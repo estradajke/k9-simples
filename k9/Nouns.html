@@ -61,9 +61,9 @@ Next: <a href="Verbs.html#Verbs" accesskey="n" rel="next">Verbs</a>, Previous: <
 <h2 class="chapter">2 Data / Nouns</h2>
 <p>The basic data types of the k9 language are numbers (interger and float), text (characters and enumerated/name) and temporal (date and time).  It is common to have functions operate on multiple data types.
 </p>
-<p>In additional to the basic data types, data can be into lists (uniform and non-uniform), dictionaries (key-value pairs), and tables (transposed/flipped dictionraries).  Dictionaries and tables will be covered in a seperate chapter.
+<p>In additional to the basic data types, data can be put into lists (uniform and non-uniform), dictionaries (key-value pairs), and tables (transposed/flipped dictionaries).  Dictionaries and tables will be covered in a seperate chapter.
 </p>
-<p>Data types can be determined by using the <code>@</code> function on values or lists of values.  In the case of lists <code>@</code> returns the type of the list <code>`L</code> but the function can be modified to evalue the type of each <code>@'</code> instead.
+<p>Data types can be determined by using the <code>@</code> function on values or lists of values.  In the case of lists <code>@</code> returns the type of the list <code>`L</code> but the function can be modified to evalue each type <code>@'</code> instead and return the type of each element in the list.
 </p>
 <div class="example">
 <pre class="example"> @(3;3.1;&quot;b&quot;;`a;12:01:02.123;2020.04.05)
@@ -74,9 +74,8 @@ Next: <a href="Verbs.html#Verbs" accesskey="n" rel="next">Verbs</a>, Previous: <
 
 <a name="Numeric-Data-Types"></a>
 <h3 class="section">2.1 Numeric Data Types</h3>
-<p>Numbers can be stored as integers and floats.  As previously mentioned <code>@</code> returns the type of either the value itself or a variable holding a value.
-</p>
-<div class="example">
+<p>Numbers can be stored as integers and floats.
+</p><div class="example">
 <pre class="example">@3 
  @3.1
 `f
@@ -86,8 +85,7 @@ Next: <a href="Verbs.html#Verbs" accesskey="n" rel="next">Verbs</a>, Previous: <
  @b
 `f
 </pre></div>
-
-<p>Numeric data can be recast as other types using the <code>$</code> or <code>$</code> command.  The <code>$</code> is an overloaded function and can either convert to string or cast to type.  The first usage take only a single argurment, the item to be converted to a string, while the second usage takes two arguments, the items to be converted and also the type to convert into.
+<p>Numeric data can be recast as other types using the <code>$</code> command.  The <code>$</code> is an overloaded function and can either convert to string or cast to type if provided.  The first usage take only a single argurment, the item to be converted to a string, while the second usage takes two arguments, the items to be converted and also the type to convert into.
 </p>
 <p>You&rsquo;ll note that the string of 3 is represented as ,&rdquo;3&rdquo;.  The comma represents the string is a list of length one and not a single element.
 </p>
@@ -106,8 +104,15 @@ Next: <a href="Verbs.html#Verbs" accesskey="n" rel="next">Verbs</a>, Previous: <
 
 <a name="Extreme-values"></a>
 <h3 class="section">2.2 Extreme values</h3>
-<p>TBD
-</p><hr>
+<p>Data types can not only represent in-range values but also null and out-of-range values.
+</p>
+<table>
+<thead><tr><th width="10%">type</th><th width="10%">null</th><th width="20%">out of range</th></tr></thead>
+<tr><td width="10%">i</td><td width="10%">0N</td><td width="20%">0W</td></tr>
+<tr><td width="10%">f</td><td width="10%">0n</td><td width="20%">0w</td></tr>
+</table>
+
+<hr>
 <div class="header">
 <p>
 Next: <a href="Verbs.html#Verbs" accesskey="n" rel="next">Verbs</a>, Previous: <a href="Intro.html#Intro" accesskey="p" rel="prev">Intro</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>

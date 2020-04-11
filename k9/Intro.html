@@ -151,27 +151,34 @@ b|0.6629631
 c|0.6708467
 </pre></div>
 
-<a name="Basic-rules"></a>
-<h3 class="section">1.4 Basic rules</h3>
+<a name="Document-formatting-for-code-examples"></a>
+<h3 class="section">1.4 Document formatting for code examples</h3>
+<p>This document uses a number of examples to help clarify k9.  The sytax is that input has a leading space and output does not.  This follows the terminal syntax where the REPL input has space but prints output without.
+</p><div class="example">
+<pre class="example"> 3+2 / this is input
+5    / this is output
+</pre></div>
 
-<p>One will need to understand some basic rules of k9 in order to progress.  The will likely seem strange at first.
+<a name="k9-nuances"></a>
+<h3 class="section">1.5 k9 nuances</h3>
+<p>One will need to understand some basic rules of k9 in order to progress.  These will likely seem strange at first.
 </p>
 <a name="g_t_003a-is-used-to-set-a-variable-to-a-value"></a>
-<h4 class="subsection">1.4.1 <code>:</code> is used to set a variable to a value</h4>
-<p><code>a:3</code> is used to set the varialbe <code>a</code> to the value <code>3</code> and not <code>a=3</code>.  <code>a=3</code> is an equality test to determine if <code>a</code>&rsquo;s value is <code>3</code>.
+<h4 class="subsection">1.5.1 <code>:</code> is used to set a variable to a value</h4>
+<p><code>a:3</code> is used to set the variable, a, to the value, 3.  <code>a=3</code> is an equality test to determine if a is equal to 3.
 </p>
 <a name="g_t_0025-is-used-to-divide-numbers"></a>
-<h4 class="subsection">1.4.2 <code>%</code> is used to divide numbers</h4>
+<h4 class="subsection">1.5.2 <code>%</code> is used to divide numbers</h4>
 <p>Yeah, 2 divide by 5 is written as <code>2%5</code> and not <code>2/5</code>.
 </p>
 <a name="Evaluation-is-done-right-to-left"></a>
-<h4 class="subsection">1.4.3 Evaluation is done right to left</h4>
+<h4 class="subsection">1.5.3 Evaluation is done right to left</h4>
 <p>2+5*3 is 17 and 2*5+3 is 16.  2+5*3 is first evaluated on the right most portion, 5*3, and once that is computed then it proceeds with 2+15.  2*5+3 goes to 2*8 which becomes 16.
 </p><a name="There-is-no-arithmetic-order"></a>
-<h4 class="subsection">1.4.4 There is no arithmetic order</h4>
-<p>+ does not happen specially before or after *.  The order of evaluation is done right to left.
+<h4 class="subsection">1.5.4 There is no arithmetic order</h4>
+<p>+ does not happen specially before or after *.  The order of evaluation is done right to left unless parenthesis are used.  (2+5)*3 = 21 as the 2+5 in parenthesis is done before being multiplied by 3.
 </p><a name="Operators-are-overloaded-depending-on-the-number-of-arguments_002e"></a>
-<h4 class="subsection">1.4.5 Operators are overloaded depending on the number of arguments.</h4>
+<h4 class="subsection">1.5.5 Operators are overloaded depending on the number of arguments.</h4>
 <div class="example">
 <pre class="example"> *(3;6;9)    / single argument so * is first element of the list
 3
@@ -179,7 +186,7 @@ c|0.6708467
 6 12 18
 </pre></div>
 <a name="Lists-and-functions-are-very-similar_002e"></a>
-<h4 class="subsection">1.4.6 Lists and functions are very similar.</h4>
+<h4 class="subsection">1.5.6 Lists and functions are very similar.</h4>
 <p>k9 syntax encourages you to treat lists and functions in a similar function.  They should both be thought of a mapping from a value to another value or from a domain to a range.
 </p><div class="example">
 <pre class="example"> l:3 4 7 12
@@ -190,8 +197,9 @@ c|0.6708467
 7
 </pre></div>
 <a name="k9-is-expressed-in-terms-of-grammar_002e"></a>
-<h4 class="subsection">1.4.7 k9 is expressed in terms of grammar.</h4>
-<ul>
+<h4 class="subsection">1.5.7 k9 is expressed in terms of grammar.</h4>
+<p>k9 uses an analogy with grammar to describe language syntax.  The k9 grammar consists of nouns (data), verbs (functions) and adverbs (function modifiers).
+</p><ul>
 <li> <tt>The boy ate an appple. (Noun verb noun)</tt>
 </li><li> <tt>The girl ate each olive. (Noun verb adverb noun)</tt>
 </li></ul>
@@ -201,8 +209,8 @@ c|0.6708467
 </li><li> <tt>3 &gt;' 0 1 2 3 4 5 (Noun verb adverb noun)</tt>
 </li></ul>
 <a name="Help_002fInfo-Card"></a>
-<h3 class="section">1.5 Help/Info Card</h3>
-<p>Typing <code>\</code> in the terminal gives you a concise overview of the language.  This document aims to provide details to beginning users where the help screen isn&rsquo;t enough.
+<h3 class="section">1.6 Help/Info Card</h3>
+<p>Typing <code>\</code> in the terminal gives you a concise overview of the language.  This document aims to provide details to beginning users where the help screen is a tad too terse.
 </p>
 <pre class="verbatim"> \   
 $k a.k                                                                         
