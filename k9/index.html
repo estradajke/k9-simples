@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for Shakti/k9.  
+
+Copyright (C) 2020 John Estrada -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>k9 simples: Top</title>
+
+<meta name="description" content="k9 simples: Top">
+<meta name="keywords" content="k9 simples: Top">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="#Top" rel="start" title="Top">
+<link href="#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="../dir/index.html" rel="up" title="(dir)">
+<link href="Intro.html#Intro" rel="next" title="Intro">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<h1 class="settitle" align="center">k9 simples</h1>
+
+
+
+<a name="SEC_Contents"></a>
+<h2 class="contents-heading">Table of Contents</h2>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a name="toc-Intro-1" href="Intro.html#Intro">1 Intro</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Get-k9_002e" href="Intro.html#Get-k9_002e">1.1 Get k9.</a></li>
+    <li><a name="toc-rlwrap" href="Intro.html#rlwrap">1.2 rlwrap</a></li>
+    <li><a name="toc-Simple-example" href="Intro.html#Simple-example">1.3 Simple example</a></li>
+    <li><a name="toc-Basic-rules" href="Intro.html#Basic-rules">1.4 Basic rules</a>
+    <ul class="no-bullet">
+      <li><a name="toc-_003a-is-used-to-set-a-variable-to-a-value" href="Intro.html#g_t_003a-is-used-to-set-a-variable-to-a-value">1.4.1 <code>:</code> is used to set a variable to a value</a></li>
+      <li><a name="toc-_0025-is-used-to-divide-numbers" href="Intro.html#g_t_0025-is-used-to-divide-numbers">1.4.2 <code>%</code> is used to divide numbers</a></li>
+      <li><a name="toc-Evaluation-is-done-right-to-left" href="Intro.html#Evaluation-is-done-right-to-left">1.4.3 Evaluation is done right to left</a></li>
+      <li><a name="toc-There-is-no-arithmetic-order" href="Intro.html#There-is-no-arithmetic-order">1.4.4 There is no arithmetic order</a></li>
+      <li><a name="toc-Operators-are-overloaded-depending-on-the-number-of-arguments_002e" href="Intro.html#Operators-are-overloaded-depending-on-the-number-of-arguments_002e">1.4.5 Operators are overloaded depending on the number of arguments.</a></li>
+      <li><a name="toc-Lists-and-functions-are-very-similar_002e" href="Intro.html#Lists-and-functions-are-very-similar_002e">1.4.6 Lists and functions are very similar.</a></li>
+      <li><a name="toc-k9-is-expressed-in-terms-of-grammar_002e" href="Intro.html#k9-is-expressed-in-terms-of-grammar_002e">1.4.7 k9 is expressed in terms of grammar.</a></li>
+    </ul></li>
+    <li><a name="toc-Help_002fInfo-Card" href="Intro.html#Help_002fInfo-Card">1.5 Help/Info Card</a></li>
+  </ul></li>
+  <li><a name="toc-Data-_002f-Nouns" href="Nouns.html#Nouns">2 Data / Nouns</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Numeric-Data-Types" href="Nouns.html#Numeric-Data-Types">2.1 Numeric Data Types</a></li>
+    <li><a name="toc-Extreme-values" href="Nouns.html#Extreme-values">2.2 Extreme values</a></li>
+  </ul></li>
+  <li><a name="toc-Functions-_002f-Verbs" href="Verbs.html#Verbs">3 Functions / Verbs</a>
+  <ul class="no-bullet">
+    <li><a name="toc-set-_21d2-x_003ay" href="Verbs.html#set-_21d2-x_003ay">3.1 set &rArr; x:y</a></li>
+    <li><a name="toc-plus-_21d2-x_002by" href="Verbs.html#plus-_21d2-x_002by">3.2 plus &rArr; x+y</a></li>
+    <li><a name="toc-flip-_21d2-_002bx" href="Verbs.html#flip-_21d2-_002bx">3.3 flip &rArr; +x</a></li>
+    <li><a name="toc-minus-_21d2-x_002dy" href="Verbs.html#minus-_21d2-x_002dy">3.4 minus &rArr; x-y</a></li>
+    <li><a name="toc-negate-_21d2-_002dx" href="Verbs.html#negate-_21d2-_002dx">3.5 negate &rArr; -x</a></li>
+    <li><a name="toc-times-_21d2-x_002ay" href="Verbs.html#times-_21d2-x_002ay">3.6 times &rArr;  x*y</a></li>
+    <li><a name="toc-first-_21d2-_002ax" href="Verbs.html#first-_21d2-_002ax">3.7 first &rArr; *x</a></li>
+    <li><a name="toc-divide-_21d2-x_0025y" href="Verbs.html#divide-_21d2-x_0025y">3.8 divide &rArr; x%y</a></li>
+    <li><a name="toc-_0026-min_002c-x_0026y" href="Verbs.html#g_t_0026-min_002c-x_0026y">3.9 <code>&amp;</code> min, x&amp;y</a></li>
+    <li><a name="toc-_0026-where_002c-_0026x" href="Verbs.html#g_t_0026-where_002c-_0026x">3.10 <code>&amp;</code> where, &amp;x</a></li>
+    <li><a name="toc-_007c-max_002c-x_007cy" href="Verbs.html#g_t_007c-max_002c-x_007cy">3.11 <code>|</code> max, x|y</a></li>
+    <li><a name="toc-_007c-reverse_002c-_007cx" href="Verbs.html#g_t_007c-reverse_002c-_007cx">3.12 <code>|</code> reverse, |x</a></li>
+    <li><a name="toc-_003c-_0028_003e_0029-less_002c-x_003c-_0028_003e_0029y" href="Verbs.html#g_t_003c-_0028_003e_0029-less_002c-x_003c-_0028_003e_0029y">3.13 <code>&lt; (&gt;)</code> less, x&lt; (&gt;)y</a></li>
+    <li><a name="toc-_003c-_0028_003e_0029-up_002c-_003c-_0028_003e_0029x" href="Verbs.html#g_t_003c-_0028_003e_0029-up_002c-_003c-_0028_003e_0029x">3.14 <code>&lt; (&gt;)</code> up, &lt; (&gt;)x</a></li>
+    <li><a name="toc-_003d-equal_002c-x_003dy" href="Verbs.html#g_t_003d-equal_002c-x_003dy">3.15 <code>=</code> equal, x=y</a></li>
+    <li><a name="toc-_003d-group_002c-_003dx" href="Verbs.html#g_t_003d-group_002c-_003dx">3.16 <code>=</code> group, =x</a></li>
+    <li><a name="toc-_007e-match_002c-x_007ey" href="Verbs.html#g_t_007e-match_002c-x_007ey">3.17 <code>~</code> match, x~y</a></li>
+    <li><a name="toc-_007e-not_002c-_007ex" href="Verbs.html#g_t_007e-not_002c-_007ex">3.18 <code>~</code> not, ~x</a></li>
+    <li><a name="toc-_0021-key_002c-x_0021y" href="Verbs.html#g_t_0021-key_002c-x_0021y">3.19 <code>!</code> key, x!y</a></li>
+    <li><a name="toc-_0021-enum_002c-_0021x" href="Verbs.html#g_t_0021-enum_002c-_0021x">3.20 <code>!</code> enum, !x</a></li>
+    <li><a name="toc-_002c-cat_002c-x_002cy" href="Verbs.html#g_t_002c-cat_002c-x_002cy">3.21 <code>,</code> cat, x,y</a></li>
+    <li><a name="toc-_002c-enlist_002c-_002cx" href="Verbs.html#g_t_002c-enlist_002c-_002cx">3.22 <code>,</code> enlist, ,x</a></li>
+    <li><a name="toc-cut-_21d2-x_005ey" href="Verbs.html#cut-_21d2-x_005ey">3.23 cut &rArr; x^y</a></li>
+    <li><a name="toc-_005e-asc_002c-_005ex" href="Verbs.html#g_t_005e-asc_002c-_005ex">3.24 <code>^</code> asc, ^x</a></li>
+    <li><a name="toc-_0024-cast_002c-x_0024y" href="Verbs.html#g_t_0024-cast_002c-x_0024y">3.25 <code>$</code> cast, x$y</a></li>
+    <li><a name="toc-_0024-string_002c-_0024x" href="Verbs.html#g_t_0024-string_002c-_0024x">3.26 <code>$</code> string, $x</a></li>
+    <li><a name="toc-_0023-take_002c-x_0023y" href="Verbs.html#g_t_0023-take_002c-x_0023y">3.27 <code>#</code> take, x#y</a></li>
+    <li><a name="toc-_0023-count_002c-_0023x" href="Verbs.html#g_t_0023-count_002c-_0023x">3.28 <code>#</code> count, #x</a></li>
+    <li><a name="toc-drop-_21d2-x_005fy" href="Verbs.html#drop-_21d2-x_005fy">3.29 drop &rArr; x_y</a></li>
+    <li><a name="toc-_003f-find_002c-x_003fy" href="Verbs.html#g_t_003f-find_002c-x_003fy">3.30 <code>?</code> find, x?y</a></li>
+    <li><a name="toc-_003f-unique_002c-_003fx" href="Verbs.html#g_t_003f-unique_002c-_003fx">3.31 <code>?</code> unique, ?x</a></li>
+    <li><a name="toc-_0040-at_002c-x_0040y" href="Verbs.html#g_t_0040-at_002c-x_0040y">3.32 <code>@</code> at, x@y</a></li>
+    <li><a name="toc-_0040-type_002c-_0040x" href="Verbs.html#g_t_0040-type_002c-_0040x">3.33 <code>@</code> type, @x</a></li>
+    <li><a name="toc-_002e-apply_002c-x_002ey" href="Verbs.html#g_t_002e-apply_002c-x_002ey">3.34 <code>.</code> apply, x.y</a></li>
+    <li><a name="toc-_002e-value_002c-_002ex" href="Verbs.html#g_t_002e-value_002c-_002ex">3.35 <code>.</code> value, .x</a></li>
+    <li><a name="toc-Sorting-by-Index-Ascending-_003c-and-Descending-_003e" href="Verbs.html#Sorting-by-Index-Ascending-_003c-and-Descending-_003e">3.36 Sorting by Index Ascending <em>&lt;</em> and Descending <em>&gt;</em></a></li>
+    <li><a name="toc-Sorting-Ascending-_005e" href="Verbs.html#Sorting-Ascending-_005e">3.37 Sorting Ascending <em>^</em></a></li>
+    <li><a name="toc-Where-_0026" href="Verbs.html#Where-_0026">3.38 Where <em>&amp;</em></a></li>
+    <li><a name="toc-Group-_003d" href="Verbs.html#Group-_003d">3.39 Group <code>=</code></a></li>
+  </ul></li>
+  <li><a name="toc-Function-Modifiers-_002f-Adverbs" href="Adverbs.html#Adverbs">4 Function Modifiers / Adverbs</a>
+  <ul class="no-bullet">
+    <li><a name="toc-each-_21d2-f_0027x" href="Adverbs.html#each-_21d2-f_0027x">4.1 each &rArr; f&rsquo;x</a></li>
+  </ul></li>
+  <li><a name="toc-Dictionaries-and-Dictionary-Functions" href="Dictionaries.html#Dictionaries">5 Dictionaries and Dictionary Functions</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Dictionaries-1" href="Dictionaries.html#Dictionaries-1">5.1 Dictionaries</a></li>
+    <li><a name="toc-Dictionary-Key-_0021" href="Dictionaries.html#Dictionary-Key-_0021">5.2 Dictionary Key <em>!</em></a></li>
+    <li><a name="toc-Dictionary-as-Value-_002e" href="Dictionaries.html#Dictionary-as-Value-_002e">5.3 Dictionary as Value <em>.</em></a></li>
+    <li><a name="toc-Sorting-a-Dictionary-by-Key-_005e" href="Dictionaries.html#Sorting-a-Dictionary-by-Key-_005e">5.4 Sorting a Dictionary by Key <em>^</em></a></li>
+    <li><a name="toc-Sorting-a-Dictionary-by-Value-_003c-and-_003e" href="Dictionaries.html#Sorting-a-Dictionary-by-Value-_003c-and-_003e">5.5 Sorting a Dictionary by Value <em>&lt;</em> and <em>&gt;</em></a></li>
+    <li><a name="toc-Flipping-a-Dictionary-into-a-Table-_002b" href="Dictionaries.html#Flipping-a-Dictionary-into-a-Table-_002b">5.6 Flipping a Dictionary into a Table <em>+</em></a></li>
+    <li><a name="toc-Functions-that-operate-on-each-value-in-a-dictionary" href="Dictionaries.html#Functions-that-operate-on-each-value-in-a-dictionary">5.7 Functions that operate on each value in a dictionary</a></li>
+    <li><a name="toc-Functions-that-operate-over-values-in-a-dictionary" href="Dictionaries.html#Functions-that-operate-over-values-in-a-dictionary">5.8 Functions that operate over values in a dictionary</a></li>
+  </ul></li>
+  <li><a name="toc-More-functions-1" href="More-functions.html#More-functions">6 More functions</a></li>
+  <li><a name="toc-I_002fO-1" href="I_002fO.html#I_002fO">7 I/O</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Input-format-values-to-table" href="I_002fO.html#Input-format-values-to-table">7.1 Input format values to table</a></li>
+    <li><a name="toc-Format-to-CSV_002fjson_002fk-_21d2-_0060csv-x" href="I_002fO.html#Format-to-CSV_002fjson_002fk-_21d2-_0060csv-x">7.2 Format to CSV/json/k &rArr; &lsquo;csv x</a></li>
+    <li><a name="toc-write-line-_21d2-x-0_003ay" href="I_002fO.html#write-line-_21d2-x-0_003ay">7.3 write line &rArr; x 0:y</a></li>
+    <li><a name="toc-read-line-_21d2-0_003ax" href="I_002fO.html#read-line-_21d2-0_003ax">7.4 read line &rArr; 0:x</a></li>
+    <li><a name="toc-write-char-_21d2-x-1_003ay" href="I_002fO.html#write-char-_21d2-x-1_003ay">7.5 write char &rArr; x 1:y</a></li>
+    <li><a name="toc-read-char-_21d2-1_003ax" href="I_002fO.html#read-char-_21d2-1_003ax">7.6 read char &rArr; 1:x</a></li>
+    <li><a name="toc-write-data-_21d2-2_003a" href="I_002fO.html#write-data-_21d2-2_003a">7.7 write data &rArr; 2:</a></li>
+    <li><a name="toc-conn_002fset-_21d2-3_003a" href="I_002fO.html#conn_002fset-_21d2-3_003a">7.8 conn/set &rArr; 3:</a></li>
+    <li><a name="toc-http_002fget-_21d2-4_003a" href="I_002fO.html#http_002fget-_21d2-4_003a">7.9 http/get &rArr; 4:</a></li>
+  </ul></li>
+  <li><a name="toc-Tables-and-kSQL" href="Tables_002fkSQL.html#Tables_002fkSQL">8 Tables and kSQL</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Tables-1" href="Tables_002fkSQL.html#Tables-1">8.1 Tables</a></li>
+    <li><a name="toc-A_005fTables-1" href="Tables_002fkSQL.html#A_005fTables-1">8.2 A_Tables</a></li>
+    <li><a name="toc-S_005fTables-1" href="Tables_002fkSQL.html#S_005fTables-1">8.3 S_Tables</a></li>
+    <li><a name="toc-kSQL-1" href="Tables_002fkSQL.html#kSQL-1">8.4 kSQL</a></li>
+  </ul></li>
+  <li><a name="toc-X" href="ChX.html#ChX">9 X</a>
+  <ul class="no-bullet">
+    <li><a name="toc-_0060freq-Histogram" href="ChX.html#g_t_0060freq-Histogram">9.1 <code>`freq</code> Histogram</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+<a name="Top"></a>
+<div class="header">
+<p>
+Next: <a href="Intro.html#Intro" accesskey="n" rel="next">Intro</a>, Up: <a href="../dir/index.html" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="k9_003a-Manual"></a>
+<h1 class="top">k9: Manual</h1>
+<p>This document explains the usage of the k9 programming language in very simple terms and is intended for newbies only.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="Intro.html#Intro" accesskey="1">Intro</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Intro
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Nouns.html#Nouns" accesskey="2">Nouns</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Data / Noun
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Verbs.html#Verbs" accesskey="3">Verbs</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Functions / Verbs
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Adverbs.html#Adverbs" accesskey="4">Adverbs</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Function Modifiers / Adverbs
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Dictionaries.html#Dictionaries" accesskey="5">Dictionaries</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Dictionaries and Functions for Dictionaries
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="More-functions.html#More-functions" accesskey="6">More functions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">More functions
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="I_002fO.html#I_002fO" accesskey="7">I/O</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">I/O
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Tables_002fkSQL.html#Tables_002fkSQL" accesskey="8">Tables/kSQL</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Tables and kSQL
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="ChX.html#ChX" accesskey="9">ChX</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Chapter X
+</td></tr>
+</table>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Intro.html#Intro" accesskey="n" rel="next">Intro</a>, Up: <a href="../dir/index.html" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+
+
+
+</body>
+</html>

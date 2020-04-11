@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for Shakti/k9.  
+
+Copyright (C) 2020 John Estrada -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>k9 simples: Tables/kSQL</title>
+
+<meta name="description" content="k9 simples: Tables/kSQL">
+<meta name="keywords" content="k9 simples: Tables/kSQL">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="ChX.html#ChX" rel="next" title="ChX">
+<link href="I_002fO.html#I_002fO" rel="prev" title="I/O">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Tables_002fkSQL"></a>
+<div class="header">
+<p>
+Next: <a href="ChX.html#ChX" accesskey="n" rel="next">ChX</a>, Previous: <a href="I_002fO.html#I_002fO" accesskey="p" rel="prev">I/O</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Tables-and-kSQL"></a>
+<h2 class="chapter">8 Tables and kSQL</h2>
+<p>This chapter introduces k9 tables and the kSQL language to query.
+<a name="Tables"></a></p><a name="Tables-1"></a>
+<h3 class="section">8.1 Tables</h3>
+<p>Here is an example of a table with three columns (Day, Weather, and Temp) and three rows.
+</p><div class="example">
+<pre class="example"> t:[[]Day:2020.04.10+!3;Weather:`sunny`cold`sunny;Temp:22 12 18]
+ t
+Day        Weather Temp
+---------- ------- ----
+2020-04-10 sunny     22
+2020-04-11 cold      12
+2020-04-12 sunny     18
+ @t                             / tables are type `A (`t is for time)
+`A
+ +t
+Day    |2020-04-10 2020-04-11 2020-04-12
+Weather|sunny cold sunny                
+Temp   |22 12 18                        
+</pre></div>
+<a name="A_005fTables"></a><a name="A_005fTables-1"></a>
+<h3 class="section">8.2 A_Tables</h3>
+<p>Here is an example of a A_table with three columns (Day, Weather, and Temp) and three rows.  One column (Day) will be add as a key.
+</p><div class="example">
+<pre class="example"> t:[[Day:2020.04.10+!3]Weather:`sunny`cold`sunny;Temp:22 12 18]
+ t
+Day       |Weather Temp
+----------|------- ----
+2020-04-10|sunny     22
+2020-04-11|cold      12
+2020-04-12|sunny     18
+
+ @t                        / A_tables have type `AA
+`AA
+</pre></div>
+<a name="S_005fTables"></a><a name="S_005fTables-1"></a>
+<h3 class="section">8.3 S_Tables</h3>
+<p>TBD
+</p><div class="example">
+<pre class="example"> x:`a`b! [[]c:2 3;d:3 4;e:4 5]
+ x
+ |c d e
+-|- - -
+a|2 3 4
+b|3 4 5
+
+ @x                              / S_tables are type `SA
+`SA
+</pre></div>
+<a name="kSQL"></a><a name="kSQL-1"></a>
+<h3 class="section">8.4 kSQL</h3>
+<p>kSQL is a powerful query language for tables.
+</p><div class="example">
+<pre class="example"> select |/Temp from t where Weather=`sunny
+Temp|22
+
+ select from t where Weather=`sunny
+Day        Weather Temp
+---------- ------- ----
+2020-04-10 sunny     22
+2020-04-12 sunny     18
+
+ select {+/x%#x}Temp from t where Weather=`sunny
+Temp|20
+
+ select |/Temp from t where Weather=`sunny
+Temp|22
+</pre></div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,614 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for Shakti/k9.  
+
+Copyright (C) 2020 John Estrada -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>k9 simples: Verbs</title>
+
+<meta name="description" content="k9 simples: Verbs">
+<meta name="keywords" content="k9 simples: Verbs">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Adverbs.html#Adverbs" rel="next" title="Adverbs">
+<link href="Nouns.html#Nouns" rel="prev" title="Nouns">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Verbs"></a>
+<div class="header">
+<p>
+Next: <a href="Adverbs.html#Adverbs" accesskey="n" rel="next">Adverbs</a>, Previous: <a href="Nouns.html#Nouns" accesskey="p" rel="prev">Nouns</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Functions-_002f-Verbs"></a>
+<h2 class="chapter">3 Functions / Verbs</h2>
+<p>This chapter explains all functions, aka verbs.  Most functions are overloaded and change depending on the number and type of arguments.
+</p>
+<div class="example">
+<pre class="example">Verb
+:  (*note set::)
++  (*note plus::)       (*note flip::)    
+-  (*note minus::)      (*note negate::)      
+*  (*note times::)      (*note first::)       
+%  (*note divide::)         
+&amp;  (*note min::)        (*note where::)    
+|  (*note max::)        (*note reverse::)     
+&lt;  (*note less::)       (*note asc::)         
+&gt;  (*note more::)       (*note dsc::)    
+=  (*note equal::)      (*note group::)    
+~  (*note match::)      (*note not::)    
+!  (*note key::)        (*note enum::)    
+,  (*note cat::)        (*note enlist::)    
+^  (*note cut::)        (*note sort::)    
+$  (*note cast::)       (*note string::)    
+#  (*note take::)       (*note count::)    
+_  (*note drop::)       (*note floor::)    
+?  (*note find::)       (*note unique::)    
+&nbsp; (*note at::)         (*note type::)    
+.  (*note apply::)      (*note value::)    
+</pre></div>
+<a name="set"></a><a name="set-_21d2-x_003ay"></a>
+<h3 class="section">3.1 set &rArr; x:y</h3>
+<p>Set a variable, x, to a value, y.
+</p>
+<div class="example">
+<pre class="example"> a:3
+ a
+3
+ b:(`green;37;&quot;blue)
+ b
+green
+37
+blue
+ c:{x+y}
+ c
+{x+y}
+ c[12;15]
+27
+</pre></div>
+
+<a name="plus"></a><a name="plus-_21d2-x_002by"></a>
+<h3 class="section">3.2 plus &rArr; x+y</h3>
+<p>Add x and y.
+</p>
+<div class="example">
+<pre class="example"> 3+7
+10
+ a:3;
+ a+8
+11
+ 3+4 5 6 7
+7 8 9 10
+ 3 4 5+4 5 6
+7 9 11
+ 3 4+1 2 3 / lengths don't match, will error: length
+error: length
+ 10:00+1         / add a minute
+10:01
+ 10:00:00+1      / add a second
+10:00:01
+ 10:00:00.000+1  / add a millisecond
+10:00:00.001
+</pre></div>
+
+<a name="flip"></a><a name="flip-_21d2-_002bx"></a>
+<h3 class="section">3.3 flip &rArr; +x</h3>
+<p>Flip, or transpose, x.  
+</p>
+<div class="example">
+<pre class="example"> x:((1 2);(3 4);(5 6))
+ x
+1 2
+3 4
+5 6
+ +x
+1 3 5
+2 4 6
+ `a`b!+x
+a|1 3 5
+b|2 4 5
+ +`a`b!+x
+a b
+- -
+1 2
+3 4
+5 6
+</pre></div>
+
+<a name="minus"></a><a name="minus-_21d2-x_002dy"></a>
+<h3 class="section">3.4 minus &rArr; x-y</h3>
+<p>Subtract y from x.
+</p>
+<div class="example">
+<pre class="example"> 5-2
+3
+ x:4;y:1;
+ x-y
+3
+</pre></div>
+
+<a name="negate"></a><a name="negate-_21d2-_002dx"></a>
+<h3 class="section">3.5 negate &rArr; -x</h3>
+<p>Negative x.
+</p>
+<div class="example">
+<pre class="example"> -3
+-3
+ --3
+3
+ x:4;
+ -x
+-4
+ d:`a`b!((1 2 3);(4 5 6))
+ -d
+a|-1 -2 -3
+b|-4 -5 -6
+</pre></div>
+<a name="times"></a><a name="times-_21d2-x_002ay"></a>
+<h3 class="section">3.6 times &rArr;  x*y</h3>
+<p>Mutliply x and y.
+</p><div class="example">
+<pre class="example"> 3*4
+12
+ 3*4 5 6
+12 15 18
+ 1 2 3*4 5 6
+4 10 18
+</pre></div>
+<a name="first"></a><a name="first-_21d2-_002ax"></a>
+<h3 class="section">3.7 first &rArr; *x</h3>
+<p>Return the first value of x.
+</p><div class="example">
+<pre class="example"> *1 2 3
+1
+ *((1 2);(3 4);(5 6))
+1 2
+ **((1 2);(3 4);(5 6))
+1
+ *`a`b!((1 2 3);(4 5 6))
+1 2 3
+</pre></div>
+<a name="divide"></a><a name="divide-_21d2-x_0025y"></a>
+<h3 class="section">3.8 divide &rArr; x%y</h3>
+<p>Divide x by y.
+</p><div class="example">
+<pre class="example"> 12%5
+2.4
+ 6%2    / division of two integers returns a float
+3f
+</pre></div>
+<a name="g_t_0026-min_002c-x_0026y"></a>
+<h3 class="section">3.9 <code>&amp;</code> min, x&amp;y</h3>
+<p>The smaller of x and y.
+</p><div class="example">
+<pre class="example"> 3&amp;2
+2
+ 1 2 3&amp;4 5 6
+1 2 3
+ 010010b&amp;111000b
+010000
+ `a&amp;`b
+`a
+</pre></div>
+<a name="g_t_0026-where_002c-_0026x"></a>
+<h3 class="section">3.10 <code>&amp;</code> where, &amp;x</h3>
+<p>Given a list of integer values, eg. x_0, x_1, ..., x_(n-1), generate x_0 values of 0, x_1 values of 1, ..., and x_(n-1) values of n-1.
+</p>
+<div class="example">
+<pre class="example"> &amp; 3 1 0 2
+0 0 0 1 3 3
+ &amp;001001b
+2 5
+ &quot;banana&quot;=&quot;a&quot;
+010101b
+ &amp;&quot;banana&quot;=&quot;a&quot;
+1 3 5
+ x@&amp;30&lt;x:12.7 0.1 35.6 -12.1 101.101  / return values greater than 30
+35.6 101.101
+</pre></div>
+
+<a name="g_t_007c-max_002c-x_007cy"></a>
+<h3 class="section">3.11 <code>|</code> max, x|y</h3>
+<p>The greater of x and y.
+</p>
+<div class="example">
+<pre class="example"> 3|2
+3
+ 1 2 3|4 5 6
+4 5 6
+ 101101b|000111b
+101111b
+</pre></div>
+<a name="g_t_007c-reverse_002c-_007cx"></a>
+<h3 class="section">3.12 <code>|</code> reverse, |x</h3>
+<p>Reverse the list x.
+</p><div class="example">
+<pre class="example"> |0 3 1 2
+2 1 3 0
+ |&quot;banana&quot;
+&quot;ananab&quot;
+ |((1 2 3);4;(5 6))
+5 6  
+4    
+1 2 3
+</pre></div>
+<a name="g_t_003c-_0028_003e_0029-less_002c-x_003c-_0028_003e_0029y"></a>
+<h3 class="section">3.13 <code>&lt; (&gt;)</code> less, x&lt; (&gt;)y</h3>
+<p>x less (more) than y.
+</p><div class="example">
+<pre class="example"> 3&lt;2
+0b
+ 2&lt;3
+1b
+ 1 2 3&lt;4 5 6
+111b
+ ((1 2 3);4;(5 6))&lt;((101 0 5);12;(10 0)) / size needs to match
+101
+1  
+10
+ &quot;a&quot;&lt;&quot;b&quot;
+1b
+</pre></div>
+<a name="g_t_003c-_0028_003e_0029-up_002c-_003c-_0028_003e_0029x"></a>
+<h3 class="section">3.14 <code>&lt; (&gt;)</code> up, &lt; (&gt;)x</h3>
+<p>The indices of a list in order to sort the list in ascending (descending) order.
+</p><div class="example">
+<pre class="example"> &lt;2 3 0 12
+2 0 1 3
+ x@&lt;x:2 3 0 12
+0 2 3 12
+</pre></div>
+<a name="g_t_003d-equal_002c-x_003dy"></a>
+<h3 class="section">3.15 <code>=</code> equal, x=y</h3>
+<p>x equal to y
+</p><div class="example">
+<pre class="example"> 2=2
+1b
+ 2=3
+0b
+ &quot;banana&quot;=&quot;abnaoo&quot;
+001100b
+</pre></div>
+<a name="g_t_003d-group_002c-_003dx"></a>
+<h3 class="section">3.16 <code>=</code> group, =x</h3>
+<p>A dictionary of the disinct values of x (key) and indices (values).
+</p>
+<div class="example">
+<pre class="example"> =&quot;banana&quot;
+a|1 3 5
+b|0    
+n|2 4  
+ =0 1 0 2 10 7 0 1 12
+ 0|0 2 6
+ 1|1 7  
+ 2|3    
+ 7|5    
+10|4    
+12|8    
+</pre></div>
+<a name="g_t_007e-match_002c-x_007ey"></a>
+<h3 class="section">3.17 <code>~</code> match, x~y</h3>
+<p>Compare x and y.
+</p><div class="example">
+<pre class="example"> 2~2
+1b
+ 2~3
+0b
+ `a`b~`a`b  / different than = which is element-wise comparison
+1b
+ `a`b=`a`b
+11b
+</pre></div>
+<a name="g_t_007e-not_002c-_007ex"></a>
+<h3 class="section">3.18 <code>~</code> not, ~x</h3>
+<p>Boolean invert of x
+</p><div class="example">
+<pre class="example"> ~1b
+0b
+ ~101b
+010b
+ ~37 0 12
+010b
+</pre></div>
+<a name="g_t_0021-key_002c-x_0021y"></a>
+<h3 class="section">3.19 <code>!</code> key, x!y</h3>
+<p>Dictionary of x (key) and y (value)
+</p><div class="example">
+<pre class="example"> 3!7
+,3!,7
+ `a`b!3 7
+a|3
+b|7
+ `a`b!((1 2);(3 4))
+a|1 2
+b|3 4
+</pre></div>
+<a name="g_t_0021-enum_002c-_0021x"></a>
+<h3 class="section">3.20 <code>!</code> enum, !x</h3>
+<p>Generate an interger list from 0 to x-1.
+</p><div class="example">
+<pre class="example"> !3
+0 1 2
+</pre></div>
+<a name="g_t_002c-cat_002c-x_002cy"></a>
+<h3 class="section">3.21 <code>,</code> cat, x,y</h3>
+<p>Concatenate x and y.
+</p><div class="example">
+<pre class="example"> 3,7
+3 7
+ &quot;hello&quot;,&quot; &quot;,&quot;there&quot;
+&quot;hello there&quot;
+</pre></div>
+<a name="g_t_002c-enlist_002c-_002cx"></a>
+<h3 class="section">3.22 <code>,</code> enlist, ,x</h3>
+<p>Create a list from x
+</p><div class="example">
+<pre class="example"> ,3
+,3
+ ,1 2 3
+1 2 3
+ 3=,3
+,1b
+ 3~,3
+0b
+</pre></div>
+<a name="cut"></a><a name="cut-_21d2-x_005ey"></a>
+<h3 class="section">3.23 cut &rArr; x^y</h3>
+<p>Reshape a list y by indices x.
+</p><div class="example">
+<pre class="example"> 0 1 5^0 1 2 3 4 5 6 7 8 9
+0        
+1 2 3 4  
+5 6 7 8 9
+ 1 5^0 1 2 3 4 5 6 7 8 9
+1 2 3 4  
+5 6 7 8 9
+</pre></div>
+<a name="g_t_005e-asc_002c-_005ex"></a>
+<h3 class="section">3.24 <code>^</code> asc, ^x</h3>
+<p>Sort list x into ascending order.
+</p><div class="example">
+<pre class="example"> ^0 3 2 1
+0 1 2 3
+ ^`b`a!((0 1 2);(7 6 5)) / sort dictionary by key
+a|7 6 5
+b|0 1 2
+</pre></div>
+<a name="g_t_0024-cast_002c-x_0024y"></a>
+<h3 class="section">3.25 <code>$</code> cast, x$y</h3>
+<p>Cast y into type x.
+</p><div class="example">
+<pre class="example"> `i$37.1 37.9
+37 37
+ `f$3
+3f
+ `D$&quot;2020.03.01&quot;
+2020-03-01
+ `t$123
+00:00:00.123
+</pre></div>
+<a name="g_t_0024-string_002c-_0024x"></a>
+<h3 class="section">3.26 <code>$</code> string, $x</h3>
+<p>Cast x to string.
+</p><div class="example">
+<pre class="example"> $`abc`d
+abc
+d
+ $4.7
+&quot;4.7&quot;
+</pre></div>
+<a name="g_t_0023-take_002c-x_0023y"></a>
+<h3 class="section">3.27 <code>#</code> take, x#y</h3>
+<p>First (last) x elements of y if x is positive (negative)
+</p><div class="example">
+<pre class="example"> 3#0 1 2 3 4 5
+0 1 2
+ -3#0 1 2 3 4 5
+3 4 5
+ 2#&quot;hello&quot;
+&quot;he&quot;
+</pre></div>
+<a name="g_t_0023-count_002c-_0023x"></a>
+<h3 class="section">3.28 <code>#</code> count, #x</h3>
+<p>Count the number of elements in x.
+</p><div class="example">
+<pre class="example"> #0 1 2 12
+4
+ #((0 1 2);3;(4 5))
+3
+ #`a`b!((1 2 3);(4 5 6)) / count the number of keys
+2
+</pre></div>
+<a name="drop"></a><a name="drop-_21d2-x_005fy"></a>
+<h3 class="section">3.29 drop &rArr; x_y</h3>
+<p>Return the list y without the first (last) x elements if x is positive (negative).
+</p><div class="example">
+<pre class="example"> 3_0 1 2 3 4 5
+3 4 5
+ -3_0 1 2 3 4 5
+0 1 2
+ a:3;b:0 9 1 8 2 7;
+ a_b
+8 2 7
+</pre></div>
+<a name="g_t_003f-find_002c-x_003fy"></a>
+<h3 class="section">3.30 <code>?</code> find, x?y</h3>
+<p>Find the first element of x that matches y otherwise return the end of vector.
+</p><div class="example">
+<pre class="example"> `a`b`a`c`b`a`a?`b
+1
+ `a`b`a`c`b`a`a?`d
+7
+ 0 1 2 3 4?10
+5
+ (1;`a;&quot;blue&quot;;7.4)?3
+4
+</pre></div>
+<a name="g_t_003f-unique_002c-_003fx"></a>
+<h3 class="section">3.31 <code>?</code> unique, ?x</h3>
+<p>Return the unique values of the list x.  The <code>?</code> preceeding the return value explicitly shows that list has no repeat values.
+</p><div class="example">
+<pre class="example"> ?`f`a`b`c`a`b`d`e`a
+?`f`a`b`c`d`e
+ ?&quot;banana&quot;
+?&quot;ban&quot;
+</pre></div>
+<a name="g_t_0040-at_002c-x_0040y"></a>
+<h3 class="section">3.32 <code>@</code> at, x@y</h3>
+<p>Given a list x return the value(s) at index(indices) y.
+</p><div class="example">
+<pre class="example"> (3 4 7 12)@2
+7
+ `a`b`c@2
+`c
+ ((1 2);3;(4 5 6))@(0 1)   / values at indices 0 and 1
+1 2
+3
+</pre></div>
+<a name="g_t_0040-type_002c-_0040x"></a>
+<h3 class="section">3.33 <code>@</code> type, @x</h3>
+<p>Return the data type of x.
+</p><div class="example">
+<pre class="example"> @1
+`i
+ @1.2
+`f
+ @`a
+`s
+ @&quot;a&quot;
+`c
+ @2020.04.20
+`D
+ @12:34:56.789
+`t
+ @(1;1.2;`a;&quot;a&quot;;2020.04.20;12:34:56.789)  / type of a list
+`L
+ @'(1;1.2;`a;&quot;a&quot;;2020.04.20;12:34:56.789) / type of elements of the list
+`i`f`s`c`D`t
+</pre></div>
+<a name="g_t_002e-apply_002c-x_002ey"></a>
+<h3 class="section">3.34 <code>.</code> apply, x.y</h3>
+<p>Given list x return the value at index list y.
+</p><div class="example">
+<pre class="example"> (3 4 7 12).,2
+7
+ `a`b`c.,2
+`c
+ ((1 2);3;(4 5 6)).(0 1)   / value at index 0 and then index 1
+2
+</pre></div>
+<a name="g_t_002e-value_002c-_002ex"></a>
+<h3 class="section">3.35 <code>.</code> value, .x</h3>
+<p>Return the value of dictionary x as lists.
+</p><div class="example">
+<pre class="example"> `a`b!(1 2;3 4)
+a|1 2
+b|3 4
+ .`a`b!(1 2;3 4)
+a   b
+1 2 3 4
+</pre></div>
+<a name="Sorting-by-Index-Ascending-_003c-and-Descending-_003e"></a>
+<h3 class="section">3.36 Sorting by Index Ascending <em>&lt;</em> and Descending <em>&gt;</em></h3>
+<p>Given a list of uniform data kk can return the indices to generate a sorted list.  The index list can either be ascending, &lt;, or descending, &gt;.  As an example if you have the numbers 10 12 11 then the correct ascending index would be 0 (10 is first), 2 (11 the number at index 2 is next), and 1 (index 1 has the largest number).
+</p>
+<div class="example">
+<pre class="example"> &lt;10 12 11
+0 2 1
+ &gt;10 12 11
+1 2 0
+</pre></div>
+<a name="Sorting-Ascending-_005e"></a>
+<h3 class="section">3.37 Sorting Ascending <em>^</em></h3>
+<p>Given a list of uniform data kk can sort the list and return the values in ascending order.
+</p>
+<div class="example">
+<pre class="example"> ^10 12 11
+10 11 12
+ ^&quot;abde&quot;
+abde
+
+</pre></div>
+
+<a name="Where-_0026"></a>
+<h3 class="section">3.38 Where <em>&amp;</em></h3>
+<p>Given a list of booleans, l, return the indices where the value is non-zero.
+</p>
+<p>Given an integer, x, return a boolean list of value 0b, x long.
+</p>
+<p>Given a list of integers, l:x0 x1 ... xN-1, return a list of x0+x1+...+xN-1 long, with x0 digits of 0, x1 digits of 1, ..., xN-1 digits of N-1. 
+</p>
+<div class="example">
+<pre class="example"> &amp; 101100b
+0 2 3
+ &amp; 5
+00000b
+ &amp; 3 0 2
+0 0 0 2 2
+</pre></div>
+
+<a name="Group-_003d"></a>
+<h3 class="section">3.39 Group <code>=</code></h3>
+<p>Given a list of uniform, lu, values produce a dictionary of keys, k, and values, v.  k being the sorted distinct values of lu.  v will be the indices of each of the items in k from lu.
+</p>
+<div class="example">
+<pre class="example"> =&quot;banana&quot;
+a|1 3 5
+b|0    
+n|2 4  
+ = 0 1 0 1 0 1
+0|0 2 4
+1|1 3 5
+ =`a`b`c`c`b`a
+a|0 5
+b|1 4
+c|2 3
+</pre></div>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Adverbs.html#Adverbs" accesskey="n" rel="next">Adverbs</a>, Previous: <a href="Nouns.html#Nouns" accesskey="p" rel="prev">Nouns</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+
+
+
+</body>
+</html>

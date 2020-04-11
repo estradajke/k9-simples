@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for Shakti/k9.  
+
+Copyright (C) 2020 John Estrada -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>k9 simples: Nouns</title>
+
+<meta name="description" content="k9 simples: Nouns">
+<meta name="keywords" content="k9 simples: Nouns">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Verbs.html#Verbs" rel="next" title="Verbs">
+<link href="Intro.html#Intro" rel="prev" title="Intro">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Nouns"></a>
+<div class="header">
+<p>
+Next: <a href="Verbs.html#Verbs" accesskey="n" rel="next">Verbs</a>, Previous: <a href="Intro.html#Intro" accesskey="p" rel="prev">Intro</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Data-_002f-Nouns"></a>
+<h2 class="chapter">2 Data / Nouns</h2>
+<p>The basic data types of the k9 language are numbers (interger and float), text (characters and enumerated/name) and temporal (date and time).  It is common to have functions operate on multiple data types.
+</p>
+<p>In additional to the basic data types, data can be into lists (uniform and non-uniform), dictionaries (key-value pairs), and tables (transposed/flipped dictionraries).  Dictionaries and tables will be covered in a seperate chapter.
+</p>
+<p>Data types can be determined by using the <code>@</code> function on values or lists of values.  In the case of lists <code>@</code> returns the type of the list <code>`L</code> but the function can be modified to evalue the type of each <code>@'</code> instead.
+</p>
+<div class="example">
+<pre class="example"> @(3;3.1;&quot;b&quot;;`a;12:01:02.123;2020.04.05)
+`L
+ @'(3;3.1;&quot;b&quot;;`a;12:01:02.123;2020.04.05)
+`i`f`c`s`t`D
+</pre></div>
+
+<a name="Numeric-Data-Types"></a>
+<h3 class="section">2.1 Numeric Data Types</h3>
+<p>Numbers can be stored as integers and floats.  As previously mentioned <code>@</code> returns the type of either the value itself or a variable holding a value.
+</p>
+<div class="example">
+<pre class="example">@3 
+ @3.1
+`f
+ a:3;b:3.1;
+ @a
+`i
+ @b
+`f
+</pre></div>
+
+<p>Numeric data can be recast as other types using the <code>$</code> or <code>$</code> command.  The <code>$</code> is an overloaded function and can either convert to string or cast to type.  The first usage take only a single argurment, the item to be converted to a string, while the second usage takes two arguments, the items to be converted and also the type to convert into.
+</p>
+<p>You&rsquo;ll note that the string of 3 is represented as ,&rdquo;3&rdquo;.  The comma represents the string is a list of length one and not a single element.
+</p>
+<div class="example">
+<pre class="example"> $3     / convert to string
+,&quot;3&quot;
+ $12    / convert to string
+&quot;12&quot;
+ `f$12  / convert to float
+12f
+ `t$12  / convert to time
+00:00:00.012
+ `d$12  / convert to date
+2024-01-13
+</pre></div>
+
+<a name="Extreme-values"></a>
+<h3 class="section">2.2 Extreme values</h3>
+<p>TBD
+</p><hr>
+<div class="header">
+<p>
+Next: <a href="Verbs.html#Verbs" accesskey="n" rel="next">Verbs</a>, Previous: <a href="Intro.html#Intro" accesskey="p" rel="prev">Intro</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for Shakti/k9.  
+
+Copyright (C) 2020 John Estrada -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>k9 simples: I/O</title>
+
+<meta name="description" content="k9 simples: I/O">
+<meta name="keywords" content="k9 simples: I/O">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Tables_002fkSQL.html#Tables_002fkSQL" rel="next" title="Tables/kSQL">
+<link href="More-functions.html#More-functions" rel="prev" title="More functions">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="I_002fO"></a>
+<div class="header">
+<p>
+Next: <a href="Tables_002fkSQL.html#Tables_002fkSQL" accesskey="n" rel="next">Tables/kSQL</a>, Previous: <a href="More-functions.html#More-functions" accesskey="p" rel="prev">More functions</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="I_002fO-1"></a>
+<h2 class="chapter">7 I/O</h2>
+<p>Functions for input and ouput (I/O).
+<a name="input-format"></a></p><a name="Input-format-values-to-table"></a>
+<h3 class="section">7.1 Input format values to table</h3>
+<p>This section shows you the syntax for reading in data into a table with the correct type.
+</p><div class="example">
+<pre class="example"> d:,(`date`time`int`float`char`symbol)            / headers 
+ d,:,(2020.04.20;12:34:56.789;37;12.3;&quot;hi&quot;;`bye)) /data
+ d                                          
+date       time         int float char  symbol
+2020-04-20 12:34:56.789 37  12.3  hi    bye   
+
+ `csv'd                                           / to csv
+date,time,int,float,char,symbol            
+2020-04-20,12:34:56.789,37,12.3,&quot;hi&quot;,bye
+
+ &quot;some.csv&quot;0:`csv'd                               / write to some.csv
+ 0:&quot;some.csv&quot;                                     / read from some.csv
+date,time,int,float,char,symbol            
+2020-04-20,12:34:56.789,37,12.3,&quot;hi&quot;,bye
+
+ (&quot;Dtifs*&quot;;,&quot;,&quot;)0:&quot;some.csv&quot;                      / read into table
+date       time         int float char    symbol
+---------- ------------ --- ----- ------- ------
+2020-04-20 12:34:56.789  37 12.3  &quot;hi&quot;    bye   
+</pre></div>
+
+
+<a name="format"></a><a name="Format-to-CSV_002fjson_002fk-_21d2-_0060csv-x"></a>
+<h3 class="section">7.2 Format to CSV/json/k &rArr; &lsquo;csv x</h3>
+<p>Convert x to CSV/json/k format.  Works on atoms, lists, and tables.
+</p><div class="example">
+<pre class="example"> `csv 3 1 2
+&quot;3,1,2&quot;
+ `json (3;`abc;2.3;&quot;blue&quot;)
+&quot;[\&quot;3\&quot;,\&quot;abc\&quot;,2.3,\&quot;blue\&quot;]&quot;
+ `k [[]i:!5;s:`a`b`c`d`e;v:5?10]
+&quot;[[]i:0 1 2 3 4;s:`a`b`c`d`e;v:7 4 7 3 2]&quot;
+ `csv `a`b!((1 2);(3 4))      / error as dictionary input
+error: class
+</pre></div>
+<a name="write-line"></a><a name="write-line-_21d2-x-0_003ay"></a>
+<h3 class="section">7.3 write line &rArr; x 0:y</h3>
+<p>Output to x the list of strings in y.  y must be a list of strings.  If y is a single stream then convert to list via enlist.
+</p><div class="example">
+<pre class="example"> &quot;&quot;0:(&quot;blue&quot;;&quot;red&quot;)      / &quot;&quot; represents stdout
+blue
+red
+ &quot;&quot;0:$'(&quot;blue&quot;;&quot;red&quot;;3)  / each element to string
+blue
+red
+3
+ &quot;some.csv&quot;0:,`csv 3 1 2 / will fail without enlist
+</pre></div>
+<a name="read-line"></a><a name="read-line-_21d2-0_003ax"></a>
+<h3 class="section">7.4 read line &rArr; 0:x</h3>
+<p>Read from file x.
+</p><div class="example">
+<pre class="example"> &quot;some.txt&quot;0:,`csv 3 1 2 / first write a file to some.txt
+ 0:&quot;some.txt&quot;            / now read it back
+3,1,2
+</pre></div>
+<a name="write-char"></a><a name="write-char-_21d2-x-1_003ay"></a>
+<h3 class="section">7.5 write char &rArr; x 1:y</h3>
+<p>Output to x the list of chars in y.  y must be a list of chars.  If y is a single char then convert to list via enlist.
+</p><div class="example">
+<pre class="example"> &quot;some.txt&quot;1:&quot;hello here\nis some text\n&quot;
+ 1:&quot;some.txt&quot;
+&quot;hello here\nis some text\n&quot;
+</pre></div>
+<a name="read-char"></a><a name="read-char-_21d2-1_003ax"></a>
+<h3 class="section">7.6 read char &rArr; 1:x</h3>
+<p>Read from file x.
+</p><div class="example">
+<pre class="example"> &quot;some.txt&quot;0:,`csv 3 1 2 / first write a file to some.txt
+ 1:&quot;some.txt&quot;            / now read it back
+&quot;3,1,2\n&quot;
+</pre></div>
+<a name="write-data"></a><a name="write-data-_21d2-2_003a"></a>
+<h3 class="section">7.7 write data &rArr; 2:</h3>
+<p>TBD
+<a name="conn_002fset"></a></p><a name="conn_002fset-_21d2-3_003a"></a>
+<h3 class="section">7.8 conn/set &rArr; 3:</h3>
+<p>TBD
+<a name="http_002fget"></a></p><a name="http_002fget-_21d2-4_003a"></a>
+<h3 class="section">7.9 http/get &rArr; 4:</h3>
+<p>TBD
+</p><hr>
+<div class="header">
+<p>
+Next: <a href="Tables_002fkSQL.html#Tables_002fkSQL" accesskey="n" rel="next">Tables/kSQL</a>, Previous: <a href="More-functions.html#More-functions" accesskey="p" rel="prev">More functions</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+
+
+
+</body>
+</html>

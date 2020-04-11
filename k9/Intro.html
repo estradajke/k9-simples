@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for Shakti/k9.  
+
+Copyright (C) 2020 John Estrada -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>k9 simples: Intro</title>
+
+<meta name="description" content="k9 simples: Intro">
+<meta name="keywords" content="k9 simples: Intro">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Nouns.html#Nouns" rel="next" title="Nouns">
+<link href="index.html#Top" rel="prev" title="Top">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Intro"></a>
+<div class="header">
+<p>
+Next: <a href="Nouns.html#Nouns" accesskey="n" rel="next">Nouns</a>, Previous: <a href="index.html#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Intro-1"></a>
+<h2 class="chapter">1 Intro</h2>
+<p>Shakti, aka k9, is a programming language built for speed, consice syntax, and data manipulation.  The syntax is a bit special and although it might feel like an impediment at first becomes an advantage with use.
+</p>
+<p>The k9 language is more closely related to mathematics syntax than most programming lanauges.  It requires the developer to learn to speak k9 but once that happens most find an ability to &ldquo;speak&rdquo; quicker in k9 than in other languages.  At this point an example might help.
+</p>
+<p>In mathematics, &ldquo;3+2&rdquo; is read as &ldquo;3 plus 2&rdquo; as you learn at an early age that &ldquo;+&rdquo; is the &ldquo;plus&rdquo; sign.  For trival operations like arithmetic most programming languages use symbols also.  Moving on to something less math like most programming lanauges switch to clear words while k9 remains with symbols which turn out to have the same level of clarity.  As an example, to determine the distinct values of a list most programming languages might use a synatx like <code>distinct()</code> while k9 uses <code>?</code>.  This requires the developer to learn how to say a number of symbols but once that happens it results in much shorter code that is quicker to write, harder to bug, and easier to maintain.
+</p>
+<p>In math which do you find easier to answer?<br><br>
+Math with text<br>
+Three plus two times open parenthesis six plus fourteen close parenthesis<br><br>
+Math with symbols<br>
+3+2*(6+14)<br>
+</p>
+<p>In code which do you find easier to understand?<br><br>
+Code with text<br>
+x = (0,12,3,4,1,17,-5,0,3,11);y=5;<br>
+distinct_x = distinct(x);<br>
+gt_distinct_x = [i for i in j if i &gt;= y];<br><br>
+Code with symbols<br>
+x:(0,12,3,4,1,17,-5,0,3,11);y:5;<br>
+z@&amp;y&lt;z:?x<br>
+</p>
+<p>If you&rsquo;re new to k9 and similar languages, then you should likely appreciate symbols is shorter but looks like line noise.  That&rsquo;s true but so did arithetic until you learns the basics.
+</p>
+<p>When you first learned arithmetic you likley didn&rsquo;t have a choice.  Now you have a choice about learning k9.  If you give it a try, then I expect you&rsquo;ll get it quickly and move onto the power phase fast enough that you&rsquo;ll be happy you gave it a chance.
+</p>
+<a name="Get-k9_002e"></a>
+<h3 class="section">1.1 Get k9.</h3>
+
+<p>https://shakti.com/
+</p>
+<p>Go to the Shakti website and click on download.  You&rsquo;ll need to enter a few pieces of information and then you&rsquo;ll have a choice to download either a Linux or MacOS version.  Click on the required OS version and you&rsquo;ll download a <samp>k.zip</samp> file around 50 kb in size.  Unzip that file and you&rsquo;ll have a single executable file <samp>k</samp> which is the language.
+</p>
+<a name="rlwrap"></a>
+<h3 class="section">1.2 rlwrap</h3>
+<p>Although you only need the <samp>k</samp> binary to run k9 most will also install rlwrap, if not already installed, in order to get command history in a terminal window.  rlwrap is &ldquo;Readline wrapper: adds readline support to tools that lack it&rdquo; and allows one to arrow up to go through the command buffer generally a useful option to have.
+</p>
+<p>In order to start k9 you should either run <samp>k</samp> or <samp>rlwrap k</samp> to get started.  Here I will show both options but in generally one would run as needed.  In this document lines with input be shown with a leading space and output will be without.  In the examples below the user starts a terminal window in the directory with the <samp>k</samp> file.  Then the users enters <kbd>rlwrap ./k <span class="key">RET</span></kbd>.  k9 starts and displays the date of the build, (c), and shakti and then listens to user input.  In this example I have entered the command to exit k9, <kbd>//</kbd>.  Then I start k9 again without rlwrap and again exit the session.
+</p>
+<div class="example">
+<pre class="example"> rlwrap ./k
+2020.04.01 (c) shakti
+ //
+
+ ./k
+2020.04.01 (c) shakti
+ //
+</pre></div>
+
+<a name="Simple-example"></a>
+<h3 class="section">1.3 Simple example</h3>
+
+<p>Here I will start up k9, perform some trivial calculations, and then close the session.  After this example it will be assumed the user will have a k9 session running and working in repl mode.  Comments (<code>/</code>) will be added to the end of lines as needed.
+</p>
+<div class="example">
+<pre class="example"> rlwrap ./k
+2020.04.01 (c) shakti
+ n:10000                     / n data points
+ s:`a`b`c                    / data for symbols a, b, and c
+ q:+s!(-1+n?2;-1+n?2;-1+n?2) / table of returns (-1,0,1) for each symbol
+ q                           / print out the table
+a  b  c 
+-- -- --
+ 0  1  1
+-1 -1  0
+-1  1  1
+ 0  1 -1
+-1 -1 -1
+..
+</pre></div>
+
+<p>At this point you might want to check which symbol has the highest return, most variance, or any other analysis on the data.
+</p>
+<div class="example">
+<pre class="example"> #'=q                          / count each unique a/b/c combination
+a  b  c |   
+-- -- --|---
+ 0  1  1|407
+-1 -1 -1|379
+-1  0  0|367
+ 0 -1 -1|391
+ 1  1  1|349
+..
+  -1#+\q                       / calulate the return of each symbol
+a   b   c 
+--- --- --
+-68 117 73
+ {(+/m*m:x-avg x)%#x}'+q      / calulate the variance of each symbol
+a|0.6601538
+b|0.6629631
+c|0.6708467
+</pre></div>
+
+<a name="Basic-rules"></a>
+<h3 class="section">1.4 Basic rules</h3>
+
+<p>One will need to understand some basic rules of k9 in order to progress.  The will likely seem strange at first.
+</p>
+<a name="g_t_003a-is-used-to-set-a-variable-to-a-value"></a>
+<h4 class="subsection">1.4.1 <code>:</code> is used to set a variable to a value</h4>
+<p><code>a:3</code> is used to set the varialbe <code>a</code> to the value <code>3</code> and not <code>a=3</code>.  <code>a=3</code> is an equality test to determine if <code>a</code>&rsquo;s value is <code>3</code>.
+</p>
+<a name="g_t_0025-is-used-to-divide-numbers"></a>
+<h4 class="subsection">1.4.2 <code>%</code> is used to divide numbers</h4>
+<p>Yeah, 2 divide by 5 is written as <code>2%5</code> and not <code>2/5</code>.
+</p>
+<a name="Evaluation-is-done-right-to-left"></a>
+<h4 class="subsection">1.4.3 Evaluation is done right to left</h4>
+<p>2+5*3 is 17 and 2*5+3 is 16.  2+5*3 is first evaluated on the right most portion, 5*3, and once that is computed then it proceeds with 2+15.  2*5+3 goes to 2*8 which becomes 16.
+</p><a name="There-is-no-arithmetic-order"></a>
+<h4 class="subsection">1.4.4 There is no arithmetic order</h4>
+<p>+ does not happen specially before or after *.  The order of evaluation is done right to left.
+</p><a name="Operators-are-overloaded-depending-on-the-number-of-arguments_002e"></a>
+<h4 class="subsection">1.4.5 Operators are overloaded depending on the number of arguments.</h4>
+<div class="example">
+<pre class="example"> *(3;6;9)    / single argument so * is first element of the list
+3
+ 2*(3;6;9)   / two arguments so * is multiplication
+6 12 18
+</pre></div>
+<a name="Lists-and-functions-are-very-similar_002e"></a>
+<h4 class="subsection">1.4.6 Lists and functions are very similar.</h4>
+<p>k9 syntax encourages you to treat lists and functions in a similar function.  They should both be thought of a mapping from a value to another value or from a domain to a range.
+</p><div class="example">
+<pre class="example"> l:3 4 7 12
+ f:{3+x*x}
+ l@2
+7
+ f@2
+7
+</pre></div>
+<a name="k9-is-expressed-in-terms-of-grammar_002e"></a>
+<h4 class="subsection">1.4.7 k9 is expressed in terms of grammar.</h4>
+<ul>
+<li> <tt>The boy ate an appple. (Noun verb noun)</tt>
+</li><li> <tt>The girl ate each olive. (Noun verb adverb noun)</tt>
+</li></ul>
+<p>In k9 as the Help/Info card shows data are nouns, functions/lists are verbs and modifiers are adverbs.
+</p><ul>
+<li> <tt>3 &gt; 2 (Noun verb noun)</tt>
+</li><li> <tt>3 &gt;' 0 1 2 3 4 5 (Noun verb adverb noun)</tt>
+</li></ul>
+<a name="Help_002fInfo-Card"></a>
+<h3 class="section">1.5 Help/Info Card</h3>
+<p>Typing <code>\</code> in the terminal gives you a concise overview of the language.  This document aims to provide details to beginning users where the help screen isn&rsquo;t enough.
+</p>
+<pre class="verbatim"> \   
+$k a.k                                                                         
+                                                                               
+Verb                      Adverb                 Noun           Type  System   
+:  set                    '  each       i bar    bool 110b         b  \l a.k   
++  plus       flip        /  over/right i div    int  2 3 4        i *\d [d]   
+-  minus      negate      \  scan/left  i mod    flt  2e3 0N 0W    f  \v [d]   
+*  times      first       ': eachprior          *fix  2.34 3.00      *\f [d]   
+%  divide                 /: [n]f-loop  i sv     date 2024.01.01   d  \w [x]   
+&amp;  min        where       \: [n]f-loop  i vs     time 12:34:56.789 t  \t:n x   
+|  max        reverse                            char &quot;ab &quot;        c  \u:n x   
+&lt;  less       up                                 str  `a`b`        s           
+&gt;  more       down        I/O                                                  
+=  equal      group       0: readwrite  line     list (2;3.4;`c)   L  \fl line 
+~  match      not         1: readwrite  char     dict [a:2;b:`c]  ??  \fc char 
+!  key        enum        2: write      data     func {(+/x)%#x}   .           
+,  cat        enlist                             expr :32+1.8*x    :           
+^  cut        asc                                                              
+$  cast       string      $[c;t;f]      cond                                   
+#  take       count       #[t;c;b[;a]]  select   table [[]a:`b`c]  A           
+_  drop                  *_[t;c;b[;a]]  update  Stable S! [[]...] SA           
+?  find       unique     *?[x;i;f[;y]]  splice  Atable [[a:..]b:] AA           
+@  at         type        @[x;i;f[;y]]  amend                          \cd dir 
+.  apply      value       .[x;i;f[;y]]  dmend                          \\  exit
+                                                                               
+ /comment \display [dict] :expr (leading space)                                
+count first last min max sum avg; in bin within; key                           
+select A by B from T where C; delete from T where C                            
+*exp log sin cos                                                               
+                                                                               
+time/cuanto: 2m 2d 2h.. 12:34:56.123456789 e.g. .z.d+2m / .z.[tuv]             
+date/cuando: 2024.01.01T12:34:56.123456789 e.g.  7\.z.d / .z.[TUV]             
+                                                                               
+v~'`json?`json v:(`ab;&quot;abc&quot;;2;2e3;0N;0W;.z.D;.z.t)                             
+v~'`csv ?`csv  v:(`ab;&quot;abc&quot;;2;2e3;0N;0W;.z.D;.z.t)                             
+                                                                               
+error: value class rank type domain length limit                               
+limit: {[param8]local8 global32 const128 jump256}                              
+</pre>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Nouns.html#Nouns" accesskey="n" rel="next">Nouns</a>, Previous: <a href="index.html#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+
+
+
+</body>
+</html>
