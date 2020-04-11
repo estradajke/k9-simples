@@ -1,0 +1,1123 @@
+\input texinfo
+@setfilename k9.info
+@settitle k9 simples
+@codequotebacktick on
+
+@copying
+This manual is for Shakti/k9.  
+
+Copyright @copyright{} 2020 John Estrada
+@end copying
+
+@titlepage
+@title k9 simples
+@author John Estrada
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+@end titlepage
+
+@contents
+
+@c @ifnottex
+@node Top
+@top k9: Manual
+This document explains the usage of the k9 programming language in very simple terms and is intended for newbies only.
+@c @end ifnottex
+
+@menu
+* Intro:: Intro
+* Nouns:: Data / Noun
+* Verbs:: Functions / Verbs
+* Adverbs:: Function Modifiers / Adverbs
+* Dictionaries:: Dictionaries and Functions for Dictionaries
+* More functions:: More functions
+* I/O:: I/O
+* Tables/kSQL:: Tables and kSQL
+* ChX:: Chapter X
+@c * Index:: Complete index
+@end menu
+
+@node Intro
+@chapter Intro
+@c @cindex chapter, first
+Shakti, aka k9, is a programming language built for speed, consice syntax, and data manipulation.  The syntax is a bit special and although it might feel like an impediment at first becomes an advantage with use.
+
+The k9 language is more closely related to mathematics syntax than most programming lanauges.  It requires the developer to learn to speak k9 but once that happens most find an ability to ``speak'' quicker in k9 than in other languages.  At this point an example might help.
+
+In mathematics, ``3+2'' is read as ``3 plus 2'' as you learn at an early age that ``+'' is the ``plus'' sign.  For trival operations like arithmetic most programming languages use symbols also.  Moving on to something less math like most programming lanauges switch to clear words while k9 remains with symbols which turn out to have the same level of clarity.  As an example, to determine the distinct values of a list most programming languages might use a synatx like @code{distinct()} while k9 uses @code{?}.  This requires the developer to learn how to say a number of symbols but once that happens it results in much shorter code that is quicker to write, harder to bug, and easier to maintain.
+
+In math which do you find easier to answer?@*@*
+Math with text@*
+Three plus two times open parenthesis six plus fourteen close parenthesis@*@*
+Math with symbols@*
+3+2*(6+14)@*
+
+In code which do you find easier to understand?@*@*
+Code with text@*
+x = (0,12,3,4,1,17,-5,0,3,11);y=5;@*
+distinct_x = distinct(x);@*
+gt_distinct_x = [i for i in j if i >= y];@*@*
+Code with symbols@*
+x:(0,12,3,4,1,17,-5,0,3,11);y:5;@*
+z@@&y<z:?x@*
+
+If you're new to k9 and similar languages, then you should likely appreciate symbols is shorter but looks like line noise.  That's true but so did arithetic until you learns the basics.
+
+When you first learned arithmetic you likley didn't have a choice.  Now you have a choice about learning k9.  If you give it a try, then I expect you'll get it quickly and move onto the power phase fast enough that you'll be happy you gave it a chance.
+
+@section Get k9.
+
+https://shakti.com/
+
+Go to the Shakti website and click on download.  You'll need to enter a few pieces of information and then you'll have a choice to download either a Linux or MacOS version.  Click on the required OS version and you'll download a @file{k.zip} file around 50 kb in size.  Unzip that file and you'll have a single executable file @file{k} which is the language.
+
+@section rlwrap
+Although you only need the @file{k} binary to run k9 most will also install rlwrap, if not already installed, in order to get command history in a terminal window.  rlwrap is ``Readline wrapper: adds readline support to tools that lack it'' and allows one to arrow up to go through the command buffer generally a useful option to have.
+
+In order to start k9 you should either run @file{k} or @file{rlwrap k} to get started.  Here I will show both options but in generally one would run as needed.  In this document lines with input be shown with a leading space and output will be without.  In the examples below the user starts a terminal window in the directory with the @file{k} file.  Then the users enters @kbd{rlwrap ./k @key{RET}}.  k9 starts and displays the date of the build, (c), and shakti and then listens to user input.  In this example I have entered the command to exit k9, @kbd{//}.  Then I start k9 again without rlwrap and again exit the session.
+
+@example
+ rlwrap ./k
+2020.04.01 (c) shakti
+ //
+
+ ./k
+2020.04.01 (c) shakti
+ //
+@end example
+
+@section Simple example
+
+Here I will start up k9, perform some trivial calculations, and then close the session.  After this example it will be assumed the user will have a k9 session running and working in repl mode.  Comments (@code{/}) will be added to the end of lines as needed.
+
+@example
+ rlwrap ./k
+2020.04.01 (c) shakti
+ n:10000                     / n data points
+ s:`a`b`c                    / data for symbols a, b, and c
+ q:+s!(-1+n?2;-1+n?2;-1+n?2) / table of returns (-1,0,1) for each symbol
+ q                           / print out the table
+a  b  c 
+-- -- --
+ 0  1  1
+-1 -1  0
+-1  1  1
+ 0  1 -1
+-1 -1 -1
+..
+@end example
+
+At this point you might want to check which symbol has the highest return, most variance, or any other analysis on the data.
+
+@example
+ #'=q                          / count each unique a/b/c combination
+a  b  c |   
+-- -- --|---
+ 0  1  1|407
+-1 -1 -1|379
+-1  0  0|367
+ 0 -1 -1|391
+ 1  1  1|349
+..
+  -1#+\q                       / calulate the return of each symbol
+a   b   c 
+--- --- --
+-68 117 73
+ @{(+/m*m:x-avg x)%#x@}'+q      / calulate the variance of each symbol
+a|0.6601538
+b|0.6629631
+c|0.6708467
+@end example
+
+@section Document formatting for code examples
+This document uses a number of examples to help clarify k9.  The sytax is that input has a leading space and output does not.  This follows the terminal syntax where the REPL input has space but prints output without.
+@example
+ 3+2 / this is input
+5    / this is output
+@end example
+
+@section k9 nuances
+One will need to understand some basic rules of k9 in order to progress.  These will likely seem strange at first.
+
+@subsection @code{:} is used to set a variable to a value
+@code{a:3} is used to set the variable, a, to the value, 3.  @code{a=3} is an equality test to determine if a is equal to 3.
+
+@subsection @code{%} is used to divide numbers
+Yeah, 2 divide by 5 is written as @code{2%5} and not @code{2/5}.
+
+@subsection Evaluation is done right to left
+2+5*3 is 17 and 2*5+3 is 16.  2+5*3 is first evaluated on the right most portion, 5*3, and once that is computed then it proceeds with 2+15.  2*5+3 goes to 2*8 which becomes 16.
+@subsection There is no arithmetic order
++ does not happen specially before or after *.  The order of evaluation is done right to left unless parenthesis are used.  (2+5)*3 = 21 as the 2+5 in parenthesis is done before being multiplied by 3.
+@subsection Operators are overloaded depending on the number of arguments.
+@example
+ *(3;6;9)    / single argument so * is first element of the list
+3
+ 2*(3;6;9)   / two arguments so * is multiplication
+6 12 18
+@end example
+@subsection Lists and functions are very similar.
+k9 syntax encourages you to treat lists and functions in a similar function.  They should both be thought of a mapping from a value to another value or from a domain to a range.
+@example
+ l:3 4 7 12
+ f:@{3+x*x@}
+ l@@2
+7
+ f@@2
+7
+@end example
+@subsection k9 is expressed in terms of grammar.
+k9 uses an analogy with grammar to describe language syntax.  The k9 grammar consists of nouns (data), verbs (functions) and adverbs (function modifiers).
+@itemize
+@item @t{The boy ate an appple. (Noun verb noun)}
+@item @t{The girl ate each olive. (Noun verb adverb noun)}
+@end itemize
+In k9 as the Help/Info card shows data are nouns, functions/lists are verbs and modifiers are adverbs.
+@itemize
+@item @t{3 > 2 (Noun verb noun)}
+@item @t{3 >' 0 1 2 3 4 5 (Noun verb adverb noun)}
+@end itemize
+@section Help/Info Card
+Typing @code{\} in the terminal gives you a concise overview of the language.  This document aims to provide details to beginning users where the help screen is a tad too terse.
+
+@verbatim
+ \   
+$k a.k                                                                         
+                                                                               
+Verb                      Adverb                 Noun           Type  System   
+:  set                    '  each       i bar    bool 110b         b  \l a.k   
++  plus       flip        /  over/right i div    int  2 3 4        i *\d [d]   
+-  minus      negate      \  scan/left  i mod    flt  2e3 0N 0W    f  \v [d]   
+*  times      first       ': eachprior          *fix  2.34 3.00      *\f [d]   
+%  divide                 /: [n]f-loop  i sv     date 2024.01.01   d  \w [x]   
+&  min        where       \: [n]f-loop  i vs     time 12:34:56.789 t  \t:n x   
+|  max        reverse                            char "ab "        c  \u:n x   
+<  less       up                                 str  `a`b`        s           
+>  more       down        I/O                                                  
+=  equal      group       0: readwrite  line     list (2;3.4;`c)   L  \fl line 
+~  match      not         1: readwrite  char     dict [a:2;b:`c]  ??  \fc char 
+!  key        enum        2: write      data     func {(+/x)%#x}   .           
+,  cat        enlist                             expr :32+1.8*x    :           
+^  cut        asc                                                              
+$  cast       string      $[c;t;f]      cond                                   
+#  take       count       #[t;c;b[;a]]  select   table [[]a:`b`c]  A           
+_  drop                  *_[t;c;b[;a]]  update  Stable S! [[]...] SA           
+?  find       unique     *?[x;i;f[;y]]  splice  Atable [[a:..]b:] AA           
+@  at         type        @[x;i;f[;y]]  amend                          \cd dir 
+.  apply      value       .[x;i;f[;y]]  dmend                          \\  exit
+                                                                               
+ /comment \display [dict] :expr (leading space)                                
+count first last min max sum avg; in bin within; key                           
+select A by B from T where C; delete from T where C                            
+*exp log sin cos                                                               
+                                                                               
+time/cuanto: 2m 2d 2h.. 12:34:56.123456789 e.g. .z.d+2m / .z.[tuv]             
+date/cuando: 2024.01.01T12:34:56.123456789 e.g.  7\.z.d / .z.[TUV]             
+                                                                               
+v~'`json?`json v:(`ab;"abc";2;2e3;0N;0W;.z.D;.z.t)                             
+v~'`csv ?`csv  v:(`ab;"abc";2;2e3;0N;0W;.z.D;.z.t)                             
+                                                                               
+error: value class rank type domain length limit                               
+limit: {[param8]local8 global32 const128 jump256}                              
+@end verbatim
+
+@node Nouns
+@chapter Data / Nouns
+The basic data types of the k9 language are numbers (interger and float), text (characters and enumerated/name) and temporal (date and time).  It is common to have functions operate on multiple data types.
+
+In additional to the basic data types, data can be put into lists (uniform and non-uniform), dictionaries (key-value pairs), and tables (transposed/flipped dictionaries).  Dictionaries and tables will be covered in a seperate chapter.
+
+Data types can be determined by using the @code{@@} function on values or lists of values.  In the case of lists @code{@@} returns the type of the list @code{`L} but the function can be modified to evalue each type @code{@@'} instead and return the type of each element in the list.
+
+@example
+ @@(3;3.1;"b";`a;12:01:02.123;2020.04.05)
+`L
+ @@'(3;3.1;"b";`a;12:01:02.123;2020.04.05)
+`i`f`c`s`t`D
+@end example
+
+@section Numeric Data Types
+Numbers can be stored as integers and floats.
+@example
+@@3 
+ @@3.1
+`f
+ a:3;b:3.1;
+ @@a
+`i
+ @@b
+`f
+@end example
+Numeric data can be recast as other types using the @code{$} command.  The @code{$} is an overloaded function and can either convert to string or cast to type if provided.  The first usage take only a single argurment, the item to be converted to a string, while the second usage takes two arguments, the items to be converted and also the type to convert into.
+
+You'll note that the string of 3 is represented as ,''3''.  The comma represents the string is a list of length one and not a single element.
+
+@example
+ $3     / convert to string
+,"3"
+ $12    / convert to string
+"12"
+ `f$12  / convert to float
+12f
+ `t$12  / convert to time
+00:00:00.012
+ `d$12  / convert to date
+2024-01-13
+@end example
+
+@section Extreme values
+Data types can not only represent in-range values but also null and out-of-range values.
+
+@multitable @columnfractions .1 .1 .2
+@headitem type @tab null @tab out of range
+@item i @tab 0N @tab 0W
+@item f @tab 0n @tab 0w
+@end multitable
+
+@node Verbs
+@chapter Functions / Verbs
+This chapter explains all functions, aka verbs.  Most functions are overloaded and change depending on the number and type of arguments.
+
+@example
+Verb
+:  (*note set::)
++  (*note plus::)       (*note flip::)    
+-  (*note minus::)      (*note negate::)      
+*  (*note times::)      (*note first::)       
+%  (*note divide::)         
+&  (*note min::)        (*note where::)    
+|  (*note max::)        (*note reverse::)     
+<  (*note less::)       (*note asc::)         
+>  (*note more::)       (*note dsc::)    
+=  (*note equal::)      (*note group::)    
+~  (*note match::)      (*note not::)    
+!  (*note key::)        (*note enum::)    
+,  (*note cat::)        (*note enlist::)    
+^  (*note cut::)        (*note sort::)    
+$  (*note cast::)       (*note string::)    
+#  (*note take::)       (*note count::)    
+_  (*note drop::)       (*note floor::)    
+?  (*note find::)       (*note unique::)    
+@  (*note at::)         (*note type::)    
+.  (*note apply::)      (*note value::)    
+@end example
+@anchor{set}@section set @result{} x:y
+Set a variable, x, to a value, y.
+
+@example
+ a:3
+ a
+3
+ b:(`green;37;"blue)
+ b
+green
+37
+blue
+ c:@{x+y@}
+ c
+@{x+y@}
+ c[12;15]
+27
+@end example
+
+@anchor{plus}@section plus @result{} x+y
+Add x and y.
+
+@example
+ 3+7
+10
+ a:3;
+ a+8
+11
+ 3+4 5 6 7
+7 8 9 10
+ 3 4 5+4 5 6
+7 9 11
+ 3 4+1 2 3 / lengths don't match, will error: length
+error: length
+ 10:00+1         / add a minute
+10:01
+ 10:00:00+1      / add a second
+10:00:01
+ 10:00:00.000+1  / add a millisecond
+10:00:00.001
+@end example
+
+@anchor{flip}@section flip @result{} +x
+Flip, or transpose, x.  
+
+@example
+ x:((1 2);(3 4);(5 6))
+ x
+1 2
+3 4
+5 6
+ +x
+1 3 5
+2 4 6
+ `a`b!+x
+a|1 3 5
+b|2 4 5
+ +`a`b!+x
+a b
+- -
+1 2
+3 4
+5 6
+@end example
+
+@anchor{minus}@section minus @result{} x-y
+Subtract y from x.
+
+@example
+ 5-2
+3
+ x:4;y:1;
+ x-y
+3
+@end example
+
+@anchor{negate}@section negate @result{} -x
+Negative x.
+
+@example
+ -3
+-3
+ --3
+3
+ x:4;
+ -x
+-4
+ d:`a`b!((1 2 3);(4 5 6))
+ -d
+a|-1 -2 -3
+b|-4 -5 -6
+@end example
+@anchor{times}@section times @result{}  x*y
+Mutliply x and y.
+@example
+ 3*4
+12
+ 3*4 5 6
+12 15 18
+ 1 2 3*4 5 6
+4 10 18
+@end example
+@anchor{first}@section first @result{} *x
+Return the first value of x.
+@example
+ *1 2 3
+1
+ *((1 2);(3 4);(5 6))
+1 2
+ **((1 2);(3 4);(5 6))
+1
+ *`a`b!((1 2 3);(4 5 6))
+1 2 3
+@end example
+@anchor{divide}@section divide @result{} x%y
+Divide x by y.
+@example
+ 12%5
+2.4
+ 6%2    / division of two integers returns a float
+3f
+@end example
+@anchor{min}@section min @result{} x&y
+The smaller of x and y.
+@example
+ 3&2
+2
+ 1 2 3&4 5 6
+1 2 3
+ 010010b&111000b
+010000
+ `a&`b
+`a
+@end example
+@anchor{where}@section where @result{} &x
+Given a list of integer values, eg. x_0, x_1, ..., x_(n-1), generate x_0 values of 0, x_1 values of 1, ..., and x_(n-1) values of n-1.
+
+@example
+ & 3 1 0 2
+0 0 0 1 3 3
+ &001001b
+2 5
+ "banana"="a"
+010101b
+ &"banana"="a"
+1 3 5
+ x@@&30<x:12.7 0.1 35.6 -12.1 101.101  / return values greater than 30
+35.6 101.101
+@end example
+@anchor{max}@section max @result{} x|y
+The greater of x and y.
+@example
+ 3|2
+3
+ 1 2 3|4 5 6
+4 5 6
+ 101101b|000111b
+101111b
+@end example
+@anchor{reverse}@section reverse @result{} |x
+Reverse the list x.
+@example
+ |0 3 1 2
+2 1 3 0
+ |"banana"
+"ananab"
+ |((1 2 3);4;(5 6))
+5 6  
+4    
+1 2 3
+@end example
+@anchor{less}@section less @result{} x < (>) y
+x less (more) than y.
+@example
+ 3<2
+0b
+ 2<3
+1b
+ 1 2 3<4 5 6
+111b
+ ((1 2 3);4;(5 6))<((101 0 5);12;(10 0)) / size needs to match
+101
+1  
+10
+ "a"<"b"
+1b
+@end example
+@anchor{up}@section up @result{} < (>) x
+The indices of a list in order to sort the list in ascending (descending) order.
+@example
+ <2 3 0 12
+2 0 1 3
+ x@@<x:2 3 0 12
+0 2 3 12
+@end example
+@anchor{equal}@section equal @result{} x=y
+x equal to y
+@example
+ 2=2
+1b
+ 2=3
+0b
+ "banana"="abnaoo"
+001100b
+@end example
+@anchor{group}@section group @result{} =x
+A dictionary of the disinct values of x (key) and indices (values).
+@example
+ ="banana"
+a|1 3 5
+b|0    
+n|2 4  
+ =0 1 0 2 10 7 0 1 12
+ 0|0 2 6
+ 1|1 7  
+ 2|3    
+ 7|5    
+10|4    
+12|8    
+@end example
+@anchor{match}@section match @result{} x~y
+Compare x and y.
+@example
+ 2~2
+1b
+ 2~3
+0b
+ `a`b~`a`b  / different than = which is element-wise comparison
+1b
+ `a`b=`a`b
+11b
+@end example
+@anchor{not}@section not @result{} ~x
+Boolean invert of x
+@example
+ ~1b
+0b
+ ~101b
+010b
+ ~37 0 12
+010b
+@end example
+@anchor{key}@section key @result{} x!y
+Dictionary of x (key) and y (value)
+@example
+ 3!7
+,3!,7
+ `a`b!3 7
+a|3
+b|7
+ `a`b!((1 2);(3 4))
+a|1 2
+b|3 4
+@end example
+@anchor{enum}@section enum @result{} !x
+Generate an interger list from 0 to x-1.
+@example
+ !3
+0 1 2
+@end example
+@anchor{cat}@section cat @result{} x,y
+Concatenate x and y.
+@example
+ 3,7
+3 7
+ "hello"," ","there"
+"hello there"
+@end example
+@anchor{enlist}@section enlist @result{} ,x
+Create a list from x
+@example
+ ,3
+,3
+ ,1 2 3
+1 2 3
+ 3=,3
+,1b
+ 3~,3
+0b
+@end example
+@anchor{cut}@section cut @result{} x^y
+Reshape a list y by indices x.
+@example
+ 0 1 5^0 1 2 3 4 5 6 7 8 9
+0        
+1 2 3 4  
+5 6 7 8 9
+ 1 5^0 1 2 3 4 5 6 7 8 9
+1 2 3 4  
+5 6 7 8 9
+@end example
+@anchor{asc}@section asc @result{} ^x
+Sort list x into ascending order.
+@example
+ ^0 3 2 1
+0 1 2 3
+ ^`b`a!((0 1 2);(7 6 5)) / sort dictionary by key
+a|7 6 5
+b|0 1 2
+@end example
+@anchor{cast}@section cast @result{} x$y
+Cast y into type x.
+@example
+ `i$37.1 37.9
+37 37
+ `f$3
+3f
+ `D$"2020.03.01"
+2020-03-01
+ `t$123
+00:00:00.123
+@end example
+@anchor{string}@section string @result{} $x
+Cast x to string.
+@example
+ $`abc`d
+abc
+d
+ $4.7
+"4.7"
+@end example
+@anchor{take}@section take @result{} x#y
+First (last) x elements of y if x is positive (negative)
+@example
+ 3#0 1 2 3 4 5
+0 1 2
+ -3#0 1 2 3 4 5
+3 4 5
+ 2#"hello"
+"he"
+@end example
+@anchor{count}@section count @result{} #x
+Count the number of elements in x.
+@example
+ #0 1 2 12
+4
+ #((0 1 2);3;(4 5))
+3
+ #`a`b!((1 2 3);(4 5 6)) / count the number of keys
+2
+@end example
+@anchor{drop}@section drop @result{} x_y
+Return the list y without the first (last) x elements if x is positive (negative).
+@example
+ 3_0 1 2 3 4 5
+3 4 5
+ -3_0 1 2 3 4 5
+0 1 2
+ a:3;b:0 9 1 8 2 7;
+ a_b
+8 2 7
+@end example
+@anchor{find}@section find @result{} x?y
+Find the first element of x that matches y otherwise return the end of vector.
+@example
+ `a`b`a`c`b`a`a?`b
+1
+ `a`b`a`c`b`a`a?`d
+7
+ 0 1 2 3 4?10
+5
+ (1;`a;"blue";7.4)?3
+4
+@end example
+@anchor{unique}@section unique @result{} ?x
+Return the unique values of the list x.  The @code{?} preceeding the return value explicitly shows that list has no repeat values.
+@example
+ ?`f`a`b`c`a`b`d`e`a
+?`f`a`b`c`d`e
+ ?"banana"
+?"ban"
+@end example
+@anchor{at}@section at @result{} x@@y
+Given a list x return the value(s) at index(indices) y.
+@example
+ (3 4 7 12)@@2
+7
+ `a`b`c@@2
+`c
+ ((1 2);3;(4 5 6))@@(0 1)   / values at indices 0 and 1
+1 2
+3
+@end example
+@anchor{type}@section type @result{} @@x
+Return the data type of x.
+@example
+ @@1
+`i
+ @@1.2
+`f
+ @@`a
+`s
+ @@"a"
+`c
+ @@2020.04.20
+`D
+ @@12:34:56.789
+`t
+ @@(1;1.2;`a;"a";2020.04.20;12:34:56.789)  / type of a list
+`L
+ @@'(1;1.2;`a;"a";2020.04.20;12:34:56.789) / type of elements of the list
+`i`f`s`c`D`t
+@end example
+@anchor{apply}@section apply @result{} x.y
+Given list x return the value at index list y.
+@example
+ (3 4 7 12).,2
+7
+ `a`b`c.,2
+`c
+ ((1 2);3;(4 5 6)).(0 1)   / value at index 0 and then index 1
+2
+@end example
+@anchor{value}@section value @result{} .x
+Return the value of dictionary x as lists.
+@example
+ `a`b!(1 2;3 4)
+a|1 2
+b|3 4
+ .`a`b!(1 2;3 4)
+a   b
+1 2 3 4
+@end example
+@node Adverbs
+@chapter Function Modifiers / Adverbs
+k9 uses function modifiers / adverbs in order to have functions operate iteratively over lists.
+@anchor{each}@section each @result{} f'x
+Apply each value in list x to function f.
+@example
+ *((1 2 3);4;(5 6);7)   / first element of the list
+1 2 3
+ *'((1 2 3);4;(5 6);7)  / first element of each element
+1 4 5 7
+@end example
+
+@node Dictionaries
+@chapter Dictionaries and Dictionary Functions
+Simple data types can be combined into structures including Dictionaries and Tables. 
+@section Dictionaries
+Dictionaries are key-value pairs of data.  The value in the dictionary can be a single element or a list.
+
+@example
+ d0:`pi`e`c!3.14 2.72 3e8;d0
+pi|3.14 
+e |2.72 
+c |3e+08
+
+ d1:`time`temp!(12:00 12:01 12:10;25.0 25.1 25.6);d1
+time|12:00 12:01 12:10
+temp|25 25.1 25.6
+
+ d2:0 10 1!37.4 46.3 0.1;d2
+ 0|37.4
+10|46.3
+ 1|0.1 
+@end example
+
+@section Dictionary Key @emph{!}
+The keys from a dictionary can be retreived by using the @emph{!} function.
+
+@example
+ !d0
+`pi`e`c
+ !d1
+`time`time
+ !d2
+0 10 1
+@end example
+
+@section Dictionary as Value @emph{.}
+A dictionary can be returned as values using the @emph{.} function.  The function returns a list of length two.  The first element is a list of the keys.  The second element is a list of the values.
+
+@example
+ . d0
+pi   e    c    
+3.14 2.72 3e+08
+
+ . d1
+time              temp        
+12:00 12:01 12:10 25 25.1 25.6
+
+ . d2
+0    10   1  
+37.4 46.3 0.1
+@end example
+
+One could return a specific value by indicing into a specific location.  As an example in order to query the first value of the temp from d1, one would convert d1 into values (as value .), take the second index (take the value 1), take the second element (take the temp 1), and then query the first value (element 0).
+
+@example
+ d1
+time|12:00 12:01 12:10
+temp|25 25.1 25.6     
+
+ (. d1)
+time              temp        
+12:00 12:01 12:10 25 25.1 25.6
+
+ (. d1)[1]
+12:00 12:01 12:10
+25    25.1  25.6 
+
+ (. d1)[1][1]
+25 25.1 25.6
+ (. d1)[1][1][0]
+25f
+@end example
+
+@section Sorting a Dictionary by Key @emph{^}
+
+@example
+ d0
+pi|3.14 
+e |2.72 
+c |3e+08
+
+ ^d0
+c |3e+08
+e |2.72 
+pi|3.14 
+@end example
+
+@section Sorting a Dictionary by Value @emph{<} and @emph{>}
+
+@example
+ d0
+pi|3.14 
+e |2.72 
+c |3e+08
+
+ <d0
+e |2.72 
+pi|3.14 
+c |3e+08
+
+ >d0
+c |3e+08
+pi|3.14 
+e |2.72 
+@end example
+
+@section Flipping a Dictionary into a Table @emph{+}
+This command flips a dictionary into a table but will be covered in detail in the table section.  Flipping a dictionary whose values are a single element has no effect.
+
+@example
+ d0
+pi|3.14 
+e |2.72 
+c |3e+08
+
+ +d0
+pi|3.14 
+e |2.72 
+c |3e+08
+
+ do~+d0
+1b
+
+ d1
+time|12:00 12:01 12:10
+temp|25 25.1 25.6     
+
+ +d1
+time  temp
+----- ----
+12:00 25  
+12:01 25.1
+12:10 25.6
+
+ d1~+d1
+0b
+@end example
+
+@section Functions that operate on each value in a dictionary
+There a number of simple functions on dictionaries that operate on the values.  If 'f' is a function then f applied to a dictionary return a dictionary with the same keys and the values are application of 'f'.
+
+@itemize
+@item @t{-d : Negate}
+@item @t{d + N : Add N to d}
+@item @t{d - N : Subtract N from d}
+@item @t{d * N : Multiple d by N}
+@item @t{d % N : Divide d by N}
+@item @t{|d : Reverse}
+@item @t{<d : Sort Ascending}
+@item @t{>d : Sort Descending}
+@item @t{~d : Not d}
+@item @t{&d : Given d:x!y repeate each x, y times, where y must be an integer}
+@item @t{=d : Given d:x!y y!x}
+@end itemize
+
+Examples
+@example
+ d2
+ 0|37.4
+10|46.3
+ 1|0.1 
+
+ -d2
+ 0|-37.4
+10|-46.3
+ 1|-0.1 
+
+ d2+3
+ 0|40.4
+10|49.3
+ 1|3.1 
+
+ d2-1.7
+ 0|35.7
+10|44.6
+ 1|-1.6
+
+ d2*10
+ 0|374
+10|463
+ 1|1  
+
+ d2%100
+ 0|0.374
+10|0.463
+ 1|0.001
+@end example
+
+@section Functions that operate over values in a dictionary
+There are functions on dictions that operate over the values.  If 'f' is a function applied to a dictionary 'd' then 'f d' returns a value.
+
+@itemize
+@item *d : First value
+@end itemize
+@example
+ d0
+pi|3.14
+e |2.72
+c |3e+08
+
+ *d0
+3.14
+@end example
+@node More functions
+@chapter More functions
+TBD
+@node I/O
+@chapter I/O
+Functions for input and ouput (I/O).
+@anchor{input format}@section Input format values to table
+This section shows you the syntax for reading in data into a table with the correct type.
+@example
+ d:,(`date`time`int`float`char`symbol)            / headers 
+ d,:,(2020.04.20;12:34:56.789;37;12.3;"hi";`bye)) /data
+ d                                          
+date       time         int float char  symbol
+2020-04-20 12:34:56.789 37  12.3  hi    bye   
+
+ `csv'd                                           / to csv
+date,time,int,float,char,symbol            
+2020-04-20,12:34:56.789,37,12.3,"hi",bye
+
+ "some.csv"0:`csv'd                               / write to some.csv
+ 0:"some.csv"                                     / read from some.csv
+date,time,int,float,char,symbol            
+2020-04-20,12:34:56.789,37,12.3,"hi",bye
+
+ ("Dtifs*";,",")0:"some.csv"                      / read into table
+date       time         int float char    symbol
+---------- ------------ --- ----- ------- ------
+2020-04-20 12:34:56.789  37 12.3  "hi"    bye   
+@end example
+
+
+@anchor{format}@section Format to CSV/json/k @result{} `csv x
+Convert x to CSV/json/k format.  Works on atoms, lists, and tables.
+@example
+ `csv 3 1 2
+"3,1,2"
+ `json (3;`abc;2.3;"blue")
+"[\"3\",\"abc\",2.3,\"blue\"]"
+ `k [[]i:!5;s:`a`b`c`d`e;v:5?10]
+"[[]i:0 1 2 3 4;s:`a`b`c`d`e;v:7 4 7 3 2]"
+ `csv `a`b!((1 2);(3 4))      / error as dictionary input
+error: class
+@end example
+@anchor{write line}@section write line @result{} x 0:y
+Output to x the list of strings in y.  y must be a list of strings.  If y is a single stream then convert to list via enlist.
+@example
+ ""0:("blue";"red")      / "" represents stdout
+blue
+red
+ ""0:$'("blue";"red";3)  / each element to string
+blue
+red
+3
+ "some.csv"0:,`csv 3 1 2 / will fail without enlist
+@end example
+@anchor{read line}@section read line @result{} 0:x
+Read from file x.
+@example
+ "some.txt"0:,`csv 3 1 2 / first write a file to some.txt
+ 0:"some.txt"            / now read it back
+3,1,2
+@end example
+@anchor{write char}@section write char @result{} x 1:y
+Output to x the list of chars in y.  y must be a list of chars.  If y is a single char then convert to list via enlist.
+@example
+ "some.txt"1:"hello here\nis some text\n"
+ 1:"some.txt"
+"hello here\nis some text\n"
+@end example
+@anchor{read char}@section read char @result{} 1:x
+Read from file x.
+@example
+ "some.txt"0:,`csv 3 1 2 / first write a file to some.txt
+ 1:"some.txt"            / now read it back
+"3,1,2\n"
+@end example
+@anchor{write data}@section write data @result{} 2:
+TBD
+@anchor{conn/set}@section conn/set @result{} 3:
+TBD
+@anchor{http/get}@section http/get @result{} 4:
+TBD
+@node Tables/kSQL
+@chapter Tables and kSQL
+This chapter introduces k9 tables and the kSQL language to query.
+@anchor{Tables}@section Tables
+Here is an example of a table with three columns (Day, Weather, and Temp) and three rows.
+@example
+ t:[[]Day:2020.04.10+!3;Weather:`sunny`cold`sunny;Temp:22 12 18]
+ t
+Day        Weather Temp
+---------- ------- ----
+2020-04-10 sunny     22
+2020-04-11 cold      12
+2020-04-12 sunny     18
+ @@t                             / tables are type `A (`t is for time)
+`A
+ +t
+Day    |2020-04-10 2020-04-11 2020-04-12
+Weather|sunny cold sunny                
+Temp   |22 12 18                        
+@end example
+@anchor{A_Tables}@section A_Tables
+Here is an example of a A_table with three columns (Day, Weather, and Temp) and three rows.  One column (Day) will be add as a key.
+@example
+ t:[[Day:2020.04.10+!3]Weather:`sunny`cold`sunny;Temp:22 12 18]
+ t
+Day       |Weather Temp
+----------|------- ----
+2020-04-10|sunny     22
+2020-04-11|cold      12
+2020-04-12|sunny     18
+
+ @@t                        / A_tables have type `AA
+`AA
+@end example
+@anchor{S_Tables}@section S_Tables
+TBD
+@example
+ x:`a`b! [[]c:2 3;d:3 4;e:4 5]
+ x
+ |c d e
+-|- - -
+a|2 3 4
+b|3 4 5
+
+ @@x                              / S_tables are type `SA
+`SA
+@end example
+@anchor{kSQL}@section kSQL
+kSQL is a powerful query language for tables.
+@example
+ select |/Temp from t where Weather=`sunny
+Temp|22
+
+ select from t where Weather=`sunny
+Day        Weather Temp
+---------- ------- ----
+2020-04-10 sunny     22
+2020-04-12 sunny     18
+
+ select @{+/x%#x@}Temp from t where Weather=`sunny
+Temp|20
+
+ select |/Temp from t where Weather=`sunny
+Temp|22
+@end example
+@node ChX
+@chapter X
+To be sorted.
+@section @code{`freq} Histogram
+Compute a histogram of a list.
+@example
+ ^`freq x:100000?10
+0| 9907
+1| 9963
+2| 9938
+3|10063
+4|10018
+5|10007
+6|10037
+7|10036
+8| 9907
+9|10124
+ ^#'=x   / same result but slower
+0| 9907
+1| 9963
+2| 9938
+3|10063
+4|10018
+5|10007
+6|10037
+7|10036
+8| 9907
+9|10124
+@end example
+@c @node Index
+@c @unnumbered Index
+
+@c @printindex cp
+
+@bye
