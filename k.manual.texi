@@ -30,6 +30,7 @@ This document explains the usage of the k9 programming language in very simple t
 * Nouns:: Data / Noun
 * Verbs:: Functions / Verbs
 * Adverbs:: Function Modifiers / Adverbs
+* Lists: Lists
 * Dictionaries:: Dictionaries and Functions for Dictionaries
 * More functions:: More functions
 * I/O:: I/O
@@ -178,9 +179,10 @@ In k9 as the Help/Info card shows data are nouns, functions/lists are verbs and 
 @item @t{3 > 2 (Noun verb noun)}
 @item @t{3 >' 0 1 2 3 4 5 (Noun verb adverb noun)}
 @end itemize
+@page
 @section Help/Info Card
 Typing @code{\} in the terminal gives you a concise overview of the language.  This document aims to provide details to beginning users where the help screen is a tad too terse.
-
+@smallformat
 @verbatim
  \   
 $k a.k                                                                         
@@ -221,7 +223,8 @@ v~'`csv ?`csv  v:(`ab;"abc";2;2e3;0N;0W;.z.D;.z.t)
 error: value class rank type domain length limit                               
 limit: {[param8]local8 global32 const128 jump256}                              
 @end verbatim
-
+@end smallformat
+@page
 @node Nouns
 @chapter Data / Nouns
 The basic data types of the k9 language are numbers (interger and float), text (characters and enumerated/name) and temporal (date and time).  It is common to have functions operate on multiple data types.
@@ -279,7 +282,7 @@ Data types can not only represent in-range values but also null and out-of-range
 @chapter Functions / Verbs
 This chapter explains all functions, aka verbs.  Most functions are overloaded and change depending on the number and type of arguments.
 
-@example
+@verbatim
 Verb
 :  (*note set::)
 +  (*note plus::)       (*note flip::)    
@@ -300,8 +303,8 @@ $  (*note cast::)       (*note string::)
 _  (*note drop::)       (*note floor::)    
 ?  (*note find::)       (*note unique::)    
 @  (*note at::)         (*note type::)    
-.  (*note apply::)      (*note value::)    
-@end example
+.  (*note apply::)      (*note value::)
+@end verbatim
 @anchor{set}@section set @result{} x:y
 Set a variable, x, to a value, y.
 
@@ -557,7 +560,7 @@ a|1 2
 b|3 4
 @end example
 @anchor{enum}@section enum @result{} !x
-Generate an interger list from 0 to x-1.
+Generate an integer list from 0 to x-1.
 @example
  !3
 0 1 2
@@ -624,14 +627,16 @@ d
 "4.7"
 @end example
 @anchor{take}@section take @result{} x#y
-First (last) x elements of y if x is positive (negative)
+First (last) x elements of y if x is positive (negative).  If x is a list then returns any values in both x and y.
 @example
- 3#0 1 2 3 4 5
+ 3#0 1 2 3 4 5          / first three
 0 1 2
- -3#0 1 2 3 4 5
+ -3#0 1 2 3 4 5         / last three
 3 4 5
  2#"hello"
 "he"
+ (1 2 3 7 8 9)#(2 8 20) / union
+2 8
 @end example
 @anchor{count}@section count @result{} #x
 Count the number of elements in x.
@@ -644,7 +649,7 @@ Count the number of elements in x.
 2
 @end example
 @anchor{drop}@section drop @result{} x_y
-Return the list y without the first (last) x elements if x is positive (negative).
+Return the list y without the first (last) x elements if x is positive (negative).  If x is a list then returns any values from y not in x.
 @example
  3_0 1 2 3 4 5
 3 4 5
@@ -653,6 +658,8 @@ Return the list y without the first (last) x elements if x is positive (negative
  a:3;b:0 9 1 8 2 7;
  a_b
 8 2 7
+ (1 2 3 7 8 9)_(2 8 20)
+,20
 @end example
 @anchor{find}@section find @result{} x?y
 Find the first element of x that matches y otherwise return the end of vector.
@@ -736,7 +743,157 @@ Apply each value in list x to function f.
  *'((1 2 3);4;(5 6);7)  / first element of each element
 1 4 5 7
 @end example
+@anchor{bar}@section bar @result{} x'y
+x divided by y using integer division and then multiplied by x.  x is an integer and y is a list of integers.
+@example
+ 5'0 1 2 3 4 5 9 10
+0 0 0 0 0 5 5 10
+@end example
+@anchor{scan}@section scan @result{} (f\)x
+Create values for each x according to...
+@itemize
+@item f@@0 @arrow{}          x@@0
+@item f@@1 @arrow{} f[f@@0;x@@1]
+@item ...
+@item f@@i @arrow{} f[f@@i-1;x@@i]
+@item ...
+@item f@@n @arrow{} f[f@@n-1;x@@n]
+@end itemize
+@example
+ (,\)("a";"b";"c")
+a
+ab
+abc
+ (+\)1 20 300
+1 21 321
+ (@{y+10*x@}\)1 20 300
+1 30 600
+@end example
+@anchor{left}@section left @result{} f\[x;y]
+Apply f[;y] to each value in x.
+@example
+ @{x+y@}[100 200 300;1 2 3]  / add the lists together itemize
+101 202 303
+ @{x+y@}\[100 200 300;1 2 3] / add the list y to each value of x
+101 102 103
+201 202 203
+301 302 303
+ @{x,y@}\[`l1`l2`l3;`r1`r2`r3]
+l1 r1 r2 r3
+l2 r1 r2 r3
+l3 r1 r2 r3
+@end example
+@anchor{mod}@section mod @result{} x\y
+The remainder after y divided by x using integer division.  x and y must be integers.
+@example
+ 12\27
+3
+ 5\22
+2
+@end example
+ @anchor{over}@section over @result{} (f/)x
+Same as scan but only print last value.
+@example
+ (,/)("a";"b";"c")
+"abc"
+ (+/)1 20 300
+321
+ (@{y+10*x@}/)1 20 300
+600
+@end example
+@anchor{right}@section right @result{} f/[x;y]
+Apply f[x;] to each value in y.
+@example
+ @{x+y@}[100 200 300;1 2 3]  / add the lists together itemize
+101 202 303
+ @{x+y@}/[100 200 300;1 2 3] / add the list y to each value of x
+101 201 301
+102 202 302
+103 203 303
+ @{x,y@}/[`l1`l2`l3;`r1`r2`r3]
+l1 l2 l3 r1
+l1 l2 l3 r2
+l1 l2 l3 r3
+@end example
+@anchor{div}@section div @result{} x/y
+y divided by x using integer division.  x and y must be integers.
+@example
+ 2/7
+3
+ 22/5
+4
+@end example
+@node Lists
+@chapter Lists
+k9 is optimized for operations on uniform lists of data.  In order to take full advantage one should store data in lists and operate on them without iteration.
+@section List syntax
+In general, lists are created by data separated by semicolons and encased by parenthesis.  Uniform lists can use a simpler syntax of spaces between elements.
+@example
+ a:1 2 3
+ b:(1;2;3)
+ a~b             / are a and b the same
+1b
+ @@a             / uniform lists are upper case value an element
+`I
+ @@'a            / type of each element
+`i`i`i
+ c:(1i;2f;"c";`d)
+ @@c             / nonuniform lists are type `L
+`L
+ @@'c
+`i`f`c`s
+ c:1i 2f "c" `d  / incorrect syntax for nonuniform list
+error: type
+@end example
+@section List Indicing
+Lists can be indexed by using a few notations.
+@example
+ a:2*1+!10  / 2 4 ... 20
+ a[10]   / out of range return null
+0
+ a[9]    / square bracket
+20
+ a@@9    / at
+20
+ a 9     / space 
+20
+ a(9)    / parenthesis
+@end example
+@section Updating List Elements
+Lists can be updated element wise but typically one is likely to be updating many elements and there is a syntax for doing so.
+@example
+ a:2*1+!10
+ a
+2 4 6 8 10 12 14 16 18 20
+ a[3]:80
+ a
+2 4 6 80 10 12 14 16 18 20
+ a:@@[a;0 2 4 6 8;0];a
+0 4 0 80 0 12 0 16 0 20
+ a:@@[a;1 3 5;*;100];a
+0 400 0 8000 0 1200 0 16 0 20
+ a:@@[a;!#a;:;0];a
+@end example
+List amend syntax has a few options so will be explained in more detail.
+@itemize
+@item @@[list;indices;value]
+@item @@[list;indices;identify function;value]
+@item @@[list;indices;function;value]
+@end itemize
+The first syntax sets the list at the indices to value.  The second syntax performs the same modificaiton but explicitly lists the identity function, :.  The third synatx is the same as the preceeding but uses an arbitrary fuction.
 
+Often the developer will need to determine which indices to modify and in cases where this isn't onerous it can be done in the function.
+@example
+ a:2*1+!10
+ @@[a;&a<14;:;-3]
+-3 -3 -3 -3 -3 -3 14 16 18 20
+ @@[!10;1 3 5;:;10 20 30]
+0 10 2 20 4 30 6 7 8 9
+ @@[!10;1 3 5;:;10 20]   / index and value array length mistmatch
+error: length
+ @@[!10;1 3;:;10 20 30]  / index and value array length mistmatch
+error: length
+@end example
 @node Dictionaries
 @chapter Dictionaries and Dictionary Functions
 Simple data types can be combined into structures including Dictionaries and Tables. 
@@ -1089,6 +1246,36 @@ Temp|22
 @node ChX
 @chapter X
 To be sorted.
+@section Errors
+This section contains information on the various error messages in k9.
+@subsection error: parse
+Syntax is wrong.
+@example
+ @{37 . "hello"
+error: parse
+@end example
+@subsection error: value
+Undefined variable is used.
+@example
+ g    / assuming 'g' has not be defining in this session
+error: value
+@end example
+@subsection error: class
+@example
+ 3+`b
+@end example
+@subsection error: length
+Operations on unequal length lists that require equal length.
+@example
+ (1 2 3)+(4 5)
+error: length
+@end example
+@subsection error: domain
+Exhausted the number of input values
+@example
+ -12?10   / only 10 unique value exist
+error: domain
+@end example
 @section @code{`freq} Histogram
 Compute a histogram of a list.
 @example

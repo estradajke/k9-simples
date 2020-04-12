@@ -61,8 +61,7 @@ Next: <a href="Adverbs.html#Adverbs" accesskey="n" rel="next">Adverbs</a>, Previ
 <h2 class="chapter">3 Functions / Verbs</h2>
 <p>This chapter explains all functions, aka verbs.  Most functions are overloaded and change depending on the number and type of arguments.
 </p>
-<div class="example">
-<pre class="example">Verb
+<pre class="verbatim">Verb
 :  (*note set::)
 +  (*note plus::)       (*note flip::)    
 -  (*note minus::)      (*note negate::)      
@@ -81,10 +80,9 @@ $  (*note cast::)       (*note string::)
 #  (*note take::)       (*note count::)    
 _  (*note drop::)       (*note floor::)    
 ?  (*note find::)       (*note unique::)    
-&nbsp; (*note at::)         (*note type::)    
-.  (*note apply::)      (*note value::)    
-</pre></div>
-<a name="set"></a><a name="set-_21d2-x_003ay"></a>
+@  (*note at::)         (*note type::)    
+.  (*note apply::)      (*note value::)
+</pre><a name="set"></a><a name="set-_21d2-x_003ay"></a>
 <h3 class="section">3.1 set &rArr; x:y</h3>
 <p>Set a variable, x, to a value, y.
 </p>
@@ -359,7 +357,7 @@ b|3 4
 </pre></div>
 <a name="enum"></a><a name="enum-_21d2-_0021x"></a>
 <h3 class="section">3.20 enum &rArr; !x</h3>
-<p>Generate an interger list from 0 to x-1.
+<p>Generate an integer list from 0 to x-1.
 </p><div class="example">
 <pre class="example"> !3
 0 1 2
@@ -433,14 +431,16 @@ d
 </pre></div>
 <a name="take"></a><a name="take-_21d2-x_0023y"></a>
 <h3 class="section">3.27 take &rArr; x#y</h3>
-<p>First (last) x elements of y if x is positive (negative)
+<p>First (last) x elements of y if x is positive (negative).  If x is a list then returns any values in both x and y.
 </p><div class="example">
-<pre class="example"> 3#0 1 2 3 4 5
+<pre class="example"> 3#0 1 2 3 4 5          / first three
 0 1 2
- -3#0 1 2 3 4 5
+ -3#0 1 2 3 4 5         / last three
 3 4 5
  2#&quot;hello&quot;
 &quot;he&quot;
+ (1 2 3 7 8 9)#(2 8 20) / union
+2 8
 </pre></div>
 <a name="count"></a><a name="count-_21d2-_0023x"></a>
 <h3 class="section">3.28 count &rArr; #x</h3>
@@ -455,7 +455,7 @@ d
 </pre></div>
 <a name="drop"></a><a name="drop-_21d2-x_005fy"></a>
 <h3 class="section">3.29 drop &rArr; x_y</h3>
-<p>Return the list y without the first (last) x elements if x is positive (negative).
+<p>Return the list y without the first (last) x elements if x is positive (negative).  If x is a list then returns any values from y not in x.
 </p><div class="example">
 <pre class="example"> 3_0 1 2 3 4 5
 3 4 5
@@ -464,6 +464,8 @@ d
  a:3;b:0 9 1 8 2 7;
  a_b
 8 2 7
+ (1 2 3 7 8 9)_(2 8 20)
+,20
 </pre></div>
 <a name="find"></a><a name="find-_21d2-x_003fy"></a>
 <h3 class="section">3.30 find &rArr; x?y</h3>

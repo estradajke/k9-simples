@@ -19,6 +19,7 @@ simple terms and is intended for newbies only.
 * Nouns:: Data / Noun
 * Verbs:: Functions / Verbs
 * Adverbs:: Function Modifiers / Adverbs
+* Lists: Lists
 * Dictionaries:: Dictionaries and Functions for Dictionaries
 * More functions:: More functions
 * I/O:: I/O
@@ -243,7 +244,6 @@ verbs and modifiers are adverbs.
 Typing '\' in the terminal gives you a concise overview of the language.
 This document aims to provide details to beginning users where the help
 screen is a tad too terse.
-
  \
 $k a.k
 
@@ -360,27 +360,27 @@ File: k9.info,  Node: Verbs,  Next: Adverbs,  Prev: Nouns,  Up: Top
 This chapter explains all functions, aka verbs.  Most functions are
 overloaded and change depending on the number and type of arguments.
 
-     Verb
-     :  (*note set::)
-     +  (*note plus::)       (*note flip::)
-     -  (*note minus::)      (*note negate::)
-     *  (*note times::)      (*note first::)
-     %  (*note divide::)
-     &  (*note min::)        (*note where::)
-     |  (*note max::)        (*note reverse::)
-     <  (*note less::)       (*note asc::)
-     >  (*note more::)       (*note dsc::)
-     =  (*note equal::)      (*note group::)
-     ~  (*note match::)      (*note not::)
-     !  (*note key::)        (*note enum::)
-     ,  (*note cat::)        (*note enlist::)
-     ^  (*note cut::)        (*note sort::)
-     $  (*note cast::)       (*note string::)
-     #  (*note take::)       (*note count::)
-     _  (*note drop::)       (*note floor::)
-     ?  (*note find::)       (*note unique::)
-       (*note at::)         (*note type::)
-     .  (*note apply::)      (*note value::)
+Verb
+:  (*note set::)
++  (*note plus::)       (*note flip::)
+-  (*note minus::)      (*note negate::)
+*  (*note times::)      (*note first::)
+%  (*note divide::)
+&  (*note min::)        (*note where::)
+|  (*note max::)        (*note reverse::)
+<  (*note less::)       (*note asc::)
+>  (*note more::)       (*note dsc::)
+=  (*note equal::)      (*note group::)
+~  (*note match::)      (*note not::)
+!  (*note key::)        (*note enum::)
+,  (*note cat::)        (*note enlist::)
+^  (*note cut::)        (*note sort::)
+$  (*note cast::)       (*note string::)
+#  (*note take::)       (*note count::)
+_  (*note drop::)       (*note floor::)
+?  (*note find::)       (*note unique::)
+@  (*note at::)         (*note type::)
+.  (*note apply::)      (*note value::)
 
 3.1 set => x:y
 ==============
@@ -656,7 +656,7 @@ Dictionary of x (key) and y (value)
 3.20 enum => !x
 ===============
 
-Generate an interger list from 0 to x-1.
+Generate an integer list from 0 to x-1.
       !3
      0 1 2
 
@@ -730,13 +730,16 @@ Cast x to string.
 3.27 take => x#y
 ================
 
-First (last) x elements of y if x is positive (negative)
-      3#0 1 2 3 4 5
+First (last) x elements of y if x is positive (negative).  If x is a
+list then returns any values in both x and y.
+      3#0 1 2 3 4 5          / first three
      0 1 2
-      -3#0 1 2 3 4 5
+      -3#0 1 2 3 4 5         / last three
      3 4 5
       2#"hello"
      "he"
+      (1 2 3 7 8 9)#(2 8 20) / union
+     2 8
 
 3.28 count => #x
 ================
@@ -753,7 +756,7 @@ Count the number of elements in x.
 ================
 
 Return the list y without the first (last) x elements if x is positive
-(negative).
+(negative).  If x is a list then returns any values from y not in x.
       3_0 1 2 3 4 5
      3 4 5
       -3_0 1 2 3 4 5
@@ -761,6 +764,8 @@ Return the list y without the first (last) x elements if x is positive
       a:3;b:0 9 1 8 2 7;
       a_b
      8 2 7
+      (1 2 3 7 8 9)_(2 8 20)
+     ,20
 
 3.30 find => x?y
 ================
@@ -842,7 +847,7 @@ Return the value of dictionary x as lists.
      1 2 3 4
 
 
-File: k9.info,  Node: Adverbs,  Next: Dictionaries,  Prev: Verbs,  Up: Top
+File: k9.info,  Node: Adverbs,  Next: Lists,  Prev: Verbs,  Up: Top
 
 4 Function Modifiers / Adverbs
 ******************************
@@ -859,16 +864,188 @@ Apply each value in list x to function f.
       *'((1 2 3);4;(5 6);7)  / first element of each element
      1 4 5 7
 
-
-File: k9.info,  Node: Dictionaries,  Next: More functions,  Prev: Adverbs,  Up: Top
+4.2 bar => x'y
+==============
 
-5 Dictionaries and Dictionary Functions
+x divided by y using integer division and then multiplied by x.  x is an
+integer and y is a list of integers.
+      5'0 1 2 3 4 5 9 10
+     0 0 0 0 0 5 5 10
+
+4.3 scan => (f\)x
+=================
+
+Create values for each x according to...
+   * f@0 -> x@0
+   * f@1 -> f[f@0;x@1]
+   * ...
+   * f@i -> f[f@i-1;x@i]
+   * ...
+   * f@n -> f[f@n-1;x@n]
+      (,\)("a";"b";"c")
+     a
+     ab
+     abc
+      (+\)1 20 300
+     1 21 321
+      ({y+10*x}\)1 20 300
+     1 30 600
+
+4.4 left => f\[x;y]
+===================
+
+Apply f[;y] to each value in x.
+      {x+y}[100 200 300;1 2 3]  / add the lists together itemize
+     101 202 303
+      {x+y}\[100 200 300;1 2 3] / add the list y to each value of x
+     101 102 103
+     201 202 203
+     301 302 303
+      {x,y}\[`l1`l2`l3;`r1`r2`r3]
+     l1 r1 r2 r3
+     l2 r1 r2 r3
+     l3 r1 r2 r3
+
+4.5 mod => x\y
+==============
+
+The remainder after y divided by x using integer division.  x and y must
+be integers.
+      12\27
+     3
+      5\22
+     2
+
+4.6 over => (f/)x
+=================
+
+Same as scan but only print last value.
+      (,/)("a";"b";"c")
+     "abc"
+      (+/)1 20 300
+     321
+      ({y+10*x}/)1 20 300
+     600
+
+4.7 right => f/[x;y]
+====================
+
+Apply f[x;] to each value in y.
+      {x+y}[100 200 300;1 2 3]  / add the lists together itemize
+     101 202 303
+      {x+y}/[100 200 300;1 2 3] / add the list y to each value of x
+     101 201 301
+     102 202 302
+     103 203 303
+      {x,y}/[`l1`l2`l3;`r1`r2`r3]
+     l1 l2 l3 r1
+     l1 l2 l3 r2
+     l1 l2 l3 r3
+
+4.8 div => x/y
+==============
+
+y divided by x using integer division.  x and y must be integers.
+      2/7
+     3
+      22/5
+     4
+
+
+File: k9.info,  Node: Lists,  Next: Dictionaries,  Prev: Adverbs,  Up: Top
+
+5 Lists
+*******
+
+k9 is optimized for operations on uniform lists of data.  In order to
+take full advantage one should store data in lists and operate on them
+without iteration.
+
+5.1 List syntax
+===============
+
+In general, lists are created by data separated by semicolons and
+encased by parenthesis.  Uniform lists can use a simpler syntax of
+spaces between elements.
+      a:1 2 3
+      b:(1;2;3)
+      a~b             / are a and b the same
+     1b
+      @a             / uniform lists are upper case value an element
+     `I
+      @'a            / type of each element
+     `i`i`i
+      c:(1i;2f;"c";`d)
+      @c             / nonuniform lists are type `L
+     `L
+      @'c
+     `i`f`c`s
+      c:1i 2f "c" `d  / incorrect syntax for nonuniform list
+     error: type
+
+5.2 List Indicing
+=================
+
+Lists can be indexed by using a few notations.
+      a:2*1+!10  / 2 4 ... 20
+      a[10]   / out of range return null
+     0
+      a[9]    / square bracket
+     20
+      a@9    / at
+     20
+      a 9     / space
+     20
+      a(9)    / parenthesis
+
+5.3 Updating List Elements
+==========================
+
+Lists can be updated element wise but typically one is likely to be
+updating many elements and there is a syntax for doing so.
+      a:2*1+!10
+      a
+     2 4 6 8 10 12 14 16 18 20
+      a[3]:80
+      a
+     2 4 6 80 10 12 14 16 18 20
+      a:@[a;0 2 4 6 8;0];a
+     0 4 0 80 0 12 0 16 0 20
+      a:@[a;1 3 5;*;100];a
+     0 400 0 8000 0 1200 0 16 0 20
+      a:@[a;!#a;:;0];a
+   List amend syntax has a few options so will be explained in more
+detail.
+   * @[list;indices;value]
+   * @[list;indices;identify function;value]
+   * @[list;indices;function;value]
+   The first syntax sets the list at the indices to value.  The second
+syntax performs the same modificaiton but explicitly lists the identity
+function, :.  The third synatx is the same as the preceeding but uses an
+arbitrary fuction.
+
+   Often the developer will need to determine which indices to modify
+and in cases where this isn't onerous it can be done in the function.
+      a:2*1+!10
+      @[a;&a<14;:;-3]
+     -3 -3 -3 -3 -3 -3 14 16 18 20
+      @[!10;1 3 5;:;10 20 30]
+     0 10 2 20 4 30 6 7 8 9
+      @[!10;1 3 5;:;10 20]   / index and value array length mistmatch
+     error: length
+      @[!10;1 3;:;10 20 30]  / index and value array length mistmatch
+     error: length
+
+
+File: k9.info,  Node: Dictionaries,  Next: More functions,  Prev: Lists,  Up: Top
+
+6 Dictionaries and Dictionary Functions
 ***************************************
 
 Simple data types can be combined into structures including Dictionaries
 and Tables.
 
-5.1 Dictionaries
+6.1 Dictionaries
 ================
 
 Dictionaries are key-value pairs of data.  The value in the dictionary
@@ -888,7 +1065,7 @@ can be a single element or a list.
      10|46.3
       1|0.1
 
-5.2 Dictionary Key _!_
+6.2 Dictionary Key _!_
 ======================
 
 The keys from a dictionary can be retreived by using the _!_  function.
@@ -900,7 +1077,7 @@ The keys from a dictionary can be retreived by using the _!_  function.
       !d2
      0 10 1
 
-5.3 Dictionary as Value _._
+6.3 Dictionary as Value _._
 ===========================
 
 A dictionary can be returned as values using the _._  function.  The
@@ -942,7 +1119,7 @@ then query the first value (element 0).
       (. d1)[1][1][0]
      25f
 
-5.4 Sorting a Dictionary by Key _^_
+6.4 Sorting a Dictionary by Key _^_
 ===================================
 
       d0
@@ -955,7 +1132,7 @@ then query the first value (element 0).
      e |2.72
      pi|3.14
 
-5.5 Sorting a Dictionary by Value _<_ and _>_
+6.5 Sorting a Dictionary by Value _<_ and _>_
 =============================================
 
       d0
@@ -973,7 +1150,7 @@ then query the first value (element 0).
      pi|3.14
      e |2.72
 
-5.6 Flipping a Dictionary into a Table _+_
+6.6 Flipping a Dictionary into a Table _+_
 ==========================================
 
 This command flips a dictionary into a table but will be covered in
@@ -1007,7 +1184,7 @@ single element has no effect.
       d1~+d1
      0b
 
-5.7 Functions that operate on each value in a dictionary
+6.7 Functions that operate on each value in a dictionary
 ========================================================
 
 There a number of simple functions on dictionaries that operate on the
@@ -1058,7 +1235,7 @@ dictionary with the same keys and the values are application of 'f'.
      10|0.463
       1|0.001
 
-5.8 Functions that operate over values in a dictionary
+6.8 Functions that operate over values in a dictionary
 ======================================================
 
 There are functions on dictions that operate over the values.  If 'f' is
@@ -1076,7 +1253,7 @@ a function applied to a dictionary 'd' then 'f d' returns a value.
 
 File: k9.info,  Node: More functions,  Next: I/O,  Prev: Dictionaries,  Up: Top
 
-6 More functions
+7 More functions
 ****************
 
 TBD
@@ -1084,12 +1261,12 @@ TBD
 
 File: k9.info,  Node: I/O,  Next: Tables/kSQL,  Prev: More functions,  Up: Top
 
-7 I/O
+8 I/O
 *****
 
 Functions for input and ouput (I/O).
 
-7.1 Input format values to table
+8.1 Input format values to table
 ================================
 
 This section shows you the syntax for reading in data into a table with
@@ -1114,7 +1291,7 @@ the correct type.
      ---------- ------------ --- ----- ------- ------
      2020-04-20 12:34:56.789  37 12.3  "hi"    bye
 
-7.2 Format to CSV/json/k => 'csv x
+8.2 Format to CSV/json/k => 'csv x
 ==================================
 
 Convert x to CSV/json/k format.  Works on atoms, lists, and tables.
@@ -1127,7 +1304,7 @@ Convert x to CSV/json/k format.  Works on atoms, lists, and tables.
       `csv `a`b!((1 2);(3 4))      / error as dictionary input
      error: class
 
-7.3 write line => x 0:y
+8.3 write line => x 0:y
 =======================
 
 Output to x the list of strings in y.  y must be a list of strings.  If
@@ -1141,7 +1318,7 @@ y is a single stream then convert to list via enlist.
      3
       "some.csv"0:,`csv 3 1 2 / will fail without enlist
 
-7.4 read line => 0:x
+8.4 read line => 0:x
 ====================
 
 Read from file x.
@@ -1149,7 +1326,7 @@ Read from file x.
       0:"some.txt"            / now read it back
      3,1,2
 
-7.5 write char => x 1:y
+8.5 write char => x 1:y
 =======================
 
 Output to x the list of chars in y.  y must be a list of chars.  If y is
@@ -1158,7 +1335,7 @@ a single char then convert to list via enlist.
       1:"some.txt"
      "hello here\nis some text\n"
 
-7.6 read char => 1:x
+8.6 read char => 1:x
 ====================
 
 Read from file x.
@@ -1166,17 +1343,17 @@ Read from file x.
       1:"some.txt"            / now read it back
      "3,1,2\n"
 
-7.7 write data => 2:
+8.7 write data => 2:
 ====================
 
 TBD
 
-7.8 conn/set => 3:
+8.8 conn/set => 3:
 ==================
 
 TBD
 
-7.9 http/get => 4:
+8.9 http/get => 4:
 ==================
 
 TBD
@@ -1184,12 +1361,12 @@ TBD
 
 File: k9.info,  Node: Tables/kSQL,  Next: ChX,  Prev: I/O,  Up: Top
 
-8 Tables and kSQL
+9 Tables and kSQL
 *****************
 
 This chapter introduces k9 tables and the kSQL language to query.
 
-8.1 Tables
+9.1 Tables
 ==========
 
 Here is an example of a table with three columns (Day, Weather, and
@@ -1208,7 +1385,7 @@ Temp) and three rows.
      Weather|sunny cold sunny
      Temp   |22 12 18
 
-8.2 A_Tables
+9.2 A_Tables
 ============
 
 Here is an example of a A_table with three columns (Day, Weather, and
@@ -1224,7 +1401,7 @@ Temp) and three rows.  One column (Day) will be add as a key.
       @t                        / A_tables have type `AA
      `AA
 
-8.3 S_Tables
+9.3 S_Tables
 ============
 
 TBD
@@ -1238,7 +1415,7 @@ TBD
       @x                              / S_tables are type `SA
      `SA
 
-8.4 kSQL
+9.4 kSQL
 ========
 
 kSQL is a powerful query language for tables.
@@ -1260,13 +1437,51 @@ kSQL is a powerful query language for tables.
 
 File: k9.info,  Node: ChX,  Prev: Tables/kSQL,  Up: Top
 
-9 X
-***
+10 X
+****
 
 To be sorted.
 
-9.1 '`freq' Histogram
-=====================
+10.1 Errors
+===========
+
+This section contains information on the various error messages in k9.
+
+10.1.1 error: parse
+-------------------
+
+Syntax is wrong.
+      {37 . "hello"
+     error: parse
+
+10.1.2 error: value
+-------------------
+
+Undefined variable is used.
+      g    / assuming 'g' has not be defining in this session
+     error: value
+
+10.1.3 error: class
+-------------------
+
+      3+`b
+
+10.1.4 error: length
+--------------------
+
+Operations on unequal length lists that require equal length.
+      (1 2 3)+(4 5)
+     error: length
+
+10.1.5 error: domain
+--------------------
+
+Exhausted the number of input values
+      -12?10   / only 10 unique value exist
+     error: domain
+
+10.2 '`freq' Histogram
+======================
 
 Compute a histogram of a list.
       ^`freq x:100000?10
@@ -1296,63 +1511,71 @@ Compute a histogram of a list.
 
 Tag Table:
 Node: Top138
-Node: Intro610
-Node: Nouns10140
-Node: Verbs12194
-Ref: set13306
-Ref: plus13518
-Ref: flip13909
-Ref: minus14159
-Ref: negate14264
-Ref: times14446
-Ref: first14577
-Ref: divide14772
-Ref: min14909
-Ref: where15065
-Ref: max15451
-Ref: reverse15590
-Ref: less15760
-Ref: up16008
-Ref: equal16192
-Ref: group16316
-Ref: match16562
-Ref: not16755
-Ref: key16872
-Ref: enum17043
-Ref: cat17138
-Ref: enlist17257
-Ref: cut17396
-Ref: asc17586
-Ref: cast17761
-Ref: string17935
-Ref: take18043
-Ref: count18225
-Ref: drop18415
-Ref: find18643
-Ref: unique18879
-Ref: at19116
-Ref: type19329
-Ref: apply19685
-Ref: value19896
-Node: Adverbs20065
-Ref: each20301
-Node: Dictionaries20521
-Node: More functions24664
-Node: I/O24787
-Ref: input format24918
-Ref: format25929
-Ref: write line26333
-Ref: read line26719
-Ref: write char26904
-Ref: read char27174
-Ref: write data27363
-Ref: conn/set27410
-Ref: http/get27454
-Node: Tables/kSQL27500
-Ref: Tables27673
-Ref: A_Tables28201
-Ref: S_Tables28650
-Ref: kSQL28850
-Node: ChX29266
+Node: Intro625
+Node: Nouns10154
+Node: Verbs12208
+Ref: set13216
+Ref: plus13428
+Ref: flip13819
+Ref: minus14069
+Ref: negate14174
+Ref: times14356
+Ref: first14487
+Ref: divide14682
+Ref: min14819
+Ref: where14975
+Ref: max15361
+Ref: reverse15500
+Ref: less15670
+Ref: up15918
+Ref: equal16102
+Ref: group16226
+Ref: match16472
+Ref: not16665
+Ref: key16782
+Ref: enum16953
+Ref: cat17047
+Ref: enlist17166
+Ref: cut17305
+Ref: asc17495
+Ref: cast17670
+Ref: string17844
+Ref: take17952
+Ref: count18282
+Ref: drop18472
+Ref: find18795
+Ref: unique19031
+Ref: at19268
+Ref: type19481
+Ref: apply19837
+Ref: value20048
+Node: Adverbs20217
+Ref: each20446
+Ref: bar20665
+Ref: scan20854
+Ref: left21161
+Ref: mod21521
+Ref: over21676
+Ref: right21852
+Ref: div22214
+Node: Lists22348
+Node: Dictionaries24785
+Node: More functions28926
+Node: I/O29049
+Ref: input format29180
+Ref: format30191
+Ref: write line30595
+Ref: read line30981
+Ref: write char31166
+Ref: read char31436
+Ref: write data31625
+Ref: conn/set31672
+Ref: http/get31716
+Node: Tables/kSQL31762
+Ref: Tables31935
+Ref: A_Tables32463
+Ref: S_Tables32912
+Ref: kSQL33112
+Node: ChX33528
 
 End Tag Table

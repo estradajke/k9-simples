@@ -16,7 +16,7 @@ Copyright (C) 2020 John Estrada -->
 <link href="index.html#Top" rel="start" title="Top">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="index.html#Top" rel="up" title="Top">
-<link href="Dictionaries.html#Dictionaries" rel="next" title="Dictionaries">
+<link href="Lists.html#Lists" rel="next" title="Lists">
 <link href="Verbs.html#Verbs" rel="prev" title="Verbs">
 <style type="text/css">
 <!--
@@ -54,7 +54,7 @@ ul.no-bullet {list-style: none}
 <a name="Adverbs"></a>
 <div class="header">
 <p>
-Next: <a href="Dictionaries.html#Dictionaries" accesskey="n" rel="next">Dictionaries</a>, Previous: <a href="Verbs.html#Verbs" accesskey="p" rel="prev">Verbs</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Lists.html#Lists" accesskey="n" rel="next">Lists</a>, Previous: <a href="Verbs.html#Verbs" accesskey="p" rel="prev">Verbs</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 <hr>
 <a name="Function-Modifiers-_002f-Adverbs"></a>
@@ -69,7 +69,98 @@ Next: <a href="Dictionaries.html#Dictionaries" accesskey="n" rel="next">Dictiona
  *'((1 2 3);4;(5 6);7)  / first element of each element
 1 4 5 7
 </pre></div>
-
+<a name="bar"></a><a name="bar-_21d2-x_0027y"></a>
+<h3 class="section">4.2 bar &rArr; x&rsquo;y</h3>
+<p>x divided by y using integer division and then multiplied by x.  x is an integer and y is a list of integers.
+</p><div class="example">
+<pre class="example"> 5'0 1 2 3 4 5 9 10
+0 0 0 0 0 5 5 10
+</pre></div>
+<a name="scan"></a><a name="scan-_21d2-_0028f_005c_0029x"></a>
+<h3 class="section">4.3 scan &rArr; (f\)x</h3>
+<p>Create values for each x according to...
+</p><ul>
+<li> f@0 &rarr;          x@0
+</li><li> f@1 &rarr; f[f@0;x@1]
+</li><li> ...
+</li><li> f@i &rarr; f[f@i-1;x@i]
+</li><li> ...
+</li><li> f@n &rarr; f[f@n-1;x@n]
+</li></ul>
+<div class="example">
+<pre class="example"> (,\)(&quot;a&quot;;&quot;b&quot;;&quot;c&quot;)
+a
+ab
+abc
+ (+\)1 20 300
+1 21 321
+ ({y+10*x}\)1 20 300
+1 30 600
+</pre></div>
+<a name="left"></a><a name="left-_21d2-f_005c_005bx_003by_005d"></a>
+<h3 class="section">4.4 left &rArr; f\[x;y]</h3>
+<p>Apply f[;y] to each value in x.
+</p><div class="example">
+<pre class="example"> {x+y}[100 200 300;1 2 3]  / add the lists together itemize
+101 202 303
+ {x+y}\[100 200 300;1 2 3] / add the list y to each value of x
+101 102 103
+201 202 203
+301 302 303
+ {x,y}\[`l1`l2`l3;`r1`r2`r3]
+l1 r1 r2 r3
+l2 r1 r2 r3
+l3 r1 r2 r3
+</pre></div>
+<a name="mod"></a><a name="mod-_21d2-x_005cy"></a>
+<h3 class="section">4.5 mod &rArr; x\y</h3>
+<p>The remainder after y divided by x using integer division.  x and y must be integers.
+</p><div class="example">
+<pre class="example"> 12\27
+3
+ 5\22
+2
+</pre></div>
+<a name="over"></a><a name="over-_21d2-_0028f_002f_0029x"></a>
+<h3 class="section">4.6 over &rArr; (f/)x</h3>
+<p>Same as scan but only print last value.
+</p><div class="example">
+<pre class="example"> (,/)(&quot;a&quot;;&quot;b&quot;;&quot;c&quot;)
+&quot;abc&quot;
+ (+/)1 20 300
+321
+ ({y+10*x}/)1 20 300
+600
+</pre></div>
+<a name="right"></a><a name="right-_21d2-f_002f_005bx_003by_005d"></a>
+<h3 class="section">4.7 right &rArr; f/[x;y]</h3>
+<p>Apply f[x;] to each value in y.
+</p><div class="example">
+<pre class="example"> {x+y}[100 200 300;1 2 3]  / add the lists together itemize
+101 202 303
+ {x+y}/[100 200 300;1 2 3] / add the list y to each value of x
+101 201 301
+102 202 302
+103 203 303
+ {x,y}/[`l1`l2`l3;`r1`r2`r3]
+l1 l2 l3 r1
+l1 l2 l3 r2
+l1 l2 l3 r3
+</pre></div>
+<a name="div"></a><a name="div-_21d2-x_002fy"></a>
+<h3 class="section">4.8 div &rArr; x/y</h3>
+<p>y divided by x using integer division.  x and y must be integers.
+</p><div class="example">
+<pre class="example"> 2/7
+3
+ 22/5
+4
+</pre></div>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Lists.html#Lists" accesskey="n" rel="next">Lists</a>, Previous: <a href="Verbs.html#Verbs" accesskey="p" rel="prev">Verbs</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
 
 
 

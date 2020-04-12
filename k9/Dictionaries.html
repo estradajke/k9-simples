@@ -17,7 +17,7 @@ Copyright (C) 2020 John Estrada -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="index.html#Top" rel="up" title="Top">
 <link href="More-functions.html#More-functions" rel="next" title="More functions">
-<link href="Adverbs.html#Adverbs" rel="prev" title="Adverbs">
+<link href="Lists.html#Lists" rel="prev" title="Lists">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -54,14 +54,14 @@ ul.no-bullet {list-style: none}
 <a name="Dictionaries"></a>
 <div class="header">
 <p>
-Next: <a href="More-functions.html#More-functions" accesskey="n" rel="next">More functions</a>, Previous: <a href="Adverbs.html#Adverbs" accesskey="p" rel="prev">Adverbs</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="More-functions.html#More-functions" accesskey="n" rel="next">More functions</a>, Previous: <a href="Lists.html#Lists" accesskey="p" rel="prev">Lists</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 <hr>
 <a name="Dictionaries-and-Dictionary-Functions"></a>
-<h2 class="chapter">5 Dictionaries and Dictionary Functions</h2>
+<h2 class="chapter">6 Dictionaries and Dictionary Functions</h2>
 <p>Simple data types can be combined into structures including Dictionaries and Tables. 
 </p><a name="Dictionaries-1"></a>
-<h3 class="section">5.1 Dictionaries</h3>
+<h3 class="section">6.1 Dictionaries</h3>
 <p>Dictionaries are key-value pairs of data.  The value in the dictionary can be a single element or a list.
 </p>
 <div class="example">
@@ -81,7 +81,7 @@ temp|25 25.1 25.6
 </pre></div>
 
 <a name="Dictionary-Key-_0021"></a>
-<h3 class="section">5.2 Dictionary Key <em>!</em></h3>
+<h3 class="section">6.2 Dictionary Key <em>!</em></h3>
 <p>The keys from a dictionary can be retreived by using the <em>!</em> function.
 </p>
 <div class="example">
@@ -94,7 +94,7 @@ temp|25 25.1 25.6
 </pre></div>
 
 <a name="Dictionary-as-Value-_002e"></a>
-<h3 class="section">5.3 Dictionary as Value <em>.</em></h3>
+<h3 class="section">6.3 Dictionary as Value <em>.</em></h3>
 <p>A dictionary can be returned as values using the <em>.</em> function.  The function returns a list of length two.  The first element is a list of the keys.  The second element is a list of the values.
 </p>
 <div class="example">
@@ -133,7 +133,7 @@ time              temp
 </pre></div>
 
 <a name="Sorting-a-Dictionary-by-Key-_005e"></a>
-<h3 class="section">5.4 Sorting a Dictionary by Key <em>^</em></h3>
+<h3 class="section">6.4 Sorting a Dictionary by Key <em>^</em></h3>
 
 <div class="example">
 <pre class="example"> d0
@@ -148,7 +148,7 @@ pi|3.14
 </pre></div>
 
 <a name="Sorting-a-Dictionary-by-Value-_003c-and-_003e"></a>
-<h3 class="section">5.5 Sorting a Dictionary by Value <em>&lt;</em> and <em>&gt;</em></h3>
+<h3 class="section">6.5 Sorting a Dictionary by Value <em>&lt;</em> and <em>&gt;</em></h3>
 
 <div class="example">
 <pre class="example"> d0
@@ -168,7 +168,7 @@ e |2.72
 </pre></div>
 
 <a name="Flipping-a-Dictionary-into-a-Table-_002b"></a>
-<h3 class="section">5.6 Flipping a Dictionary into a Table <em>+</em></h3>
+<h3 class="section">6.6 Flipping a Dictionary into a Table <em>+</em></h3>
 <p>This command flips a dictionary into a table but will be covered in detail in the table section.  Flipping a dictionary whose values are a single element has no effect.
 </p>
 <div class="example">
@@ -201,7 +201,7 @@ time  temp
 </pre></div>
 
 <a name="Functions-that-operate-on-each-value-in-a-dictionary"></a>
-<h3 class="section">5.7 Functions that operate on each value in a dictionary</h3>
+<h3 class="section">6.7 Functions that operate on each value in a dictionary</h3>
 <p>There a number of simple functions on dictionaries that operate on the values.  If &rsquo;f&rsquo; is a function then f applied to a dictionary return a dictionary with the same keys and the values are application of &rsquo;f&rsquo;.
 </p>
 <ul>
@@ -252,7 +252,7 @@ time  temp
 </pre></div>
 
 <a name="Functions-that-operate-over-values-in-a-dictionary"></a>
-<h3 class="section">5.8 Functions that operate over values in a dictionary</h3>
+<h3 class="section">6.8 Functions that operate over values in a dictionary</h3>
 <p>There are functions on dictions that operate over the values.  If &rsquo;f&rsquo; is a function applied to a dictionary &rsquo;d&rsquo; then &rsquo;f d&rsquo; returns a value.
 </p>
 <ul>
@@ -270,7 +270,7 @@ c |3e+08
 <hr>
 <div class="header">
 <p>
-Next: <a href="More-functions.html#More-functions" accesskey="n" rel="next">More functions</a>, Previous: <a href="Adverbs.html#Adverbs" accesskey="p" rel="prev">Adverbs</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="More-functions.html#More-functions" accesskey="n" rel="next">More functions</a>, Previous: <a href="Lists.html#Lists" accesskey="p" rel="prev">Lists</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 
 

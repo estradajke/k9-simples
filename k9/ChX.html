@@ -57,10 +57,46 @@ Previous: <a href="Tables_002fkSQL.html#Tables_002fkSQL" accesskey="p" rel="prev
 </div>
 <hr>
 <a name="X"></a>
-<h2 class="chapter">9 X</h2>
+<h2 class="chapter">10 X</h2>
 <p>To be sorted.
-</p><a name="g_t_0060freq-Histogram"></a>
-<h3 class="section">9.1 <code>`freq</code> Histogram</h3>
+</p><a name="Errors"></a>
+<h3 class="section">10.1 Errors</h3>
+<p>This section contains information on the various error messages in k9.
+</p><a name="error_003a-parse"></a>
+<h4 class="subsection">10.1.1 error: parse</h4>
+<p>Syntax is wrong.
+</p><div class="example">
+<pre class="example"> {37 . &quot;hello&quot;
+error: parse
+</pre></div>
+<a name="error_003a-value"></a>
+<h4 class="subsection">10.1.2 error: value</h4>
+<p>Undefined variable is used.
+</p><div class="example">
+<pre class="example"> g    / assuming 'g' has not be defining in this session
+error: value
+</pre></div>
+<a name="error_003a-class"></a>
+<h4 class="subsection">10.1.3 error: class</h4>
+<div class="example">
+<pre class="example"> 3+`b
+</pre></div>
+<a name="error_003a-length"></a>
+<h4 class="subsection">10.1.4 error: length</h4>
+<p>Operations on unequal length lists that require equal length.
+</p><div class="example">
+<pre class="example"> (1 2 3)+(4 5)
+error: length
+</pre></div>
+<a name="error_003a-domain"></a>
+<h4 class="subsection">10.1.5 error: domain</h4>
+<p>Exhausted the number of input values
+</p><div class="example">
+<pre class="example"> -12?10   / only 10 unique value exist
+error: domain
+</pre></div>
+<a name="g_t_0060freq-Histogram"></a>
+<h3 class="section">10.2 <code>`freq</code> Histogram</h3>
 <p>Compute a histogram of a list.
 </p><div class="example">
 <pre class="example"> ^`freq x:100000?10
