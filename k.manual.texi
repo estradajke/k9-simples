@@ -30,7 +30,7 @@ This document explains the usage of the k9 programming language in very simple t
 * Nouns:: Data / Noun
 * Verbs:: Functions / Verbs
 * Adverbs:: Function Modifiers / Adverbs
-* Lists: Lists
+* Lists:: Lists
 * Dictionaries:: Dictionaries and Functions for Dictionaries
 * More functions:: More functions
 * I/O:: I/O
@@ -1098,7 +1098,66 @@ c |3e+08
 @end example
 @node More functions
 @chapter More functions
-TBD
+This chapter includes functions that likely will be included elsewhere later.
+@anchor{parse}@section parse
+Parse allows one to see how a command is parsed into normal k9 form.
+@example
+ :3+2
++
+3
+2
+ t:+`a`b!(1 2;3 4)
+ :select from t
+t
+ :select a from t
+t
+[..]
+ p::select a from t  / store output into p
+ #p
+2
+ p 0
+`t
+ p 1
+a|a
+ . p                 / value parse expression
+a
+-
+1
+2
+ .(`t;`a!`a)         / value expression
+a
+-
+1
+2
+ select from t       / orginal statement
+a
+-
+1
+2
+@end example
+Now for an example with a group clause.
+@example
+ t:+`a`b`c!(`x`y`x;0 2 10;1 1 0)
+ select avg:+/b%#b by a from t
+a|avg
+-|---
+x|5
+y|2
+ p::select avg:+/b%#b by a from t
+ .(#;`t;();`a!`a;`avg!(%;(+/;`b);#`b)) / parse form
+ #[t;();`a!`a;`avg!(%;(+/;`b);#`b)]    / functional form
+a|avg
+-|---
+x|10 
+y|2  
+ p::select avg:+/b%#b by a from t where c=1
+ #[t;(=;`c;1);`a!`a;`avg!(%;(+/;`b);#`b)]
+a|avg
+-|---
+x|0  
+y|2  
+@end example
+In the example above the parse output is reduced.  In order to see the elements in the output one could manually return the values in the list, eg. p[2;0 1 2].
 @node I/O
 @chapter I/O
 Functions for input and ouput (I/O).

@@ -19,7 +19,7 @@ simple terms and is intended for newbies only.
 * Nouns:: Data / Noun
 * Verbs:: Functions / Verbs
 * Adverbs:: Function Modifiers / Adverbs
-* Lists: Lists
+* Lists:: Lists
 * Dictionaries:: Dictionaries and Functions for Dictionaries
 * More functions:: More functions
 * I/O:: I/O
@@ -1256,7 +1256,68 @@ File: k9.info,  Node: More functions,  Next: I/O,  Prev: Dictionaries,  Up: Top
 7 More functions
 ****************
 
-TBD
+This chapter includes functions that likely will be included elsewhere
+later.
+
+7.1 parse
+=========
+
+Parse allows one to see how a command is parsed into normal k9 form.
+      :3+2
+     +
+     3
+     2
+      t:+`a`b!(1 2;3 4)
+      :select from t
+     t
+      :select a from t
+     t
+     [..]
+      p::select a from t  / store output into p
+      #p
+     2
+      p 0
+     `t
+      p 1
+     a|a
+      . p                 / value parse expression
+     a
+     -
+     1
+     2
+      .(`t;`a!`a)         / value expression
+     a
+     -
+     1
+     2
+      select from t       / orginal statement
+     a
+     -
+     1
+     2
+   Now for an example with a group clause.
+      t:+`a`b`c!(`x`y`x;0 2 10;1 1 0)
+      select avg:+/b%#b by a from t
+     a|avg
+     -|---
+     x|5
+     y|2
+      p::select avg:+/b%#b by a from t
+      .(#;`t;();`a!`a;`avg!(%;(+/;`b);#`b)) / parse form
+      #[t;();`a!`a;`avg!(%;(+/;`b);#`b)]    / functional form
+     a|avg
+     -|---
+     x|10
+     y|2
+      p::select avg:+/b%#b by a from t where c=1
+      #[t;(=;`c;1);`a!`a;`avg!(%;(+/;`b);#`b)]
+     a|avg
+     -|---
+     x|0
+     y|2
+   In the example above the parse output is reduced.  In order to see
+the elements in the output one could manually return the values in the
+list, eg.  p[2;0 1 2].
 
 
 File: k9.info,  Node: I/O,  Next: Tables/kSQL,  Prev: More functions,  Up: Top
@@ -1511,71 +1572,72 @@ Compute a histogram of a list.
 
 Tag Table:
 Node: Top138
-Node: Intro625
-Node: Nouns10154
-Node: Verbs12208
-Ref: set13216
-Ref: plus13428
-Ref: flip13819
-Ref: minus14069
-Ref: negate14174
-Ref: times14356
-Ref: first14487
-Ref: divide14682
-Ref: min14819
-Ref: where14975
-Ref: max15361
-Ref: reverse15500
-Ref: less15670
-Ref: up15918
-Ref: equal16102
-Ref: group16226
-Ref: match16472
-Ref: not16665
-Ref: key16782
-Ref: enum16953
-Ref: cat17047
-Ref: enlist17166
-Ref: cut17305
-Ref: asc17495
-Ref: cast17670
-Ref: string17844
-Ref: take17952
-Ref: count18282
-Ref: drop18472
-Ref: find18795
-Ref: unique19031
-Ref: at19268
-Ref: type19481
-Ref: apply19837
-Ref: value20048
-Node: Adverbs20217
-Ref: each20446
-Ref: bar20665
-Ref: scan20854
-Ref: left21161
-Ref: mod21521
-Ref: over21676
-Ref: right21852
-Ref: div22214
-Node: Lists22348
-Node: Dictionaries24785
-Node: More functions28926
-Node: I/O29049
-Ref: input format29180
-Ref: format30191
-Ref: write line30595
-Ref: read line30981
-Ref: write char31166
-Ref: read char31436
-Ref: write data31625
-Ref: conn/set31672
-Ref: http/get31716
-Node: Tables/kSQL31762
-Ref: Tables31935
-Ref: A_Tables32463
-Ref: S_Tables32912
-Ref: kSQL33112
-Node: ChX33528
+Node: Intro626
+Node: Nouns10155
+Node: Verbs12209
+Ref: set13217
+Ref: plus13429
+Ref: flip13820
+Ref: minus14070
+Ref: negate14175
+Ref: times14357
+Ref: first14488
+Ref: divide14683
+Ref: min14820
+Ref: where14976
+Ref: max15362
+Ref: reverse15501
+Ref: less15671
+Ref: up15919
+Ref: equal16103
+Ref: group16227
+Ref: match16473
+Ref: not16666
+Ref: key16783
+Ref: enum16954
+Ref: cat17048
+Ref: enlist17167
+Ref: cut17306
+Ref: asc17496
+Ref: cast17671
+Ref: string17845
+Ref: take17953
+Ref: count18283
+Ref: drop18473
+Ref: find18796
+Ref: unique19032
+Ref: at19269
+Ref: type19482
+Ref: apply19838
+Ref: value20049
+Node: Adverbs20218
+Ref: each20447
+Ref: bar20666
+Ref: scan20855
+Ref: left21162
+Ref: mod21522
+Ref: over21677
+Ref: right21853
+Ref: div22215
+Node: Lists22349
+Node: Dictionaries24786
+Node: More functions28927
+Ref: parse29122
+Node: I/O30322
+Ref: input format30453
+Ref: format31464
+Ref: write line31868
+Ref: read line32254
+Ref: write char32439
+Ref: read char32709
+Ref: write data32898
+Ref: conn/set32945
+Ref: http/get32989
+Node: Tables/kSQL33035
+Ref: Tables33208
+Ref: A_Tables33736
+Ref: S_Tables34185
+Ref: kSQL34385
+Node: ChX34801
 
 End Tag Table
