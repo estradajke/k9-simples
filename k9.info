@@ -780,7 +780,8 @@ Return the integer floor of float x.
 ================
 
 Find the first element of x that matches y otherwise return the end of
-vector.
+vector.  Also, acts to generates random numbers from 0 to y when x and y
+are integers.
       `a`b`a`c`b`a`a?`b
      1
       `a`b`a`c`b`a`a?`d
@@ -789,6 +790,10 @@ vector.
      5
       (1;`a;"blue";7.4)?3
      4
+      3?10         / 3 random integers between 0 and 9 inclusive
+     5 5 6
+      3?10         / as above but no repeats
+     0 5 6
 
 3.32 unique => ?x
 =================
@@ -863,6 +868,14 @@ File: k9.info,  Node: Adverbs,  Next: Lists,  Prev: Verbs,  Up: Top
 
 k9 uses function modifiers / adverbs in order to have functions operate
 iteratively over lists.
+
+     Adverb
+     '  *Note each::,           *Note i bar: bar.
+     /  *Note over::,*Note right::, *Note i div: div.
+     \  *Note scan::,*Note left::,  *Note i mod: mod.
+     ': *Note eachprior::.
+     /: [n]over             *Note i sv: sv.
+     \: [n]scan             *Note i vs: vs.
 
 4.1 each => f'x
 ===============
@@ -960,8 +973,8 @@ y divided by x using integer division.  x and y must be integers.
       22/5
      4
 
-4.9 each prior => f':[x;y]
-==========================
+4.9 eachprior => f':[x;y]
+=========================
 
 Apply f[y_n;y_{n-1}].  f_0 is a special case of f[y_0;x].
       ,':[`x;(`$"y",'$!5)]
@@ -974,6 +987,24 @@ Apply f[y_n;y_{n-1}].  f_0 is a special case of f[y_0;x].
      1 1.019 1.031403 0.9733587 1.037146
       100%':100 101.9 105.1 102.3 106.1    / using infix notation
      1 1.019 1.031403 0.9733587 1.037146
+
+4.10 vs => x\:y
+===============
+
+Convert y (base 10) into base x.
+      2\:129
+     10000001b
+      16\:255
+     15 15
+
+4.11 sv => x/:y
+===============
+
+Convert list y (base x) into base 10.
+      2/:10101b
+     21
+      16/:15 0 15
+     3855
 
 
 File: k9.info,  Node: Lists,  Next: Dictionaries,  Prev: Adverbs,  Up: Top
@@ -1683,45 +1714,47 @@ Ref: count18322
 Ref: drop18512
 Ref: floor18835
 Ref: find18926
-Ref: unique19162
-Ref: at19399
-Ref: type19612
-Ref: apply19968
-Ref: value20179
-Node: Adverbs20348
-Ref: each20577
-Ref: bar20796
-Ref: scan20985
-Ref: left21292
-Ref: mod21652
-Ref: over21807
-Ref: right21983
-Ref: div22345
-Ref: each prior22478
-Node: Lists22883
-Node: Dictionaries25320
-Node: More functions29461
-Ref: parse29656
-Node: I/O30856
-Ref: input format30987
-Ref: format31998
-Ref: write line32402
-Ref: read line32788
-Ref: write char32973
-Ref: read char33243
-Ref: write data33432
-Ref: conn/set33479
-Ref: http/get33523
-Node: Tables/kSQL33569
-Ref: Tables33745
-Ref: A_Tables34273
-Ref: S_Tables34722
-Ref: kSQL34922
-Node: System35338
-Ref: Display35490
-Ref: Variables35737
-Ref: Memory35838
-Ref: Timing35953
-Node: ChX36045
+Ref: unique19373
+Ref: at19610
+Ref: type19823
+Ref: apply20179
+Ref: value20390
+Node: Adverbs20559
+Ref: each21076
+Ref: bar21293
+Ref: scan21482
+Ref: left21789
+Ref: mod22149
+Ref: over22304
+Ref: right22480
+Ref: div22842
+Ref: eachprior22975
+Ref: vs23377
+Ref: sv23497
+Node: Lists23622
+Node: Dictionaries26059
+Node: More functions30200
+Ref: parse30395
+Node: I/O31595
+Ref: input format31726
+Ref: format32737
+Ref: write line33141
+Ref: read line33527
+Ref: write char33712
+Ref: read char33982
+Ref: write data34171
+Ref: conn/set34218
+Ref: http/get34262
+Node: Tables/kSQL34308
+Ref: Tables34484
+Ref: A_Tables35012
+Ref: S_Tables35461
+Ref: kSQL35661
+Node: System36077
+Ref: Display36229
+Ref: Variables36476
+Ref: Memory36577
+Ref: Timing36692
+Node: ChX36784
 
 End Tag Table

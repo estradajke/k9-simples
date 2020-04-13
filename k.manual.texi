@@ -671,7 +671,7 @@ Return the integer floor of float x.
 3
 @end example
 @anchor{find}@section find @result{} x?y
-Find the first element of x that matches y otherwise return the end of vector.
+Find the first element of x that matches y otherwise return the end of vector. Also, acts to generates random numbers from 0 to y when x and y are integers.
 @example
  `a`b`a`c`b`a`a?`b
 1
@@ -681,6 +681,10 @@ Find the first element of x that matches y otherwise return the end of vector.
 5
  (1;`a;"blue";7.4)?3
 4
+ 3?10         / 3 random integers between 0 and 9 inclusive
+5 5 6
+ 3?10         / as above but no repeats
+0 5 6
 @end example
 @anchor{unique}@section unique @result{} ?x
 Return the unique values of the list x.  The @code{?} preceeding the return value explicitly shows that list has no repeat values.
@@ -744,6 +748,17 @@ a   b
 @node Adverbs
 @chapter Function Modifiers / Adverbs
 k9 uses function modifiers / adverbs in order to have functions operate iteratively over lists.
+
+@example
+Adverb
+'  @xref{each},           @xref{bar,i bar}.
+/  @xref{over},@xref{right}, @xref{div,i div}.
+\  @xref{scan},@xref{left},  @xref{mod,i mod}.
+': @xref{eachprior}.
+/: [n]over             @xref{sv,i sv}.
+\: [n]scan             @xref{vs,i vs}.
+@end example
+
 @anchor{each}@section each @result{} f'x
 Apply each value in list x to function f.
 @example
@@ -832,7 +847,7 @@ y divided by x using integer division.  x and y must be integers.
  22/5
 4
 @end example
-@anchor{each prior}@section each prior @result{} f':[x;y]
+@anchor{eachprior}@section eachprior @result{} f':[x;y]
 Apply f[y_n;y_@{n-1@}].  f_0 is a special case of f[y_0;x].
 @example
  ,':[`x;(`$"y",'$!5)]
@@ -845,6 +860,22 @@ y4 y3
 1 1.019 1.031403 0.9733587 1.037146
  100%':100 101.9 105.1 102.3 106.1    / using infix notation
 1 1.019 1.031403 0.9733587 1.037146
+@end example
+@anchor{vs}@section vs @result{} x\:y
+Convert y (base 10) into base x.
+@example
+ 2\:129
+10000001b
+ 16\:255
+15 15
+@end example
+@anchor{sv}@section sv @result{} x/:y
+Convert list y (base x) into base 10.
+@example
+ 2/:10101b
+21
+ 16/:15 0 15
+3855
 @end example
 @node Lists
 @chapter Lists

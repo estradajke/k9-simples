@@ -60,7 +60,18 @@ Next: <a href="Lists.html#Lists" accesskey="n" rel="next">Lists</a>, Previous: <
 <a name="Function-Modifiers-_002f-Adverbs"></a>
 <h2 class="chapter">4 Function Modifiers / Adverbs</h2>
 <p>k9 uses function modifiers / adverbs in order to have functions operate iteratively over lists.
-<a name="each"></a></p><a name="each-_21d2-f_0027x"></a>
+</p>
+<div class="example">
+<pre class="example">Adverb
+'  See <a href="#each">each</a>,           See <a href="#bar">i bar</a>.
+/  See <a href="#over">over</a>,See <a href="#right">right</a>, See <a href="#div">i div</a>.
+\  See <a href="#scan">scan</a>,See <a href="#left">left</a>,  See <a href="#mod">i mod</a>.
+': See <a href="#eachprior">eachprior</a>.
+/: [n]over             See <a href="#sv">i sv</a>.
+\: [n]scan             See <a href="#vs">i vs</a>.
+</pre></div>
+
+<a name="each"></a><a name="each-_21d2-f_0027x"></a>
 <h3 class="section">4.1 each &rArr; f&rsquo;x</h3>
 <p>Apply each value in list x to function f.
 </p><div class="example">
@@ -156,8 +167,8 @@ l1 l2 l3 r3
  22/5
 4
 </pre></div>
-<a name="each-prior"></a><a name="each-prior-_21d2-f_0027_003a_005bx_003by_005d"></a>
-<h3 class="section">4.9 each prior &rArr; f&rsquo;:[x;y]</h3>
+<a name="eachprior"></a><a name="eachprior-_21d2-f_0027_003a_005bx_003by_005d"></a>
+<h3 class="section">4.9 eachprior &rArr; f&rsquo;:[x;y]</h3>
 <p>Apply f[y_n;y_{n-1}].  f_0 is a special case of f[y_0;x].
 </p><div class="example">
 <pre class="example"> ,':[`x;(`$&quot;y&quot;,'$!5)]
@@ -170,6 +181,24 @@ y4 y3
 1 1.019 1.031403 0.9733587 1.037146
  100%':100 101.9 105.1 102.3 106.1    / using infix notation
 1 1.019 1.031403 0.9733587 1.037146
+</pre></div>
+<a name="vs"></a><a name="vs-_21d2-x_005c_003ay"></a>
+<h3 class="section">4.10 vs &rArr; x\:y</h3>
+<p>Convert y (base 10) into base x.
+</p><div class="example">
+<pre class="example"> 2\:129
+10000001b
+ 16\:255
+15 15
+</pre></div>
+<a name="sv"></a><a name="sv-_21d2-x_002f_003ay"></a>
+<h3 class="section">4.11 sv &rArr; x/:y</h3>
+<p>Convert list y (base x) into base 10.
+</p><div class="example">
+<pre class="example"> 2/:10101b
+21
+ 16/:15 0 15
+3855
 </pre></div>
 <hr>
 <div class="header">
