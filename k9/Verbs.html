@@ -61,28 +61,32 @@ Next: <a href="Adverbs.html#Adverbs" accesskey="n" rel="next">Adverbs</a>, Previ
 <h2 class="chapter">3 Functions / Verbs</h2>
 <p>This chapter explains all functions, aka verbs.  Most functions are overloaded and change depending on the number and type of arguments.
 </p>
-<pre class="verbatim">Verb
-:  (*note set::)
-+  (*note plus::)       (*note flip::)    
--  (*note minus::)      (*note negate::)      
-*  (*note times::)      (*note first::)       
-%  (*note divide::)         
-&amp;  (*note min::)        (*note where::)    
-|  (*note max::)        (*note reverse::)     
-&lt;  (*note less::)       (*note asc::)         
-&gt;  (*note more::)       (*note dsc::)    
-=  (*note equal::)      (*note group::)    
-~  (*note match::)      (*note not::)    
-!  (*note key::)        (*note enum::)    
-,  (*note cat::)        (*note enlist::)    
-^  (*note cut::)        (*note sort::)    
-$  (*note cast::)       (*note string::)    
-#  (*note take::)       (*note count::)    
-_  (*note drop::)       (*note floor::)    
-?  (*note find::)       (*note unique::)    
-@  (*note at::)         (*note type::)    
-.  (*note apply::)      (*note value::)
-</pre><a name="set"></a><a name="set-_21d2-x_003ay"></a>
+<div class="example">
+<pre class="example">Verb
+: See <a href="#set">set</a>.
++ See <a href="#plus">plus</a>,     See <a href="#flip">flip</a>.
+- See <a href="#minus">minus</a>,    See <a href="#negate">negate</a>.
+* See <a href="#times">times</a>,    See <a href="#first">first</a>.
+% See <a href="#divide">divide</a>.
+&amp; See <a href="#min">min</a>,      See <a href="#where">where</a>.
+| See <a href="#max">max</a>,      See <a href="#reverse">reverse</a>.
+&lt; See <a href="#less">less</a>,     See <a href="#asc">asc</a>.
+&gt; See <a href="#less">more</a>,     See <a href="#asc">dsc</a>.
+= See <a href="#equal">equal</a>,    See <a href="#group">group</a>.
+~ See <a href="#match">match</a>,    See <a href="#not">not</a>.
+! See <a href="#key">key</a>,      See <a href="#enum">enum</a>.
+, See <a href="#cat">cat</a>,      See <a href="#enlist">enlist</a>.
+^ See <a href="#cut">cut</a>,      See <a href="#sort">sort</a>. 
+$ See <a href="#cast">cast</a>,     See <a href="#string">string</a>.    
+# See <a href="#take">take</a>,     See <a href="#count">count</a>.  
+_ See <a href="#drop">drop</a>,     See <a href="#floor">floor</a>.    
+? See <a href="#find">find</a>,     See <a href="#unique">unique</a>.    
+&nbsp;See <a href="#at">at</a>,       See <a href="#type">type</a>.    
+. See <a href="#apply">apply</a>,    See <a href="#value">value</a>.
+
+</pre></div>
+
+<a name="set"></a><a name="set-_21d2-x_003ay"></a>
 <h3 class="section">3.1 set &rArr; x:y</h3>
 <p>Set a variable, x, to a value, y.
 </p>
@@ -265,8 +269,8 @@ b|-4 -5 -6
 4    
 1 2 3
 </pre></div>
-<a name="less"></a><a name="less-_21d2-x-_003c-_0028_003e_0029-y"></a>
-<h3 class="section">3.13 less &rArr; x &lt; (&gt;) y</h3>
+<a name="less"></a><a name="less-_0028more_0029-_21d2-x-_003c-_0028_003e_0029-y"></a>
+<h3 class="section">3.13 less (more) &rArr; x &lt; (&gt;) y</h3>
 <p>x less (more) than y.
 </p><div class="example">
 <pre class="example"> 3&lt;2
@@ -282,8 +286,8 @@ b|-4 -5 -6
  &quot;a&quot;&lt;&quot;b&quot;
 1b
 </pre></div>
-<a name="up"></a><a name="up-_21d2-_003c-_0028_003e_0029-x"></a>
-<h3 class="section">3.14 up &rArr; &lt; (&gt;) x</h3>
+<a name="asc"></a><a name="asc_0028dsc_0029-_21d2-_003c-_0028_003e_0029-x"></a>
+<h3 class="section">3.14 asc(dsc) &rArr; &lt; (&gt;) x</h3>
 <p>The indices of a list in order to sort the list in ascending (descending) order.
 </p><div class="example">
 <pre class="example"> &lt;2 3 0 12
@@ -396,8 +400,8 @@ b|3 4
 1 2 3 4  
 5 6 7 8 9
 </pre></div>
-<a name="asc"></a><a name="asc-_21d2-_005ex"></a>
-<h3 class="section">3.24 asc &rArr; ^x</h3>
+<a name="sort"></a><a name="sort-_21d2-_005ex"></a>
+<h3 class="section">3.24 sort &rArr; ^x</h3>
 <p>Sort list x into ascending order.
 </p><div class="example">
 <pre class="example"> ^0 3 2 1
@@ -467,8 +471,15 @@ d
  (1 2 3 7 8 9)_(2 8 20)
 ,20
 </pre></div>
+<a name="floor"></a><a name="floor-_21d2-_005fx"></a>
+<h3 class="section">3.30 floor &rArr; _x</h3>
+<p>Return the integer floor of float x.
+</p><div class="example">
+<pre class="example"> _3.7
+3
+</pre></div>
 <a name="find"></a><a name="find-_21d2-x_003fy"></a>
-<h3 class="section">3.30 find &rArr; x?y</h3>
+<h3 class="section">3.31 find &rArr; x?y</h3>
 <p>Find the first element of x that matches y otherwise return the end of vector.
 </p><div class="example">
 <pre class="example"> `a`b`a`c`b`a`a?`b
@@ -481,7 +492,7 @@ d
 4
 </pre></div>
 <a name="unique"></a><a name="unique-_21d2-_003fx"></a>
-<h3 class="section">3.31 unique &rArr; ?x</h3>
+<h3 class="section">3.32 unique &rArr; ?x</h3>
 <p>Return the unique values of the list x.  The <code>?</code> preceeding the return value explicitly shows that list has no repeat values.
 </p><div class="example">
 <pre class="example"> ?`f`a`b`c`a`b`d`e`a
@@ -490,7 +501,7 @@ d
 ?&quot;ban&quot;
 </pre></div>
 <a name="at"></a><a name="at-_21d2-x_0040y"></a>
-<h3 class="section">3.32 at &rArr; x@y</h3>
+<h3 class="section">3.33 at &rArr; x@y</h3>
 <p>Given a list x return the value(s) at index(indices) y.
 </p><div class="example">
 <pre class="example"> (3 4 7 12)@2
@@ -502,7 +513,7 @@ d
 3
 </pre></div>
 <a name="type"></a><a name="type-_21d2-_0040x"></a>
-<h3 class="section">3.33 type &rArr; @x</h3>
+<h3 class="section">3.34 type &rArr; @x</h3>
 <p>Return the data type of x.
 </p><div class="example">
 <pre class="example"> @1
@@ -523,7 +534,7 @@ d
 `i`f`s`c`D`t
 </pre></div>
 <a name="apply"></a><a name="apply-_21d2-x_002ey"></a>
-<h3 class="section">3.34 apply &rArr; x.y</h3>
+<h3 class="section">3.35 apply &rArr; x.y</h3>
 <p>Given list x return the value at index list y.
 </p><div class="example">
 <pre class="example"> (3 4 7 12).,2
@@ -534,7 +545,7 @@ d
 2
 </pre></div>
 <a name="value"></a><a name="value-_21d2-_002ex"></a>
-<h3 class="section">3.35 value &rArr; .x</h3>
+<h3 class="section">3.36 value &rArr; .x</h3>
 <p>Return the value of dictionary x as lists.
 </p><div class="example">
 <pre class="example"> `a`b!(1 2;3 4)

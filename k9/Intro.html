@@ -212,44 +212,44 @@ c|0.6708467
 <h3 class="section">1.6 Help/Info Card</h3>
 <p>Typing <code>\</code> in the terminal gives you a concise overview of the language.  This document aims to provide details to beginning users where the help screen is a tad too terse.
 </p><div class="smallformat">
-<pre class="verbatim"> \   
-$k a.k                                                                         
-                                                                               
-Verb                      Adverb                 Noun           Type  System   
-:  set                    '  each       i bar    bool 110b         b  \l a.k   
-+  plus       flip        /  over/right i div    int  2 3 4        i *\d [d]   
--  minus      negate      \  scan/left  i mod    flt  2e3 0N 0W    f  \v [d]   
-*  times      first       ': eachprior          *fix  2.34 3.00      *\f [d]   
-%  divide                 /: [n]f-loop  i sv     date 2024.01.01   d  \w [x]   
-&amp;  min        where       \: [n]f-loop  i vs     time 12:34:56.789 t  \t:n x   
-|  max        reverse                            char &quot;ab &quot;        c  \u:n x   
-&lt;  less       up                                 str  `a`b`        s           
-&gt;  more       down        I/O                                                  
-=  equal      group       0: readwrite  line     list (2;3.4;`c)   L  \fl line 
-~  match      not         1: readwrite  char     dict [a:2;b:`c]  ??  \fc char 
-!  key        enum        2: write      data     func {(+/x)%#x}   .           
-,  cat        enlist                             expr :32+1.8*x    :           
-^  cut        asc                                                              
-$  cast       string      $[c;t;f]      cond                                   
-#  take       count       #[t;c;b[;a]]  select   table [[]a:`b`c]  A           
-_  drop                  *_[t;c;b[;a]]  update  Stable S! [[]...] SA           
-?  find       unique     *?[x;i;f[;y]]  splice  Atable [[a:..]b:] AA           
-@  at         type        @[x;i;f[;y]]  amend                          \cd dir 
+<pre class="verbatim"> \
+$k f.k
+
+Verb                      Adverb                 Atom            Type  System
+:  set                    '  each       i bar    bool  110b         b  \k
++  plus       flip        /  over/right i div    int   2 3 4        i *\l a.k
+-  minus      negate      \  scan/left  i mod    float 2e3 0n 0w    f  \v [d]
+*  times      first       ': eachprior           date  2024.01.01   D *\f [d]
+%  divide                 /: [n]over    i sv     time  12:34:56.789 t  \w [x]
+&amp;  min        where       \: [n]scan    i vs     char  &quot;ab &quot;        c  \t:n x
+|  max        reverse                            sym   `a`b`        s  \u:n x
+&lt;  less       asc          I/O                         
+&gt;  more       dsc         0: readwrite  line     List (2;3.4;`c)    L  \fl line
+=  equal      group       1: readwrite  char     Dict [a:2;b:`c]   ??  \fc char
+~  match      not         2: write      data     Func {(+/x)%#x}    .
+!  key        enum        3: *conn/set
+,  cat        enlist      4: *http/get                        
+^  cut        sort
+$  cast       string      $[c;t;f]      cond
+#  take       count       #[t;c;b[;a]]  select   table [[]a:`b`c]   T
+_  drop       floor      *_[t;c;b[;a]]  update  Ttable [[a:..]b:]  TT
+?  find       unique     *?[x;i;f[;y]]  splice  Stable S! [[]...]  ST
+@  at         type        @[x;i;f[;y]]  amend                          \cd dir
 .  apply      value       .[x;i;f[;y]]  dmend                          \\  exit
-                                                                               
- /comment \display [dict] :expr (leading space)                                
-count first last min max sum avg; in bin within; key                           
-select A by B from T where C; delete from T where C                            
-*exp log sin cos                                                               
-                                                                               
-time/cuanto: 2m 2d 2h.. 12:34:56.123456789 e.g. .z.d+2m / .z.[tuv]             
-date/cuando: 2024.01.01T12:34:56.123456789 e.g.  7\.z.d / .z.[TUV]             
-                                                                               
-v~'`json?`json v:(`ab;&quot;abc&quot;;2;2e3;0N;0W;.z.D;.z.t)                             
-v~'`csv ?`csv  v:(`ab;&quot;abc&quot;;2;2e3;0N;0W;.z.D;.z.t)                             
-                                                                               
-error: value class rank type domain length limit                               
-limit: {[param8]local8 global32 const128 jump256}                              
+
+A_-~%$ L|+#*&amp;=&lt;&gt;^?! ,@.
+A+-*%&amp;|&lt;&gt;=$ L,#_^?! ~@.  F#_
+
+count first last min max sum avg; in bin within; *exp log sin cos
+select A by B from T where C; delete from T where C
+
+/comment \display [dict] :expr (leading space)
+roundtrip: `json?`json(2.3;.z.D;.z.t;&quot;abc&quot;)  / also: `csv`k
+time/cuanto: 2m 2d ..   12:34:56.123456789 e.g. .z.D+2m / .z.[tuv]
+date/cuando: 2024.01.01T12:34:56.123456789 e.g.  7\.z.D / .z.[TUV]
+
+error: parse value class rank type domain length limit
+limit: sym8(*256) {[param8]local8 global32 const128 jump256}
 </pre></div>
 <hr>
 <div class="header">

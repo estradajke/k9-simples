@@ -246,43 +246,43 @@ Typing '\' in the terminal gives you a concise overview of the language.
 This document aims to provide details to beginning users where the help
 screen is a tad too terse.
  \
-$k a.k
+$k f.k
 
-Verb                      Adverb                 Noun           Type  System
-:  set                    '  each       i bar    bool 110b         b  \l a.k
-+  plus       flip        /  over/right i div    int  2 3 4        i *\d [d]
--  minus      negate      \  scan/left  i mod    flt  2e3 0N 0W    f  \v [d]
-*  times      first       ': eachprior          *fix  2.34 3.00      *\f [d]
-%  divide                 /: [n]f-loop  i sv     date 2024.01.01   d  \w [x]
-&  min        where       \: [n]f-loop  i vs     time 12:34:56.789 t  \t:n x
-|  max        reverse                            char "ab "        c  \u:n x
-<  less       up                                 str  `a`b`        s
->  more       down        I/O
-=  equal      group       0: readwrite  line     list (2;3.4;`c)   L  \fl line
-~  match      not         1: readwrite  char     dict [a:2;b:`c]  ??  \fc char
-!  key        enum        2: write      data     func {(+/x)%#x}   .
-,  cat        enlist                             expr :32+1.8*x    :
-^  cut        asc
+Verb                      Adverb                 Atom            Type  System
+:  set                    '  each       i bar    bool  110b         b  \k
++  plus       flip        /  over/right i div    int   2 3 4        i *\l a.k
+-  minus      negate      \  scan/left  i mod    float 2e3 0n 0w    f  \v [d]
+*  times      first       ': eachprior           date  2024.01.01   D *\f [d]
+%  divide                 /: [n]over    i sv     time  12:34:56.789 t  \w [x]
+&  min        where       \: [n]scan    i vs     char  "ab "        c  \t:n x
+|  max        reverse                            sym   `a`b`        s  \u:n x
+<  less       asc          I/O
+>  more       dsc         0: readwrite  line     List (2;3.4;`c)    L  \fl line
+=  equal      group       1: readwrite  char     Dict [a:2;b:`c]   ??  \fc char
+~  match      not         2: write      data     Func {(+/x)%#x}    .
+!  key        enum        3: *conn/set
+,  cat        enlist      4: *http/get
+^  cut        sort
 $  cast       string      $[c;t;f]      cond
-#  take       count       #[t;c;b[;a]]  select   table [[]a:`b`c]  A
-_  drop                  *_[t;c;b[;a]]  update  Stable S! [[]...] SA
-?  find       unique     *?[x;i;f[;y]]  splice  Atable [[a:..]b:] AA
+#  take       count       #[t;c;b[;a]]  select   table [[]a:`b`c]   T
+_  drop       floor      *_[t;c;b[;a]]  update  Ttable [[a:..]b:]  TT
+?  find       unique     *?[x;i;f[;y]]  splice  Stable S! [[]...]  ST
 @  at         type        @[x;i;f[;y]]  amend                          \cd dir
 .  apply      value       .[x;i;f[;y]]  dmend                          \\  exit
 
- /comment \display [dict] :expr (leading space)
-count first last min max sum avg; in bin within; key
+A_-~%$ L|+#*&=<>^?! ,@.
+A+-*%&|<>=$ L,#_^?! ~@.  F#_
+
+count first last min max sum avg; in bin within; *exp log sin cos
 select A by B from T where C; delete from T where C
-*exp log sin cos
 
-time/cuanto: 2m 2d 2h.. 12:34:56.123456789 e.g. .z.d+2m / .z.[tuv]
-date/cuando: 2024.01.01T12:34:56.123456789 e.g.  7\.z.d / .z.[TUV]
+/comment \display [dict] :expr (leading space)
+roundtrip: `json?`json(2.3;.z.D;.z.t;"abc")  / also: `csv`k
+time/cuanto: 2m 2d ..   12:34:56.123456789 e.g. .z.D+2m / .z.[tuv]
+date/cuando: 2024.01.01T12:34:56.123456789 e.g.  7\.z.D / .z.[TUV]
 
-v~'`json?`json v:(`ab;"abc";2;2e3;0N;0W;.z.D;.z.t)
-v~'`csv ?`csv  v:(`ab;"abc";2;2e3;0N;0W;.z.D;.z.t)
-
-error: value class rank type domain length limit
-limit: {[param8]local8 global32 const128 jump256}
+error: parse value class rank type domain length limit
+limit: sym8(*256) {[param8]local8 global32 const128 jump256}
 
 
 File: k9.info,  Node: Nouns,  Next: Verbs,  Prev: Intro,  Up: Top
@@ -361,27 +361,28 @@ File: k9.info,  Node: Verbs,  Next: Adverbs,  Prev: Nouns,  Up: Top
 This chapter explains all functions, aka verbs.  Most functions are
 overloaded and change depending on the number and type of arguments.
 
-Verb
-:  (*note set::)
-+  (*note plus::)       (*note flip::)
--  (*note minus::)      (*note negate::)
-*  (*note times::)      (*note first::)
-%  (*note divide::)
-&  (*note min::)        (*note where::)
-|  (*note max::)        (*note reverse::)
-<  (*note less::)       (*note asc::)
->  (*note more::)       (*note dsc::)
-=  (*note equal::)      (*note group::)
-~  (*note match::)      (*note not::)
-!  (*note key::)        (*note enum::)
-,  (*note cat::)        (*note enlist::)
-^  (*note cut::)        (*note sort::)
-$  (*note cast::)       (*note string::)
-#  (*note take::)       (*note count::)
-_  (*note drop::)       (*note floor::)
-?  (*note find::)       (*note unique::)
-@  (*note at::)         (*note type::)
-.  (*note apply::)      (*note value::)
+     Verb
+     : *Note set::.
+     + *Note plus::,     *Note flip::.
+     - *Note minus::,    *Note negate::.
+     * *Note times::,    *Note first::.
+     % *Note divide::.
+     & *Note min::,      *Note where::.
+     | *Note max::,      *Note reverse::.
+     < *Note less::,     *Note asc::.
+     > *Note more: less,     *Note dsc: asc.
+     = *Note equal::,    *Note group::.
+     ~ *Note match::,    *Note not::.
+     ! *Note key::,      *Note enum::.
+     , *Note cat::,      *Note enlist::.
+     ^ *Note cut::,      *Note sort::.
+     $ *Note cast::,     *Note string::.
+     # *Note take::,     *Note count::.
+     _ *Note drop::,     *Note floor::.
+     ? *Note find::,     *Note unique::.
+      *Note at::,       *Note type::.
+     . *Note apply::,    *Note value::.
+
 
 3.1 set => x:y
 ==============
@@ -563,8 +564,8 @@ Reverse the list x.
      4
      1 2 3
 
-3.13 less => x < (>) y
-======================
+3.13 less (more) => x < (>) y
+=============================
 
 x less (more) than y.
       3<2
@@ -580,8 +581,8 @@ x less (more) than y.
       "a"<"b"
      1b
 
-3.14 up => < (>) x
-==================
+3.14 asc(dsc) => < (>) x
+========================
 
 The indices of a list in order to sort the list in ascending
 (descending) order.
@@ -695,8 +696,8 @@ Reshape a list y by indices x.
      1 2 3 4
      5 6 7 8 9
 
-3.24 asc => ^x
-==============
+3.24 sort => ^x
+===============
 
 Sort list x into ascending order.
       ^0 3 2 1
@@ -768,7 +769,14 @@ Return the list y without the first (last) x elements if x is positive
       (1 2 3 7 8 9)_(2 8 20)
      ,20
 
-3.30 find => x?y
+3.30 floor => _x
+================
+
+Return the integer floor of float x.
+      _3.7
+     3
+
+3.31 find => x?y
 ================
 
 Find the first element of x that matches y otherwise return the end of
@@ -782,7 +790,7 @@ vector.
       (1;`a;"blue";7.4)?3
      4
 
-3.31 unique => ?x
+3.32 unique => ?x
 =================
 
 Return the unique values of the list x.  The '?' preceeding the return
@@ -792,7 +800,7 @@ value explicitly shows that list has no repeat values.
       ?"banana"
      ?"ban"
 
-3.32 at => x@y
+3.33 at => x@y
 ==============
 
 Given a list x return the value(s) at index(indices) y.
@@ -804,7 +812,7 @@ Given a list x return the value(s) at index(indices) y.
      1 2
      3
 
-3.33 type => @x
+3.34 type => @x
 ===============
 
 Return the data type of x.
@@ -825,7 +833,7 @@ Return the data type of x.
       @'(1;1.2;`a;"a";2020.04.20;12:34:56.789) / type of elements of the list
      `i`f`s`c`D`t
 
-3.34 apply => x.y
+3.35 apply => x.y
 =================
 
 Given list x return the value at index list y.
@@ -836,7 +844,7 @@ Given list x return the value at index list y.
       ((1 2);3;(4 5 6)).(0 1)   / value at index 0 and then index 1
      2
 
-3.35 value => .x
+3.36 value => .x
 ================
 
 Return the value of dictionary x as lists.
@@ -1642,77 +1650,78 @@ Compute a histogram of a list.
 Tag Table:
 Node: Top138
 Node: Intro644
-Node: Nouns10173
-Node: Verbs12227
-Ref: set13235
-Ref: plus13447
-Ref: flip13838
-Ref: minus14088
-Ref: negate14193
-Ref: times14375
-Ref: first14506
-Ref: divide14701
-Ref: min14838
-Ref: where14994
-Ref: max15380
-Ref: reverse15519
-Ref: less15689
-Ref: up15937
-Ref: equal16121
-Ref: group16245
-Ref: match16491
-Ref: not16684
-Ref: key16801
-Ref: enum16972
-Ref: cat17066
-Ref: enlist17185
-Ref: cut17324
-Ref: asc17514
-Ref: cast17689
-Ref: string17863
-Ref: take17971
-Ref: count18301
-Ref: drop18491
-Ref: find18814
-Ref: unique19050
-Ref: at19287
-Ref: type19500
-Ref: apply19856
-Ref: value20067
-Node: Adverbs20236
-Ref: each20465
-Ref: bar20684
-Ref: scan20873
-Ref: left21180
-Ref: mod21540
-Ref: over21695
-Ref: right21871
-Ref: div22233
-Ref: each prior22366
-Node: Lists22771
-Node: Dictionaries25208
-Node: More functions29349
-Ref: parse29544
-Node: I/O30744
-Ref: input format30875
-Ref: format31886
-Ref: write line32290
-Ref: read line32676
-Ref: write char32861
-Ref: read char33131
-Ref: write data33320
-Ref: conn/set33367
-Ref: http/get33411
-Node: Tables/kSQL33457
-Ref: Tables33633
-Ref: A_Tables34161
-Ref: S_Tables34610
-Ref: kSQL34810
-Node: System35226
-Ref: Display35378
-Ref: Variables35625
-Ref: Memory35726
-Ref: Timing35841
-Node: ChX35933
+Node: Nouns10148
+Node: Verbs12202
+Ref: set13229
+Ref: plus13440
+Ref: flip13831
+Ref: minus14081
+Ref: negate14186
+Ref: times14368
+Ref: first14499
+Ref: divide14694
+Ref: min14831
+Ref: where14987
+Ref: max15373
+Ref: reverse15512
+Ref: less15682
+Ref: asc15944
+Ref: equal16140
+Ref: group16264
+Ref: match16510
+Ref: not16703
+Ref: key16820
+Ref: enum16991
+Ref: cat17085
+Ref: enlist17204
+Ref: cut17343
+Ref: sort17533
+Ref: cast17710
+Ref: string17884
+Ref: take17992
+Ref: count18322
+Ref: drop18512
+Ref: floor18835
+Ref: find18926
+Ref: unique19162
+Ref: at19399
+Ref: type19612
+Ref: apply19968
+Ref: value20179
+Node: Adverbs20348
+Ref: each20577
+Ref: bar20796
+Ref: scan20985
+Ref: left21292
+Ref: mod21652
+Ref: over21807
+Ref: right21983
+Ref: div22345
+Ref: each prior22478
+Node: Lists22883
+Node: Dictionaries25320
+Node: More functions29461
+Ref: parse29656
+Node: I/O30856
+Ref: input format30987
+Ref: format31998
+Ref: write line32402
+Ref: read line32788
+Ref: write char32973
+Ref: read char33243
+Ref: write data33432
+Ref: conn/set33479
+Ref: http/get33523
+Node: Tables/kSQL33569
+Ref: Tables33745
+Ref: A_Tables34273
+Ref: S_Tables34722
+Ref: kSQL34922
+Node: System35338
+Ref: Display35490
+Ref: Variables35737
+Ref: Memory35838
+Ref: Timing35953
+Node: ChX36045
 
 End Tag Table

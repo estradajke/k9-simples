@@ -185,44 +185,44 @@ In k9 as the Help/Info card shows data are nouns, functions/lists are verbs and 
 Typing @code{\} in the terminal gives you a concise overview of the language.  This document aims to provide details to beginning users where the help screen is a tad too terse.
 @smallformat
 @verbatim
- \   
-$k a.k                                                                         
-                                                                               
-Verb                      Adverb                 Noun           Type  System   
-:  set                    '  each       i bar    bool 110b         b  \l a.k   
-+  plus       flip        /  over/right i div    int  2 3 4        i *\d [d]   
--  minus      negate      \  scan/left  i mod    flt  2e3 0N 0W    f  \v [d]   
-*  times      first       ': eachprior          *fix  2.34 3.00      *\f [d]   
-%  divide                 /: [n]f-loop  i sv     date 2024.01.01   d  \w [x]   
-&  min        where       \: [n]f-loop  i vs     time 12:34:56.789 t  \t:n x   
-|  max        reverse                            char "ab "        c  \u:n x   
-<  less       up                                 str  `a`b`        s           
->  more       down        I/O                                                  
-=  equal      group       0: readwrite  line     list (2;3.4;`c)   L  \fl line 
-~  match      not         1: readwrite  char     dict [a:2;b:`c]  ??  \fc char 
-!  key        enum        2: write      data     func {(+/x)%#x}   .           
-,  cat        enlist                             expr :32+1.8*x    :           
-^  cut        asc                                                              
-$  cast       string      $[c;t;f]      cond                                   
-#  take       count       #[t;c;b[;a]]  select   table [[]a:`b`c]  A           
-_  drop                  *_[t;c;b[;a]]  update  Stable S! [[]...] SA           
-?  find       unique     *?[x;i;f[;y]]  splice  Atable [[a:..]b:] AA           
-@  at         type        @[x;i;f[;y]]  amend                          \cd dir 
+ \
+$k f.k
+
+Verb                      Adverb                 Atom            Type  System
+:  set                    '  each       i bar    bool  110b         b  \k
++  plus       flip        /  over/right i div    int   2 3 4        i *\l a.k
+-  minus      negate      \  scan/left  i mod    float 2e3 0n 0w    f  \v [d]
+*  times      first       ': eachprior           date  2024.01.01   D *\f [d]
+%  divide                 /: [n]over    i sv     time  12:34:56.789 t  \w [x]
+&  min        where       \: [n]scan    i vs     char  "ab "        c  \t:n x
+|  max        reverse                            sym   `a`b`        s  \u:n x
+<  less       asc          I/O                         
+>  more       dsc         0: readwrite  line     List (2;3.4;`c)    L  \fl line
+=  equal      group       1: readwrite  char     Dict [a:2;b:`c]   ??  \fc char
+~  match      not         2: write      data     Func {(+/x)%#x}    .
+!  key        enum        3: *conn/set
+,  cat        enlist      4: *http/get                        
+^  cut        sort
+$  cast       string      $[c;t;f]      cond
+#  take       count       #[t;c;b[;a]]  select   table [[]a:`b`c]   T
+_  drop       floor      *_[t;c;b[;a]]  update  Ttable [[a:..]b:]  TT
+?  find       unique     *?[x;i;f[;y]]  splice  Stable S! [[]...]  ST
+@  at         type        @[x;i;f[;y]]  amend                          \cd dir
 .  apply      value       .[x;i;f[;y]]  dmend                          \\  exit
-                                                                               
- /comment \display [dict] :expr (leading space)                                
-count first last min max sum avg; in bin within; key                           
-select A by B from T where C; delete from T where C                            
-*exp log sin cos                                                               
-                                                                               
-time/cuanto: 2m 2d 2h.. 12:34:56.123456789 e.g. .z.d+2m / .z.[tuv]             
-date/cuando: 2024.01.01T12:34:56.123456789 e.g.  7\.z.d / .z.[TUV]             
-                                                                               
-v~'`json?`json v:(`ab;"abc";2;2e3;0N;0W;.z.D;.z.t)                             
-v~'`csv ?`csv  v:(`ab;"abc";2;2e3;0N;0W;.z.D;.z.t)                             
-                                                                               
-error: value class rank type domain length limit                               
-limit: {[param8]local8 global32 const128 jump256}                              
+
+A_-~%$ L|+#*&=<>^?! ,@.
+A+-*%&|<>=$ L,#_^?! ~@.  F#_
+
+count first last min max sum avg; in bin within; *exp log sin cos
+select A by B from T where C; delete from T where C
+
+/comment \display [dict] :expr (leading space)
+roundtrip: `json?`json(2.3;.z.D;.z.t;"abc")  / also: `csv`k
+time/cuanto: 2m 2d ..   12:34:56.123456789 e.g. .z.D+2m / .z.[tuv]
+date/cuando: 2024.01.01T12:34:56.123456789 e.g.  7\.z.D / .z.[TUV]
+
+error: parse value class rank type domain length limit
+limit: sym8(*256) {[param8]local8 global32 const128 jump256}
 @end verbatim
 @end smallformat
 @page
@@ -283,29 +283,31 @@ Data types can not only represent in-range values but also null and out-of-range
 @chapter Functions / Verbs
 This chapter explains all functions, aka verbs.  Most functions are overloaded and change depending on the number and type of arguments.
 
-@verbatim
+@example
 Verb
-:  (*note set::)
-+  (*note plus::)       (*note flip::)    
--  (*note minus::)      (*note negate::)      
-*  (*note times::)      (*note first::)       
-%  (*note divide::)         
-&  (*note min::)        (*note where::)    
-|  (*note max::)        (*note reverse::)     
-<  (*note less::)       (*note asc::)         
->  (*note more::)       (*note dsc::)    
-=  (*note equal::)      (*note group::)    
-~  (*note match::)      (*note not::)    
-!  (*note key::)        (*note enum::)    
-,  (*note cat::)        (*note enlist::)    
-^  (*note cut::)        (*note sort::)    
-$  (*note cast::)       (*note string::)    
-#  (*note take::)       (*note count::)    
-_  (*note drop::)       (*note floor::)    
-?  (*note find::)       (*note unique::)    
-@  (*note at::)         (*note type::)    
-.  (*note apply::)      (*note value::)
-@end verbatim
+: @xref{set}.
++ @xref{plus},     @xref{flip}.
+- @xref{minus},    @xref{negate}.
+* @xref{times},    @xref{first}.
+% @xref{divide}.
+& @xref{min},      @xref{where}.
+| @xref{max},      @xref{reverse}.
+< @xref{less},     @xref{asc}.
+> @xref{less,more},     @xref{asc,dsc}.
+= @xref{equal},    @xref{group}.
+~ @xref{match},    @xref{not}.
+! @xref{key},      @xref{enum}.
+, @xref{cat},      @xref{enlist}.
+^ @xref{cut},      @xref{sort}. 
+$ @xref{cast},     @xref{string}.    
+# @xref{take},     @xref{count}.  
+_ @xref{drop},     @xref{floor}.    
+? @xref{find},     @xref{unique}.    
+@ @xref{at},       @xref{type}.    
+. @xref{apply},    @xref{value}.
+
+@end example
+
 @anchor{set}@section set @result{} x:y
 Set a variable, x, to a value, y.
 
@@ -477,7 +479,7 @@ Reverse the list x.
 4    
 1 2 3
 @end example
-@anchor{less}@section less @result{} x < (>) y
+@anchor{less}@section less (more) @result{} x < (>) y
 x less (more) than y.
 @example
  3<2
@@ -493,7 +495,7 @@ x less (more) than y.
  "a"<"b"
 1b
 @end example
-@anchor{up}@section up @result{} < (>) x
+@anchor{asc}@section asc(dsc) @result{} < (>) x
 The indices of a list in order to sort the list in ascending (descending) order.
 @example
  <2 3 0 12
@@ -597,7 +599,7 @@ Reshape a list y by indices x.
 1 2 3 4  
 5 6 7 8 9
 @end example
-@anchor{asc}@section asc @result{} ^x
+@anchor{sort}@section sort @result{} ^x
 Sort list x into ascending order.
 @example
  ^0 3 2 1
@@ -661,6 +663,12 @@ Return the list y without the first (last) x elements if x is positive (negative
 8 2 7
  (1 2 3 7 8 9)_(2 8 20)
 ,20
+@end example
+@anchor{floor}@section floor @result{} _x
+Return the integer floor of float x.
+@example
+ _3.7
+3
 @end example
 @anchor{find}@section find @result{} x?y
 Find the first element of x that matches y otherwise return the end of vector.
