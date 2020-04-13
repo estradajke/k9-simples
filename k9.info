@@ -852,13 +852,21 @@ Given list x return the value at index list y.
 3.36 value => .x
 ================
 
-Return the value of dictionary x as lists.
+   * x= dictionary => Return the value of x as lists.
+   * x= parse output => Evaulate x.
       `a`b!(1 2;3 4)
      a|1 2
      b|3 4
       .`a`b!(1 2;3 4)
      a   b
      1 2 3 4
+      p:3+2
+      p
+     +
+     3
+     2
+      . p   / the space between . and p is necessary
+     5
 
 
 File: k9.info,  Node: Adverbs,  Next: Lists,  Prev: Verbs,  Up: Top
@@ -1318,6 +1326,7 @@ later.
 =========
 
 Parse allows one to see how a command is parsed into normal k9 form.
+One can value the parse by using the value command, *Note value::.
       :3+2
      +
      3
@@ -1550,6 +1559,100 @@ kSQL is a powerful query language for tables.
       select |/Temp from t where Weather=`sunny
      Temp|22
 
+9.5 Joins
+=========
+
+Joining tables together.  In this section x, y represent tables and kx
+and ky represent keyed/A_tables.
+
+join    x       y
+---------------------------------------
+union   table   table
+left    table   Atable
+outer   Atable  Atable
+asof    table   Atable (by time)
+
+9.5.1 union join => x,y
+-----------------------
+
+Union join table x with table y.
+      x:[[]s:`a`b;p:1 2;q:3 4]
+      y:[[]s:`b`c;p:11 12;q:21 22]
+      x
+     s p q
+     - - -
+     a 1 3
+     b 2 4
+
+      y
+     s p  q
+     - -- --
+     b 11 21
+     c 12 22
+
+      x,y
+     s p  q
+     - -- --
+     a  1  3
+     b  2  4
+     b 11 21
+     c 12 22
+
+9.5.2 left join => x,y
+----------------------
+
+Left join table x with keyed table/A_table.  Result includes all rows
+from x and values from x where there is no y value.
+      x:[[]s:`a`b`c;p:1 2 3;q:7 8 9]
+      y:[[s:`a`b`x`y`z]q:101 102 103 104 105;r:51 52 53 54 55]
+      x
+     s p q
+     - - -
+     a 1 7
+     b 2 8
+     c 3 9
+
+      y
+     s|q   r
+     -|--- --
+     a|101 51
+     b|102 52
+     x|103 53
+     y|104 54
+     z|105 55
+
+      x,y
+     s p q   r
+     - - --- --
+     a 1 101 51
+     b 2 102 52
+     c 3   9  0
+
+9.5.3 outer join => x,y
+-----------------------
+
+Outer join key table/A_table x with key table/A_table y.
+      x:[[s:`a`b]p:1 2;q:3 4]
+      y:[[s:`b`c]p:9 8;q:7 6]
+      x
+     s|p q
+     -|- -
+     a|1 3
+     b|2 4
+
+      y
+     s|p q
+     -|- -
+     b|9 7
+     c|8 6
+
+      x,y
+     s|p q
+     -|- -
+     a|1 3
+     b|9 7
+     c|8 6
+
 
 File: k9.info,  Node: System,  Next: ChX,  Prev: Tables/kSQL,  Up: Top
 
@@ -1719,42 +1822,42 @@ Ref: at19610
 Ref: type19823
 Ref: apply20179
 Ref: value20390
-Node: Adverbs20559
-Ref: each21076
-Ref: bar21293
-Ref: scan21482
-Ref: left21789
-Ref: mod22149
-Ref: over22304
-Ref: right22480
-Ref: div22842
-Ref: eachprior22975
-Ref: vs23377
-Ref: sv23497
-Node: Lists23622
-Node: Dictionaries26059
-Node: More functions30200
-Ref: parse30395
-Node: I/O31595
-Ref: input format31726
-Ref: format32737
-Ref: write line33141
-Ref: read line33527
-Ref: write char33712
-Ref: read char33982
-Ref: write data34171
-Ref: conn/set34218
-Ref: http/get34262
-Node: Tables/kSQL34308
-Ref: Tables34484
-Ref: A_Tables35012
-Ref: S_Tables35461
-Ref: kSQL35661
-Node: System36077
-Ref: Display36229
-Ref: Variables36476
-Ref: Memory36577
-Ref: Timing36692
-Node: ChX36784
+Node: Adverbs20707
+Ref: each21224
+Ref: bar21441
+Ref: scan21630
+Ref: left21937
+Ref: mod22297
+Ref: over22452
+Ref: right22628
+Ref: div22990
+Ref: eachprior23123
+Ref: vs23525
+Ref: sv23645
+Node: Lists23770
+Node: Dictionaries26207
+Node: More functions30348
+Ref: parse30543
+Node: I/O31810
+Ref: input format31941
+Ref: format32952
+Ref: write line33356
+Ref: read line33742
+Ref: write char33927
+Ref: read char34197
+Ref: write data34386
+Ref: conn/set34433
+Ref: http/get34477
+Node: Tables/kSQL34523
+Ref: Tables34699
+Ref: A_Tables35227
+Ref: S_Tables35676
+Ref: kSQL35876
+Node: System37794
+Ref: Display37946
+Ref: Variables38193
+Ref: Memory38294
+Ref: Timing38409
+Node: ChX38501
 
 End Tag Table

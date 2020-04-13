@@ -736,7 +736,10 @@ Given list x return the value at index list y.
 2
 @end example
 @anchor{value}@section value @result{} .x
-Return the value of dictionary x as lists.
+@itemize
+@item x= dictionary @result{} Return the value of x as lists.
+@item x= parse output @result{} Evaulate x.
+@end itemize
 @example
  `a`b!(1 2;3 4)
 a|1 2
@@ -744,6 +747,13 @@ b|3 4
  .`a`b!(1 2;3 4)
 a   b
 1 2 3 4
+ p:3+2
+ p
++
+3
+2
+ . p   / the space between . and p is necessary
+5
 @end example
 @node Adverbs
 @chapter Function Modifiers / Adverbs
@@ -1154,7 +1164,7 @@ c |3e+08
 @chapter More functions
 This chapter includes functions that likely will be included elsewhere later.
 @anchor{parse}@section parse
-Parse allows one to see how a command is parsed into normal k9 form.
+Parse allows one to see how a command is parsed into normal k9 form.  One can value the parse by using the value command, @xref{value}.
 @example
  :3+2
 +
@@ -1355,6 +1365,95 @@ Temp|20
 
  select |/Temp from t where Weather=`sunny
 Temp|22
+@end example
+@section Joins
+Joining tables together.  In this section x, y represent tables and kx and ky represent keyed/A_tables.
+
+@multitable @columnfractions .1 .1 .3
+@headitem join @tab x @tab y
+@item union @tab table @tab table
+@item left @tab table @tab Atable
+@item outer @tab Atable @tab Atable
+@item asof @tab table @tab Atable (by time)
+@end multitable
+
+
+@subsection union join @result{} x,y
+Union join table x with table y.
+@example
+ x:[[]s:`a`b;p:1 2;q:3 4]
+ y:[[]s:`b`c;p:11 12;q:21 22]
+ x
+s p q
+- - -
+a 1 3
+b 2 4
+
+ y
+s p  q 
+- -- --
+b 11 21
+c 12 22
+
+ x,y
+s p  q 
+- -- --
+a  1  3
+b  2  4
+b 11 21
+c 12 22
+@end example
+@subsection left join @result{} x,y
+Left join table x with keyed table/A_table.  Result includes all rows from x and values from x where there is no y value.
+@example
+ x:[[]s:`a`b`c;p:1 2 3;q:7 8 9]
+ y:[[s:`a`b`x`y`z]q:101 102 103 104 105;r:51 52 53 54 55]
+ x
+s p q
+- - -
+a 1 7
+b 2 8
+c 3 9
+
+ y
+s|q   r 
+-|--- --
+a|101 51
+b|102 52
+x|103 53
+y|104 54
+z|105 55
+
+ x,y
+s p q   r 
+- - --- --
+a 1 101 51
+b 2 102 52
+c 3   9  0
+@end example
+@subsection outer join @result{} x,y
+Outer join key table/A_table x with key table/A_table y. 
+@example
+ x:[[s:`a`b]p:1 2;q:3 4]
+ y:[[s:`b`c]p:9 8;q:7 6]
+ x
+s|p q
+-|- -
+a|1 3
+b|2 4
+
+ y
+s|p q
+-|- -
+b|9 7
+c|8 6
+
+ x,y
+s|p q
+-|- -
+a|1 3
+b|9 7
+c|8 6
 @end example
 @node System
 @chapter System
