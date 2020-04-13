@@ -370,7 +370,7 @@ overloaded and change depending on the number and type of arguments.
      & *Note min::,      *Note where::.
      | *Note max::,      *Note reverse::.
      < *Note less::,     *Note asc::.
-     > *Note more: less,     *Note dsc: asc.
+     > *Note more: less,      *Note dsc: asc.
      = *Note equal::,    *Note group::.
      ~ *Note match::,    *Note not::.
      ! *Note key::,      *Note enum::.
@@ -380,7 +380,7 @@ overloaded and change depending on the number and type of arguments.
      # *Note take::,     *Note count::.
      _ *Note drop::,     *Note floor::.
      ? *Note find::,     *Note unique::.
-      *Note at::,       *Note type::.
+     @ *Note at::,       *Note type::.
      . *Note apply::,    *Note value::.
 
 
@@ -860,7 +860,7 @@ Given list x return the value at index list y.
       .`a`b!(1 2;3 4)
      a   b
      1 2 3 4
-      p:3+2
+      p::3+2
       p
      +
      3
@@ -1105,21 +1105,18 @@ File: k9.info,  Node: Dictionaries,  Next: More functions,  Prev: Lists,  Up: To
 6 Dictionaries and Dictionary Functions
 ***************************************
 
-Simple data types can be combined into structures including Dictionaries
-and Tables.
+Dictionaries are key-value pairs of data.  The values in the dictionary
+can be single elements or lists.
 
-6.1 Dictionaries
-================
+6.1 Dictionary Creation => x!y
+==============================
 
-Dictionaries are key-value pairs of data.  The value in the dictionary
-can be a single element or a list.
-
-      d0:`pi`e`c!3.14 2.72 3e8;d0
+      d0:`pi`e`c!3.14 2.72 3e8;d0                         / elements
      pi|3.14
      e |2.72
      c |3e+08
 
-      d1:`time`temp!(12:00 12:01 12:10;25.0 25.1 25.6);d1
+      d1:`time`temp!(12:00 12:01 12:10;25.0 25.1 25.6);d1 / lists
      time|12:00 12:01 12:10
      temp|25 25.1 25.6
 
@@ -1128,22 +1125,41 @@ can be a single element or a list.
      10|46.3
       1|0.1
 
-6.2 Dictionary Key _!_
-======================
+6.2 Dictionary Indicing => x@y
+==============================
 
-The keys from a dictionary can be retreived by using the _!_  function.
+Dictionary indicing, like lists, can be indexed in a number of ways.
+      x:`a`b`c!(1 2;3 4;5 6);x
+     a|1 2
+     b|3 4
+     c|5 6
+      x@`a
+     1 2
+      x@`a`c
+     1 2
+     5 6
+      / all these notaions for indicing work, output surpressed
+      x@`b;  / at
+      x(`b); / parenthesis
+      x `b;  / space
+      x[`b]; / square bracket
+
+6.3 Dictionary Key => !x
+========================
+
+The keys from a dictionary can be retreived by using the !  function.
 
       !d0
      `pi`e`c
       !d1
-     `time`time
+     `time`temp
       !d2
      0 10 1
 
-6.3 Dictionary as Value _._
-===========================
+6.4 Dictionary as Value => .x
+=============================
 
-A dictionary can be returned as values using the _._  function.  The
+A dictionary can be returned as values using the .  function.  The
 function returns a list of length two.  The first element is a list of
 the keys.  The second element is a list of the values.
 
@@ -1182,8 +1198,8 @@ then query the first value (element 0).
       (. d1)[1][1][0]
      25f
 
-6.4 Sorting a Dictionary by Key _^_
-===================================
+6.5 Sorting a Dictionary by Key => ^x
+=====================================
 
       d0
      pi|3.14
@@ -1195,8 +1211,8 @@ then query the first value (element 0).
      e |2.72
      pi|3.14
 
-6.5 Sorting a Dictionary by Value _<_ and _>_
-=============================================
+6.6 Sorting a Dictionary by Value => <x (>x)
+============================================
 
       d0
      pi|3.14
@@ -1213,8 +1229,8 @@ then query the first value (element 0).
      pi|3.14
      e |2.72
 
-6.6 Flipping a Dictionary into a Table _+_
-==========================================
+6.7 Flipping a Dictionary into a Table => +x
+============================================
 
 This command flips a dictionary into a table but will be covered in
 detail in the table section.  Flipping a dictionary whose values are a
@@ -1247,7 +1263,7 @@ single element has no effect.
       d1~+d1
      0b
 
-6.7 Functions that operate on each value in a dictionary
+6.8 Functions that operate on each value in a dictionary
 ========================================================
 
 There a number of simple functions on dictionaries that operate on the
@@ -1298,7 +1314,7 @@ dictionary with the same keys and the values are application of 'f'.
      10|0.463
       1|0.001
 
-6.8 Functions that operate over values in a dictionary
+6.9 Functions that operate over values in a dictionary
 ======================================================
 
 There are functions on dictions that operate over the values.  If 'f' is
@@ -1786,78 +1802,78 @@ Node: Top138
 Node: Intro644
 Node: Nouns10148
 Node: Verbs12202
-Ref: set13229
-Ref: plus13440
-Ref: flip13831
-Ref: minus14081
-Ref: negate14186
-Ref: times14368
-Ref: first14499
-Ref: divide14694
-Ref: min14831
-Ref: where14987
-Ref: max15373
-Ref: reverse15512
-Ref: less15682
-Ref: asc15944
-Ref: equal16140
-Ref: group16264
-Ref: match16510
-Ref: not16703
-Ref: key16820
-Ref: enum16991
-Ref: cat17085
-Ref: enlist17204
-Ref: cut17343
-Ref: sort17533
-Ref: cast17710
-Ref: string17884
-Ref: take17992
-Ref: count18322
-Ref: drop18512
-Ref: floor18835
-Ref: find18926
-Ref: unique19373
-Ref: at19610
-Ref: type19823
-Ref: apply20179
-Ref: value20390
-Node: Adverbs20707
-Ref: each21224
-Ref: bar21441
-Ref: scan21630
-Ref: left21937
-Ref: mod22297
-Ref: over22452
-Ref: right22628
-Ref: div22990
-Ref: eachprior23123
-Ref: vs23525
-Ref: sv23645
-Node: Lists23770
-Node: Dictionaries26207
-Node: More functions30348
-Ref: parse30543
-Node: I/O31810
-Ref: input format31941
-Ref: format32952
-Ref: write line33356
-Ref: read line33742
-Ref: write char33927
-Ref: read char34197
-Ref: write data34386
-Ref: conn/set34433
-Ref: http/get34477
-Node: Tables/kSQL34523
-Ref: Tables34699
-Ref: A_Tables35227
-Ref: S_Tables35676
-Ref: kSQL35876
-Node: System37794
-Ref: Display37946
-Ref: Variables38193
-Ref: Memory38294
-Ref: Timing38409
-Node: ChX38501
+Ref: set13231
+Ref: plus13442
+Ref: flip13833
+Ref: minus14083
+Ref: negate14188
+Ref: times14370
+Ref: first14501
+Ref: divide14696
+Ref: min14833
+Ref: where14989
+Ref: max15375
+Ref: reverse15514
+Ref: less15684
+Ref: asc15946
+Ref: equal16142
+Ref: group16266
+Ref: match16512
+Ref: not16705
+Ref: key16822
+Ref: enum16993
+Ref: cat17087
+Ref: enlist17206
+Ref: cut17345
+Ref: sort17535
+Ref: cast17712
+Ref: string17886
+Ref: take17994
+Ref: count18324
+Ref: drop18514
+Ref: floor18837
+Ref: find18928
+Ref: unique19375
+Ref: at19612
+Ref: type19825
+Ref: apply20181
+Ref: value20392
+Node: Adverbs20710
+Ref: each21227
+Ref: bar21444
+Ref: scan21633
+Ref: left21940
+Ref: mod22300
+Ref: over22455
+Ref: right22631
+Ref: div22993
+Ref: eachprior23126
+Ref: vs23528
+Ref: sv23648
+Node: Lists23773
+Node: Dictionaries26210
+Node: More functions30753
+Ref: parse30948
+Node: I/O32215
+Ref: input format32346
+Ref: format33357
+Ref: write line33761
+Ref: read line34147
+Ref: write char34332
+Ref: read char34602
+Ref: write data34791
+Ref: conn/set34838
+Ref: http/get34882
+Node: Tables/kSQL34928
+Ref: Tables35104
+Ref: A_Tables35632
+Ref: S_Tables36081
+Ref: kSQL36281
+Node: System38199
+Ref: Display38351
+Ref: Variables38598
+Ref: Memory38699
+Ref: Timing38814
+Node: ChX38906
 
 End Tag Table
