@@ -24,6 +24,7 @@ simple terms and is intended for newbies only.
 * More functions:: More functions
 * I/O:: I/O
 * Tables/kSQL:: Tables and kSQL
+* System;: System
 * ChX:: Chapter X
 
 
@@ -951,6 +952,21 @@ y divided by x using integer division.  x and y must be integers.
       22/5
      4
 
+4.9 each prior => f':[x;y]
+==========================
+
+Apply f[y_n;y_{n-1}].  f_0 is a special case of f[y_0;x].
+      ,':[`x;(`$"y",'$!5)]
+     y0 x
+     y1 y0
+     y2 y1
+     y3 y2
+     y4 y3
+      %':[100;100 101.9 105.1 102.3 106.1] / compute returns
+     1 1.019 1.031403 0.9733587 1.037146
+      100%':100 101.9 105.1 102.3 106.1    / using infix notation
+     1 1.019 1.031403 0.9733587 1.037146
+
 
 File: k9.info,  Node: Lists,  Next: Dictionaries,  Prev: Adverbs,  Up: Top
 
@@ -1420,7 +1436,7 @@ TBD
 TBD
 
 
-File: k9.info,  Node: Tables/kSQL,  Next: ChX,  Prev: I/O,  Up: Top
+File: k9.info,  Node: Tables/kSQL,  Next: System,  Prev: I/O,  Up: Top
 
 9 Tables and kSQL
 *****************
@@ -1496,52 +1512,105 @@ kSQL is a powerful query language for tables.
      Temp|22
 
 
-File: k9.info,  Node: ChX,  Prev: Tables/kSQL,  Up: Top
+File: k9.info,  Node: System,  Next: ChX,  Prev: Tables/kSQL,  Up: Top
 
-10 X
+10 System
+*********
+
+This chapter describes the system settings and functions.
+
+10.1 Display => \k
+==================
+
+      m:(100 101 102;3;14 15);d:`a`b!(1 2;3 4)
+      \k 0
+      m
+     100 101 102
+     3
+     14 15
+
+      d
+     a|1 2
+     b|3 4
+
+      \k 1
+      m
+     (100 101 102;3;14 15)
+      d
+     [a:1 2;b:3 4]
+
+10.2 Variables => \v
+====================
+
+List variables
+     a:1;b:2;c:3
+      \v
+     [v:`a`b`c]
+
+10.3 Memory => \w
+=================
+
+List memory usage
+      \w
+     0
+      r:(`i$10e6)?10
+      \w
+     2097158
+
+10.4 Timing => \t
+=================
+
+List time elapsed
+      \t ^(`i$1e7)?`i$1e8
+     360
+
+
+File: k9.info,  Node: ChX,  Prev: System,  Up: Top
+
+11 X
 ****
 
 To be sorted.
 
-10.1 Errors
+11.1 Errors
 ===========
 
 This section contains information on the various error messages in k9.
 
-10.1.1 error: parse
+11.1.1 error: parse
 -------------------
 
 Syntax is wrong.
       {37 . "hello"
      error: parse
 
-10.1.2 error: value
+11.1.2 error: value
 -------------------
 
 Undefined variable is used.
       g    / assuming 'g' has not be defining in this session
      error: value
 
-10.1.3 error: class
+11.1.3 error: class
 -------------------
 
       3+`b
 
-10.1.4 error: length
+11.1.4 error: length
 --------------------
 
 Operations on unequal length lists that require equal length.
       (1 2 3)+(4 5)
      error: length
 
-10.1.5 error: domain
+11.1.5 error: domain
 --------------------
 
 Exhausted the number of input values
       -12?10   / only 10 unique value exist
      error: domain
 
-10.2 '`freq' Histogram
+11.2 '`freq' Histogram
 ======================
 
 Compute a histogram of a list.
@@ -1572,72 +1641,78 @@ Compute a histogram of a list.
 
 Tag Table:
 Node: Top138
-Node: Intro626
-Node: Nouns10155
-Node: Verbs12209
-Ref: set13217
-Ref: plus13429
-Ref: flip13820
-Ref: minus14070
-Ref: negate14175
-Ref: times14357
-Ref: first14488
-Ref: divide14683
-Ref: min14820
-Ref: where14976
-Ref: max15362
-Ref: reverse15501
-Ref: less15671
-Ref: up15919
-Ref: equal16103
-Ref: group16227
-Ref: match16473
-Ref: not16666
-Ref: key16783
-Ref: enum16954
-Ref: cat17048
-Ref: enlist17167
-Ref: cut17306
-Ref: asc17496
-Ref: cast17671
-Ref: string17845
-Ref: take17953
-Ref: count18283
-Ref: drop18473
-Ref: find18796
-Ref: unique19032
-Ref: at19269
-Ref: type19482
-Ref: apply19838
-Ref: value20049
-Node: Adverbs20218
-Ref: each20447
-Ref: bar20666
-Ref: scan20855
-Ref: left21162
-Ref: mod21522
-Ref: over21677
-Ref: right21853
-Ref: div22215
-Node: Lists22349
-Node: Dictionaries24786
-Node: More functions28927
-Ref: parse29122
-Node: I/O30322
-Ref: input format30453
-Ref: format31464
-Ref: write line31868
-Ref: read line32254
-Ref: write char32439
-Ref: read char32709
-Ref: write data32898
-Ref: conn/set32945
-Ref: http/get32989
-Node: Tables/kSQL33035
-Ref: Tables33208
-Ref: A_Tables33736
-Ref: S_Tables34185
-Ref: kSQL34385
-Node: ChX34801
+Node: Intro644
+Node: Nouns10173
+Node: Verbs12227
+Ref: set13235
+Ref: plus13447
+Ref: flip13838
+Ref: minus14088
+Ref: negate14193
+Ref: times14375
+Ref: first14506
+Ref: divide14701
+Ref: min14838
+Ref: where14994
+Ref: max15380
+Ref: reverse15519
+Ref: less15689
+Ref: up15937
+Ref: equal16121
+Ref: group16245
+Ref: match16491
+Ref: not16684
+Ref: key16801
+Ref: enum16972
+Ref: cat17066
+Ref: enlist17185
+Ref: cut17324
+Ref: asc17514
+Ref: cast17689
+Ref: string17863
+Ref: take17971
+Ref: count18301
+Ref: drop18491
+Ref: find18814
+Ref: unique19050
+Ref: at19287
+Ref: type19500
+Ref: apply19856
+Ref: value20067
+Node: Adverbs20236
+Ref: each20465
+Ref: bar20684
+Ref: scan20873
+Ref: left21180
+Ref: mod21540
+Ref: over21695
+Ref: right21871
+Ref: div22233
+Ref: each prior22366
+Node: Lists22771
+Node: Dictionaries25208
+Node: More functions29349
+Ref: parse29544
+Node: I/O30744
+Ref: input format30875
+Ref: format31886
+Ref: write line32290
+Ref: read line32676
+Ref: write char32861
+Ref: read char33131
+Ref: write data33320
+Ref: conn/set33367
+Ref: http/get33411
+Node: Tables/kSQL33457
+Ref: Tables33633
+Ref: A_Tables34161
+Ref: S_Tables34610
+Ref: kSQL34810
+Node: System35226
+Ref: Display35378
+Ref: Variables35625
+Ref: Memory35726
+Ref: Timing35841
+Node: ChX35933
 
 End Tag Table

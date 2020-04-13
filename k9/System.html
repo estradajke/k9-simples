@@ -5,10 +5,10 @@
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>k9 simples: ChX</title>
+<title>k9 simples: System</title>
 
-<meta name="description" content="k9 simples: ChX">
-<meta name="keywords" content="k9 simples: ChX">
+<meta name="description" content="k9 simples: System">
+<meta name="keywords" content="k9 simples: System">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
@@ -16,7 +16,8 @@ Copyright (C) 2020 John Estrada -->
 <link href="index.html#Top" rel="start" title="Top">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="index.html#Top" rel="up" title="Top">
-<link href="System.html#System" rel="prev" title="System">
+<link href="ChX.html#ChX" rel="next" title="ChX">
+<link href="Tables_002fkSQL.html#Tables_002fkSQL" rel="prev" title="Tables/kSQL">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -50,80 +51,60 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<a name="ChX"></a>
+<a name="System"></a>
 <div class="header">
 <p>
-Previous: <a href="System.html#System" accesskey="p" rel="prev">System</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="ChX.html#ChX" accesskey="n" rel="next">ChX</a>, Previous: <a href="Tables_002fkSQL.html#Tables_002fkSQL" accesskey="p" rel="prev">Tables/kSQL</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 <hr>
-<a name="X"></a>
-<h2 class="chapter">11 X</h2>
-<p>To be sorted.
-</p><a name="Errors"></a>
-<h3 class="section">11.1 Errors</h3>
-<p>This section contains information on the various error messages in k9.
-</p><a name="error_003a-parse"></a>
-<h4 class="subsection">11.1.1 error: parse</h4>
-<p>Syntax is wrong.
-</p><div class="example">
-<pre class="example"> {37 . &quot;hello&quot;
-error: parse
-</pre></div>
-<a name="error_003a-value"></a>
-<h4 class="subsection">11.1.2 error: value</h4>
-<p>Undefined variable is used.
-</p><div class="example">
-<pre class="example"> g    / assuming 'g' has not be defining in this session
-error: value
-</pre></div>
-<a name="error_003a-class"></a>
-<h4 class="subsection">11.1.3 error: class</h4>
+<a name="System-1"></a>
+<h2 class="chapter">10 System</h2>
+<p>This chapter describes the system settings and functions.
+<a name="Display"></a></p><a name="Display-_21d2-_005ck"></a>
+<h3 class="section">10.1 Display &rArr; \k</h3>
 <div class="example">
-<pre class="example"> 3+`b
-</pre></div>
-<a name="error_003a-length"></a>
-<h4 class="subsection">11.1.4 error: length</h4>
-<p>Operations on unequal length lists that require equal length.
-</p><div class="example">
-<pre class="example"> (1 2 3)+(4 5)
-error: length
-</pre></div>
-<a name="error_003a-domain"></a>
-<h4 class="subsection">11.1.5 error: domain</h4>
-<p>Exhausted the number of input values
-</p><div class="example">
-<pre class="example"> -12?10   / only 10 unique value exist
-error: domain
-</pre></div>
-<a name="g_t_0060freq-Histogram"></a>
-<h3 class="section">11.2 <code>`freq</code> Histogram</h3>
-<p>Compute a histogram of a list.
-</p><div class="example">
-<pre class="example"> ^`freq x:100000?10
-0| 9907
-1| 9963
-2| 9938
-3|10063
-4|10018
-5|10007
-6|10037
-7|10036
-8| 9907
-9|10124
- ^#'=x   / same result but slower
-0| 9907
-1| 9963
-2| 9938
-3|10063
-4|10018
-5|10007
-6|10037
-7|10036
-8| 9907
-9|10124
-</pre></div>
+<pre class="example"> m:(100 101 102;3;14 15);d:`a`b!(1 2;3 4)
+ \k 0
+ m
+100 101 102
+3          
+14 15      
 
+ d
+a|1 2
+b|3 4
 
+ \k 1
+ m
+(100 101 102;3;14 15)
+ d
+[a:1 2;b:3 4]
+</pre></div>
+<a name="Variables"></a><a name="Variables-_21d2-_005cv"></a>
+<h3 class="section">10.2 Variables &rArr; \v</h3>
+<p>List variables
+</p><div class="example">
+<pre class="example">a:1;b:2;c:3
+ \v
+[v:`a`b`c]
+</pre></div>
+<a name="Memory"></a><a name="Memory-_21d2-_005cw"></a>
+<h3 class="section">10.3 Memory &rArr; \w</h3>
+<p>List memory usage
+</p><div class="example">
+<pre class="example"> \w
+0
+ r:(`i$10e6)?10
+ \w
+2097158
+</pre></div>
+<a name="Timing"></a><a name="Timing-_21d2-_005ct"></a>
+<h3 class="section">10.4 Timing &rArr; \t</h3>
+<p>List time elapsed
+</p><div class="example">
+<pre class="example"> \t ^(`i$1e7)?`i$1e8
+360
+</pre></div>
 
 
 

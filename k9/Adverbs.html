@@ -156,6 +156,21 @@ l1 l2 l3 r3
  22/5
 4
 </pre></div>
+<a name="each-prior"></a><a name="each-prior-_21d2-f_0027_003a_005bx_003by_005d"></a>
+<h3 class="section">4.9 each prior &rArr; f&rsquo;:[x;y]</h3>
+<p>Apply f[y_n;y_{n-1}].  f_0 is a special case of f[y_0;x].
+</p><div class="example">
+<pre class="example"> ,':[`x;(`$&quot;y&quot;,'$!5)]
+y0 x 
+y1 y0
+y2 y1
+y3 y2
+y4 y3
+ %':[100;100 101.9 105.1 102.3 106.1] / compute returns
+1 1.019 1.031403 0.9733587 1.037146
+ 100%':100 101.9 105.1 102.3 106.1    / using infix notation
+1 1.019 1.031403 0.9733587 1.037146
+</pre></div>
 <hr>
 <div class="header">
 <p>
