@@ -978,7 +978,7 @@ Apply f[x;] to each value in y.
 y divided by x using integer division.  x and y must be integers.
       2/7
      3
-      22/5
+      5/22
      4
 
 4.9 eachprior => f':[x;y]
@@ -1475,6 +1475,12 @@ a single char then convert to list via enlist.
       "some.txt"1:"hello here\nis some text\n"
       1:"some.txt"
      "hello here\nis some text\n"
+       t:+`a`b!(1 2;3 4);t
+     a b
+     - -
+     1 3
+     2 4
+      "some.k"1:`k t      / write table to file in k format
 
 8.6 read char => 1:x
 ====================
@@ -1483,6 +1489,16 @@ Read from file x.
       "some.txt"0:,`csv 3 1 2 / first write a file to some.txt
       1:"some.txt"            / now read it back
      "3,1,2\n"
+       t:+`a`b!(1 2;3 4);t
+     a b
+     - -
+     1 3
+     2 4
+      t:`k?1:"some.k";t   / read file stored in k format (as shown above)
+     a b
+     - -
+     1 3
+     2 4
 
 8.7 write data => 2:
 ====================
@@ -1860,20 +1876,20 @@ Ref: format33357
 Ref: write line33761
 Ref: read line34147
 Ref: write char34332
-Ref: read char34602
-Ref: write data34791
-Ref: conn/set34838
-Ref: http/get34882
-Node: Tables/kSQL34928
-Ref: Tables35104
-Ref: A_Tables35632
-Ref: S_Tables36081
-Ref: kSQL36281
-Node: System38199
-Ref: Display38351
-Ref: Variables38598
-Ref: Memory38699
-Ref: Timing38814
-Node: ChX38906
+Ref: read char34725
+Ref: write data35087
+Ref: conn/set35134
+Ref: http/get35178
+Node: Tables/kSQL35224
+Ref: Tables35400
+Ref: A_Tables35928
+Ref: S_Tables36377
+Ref: kSQL36577
+Node: System38495
+Ref: Display38647
+Ref: Variables38894
+Ref: Memory38995
+Ref: Timing39110
+Node: ChX39202
 
 End Tag Table

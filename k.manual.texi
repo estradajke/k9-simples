@@ -854,7 +854,7 @@ y divided by x using integer division.  x and y must be integers.
 @example
  2/7
 3
- 22/5
+ 5/22
 4
 @end example
 @anchor{eachprior}@section eachprior @result{} f':[x;y]
@@ -1302,6 +1302,12 @@ Output to x the list of chars in y.  y must be a list of chars.  If y is a singl
  "some.txt"1:"hello here\nis some text\n"
  1:"some.txt"
 "hello here\nis some text\n"
+  t:+`a`b!(1 2;3 4);t
+a b
+- -
+1 3
+2 4
+ "some.k"1:`k t      / write table to file in k format
 @end example
 @anchor{read char}@section read char @result{} 1:x
 Read from file x.
@@ -1309,6 +1315,16 @@ Read from file x.
  "some.txt"0:,`csv 3 1 2 / first write a file to some.txt
  1:"some.txt"            / now read it back
 "3,1,2\n"
+  t:+`a`b!(1 2;3 4);t
+a b
+- -
+1 3
+2 4
+ t:`k?1:"some.k";t   / read file stored in k format (as shown above)
+a b
+- -
+1 3
+2 4
 @end example
 @anchor{write data}@section write data @result{} 2:
 TBD
