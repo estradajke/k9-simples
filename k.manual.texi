@@ -244,7 +244,8 @@ Data types can be determined by using the @code{@@} function on values or lists 
 @section Numeric Data Types
 Numbers can be stored as integers and floats.
 @example
-@@3 
+ @@3
+`i
  @@3.1
 `f
  a:3;b:3.1;
@@ -270,6 +271,18 @@ You'll note that the string of 3 is represented as ,''3''.  The comma represents
 2024-01-13
 @end example
 
+@section Text Data Types
+Text data types come in characters, lists of characters (aka strings) and enumerated types.  Enumerated types are displayed as text but stored internally as integers.
+@example
+ @@"b"
+`c
+ @@"bd"
+`C 
+ @@`blue
+`s
+ @@`blue`red
+`S
+@end example
 @section Extreme values
 Data types can not only represent in-range values but also null and out-of-range values.
 

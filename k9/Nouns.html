@@ -76,7 +76,8 @@ Next: <a href="Verbs.html#Verbs" accesskey="n" rel="next">Verbs</a>, Previous: <
 <h3 class="section">2.1 Numeric Data Types</h3>
 <p>Numbers can be stored as integers and floats.
 </p><div class="example">
-<pre class="example">@3 
+<pre class="example"> @3
+`i
  @3.1
 `f
  a:3;b:3.1;
@@ -102,8 +103,21 @@ Next: <a href="Verbs.html#Verbs" accesskey="n" rel="next">Verbs</a>, Previous: <
 2024-01-13
 </pre></div>
 
+<a name="Text-Data-Types"></a>
+<h3 class="section">2.2 Text Data Types</h3>
+<p>Text data types come in characters, lists of characters (aka strings) and enumerated types.  Enumerated types are displayed as text but stored internally as integers.
+</p><div class="example">
+<pre class="example"> @&quot;b&quot;
+`c
+ @&quot;bd&quot;
+`C 
+ @`blue
+`s
+ @`blue`red
+`S
+</pre></div>
 <a name="Extreme-values"></a>
-<h3 class="section">2.2 Extreme values</h3>
+<h3 class="section">2.3 Extreme values</h3>
 <p>Data types can not only represent in-range values but also null and out-of-range values.
 </p>
 <table>

@@ -313,7 +313,8 @@ and return the type of each element in the list.
 ======================
 
 Numbers can be stored as integers and floats.
-     @3
+      @3
+     `i
       @3.1
      `f
       a:3;b:3.1;
@@ -341,7 +342,22 @@ represents the string is a list of length one and not a single element.
       `d$12  / convert to date
      2024-01-13
 
-2.2 Extreme values
+2.2 Text Data Types
+===================
+
+Text data types come in characters, lists of characters (aka strings)
+and enumerated types.  Enumerated types are displayed as text but stored
+internally as integers.
+      @"b"
+     `c
+      @"bd"
+     `C
+      @`blue
+     `s
+      @`blue`red
+     `S
+
+2.3 Extreme values
 ==================
 
 Data types can not only represent in-range values but also null and
@@ -1817,79 +1833,79 @@ Tag Table:
 Node: Top138
 Node: Intro644
 Node: Nouns10148
-Node: Verbs12202
-Ref: set13231
-Ref: plus13442
-Ref: flip13833
-Ref: minus14083
-Ref: negate14188
-Ref: times14370
-Ref: first14501
-Ref: divide14696
-Ref: min14833
-Ref: where14989
-Ref: max15375
-Ref: reverse15514
-Ref: less15684
-Ref: asc15946
-Ref: equal16142
-Ref: group16266
-Ref: match16512
-Ref: not16705
-Ref: key16822
-Ref: enum16993
-Ref: cat17087
-Ref: enlist17206
-Ref: cut17345
-Ref: sort17535
-Ref: cast17712
-Ref: string17886
-Ref: take17994
-Ref: count18324
-Ref: drop18514
-Ref: floor18837
-Ref: find18928
-Ref: unique19375
-Ref: at19612
-Ref: type19825
-Ref: apply20181
-Ref: value20392
-Node: Adverbs20710
-Ref: each21227
-Ref: bar21444
-Ref: scan21633
-Ref: left21940
-Ref: mod22300
-Ref: over22455
-Ref: right22631
-Ref: div22993
-Ref: eachprior23126
-Ref: vs23528
-Ref: sv23648
-Node: Lists23773
-Node: Dictionaries26210
-Node: More functions30753
-Ref: parse30948
-Node: I/O32215
-Ref: input format32346
-Ref: format33357
-Ref: write line33761
-Ref: read line34147
-Ref: write char34332
-Ref: read char34725
-Ref: write data35087
-Ref: conn/set35134
-Ref: http/get35178
-Node: Tables/kSQL35224
-Ref: Tables35400
-Ref: A_Tables35928
-Ref: S_Tables36377
-Ref: kSQL36577
-Node: System38495
-Ref: Display38647
-Ref: Variables38894
-Ref: Memory38995
-Ref: Timing39110
-Node: ChX39202
+Node: Verbs12505
+Ref: set13534
+Ref: plus13745
+Ref: flip14136
+Ref: minus14386
+Ref: negate14491
+Ref: times14673
+Ref: first14804
+Ref: divide14999
+Ref: min15136
+Ref: where15292
+Ref: max15678
+Ref: reverse15817
+Ref: less15987
+Ref: asc16249
+Ref: equal16445
+Ref: group16569
+Ref: match16815
+Ref: not17008
+Ref: key17125
+Ref: enum17296
+Ref: cat17390
+Ref: enlist17509
+Ref: cut17648
+Ref: sort17838
+Ref: cast18015
+Ref: string18189
+Ref: take18297
+Ref: count18627
+Ref: drop18817
+Ref: floor19140
+Ref: find19231
+Ref: unique19678
+Ref: at19915
+Ref: type20128
+Ref: apply20484
+Ref: value20695
+Node: Adverbs21013
+Ref: each21530
+Ref: bar21747
+Ref: scan21936
+Ref: left22243
+Ref: mod22603
+Ref: over22758
+Ref: right22934
+Ref: div23296
+Ref: eachprior23429
+Ref: vs23831
+Ref: sv23951
+Node: Lists24076
+Node: Dictionaries26513
+Node: More functions31056
+Ref: parse31251
+Node: I/O32518
+Ref: input format32649
+Ref: format33660
+Ref: write line34064
+Ref: read line34450
+Ref: write char34635
+Ref: read char35028
+Ref: write data35390
+Ref: conn/set35437
+Ref: http/get35481
+Node: Tables/kSQL35527
+Ref: Tables35703
+Ref: A_Tables36231
+Ref: S_Tables36680
+Ref: kSQL36880
+Node: System38798
+Ref: Display38950
+Ref: Variables39197
+Ref: Memory39298
+Ref: Timing39413
+Node: ChX39505
 
 End Tag Table
