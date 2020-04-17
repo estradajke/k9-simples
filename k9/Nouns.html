@@ -63,17 +63,22 @@ Next: <a href="Verbs.html#Verbs" accesskey="n" rel="next">Verbs</a>, Previous: <
 </p>
 <p>In additional to the basic data types, data can be put into lists (uniform and non-uniform), dictionaries (key-value pairs), and tables (transposed/flipped dictionaries).  Dictionaries and tables will be covered in a seperate chapter.
 </p>
-<p>Data types can be determined by using the <code>@</code> function on values or lists of values.  In the case of lists <code>@</code> returns the type of the list <code>`L</code> but the function can be modified to evalue each type <code>@'</code> instead and return the type of each element in the list.
+<p>Data types can be determined by using the <code>@</code> function on values or lists of values.  In the case of non-uniform lists <code>@</code> returns the type of the list <code>`L</code> but the function can be modified to evalue each type <code>@'</code> instead and return the type of each element in the list.
 </p>
 <div class="example">
-<pre class="example"> @(3;3.1;&quot;b&quot;;`a;12:01:02.123;2020.04.05)
+<pre class="example"> @1            / integer atom
+`i
+ @1 2 3        / integer list
+`I
+ @12:34:56.789 / time atom
+ @(3;3.1;&quot;b&quot;;`a;12:01:02.123;2020.04.05) / mixed list
 `L
  @'(3;3.1;&quot;b&quot;;`a;12:01:02.123;2020.04.05)
 `i`f`c`s`t`D
 </pre></div>
 
-<a name="Numeric-Data-Types"></a>
-<h3 class="section">2.1 Numeric Data Types</h3>
+<a name="Numeric-Data"></a>
+<h3 class="section">2.1 Numeric Data</h3>
 <p>Numbers can be stored as integers and floats.
 </p><div class="example">
 <pre class="example"> @3
@@ -103,9 +108,9 @@ Next: <a href="Verbs.html#Verbs" accesskey="n" rel="next">Verbs</a>, Previous: <
 2024-01-13
 </pre></div>
 
-<a name="Text-Data-Types"></a>
-<h3 class="section">2.2 Text Data Types</h3>
-<p>Text data types come in characters, lists of characters (aka strings) and enumerated types.  Enumerated types are displayed as text but stored internally as integers.
+<a name="Text-Data"></a>
+<h3 class="section">2.2 Text Data</h3>
+<p>Text data come in characters, lists of characters (aka strings) and enumerated types.  Enumerated types are displayed as text but stored internally as integers.
 </p><div class="example">
 <pre class="example"> @&quot;b&quot;
 `c
@@ -116,8 +121,41 @@ Next: <a href="Verbs.html#Verbs" accesskey="n" rel="next">Verbs</a>, Previous: <
  @`blue`red
 `S
 </pre></div>
+<a name="Temporal-Data"></a>
+<h3 class="section">2.3 Temporal Data</h3>
+<p>Temporal data can be expressed in time, date, or a combined date and time.
+</p><div class="example">
+<pre class="example"> @12:34:56.789             / time
+`t
+ @2020.04.20               / date
+`D
+ @2020.04.20T12:34:56.789  / date and time
+`T
+ .z.t                       / current time in GMT
+17:32:57.995
+ (t:.z.t)-17:30:00.000
+00:03:59.986
+ t
+17:33:59.986
+ `i$00:00:00.001            / numeric representation of 1ms
+1
+ `i$00:00:00.001            / numeric representation of 1s
+1000
+ `i$00:01:00.000            / numeric representation of 1m
+60000
+ `t$12345                   / convert milliseconds to time
+00:00:12.345
+ .z.D                       / current date in GMT
+2020-04-17
+ `i$.z.D                    / numeric representation of date
+-1351
+ `i$2024.01.01              / zero date
+0
+ `D$0                       / zero date
+2024.01.01
+</pre></div>
 <a name="Extreme-values"></a>
-<h3 class="section">2.3 Extreme values</h3>
+<h3 class="section">2.4 Extreme values</h3>
 <p>Data types can not only represent in-range values but also null and out-of-range values.
 </p>
 <table>

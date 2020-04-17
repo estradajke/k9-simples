@@ -24,8 +24,8 @@ simple terms and is intended for newbies only.
 * More functions:: More functions
 * I/O:: I/O
 * Tables/kSQL:: Tables and kSQL
-* System;: System
-* ChX:: Chapter X
+* System:: System
+* Errors:: Errors
 
 
 File: k9.info,  Node: Intro,  Next: Nouns,  Prev: Top,  Up: Top
@@ -300,17 +300,22 @@ time).  It is common to have functions operate on multiple data types.
 covered in a seperate chapter.
 
    Data types can be determined by using the '@' function on values or
-lists of values.  In the case of lists '@' returns the type of the list
-'`L' but the function can be modified to evalue each type '@'' instead
-and return the type of each element in the list.
+lists of values.  In the case of non-uniform lists '@' returns the type
+of the list '`L' but the function can be modified to evalue each type
+'@'' instead and return the type of each element in the list.
 
-      @(3;3.1;"b";`a;12:01:02.123;2020.04.05)
+      @1            / integer atom
+     `i
+      @1 2 3        / integer list
+     `I
+      @12:34:56.789 / time atom
+      @(3;3.1;"b";`a;12:01:02.123;2020.04.05) / mixed list
      `L
       @'(3;3.1;"b";`a;12:01:02.123;2020.04.05)
      `i`f`c`s`t`D
 
-2.1 Numeric Data Types
-======================
+2.1 Numeric Data
+================
 
 Numbers can be stored as integers and floats.
       @3
@@ -342,11 +347,11 @@ represents the string is a list of length one and not a single element.
       `d$12  / convert to date
      2024-01-13
 
-2.2 Text Data Types
-===================
+2.2 Text Data
+=============
 
-Text data types come in characters, lists of characters (aka strings)
-and enumerated types.  Enumerated types are displayed as text but stored
+Text data come in characters, lists of characters (aka strings) and
+enumerated types.  Enumerated types are displayed as text but stored
 internally as integers.
       @"b"
      `c
@@ -357,7 +362,41 @@ internally as integers.
       @`blue`red
      `S
 
-2.3 Extreme values
+2.3 Temporal Data
+=================
+
+Temporal data can be expressed in time, date, or a combined date and
+time.
+      @12:34:56.789             / time
+     `t
+      @2020.04.20               / date
+     `D
+      @2020.04.20T12:34:56.789  / date and time
+     `T
+      .z.t                       / current time in GMT
+     17:32:57.995
+      (t:.z.t)-17:30:00.000
+     00:03:59.986
+      t
+     17:33:59.986
+      `i$00:00:00.001            / numeric representation of 1ms
+     1
+      `i$00:00:00.001            / numeric representation of 1s
+     1000
+      `i$00:01:00.000            / numeric representation of 1m
+     60000
+      `t$12345                   / convert milliseconds to time
+     00:00:12.345
+      .z.D                       / current date in GMT
+     2020-04-17
+      `i$.z.D                    / numeric representation of date
+     -1351
+      `i$2024.01.01              / zero date
+     0
+      `D$0                       / zero date
+     2024.01.01
+
+2.4 Extreme values
 ==================
 
 Data types can not only represent in-range values but also null and
@@ -1354,8 +1393,8 @@ File: k9.info,  Node: More functions,  Next: I/O,  Prev: Dictionaries,  Up: Top
 This chapter includes functions that likely will be included elsewhere
 later.
 
-7.1 parse
-=========
+7.1 parse => parse
+==================
 
 Parse allows one to see how a command is parsed into normal k9 form.
 One can value the parse by using the value command, *Note value::.
@@ -1414,6 +1453,33 @@ One can value the parse by using the value command, *Note value::.
    In the example above the parse output is reduced.  In order to see
 the elements in the output one could manually return the values in the
 list, eg.  p[2;0 1 2].
+
+7.2 Histogram => 'freq
+======================
+
+Compute a histogram of a list.
+      ^`freq x:100000?10
+     0| 9907
+     1| 9963
+     2| 9938
+     3|10063
+     4|10018
+     5|10007
+     6|10037
+     7|10036
+     8| 9907
+     9|10124
+      ^#'=x   / same result but slower
+     0| 9907
+     1| 9963
+     2| 9938
+     3|10063
+     4|10018
+     5|10007
+     6|10037
+     7|10036
+     8| 9907
+     9|10124
 
 
 File: k9.info,  Node: I/O,  Next: Tables/kSQL,  Prev: More functions,  Up: Top
@@ -1702,7 +1768,7 @@ Outer join key table/A_table x with key table/A_table y.
      c|8 6
 
 
-File: k9.info,  Node: System,  Next: ChX,  Prev: Tables/kSQL,  Up: Top
+File: k9.info,  Node: System,  Next: Errors,  Prev: Tables/kSQL,  Up: Top
 
 10 System
 *********
@@ -1755,77 +1821,45 @@ List time elapsed
      360
 
 
-File: k9.info,  Node: ChX,  Prev: System,  Up: Top
+File: k9.info,  Node: Errors,  Prev: System,  Up: Top
 
-11 X
-****
-
-To be sorted.
-
-11.1 Errors
-===========
+11 Errors
+*********
 
 This section contains information on the various error messages in k9.
 
-11.1.1 error: parse
--------------------
+11.1 error: parse
+=================
 
 Syntax is wrong.
       {37 . "hello"
      error: parse
 
-11.1.2 error: value
--------------------
+11.2 error: value
+=================
 
 Undefined variable is used.
       g    / assuming 'g' has not be defining in this session
      error: value
 
-11.1.3 error: class
--------------------
+11.3 error: class
+=================
 
       3+`b
 
-11.1.4 error: length
---------------------
+11.4 error: length
+==================
 
 Operations on unequal length lists that require equal length.
       (1 2 3)+(4 5)
      error: length
 
-11.1.5 error: domain
---------------------
+11.5 error: domain
+==================
 
 Exhausted the number of input values
       -12?10   / only 10 unique value exist
      error: domain
-
-11.2 '`freq' Histogram
-======================
-
-Compute a histogram of a list.
-      ^`freq x:100000?10
-     0| 9907
-     1| 9963
-     2| 9938
-     3|10063
-     4|10018
-     5|10007
-     6|10037
-     7|10036
-     8| 9907
-     9|10124
-      ^#'=x   / same result but slower
-     0| 9907
-     1| 9963
-     2| 9938
-     3|10063
-     4|10018
-     5|10007
-     6|10037
-     7|10036
-     8| 9907
-     9|10124
 
 
 
@@ -1833,79 +1867,80 @@ Tag Table:
 Node: Top138
 Node: Intro644
 Node: Nouns10148
-Node: Verbs12505
-Ref: set13534
-Ref: plus13745
-Ref: flip14136
-Ref: minus14386
-Ref: negate14491
-Ref: times14673
-Ref: first14804
-Ref: divide14999
-Ref: min15136
-Ref: where15292
-Ref: max15678
-Ref: reverse15817
-Ref: less15987
-Ref: asc16249
-Ref: equal16445
-Ref: group16569
-Ref: match16815
-Ref: not17008
-Ref: key17125
-Ref: enum17296
-Ref: cat17390
-Ref: enlist17509
-Ref: cut17648
-Ref: sort17838
-Ref: cast18015
-Ref: string18189
-Ref: take18297
-Ref: count18627
-Ref: drop18817
-Ref: floor19140
-Ref: find19231
-Ref: unique19678
-Ref: at19915
-Ref: type20128
-Ref: apply20484
-Ref: value20695
-Node: Adverbs21013
-Ref: each21530
-Ref: bar21747
-Ref: scan21936
-Ref: left22243
-Ref: mod22603
-Ref: over22758
-Ref: right22934
-Ref: div23296
-Ref: eachprior23429
-Ref: vs23831
-Ref: sv23951
-Node: Lists24076
-Node: Dictionaries26513
-Node: More functions31056
-Ref: parse31251
-Node: I/O32518
-Ref: input format32649
-Ref: format33660
-Ref: write line34064
-Ref: read line34450
-Ref: write char34635
-Ref: read char35028
-Ref: write data35390
-Ref: conn/set35437
-Ref: http/get35481
-Node: Tables/kSQL35527
-Ref: Tables35703
-Ref: A_Tables36231
-Ref: S_Tables36680
-Ref: kSQL36880
-Node: System38798
-Ref: Display38950
-Ref: Variables39197
-Ref: Memory39298
-Ref: Timing39413
-Node: ChX39505
+Node: Verbs13590
+Ref: set14619
+Ref: plus14830
+Ref: flip15221
+Ref: minus15471
+Ref: negate15576
+Ref: times15758
+Ref: first15889
+Ref: divide16084
+Ref: min16221
+Ref: where16377
+Ref: max16763
+Ref: reverse16902
+Ref: less17072
+Ref: asc17334
+Ref: equal17530
+Ref: group17654
+Ref: match17900
+Ref: not18093
+Ref: key18210
+Ref: enum18381
+Ref: cat18475
+Ref: enlist18594
+Ref: cut18733
+Ref: sort18923
+Ref: cast19100
+Ref: string19274
+Ref: take19382
+Ref: count19712
+Ref: drop19902
+Ref: floor20225
+Ref: find20316
+Ref: unique20763
+Ref: at21000
+Ref: type21213
+Ref: apply21569
+Ref: value21780
+Node: Adverbs22098
+Ref: each22615
+Ref: bar22832
+Ref: scan23021
+Ref: left23328
+Ref: mod23688
+Ref: over23843
+Ref: right24019
+Ref: div24381
+Ref: eachprior24514
+Ref: vs24916
+Ref: sv25036
+Node: Lists25161
+Node: Dictionaries27598
+Node: More functions32141
+Ref: parse32336
+Ref: freq33619
+Node: I/O34024
+Ref: input format34155
+Ref: format35166
+Ref: write line35570
+Ref: read line35956
+Ref: write char36141
+Ref: read char36534
+Ref: write data36896
+Ref: conn/set36943
+Ref: http/get36987
+Node: Tables/kSQL37033
+Ref: Tables37209
+Ref: A_Tables37737
+Ref: S_Tables38186
+Ref: kSQL38386
+Node: System40304
+Ref: Display40459
+Ref: Variables40706
+Ref: Memory40807
+Ref: Timing40922
+Node: Errors41014
 
 End Tag Table

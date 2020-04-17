@@ -60,8 +60,8 @@ Next: <a href="I_002fO.html#I_002fO" accesskey="n" rel="next">I/O</a>, Previous:
 <a name="More-functions-1"></a>
 <h2 class="chapter">7 More functions</h2>
 <p>This chapter includes functions that likely will be included elsewhere later.
-<a name="parse"></a></p><a name="parse-1"></a>
-<h3 class="section">7.1 parse</h3>
+<a name="parse"></a></p><a name="parse-_21d2-parse"></a>
+<h3 class="section">7.1 parse &rArr; parse</h3>
 <p>Parse allows one to see how a command is parsed into normal k9 form.  One can value the parse by using the value command, See <a href="Verbs.html#value">value</a>.
 </p><div class="example">
 <pre class="example"> :3+2
@@ -120,7 +120,34 @@ x|0
 y|2  
 </pre></div>
 <p>In the example above the parse output is reduced.  In order to see the elements in the output one could manually return the values in the list, eg. p[2;0 1 2].
-</p>
+<a name="freq"></a></p><a name="Histogram-_21d2-_0060freq"></a>
+<h3 class="section">7.2 Histogram &rArr; &lsquo;freq</h3>
+<p>Compute a histogram of a list.
+</p><div class="example">
+<pre class="example"> ^`freq x:100000?10
+0| 9907
+1| 9963
+2| 9938
+3|10063
+4|10018
+5|10007
+6|10037
+7|10036
+8| 9907
+9|10124
+ ^#'=x   / same result but slower
+0| 9907
+1| 9963
+2| 9938
+3|10063
+4|10018
+5|10007
+6|10037
+7|10036
+8| 9907
+9|10124
+</pre></div>
+
 
 
 </body>

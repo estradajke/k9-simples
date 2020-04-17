@@ -35,8 +35,8 @@ This document explains the usage of the k9 programming language in very simple t
 * More functions:: More functions
 * I/O:: I/O
 * Tables/kSQL:: Tables and kSQL
-* System;: System
-* ChX:: Chapter X
+* System:: System
+* Errors:: Errors
 @c * Index:: Complete index
 @end menu
 
@@ -232,16 +232,21 @@ The basic data types of the k9 language are numbers (interger and float), text (
 
 In additional to the basic data types, data can be put into lists (uniform and non-uniform), dictionaries (key-value pairs), and tables (transposed/flipped dictionaries).  Dictionaries and tables will be covered in a seperate chapter.
 
-Data types can be determined by using the @code{@@} function on values or lists of values.  In the case of lists @code{@@} returns the type of the list @code{`L} but the function can be modified to evalue each type @code{@@'} instead and return the type of each element in the list.
+Data types can be determined by using the @code{@@} function on values or lists of values.  In the case of non-uniform lists @code{@@} returns the type of the list @code{`L} but the function can be modified to evalue each type @code{@@'} instead and return the type of each element in the list.
 
 @example
- @@(3;3.1;"b";`a;12:01:02.123;2020.04.05)
+ @@1            / integer atom
+`i
+ @@1 2 3        / integer list
+`I
+ @@12:34:56.789 / time atom
+ @@(3;3.1;"b";`a;12:01:02.123;2020.04.05) / mixed list
 `L
  @@'(3;3.1;"b";`a;12:01:02.123;2020.04.05)
 `i`f`c`s`t`D
 @end example
 
-@section Numeric Data Types
+@section Numeric Data
 Numbers can be stored as integers and floats.
 @example
  @@3
@@ -271,8 +276,8 @@ You'll note that the string of 3 is represented as ,''3''.  The comma represents
 2024-01-13
 @end example
 
-@section Text Data Types
-Text data types come in characters, lists of characters (aka strings) and enumerated types.  Enumerated types are displayed as text but stored internally as integers.
+@section Text Data
+Text data come in characters, lists of characters (aka strings) and enumerated types.  Enumerated types are displayed as text but stored internally as integers.
 @example
  @@"b"
 `c
@@ -282,6 +287,38 @@ Text data types come in characters, lists of characters (aka strings) and enumer
 `s
  @@`blue`red
 `S
+@end example
+@section Temporal Data
+Temporal data can be expressed in time, date, or a combined date and time.
+@example
+ @@12:34:56.789             / time
+`t
+ @@2020.04.20               / date
+`D
+ @@2020.04.20T12:34:56.789  / date and time
+`T
+ .z.t                       / current time in GMT
+17:32:57.995
+ (t:.z.t)-17:30:00.000
+00:03:59.986
+ t
+17:33:59.986
+ `i$00:00:00.001            / numeric representation of 1ms
+1
+ `i$00:00:00.001            / numeric representation of 1s
+1000
+ `i$00:01:00.000            / numeric representation of 1m
+60000
+ `t$12345                   / convert milliseconds to time
+00:00:12.345
+ .z.D                       / current date in GMT
+2020-04-17
+ `i$.z.D                    / numeric representation of date
+-1351
+ `i$2024.01.01              / zero date
+0
+ `D$0                       / zero date
+2024.01.01
 @end example
 @section Extreme values
 Data types can not only represent in-range values but also null and out-of-range values.
@@ -1191,7 +1228,7 @@ c |3e+08
 @node More functions
 @chapter More functions
 This chapter includes functions that likely will be included elsewhere later.
-@anchor{parse}@section parse
+@anchor{parse}@section parse @result{} parse
 Parse allows one to see how a command is parsed into normal k9 form.  One can value the parse by using the value command, @xref{value}.
 @example
  :3+2
@@ -1250,6 +1287,32 @@ x|0
 y|2  
 @end example
 In the example above the parse output is reduced.  In order to see the elements in the output one could manually return the values in the list, eg. p[2;0 1 2].
+@anchor{freq}@section Histogram @result{} `freq
+Compute a histogram of a list.
+@example
+ ^`freq x:100000?10
+0| 9907
+1| 9963
+2| 9938
+3|10063
+4|10018
+5|10007
+6|10037
+7|10036
+8| 9907
+9|10124
+ ^#'=x   / same result but slower
+0| 9907
+1| 9963
+2| 9938
+3|10063
+4|10018
+5|10007
+6|10037
+7|10036
+8| 9907
+9|10124
+@end example
 @node I/O
 @chapter I/O
 Functions for input and ouput (I/O).
@@ -1543,64 +1606,36 @@ List time elapsed
  \t ^(`i$1e7)?`i$1e8
 360
 @end example
-@node ChX
-@chapter X
-To be sorted.
-@section Errors
+@node Errors
+@chapter Errors
 This section contains information on the various error messages in k9.
-@subsection error: parse
+@section error: parse
 Syntax is wrong.
 @example
  @{37 . "hello"
 error: parse
 @end example
-@subsection error: value
+@section error: value
 Undefined variable is used.
 @example
  g    / assuming 'g' has not be defining in this session
 error: value
 @end example
-@subsection error: class
+@section error: class
 @example
  3+`b
 @end example
-@subsection error: length
+@section error: length
 Operations on unequal length lists that require equal length.
 @example
  (1 2 3)+(4 5)
 error: length
 @end example
-@subsection error: domain
+@section error: domain
 Exhausted the number of input values
 @example
  -12?10   / only 10 unique value exist
 error: domain
-@end example
-@section @code{`freq} Histogram
-Compute a histogram of a list.
-@example
- ^`freq x:100000?10
-0| 9907
-1| 9963
-2| 9938
-3|10063
-4|10018
-5|10007
-6|10037
-7|10036
-8| 9907
-9|10124
- ^#'=x   / same result but slower
-0| 9907
-1| 9963
-2| 9938
-3|10063
-4|10018
-5|10007
-6|10037
-7|10036
-8| 9907
-9|10124
 @end example
 @c @node Index
 @c @unnumbered Index
