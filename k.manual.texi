@@ -777,7 +777,7 @@ Return the data type of x.
 `i`f`s`c`D`t
 @end example
 @anchor{apply}@section apply @result{} x.y
-Given list x return the value at list y.  The action of apply depends on the characteristics of y.
+Given list x return the value at list y.  The action of apply depends on the shape of y.
 @itemize
 @item Index returns the value(s) at x at each index y, i.e. x@@y@@0, x@@y@@1, ..., x@@y@@(n-1).
 @item Recursive index returns the value(s) at x[y@@0;y@@1].
@@ -785,9 +785,9 @@ Given list x return the value at list y.  The action of apply depends on the cha
 @end itemize
 
 @multitable @columnfractions .3 .1 .1 .2
-@headitem type @tab @@y @tab #y @tab example
-@item index @tab `I @tab 1 @tab ,2
-@item index @tab `I @tab 1 @tab ,1 3
+@headitem action @tab @@y @tab #y @tab example
+@item simple index @tab `I @tab 1 @tab ,2
+@item simple indices @tab `I @tab 1 @tab ,1 3
 @item recursive index @tab `L @tab 1 @tab 0 2
 @item recursive index over @tab `L @tab 2 @tab (0 2;1 3)
 @end multitable
@@ -797,7 +797,12 @@ Given list x return the value at list y.  The action of apply depends on the cha
 7
  `a`b`c.,2
 `c
-x:(`x00`x01;`x10`x11`x12;`x20;`x30`x31`x32);x 
+ x:(`x00`x01;`x10`x11`x12;`x20;`x30`x31`x32);x
+x00 x01    
+x10 x11 x12
+x20        
+x30 x31 x32
+
  x . ,1
 `x10`x11`x12
  x . ,0 1 3
@@ -1314,6 +1319,104 @@ x|0
 y|2  
 @end example
 In the example above the parse output is reduced.  In order to see the elements in the output one could manually return the values in the list, eg. p[2;0 1 2].
+@anchor{amend}@section amend @result{} @@[x;i;f[;y]]
+Replace the values in list x at indices i with f or f[y].
+
+@@[x;i;f] examples@*@*
+@example
+ x:(`x00`x01;`x10`x11`x12;`x20;`x30`x31`x32);x
+x00 x01    
+x10 x11 x12
+x20        
+x30 x31 x32
+
+ @@[x;,1;`newValue]
+x00 x01    
+newValue   
+x20        
+x30 x31 x32
+
+ @@[x;1 2;`newValue]
+x00 x01    
+newValue   
+newValue   
+x30 x31 x32
+
+@end example
+
+@@[x;i;f;y] examples@*@*
+@example
+ x:(0 1;10 11 12;20;30 31 32);x
+0 1     
+10 11 12
+20      
+30 31 32
+
+ @@[x;,1;*;100]
+0 1           
+1000 1100 1200
+20            
+30 31 32      
+
+ @@[x;1 2;*;100]
+0 1           
+1000 1100 1200
+2000          
+30 31 32      
+
+@end example
+@anchor{dmend}@section dmend @result{} .[x;i;f[;y]]
+
+.[x;i;f] examples@*@*
+@example
+ x:(`x00`x01;`x10`x11`x12;`x20;`x30`x31`x32);x
+x00 x01    
+x10 x11 x12
+x20        
+x30 x31 x32
+
+ .[x;1 2;`newValue]
+x00 x01         
+x10 x11 newValue
+x20             
+x30 x31 x32     
+
+@end example
+.[x;i;f;y] examples@*@*
+@example
+ x:(`x00`x01;`x10`x11`x12;`x20;`x30`x31`x32);x
+x00 x01    
+x10 x11 x12
+x20        
+x30 x31 x32
+
+ i:(1 3; 0 1);i
+1 3
+0 1
+
+ y:(`a`b;`c`d);y
+a b
+c d
+
+ .[x;i;:;y]
+x00 x01
+a b x12
+x20    
+c d x32
+
+ x:(0 1;10 11 12;20;30 31 32);x
+0 1     
+10 11 12
+20      
+30 31 32
+
+ .[x;i;*;-1]
+0 1       
+-10 -11 12
+20        
+-30 -31 32
+
+@end example
 @anchor{freq}@section Histogram @result{} `freq
 Compute a histogram of a list.
 @example

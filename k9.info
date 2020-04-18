@@ -900,17 +900,17 @@ Return the data type of x.
 =================
 
 Given list x return the value at list y.  The action of apply depends on
-the characteristics of y.
+the shape of y.
    * Index returns the value(s) at x at each index y, i.e.  x@y@0,
      x@y@1, ..., x@y@(n-1).
    * Recursive index returns the value(s) at x[y@0;y@1].
    * Recursive index over returns x[y[0;0];y[1]], x[y[0;1];y[1]], ...,
      x[y[0;n-1];y[1]].
 
-type                   @y      #y      example
+action                 @y      #y      example
 ------------------------------------------------------
-index                  'I      1       ,2
-index                  'I      1       ,1 3
+simple index           'I      1       ,2
+simple indices         'I      1       ,1 3
 recursive index        'L      1       0 2
 recursive index over   'L      2       (0 2;1 3)
 
@@ -918,7 +918,12 @@ recursive index over   'L      2       (0 2;1 3)
      7
       `a`b`c.,2
      `c
-     x:(`x00`x01;`x10`x11`x12;`x20;`x30`x31`x32);x
+      x:(`x00`x01;`x10`x11`x12;`x20;`x30`x31`x32);x
+     x00 x01
+     x10 x11 x12
+     x20
+     x30 x31 x32
+
       x . ,1
      `x10`x11`x12
       x . ,0 1 3
@@ -1483,7 +1488,106 @@ One can value the parse by using the value command, *Note value::.
 the elements in the output one could manually return the values in the
 list, eg.  p[2;0 1 2].
 
-7.2 Histogram => 'freq
+7.2 amend => @[x;i;f[;y]]
+=========================
+
+Replace the values in list x at indices i with f or f[y].
+
+   @[x;i;f] examples
+
+      x:(`x00`x01;`x10`x11`x12;`x20;`x30`x31`x32);x
+     x00 x01
+     x10 x11 x12
+     x20
+     x30 x31 x32
+
+      @[x;,1;`newValue]
+     x00 x01
+     newValue
+     x20
+     x30 x31 x32
+
+      @[x;1 2;`newValue]
+     x00 x01
+     newValue
+     newValue
+     x30 x31 x32
+
+
+   @[x;i;f;y] examples
+
+      x:(0 1;10 11 12;20;30 31 32);x
+     0 1
+     10 11 12
+     20
+     30 31 32
+
+      @[x;,1;*;100]
+     0 1
+     1000 1100 1200
+     20
+     30 31 32
+
+      @[x;1 2;*;100]
+     0 1
+     1000 1100 1200
+     2000
+     30 31 32
+
+
+7.3 dmend => .[x;i;f[;y]]
+=========================
+
+.[x;i;f] examples
+
+      x:(`x00`x01;`x10`x11`x12;`x20;`x30`x31`x32);x
+     x00 x01
+     x10 x11 x12
+     x20
+     x30 x31 x32
+
+      .[x;1 2;`newValue]
+     x00 x01
+     x10 x11 newValue
+     x20
+     x30 x31 x32
+
+   .[x;i;f;y] examples
+
+      x:(`x00`x01;`x10`x11`x12;`x20;`x30`x31`x32);x
+     x00 x01
+     x10 x11 x12
+     x20
+     x30 x31 x32
+
+      i:(1 3; 0 1);i
+     1 3
+     0 1
+
+      y:(`a`b;`c`d);y
+     a b
+     c d
+
+      .[x;i;:;y]
+     x00 x01
+     a b x12
+     x20
+     c d x32
+
+      x:(0 1;10 11 12;20;30 31 32);x
+     0 1
+     10 11 12
+     20
+     30 31 32
+
+      .[x;i;*;-1]
+     0 1
+     -10 -11 12
+     20
+     -30 -31 32
+
+
+7.4 Histogram => 'freq
 ======================
 
 Compute a histogram of a list.
@@ -1933,44 +2037,46 @@ Ref: unique20913
 Ref: at21150
 Ref: type21363
 Ref: apply21719
-Ref: value22653
-Node: Adverbs22971
-Ref: each23488
-Ref: bar23705
-Ref: scan23894
-Ref: left24201
-Ref: mod24561
-Ref: over24716
-Ref: right24892
-Ref: div25254
-Ref: eachprior25387
-Ref: vs25789
-Ref: sv25909
-Node: Lists26034
-Node: Dictionaries28471
-Node: More functions33014
-Ref: parse33209
-Ref: freq34486
-Node: I/O34891
-Ref: input format35022
-Ref: format36033
-Ref: write line36437
-Ref: read line36823
-Ref: write char37008
-Ref: read char37401
-Ref: write data37763
-Ref: conn/set37810
-Ref: http/get37854
-Node: Tables/kSQL37900
-Ref: Tables38076
-Ref: A_Tables38604
-Ref: S_Tables39053
-Ref: kSQL39253
-Node: System41171
-Ref: Display41326
-Ref: Variables41573
-Ref: Memory41674
-Ref: Timing41789
-Node: Errors41881
+Ref: value22701
+Node: Adverbs23019
+Ref: each23536
+Ref: bar23753
+Ref: scan23942
+Ref: left24249
+Ref: mod24609
+Ref: over24764
+Ref: right24940
+Ref: div25302
+Ref: eachprior25435
+Ref: vs25837
+Ref: sv25957
+Node: Lists26082
+Node: Dictionaries28519
+Node: More functions33062
+Ref: parse33257
+Ref: amend34534
+Ref: dmend35196
+Ref: freq35896
+Node: I/O36300
+Ref: input format36431
+Ref: format37442
+Ref: write line37846
+Ref: read line38232
+Ref: write char38417
+Ref: read char38810
+Ref: write data39172
+Ref: conn/set39219
+Ref: http/get39263
+Node: Tables/kSQL39309
+Ref: Tables39485
+Ref: A_Tables40013
+Ref: S_Tables40462
+Ref: kSQL40662
+Node: System42580
+Ref: Display42735
+Ref: Variables42982
+Ref: Memory43083
+Ref: Timing43198
+Node: Errors43290
 
 End Tag Table
