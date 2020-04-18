@@ -4,7 +4,8 @@
 @codequotebacktick on
 
 @copying
-This manual is for Shakti/k9.  
+This manual is for Shakti (k9) build 2020.04.14.@*
+@today{}
 
 Copyright @copyright{} 2020 John Estrada
 @end copying
@@ -22,7 +23,7 @@ Copyright @copyright{} 2020 John Estrada
 @c @ifnottex
 @node Top
 @top k9: Manual
-This document explains the usage of the k9 programming language in very simple terms and is intended for newbies only.
+This document explains the usage of the k9 programming language in very simple terms and is intended for newer developers.  k9 is a rapidly evolving platform therefore newer versions may have additional functionality not covered in this document.
 @c @end ifnottex
 
 @menu
@@ -77,7 +78,7 @@ Go to the Shakti website and click on download.  You'll need to enter a few piec
 @section rlwrap
 Although you only need the @file{k} binary to run k9 most will also install rlwrap, if not already installed, in order to get command history in a terminal window.  rlwrap is ``Readline wrapper: adds readline support to tools that lack it'' and allows one to arrow up to go through the command buffer generally a useful option to have.
 
-In order to start k9 you should either run @file{k} or @file{rlwrap k} to get started.  Here I will show both options but in generally one would run as needed.  In this document lines with input be shown with a leading space and output will be without.  In the examples below the user starts a terminal window in the directory with the @file{k} file.  Then the users enters @kbd{rlwrap ./k @key{RET}}.  k9 starts and displays the date of the build, (c), and shakti and then listens to user input.  In this example I have entered the command to exit k9, @kbd{//}.  Then I start k9 again without rlwrap and again exit the session.
+In order to start k9 you should either run @file{k} or @file{rlwrap k} to get started.  Here I will show both options but one should run as desired.  In this document lines with input be shown with a leading space and output will be without.  In the examples below the user starts a terminal window in the directory with the @file{k} file.  Then the users enters @kbd{rlwrap ./k @key{RET}}.  k9 starts and displays the date of the build, (c), and shakti and then listens to user input.  In this example I have entered the command to exit k9, @kbd{//}.  Then I start k9 again without rlwrap and again exit the session.
 
 @example
  rlwrap ./k
@@ -1624,6 +1625,7 @@ error: value
 @section error: class
 @example
  3+`b
+error: class
 @end example
 @section error: length
 Operations on unequal length lists that require equal length.

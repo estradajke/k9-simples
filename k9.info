@@ -1,6 +1,7 @@
 This is k9.info, produced by makeinfo version 5.2 from k.manual.texi.
 
-This manual is for Shakti/k9.
+This manual is for Shakti (k9) build 2020.04.14.
+April 18, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -11,7 +12,9 @@ k9: Manual
 **********
 
 This document explains the usage of the k9 programming language in very
-simple terms and is intended for newbies only.
+simple terms and is intended for newer developers.  k9 is a rapidly
+evolving platform therefore newer versions may have additional
+functionality not covered in this document.
 
 * Menu:
 
@@ -103,10 +106,10 @@ tools that lack it" and allows one to arrow up to go through the command
 buffer generally a useful option to have.
 
    In order to start k9 you should either run 'k' or 'rlwrap k' to get
-started.  Here I will show both options but in generally one would run
-as needed.  In this document lines with input be shown with a leading
-space and output will be without.  In the examples below the user starts
-a terminal window in the directory with the 'k' file.  Then the users
+started.  Here I will show both options but one should run as desired.
+In this document lines with input be shown with a leading space and
+output will be without.  In the examples below the user starts a
+terminal window in the directory with the 'k' file.  Then the users
 enters 'rlwrap ./k <RET>'.  k9 starts and displays the date of the
 build, (c), and shakti and then listens to user input.  In this example
 I have entered the command to exit k9, '//'.  Then I start k9 again
@@ -1846,6 +1849,7 @@ Undefined variable is used.
 =================
 
       3+`b
+     error: class
 
 11.4 error: length
 ==================
@@ -1864,83 +1868,83 @@ Exhausted the number of input values
 
 
 Tag Table:
-Node: Top138
-Node: Intro644
-Node: Nouns10148
-Node: Verbs13590
-Ref: set14619
-Ref: plus14830
-Ref: flip15221
-Ref: minus15471
-Ref: negate15576
-Ref: times15758
-Ref: first15889
-Ref: divide16084
-Ref: min16221
-Ref: where16377
-Ref: max16763
-Ref: reverse16902
-Ref: less17072
-Ref: asc17334
-Ref: equal17530
-Ref: group17654
-Ref: match17900
-Ref: not18093
-Ref: key18210
-Ref: enum18381
-Ref: cat18475
-Ref: enlist18594
-Ref: cut18733
-Ref: sort18923
-Ref: cast19100
-Ref: string19274
-Ref: take19382
-Ref: count19712
-Ref: drop19902
-Ref: floor20225
-Ref: find20316
-Ref: unique20763
-Ref: at21000
-Ref: type21213
-Ref: apply21569
-Ref: value21780
-Node: Adverbs22098
-Ref: each22615
-Ref: bar22832
-Ref: scan23021
-Ref: left23328
-Ref: mod23688
-Ref: over23843
-Ref: right24019
-Ref: div24381
-Ref: eachprior24514
-Ref: vs24916
-Ref: sv25036
-Node: Lists25161
-Node: Dictionaries27598
-Node: More functions32141
-Ref: parse32336
-Ref: freq33619
-Node: I/O34024
-Ref: input format34155
-Ref: format35166
-Ref: write line35570
-Ref: read line35956
-Ref: write char36141
-Ref: read char36534
-Ref: write data36896
-Ref: conn/set36943
-Ref: http/get36987
-Node: Tables/kSQL37033
-Ref: Tables37209
-Ref: A_Tables37737
-Ref: S_Tables38186
-Ref: kSQL38386
-Node: System40304
-Ref: Display40459
-Ref: Variables40706
-Ref: Memory40807
-Ref: Timing40922
-Node: Errors41014
+Node: Top172
+Node: Intro806
+Node: Nouns10298
+Node: Verbs13740
+Ref: set14769
+Ref: plus14980
+Ref: flip15371
+Ref: minus15621
+Ref: negate15726
+Ref: times15908
+Ref: first16039
+Ref: divide16234
+Ref: min16371
+Ref: where16527
+Ref: max16913
+Ref: reverse17052
+Ref: less17222
+Ref: asc17484
+Ref: equal17680
+Ref: group17804
+Ref: match18050
+Ref: not18243
+Ref: key18360
+Ref: enum18531
+Ref: cat18625
+Ref: enlist18744
+Ref: cut18883
+Ref: sort19073
+Ref: cast19250
+Ref: string19424
+Ref: take19532
+Ref: count19862
+Ref: drop20052
+Ref: floor20375
+Ref: find20466
+Ref: unique20913
+Ref: at21150
+Ref: type21363
+Ref: apply21719
+Ref: value21930
+Node: Adverbs22248
+Ref: each22765
+Ref: bar22982
+Ref: scan23171
+Ref: left23478
+Ref: mod23838
+Ref: over23993
+Ref: right24169
+Ref: div24531
+Ref: eachprior24664
+Ref: vs25066
+Ref: sv25186
+Node: Lists25311
+Node: Dictionaries27748
+Node: More functions32291
+Ref: parse32486
+Ref: freq33769
+Node: I/O34174
+Ref: input format34305
+Ref: format35316
+Ref: write line35720
+Ref: read line36106
+Ref: write char36291
+Ref: read char36684
+Ref: write data37046
+Ref: conn/set37093
+Ref: http/get37137
+Node: Tables/kSQL37183
+Ref: Tables37359
+Ref: A_Tables37887
+Ref: S_Tables38336
+Ref: kSQL38536
+Node: System40454
+Ref: Display40609
+Ref: Variables40856
+Ref: Memory40957
+Ref: Timing41072
+Node: Errors41164
 
 End Tag Table
