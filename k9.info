@@ -899,13 +899,39 @@ Return the data type of x.
 3.35 apply => x.y
 =================
 
-Given list x return the value at index list y.
+Given list x return the value at list y.  The action of apply depends on
+the characteristics of y.
+   * Index returns the value(s) at x at each index y, i.e.  x@y@0,
+     x@y@1, ..., x@y@(n-1).
+   * Recursive index returns the value(s) at x[y@0;y@1].
+   * Recursive index over returns x[y[0;0];y[1]], x[y[0;1];y[1]], ...,
+     x[y[0;n-1];y[1]].
+
+type                   @y      #y      example
+------------------------------------------------------
+index                  'I      1       ,2
+index                  'I      1       ,1 3
+recursive index        'L      1       0 2
+recursive index over   'L      2       (0 2;1 3)
+
       (3 4 7 12).,2
      7
       `a`b`c.,2
      `c
-      ((1 2);3;(4 5 6)).(0 1)   / value at index 0 and then index 1
-     2
+     x:(`x00`x01;`x10`x11`x12;`x20;`x30`x31`x32);x
+      x . ,1
+     `x10`x11`x12
+      x . ,0 1 3
+     x00 x01
+     x10 x11 x12
+     x30 x31 x32
+
+      x . 3 1
+     `x31
+      x . (1 3;0 1)
+     x10 x11
+     x30 x31
+
 
 3.36 value => .x
 ================
@@ -1396,8 +1422,8 @@ File: k9.info,  Node: More functions,  Next: I/O,  Prev: Dictionaries,  Up: Top
 This chapter includes functions that likely will be included elsewhere
 later.
 
-7.1 parse => parse
-==================
+7.1 parse => :x
+===============
 
 Parse allows one to see how a command is parsed into normal k9 form.
 One can value the parse by using the value command, *Note value::.
@@ -1907,44 +1933,44 @@ Ref: unique20913
 Ref: at21150
 Ref: type21363
 Ref: apply21719
-Ref: value21930
-Node: Adverbs22248
-Ref: each22765
-Ref: bar22982
-Ref: scan23171
-Ref: left23478
-Ref: mod23838
-Ref: over23993
-Ref: right24169
-Ref: div24531
-Ref: eachprior24664
-Ref: vs25066
-Ref: sv25186
-Node: Lists25311
-Node: Dictionaries27748
-Node: More functions32291
-Ref: parse32486
-Ref: freq33769
-Node: I/O34174
-Ref: input format34305
-Ref: format35316
-Ref: write line35720
-Ref: read line36106
-Ref: write char36291
-Ref: read char36684
-Ref: write data37046
-Ref: conn/set37093
-Ref: http/get37137
-Node: Tables/kSQL37183
-Ref: Tables37359
-Ref: A_Tables37887
-Ref: S_Tables38336
-Ref: kSQL38536
-Node: System40454
-Ref: Display40609
-Ref: Variables40856
-Ref: Memory40957
-Ref: Timing41072
-Node: Errors41164
+Ref: value22653
+Node: Adverbs22971
+Ref: each23488
+Ref: bar23705
+Ref: scan23894
+Ref: left24201
+Ref: mod24561
+Ref: over24716
+Ref: right24892
+Ref: div25254
+Ref: eachprior25387
+Ref: vs25789
+Ref: sv25909
+Node: Lists26034
+Node: Dictionaries28471
+Node: More functions33014
+Ref: parse33209
+Ref: freq34486
+Node: I/O34891
+Ref: input format35022
+Ref: format36033
+Ref: write line36437
+Ref: read line36823
+Ref: write char37008
+Ref: read char37401
+Ref: write data37763
+Ref: conn/set37810
+Ref: http/get37854
+Node: Tables/kSQL37900
+Ref: Tables38076
+Ref: A_Tables38604
+Ref: S_Tables39053
+Ref: kSQL39253
+Node: System41171
+Ref: Display41326
+Ref: Variables41573
+Ref: Memory41674
+Ref: Timing41789
+Node: Errors41881
 
 End Tag Table
