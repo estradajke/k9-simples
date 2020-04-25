@@ -462,7 +462,7 @@ Mutliply x and y.
 4 10 18
 @end example
 @anchor{first}@section first @result{} *x
-Return the first value of x.
+Return the first value of x.  Last can either be determine by taking the first element of the reverse list (*|`a`b`c) or using last syntax ((:/)`a`b`c).
 @example
  *1 2 3
 1
@@ -482,7 +482,7 @@ Divide x by y.
 3f
 @end example
 @anchor{min}@section min @result{} x&y
-The smaller of x and y.
+The smaller of x and y.  One can use the over adverb to determine the min value in a list.
 @example
  3&2
 2
@@ -492,6 +492,8 @@ The smaller of x and y.
 010000
  `a&`b
 `a
+ &/ 3 2 10 -200 47
+-200
 @end example
 @anchor{where}@section where @result{} &x
 Given a list of integer values, eg. x_0, x_1, ..., x_(n-1), generate x_0 values of 0, x_1 values of 1, ..., and x_(n-1) values of n-1.
@@ -509,7 +511,7 @@ Given a list of integer values, eg. x_0, x_1, ..., x_(n-1), generate x_0 values 
 35.6 101.101
 @end example
 @anchor{max}@section max @result{} x|y
-The greater of x and y.
+The greater of x and y.  Max of a list can be determine by use of the adverb over.
 @example
  3|2
 3
@@ -517,6 +519,8 @@ The greater of x and y.
 4 5 6
  101101b|000111b
 101111b
+ |/12 2 3 10 / use over to determine the max of a list
+12
 @end example
 @anchor{reverse}@section reverse @result{} |x
 Reverse the list x.
@@ -847,7 +851,7 @@ Adverb
 /  @xref{over},@xref{right}, @xref{div,i div}.
 \  @xref{scan},@xref{left},  @xref{mod,i mod}.
 ': @xref{eachprior}.
-/: [n]over             @xref{sv,i sv}.
+/: @xref{[n]over}.             @xref{sv,i sv}.
 \: [n]scan             @xref{vs,i vs}.
 @end example
 
@@ -952,6 +956,18 @@ y4 y3
 1 1.019 1.031403 0.9733587 1.037146
  100%':100 101.9 105.1 102.3 106.1    / using infix notation
 1 1.019 1.031403 0.9733587 1.037146
+@end example
+@anchor{[n]over}@section [n]over @result{} x f/:y
+Compute f with initial value x and over list y.  f[i] = f[f[i-1];y[i]] except for the case of f[0]=f[x;y[0]]
+@example
+ f:@{(0.1*x)+0.9*y@}      / ema
+ 0. f\:1+!3
+0.9 1.89 2.889
+ f:@{(`$,/$x),(`$,/$y)@} / join and collaspe
+ `x f\: `y0`y1`y2
+x     y0
+xy0   y1
+xy0y1 y2
 @end example
 @anchor{vs}@section vs @result{} x\:y
 Convert y (base 10) into base x.
@@ -1260,6 +1276,20 @@ c |3e+08
 @node More functions
 @chapter More functions
 This chapter includes functions that likely will be included elsewhere later.
+@anchor{in}@section in @result{} x'y
+Determine if y is in list x.
+@example
+ `a`b`d`e'`c
+0b
+ `a`b`d`e'`b
+1b
+ (!10)'2
+1b
+ (!10)'2. / will error as type is different
+(!10)'2.
+^
+error: type
+@end example
 @anchor{parse}@section parse @result{} :x
 Parse allows one to see how a command is parsed into normal k9 form.  One can value the parse by using the value command, @xref{value}.
 @example

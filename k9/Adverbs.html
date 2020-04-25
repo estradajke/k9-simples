@@ -2,7 +2,7 @@
 <html>
 <!-- This manual is for Shakti (k9) build 2020.04.14.
 
-April 18, 2020
+April 25, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
@@ -69,7 +69,7 @@ Next: <a href="Lists.html#Lists" accesskey="n" rel="next">Lists</a>, Previous: <
 /  See <a href="#over">over</a>,See <a href="#right">right</a>, See <a href="#div">i div</a>.
 \  See <a href="#scan">scan</a>,See <a href="#left">left</a>,  See <a href="#mod">i mod</a>.
 ': See <a href="#eachprior">eachprior</a>.
-/: [n]over             See <a href="#sv">i sv</a>.
+/: See <a href="#g_t_005bn_005dover">[n]over</a>.             See <a href="#sv">i sv</a>.
 \: [n]scan             See <a href="#vs">i vs</a>.
 </pre></div>
 
@@ -184,8 +184,21 @@ y4 y3
  100%':100 101.9 105.1 102.3 106.1    / using infix notation
 1 1.019 1.031403 0.9733587 1.037146
 </pre></div>
+<a name="g_t_005bn_005dover"></a><a name="g_t_005bn_005dover-_21d2-x-f_002f_003ay"></a>
+<h3 class="section">4.10 [n]over &rArr; x f/:y</h3>
+<p>Compute f with initial value x and over list y.  f[i] = f[f[i-1];y[i]] except for the case of f[0]=f[x;y[0]]
+</p><div class="example">
+<pre class="example"> f:{(0.1*x)+0.9*y}      / ema
+ 0. f\:1+!3
+0.9 1.89 2.889
+ f:{(`$,/$x),(`$,/$y)} / join and collaspe
+ `x f\: `y0`y1`y2
+x     y0
+xy0   y1
+xy0y1 y2
+</pre></div>
 <a name="vs"></a><a name="vs-_21d2-x_005c_003ay"></a>
-<h3 class="section">4.10 vs &rArr; x\:y</h3>
+<h3 class="section">4.11 vs &rArr; x\:y</h3>
 <p>Convert y (base 10) into base x.
 </p><div class="example">
 <pre class="example"> 2\:129
@@ -194,7 +207,7 @@ y4 y3
 15 15
 </pre></div>
 <a name="sv"></a><a name="sv-_21d2-x_002f_003ay"></a>
-<h3 class="section">4.11 sv &rArr; x/:y</h3>
+<h3 class="section">4.12 sv &rArr; x/:y</h3>
 <p>Convert list y (base x) into base 10.
 </p><div class="example">
 <pre class="example"> 2/:10101b

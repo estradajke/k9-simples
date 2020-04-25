@@ -2,7 +2,7 @@
 <html>
 <!-- This manual is for Shakti (k9) build 2020.04.14.
 
-April 18, 2020
+April 25, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
@@ -198,7 +198,7 @@ b|-4 -5 -6
 </pre></div>
 <a name="first"></a><a name="first-_21d2-_002ax"></a>
 <h3 class="section">3.7 first &rArr; *x</h3>
-<p>Return the first value of x.
+<p>Return the first value of x.  Last can either be determine by taking the first element of the reverse list (*|&lsquo;a&lsquo;b&lsquo;c) or using last syntax ((:/)&lsquo;a&lsquo;b&lsquo;c).
 </p><div class="example">
 <pre class="example"> *1 2 3
 1
@@ -220,7 +220,7 @@ b|-4 -5 -6
 </pre></div>
 <a name="min"></a><a name="min-_21d2-x_0026y"></a>
 <h3 class="section">3.9 min &rArr; x&amp;y</h3>
-<p>The smaller of x and y.
+<p>The smaller of x and y.  One can use the over adverb to determine the min value in a list.
 </p><div class="example">
 <pre class="example"> 3&amp;2
 2
@@ -230,6 +230,8 @@ b|-4 -5 -6
 010000
  `a&amp;`b
 `a
+ &amp;/ 3 2 10 -200 47
+-200
 </pre></div>
 <a name="where"></a><a name="where-_21d2-_0026x"></a>
 <h3 class="section">3.10 where &rArr; &amp;x</h3>
@@ -249,7 +251,7 @@ b|-4 -5 -6
 </pre></div>
 <a name="max"></a><a name="max-_21d2-x_007cy"></a>
 <h3 class="section">3.11 max &rArr; x|y</h3>
-<p>The greater of x and y.
+<p>The greater of x and y.  Max of a list can be determine by use of the adverb over.
 </p><div class="example">
 <pre class="example"> 3|2
 3
@@ -257,6 +259,8 @@ b|-4 -5 -6
 4 5 6
  101101b|000111b
 101111b
+ |/12 2 3 10 / use over to determine the max of a list
+12
 </pre></div>
 <a name="reverse"></a><a name="reverse-_21d2-_007cx"></a>
 <h3 class="section">3.12 reverse &rArr; |x</h3>

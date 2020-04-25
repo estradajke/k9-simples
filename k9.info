@@ -1,7 +1,7 @@
 This is k9.info, produced by makeinfo version 5.2 from k.manual.texi.
 
 This manual is for Shakti (k9) build 2020.04.14.
-April 18, 2020
+April 25, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -549,7 +549,9 @@ Mutliply x and y.
 3.7 first => *x
 ===============
 
-Return the first value of x.
+Return the first value of x.  Last can either be determine by taking the
+first element of the reverse list (*|'a'b'c) or using last syntax
+((:/)'a'b'c).
       *1 2 3
      1
       *((1 2);(3 4);(5 6))
@@ -571,7 +573,8 @@ Divide x by y.
 3.9 min => x&y
 ==============
 
-The smaller of x and y.
+The smaller of x and y.  One can use the over adverb to determine the
+min value in a list.
       3&2
      2
       1 2 3&4 5 6
@@ -580,6 +583,8 @@ The smaller of x and y.
      010000
       `a&`b
      `a
+      &/ 3 2 10 -200 47
+     -200
 
 3.10 where => &x
 ================
@@ -601,13 +606,16 @@ x_0 values of 0, x_1 values of 1, ..., and x_(n-1) values of n-1.
 3.11 max => x|y
 ===============
 
-The greater of x and y.
+The greater of x and y.  Max of a list can be determine by use of the
+adverb over.
       3|2
      3
       1 2 3|4 5 6
      4 5 6
       101101b|000111b
      101111b
+      |/12 2 3 10 / use over to determine the max of a list
+     12
 
 3.12 reverse => |x
 ==================
@@ -971,7 +979,7 @@ iteratively over lists.
      /  *Note over::,*Note right::, *Note i div: div.
      \  *Note scan::,*Note left::,  *Note i mod: mod.
      ': *Note eachprior::.
-     /: [n]over             *Note i sv: sv.
+     /: *Note [n]over::.             *Note i sv: sv.
      \: [n]scan             *Note i vs: vs.
 
 4.1 each => f'x
@@ -1085,7 +1093,21 @@ Apply f[y_n;y_{n-1}].  f_0 is a special case of f[y_0;x].
       100%':100 101.9 105.1 102.3 106.1    / using infix notation
      1 1.019 1.031403 0.9733587 1.037146
 
-4.10 vs => x\:y
+4.10 [n]over => x f/:y
+======================
+
+Compute f with initial value x and over list y.  f[i] = f[f[i-1];y[i]]
+except for the case of f[0]=f[x;y[0]]
+      f:{(0.1*x)+0.9*y}      / ema
+      0. f\:1+!3
+     0.9 1.89 2.889
+      f:{(`$,/$x),(`$,/$y)} / join and collaspe
+      `x f\: `y0`y1`y2
+     x     y0
+     xy0   y1
+     xy0y1 y2
+
+4.11 vs => x\:y
 ===============
 
 Convert y (base 10) into base x.
@@ -1094,7 +1116,7 @@ Convert y (base 10) into base x.
       16\:255
      15 15
 
-4.11 sv => x/:y
+4.12 sv => x/:y
 ===============
 
 Convert list y (base x) into base 10.
@@ -1427,7 +1449,22 @@ File: k9.info,  Node: More functions,  Next: I/O,  Prev: Dictionaries,  Up: Top
 This chapter includes functions that likely will be included elsewhere
 later.
 
-7.1 parse => :x
+7.1 in => x'y
+=============
+
+Determine if y is in list x.
+      `a`b`d`e'`c
+     0b
+      `a`b`d`e'`b
+     1b
+      (!10)'2
+     1b
+      (!10)'2. / will error as type is different
+     (!10)'2.
+     ^
+     error: type
+
+7.2 parse => :x
 ===============
 
 Parse allows one to see how a command is parsed into normal k9 form.
@@ -1488,7 +1525,7 @@ One can value the parse by using the value command, *Note value::.
 the elements in the output one could manually return the values in the
 list, eg.  p[2;0 1 2].
 
-7.2 amend => @[x;i;f[;y]]
+7.3 amend => @[x;i;f[;y]]
 =========================
 
 Replace the values in list x at indices i with f or f[y].
@@ -1535,7 +1572,7 @@ Replace the values in list x at indices i with f or f[y].
      30 31 32
 
 
-7.3 dmend => .[x;i;f[;y]]
+7.4 dmend => .[x;i;f[;y]]
 =========================
 
 .[x;i;f] examples
@@ -1587,7 +1624,7 @@ Replace the values in list x at indices i with f or f[y].
      -30 -31 32
 
 
-7.4 Histogram => 'freq
+7.5 Histogram => 'freq
 ======================
 
 Compute a histogram of a list.
@@ -2009,74 +2046,76 @@ Ref: minus15621
 Ref: negate15726
 Ref: times15908
 Ref: first16039
-Ref: divide16234
-Ref: min16371
-Ref: where16527
-Ref: max16913
-Ref: reverse17052
-Ref: less17222
-Ref: asc17484
-Ref: equal17680
-Ref: group17804
-Ref: match18050
-Ref: not18243
-Ref: key18360
-Ref: enum18531
-Ref: cat18625
-Ref: enlist18744
-Ref: cut18883
-Ref: sort19073
-Ref: cast19250
-Ref: string19424
-Ref: take19532
-Ref: count19862
-Ref: drop20052
-Ref: floor20375
-Ref: find20466
-Ref: unique20913
-Ref: at21150
-Ref: type21363
-Ref: apply21719
-Ref: value22701
-Node: Adverbs23019
-Ref: each23536
-Ref: bar23753
-Ref: scan23942
-Ref: left24249
-Ref: mod24609
-Ref: over24764
-Ref: right24940
-Ref: div25302
-Ref: eachprior25435
-Ref: vs25837
-Ref: sv25957
-Node: Lists26082
-Node: Dictionaries28519
-Node: More functions33062
-Ref: parse33257
-Ref: amend34534
-Ref: dmend35196
-Ref: freq35896
-Node: I/O36300
-Ref: input format36431
-Ref: format37442
-Ref: write line37846
-Ref: read line38232
-Ref: write char38417
-Ref: read char38810
-Ref: write data39172
-Ref: conn/set39219
-Ref: http/get39263
-Node: Tables/kSQL39309
-Ref: Tables39485
-Ref: A_Tables40013
-Ref: S_Tables40462
-Ref: kSQL40662
-Node: System42580
-Ref: Display42735
-Ref: Variables42982
-Ref: Memory43083
-Ref: Timing43198
-Node: Errors43290
+Ref: divide16358
+Ref: min16495
+Ref: where16752
+Ref: max17138
+Ref: reverse17404
+Ref: less17574
+Ref: asc17836
+Ref: equal18032
+Ref: group18156
+Ref: match18402
+Ref: not18595
+Ref: key18712
+Ref: enum18883
+Ref: cat18977
+Ref: enlist19096
+Ref: cut19235
+Ref: sort19425
+Ref: cast19602
+Ref: string19776
+Ref: take19884
+Ref: count20214
+Ref: drop20404
+Ref: floor20727
+Ref: find20818
+Ref: unique21265
+Ref: at21502
+Ref: type21715
+Ref: apply22071
+Ref: value23053
+Node: Adverbs23371
+Ref: each23897
+Ref: bar24114
+Ref: scan24303
+Ref: left24610
+Ref: mod24970
+Ref: over25125
+Ref: right25301
+Ref: div25663
+Ref: eachprior25796
+Ref: [n]over26198
+Ref: vs26540
+Ref: sv26660
+Node: Lists26785
+Node: Dictionaries29222
+Node: More functions33765
+Ref: in33960
+Ref: parse34181
+Ref: amend35457
+Ref: dmend36119
+Ref: freq36819
+Node: I/O37223
+Ref: input format37354
+Ref: format38365
+Ref: write line38769
+Ref: read line39155
+Ref: write char39340
+Ref: read char39733
+Ref: write data40095
+Ref: conn/set40142
+Ref: http/get40186
+Node: Tables/kSQL40232
+Ref: Tables40408
+Ref: A_Tables40936
+Ref: S_Tables41385
+Ref: kSQL41585
+Node: System43503
+Ref: Display43658
+Ref: Variables43905
+Ref: Memory44006
+Ref: Timing44121
+Node: Errors44213
 
 End Tag Table
