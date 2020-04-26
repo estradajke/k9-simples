@@ -184,7 +184,7 @@ y4 y3
  100%':100 101.9 105.1 102.3 106.1    / using infix notation
 1 1.019 1.031403 0.9733587 1.037146
 </pre></div>
-<a name="g_t_005bn_005dover"></a><a name="g_t_005bn_005dscan-_21d2-x-f_005c_003ay"></a>
+<a name="g_t_005bn_005dscan"></a><a name="g_t_005bn_005dscan-_21d2-x-f_005c_003ay"></a>
 <h3 class="section">4.10 [n]scan &rArr; x f\:y</h3>
 <p>Compute f with initial value x and over list y.  f[i] = f[f[i-1];y[i]] except for the case of f[0]=f[x;y[0]]
 </p><div class="example">
@@ -197,15 +197,21 @@ x     y0
 xy0   y1
 xy0y1 y2
 </pre></div>
-<a name="converge"></a><a name="converge-_21d2-f_005c_003ax"></a>
-<h3 class="section">4.11 converge &rArr; f\:x</h3>
+<a name="converge-scan"></a><a name="converge-scan-_21d2-f_005c_003ax"></a>
+<h3 class="section">4.11 converge scan &rArr; f\:x</h3>
 <p>Compute f[x], f[f[x]] and continue to call f[previous result] until the output converges to a stationary value or the output produces x.
 </p><div class="example">
 <pre class="example">  {x*x}\:.99
 0.99 0.9801 0.960596 0.9227447 0.8514578 0.7249803 0.5255965 0.2762517 0.07631498 0.005823977 3.391871e-05 1.150479e-09 1.323601e-18 1.751919e-36 3.069222e-72 9.420123e-144 8.873872e-287 0
 </pre></div>
-<a name="vs"></a><a name="vs-_21d2-x_005c_003ay"></a>
-<h3 class="section">4.12 vs &rArr; x\:y</h3>
+<a name="g_t_005bn_005dover"></a><a name="g_t_005bn_005dover-_21d2-x-f_002f_003ay"></a>
+<h3 class="section">4.12 [n]over &rArr; x f/:y</h3>
+<p>Same as [n]scan but only return last value.
+<a name="converge-over"></a></p><a name="converage-over-_21d2-f_002f_003ax"></a>
+<h3 class="section">4.13 converage over &rArr; f/:x</h3>
+<p>Same as converge scan but only return last value.
+<a name="vs"></a></p><a name="vs-_21d2-x_005c_003ay"></a>
+<h3 class="section">4.14 vs &rArr; x\:y</h3>
 <p>Convert y (base 10) into base x.
 </p><div class="example">
 <pre class="example"> 2\:129
@@ -214,7 +220,7 @@ xy0y1 y2
 15 15
 </pre></div>
 <a name="sv"></a><a name="sv-_21d2-x_002f_003ay"></a>
-<h3 class="section">4.13 sv &rArr; x/:y</h3>
+<h3 class="section">4.15 sv &rArr; x/:y</h3>
 <p>Convert list y (base x) into base 10.
 </p><div class="example">
 <pre class="example"> 2/:10101b

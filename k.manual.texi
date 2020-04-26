@@ -957,7 +957,7 @@ y4 y3
  100%':100 101.9 105.1 102.3 106.1    / using infix notation
 1 1.019 1.031403 0.9733587 1.037146
 @end example
-@anchor{[n]over}@section [n]scan @result{} x f\:y
+@anchor{[n]scan}@section [n]scan @result{} x f\:y
 Compute f with initial value x and over list y.  f[i] = f[f[i-1];y[i]] except for the case of f[0]=f[x;y[0]]
 @example
  f:@{(0.1*x)+0.9*y@}      / ema
@@ -969,12 +969,16 @@ x     y0
 xy0   y1
 xy0y1 y2
 @end example
-@anchor{converge}@section converge @result{} f\:x
+@anchor{converge scan}@section converge scan @result{} f\:x
 Compute f[x], f[f[x]] and continue to call f[previous result] until the output converges to a stationary value or the output produces x.
 @example
   @{x*x@}\:.99
 0.99 0.9801 0.960596 0.9227447 0.8514578 0.7249803 0.5255965 0.2762517 0.07631498 0.005823977 3.391871e-05 1.150479e-09 1.323601e-18 1.751919e-36 3.069222e-72 9.420123e-144 8.873872e-287 0
 @end example
+@anchor{[n]over}@section [n]over @result{} x f/:y
+Same as [n]scan but only return last value.
+@anchor{converge over}@section converage over @result{} f/:x
+Same as converge scan but only return last value.
 @anchor{vs}@section vs @result{} x\:y
 Convert y (base 10) into base x.
 @example
@@ -1282,6 +1286,14 @@ c |3e+08
 @node More functions
 @chapter More functions
 This chapter includes functions that likely will be included elsewhere later.
+@anchor{cond}@section cond @result{} $[x;y;z]
+If x then y else z.
+@example
+ $[3>2;`a;`b]
+`a
+ $[2>3;`a;`b]
+`b
+@end example
 @anchor{in}@section in @result{} x'y
 Determine if y is in list x.
 @example

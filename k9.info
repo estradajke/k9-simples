@@ -1107,15 +1107,25 @@ except for the case of f[0]=f[x;y[0]]
      xy0   y1
      xy0y1 y2
 
-4.11 converge => f\:x
-=====================
+4.11 converge scan => f\:x
+==========================
 
 Compute f[x], f[f[x]] and continue to call f[previous result] until the
 output converges to a stationary value or the output produces x.
        {x*x}\:.99
      0.99 0.9801 0.960596 0.9227447 0.8514578 0.7249803 0.5255965 0.2762517 0.07631498 0.005823977 3.391871e-05 1.150479e-09 1.323601e-18 1.751919e-36 3.069222e-72 9.420123e-144 8.873872e-287 0
 
-4.12 vs => x\:y
+4.12 [n]over => x f/:y
+======================
+
+Same as [n]scan but only return last value.
+
+4.13 converage over => f/:x
+===========================
+
+Same as converge scan but only return last value.
+
+4.14 vs => x\:y
 ===============
 
 Convert y (base 10) into base x.
@@ -1124,7 +1134,7 @@ Convert y (base 10) into base x.
       16\:255
      15 15
 
-4.13 sv => x/:y
+4.15 sv => x/:y
 ===============
 
 Convert list y (base x) into base 10.
@@ -1457,7 +1467,16 @@ File: k9.info,  Node: More functions,  Next: I/O,  Prev: Dictionaries,  Up: Top
 This chapter includes functions that likely will be included elsewhere
 later.
 
-7.1 in => x'y
+7.1 cond => $[x;y;z]
+====================
+
+If x then y else z.
+      $[3>2;`a;`b]
+     `a
+      $[2>3;`a;`b]
+     `b
+
+7.2 in => x'y
 =============
 
 Determine if y is in list x.
@@ -1472,7 +1491,7 @@ Determine if y is in list x.
      ^
      error: type
 
-7.2 parse => :x
+7.3 parse => :x
 ===============
 
 Parse allows one to see how a command is parsed into normal k9 form.
@@ -1533,7 +1552,7 @@ One can value the parse by using the value command, *Note value::.
 the elements in the output one could manually return the values in the
 list, eg.  p[2;0 1 2].
 
-7.3 amend => @[x;i;f[;y]]
+7.4 amend => @[x;i;f[;y]]
 =========================
 
 Replace the values in list x at indices i with f or f[y].
@@ -1580,7 +1599,7 @@ Replace the values in list x at indices i with f or f[y].
      30 31 32
 
 
-7.4 dmend => .[x;i;f[;y]]
+7.5 dmend => .[x;i;f[;y]]
 =========================
 
 .[x;i;f] examples
@@ -1632,7 +1651,7 @@ Replace the values in list x at indices i with f or f[y].
      -30 -31 32
 
 
-7.5 Histogram => 'freq
+7.6 Histogram => 'freq
 ======================
 
 Compute a histogram of a list.
@@ -2093,38 +2112,41 @@ Ref: over25125
 Ref: right25301
 Ref: div25663
 Ref: eachprior25796
-Ref: [n]over26198
-Ref: converge26540
-Ref: vs26935
-Ref: sv27055
-Node: Lists27180
-Node: Dictionaries29617
-Node: More functions34160
-Ref: in34355
-Ref: parse34576
-Ref: amend35852
-Ref: dmend36514
-Ref: freq37214
-Node: I/O37618
-Ref: input format37749
-Ref: format38760
-Ref: write line39164
-Ref: read line39550
-Ref: write char39735
-Ref: read char40128
-Ref: write data40490
-Ref: conn/set40537
-Ref: http/get40581
-Node: Tables/kSQL40627
-Ref: Tables40803
-Ref: A_Tables41331
-Ref: S_Tables41780
-Ref: kSQL41980
-Node: System43898
-Ref: Display44053
-Ref: Variables44300
-Ref: Memory44401
-Ref: Timing44516
-Node: Errors44608
+Ref: [n]scan26198
+Ref: converge scan26540
+Ref: [n]over26945
+Ref: converge over27036
+Ref: vs27144
+Ref: sv27265
+Node: Lists27390
+Node: Dictionaries29827
+Node: More functions34370
+Ref: cond34565
+Ref: in34684
+Ref: parse34904
+Ref: amend36180
+Ref: dmend36842
+Ref: freq37542
+Node: I/O37946
+Ref: input format38077
+Ref: format39088
+Ref: write line39492
+Ref: read line39878
+Ref: write char40063
+Ref: read char40456
+Ref: write data40818
+Ref: conn/set40865
+Ref: http/get40909
+Node: Tables/kSQL40955
+Ref: Tables41131
+Ref: A_Tables41659
+Ref: S_Tables42108
+Ref: kSQL42308
+Node: System44226
+Ref: Display44381
+Ref: Variables44628
+Ref: Memory44729
+Ref: Timing44844
+Node: Errors44936
 
 End Tag Table
