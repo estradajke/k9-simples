@@ -302,6 +302,17 @@ time).  It is common to have functions operate on multiple data types.
 (transposed/flipped dictionaries).  Dictionaries and tables will be
 covered in a seperate chapter.
 
+   The set of k9 data, aka nouns, are as follows.
+
+         Atom             Type
+     *Note bool::,  110b         b
+     *Note int::,   2 3 4        i
+     *Note float::, 2e3 0n 0w    f
+     *Note date::,  2024.01.01   D
+     *Note time::,  12:34:56.789 t
+     *Note char::,  "ab "        c
+     *Note sym::,   `a`b`        s
+
    Data types can be determined by using the '@' function on values or
 lists of values.  In the case of non-uniform lists '@' returns the type
 of the list '`L' but the function can be modified to evalue each type
@@ -317,65 +328,87 @@ of the list '`L' but the function can be modified to evalue each type
       @'(3;3.1;"b";`a;12:01:02.123;2020.04.05)
      `i`f`c`s`t`D
 
-2.1 Numeric Data
+2.1 bool => Boolean b
+=====================
+
+Booleans have two possible values 0 and 1 and have a 'b' to avoid
+confusion with integers, eg.  0b or 1b.
+
+      0b
+     0b
+      1b
+     1b
+      10101010b
+     10101010b
+
+2.2 Numeric Data
 ================
 
 Numbers can be stored as integers and floats.
+
+2.2.1 int => Integer i
+----------------------
+
+Integers
+
+      3
+     3
+      3+1
+     4
       @3
      `i
-      @3.1
-     `f
-      a:3;b:3.1;
+      a:3;
       @a
      `i
-      @b
+      3%1   / result will be float even though inputs are int
+     3f
+
+2.2.2 float => Float f
+----------------------
+
+Float
+      3.1
+     3.1
+      3.1+1.2
+     4.3
+      3.1-1.1   / looks like an int but really is a float
+     2
+      @3.1-1.1
+     1f
+      @3.1
      `f
-   Numeric data can be recast as other types using the '$' command.  The
-'$' is an overloaded function and can either convert to string or cast
-to type if provided.  The first usage take only a single argurment, the
-item to be converted to a string, while the second usage takes two
-arguments, the items to be converted and also the type to convert into.
-
-   You'll note that the string of 3 is represented as ,"3".  The comma
-represents the string is a list of length one and not a single element.
-
-      $3     / convert to string
-     ,"3"
-      $12    / convert to string
-     "12"
-      `f$12  / convert to float
-     12f
-      `t$12  / convert to time
-     00:00:00.012
-      `d$12  / convert to date
-     2024-01-13
-
-2.2 Text Data
-=============
-
-Text data come in characters, lists of characters (aka strings) and
-enumerated types.  Enumerated types are displayed as text but stored
-internally as integers.
-      @"b"
-     `c
-      @"bd"
-     `C
-      @`blue
-     `s
-      @`blue`red
-     `S
+      a:3.1;
+      @a
+     `f
 
 2.3 Temporal Data
 =================
 
 Temporal data can be expressed in time, date, or a combined date and
 time.
-      @12:34:56.789             / time
-     `t
+
+2.3.1 date => Date D
+--------------------
+
+Dates are in yyyy.mm.dd format and stored internally as integers.
       @2020.04.20               / date
      `D
-      @2020.04.20T12:34:56.789  / date and time
-     `T
+      .z.D                       / current date in GMT
+     2020-04-17
+      `i$.z.D                    / numeric representation of date
+     -1351
+      `i$2024.01.01              / zero date
+     0
+      `D$0                       / zero date
+     2024.01.01
+
+2.3.2 time => Time t
+--------------------
+
+Times are stored in hh:mm:ss.123 format and stored internally as
+integers.
+      @12:34:56.789             / time
+     `t
       .z.t                       / current time in GMT
      17:32:57.995
       (t:.z.t)-17:30:00.000
@@ -390,16 +423,44 @@ time.
      60000
       `t$12345                   / convert milliseconds to time
      00:00:12.345
-      .z.D                       / current date in GMT
-     2020-04-17
-      `i$.z.D                    / numeric representation of date
-     -1351
-      `i$2024.01.01              / zero date
-     0
-      `D$0                       / zero date
-     2024.01.01
 
-2.4 Extreme values
+2.3.3 datetime => Datetime T
+----------------------------
+
+Dates and times can be combined as 2020.04.20T12:34:56.789.
+
+      @2020.04.20T12:34:56.789  / date and time
+     `T
+
+2.4 Text Data
+=============
+
+Text data come in characters, lists of characters (aka strings) and
+enumerated types.  Enumerated types are displayed as text but stored
+internally as integers.
+
+2.4.1 char => Character c
+-------------------------
+
+Characters are stored as their ANSI value and can be seen by conversion
+to integers.  Character lists are equivalent to strings.
+
+      @"b"
+     `c
+      @"bd"
+     `C
+
+2.4.2 sym => Symbol s
+---------------------
+
+Symbols are enumerate type shown as a text string but stored internally
+as a integer value.
+      @`blue
+     `s
+      @`blue`red
+     `S
+
+2.5 Extreme values
 ==================
 
 Data types can not only represent in-range values but also null and
@@ -1120,8 +1181,8 @@ output converges to a stationary value or the output produces x.
 
 Same as [n]scan but only return last value.
 
-4.13 converage over => f/:x
-===========================
+4.13 converge over => f/:x
+==========================
 
 Same as converge scan but only return last value.
 
@@ -2025,39 +2086,57 @@ File: k9.info,  Node: Errors,  Prev: System,  Up: Top
 
 This section contains information on the various error messages in k9.
 
-11.1 error: parse
+11.1 error: class
 =================
 
-Syntax is wrong.
-      {37 . "hello"
-     error: parse
-
-11.2 error: value
-=================
-
-Undefined variable is used.
-      g    / assuming 'g' has not be defining in this session
-     error: value
-
-11.3 error: class
-=================
-
+Calling a function on mismatched types.
       3+`b
      error: class
 
-11.4 error: length
+11.2 error: domain
+==================
+
+Exhausted the number of input values
+      -12?10   / only 10 unique value exist
+     error: domain
+
+11.3 error: length
 ==================
 
 Operations on unequal length lists that require equal length.
       (1 2 3)+(4 5)
      error: length
 
-11.5 error: domain
-==================
+11.4 error: parse
+=================
 
-Exhausted the number of input values
-      -12?10   / only 10 unique value exist
-     error: domain
+Syntax is wrong.
+      {37 . "hello"
+     error: parse
+
+11.5 error: rank
+================
+
+Calling a function with too many parameters.
+      {x+y}[1;2;3]
+     {x+y}[1;2;3]
+     ^
+     error: rank
+
+11.6 error: type
+================
+
+Calling a function with an unsupported variable type.
+     `a+`b
+       ^
+     error: type
+
+11.7 error: value
+=================
+
+Undefined variable is used.
+      g    / assuming 'g' has not be defining in this session
+     error: value
 
 
 
@@ -2065,88 +2144,96 @@ Tag Table:
 Node: Top172
 Node: Intro806
 Node: Nouns10298
-Node: Verbs13740
-Ref: set14769
-Ref: plus14980
-Ref: flip15371
-Ref: minus15621
-Ref: negate15726
-Ref: times15908
-Ref: first16039
-Ref: divide16358
-Ref: min16495
-Ref: where16752
-Ref: max17138
-Ref: reverse17404
-Ref: less17574
-Ref: asc17836
-Ref: equal18032
-Ref: group18156
-Ref: match18402
-Ref: not18595
-Ref: key18712
-Ref: enum18883
-Ref: cat18977
-Ref: enlist19096
-Ref: cut19235
-Ref: sort19425
-Ref: cast19602
-Ref: string19776
-Ref: take19884
-Ref: count20214
-Ref: drop20404
-Ref: floor20727
-Ref: find20818
-Ref: unique21265
-Ref: at21502
-Ref: type21715
-Ref: apply22071
-Ref: value23053
-Node: Adverbs23371
-Ref: each23897
-Ref: bar24114
-Ref: scan24303
-Ref: left24610
-Ref: mod24970
-Ref: over25125
-Ref: right25301
-Ref: div25663
-Ref: eachprior25796
-Ref: [n]scan26198
-Ref: converge scan26540
-Ref: [n]over26945
-Ref: converge over27036
-Ref: vs27144
-Ref: sv27265
-Node: Lists27390
-Node: Dictionaries29827
-Node: More functions34370
-Ref: cond34565
-Ref: in34684
-Ref: parse34904
-Ref: amend36180
-Ref: dmend36842
-Ref: freq37542
-Node: I/O37946
-Ref: input format38077
-Ref: format39088
-Ref: write line39492
-Ref: read line39878
-Ref: write char40063
-Ref: read char40456
-Ref: write data40818
-Ref: conn/set40865
-Ref: http/get40909
-Node: Tables/kSQL40955
-Ref: Tables41131
-Ref: A_Tables41659
-Ref: S_Tables42108
-Ref: kSQL42308
-Node: System44226
-Ref: Display44381
-Ref: Variables44628
-Ref: Memory44729
-Ref: Timing44844
-Node: Errors44936
+Ref: bool11699
+Ref: int11999
+Ref: float12203
+Ref: date12548
+Ref: time12968
+Ref: datetime13582
+Ref: char13950
+Ref: sym14173
+Node: Verbs14586
+Ref: set15615
+Ref: plus15826
+Ref: flip16217
+Ref: minus16467
+Ref: negate16572
+Ref: times16754
+Ref: first16885
+Ref: divide17204
+Ref: min17341
+Ref: where17598
+Ref: max17984
+Ref: reverse18250
+Ref: less18420
+Ref: asc18682
+Ref: equal18878
+Ref: group19002
+Ref: match19248
+Ref: not19441
+Ref: key19558
+Ref: enum19729
+Ref: cat19823
+Ref: enlist19942
+Ref: cut20081
+Ref: sort20271
+Ref: cast20448
+Ref: string20622
+Ref: take20730
+Ref: count21060
+Ref: drop21250
+Ref: floor21573
+Ref: find21664
+Ref: unique22111
+Ref: at22348
+Ref: type22561
+Ref: apply22917
+Ref: value23899
+Node: Adverbs24217
+Ref: each24743
+Ref: bar24960
+Ref: scan25149
+Ref: left25456
+Ref: mod25816
+Ref: over25971
+Ref: right26147
+Ref: div26509
+Ref: eachprior26642
+Ref: [n]scan27044
+Ref: converge scan27386
+Ref: [n]over27791
+Ref: converge over27882
+Ref: vs27988
+Ref: sv28109
+Node: Lists28234
+Node: Dictionaries30671
+Node: More functions35214
+Ref: cond35409
+Ref: in35528
+Ref: parse35748
+Ref: amend37024
+Ref: dmend37686
+Ref: freq38386
+Node: I/O38790
+Ref: input format38921
+Ref: format39932
+Ref: write line40336
+Ref: read line40722
+Ref: write char40907
+Ref: read char41300
+Ref: write data41662
+Ref: conn/set41709
+Ref: http/get41753
+Node: Tables/kSQL41799
+Ref: Tables41975
+Ref: A_Tables42503
+Ref: S_Tables42952
+Ref: kSQL43152
+Node: System45070
+Ref: Display45225
+Ref: Variables45472
+Ref: Memory45573
+Ref: Timing45688
+Node: Errors45780
 
 End Tag Table

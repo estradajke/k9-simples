@@ -61,39 +61,57 @@ Previous: <a href="System.html#System" accesskey="p" rel="prev">System</a>, Up: 
 <a name="Errors-1"></a>
 <h2 class="chapter">11 Errors</h2>
 <p>This section contains information on the various error messages in k9.
-</p><a name="error_003a-parse"></a>
-<h3 class="section">11.1 error: parse</h3>
-<p>Syntax is wrong.
+</p><a name="error_003a-class"></a>
+<h3 class="section">11.1 error: class</h3>
+<p>Calling a function on mismatched types.
 </p><div class="example">
-<pre class="example"> {37 . &quot;hello&quot;
-error: parse
-</pre></div>
-<a name="error_003a-value"></a>
-<h3 class="section">11.2 error: value</h3>
-<p>Undefined variable is used.
-</p><div class="example">
-<pre class="example"> g    / assuming 'g' has not be defining in this session
-error: value
-</pre></div>
-<a name="error_003a-class"></a>
-<h3 class="section">11.3 error: class</h3>
-<div class="example">
 <pre class="example"> 3+`b
 error: class
 </pre></div>
+<a name="error_003a-domain"></a>
+<h3 class="section">11.2 error: domain</h3>
+<p>Exhausted the number of input values
+</p><div class="example">
+<pre class="example"> -12?10   / only 10 unique value exist
+error: domain
+</pre></div>
 <a name="error_003a-length"></a>
-<h3 class="section">11.4 error: length</h3>
+<h3 class="section">11.3 error: length</h3>
 <p>Operations on unequal length lists that require equal length.
 </p><div class="example">
 <pre class="example"> (1 2 3)+(4 5)
 error: length
 </pre></div>
-<a name="error_003a-domain"></a>
-<h3 class="section">11.5 error: domain</h3>
-<p>Exhausted the number of input values
+<a name="error_003a-parse"></a>
+<h3 class="section">11.4 error: parse</h3>
+<p>Syntax is wrong.
 </p><div class="example">
-<pre class="example"> -12?10   / only 10 unique value exist
-error: domain
+<pre class="example"> {37 . &quot;hello&quot;
+error: parse
+</pre></div>
+<a name="error_003a-rank"></a>
+<h3 class="section">11.5 error: rank</h3>
+<p>Calling a function with too many parameters.
+</p><div class="example">
+<pre class="example"> {x+y}[1;2;3]
+{x+y}[1;2;3]
+^
+error: rank
+</pre></div>
+<a name="error_003a-type"></a>
+<h3 class="section">11.6 error: type</h3>
+<p>Calling a function with an unsupported variable type.
+</p><div class="example">
+<pre class="example">`a+`b
+  ^
+error: type
+</pre></div>
+<a name="error_003a-value"></a>
+<h3 class="section">11.7 error: value</h3>
+<p>Undefined variable is used.
+</p><div class="example">
+<pre class="example"> g    / assuming 'g' has not be defining in this session
+error: value
 </pre></div>
 
 

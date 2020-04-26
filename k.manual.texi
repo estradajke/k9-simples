@@ -233,6 +233,19 @@ The basic data types of the k9 language are numbers (interger and float), text (
 
 In additional to the basic data types, data can be put into lists (uniform and non-uniform), dictionaries (key-value pairs), and tables (transposed/flipped dictionaries).  Dictionaries and tables will be covered in a seperate chapter.
 
+The set of k9 data, aka nouns, are as follows.
+
+@example
+    Atom             Type  
+@xref{bool},  110b         b  
+@xref{int},   2 3 4        i 
+@xref{float}, 2e3 0n 0w    f  
+@xref{date},  2024.01.01   D 
+@xref{time},  12:34:56.789 t  
+@xref{char},  "ab "        c  
+@xref{sym},   `a`b`        s  
+@end example
+
 Data types can be determined by using the @code{@@} function on values or lists of values.  In the case of non-uniform lists @code{@@} returns the type of the list @code{`L} but the function can be modified to evalue each type @code{@@'} instead and return the type of each element in the list.
 
 @example
@@ -247,57 +260,76 @@ Data types can be determined by using the @code{@@} function on values or lists 
 `i`f`c`s`t`D
 @end example
 
+@anchor{bool}@section bool @result{} Boolean b
+Booleans have two possible values 0 and 1 and have a 'b' to avoid confusion with integers, eg. 0b or 1b.
+
+@example
+ 0b
+0b
+ 1b
+1b
+ 10101010b
+10101010b
+@end example
 @section Numeric Data
 Numbers can be stored as integers and floats.
+
+@anchor{int}@subsection int @result{} Integer i
+Integers 
+
 @example
+ 3
+3
+ 3+1
+4
  @@3
 `i
- @@3.1
-`f
- a:3;b:3.1;
+ a:3;
  @@a
 `i
- @@b
+ 3%1   / result will be float even though inputs are int
+3f
+@end example
+@anchor{float}@subsection float @result{} Float f
+Float
+@example
+ 3.1
+3.1
+ 3.1+1.2
+4.3
+ 3.1-1.1   / looks like an int but really is a float
+2
+ @@3.1-1.1
+1f
+ @@3.1
+`f
+ a:3.1;
+ @@a
 `f
 @end example
-Numeric data can be recast as other types using the @code{$} command.  The @code{$} is an overloaded function and can either convert to string or cast to type if provided.  The first usage take only a single argurment, the item to be converted to a string, while the second usage takes two arguments, the items to be converted and also the type to convert into.
 
-You'll note that the string of 3 is represented as ,''3''.  The comma represents the string is a list of length one and not a single element.
-
-@example
- $3     / convert to string
-,"3"
- $12    / convert to string
-"12"
- `f$12  / convert to float
-12f
- `t$12  / convert to time
-00:00:00.012
- `d$12  / convert to date
-2024-01-13
-@end example
-
-@section Text Data
-Text data come in characters, lists of characters (aka strings) and enumerated types.  Enumerated types are displayed as text but stored internally as integers.
-@example
- @@"b"
-`c
- @@"bd"
-`C 
- @@`blue
-`s
- @@`blue`red
-`S
-@end example
 @section Temporal Data
 Temporal data can be expressed in time, date, or a combined date and time.
+@anchor{date}@subsection date @result{} Date D
+Dates are in yyyy.mm.dd format and stored internally as integers.
+@example
+ @@2020.04.20               / date
+`D
+ .z.D                       / current date in GMT
+2020-04-17
+ `i$.z.D                    / numeric representation of date
+-1351
+ `i$2024.01.01              / zero date
+0
+ `D$0                       / zero date
+2024.01.01
+@end example
+
+@anchor{time}@subsection time @result{} Time t
+Times are stored in hh:mm:ss.123 format and stored internally as integers.
 @example
  @@12:34:56.789             / time
 `t
- @@2020.04.20               / date
-`D
- @@2020.04.20T12:34:56.789  / date and time
-`T
  .z.t                       / current time in GMT
 17:32:57.995
  (t:.z.t)-17:30:00.000
@@ -312,14 +344,36 @@ Temporal data can be expressed in time, date, or a combined date and time.
 60000
  `t$12345                   / convert milliseconds to time
 00:00:12.345
- .z.D                       / current date in GMT
-2020-04-17
- `i$.z.D                    / numeric representation of date
--1351
- `i$2024.01.01              / zero date
-0
- `D$0                       / zero date
-2024.01.01
+@end example
+
+@anchor{datetime}@subsection datetime @result{} Datetime T
+Dates and times can be combined as 2020.04.20T12:34:56.789.
+
+@example
+ @@2020.04.20T12:34:56.789  / date and time
+`T
+@end example
+
+@section Text Data
+Text data come in characters, lists of characters (aka strings) and enumerated types.  Enumerated types are displayed as text but stored internally as integers.
+
+@anchor{char}@subsection char @result{} Character c
+Characters are stored as their ANSI value and can be seen by conversion to integers.  Character lists are equivalent to strings.
+
+@example
+ @@"b"
+`c
+ @@"bd"
+`C 
+@end example
+
+@anchor{sym}@subsection sym @result{} Symbol s
+Symbols are enumerate type shown as a text string but stored internally as a integer value.
+@example
+ @@`blue
+`s
+ @@`blue`red
+`S
 @end example
 @section Extreme values
 Data types can not only represent in-range values but also null and out-of-range values.
@@ -977,7 +1031,7 @@ Compute f[x], f[f[x]] and continue to call f[previous result] until the output c
 @end example
 @anchor{[n]over}@section [n]over @result{} x f/:y
 Same as [n]scan but only return last value.
-@anchor{converge over}@section converage over @result{} f/:x
+@anchor{converge over}@section converge over @result{} f/:x
 Same as converge scan but only return last value.
 @anchor{vs}@section vs @result{} x\:y
 Convert y (base 10) into base x.
@@ -1787,22 +1841,17 @@ List time elapsed
 @node Errors
 @chapter Errors
 This section contains information on the various error messages in k9.
-@section error: parse
-Syntax is wrong.
-@example
- @{37 . "hello"
-error: parse
-@end example
-@section error: value
-Undefined variable is used.
-@example
- g    / assuming 'g' has not be defining in this session
-error: value
-@end example
 @section error: class
+Calling a function on mismatched types.
 @example
  3+`b
 error: class
+@end example
+@section error: domain
+Exhausted the number of input values
+@example
+ -12?10   / only 10 unique value exist
+error: domain
 @end example
 @section error: length
 Operations on unequal length lists that require equal length.
@@ -1810,11 +1859,32 @@ Operations on unequal length lists that require equal length.
  (1 2 3)+(4 5)
 error: length
 @end example
-@section error: domain
-Exhausted the number of input values
+@section error: parse
+Syntax is wrong.
 @example
- -12?10   / only 10 unique value exist
-error: domain
+ @{37 . "hello"
+error: parse
+@end example
+@section error: rank
+Calling a function with too many parameters.
+@example
+ @{x+y@}[1;2;3]
+@{x+y@}[1;2;3]
+^
+error: rank
+@end example
+@section error: type
+Calling a function with an unsupported variable type.
+@example
+`a+`b
+  ^
+error: type
+@end example
+@section error: value
+Undefined variable is used.
+@example
+ g    / assuming 'g' has not be defining in this session
+error: value
 @end example
 @c @node Index
 @c @unnumbered Index
