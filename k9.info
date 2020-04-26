@@ -96,7 +96,53 @@ either a Linux or MacOS version.  Click on the required OS version and
 you'll download a 'k.zip' file around 50 kb in size.  Unzip that file
 and you'll have a single executable file 'k' which is the language.
 
-1.2 rlwrap
+1.2 Help/Info Card
+==================
+
+Typing '\' in the terminal gives you a concise overview of the language.
+This document aims to provide details to beginning users where the help
+screen is a tad too terse.  Some commands are not yet complete and thus
+marked with an asterisk, eg.  *\l a.k.
+ \
+$k f.k
+
+Verb                      Adverb                 Atom            Type  System
+:  set                    '  each       i bar    bool  110b         b  \k
++  plus       flip        /  over/right i div    int   2 3 4        i *\l a.k
+-  minus      negate      \  scan/left  i mod    float 2e3 0n 0w    f  \v [d]
+*  times      first       ': eachprior           date  2024.01.01   D *\f [d]
+%  divide                 /: [n]over    i sv     time  12:34:56.789 t  \w [x]
+&  min        where       \: [n]scan    i vs     char  "ab "        c  \t:n x
+|  max        reverse                            sym   `a`b`        s  \u:n x
+<  less       asc          I/O
+>  more       dsc         0: readwrite  line     List (2;3.4;`c)    L  \fl line
+=  equal      group       1: readwrite  char     Dict [a:2;b:`c]   ??  \fc char
+~  match      not         2: write      data     Func {(+/x)%#x}    .
+!  key        enum        3: *conn/set
+,  cat        enlist      4: *http/get
+^  cut        sort
+$  cast       string      $[c;t;f]      cond
+#  take       count       #[t;c;b[;a]]  select   table [[]a:`b`c]   T
+_  drop       floor      *_[t;c;b[;a]]  update  Ttable [[a:..]b:]  TT
+?  find       unique     *?[x;i;f[;y]]  splice  Stable S! [[]...]  ST
+@  at         type        @[x;i;f[;y]]  amend                          \cd dir
+.  apply      value       .[x;i;f[;y]]  dmend                          \\  exit
+
+A_-~%$ L|+#*&=<>^?! ,@.
+A+-*%&|<>=$ L,#_^?! ~@.  F#_
+
+count first last min max sum avg; in bin within; *exp log sin cos
+select A by B from T where C; delete from T where C
+
+/comment \display [dict] :expr (leading space)
+roundtrip: `json?`json(2.3;.z.D;.z.t;"abc")  / also: `csv`k
+time/cuanto: 2m 2d ..   12:34:56.123456789 e.g. .z.D+2m / .z.[tuv]
+date/cuando: 2024.01.01T12:34:56.123456789 e.g.  7\.z.D / .z.[TUV]
+
+error: parse value class rank type domain length limit
+limit: sym8(*256) {[param8]local8 global32 const128 jump256}
+
+1.3 rlwrap
 ==========
 
 Although you only need the 'k' binary to run k9 most will also install
@@ -123,7 +169,7 @@ without rlwrap and again exit the session.
      2020.04.01 (c) shakti
       //
 
-1.3 Simple example
+1.4 Simple example
 ==================
 
 Here I will start up k9, perform some trivial calculations, and then
@@ -167,7 +213,7 @@ return, most variance, or any other analysis on the data.
      b|0.6629631
      c|0.6708467
 
-1.4 Document formatting for code examples
+1.5 Document formatting for code examples
 =========================================
 
 This document uses a number of examples to help clarify k9.  The sytax
@@ -177,38 +223,38 @@ without.
       3+2 / this is input
      5    / this is output
 
-1.5 k9 nuances
+1.6 k9 nuances
 ==============
 
 One will need to understand some basic rules of k9 in order to progress.
 These will likely seem strange at first.
 
-1.5.1 ':' is used to set a variable to a value
+1.6.1 ':' is used to set a variable to a value
 ----------------------------------------------
 
 'a:3' is used to set the variable, a, to the value, 3.  'a=3' is an
 equality test to determine if a is equal to 3.
 
-1.5.2 '%' is used to divide numbers
+1.6.2 '%' is used to divide numbers
 -----------------------------------
 
 Yeah, 2 divide by 5 is written as '2%5' and not '2/5'.
 
-1.5.3 Evaluation is done right to left
+1.6.3 Evaluation is done right to left
 --------------------------------------
 
 2+5*3 is 17 and 2*5+3 is 16.  2+5*3 is first evaluated on the right most
 portion, 5*3, and once that is computed then it proceeds with 2+15.
 2*5+3 goes to 2*8 which becomes 16.
 
-1.5.4 There is no arithmetic order
+1.6.4 There is no arithmetic order
 ----------------------------------
 
 + does not happen specially before or after *.  The order of evaluation
 is done right to left unless parenthesis are used.  (2+5)*3 = 21 as the
 2+5 in parenthesis is done before being multiplied by 3.
 
-1.5.5 Operators are overloaded depending on the number of arguments.
+1.6.5 Operators are overloaded depending on the number of arguments.
 --------------------------------------------------------------------
 
       *(3;6;9)    / single argument so * is first element of the list
@@ -216,7 +262,7 @@ is done right to left unless parenthesis are used.  (2+5)*3 = 21 as the
       2*(3;6;9)   / two arguments so * is multiplication
      6 12 18
 
-1.5.6 Lists and functions are very similar.
+1.6.6 Lists and functions are very similar.
 -------------------------------------------
 
 k9 syntax encourages you to treat lists and functions in a similar
@@ -229,7 +275,7 @@ another value or from a domain to a range.
       f@2
      7
 
-1.5.7 k9 is expressed in terms of grammar.
+1.6.7 k9 is expressed in terms of grammar.
 ------------------------------------------
 
 k9 uses an analogy with grammar to describe language syntax.  The k9
@@ -241,51 +287,6 @@ grammar consists of nouns (data), verbs (functions) and adverbs
 verbs and modifiers are adverbs.
    * 3 > 2 (Noun verb noun)
    * 3 >' 0 1 2 3 4 5 (Noun verb adverb noun)
-
-1.6 Help/Info Card
-==================
-
-Typing '\' in the terminal gives you a concise overview of the language.
-This document aims to provide details to beginning users where the help
-screen is a tad too terse.
- \
-$k f.k
-
-Verb                      Adverb                 Atom            Type  System
-:  set                    '  each       i bar    bool  110b         b  \k
-+  plus       flip        /  over/right i div    int   2 3 4        i *\l a.k
--  minus      negate      \  scan/left  i mod    float 2e3 0n 0w    f  \v [d]
-*  times      first       ': eachprior           date  2024.01.01   D *\f [d]
-%  divide                 /: [n]over    i sv     time  12:34:56.789 t  \w [x]
-&  min        where       \: [n]scan    i vs     char  "ab "        c  \t:n x
-|  max        reverse                            sym   `a`b`        s  \u:n x
-<  less       asc          I/O
->  more       dsc         0: readwrite  line     List (2;3.4;`c)    L  \fl line
-=  equal      group       1: readwrite  char     Dict [a:2;b:`c]   ??  \fc char
-~  match      not         2: write      data     Func {(+/x)%#x}    .
-!  key        enum        3: *conn/set
-,  cat        enlist      4: *http/get
-^  cut        sort
-$  cast       string      $[c;t;f]      cond
-#  take       count       #[t;c;b[;a]]  select   table [[]a:`b`c]   T
-_  drop       floor      *_[t;c;b[;a]]  update  Ttable [[a:..]b:]  TT
-?  find       unique     *?[x;i;f[;y]]  splice  Stable S! [[]...]  ST
-@  at         type        @[x;i;f[;y]]  amend                          \cd dir
-.  apply      value       .[x;i;f[;y]]  dmend                          \\  exit
-
-A_-~%$ L|+#*&=<>^?! ,@.
-A+-*%&|<>=$ L,#_^?! ~@.  F#_
-
-count first last min max sum avg; in bin within; *exp log sin cos
-select A by B from T where C; delete from T where C
-
-/comment \display [dict] :expr (leading space)
-roundtrip: `json?`json(2.3;.z.D;.z.t;"abc")  / also: `csv`k
-time/cuanto: 2m 2d ..   12:34:56.123456789 e.g. .z.D+2m / .z.[tuv]
-date/cuando: 2024.01.01T12:34:56.123456789 e.g.  7\.z.D / .z.[TUV]
-
-error: parse value class rank type domain length limit
-limit: sym8(*256) {[param8]local8 global32 const128 jump256}
 
 
 File: k9.info,  Node: Nouns,  Next: Verbs,  Prev: Intro,  Up: Top
@@ -2143,97 +2144,97 @@ Undefined variable is used.
 Tag Table:
 Node: Top172
 Node: Intro806
-Node: Nouns10298
-Ref: bool11699
-Ref: int11999
-Ref: float12203
-Ref: date12548
-Ref: time12968
-Ref: datetime13582
-Ref: char13950
-Ref: sym14173
-Node: Verbs14586
-Ref: set15615
-Ref: plus15826
-Ref: flip16217
-Ref: minus16467
-Ref: negate16572
-Ref: times16754
-Ref: first16885
-Ref: divide17204
-Ref: min17341
-Ref: where17598
-Ref: max17984
-Ref: reverse18250
-Ref: less18420
-Ref: asc18682
-Ref: equal18878
-Ref: group19002
-Ref: match19248
-Ref: not19441
-Ref: key19558
-Ref: enum19729
-Ref: cat19823
-Ref: enlist19942
-Ref: cut20081
-Ref: sort20271
-Ref: cast20448
-Ref: string20622
-Ref: take20730
-Ref: count21060
-Ref: drop21250
-Ref: floor21573
-Ref: find21664
-Ref: unique22111
-Ref: at22348
-Ref: type22561
-Ref: apply22917
-Ref: value23899
-Node: Adverbs24217
-Ref: each24743
-Ref: bar24960
-Ref: scan25149
-Ref: left25456
-Ref: mod25816
-Ref: over25971
-Ref: right26147
-Ref: div26509
-Ref: eachprior26642
-Ref: [n]scan27044
-Ref: converge scan27386
-Ref: [n]over27791
-Ref: converge over27882
-Ref: vs27988
-Ref: sv28109
-Node: Lists28234
-Node: Dictionaries30671
-Node: More functions35214
-Ref: cond35409
-Ref: in35528
-Ref: parse35748
-Ref: amend37024
-Ref: dmend37686
-Ref: freq38386
-Node: I/O38790
-Ref: input format38921
-Ref: format39932
-Ref: write line40336
-Ref: read line40722
-Ref: write char40907
-Ref: read char41300
-Ref: write data41662
-Ref: conn/set41709
-Ref: http/get41753
-Node: Tables/kSQL41799
-Ref: Tables41975
-Ref: A_Tables42503
-Ref: S_Tables42952
-Ref: kSQL43152
-Node: System45070
-Ref: Display45225
-Ref: Variables45472
-Ref: Memory45573
-Ref: Timing45688
-Node: Errors45780
+Node: Nouns10382
+Ref: bool11783
+Ref: int12083
+Ref: float12287
+Ref: date12632
+Ref: time13052
+Ref: datetime13666
+Ref: char14034
+Ref: sym14257
+Node: Verbs14670
+Ref: set15699
+Ref: plus15910
+Ref: flip16301
+Ref: minus16551
+Ref: negate16656
+Ref: times16838
+Ref: first16969
+Ref: divide17288
+Ref: min17425
+Ref: where17682
+Ref: max18068
+Ref: reverse18334
+Ref: less18504
+Ref: asc18766
+Ref: equal18962
+Ref: group19086
+Ref: match19332
+Ref: not19525
+Ref: key19642
+Ref: enum19813
+Ref: cat19907
+Ref: enlist20026
+Ref: cut20165
+Ref: sort20355
+Ref: cast20532
+Ref: string20706
+Ref: take20814
+Ref: count21144
+Ref: drop21334
+Ref: floor21657
+Ref: find21748
+Ref: unique22195
+Ref: at22432
+Ref: type22645
+Ref: apply23001
+Ref: value23983
+Node: Adverbs24301
+Ref: each24827
+Ref: bar25044
+Ref: scan25233
+Ref: left25540
+Ref: mod25900
+Ref: over26055
+Ref: right26231
+Ref: div26593
+Ref: eachprior26726
+Ref: [n]scan27128
+Ref: converge scan27470
+Ref: [n]over27875
+Ref: converge over27966
+Ref: vs28072
+Ref: sv28193
+Node: Lists28318
+Node: Dictionaries30755
+Node: More functions35298
+Ref: cond35493
+Ref: in35612
+Ref: parse35832
+Ref: amend37108
+Ref: dmend37770
+Ref: freq38470
+Node: I/O38874
+Ref: input format39005
+Ref: format40016
+Ref: write line40420
+Ref: read line40806
+Ref: write char40991
+Ref: read char41384
+Ref: write data41746
+Ref: conn/set41793
+Ref: http/get41837
+Node: Tables/kSQL41883
+Ref: Tables42059
+Ref: A_Tables42587
+Ref: S_Tables43036
+Ref: kSQL43236
+Node: System45154
+Ref: Display45309
+Ref: Variables45556
+Ref: Memory45657
+Ref: Timing45772
+Node: Errors45864
 
 End Tag Table
