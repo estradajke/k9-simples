@@ -1,7 +1,7 @@
 This is k9.info, produced by makeinfo version 5.2 from k.manual.texi.
 
 This manual is for Shakti (k9) build 2020.04.14.
-April 26, 2020
+May 2, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -268,6 +268,12 @@ is done right to left unless parenthesis are used.  (2+5)*3 = 21 as the
 k9 syntax encourages you to treat lists and functions in a similar
 function.  They should both be thought of a mapping from a value to
 another value or from a domain to a range.
+
+   If this book wasn't a simples guide then lists (l) and functions (f)
+would be replaced by maps (m) given the interchangeability.  One way to
+determine if a map is either a lits or function is via the type
+function.  Lists and functions do not have the same type.
+
       l:3 4 7 12
       f:{3+x*x}
       l@2
@@ -1037,12 +1043,12 @@ k9 uses function modifiers / adverbs in order to have functions operate
 iteratively over lists.
 
      Adverb
-     '  *Note each::,           *Note i bar: bar.
-     /  *Note over::,*Note right::, *Note i div: div.
-     \  *Note scan::,*Note left::,  *Note i mod: mod.
+     '  *Note each::,                *Note i bar: bar.
+     /  *Note over::,*Note right::,      *Note i div: div.
+     \  *Note scan::,*Note left::,       *Note i mod: mod.
      ': *Note eachprior::.
-     /: *Note [n]over::.             *Note i sv: sv.
-     \: [n]scan             *Note i vs: vs.
+     /: *Note c over::,*Note n over::,   *Note i sv: sv.
+     \: *Note c scan::,*Note n scan::,   *Note i vs: vs.
 
 4.1 each => f'x
 ===============
@@ -1155,8 +1161,8 @@ Apply f[y_n;y_{n-1}].  f_0 is a special case of f[y_0;x].
       100%':100 101.9 105.1 102.3 106.1    / using infix notation
      1 1.019 1.031403 0.9733587 1.037146
 
-4.10 [n]scan => x f\:y
-======================
+4.10 n scan => x f\:y
+=====================
 
 Compute f with initial value x and over list y.  f[i] = f[f[i-1];y[i]]
 except for the case of f[0]=f[x;y[0]]
@@ -1169,21 +1175,21 @@ except for the case of f[0]=f[x;y[0]]
      xy0   y1
      xy0y1 y2
 
-4.11 converge scan => f\:x
-==========================
+4.11 c scan => f\:x
+===================
 
 Compute f[x], f[f[x]] and continue to call f[previous result] until the
 output converges to a stationary value or the output produces x.
        {x*x}\:.99
      0.99 0.9801 0.960596 0.9227447 0.8514578 0.7249803 0.5255965 0.2762517 0.07631498 0.005823977 3.391871e-05 1.150479e-09 1.323601e-18 1.751919e-36 3.069222e-72 9.420123e-144 8.873872e-287 0
 
-4.12 [n]over => x f/:y
-======================
+4.12 n over => x f/:y
+=====================
 
-Same as [n]scan but only return last value.
+Same as n scan but only return last value.
 
-4.13 converge over => f/:x
-==========================
+4.13 c over => f/:x
+===================
 
 Same as converge scan but only return last value.
 
@@ -2111,7 +2117,8 @@ Operations on unequal length lists that require equal length.
 11.4 error: parse
 =================
 
-Syntax is wrong.
+Syntax is wrong.  Possible you failed to match characters which must
+match, eg.  (), {}, [], "".
       {37 . "hello"
      error: parse
 
@@ -2142,99 +2149,99 @@ Undefined variable is used.
 
 
 Tag Table:
-Node: Top172
-Node: Intro806
-Node: Nouns10382
-Ref: bool11783
-Ref: int12083
-Ref: float12287
-Ref: date12632
-Ref: time13052
-Ref: datetime13666
-Ref: char14034
-Ref: sym14257
-Node: Verbs14670
-Ref: set15699
-Ref: plus15910
-Ref: flip16301
-Ref: minus16551
-Ref: negate16656
-Ref: times16838
-Ref: first16969
-Ref: divide17288
-Ref: min17425
-Ref: where17682
-Ref: max18068
-Ref: reverse18334
-Ref: less18504
-Ref: asc18766
-Ref: equal18962
-Ref: group19086
-Ref: match19332
-Ref: not19525
-Ref: key19642
-Ref: enum19813
-Ref: cat19907
-Ref: enlist20026
-Ref: cut20165
-Ref: sort20355
-Ref: cast20532
-Ref: string20706
-Ref: take20814
-Ref: count21144
-Ref: drop21334
-Ref: floor21657
-Ref: find21748
-Ref: unique22195
-Ref: at22432
-Ref: type22645
-Ref: apply23001
-Ref: value23983
-Node: Adverbs24301
-Ref: each24827
-Ref: bar25044
-Ref: scan25233
-Ref: left25540
-Ref: mod25900
-Ref: over26055
-Ref: right26231
-Ref: div26593
-Ref: eachprior26726
-Ref: [n]scan27128
-Ref: converge scan27470
-Ref: [n]over27875
-Ref: converge over27966
-Ref: vs28072
-Ref: sv28193
-Node: Lists28318
-Node: Dictionaries30755
-Node: More functions35298
-Ref: cond35493
-Ref: in35612
-Ref: parse35832
-Ref: amend37108
-Ref: dmend37770
-Ref: freq38470
-Node: I/O38874
-Ref: input format39005
-Ref: format40016
-Ref: write line40420
-Ref: read line40806
-Ref: write char40991
-Ref: read char41384
-Ref: write data41746
-Ref: conn/set41793
-Ref: http/get41837
-Node: Tables/kSQL41883
-Ref: Tables42059
-Ref: A_Tables42587
-Ref: S_Tables43036
-Ref: kSQL43236
-Node: System45154
-Ref: Display45309
-Ref: Variables45556
-Ref: Memory45657
-Ref: Timing45772
-Node: Errors45864
+Node: Top169
+Node: Intro803
+Node: Nouns10647
+Ref: bool12048
+Ref: int12348
+Ref: float12552
+Ref: date12897
+Ref: time13317
+Ref: datetime13931
+Ref: char14299
+Ref: sym14522
+Node: Verbs14935
+Ref: set15964
+Ref: plus16175
+Ref: flip16566
+Ref: minus16816
+Ref: negate16921
+Ref: times17103
+Ref: first17234
+Ref: divide17553
+Ref: min17690
+Ref: where17947
+Ref: max18333
+Ref: reverse18599
+Ref: less18769
+Ref: asc19031
+Ref: equal19227
+Ref: group19351
+Ref: match19597
+Ref: not19790
+Ref: key19907
+Ref: enum20078
+Ref: cat20172
+Ref: enlist20291
+Ref: cut20430
+Ref: sort20620
+Ref: cast20797
+Ref: string20971
+Ref: take21079
+Ref: count21409
+Ref: drop21599
+Ref: floor21922
+Ref: find22013
+Ref: unique22460
+Ref: at22697
+Ref: type22910
+Ref: apply23266
+Ref: value24248
+Node: Adverbs24566
+Ref: each25124
+Ref: bar25341
+Ref: scan25530
+Ref: left25837
+Ref: mod26197
+Ref: over26352
+Ref: right26528
+Ref: div26890
+Ref: eachprior27023
+Ref: n scan27425
+Ref: c scan27765
+Ref: n over28156
+Ref: c over28244
+Ref: vs28336
+Ref: sv28457
+Node: Lists28582
+Node: Dictionaries31019
+Node: More functions35562
+Ref: cond35757
+Ref: in35876
+Ref: parse36096
+Ref: amend37372
+Ref: dmend38034
+Ref: freq38734
+Node: I/O39138
+Ref: input format39269
+Ref: format40280
+Ref: write line40684
+Ref: read line41070
+Ref: write char41255
+Ref: read char41648
+Ref: write data42010
+Ref: conn/set42057
+Ref: http/get42101
+Node: Tables/kSQL42147
+Ref: Tables42323
+Ref: A_Tables42851
+Ref: S_Tables43300
+Ref: kSQL43500
+Node: System45418
+Ref: Display45573
+Ref: Variables45820
+Ref: Memory45921
+Ref: Timing46036
+Node: Errors46128
 
 End Tag Table

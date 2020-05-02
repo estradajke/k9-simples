@@ -207,6 +207,9 @@ Yeah, 2 divide by 5 is written as @code{2%5} and not @code{2/5}.
 @end example
 @subsection Lists and functions are very similar.
 k9 syntax encourages you to treat lists and functions in a similar function.  They should both be thought of a mapping from a value to another value or from a domain to a range.
+
+If this book wasn't a simples guide then lists (l) and functions (f) would be replaced by maps (m) given the interchangeability.  One way to determine if a map is either a lits or function is via the type function.  Lists and functions do not have the same type.
+
 @example
  l:3 4 7 12
  f:@{3+x*x@}
@@ -901,12 +904,12 @@ k9 uses function modifiers / adverbs in order to have functions operate iterativ
 
 @example
 Adverb
-'  @xref{each},           @xref{bar,i bar}.
-/  @xref{over},@xref{right}, @xref{div,i div}.
-\  @xref{scan},@xref{left},  @xref{mod,i mod}.
+'  @xref{each},                @xref{bar,i bar}.
+/  @xref{over},@xref{right},      @xref{div,i div}.
+\  @xref{scan},@xref{left},       @xref{mod,i mod}.
 ': @xref{eachprior}.
-/: @xref{[n]over}.             @xref{sv,i sv}.
-\: [n]scan             @xref{vs,i vs}.
+/: @xref{c over},@xref{n over},   @xref{sv,i sv}.
+\: @xref{c scan},@xref{n scan},   @xref{vs,i vs}.
 @end example
 
 @anchor{each}@section each @result{} f'x
@@ -1011,7 +1014,7 @@ y4 y3
  100%':100 101.9 105.1 102.3 106.1    / using infix notation
 1 1.019 1.031403 0.9733587 1.037146
 @end example
-@anchor{[n]scan}@section [n]scan @result{} x f\:y
+@anchor{n scan}@section n scan @result{} x f\:y
 Compute f with initial value x and over list y.  f[i] = f[f[i-1];y[i]] except for the case of f[0]=f[x;y[0]]
 @example
  f:@{(0.1*x)+0.9*y@}      / ema
@@ -1023,15 +1026,15 @@ x     y0
 xy0   y1
 xy0y1 y2
 @end example
-@anchor{converge scan}@section converge scan @result{} f\:x
+@anchor{c scan}@section c scan @result{} f\:x
 Compute f[x], f[f[x]] and continue to call f[previous result] until the output converges to a stationary value or the output produces x.
 @example
   @{x*x@}\:.99
 0.99 0.9801 0.960596 0.9227447 0.8514578 0.7249803 0.5255965 0.2762517 0.07631498 0.005823977 3.391871e-05 1.150479e-09 1.323601e-18 1.751919e-36 3.069222e-72 9.420123e-144 8.873872e-287 0
 @end example
-@anchor{[n]over}@section [n]over @result{} x f/:y
-Same as [n]scan but only return last value.
-@anchor{converge over}@section converge over @result{} f/:x
+@anchor{n over}@section n over @result{} x f/:y
+Same as n scan but only return last value.
+@anchor{c over}@section c over @result{} f/:x
 Same as converge scan but only return last value.
 @anchor{vs}@section vs @result{} x\:y
 Convert y (base 10) into base x.
@@ -1860,7 +1863,7 @@ Operations on unequal length lists that require equal length.
 error: length
 @end example
 @section error: parse
-Syntax is wrong.
+Syntax is wrong.  Possible you failed to match characters which must match, eg. (), @{@}, [], "".
 @example
  @{37 . "hello"
 error: parse

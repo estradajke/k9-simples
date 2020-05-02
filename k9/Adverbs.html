@@ -2,7 +2,7 @@
 <html>
 <!-- This manual is for Shakti (k9) build 2020.04.14.
 
-April 26, 2020
+May 2, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
@@ -65,12 +65,12 @@ Next: <a href="Lists.html#Lists" accesskey="n" rel="next">Lists</a>, Previous: <
 </p>
 <div class="example">
 <pre class="example">Adverb
-'  See <a href="#each">each</a>,           See <a href="#bar">i bar</a>.
-/  See <a href="#over">over</a>,See <a href="#right">right</a>, See <a href="#div">i div</a>.
-\  See <a href="#scan">scan</a>,See <a href="#left">left</a>,  See <a href="#mod">i mod</a>.
+'  See <a href="#each">each</a>,                See <a href="#bar">i bar</a>.
+/  See <a href="#over">over</a>,See <a href="#right">right</a>,      See <a href="#div">i div</a>.
+\  See <a href="#scan">scan</a>,See <a href="#left">left</a>,       See <a href="#mod">i mod</a>.
 ': See <a href="#eachprior">eachprior</a>.
-/: See <a href="#g_t_005bn_005dover">[n]over</a>.             See <a href="#sv">i sv</a>.
-\: [n]scan             See <a href="#vs">i vs</a>.
+/: See <a href="#c-over">c over</a>,See <a href="#n-over">n over</a>,   See <a href="#sv">i sv</a>.
+\: See <a href="#c-scan">c scan</a>,See <a href="#n-scan">n scan</a>,   See <a href="#vs">i vs</a>.
 </pre></div>
 
 <a name="each"></a><a name="each-_21d2-f_0027x"></a>
@@ -184,8 +184,8 @@ y4 y3
  100%':100 101.9 105.1 102.3 106.1    / using infix notation
 1 1.019 1.031403 0.9733587 1.037146
 </pre></div>
-<a name="g_t_005bn_005dscan"></a><a name="g_t_005bn_005dscan-_21d2-x-f_005c_003ay"></a>
-<h3 class="section">4.10 [n]scan &rArr; x f\:y</h3>
+<a name="n-scan"></a><a name="n-scan-_21d2-x-f_005c_003ay"></a>
+<h3 class="section">4.10 n scan &rArr; x f\:y</h3>
 <p>Compute f with initial value x and over list y.  f[i] = f[f[i-1];y[i]] except for the case of f[0]=f[x;y[0]]
 </p><div class="example">
 <pre class="example"> f:{(0.1*x)+0.9*y}      / ema
@@ -197,18 +197,18 @@ x     y0
 xy0   y1
 xy0y1 y2
 </pre></div>
-<a name="converge-scan"></a><a name="converge-scan-_21d2-f_005c_003ax"></a>
-<h3 class="section">4.11 converge scan &rArr; f\:x</h3>
+<a name="c-scan"></a><a name="c-scan-_21d2-f_005c_003ax"></a>
+<h3 class="section">4.11 c scan &rArr; f\:x</h3>
 <p>Compute f[x], f[f[x]] and continue to call f[previous result] until the output converges to a stationary value or the output produces x.
 </p><div class="example">
 <pre class="example">  {x*x}\:.99
 0.99 0.9801 0.960596 0.9227447 0.8514578 0.7249803 0.5255965 0.2762517 0.07631498 0.005823977 3.391871e-05 1.150479e-09 1.323601e-18 1.751919e-36 3.069222e-72 9.420123e-144 8.873872e-287 0
 </pre></div>
-<a name="g_t_005bn_005dover"></a><a name="g_t_005bn_005dover-_21d2-x-f_002f_003ay"></a>
-<h3 class="section">4.12 [n]over &rArr; x f/:y</h3>
-<p>Same as [n]scan but only return last value.
-<a name="converge-over"></a></p><a name="converge-over-_21d2-f_002f_003ax"></a>
-<h3 class="section">4.13 converge over &rArr; f/:x</h3>
+<a name="n-over"></a><a name="n-over-_21d2-x-f_002f_003ay"></a>
+<h3 class="section">4.12 n over &rArr; x f/:y</h3>
+<p>Same as n scan but only return last value.
+<a name="c-over"></a></p><a name="c-over-_21d2-f_002f_003ax"></a>
+<h3 class="section">4.13 c over &rArr; f/:x</h3>
 <p>Same as converge scan but only return last value.
 <a name="vs"></a></p><a name="vs-_21d2-x_005c_003ay"></a>
 <h3 class="section">4.14 vs &rArr; x\:y</h3>
