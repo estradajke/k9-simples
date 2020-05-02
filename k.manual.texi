@@ -675,11 +675,50 @@ a|1 2
 b|3 4
 @end example
 @anchor{enum}@section enum @result{} !x
-Generate an integer list from 0 to x-1.
+Given an integer, x, generate an integer list from 0 to x-1.
 @example
  !3
 0 1 2
 @end example
+
+Given a list of integers, x, generate a list of lists where each individual index goes from 0 to n-1.  Aka an odometer where the each place can have a separate base and the total number of lists is the product of all the x values.
+
+@example
+ !2 8 16  / an odometer where the values are 0-1, 0-7, and 0-15.
+0 0 0 0 0 0 0 0 0 0  0  0  0  0  0  0 0 0 0 0 0 0 0 0 0 0  0  0  0  0  0  0 0 0
+0 0 0 0 0 0 0 0 0 0  0  0  0  0  0  0 1 1 1 1 1 1 1 1 1 1  1  1  1  1  1  1 2 2
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 0 1
+ 18#+!2 8 16 / flip the output and display first 18 rows
+0 0  0
+0 0  1
+0 0  2
+0 0  3
+0 0  4
+0 0  5
+0 0  6
+0 0  7
+0 0  8
+0 0  9
+0 0 10
+0 0 11
+0 0 12
+0 0 13
+0 0 14
+0 0 15
+0 1  0
+0 1  1
+ 5_+!2 8 16 / flip the output and display last 5 rows
+1 7 11
+1 7 12
+1 7 13
+1 7 14
+1 7 15
+ B:`b$+!16#2 / create a list of 16-bit binary numbers from 0 to 65535
+ B[12123]    / pull the element 12,123
+0010111101011011b
+ 2/:B[12123] / convert to base10 to check it's actually 12123
+12123
+@end example 
 @anchor{cat}@section cat @result{} x,y
 Concatenate x and y.
 @example
