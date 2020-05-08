@@ -1,7 +1,7 @@
 This is k9.info, produced by makeinfo version 5.2 from k.manual.texi.
 
 This manual is for Shakti (k9) build 2020.04.14.
-May 2, 2020
+May 8, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -438,6 +438,14 @@ Dates and times can be combined as 2020.04.20T12:34:56.789.
 
       @2020.04.20T12:34:56.789  / date and time
      `T
+      "T"$"2020.04.20 12:34:56.789" / converting from string with a few formats
+     2020-04-20T12:34:56.789
+      "T"$"2020-04-20 12:34:56.789"
+     2020-04-20T12:34:56.789
+      "T"$"2020.04.20T12:34:56.789"
+     2020-04-20T12:34:56.789
+      "T"$"2020-04-20T12:34:56.789"
+     2020-04-20T12:34:56.789
 
 2.4 Text Data
 =============
@@ -1093,7 +1101,7 @@ iteratively over lists.
 4.1 each => f'x
 ===============
 
-Apply each value in list x to function f.
+Apply function f to each value in list x.
       *((1 2 3);4;(5 6);7)   / first element of the list
      1 2 3
       *'((1 2 3);4;(5 6);7)  / first element of each element
@@ -2154,7 +2162,28 @@ Operations on unequal length lists that require equal length.
       (1 2 3)+(4 5)
      error: length
 
-11.4 error: parse
+11.4 error: nyi
+===============
+
+Running code that is not yet implemented.  This may come from running
+code in this document with a different version of k9.
+
+   2020.04.08 (c) shakti
+
+      =+`a`b!(1 2;1 3)
+     a b|
+     - -|-
+     1 1|0
+     2 3|1
+
+   2020.05.03 (c) shakti
+
+      =+`a`b!(1 2;1 3)
+     =+`a`b!(1 2;1 3)
+     ^
+     error: nyi
+
+11.5 error: parse
 =================
 
 Syntax is wrong.  Possible you failed to match characters which must
@@ -2162,7 +2191,7 @@ match, eg.  (), {}, [], "".
       {37 . "hello"
      error: parse
 
-11.5 error: rank
+11.6 error: rank
 ================
 
 Calling a function with too many parameters.
@@ -2171,7 +2200,7 @@ Calling a function with too many parameters.
      ^
      error: rank
 
-11.6 error: type
+11.7 error: type
 ================
 
 Calling a function with an unsupported variable type.
@@ -2179,7 +2208,7 @@ Calling a function with an unsupported variable type.
        ^
      error: type
 
-11.7 error: value
+11.8 error: value
 =================
 
 Undefined variable is used.
@@ -2198,90 +2227,90 @@ Ref: float12552
 Ref: date12897
 Ref: time13317
 Ref: datetime13931
-Ref: char14299
-Ref: sym14522
-Node: Verbs14935
-Ref: set15964
-Ref: plus16175
-Ref: flip16566
-Ref: minus16816
-Ref: negate16921
-Ref: times17103
-Ref: first17234
-Ref: divide17553
-Ref: min17690
-Ref: where17947
-Ref: max18333
-Ref: reverse18599
-Ref: less18769
-Ref: asc19031
-Ref: equal19227
-Ref: group19351
-Ref: match19597
-Ref: not19790
-Ref: key19907
-Ref: enum20078
-Ref: cat21371
-Ref: enlist21490
-Ref: cut21629
-Ref: sort21819
-Ref: cast21996
-Ref: string22170
-Ref: take22278
-Ref: count22608
-Ref: drop22798
-Ref: floor23121
-Ref: find23212
-Ref: unique23659
-Ref: at23896
-Ref: type24109
-Ref: apply24465
-Ref: value25447
-Node: Adverbs25765
-Ref: each26323
-Ref: bar26540
-Ref: scan26729
-Ref: left27036
-Ref: mod27396
-Ref: over27551
-Ref: right27727
-Ref: div28089
-Ref: eachprior28222
-Ref: n scan28624
-Ref: c scan28964
-Ref: n over29355
-Ref: c over29443
-Ref: vs29535
-Ref: sv29656
-Node: Lists29781
-Node: Dictionaries32218
-Node: More functions36761
-Ref: cond36956
-Ref: in37075
-Ref: parse37295
-Ref: amend38571
-Ref: dmend39233
-Ref: freq39933
-Node: I/O40337
-Ref: input format40468
-Ref: format41479
-Ref: write line41883
-Ref: read line42269
-Ref: write char42454
-Ref: read char42847
-Ref: write data43209
-Ref: conn/set43256
-Ref: http/get43300
-Node: Tables/kSQL43346
-Ref: Tables43522
-Ref: A_Tables44050
-Ref: S_Tables44499
-Ref: kSQL44699
-Node: System46617
-Ref: Display46772
-Ref: Variables47019
-Ref: Memory47120
-Ref: Timing47235
-Node: Errors47327
+Ref: char14603
+Ref: sym14826
+Node: Verbs15239
+Ref: set16268
+Ref: plus16479
+Ref: flip16870
+Ref: minus17120
+Ref: negate17225
+Ref: times17407
+Ref: first17538
+Ref: divide17857
+Ref: min17994
+Ref: where18251
+Ref: max18637
+Ref: reverse18903
+Ref: less19073
+Ref: asc19335
+Ref: equal19531
+Ref: group19655
+Ref: match19901
+Ref: not20094
+Ref: key20211
+Ref: enum20382
+Ref: cat21675
+Ref: enlist21794
+Ref: cut21933
+Ref: sort22123
+Ref: cast22300
+Ref: string22474
+Ref: take22582
+Ref: count22912
+Ref: drop23102
+Ref: floor23425
+Ref: find23516
+Ref: unique23963
+Ref: at24200
+Ref: type24413
+Ref: apply24769
+Ref: value25751
+Node: Adverbs26069
+Ref: each26627
+Ref: bar26844
+Ref: scan27033
+Ref: left27340
+Ref: mod27700
+Ref: over27855
+Ref: right28031
+Ref: div28393
+Ref: eachprior28526
+Ref: n scan28928
+Ref: c scan29268
+Ref: n over29659
+Ref: c over29747
+Ref: vs29839
+Ref: sv29960
+Node: Lists30085
+Node: Dictionaries32522
+Node: More functions37065
+Ref: cond37260
+Ref: in37379
+Ref: parse37599
+Ref: amend38875
+Ref: dmend39537
+Ref: freq40237
+Node: I/O40641
+Ref: input format40772
+Ref: format41783
+Ref: write line42187
+Ref: read line42573
+Ref: write char42758
+Ref: read char43151
+Ref: write data43513
+Ref: conn/set43560
+Ref: http/get43604
+Node: Tables/kSQL43650
+Ref: Tables43826
+Ref: A_Tables44354
+Ref: S_Tables44803
+Ref: kSQL45003
+Node: System46921
+Ref: Display47076
+Ref: Variables47323
+Ref: Memory47424
+Ref: Timing47539
+Node: Errors47631
 
 End Tag Table
