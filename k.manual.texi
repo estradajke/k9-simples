@@ -24,6 +24,8 @@ Copyright @copyright{} 2020 John Estrada
 @node Top
 @top k9: Manual
 This document explains the usage of the k9 programming language in very simple terms and is intended for newer developers.  k9 is a rapidly evolving platform therefore newer versions may have additional functionality not covered in this document.
+
+This manual is for Shakti (k9) build 2020.05.08.@*
 @c @end ifnottex
 
 @menu
@@ -373,7 +375,7 @@ As might have been guessed @code{#x} counts the number of charcters in the first
 ..
 @end example
 
-Here the code takes each iteger from the previous calculation and then add an integer list as long as the send argument to each value.  In order to ensure this is clear one could write something similar and ensure the output is able to be predicted.
+Here the code takes each integer from the previous calculation and then add an integer list as long as the send argument to each value.  In order to ensure this is clear one could write something similar and ensure the output is able to be predicted.
 
 @example
 @ @{(!x)+\!y@}[6;4]

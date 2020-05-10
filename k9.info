@@ -16,6 +16,8 @@ simple terms and is intended for newer developers.  k9 is a rapidly
 evolving platform therefore newer versions may have additional
 functionality not covered in this document.
 
+   This manual is for Shakti (k9) build 2020.05.08.
+
 * Menu:
 
 * Intro:: Intro
@@ -445,7 +447,7 @@ n-1.
      20 21
      ..
 
-   Here the code takes each iteger from the previous calculation and
+   Here the code takes each integer from the previous calculation and
 then add an integer list as long as the send argument to each value.  In
 order to ensure this is clear one could write something similar and
 ensure the output is able to be predicted.
@@ -2420,98 +2422,98 @@ Undefined variable is used.
 
 Tag Table:
 Node: Top170
-Node: Intro826
-Node: Examples11288
-Node: Nouns16167
-Ref: bool17571
-Ref: int17871
-Ref: float18075
-Ref: date18420
-Ref: time18840
-Ref: datetime19454
-Ref: char20126
-Ref: sym20349
-Node: Verbs20762
-Ref: set21789
-Ref: plus22001
-Ref: flip22392
-Ref: minus22642
-Ref: times22905
-Ref: first23036
-Ref: divide23355
-Ref: and23492
-Ref: where23749
-Ref: or24133
-Ref: reverse24397
-Ref: less24567
-Ref: asc24829
-Ref: equal25025
-Ref: group25149
-Ref: match25395
-Ref: not25588
-Ref: key25705
-Ref: enum25876
-Ref: cat27169
-Ref: enlist27288
-Ref: cut27427
-Ref: sort27617
-Ref: cast27794
-Ref: string27983
-Ref: take28091
-Ref: count28421
-Ref: drop28611
-Ref: floor28934
-Ref: find29025
-Ref: unique29472
-Ref: at29709
-Ref: type29922
-Ref: apply30278
-Ref: value31260
-Node: Adverbs31578
-Ref: each32136
-Ref: bar32353
-Ref: scan32542
-Ref: left32849
-Ref: mod33209
-Ref: over33368
-Ref: right33545
-Ref: div33907
-Ref: eachprior34040
-Ref: n scan34442
-Ref: c scan34782
-Ref: n over35191
-Ref: c over35279
-Ref: vs35389
-Ref: sv35510
-Node: Lists35635
-Node: Dictionaries38072
-Node: More functions42615
-Ref: cond42810
-Ref: in42929
-Ref: parse43149
-Ref: amend44425
-Ref: dmend45087
-Ref: freq45787
-Node: I/O46191
-Ref: input format46322
-Ref: format47333
-Ref: write line47737
-Ref: read line48123
-Ref: write char48308
-Ref: read char48701
-Ref: write data49063
-Ref: conn/set49110
-Ref: http/get49154
-Node: Tables/kSQL49200
-Ref: Tables49378
-Ref: A_Tables49908
-Ref: S_Tables50359
-Ref: kSQL50561
-Node: System52489
-Ref: Display52644
-Ref: Variables52891
-Ref: Memory52992
-Ref: Timing53107
-Node: Errors53199
+Node: Intro879
+Node: Examples11341
+Node: Nouns16221
+Ref: bool17625
+Ref: int17925
+Ref: float18129
+Ref: date18474
+Ref: time18894
+Ref: datetime19508
+Ref: char20180
+Ref: sym20403
+Node: Verbs20816
+Ref: set21843
+Ref: plus22055
+Ref: flip22446
+Ref: minus22696
+Ref: times22959
+Ref: first23090
+Ref: divide23409
+Ref: and23546
+Ref: where23803
+Ref: or24187
+Ref: reverse24451
+Ref: less24621
+Ref: asc24883
+Ref: equal25079
+Ref: group25203
+Ref: match25449
+Ref: not25642
+Ref: key25759
+Ref: enum25930
+Ref: cat27223
+Ref: enlist27342
+Ref: cut27481
+Ref: sort27671
+Ref: cast27848
+Ref: string28037
+Ref: take28145
+Ref: count28475
+Ref: drop28665
+Ref: floor28988
+Ref: find29079
+Ref: unique29526
+Ref: at29763
+Ref: type29976
+Ref: apply30332
+Ref: value31314
+Node: Adverbs31632
+Ref: each32190
+Ref: bar32407
+Ref: scan32596
+Ref: left32903
+Ref: mod33263
+Ref: over33422
+Ref: right33599
+Ref: div33961
+Ref: eachprior34094
+Ref: n scan34496
+Ref: c scan34836
+Ref: n over35245
+Ref: c over35333
+Ref: vs35443
+Ref: sv35564
+Node: Lists35689
+Node: Dictionaries38126
+Node: More functions42669
+Ref: cond42864
+Ref: in42983
+Ref: parse43203
+Ref: amend44479
+Ref: dmend45141
+Ref: freq45841
+Node: I/O46245
+Ref: input format46376
+Ref: format47387
+Ref: write line47791
+Ref: read line48177
+Ref: write char48362
+Ref: read char48755
+Ref: write data49117
+Ref: conn/set49164
+Ref: http/get49208
+Node: Tables/kSQL49254
+Ref: Tables49432
+Ref: A_Tables49962
+Ref: S_Tables50413
+Ref: kSQL50615
+Node: System52543
+Ref: Display52698
+Ref: Variables52945
+Ref: Memory53046
+Ref: Timing53161
+Node: Errors53253
 
 End Tag Table
