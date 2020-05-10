@@ -316,14 +316,17 @@ Examples of k9 in practice.
 
 Generate a table of financial random data and compute basic statistics
 quickly.
+
       n:_50*1000*1000                        / 50 million rows
       t:{g@<g:09:00:00.000+x?10:00:00.000}   / random times
       s:{x?`a`b`c`d`e}                       / random symbols
       d:{(-6+!13)@(x?_2e9)bin 1e9*(0,(1-|d),1+d:0.682689492 0.954499736 0.997300203 0.999936657 0.999999426 0.999999998),2}/ random deltas
       q:+`t`s`d!(t[n];s[n];d[n])             / generate the data
+
    As this point one might want to check start and stop times, see if
 the symbol distribution is actual random and look at the distribution of
 the price deltas.
+
       select min t, max t from q
      t|09:00:00.002
      t|18:59:59.998
@@ -360,16 +363,23 @@ be used to learn best practice.  In order to make sense of other's codes
 one needs to be able to effeciently parse the typically dense k9
 language.  Here, an example of how one goes about this process is
 presented.
+
      ss:{*{o:o@&(-1+(#y)+*x@1)<o:1_x@1;$[0<#x@1;((x@0),*x@1;o);x]}[;y]/:(();&(x@(!#x)+\!#y)~\y)}
+
    This function finds a substring in a string.
+
  000000000011111111112222222222333333
  012345678901234567890123456789012345
 "Find the +++ needle in + the ++ text"
+
    Here one would expect to find "++" at 9 and 29.
+
       ss["Find the +++ needle in + the ++ text";"++"]
      9 29
+
    In order to determine how this function works let's strip out the
 details...
+
      ss:{
          *{
            o:o@&(-1+(#y)+*x@1)<o:1_x@1; / set o
@@ -378,29 +388,39 @@ details...
        [;y]/:(();&(x@(!#x)+\!#y)~\y)    / compute and use value for inner function
        }
 
+
    Given k9 evaluates right to left let's start with the right most code
 fragment.
+
       (();&(x@(!#x)+\!#y)~\y)          / a list (null;value)
+
    And now let's focus on the value in the list.
+
       &(x@(!#x)+\!#y)~\y
+
    In order to easily check our understand we can wrap this in a
 function and call the function with the parameters shown above.  In
 order to step through we can start with the inner parenthesis and build
 up the code until it is complete.
+
       {!#x}["Find the +++ needle in + the ++ text";"++"]
      {!#x}["Find the +++ needle in + the ++ text";"++"]
      ^
      error: rank
+
    This won't work as one cannot call a function with two arguments and
 then only use one.  In order to get around this we will insert code for
 the second argument but not use it.
+
       {y;#x}["Find the +++ needle in + the ++ text";"++"]
      36
       {y;!#x}["Find the +++ needle in + the ++ text";"++"]
      0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35
+
    As might have been guessed '#x' counts the number of charcters in the
 first argument and then '!#x' generates a list of integers from 0 to
 n-1.
+
       {(!#x)+\!#y}["Find the +++ needle in + the ++ text";"++"]
       0  1
       1  2
@@ -424,10 +444,12 @@ n-1.
      19 20
      20 21
      ..
+
    Here the code takes each iteger from the previous calculation and
 then add an integer list as long as the send argument to each value.  In
 order to ensure this is clear one could write something similar and
 ensure the output is able to be predicted.
+
       {(!x)+\!y}[6;4]
      0 1 2 3
      1 2 3 4
@@ -435,8 +457,10 @@ ensure the output is able to be predicted.
      3 4 5 6
      4 5 6 7
      5 6 7 8
+
    Now using the matrix above the code indices the first argument and
 pull substrings that match in length of the search string.
+
       {x@(!#x)+\!#y}["Find the +++ needle in + the ++ text";"++"]
      Fi
      in
@@ -460,12 +484,16 @@ pull substrings that match in length of the search string.
       i
      in
      ..
+
    At this point one can compare the search substring in this list of
 substrings to find a match.
+
       {(x@(!#x)+\!#y)~\y}["Find the +++ needle in + the ++ text";"++"]
      000000000110000000000000000001000000b
+
    And then one can use the where function, '&', to determine the index
 of the matches.
+
       {&(x@(!#x)+\!#y)~\y}["Find the +++ needle in + the ++ text";"++"]
      9 10 29
 
@@ -2394,96 +2422,96 @@ Tag Table:
 Node: Top170
 Node: Intro826
 Node: Examples11288
-Node: Nouns16139
-Ref: bool17543
-Ref: int17843
-Ref: float18047
-Ref: date18392
-Ref: time18812
-Ref: datetime19426
-Ref: char20098
-Ref: sym20321
-Node: Verbs20734
-Ref: set21761
-Ref: plus21973
-Ref: flip22364
-Ref: minus22614
-Ref: times22877
-Ref: first23008
-Ref: divide23327
-Ref: and23464
-Ref: where23721
-Ref: or24105
-Ref: reverse24369
-Ref: less24539
-Ref: asc24801
-Ref: equal24997
-Ref: group25121
-Ref: match25367
-Ref: not25560
-Ref: key25677
-Ref: enum25848
-Ref: cat27141
-Ref: enlist27260
-Ref: cut27399
-Ref: sort27589
-Ref: cast27766
-Ref: string27955
-Ref: take28063
-Ref: count28393
-Ref: drop28583
-Ref: floor28906
-Ref: find28997
-Ref: unique29444
-Ref: at29681
-Ref: type29894
-Ref: apply30250
-Ref: value31232
-Node: Adverbs31550
-Ref: each32108
-Ref: bar32325
-Ref: scan32514
-Ref: left32821
-Ref: mod33181
-Ref: over33340
-Ref: right33517
-Ref: div33879
-Ref: eachprior34012
-Ref: n scan34414
-Ref: c scan34754
-Ref: n over35163
-Ref: c over35251
-Ref: vs35361
-Ref: sv35482
-Node: Lists35607
-Node: Dictionaries38044
-Node: More functions42587
-Ref: cond42782
-Ref: in42901
-Ref: parse43121
-Ref: amend44397
-Ref: dmend45059
-Ref: freq45759
-Node: I/O46163
-Ref: input format46294
-Ref: format47305
-Ref: write line47709
-Ref: read line48095
-Ref: write char48280
-Ref: read char48673
-Ref: write data49035
-Ref: conn/set49082
-Ref: http/get49126
-Node: Tables/kSQL49172
-Ref: Tables49350
-Ref: A_Tables49880
-Ref: S_Tables50331
-Ref: kSQL50533
-Node: System52461
-Ref: Display52616
-Ref: Variables52863
-Ref: Memory52964
-Ref: Timing53079
-Node: Errors53171
+Node: Nouns16167
+Ref: bool17571
+Ref: int17871
+Ref: float18075
+Ref: date18420
+Ref: time18840
+Ref: datetime19454
+Ref: char20126
+Ref: sym20349
+Node: Verbs20762
+Ref: set21789
+Ref: plus22001
+Ref: flip22392
+Ref: minus22642
+Ref: times22905
+Ref: first23036
+Ref: divide23355
+Ref: and23492
+Ref: where23749
+Ref: or24133
+Ref: reverse24397
+Ref: less24567
+Ref: asc24829
+Ref: equal25025
+Ref: group25149
+Ref: match25395
+Ref: not25588
+Ref: key25705
+Ref: enum25876
+Ref: cat27169
+Ref: enlist27288
+Ref: cut27427
+Ref: sort27617
+Ref: cast27794
+Ref: string27983
+Ref: take28091
+Ref: count28421
+Ref: drop28611
+Ref: floor28934
+Ref: find29025
+Ref: unique29472
+Ref: at29709
+Ref: type29922
+Ref: apply30278
+Ref: value31260
+Node: Adverbs31578
+Ref: each32136
+Ref: bar32353
+Ref: scan32542
+Ref: left32849
+Ref: mod33209
+Ref: over33368
+Ref: right33545
+Ref: div33907
+Ref: eachprior34040
+Ref: n scan34442
+Ref: c scan34782
+Ref: n over35191
+Ref: c over35279
+Ref: vs35389
+Ref: sv35510
+Node: Lists35635
+Node: Dictionaries38072
+Node: More functions42615
+Ref: cond42810
+Ref: in42929
+Ref: parse43149
+Ref: amend44425
+Ref: dmend45087
+Ref: freq45787
+Node: I/O46191
+Ref: input format46322
+Ref: format47333
+Ref: write line47737
+Ref: read line48123
+Ref: write char48308
+Ref: read char48701
+Ref: write data49063
+Ref: conn/set49110
+Ref: http/get49154
+Node: Tables/kSQL49200
+Ref: Tables49378
+Ref: A_Tables49908
+Ref: S_Tables50359
+Ref: kSQL50561
+Node: System52489
+Ref: Display52644
+Ref: Variables52891
+Ref: Memory52992
+Ref: Timing53107
+Node: Errors53199
 
 End Tag Table

@@ -65,15 +65,18 @@ Next: <a href="Nouns.html#Nouns" accesskey="n" rel="next">Nouns</a>, Previous: <
 </p><a name="Data-Manipulation"></a>
 <h3 class="section">2.1 Data Manipulation</h3>
 <p>Generate a table of financial random data and compute basic statistics quickly.
-</p><div class="example">
+</p>
+<div class="example">
 <pre class="example">&nbsp;n:_50*1000*1000                        / 50 million rows
 &nbsp;t:{g@&lt;g:09:00:00.000+x?10:00:00.000}   / random times
 &nbsp;s:{x?`a`b`c`d`e}                       / random symbols
 &nbsp;d:{(-6+!13)@(x?_2e9)bin 1e9*(0,(1-|d),1+d:0.682689492 0.954499736 0.997300203 0.999936657 0.999999426 0.999999998),2}/ random deltas
 &nbsp;q:+`t`s`d!(t[n];s[n];d[n])             / generate the data
 </pre></div>
+
 <p>As this point one might want to check start and stop times, see if the symbol distribution is actual random and look at the distribution of the price deltas.
-</p><div class="example">
+</p>
+<div class="example">
 <pre class="example">&nbsp;select min t, max t from q
 t|09:00:00.002
 t|18:59:59.998
@@ -102,23 +105,31 @@ d |d
  4|    1613
  5|      16
 </pre></div>
+
 <a name="Understanding-Code-Examples"></a>
 <h3 class="section">2.2 Understanding Code Examples</h3>
 <p>In the shakti mailing list there is a number of code examples that can be used to learn best practice.  In order to make sense of other&rsquo;s codes one needs to be able to effeciently parse the typically dense k9 language.  Here, an example of how one goes about this process is presented.
-</p><div class="example">
+</p>
+<div class="example">
 <pre class="example">ss:{*{o:o@&amp;(-1+(#y)+*x@1)&lt;o:1_x@1;$[0&lt;#x@1;((x@0),*x@1;o);x]}[;y]/:(();&amp;(x@(!#x)+\!#y)~\y)}
 </pre></div>
+
 <p>This function finds a substring in a string.
-</p><pre class="verbatim"> 000000000011111111112222222222333333
+</p>
+<pre class="verbatim"> 000000000011111111112222222222333333
  012345678901234567890123456789012345
 &quot;Find the +++ needle in + the ++ text&quot;
-</pre><p>Here one would expect to find &ldquo;++&rdquo; at 9 and 29.
-</p><div class="example">
+</pre>
+<p>Here one would expect to find &ldquo;++&rdquo; at 9 and 29.
+</p>
+<div class="example">
 <pre class="example">&nbsp;ss[&quot;Find the +++ needle in + the ++ text&quot;;&quot;++&quot;]
 9 29
 </pre></div>
+
 <p>In order to determine how this function works let&rsquo;s strip out the details...
-</p><div class="example">
+</p>
+<div class="example">
 <pre class="example">ss:{
     *{
       o:o@&amp;(-1+(#y)+*x@1)&lt;o:1_x@1; / set o 
@@ -128,30 +139,40 @@ d |d
   }
  
 </pre></div>
+
 <p>Given k9 evaluates right to left let&rsquo;s start with the right most code fragment.
-</p><div class="example">
+</p>
+<div class="example">
 <pre class="example">&nbsp;(();&amp;(x@(!#x)+\!#y)~\y)          / a list (null;value)
 </pre></div>
+
 <p>And now let&rsquo;s focus on the value in the list.
-</p><div class="example">
+</p>
+<div class="example">
 <pre class="example">&nbsp;&amp;(x@(!#x)+\!#y)~\y
 </pre></div>
+
 <p>In order to easily check our understand we can wrap this in a function and call the function with the parameters shown above.  In order to step through we can start with the inner parenthesis and build up the code until it is complete.
-</p><div class="example">
+</p>
+<div class="example">
 <pre class="example">&nbsp;{!#x}[&quot;Find the +++ needle in + the ++ text&quot;;&quot;++&quot;]
 {!#x}[&quot;Find the +++ needle in + the ++ text&quot;;&quot;++&quot;]
 ^
 error: rank
 </pre></div>
+
 <p>This won&rsquo;t work as one cannot call a function with two arguments and then only use one.  In order to get around this we will insert code for the second argument but not use it.
-</p><div class="example">
+</p>
+<div class="example">
 <pre class="example"> {y;#x}[&quot;Find the +++ needle in + the ++ text&quot;;&quot;++&quot;]
 36
  {y;!#x}[&quot;Find the +++ needle in + the ++ text&quot;;&quot;++&quot;]
 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35
 </pre></div>
+
 <p>As might have been guessed <code>#x</code> counts the number of charcters in the first argument and then <code>!#x</code> generates a list of integers from 0 to n-1.
-</p><div class="example">
+</p>
+<div class="example">
 <pre class="example">&nbsp;{(!#x)+\!#y}[&quot;Find the +++ needle in + the ++ text&quot;;&quot;++&quot;]
  0  1
  1  2
@@ -176,8 +197,10 @@ error: rank
 20 21
 ..
 </pre></div>
+
 <p>Here the code takes each iteger from the previous calculation and then add an integer list as long as the send argument to each value.  In order to ensure this is clear one could write something similar and ensure the output is able to be predicted.
-</p><div class="example">
+</p>
+<div class="example">
 <pre class="example">&nbsp;{(!x)+\!y}[6;4]
 0 1 2 3
 1 2 3 4
@@ -186,8 +209,10 @@ error: rank
 4 5 6 7
 5 6 7 8
 </pre></div>
+
 <p>Now using the matrix above the code indices the first argument and pull substrings that match in length of the search string.
-</p><div class="example">
+</p>
+<div class="example">
 <pre class="example">&nbsp;{x@(!#x)+\!#y}[&quot;Find the +++ needle in + the ++ text&quot;;&quot;++&quot;]
 Fi
 in
@@ -212,16 +237,21 @@ e
 in
 ..
 </pre></div>
+
 <p>At this point one can compare the search substring in this list of substrings to find a match.
-</p><div class="example">
+</p>
+<div class="example">
 <pre class="example">&nbsp;{(x@(!#x)+\!#y)~\y}[&quot;Find the +++ needle in + the ++ text&quot;;&quot;++&quot;]
 000000000110000000000000000001000000b
 </pre></div>
+
 <p>And then one can use the where function, <code>&amp;</code>, to determine the index of the matches.
-</p><div class="example">
+</p>
+<div class="example">
 <pre class="example">&nbsp;{&amp;(x@(!#x)+\!#y)~\y}[&quot;Find the +++ needle in + the ++ text&quot;;&quot;++&quot;]
 9 10 29
 </pre></div>
+
 <hr>
 <div class="header">
 <p>
