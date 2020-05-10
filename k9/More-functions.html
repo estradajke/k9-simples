@@ -2,7 +2,7 @@
 <html>
 <!-- This manual is for Shakti (k9) build 2020.04.14.
 
-May 8, 2020
+May 10, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
@@ -60,64 +60,64 @@ Next: <a href="I_002fO.html#I_002fO" accesskey="n" rel="next">I/O</a>, Previous:
 </div>
 <hr>
 <a name="More-functions-1"></a>
-<h2 class="chapter">7 More functions</h2>
+<h2 class="chapter">8 More functions</h2>
 <p>This chapter includes functions that likely will be included elsewhere later.
 <a name="cond"></a></p><a name="cond-_21d2-_0024_005bx_003by_003bz_005d"></a>
-<h3 class="section">7.1 cond &rArr; $[x;y;z]</h3>
+<h3 class="section">8.1 cond &rArr; $[x;y;z]</h3>
 <p>If x then y else z.
 </p><div class="example">
-<pre class="example"> $[3&gt;2;`a;`b]
+<pre class="example">&nbsp;$[3&gt;2;`a;`b]
 `a
- $[2&gt;3;`a;`b]
+&nbsp;$[2&gt;3;`a;`b]
 `b
 </pre></div>
 <a name="in"></a><a name="in-_21d2-x_0027y"></a>
-<h3 class="section">7.2 in &rArr; x&rsquo;y</h3>
+<h3 class="section">8.2 in &rArr; x&rsquo;y</h3>
 <p>Determine if y is in list x.
 </p><div class="example">
-<pre class="example"> `a`b`d`e'`c
+<pre class="example">&nbsp;`a`b`d`e'`c
 0b
- `a`b`d`e'`b
+&nbsp;`a`b`d`e'`b
 1b
- (!10)'2
+&nbsp;(!10)'2
 1b
- (!10)'2. / will error as type is different
+&nbsp;(!10)'2. / will error as type is different
 (!10)'2.
 ^
 error: type
 </pre></div>
 <a name="parse"></a><a name="parse-_21d2-_003ax"></a>
-<h3 class="section">7.3 parse &rArr; :x</h3>
+<h3 class="section">8.3 parse &rArr; :x</h3>
 <p>Parse allows one to see how a command is parsed into normal k9 form.  One can value the parse by using the value command, See <a href="Verbs.html#value">value</a>.
 </p><div class="example">
-<pre class="example"> :3+2
+<pre class="example">&nbsp;:3+2
 +
 3
 2
- t:+`a`b!(1 2;3 4)
- :select from t
+&nbsp;t:+`a`b!(1 2;3 4)
+&nbsp;:select from t
 t
- :select a from t
+&nbsp;:select a from t
 t
 [..]
- p::select a from t  / store output into p
- #p
+&nbsp;p::select a from t  / store output into p
+&nbsp;#p
 2
- p 0
+&nbsp;p 0
 `t
- p 1
+&nbsp;p 1
 a|a
- . p                 / value parse expression
+&nbsp;. p                 / value parse expression
 a
 -
 1
 2
- .(`t;`a!`a)         / value expression
+&nbsp;.(`t;`a!`a)         / value expression
 a
 -
 1
 2
- select from t       / orginal statement
+&nbsp;select from t       / orginal statement
 a
 -
 1
@@ -125,21 +125,21 @@ a
 </pre></div>
 <p>Now for an example with a group clause.
 </p><div class="example">
-<pre class="example"> t:+`a`b`c!(`x`y`x;0 2 10;1 1 0)
- select avg:+/b%#b by a from t
+<pre class="example">&nbsp;t:+`a`b`c!(`x`y`x;0 2 10;1 1 0)
+&nbsp;select avg:+/b%#b by a from t
 a|avg
 -|---
 x|5
 y|2
- p::select avg:+/b%#b by a from t
- .(#;`t;();`a!`a;`avg!(%;(+/;`b);#`b)) / parse form
- #[t;();`a!`a;`avg!(%;(+/;`b);#`b)]    / functional form
+&nbsp;p::select avg:+/b%#b by a from t
+&nbsp;.(#;`t;();`a!`a;`avg!(%;(+/;`b);#`b)) / parse form
+&nbsp;#[t;();`a!`a;`avg!(%;(+/;`b);#`b)]    / functional form
 a|avg
 -|---
 x|10 
 y|2  
- p::select avg:+/b%#b by a from t where c=1
- #[t;(=;`c;1);`a!`a;`avg!(%;(+/;`b);#`b)]
+&nbsp;p::select avg:+/b%#b by a from t where c=1
+&nbsp;#[t;(=;`c;1);`a!`a;`avg!(%;(+/;`b);#`b)]
 a|avg
 -|---
 x|0  
@@ -147,24 +147,24 @@ y|2
 </pre></div>
 <p>In the example above the parse output is reduced.  In order to see the elements in the output one could manually return the values in the list, eg. p[2;0 1 2].
 <a name="amend"></a></p><a name="amend-_21d2-_0040_005bx_003bi_003bf_005b_003by_005d_005d"></a>
-<h3 class="section">7.4 amend &rArr; @[x;i;f[;y]]</h3>
+<h3 class="section">8.4 amend &rArr; @[x;i;f[;y]]</h3>
 <p>Replace the values in list x at indices i with f or f[y].
 </p>
 <p>@[x;i;f] examples<br><br>
 </p><div class="example">
-<pre class="example"> x:(`x00`x01;`x10`x11`x12;`x20;`x30`x31`x32);x
+<pre class="example">&nbsp;x:(`x00`x01;`x10`x11`x12;`x20;`x30`x31`x32);x
 x00 x01    
 x10 x11 x12
 x20        
 x30 x31 x32
 
- @[x;,1;`newValue]
+&nbsp;@[x;,1;`newValue]
 x00 x01    
 newValue   
 x20        
 x30 x31 x32
 
- @[x;1 2;`newValue]
+&nbsp;@[x;1 2;`newValue]
 x00 x01    
 newValue   
 newValue   
@@ -174,19 +174,19 @@ x30 x31 x32
 
 <p>@[x;i;f;y] examples<br><br>
 </p><div class="example">
-<pre class="example"> x:(0 1;10 11 12;20;30 31 32);x
+<pre class="example">&nbsp;x:(0 1;10 11 12;20;30 31 32);x
 0 1     
 10 11 12
 20      
 30 31 32
 
- @[x;,1;*;100]
+&nbsp;@[x;,1;*;100]
 0 1           
 1000 1100 1200
 20            
 30 31 32      
 
- @[x;1 2;*;100]
+&nbsp;@[x;1 2;*;100]
 0 1           
 1000 1100 1200
 2000          
@@ -194,17 +194,17 @@ x30 x31 x32
 
 </pre></div>
 <a name="dmend"></a><a name="dmend-_21d2-_002e_005bx_003bi_003bf_005b_003by_005d_005d"></a>
-<h3 class="section">7.5 dmend &rArr; .[x;i;f[;y]]</h3>
+<h3 class="section">8.5 dmend &rArr; .[x;i;f[;y]]</h3>
 
 <p>.[x;i;f] examples<br><br>
 </p><div class="example">
-<pre class="example"> x:(`x00`x01;`x10`x11`x12;`x20;`x30`x31`x32);x
+<pre class="example">&nbsp;x:(`x00`x01;`x10`x11`x12;`x20;`x30`x31`x32);x
 x00 x01    
 x10 x11 x12
 x20        
 x30 x31 x32
 
- .[x;1 2;`newValue]
+&nbsp;.[x;1 2;`newValue]
 x00 x01         
 x10 x11 newValue
 x20             
@@ -213,33 +213,33 @@ x30 x31 x32
 </pre></div>
 <p>.[x;i;f;y] examples<br><br>
 </p><div class="example">
-<pre class="example"> x:(`x00`x01;`x10`x11`x12;`x20;`x30`x31`x32);x
+<pre class="example">&nbsp;x:(`x00`x01;`x10`x11`x12;`x20;`x30`x31`x32);x
 x00 x01    
 x10 x11 x12
 x20        
 x30 x31 x32
 
- i:(1 3; 0 1);i
+&nbsp;i:(1 3; 0 1);i
 1 3
 0 1
 
- y:(`a`b;`c`d);y
+&nbsp;y:(`a`b;`c`d);y
 a b
 c d
 
- .[x;i;:;y]
+&nbsp;.[x;i;:;y]
 x00 x01
 a b x12
 x20    
 c d x32
 
- x:(0 1;10 11 12;20;30 31 32);x
+&nbsp;x:(0 1;10 11 12;20;30 31 32);x
 0 1     
 10 11 12
 20      
 30 31 32
 
- .[x;i;*;-1]
+&nbsp;.[x;i;*;-1]
 0 1       
 -10 -11 12
 20        
@@ -247,10 +247,10 @@ c d x32
 
 </pre></div>
 <a name="freq"></a><a name="Histogram-_21d2-_0060freq"></a>
-<h3 class="section">7.6 Histogram &rArr; &lsquo;freq</h3>
+<h3 class="section">8.6 Histogram &rArr; &lsquo;freq</h3>
 <p>Compute a histogram of a list.
 </p><div class="example">
-<pre class="example"> ^`freq x:100000?10
+<pre class="example">&nbsp;^`freq x:100000?10
 0| 9907
 1| 9963
 2| 9938
@@ -261,7 +261,7 @@ c d x32
 7|10036
 8| 9907
 9|10124
- ^#'=x   / same result but slower
+&nbsp;^#'=x   / same result but slower
 0| 9907
 1| 9963
 2| 9938

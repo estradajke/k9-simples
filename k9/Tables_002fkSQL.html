@@ -2,7 +2,7 @@
 <html>
 <!-- This manual is for Shakti (k9) build 2020.04.14.
 
-May 8, 2020
+May 10, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
@@ -60,76 +60,76 @@ Next: <a href="System.html#System" accesskey="n" rel="next">System</a>, Previous
 </div>
 <hr>
 <a name="Tables-and-kSQL"></a>
-<h2 class="chapter">9 Tables and kSQL</h2>
+<h2 class="chapter">10 Tables and kSQL</h2>
 <p>This chapter introduces k9 tables and the kSQL language to query.
 <a name="Tables"></a></p><a name="Tables-1"></a>
-<h3 class="section">9.1 Tables</h3>
+<h3 class="section">10.1 Tables</h3>
 <p>Here is an example of a table with three columns (Day, Weather, and Temp) and three rows.
 </p><div class="example">
-<pre class="example"> t:[[]Day:2020.04.10+!3;Weather:`sunny`cold`sunny;Temp:22 12 18]
- t
+<pre class="example">&nbsp;t:[[]Day:2020.04.10+!3;Weather:`sunny`cold`sunny;Temp:22 12 18]
+&nbsp;t
 Day        Weather Temp
 ---------- ------- ----
 2020-04-10 sunny     22
 2020-04-11 cold      12
 2020-04-12 sunny     18
- @t                             / tables are type `A (`t is for time)
+&nbsp;@t                             / tables are type `A (`t is for time)
 `A
- +t
+&nbsp;+t
 Day    |2020-04-10 2020-04-11 2020-04-12
 Weather|sunny cold sunny                
 Temp   |22 12 18                        
 </pre></div>
 <a name="A_005fTables"></a><a name="A_005fTables-1"></a>
-<h3 class="section">9.2 A_Tables</h3>
+<h3 class="section">10.2 A_Tables</h3>
 <p>Here is an example of a A_table with three columns (Day, Weather, and Temp) and three rows.  One column (Day) will be add as a key.
 </p><div class="example">
-<pre class="example"> t:[[Day:2020.04.10+!3]Weather:`sunny`cold`sunny;Temp:22 12 18]
- t
+<pre class="example">&nbsp;t:[[Day:2020.04.10+!3]Weather:`sunny`cold`sunny;Temp:22 12 18]
+&nbsp;t
 Day       |Weather Temp
 ----------|------- ----
 2020-04-10|sunny     22
 2020-04-11|cold      12
 2020-04-12|sunny     18
 
- @t                        / A_tables have type `AA
+&nbsp;@t                        / A_tables have type `AA
 `AA
 </pre></div>
 <a name="S_005fTables"></a><a name="S_005fTables-1"></a>
-<h3 class="section">9.3 S_Tables</h3>
+<h3 class="section">10.3 S_Tables</h3>
 <p>TBD
 </p><div class="example">
-<pre class="example"> x:`a`b! [[]c:2 3;d:3 4;e:4 5]
- x
- |c d e
+<pre class="example">&nbsp;x:`a`b! [[]c:2 3;d:3 4;e:4 5]
+&nbsp;x
+&nbsp;|c d e
 -|- - -
 a|2 3 4
 b|3 4 5
 
- @x                              / S_tables are type `SA
+&nbsp;@x                              / S_tables are type `SA
 `SA
 </pre></div>
 <a name="kSQL"></a><a name="kSQL-1"></a>
-<h3 class="section">9.4 kSQL</h3>
+<h3 class="section">10.4 kSQL</h3>
 <p>kSQL is a powerful query language for tables.
 </p><div class="example">
-<pre class="example"> select |/Temp from t where Weather=`sunny
+<pre class="example">&nbsp;select |/Temp from t where Weather=`sunny
 Temp|22
 
- select from t where Weather=`sunny
+&nbsp;select from t where Weather=`sunny
 Day        Weather Temp
 ---------- ------- ----
 2020-04-10 sunny     22
 2020-04-12 sunny     18
 
- select {+/x%#x}Temp from t where Weather=`sunny
+&nbsp;select {+/x%#x}Temp from t where Weather=`sunny
 Temp|20
 
- select |/Temp from t where Weather=`sunny
+&nbsp;select |/Temp from t where Weather=`sunny
 Temp|22
 </pre></div>
 <a name="Joins"></a>
-<h3 class="section">9.5 Joins</h3>
+<h3 class="section">10.5 Joins</h3>
 <p>Joining tables together.  In this section x, y represent tables and kx and ky represent keyed/A_tables.
 </p>
 <table>
@@ -142,24 +142,24 @@ Temp|22
 
 
 <a name="union-join-_21d2-x_002cy"></a>
-<h4 class="subsection">9.5.1 union join &rArr; x,y</h4>
+<h4 class="subsection">10.5.1 union join &rArr; x,y</h4>
 <p>Union join table x with table y.
 </p><div class="example">
-<pre class="example"> x:[[]s:`a`b;p:1 2;q:3 4]
- y:[[]s:`b`c;p:11 12;q:21 22]
- x
+<pre class="example">&nbsp;x:[[]s:`a`b;p:1 2;q:3 4]
+&nbsp;y:[[]s:`b`c;p:11 12;q:21 22]
+&nbsp;x
 s p q
 - - -
 a 1 3
 b 2 4
 
- y
+&nbsp;y
 s p  q 
 - -- --
 b 11 21
 c 12 22
 
- x,y
+&nbsp;x,y
 s p  q 
 - -- --
 a  1  3
@@ -168,19 +168,19 @@ b 11 21
 c 12 22
 </pre></div>
 <a name="left-join-_21d2-x_002cy"></a>
-<h4 class="subsection">9.5.2 left join &rArr; x,y</h4>
+<h4 class="subsection">10.5.2 left join &rArr; x,y</h4>
 <p>Left join table x with keyed table/A_table.  Result includes all rows from x and values from x where there is no y value.
 </p><div class="example">
-<pre class="example"> x:[[]s:`a`b`c;p:1 2 3;q:7 8 9]
- y:[[s:`a`b`x`y`z]q:101 102 103 104 105;r:51 52 53 54 55]
- x
+<pre class="example">&nbsp;x:[[]s:`a`b`c;p:1 2 3;q:7 8 9]
+&nbsp;y:[[s:`a`b`x`y`z]q:101 102 103 104 105;r:51 52 53 54 55]
+&nbsp;x
 s p q
 - - -
 a 1 7
 b 2 8
 c 3 9
 
- y
+&nbsp;y
 s|q   r 
 -|--- --
 a|101 51
@@ -189,7 +189,7 @@ x|103 53
 y|104 54
 z|105 55
 
- x,y
+&nbsp;x,y
 s p q   r 
 - - --- --
 a 1 101 51
@@ -197,24 +197,24 @@ b 2 102 52
 c 3   9  0
 </pre></div>
 <a name="outer-join-_21d2-x_002cy"></a>
-<h4 class="subsection">9.5.3 outer join &rArr; x,y</h4>
+<h4 class="subsection">10.5.3 outer join &rArr; x,y</h4>
 <p>Outer join key table/A_table x with key table/A_table y. 
 </p><div class="example">
-<pre class="example"> x:[[s:`a`b]p:1 2;q:3 4]
- y:[[s:`b`c]p:9 8;q:7 6]
- x
+<pre class="example">&nbsp;x:[[s:`a`b]p:1 2;q:3 4]
+&nbsp;y:[[s:`b`c]p:9 8;q:7 6]
+&nbsp;x
 s|p q
 -|- -
 a|1 3
 b|2 4
 
- y
+&nbsp;y
 s|p q
 -|- -
 b|9 7
 c|8 6
 
- x,y
+&nbsp;x,y
 s|p q
 -|- -
 a|1 3

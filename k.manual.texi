@@ -28,6 +28,7 @@ This document explains the usage of the k9 programming language in very simple t
 
 @menu
 * Intro:: Intro
+* Examples:: Examples
 * Nouns:: Data / Noun
 * Verbs:: Functions / Verbs
 * Adverbs:: Function Modifiers / Adverbs
@@ -142,10 +143,10 @@ Here I will start up k9, perform some trivial calculations, and then close the s
 @example
  rlwrap ./k
 2020.04.01 (c) shakti
- n:10000                     / n data points
- s:`a`b`c                    / data for symbols a, b, and c
- q:+s!(-1+n?2;-1+n?2;-1+n?2) / table of returns (-1,0,1) for each symbol
- q                           / print out the table
+@ n:10000                     / n data points
+@ s:`a`b`c                    / data for symbols a, b, and c
+@ q:+s!(-1+n?2;-1+n?2;-1+n?2) / table of returns (-1,0,1) for each symbol
+@ q                           / print out the table
 a  b  c 
 -- -- --
  0  1  1
@@ -159,7 +160,7 @@ a  b  c
 At this point you might want to check which symbol has the highest return, most variance, or any other analysis on the data.
 
 @example
- #'=q                          / count each unique a/b/c combination
+@ #'=q                          / count each unique a/b/c combination
 a  b  c |   
 -- -- --|---
  0  1  1|407
@@ -168,7 +169,7 @@ a  b  c |
  0 -1 -1|391
  1  1  1|349
 ..
-  -1#+\q                       / calulate the return of each symbol
+@ -1#+\q                       / calulate the return of each symbol
 a   b   c 
 --- --- --
 -68 117 73
@@ -181,12 +182,15 @@ c|0.6708467
 @section Document formatting for code examples
 This document uses a number of examples to help clarify k9.  The sytax is that input has a leading space and output does not.  This follows the terminal syntax where the REPL input has space but prints output without.
 @example
- 3+2 / this is input
+@ 3+2 / this is input
 5    / this is output
 @end example
 
 @section k9 nuances
 One will need to understand some basic rules of k9 in order to progress.  These will likely seem strange at first.
+
+@subsection The language is being changed often.
+There may be examples in this document which work on the version idicated but do not with the version currently available to download.  If so, then feel free to drop the author a note.  Items which currently error but are likley to come back 'soon' will be left in the document.
 
 @subsection @code{:} is used to set a variable to a value
 @code{a:3} is used to set the variable, a, to the value, 3.  @code{a=3} is an equality test to determine if a is equal to 3.
@@ -200,9 +204,9 @@ Yeah, 2 divide by 5 is written as @code{2%5} and not @code{2/5}.
 + does not happen specially before or after *.  The order of evaluation is done right to left unless parenthesis are used.  (2+5)*3 = 21 as the 2+5 in parenthesis is done before being multiplied by 3.
 @subsection Operators are overloaded depending on the number of arguments.
 @example
- *(3;6;9)    / single argument so * is first element of the list
+@ *(3;6;9)    / single argument so * is first element of the list
 3
- 2*(3;6;9)   / two arguments so * is multiplication
+@ 2*(3;6;9)   / two arguments so * is multiplication
 6 12 18
 @end example
 @subsection Lists and functions are very similar.
@@ -211,11 +215,11 @@ k9 syntax encourages you to treat lists and functions in a similar function.  Th
 If this book wasn't a simples guide then lists (l) and functions (f) would be replaced by maps (m) given the interchangeability.  One way to determine if a map is either a lits or function is via the type function.  Lists and functions do not have the same type.
 
 @example
- l:3 4 7 12
- f:@{3+x*x@}
- l@@2
+@ l:3 4 7 12
+@ f:@{3+x*x@}
+@ l@@2
 7
- f@@2
+@ f@@2
 7
 @end example
 @subsection k9 is expressed in terms of grammar.
@@ -230,6 +234,169 @@ In k9 as the Help/Info card shows data are nouns, functions/lists are verbs and 
 @item @t{3 >' 0 1 2 3 4 5 (Noun verb adverb noun)}
 @end itemize
 @page
+@node Examples
+@chapter Examples
+Examples of k9 in practice.
+@section Data Manipulation
+Generate a table of financial random data and compute basic statistics quickly.
+@example
+@ n:_50*1000*1000                        / 50 million rows
+@ t:@{g@@<g:09:00:00.000+x?10:00:00.000@}   / random times
+@ s:@{x?`a`b`c`d`e@}                       / random symbols
+@ d:@{(-6+!13)@@(x?_2e9)bin 1e9*(0,(1-|d),1+d:0.682689492 0.954499736 0.997300203 0.999936657 0.999999426 0.999999998),2@}/ random deltas
+@ q:+`t`s`d!(t[n];s[n];d[n])             / generate the data
+@end example
+As this point one might want to check start and stop times, see if the symbol distribution is actual random and look at the distribution of the price deltas.
+@example
+@ select min t, max t from q
+t|09:00:00.002
+t|18:59:59.998
+
+@ select #s by s from q
+s|s       
+-|--------
+a|10002646
+b|10001228
+c|10002255
+d| 9993125
+e|10000746
+
+@ select #d by d from q
+d |d       
+--|--------
+-5|       9
+-4|    1572
+-3|   65761
+-2| 1069559
+-1| 6794024
+ 0|34133178
+ 1| 6799826
+ 2| 1068860
+ 3|   65582
+ 4|    1613
+ 5|      16
+@end example
+@section Understanding Code Examples
+In the shakti mailing list there is a number of code examples that can be used to learn best practice.  In order to make sense of other's codes one needs to be able to effeciently parse the typically dense k9 language.  Here, an example of how one goes about this process is presented.
+@example
+ss:@{*@{o:o@@&(-1+(#y)+*x@@1)<o:1_x@@1;$[0<#x@@1;((x@@0),*x@@1;o);x]@}[;y]/:(();&(x@@(!#x)+\!#y)~\y)@}
+@end example
+This function finds a substring in a string.
+@verbatim
+ 000000000011111111112222222222333333
+ 012345678901234567890123456789012345
+"Find the +++ needle in + the ++ text"
+@end verbatim
+Here one would expect to find ``++'' at 9 and 29.
+@example
+@ ss["Find the +++ needle in + the ++ text";"++"]
+9 29
+@end example
+In order to determine how this function works let's strip out the details...
+@example
+ss:@{
+    *@{
+      o:o@@&(-1+(#y)+*x@@1)<o:1_x@@1; / set o 
+      $[0<#x@@1;((x@@0),*x@@1;o);x]   / if x then y else z
+      @}
+  [;y]/:(();&(x@@(!#x)+\!#y)~\y)    / compute and use value for inner function
+  @}
+ 
+@end example
+Given k9 evaluates right to left let's start with the right most code fragment.
+@example
+@ (();&(x@@(!#x)+\!#y)~\y)          / a list (null;value)
+@end example
+And now let's focus on the value in the list.
+@example
+@ &(x@@(!#x)+\!#y)~\y
+@end example
+In order to easily check our understand we can wrap this in a function and call the function with the parameters shown above.  In order to step through we can start with the inner parenthesis and build up the code until it is complete.
+@example
+@ @{!#x@}["Find the +++ needle in + the ++ text";"++"]
+@{!#x@}["Find the +++ needle in + the ++ text";"++"]
+^
+error: rank
+@end example
+This won't work as one cannot call a function with two arguments and then only use one.  In order to get around this we will insert code for the second argument but not use it.
+@example
+ @{y;#x@}["Find the +++ needle in + the ++ text";"++"]
+36
+ @{y;!#x@}["Find the +++ needle in + the ++ text";"++"]
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35
+@end example
+As might have been guessed @code{#x} counts the number of charcters in the first argument and then @code{!#x} generates a list of integers from 0 to n-1.
+@example
+@ @{(!#x)+\!#y@}["Find the +++ needle in + the ++ text";"++"]
+ 0  1
+ 1  2
+ 2  3
+ 3  4
+ 4  5
+ 5  6
+ 6  7
+ 7  8
+ 8  9
+ 9 10
+10 11
+11 12
+12 13
+13 14
+14 15
+15 16
+16 17
+17 18
+18 19
+19 20
+20 21
+..
+@end example
+Here the code takes each iteger from the previous calculation and then add an integer list as long as the send argument to each value.  In order to ensure this is clear one could write something similar and ensure the output is able to be predicted.
+@example
+@ @{(!x)+\!y@}[6;4]
+0 1 2 3
+1 2 3 4
+2 3 4 5
+3 4 5 6
+4 5 6 7
+5 6 7 8
+@end example
+Now using the matrix above the code indices the first argument and pull substrings that match in length of the search string.
+@example
+@ @{x@@(!#x)+\!#y@}["Find the +++ needle in + the ++ text";"++"]
+Fi
+in
+nd
+d 
+ t
+th
+he
+e 
+ +
+++
+++
++ 
+ n
+ne
+ee
+ed
+dl
+le
+e 
+ i
+in
+..
+@end example
+At this point one can compare the search substring in this list of substrings to find a match.
+@example
+@ @{(x@@(!#x)+\!#y)~\y@}["Find the +++ needle in + the ++ text";"++"]
+000000000110000000000000000001000000b
+@end example
+And then one can use the where function, @code{&}, to determine the index of the matches.
+@example
+@ @{&(x@@(!#x)+\!#y)~\y@}["Find the +++ needle in + the ++ text";"++"]
+9 10 29
+@end example
 @node Nouns
 @chapter Data / Nouns
 The basic data types of the k9 language are numbers (interger and float), text (characters and enumerated/name) and temporal (date and time).  It is common to have functions operate on multiple data types.
@@ -252,14 +419,14 @@ The set of k9 data, aka nouns, are as follows.
 Data types can be determined by using the @code{@@} function on values or lists of values.  In the case of non-uniform lists @code{@@} returns the type of the list @code{`L} but the function can be modified to evalue each type @code{@@'} instead and return the type of each element in the list.
 
 @example
- @@1            / integer atom
+@ @@1            / integer atom
 `i
- @@1 2 3        / integer list
+@ @@1 2 3        / integer list
 `I
- @@12:34:56.789 / time atom
- @@(3;3.1;"b";`a;12:01:02.123;2020.04.05) / mixed list
+@ @@12:34:56.789 / time atom
+@ @@(3;3.1;"b";`a;12:01:02.123;2020.04.05) / mixed list
 `L
- @@'(3;3.1;"b";`a;12:01:02.123;2020.04.05)
+@ @@'(3;3.1;"b";`a;12:01:02.123;2020.04.05)
 `i`f`c`s`t`D
 @end example
 
@@ -267,11 +434,11 @@ Data types can be determined by using the @code{@@} function on values or lists 
 Booleans have two possible values 0 and 1 and have a 'b' to avoid confusion with integers, eg. 0b or 1b.
 
 @example
- 0b
+@ 0b
 0b
- 1b
+@ 1b
 1b
- 10101010b
+@ 10101010b
 10101010b
 @end example
 @section Numeric Data
@@ -281,33 +448,33 @@ Numbers can be stored as integers and floats.
 Integers 
 
 @example
- 3
+@ 3
 3
- 3+1
+@ 3+1
 4
- @@3
+@ @@3
 `i
- a:3;
- @@a
+@ a:3;
+@ @@a
 `i
- 3%1   / result will be float even though inputs are int
+@ 3%1   / result will be float even though inputs are int
 3f
 @end example
 @anchor{float}@subsection float @result{} Float f
 Float
 @example
- 3.1
+@ 3.1
 3.1
- 3.1+1.2
+@ 3.1+1.2
 4.3
- 3.1-1.1   / looks like an int but really is a float
+@ 3.1-1.1   / looks like an int but really is a float
 2
- @@3.1-1.1
+@ @@3.1-1.1
 1f
- @@3.1
+@ @@3.1
 `f
- a:3.1;
- @@a
+@ a:3.1;
+@ @@a
 `f
 @end example
 
@@ -316,36 +483,36 @@ Temporal data can be expressed in time, date, or a combined date and time.
 @anchor{date}@subsection date @result{} Date D
 Dates are in yyyy.mm.dd format and stored internally as integers.
 @example
- @@2020.04.20               / date
+@ @@2020.04.20               / date
 `D
- .z.D                       / current date in GMT
+@ .z.D                       / current date in GMT
 2020-04-17
- `i$.z.D                    / numeric representation of date
+@ `i$.z.D                    / numeric representation of date
 -1351
- `i$2024.01.01              / zero date
+@ `i$2024.01.01              / zero date
 0
- `D$0                       / zero date
+@ `D$0                       / zero date
 2024.01.01
 @end example
 
 @anchor{time}@subsection time @result{} Time t
 Times are stored in hh:mm:ss.123 format and stored internally as integers.
 @example
- @@12:34:56.789             / time
+@ @@12:34:56.789             / time
 `t
- .z.t                       / current time in GMT
+@ .z.t                       / current time in GMT
 17:32:57.995
- (t:.z.t)-17:30:00.000
+@ (t:.z.t)-17:30:00.000
 00:03:59.986
- t
+@ t
 17:33:59.986
- `i$00:00:00.001            / numeric representation of 1ms
+@ `i$00:00:00.001            / numeric representation of 1ms
 1
- `i$00:00:00.001            / numeric representation of 1s
+@ `i$00:00:00.001            / numeric representation of 1s
 1000
- `i$00:01:00.000            / numeric representation of 1m
+@ `i$00:01:00.000            / numeric representation of 1m
 60000
- `t$12345                   / convert milliseconds to time
+@ `t$12345                   / convert milliseconds to time
 00:00:12.345
 @end example
 
@@ -353,15 +520,15 @@ Times are stored in hh:mm:ss.123 format and stored internally as integers.
 Dates and times can be combined as 2020.04.20T12:34:56.789.
 
 @example
- @@2020.04.20T12:34:56.789  / date and time
+@ @@2020.04.20T12:34:56.789  / date and time
 `T
- "T"$"2020.04.20 12:34:56.789" / converting from string with a few formats
+@ "T"$"2020.04.20 12:34:56.789" / converting from string with a few formats
 2020-04-20T12:34:56.789
- "T"$"2020-04-20 12:34:56.789"
+@ "T"$"2020-04-20 12:34:56.789"
 2020-04-20T12:34:56.789
- "T"$"2020.04.20T12:34:56.789"
+@ "T"$"2020.04.20T12:34:56.789"
 2020-04-20T12:34:56.789
- "T"$"2020-04-20T12:34:56.789"
+@ "T"$"2020-04-20T12:34:56.789"
 2020-04-20T12:34:56.789
 @end example
 
@@ -372,18 +539,18 @@ Text data come in characters, lists of characters (aka strings) and enumerated t
 Characters are stored as their ANSI value and can be seen by conversion to integers.  Character lists are equivalent to strings.
 
 @example
- @@"b"
+@ @@"b"
 `c
- @@"bd"
+@ @@"bd"
 `C 
 @end example
 
 @anchor{sym}@subsection sym @result{} Symbol s
 Symbols are enumerate type shown as a text string but stored internally as a integer value.
 @example
- @@`blue
+@ @@`blue
 `s
- @@`blue`red
+@ @@`blue`red
 `S
 @end example
 @section Extreme values
@@ -428,18 +595,18 @@ _ @xref{drop},     @xref{floor}.
 Set a variable, x, to a value, y.
 
 @example
- a:3
- a
+@ a:3
+@ a
 3
- b:(`green;37;"blue)
- b
+@ b:(`green;37;"blue")
+@ b
 green
 37
 blue
- c:@{x+y@}
- c
+@ c:@{x+y@}
+@ c
 @{x+y@}
- c[12;15]
+@ c[12;15]
 27
 @end example
 
@@ -447,22 +614,22 @@ blue
 Add x and y.
 
 @example
- 3+7
+@ 3+7
 10
- a:3;
- a+8
+@ a:3;
+@ a+8
 11
- 3+4 5 6 7
+@ 3+4 5 6 7
 7 8 9 10
- 3 4 5+4 5 6
+@ 3 4 5+4 5 6
 7 9 11
- 3 4+1 2 3 / lengths don't match, will error: length
+@ 3 4+1 2 3 / lengths don't match, will error: length
 error: length
- 10:00+1         / add a minute
+@ 10:00+1         / add a minute
 10:01
- 10:00:00+1      / add a second
+@ 10:00:00+1      / add a second
 10:00:01
- 10:00:00.000+1  / add a millisecond
+@ 10:00:00.000+1  / add a millisecond
 10:00:00.001
 @end example
 
@@ -470,18 +637,18 @@ error: length
 Flip, or transpose, x.  
 
 @example
- x:((1 2);(3 4);(5 6))
- x
+@ x:((1 2);(3 4);(5 6))
+@ x
 1 2
 3 4
 5 6
- +x
+@ +x
 1 3 5
 2 4 6
- `a`b!+x
+@ `a`b!+x
 a|1 3 5
 b|2 4 5
- +`a`b!+x
+@ +`a`b!+x
 a b
 - -
 1 2
@@ -493,10 +660,10 @@ a b
 Subtract y from x.
 
 @example
- 5-2
+@ 5-2
 3
- x:4;y:1;
- x-y
+@ x:4;y:1;
+@ x-y
 3
 @end example
 
@@ -504,97 +671,97 @@ Subtract y from x.
 Negative x.
 
 @example
- -3
+@ -3
 -3
- --3
+@ --3
 3
- x:4;
- -x
+@ x:4;
+@ -x
 -4
- d:`a`b!((1 2 3);(4 5 6))
- -d
+@ d:`a`b!((1 2 3);(4 5 6))
+@ -d
 a|-1 -2 -3
 b|-4 -5 -6
 @end example
 @anchor{times}@section times @result{}  x*y
 Mutliply x and y.
 @example
- 3*4
+@ 3*4
 12
- 3*4 5 6
+@ 3*4 5 6
 12 15 18
- 1 2 3*4 5 6
+@ 1 2 3*4 5 6
 4 10 18
 @end example
 @anchor{first}@section first @result{} *x
 Return the first value of x.  Last can either be determine by taking the first element of the reverse list (*|`a`b`c) or using last syntax ((:/)`a`b`c).
 @example
- *1 2 3
+@ *1 2 3
 1
- *((1 2);(3 4);(5 6))
+@ *((1 2);(3 4);(5 6))
 1 2
- **((1 2);(3 4);(5 6))
+@ **((1 2);(3 4);(5 6))
 1
- *`a`b!((1 2 3);(4 5 6))
+@ *`a`b!((1 2 3);(4 5 6))
 1 2 3
 @end example
 @anchor{divide}@section divide @result{} x%y
 Divide x by y.
 @example
- 12%5
+@ 12%5
 2.4
- 6%2    / division of two integers returns a float
+@ 6%2    / division of two integers returns a float
 3f
 @end example
 @anchor{min}@section min @result{} x&y
 The smaller of x and y.  One can use the over adverb to determine the min value in a list.
 @example
- 3&2
+@ 3&2
 2
- 1 2 3&4 5 6
+@ 1 2 3&4 5 6
 1 2 3
- 010010b&111000b
+@ 010010b&111000b
 010000
- `a&`b
+@ `a&`b
 `a
- &/ 3 2 10 -200 47
+@ &/ 3 2 10 -200 47
 -200
 @end example
 @anchor{where}@section where @result{} &x
 Given a list of integer values, eg. x_0, x_1, ..., x_(n-1), generate x_0 values of 0, x_1 values of 1, ..., and x_(n-1) values of n-1.
 
 @example
- & 3 1 0 2
+@ & 3 1 0 2
 0 0 0 1 3 3
- &001001b
+@ &001001b
 2 5
- "banana"="a"
+@ "banana"="a"
 010101b
- &"banana"="a"
+@ &"banana"="a"
 1 3 5
- x@@&30<x:12.7 0.1 35.6 -12.1 101.101  / return values greater than 30
+@ x@@&30<x:12.7 0.1 35.6 -12.1 101.101  / return values greater than 30
 35.6 101.101
 @end example
 @anchor{max}@section max @result{} x|y
 The greater of x and y.  Max of a list can be determine by use of the adverb over.
 @example
- 3|2
+@ 3|2
 3
- 1 2 3|4 5 6
+@ 1 2 3|4 5 6
 4 5 6
- 101101b|000111b
+@ 101101b|000111b
 101111b
- |/12 2 3 10 / use over to determine the max of a list
+@ |/12 2 3 10 / use over to determine the max of a list
 12
 @end example
 @anchor{reverse}@section reverse @result{} |x
 Reverse the list x.
 @example
- |0 3 1 2
+@ |0 3 1 2
 2 1 3 0
- |"banana"
+@ |"banana"
 "ananab"
- |((1 2 3);4;(5 6))
+@ |((1 2 3);4;(5 6))
 5 6  
 4    
 1 2 3
@@ -602,45 +769,45 @@ Reverse the list x.
 @anchor{less}@section less (more) @result{} x < (>) y
 x less (more) than y.
 @example
- 3<2
+@ 3<2
 0b
- 2<3
+@ 2<3
 1b
- 1 2 3<4 5 6
+@ 1 2 3<4 5 6
 111b
- ((1 2 3);4;(5 6))<((101 0 5);12;(10 0)) / size needs to match
+@ ((1 2 3);4;(5 6))<((101 0 5);12;(10 0)) / size needs to match
 101
 1  
 10
- "a"<"b"
+@ "a"<"b"
 1b
 @end example
 @anchor{asc}@section asc(dsc) @result{} < (>) x
 The indices of a list in order to sort the list in ascending (descending) order.
 @example
- <2 3 0 12
+@ <2 3 0 12
 2 0 1 3
- x@@<x:2 3 0 12
+@ x@@<x:2 3 0 12
 0 2 3 12
 @end example
 @anchor{equal}@section equal @result{} x=y
 x equal to y
 @example
- 2=2
+@ 2=2
 1b
- 2=3
+@ 2=3
 0b
- "banana"="abnaoo"
+@ "banana"="abnaoo"
 001100b
 @end example
 @anchor{group}@section group @result{} =x
 A dictionary of the disinct values of x (key) and indices (values).
 @example
- ="banana"
+@ ="banana"
 a|1 3 5
 b|0    
 n|2 4  
- =0 1 0 2 10 7 0 1 12
+@ =0 1 0 2 10 7 0 1 12
  0|0 2 6
  1|1 7  
  2|3    
@@ -651,52 +818,52 @@ n|2 4
 @anchor{match}@section match @result{} x~y
 Compare x and y.
 @example
- 2~2
+@ 2~2
 1b
- 2~3
+@ 2~3
 0b
- `a`b~`a`b  / different than = which is element-wise comparison
+@ `a`b~`a`b  / different than = which is element-wise comparison
 1b
- `a`b=`a`b
+@ `a`b=`a`b
 11b
 @end example
 @anchor{not}@section not @result{} ~x
 Boolean invert of x
 @example
- ~1b
+@ ~1b
 0b
- ~101b
+@ ~101b
 010b
- ~37 0 12
+@ ~37 0 12
 010b
 @end example
 @anchor{key}@section key @result{} x!y
 Dictionary of x (key) and y (value)
 @example
- 3!7
+@ 3!7
 ,3!,7
- `a`b!3 7
+@ `a`b!3 7
 a|3
 b|7
- `a`b!((1 2);(3 4))
+@ `a`b!((1 2);(3 4))
 a|1 2
 b|3 4
 @end example
 @anchor{enum}@section enum @result{} !x
 Given an integer, x, generate an integer list from 0 to x-1.
 @example
- !3
+@ !3
 0 1 2
 @end example
 
 Given a list of integers, x, generate a list of lists where each individual index goes from 0 to n-1.  Aka an odometer where the each place can have a separate base and the total number of lists is the product of all the x values.
 
 @example
- !2 8 16  / an odometer where the values are 0-1, 0-7, and 0-15.
+@ !2 8 16  / an odometer where the values are 0-1, 0-7, and 0-15.
 0 0 0 0 0 0 0 0 0 0  0  0  0  0  0  0 0 0 0 0 0 0 0 0 0 0  0  0  0  0  0  0 0 0
 0 0 0 0 0 0 0 0 0 0  0  0  0  0  0  0 1 1 1 1 1 1 1 1 1 1  1  1  1  1  1  1 2 2
 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 0 1
- 18#+!2 8 16 / flip the output and display first 18 rows
+@ 18#+!2 8 16 / flip the output and display first 18 rows
 0 0  0
 0 0  1
 0 0  2
@@ -715,173 +882,173 @@ Given a list of integers, x, generate a list of lists where each individual inde
 0 0 15
 0 1  0
 0 1  1
- 5_+!2 8 16 / flip the output and display last 5 rows
+@ 5_+!2 8 16 / flip the output and display last 5 rows
 1 7 11
 1 7 12
 1 7 13
 1 7 14
 1 7 15
- B:`b$+!16#2 / create a list of 16-bit binary numbers from 0 to 65535
- B[12123]    / pull the element 12,123
+@ B:`b$+!16#2 / create a list of 16-bit binary numbers from 0 to 65535
+@ B[12123]    / pull the element 12,123
 0010111101011011b
- 2/:B[12123] / convert to base10 to check it's actually 12123
+@ 2/:B[12123] / convert to base10 to check it's actually 12123
 12123
-@end example 
+@end example
 @anchor{cat}@section cat @result{} x,y
 Concatenate x and y.
 @example
- 3,7
+@ 3,7
 3 7
- "hello"," ","there"
+@ "hello"," ","there"
 "hello there"
 @end example
 @anchor{enlist}@section enlist @result{} ,x
 Create a list from x
 @example
- ,3
+@ ,3
 ,3
- ,1 2 3
+@ ,1 2 3
 1 2 3
- 3=,3
+@ 3=,3
 ,1b
- 3~,3
+@ 3~,3
 0b
 @end example
 @anchor{cut}@section cut @result{} x^y
 Reshape a list y by indices x.
 @example
- 0 1 5^0 1 2 3 4 5 6 7 8 9
+@ 0 1 5^0 1 2 3 4 5 6 7 8 9
 0        
 1 2 3 4  
 5 6 7 8 9
- 1 5^0 1 2 3 4 5 6 7 8 9
+@ 1 5^0 1 2 3 4 5 6 7 8 9
 1 2 3 4  
 5 6 7 8 9
 @end example
 @anchor{sort}@section sort @result{} ^x
 Sort list x into ascending order.
 @example
- ^0 3 2 1
+@ ^0 3 2 1
 0 1 2 3
- ^`b`a!((0 1 2);(7 6 5)) / sort dictionary by key
+@ ^`b`a!((0 1 2);(7 6 5)) / sort dictionary by key
 a|7 6 5
 b|0 1 2
 @end example
 @anchor{cast}@section cast @result{} x$y
 Cast y into type x.
 @example
- `i$37.1 37.9
+@ `i$37.1 37.9
 37 37
- `f$3
+@ `f$3
 3f
- `D$"2020.03.01"
+@ `D$"2020.03.01"
 2020-03-01
- `t$123
+@ `t$123
 00:00:00.123
 @end example
 @anchor{string}@section string @result{} $x
 Cast x to string.
 @example
- $`abc`d
+@ $`abc`d
 abc
 d
- $4.7
+@ $4.7
 "4.7"
 @end example
 @anchor{take}@section take @result{} x#y
 First (last) x elements of y if x is positive (negative).  If x is a list then returns any values in both x and y.
 @example
- 3#0 1 2 3 4 5          / first three
+@ 3#0 1 2 3 4 5          / first three
 0 1 2
- -3#0 1 2 3 4 5         / last three
+@ -3#0 1 2 3 4 5         / last three
 3 4 5
- 2#"hello"
+@ 2#"hello"
 "he"
- (1 2 3 7 8 9)#(2 8 20) / union
+@ (1 2 3 7 8 9)#(2 8 20) / union
 2 8
 @end example
 @anchor{count}@section count @result{} #x
 Count the number of elements in x.
 @example
- #0 1 2 12
+@ #0 1 2 12
 4
- #((0 1 2);3;(4 5))
+@ #((0 1 2);3;(4 5))
 3
- #`a`b!((1 2 3);(4 5 6)) / count the number of keys
+@ #`a`b!((1 2 3);(4 5 6)) / count the number of keys
 2
 @end example
 @anchor{drop}@section drop @result{} x_y
 Return the list y without the first (last) x elements if x is positive (negative).  If x is a list then returns any values from y not in x.
 @example
- 3_0 1 2 3 4 5
+@ 3_0 1 2 3 4 5
 3 4 5
- -3_0 1 2 3 4 5
+@ -3_0 1 2 3 4 5
 0 1 2
- a:3;b:0 9 1 8 2 7;
- a_b
+@ a:3;b:0 9 1 8 2 7;
+@ a_b
 8 2 7
- (1 2 3 7 8 9)_(2 8 20)
+@ (1 2 3 7 8 9)_(2 8 20)
 ,20
 @end example
 @anchor{floor}@section floor @result{} _x
 Return the integer floor of float x.
 @example
- _3.7
+@ _3.7
 3
 @end example
 @anchor{find}@section find @result{} x?y
 Find the first element of x that matches y otherwise return the end of vector. Also, acts to generates random numbers from 0 to y when x and y are integers.
 @example
- `a`b`a`c`b`a`a?`b
+@ `a`b`a`c`b`a`a?`b
 1
- `a`b`a`c`b`a`a?`d
+@ `a`b`a`c`b`a`a?`d
 7
- 0 1 2 3 4?10
+@ 0 1 2 3 4?10
 5
- (1;`a;"blue";7.4)?3
+@ (1;`a;"blue";7.4)?3
 4
- 3?10         / 3 random integers between 0 and 9 inclusive
+@ 3?10         / 3 random integers between 0 and 9 inclusive
 5 5 6
- 3?10         / as above but no repeats
+@ 3?10         / as above but no repeats
 0 5 6
 @end example
 @anchor{unique}@section unique @result{} ?x
 Return the unique values of the list x.  The @code{?} preceeding the return value explicitly shows that list has no repeat values.
 @example
- ?`f`a`b`c`a`b`d`e`a
+@ ?`f`a`b`c`a`b`d`e`a
 ?`f`a`b`c`d`e
- ?"banana"
+@ ?"banana"
 ?"ban"
 @end example
 @anchor{at}@section at @result{} x@@y
 Given a list x return the value(s) at index(indices) y.
 @example
- (3 4 7 12)@@2
+@ (3 4 7 12)@@2
 7
- `a`b`c@@2
+@ `a`b`c@@2
 `c
- ((1 2);3;(4 5 6))@@(0 1)   / values at indices 0 and 1
+@ ((1 2);3;(4 5 6))@@(0 1)   / values at indices 0 and 1
 1 2
 3
 @end example
 @anchor{type}@section type @result{} @@x
 Return the data type of x.
 @example
- @@1
+@ @@1
 `i
- @@1.2
+@ @@1.2
 `f
- @@`a
+@ @@`a
 `s
- @@"a"
+@ @@"a"
 `c
- @@2020.04.20
+@ @@2020.04.20
 `D
- @@12:34:56.789
+@ @@12:34:56.789
 `t
- @@(1;1.2;`a;"a";2020.04.20;12:34:56.789)  / type of a list
+@ @@(1;1.2;`a;"a";2020.04.20;12:34:56.789)  / type of a list
 `L
- @@'(1;1.2;`a;"a";2020.04.20;12:34:56.789) / type of elements of the list
+@ @@'(1;1.2;`a;"a";2020.04.20;12:34:56.789) / type of elements of the list
 `i`f`s`c`D`t
 @end example
 @anchor{apply}@section apply @result{} x.y
@@ -901,26 +1068,26 @@ Given list x return the value at list y.  The action of apply depends on the sha
 @end multitable
 
 @example
- (3 4 7 12).,2
+@ (3 4 7 12).,2
 7
- `a`b`c.,2
+@ `a`b`c.,2
 `c
- x:(`x00`x01;`x10`x11`x12;`x20;`x30`x31`x32);x
+@ x:(`x00`x01;`x10`x11`x12;`x20;`x30`x31`x32);x
 x00 x01    
 x10 x11 x12
 x20        
 x30 x31 x32
 
- x . ,1
+@ x . ,1
 `x10`x11`x12
- x . ,0 1 3
+@ x . ,0 1 3
 x00 x01    
 x10 x11 x12
 x30 x31 x32
 
- x . 3 1
+@ x . 3 1
 `x31
- x . (1 3;0 1)
+@ x . (1 3;0 1)
 x10 x11
 x30 x31
 
@@ -931,18 +1098,18 @@ x30 x31
 @item x= parse output @result{} Evaulate x.
 @end itemize
 @example
- `a`b!(1 2;3 4)
+@ `a`b!(1 2;3 4)
 a|1 2
 b|3 4
- .`a`b!(1 2;3 4)
+@ .`a`b!(1 2;3 4)
 a   b
 1 2 3 4
- p::3+2
- p
+@ p::3+2
+@ p
 +
 3
 2
- . p   / the space between . and p is necessary
+@ . p   / the space between . and p is necessary
 5
 @end example
 @node Adverbs
@@ -962,15 +1129,15 @@ Adverb
 @anchor{each}@section each @result{} f'x
 Apply function f to each value in list x.
 @example
- *((1 2 3);4;(5 6);7)   / first element of the list
+@ *((1 2 3);4;(5 6);7)   / first element of the list
 1 2 3
- *'((1 2 3);4;(5 6);7)  / first element of each element
+@ *'((1 2 3);4;(5 6);7)  / first element of each element
 1 4 5 7
 @end example
 @anchor{bar}@section bar @result{} x'y
 y divided by x using integer division and then multiplied by x.  x is an integer and y is a list of integers.
 @example
- 5'0 1 2 3 4 5 9 10
+@ 5'0 1 2 3 4 5 9 10
 0 0 0 0 0 5 5 10
 @end example
 @anchor{scan}@section scan @result{} (f\)x
@@ -984,25 +1151,25 @@ Create values for each x according to...
 @item f@@n @arrow{} f[f@@n-1;x@@n]
 @end itemize
 @example
- (,\)("a";"b";"c")
+@ (,\)("a";"b";"c")
 a
 ab
 abc
- (+\)1 20 300
+@ (+\)1 20 300
 1 21 321
- (@{y+10*x@}\)1 20 300
+@ (@{y+10*x@}\)1 20 300
 1 30 600
 @end example
 @anchor{left}@section left @result{} f\[x;y]
 Apply f[;y] to each value in x.
 @example
- @{x+y@}[100 200 300;1 2 3]  / add the lists together itemize
+@ @{x+y@}[100 200 300;1 2 3]  / add the lists together itemize
 101 202 303
- @{x+y@}\[100 200 300;1 2 3] / add the list y to each value of x
+@ @{x+y@}\[100 200 300;1 2 3] / add the list y to each value of x
 101 102 103
 201 202 203
 301 302 303
- @{x,y@}\[`l1`l2`l3;`r1`r2`r3]
+@ @{x,y@}\[`l1`l2`l3;`r1`r2`r3]
 l1 r1 r2 r3
 l2 r1 r2 r3
 l3 r1 r2 r3
@@ -1010,31 +1177,31 @@ l3 r1 r2 r3
 @anchor{mod}@section mod @result{} x\y
 The remainder after y divided by x using integer division.  x and y must be integers.
 @example
- 12\27
+@ 12\27
 3
- 5\22
+@ 5\22
 2
 @end example
- @anchor{over}@section over @result{} (f/)x
+@ @anchor{over}@section over @result{} (f/)x
 Same as scan but only print last value.
 @example
- (,/)("a";"b";"c")
+@ (,/)("a";"b";"c")
 "abc"
- (+/)1 20 300
+@ (+/)1 20 300
 321
- (@{y+10*x@}/)1 20 300
+@ (@{y+10*x@}/)1 20 300
 600
 @end example
 @anchor{right}@section right @result{} f/[x;y]
 Apply f[x;] to each value in y.
 @example
- @{x+y@}[100 200 300;1 2 3]  / add the lists together itemize
+@ @{x+y@}[100 200 300;1 2 3]  / add the lists together itemize
 101 202 303
- @{x+y@}/[100 200 300;1 2 3] / add the list y to each value of x
+@ @{x+y@}/[100 200 300;1 2 3] / add the list y to each value of x
 101 201 301
 102 202 302
 103 203 303
- @{x,y@}/[`l1`l2`l3;`r1`r2`r3]
+@ @{x,y@}/[`l1`l2`l3;`r1`r2`r3]
 l1 l2 l3 r1
 l1 l2 l3 r2
 l1 l2 l3 r3
@@ -1042,61 +1209,61 @@ l1 l2 l3 r3
 @anchor{div}@section div @result{} x/y
 y divided by x using integer division.  x and y must be integers.
 @example
- 2/7
+@ 2/7
 3
- 5/22
+@ 5/22
 4
 @end example
 @anchor{eachprior}@section eachprior @result{} f':[x;y]
 Apply f[y_n;y_@{n-1@}].  f_0 is a special case of f[y_0;x].
 @example
- ,':[`x;(`$"y",'$!5)]
+@ ,':[`x;(`$"y",'$!5)]
 y0 x 
 y1 y0
 y2 y1
 y3 y2
 y4 y3
- %':[100;100 101.9 105.1 102.3 106.1] / compute returns
+@ %':[100;100 101.9 105.1 102.3 106.1] / compute returns
 1 1.019 1.031403 0.9733587 1.037146
- 100%':100 101.9 105.1 102.3 106.1    / using infix notation
+@ 100%':100 101.9 105.1 102.3 106.1    / using infix notation
 1 1.019 1.031403 0.9733587 1.037146
 @end example
 @anchor{n scan}@section n scan @result{} x f\:y
 Compute f with initial value x and over list y.  f[i] = f[f[i-1];y[i]] except for the case of f[0]=f[x;y[0]]
 @example
- f:@{(0.1*x)+0.9*y@}      / ema
- 0. f\:1+!3
+@ f:@{(0.1*x)+0.9*y@}      / ema
+@ 0. f\:1+!3
 0.9 1.89 2.889
- f:@{(`$,/$x),(`$,/$y)@} / join and collapse
- `x f\: `y0`y1`y2
+@ f:@{(`$,/$x),(`$,/$y)@} / join and collapse
+@ `x f\: `y0`y1`y2
 x     y0
 xy0   y1
 xy0y1 y2
 @end example
-@anchor{c scan}@section c scan @result{} f\:x
+@anchor{c scan}@section c(onverge) scan @result{} f\:x
 Compute f[x], f[f[x]] and continue to call f[previous result] until the output converges to a stationary value or the output produces x.
 @example
-  @{x*x@}\:.99
+@  @{x*x@}\:.99
 0.99 0.9801 0.960596 0.9227447 0.8514578 0.7249803 0.5255965 0.2762517 0.07631498 0.005823977 3.391871e-05 1.150479e-09 1.323601e-18 1.751919e-36 3.069222e-72 9.420123e-144 8.873872e-287 0
 @end example
 @anchor{n over}@section n over @result{} x f/:y
 Same as n scan but only return last value.
-@anchor{c over}@section c over @result{} f/:x
+@anchor{c over}@section c(onverge) over @result{} f/:x
 Same as converge scan but only return last value.
 @anchor{vs}@section vs @result{} x\:y
 Convert y (base 10) into base x.
 @example
- 2\:129
+@ 2\:129
 10000001b
- 16\:255
+@ 16\:255
 15 15
 @end example
 @anchor{sv}@section sv @result{} x/:y
 Convert list y (base x) into base 10.
 @example
- 2/:10101b
+@ 2/:10101b
 21
- 16/:15 0 15
+@ 16/:15 0 15
 3855
 @end example
 @node Lists
@@ -1105,50 +1272,50 @@ k9 is optimized for operations on uniform lists of data.  In order to take full 
 @section List syntax
 In general, lists are created by data separated by semicolons and encased by parenthesis.  Uniform lists can use a simpler syntax of spaces between elements.
 @example
- a:1 2 3
- b:(1;2;3)
- a~b             / are a and b the same
+@ a:1 2 3
+@ b:(1;2;3)
+@ a~b             / are a and b the same
 1b
- @@a             / uniform lists are upper case value an element
+@ @@a             / uniform lists are upper case value an element
 `I
- @@'a            / type of each element
+@ @@'a            / type of each element
 `i`i`i
- c:(1i;2f;"c";`d)
- @@c             / nonuniform lists are type `L
+@ c:(1i;2f;"c";`d)
+@ @@c             / nonuniform lists are type `L
 `L
- @@'c
+@ @@'c
 `i`f`c`s
- c:1i 2f "c" `d  / incorrect syntax for nonuniform list
+@ c:1i 2f "c" `d  / incorrect syntax for nonuniform list
 error: type
 @end example
 @section List Indicing
 Lists can be indexed by using a few notations.
 @example
- a:2*1+!10  / 2 4 ... 20
- a[10]   / out of range return null
+@ a:2*1+!10  / 2 4 ... 20
+@ a[10]   / out of range return null
 0
- a[9]    / square bracket
+@ a[9]    / square bracket
 20
- a@@9    / at
+@ a@@9    / at
 20
- a 9     / space 
+@ a 9     / space 
 20
- a(9)    / parenthesis
+@ a(9)    / parenthesis
 @end example
 @section Updating List Elements
 Lists can be updated element wise but typically one is likely to be updating many elements and there is a syntax for doing so.
 @example
- a:2*1+!10
- a
+@ a:2*1+!10
+@ a
 2 4 6 8 10 12 14 16 18 20
- a[3]:80
- a
+@ a[3]:80
+@ a
 2 4 6 80 10 12 14 16 18 20
- a:@@[a;0 2 4 6 8;0];a
+@ a:@@[a;0 2 4 6 8;0];a
 0 4 0 80 0 12 0 16 0 20
- a:@@[a;1 3 5;*;100];a
+@ a:@@[a;1 3 5;*;100];a
 0 400 0 8000 0 1200 0 16 0 20
- a:@@[a;!#a;:;0];a
+@ a:@@[a;!#a;:;0];a
 @end example
 List amend syntax has a few options so will be explained in more detail.
 @itemize
@@ -1160,14 +1327,14 @@ The first syntax sets the list at the indices to value.  The second syntax perfo
 
 Often the developer will need to determine which indices to modify and in cases where this isn't onerous it can be done in the function.
 @example
- a:2*1+!10
- @@[a;&a<14;:;-3]
+@ a:2*1+!10
+@ @@[a;&a<14;:;-3]
 -3 -3 -3 -3 -3 -3 14 16 18 20
- @@[!10;1 3 5;:;10 20 30]
+@ @@[!10;1 3 5;:;10 20 30]
 0 10 2 20 4 30 6 7 8 9
- @@[!10;1 3 5;:;10 20]   / index and value array length mistmatch
+@ @@[!10;1 3 5;:;10 20]   / index and value array length mistmatch
 error: length
- @@[!10;1 3;:;10 20 30]  / index and value array length mistmatch
+@ @@[!10;1 3;:;10 20 30]  / index and value array length mistmatch
 error: length
 @end example
 @node Dictionaries
@@ -1175,47 +1342,47 @@ error: length
 Dictionaries are key-value pairs of data.  The values in the dictionary can be single elements or lists.  
 @section Dictionary Creation @result{} x!y
 @example
- d0:`pi`e`c!3.14 2.72 3e8;d0                         / elements
+@ d0:`pi`e`c!3.14 2.72 3e8;d0                         / elements
 pi|3.14 
 e |2.72 
 c |3e+08
 
- d1:`time`temp!(12:00 12:01 12:10;25.0 25.1 25.6);d1 / lists
+@ d1:`time`temp!(12:00 12:01 12:10;25.0 25.1 25.6);d1 / lists
 time|12:00 12:01 12:10
 temp|25 25.1 25.6
 
- d2:0 10 1!37.4 46.3 0.1;d2
- 0|37.4
+@ d2:0 10 1!37.4 46.3 0.1;d2
+@ 0|37.4
 10|46.3
- 1|0.1 
+@ 1|0.1 
 @end example
 @section Dictionary Indicing @result{} x@@y
 Dictionary indicing, like lists, can be indexed in a number of ways.
 @example
- x:`a`b`c!(1 2;3 4;5 6);x
+@ x:`a`b`c!(1 2;3 4;5 6);x
 a|1 2
 b|3 4
 c|5 6
- x@@`a      
+@ x@@`a      
 1 2
- x@@`a`c    
+@ x@@`a`c    
 1 2
 5 6
- / all these notaions for indicing work, output surpressed
- x@@`b;  / at
- x(`b); / parenthesis
- x `b;  / space
- x[`b]; / square bracket
+@ / all these notaions for indicing work, output surpressed
+@ x@@`b;  / at
+@ x(`b); / parenthesis
+@ x `b;  / space
+@ x[`b]; / square bracket
 @end example
 @section Dictionary Key @result{} !x
 The keys from a dictionary can be retreived by using the ! function.
 
 @example
- !d0
+@ !d0
 `pi`e`c
- !d1
+@ !d1
 `time`temp
- !d2
+@ !d2
 0 10 1
 @end example
 
@@ -1223,15 +1390,15 @@ The keys from a dictionary can be retreived by using the ! function.
 A dictionary can be returned as values using the . function.  The function returns a list of length two.  The first element is a list of the keys.  The second element is a list of the values.
 
 @example
- . d0
+@ . d0
 pi   e    c    
 3.14 2.72 3e+08
 
- . d1
+@ . d1
 time              temp        
 12:00 12:01 12:10 25 25.1 25.6
 
- . d2
+@ . d2
 0    10   1  
 37.4 46.3 0.1
 @end example
@@ -1239,33 +1406,33 @@ time              temp
 One could return a specific value by indicing into a specific location.  As an example in order to query the first value of the temp from d1, one would convert d1 into values (as value .), take the second index (take the value 1), take the second element (take the temp 1), and then query the first value (element 0).
 
 @example
- d1
+@ d1
 time|12:00 12:01 12:10
 temp|25 25.1 25.6     
 
- (. d1)
+@ (. d1)
 time              temp        
 12:00 12:01 12:10 25 25.1 25.6
 
- (. d1)[1]
+@ (. d1)[1]
 12:00 12:01 12:10
 25    25.1  25.6 
 
- (. d1)[1][1]
+@ (. d1)[1][1]
 25 25.1 25.6
- (. d1)[1][1][0]
+@ (. d1)[1][1][0]
 25f
 @end example
 
 @section Sorting a Dictionary by Key @result{} ^x
 
 @example
- d0
+@ d0
 pi|3.14 
 e |2.72 
 c |3e+08
 
- ^d0
+@ ^d0
 c |3e+08
 e |2.72 
 pi|3.14 
@@ -1274,17 +1441,17 @@ pi|3.14
 @section Sorting a Dictionary by Value @result{} <x (>x)
 
 @example
- d0
+@ d0
 pi|3.14 
 e |2.72 
 c |3e+08
 
- <d0
+@ <d0
 e |2.72 
 pi|3.14 
 c |3e+08
 
- >d0
+@ >d0
 c |3e+08
 pi|3.14 
 e |2.72 
@@ -1294,31 +1461,31 @@ e |2.72
 This command flips a dictionary into a table but will be covered in detail in the table section.  Flipping a dictionary whose values are a single element has no effect.
 
 @example
- d0
+@ d0
 pi|3.14 
 e |2.72 
 c |3e+08
 
- +d0
+@ +d0
 pi|3.14 
 e |2.72 
 c |3e+08
 
- do~+d0
+@ do~+d0
 1b
 
- d1
+@ d1
 time|12:00 12:01 12:10
 temp|25 25.1 25.6     
 
- +d1
+@ +d1
 time  temp
 ----- ----
 12:00 25  
 12:01 25.1
 12:10 25.6
 
- d1~+d1
+@ d1~+d1
 0b
 @end example
 
@@ -1341,35 +1508,35 @@ There a number of simple functions on dictionaries that operate on the values.  
 
 Examples
 @example
- d2
- 0|37.4
+@ d2
+@ 0|37.4
 10|46.3
- 1|0.1 
+@ 1|0.1 
 
- -d2
- 0|-37.4
+@ -d2
+@ 0|-37.4
 10|-46.3
- 1|-0.1 
+@ 1|-0.1 
 
- d2+3
- 0|40.4
+@ d2+3
+@ 0|40.4
 10|49.3
- 1|3.1 
+@ 1|3.1 
 
- d2-1.7
- 0|35.7
+@ d2-1.7
+@ 0|35.7
 10|44.6
- 1|-1.6
+@ 1|-1.6
 
- d2*10
- 0|374
+@ d2*10
+@ 0|374
 10|463
- 1|1  
+@ 1|1  
 
- d2%100
- 0|0.374
+@ d2%100
+@ 0|0.374
 10|0.463
- 1|0.001
+@ 1|0.001
 @end example
 
 @section Functions that operate over values in a dictionary
@@ -1379,12 +1546,12 @@ There are functions on dictions that operate over the values.  If 'f' is a funct
 @item *d : First value
 @end itemize
 @example
- d0
+@ d0
 pi|3.14
 e |2.72
 c |3e+08
 
- *d0
+@ *d0
 3.14
 @end example
 @node More functions
@@ -1393,21 +1560,21 @@ This chapter includes functions that likely will be included elsewhere later.
 @anchor{cond}@section cond @result{} $[x;y;z]
 If x then y else z.
 @example
- $[3>2;`a;`b]
+@ $[3>2;`a;`b]
 `a
- $[2>3;`a;`b]
+@ $[2>3;`a;`b]
 `b
 @end example
 @anchor{in}@section in @result{} x'y
 Determine if y is in list x.
 @example
- `a`b`d`e'`c
+@ `a`b`d`e'`c
 0b
- `a`b`d`e'`b
+@ `a`b`d`e'`b
 1b
- (!10)'2
+@ (!10)'2
 1b
- (!10)'2. / will error as type is different
+@ (!10)'2. / will error as type is different
 (!10)'2.
 ^
 error: type
@@ -1415,34 +1582,34 @@ error: type
 @anchor{parse}@section parse @result{} :x
 Parse allows one to see how a command is parsed into normal k9 form.  One can value the parse by using the value command, @xref{value}.
 @example
- :3+2
+@ :3+2
 +
 3
 2
- t:+`a`b!(1 2;3 4)
- :select from t
+@ t:+`a`b!(1 2;3 4)
+@ :select from t
 t
- :select a from t
+@ :select a from t
 t
 [..]
- p::select a from t  / store output into p
- #p
+@ p::select a from t  / store output into p
+@ #p
 2
- p 0
+@ p 0
 `t
- p 1
+@ p 1
 a|a
- . p                 / value parse expression
+@ . p                 / value parse expression
 a
 -
 1
 2
- .(`t;`a!`a)         / value expression
+@ .(`t;`a!`a)         / value expression
 a
 -
 1
 2
- select from t       / orginal statement
+@ select from t       / orginal statement
 a
 -
 1
@@ -1450,21 +1617,21 @@ a
 @end example
 Now for an example with a group clause.
 @example
- t:+`a`b`c!(`x`y`x;0 2 10;1 1 0)
- select avg:+/b%#b by a from t
+@ t:+`a`b`c!(`x`y`x;0 2 10;1 1 0)
+@ select avg:+/b%#b by a from t
 a|avg
 -|---
 x|5
 y|2
- p::select avg:+/b%#b by a from t
- .(#;`t;();`a!`a;`avg!(%;(+/;`b);#`b)) / parse form
- #[t;();`a!`a;`avg!(%;(+/;`b);#`b)]    / functional form
+@ p::select avg:+/b%#b by a from t
+@ .(#;`t;();`a!`a;`avg!(%;(+/;`b);#`b)) / parse form
+@ #[t;();`a!`a;`avg!(%;(+/;`b);#`b)]    / functional form
 a|avg
 -|---
 x|10 
 y|2  
- p::select avg:+/b%#b by a from t where c=1
- #[t;(=;`c;1);`a!`a;`avg!(%;(+/;`b);#`b)]
+@ p::select avg:+/b%#b by a from t where c=1
+@ #[t;(=;`c;1);`a!`a;`avg!(%;(+/;`b);#`b)]
 a|avg
 -|---
 x|0  
@@ -1476,19 +1643,19 @@ Replace the values in list x at indices i with f or f[y].
 
 @@[x;i;f] examples@*@*
 @example
- x:(`x00`x01;`x10`x11`x12;`x20;`x30`x31`x32);x
+@ x:(`x00`x01;`x10`x11`x12;`x20;`x30`x31`x32);x
 x00 x01    
 x10 x11 x12
 x20        
 x30 x31 x32
 
- @@[x;,1;`newValue]
+@ @@[x;,1;`newValue]
 x00 x01    
 newValue   
 x20        
 x30 x31 x32
 
- @@[x;1 2;`newValue]
+@ @@[x;1 2;`newValue]
 x00 x01    
 newValue   
 newValue   
@@ -1498,19 +1665,19 @@ x30 x31 x32
 
 @@[x;i;f;y] examples@*@*
 @example
- x:(0 1;10 11 12;20;30 31 32);x
+@ x:(0 1;10 11 12;20;30 31 32);x
 0 1     
 10 11 12
 20      
 30 31 32
 
- @@[x;,1;*;100]
+@ @@[x;,1;*;100]
 0 1           
 1000 1100 1200
 20            
 30 31 32      
 
- @@[x;1 2;*;100]
+@ @@[x;1 2;*;100]
 0 1           
 1000 1100 1200
 2000          
@@ -1521,13 +1688,13 @@ x30 x31 x32
 
 .[x;i;f] examples@*@*
 @example
- x:(`x00`x01;`x10`x11`x12;`x20;`x30`x31`x32);x
+@ x:(`x00`x01;`x10`x11`x12;`x20;`x30`x31`x32);x
 x00 x01    
 x10 x11 x12
 x20        
 x30 x31 x32
 
- .[x;1 2;`newValue]
+@ .[x;1 2;`newValue]
 x00 x01         
 x10 x11 newValue
 x20             
@@ -1536,33 +1703,33 @@ x30 x31 x32
 @end example
 .[x;i;f;y] examples@*@*
 @example
- x:(`x00`x01;`x10`x11`x12;`x20;`x30`x31`x32);x
+@ x:(`x00`x01;`x10`x11`x12;`x20;`x30`x31`x32);x
 x00 x01    
 x10 x11 x12
 x20        
 x30 x31 x32
 
- i:(1 3; 0 1);i
+@ i:(1 3; 0 1);i
 1 3
 0 1
 
- y:(`a`b;`c`d);y
+@ y:(`a`b;`c`d);y
 a b
 c d
 
- .[x;i;:;y]
+@ .[x;i;:;y]
 x00 x01
 a b x12
 x20    
 c d x32
 
- x:(0 1;10 11 12;20;30 31 32);x
+@ x:(0 1;10 11 12;20;30 31 32);x
 0 1     
 10 11 12
 20      
 30 31 32
 
- .[x;i;*;-1]
+@ .[x;i;*;-1]
 0 1       
 -10 -11 12
 20        
@@ -1572,7 +1739,7 @@ c d x32
 @anchor{freq}@section Histogram @result{} `freq
 Compute a histogram of a list.
 @example
- ^`freq x:100000?10
+@ ^`freq x:100000?10
 0| 9907
 1| 9963
 2| 9938
@@ -1583,7 +1750,7 @@ Compute a histogram of a list.
 7|10036
 8| 9907
 9|10124
- ^#'=x   / same result but slower
+@ ^#'=x   / same result but slower
 0| 9907
 1| 9963
 2| 9938
@@ -1601,22 +1768,22 @@ Functions for input and ouput (I/O).
 @anchor{input format}@section Input format values to table
 This section shows you the syntax for reading in data into a table with the correct type.
 @example
- d:,(`date`time`int`float`char`symbol)            / headers 
- d,:,(2020.04.20;12:34:56.789;37;12.3;"hi";`bye)) /data
- d                                          
+@ d:,(`date`time`int`float`char`symbol)            / headers 
+@ d,:,(2020.04.20;12:34:56.789;37;12.3;"hi";`bye)) /data
+@ d                                          
 date       time         int float char  symbol
 2020-04-20 12:34:56.789 37  12.3  hi    bye   
 
- `csv'd                                           / to csv
+@ `csv'd                                           / to csv
 date,time,int,float,char,symbol            
 2020-04-20,12:34:56.789,37,12.3,"hi",bye
 
- "some.csv"0:`csv'd                               / write to some.csv
- 0:"some.csv"                                     / read from some.csv
+@ "some.csv"0:`csv'd                               / write to some.csv
+@ 0:"some.csv"                                     / read from some.csv
 date,time,int,float,char,symbol            
 2020-04-20,12:34:56.789,37,12.3,"hi",bye
 
- ("Dtifs*";,",")0:"some.csv"                      / read into table
+@ ("Dtifs*";,",")0:"some.csv"                      / read into table
 date       time         int float char    symbol
 ---------- ------------ --- ----- ------- ------
 2020-04-20 12:34:56.789  37 12.3  "hi"    bye   
@@ -1626,59 +1793,59 @@ date       time         int float char    symbol
 @anchor{format}@section Format to CSV/json/k @result{} `csv x
 Convert x to CSV/json/k format.  Works on atoms, lists, and tables.
 @example
- `csv 3 1 2
+@ `csv 3 1 2
 "3,1,2"
- `json (3;`abc;2.3;"blue")
+@ `json (3;`abc;2.3;"blue")
 "[\"3\",\"abc\",2.3,\"blue\"]"
- `k [[]i:!5;s:`a`b`c`d`e;v:5?10]
+@ `k [[]i:!5;s:`a`b`c`d`e;v:5?10]
 "[[]i:0 1 2 3 4;s:`a`b`c`d`e;v:7 4 7 3 2]"
- `csv `a`b!((1 2);(3 4))      / error as dictionary input
+@ `csv `a`b!((1 2);(3 4))      / error as dictionary input
 error: class
 @end example
 @anchor{write line}@section write line @result{} x 0:y
 Output to x the list of strings in y.  y must be a list of strings.  If y is a single stream then convert to list via enlist.
 @example
- ""0:("blue";"red")      / "" represents stdout
+@ ""0:("blue";"red")      / "" represents stdout
 blue
 red
- ""0:$'("blue";"red";3)  / each element to string
+@ ""0:$'("blue";"red";3)  / each element to string
 blue
 red
 3
- "some.csv"0:,`csv 3 1 2 / will fail without enlist
+@ "some.csv"0:,`csv 3 1 2 / will fail without enlist
 @end example
 @anchor{read line}@section read line @result{} 0:x
 Read from file x.
 @example
- "some.txt"0:,`csv 3 1 2 / first write a file to some.txt
- 0:"some.txt"            / now read it back
+@ "some.txt"0:,`csv 3 1 2 / first write a file to some.txt
+@ 0:"some.txt"            / now read it back
 3,1,2
 @end example
 @anchor{write char}@section write char @result{} x 1:y
 Output to x the list of chars in y.  y must be a list of chars.  If y is a single char then convert to list via enlist.
 @example
- "some.txt"1:"hello here\nis some text\n"
- 1:"some.txt"
+@ "some.txt"1:"hello here\nis some text\n"
+@ 1:"some.txt"
 "hello here\nis some text\n"
-  t:+`a`b!(1 2;3 4);t
+@  t:+`a`b!(1 2;3 4);t
 a b
 - -
 1 3
 2 4
- "some.k"1:`k t      / write table to file in k format
+@ "some.k"1:`k t      / write table to file in k format
 @end example
 @anchor{read char}@section read char @result{} 1:x
 Read from file x.
 @example
- "some.txt"0:,`csv 3 1 2 / first write a file to some.txt
- 1:"some.txt"            / now read it back
+@ "some.txt"0:,`csv 3 1 2 / first write a file to some.txt
+@ 1:"some.txt"            / now read it back
 "3,1,2\n"
-  t:+`a`b!(1 2;3 4);t
+@  t:+`a`b!(1 2;3 4);t
 a b
 - -
 1 3
 2 4
- t:`k?1:"some.k";t   / read file stored in k format (as shown above)
+@ t:`k?1:"some.k";t   / read file stored in k format (as shown above)
 a b
 - -
 1 3
@@ -1696,16 +1863,16 @@ This chapter introduces k9 tables and the kSQL language to query.
 @anchor{Tables}@section Tables
 Here is an example of a table with three columns (Day, Weather, and Temp) and three rows.
 @example
- t:[[]Day:2020.04.10+!3;Weather:`sunny`cold`sunny;Temp:22 12 18]
- t
+@ t:[[]Day:2020.04.10+!3;Weather:`sunny`cold`sunny;Temp:22 12 18]
+@ t
 Day        Weather Temp
 ---------- ------- ----
 2020-04-10 sunny     22
 2020-04-11 cold      12
 2020-04-12 sunny     18
- @@t                             / tables are type `A (`t is for time)
+@ @@t                             / tables are type `A (`t is for time)
 `A
- +t
+@ +t
 Day    |2020-04-10 2020-04-11 2020-04-12
 Weather|sunny cold sunny                
 Temp   |22 12 18                        
@@ -1713,46 +1880,46 @@ Temp   |22 12 18
 @anchor{A_Tables}@section A_Tables
 Here is an example of a A_table with three columns (Day, Weather, and Temp) and three rows.  One column (Day) will be add as a key.
 @example
- t:[[Day:2020.04.10+!3]Weather:`sunny`cold`sunny;Temp:22 12 18]
- t
+@ t:[[Day:2020.04.10+!3]Weather:`sunny`cold`sunny;Temp:22 12 18]
+@ t
 Day       |Weather Temp
 ----------|------- ----
 2020-04-10|sunny     22
 2020-04-11|cold      12
 2020-04-12|sunny     18
 
- @@t                        / A_tables have type `AA
+@ @@t                        / A_tables have type `AA
 `AA
 @end example
 @anchor{S_Tables}@section S_Tables
 TBD
 @example
- x:`a`b! [[]c:2 3;d:3 4;e:4 5]
- x
- |c d e
+@ x:`a`b! [[]c:2 3;d:3 4;e:4 5]
+@ x
+@ |c d e
 -|- - -
 a|2 3 4
 b|3 4 5
 
- @@x                              / S_tables are type `SA
+@ @@x                              / S_tables are type `SA
 `SA
 @end example
 @anchor{kSQL}@section kSQL
 kSQL is a powerful query language for tables.
 @example
- select |/Temp from t where Weather=`sunny
+@ select |/Temp from t where Weather=`sunny
 Temp|22
 
- select from t where Weather=`sunny
+@ select from t where Weather=`sunny
 Day        Weather Temp
 ---------- ------- ----
 2020-04-10 sunny     22
 2020-04-12 sunny     18
 
- select @{+/x%#x@}Temp from t where Weather=`sunny
+@ select @{+/x%#x@}Temp from t where Weather=`sunny
 Temp|20
 
- select |/Temp from t where Weather=`sunny
+@ select |/Temp from t where Weather=`sunny
 Temp|22
 @end example
 @section Joins
@@ -1770,21 +1937,21 @@ Joining tables together.  In this section x, y represent tables and kx and ky re
 @subsection union join @result{} x,y
 Union join table x with table y.
 @example
- x:[[]s:`a`b;p:1 2;q:3 4]
- y:[[]s:`b`c;p:11 12;q:21 22]
- x
+@ x:[[]s:`a`b;p:1 2;q:3 4]
+@ y:[[]s:`b`c;p:11 12;q:21 22]
+@ x
 s p q
 - - -
 a 1 3
 b 2 4
 
- y
+@ y
 s p  q 
 - -- --
 b 11 21
 c 12 22
 
- x,y
+@ x,y
 s p  q 
 - -- --
 a  1  3
@@ -1795,16 +1962,16 @@ c 12 22
 @subsection left join @result{} x,y
 Left join table x with keyed table/A_table.  Result includes all rows from x and values from x where there is no y value.
 @example
- x:[[]s:`a`b`c;p:1 2 3;q:7 8 9]
- y:[[s:`a`b`x`y`z]q:101 102 103 104 105;r:51 52 53 54 55]
- x
+@ x:[[]s:`a`b`c;p:1 2 3;q:7 8 9]
+@ y:[[s:`a`b`x`y`z]q:101 102 103 104 105;r:51 52 53 54 55]
+@ x
 s p q
 - - -
 a 1 7
 b 2 8
 c 3 9
 
- y
+@ y
 s|q   r 
 -|--- --
 a|101 51
@@ -1813,7 +1980,7 @@ x|103 53
 y|104 54
 z|105 55
 
- x,y
+@ x,y
 s p q   r 
 - - --- --
 a 1 101 51
@@ -1823,21 +1990,21 @@ c 3   9  0
 @subsection outer join @result{} x,y
 Outer join key table/A_table x with key table/A_table y. 
 @example
- x:[[s:`a`b]p:1 2;q:3 4]
- y:[[s:`b`c]p:9 8;q:7 6]
- x
+@ x:[[s:`a`b]p:1 2;q:3 4]
+@ y:[[s:`b`c]p:9 8;q:7 6]
+@ x
 s|p q
 -|- -
 a|1 3
 b|2 4
 
- y
+@ y
 s|p q
 -|- -
 b|9 7
 c|8 6
 
- x,y
+@ x,y
 s|p q
 -|- -
 a|1 3
@@ -1849,43 +2016,43 @@ c|8 6
 This chapter describes the system settings and functions.
 @anchor{Display}@section Display @result{} \k
 @example
- m:(100 101 102;3;14 15);d:`a`b!(1 2;3 4)
- \k 0
- m
+@ m:(100 101 102;3;14 15);d:`a`b!(1 2;3 4)
+@ \k 0
+@ m
 100 101 102
 3          
 14 15      
 
- d
+@ d
 a|1 2
 b|3 4
 
- \k 1
- m
+@ \k 1
+@ m
 (100 101 102;3;14 15)
- d
+@ d
 [a:1 2;b:3 4]
 @end example
 @anchor{Variables}@section Variables @result{} \v
 List variables
 @example
 a:1;b:2;c:3
- \v
+@ \v
 [v:`a`b`c]
 @end example
 @anchor{Memory}@section Memory @result{} \w
 List memory usage
 @example
- \w
+@ \w
 0
- r:(`i$10e6)?10
- \w
+@ r:(`i$10e6)?10
+@ \w
 2097158
 @end example
 @anchor{Timing}@section Timing @result{} \t
 List time elapsed
 @example
- \t ^(`i$1e7)?`i$1e8
+@ \t ^(`i$1e7)?`i$1e8
 360
 @end example
 @node Errors
@@ -1894,19 +2061,19 @@ This section contains information on the various error messages in k9.
 @section error: class
 Calling a function on mismatched types.
 @example
- 3+`b
+@ 3+`b
 error: class
 @end example
 @section error: domain
 Exhausted the number of input values
 @example
- -12?10   / only 10 unique value exist
+@ -12?10   / only 10 unique value exist
 error: domain
 @end example
 @section error: length
 Operations on unequal length lists that require equal length.
 @example
- (1 2 3)+(4 5)
+@ (1 2 3)+(4 5)
 error: length
 @end example
 @section error: nyi
@@ -1915,7 +2082,7 @@ Running code that is not yet implemented.  This may come from running code in th
 2020.04.08 (c) shakti
 
 @example
- =+`a`b!(1 2;1 3)
+@ =+`a`b!(1 2;1 3)
 a b| 
 - -|-
 1 1|0
@@ -1925,7 +2092,7 @@ a b|
 2020.05.03 (c) shakti
 
 @example
- =+`a`b!(1 2;1 3)
+@ =+`a`b!(1 2;1 3)
 =+`a`b!(1 2;1 3)
 ^
 error: nyi
@@ -1933,13 +2100,13 @@ error: nyi
 @section error: parse
 Syntax is wrong.  Possible you failed to match characters which must match, eg. (), @{@}, [], "".
 @example
- @{37 . "hello"
+@ @{37 . "hello"
 error: parse
 @end example
 @section error: rank
 Calling a function with too many parameters.
 @example
- @{x+y@}[1;2;3]
+@ @{x+y@}[1;2;3]
 @{x+y@}[1;2;3]
 ^
 error: rank
@@ -1948,13 +2115,13 @@ error: rank
 Calling a function with an unsupported variable type.
 @example
 `a+`b
-  ^
+@  ^
 error: type
 @end example
 @section error: value
 Undefined variable is used.
 @example
- g    / assuming 'g' has not be defining in this session
+@ g    / assuming 'g' has not be defining in this session
 error: value
 @end example
 @c @node Index

@@ -2,7 +2,7 @@
 <html>
 <!-- This manual is for Shakti (k9) build 2020.04.14.
 
-May 8, 2020
+May 10, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
@@ -18,7 +18,7 @@ Copyright (C) 2020 John Estrada -->
 <link href="index.html#Top" rel="start" title="Top">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="index.html#Top" rel="up" title="Top">
-<link href="Nouns.html#Nouns" rel="next" title="Nouns">
+<link href="Examples.html#Examples" rel="next" title="Examples">
 <link href="index.html#Top" rel="prev" title="Top">
 <style type="text/css">
 <!--
@@ -56,7 +56,7 @@ ul.no-bullet {list-style: none}
 <a name="Intro"></a>
 <div class="header">
 <p>
-Next: <a href="Nouns.html#Nouns" accesskey="n" rel="next">Nouns</a>, Previous: <a href="index.html#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Examples.html#Examples" accesskey="n" rel="next">Examples</a>, Previous: <a href="index.html#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 <hr>
 <a name="Intro-1"></a>
@@ -160,10 +160,10 @@ limit: sym8(*256) {[param8]local8 global32 const128 jump256}
 <div class="example">
 <pre class="example"> rlwrap ./k
 2020.04.01 (c) shakti
- n:10000                     / n data points
- s:`a`b`c                    / data for symbols a, b, and c
- q:+s!(-1+n?2;-1+n?2;-1+n?2) / table of returns (-1,0,1) for each symbol
- q                           / print out the table
+&nbsp;n:10000                     / n data points
+&nbsp;s:`a`b`c                    / data for symbols a, b, and c
+&nbsp;q:+s!(-1+n?2;-1+n?2;-1+n?2) / table of returns (-1,0,1) for each symbol
+&nbsp;q                           / print out the table
 a  b  c 
 -- -- --
  0  1  1
@@ -177,7 +177,7 @@ a  b  c
 <p>At this point you might want to check which symbol has the highest return, most variance, or any other analysis on the data.
 </p>
 <div class="example">
-<pre class="example"> #'=q                          / count each unique a/b/c combination
+<pre class="example">&nbsp;#'=q                          / count each unique a/b/c combination
 a  b  c |   
 -- -- --|---
  0  1  1|407
@@ -186,7 +186,7 @@ a  b  c |
  0 -1 -1|391
  1  1  1|349
 ..
-  -1#+\q                       / calulate the return of each symbol
+&nbsp;-1#+\q                       / calulate the return of each symbol
 a   b   c 
 --- --- --
 -68 117 73
@@ -200,7 +200,7 @@ c|0.6708467
 <h3 class="section">1.5 Document formatting for code examples</h3>
 <p>This document uses a number of examples to help clarify k9.  The sytax is that input has a leading space and output does not.  This follows the terminal syntax where the REPL input has space but prints output without.
 </p><div class="example">
-<pre class="example"> 3+2 / this is input
+<pre class="example">&nbsp;3+2 / this is input
 5    / this is output
 </pre></div>
 
@@ -208,44 +208,48 @@ c|0.6708467
 <h3 class="section">1.6 k9 nuances</h3>
 <p>One will need to understand some basic rules of k9 in order to progress.  These will likely seem strange at first.
 </p>
+<a name="The-language-is-being-changed-often_002e"></a>
+<h4 class="subsection">1.6.1 The language is being changed often.</h4>
+<p>There may be examples in this document which work on the version idicated but do not with the version currently available to download.  If so, then feel free to drop the author a note.  Items which currently error but are likley to come back &rsquo;soon&rsquo; will be left in the document.
+</p>
 <a name="g_t_003a-is-used-to-set-a-variable-to-a-value"></a>
-<h4 class="subsection">1.6.1 <code>:</code> is used to set a variable to a value</h4>
+<h4 class="subsection">1.6.2 <code>:</code> is used to set a variable to a value</h4>
 <p><code>a:3</code> is used to set the variable, a, to the value, 3.  <code>a=3</code> is an equality test to determine if a is equal to 3.
 </p>
 <a name="g_t_0025-is-used-to-divide-numbers"></a>
-<h4 class="subsection">1.6.2 <code>%</code> is used to divide numbers</h4>
+<h4 class="subsection">1.6.3 <code>%</code> is used to divide numbers</h4>
 <p>Yeah, 2 divide by 5 is written as <code>2%5</code> and not <code>2/5</code>.
 </p>
 <a name="Evaluation-is-done-right-to-left"></a>
-<h4 class="subsection">1.6.3 Evaluation is done right to left</h4>
+<h4 class="subsection">1.6.4 Evaluation is done right to left</h4>
 <p>2+5*3 is 17 and 2*5+3 is 16.  2+5*3 is first evaluated on the right most portion, 5*3, and once that is computed then it proceeds with 2+15.  2*5+3 goes to 2*8 which becomes 16.
 </p><a name="There-is-no-arithmetic-order"></a>
-<h4 class="subsection">1.6.4 There is no arithmetic order</h4>
+<h4 class="subsection">1.6.5 There is no arithmetic order</h4>
 <p>+ does not happen specially before or after *.  The order of evaluation is done right to left unless parenthesis are used.  (2+5)*3 = 21 as the 2+5 in parenthesis is done before being multiplied by 3.
 </p><a name="Operators-are-overloaded-depending-on-the-number-of-arguments_002e"></a>
-<h4 class="subsection">1.6.5 Operators are overloaded depending on the number of arguments.</h4>
+<h4 class="subsection">1.6.6 Operators are overloaded depending on the number of arguments.</h4>
 <div class="example">
-<pre class="example"> *(3;6;9)    / single argument so * is first element of the list
+<pre class="example">&nbsp;*(3;6;9)    / single argument so * is first element of the list
 3
- 2*(3;6;9)   / two arguments so * is multiplication
+&nbsp;2*(3;6;9)   / two arguments so * is multiplication
 6 12 18
 </pre></div>
 <a name="Lists-and-functions-are-very-similar_002e"></a>
-<h4 class="subsection">1.6.6 Lists and functions are very similar.</h4>
+<h4 class="subsection">1.6.7 Lists and functions are very similar.</h4>
 <p>k9 syntax encourages you to treat lists and functions in a similar function.  They should both be thought of a mapping from a value to another value or from a domain to a range.
 </p>
 <p>If this book wasn&rsquo;t a simples guide then lists (l) and functions (f) would be replaced by maps (m) given the interchangeability.  One way to determine if a map is either a lits or function is via the type function.  Lists and functions do not have the same type.
 </p>
 <div class="example">
-<pre class="example"> l:3 4 7 12
- f:{3+x*x}
- l@2
+<pre class="example">&nbsp;l:3 4 7 12
+&nbsp;f:{3+x*x}
+&nbsp;l@2
 7
- f@2
+&nbsp;f@2
 7
 </pre></div>
 <a name="k9-is-expressed-in-terms-of-grammar_002e"></a>
-<h4 class="subsection">1.6.7 k9 is expressed in terms of grammar.</h4>
+<h4 class="subsection">1.6.8 k9 is expressed in terms of grammar.</h4>
 <p>k9 uses an analogy with grammar to describe language syntax.  The k9 grammar consists of nouns (data), verbs (functions) and adverbs (function modifiers).
 </p><ul>
 <li> <tt>The boy ate an appple. (Noun verb noun)</tt>
@@ -259,7 +263,7 @@ c|0.6708467
 <hr>
 <div class="header">
 <p>
-Next: <a href="Nouns.html#Nouns" accesskey="n" rel="next">Nouns</a>, Previous: <a href="index.html#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Examples.html#Examples" accesskey="n" rel="next">Examples</a>, Previous: <a href="index.html#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 
 
