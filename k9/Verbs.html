@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is for Shakti (k9) build 2020.04.14.
+<!-- This manual is for Shakti (k9) build 2020.05.08.
 
 May 10, 2020
 
@@ -67,11 +67,11 @@ Next: <a href="Adverbs.html#Adverbs" accesskey="n" rel="next">Adverbs</a>, Previ
 <pre class="example">Verb
 : See <a href="#set">set</a>.
 + See <a href="#plus">plus</a>,     See <a href="#flip">flip</a>.
-- See <a href="#minus">minus</a>,    See <a href="#negate">negate</a>.
+- See <a href="#minus">minus</a>,    See <a href="#minus">minus</a>.
 * See <a href="#times">times</a>,    See <a href="#first">first</a>.
 % See <a href="#divide">divide</a>.
-&amp; See <a href="#min">min</a>,      See <a href="#where">where</a>.
-| See <a href="#max">max</a>,      See <a href="#reverse">reverse</a>.
+&amp; See <a href="#and">and</a>,      See <a href="#where">where</a>.
+| See <a href="#or">or</a>,      See <a href="#reverse">reverse</a>.
 &lt; See <a href="#less">less</a>,     See <a href="#asc">asc</a>.
 &gt; See <a href="#less">more</a>,      See <a href="#asc">dsc</a>.
 = See <a href="#equal">equal</a>,    See <a href="#group">group</a>.
@@ -156,8 +156,8 @@ a b
 5 6
 </pre></div>
 
-<a name="minus"></a><a name="minus-_21d2-x_002dy"></a>
-<h3 class="section">4.4 minus &rArr; x-y</h3>
+<a name="minus"></a><a name="minus-_21d2-x_002dy_002c-_002dx"></a>
+<h3 class="section">4.4 minus &rArr; x-y, -x</h3>
 <p>Subtract y from x.
 </p>
 <div class="example">
@@ -168,8 +168,6 @@ a b
 3
 </pre></div>
 
-<a name="negate"></a><a name="negate-_21d2-_002dx"></a>
-<h3 class="section">4.5 negate &rArr; -x</h3>
 <p>Negative x.
 </p>
 <div class="example">
@@ -186,7 +184,7 @@ a|-1 -2 -3
 b|-4 -5 -6
 </pre></div>
 <a name="times"></a><a name="times-_21d2-x_002ay"></a>
-<h3 class="section">4.6 times &rArr;  x*y</h3>
+<h3 class="section">4.5 times &rArr;  x*y</h3>
 <p>Mutliply x and y.
 </p><div class="example">
 <pre class="example">&nbsp;3*4
@@ -197,7 +195,7 @@ b|-4 -5 -6
 4 10 18
 </pre></div>
 <a name="first"></a><a name="first-_21d2-_002ax"></a>
-<h3 class="section">4.7 first &rArr; *x</h3>
+<h3 class="section">4.6 first &rArr; *x</h3>
 <p>Return the first value of x.  Last can either be determine by taking the first element of the reverse list (*|&lsquo;a&lsquo;b&lsquo;c) or using last syntax ((:/)&lsquo;a&lsquo;b&lsquo;c).
 </p><div class="example">
 <pre class="example">&nbsp;*1 2 3
@@ -210,7 +208,7 @@ b|-4 -5 -6
 1 2 3
 </pre></div>
 <a name="divide"></a><a name="divide-_21d2-x_0025y"></a>
-<h3 class="section">4.8 divide &rArr; x%y</h3>
+<h3 class="section">4.7 divide &rArr; x%y</h3>
 <p>Divide x by y.
 </p><div class="example">
 <pre class="example">&nbsp;12%5
@@ -218,8 +216,8 @@ b|-4 -5 -6
 &nbsp;6%2    / division of two integers returns a float
 3f
 </pre></div>
-<a name="min"></a><a name="min-_21d2-x_0026y"></a>
-<h3 class="section">4.9 min &rArr; x&amp;y</h3>
+<a name="and"></a><a name="and-_21d2-x_0026y"></a>
+<h3 class="section">4.8 and &rArr; x&amp;y</h3>
 <p>The smaller of x and y.  One can use the over adverb to determine the min value in a list.
 </p><div class="example">
 <pre class="example">&nbsp;3&amp;2
@@ -234,7 +232,7 @@ b|-4 -5 -6
 -200
 </pre></div>
 <a name="where"></a><a name="where-_21d2-_0026x"></a>
-<h3 class="section">4.10 where &rArr; &amp;x</h3>
+<h3 class="section">4.9 where &rArr; &amp;x</h3>
 <p>Given a list of integer values, eg. x_0, x_1, ..., x_(n-1), generate x_0 values of 0, x_1 values of 1, ..., and x_(n-1) values of n-1.
 </p>
 <div class="example">
@@ -249,8 +247,8 @@ b|-4 -5 -6
 &nbsp;x@&amp;30&lt;x:12.7 0.1 35.6 -12.1 101.101  / return values greater than 30
 35.6 101.101
 </pre></div>
-<a name="max"></a><a name="max-_21d2-x_007cy"></a>
-<h3 class="section">4.11 max &rArr; x|y</h3>
+<a name="or"></a><a name="or-_21d2-x_007cy"></a>
+<h3 class="section">4.10 or &rArr; x|y</h3>
 <p>The greater of x and y.  Max of a list can be determine by use of the adverb over.
 </p><div class="example">
 <pre class="example">&nbsp;3|2
@@ -263,7 +261,7 @@ b|-4 -5 -6
 12
 </pre></div>
 <a name="reverse"></a><a name="reverse-_21d2-_007cx"></a>
-<h3 class="section">4.12 reverse &rArr; |x</h3>
+<h3 class="section">4.11 reverse &rArr; |x</h3>
 <p>Reverse the list x.
 </p><div class="example">
 <pre class="example">&nbsp;|0 3 1 2
@@ -276,7 +274,7 @@ b|-4 -5 -6
 1 2 3
 </pre></div>
 <a name="less"></a><a name="less-_0028more_0029-_21d2-x-_003c-_0028_003e_0029-y"></a>
-<h3 class="section">4.13 less (more) &rArr; x &lt; (&gt;) y</h3>
+<h3 class="section">4.12 less (more) &rArr; x &lt; (&gt;) y</h3>
 <p>x less (more) than y.
 </p><div class="example">
 <pre class="example">&nbsp;3&lt;2
@@ -293,7 +291,7 @@ b|-4 -5 -6
 1b
 </pre></div>
 <a name="asc"></a><a name="asc_0028dsc_0029-_21d2-_003c-_0028_003e_0029-x"></a>
-<h3 class="section">4.14 asc(dsc) &rArr; &lt; (&gt;) x</h3>
+<h3 class="section">4.13 asc(dsc) &rArr; &lt; (&gt;) x</h3>
 <p>The indices of a list in order to sort the list in ascending (descending) order.
 </p><div class="example">
 <pre class="example">&nbsp;&lt;2 3 0 12
@@ -302,7 +300,7 @@ b|-4 -5 -6
 0 2 3 12
 </pre></div>
 <a name="equal"></a><a name="equal-_21d2-x_003dy"></a>
-<h3 class="section">4.15 equal &rArr; x=y</h3>
+<h3 class="section">4.14 equal &rArr; x=y</h3>
 <p>x equal to y
 </p><div class="example">
 <pre class="example">&nbsp;2=2
@@ -313,7 +311,7 @@ b|-4 -5 -6
 001100b
 </pre></div>
 <a name="group"></a><a name="group-_21d2-_003dx"></a>
-<h3 class="section">4.16 group &rArr; =x</h3>
+<h3 class="section">4.15 group &rArr; =x</h3>
 <p>A dictionary of the disinct values of x (key) and indices (values).
 </p><div class="example">
 <pre class="example">&nbsp;=&quot;banana&quot;
@@ -329,7 +327,7 @@ n|2 4
 12|8    
 </pre></div>
 <a name="match"></a><a name="match-_21d2-x_007ey"></a>
-<h3 class="section">4.17 match &rArr; x~y</h3>
+<h3 class="section">4.16 match &rArr; x~y</h3>
 <p>Compare x and y.
 </p><div class="example">
 <pre class="example">&nbsp;2~2
@@ -342,7 +340,7 @@ n|2 4
 11b
 </pre></div>
 <a name="not"></a><a name="not-_21d2-_007ex"></a>
-<h3 class="section">4.18 not &rArr; ~x</h3>
+<h3 class="section">4.17 not &rArr; ~x</h3>
 <p>Boolean invert of x
 </p><div class="example">
 <pre class="example">&nbsp;~1b
@@ -353,7 +351,7 @@ n|2 4
 010b
 </pre></div>
 <a name="key"></a><a name="key-_21d2-x_0021y"></a>
-<h3 class="section">4.19 key &rArr; x!y</h3>
+<h3 class="section">4.18 key &rArr; x!y</h3>
 <p>Dictionary of x (key) and y (value)
 </p><div class="example">
 <pre class="example">&nbsp;3!7
@@ -366,7 +364,7 @@ a|1 2
 b|3 4
 </pre></div>
 <a name="enum"></a><a name="enum-_21d2-_0021x"></a>
-<h3 class="section">4.20 enum &rArr; !x</h3>
+<h3 class="section">4.19 enum &rArr; !x</h3>
 <p>Given an integer, x, generate an integer list from 0 to x-1.
 </p><div class="example">
 <pre class="example">&nbsp;!3
@@ -412,7 +410,7 @@ b|3 4
 12123
 </pre></div>
 <a name="cat"></a><a name="cat-_21d2-x_002cy"></a>
-<h3 class="section">4.21 cat &rArr; x,y</h3>
+<h3 class="section">4.20 cat &rArr; x,y</h3>
 <p>Concatenate x and y.
 </p><div class="example">
 <pre class="example">&nbsp;3,7
@@ -421,7 +419,7 @@ b|3 4
 &quot;hello there&quot;
 </pre></div>
 <a name="enlist"></a><a name="enlist-_21d2-_002cx"></a>
-<h3 class="section">4.22 enlist &rArr; ,x</h3>
+<h3 class="section">4.21 enlist &rArr; ,x</h3>
 <p>Create a list from x
 </p><div class="example">
 <pre class="example">&nbsp;,3
@@ -434,7 +432,7 @@ b|3 4
 0b
 </pre></div>
 <a name="cut"></a><a name="cut-_21d2-x_005ey"></a>
-<h3 class="section">4.23 cut &rArr; x^y</h3>
+<h3 class="section">4.22 cut &rArr; x^y</h3>
 <p>Reshape a list y by indices x.
 </p><div class="example">
 <pre class="example">&nbsp;0 1 5^0 1 2 3 4 5 6 7 8 9
@@ -446,7 +444,7 @@ b|3 4
 5 6 7 8 9
 </pre></div>
 <a name="sort"></a><a name="sort-_21d2-_005ex"></a>
-<h3 class="section">4.24 sort &rArr; ^x</h3>
+<h3 class="section">4.23 sort &rArr; ^x</h3>
 <p>Sort list x into ascending order.
 </p><div class="example">
 <pre class="example">&nbsp;^0 3 2 1
@@ -456,20 +454,20 @@ a|7 6 5
 b|0 1 2
 </pre></div>
 <a name="cast"></a><a name="cast-_21d2-x_0024y"></a>
-<h3 class="section">4.25 cast &rArr; x$y</h3>
-<p>Cast y into type x.
+<h3 class="section">4.24 cast &rArr; x$y</h3>
+<p>Cast string y into type x.
 </p><div class="example">
-<pre class="example">&nbsp;`i$37.1 37.9
-37 37
-&nbsp;`f$3
-3f
-&nbsp;`D$&quot;2020.03.01&quot;
-2020-03-01
-&nbsp;`t$123
-00:00:00.123
+<pre class="example">&nbsp;`i$&quot;23&quot;
+23
+&nbsp;`f$&quot;2.3&quot;
+2.3
+&nbsp;`t$&quot;12:34:56.789&quot;
+12:34:56.789
+&nbsp;`D$&quot;2020.04.20&quot;
+2020-04-20
 </pre></div>
 <a name="string"></a><a name="string-_21d2-_0024x"></a>
-<h3 class="section">4.26 string &rArr; $x</h3>
+<h3 class="section">4.25 string &rArr; $x</h3>
 <p>Cast x to string.
 </p><div class="example">
 <pre class="example">&nbsp;$`abc`d
@@ -479,7 +477,7 @@ d
 &quot;4.7&quot;
 </pre></div>
 <a name="take"></a><a name="take-_21d2-x_0023y"></a>
-<h3 class="section">4.27 take &rArr; x#y</h3>
+<h3 class="section">4.26 take &rArr; x#y</h3>
 <p>First (last) x elements of y if x is positive (negative).  If x is a list then returns any values in both x and y.
 </p><div class="example">
 <pre class="example">&nbsp;3#0 1 2 3 4 5          / first three
@@ -492,7 +490,7 @@ d
 2 8
 </pre></div>
 <a name="count"></a><a name="count-_21d2-_0023x"></a>
-<h3 class="section">4.28 count &rArr; #x</h3>
+<h3 class="section">4.27 count &rArr; #x</h3>
 <p>Count the number of elements in x.
 </p><div class="example">
 <pre class="example">&nbsp;#0 1 2 12
@@ -503,7 +501,7 @@ d
 2
 </pre></div>
 <a name="drop"></a><a name="drop-_21d2-x_005fy"></a>
-<h3 class="section">4.29 drop &rArr; x_y</h3>
+<h3 class="section">4.28 drop &rArr; x_y</h3>
 <p>Return the list y without the first (last) x elements if x is positive (negative).  If x is a list then returns any values from y not in x.
 </p><div class="example">
 <pre class="example">&nbsp;3_0 1 2 3 4 5
@@ -517,14 +515,14 @@ d
 ,20
 </pre></div>
 <a name="floor"></a><a name="floor-_21d2-_005fx"></a>
-<h3 class="section">4.30 floor &rArr; _x</h3>
+<h3 class="section">4.29 floor &rArr; _x</h3>
 <p>Return the integer floor of float x.
 </p><div class="example">
 <pre class="example">&nbsp;_3.7
 3
 </pre></div>
 <a name="find"></a><a name="find-_21d2-x_003fy"></a>
-<h3 class="section">4.31 find &rArr; x?y</h3>
+<h3 class="section">4.30 find &rArr; x?y</h3>
 <p>Find the first element of x that matches y otherwise return the end of vector. Also, acts to generates random numbers from 0 to y when x and y are integers.
 </p><div class="example">
 <pre class="example">&nbsp;`a`b`a`c`b`a`a?`b
@@ -541,7 +539,7 @@ d
 0 5 6
 </pre></div>
 <a name="unique"></a><a name="unique-_21d2-_003fx"></a>
-<h3 class="section">4.32 unique &rArr; ?x</h3>
+<h3 class="section">4.31 unique &rArr; ?x</h3>
 <p>Return the unique values of the list x.  The <code>?</code> preceeding the return value explicitly shows that list has no repeat values.
 </p><div class="example">
 <pre class="example">&nbsp;?`f`a`b`c`a`b`d`e`a
@@ -550,7 +548,7 @@ d
 ?&quot;ban&quot;
 </pre></div>
 <a name="at"></a><a name="at-_21d2-x_0040y"></a>
-<h3 class="section">4.33 at &rArr; x@y</h3>
+<h3 class="section">4.32 at &rArr; x@y</h3>
 <p>Given a list x return the value(s) at index(indices) y.
 </p><div class="example">
 <pre class="example">&nbsp;(3 4 7 12)@2
@@ -562,7 +560,7 @@ d
 3
 </pre></div>
 <a name="type"></a><a name="type-_21d2-_0040x"></a>
-<h3 class="section">4.34 type &rArr; @x</h3>
+<h3 class="section">4.33 type &rArr; @x</h3>
 <p>Return the data type of x.
 </p><div class="example">
 <pre class="example">&nbsp;@1
@@ -583,7 +581,7 @@ d
 `i`f`s`c`D`t
 </pre></div>
 <a name="apply"></a><a name="apply-_21d2-x_002ey"></a>
-<h3 class="section">4.35 apply &rArr; x.y</h3>
+<h3 class="section">4.34 apply &rArr; x.y</h3>
 <p>Given list x return the value at list y.  The action of apply depends on the shape of y.
 </p><ul>
 <li> Index returns the value(s) at x at each index y, i.e. x@y@0, x@y@1, ..., x@y@(n-1).
@@ -625,7 +623,7 @@ x30 x31
 
 </pre></div>
 <a name="value"></a><a name="value-_21d2-_002ex"></a>
-<h3 class="section">4.36 value &rArr; .x</h3>
+<h3 class="section">4.35 value &rArr; .x</h3>
 <ul>
 <li> x= dictionary &rArr; Return the value of x as lists.
 </li><li> x= parse output &rArr; Evaulate x.

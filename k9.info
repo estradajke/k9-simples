@@ -1,6 +1,6 @@
 This is k9.info, produced by makeinfo version 5.2 from k.manual.texi.
 
-This manual is for Shakti (k9) build 2020.04.14.
+This manual is for Shakti (k9) build 2020.05.08.
 May 10, 2020
 
    Copyright (C) 2020 John Estrada
@@ -105,43 +105,43 @@ This document aims to provide details to beginning users where the help
 screen is a tad too terse.  Some commands are not yet complete and thus
 marked with an asterisk, eg.  *\l a.k.
  \
-$k f.k
-
-Verb                      Adverb                 Atom            Type  System
-:  set                    '  each       i bar    bool  110b         b  \k
-+  plus       flip        /  over/right i div    int   2 3 4        i *\l a.k
--  minus      negate      \  scan/left  i mod    float 2e3 0n 0w    f  \v [d]
-*  times      first       ': eachprior           date  2024.01.01   D *\f [d]
-%  divide                 /: [n]over    i sv     time  12:34:56.789 t  \w [x]
-&  min        where       \: [n]scan    i vs     char  "ab "        c  \t:n x
-|  max        reverse                            sym   `a`b`        s  \u:n x
-<  less       asc          I/O
+Verb                      Adverb                 Noun            Type  System
+:                         '  each                bool  011b         b  \k
++  plus       flip        /  over/right          int   2 3 4        i  \l a.k
+-  minus      minus       \  scan/left           float 2.3 0w       f  \v [d]
+*  times      first       ': eachprior           char  " ab"        c *\f [d]
+%  divide                 /: [n]over             sym   ``a`b        s  \w [x]
+&  and        where       \: [n]scan             time  12:34:56.789 t  \t:n x
+|  or         reverse                            date  2024.01.01   D  \u:n x
+<  less       asc         I/O
 >  more       dsc         0: readwrite  line     List (2;3.4;`c)    L  \fl line
 =  equal      group       1: readwrite  char     Dict [a:2;b:`c]   ??  \fc char
-~  match      not         2: write      data     Func {(+/x)%#x}    .
-!  key        enum        3: *conn/set
+~  match      not         2: readwrite  data     Func {(+/x)%#x}    .
+!  key        key         3: *conn/set
 ,  cat        enlist      4: *http/get
 ^  cut        sort
 $  cast       string      $[c;t;f]      cond
 #  take       count       #[t;c;b[;a]]  select   table [[]a:`b`c]   T
 _  drop       floor      *_[t;c;b[;a]]  update  Ttable [[a:..]b:]  TT
-?  find       unique     *?[x;i;f[;y]]  splice  Stable S! [[]...]  ST
+?  find       uniq       *?[x;i;f[;y]]  splice  Stable S! [[]...]  ST
 @  at         type        @[x;i;f[;y]]  amend                          \cd dir
-.  apply      value       .[x;i;f[;y]]  dmend                          \\  exit
+.  dot        dot         .[x;i;f[;y]]  dmend                          \\  exit
 
-A_-~%$ L|+#*&=<>^?! ,@.
-A+-*%&|<>=$ L,#_^?! ~@.  F#_
+       Atom(pervasive)    List/Dict     Func     ALDF  tolerant    random
+monad: $-~_               .!#*|+&^<>=?           @,     [*|&!]a     ?a
+dyad:  $+-*%&|<>= L[@?]   .!#_^,        f[#_]    @~    a[,#_!]a    a?x
 
-count first last min max sum avg; in bin within; *exp log sin cos
+sqrt exp log sin cos count first last min max sum avg;div mod bar in bin within
 select A by B from T where C; delete from T where C
 
-/comment \display [dict] :expr (leading space)
-roundtrip: `json?`json(2.3;.z.D;.z.t;"abc")  / also: `csv`k
-time/cuanto: 2m 2d ..   12:34:56.123456789 e.g. .z.D+2m / .z.[tuv]
-date/cuando: 2024.01.01T12:34:56.123456789 e.g.  7\.z.D / .z.[TUV]
+roundtrip: `json?`json@(2.3;"abc";.z.T) `k?`k@x `csv?`csv@x
+time/cuanto: 2m 2d ..   12:34:56.123456789 .z.[dtv]
+date/cuando: 2024.01.01T12:34:56.123456789 .z.[DTV]
 
-error: parse value class rank type domain length limit
-limit: sym8(*256) {[param8]local8 global32 const128 jump256}
+error: nyi class rank length type domain limit (value stack parse value)
+limit: sym8(*256) 4K {[param8]local8 global32 const128 jump256}
+atom/list/dict/table (scalar/vector/matrix/tensor) dyad/monad noun/verb/adverb
+/comment \display [dict] :expr (leading space) OVERLOAD(?)
 
 1.3 rlwrap
 ==========
@@ -673,11 +673,11 @@ overloaded and change depending on the number and type of arguments.
      Verb
      : *Note set::.
      + *Note plus::,     *Note flip::.
-     - *Note minus::,    *Note negate::.
+     - *Note minus::,    *Note minus::.
      * *Note times::,    *Note first::.
      % *Note divide::.
-     & *Note min::,      *Note where::.
-     | *Note max::,      *Note reverse::.
+     & *Note and::,      *Note where::.
+     | *Note or::,      *Note reverse::.
      < *Note less::,     *Note asc::.
      > *Note more: less,      *Note dsc: asc.
      = *Note equal::,    *Note group::.
@@ -758,8 +758,8 @@ Flip, or transpose, x.
      3 4
      5 6
 
-4.4 minus => x-y
-================
+4.4 minus => x-y, -x
+====================
 
 Subtract y from x.
 
@@ -769,10 +769,7 @@ Subtract y from x.
       x-y
      3
 
-4.5 negate => -x
-================
-
-Negative x.
+   Negative x.
 
       -3
      -3
@@ -786,7 +783,7 @@ Negative x.
      a|-1 -2 -3
      b|-4 -5 -6
 
-4.6 times => x*y
+4.5 times => x*y
 ================
 
 Mutliply x and y.
@@ -797,7 +794,7 @@ Mutliply x and y.
       1 2 3*4 5 6
      4 10 18
 
-4.7 first => *x
+4.6 first => *x
 ===============
 
 Return the first value of x.  Last can either be determine by taking the
@@ -812,7 +809,7 @@ first element of the reverse list (*|'a'b'c) or using last syntax
       *`a`b!((1 2 3);(4 5 6))
      1 2 3
 
-4.8 divide => x%y
+4.7 divide => x%y
 =================
 
 Divide x by y.
@@ -821,7 +818,7 @@ Divide x by y.
       6%2    / division of two integers returns a float
      3f
 
-4.9 min => x&y
+4.8 and => x&y
 ==============
 
 The smaller of x and y.  One can use the over adverb to determine the
@@ -837,8 +834,8 @@ min value in a list.
       &/ 3 2 10 -200 47
      -200
 
-4.10 where => &x
-================
+4.9 where => &x
+===============
 
 Given a list of integer values, eg.  x_0, x_1, ..., x_(n-1), generate
 x_0 values of 0, x_1 values of 1, ..., and x_(n-1) values of n-1.
@@ -854,8 +851,8 @@ x_0 values of 0, x_1 values of 1, ..., and x_(n-1) values of n-1.
       x@&30<x:12.7 0.1 35.6 -12.1 101.101  / return values greater than 30
      35.6 101.101
 
-4.11 max => x|y
-===============
+4.10 or => x|y
+==============
 
 The greater of x and y.  Max of a list can be determine by use of the
 adverb over.
@@ -868,7 +865,7 @@ adverb over.
       |/12 2 3 10 / use over to determine the max of a list
      12
 
-4.12 reverse => |x
+4.11 reverse => |x
 ==================
 
 Reverse the list x.
@@ -881,7 +878,7 @@ Reverse the list x.
      4
      1 2 3
 
-4.13 less (more) => x < (>) y
+4.12 less (more) => x < (>) y
 =============================
 
 x less (more) than y.
@@ -898,7 +895,7 @@ x less (more) than y.
       "a"<"b"
      1b
 
-4.14 asc(dsc) => < (>) x
+4.13 asc(dsc) => < (>) x
 ========================
 
 The indices of a list in order to sort the list in ascending
@@ -908,7 +905,7 @@ The indices of a list in order to sort the list in ascending
       x@<x:2 3 0 12
      0 2 3 12
 
-4.15 equal => x=y
+4.14 equal => x=y
 =================
 
 x equal to y
@@ -919,7 +916,7 @@ x equal to y
       "banana"="abnaoo"
      001100b
 
-4.16 group => =x
+4.15 group => =x
 ================
 
 A dictionary of the disinct values of x (key) and indices (values).
@@ -935,7 +932,7 @@ A dictionary of the disinct values of x (key) and indices (values).
      10|4
      12|8
 
-4.17 match => x~y
+4.16 match => x~y
 =================
 
 Compare x and y.
@@ -948,7 +945,7 @@ Compare x and y.
       `a`b=`a`b
      11b
 
-4.18 not => ~x
+4.17 not => ~x
 ==============
 
 Boolean invert of x
@@ -959,7 +956,7 @@ Boolean invert of x
       ~37 0 12
      010b
 
-4.19 key => x!y
+4.18 key => x!y
 ===============
 
 Dictionary of x (key) and y (value)
@@ -972,7 +969,7 @@ Dictionary of x (key) and y (value)
      a|1 2
      b|3 4
 
-4.20 enum => !x
+4.19 enum => !x
 ===============
 
 Given an integer, x, generate an integer list from 0 to x-1.
@@ -1019,7 +1016,7 @@ product of all the x values.
       2/:B[12123] / convert to base10 to check it's actually 12123
      12123
 
-4.21 cat => x,y
+4.20 cat => x,y
 ===============
 
 Concatenate x and y.
@@ -1028,7 +1025,7 @@ Concatenate x and y.
       "hello"," ","there"
      "hello there"
 
-4.22 enlist => ,x
+4.21 enlist => ,x
 =================
 
 Create a list from x
@@ -1041,7 +1038,7 @@ Create a list from x
       3~,3
      0b
 
-4.23 cut => x^y
+4.22 cut => x^y
 ===============
 
 Reshape a list y by indices x.
@@ -1053,7 +1050,7 @@ Reshape a list y by indices x.
      1 2 3 4
      5 6 7 8 9
 
-4.24 sort => ^x
+4.23 sort => ^x
 ===============
 
 Sort list x into ascending order.
@@ -1063,20 +1060,20 @@ Sort list x into ascending order.
      a|7 6 5
      b|0 1 2
 
-4.25 cast => x$y
+4.24 cast => x$y
 ================
 
-Cast y into type x.
-      `i$37.1 37.9
-     37 37
-      `f$3
-     3f
-      `D$"2020.03.01"
-     2020-03-01
-      `t$123
-     00:00:00.123
+Cast string y into type x.
+      `i$"23"
+     23
+      `f$"2.3"
+     2.3
+      `t$"12:34:56.789"
+     12:34:56.789
+      `D$"2020.04.20"
+     2020-04-20
 
-4.26 string => $x
+4.25 string => $x
 =================
 
 Cast x to string.
@@ -1086,7 +1083,7 @@ Cast x to string.
       $4.7
      "4.7"
 
-4.27 take => x#y
+4.26 take => x#y
 ================
 
 First (last) x elements of y if x is positive (negative).  If x is a
@@ -1100,7 +1097,7 @@ list then returns any values in both x and y.
       (1 2 3 7 8 9)#(2 8 20) / union
      2 8
 
-4.28 count => #x
+4.27 count => #x
 ================
 
 Count the number of elements in x.
@@ -1111,7 +1108,7 @@ Count the number of elements in x.
       #`a`b!((1 2 3);(4 5 6)) / count the number of keys
      2
 
-4.29 drop => x_y
+4.28 drop => x_y
 ================
 
 Return the list y without the first (last) x elements if x is positive
@@ -1126,14 +1123,14 @@ Return the list y without the first (last) x elements if x is positive
       (1 2 3 7 8 9)_(2 8 20)
      ,20
 
-4.30 floor => _x
+4.29 floor => _x
 ================
 
 Return the integer floor of float x.
       _3.7
      3
 
-4.31 find => x?y
+4.30 find => x?y
 ================
 
 Find the first element of x that matches y otherwise return the end of
@@ -1152,7 +1149,7 @@ are integers.
       3?10         / as above but no repeats
      0 5 6
 
-4.32 unique => ?x
+4.31 unique => ?x
 =================
 
 Return the unique values of the list x.  The '?' preceeding the return
@@ -1162,7 +1159,7 @@ value explicitly shows that list has no repeat values.
       ?"banana"
      ?"ban"
 
-4.33 at => x@y
+4.32 at => x@y
 ==============
 
 Given a list x return the value(s) at index(indices) y.
@@ -1174,7 +1171,7 @@ Given a list x return the value(s) at index(indices) y.
      1 2
      3
 
-4.34 type => @x
+4.33 type => @x
 ===============
 
 Return the data type of x.
@@ -1195,7 +1192,7 @@ Return the data type of x.
       @'(1;1.2;`a;"a";2020.04.20;12:34:56.789) / type of elements of the list
      `i`f`s`c`D`t
 
-4.35 apply => x.y
+4.34 apply => x.y
 =================
 
 Given list x return the value at list y.  The action of apply depends on
@@ -1237,7 +1234,7 @@ recursive index over   'L      2       (0 2;1 3)
      x30 x31
 
 
-4.36 value => .x
+4.35 value => .x
 ================
 
    * x= dictionary => Return the value of x as lists.
@@ -2396,98 +2393,97 @@ Undefined variable is used.
 Tag Table:
 Node: Top170
 Node: Intro826
-Node: Examples11038
-Node: Nouns15889
-Ref: bool17293
-Ref: int17593
-Ref: float17797
-Ref: date18142
-Ref: time18562
-Ref: datetime19176
-Ref: char19848
-Ref: sym20071
-Node: Verbs20484
-Ref: set21513
-Ref: plus21725
-Ref: flip22116
-Ref: minus22366
-Ref: negate22471
-Ref: times22653
-Ref: first22784
-Ref: divide23103
-Ref: min23240
-Ref: where23497
-Ref: max23883
-Ref: reverse24149
-Ref: less24319
-Ref: asc24581
-Ref: equal24777
-Ref: group24901
-Ref: match25147
-Ref: not25340
-Ref: key25457
-Ref: enum25628
-Ref: cat26921
-Ref: enlist27040
-Ref: cut27179
-Ref: sort27369
-Ref: cast27546
-Ref: string27720
-Ref: take27828
-Ref: count28158
-Ref: drop28348
-Ref: floor28671
-Ref: find28762
-Ref: unique29209
-Ref: at29446
-Ref: type29659
-Ref: apply30015
-Ref: value30997
-Node: Adverbs31315
-Ref: each31873
-Ref: bar32090
-Ref: scan32279
-Ref: left32586
-Ref: mod32946
-Ref: over33105
-Ref: right33282
-Ref: div33644
-Ref: eachprior33777
-Ref: n scan34179
-Ref: c scan34519
-Ref: n over34928
-Ref: c over35016
-Ref: vs35126
-Ref: sv35247
-Node: Lists35372
-Node: Dictionaries37809
-Node: More functions42352
-Ref: cond42547
-Ref: in42666
-Ref: parse42886
-Ref: amend44162
-Ref: dmend44824
-Ref: freq45524
-Node: I/O45928
-Ref: input format46059
-Ref: format47070
-Ref: write line47474
-Ref: read line47860
-Ref: write char48045
-Ref: read char48438
-Ref: write data48800
-Ref: conn/set48847
-Ref: http/get48891
-Node: Tables/kSQL48937
-Ref: Tables49115
-Ref: A_Tables49645
-Ref: S_Tables50096
-Ref: kSQL50298
-Node: System52226
-Ref: Display52381
-Ref: Variables52628
-Ref: Memory52729
-Ref: Timing52844
-Node: Errors52936
+Node: Examples11288
+Node: Nouns16139
+Ref: bool17543
+Ref: int17843
+Ref: float18047
+Ref: date18392
+Ref: time18812
+Ref: datetime19426
+Ref: char20098
+Ref: sym20321
+Node: Verbs20734
+Ref: set21761
+Ref: plus21973
+Ref: flip22364
+Ref: minus22614
+Ref: times22877
+Ref: first23008
+Ref: divide23327
+Ref: and23464
+Ref: where23721
+Ref: or24105
+Ref: reverse24369
+Ref: less24539
+Ref: asc24801
+Ref: equal24997
+Ref: group25121
+Ref: match25367
+Ref: not25560
+Ref: key25677
+Ref: enum25848
+Ref: cat27141
+Ref: enlist27260
+Ref: cut27399
+Ref: sort27589
+Ref: cast27766
+Ref: string27955
+Ref: take28063
+Ref: count28393
+Ref: drop28583
+Ref: floor28906
+Ref: find28997
+Ref: unique29444
+Ref: at29681
+Ref: type29894
+Ref: apply30250
+Ref: value31232
+Node: Adverbs31550
+Ref: each32108
+Ref: bar32325
+Ref: scan32514
+Ref: left32821
+Ref: mod33181
+Ref: over33340
+Ref: right33517
+Ref: div33879
+Ref: eachprior34012
+Ref: n scan34414
+Ref: c scan34754
+Ref: n over35163
+Ref: c over35251
+Ref: vs35361
+Ref: sv35482
+Node: Lists35607
+Node: Dictionaries38044
+Node: More functions42587
+Ref: cond42782
+Ref: in42901
+Ref: parse43121
+Ref: amend44397
+Ref: dmend45059
+Ref: freq45759
+Node: I/O46163
+Ref: input format46294
+Ref: format47305
+Ref: write line47709
+Ref: read line48095
+Ref: write char48280
+Ref: read char48673
+Ref: write data49035
+Ref: conn/set49082
+Ref: http/get49126
+Node: Tables/kSQL49172
+Ref: Tables49350
+Ref: A_Tables49880
+Ref: S_Tables50331
+Ref: kSQL50533
+Node: System52461
+Ref: Display52616
+Ref: Variables52863
+Ref: Memory52964
+Ref: Timing53079
+Node: Errors53171
 
 End Tag Table

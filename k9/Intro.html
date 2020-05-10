@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is for Shakti (k9) build 2020.04.14.
+<!-- This manual is for Shakti (k9) build 2020.05.08.
 
 May 10, 2020
 
@@ -97,43 +97,43 @@ z@&amp;y&lt;z:?x<br>
 <p>Typing <code>\</code> in the terminal gives you a concise overview of the language.  This document aims to provide details to beginning users where the help screen is a tad too terse.  Some commands are not yet complete and thus marked with an asterisk, eg. *\l a.k.
 </p><div class="smallformat">
 <pre class="verbatim"> \
-$k f.k
-
-Verb                      Adverb                 Atom            Type  System
-:  set                    '  each       i bar    bool  110b         b  \k
-+  plus       flip        /  over/right i div    int   2 3 4        i *\l a.k
--  minus      negate      \  scan/left  i mod    float 2e3 0n 0w    f  \v [d]
-*  times      first       ': eachprior           date  2024.01.01   D *\f [d]
-%  divide                 /: [n]over    i sv     time  12:34:56.789 t  \w [x]
-&amp;  min        where       \: [n]scan    i vs     char  &quot;ab &quot;        c  \t:n x
-|  max        reverse                            sym   `a`b`        s  \u:n x
-&lt;  less       asc          I/O                         
+Verb                      Adverb                 Noun            Type  System
+:                         '  each                bool  011b         b  \k
++  plus       flip        /  over/right          int   2 3 4        i  \l a.k
+-  minus      minus       \  scan/left           float 2.3 0w       f  \v [d]
+*  times      first       ': eachprior           char  &quot; ab&quot;        c *\f [d]
+%  divide                 /: [n]over             sym   ``a`b        s  \w [x]
+&amp;  and        where       \: [n]scan             time  12:34:56.789 t  \t:n x
+|  or         reverse                            date  2024.01.01   D  \u:n x
+&lt;  less       asc         I/O                         
 &gt;  more       dsc         0: readwrite  line     List (2;3.4;`c)    L  \fl line
 =  equal      group       1: readwrite  char     Dict [a:2;b:`c]   ??  \fc char
-~  match      not         2: write      data     Func {(+/x)%#x}    .
-!  key        enum        3: *conn/set
+~  match      not         2: readwrite  data     Func {(+/x)%#x}    .
+!  key        key         3: *conn/set
 ,  cat        enlist      4: *http/get                        
 ^  cut        sort
 $  cast       string      $[c;t;f]      cond
 #  take       count       #[t;c;b[;a]]  select   table [[]a:`b`c]   T
 _  drop       floor      *_[t;c;b[;a]]  update  Ttable [[a:..]b:]  TT
-?  find       unique     *?[x;i;f[;y]]  splice  Stable S! [[]...]  ST
+?  find       uniq       *?[x;i;f[;y]]  splice  Stable S! [[]...]  ST
 @  at         type        @[x;i;f[;y]]  amend                          \cd dir
-.  apply      value       .[x;i;f[;y]]  dmend                          \\  exit
+.  dot        dot         .[x;i;f[;y]]  dmend                          \\  exit
 
-A_-~%$ L|+#*&amp;=&lt;&gt;^?! ,@.
-A+-*%&amp;|&lt;&gt;=$ L,#_^?! ~@.  F#_
+       Atom(pervasive)    List/Dict     Func     ALDF  tolerant    random
+monad: $-~_               .!#*|+&amp;^&lt;&gt;=?           @,     [*|&amp;!]a     ?a
+dyad:  $+-*%&amp;|&lt;&gt;= L[@?]   .!#_^,        f[#_]    @~    a[,#_!]a    a?x
 
-count first last min max sum avg; in bin within; *exp log sin cos
+sqrt exp log sin cos count first last min max sum avg;div mod bar in bin within
 select A by B from T where C; delete from T where C
 
-/comment \display [dict] :expr (leading space)
-roundtrip: `json?`json(2.3;.z.D;.z.t;&quot;abc&quot;)  / also: `csv`k
-time/cuanto: 2m 2d ..   12:34:56.123456789 e.g. .z.D+2m / .z.[tuv]
-date/cuando: 2024.01.01T12:34:56.123456789 e.g.  7\.z.D / .z.[TUV]
+roundtrip: `json?`json@(2.3;&quot;abc&quot;;.z.T) `k?`k@x `csv?`csv@x
+time/cuanto: 2m 2d ..   12:34:56.123456789 .z.[dtv]
+date/cuando: 2024.01.01T12:34:56.123456789 .z.[DTV]
 
-error: parse value class rank type domain length limit
-limit: sym8(*256) {[param8]local8 global32 const128 jump256}
+error: nyi class rank length type domain limit (value stack parse value)
+limit: sym8(*256) 4K {[param8]local8 global32 const128 jump256}
+atom/list/dict/table (scalar/vector/matrix/tensor) dyad/monad noun/verb/adverb
+/comment \display [dict] :expr (leading space) OVERLOAD(?)
 </pre></div>
 
 <a name="rlwrap"></a>
