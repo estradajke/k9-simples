@@ -1839,11 +1839,11 @@ must be integers.
 8.2.3 bar => x bar y
 --------------------
 
-y divided by x using integer division and then multiplied by x.  x is
-an integer and y is a list of integers.
+For each value in y determine the number of integer multiples of x
+that is less than or equal to each x.
 
-      5'0 1 2 3 4 5 9 10
-     0 0 0 0 0 5 5 10
+      10 bar 9 10 11 19 20 21
+     0 10 10 10 20 20
 
 8.2.4 in => x'y
 ---------------
@@ -2212,7 +2212,8 @@ Temp) and three rows.
 =============
 
 Here is an example of a A_table with three columns (Day, Weather, and
-Temp) and three rows.  One column (Day) will be add as a key.
+Temp) and three rows.  One column (Day) will be added as a key.
+
       t:[[Day:2020.04.10+!3]Weather:`sunny`cold`sunny;Temp:22 12 18]
       t
      Day       |Weather Temp
@@ -2228,12 +2229,18 @@ Temp) and three rows.  One column (Day) will be add as a key.
 =============
 
 TBD
-      x:`a`b! [[]c:2 3;d:3 4;e:4 5]
+
+      e:1.08369 1.07973 1.08194
+      y:106.917 107.102 107.26
+      c:0.97050 0.97297 0.97244
+      g:1.22257 1.21925 1.21298
+      x:`wed`thu`fri!+`eurusd`usdjpy`usdchf`gbpusd!(e;y;c;g)
       x
-      |c d e
-     -|- - -
-     a|2 3 4
-     b|3 4 5
+        |eurusd  usdjpy  usdchf  gbpusd
+     ---|------- ------- ------- -------
+     wed|1.08369 106.917 0.9705  1.22257
+     thu|1.07973 107.102 0.97297 1.21925
+     fri|1.08194 107.26  0.97244 1.21298
 
       @x                              / S_tables are type `SA
      `SA
@@ -2579,15 +2586,15 @@ Ref: http/get51706
 Node: Tables/kSQL51752
 Ref: Tables51930
 Ref: A_Tables52460
-Ref: S_Tables52911
-Ref: kSQL53113
-Node: System55040
-Ref: Display55195
-Ref: Load File55442
-Ref: Variables55636
-Ref: Memory55737
-Ref: Timing55852
-Node: Errors55944
+Ref: S_Tables52914
+Ref: kSQL53421
+Node: System55348
+Ref: Display55503
+Ref: Load File55750
+Ref: Variables55944
+Ref: Memory56045
+Ref: Timing56160
+Node: Errors56252
 
 End Tag Table
 

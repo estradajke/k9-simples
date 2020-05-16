@@ -68,8 +68,9 @@ Weather|sunny cold sunny
 Temp   |22 12 18                        
 </pre></div>
 <span id="A_005fTables"></span><span id="A_005fTables-1"></span><h3 class="section">10.2 A_Tables</h3>
-<p>Here is an example of a A_table with three columns (Day, Weather, and Temp) and three rows.  One column (Day) will be add as a key.
-</p><div class="example">
+<p>Here is an example of a A_table with three columns (Day, Weather, and Temp) and three rows.  One column (Day) will be added as a key.
+</p>
+<div class="example">
 <pre class="example">&nbsp;t:[[Day:2020.04.10+!3]Weather:`sunny`cold`sunny;Temp:22 12 18]
 &nbsp;t
 Day       |Weather Temp
@@ -83,13 +84,19 @@ Day       |Weather Temp
 </pre></div>
 <span id="S_005fTables"></span><span id="S_005fTables-1"></span><h3 class="section">10.3 S_Tables</h3>
 <p>TBD
-</p><div class="example">
-<pre class="example">&nbsp;x:`a`b! [[]c:2 3;d:3 4;e:4 5]
+</p>
+<div class="example">
+<pre class="example">&nbsp;e:1.08369 1.07973 1.08194
+&nbsp;y:106.917 107.102 107.26 
+&nbsp;c:0.97050 0.97297 0.97244
+&nbsp;g:1.22257 1.21925 1.21298
+&nbsp;x:`wed`thu`fri!+`eurusd`usdjpy`usdchf`gbpusd!(e;y;c;g)
 &nbsp;x
-&nbsp;|c d e
--|- - -
-a|2 3 4
-b|3 4 5
+   |eurusd  usdjpy  usdchf  gbpusd 
+---|------- ------- ------- -------
+wed|1.08369 106.917 0.9705  1.22257
+thu|1.07973 107.102 0.97297 1.21925
+fri|1.08194 107.26  0.97244 1.21298
 
 &nbsp;@x                              / S_tables are type `SA
 `SA
