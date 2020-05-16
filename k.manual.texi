@@ -1581,7 +1581,7 @@ Log is natural log and sin and cos are in radians.
 
 @section Various Functions @result{} ema div mod bar in bin within
 
-@section div @result{} x div y
+@subsection div @result{} x div y
 y divided by x using integer division.  x and y must be integers.
 
 @example
@@ -1591,7 +1591,7 @@ y divided by x using integer division.  x and y must be integers.
 4
 @end example
 
-@section mod @result{} x mod y
+@subsection mod @result{} x mod y
 The remainder after y divided by x using integer division.  x and y must be integers.
 
 @example
@@ -1601,7 +1601,7 @@ The remainder after y divided by x using integer division.  x and y must be inte
 2
 @end example
 
-@anchor{bar}@section bar @result{} x bar y
+@subsection bar @result{} x bar y
 y divided by x using integer division and then multiplied by x.  x is an integer and y is a list of integers.
 
 @example
@@ -1609,7 +1609,7 @@ y divided by x using integer division and then multiplied by x.  x is an integer
 0 0 0 0 0 5 5 10
 @end example
 
-@anchor{in}@section in @result{} x'y
+@subsection in @result{} x'y
 Determine if y is in list x.
 
 @example
@@ -1625,7 +1625,7 @@ Determine if y is in list x.
 error: type
 @end example
 
-@section bin @result{} x bin y
+@subsection bin @result{} x bin y
 Given a sorted (increasing) list x, find the greatest index, i, where y>x[i].
 
 @example
@@ -1635,7 +1635,7 @@ Given a sorted (increasing) list x, find the greatest index, i, where y>x[i].
 2
 @end example
 
-@section within @result{} x within y
+@subsection within @result{} x within y
 Test if x is greater than y[0] and less than y[1].
 
 @example

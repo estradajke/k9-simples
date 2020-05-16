@@ -1775,8 +1775,8 @@ Log is natural log and sin and cos are in radians.
 8.2 Various Functions => ema div mod bar in bin within
 ======================================================
 
-8.3 div => x div y
-==================
+8.2.1 div => x div y
+--------------------
 
 y divided by x using integer division.  x and y must be integers.
 
@@ -1785,8 +1785,8 @@ y divided by x using integer division.  x and y must be integers.
       5 div 22
      4
 
-8.4 mod => x mod y
-==================
+8.2.2 mod => x mod y
+--------------------
 
 The remainder after y divided by x using integer division.  x and y
 must be integers.
@@ -1796,8 +1796,8 @@ must be integers.
       5 mod 22
      2
 
-8.5 bar => x bar y
-==================
+8.2.3 bar => x bar y
+--------------------
 
 y divided by x using integer division and then multiplied by x.  x is
 an integer and y is a list of integers.
@@ -1805,8 +1805,8 @@ an integer and y is a list of integers.
       5'0 1 2 3 4 5 9 10
      0 0 0 0 0 5 5 10
 
-8.6 in => x'y
-=============
+8.2.4 in => x'y
+---------------
 
 Determine if y is in list x.
 
@@ -1821,8 +1821,8 @@ Determine if y is in list x.
      ^
      error: type
 
-8.7 bin => x bin y
-==================
+8.2.5 bin => x bin y
+--------------------
 
 Given a sorted (increasing) list x, find the greatest index, i, where
 y>x[i].
@@ -1832,8 +1832,8 @@ y>x[i].
       1.025 bin n
      2
 
-8.8 within => x within y
-========================
+8.2.6 within => x within y
+--------------------------
 
 Test if x is greater than y[0] and less than y[1].
 
@@ -1844,7 +1844,7 @@ Test if x is greater than y[0] and less than y[1].
       23 within (0;12)
      0b
 
-8.9 Wrapper Functions => count first last min max sum avg
+8.3 Wrapper Functions => count first last min max sum avg
 =========================================================
 
 These functions exist as verbs but also can be called with the names
@@ -1856,8 +1856,8 @@ above.
       +/n
      10.5
 
-8.10 cond => $[x;y;z]
-=====================
+8.4 cond => $[x;y;z]
+====================
 
 If x then y else z.
       $[3>2;`a;`b]
@@ -1865,8 +1865,8 @@ If x then y else z.
       $[2>3;`a;`b]
      `b
 
-8.11 parse => :x
-================
+8.5 parse => :x
+===============
 
 Parse allows one to see how a command is parsed into normal k9 form.
 One can value the parse by using the value command, *Note value::.
@@ -1926,8 +1926,8 @@ One can value the parse by using the value command, *Note value::.
 the elements in the output one could manually return the values in the
 list, eg.  p[2;0 1 2].
 
-8.12 amend => @[x;i;f[;y]]
-==========================
+8.6 amend => @[x;i;f[;y]]
+=========================
 
 Replace the values in list x at indices i with f or f[y].
 
@@ -1973,8 +1973,8 @@ Replace the values in list x at indices i with f or f[y].
      30 31 32
 
 
-8.13 dmend => .[x;i;f[;y]]
-==========================
+8.7 dmend => .[x;i;f[;y]]
+=========================
 
 .[x;i;f] examples
 
@@ -2522,34 +2522,32 @@ Ref: sv35015
 Node: Lists35140
 Node: Dictionaries37577
 Node: More functions41890
-Ref: bar42733
-Ref: in42931
-Ref: cond43813
-Ref: parse43933
-Ref: amend45210
-Ref: dmend45874
-Node: I/O46577
-Ref: input format46708
-Ref: format47719
-Ref: write line48123
-Ref: read line48508
-Ref: write char48693
-Ref: read char49086
-Ref: write data49448
-Ref: conn/set49495
-Ref: http/get49539
-Node: Tables/kSQL49585
-Ref: Tables49763
-Ref: A_Tables50293
-Ref: S_Tables50744
-Ref: kSQL50946
-Node: System52873
-Ref: Display53028
-Ref: Load File53275
-Ref: Variables53469
-Ref: Memory53570
-Ref: Timing53685
-Node: Errors53777
+Ref: cond43837
+Ref: parse43955
+Ref: amend45230
+Ref: dmend45892
+Node: I/O46593
+Ref: input format46724
+Ref: format47735
+Ref: write line48139
+Ref: read line48524
+Ref: write char48709
+Ref: read char49102
+Ref: write data49464
+Ref: conn/set49511
+Ref: http/get49555
+Node: Tables/kSQL49601
+Ref: Tables49779
+Ref: A_Tables50309
+Ref: S_Tables50760
+Ref: kSQL50962
+Node: System52889
+Ref: Display53044
+Ref: Load File53291
+Ref: Variables53485
+Ref: Memory53586
+Ref: Timing53701
+Node: Errors53793
 
 End Tag Table
 
