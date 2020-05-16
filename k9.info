@@ -1,7 +1,7 @@
-This is k9.info, produced by makeinfo version 5.2 from k.manual.texi.
+This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
 This manual is for Shakti (k9) build 2020.05.08.
-May 10, 2020
+May 16, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -11,9 +11,9 @@ File: k9.info,  Node: Top,  Next: Intro,  Up: (dir)
 k9: Manual
 **********
 
-This document explains the usage of the k9 programming language in very
-simple terms and is intended for newer developers.  k9 is a rapidly
-evolving platform therefore newer versions may have additional
+This document explains the usage of the k9 programming language in
+very simple terms and is intended for newer developers.  k9 is a
+rapidly evolving platform therefore newer versions may have additional
 functionality not covered in this document.
 
    This manual is for Shakti (k9) build 2020.05.08.
@@ -40,24 +40,25 @@ File: k9.info,  Node: Intro,  Next: Examples,  Prev: Top,  Up: Top
 *******
 
 Shakti, aka k9, is a programming language built for speed, consice
-syntax, and data manipulation.  The syntax is a bit special and although
-it might feel like an impediment at first becomes an advantage with use.
+syntax, and data manipulation.  The syntax is a bit special and
+although it might feel like an impediment at first becomes an
+advantage with use.
 
    The k9 language is more closely related to mathematics syntax than
-most programming lanauges.  It requires the developer to learn to speak
-k9 but once that happens most find an ability to "speak" quicker in k9
-than in other languages.  At this point an example might help.
+most programming lanauges.  It requires the developer to learn to
+speak k9 but once that happens most find an ability to "speak" quicker
+in k9 than in other languages.  At this point an example might help.
 
-   In mathematics, "3+2" is read as "3 plus 2" as you learn at an early
-age that "+" is the "plus" sign.  For trival operations like arithmetic
-most programming languages use symbols also.  Moving on to something
-less math like most programming lanauges switch to clear words while k9
-remains with symbols which turn out to have the same level of clarity.
-As an example, to determine the distinct values of a list most
-programming languages might use a synatx like 'distinct()' while k9 uses
-'?'.  This requires the developer to learn how to say a number of
-symbols but once that happens it results in much shorter code that is
-quicker to write, harder to bug, and easier to maintain.
+   In mathematics, "3+2" is read as "3 plus 2" as you learn at an
+early age that "+" is the "plus" sign.  For trival operations like
+arithmetic most programming languages use symbols also.  Moving on to
+something less math like most programming lanauges switch to clear
+words while k9 remains with symbols which turn out to have the same
+level of clarity.  As an example, to determine the distinct values of
+a list most programming languages might use a synatx like 'distinct()'
+while k9 uses '?'.  This requires the developer to learn how to say a
+number of symbols but once that happens it results in much shorter
+code that is quicker to write, harder to bug, and easier to maintain.
 
    In math which do you find easier to answer?
 
@@ -93,19 +94,20 @@ that you'll be happy you gave it a chance.
 
 https://shakti.com/
 
-   Go to the Shakti website and click on download.  You'll need to enter
-a few pieces of information and then you'll have a choice to download
-either a Linux or MacOS version.  Click on the required OS version and
-you'll download a 'k.zip' file around 50 kb in size.  Unzip that file
-and you'll have a single executable file 'k' which is the language.
+   Go to the Shakti website and click on download.  You'll need to
+enter a few pieces of information and then you'll have a choice to
+download either a Linux or MacOS version.  Click on the required OS
+version and you'll download a 'k.zip' file around 50 kb in size.
+Unzip that file and you'll have a single executable file 'k' which is
+the language.
 
 1.2 Help/Info Card
 ==================
 
-Typing '\' in the terminal gives you a concise overview of the language.
-This document aims to provide details to beginning users where the help
-screen is a tad too terse.  Some commands are not yet complete and thus
-marked with an asterisk, eg.  *\l a.k.
+Typing '\' in the terminal gives you a concise overview of the
+language.  This document aims to provide details to beginning users
+where the help screen is a tad too terse.  Some commands are not yet
+complete and thus marked with an asterisk, eg.  *\l a.k.
  \
 Verb                      Adverb                 Noun            Type  System
 :                         '  each                bool  011b         b  \k
@@ -115,12 +117,12 @@ Verb                      Adverb                 Noun            Type  System
 %  divide                 /: [n]over             sym   ``a`b        s  \w [x]
 &  and        where       \: [n]scan             time  12:34:56.789 t  \t:n x
 |  or         reverse                            date  2024.01.01   D  \u:n x
-<  less       asc         I/O
+<  less       asc         I/O                         
 >  more       dsc         0: readwrite  line     List (2;3.4;`c)    L  \fl line
 =  equal      group       1: readwrite  char     Dict [a:2;b:`c]   ??  \fc char
 ~  match      not         2: readwrite  data     Func {(+/x)%#x}    .
 !  key        key         3: *conn/set
-,  cat        enlist      4: *http/get
+,  cat        enlist      4: *http/get                        
 ^  cut        sort
 $  cast       string      $[c;t;f]      cond
 #  take       count       #[t;c;b[;a]]  select   table [[]a:`b`c]   T
@@ -150,9 +152,9 @@ atom/list/dict/table (scalar/vector/matrix/tensor) dyad/monad noun/verb/adverb
 
 Although you only need the 'k' binary to run k9 most will also install
 rlwrap, if not already installed, in order to get command history in a
-terminal window.  rlwrap is "Readline wrapper: adds readline support to
-tools that lack it" and allows one to arrow up to go through the command
-buffer generally a useful option to have.
+terminal window.  rlwrap is "Readline wrapper: adds readline support
+to tools that lack it" and allows one to arrow up to go through the
+command buffer generally a useful option to have.
 
    In order to start k9 you should either run 'k' or 'rlwrap k' to get
 started.  Here I will show both options but one should run as desired.
@@ -160,9 +162,9 @@ In this document lines with input be shown with a leading space and
 output will be without.  In the examples below the user starts a
 terminal window in the directory with the 'k' file.  Then the users
 enters 'rlwrap ./k <RET>'.  k9 starts and displays the date of the
-build, (c), and shakti and then listens to user input.  In this example
-I have entered the command to exit k9, '//'.  Then I start k9 again
-without rlwrap and again exit the session.
+build, (c), and shakti and then listens to user input.  In this
+example I have entered the command to exit k9, '//'.  Then I start k9
+again without rlwrap and again exit the session.
 
       rlwrap ./k
      2020.04.01 (c) shakti
@@ -176,9 +178,9 @@ without rlwrap and again exit the session.
 ==================
 
 Here I will start up k9, perform some trivial calculations, and then
-close the session.  After this example it will be assumed the user will
-have a k9 session running and working in repl mode.  Comments ('/') will
-be added to the end of lines as needed.
+close the session.  After this example it will be assumed the user
+will have a k9 session running and working in repl mode.  Comments
+('/') will be added to the end of lines as needed.
 
       rlwrap ./k
      2020.04.01 (c) shakti
@@ -220,8 +222,8 @@ return, most variance, or any other analysis on the data.
 =========================================
 
 This document uses a number of examples to help clarify k9.  The sytax
-is that input has a leading space and output does not.  This follows the
-terminal syntax where the REPL input has space but prints output
+is that input has a leading space and output does not.  This follows
+the terminal syntax where the REPL input has space but prints output
 without.
       3+2 / this is input
      5    / this is output
@@ -229,16 +231,17 @@ without.
 1.6 k9 nuances
 ==============
 
-One will need to understand some basic rules of k9 in order to progress.
-These will likely seem strange at first.
+One will need to understand some basic rules of k9 in order to
+progress.  These will likely seem strange at first.
 
 1.6.1 The language is being changed often.
 ------------------------------------------
 
 There may be examples in this document which work on the version
 idicated but do not with the version currently available to download.
-If so, then feel free to drop the author a note.  Items which currently
-error but are likley to come back 'soon' will be left in the document.
+If so, then feel free to drop the author a note.  Items which
+currently error but are likley to come back 'soon' will be left in the
+document.
 
 1.6.2 ':' is used to set a variable to a value
 ----------------------------------------------
@@ -254,16 +257,16 @@ Yeah, 2 divide by 5 is written as '2%5' and not '2/5'.
 1.6.4 Evaluation is done right to left
 --------------------------------------
 
-2+5*3 is 17 and 2*5+3 is 16.  2+5*3 is first evaluated on the right most
-portion, 5*3, and once that is computed then it proceeds with 2+15.
-2*5+3 goes to 2*8 which becomes 16.
+2+5*3 is 17 and 2*5+3 is 16.  2+5*3 is first evaluated on the right
+most portion, 5*3, and once that is computed then it proceeds with
+2+15.  2*5+3 goes to 2*8 which becomes 16.
 
 1.6.5 There is no arithmetic order
 ----------------------------------
 
-+ does not happen specially before or after *.  The order of evaluation
-is done right to left unless parenthesis are used.  (2+5)*3 = 21 as the
-2+5 in parenthesis is done before being multiplied by 3.
++ does not happen specially before or after *.  The order of
+evaluation is done right to left unless parenthesis are used.  (2+5)*3
+= 21 as the 2+5 in parenthesis is done before being multiplied by 3.
 
 1.6.6 Operators are overloaded depending on the number of arguments.
 --------------------------------------------------------------------
@@ -280,9 +283,9 @@ k9 syntax encourages you to treat lists and functions in a similar
 function.  They should both be thought of a mapping from a value to
 another value or from a domain to a range.
 
-   If this book wasn't a simples guide then lists (l) and functions (f)
-would be replaced by maps (m) given the interchangeability.  One way to
-determine if a map is either a lits or function is via the type
+   If this book wasn't a simples guide then lists (l) and functions
+(f) would be replaced by maps (m) given the interchangeability.  One
+way to determine if a map is either a lits or function is via the type
 function.  Lists and functions do not have the same type.
 
       l:3 4 7 12
@@ -300,8 +303,8 @@ grammar consists of nouns (data), verbs (functions) and adverbs
 (function modifiers).
    * The boy ate an appple. (Noun verb noun)
    * The girl ate each olive. (Noun verb adverb noun)
-   In k9 as the Help/Info card shows data are nouns, functions/lists are
-verbs and modifiers are adverbs.
+   In k9 as the Help/Info card shows data are nouns, functions/lists
+are verbs and modifiers are adverbs.
    * 3 > 2 (Noun verb noun)
    * 3 >' 0 1 2 3 4 5 (Noun verb adverb noun)
 
@@ -326,8 +329,8 @@ quickly.
       q:+`t`s`d!(t[n];s[n];d[n])             / generate the data
 
    As this point one might want to check start and stop times, see if
-the symbol distribution is actual random and look at the distribution of
-the price deltas.
+the symbol distribution is actual random and look at the distribution
+of the price deltas.
 
       select min t, max t from q
      t|09:00:00.002
@@ -361,8 +364,8 @@ the price deltas.
 ===============================
 
 In the shakti mailing list there is a number of code examples that can
-be used to learn best practice.  In order to make sense of other's codes
-one needs to be able to effeciently parse the typically dense k9
+be used to learn best practice.  In order to make sense of other's
+codes one needs to be able to effeciently parse the typically dense k9
 language.  Here, an example of how one goes about this process is
 presented.
 
@@ -391,8 +394,8 @@ details...
        }
 
 
-   Given k9 evaluates right to left let's start with the right most code
-fragment.
+   Given k9 evaluates right to left let's start with the right most
+code fragment.
 
       (();&(x@(!#x)+\!#y)~\y)          / a list (null;value)
 
@@ -402,26 +405,26 @@ fragment.
 
    In order to easily check our understand we can wrap this in a
 function and call the function with the parameters shown above.  In
-order to step through we can start with the inner parenthesis and build
-up the code until it is complete.
+order to step through we can start with the inner parenthesis and
+build up the code until it is complete.
 
       {!#x}["Find the +++ needle in + the ++ text";"++"]
      {!#x}["Find the +++ needle in + the ++ text";"++"]
      ^
      error: rank
 
-   This won't work as one cannot call a function with two arguments and
-then only use one.  In order to get around this we will insert code for
-the second argument but not use it.
+   This won't work as one cannot call a function with two arguments
+and then only use one.  In order to get around this we will insert
+code for the second argument but not use it.
 
       {y;#x}["Find the +++ needle in + the ++ text";"++"]
      36
       {y;!#x}["Find the +++ needle in + the ++ text";"++"]
      0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35
 
-   As might have been guessed '#x' counts the number of charcters in the
-first argument and then '!#x' generates a list of integers from 0 to
-n-1.
+   As might have been guessed '#x' counts the number of charcters in
+the first argument and then '!#x' generates a list of integers from 0
+to n-1.
 
       {(!#x)+\!#y}["Find the +++ needle in + the ++ text";"++"]
       0  1
@@ -448,8 +451,8 @@ n-1.
      ..
 
    Here the code takes each integer from the previous calculation and
-then add an integer list as long as the send argument to each value.  In
-order to ensure this is clear one could write something similar and
+then add an integer list as long as the send argument to each value.
+In order to ensure this is clear one could write something similar and
 ensure the output is able to be predicted.
 
       {(!x)+\!y}[6;4]
@@ -493,8 +496,8 @@ substrings to find a match.
       {(x@(!#x)+\!#y)~\y}["Find the +++ needle in + the ++ text";"++"]
      000000000110000000000000000001000000b
 
-   And then one can use the where function, '&', to determine the index
-of the matches.
+   And then one can use the where function, '&', to determine the
+index of the matches.
 
       {&(x@(!#x)+\!#y)~\y}["Find the +++ needle in + the ++ text";"++"]
      9 10 29
@@ -526,9 +529,9 @@ covered in a seperate chapter.
      *Note sym::,   `a`b`        s
 
    Data types can be determined by using the '@' function on values or
-lists of values.  In the case of non-uniform lists '@' returns the type
-of the list '`L' but the function can be modified to evalue each type
-'@'' instead and return the type of each element in the list.
+lists of values.  In the case of non-uniform lists '@' returns the
+type of the list '`L' but the function can be modified to evalue each
+type '@'' instead and return the type of each element in the list.
 
       @1            / integer atom
      `i
@@ -662,8 +665,8 @@ internally as integers.
 3.4.1 char => Character c
 -------------------------
 
-Characters are stored as their ANSI value and can be seen by conversion
-to integers.  Character lists are equivalent to strings.
+Characters are stored as their ANSI value and can be seen by
+conversion to integers.  Character lists are equivalent to strings.
 
       @"b"
      `c
@@ -673,8 +676,8 @@ to integers.  Character lists are equivalent to strings.
 3.4.2 sym => Symbol s
 ---------------------
 
-Symbols are enumerate type shown as a text string but stored internally
-as a integer value.
+Symbols are enumerate type shown as a text string but stored
+internally as a integer value.
       @`blue
      `s
       @`blue`red
@@ -827,8 +830,8 @@ Mutliply x and y.
 4.6 first => *x
 ===============
 
-Return the first value of x.  Last can either be determine by taking the
-first element of the reverse list (*|'a'b'c) or using last syntax
+Return the first value of x.  Last can either be determine by taking
+the first element of the reverse list (*|'a'b'c) or using last syntax
 ((:/)'a'b'c).
       *1 2 3
      1
@@ -1164,8 +1167,8 @@ Return the integer floor of float x.
 ================
 
 Find the first element of x that matches y otherwise return the end of
-vector.  Also, acts to generates random numbers from 0 to y when x and y
-are integers.
+vector.  Also, acts to generates random numbers from 0 to y when x and
+y are integers.
       `a`b`a`c`b`a`a?`b
      1
       `a`b`a`c`b`a`a?`d
@@ -1225,20 +1228,21 @@ Return the data type of x.
 4.34 apply => x.y
 =================
 
-Given list x return the value at list y.  The action of apply depends on
-the shape of y.
+Given list x return the value at list y.  The action of apply depends
+on the shape of y.
    * Index returns the value(s) at x at each index y, i.e.  x@y@0,
      x@y@1, ..., x@y@(n-1).
    * Recursive index returns the value(s) at x[y@0;y@1].
    * Recursive index over returns x[y[0;0];y[1]], x[y[0;1];y[1]], ...,
      x[y[0;n-1];y[1]].
 
-action                 @y      #y      example
-------------------------------------------------------
-simple index           'I      1       ,2
-simple indices         'I      1       ,1 3
-recursive index        'L      1       0 2
-recursive index over   'L      2       (0 2;1 3)
+action                @y      #y      example
+-----------------------------------------------------
+simple index          'I      1       ,2
+simple indices        'I      1       ,1 3
+recursive index       'L      1       0 2
+recursive index       'L      2       (0 2;1 3)
+over
 
       (3 4 7 12).,2
      7
@@ -1289,8 +1293,8 @@ File: k9.info,  Node: Adverbs,  Next: Lists,  Prev: Verbs,  Up: Top
 5 Function Modifiers / Adverbs
 ******************************
 
-k9 uses function modifiers / adverbs in order to have functions operate
-iteratively over lists.
+k9 uses function modifiers / adverbs in order to have functions
+operate iteratively over lists.
 
      Adverb
      '  *Note each::,                *Note i bar: bar.
@@ -1312,8 +1316,8 @@ Apply function f to each value in list x.
 5.2 bar => x'y
 ==============
 
-y divided by x using integer division and then multiplied by x.  x is an
-integer and y is a list of integers.
+y divided by x using integer division and then multiplied by x.  x is
+an integer and y is a list of integers.
       5'0 1 2 3 4 5 9 10
      0 0 0 0 0 5 5 10
 
@@ -1354,8 +1358,8 @@ Apply f[;y] to each value in x.
 5.5 mod => x\y
 ==============
 
-The remainder after y divided by x using integer division.  x and y must
-be integers.
+The remainder after y divided by x using integer division.  x and y
+must be integers.
       12\27
      3
       5\22
@@ -1429,8 +1433,8 @@ except for the case of f[0]=f[x;y[0]]
 5.11 c(onverge) scan => f\:x
 ============================
 
-Compute f[x], f[f[x]] and continue to call f[previous result] until the
-output converges to a stationary value or the output produces x.
+Compute f[x], f[f[x]] and continue to call f[previous result] until
+the output converges to a stationary value or the output produces x.
        {x*x}\:.99
      0.99 0.9801 0.960596 0.9227447 0.8514578 0.7249803 0.5255965 0.2762517 0.07631498 0.005823977 3.391871e-05 1.150479e-09 1.323601e-18 1.751919e-36 3.069222e-72 9.420123e-144 8.873872e-287 0
 
@@ -1531,9 +1535,9 @@ detail.
    * @[list;indices;identify function;value]
    * @[list;indices;function;value]
    The first syntax sets the list at the indices to value.  The second
-syntax performs the same modificaiton but explicitly lists the identity
-function, :.  The third synatx is the same as the preceeding but uses an
-arbitrary fuction.
+syntax performs the same modificaiton but explicitly lists the
+identity function, :.  The third synatx is the same as the preceeding
+but uses an arbitrary fuction.
 
    Often the developer will need to determine which indices to modify
 and in cases where this isn't onerous it can be done in the function.
@@ -1553,8 +1557,8 @@ File: k9.info,  Node: Dictionaries,  Next: More functions,  Prev: Lists,  Up: To
 7 Dictionaries and Dictionary Functions
 ***************************************
 
-Dictionaries are key-value pairs of data.  The values in the dictionary
-can be single elements or lists.
+Dictionaries are key-value pairs of data.  The values in the
+dictionary can be single elements or lists.
 
 7.1 Dictionary Creation => x!y
 ==============================
@@ -1595,7 +1599,7 @@ Dictionary indicing, like lists, can be indexed in a number of ways.
 7.3 Dictionary Key => !x
 ========================
 
-The keys from a dictionary can be retreived by using the !  function.
+The keys from a dictionary are retreived by using the !  function.
 
       !d0
      `pi`e`c
@@ -1604,46 +1608,40 @@ The keys from a dictionary can be retreived by using the !  function.
       !d2
      0 10 1
 
-7.4 Dictionary as Value => .x
-=============================
+7.4 Dictionary Value => x[]
+===========================
 
-A dictionary can be returned as values using the .  function.  The
-function returns a list of length two.  The first element is a list of
-the keys.  The second element is a list of the values.
+The values from a dictionary are retreived by bracket notation.
 
-      . d0
+      d0[]
      pi   e    c
      3.14 2.72 3e+08
 
-      . d1
+      d1[]
      time              temp
      12:00 12:01 12:10 25 25.1 25.6
 
-      . d2
+      d2[]
      0    10   1
      37.4 46.3 0.1
 
    One could return a specific value by indicing into a specific
 location.  As an example in order to query the first value of the temp
-from d1, one would convert d1 into values (as value .), take the second
-index (take the value 1), take the second element (take the temp 1), and
-then query the first value (element 0).
+from d1, one would convert d1 into values (as value .), take the
+second index (take the value 1), take the second element (take the
+temp 1), and then query the first value (element 0).
 
       d1
      time|12:00 12:01 12:10
      temp|25 25.1 25.6
 
-      (. d1)
-     time              temp
-     12:00 12:01 12:10 25 25.1 25.6
-
-      (. d1)[1]
+      d1[]
      12:00 12:01 12:10
      25    25.1  25.6
 
-      (. d1)[1][1]
+      d1[][1]
      25 25.1 25.6
-      (. d1)[1][1][0]
+      d1[][1;0]
      25f
 
 7.5 Sorting a Dictionary by Key => ^x
@@ -1765,8 +1763,8 @@ dictionary with the same keys and the values are application of 'f'.
 7.9 Functions that operate over values in a dictionary
 ======================================================
 
-There are functions on dictions that operate over the values.  If 'f' is
-a function applied to a dictionary 'd' then 'f d' returns a value.
+There are functions on dictions that operate over the values.  If 'f'
+is a function applied to a dictionary 'd' then 'f d' returns a value.
 
    * *d : First value
       d0
@@ -2008,8 +2006,8 @@ Functions for input and ouput (I/O).
 9.1 Input format values to table
 ================================
 
-This section shows you the syntax for reading in data into a table with
-the correct type.
+This section shows you the syntax for reading in data into a table
+with the correct type.
       d:,(`date`time`int`float`char`symbol)            / headers
       d,:,(2020.04.20;12:34:56.789;37;12.3;"hi";`bye)) /data
       d
@@ -2046,8 +2044,8 @@ Convert x to CSV/json/k format.  Works on atoms, lists, and tables.
 9.3 write line => x 0:y
 =======================
 
-Output to x the list of strings in y.  y must be a list of strings.  If
-y is a single stream then convert to list via enlist.
+Output to x the list of strings in y.  y must be a list of strings.
+If y is a single stream then convert to list via enlist.
       ""0:("blue";"red")      / "" represents stdout
      blue
      red
@@ -2068,8 +2066,8 @@ Read from file x.
 9.5 write char => x 1:y
 =======================
 
-Output to x the list of chars in y.  y must be a list of chars.  If y is
-a single char then convert to list via enlist.
+Output to x the list of chars in y.  y must be a list of chars.  If y
+is a single char then convert to list via enlist.
       "some.txt"1:"hello here\nis some text\n"
       1:"some.txt"
      "hello here\nis some text\n"
@@ -2196,7 +2194,7 @@ Joining tables together.  In this section x, y represent tables and kx
 and ky represent keyed/A_tables.
 
 join    x       y
----------------------------------------
+--------------------------------------
 union   table   table
 left    table   Atable
 outer   Atable  Atable
@@ -2311,7 +2309,16 @@ This chapter describes the system settings and functions.
       d
      [a:1 2;b:3 4]
 
-11.2 Variables => \v
+11.2 Load File=> \l
+===================
+
+Load a text file of k9 commands.  The file name must end in .k.
+      \l func.k
+     \l func.k
+      \l func.k7  / will error as not .k
+     error: nyi
+
+11.3 Variables => \v
 ====================
 
 List variables
@@ -2319,7 +2326,7 @@ List variables
       \v
      [v:`a`b`c]
 
-11.3 Memory => \w
+11.4 Memory => \w
 =================
 
 List memory usage
@@ -2329,7 +2336,7 @@ List memory usage
       \w
      2097158
 
-11.4 Timing => \t
+11.5 Timing => \t
 =================
 
 List time elapsed
@@ -2423,97 +2430,103 @@ Undefined variable is used.
 Tag Table:
 Node: Top170
 Node: Intro879
-Node: Examples11341
-Node: Nouns16221
-Ref: bool17625
-Ref: int17925
-Ref: float18129
-Ref: date18474
-Ref: time18894
-Ref: datetime19508
-Ref: char20180
-Ref: sym20403
-Node: Verbs20816
-Ref: set21843
-Ref: plus22055
-Ref: flip22446
-Ref: minus22696
-Ref: times22959
-Ref: first23090
-Ref: divide23409
-Ref: and23546
-Ref: where23803
-Ref: or24187
-Ref: reverse24451
-Ref: less24621
-Ref: asc24883
-Ref: equal25079
-Ref: group25203
-Ref: match25449
-Ref: not25642
-Ref: key25759
-Ref: enum25930
-Ref: cat27223
-Ref: enlist27342
-Ref: cut27481
-Ref: sort27671
-Ref: cast27848
-Ref: string28037
-Ref: take28145
-Ref: count28475
-Ref: drop28665
-Ref: floor28988
-Ref: find29079
-Ref: unique29526
-Ref: at29763
-Ref: type29976
-Ref: apply30332
-Ref: value31314
-Node: Adverbs31632
-Ref: each32190
-Ref: bar32407
-Ref: scan32596
-Ref: left32903
-Ref: mod33263
-Ref: over33422
-Ref: right33599
-Ref: div33961
-Ref: eachprior34094
-Ref: n scan34496
-Ref: c scan34836
-Ref: n over35245
-Ref: c over35333
-Ref: vs35443
-Ref: sv35564
-Node: Lists35689
-Node: Dictionaries38126
-Node: More functions42669
-Ref: cond42864
-Ref: in42983
-Ref: parse43203
-Ref: amend44479
-Ref: dmend45141
-Ref: freq45841
-Node: I/O46245
-Ref: input format46376
-Ref: format47387
-Ref: write line47791
-Ref: read line48177
-Ref: write char48362
-Ref: read char48755
-Ref: write data49117
-Ref: conn/set49164
-Ref: http/get49208
-Node: Tables/kSQL49254
-Ref: Tables49432
-Ref: A_Tables49962
-Ref: S_Tables50413
-Ref: kSQL50615
-Node: System52543
-Ref: Display52698
-Ref: Variables52945
-Ref: Memory53046
-Ref: Timing53161
-Node: Errors53253
+Node: Examples11393
+Node: Nouns16272
+Ref: bool17676
+Ref: int17976
+Ref: float18180
+Ref: date18525
+Ref: time18945
+Ref: datetime19559
+Ref: char20231
+Ref: sym20454
+Node: Verbs20867
+Ref: set21894
+Ref: plus22106
+Ref: flip22497
+Ref: minus22747
+Ref: times23010
+Ref: first23141
+Ref: divide23460
+Ref: and23597
+Ref: where23854
+Ref: or24238
+Ref: reverse24502
+Ref: less24672
+Ref: asc24934
+Ref: equal25130
+Ref: group25254
+Ref: match25500
+Ref: not25693
+Ref: key25810
+Ref: enum25981
+Ref: cat27274
+Ref: enlist27393
+Ref: cut27532
+Ref: sort27722
+Ref: cast27899
+Ref: string28088
+Ref: take28196
+Ref: count28526
+Ref: drop28716
+Ref: floor29039
+Ref: find29130
+Ref: unique29577
+Ref: at29814
+Ref: type30027
+Ref: apply30383
+Ref: value31364
+Node: Adverbs31682
+Ref: each32240
+Ref: bar32457
+Ref: scan32646
+Ref: left32953
+Ref: mod33313
+Ref: over33472
+Ref: right33649
+Ref: div34011
+Ref: eachprior34144
+Ref: n scan34546
+Ref: c scan34886
+Ref: n over35295
+Ref: c over35383
+Ref: vs35493
+Ref: sv35614
+Node: Lists35739
+Node: Dictionaries38176
+Node: More functions42489
+Ref: cond42684
+Ref: in42803
+Ref: parse43023
+Ref: amend44299
+Ref: dmend44961
+Ref: freq45661
+Node: I/O46065
+Ref: input format46196
+Ref: format47207
+Ref: write line47611
+Ref: read line47996
+Ref: write char48181
+Ref: read char48574
+Ref: write data48936
+Ref: conn/set48983
+Ref: http/get49027
+Node: Tables/kSQL49073
+Ref: Tables49251
+Ref: A_Tables49781
+Ref: S_Tables50232
+Ref: kSQL50434
+Node: System52361
+Ref: Display52516
+Ref: Load File52763
+Ref: Variables52957
+Ref: Memory53058
+Ref: Timing53173
+Node: Errors53265
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:

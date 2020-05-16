@@ -2,49 +2,39 @@
 <html>
 <!-- This manual is for Shakti (k9) build 2020.05.08.
 
-May 10, 2020
+May 16, 2020
 
 Copyright (C) 2020 John Estrada -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>k9 simples: Dictionaries</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Dictionaries (k9 simples)</title>
 
-<meta name="description" content="k9 simples: Dictionaries">
-<meta name="keywords" content="k9 simples: Dictionaries">
+<meta name="description" content="Dictionaries (k9 simples)">
+<meta name="keywords" content="Dictionaries (k9 simples)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html" rel="start" title="Top">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
-<link href="index.html#Top" rel="up" title="Top">
-<link href="More-functions.html#More-functions" rel="next" title="More functions">
-<link href="Lists.html#Lists" rel="prev" title="Lists">
+<link href="index.html" rel="up" title="Top">
+<link href="More-functions.html" rel="next" title="More functions">
+<link href="Lists.html" rel="prev" title="Lists">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
-blockquote.smallquotation {font-size: smaller}
+blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.indentedblock {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
-div.smalldisplay {margin-left: 3.2em}
-div.smallexample {margin-left: 3.2em}
-div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
-div.smalllisp {margin-left: 3.2em}
-kbd {font-style:oblique}
+kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
 pre.menu-preformatted {font-family: serif}
-pre.smalldisplay {font-family: inherit; font-size: smaller}
-pre.smallexample {font-size: smaller}
-pre.smallformat {font-family: inherit; font-size: smaller}
-pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space:nowrap}
-span.nolinebreak {white-space:nowrap}
-span.roman {font-family:serif; font-weight:normal}
-span.sansserif {font-family:sans-serif; font-weight:normal}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -52,18 +42,15 @@ ul.no-bullet {list-style: none}
 
 </head>
 
-<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<a name="Dictionaries"></a>
-<div class="header">
+<body lang="en">
+<span id="Dictionaries"></span><div class="header">
 <p>
-Next: <a href="More-functions.html#More-functions" accesskey="n" rel="next">More functions</a>, Previous: <a href="Lists.html#Lists" accesskey="p" rel="prev">Lists</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="More-functions.html" accesskey="n" rel="next">More functions</a>, Previous: <a href="Lists.html" accesskey="p" rel="prev">Lists</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 <hr>
-<a name="Dictionaries-and-Dictionary-Functions"></a>
-<h2 class="chapter">7 Dictionaries and Dictionary Functions</h2>
+<span id="Dictionaries-and-Dictionary-Functions"></span><h2 class="chapter">7 Dictionaries and Dictionary Functions</h2>
 <p>Dictionaries are key-value pairs of data.  The values in the dictionary can be single elements or lists.  
-</p><a name="Dictionary-Creation-_21d2-x_0021y"></a>
-<h3 class="section">7.1 Dictionary Creation &rArr; x!y</h3>
+</p><span id="Dictionary-Creation-_21d2-x_0021y"></span><h3 class="section">7.1 Dictionary Creation &rArr; x!y</h3>
 <div class="example">
 <pre class="example">&nbsp;d0:`pi`e`c!3.14 2.72 3e8;d0                         / elements
 pi|3.14 
@@ -79,8 +66,7 @@ temp|25 25.1 25.6
 10|46.3
 &nbsp;1|0.1 
 </pre></div>
-<a name="Dictionary-Indicing-_21d2-x_0040y"></a>
-<h3 class="section">7.2 Dictionary Indicing &rArr; x@y</h3>
+<span id="Dictionary-Indicing-_21d2-x_0040y"></span><h3 class="section">7.2 Dictionary Indicing &rArr; x@y</h3>
 <p>Dictionary indicing, like lists, can be indexed in a number of ways.
 </p><div class="example">
 <pre class="example">&nbsp;x:`a`b`c!(1 2;3 4;5 6);x
@@ -98,9 +84,8 @@ c|5 6
 &nbsp;x `b;  / space
 &nbsp;x[`b]; / square bracket
 </pre></div>
-<a name="Dictionary-Key-_21d2-_0021x"></a>
-<h3 class="section">7.3 Dictionary Key &rArr; !x</h3>
-<p>The keys from a dictionary can be retreived by using the ! function.
+<span id="Dictionary-Key-_21d2-_0021x"></span><h3 class="section">7.3 Dictionary Key &rArr; !x</h3>
+<p>The keys from a dictionary are retreived by using the ! function.
 </p>
 <div class="example">
 <pre class="example">&nbsp;!d0
@@ -111,20 +96,19 @@ c|5 6
 0 10 1
 </pre></div>
 
-<a name="Dictionary-as-Value-_21d2-_002ex"></a>
-<h3 class="section">7.4 Dictionary as Value &rArr; .x</h3>
-<p>A dictionary can be returned as values using the . function.  The function returns a list of length two.  The first element is a list of the keys.  The second element is a list of the values.
+<span id="Dictionary-Value-_21d2-x_005b_005d"></span><h3 class="section">7.4 Dictionary Value &rArr; x[]</h3>
+<p>The values from a dictionary are retreived by bracket notation.
 </p>
 <div class="example">
-<pre class="example">&nbsp;. d0
+<pre class="example">&nbsp;d0[]
 pi   e    c    
 3.14 2.72 3e+08
 
-&nbsp;. d1
+&nbsp;d1[]
 time              temp        
 12:00 12:01 12:10 25 25.1 25.6
 
-&nbsp;. d2
+&nbsp;d2[]
 0    10   1  
 37.4 46.3 0.1
 </pre></div>
@@ -136,22 +120,17 @@ time              temp
 time|12:00 12:01 12:10
 temp|25 25.1 25.6     
 
-&nbsp;(. d1)
-time              temp        
-12:00 12:01 12:10 25 25.1 25.6
-
-&nbsp;(. d1)[1]
+&nbsp;d1[]
 12:00 12:01 12:10
 25    25.1  25.6 
 
-&nbsp;(. d1)[1][1]
+&nbsp;d1[][1]
 25 25.1 25.6
-&nbsp;(. d1)[1][1][0]
+&nbsp;d1[][1;0]
 25f
 </pre></div>
 
-<a name="Sorting-a-Dictionary-by-Key-_21d2-_005ex"></a>
-<h3 class="section">7.5 Sorting a Dictionary by Key &rArr; ^x</h3>
+<span id="Sorting-a-Dictionary-by-Key-_21d2-_005ex"></span><h3 class="section">7.5 Sorting a Dictionary by Key &rArr; ^x</h3>
 
 <div class="example">
 <pre class="example">&nbsp;d0
@@ -165,8 +144,7 @@ e |2.72
 pi|3.14 
 </pre></div>
 
-<a name="Sorting-a-Dictionary-by-Value-_21d2-_003cx-_0028_003ex_0029"></a>
-<h3 class="section">7.6 Sorting a Dictionary by Value &rArr; &lt;x (&gt;x)</h3>
+<span id="Sorting-a-Dictionary-by-Value-_21d2-_003cx-_0028_003ex_0029"></span><h3 class="section">7.6 Sorting a Dictionary by Value &rArr; &lt;x (&gt;x)</h3>
 
 <div class="example">
 <pre class="example">&nbsp;d0
@@ -185,8 +163,7 @@ pi|3.14
 e |2.72 
 </pre></div>
 
-<a name="Flipping-a-Dictionary-into-a-Table-_21d2-_002bx"></a>
-<h3 class="section">7.7 Flipping a Dictionary into a Table &rArr; +x</h3>
+<span id="Flipping-a-Dictionary-into-a-Table-_21d2-_002bx"></span><h3 class="section">7.7 Flipping a Dictionary into a Table &rArr; +x</h3>
 <p>This command flips a dictionary into a table but will be covered in detail in the table section.  Flipping a dictionary whose values are a single element has no effect.
 </p>
 <div class="example">
@@ -218,8 +195,7 @@ time  temp
 0b
 </pre></div>
 
-<a name="Functions-that-operate-on-each-value-in-a-dictionary"></a>
-<h3 class="section">7.8 Functions that operate on each value in a dictionary</h3>
+<span id="Functions-that-operate-on-each-value-in-a-dictionary"></span><h3 class="section">7.8 Functions that operate on each value in a dictionary</h3>
 <p>There a number of simple functions on dictionaries that operate on the values.  If &rsquo;f&rsquo; is a function then f applied to a dictionary return a dictionary with the same keys and the values are application of &rsquo;f&rsquo;.
 </p>
 <ul>
@@ -269,8 +245,7 @@ time  temp
 &nbsp;1|0.001
 </pre></div>
 
-<a name="Functions-that-operate-over-values-in-a-dictionary"></a>
-<h3 class="section">7.9 Functions that operate over values in a dictionary</h3>
+<span id="Functions-that-operate-over-values-in-a-dictionary"></span><h3 class="section">7.9 Functions that operate over values in a dictionary</h3>
 <p>There are functions on dictions that operate over the values.  If &rsquo;f&rsquo; is a function applied to a dictionary &rsquo;d&rsquo; then &rsquo;f d&rsquo; returns a value.
 </p>
 <ul>
@@ -288,7 +263,7 @@ c |3e+08
 <hr>
 <div class="header">
 <p>
-Next: <a href="More-functions.html#More-functions" accesskey="n" rel="next">More functions</a>, Previous: <a href="Lists.html#Lists" accesskey="p" rel="prev">Lists</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="More-functions.html" accesskey="n" rel="next">More functions</a>, Previous: <a href="Lists.html" accesskey="p" rel="prev">Lists</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 
 

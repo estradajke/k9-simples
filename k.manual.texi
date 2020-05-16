@@ -1406,7 +1406,7 @@ c|5 6
 @ x[`b]; / square bracket
 @end example
 @section Dictionary Key @result{} !x
-The keys from a dictionary can be retreived by using the ! function.
+The keys from a dictionary are retreived by using the ! function.
 
 @example
 @ !d0
@@ -1417,19 +1417,19 @@ The keys from a dictionary can be retreived by using the ! function.
 0 10 1
 @end example
 
-@section Dictionary as Value @result{} .x
-A dictionary can be returned as values using the . function.  The function returns a list of length two.  The first element is a list of the keys.  The second element is a list of the values.
+@section Dictionary Value @result{} x[]
+The values from a dictionary are retreived by bracket notation.
 
 @example
-@ . d0
+@ d0[]
 pi   e    c    
 3.14 2.72 3e+08
 
-@ . d1
+@ d1[]
 time              temp        
 12:00 12:01 12:10 25 25.1 25.6
 
-@ . d2
+@ d2[]
 0    10   1  
 37.4 46.3 0.1
 @end example
@@ -1441,17 +1441,13 @@ One could return a specific value by indicing into a specific location.  As an e
 time|12:00 12:01 12:10
 temp|25 25.1 25.6     
 
-@ (. d1)
-time              temp        
-12:00 12:01 12:10 25 25.1 25.6
-
-@ (. d1)[1]
+@ d1[]
 12:00 12:01 12:10
 25    25.1  25.6 
 
-@ (. d1)[1][1]
+@ d1[][1]
 25 25.1 25.6
-@ (. d1)[1][1][0]
+@ d1[][1;0]
 25f
 @end example
 
@@ -2063,6 +2059,14 @@ b|3 4
 (100 101 102;3;14 15)
 @ d
 [a:1 2;b:3 4]
+@end example
+@anchor{Load File}@section Load File@result{} \l
+Load a text file of k9 commands.  The file name must end in .k.
+@example
+@ \l func.k
+\l func.k
+@ \l func.k7  / will error as not .k
+error: nyi
 @end example
 @anchor{Variables}@section Variables @result{} \v
 List variables

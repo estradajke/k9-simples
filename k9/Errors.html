@@ -2,48 +2,38 @@
 <html>
 <!-- This manual is for Shakti (k9) build 2020.05.08.
 
-May 10, 2020
+May 16, 2020
 
 Copyright (C) 2020 John Estrada -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>k9 simples: Errors</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Errors (k9 simples)</title>
 
-<meta name="description" content="k9 simples: Errors">
-<meta name="keywords" content="k9 simples: Errors">
+<meta name="description" content="Errors (k9 simples)">
+<meta name="keywords" content="Errors (k9 simples)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html" rel="start" title="Top">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
-<link href="index.html#Top" rel="up" title="Top">
-<link href="System.html#System" rel="prev" title="System">
+<link href="index.html" rel="up" title="Top">
+<link href="System.html" rel="prev" title="System">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
-blockquote.smallquotation {font-size: smaller}
+blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.indentedblock {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
-div.smalldisplay {margin-left: 3.2em}
-div.smallexample {margin-left: 3.2em}
-div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
-div.smalllisp {margin-left: 3.2em}
-kbd {font-style:oblique}
+kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
 pre.menu-preformatted {font-family: serif}
-pre.smalldisplay {font-family: inherit; font-size: smaller}
-pre.smallexample {font-size: smaller}
-pre.smallformat {font-family: inherit; font-size: smaller}
-pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space:nowrap}
-span.nolinebreak {white-space:nowrap}
-span.roman {font-family:serif; font-weight:normal}
-span.sansserif {font-family:sans-serif; font-weight:normal}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -51,39 +41,33 @@ ul.no-bullet {list-style: none}
 
 </head>
 
-<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<a name="Errors"></a>
-<div class="header">
+<body lang="en">
+<span id="Errors"></span><div class="header">
 <p>
-Previous: <a href="System.html#System" accesskey="p" rel="prev">System</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Previous: <a href="System.html" accesskey="p" rel="prev">System</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 <hr>
-<a name="Errors-1"></a>
-<h2 class="chapter">12 Errors</h2>
+<span id="Errors-1"></span><h2 class="chapter">12 Errors</h2>
 <p>This section contains information on the various error messages in k9.
-</p><a name="error_003a-class"></a>
-<h3 class="section">12.1 error: class</h3>
+</p><span id="error_003a-class"></span><h3 class="section">12.1 error: class</h3>
 <p>Calling a function on mismatched types.
 </p><div class="example">
 <pre class="example">&nbsp;3+`b
 error: class
 </pre></div>
-<a name="error_003a-domain"></a>
-<h3 class="section">12.2 error: domain</h3>
+<span id="error_003a-domain"></span><h3 class="section">12.2 error: domain</h3>
 <p>Exhausted the number of input values
 </p><div class="example">
 <pre class="example">&nbsp;-12?10   / only 10 unique value exist
 error: domain
 </pre></div>
-<a name="error_003a-length"></a>
-<h3 class="section">12.3 error: length</h3>
+<span id="error_003a-length"></span><h3 class="section">12.3 error: length</h3>
 <p>Operations on unequal length lists that require equal length.
 </p><div class="example">
 <pre class="example">&nbsp;(1 2 3)+(4 5)
 error: length
 </pre></div>
-<a name="error_003a-nyi"></a>
-<h3 class="section">12.4 error: nyi</h3>
+<span id="error_003a-nyi"></span><h3 class="section">12.4 error: nyi</h3>
 <p>Running code that is not yet implemented.  This may come from running code in this document with a different version of k9.
 </p>
 <p>2020.04.08 (c) shakti
@@ -104,15 +88,13 @@ a b|
 ^
 error: nyi
 </pre></div>
-<a name="error_003a-parse"></a>
-<h3 class="section">12.5 error: parse</h3>
+<span id="error_003a-parse"></span><h3 class="section">12.5 error: parse</h3>
 <p>Syntax is wrong.  Possible you failed to match characters which must match, eg. (), {}, [], &quot;&quot;.
 </p><div class="example">
 <pre class="example">&nbsp;{37 . &quot;hello&quot;
 error: parse
 </pre></div>
-<a name="error_003a-rank"></a>
-<h3 class="section">12.6 error: rank</h3>
+<span id="error_003a-rank"></span><h3 class="section">12.6 error: rank</h3>
 <p>Calling a function with too many parameters.
 </p><div class="example">
 <pre class="example">&nbsp;{x+y}[1;2;3]
@@ -120,16 +102,14 @@ error: parse
 ^
 error: rank
 </pre></div>
-<a name="error_003a-type"></a>
-<h3 class="section">12.7 error: type</h3>
+<span id="error_003a-type"></span><h3 class="section">12.7 error: type</h3>
 <p>Calling a function with an unsupported variable type.
 </p><div class="example">
 <pre class="example">`a+`b
 &nbsp; ^
 error: type
 </pre></div>
-<a name="error_003a-value"></a>
-<h3 class="section">12.8 error: value</h3>
+<span id="error_003a-value"></span><h3 class="section">12.8 error: value</h3>
 <p>Undefined variable is used.
 </p><div class="example">
 <pre class="example">&nbsp;g    / assuming 'g' has not be defining in this session

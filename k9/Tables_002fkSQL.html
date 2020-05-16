@@ -2,49 +2,39 @@
 <html>
 <!-- This manual is for Shakti (k9) build 2020.05.08.
 
-May 10, 2020
+May 16, 2020
 
 Copyright (C) 2020 John Estrada -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>k9 simples: Tables/kSQL</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Tables/kSQL (k9 simples)</title>
 
-<meta name="description" content="k9 simples: Tables/kSQL">
-<meta name="keywords" content="k9 simples: Tables/kSQL">
+<meta name="description" content="Tables/kSQL (k9 simples)">
+<meta name="keywords" content="Tables/kSQL (k9 simples)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html" rel="start" title="Top">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
-<link href="index.html#Top" rel="up" title="Top">
-<link href="System.html#System" rel="next" title="System">
-<link href="I_002fO.html#I_002fO" rel="prev" title="I/O">
+<link href="index.html" rel="up" title="Top">
+<link href="System.html" rel="next" title="System">
+<link href="I_002fO.html" rel="prev" title="I/O">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
-blockquote.smallquotation {font-size: smaller}
+blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.indentedblock {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
-div.smalldisplay {margin-left: 3.2em}
-div.smallexample {margin-left: 3.2em}
-div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
-div.smalllisp {margin-left: 3.2em}
-kbd {font-style:oblique}
+kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
 pre.menu-preformatted {font-family: serif}
-pre.smalldisplay {font-family: inherit; font-size: smaller}
-pre.smallexample {font-size: smaller}
-pre.smallformat {font-family: inherit; font-size: smaller}
-pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space:nowrap}
-span.nolinebreak {white-space:nowrap}
-span.roman {font-family:serif; font-weight:normal}
-span.sansserif {font-family:sans-serif; font-weight:normal}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -52,18 +42,15 @@ ul.no-bullet {list-style: none}
 
 </head>
 
-<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<a name="Tables_002fkSQL"></a>
-<div class="header">
+<body lang="en">
+<span id="Tables_002fkSQL"></span><div class="header">
 <p>
-Next: <a href="System.html#System" accesskey="n" rel="next">System</a>, Previous: <a href="I_002fO.html#I_002fO" accesskey="p" rel="prev">I/O</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="System.html" accesskey="n" rel="next">System</a>, Previous: <a href="I_002fO.html" accesskey="p" rel="prev">I/O</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 <hr>
-<a name="Tables-and-kSQL"></a>
-<h2 class="chapter">10 Tables and kSQL</h2>
+<span id="Tables-and-kSQL"></span><h2 class="chapter">10 Tables and kSQL</h2>
 <p>This chapter introduces k9 tables and the kSQL language to query.
-<a name="Tables"></a></p><a name="Tables-1"></a>
-<h3 class="section">10.1 Tables</h3>
+<span id="Tables"></span></p><span id="Tables-1"></span><h3 class="section">10.1 Tables</h3>
 <p>Here is an example of a table with three columns (Day, Weather, and Temp) and three rows.
 </p><div class="example">
 <pre class="example">&nbsp;t:[[]Day:2020.04.10+!3;Weather:`sunny`cold`sunny;Temp:22 12 18]
@@ -80,8 +67,7 @@ Day    |2020-04-10 2020-04-11 2020-04-12
 Weather|sunny cold sunny                
 Temp   |22 12 18                        
 </pre></div>
-<a name="A_005fTables"></a><a name="A_005fTables-1"></a>
-<h3 class="section">10.2 A_Tables</h3>
+<span id="A_005fTables"></span><span id="A_005fTables-1"></span><h3 class="section">10.2 A_Tables</h3>
 <p>Here is an example of a A_table with three columns (Day, Weather, and Temp) and three rows.  One column (Day) will be add as a key.
 </p><div class="example">
 <pre class="example">&nbsp;t:[[Day:2020.04.10+!3]Weather:`sunny`cold`sunny;Temp:22 12 18]
@@ -95,8 +81,7 @@ Day       |Weather Temp
 &nbsp;@t                        / A_tables have type `AA
 `AA
 </pre></div>
-<a name="S_005fTables"></a><a name="S_005fTables-1"></a>
-<h3 class="section">10.3 S_Tables</h3>
+<span id="S_005fTables"></span><span id="S_005fTables-1"></span><h3 class="section">10.3 S_Tables</h3>
 <p>TBD
 </p><div class="example">
 <pre class="example">&nbsp;x:`a`b! [[]c:2 3;d:3 4;e:4 5]
@@ -109,8 +94,7 @@ b|3 4 5
 &nbsp;@x                              / S_tables are type `SA
 `SA
 </pre></div>
-<a name="kSQL"></a><a name="kSQL-1"></a>
-<h3 class="section">10.4 kSQL</h3>
+<span id="kSQL"></span><span id="kSQL-1"></span><h3 class="section">10.4 kSQL</h3>
 <p>kSQL is a powerful query language for tables.
 </p><div class="example">
 <pre class="example">&nbsp;select |/Temp from t where Weather=`sunny
@@ -128,8 +112,7 @@ Temp|20
 &nbsp;select |/Temp from t where Weather=`sunny
 Temp|22
 </pre></div>
-<a name="Joins"></a>
-<h3 class="section">10.5 Joins</h3>
+<span id="Joins"></span><h3 class="section">10.5 Joins</h3>
 <p>Joining tables together.  In this section x, y represent tables and kx and ky represent keyed/A_tables.
 </p>
 <table>
@@ -141,8 +124,7 @@ Temp|22
 </table>
 
 
-<a name="union-join-_21d2-x_002cy"></a>
-<h4 class="subsection">10.5.1 union join &rArr; x,y</h4>
+<span id="union-join-_21d2-x_002cy"></span><h4 class="subsection">10.5.1 union join &rArr; x,y</h4>
 <p>Union join table x with table y.
 </p><div class="example">
 <pre class="example">&nbsp;x:[[]s:`a`b;p:1 2;q:3 4]
@@ -167,8 +149,7 @@ b  2  4
 b 11 21
 c 12 22
 </pre></div>
-<a name="left-join-_21d2-x_002cy"></a>
-<h4 class="subsection">10.5.2 left join &rArr; x,y</h4>
+<span id="left-join-_21d2-x_002cy"></span><h4 class="subsection">10.5.2 left join &rArr; x,y</h4>
 <p>Left join table x with keyed table/A_table.  Result includes all rows from x and values from x where there is no y value.
 </p><div class="example">
 <pre class="example">&nbsp;x:[[]s:`a`b`c;p:1 2 3;q:7 8 9]
@@ -196,8 +177,7 @@ a 1 101 51
 b 2 102 52
 c 3   9  0
 </pre></div>
-<a name="outer-join-_21d2-x_002cy"></a>
-<h4 class="subsection">10.5.3 outer join &rArr; x,y</h4>
+<span id="outer-join-_21d2-x_002cy"></span><h4 class="subsection">10.5.3 outer join &rArr; x,y</h4>
 <p>Outer join key table/A_table x with key table/A_table y. 
 </p><div class="example">
 <pre class="example">&nbsp;x:[[s:`a`b]p:1 2;q:3 4]
@@ -224,7 +204,7 @@ c|8 6
 <hr>
 <div class="header">
 <p>
-Next: <a href="System.html#System" accesskey="n" rel="next">System</a>, Previous: <a href="I_002fO.html#I_002fO" accesskey="p" rel="prev">I/O</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="System.html" accesskey="n" rel="next">System</a>, Previous: <a href="I_002fO.html" accesskey="p" rel="prev">I/O</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 
 

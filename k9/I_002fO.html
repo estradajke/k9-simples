@@ -2,49 +2,39 @@
 <html>
 <!-- This manual is for Shakti (k9) build 2020.05.08.
 
-May 10, 2020
+May 16, 2020
 
 Copyright (C) 2020 John Estrada -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>k9 simples: I/O</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>I/O (k9 simples)</title>
 
-<meta name="description" content="k9 simples: I/O">
-<meta name="keywords" content="k9 simples: I/O">
+<meta name="description" content="I/O (k9 simples)">
+<meta name="keywords" content="I/O (k9 simples)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html" rel="start" title="Top">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
-<link href="index.html#Top" rel="up" title="Top">
-<link href="Tables_002fkSQL.html#Tables_002fkSQL" rel="next" title="Tables/kSQL">
-<link href="More-functions.html#More-functions" rel="prev" title="More functions">
+<link href="index.html" rel="up" title="Top">
+<link href="Tables_002fkSQL.html" rel="next" title="Tables/kSQL">
+<link href="More-functions.html" rel="prev" title="More functions">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
-blockquote.smallquotation {font-size: smaller}
+blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.indentedblock {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
-div.smalldisplay {margin-left: 3.2em}
-div.smallexample {margin-left: 3.2em}
-div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
-div.smalllisp {margin-left: 3.2em}
-kbd {font-style:oblique}
+kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
 pre.menu-preformatted {font-family: serif}
-pre.smalldisplay {font-family: inherit; font-size: smaller}
-pre.smallexample {font-size: smaller}
-pre.smallformat {font-family: inherit; font-size: smaller}
-pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space:nowrap}
-span.nolinebreak {white-space:nowrap}
-span.roman {font-family:serif; font-weight:normal}
-span.sansserif {font-family:sans-serif; font-weight:normal}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -52,18 +42,15 @@ ul.no-bullet {list-style: none}
 
 </head>
 
-<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<a name="I_002fO"></a>
-<div class="header">
+<body lang="en">
+<span id="I_002fO"></span><div class="header">
 <p>
-Next: <a href="Tables_002fkSQL.html#Tables_002fkSQL" accesskey="n" rel="next">Tables/kSQL</a>, Previous: <a href="More-functions.html#More-functions" accesskey="p" rel="prev">More functions</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Tables_002fkSQL.html" accesskey="n" rel="next">Tables/kSQL</a>, Previous: <a href="More-functions.html" accesskey="p" rel="prev">More functions</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 <hr>
-<a name="I_002fO-1"></a>
-<h2 class="chapter">9 I/O</h2>
+<span id="I_002fO-1"></span><h2 class="chapter">9 I/O</h2>
 <p>Functions for input and ouput (I/O).
-<a name="input-format"></a></p><a name="Input-format-values-to-table"></a>
-<h3 class="section">9.1 Input format values to table</h3>
+<span id="input-format"></span></p><span id="Input-format-values-to-table"></span><h3 class="section">9.1 Input format values to table</h3>
 <p>This section shows you the syntax for reading in data into a table with the correct type.
 </p><div class="example">
 <pre class="example">&nbsp;d:,(`date`time`int`float`char`symbol)            / headers 
@@ -88,8 +75,7 @@ date       time         int float char    symbol
 </pre></div>
 
 
-<a name="format"></a><a name="Format-to-CSV_002fjson_002fk-_21d2-_0060csv-x"></a>
-<h3 class="section">9.2 Format to CSV/json/k &rArr; &lsquo;csv x</h3>
+<span id="format"></span><span id="Format-to-CSV_002fjson_002fk-_21d2-_0060csv-x"></span><h3 class="section">9.2 Format to CSV/json/k &rArr; &lsquo;csv x</h3>
 <p>Convert x to CSV/json/k format.  Works on atoms, lists, and tables.
 </p><div class="example">
 <pre class="example">&nbsp;`csv 3 1 2
@@ -101,8 +87,7 @@ date       time         int float char    symbol
 &nbsp;`csv `a`b!((1 2);(3 4))      / error as dictionary input
 error: class
 </pre></div>
-<a name="write-line"></a><a name="write-line-_21d2-x-0_003ay"></a>
-<h3 class="section">9.3 write line &rArr; x 0:y</h3>
+<span id="write-line"></span><span id="write-line-_21d2-x-0_003ay"></span><h3 class="section">9.3 write line &rArr; x 0:y</h3>
 <p>Output to x the list of strings in y.  y must be a list of strings.  If y is a single stream then convert to list via enlist.
 </p><div class="example">
 <pre class="example">&nbsp;&quot;&quot;0:(&quot;blue&quot;;&quot;red&quot;)      / &quot;&quot; represents stdout
@@ -114,16 +99,14 @@ red
 3
 &nbsp;&quot;some.csv&quot;0:,`csv 3 1 2 / will fail without enlist
 </pre></div>
-<a name="read-line"></a><a name="read-line-_21d2-0_003ax"></a>
-<h3 class="section">9.4 read line &rArr; 0:x</h3>
+<span id="read-line"></span><span id="read-line-_21d2-0_003ax"></span><h3 class="section">9.4 read line &rArr; 0:x</h3>
 <p>Read from file x.
 </p><div class="example">
 <pre class="example">&nbsp;&quot;some.txt&quot;0:,`csv 3 1 2 / first write a file to some.txt
 &nbsp;0:&quot;some.txt&quot;            / now read it back
 3,1,2
 </pre></div>
-<a name="write-char"></a><a name="write-char-_21d2-x-1_003ay"></a>
-<h3 class="section">9.5 write char &rArr; x 1:y</h3>
+<span id="write-char"></span><span id="write-char-_21d2-x-1_003ay"></span><h3 class="section">9.5 write char &rArr; x 1:y</h3>
 <p>Output to x the list of chars in y.  y must be a list of chars.  If y is a single char then convert to list via enlist.
 </p><div class="example">
 <pre class="example">&nbsp;&quot;some.txt&quot;1:&quot;hello here\nis some text\n&quot;
@@ -136,8 +119,7 @@ a b
 2 4
 &nbsp;&quot;some.k&quot;1:`k t      / write table to file in k format
 </pre></div>
-<a name="read-char"></a><a name="read-char-_21d2-1_003ax"></a>
-<h3 class="section">9.6 read char &rArr; 1:x</h3>
+<span id="read-char"></span><span id="read-char-_21d2-1_003ax"></span><h3 class="section">9.6 read char &rArr; 1:x</h3>
 <p>Read from file x.
 </p><div class="example">
 <pre class="example">&nbsp;&quot;some.txt&quot;0:,`csv 3 1 2 / first write a file to some.txt
@@ -154,19 +136,16 @@ a b
 1 3
 2 4
 </pre></div>
-<a name="write-data"></a><a name="write-data-_21d2-2_003a"></a>
-<h3 class="section">9.7 write data &rArr; 2:</h3>
+<span id="write-data"></span><span id="write-data-_21d2-2_003a"></span><h3 class="section">9.7 write data &rArr; 2:</h3>
 <p>TBD
-<a name="conn_002fset"></a></p><a name="conn_002fset-_21d2-3_003a"></a>
-<h3 class="section">9.8 conn/set &rArr; 3:</h3>
+<span id="conn_002fset"></span></p><span id="conn_002fset-_21d2-3_003a"></span><h3 class="section">9.8 conn/set &rArr; 3:</h3>
 <p>TBD
-<a name="http_002fget"></a></p><a name="http_002fget-_21d2-4_003a"></a>
-<h3 class="section">9.9 http/get &rArr; 4:</h3>
+<span id="http_002fget"></span></p><span id="http_002fget-_21d2-4_003a"></span><h3 class="section">9.9 http/get &rArr; 4:</h3>
 <p>TBD
 </p><hr>
 <div class="header">
 <p>
-Next: <a href="Tables_002fkSQL.html#Tables_002fkSQL" accesskey="n" rel="next">Tables/kSQL</a>, Previous: <a href="More-functions.html#More-functions" accesskey="p" rel="prev">More functions</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Tables_002fkSQL.html" accesskey="n" rel="next">Tables/kSQL</a>, Previous: <a href="More-functions.html" accesskey="p" rel="prev">More functions</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 
 

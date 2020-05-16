@@ -2,49 +2,39 @@
 <html>
 <!-- This manual is for Shakti (k9) build 2020.05.08.
 
-May 10, 2020
+May 16, 2020
 
 Copyright (C) 2020 John Estrada -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>k9 simples: More functions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>More functions (k9 simples)</title>
 
-<meta name="description" content="k9 simples: More functions">
-<meta name="keywords" content="k9 simples: More functions">
+<meta name="description" content="More functions (k9 simples)">
+<meta name="keywords" content="More functions (k9 simples)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html" rel="start" title="Top">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
-<link href="index.html#Top" rel="up" title="Top">
-<link href="I_002fO.html#I_002fO" rel="next" title="I/O">
-<link href="Dictionaries.html#Dictionaries" rel="prev" title="Dictionaries">
+<link href="index.html" rel="up" title="Top">
+<link href="I_002fO.html" rel="next" title="I/O">
+<link href="Dictionaries.html" rel="prev" title="Dictionaries">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
-blockquote.smallquotation {font-size: smaller}
+blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.indentedblock {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
-div.smalldisplay {margin-left: 3.2em}
-div.smallexample {margin-left: 3.2em}
-div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
-div.smalllisp {margin-left: 3.2em}
-kbd {font-style:oblique}
+kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
 pre.menu-preformatted {font-family: serif}
-pre.smalldisplay {font-family: inherit; font-size: smaller}
-pre.smallexample {font-size: smaller}
-pre.smallformat {font-family: inherit; font-size: smaller}
-pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space:nowrap}
-span.nolinebreak {white-space:nowrap}
-span.roman {font-family:serif; font-weight:normal}
-span.sansserif {font-family:sans-serif; font-weight:normal}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -52,18 +42,15 @@ ul.no-bullet {list-style: none}
 
 </head>
 
-<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<a name="More-functions"></a>
-<div class="header">
+<body lang="en">
+<span id="More-functions"></span><div class="header">
 <p>
-Next: <a href="I_002fO.html#I_002fO" accesskey="n" rel="next">I/O</a>, Previous: <a href="Dictionaries.html#Dictionaries" accesskey="p" rel="prev">Dictionaries</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="I_002fO.html" accesskey="n" rel="next">I/O</a>, Previous: <a href="Dictionaries.html" accesskey="p" rel="prev">Dictionaries</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 <hr>
-<a name="More-functions-1"></a>
-<h2 class="chapter">8 More functions</h2>
+<span id="More-functions-1"></span><h2 class="chapter">8 More functions</h2>
 <p>This chapter includes functions that likely will be included elsewhere later.
-<a name="cond"></a></p><a name="cond-_21d2-_0024_005bx_003by_003bz_005d"></a>
-<h3 class="section">8.1 cond &rArr; $[x;y;z]</h3>
+<span id="cond"></span></p><span id="cond-_21d2-_0024_005bx_003by_003bz_005d"></span><h3 class="section">8.1 cond &rArr; $[x;y;z]</h3>
 <p>If x then y else z.
 </p><div class="example">
 <pre class="example">&nbsp;$[3&gt;2;`a;`b]
@@ -71,8 +58,7 @@ Next: <a href="I_002fO.html#I_002fO" accesskey="n" rel="next">I/O</a>, Previous:
 &nbsp;$[2&gt;3;`a;`b]
 `b
 </pre></div>
-<a name="in"></a><a name="in-_21d2-x_0027y"></a>
-<h3 class="section">8.2 in &rArr; x&rsquo;y</h3>
+<span id="in"></span><span id="in-_21d2-x_0027y"></span><h3 class="section">8.2 in &rArr; x&rsquo;y</h3>
 <p>Determine if y is in list x.
 </p><div class="example">
 <pre class="example">&nbsp;`a`b`d`e'`c
@@ -86,8 +72,7 @@ Next: <a href="I_002fO.html#I_002fO" accesskey="n" rel="next">I/O</a>, Previous:
 ^
 error: type
 </pre></div>
-<a name="parse"></a><a name="parse-_21d2-_003ax"></a>
-<h3 class="section">8.3 parse &rArr; :x</h3>
+<span id="parse"></span><span id="parse-_21d2-_003ax"></span><h3 class="section">8.3 parse &rArr; :x</h3>
 <p>Parse allows one to see how a command is parsed into normal k9 form.  One can value the parse by using the value command, See <a href="Verbs.html#value">value</a>.
 </p><div class="example">
 <pre class="example">&nbsp;:3+2
@@ -146,8 +131,7 @@ x|0
 y|2  
 </pre></div>
 <p>In the example above the parse output is reduced.  In order to see the elements in the output one could manually return the values in the list, eg. p[2;0 1 2].
-<a name="amend"></a></p><a name="amend-_21d2-_0040_005bx_003bi_003bf_005b_003by_005d_005d"></a>
-<h3 class="section">8.4 amend &rArr; @[x;i;f[;y]]</h3>
+<span id="amend"></span></p><span id="amend-_21d2-_0040_005bx_003bi_003bf_005b_003by_005d_005d"></span><h3 class="section">8.4 amend &rArr; @[x;i;f[;y]]</h3>
 <p>Replace the values in list x at indices i with f or f[y].
 </p>
 <p>@[x;i;f] examples<br><br>
@@ -193,8 +177,7 @@ x30 x31 x32
 30 31 32      
 
 </pre></div>
-<a name="dmend"></a><a name="dmend-_21d2-_002e_005bx_003bi_003bf_005b_003by_005d_005d"></a>
-<h3 class="section">8.5 dmend &rArr; .[x;i;f[;y]]</h3>
+<span id="dmend"></span><span id="dmend-_21d2-_002e_005bx_003bi_003bf_005b_003by_005d_005d"></span><h3 class="section">8.5 dmend &rArr; .[x;i;f[;y]]</h3>
 
 <p>.[x;i;f] examples<br><br>
 </p><div class="example">
@@ -246,8 +229,7 @@ c d x32
 -30 -31 32
 
 </pre></div>
-<a name="freq"></a><a name="Histogram-_21d2-_0060freq"></a>
-<h3 class="section">8.6 Histogram &rArr; &lsquo;freq</h3>
+<span id="freq"></span><span id="Histogram-_21d2-_0060freq"></span><h3 class="section">8.6 Histogram &rArr; &lsquo;freq</h3>
 <p>Compute a histogram of a list.
 </p><div class="example">
 <pre class="example">&nbsp;^`freq x:100000?10
@@ -276,7 +258,7 @@ c d x32
 <hr>
 <div class="header">
 <p>
-Next: <a href="I_002fO.html#I_002fO" accesskey="n" rel="next">I/O</a>, Previous: <a href="Dictionaries.html#Dictionaries" accesskey="p" rel="prev">Dictionaries</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="I_002fO.html" accesskey="n" rel="next">I/O</a>, Previous: <a href="Dictionaries.html" accesskey="p" rel="prev">Dictionaries</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 
 

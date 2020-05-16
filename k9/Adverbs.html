@@ -2,49 +2,39 @@
 <html>
 <!-- This manual is for Shakti (k9) build 2020.05.08.
 
-May 10, 2020
+May 16, 2020
 
 Copyright (C) 2020 John Estrada -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>k9 simples: Adverbs</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Adverbs (k9 simples)</title>
 
-<meta name="description" content="k9 simples: Adverbs">
-<meta name="keywords" content="k9 simples: Adverbs">
+<meta name="description" content="Adverbs (k9 simples)">
+<meta name="keywords" content="Adverbs (k9 simples)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html" rel="start" title="Top">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
-<link href="index.html#Top" rel="up" title="Top">
-<link href="Lists.html#Lists" rel="next" title="Lists">
-<link href="Verbs.html#Verbs" rel="prev" title="Verbs">
+<link href="index.html" rel="up" title="Top">
+<link href="Lists.html" rel="next" title="Lists">
+<link href="Verbs.html" rel="prev" title="Verbs">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
-blockquote.smallquotation {font-size: smaller}
+blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.indentedblock {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
-div.smalldisplay {margin-left: 3.2em}
-div.smallexample {margin-left: 3.2em}
-div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
-div.smalllisp {margin-left: 3.2em}
-kbd {font-style:oblique}
+kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
 pre.menu-preformatted {font-family: serif}
-pre.smalldisplay {font-family: inherit; font-size: smaller}
-pre.smallexample {font-size: smaller}
-pre.smallformat {font-family: inherit; font-size: smaller}
-pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space:nowrap}
-span.nolinebreak {white-space:nowrap}
-span.roman {font-family:serif; font-weight:normal}
-span.sansserif {font-family:sans-serif; font-weight:normal}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -52,15 +42,13 @@ ul.no-bullet {list-style: none}
 
 </head>
 
-<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<a name="Adverbs"></a>
-<div class="header">
+<body lang="en">
+<span id="Adverbs"></span><div class="header">
 <p>
-Next: <a href="Lists.html#Lists" accesskey="n" rel="next">Lists</a>, Previous: <a href="Verbs.html#Verbs" accesskey="p" rel="prev">Verbs</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Lists.html" accesskey="n" rel="next">Lists</a>, Previous: <a href="Verbs.html" accesskey="p" rel="prev">Verbs</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 <hr>
-<a name="Function-Modifiers-_002f-Adverbs"></a>
-<h2 class="chapter">5 Function Modifiers / Adverbs</h2>
+<span id="Function-Modifiers-_002f-Adverbs"></span><h2 class="chapter">5 Function Modifiers / Adverbs</h2>
 <p>k9 uses function modifiers / adverbs in order to have functions operate iteratively over lists.
 </p>
 <div class="example">
@@ -73,8 +61,7 @@ Next: <a href="Lists.html#Lists" accesskey="n" rel="next">Lists</a>, Previous: <
 \: See <a href="#c-scan">c scan</a>,See <a href="#n-scan">n scan</a>,   See <a href="#vs">i vs</a>.
 </pre></div>
 
-<a name="each"></a><a name="each-_21d2-f_0027x"></a>
-<h3 class="section">5.1 each &rArr; f&rsquo;x</h3>
+<span id="each"></span><span id="each-_21d2-f_0027x"></span><h3 class="section">5.1 each &rArr; f&rsquo;x</h3>
 <p>Apply function f to each value in list x.
 </p><div class="example">
 <pre class="example">&nbsp;*((1 2 3);4;(5 6);7)   / first element of the list
@@ -82,15 +69,13 @@ Next: <a href="Lists.html#Lists" accesskey="n" rel="next">Lists</a>, Previous: <
 &nbsp;*'((1 2 3);4;(5 6);7)  / first element of each element
 1 4 5 7
 </pre></div>
-<a name="bar"></a><a name="bar-_21d2-x_0027y"></a>
-<h3 class="section">5.2 bar &rArr; x&rsquo;y</h3>
+<span id="bar"></span><span id="bar-_21d2-x_0027y"></span><h3 class="section">5.2 bar &rArr; x&rsquo;y</h3>
 <p>y divided by x using integer division and then multiplied by x.  x is an integer and y is a list of integers.
 </p><div class="example">
 <pre class="example">&nbsp;5'0 1 2 3 4 5 9 10
 0 0 0 0 0 5 5 10
 </pre></div>
-<a name="scan"></a><a name="scan-_21d2-_0028f_005c_0029x"></a>
-<h3 class="section">5.3 scan &rArr; (f\)x</h3>
+<span id="scan"></span><span id="scan-_21d2-_0028f_005c_0029x"></span><h3 class="section">5.3 scan &rArr; (f\)x</h3>
 <p>Create values for each x according to...
 </p><ul>
 <li> f@0 &rarr;          x@0
@@ -110,8 +95,7 @@ abc
 &nbsp;({y+10*x}\)1 20 300
 1 30 600
 </pre></div>
-<a name="left"></a><a name="left-_21d2-f_005c_005bx_003by_005d"></a>
-<h3 class="section">5.4 left &rArr; f\[x;y]</h3>
+<span id="left"></span><span id="left-_21d2-f_005c_005bx_003by_005d"></span><h3 class="section">5.4 left &rArr; f\[x;y]</h3>
 <p>Apply f[;y] to each value in x.
 </p><div class="example">
 <pre class="example">&nbsp;{x+y}[100 200 300;1 2 3]  / add the lists together itemize
@@ -125,8 +109,7 @@ l1 r1 r2 r3
 l2 r1 r2 r3
 l3 r1 r2 r3
 </pre></div>
-<a name="mod"></a><a name="mod-_21d2-x_005cy"></a>
-<h3 class="section">5.5 mod &rArr; x\y</h3>
+<span id="mod"></span><span id="mod-_21d2-x_005cy"></span><h3 class="section">5.5 mod &rArr; x\y</h3>
 <p>The remainder after y divided by x using integer division.  x and y must be integers.
 </p><div class="example">
 <pre class="example">&nbsp;12\27
@@ -134,8 +117,7 @@ l3 r1 r2 r3
 &nbsp;5\22
 2
 </pre></div>
-<p>&nbsp;<a name="over"></a></p><a name="over-_21d2-_0028f_002f_0029x"></a>
-<h3 class="section">5.6 over &rArr; (f/)x</h3>
+<p>&nbsp;<span id="over"></span></p><span id="over-_21d2-_0028f_002f_0029x"></span><h3 class="section">5.6 over &rArr; (f/)x</h3>
 <p>Same as scan but only print last value.
 </p><div class="example">
 <pre class="example">&nbsp;(,/)(&quot;a&quot;;&quot;b&quot;;&quot;c&quot;)
@@ -145,8 +127,7 @@ l3 r1 r2 r3
 &nbsp;({y+10*x}/)1 20 300
 600
 </pre></div>
-<a name="right"></a><a name="right-_21d2-f_002f_005bx_003by_005d"></a>
-<h3 class="section">5.7 right &rArr; f/[x;y]</h3>
+<span id="right"></span><span id="right-_21d2-f_002f_005bx_003by_005d"></span><h3 class="section">5.7 right &rArr; f/[x;y]</h3>
 <p>Apply f[x;] to each value in y.
 </p><div class="example">
 <pre class="example">&nbsp;{x+y}[100 200 300;1 2 3]  / add the lists together itemize
@@ -160,8 +141,7 @@ l1 l2 l3 r1
 l1 l2 l3 r2
 l1 l2 l3 r3
 </pre></div>
-<a name="div"></a><a name="div-_21d2-x_002fy"></a>
-<h3 class="section">5.8 div &rArr; x/y</h3>
+<span id="div"></span><span id="div-_21d2-x_002fy"></span><h3 class="section">5.8 div &rArr; x/y</h3>
 <p>y divided by x using integer division.  x and y must be integers.
 </p><div class="example">
 <pre class="example">&nbsp;2/7
@@ -169,8 +149,7 @@ l1 l2 l3 r3
 &nbsp;5/22
 4
 </pre></div>
-<a name="eachprior"></a><a name="eachprior-_21d2-f_0027_003a_005bx_003by_005d"></a>
-<h3 class="section">5.9 eachprior &rArr; f&rsquo;:[x;y]</h3>
+<span id="eachprior"></span><span id="eachprior-_21d2-f_0027_003a_005bx_003by_005d"></span><h3 class="section">5.9 eachprior &rArr; f&rsquo;:[x;y]</h3>
 <p>Apply f[y_n;y_{n-1}].  f_0 is a special case of f[y_0;x].
 </p><div class="example">
 <pre class="example">&nbsp;,':[`x;(`$&quot;y&quot;,'$!5)]
@@ -184,8 +163,7 @@ y4 y3
 &nbsp;100%':100 101.9 105.1 102.3 106.1    / using infix notation
 1 1.019 1.031403 0.9733587 1.037146
 </pre></div>
-<a name="n-scan"></a><a name="n-scan-_21d2-x-f_005c_003ay"></a>
-<h3 class="section">5.10 n scan &rArr; x f\:y</h3>
+<span id="n-scan"></span><span id="n-scan-_21d2-x-f_005c_003ay"></span><h3 class="section">5.10 n scan &rArr; x f\:y</h3>
 <p>Compute f with initial value x and over list y.  f[i] = f[f[i-1];y[i]] except for the case of f[0]=f[x;y[0]]
 </p><div class="example">
 <pre class="example">&nbsp;f:{(0.1*x)+0.9*y}      / ema
@@ -197,21 +175,17 @@ x     y0
 xy0   y1
 xy0y1 y2
 </pre></div>
-<a name="c-scan"></a><a name="c_0028onverge_0029-scan-_21d2-f_005c_003ax"></a>
-<h3 class="section">5.11 c(onverge) scan &rArr; f\:x</h3>
+<span id="c-scan"></span><span id="c_0028onverge_0029-scan-_21d2-f_005c_003ax"></span><h3 class="section">5.11 c(onverge) scan &rArr; f\:x</h3>
 <p>Compute f[x], f[f[x]] and continue to call f[previous result] until the output converges to a stationary value or the output produces x.
 </p><div class="example">
 <pre class="example">&nbsp; {x*x}\:.99
 0.99 0.9801 0.960596 0.9227447 0.8514578 0.7249803 0.5255965 0.2762517 0.07631498 0.005823977 3.391871e-05 1.150479e-09 1.323601e-18 1.751919e-36 3.069222e-72 9.420123e-144 8.873872e-287 0
 </pre></div>
-<a name="n-over"></a><a name="n-over-_21d2-x-f_002f_003ay"></a>
-<h3 class="section">5.12 n over &rArr; x f/:y</h3>
+<span id="n-over"></span><span id="n-over-_21d2-x-f_002f_003ay"></span><h3 class="section">5.12 n over &rArr; x f/:y</h3>
 <p>Same as n scan but only return last value.
-<a name="c-over"></a></p><a name="c_0028onverge_0029-over-_21d2-f_002f_003ax"></a>
-<h3 class="section">5.13 c(onverge) over &rArr; f/:x</h3>
+<span id="c-over"></span></p><span id="c_0028onverge_0029-over-_21d2-f_002f_003ax"></span><h3 class="section">5.13 c(onverge) over &rArr; f/:x</h3>
 <p>Same as converge scan but only return last value.
-<a name="vs"></a></p><a name="vs-_21d2-x_005c_003ay"></a>
-<h3 class="section">5.14 vs &rArr; x\:y</h3>
+<span id="vs"></span></p><span id="vs-_21d2-x_005c_003ay"></span><h3 class="section">5.14 vs &rArr; x\:y</h3>
 <p>Convert y (base 10) into base x.
 </p><div class="example">
 <pre class="example">&nbsp;2\:129
@@ -219,8 +193,7 @@ xy0y1 y2
 &nbsp;16\:255
 15 15
 </pre></div>
-<a name="sv"></a><a name="sv-_21d2-x_002f_003ay"></a>
-<h3 class="section">5.15 sv &rArr; x/:y</h3>
+<span id="sv"></span><span id="sv-_21d2-x_002f_003ay"></span><h3 class="section">5.15 sv &rArr; x/:y</h3>
 <p>Convert list y (base x) into base 10.
 </p><div class="example">
 <pre class="example">&nbsp;2/:10101b
@@ -231,7 +204,7 @@ xy0y1 y2
 <hr>
 <div class="header">
 <p>
-Next: <a href="Lists.html#Lists" accesskey="n" rel="next">Lists</a>, Previous: <a href="Verbs.html#Verbs" accesskey="p" rel="prev">Verbs</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Lists.html" accesskey="n" rel="next">Lists</a>, Previous: <a href="Verbs.html" accesskey="p" rel="prev">Verbs</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 
 

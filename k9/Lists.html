@@ -2,49 +2,39 @@
 <html>
 <!-- This manual is for Shakti (k9) build 2020.05.08.
 
-May 10, 2020
+May 16, 2020
 
 Copyright (C) 2020 John Estrada -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>k9 simples: Lists</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Lists (k9 simples)</title>
 
-<meta name="description" content="k9 simples: Lists">
-<meta name="keywords" content="k9 simples: Lists">
+<meta name="description" content="Lists (k9 simples)">
+<meta name="keywords" content="Lists (k9 simples)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html" rel="start" title="Top">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
-<link href="index.html#Top" rel="up" title="Top">
-<link href="Dictionaries.html#Dictionaries" rel="next" title="Dictionaries">
-<link href="Adverbs.html#Adverbs" rel="prev" title="Adverbs">
+<link href="index.html" rel="up" title="Top">
+<link href="Dictionaries.html" rel="next" title="Dictionaries">
+<link href="Adverbs.html" rel="prev" title="Adverbs">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
-blockquote.smallquotation {font-size: smaller}
+blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.indentedblock {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
-div.smalldisplay {margin-left: 3.2em}
-div.smallexample {margin-left: 3.2em}
-div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
-div.smalllisp {margin-left: 3.2em}
-kbd {font-style:oblique}
+kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
 pre.menu-preformatted {font-family: serif}
-pre.smalldisplay {font-family: inherit; font-size: smaller}
-pre.smallexample {font-size: smaller}
-pre.smallformat {font-family: inherit; font-size: smaller}
-pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space:nowrap}
-span.nolinebreak {white-space:nowrap}
-span.roman {font-family:serif; font-weight:normal}
-span.sansserif {font-family:sans-serif; font-weight:normal}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -52,18 +42,15 @@ ul.no-bullet {list-style: none}
 
 </head>
 
-<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<a name="Lists"></a>
-<div class="header">
+<body lang="en">
+<span id="Lists"></span><div class="header">
 <p>
-Next: <a href="Dictionaries.html#Dictionaries" accesskey="n" rel="next">Dictionaries</a>, Previous: <a href="Adverbs.html#Adverbs" accesskey="p" rel="prev">Adverbs</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Dictionaries.html" accesskey="n" rel="next">Dictionaries</a>, Previous: <a href="Adverbs.html" accesskey="p" rel="prev">Adverbs</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 <hr>
-<a name="Lists-1"></a>
-<h2 class="chapter">6 Lists</h2>
+<span id="Lists-1"></span><h2 class="chapter">6 Lists</h2>
 <p>k9 is optimized for operations on uniform lists of data.  In order to take full advantage one should store data in lists and operate on them without iteration.
-</p><a name="List-syntax"></a>
-<h3 class="section">6.1 List syntax</h3>
+</p><span id="List-syntax"></span><h3 class="section">6.1 List syntax</h3>
 <p>In general, lists are created by data separated by semicolons and encased by parenthesis.  Uniform lists can use a simpler syntax of spaces between elements.
 </p><div class="example">
 <pre class="example">&nbsp;a:1 2 3
@@ -82,8 +69,7 @@ Next: <a href="Dictionaries.html#Dictionaries" accesskey="n" rel="next">Dictiona
 &nbsp;c:1i 2f &quot;c&quot; `d  / incorrect syntax for nonuniform list
 error: type
 </pre></div>
-<a name="List-Indicing"></a>
-<h3 class="section">6.2 List Indicing</h3>
+<span id="List-Indicing"></span><h3 class="section">6.2 List Indicing</h3>
 <p>Lists can be indexed by using a few notations.
 </p><div class="example">
 <pre class="example">&nbsp;a:2*1+!10  / 2 4 ... 20
@@ -97,8 +83,7 @@ error: type
 20
 &nbsp;a(9)    / parenthesis
 </pre></div>
-<a name="Updating-List-Elements"></a>
-<h3 class="section">6.3 Updating List Elements</h3>
+<span id="Updating-List-Elements"></span><h3 class="section">6.3 Updating List Elements</h3>
 <p>Lists can be updated element wise but typically one is likely to be updating many elements and there is a syntax for doing so.
 </p><div class="example">
 <pre class="example">&nbsp;a:2*1+!10
@@ -136,7 +121,7 @@ error: length
 <hr>
 <div class="header">
 <p>
-Next: <a href="Dictionaries.html#Dictionaries" accesskey="n" rel="next">Dictionaries</a>, Previous: <a href="Adverbs.html#Adverbs" accesskey="p" rel="prev">Adverbs</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Dictionaries.html" accesskey="n" rel="next">Dictionaries</a>, Previous: <a href="Adverbs.html" accesskey="p" rel="prev">Adverbs</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 
 
