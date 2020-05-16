@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is for Shakti (k9) build 2020.05.08.
+<!-- This manual is for Shakti (k9) build 2020.05.13.
 
 May 16, 2020
 
@@ -55,6 +55,48 @@ Next: <a href="Intro.html" accesskey="n" rel="next">Intro</a> &nbsp; [<a href="E
 </p>
 <p>This manual is for Shakti (k9) build 2020.05.08.<br>
 </p>
+<div class="format">
+<pre class="verbatim">2020.05.13 16GB (c) shakti
+ \
+Verb                      Adverb                 Noun            Type  System
+:                         '  each                bool  011b         b  \k
++  plus       flip        /  over/right sv       int   2 3 4        i  \l a.k
+-  minus      minus       \  scan/left  vs       float 2.3 0w       f  \v [d]
+*  times      first       ': eachprior           char  &quot; ab&quot;        c *\f [d]
+%  divide                 /: [n]over             sym   ``a`b        s  \w [x]
+&amp;  and        where       \: [n]scan             time  12:34:56.789 t  \t:n x
+|  or         reverse                            date  2024.01.01   D  \u:n x
+&lt;  less       asc         I/O                         
+&gt;  more       dsc         0: write/read line     List (2;3.4;`ab)   L  \fl line
+=  equal      group       1: write/read char     Dict [a:2;b:`ab]  ??  \fc char
+~  match      not         2: write/read data     Func {[x]+/x%#x}   .
+!  key        key         3: *set/conn
+,  cat        enlist      4: *get/http                        
+^  cut        sort
+$  value      string      $[c;t;f]      cond
+#  take       count       #[t;c;b[;a]]  select   table [[]a:`b`c]   T
+_  drop       floor      *_[t;c;b[;a]]  update  Ttable [[a:..]b:]  TT
+?  find       uniq       *?[x;i;f[;y]]  splice  Stable S! [[]...]  ST
+@  at         type        @[x;i;f[;y]]  amend                          \cd dir
+.  dot        eval        .[x;i;f[;y]]  dmend                          \\  exit
+/comment
+           Atomic            List/Dict     tolerant  RAND   
+monad: @,  $-~_              !*|&amp;+^&lt;&gt;=?#.   [!*|&amp;]a    ?n
+ dyad: @~  $+-*%&amp;|&lt;&gt;= L[@?]  !,^#_.        a[!#_,]a   n?x
+
+sqrt exp log sin cos; ema div mod bar in bin within
+count first last min max sum avg
+select A by B from T where C  (delete from T where C)
+
+roundtrip: `json?`json@(2.3;&quot;abc&quot;;.z.T) `k?`k@x `csv?`csv@x
+time/cuanto: 2m 2d ..   12:34:56.123456789 .z.[dtv]
+date/cuando: 2024.01.01T12:34:56.123456789 .z.[DTV]
+
+atom/list/dict/table (scalar/vector/matrix/tensor)
+limit: sym8(*256) 4K {[param8]local8 global32 const128 jump256}
+error: nyi class rank length type domain limit (value stack parse value)
+</pre></div>
+
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="Intro.html" accesskey="1">Intro</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Intro
 </td></tr>
