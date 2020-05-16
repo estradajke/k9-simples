@@ -1824,32 +1824,6 @@ c d x32
 -30 -31 32
 
 @end example
-@anchor{freq}@section Histogram @result{} `freq
-Compute a histogram of a list.
-@example
-@ ^`freq x:100000?10
-0| 9907
-1| 9963
-2| 9938
-3|10063
-4|10018
-5|10007
-6|10037
-7|10036
-8| 9907
-9|10124
-@ ^#'=x   / same result but slower
-0| 9907
-1| 9963
-2| 9938
-3|10063
-4|10018
-5|10007
-6|10037
-7|10036
-8| 9907
-9|10124
-@end example
 @node I/O
 @chapter I/O
 Functions for input and ouput (I/O).

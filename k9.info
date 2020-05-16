@@ -2025,33 +2025,6 @@ Replace the values in list x at indices i with f or f[y].
      -30 -31 32
 
 
-8.14 Histogram => 'freq
-=======================
-
-Compute a histogram of a list.
-      ^`freq x:100000?10
-     0| 9907
-     1| 9963
-     2| 9938
-     3|10063
-     4|10018
-     5|10007
-     6|10037
-     7|10036
-     8| 9907
-     9|10124
-      ^#'=x   / same result but slower
-     0| 9907
-     1| 9963
-     2| 9938
-     3|10063
-     4|10018
-     5|10007
-     6|10037
-     7|10036
-     8| 9907
-     9|10124
-
 
 File: k9.info,  Node: I/O,  Next: Tables/kSQL,  Prev: More functions,  Up: Top
 
@@ -2555,29 +2528,28 @@ Ref: cond43813
 Ref: parse43933
 Ref: amend45210
 Ref: dmend45874
-Ref: freq46576
-Node: I/O46982
-Ref: input format47113
-Ref: format48124
-Ref: write line48528
-Ref: read line48913
-Ref: write char49098
-Ref: read char49491
-Ref: write data49853
-Ref: conn/set49900
-Ref: http/get49944
-Node: Tables/kSQL49990
-Ref: Tables50168
-Ref: A_Tables50698
-Ref: S_Tables51149
-Ref: kSQL51351
-Node: System53278
-Ref: Display53433
-Ref: Load File53680
-Ref: Variables53874
-Ref: Memory53975
-Ref: Timing54090
-Node: Errors54182
+Node: I/O46577
+Ref: input format46708
+Ref: format47719
+Ref: write line48123
+Ref: read line48508
+Ref: write char48693
+Ref: read char49086
+Ref: write data49448
+Ref: conn/set49495
+Ref: http/get49539
+Node: Tables/kSQL49585
+Ref: Tables49763
+Ref: A_Tables50293
+Ref: S_Tables50744
+Ref: kSQL50946
+Node: System52873
+Ref: Display53028
+Ref: Load File53275
+Ref: Variables53469
+Ref: Memory53570
+Ref: Timing53685
+Node: Errors53777
 
 End Tag Table
 
