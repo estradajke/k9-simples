@@ -53,12 +53,12 @@ Next: <a href="Lists.html" accesskey="n" rel="next">Lists</a>, Previous: <a href
 </p>
 <div class="example">
 <pre class="example">Adverb
-'  See <a href="#each">each</a>,                See <a href="#bar">i bar</a>.
-/  See <a href="#over">over</a>,See <a href="#right">right</a>,      See <a href="#div">i div</a>.
-\  See <a href="#scan">scan</a>,See <a href="#left">left</a>,       See <a href="#mod">i mod</a>.
+'  See <a href="#each">each</a>.
+/  See <a href="#over">over</a>,See <a href="#right">right</a>.
+\  See <a href="#scan">scan</a>,See <a href="#left">left</a>.
 ': See <a href="#eachprior">eachprior</a>.
-/: See <a href="#c-over">c over</a>,See <a href="#n-over">n over</a>,   See <a href="#sv">i sv</a>.
-\: See <a href="#c-scan">c scan</a>,See <a href="#n-scan">n scan</a>,   See <a href="#vs">i vs</a>.
+/: See <a href="#c-over">c over</a>,See <a href="#n-over">n over</a>.
+\: See <a href="#c-scan">c scan</a>,See <a href="#n-scan">n scan</a>.
 </pre></div>
 
 <span id="each"></span><span id="each-_21d2-f_0027x"></span><h3 class="section">5.1 each &rArr; f&rsquo;x</h3>
@@ -69,13 +69,7 @@ Next: <a href="Lists.html" accesskey="n" rel="next">Lists</a>, Previous: <a href
 &nbsp;*'((1 2 3);4;(5 6);7)  / first element of each element
 1 4 5 7
 </pre></div>
-<span id="bar"></span><span id="bar-_21d2-x_0027y"></span><h3 class="section">5.2 bar &rArr; x&rsquo;y</h3>
-<p>y divided by x using integer division and then multiplied by x.  x is an integer and y is a list of integers.
-</p><div class="example">
-<pre class="example">&nbsp;5'0 1 2 3 4 5 9 10
-0 0 0 0 0 5 5 10
-</pre></div>
-<span id="scan"></span><span id="scan-_21d2-_0028f_005c_0029x"></span><h3 class="section">5.3 scan &rArr; (f\)x</h3>
+<span id="scan"></span><span id="scan-_21d2-_0028f_005c_0029x"></span><h3 class="section">5.2 scan &rArr; (f\)x</h3>
 <p>Create values for each x according to...
 </p><ul>
 <li> f@0 &rarr;          x@0
@@ -95,7 +89,7 @@ abc
 &nbsp;({y+10*x}\)1 20 300
 1 30 600
 </pre></div>
-<span id="left"></span><span id="left-_21d2-f_005c_005bx_003by_005d"></span><h3 class="section">5.4 left &rArr; f\[x;y]</h3>
+<span id="left"></span><span id="left-_21d2-f_005c_005bx_003by_005d"></span><h3 class="section">5.3 left &rArr; f\[x;y]</h3>
 <p>Apply f[;y] to each value in x.
 </p><div class="example">
 <pre class="example">&nbsp;{x+y}[100 200 300;1 2 3]  / add the lists together itemize
@@ -109,15 +103,7 @@ l1 r1 r2 r3
 l2 r1 r2 r3
 l3 r1 r2 r3
 </pre></div>
-<span id="mod"></span><span id="mod-_21d2-x_005cy"></span><h3 class="section">5.5 mod &rArr; x\y</h3>
-<p>The remainder after y divided by x using integer division.  x and y must be integers.
-</p><div class="example">
-<pre class="example">&nbsp;12\27
-3
-&nbsp;5\22
-2
-</pre></div>
-<p>&nbsp;<span id="over"></span></p><span id="over-_21d2-_0028f_002f_0029x"></span><h3 class="section">5.6 over &rArr; (f/)x</h3>
+<p>&nbsp;<span id="over"></span></p><span id="over-_21d2-_0028f_002f_0029x"></span><h3 class="section">5.4 over &rArr; (f/)x</h3>
 <p>Same as scan but only print last value.
 </p><div class="example">
 <pre class="example">&nbsp;(,/)(&quot;a&quot;;&quot;b&quot;;&quot;c&quot;)
@@ -127,7 +113,7 @@ l3 r1 r2 r3
 &nbsp;({y+10*x}/)1 20 300
 600
 </pre></div>
-<span id="right"></span><span id="right-_21d2-f_002f_005bx_003by_005d"></span><h3 class="section">5.7 right &rArr; f/[x;y]</h3>
+<span id="right"></span><span id="right-_21d2-f_002f_005bx_003by_005d"></span><h3 class="section">5.5 right &rArr; f/[x;y]</h3>
 <p>Apply f[x;] to each value in y.
 </p><div class="example">
 <pre class="example">&nbsp;{x+y}[100 200 300;1 2 3]  / add the lists together itemize
@@ -141,15 +127,7 @@ l1 l2 l3 r1
 l1 l2 l3 r2
 l1 l2 l3 r3
 </pre></div>
-<span id="div"></span><span id="div-_21d2-x_002fy"></span><h3 class="section">5.8 div &rArr; x/y</h3>
-<p>y divided by x using integer division.  x and y must be integers.
-</p><div class="example">
-<pre class="example">&nbsp;2/7
-3
-&nbsp;5/22
-4
-</pre></div>
-<span id="eachprior"></span><span id="eachprior-_21d2-f_0027_003a_005bx_003by_005d"></span><h3 class="section">5.9 eachprior &rArr; f&rsquo;:[x;y]</h3>
+<span id="eachprior"></span><span id="eachprior-_21d2-f_0027_003a_005bx_003by_005d"></span><h3 class="section">5.6 eachprior &rArr; f&rsquo;:[x;y]</h3>
 <p>Apply f[y_n;y_{n-1}].  f_0 is a special case of f[y_0;x].
 </p><div class="example">
 <pre class="example">&nbsp;,':[`x;(`$&quot;y&quot;,'$!5)]
@@ -163,7 +141,7 @@ y4 y3
 &nbsp;100%':100 101.9 105.1 102.3 106.1    / using infix notation
 1 1.019 1.031403 0.9733587 1.037146
 </pre></div>
-<span id="n-scan"></span><span id="n-scan-_21d2-x-f_005c_003ay"></span><h3 class="section">5.10 n scan &rArr; x f\:y</h3>
+<span id="n-scan"></span><span id="n-scan-_21d2-x-f_005c_003ay"></span><h3 class="section">5.7 n scan &rArr; x f\:y</h3>
 <p>Compute f with initial value x and over list y.  f[i] = f[f[i-1];y[i]] except for the case of f[0]=f[x;y[0]]
 </p><div class="example">
 <pre class="example">&nbsp;f:{(0.1*x)+0.9*y}      / ema
@@ -175,17 +153,17 @@ x     y0
 xy0   y1
 xy0y1 y2
 </pre></div>
-<span id="c-scan"></span><span id="c_0028onverge_0029-scan-_21d2-f_005c_003ax"></span><h3 class="section">5.11 c(onverge) scan &rArr; f\:x</h3>
+<span id="c-scan"></span><span id="c_0028onverge_0029-scan-_21d2-f_005c_003ax"></span><h3 class="section">5.8 c(onverge) scan &rArr; f\:x</h3>
 <p>Compute f[x], f[f[x]] and continue to call f[previous result] until the output converges to a stationary value or the output produces x.
 </p><div class="example">
 <pre class="example">&nbsp; {x*x}\:.99
 0.99 0.9801 0.960596 0.9227447 0.8514578 0.7249803 0.5255965 0.2762517 0.07631498 0.005823977 3.391871e-05 1.150479e-09 1.323601e-18 1.751919e-36 3.069222e-72 9.420123e-144 8.873872e-287 0
 </pre></div>
-<span id="n-over"></span><span id="n-over-_21d2-x-f_002f_003ay"></span><h3 class="section">5.12 n over &rArr; x f/:y</h3>
+<span id="n-over"></span><span id="n-over-_21d2-x-f_002f_003ay"></span><h3 class="section">5.9 n over &rArr; x f/:y</h3>
 <p>Same as n scan but only return last value.
-<span id="c-over"></span></p><span id="c_0028onverge_0029-over-_21d2-f_002f_003ax"></span><h3 class="section">5.13 c(onverge) over &rArr; f/:x</h3>
+<span id="c-over"></span></p><span id="c_0028onverge_0029-over-_21d2-f_002f_003ax"></span><h3 class="section">5.10 c(onverge) over &rArr; f/:x</h3>
 <p>Same as converge scan but only return last value.
-<span id="vs"></span></p><span id="vs-_21d2-x_005c_003ay"></span><h3 class="section">5.14 vs &rArr; x\:y</h3>
+<span id="vs"></span></p><span id="vs-_21d2-x_005c_003ay"></span><h3 class="section">5.11 vs &rArr; x\:y</h3>
 <p>Convert y (base 10) into base x.
 </p><div class="example">
 <pre class="example">&nbsp;2\:129
@@ -193,7 +171,7 @@ xy0y1 y2
 &nbsp;16\:255
 15 15
 </pre></div>
-<span id="sv"></span><span id="sv-_21d2-x_002f_003ay"></span><h3 class="section">5.15 sv &rArr; x/:y</h3>
+<span id="sv"></span><span id="sv-_21d2-x_002f_003ay"></span><h3 class="section">5.12 sv &rArr; x/:y</h3>
 <p>Convert list y (base x) into base 10.
 </p><div class="example">
 <pre class="example">&nbsp;2/:10101b

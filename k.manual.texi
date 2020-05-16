@@ -1149,12 +1149,12 @@ k9 uses function modifiers / adverbs in order to have functions operate iterativ
 
 @example
 Adverb
-'  @xref{each},                @xref{bar,i bar}.
-/  @xref{over},@xref{right},      @xref{div,i div}.
-\  @xref{scan},@xref{left},       @xref{mod,i mod}.
+'  @xref{each}.
+/  @xref{over},@xref{right}.
+\  @xref{scan},@xref{left}.
 ': @xref{eachprior}.
-/: @xref{c over},@xref{n over},   @xref{sv,i sv}.
-\: @xref{c scan},@xref{n scan},   @xref{vs,i vs}.
+/: @xref{c over},@xref{n over}.
+\: @xref{c scan},@xref{n scan}.
 @end example
 
 @anchor{each}@section each @result{} f'x
@@ -1164,12 +1164,6 @@ Apply function f to each value in list x.
 1 2 3
 @ *'((1 2 3);4;(5 6);7)  / first element of each element
 1 4 5 7
-@end example
-@anchor{bar}@section bar @result{} x'y
-y divided by x using integer division and then multiplied by x.  x is an integer and y is a list of integers.
-@example
-@ 5'0 1 2 3 4 5 9 10
-0 0 0 0 0 5 5 10
 @end example
 @anchor{scan}@section scan @result{} (f\)x
 Create values for each x according to...
@@ -1205,14 +1199,6 @@ l1 r1 r2 r3
 l2 r1 r2 r3
 l3 r1 r2 r3
 @end example
-@anchor{mod}@section mod @result{} x\y
-The remainder after y divided by x using integer division.  x and y must be integers.
-@example
-@ 12\27
-3
-@ 5\22
-2
-@end example
 @ @anchor{over}@section over @result{} (f/)x
 Same as scan but only print last value.
 @example
@@ -1236,14 +1222,6 @@ Apply f[x;] to each value in y.
 l1 l2 l3 r1
 l1 l2 l3 r2
 l1 l2 l3 r3
-@end example
-@anchor{div}@section div @result{} x/y
-y divided by x using integer division.  x and y must be integers.
-@example
-@ 2/7
-3
-@ 5/22
-4
 @end example
 @anchor{eachprior}@section eachprior @result{} f':[x;y]
 Apply f[y_n;y_@{n-1@}].  f_0 is a special case of f[y_0;x].
@@ -1583,17 +1561,57 @@ c |3e+08
 @end example
 @node More functions
 @chapter More functions
-This chapter includes functions that likely will be included elsewhere later.
-@anchor{cond}@section cond @result{} $[x;y;z]
-If x then y else z.
+Functions not listed as verbs.
+
+@section Math Functions @result{} sqrt exp log sin cos
+Log is natural log and sin and cos are in radians.
+
 @example
-@ $[3>2;`a;`b]
-`a
-@ $[2>3;`a;`b]
-`b
+@ sqrt 2
+1.414214
+@ exp 1
+2.718282
+@ log 10
+2.302585
+@ sin 0
+0f
+@ cos 0
+1f
 @end example
+
+@section Various Functions @result{} ema div mod bar in bin within
+
+@section div @result{} x div y
+y divided by x using integer division.  x and y must be integers.
+
+@example
+@ 2 div 7
+3
+@ 5 div 22
+4
+@end example
+
+@section mod @result{} x mod y
+The remainder after y divided by x using integer division.  x and y must be integers.
+
+@example
+@ 12 mod 27
+3
+@ 5 mod 22
+2
+@end example
+
+@anchor{bar}@section bar @result{} x bar y
+y divided by x using integer division and then multiplied by x.  x is an integer and y is a list of integers.
+
+@example
+@ 5'0 1 2 3 4 5 9 10
+0 0 0 0 0 5 5 10
+@end example
+
 @anchor{in}@section in @result{} x'y
 Determine if y is in list x.
+
 @example
 @ `a`b`d`e'`c
 0b
@@ -1606,6 +1624,49 @@ Determine if y is in list x.
 ^
 error: type
 @end example
+
+@section bin @result{} x bin y
+Given a sorted (increasing) list x, find the greatest index, i, where y>x[i].
+
+@example
+@ n:exp 0.01*!5;n
+1 1.01005 1.020201 1.030455 1.040811
+@ 1.025 bin n
+2
+@end example
+
+@section within @result{} x within y
+Test if x is greater than y[0] and less than y[1].
+
+@example
+@ 3 within (0;12)
+1b
+@ 12 within (0;12)
+0b
+@ 23 within (0;12)
+0b
+@end example
+
+@section Wrapper Functions @result{} count first last min max sum avg
+These functions exist as verbs but also can be called with the names above.
+
+@example
+@ n:3.2 1.7 5.6
+@ sum n
+10.5
+@ +/n
+10.5
+@end example
+
+@anchor{cond}@section cond @result{} $[x;y;z]
+If x then y else z.
+@example
+@ $[3>2;`a;`b]
+`a
+@ $[2>3;`a;`b]
+`b
+@end example
+
 @anchor{parse}@section parse @result{} :x
 Parse allows one to see how a command is parsed into normal k9 form.  One can value the parse by using the value command, @xref{value}.
 @example

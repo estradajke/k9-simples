@@ -1297,12 +1297,12 @@ k9 uses function modifiers / adverbs in order to have functions
 operate iteratively over lists.
 
      Adverb
-     '  *Note each::,                *Note i bar: bar.
-     /  *Note over::,*Note right::,      *Note i div: div.
-     \  *Note scan::,*Note left::,       *Note i mod: mod.
+     '  *Note each::.
+     /  *Note over::,*Note right::.
+     \  *Note scan::,*Note left::.
      ': *Note eachprior::.
-     /: *Note c over::,*Note n over::,   *Note i sv: sv.
-     \: *Note c scan::,*Note n scan::,   *Note i vs: vs.
+     /: *Note c over::,*Note n over::.
+     \: *Note c scan::,*Note n scan::.
 
 5.1 each => f'x
 ===============
@@ -1313,15 +1313,7 @@ Apply function f to each value in list x.
       *'((1 2 3);4;(5 6);7)  / first element of each element
      1 4 5 7
 
-5.2 bar => x'y
-==============
-
-y divided by x using integer division and then multiplied by x.  x is
-an integer and y is a list of integers.
-      5'0 1 2 3 4 5 9 10
-     0 0 0 0 0 5 5 10
-
-5.3 scan => (f\)x
+5.2 scan => (f\)x
 =================
 
 Create values for each x according to...
@@ -1340,7 +1332,7 @@ Create values for each x according to...
       ({y+10*x}\)1 20 300
      1 30 600
 
-5.4 left => f\[x;y]
+5.3 left => f\[x;y]
 ===================
 
 Apply f[;y] to each value in x.
@@ -1354,19 +1346,9 @@ Apply f[;y] to each value in x.
      l1 r1 r2 r3
      l2 r1 r2 r3
      l3 r1 r2 r3
-
-5.5 mod => x\y
-==============
-
-The remainder after y divided by x using integer division.  x and y
-must be integers.
-      12\27
-     3
-      5\22
-     2
     
 
-5.6 over => (f/)x
+5.4 over => (f/)x
 =================
 
 Same as scan but only print last value.
@@ -1377,7 +1359,7 @@ Same as scan but only print last value.
       ({y+10*x}/)1 20 300
      600
 
-5.7 right => f/[x;y]
+5.5 right => f/[x;y]
 ====================
 
 Apply f[x;] to each value in y.
@@ -1392,16 +1374,7 @@ Apply f[x;] to each value in y.
      l1 l2 l3 r2
      l1 l2 l3 r3
 
-5.8 div => x/y
-==============
-
-y divided by x using integer division.  x and y must be integers.
-      2/7
-     3
-      5/22
-     4
-
-5.9 eachprior => f':[x;y]
+5.6 eachprior => f':[x;y]
 =========================
 
 Apply f[y_n;y_{n-1}].  f_0 is a special case of f[y_0;x].
@@ -1416,8 +1389,8 @@ Apply f[y_n;y_{n-1}].  f_0 is a special case of f[y_0;x].
       100%':100 101.9 105.1 102.3 106.1    / using infix notation
      1 1.019 1.031403 0.9733587 1.037146
 
-5.10 n scan => x f\:y
-=====================
+5.7 n scan => x f\:y
+====================
 
 Compute f with initial value x and over list y.  f[i] = f[f[i-1];y[i]]
 except for the case of f[0]=f[x;y[0]]
@@ -1430,25 +1403,25 @@ except for the case of f[0]=f[x;y[0]]
      xy0   y1
      xy0y1 y2
 
-5.11 c(onverge) scan => f\:x
-============================
+5.8 c(onverge) scan => f\:x
+===========================
 
 Compute f[x], f[f[x]] and continue to call f[previous result] until
 the output converges to a stationary value or the output produces x.
        {x*x}\:.99
      0.99 0.9801 0.960596 0.9227447 0.8514578 0.7249803 0.5255965 0.2762517 0.07631498 0.005823977 3.391871e-05 1.150479e-09 1.323601e-18 1.751919e-36 3.069222e-72 9.420123e-144 8.873872e-287 0
 
-5.12 n over => x f/:y
-=====================
+5.9 n over => x f/:y
+====================
 
 Same as n scan but only return last value.
 
-5.13 c(onverge) over => f/:x
+5.10 c(onverge) over => f/:x
 ============================
 
 Same as converge scan but only return last value.
 
-5.14 vs => x\:y
+5.11 vs => x\:y
 ===============
 
 Convert y (base 10) into base x.
@@ -1457,7 +1430,7 @@ Convert y (base 10) into base x.
       16\:255
      15 15
 
-5.15 sv => x/:y
+5.12 sv => x/:y
 ===============
 
 Convert list y (base x) into base 10.
@@ -1781,22 +1754,62 @@ File: k9.info,  Node: More functions,  Next: I/O,  Prev: Dictionaries,  Up: Top
 8 More functions
 ****************
 
-This chapter includes functions that likely will be included elsewhere
-later.
+Functions not listed as verbs.
 
-8.1 cond => $[x;y;z]
-====================
+8.1 Math Functions => sqrt exp log sin cos
+==========================================
 
-If x then y else z.
-      $[3>2;`a;`b]
-     `a
-      $[2>3;`a;`b]
-     `b
+Log is natural log and sin and cos are in radians.
 
-8.2 in => x'y
+      sqrt 2
+     1.414214
+      exp 1
+     2.718282
+      log 10
+     2.302585
+      sin 0
+     0f
+      cos 0
+     1f
+
+8.2 Various Functions => ema div mod bar in bin within
+======================================================
+
+8.3 div => x div y
+==================
+
+y divided by x using integer division.  x and y must be integers.
+
+      2 div 7
+     3
+      5 div 22
+     4
+
+8.4 mod => x mod y
+==================
+
+The remainder after y divided by x using integer division.  x and y
+must be integers.
+
+      12 mod 27
+     3
+      5 mod 22
+     2
+
+8.5 bar => x bar y
+==================
+
+y divided by x using integer division and then multiplied by x.  x is
+an integer and y is a list of integers.
+
+      5'0 1 2 3 4 5 9 10
+     0 0 0 0 0 5 5 10
+
+8.6 in => x'y
 =============
 
 Determine if y is in list x.
+
       `a`b`d`e'`c
      0b
       `a`b`d`e'`b
@@ -1808,8 +1821,52 @@ Determine if y is in list x.
      ^
      error: type
 
-8.3 parse => :x
-===============
+8.7 bin => x bin y
+==================
+
+Given a sorted (increasing) list x, find the greatest index, i, where
+y>x[i].
+
+      n:exp 0.01*!5;n
+     1 1.01005 1.020201 1.030455 1.040811
+      1.025 bin n
+     2
+
+8.8 within => x within y
+========================
+
+Test if x is greater than y[0] and less than y[1].
+
+      3 within (0;12)
+     1b
+      12 within (0;12)
+     0b
+      23 within (0;12)
+     0b
+
+8.9 Wrapper Functions => count first last min max sum avg
+=========================================================
+
+These functions exist as verbs but also can be called with the names
+above.
+
+      n:3.2 1.7 5.6
+      sum n
+     10.5
+      +/n
+     10.5
+
+8.10 cond => $[x;y;z]
+=====================
+
+If x then y else z.
+      $[3>2;`a;`b]
+     `a
+      $[2>3;`a;`b]
+     `b
+
+8.11 parse => :x
+================
 
 Parse allows one to see how a command is parsed into normal k9 form.
 One can value the parse by using the value command, *Note value::.
@@ -1869,8 +1926,8 @@ One can value the parse by using the value command, *Note value::.
 the elements in the output one could manually return the values in the
 list, eg.  p[2;0 1 2].
 
-8.4 amend => @[x;i;f[;y]]
-=========================
+8.12 amend => @[x;i;f[;y]]
+==========================
 
 Replace the values in list x at indices i with f or f[y].
 
@@ -1916,8 +1973,8 @@ Replace the values in list x at indices i with f or f[y].
      30 31 32
 
 
-8.5 dmend => .[x;i;f[;y]]
-=========================
+8.13 dmend => .[x;i;f[;y]]
+==========================
 
 .[x;i;f] examples
 
@@ -1968,8 +2025,8 @@ Replace the values in list x at indices i with f or f[y].
      -30 -31 32
 
 
-8.6 Histogram => 'freq
-======================
+8.14 Histogram => 'freq
+=======================
 
 Compute a histogram of a list.
       ^`freq x:100000?10
@@ -2477,52 +2534,50 @@ Ref: type30027
 Ref: apply30383
 Ref: value31364
 Node: Adverbs31682
-Ref: each32240
-Ref: bar32457
-Ref: scan32646
-Ref: left32953
-Ref: mod33313
-Ref: over33472
-Ref: right33649
-Ref: div34011
-Ref: eachprior34144
-Ref: n scan34546
-Ref: c scan34886
-Ref: n over35295
-Ref: c over35383
-Ref: vs35493
-Ref: sv35614
-Node: Lists35739
-Node: Dictionaries38176
-Node: More functions42489
-Ref: cond42684
-Ref: in42803
-Ref: parse43023
-Ref: amend44299
-Ref: dmend44961
-Ref: freq45661
-Node: I/O46065
-Ref: input format46196
-Ref: format47207
-Ref: write line47611
-Ref: read line47996
-Ref: write char48181
-Ref: read char48574
-Ref: write data48936
-Ref: conn/set48983
-Ref: http/get49027
-Node: Tables/kSQL49073
-Ref: Tables49251
-Ref: A_Tables49781
-Ref: S_Tables50232
-Ref: kSQL50434
-Node: System52361
-Ref: Display52516
-Ref: Load File52763
-Ref: Variables52957
-Ref: Memory53058
-Ref: Timing53173
-Node: Errors53265
+Ref: each32124
+Ref: scan32341
+Ref: left32648
+Ref: over33012
+Ref: right33189
+Ref: eachprior33551
+Ref: n scan33953
+Ref: c scan34291
+Ref: n over34698
+Ref: c over34784
+Ref: vs34894
+Ref: sv35015
+Node: Lists35140
+Node: Dictionaries37577
+Node: More functions41890
+Ref: bar42733
+Ref: in42931
+Ref: cond43813
+Ref: parse43933
+Ref: amend45210
+Ref: dmend45874
+Ref: freq46576
+Node: I/O46982
+Ref: input format47113
+Ref: format48124
+Ref: write line48528
+Ref: read line48913
+Ref: write char49098
+Ref: read char49491
+Ref: write data49853
+Ref: conn/set49900
+Ref: http/get49944
+Node: Tables/kSQL49990
+Ref: Tables50168
+Ref: A_Tables50698
+Ref: S_Tables51149
+Ref: kSQL51351
+Node: System53278
+Ref: Display53433
+Ref: Load File53680
+Ref: Variables53874
+Ref: Memory53975
+Ref: Timing54090
+Node: Errors54182
 
 End Tag Table
 
