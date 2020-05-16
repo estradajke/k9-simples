@@ -561,11 +561,11 @@ Dates are in yyyy.mm.dd format and stored internally as integers.
 `D
 @ .z.D                       / current date in GMT
 2020-04-17
-@ `i$.z.D                    / numeric representation of date
+@ `i .z.D                    / numeric representation of date
 -1351
-@ `i$2024.01.01              / zero date
+@ `i 2024.01.01              / zero date
 0
-@ `D$0                       / zero date
+@ `D 0                       / zero date
 2024.01.01
 @end example
 
@@ -580,13 +580,13 @@ Times are stored in hh:mm:ss.123 format and stored internally as integers.
 00:03:59.986
 @ t
 17:33:59.986
-@ `i$00:00:00.001            / numeric representation of 1ms
+@ `i 00:00:00.001            / numeric representation of 1ms
 1
-@ `i$00:00:00.001            / numeric representation of 1s
+@ `i 00:00:00.001            / numeric representation of 1s
 1000
-@ `i$00:01:00.000            / numeric representation of 1m
+@ `i 00:01:00.000            / numeric representation of 1m
 60000
-@ `t$12345                   / convert milliseconds to time
+@ `t 12345                   / convert milliseconds to time
 00:00:12.345
 @end example
 
