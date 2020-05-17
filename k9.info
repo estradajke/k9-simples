@@ -360,45 +360,48 @@ Examples of k9 in practice.
 =====================
 
 Generate a table of financial random data and compute basic statistics
-quickly.
+quickly.  This table takes about 11 GB and 10 seconds, so scale up or
+down as required to fit.
 
-      n:_50*1000*1000                        / 50 million rows
-      t:{g@<g:09:00:00.000+x?10:00:00.000}   / random times
-      s:{x?`a`b`c`d`e}                       / random symbols
-      d:{(-6+!13)@(x?_2e9)bin 1e9*(0,(1-|d),1+d:0.682689492 0.954499736 0.997300203 0.999936657 0.999999426 0.999999998),2}/ random deltas
-      q:+`t`s`d!(t[n];s[n];d[n])             / generate the data
+      n:_100*1000*1000                         / 100 million rows
+      t:{[x]g@<g:09:00:00.000+x?10:00:00.000}  / random times
+      s:{[x]x?`a`b`c`d`e}                      / random symbols
+      d:{[x](-6+!13)@(+\0,(|d),365378984,d:271810244 42800467 2636454 62769 572 2)bin x?_1e9}
+      \t q:+`t`s`d!(t[n];s[n];d[n])            / time data generation in ms
+     10263
 
    As this point one might want to check start and stop times, see if
 the symbol distribution is actual random and look at the distribution
 of the price deltas.
 
-      select min t, max t from q
-     t|09:00:00.002
-     t|18:59:59.998
+      select min t, max t from q               / min and max time values
+     t|09:00:00.000
+     t|18:59:59.999
 
-      select #s by s from q
+      select #s by s from q                    / count each symbol
      s|s
      -|--------
-     a|10002646
-     b|10001228
-     c|10002255
-     d| 9993125
-     e|10000746
+     a|19999325
+     b|20000982
+     c|19996938
+     d|20001721
+     e|20001034
 
-      select #d by d from q
+      select #d by d from q                    / check the normal distribution
      d |d
      --|--------
-     -5|       9
-     -4|    1572
-     -3|   65761
-     -2| 1069559
-     -1| 6794024
-      0|34133178
-      1| 6799826
-      2| 1068860
-      3|   65582
-      4|    1613
-      5|      16
+     -6|       1
+     -5|      46
+     -4|    6284
+     -3|  263124
+     -2| 4276881
+     -1|27184896
+      0|36538226
+      1|27182073
+      2| 4278498
+      3|  263523
+      4|    6391
+      5|      57
 
 2.2 Understanding Code Examples
 ===============================
@@ -750,7 +753,7 @@ overloaded and change depending on the number and type of arguments.
      * *Note times::,    *Note first::.
      % *Note divide::.
      & *Note and::,      *Note where::.
-     | *Note or::,      *Note reverse::.
+     | *Note or::,       *Note reverse::.
      < *Note less::,     *Note asc::.
      > *Note more: less,      *Note dsc: asc.
      = *Note equal::,    *Note group::.
@@ -2508,93 +2511,93 @@ Tag Table:
 Node: Top170
 Node: Intro3030
 Node: Examples13544
-Node: Nouns18423
-Ref: bool19827
-Ref: int20127
-Ref: float20331
-Ref: date20676
-Ref: time21096
-Ref: datetime21710
-Ref: char22382
-Ref: sym22605
-Node: Verbs23018
-Ref: set24045
-Ref: plus24257
-Ref: flip24648
-Ref: minus24898
-Ref: times25161
-Ref: first25292
-Ref: divide25611
-Ref: and25748
-Ref: where26005
-Ref: or26389
-Ref: reverse26653
-Ref: less26823
-Ref: asc27085
-Ref: equal27281
-Ref: group27405
-Ref: match27651
-Ref: not27844
-Ref: key27961
-Ref: enum28132
-Ref: cat29425
-Ref: enlist29544
-Ref: cut29683
-Ref: sort29873
-Ref: cast30050
-Ref: string30239
-Ref: take30347
-Ref: count30677
-Ref: drop30867
-Ref: floor31190
-Ref: find31281
-Ref: unique31728
-Ref: at31965
-Ref: type32178
-Ref: apply32534
-Ref: value33515
-Node: Adverbs33833
-Ref: each34275
-Ref: scan34492
-Ref: left34799
-Ref: over35163
-Ref: right35340
-Ref: eachprior35702
-Ref: n scan36104
-Ref: c scan36442
-Ref: n over36849
-Ref: c over36935
-Ref: vs37045
-Ref: sv37166
-Node: Lists37291
-Node: Dictionaries39728
-Node: More functions44041
-Ref: cond45988
-Ref: parse46106
-Ref: amend47381
-Ref: dmend48043
-Node: I/O48744
-Ref: input format48875
-Ref: format49886
-Ref: write line50290
-Ref: read line50675
-Ref: write char50860
-Ref: read char51253
-Ref: write data51615
-Ref: conn/set51662
-Ref: http/get51706
-Node: Tables/kSQL51752
-Ref: Tables51930
-Ref: A_Tables52460
-Ref: S_Tables52914
-Ref: kSQL53421
-Node: System55348
-Ref: Display55503
-Ref: Load File55750
-Ref: Variables55944
-Ref: Memory56045
-Ref: Timing56160
-Node: Errors56252
+Node: Nouns18640
+Ref: bool20044
+Ref: int20344
+Ref: float20548
+Ref: date20893
+Ref: time21313
+Ref: datetime21927
+Ref: char22599
+Ref: sym22822
+Node: Verbs23235
+Ref: set24263
+Ref: plus24475
+Ref: flip24866
+Ref: minus25116
+Ref: times25379
+Ref: first25510
+Ref: divide25829
+Ref: and25966
+Ref: where26223
+Ref: or26607
+Ref: reverse26871
+Ref: less27041
+Ref: asc27303
+Ref: equal27499
+Ref: group27623
+Ref: match27869
+Ref: not28062
+Ref: key28179
+Ref: enum28350
+Ref: cat29643
+Ref: enlist29762
+Ref: cut29901
+Ref: sort30091
+Ref: cast30268
+Ref: string30457
+Ref: take30565
+Ref: count30895
+Ref: drop31085
+Ref: floor31408
+Ref: find31499
+Ref: unique31946
+Ref: at32183
+Ref: type32396
+Ref: apply32752
+Ref: value33733
+Node: Adverbs34051
+Ref: each34493
+Ref: scan34710
+Ref: left35017
+Ref: over35381
+Ref: right35558
+Ref: eachprior35920
+Ref: n scan36322
+Ref: c scan36660
+Ref: n over37067
+Ref: c over37153
+Ref: vs37263
+Ref: sv37384
+Node: Lists37509
+Node: Dictionaries39946
+Node: More functions44259
+Ref: cond46206
+Ref: parse46324
+Ref: amend47599
+Ref: dmend48261
+Node: I/O48962
+Ref: input format49093
+Ref: format50104
+Ref: write line50508
+Ref: read line50893
+Ref: write char51078
+Ref: read char51471
+Ref: write data51833
+Ref: conn/set51880
+Ref: http/get51924
+Node: Tables/kSQL51970
+Ref: Tables52148
+Ref: A_Tables52678
+Ref: S_Tables53132
+Ref: kSQL53639
+Node: System55566
+Ref: Display55721
+Ref: Load File55968
+Ref: Variables56162
+Ref: Memory56263
+Ref: Timing56378
+Node: Errors56470
 
 End Tag Table
 

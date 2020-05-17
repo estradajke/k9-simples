@@ -51,46 +51,48 @@ Next: <a href="Nouns.html" accesskey="n" rel="next">Nouns</a>, Previous: <a href
 <span id="Examples-1"></span><h2 class="chapter">2 Examples</h2>
 <p>Examples of k9 in practice.
 </p><span id="Data-Manipulation"></span><h3 class="section">2.1 Data Manipulation</h3>
-<p>Generate a table of financial random data and compute basic statistics quickly.
+<p>Generate a table of financial random data and compute basic statistics quickly.  This table takes about 11 GB and 10 seconds, so scale up or down as required to fit.
 </p>
 <div class="example">
-<pre class="example">&nbsp;n:_50*1000*1000                        / 50 million rows
-&nbsp;t:{g@&lt;g:09:00:00.000+x?10:00:00.000}   / random times
-&nbsp;s:{x?`a`b`c`d`e}                       / random symbols
-&nbsp;d:{(-6+!13)@(x?_2e9)bin 1e9*(0,(1-|d),1+d:0.682689492 0.954499736 0.997300203 0.999936657 0.999999426 0.999999998),2}/ random deltas
-&nbsp;q:+`t`s`d!(t[n];s[n];d[n])             / generate the data
+<pre class="example">&nbsp;n:_100*1000*1000                         / 100 million rows
+&nbsp;t:{[x]g@&lt;g:09:00:00.000+x?10:00:00.000}  / random times
+&nbsp;s:{[x]x?`a`b`c`d`e}                      / random symbols
+&nbsp;d:{[x](-6+!13)@(+\0,(|d),365378984,d:271810244 42800467 2636454 62769 572 2)bin x?_1e9}
+&nbsp;\t q:+`t`s`d!(t[n];s[n];d[n])            / time data generation in ms
+10263
 </pre></div>
 
 <p>As this point one might want to check start and stop times, see if the symbol distribution is actual random and look at the distribution of the price deltas.
 </p>
 <div class="example">
-<pre class="example">&nbsp;select min t, max t from q
-t|09:00:00.002
-t|18:59:59.998
+<pre class="example">&nbsp;select min t, max t from q               / min and max time values
+t|09:00:00.000
+t|18:59:59.999
 
-&nbsp;select #s by s from q
+&nbsp;select #s by s from q                    / count each symbol
 s|s       
 -|--------
-a|10002646
-b|10001228
-c|10002255
-d| 9993125
-e|10000746
+a|19999325
+b|20000982
+c|19996938
+d|20001721
+e|20001034
 
-&nbsp;select #d by d from q
+&nbsp;select #d by d from q                    / check the normal distribution
 d |d       
 --|--------
--5|       9
--4|    1572
--3|   65761
--2| 1069559
--1| 6794024
- 0|34133178
- 1| 6799826
- 2| 1068860
- 3|   65582
- 4|    1613
- 5|      16
+-6|       1
+-5|      46
+-4|    6284
+-3|  263124
+-2| 4276881
+-1|27184896
+ 0|36538226
+ 1|27182073
+ 2| 4278498
+ 3|  263523
+ 4|    6391
+ 5|      57
 </pre></div>
 
 <span id="Understanding-Code-Examples"></span><h3 class="section">2.2 Understanding Code Examples</h3>
