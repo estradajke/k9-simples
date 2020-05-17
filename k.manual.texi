@@ -1339,7 +1339,7 @@ In general, lists are created by data separated by semicolons and encased by par
 @ c:1i 2f "c" `d  / incorrect syntax for nonuniform list
 error: type
 @end example
-@section List Indicing
+@section List Indexing
 Lists can be indexed by using a few notations.
 @example
 @ a:2*1+!10  / 2 4 ... 20
@@ -1407,8 +1407,8 @@ temp|25 25.1 25.6
 10|46.3
 @ 1|0.1 
 @end example
-@section Dictionary Indicing @result{} x@@y
-Dictionary indicing, like lists, can be indexed in a number of ways.
+@section Dictionary Indexing @result{} x@@y
+Dictionary indexing, like lists, can be indexed in a number of ways.
 @example
 @ x:`a`b`c!(1 2;3 4;5 6);x
 a|1 2
@@ -1419,7 +1419,7 @@ c|5 6
 @ x@@`a`c    
 1 2
 5 6
-@ / all these notaions for indicing work, output surpressed
+@ / all these notaions for indexing work, output surpressed
 @ x@@`b;  / at
 @ x(`b); / parenthesis
 @ x `b;  / space
@@ -1454,7 +1454,7 @@ time              temp
 37.4 46.3 0.1
 @end example
 
-One could return a specific value by indicing into a specific location.  As an example in order to query the first value of the temp from d1, one would convert d1 into values (as value .), take the second index (take the value 1), take the second element (take the temp 1), and then query the first value (element 0).
+One could return a specific value by indexing into a specific location.  As an example in order to query the first value of the temp from d1, one would convert d1 into values (as value .), take the second index (take the value 1), take the second element (take the temp 1), and then query the first value (element 0).
 
 @example
 @ d1

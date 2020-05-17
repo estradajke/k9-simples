@@ -1,7 +1,7 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
 This manual is for Shakti (k9) build 2020.05.13.
-May 16, 2020
+May 17, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -1511,7 +1511,7 @@ spaces between elements.
       c:1i 2f "c" `d  / incorrect syntax for nonuniform list
      error: type
 
-6.2 List Indicing
+6.2 List Indexing
 =================
 
 Lists can be indexed by using a few notations.
@@ -1590,10 +1590,10 @@ dictionary can be single elements or lists.
      10|46.3
       1|0.1
 
-7.2 Dictionary Indicing => x@y
+7.2 Dictionary Indexing => x@y
 ==============================
 
-Dictionary indicing, like lists, can be indexed in a number of ways.
+Dictionary indexing, like lists, can be indexed in a number of ways.
       x:`a`b`c!(1 2;3 4;5 6);x
      a|1 2
      b|3 4
@@ -1603,7 +1603,7 @@ Dictionary indicing, like lists, can be indexed in a number of ways.
       x@`a`c
      1 2
      5 6
-      / all these notaions for indicing work, output surpressed
+      / all these notaions for indexing work, output surpressed
       x@`b;  / at
       x(`b); / parenthesis
       x `b;  / space
@@ -1638,7 +1638,7 @@ The values from a dictionary are retreived by bracket notation.
      0    10   1
      37.4 46.3 0.1
 
-   One could return a specific value by indicing into a specific
+   One could return a specific value by indexing into a specific
 location.  As an example in order to query the first value of the temp
 from d1, one would convert d1 into values (as value .), take the
 second index (take the value 1), take the second element (take the
