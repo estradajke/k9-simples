@@ -1,7 +1,7 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
 This manual is for Shakti (k9) build 2020.05.13.
-May 17, 2020
+May 30, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -16,7 +16,7 @@ very simple terms and is intended for newer developers.  k9 is a
 rapidly evolving platform therefore newer versions may have additional
 functionality not covered in this document.
 
-   This manual is for Shakti (k9) build 2020.05.08.
+   This manual is for Shakti (k9) build 2020.05.13.
 
 2020.05.13 16GB (c) shakti
  \
@@ -562,7 +562,7 @@ covered in a seperate chapter.
 
    The set of k9 data, aka nouns, are as follows.
 
-         Atom             Type
+         Atom   Example      Type
      *Note bool::,  110b         b
      *Note int::,   2 3 4        i
      *Note float::, 2e3 0n 0w    f
@@ -1035,7 +1035,9 @@ Boolean invert of x
 4.18 key => x!y
 ===============
 
-Dictionary of x (key) and y (value)
+Dictionary of x (key) and y (value).  If looking to key a table then
+*note cut::.
+
       3!7
      ,3!,7
       `a`b!3 7
@@ -1117,7 +1119,8 @@ Create a list from x
 4.22 cut => x^y
 ===============
 
-Reshape a list y by indices x.
+Reshape a list y by indices x or add key x to table y.
+
       0 1 5^0 1 2 3 4 5 6 7 8 9
      0
      1 2 3 4
@@ -1125,6 +1128,27 @@ Reshape a list y by indices x.
       1 5^0 1 2 3 4 5 6 7 8 9
      1 2 3 4
      5 6 7 8 9
+
+      t:[[]a:`x`y`z;b:1 20 1];t / an unkeyed table
+     a b
+     - --
+     x  1
+     y 20
+     z  1
+
+      kt:`a^t;kt                / set `a as the key
+     a|b
+     -|--
+     x| 1
+     y|20
+     z| 1
+
+      (0#`)^kt                  / unkey the keyed table
+     a b
+     - --
+     x  1
+     y 20
+     z  1
 
 4.23 sort => ^x
 ===============
@@ -1314,21 +1338,23 @@ over
 4.35 value => .x
 ================
 
-   * x= dictionary => Return the value of x as lists.
-   * x= parse output => Evaulate x.
-      `a`b!(1 2;3 4)
-     a|1 2
-     b|3 4
-      .`a`b!(1 2;3 4)
-     a   b
-     1 2 3 4
-      p::3+2
-      p
-     +
-     3
-     2
-      . p   / the space between . and p is necessary
+Value a string of valid k code or list of k code.
+
+      ."3+2"
      5
+      ."20*1+!3"
+     20 40 60
+      .(*;16;3)
+     48
+      n:3;p:(n?(+;-;*;%);1+n?10;1+n?10);p
+     %  - *
+     2  4 9
+     10 8 3
+
+      .'(+p)
+     0.2
+     -4
+     27
 
 
 File: k9.info,  Node: Adverbs,  Next: Lists,  Prev: Verbs,  Up: Top
@@ -1341,11 +1367,11 @@ operate iteratively over lists.
 
      Adverb
      '  *Note each::.
-     /  *Note over::,*Note right::.
-     \  *Note scan::,*Note left::.
+     /  *Note scan::,   *Note right::.
+     \  *Note over: scan,,   *Note left::.
      ': *Note eachprior::.
-     /: *Note c over::,*Note n over::.
-     \: *Note c scan::,*Note n scan::.
+     /: *Note c over::, *Note n over: n scan.
+     \: *Note c scan::, *Note n scan::.
 
 5.1 each => f'x
 ===============
@@ -1356,24 +1382,32 @@ Apply function f to each value in list x.
       *'((1 2 3);4;(5 6);7)  / first element of each element
      1 4 5 7
 
-5.2 scan => (f\)x
-=================
+5.2 scan (over) => f\x (f/x)
+============================
 
-Create values for each x according to...
+Compute f[x;y] such that f@i=f[f@i-1;x@i].  Scan and over are the same
+functions except that over only returns the last value.
+
+   Given a function of two inputs, output for each x according to...
    * f@0 -> x@0
    * f@1 -> f[f@0;x@1]
    * ...
    * f@i -> f[f@i-1;x@i]
    * ...
    * f@n -> f[f@n-1;x@n]
+
+   An example
+
       (,\)("a";"b";"c")
      a
      ab
      abc
-      (+\)1 20 300
+      +\1 20 300
      1 21 321
-      ({y+10*x}\)1 20 300
+      {[x;y]y+10*x}\1 20 300
      1 30 600
+      {[x;y]y+10*x}/1 20 300
+     600
 
 5.3 left => f\[x;y]
 ===================
@@ -1389,20 +1423,8 @@ Apply f[;y] to each value in x.
      l1 r1 r2 r3
      l2 r1 r2 r3
      l3 r1 r2 r3
-    
 
-5.4 over => (f/)x
-=================
-
-Same as scan but only print last value.
-      (,/)("a";"b";"c")
-     "abc"
-      (+/)1 20 300
-     321
-      ({y+10*x}/)1 20 300
-     600
-
-5.5 right => f/[x;y]
+5.4 right => f/[x;y]
 ====================
 
 Apply f[x;] to each value in y.
@@ -1417,7 +1439,7 @@ Apply f[x;] to each value in y.
      l1 l2 l3 r2
      l1 l2 l3 r3
 
-5.6 eachprior => f':[x;y]
+5.5 eachprior => f':[x;y]
 =========================
 
 Apply f[y_n;y_{n-1}].  f_0 is a special case of f[y_0;x].
@@ -1432,21 +1454,24 @@ Apply f[y_n;y_{n-1}].  f_0 is a special case of f[y_0;x].
       100%':100 101.9 105.1 102.3 106.1    / using infix notation
      1 1.019 1.031403 0.9733587 1.037146
 
-5.7 n scan => x f\:y
-====================
+5.6 n scan (n over) => x f\:y (x f/:y)
+======================================
 
 Compute f with initial value x and over list y.  f[i] = f[f[i-1];y[i]]
-except for the case of f[0]=f[x;y[0]]
+except for the case of f[0]=f[x;y[0]].  n over differs from n scan in
+that it only returns the last value.
       f:{(0.1*x)+0.9*y}      / ema
       0. f\:1+!3
      0.9 1.89 2.889
-      f:{(`$,/$x),(`$,/$y)} / join and collapse
+      f:{[x;y](`$,/$x),(`$,/$y)} / join and collapse
       `x f\: `y0`y1`y2
      x     y0
      xy0   y1
      xy0y1 y2
+      `x f/: `y0`y1`y2
+     xy0y1 y2
 
-5.8 c(onverge) scan => f\:x
+5.7 c(onverge) scan => f\:x
 ===========================
 
 Compute f[x], f[f[x]] and continue to call f[previous result] until
@@ -1454,18 +1479,13 @@ the output converges to a stationary value or the output produces x.
        {x*x}\:.99
      0.99 0.9801 0.960596 0.9227447 0.8514578 0.7249803 0.5255965 0.2762517 0.07631498 0.005823977 3.391871e-05 1.150479e-09 1.323601e-18 1.751919e-36 3.069222e-72 9.420123e-144 8.873872e-287 0
 
-5.9 n over => x f/:y
-====================
-
-Same as n scan but only return last value.
-
-5.10 c(onverge) over => f/:x
-============================
+5.8 c(onverge) over => f/:x
+===========================
 
 Same as converge scan but only return last value.
 
-5.11 vs => x\:y
-===============
+5.9 vs => x\:y
+==============
 
 Convert y (base 10) into base x.
       2\:129
@@ -1473,7 +1493,7 @@ Convert y (base 10) into base x.
       16\:255
      15 15
 
-5.12 sv => x/:y
+5.10 sv => x/:y
 ===============
 
 Convert list y (base x) into base 10.
@@ -2512,92 +2532,90 @@ Node: Top170
 Node: Intro3030
 Node: Examples13544
 Node: Nouns18640
-Ref: bool20044
-Ref: int20344
-Ref: float20548
-Ref: date20893
-Ref: time21313
-Ref: datetime21927
-Ref: char22599
-Ref: sym22822
-Node: Verbs23235
-Ref: set24263
-Ref: plus24475
-Ref: flip24866
-Ref: minus25116
-Ref: times25379
-Ref: first25510
-Ref: divide25829
-Ref: and25966
-Ref: where26223
-Ref: or26607
-Ref: reverse26871
-Ref: less27041
-Ref: asc27303
-Ref: equal27499
-Ref: group27623
-Ref: match27869
-Ref: not28062
-Ref: key28179
-Ref: enum28350
-Ref: cat29643
-Ref: enlist29762
-Ref: cut29901
-Ref: sort30091
-Ref: cast30268
-Ref: string30457
-Ref: take30565
-Ref: count30895
-Ref: drop31085
-Ref: floor31408
-Ref: find31499
-Ref: unique31946
-Ref: at32183
-Ref: type32396
-Ref: apply32752
-Ref: value33733
-Node: Adverbs34051
-Ref: each34493
-Ref: scan34710
-Ref: left35017
-Ref: over35381
-Ref: right35558
-Ref: eachprior35920
-Ref: n scan36322
-Ref: c scan36660
-Ref: n over37067
-Ref: c over37153
-Ref: vs37263
-Ref: sv37384
-Node: Lists37509
-Node: Dictionaries39946
-Node: More functions44259
-Ref: cond46206
-Ref: parse46324
-Ref: amend47599
-Ref: dmend48261
-Node: I/O48962
-Ref: input format49093
-Ref: format50104
-Ref: write line50508
-Ref: read line50893
-Ref: write char51078
-Ref: read char51471
-Ref: write data51833
-Ref: conn/set51880
-Ref: http/get51924
-Node: Tables/kSQL51970
-Ref: Tables52148
-Ref: A_Tables52678
-Ref: S_Tables53132
-Ref: kSQL53639
-Node: System55566
-Ref: Display55721
-Ref: Load File55968
-Ref: Variables56162
-Ref: Memory56263
-Ref: Timing56378
-Node: Errors56470
+Ref: bool20047
+Ref: int20347
+Ref: float20551
+Ref: date20896
+Ref: time21316
+Ref: datetime21930
+Ref: char22602
+Ref: sym22825
+Node: Verbs23238
+Ref: set24266
+Ref: plus24478
+Ref: flip24869
+Ref: minus25119
+Ref: times25382
+Ref: first25513
+Ref: divide25832
+Ref: and25969
+Ref: where26226
+Ref: or26610
+Ref: reverse26874
+Ref: less27044
+Ref: asc27306
+Ref: equal27502
+Ref: group27626
+Ref: match27872
+Ref: not28065
+Ref: key28182
+Ref: enum28400
+Ref: cat29693
+Ref: enlist29812
+Ref: cut29951
+Ref: sort30476
+Ref: cast30652
+Ref: string30841
+Ref: take30949
+Ref: count31279
+Ref: drop31469
+Ref: floor31792
+Ref: find31883
+Ref: unique32330
+Ref: at32567
+Ref: type32780
+Ref: apply33136
+Ref: value34117
+Node: Adverbs34397
+Ref: each34858
+Ref: scan35075
+Ref: left35615
+Ref: right35975
+Ref: eachprior36337
+Ref: n scan36739
+Ref: c scan37224
+Ref: c over37631
+Ref: vs37738
+Ref: sv37857
+Node: Lists37982
+Node: Dictionaries40419
+Node: More functions44732
+Ref: cond46679
+Ref: parse46797
+Ref: amend48072
+Ref: dmend48734
+Node: I/O49435
+Ref: input format49566
+Ref: format50577
+Ref: write line50981
+Ref: read line51366
+Ref: write char51551
+Ref: read char51944
+Ref: write data52306
+Ref: conn/set52353
+Ref: http/get52397
+Node: Tables/kSQL52443
+Ref: Tables52621
+Ref: A_Tables53151
+Ref: S_Tables53605
+Ref: kSQL54112
+Node: System56039
+Ref: Display56194
+Ref: Load File56441
+Ref: Variables56635
+Ref: Memory56736
+Ref: Timing56851
+Node: Errors56943
 
 End Tag Table
 

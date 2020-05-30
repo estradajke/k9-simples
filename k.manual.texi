@@ -23,7 +23,7 @@ Copyright @copyright{} 2020 John Estrada
 @top k9: Manual
 This document explains the usage of the k9 programming language in very simple terms and is intended for newer developers.  k9 is a rapidly evolving platform therefore newer versions may have additional functionality not covered in this document.
 
-This manual is for Shakti (k9) build 2020.05.08.@*
+This manual is for Shakti (k9) build 2020.05.13.@*
 @c @end ifnottex
 
 @smallformat
@@ -482,7 +482,7 @@ In additional to the basic data types, data can be put into lists (uniform and n
 The set of k9 data, aka nouns, are as follows.
 
 @example
-    Atom             Type  
+    Atom   Example      Type  
 @xref{bool},  110b         b  
 @xref{int},   2 3 4        i 
 @xref{float}, 2e3 0n 0w    f  
@@ -913,7 +913,8 @@ Boolean invert of x
 010b
 @end example
 @anchor{key}@section key @result{} x!y
-Dictionary of x (key) and y (value)
+Dictionary of x (key) and y (value).  If looking to key a table then @ref{cut}.
+
 @example
 @ 3!7
 ,3!,7
@@ -990,7 +991,8 @@ Create a list from x
 0b
 @end example
 @anchor{cut}@section cut @result{} x^y
-Reshape a list y by indices x.
+Reshape a list y by indices x or add key x to table y.
+
 @example
 @ 0 1 5^0 1 2 3 4 5 6 7 8 9
 0        
@@ -1000,6 +1002,30 @@ Reshape a list y by indices x.
 1 2 3 4  
 5 6 7 8 9
 @end example
+
+@example
+ t:[[]a:`x`y`z;b:1 20 1];t / an unkeyed table
+a b 
+- --
+x  1
+y 20
+z  1
+
+ kt:`a^t;kt                / set `a as the key
+a|b 
+-|--
+x| 1
+y|20
+z| 1
+
+ (0#`)^kt                  / unkey the keyed table
+a b 
+- --
+x  1
+y 20
+z  1
+@end example 
+
 @anchor{sort}@section sort @result{} ^x
 Sort list x into ascending order.
 @example
@@ -1168,25 +1194,26 @@ x30 x31
 
 @end example
 @anchor{value}@section value @result{} .x
-@itemize
-@item x= dictionary @result{} Return the value of x as lists.
-@item x= parse output @result{} Evaulate x.
-@end itemize
+Value a string of valid k code or list of k code.
+
 @example
-@ `a`b!(1 2;3 4)
-a|1 2
-b|3 4
-@ .`a`b!(1 2;3 4)
-a   b
-1 2 3 4
-@ p::3+2
-@ p
-+
-3
-2
-@ . p   / the space between . and p is necessary
+@ ."3+2"
 5
+@ ."20*1+!3"
+20 40 60
+@ .(*;16;3)
+48
+@ n:3;p:(n?(+;-;*;%);1+n?10;1+n?10);p
+%  - *
+2  4 9
+10 8 3
+
+@ .'(+p)
+0.2
+-4 
+27 
 @end example
+
 @node Adverbs
 @chapter Function Modifiers / Adverbs
 k9 uses function modifiers / adverbs in order to have functions operate iteratively over lists.
@@ -1194,11 +1221,11 @@ k9 uses function modifiers / adverbs in order to have functions operate iterativ
 @example
 Adverb
 '  @xref{each}.
-/  @xref{over},@xref{right}.
-\  @xref{scan},@xref{left}.
+/  @xref{scan},   @xref{right}.
+\  @xref{scan,over},,   @xref{left}.
 ': @xref{eachprior}.
-/: @xref{c over},@xref{n over}.
-\: @xref{c scan},@xref{n scan}.
+/: @xref{c over}, @xref{n scan,n over}.
+\: @xref{c scan}, @xref{n scan}.
 @end example
 
 @anchor{each}@section each @result{} f'x
@@ -1209,8 +1236,10 @@ Apply function f to each value in list x.
 @ *'((1 2 3);4;(5 6);7)  / first element of each element
 1 4 5 7
 @end example
-@anchor{scan}@section scan @result{} (f\)x
-Create values for each x according to...
+@anchor{scan}@section scan (over) @result{} f\x (f/x)
+Compute f[x;y] such that f@@i=f[f@@i-1;x@@i].  Scan and over are the same functions except that over only returns the last value.
+
+Given a function of two inputs, output for each x according to...
 @itemize
 @item f@@0 @arrow{}          x@@0
 @item f@@1 @arrow{} f[f@@0;x@@1]
@@ -1219,15 +1248,20 @@ Create values for each x according to...
 @item ...
 @item f@@n @arrow{} f[f@@n-1;x@@n]
 @end itemize
+
+An example
+
 @example
 @ (,\)("a";"b";"c")
 a
 ab
 abc
-@ (+\)1 20 300
+@ +\1 20 300
 1 21 321
-@ (@{y+10*x@}\)1 20 300
+@ @{[x;y]y+10*x@}\1 20 300
 1 30 600
+@ @{[x;y]y+10*x@}/1 20 300
+600
 @end example
 @anchor{left}@section left @result{} f\[x;y]
 Apply f[;y] to each value in x.
@@ -1242,16 +1276,6 @@ Apply f[;y] to each value in x.
 l1 r1 r2 r3
 l2 r1 r2 r3
 l3 r1 r2 r3
-@end example
-@ @anchor{over}@section over @result{} (f/)x
-Same as scan but only print last value.
-@example
-@ (,/)("a";"b";"c")
-"abc"
-@ (+/)1 20 300
-321
-@ (@{y+10*x@}/)1 20 300
-600
 @end example
 @anchor{right}@section right @result{} f/[x;y]
 Apply f[x;] to each value in y.
@@ -1281,16 +1305,18 @@ y4 y3
 @ 100%':100 101.9 105.1 102.3 106.1    / using infix notation
 1 1.019 1.031403 0.9733587 1.037146
 @end example
-@anchor{n scan}@section n scan @result{} x f\:y
-Compute f with initial value x and over list y.  f[i] = f[f[i-1];y[i]] except for the case of f[0]=f[x;y[0]]
+@anchor{n scan}@section n scan (n over) @result{} x f\:y (x f/:y)
+Compute f with initial value x and over list y.  f[i] = f[f[i-1];y[i]] except for the case of f[0]=f[x;y[0]].  n over differs from n scan in that it only returns the last value.
 @example
 @ f:@{(0.1*x)+0.9*y@}      / ema
 @ 0. f\:1+!3
 0.9 1.89 2.889
-@ f:@{(`$,/$x),(`$,/$y)@} / join and collapse
+@ f:@{[x;y](`$,/$x),(`$,/$y)@} / join and collapse
 @ `x f\: `y0`y1`y2
 x     y0
 xy0   y1
+xy0y1 y2
+@ `x f/: `y0`y1`y2
 xy0y1 y2
 @end example
 @anchor{c scan}@section c(onverge) scan @result{} f\:x
@@ -1299,8 +1325,6 @@ Compute f[x], f[f[x]] and continue to call f[previous result] until the output c
 @  @{x*x@}\:.99
 0.99 0.9801 0.960596 0.9227447 0.8514578 0.7249803 0.5255965 0.2762517 0.07631498 0.005823977 3.391871e-05 1.150479e-09 1.323601e-18 1.751919e-36 3.069222e-72 9.420123e-144 8.873872e-287 0
 @end example
-@anchor{n over}@section n over @result{} x f/:y
-Same as n scan but only return last value.
 @anchor{c over}@section c(onverge) over @result{} f/:x
 Same as converge scan but only return last value.
 @anchor{vs}@section vs @result{} x\:y
