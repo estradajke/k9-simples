@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for Shakti (k9) build 2020.05.13.
+
+May 30, 2020
+
+Copyright (C) 2020 John Estrada -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Top (k9 simples)</title>
+
+<meta name="description" content="Top (k9 simples)">
+<meta name="keywords" content="Top (k9 simples)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="#Top" rel="start" title="Top">
+<link href="Errors.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Intro.html" rel="next" title="Intro">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<h1 class="settitle" align="center">k9 simples</h1>
+
+
+
+<span id="Top"></span><div class="header">
+<p>
+Next: <a href="Intro.html" accesskey="n" rel="next">Intro</a> &nbsp; [<a href="Errors.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<span id="k9_003a-Manual"></span><h1 class="top">k9: Manual</h1>
+<p>This document explains the usage of the k9 programming language in very simple terms and is intended for newer developers.  k9 is a rapidly evolving platform therefore newer versions may have additional functionality not covered in this document.
+</p>
+<p>This manual is for Shakti (k9) build 2020.05.13.<br>
+</p>
+<div class="format">
+<pre class="verbatim">2020.05.13 16GB (c) shakti
+ \
+Verb                      Adverb                 Noun            Type  System
+:                         '  each                bool  011b         b  \k
++  plus       flip        /  over/right sv       int   2 3 4        i  \l a.k
+-  minus      minus       \  scan/left  vs       float 2.3 0w       f  \v [d]
+*  times      first       ': eachprior           char  &quot; ab&quot;        c *\f [d]
+%  divide                 /: [n]over             sym   ``a`b        s  \w [x]
+&amp;  and        where       \: [n]scan             time  12:34:56.789 t  \t:n x
+|  or         reverse                            date  2024.01.01   D  \u:n x
+&lt;  less       asc         I/O                         
+&gt;  more       dsc         0: write/read line     List (2;3.4;`ab)   L  \fl line
+=  equal      group       1: write/read char     Dict [a:2;b:`ab]  ??  \fc char
+~  match      not         2: write/read data     Func {[x]+/x%#x}   .
+!  key        key         3: *set/conn
+,  cat        enlist      4: *get/http                        
+^  cut        sort
+$  value      string      $[c;t;f]      cond
+#  take       count       #[t;c;b[;a]]  select   table [[]a:`b`c]   T
+_  drop       floor      *_[t;c;b[;a]]  update  Ttable [[a:..]b:]  TT
+?  find       uniq       *?[x;i;f[;y]]  splice  Stable S! [[]...]  ST
+@  at         type        @[x;i;f[;y]]  amend                          \cd dir
+.  dot        eval        .[x;i;f[;y]]  dmend                          \\  exit
+/comment
+           Atomic            List/Dict     tolerant  RAND   
+monad: @,  $-~_              !*|&amp;+^&lt;&gt;=?#.   [!*|&amp;]a    ?n
+ dyad: @~  $+-*%&amp;|&lt;&gt;= L[@?]  !,^#_.        a[!#_,]a   n?x
+
+sqrt exp log sin cos; ema div mod bar in bin within
+count first last min max sum avg
+select A by B from T where C  (delete from T where C)
+
+roundtrip: `json?`json@(2.3;&quot;abc&quot;;.z.T) `k?`k@x `csv?`csv@x
+time/cuanto: 2m 2d ..   12:34:56.123456789 .z.[dtv]
+date/cuando: 2024.01.01T12:34:56.123456789 .z.[DTV]
+
+atom/list/dict/table (scalar/vector/matrix/tensor)
+limit: sym8(*256) 4K {[param8]local8 global32 const128 jump256}
+error: nyi class rank length type domain limit (value stack parse value)
+</pre></div>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="Intro.html" accesskey="1">Intro</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Intro
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Examples.html" accesskey="2">Examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Examples
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Nouns.html" accesskey="3">Nouns</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Data / Noun
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Verbs.html" accesskey="4">Verbs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Functions / Verbs
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Adverbs.html" accesskey="5">Adverbs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Function Modifiers / Adverbs
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Lists.html" accesskey="6">Lists</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Lists
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Dictionaries.html" accesskey="7">Dictionaries</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Dictionaries and Functions for Dictionaries
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="More-functions.html" accesskey="8">More functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">More functions
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="I_002fO.html" accesskey="9">I/O</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">I/O
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Tables_002fkSQL.html">Tables/kSQL</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Tables and kSQL
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="System.html">System</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">System
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Errors.html">Errors</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Errors
+</td></tr>
+</table>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Intro.html" accesskey="n" rel="next">Intro</a> &nbsp; [<a href="Errors.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+
+
+
+</body>
+</html>
