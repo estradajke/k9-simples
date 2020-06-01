@@ -1,7 +1,7 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
-This manual is for Shakti (k9) build 2020.05.13.
-May 30, 2020
+This manual is for Shakti (k9) build 2020.05.31.
+June 1, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -16,7 +16,7 @@ very simple terms and is intended for newer developers.  k9 is a
 rapidly evolving platform therefore newer versions may have additional
 functionality not covered in this document.
 
-   This manual is for Shakti (k9) build 2020.05.13.
+   This manual is for Shakti (k9) build 2020.05.31.
 
 2020.05.13 16GB (c) shakti
  \
@@ -329,7 +329,7 @@ way to determine if a map is either a lits or function is via the type
 function.  Lists and functions do not have the same type.
 
       l:3 4 7 12
-      f:{3+x*x}
+      f:{[x]3+x*x}
       l@2
      7
       f@2
@@ -2381,6 +2381,66 @@ Outer join key table/A_table x with key table/A_table y.
      b|9 7
      c|8 6
 
+10.6 Insert and Upsert
+======================
+
+One can add data to tables via insert or upsert.  The difference
+between the two is that insert adds data to a table while upsert will
+add or replace data to a keyed table.  Upsert adds when the key isn't
+present and replaces when the key is.
+
+10.6.1 insert => x,y
+--------------------
+
+Insert dictionary y into table x.
+      t:[[]c1:`a`b`a;c2:1 2 7];t
+     c1 c2
+     -- --
+     a   1
+     b   2
+     a   7
+
+      t,`c1`c2!(`a;12)
+     c1 c2
+     -- --
+     a   1
+     b   2
+     a   7
+     a  12
+
+      t,`c1`c2!(`c;12)
+     c1 c2
+     -- --
+     a   1
+     b   2
+     a   7
+     c  12
+
+10.6.2 upsert => x,y
+--------------------
+
+Insert dictionary y into keyed table x.
+      t:[[c1:`a`b`c]c2:1 2 7];t
+     c1|c2
+     --|--
+     a | 1
+     b | 2
+     c | 7
+
+      t,`c1`c2!(`a;12)
+     c1|c2
+     --|--
+     a |12
+     b | 2
+     c | 7
+
+      t,`c1`c2!(`b;12)
+     c1|c2
+     --|--
+     a | 1
+     b |12
+     c | 7
+
 
 File: k9.info,  Node: System,  Next: Errors,  Prev: Tables/kSQL,  Up: Top
 
@@ -2530,92 +2590,92 @@ Undefined variable is used.
 Tag Table:
 Node: Top170
 Node: Intro3030
-Node: Examples13544
-Node: Nouns18640
-Ref: bool20047
-Ref: int20347
-Ref: float20551
-Ref: date20896
-Ref: time21316
-Ref: datetime21930
-Ref: char22602
-Ref: sym22825
-Node: Verbs23238
-Ref: set24266
-Ref: plus24478
-Ref: flip24869
-Ref: minus25119
-Ref: times25382
-Ref: first25513
-Ref: divide25832
-Ref: and25969
-Ref: where26226
-Ref: or26610
-Ref: reverse26874
-Ref: less27044
-Ref: asc27306
-Ref: equal27502
-Ref: group27626
-Ref: match27872
-Ref: not28065
-Ref: key28182
-Ref: enum28400
-Ref: cat29693
-Ref: enlist29812
-Ref: cut29951
-Ref: sort30476
-Ref: cast30652
-Ref: string30841
-Ref: take30949
-Ref: count31279
-Ref: drop31469
-Ref: floor31792
-Ref: find31883
-Ref: unique32330
-Ref: at32567
-Ref: type32780
-Ref: apply33136
-Ref: value34117
-Node: Adverbs34397
-Ref: each34858
-Ref: scan35075
-Ref: left35615
-Ref: right35975
-Ref: eachprior36337
-Ref: n scan36739
-Ref: c scan37224
-Ref: c over37631
-Ref: vs37738
-Ref: sv37857
-Node: Lists37982
-Node: Dictionaries40419
-Node: More functions44732
-Ref: cond46679
-Ref: parse46797
-Ref: amend48072
-Ref: dmend48734
-Node: I/O49435
-Ref: input format49566
-Ref: format50577
-Ref: write line50981
-Ref: read line51366
-Ref: write char51551
-Ref: read char51944
-Ref: write data52306
-Ref: conn/set52353
-Ref: http/get52397
-Node: Tables/kSQL52443
-Ref: Tables52621
-Ref: A_Tables53151
-Ref: S_Tables53605
-Ref: kSQL54112
-Node: System56039
-Ref: Display56194
-Ref: Load File56441
-Ref: Variables56635
-Ref: Memory56736
-Ref: Timing56851
-Node: Errors56943
+Node: Examples13547
+Node: Nouns18643
+Ref: bool20050
+Ref: int20350
+Ref: float20554
+Ref: date20899
+Ref: time21319
+Ref: datetime21933
+Ref: char22605
+Ref: sym22828
+Node: Verbs23241
+Ref: set24269
+Ref: plus24481
+Ref: flip24872
+Ref: minus25122
+Ref: times25385
+Ref: first25516
+Ref: divide25835
+Ref: and25972
+Ref: where26229
+Ref: or26613
+Ref: reverse26877
+Ref: less27047
+Ref: asc27309
+Ref: equal27505
+Ref: group27629
+Ref: match27875
+Ref: not28068
+Ref: key28185
+Ref: enum28403
+Ref: cat29696
+Ref: enlist29815
+Ref: cut29954
+Ref: sort30479
+Ref: cast30655
+Ref: string30844
+Ref: take30952
+Ref: count31282
+Ref: drop31472
+Ref: floor31795
+Ref: find31886
+Ref: unique32333
+Ref: at32570
+Ref: type32783
+Ref: apply33139
+Ref: value34120
+Node: Adverbs34400
+Ref: each34861
+Ref: scan35078
+Ref: left35618
+Ref: right35978
+Ref: eachprior36340
+Ref: n scan36742
+Ref: c scan37227
+Ref: c over37634
+Ref: vs37741
+Ref: sv37860
+Node: Lists37985
+Node: Dictionaries40422
+Node: More functions44735
+Ref: cond46682
+Ref: parse46800
+Ref: amend48075
+Ref: dmend48737
+Node: I/O49438
+Ref: input format49569
+Ref: format50580
+Ref: write line50984
+Ref: read line51369
+Ref: write char51554
+Ref: read char51947
+Ref: write data52309
+Ref: conn/set52356
+Ref: http/get52400
+Node: Tables/kSQL52446
+Ref: Tables52624
+Ref: A_Tables53154
+Ref: S_Tables53608
+Ref: kSQL54115
+Node: System57008
+Ref: Display57163
+Ref: Load File57410
+Ref: Variables57604
+Ref: Memory57705
+Ref: Timing57820
+Node: Errors57912
 
 End Tag Table
 
