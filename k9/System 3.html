@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for Shakti (k9) build 2020.05.13.
+
+May 30, 2020
+
+Copyright (C) 2020 John Estrada -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>System (k9 simples)</title>
+
+<meta name="description" content="System (k9 simples)">
+<meta name="keywords" content="System (k9 simples)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Errors.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html" rel="up" title="Top">
+<link href="Errors.html" rel="next" title="Errors">
+<link href="Tables_002fkSQL.html" rel="prev" title="Tables/kSQL">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="System"></span><div class="header">
+<p>
+Next: <a href="Errors.html" accesskey="n" rel="next">Errors</a>, Previous: <a href="Tables_002fkSQL.html" accesskey="p" rel="prev">Tables/kSQL</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="Errors.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<span id="System-1"></span><h2 class="chapter">11 System</h2>
+<p>This chapter describes the system settings and functions.
+<span id="Display"></span></p><span id="Display-_21d2-_005ck"></span><h3 class="section">11.1 Display &rArr; \k</h3>
+<div class="example">
+<pre class="example">&nbsp;m:(100 101 102;3;14 15);d:`a`b!(1 2;3 4)
+&nbsp;\k 0
+&nbsp;m
+100 101 102
+3          
+14 15      
+
+&nbsp;d
+a|1 2
+b|3 4
+
+&nbsp;\k 1
+&nbsp;m
+(100 101 102;3;14 15)
+&nbsp;d
+[a:1 2;b:3 4]
+</pre></div>
+<span id="Load-File"></span><span id="Load-File_21d2-_005cl"></span><h3 class="section">11.2 Load File&rArr; \l</h3>
+<p>Load a text file of k9 commands.  The file name must end in .k.
+</p><div class="example">
+<pre class="example">&nbsp;\l func.k
+\l func.k
+&nbsp;\l func.k7  / will error as not .k
+error: nyi
+</pre></div>
+<span id="Variables"></span><span id="Variables-_21d2-_005cv"></span><h3 class="section">11.3 Variables &rArr; \v</h3>
+<p>List variables
+</p><div class="example">
+<pre class="example">a:1;b:2;c:3
+&nbsp;\v
+[v:`a`b`c]
+</pre></div>
+<span id="Memory"></span><span id="Memory-_21d2-_005cw"></span><h3 class="section">11.4 Memory &rArr; \w</h3>
+<p>List memory usage
+</p><div class="example">
+<pre class="example">&nbsp;\w
+0
+&nbsp;r:(`i$10e6)?10
+&nbsp;\w
+2097158
+</pre></div>
+<span id="Timing"></span><span id="Timing-_21d2-_005ct"></span><h3 class="section">11.5 Timing &rArr; \t</h3>
+<p>List time elapsed
+</p><div class="example">
+<pre class="example">&nbsp;\t ^(`i$1e7)?`i$1e8
+360
+</pre></div>
+
+
+
+</body>
+</html>
