@@ -1,7 +1,7 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
 This manual is for Shakti (k9) build 2020.05.31.
-June 1, 2020
+June 8, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -18,7 +18,7 @@ functionality not covered in this document.
 
    This manual is for Shakti (k9) build 2020.05.31.
 
-2020.05.13 16GB (c) shakti
+2020.05.31 16GB (c) shakti
  \
 Verb                      Adverb                 Noun            Type  System
 :                         '  each                bool  011b         b  \k
@@ -1355,6 +1355,10 @@ Value a string of valid k code or list of k code.
      0.2
      -4
      27
+      (!).(`a`b`c;1 2 3)
+     a|1
+     b|2
+     c|3
 
 
 File: k9.info,  Node: Adverbs,  Next: Lists,  Prev: Verbs,  Up: Top
@@ -2538,7 +2542,7 @@ Operations on unequal length lists that require equal length.
 Running code that is not yet implemented.  This may come from running
 code in this document with a different version of k9.
 
-   2020.04.08 (c) shakti
+   2020.05.31 (c) shakti
 
       =+`a`b!(1 2;1 3)
      a b|
@@ -2546,7 +2550,7 @@ code in this document with a different version of k9.
      1 1|0
      2 3|1
 
-   2020.05.03 (c) shakti
+   2020.05.31 (c) shakti
 
       =+`a`b!(1 2;1 3)
      =+`a`b!(1 2;1 3)
@@ -2636,46 +2640,46 @@ Ref: at32570
 Ref: type32783
 Ref: apply33139
 Ref: value34120
-Node: Adverbs34400
-Ref: each34861
-Ref: scan35078
-Ref: left35618
-Ref: right35978
-Ref: eachprior36340
-Ref: n scan36742
-Ref: c scan37227
-Ref: c over37634
-Ref: vs37741
-Ref: sv37860
-Node: Lists37985
-Node: Dictionaries40422
-Node: More functions44735
-Ref: cond46682
-Ref: parse46800
-Ref: amend48075
-Ref: dmend48737
-Node: I/O49438
-Ref: input format49569
-Ref: format50580
-Ref: write line50984
-Ref: read line51369
-Ref: write char51554
-Ref: read char51947
-Ref: write data52309
-Ref: conn/set52356
-Ref: http/get52400
-Node: Tables/kSQL52446
-Ref: Tables52624
-Ref: A_Tables53154
-Ref: S_Tables53608
-Ref: kSQL54115
-Node: System57008
-Ref: Display57163
-Ref: Load File57410
-Ref: Variables57604
-Ref: Memory57705
-Ref: Timing57820
-Node: Errors57912
+Node: Adverbs34452
+Ref: each34913
+Ref: scan35130
+Ref: left35670
+Ref: right36030
+Ref: eachprior36392
+Ref: n scan36794
+Ref: c scan37279
+Ref: c over37686
+Ref: vs37793
+Ref: sv37912
+Node: Lists38037
+Node: Dictionaries40474
+Node: More functions44787
+Ref: cond46734
+Ref: parse46852
+Ref: amend48127
+Ref: dmend48789
+Node: I/O49490
+Ref: input format49621
+Ref: format50632
+Ref: write line51036
+Ref: read line51421
+Ref: write char51606
+Ref: read char51999
+Ref: write data52361
+Ref: conn/set52408
+Ref: http/get52452
+Node: Tables/kSQL52498
+Ref: Tables52676
+Ref: A_Tables53206
+Ref: S_Tables53660
+Ref: kSQL54167
+Node: System57060
+Ref: Display57215
+Ref: Load File57462
+Ref: Variables57656
+Ref: Memory57757
+Ref: Timing57872
+Node: Errors57964
 
 End Tag Table
 

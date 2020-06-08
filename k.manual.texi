@@ -28,7 +28,7 @@ This manual is for Shakti (k9) build 2020.05.31.@*
 
 @smallformat
 @verbatim
-2020.05.13 16GB (c) shakti
+2020.05.31 16GB (c) shakti
  \
 Verb                      Adverb                 Noun            Type  System
 :                         '  each                bool  011b         b  \k
@@ -1211,7 +1211,11 @@ Value a string of valid k code or list of k code.
 @ .'(+p)
 0.2
 -4 
-27 
+27
+@ (!).(`a`b`c;1 2 3)
+a|1
+b|2
+c|3
 @end example
 
 @node Adverbs
@@ -2279,7 +2283,7 @@ error: length
 @section error: nyi
 Running code that is not yet implemented.  This may come from running code in this document with a different version of k9.
 
-2020.04.08 (c) shakti
+2020.05.31 (c) shakti
 
 @example
 @ =+`a`b!(1 2;1 3)
@@ -2289,7 +2293,7 @@ a b|
 2 3|1
 @end example
 
-2020.05.03 (c) shakti
+2020.05.31 (c) shakti
 
 @example
 @ =+`a`b!(1 2;1 3)
