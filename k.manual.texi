@@ -189,7 +189,7 @@ Here I will start up k9, perform some trivial calculations, and then close the s
 2020.04.01 (c) shakti
 @ n:10000                     / n data points
 @ s:`a`b`c                    / data for symbols a, b, and c
-@ q:+s!(-1+n?2;-1+n?2;-1+n?2) / table of returns (-1,0,1) for each symbol
+@ q:+s!(-1+n?3;-1+n?3;-1+n?3) / table of returns (-1,0,1) for each symbol
 @ q                           / print out the table
 a  b  c 
 -- -- --
@@ -204,7 +204,7 @@ a  b  c
 At this point you might want to check which symbol has the highest return, most variance, or any other analysis on the data.
 
 @example
-@ #'=q                          / count each unique a/b/c combination
+@ #'=+(+q)[]                         / count each unique a/b/c combination
 a  b  c |   
 -- -- --|---
  0  1  1|407

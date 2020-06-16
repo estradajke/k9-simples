@@ -1,7 +1,7 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
 This manual is for Shakti (k9) build 2020.05.31.
-June 8, 2020
+June 16, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -226,7 +226,7 @@ will have a k9 session running and working in repl mode.  Comments
      2020.04.01 (c) shakti
       n:10000                     / n data points
       s:`a`b`c                    / data for symbols a, b, and c
-      q:+s!(-1+n?2;-1+n?2;-1+n?2) / table of returns (-1,0,1) for each symbol
+      q:+s!(-1+n?3;-1+n?3;-1+n?3) / table of returns (-1,0,1) for each symbol
       q                           / print out the table
      a  b  c
      -- -- --
@@ -240,7 +240,7 @@ will have a k9 session running and working in repl mode.  Comments
    At this point you might want to check which symbol has the highest
 return, most variance, or any other analysis on the data.
 
-      #'=q                          / count each unique a/b/c combination
+      #'=+(+q)[]                         / count each unique a/b/c combination
      a  b  c |
      -- -- --|---
       0  1  1|407
@@ -2592,94 +2592,94 @@ Undefined variable is used.
 
 
 Tag Table:
-Node: Top170
-Node: Intro3030
-Node: Examples13547
-Node: Nouns18643
-Ref: bool20050
-Ref: int20350
-Ref: float20554
-Ref: date20899
-Ref: time21319
-Ref: datetime21933
-Ref: char22605
-Ref: sym22828
-Node: Verbs23241
-Ref: set24269
-Ref: plus24481
-Ref: flip24872
-Ref: minus25122
-Ref: times25385
-Ref: first25516
-Ref: divide25835
-Ref: and25972
-Ref: where26229
-Ref: or26613
-Ref: reverse26877
-Ref: less27047
-Ref: asc27309
-Ref: equal27505
-Ref: group27629
-Ref: match27875
-Ref: not28068
-Ref: key28185
-Ref: enum28403
-Ref: cat29696
-Ref: enlist29815
-Ref: cut29954
-Ref: sort30479
-Ref: cast30655
-Ref: string30844
-Ref: take30952
-Ref: count31282
-Ref: drop31472
-Ref: floor31795
-Ref: find31886
-Ref: unique32333
-Ref: at32570
-Ref: type32783
-Ref: apply33139
-Ref: value34120
-Node: Adverbs34452
-Ref: each34913
-Ref: scan35130
-Ref: left35670
-Ref: right36030
-Ref: eachprior36392
-Ref: n scan36794
-Ref: c scan37279
-Ref: c over37686
-Ref: vs37793
-Ref: sv37912
-Node: Lists38037
-Node: Dictionaries40474
-Node: More functions44787
-Ref: cond46734
-Ref: parse46852
-Ref: amend48127
-Ref: dmend48789
-Node: I/O49490
-Ref: input format49621
-Ref: format50632
-Ref: write line51036
-Ref: read line51421
-Ref: write char51606
-Ref: read char51999
-Ref: write data52361
-Ref: conn/set52408
-Ref: http/get52452
-Node: Tables/kSQL52498
-Ref: Tables52676
-Ref: A_Tables53206
-Ref: S_Tables53660
-Ref: kSQL54167
-Node: System57060
-Ref: Display57215
-Ref: Load File57462
-Ref: Variables57656
-Ref: Memory57757
-Ref: Timing57872
-Node: Errors57964
+Node: Top171
+Node: Intro3031
+Node: Examples13553
+Node: Nouns18649
+Ref: bool20056
+Ref: int20356
+Ref: float20560
+Ref: date20905
+Ref: time21325
+Ref: datetime21939
+Ref: char22611
+Ref: sym22834
+Node: Verbs23247
+Ref: set24275
+Ref: plus24487
+Ref: flip24878
+Ref: minus25128
+Ref: times25391
+Ref: first25522
+Ref: divide25841
+Ref: and25978
+Ref: where26235
+Ref: or26619
+Ref: reverse26883
+Ref: less27053
+Ref: asc27315
+Ref: equal27511
+Ref: group27635
+Ref: match27881
+Ref: not28074
+Ref: key28191
+Ref: enum28409
+Ref: cat29702
+Ref: enlist29821
+Ref: cut29960
+Ref: sort30485
+Ref: cast30661
+Ref: string30850
+Ref: take30958
+Ref: count31288
+Ref: drop31478
+Ref: floor31801
+Ref: find31892
+Ref: unique32339
+Ref: at32576
+Ref: type32789
+Ref: apply33145
+Ref: value34126
+Node: Adverbs34458
+Ref: each34919
+Ref: scan35136
+Ref: left35676
+Ref: right36036
+Ref: eachprior36398
+Ref: n scan36800
+Ref: c scan37285
+Ref: c over37692
+Ref: vs37799
+Ref: sv37918
+Node: Lists38043
+Node: Dictionaries40480
+Node: More functions44793
+Ref: cond46740
+Ref: parse46858
+Ref: amend48133
+Ref: dmend48795
+Node: I/O49496
+Ref: input format49627
+Ref: format50638
+Ref: write line51042
+Ref: read line51427
+Ref: write char51612
+Ref: read char52005
+Ref: write data52367
+Ref: conn/set52414
+Ref: http/get52458
+Node: Tables/kSQL52504
+Ref: Tables52682
+Ref: A_Tables53212
+Ref: S_Tables53666
+Ref: kSQL54173
+Node: System57066
+Ref: Display57221
+Ref: Load File57468
+Ref: Variables57662
+Ref: Memory57763
+Ref: Timing57878
+Node: Errors57970
 
 End Tag Table
 
