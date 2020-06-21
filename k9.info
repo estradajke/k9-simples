@@ -1,7 +1,7 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
 This manual is for Shakti (k9) build 2020.05.31.
-June 16, 2020
+June 21, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -249,11 +249,11 @@ return, most variance, or any other analysis on the data.
       0 -1 -1|391
       1  1  1|349
      ..
-      -1#+\q                       / calulate the return of each symbol
-     a   b   c
-     --- --- --
-     -68 117 73
-      {(+/m*m:x-avg x)%#x}'+q      / calulate the variance of each symbol
+      +-1#+\q                       / calulate the return of each symbol
+     a|-68
+     b|117
+     c|73
+      {[x](+/m*m:x-avg x)%#x}'+q      / calulate the variance of each symbol
      a|0.6601538
      b|0.6629631
      c|0.6708467
@@ -2594,92 +2594,92 @@ Undefined variable is used.
 Tag Table:
 Node: Top171
 Node: Intro3031
-Node: Examples13553
-Node: Nouns18649
-Ref: bool20056
-Ref: int20356
-Ref: float20560
-Ref: date20905
-Ref: time21325
-Ref: datetime21939
-Ref: char22611
-Ref: sym22834
-Node: Verbs23247
-Ref: set24275
-Ref: plus24487
-Ref: flip24878
-Ref: minus25128
-Ref: times25391
-Ref: first25522
-Ref: divide25841
-Ref: and25978
-Ref: where26235
-Ref: or26619
-Ref: reverse26883
-Ref: less27053
-Ref: asc27315
-Ref: equal27511
-Ref: group27635
-Ref: match27881
-Ref: not28074
-Ref: key28191
-Ref: enum28409
-Ref: cat29702
-Ref: enlist29821
-Ref: cut29960
-Ref: sort30485
-Ref: cast30661
-Ref: string30850
-Ref: take30958
-Ref: count31288
-Ref: drop31478
-Ref: floor31801
-Ref: find31892
-Ref: unique32339
-Ref: at32576
-Ref: type32789
-Ref: apply33145
-Ref: value34126
-Node: Adverbs34458
-Ref: each34919
-Ref: scan35136
-Ref: left35676
-Ref: right36036
-Ref: eachprior36398
-Ref: n scan36800
-Ref: c scan37285
-Ref: c over37692
-Ref: vs37799
-Ref: sv37918
-Node: Lists38043
-Node: Dictionaries40480
-Node: More functions44793
-Ref: cond46740
-Ref: parse46858
-Ref: amend48133
-Ref: dmend48795
-Node: I/O49496
-Ref: input format49627
-Ref: format50638
-Ref: write line51042
-Ref: read line51427
-Ref: write char51612
-Ref: read char52005
-Ref: write data52367
-Ref: conn/set52414
-Ref: http/get52458
-Node: Tables/kSQL52504
-Ref: Tables52682
-Ref: A_Tables53212
-Ref: S_Tables53666
-Ref: kSQL54173
-Node: System57066
-Ref: Display57221
-Ref: Load File57468
-Ref: Variables57662
-Ref: Memory57763
-Ref: Timing57878
-Node: Errors57970
+Node: Examples13542
+Node: Nouns18638
+Ref: bool20045
+Ref: int20345
+Ref: float20549
+Ref: date20894
+Ref: time21314
+Ref: datetime21928
+Ref: char22600
+Ref: sym22823
+Node: Verbs23236
+Ref: set24264
+Ref: plus24476
+Ref: flip24867
+Ref: minus25117
+Ref: times25380
+Ref: first25511
+Ref: divide25830
+Ref: and25967
+Ref: where26224
+Ref: or26608
+Ref: reverse26872
+Ref: less27042
+Ref: asc27304
+Ref: equal27500
+Ref: group27624
+Ref: match27870
+Ref: not28063
+Ref: key28180
+Ref: enum28398
+Ref: cat29691
+Ref: enlist29810
+Ref: cut29949
+Ref: sort30474
+Ref: cast30650
+Ref: string30839
+Ref: take30947
+Ref: count31277
+Ref: drop31467
+Ref: floor31790
+Ref: find31881
+Ref: unique32328
+Ref: at32565
+Ref: type32778
+Ref: apply33134
+Ref: value34115
+Node: Adverbs34447
+Ref: each34908
+Ref: scan35125
+Ref: left35665
+Ref: right36025
+Ref: eachprior36387
+Ref: n scan36789
+Ref: c scan37274
+Ref: c over37681
+Ref: vs37788
+Ref: sv37907
+Node: Lists38032
+Node: Dictionaries40469
+Node: More functions44782
+Ref: cond46729
+Ref: parse46847
+Ref: amend48122
+Ref: dmend48784
+Node: I/O49485
+Ref: input format49616
+Ref: format50627
+Ref: write line51031
+Ref: read line51416
+Ref: write char51601
+Ref: read char51994
+Ref: write data52356
+Ref: conn/set52403
+Ref: http/get52447
+Node: Tables/kSQL52493
+Ref: Tables52671
+Ref: A_Tables53201
+Ref: S_Tables53655
+Ref: kSQL54162
+Node: System57055
+Ref: Display57210
+Ref: Load File57457
+Ref: Variables57651
+Ref: Memory57752
+Ref: Timing57867
+Node: Errors57959
 
 End Tag Table
 
