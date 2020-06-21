@@ -49,13 +49,13 @@ Next: <a href="Dictionaries.html" accesskey="n" rel="next">Dictionaries</a>, Pre
 </div>
 <hr>
 <span id="Lists-1"></span><h2 class="chapter">6 Lists</h2>
-<p>k9 is optimized for operations on uniform lists of data.  In order to take full advantage one should store data in lists and operate on them without iteration.
+<p>k9 is optimized for operations on uniform lists of data.  In order to take full advantage one should store data in lists or derivatives of lists, eg. dictionaries or tables, and operate on them without explicit iteration.
 </p><span id="List-syntax"></span><h3 class="section">6.1 List syntax</h3>
 <p>In general, lists are created by data separated by semicolons and encased by parenthesis.  Uniform lists can use a simpler syntax of spaces between elements.
 </p><div class="example">
 <pre class="example">&nbsp;a:1 2 3
 &nbsp;b:(1;2;3)
-&nbsp;a~b             / are a and b the same
+&nbsp;a~b             / are a and b the same?
 1b
 &nbsp;@a             / uniform lists are upper case value an element
 `I
@@ -85,7 +85,8 @@ error: type
 </pre></div>
 <span id="Updating-List-Elements"></span><h3 class="section">6.3 Updating List Elements</h3>
 <p>Lists can be updated element wise but typically one is likely to be updating many elements and there is a syntax for doing so.
-</p><div class="example">
+</p>
+<div class="example">
 <pre class="example">&nbsp;a:2*1+!10
 &nbsp;a
 2 4 6 8 10 12 14 16 18 20
@@ -98,16 +99,20 @@ error: type
 0 400 0 8000 0 1200 0 16 0 20
 &nbsp;a:@[a;!#a;:;0];a
 </pre></div>
+
 <p>List amend syntax has a few options so will be explained in more detail.
-</p><ul>
+</p>
+<ul>
 <li> @[list;indices;value]
-</li><li> @[list;indices;identify function;value]
+</li><li> @[list;indices;identity function;value]
 </li><li> @[list;indices;function;value]
 </li></ul>
+
 <p>The first syntax sets the list at the indices to value.  The second syntax performs the same modificaiton but explicitly lists the identity function, :.  The third synatx is the same as the preceeding but uses an arbitrary fuction.
 </p>
 <p>Often the developer will need to determine which indices to modify and in cases where this isn&rsquo;t onerous it can be done in the function.
-</p><div class="example">
+</p>
+<div class="example">
 <pre class="example">&nbsp;a:2*1+!10
 &nbsp;@[a;&amp;a&lt;14;:;-3]
 -3 -3 -3 -3 -3 -3 14 16 18 20
@@ -120,7 +125,7 @@ error: length
 </pre></div>
 
 <span id="Fuction-of-Two-Lists"></span><h3 class="section">6.4 Fuction of Two Lists</h3>
-<p>This section will focus on functions (f) that operate on two lists (x and y).  
+<p>This section will focus on functions (f) that operate on two lists (x and y).  As these are internal functions examples will be shown with infix notation (x+y) but prefix notation (+[x;y]) is also permissible.
 </p>
 
 <span id="Pairwise"></span><h4 class="subsection">6.4.1 Pairwise</h4>

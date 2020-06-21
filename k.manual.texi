@@ -1349,13 +1349,13 @@ Convert list y (base x) into base 10.
 @end example
 @node Lists
 @chapter Lists
-k9 is optimized for operations on uniform lists of data.  In order to take full advantage one should store data in lists and operate on them without iteration.
+k9 is optimized for operations on uniform lists of data.  In order to take full advantage one should store data in lists or derivatives of lists, eg. dictionaries or tables, and operate on them without explicit iteration.
 @section List syntax
 In general, lists are created by data separated by semicolons and encased by parenthesis.  Uniform lists can use a simpler syntax of spaces between elements.
 @example
 @ a:1 2 3
 @ b:(1;2;3)
-@ a~b             / are a and b the same
+@ a~b             / are a and b the same?
 1b
 @ @@a             / uniform lists are upper case value an element
 `I
@@ -1385,6 +1385,7 @@ Lists can be indexed by using a few notations.
 @end example
 @section Updating List Elements
 Lists can be updated element wise but typically one is likely to be updating many elements and there is a syntax for doing so.
+
 @example
 @ a:2*1+!10
 @ a
@@ -1398,15 +1399,19 @@ Lists can be updated element wise but typically one is likely to be updating man
 0 400 0 8000 0 1200 0 16 0 20
 @ a:@@[a;!#a;:;0];a
 @end example
+
 List amend syntax has a few options so will be explained in more detail.
+
 @itemize
 @item @@[list;indices;value]
-@item @@[list;indices;identify function;value]
+@item @@[list;indices;identity function;value]
 @item @@[list;indices;function;value]
 @end itemize
+
 The first syntax sets the list at the indices to value.  The second syntax performs the same modificaiton but explicitly lists the identity function, :.  The third synatx is the same as the preceeding but uses an arbitrary fuction.
 
 Often the developer will need to determine which indices to modify and in cases where this isn't onerous it can be done in the function.
+
 @example
 @ a:2*1+!10
 @ @@[a;&a<14;:;-3]
@@ -1420,7 +1425,7 @@ error: length
 @end example
 
 @section Fuction of Two Lists
-This section will focus on functions (f) that operate on two lists (x and y).  
+This section will focus on functions (f) that operate on two lists (x and y).  As these are internal functions examples will be shown with infix notation (x+y) but prefix notation (+[x;y]) is also permissible.
 
 
 @subsection Pairwise
