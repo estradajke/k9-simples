@@ -1418,6 +1418,107 @@ error: length
 @ @@[!10;1 3;:;10 20 30]  / index and value array length mistmatch
 error: length
 @end example
+
+@section Fuction of Two Lists
+This section will focus on functions (f) that operate on two lists (x and y).  
+
+
+@subsection Pairwise
+These function only operates on x[i] and y[i] and thus requires that x and y are equal length.
+@itemize
+@item @t{x+y : Add}
+@item @t{x-y : Subtract}
+@item @t{x*y : Multiply}
+@item @t{x%y : Divide}
+@item @t{x&y : AND/Min}
+@item @t{x|y : OR/Max}
+@item @t{x>y : Greater Than}
+@item @t{x<y : Less Than}
+@item @t{x=y : Equals}
+@item @t{x!y : Dictionary}
+@item @t{x$y : Take}
+@end itemize
+
+@example
+@ x:1+!5;y:10-2*!5
+@ x
+1 2 3 4 5
+@ y
+10 8 6 4 2
+@ x+y
+11 10 9 8 7
+@ x-y
+-9 -6 -3 0 3
+@ x*y
+10 16 18 16 10
+@ x%y
+0.1 0.25 0.5 1 2.5f
+@ x&y
+1 2 3 4 2
+@ x|y
+10 8 6 4 5
+@ x>y
+00001b
+@ x<y
+11100b
+@ x=y
+00010b
+@ x!y
+1|10
+2| 8
+3| 6
+4| 4
+5| 2
+
+@ x$y
+10       
+8 8      
+6 6 6    
+4 4 4 4  
+2 2 2 2 2
+@end example
+
+@subsection Each Element of One List Compared to Entire Other List
+These functions compare x[i] to y or x to y[i] and f is not symmetric to its inputs, i.e. f[x;y] does not equal f[y;x];
+
+@itemize
+@item @t{x^y : Reshape all element in y by x}
+@item @t{x#y : List all elements in x that appear in y}
+@item @t{x?y : Find all elements in y from x}
+@end itemize
+
+@example
+@ x:0 2 5 10
+@ y:!20
+@ x^y
+0 1                          
+2 3 4                        
+5 6 7 8 9                    
+10 11 12 13 14 15 16 17 18 19
+
+@ x:2 8 20
+@ y:1 2 3 7 8 9
+@ x#y
+2 8
+@ x?y
+3 0 3 3 1 3
+@end example
+
+@subsection Each List Used Symmetrically
+These functions are symmetric in the inputs f[x;y]=f[y;x] and the lists are not required to be equal length.
+
+@itemize
+@item @t{x_y : Unique values to only one list}
+@end itemize
+
+@example
+@ x:2 8 20
+@ y:1 2 3 7 8 9
+@ x_y
+1 3 7 9
+@end example
+
+
 @node Dictionaries
 @chapter Dictionaries and Dictionary Functions
 Dictionaries are key-value pairs of data.  The values in the dictionary can be single elements or lists.  

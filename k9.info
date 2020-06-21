@@ -1591,6 +1591,104 @@ and in cases where this isn't onerous it can be done in the function.
       @[!10;1 3;:;10 20 30]  / index and value array length mistmatch
      error: length
 
+6.4 Fuction of Two Lists
+========================
+
+This section will focus on functions (f) that operate on two lists (x
+and y).
+
+6.4.1 Pairwise
+--------------
+
+These function only operates on x[i] and y[i] and thus requires that x
+and y are equal length.
+   * x+y : Add
+   * x-y : Subtract
+   * x*y : Multiply
+   * x%y : Divide
+   * x&y : AND/Min
+   * x|y : OR/Max
+   * x>y : Greater Than
+   * x<y : Less Than
+   * x=y : Equals
+   * x!y : Dictionary
+   * x$y : Take
+
+      x:1+!5;y:10-2*!5
+      x
+     1 2 3 4 5
+      y
+     10 8 6 4 2
+      x+y
+     11 10 9 8 7
+      x-y
+     -9 -6 -3 0 3
+      x*y
+     10 16 18 16 10
+      x%y
+     0.1 0.25 0.5 1 2.5f
+      x&y
+     1 2 3 4 2
+      x|y
+     10 8 6 4 5
+      x>y
+     00001b
+      x<y
+     11100b
+      x=y
+     00010b
+      x!y
+     1|10
+     2| 8
+     3| 6
+     4| 4
+     5| 2
+
+      x$y
+     10
+     8 8
+     6 6 6
+     4 4 4 4
+     2 2 2 2 2
+
+6.4.2 Each Element of One List Compared to Entire Other List
+------------------------------------------------------------
+
+These functions compare x[i] to y or x to y[i] and f is not symmetric
+to its inputs, i.e.  f[x;y] does not equal f[y;x];
+
+   * x^y : Reshape all element in y by x
+   * x#y : List all elements in x that appear in y
+   * x?y : Find all elements in y from x
+
+      x:0 2 5 10
+      y:!20
+      x^y
+     0 1
+     2 3 4
+     5 6 7 8 9
+     10 11 12 13 14 15 16 17 18 19
+
+      x:2 8 20
+      y:1 2 3 7 8 9
+      x#y
+     2 8
+      x?y
+     3 0 3 3 1 3
+
+6.4.3 Each List Used Symmetrically
+----------------------------------
+
+These functions are symmetric in the inputs f[x;y]=f[y;x] and the
+lists are not required to be equal length.
+
+   * x_y : Unique values to only one list
+
+      x:2 8 20
+      y:1 2 3 7 8 9
+      x_y
+     1 3 7 9
+
 
 File: k9.info,  Node: Dictionaries,  Next: More functions,  Prev: Lists,  Up: Top
 
@@ -2652,34 +2750,34 @@ Ref: c over37683
 Ref: vs37790
 Ref: sv37909
 Node: Lists38034
-Node: Dictionaries40471
-Node: More functions44784
-Ref: cond46731
-Ref: parse46849
-Ref: amend48124
-Ref: dmend48786
-Node: I/O49487
-Ref: input format49618
-Ref: format50629
-Ref: write line51033
-Ref: read line51418
-Ref: write char51603
-Ref: read char51996
-Ref: write data52358
-Ref: conn/set52405
-Ref: http/get52449
-Node: Tables/kSQL52495
-Ref: Tables52673
-Ref: A_Tables53203
-Ref: S_Tables53657
-Ref: kSQL54164
-Node: System57057
-Ref: Display57212
-Ref: Load File57459
-Ref: Variables57653
-Ref: Memory57754
-Ref: Timing57869
-Node: Errors57961
+Node: Dictionaries42228
+Node: More functions46541
+Ref: cond48488
+Ref: parse48606
+Ref: amend49881
+Ref: dmend50543
+Node: I/O51244
+Ref: input format51375
+Ref: format52386
+Ref: write line52790
+Ref: read line53175
+Ref: write char53360
+Ref: read char53753
+Ref: write data54115
+Ref: conn/set54162
+Ref: http/get54206
+Node: Tables/kSQL54252
+Ref: Tables54430
+Ref: A_Tables54960
+Ref: S_Tables55414
+Ref: kSQL55921
+Node: System58814
+Ref: Display58969
+Ref: Load File59216
+Ref: Variables59410
+Ref: Memory59511
+Ref: Timing59626
+Node: Errors59718
 
 End Tag Table
 
