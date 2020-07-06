@@ -1,7 +1,7 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
 This manual is for Shakti (k9) build 2020.05.31.
-June 21, 2020
+July 6, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -274,8 +274,8 @@ without.
 One will need to understand some basic rules of k9 in order to
 progress.  These will likely seem strange at first.
 
-1.6.1 The language is being changed often.
-------------------------------------------
+1.6.1 The language changes often.
+---------------------------------
 
 There may be examples in this document which work on the version
 idicated but do not with the version currently available to download.
@@ -1523,6 +1523,7 @@ explicit iteration.
 In general, lists are created by data separated by semicolons and
 encased by parenthesis.  Uniform lists can use a simpler syntax of
 spaces between elements.
+
       a:1 2 3
       b:(1;2;3)
       a~b             / are a and b the same?
@@ -1542,7 +1543,10 @@ spaces between elements.
 6.2 List Indexing
 =================
 
-Lists can be indexed by using a few notations.
+Lists can be indexed by using a few notations.  The  notation is often
+used as it's less characters than [] and the explicit  instead of
+space is likley more clear.
+
       a:2*1+!10  / 2 4 ... 20
       a[10]   / out of range return null
      0
@@ -2697,94 +2701,94 @@ Undefined variable is used.
 
 
 Tag Table:
-Node: Top171
-Node: Intro3031
-Node: Examples13544
-Node: Nouns18640
-Ref: bool20047
-Ref: int20347
-Ref: float20551
-Ref: date20896
-Ref: time21316
-Ref: datetime21930
-Ref: char22602
-Ref: sym22825
-Node: Verbs23238
-Ref: set24266
-Ref: plus24478
-Ref: flip24869
-Ref: minus25119
-Ref: times25382
-Ref: first25513
-Ref: divide25832
-Ref: and25969
-Ref: where26226
-Ref: or26610
-Ref: reverse26874
-Ref: less27044
-Ref: asc27306
-Ref: equal27502
-Ref: group27626
-Ref: match27872
-Ref: not28065
-Ref: key28182
-Ref: enum28400
-Ref: cat29693
-Ref: enlist29812
-Ref: cut29951
-Ref: sort30476
-Ref: cast30652
-Ref: string30841
-Ref: take30949
-Ref: count31279
-Ref: drop31469
-Ref: floor31792
-Ref: find31883
-Ref: unique32330
-Ref: at32567
-Ref: type32780
-Ref: apply33136
-Ref: value34117
-Node: Adverbs34449
-Ref: each34910
-Ref: scan35127
-Ref: left35667
-Ref: right36027
-Ref: eachprior36389
-Ref: n scan36791
-Ref: c scan37276
-Ref: c over37683
-Ref: vs37790
-Ref: sv37909
-Node: Lists38034
-Node: Dictionaries42441
-Node: More functions46754
-Ref: cond48701
-Ref: parse48819
-Ref: amend50094
-Ref: dmend50756
-Node: I/O51457
-Ref: input format51588
-Ref: format52599
-Ref: write line53003
-Ref: read line53388
-Ref: write char53573
-Ref: read char53966
-Ref: write data54328
-Ref: conn/set54375
-Ref: http/get54419
-Node: Tables/kSQL54465
-Ref: Tables54643
-Ref: A_Tables55173
-Ref: S_Tables55627
-Ref: kSQL56134
-Node: System59027
-Ref: Display59182
-Ref: Load File59429
-Ref: Variables59623
-Ref: Memory59724
-Ref: Timing59839
-Node: Errors59931
+Node: Top170
+Node: Intro3030
+Node: Examples13525
+Node: Nouns18621
+Ref: bool20028
+Ref: int20328
+Ref: float20532
+Ref: date20877
+Ref: time21297
+Ref: datetime21911
+Ref: char22583
+Ref: sym22806
+Node: Verbs23219
+Ref: set24247
+Ref: plus24459
+Ref: flip24850
+Ref: minus25100
+Ref: times25363
+Ref: first25494
+Ref: divide25813
+Ref: and25950
+Ref: where26207
+Ref: or26591
+Ref: reverse26855
+Ref: less27025
+Ref: asc27287
+Ref: equal27483
+Ref: group27607
+Ref: match27853
+Ref: not28046
+Ref: key28163
+Ref: enum28381
+Ref: cat29674
+Ref: enlist29793
+Ref: cut29932
+Ref: sort30457
+Ref: cast30633
+Ref: string30822
+Ref: take30930
+Ref: count31260
+Ref: drop31450
+Ref: floor31773
+Ref: find31864
+Ref: unique32311
+Ref: at32548
+Ref: type32761
+Ref: apply33117
+Ref: value34098
+Node: Adverbs34430
+Ref: each34891
+Ref: scan35108
+Ref: left35648
+Ref: right36008
+Ref: eachprior36370
+Ref: n scan36772
+Ref: c scan37257
+Ref: c over37664
+Ref: vs37771
+Ref: sv37890
+Node: Lists38015
+Node: Dictionaries42542
+Node: More functions46855
+Ref: cond48802
+Ref: parse48920
+Ref: amend50195
+Ref: dmend50857
+Node: I/O51558
+Ref: input format51689
+Ref: format52700
+Ref: write line53104
+Ref: read line53489
+Ref: write char53674
+Ref: read char54067
+Ref: write data54429
+Ref: conn/set54476
+Ref: http/get54520
+Node: Tables/kSQL54566
+Ref: Tables54744
+Ref: A_Tables55274
+Ref: S_Tables55728
+Ref: kSQL56235
+Node: System59128
+Ref: Display59283
+Ref: Load File59530
+Ref: Variables59724
+Ref: Memory59825
+Ref: Timing59940
+Node: Errors60032
 
 End Tag Table
 

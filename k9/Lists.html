@@ -2,16 +2,16 @@
 <html>
 <!-- This manual is for Shakti (k9) build 2020.05.31.
 
-June 21, 2020
+July 6, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Lists (k9 simples)</title>
+<title>Lists (Shakti tutorial)</title>
 
-<meta name="description" content="Lists (k9 simples)">
-<meta name="keywords" content="Lists (k9 simples)">
+<meta name="description" content="Lists (Shakti tutorial)">
+<meta name="keywords" content="Lists (Shakti tutorial)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
@@ -52,7 +52,8 @@ Next: <a href="Dictionaries.html" accesskey="n" rel="next">Dictionaries</a>, Pre
 <p>k9 is optimized for operations on uniform lists of data.  In order to take full advantage one should store data in lists or derivatives of lists, eg. dictionaries or tables, and operate on them without explicit iteration.
 </p><span id="List-syntax"></span><h3 class="section">6.1 List syntax</h3>
 <p>In general, lists are created by data separated by semicolons and encased by parenthesis.  Uniform lists can use a simpler syntax of spaces between elements.
-</p><div class="example">
+</p>
+<div class="example">
 <pre class="example">&nbsp;a:1 2 3
 &nbsp;b:(1;2;3)
 &nbsp;a~b             / are a and b the same?
@@ -69,9 +70,11 @@ Next: <a href="Dictionaries.html" accesskey="n" rel="next">Dictionaries</a>, Pre
 &nbsp;c:1i 2f &quot;c&quot; `d  / incorrect syntax for nonuniform list
 error: type
 </pre></div>
+
 <span id="List-Indexing"></span><h3 class="section">6.2 List Indexing</h3>
-<p>Lists can be indexed by using a few notations.
-</p><div class="example">
+<p>Lists can be indexed by using a few notations.  The &nbsp;notation is often used as it&rsquo;s less characters than [] and the explicit &nbsp;instead of space is likley more clear.
+</p>
+<div class="example">
 <pre class="example">&nbsp;a:2*1+!10  / 2 4 ... 20
 &nbsp;a[10]   / out of range return null
 0

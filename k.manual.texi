@@ -1,6 +1,6 @@
 \input texinfo
 @setfilename k9.info
-@settitle k9 simples
+@settitle Shakti tutorial
 @codequotebacktick on
 
 @copying
@@ -11,7 +11,7 @@ Copyright @copyright{} 2020 John Estrada
 @end copying
 
 @titlepage
-@title k9 simples
+@title Shakti tutorial
 @author John Estrada
 @page
 @vskip 0pt plus 1filll
@@ -233,7 +233,7 @@ This document uses a number of examples to help clarify k9.  The sytax is that i
 @section k9 nuances
 One will need to understand some basic rules of k9 in order to progress.  These will likely seem strange at first.
 
-@subsection The language is being changed often.
+@subsection The language changes often.
 There may be examples in this document which work on the version idicated but do not with the version currently available to download.  If so, then feel free to drop the author a note.  Items which currently error but are likley to come back 'soon' will be left in the document.
 
 @subsection @code{:} is used to set a variable to a value
@@ -1352,6 +1352,7 @@ Convert list y (base x) into base 10.
 k9 is optimized for operations on uniform lists of data.  In order to take full advantage one should store data in lists or derivatives of lists, eg. dictionaries or tables, and operate on them without explicit iteration.
 @section List syntax
 In general, lists are created by data separated by semicolons and encased by parenthesis.  Uniform lists can use a simpler syntax of spaces between elements.
+
 @example
 @ a:1 2 3
 @ b:(1;2;3)
@@ -1369,8 +1370,10 @@ In general, lists are created by data separated by semicolons and encased by par
 @ c:1i 2f "c" `d  / incorrect syntax for nonuniform list
 error: type
 @end example
+
 @section List Indexing
-Lists can be indexed by using a few notations.
+Lists can be indexed by using a few notations.  The @ notation is often used as it's less characters than [] and the explicit @ instead of space is likley more clear.
+
 @example
 @ a:2*1+!10  / 2 4 ... 20
 @ a[10]   / out of range return null
