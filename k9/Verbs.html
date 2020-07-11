@@ -2,7 +2,7 @@
 <html>
 <!-- This manual is for Shakti (k9) build 2020.05.31.
 
-July 6, 2020
+July 11, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -608,19 +608,23 @@ x30 x31
 <div class="example">
 <pre class="example">&nbsp;.&quot;3+2&quot;
 5
+
 &nbsp;.&quot;20*1+!3&quot;
 20 40 60
+
 &nbsp;.(*;16;3)
 48
-&nbsp;n:3;p:(n?(+;-;*;%);1+n?10;1+n?10);p
-%  - *
-2  4 9
-10 8 3
 
-&nbsp;.'(+p)
-0.2
--4 
-27
+&nbsp;n:3;p:+(n?(+;-;*;%);1+n?10;1+n?10);p
+% 6 3
+* 2 7
+- 5 5
+
+&nbsp;.'p
+2 
+14
+0 
+
 &nbsp;(!).(`a`b`c;1 2 3)
 a|1
 b|2
