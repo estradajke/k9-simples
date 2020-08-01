@@ -640,7 +640,7 @@ Data types can not only represent in-range values but also null and out-of-range
 
 @node Verbs
 @chapter Functions / Verbs
-This chapter explains all functions, aka verbs.  Most functions are overloaded and change depending on the number and type of arguments.
+This chapter explains functions, aka verbs.  Most functions are overloaded and change depending on the number and type of arguments.
 
 @example
 Verb
@@ -991,9 +991,16 @@ Create a list from x
 0b
 @end example
 @anchor{cut}@section cut @result{} x^y
-Reshape a list y by indices x or add key x to table y.
+Reshape a list y by size x, indices x or add key x to table y.
 
 @example
+@ 3^!18
+ 0  1  2
+ 3  4  5
+ 6  7  8
+ 9 10 11
+12 13 14
+15 16 17
 @ 0 1 5^0 1 2 3 4 5 6 7 8 9
 0        
 1 2 3 4  
@@ -1219,7 +1226,7 @@ Value a string of valid k code or list of k code.
 @ (!).(`a`b`c;1 2 3)
 a|1
 b|2
-c|3
+c|3u
 @end example
 
 @node Adverbs
@@ -2098,8 +2105,30 @@ a b
 1 3
 2 4
 @end example
-@anchor{write data}@section write data @result{} 2:
-TBD
+@anchor{write data}@section Call shared library @result{} x 2: y
+Load shared library x with dictionary y. 
+
+Contents of file 'a.c'
+@example
+int add1(int x)@{return 1+x;@}
+int add2(int x)@{return 2+x;@}
+int indx(int x[],int y)@{return x[y];@}
+@end example
+
+Compile into a shared library (done on macos here)
+@example
+% clang -dynamiclib -o a.so a.c
+@end example
+
+Load the shared library into the session.
+@example
+@ f:"./dev/a.so"2:@{add1:"i";add2:"i";indx:"Ii"@}
+@ f[`add1] 12
+13
+@ f[`indx][12 13 14;2]
+14
+@end example
+
 @anchor{conn/set}@section conn/set @result{} 3:
 TBD
 @anchor{http/get}@section http/get @result{} 4:

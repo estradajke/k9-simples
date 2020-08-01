@@ -1,7 +1,7 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
 This manual is for Shakti (k9) build 2020.05.31.
-July 11, 2020
+August 1, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -743,7 +743,7 @@ File: k9.info,  Node: Verbs,  Next: Adverbs,  Prev: Nouns,  Up: Top
 4 Functions / Verbs
 *******************
 
-This chapter explains all functions, aka verbs.  Most functions are
+This chapter explains functions, aka verbs.  Most functions are
 overloaded and change depending on the number and type of arguments.
 
      Verb
@@ -1119,8 +1119,15 @@ Create a list from x
 4.22 cut => x^y
 ===============
 
-Reshape a list y by indices x or add key x to table y.
+Reshape a list y by size x, indices x or add key x to table y.
 
+      3^!18
+      0  1  2
+      3  4  5
+      6  7  8
+      9 10 11
+     12 13 14
+     15 16 17
       0 1 5^0 1 2 3 4 5 6 7 8 9
      0
      1 2 3 4
@@ -1362,7 +1369,7 @@ Value a string of valid k code or list of k code.
       (!).(`a`b`c;1 2 3)
      a|1
      b|2
-     c|3
+     c|3u
 
 
 File: k9.info,  Node: Adverbs,  Next: Lists,  Prev: Verbs,  Up: Top
@@ -2306,10 +2313,25 @@ Read from file x.
      1 3
      2 4
 
-9.7 write data => 2:
-====================
+9.7 Call shared library => x 2: y
+=================================
 
-TBD
+Load shared library x with dictionary y.
+
+   Contents of file 'a.c'
+     int add1(int x){return 1+x;}
+     int add2(int x){return 2+x;}
+     int indx(int x[],int y){return x[y];}
+
+   Compile into a shared library (done on macos here)
+     % clang -dynamiclib -o a.so a.c
+
+   Load the shared library into the session.
+      f:"./dev/a.so"2:{add1:"i";add2:"i";indx:"Ii"}
+      f[`add1] 12
+     13
+      f[`indx][12 13 14;2]
+     14
 
 9.8 conn/set => 3:
 ==================
@@ -2705,94 +2727,94 @@ Undefined variable is used.
 
 
 Tag Table:
-Node: Top171
-Node: Intro3031
-Node: Examples13526
-Node: Nouns18622
-Ref: bool20029
-Ref: int20329
-Ref: float20533
-Ref: date20878
-Ref: time21298
-Ref: datetime21912
-Ref: char22584
-Ref: sym22807
-Node: Verbs23220
-Ref: set24248
-Ref: plus24460
-Ref: flip24851
-Ref: minus25101
-Ref: times25364
-Ref: first25495
-Ref: divide25814
-Ref: and25951
-Ref: where26208
-Ref: or26592
-Ref: reverse26856
-Ref: less27026
-Ref: asc27288
-Ref: equal27484
-Ref: group27608
-Ref: match27854
-Ref: not28047
-Ref: key28164
-Ref: enum28382
-Ref: cat29675
-Ref: enlist29794
-Ref: cut29933
-Ref: sort30458
-Ref: cast30634
-Ref: string30823
-Ref: take30931
-Ref: count31261
-Ref: drop31451
-Ref: floor31774
-Ref: find31865
-Ref: unique32312
-Ref: at32549
-Ref: type32762
-Ref: apply33118
-Ref: value34099
-Node: Adverbs34427
-Ref: each34888
-Ref: scan35105
-Ref: left35645
-Ref: right36005
-Ref: eachprior36367
-Ref: n scan36769
-Ref: c scan37254
-Ref: c over37661
-Ref: vs37768
-Ref: sv37887
-Node: Lists38012
-Node: Dictionaries42539
-Node: More functions46852
-Ref: cond48799
-Ref: parse48917
-Ref: amend50192
-Ref: dmend50854
-Node: I/O51555
-Ref: input format51686
-Ref: format52697
-Ref: write line53101
-Ref: read line53486
-Ref: write char53671
-Ref: read char54064
-Ref: write data54426
-Ref: conn/set54473
-Ref: http/get54517
-Node: Tables/kSQL54563
-Ref: Tables54741
-Ref: A_Tables55271
-Ref: S_Tables55725
-Ref: kSQL56232
-Node: System59125
-Ref: Display59280
-Ref: Load File59527
-Ref: Variables59721
-Ref: Memory59822
-Ref: Timing59937
-Node: Errors60029
+Node: Top172
+Node: Intro3032
+Node: Examples13527
+Node: Nouns18623
+Ref: bool20030
+Ref: int20330
+Ref: float20534
+Ref: date20879
+Ref: time21299
+Ref: datetime21913
+Ref: char22585
+Ref: sym22808
+Node: Verbs23221
+Ref: set24245
+Ref: plus24457
+Ref: flip24848
+Ref: minus25098
+Ref: times25361
+Ref: first25492
+Ref: divide25811
+Ref: and25948
+Ref: where26205
+Ref: or26589
+Ref: reverse26853
+Ref: less27023
+Ref: asc27285
+Ref: equal27481
+Ref: group27605
+Ref: match27851
+Ref: not28044
+Ref: key28161
+Ref: enum28379
+Ref: cat29672
+Ref: enlist29791
+Ref: cut29930
+Ref: sort30559
+Ref: cast30735
+Ref: string30924
+Ref: take31032
+Ref: count31362
+Ref: drop31552
+Ref: floor31875
+Ref: find31966
+Ref: unique32413
+Ref: at32650
+Ref: type32863
+Ref: apply33219
+Ref: value34200
+Node: Adverbs34529
+Ref: each34990
+Ref: scan35207
+Ref: left35747
+Ref: right36107
+Ref: eachprior36469
+Ref: n scan36871
+Ref: c scan37356
+Ref: c over37763
+Ref: vs37870
+Ref: sv37989
+Node: Lists38114
+Node: Dictionaries42641
+Node: More functions46954
+Ref: cond48901
+Ref: parse49019
+Ref: amend50294
+Ref: dmend50956
+Node: I/O51657
+Ref: input format51788
+Ref: format52799
+Ref: write line53203
+Ref: read line53588
+Ref: write char53773
+Ref: read char54166
+Ref: write data54528
+Ref: conn/set55029
+Ref: http/get55071
+Node: Tables/kSQL55117
+Ref: Tables55295
+Ref: A_Tables55825
+Ref: S_Tables56279
+Ref: kSQL56786
+Node: System59679
+Ref: Display59834
+Ref: Load File60081
+Ref: Variables60275
+Ref: Memory60376
+Ref: Timing60491
+Node: Errors60583
 
 End Tag Table
 

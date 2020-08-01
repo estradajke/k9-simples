@@ -2,7 +2,7 @@
 <html>
 <!-- This manual is for Shakti (k9) build 2020.05.31.
 
-July 11, 2020
+August 1, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -49,7 +49,7 @@ Next: <a href="Adverbs.html" accesskey="n" rel="next">Adverbs</a>, Previous: <a 
 </div>
 <hr>
 <span id="Functions-_002f-Verbs"></span><h2 class="chapter">4 Functions / Verbs</h2>
-<p>This chapter explains all functions, aka verbs.  Most functions are overloaded and change depending on the number and type of arguments.
+<p>This chapter explains functions, aka verbs.  Most functions are overloaded and change depending on the number and type of arguments.
 </p>
 <div class="example">
 <pre class="example">Verb
@@ -400,10 +400,17 @@ b|3 4
 0b
 </pre></div>
 <span id="cut"></span><span id="cut-_21d2-x_005ey"></span><h3 class="section">4.22 cut &rArr; x^y</h3>
-<p>Reshape a list y by indices x or add key x to table y.
+<p>Reshape a list y by size x, indices x or add key x to table y.
 </p>
 <div class="example">
-<pre class="example">&nbsp;0 1 5^0 1 2 3 4 5 6 7 8 9
+<pre class="example">&nbsp;3^!18
+ 0  1  2
+ 3  4  5
+ 6  7  8
+ 9 10 11
+12 13 14
+15 16 17
+&nbsp;0 1 5^0 1 2 3 4 5 6 7 8 9
 0        
 1 2 3 4  
 5 6 7 8 9
@@ -628,7 +635,7 @@ x30 x31
 &nbsp;(!).(`a`b`c;1 2 3)
 a|1
 b|2
-c|3
+c|3u
 </pre></div>
 
 <hr>
