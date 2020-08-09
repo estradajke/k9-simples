@@ -1,7 +1,7 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
 This manual is for Shakti (k9) build 2020.05.31.
-August 1, 2020
+August 9, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -1193,16 +1193,21 @@ Cast x to string.
 4.26 take => x#y
 ================
 
-First (last) x elements of y if x is positive (negative).  If x is a
-list then returns any values in both x and y.
-      3#0 1 2 3 4 5          / first three
+Take is used to return a subset of list y depending if x is a atom,
+list, or function.  If x is an atom, then postive (negative) x returns
+the first (last) x elements of y.  If x is a list, then returns any
+values common in both x and y.  If x is a function, then filter out
+values where the funtion is non-zero.
+      3#0 1 2 3 4 5          / take first
      0 1 2
-      -3#0 1 2 3 4 5         / last three
+      -3#0 1 2 3 4 5         / take last
      3 4 5
       2#"hello"
      "he"
-      (1 2 3 7 8 9)#(2 8 20) / union
+      (1 2 3 7 8 9)#(2 8 20) / common
      2 8
+      (0.5<)#10?1.           / filter
+     0.840732 0.5330717 0.7539563 0.643315 0.6993048f
 
 4.27 count => #x
 ================
@@ -1218,17 +1223,21 @@ Count the number of elements in x.
 4.28 drop => x_y
 ================
 
-Return the list y without the first (last) x elements if x is positive
-(negative).  If x is a list then returns any values from y not in x.
-      3_0 1 2 3 4 5
+Drop is used to remove a subset of list y depending if x is a atom,
+list, or function.  If x is an atom, then postive (negative) x removes
+the first (last) x elements of y.  If x is a list, then remove any
+values in x from y.  If x is a function, then remove values where the
+funtion is non-zero.
+      3_0 1 2 3 4 5          / drop first
      3 4 5
-      -3_0 1 2 3 4 5
+      -3_0 1 2 3 4 5         / drop last
      0 1 2
-      a:3;b:0 9 1 8 2 7;
-      a_b
-     8 2 7
-      (1 2 3 7 8 9)_(2 8 20)
+      2#"hello"
+     "he"
+      (1 2 3 7 8 9)_(2 8 20) / drop common
      ,20
+      (0.5<)_10?1.           / drop true
+     0.4004211 0.2929524f
 
 4.29 floor => _x
 ================
@@ -2766,55 +2775,55 @@ Ref: sort30559
 Ref: cast30735
 Ref: string30924
 Ref: take31032
-Ref: count31362
-Ref: drop31552
-Ref: floor31875
-Ref: find31966
-Ref: unique32413
-Ref: at32650
-Ref: type32863
-Ref: apply33219
-Ref: value34200
-Node: Adverbs34529
-Ref: each34990
-Ref: scan35207
-Ref: left35747
-Ref: right36107
-Ref: eachprior36469
-Ref: n scan36871
-Ref: c scan37356
-Ref: c over37763
-Ref: vs37870
-Ref: sv37989
-Node: Lists38114
-Node: Dictionaries42641
-Node: More functions46954
-Ref: cond48901
-Ref: parse49019
-Ref: amend50294
-Ref: dmend50956
-Node: I/O51657
-Ref: input format51788
-Ref: format52799
-Ref: write line53203
-Ref: read line53588
-Ref: write char53773
-Ref: read char54166
-Ref: write data54528
-Ref: conn/set55029
-Ref: http/get55071
-Node: Tables/kSQL55117
-Ref: Tables55295
-Ref: A_Tables55825
-Ref: S_Tables56279
-Ref: kSQL56786
-Node: System59679
-Ref: Display59834
-Ref: Load File60081
-Ref: Variables60275
-Ref: Memory60376
-Ref: Timing60491
-Node: Errors60583
+Ref: count31651
+Ref: drop31841
+Ref: floor32424
+Ref: find32515
+Ref: unique32962
+Ref: at33199
+Ref: type33412
+Ref: apply33768
+Ref: value34749
+Node: Adverbs35078
+Ref: each35539
+Ref: scan35756
+Ref: left36296
+Ref: right36656
+Ref: eachprior37018
+Ref: n scan37420
+Ref: c scan37905
+Ref: c over38312
+Ref: vs38419
+Ref: sv38538
+Node: Lists38663
+Node: Dictionaries43190
+Node: More functions47503
+Ref: cond49450
+Ref: parse49568
+Ref: amend50843
+Ref: dmend51505
+Node: I/O52206
+Ref: input format52337
+Ref: format53348
+Ref: write line53752
+Ref: read line54137
+Ref: write char54322
+Ref: read char54715
+Ref: write data55077
+Ref: conn/set55578
+Ref: http/get55620
+Node: Tables/kSQL55666
+Ref: Tables55844
+Ref: A_Tables56374
+Ref: S_Tables56828
+Ref: kSQL57335
+Node: System60228
+Ref: Display60383
+Ref: Load File60630
+Ref: Variables60824
+Ref: Memory60925
+Ref: Timing61040
+Node: Errors61132
 
 End Tag Table
 

@@ -1064,16 +1064,18 @@ d
 "4.7"
 @end example
 @anchor{take}@section take @result{} x#y
-First (last) x elements of y if x is positive (negative).  If x is a list then returns any values in both x and y.
+Take is used to return a subset of list y depending if x is a atom, list, or function.  If x is an atom, then postive (negative) x returns the first (last) x elements of y.  If x is a list, then returns any values common in both x and y. If x is a function, then filter out values where the funtion is non-zero.
 @example
-@ 3#0 1 2 3 4 5          / first three
+@ 3#0 1 2 3 4 5          / take first
 0 1 2
-@ -3#0 1 2 3 4 5         / last three
+@ -3#0 1 2 3 4 5         / take last
 3 4 5
 @ 2#"hello"
 "he"
-@ (1 2 3 7 8 9)#(2 8 20) / union
+@ (1 2 3 7 8 9)#(2 8 20) / common
 2 8
+@ (0.5<)#10?1.           / filter
+0.840732 0.5330717 0.7539563 0.643315 0.6993048f
 @end example
 @anchor{count}@section count @result{} #x
 Count the number of elements in x.
@@ -1086,17 +1088,18 @@ Count the number of elements in x.
 2
 @end example
 @anchor{drop}@section drop @result{} x_y
-Return the list y without the first (last) x elements if x is positive (negative).  If x is a list then returns any values from y not in x.
+Drop is used to remove a subset of list y depending if x is a atom, list, or function.  If x is an atom, then postive (negative) x removes the first (last) x elements of y.  If x is a list, then remove any values in x from y. If x is a function, then remove values where the funtion is non-zero.
 @example
-@ 3_0 1 2 3 4 5
+@ 3_0 1 2 3 4 5          / drop first
 3 4 5
-@ -3_0 1 2 3 4 5
+@ -3_0 1 2 3 4 5         / drop last
 0 1 2
-@ a:3;b:0 9 1 8 2 7;
-@ a_b
-8 2 7
-@ (1 2 3 7 8 9)_(2 8 20)
+@ 2#"hello"
+"he"
+@ (1 2 3 7 8 9)_(2 8 20) / drop common
 ,20
+@ (0.5<)_10?1.           / drop true
+0.4004211 0.2929524f
 @end example
 @anchor{floor}@section floor @result{} _x
 Return the integer floor of float x.

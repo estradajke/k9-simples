@@ -2,7 +2,7 @@
 <html>
 <!-- This manual is for Shakti (k9) build 2020.05.31.
 
-August 1, 2020
+August 9, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -473,16 +473,18 @@ d
 &quot;4.7&quot;
 </pre></div>
 <span id="take"></span><span id="take-_21d2-x_0023y"></span><h3 class="section">4.26 take &rArr; x#y</h3>
-<p>First (last) x elements of y if x is positive (negative).  If x is a list then returns any values in both x and y.
+<p>Take is used to return a subset of list y depending if x is a atom, list, or function.  If x is an atom, then postive (negative) x returns the first (last) x elements of y.  If x is a list, then returns any values common in both x and y. If x is a function, then filter out values where the funtion is non-zero.
 </p><div class="example">
-<pre class="example">&nbsp;3#0 1 2 3 4 5          / first three
+<pre class="example">&nbsp;3#0 1 2 3 4 5          / take first
 0 1 2
-&nbsp;-3#0 1 2 3 4 5         / last three
+&nbsp;-3#0 1 2 3 4 5         / take last
 3 4 5
 &nbsp;2#&quot;hello&quot;
 &quot;he&quot;
-&nbsp;(1 2 3 7 8 9)#(2 8 20) / union
+&nbsp;(1 2 3 7 8 9)#(2 8 20) / common
 2 8
+&nbsp;(0.5&lt;)#10?1.           / filter
+0.840732 0.5330717 0.7539563 0.643315 0.6993048f
 </pre></div>
 <span id="count"></span><span id="count-_21d2-_0023x"></span><h3 class="section">4.27 count &rArr; #x</h3>
 <p>Count the number of elements in x.
@@ -495,17 +497,18 @@ d
 2
 </pre></div>
 <span id="drop"></span><span id="drop-_21d2-x_005fy"></span><h3 class="section">4.28 drop &rArr; x_y</h3>
-<p>Return the list y without the first (last) x elements if x is positive (negative).  If x is a list then returns any values from y not in x.
+<p>Drop is used to remove a subset of list y depending if x is a atom, list, or function.  If x is an atom, then postive (negative) x removes the first (last) x elements of y.  If x is a list, then remove any values in x from y. If x is a function, then remove values where the funtion is non-zero.
 </p><div class="example">
-<pre class="example">&nbsp;3_0 1 2 3 4 5
+<pre class="example">&nbsp;3_0 1 2 3 4 5          / drop first
 3 4 5
-&nbsp;-3_0 1 2 3 4 5
+&nbsp;-3_0 1 2 3 4 5         / drop last
 0 1 2
-&nbsp;a:3;b:0 9 1 8 2 7;
-&nbsp;a_b
-8 2 7
-&nbsp;(1 2 3 7 8 9)_(2 8 20)
+&nbsp;2#&quot;hello&quot;
+&quot;he&quot;
+&nbsp;(1 2 3 7 8 9)_(2 8 20) / drop common
 ,20
+&nbsp;(0.5&lt;)_10?1.           / drop true
+0.4004211 0.2929524f
 </pre></div>
 <span id="floor"></span><span id="floor-_21d2-_005fx"></span><h3 class="section">4.29 floor &rArr; _x</h3>
 <p>Return the integer floor of float x.
