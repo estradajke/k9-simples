@@ -23,50 +23,48 @@ Copyright @copyright{} 2020 John Estrada
 @top k9: Manual
 This document explains the usage of the k9 programming language in very simple terms and is intended for newer developers.  k9 is a rapidly evolving platform therefore newer versions may have additional functionality not covered in this document.
 
-This manual is for Shakti (k9) build 2020.05.31.@*
+This manual is for Shakti (k9) build 2020.08.06.@*
 @c @end ifnottex
 
 @smallformat
 @verbatim
-2020.05.31 16GB (c) shakti
+Aug  6 2020 16GB (c) shakti
  \
-Verb                      Adverb                 Noun            Type  System
-:                         '  each                bool  011b         b  \k
-+  plus       flip        /  over/right sv       int   2 3 4        i  \l a.k
--  minus      minus       \  scan/left  vs       float 2.3 0w       f  \v [d]
-*  times      first       ': eachprior           char  " ab"        c *\f [d]
-%  divide                 /: [n]over             sym   ``a`b        s  \w [x]
-&  and        where       \: [n]scan             time  12:34:56.789 t  \t:n x
-|  or         reverse                            date  2024.01.01   D  \u:n x
-<  less       asc         I/O                         
->  more       dsc         0: write/read line     List (2;3.4;`ab)   L  \fl line
-=  equal      group       1: write/read char     Dict [a:2;b:`ab]  ??  \fc char
-~  match      not         2: write/read data     Func {[x]+/x%#x}   .
-!  key        key         3: *set/conn
-,  cat        enlist      4: *get/http                        
-^  cut        sort
-$  value      string      $[c;t;f]      cond
-#  take       count       #[t;c;b[;a]]  select   table [[]a:`b`c]   T
-_  drop       floor      *_[t;c;b[;a]]  update  Ttable [[a:..]b:]  TT
-?  find       uniq       *?[x;i;f[;y]]  splice  Stable S! [[]...]  ST
-@  at         type        @[x;i;f[;y]]  amend                          \cd dir
-.  dot        eval        .[x;i;f[;y]]  dmend                          \\  exit
-/comment
-           Atomic            List/Dict     tolerant  RAND   
-monad: @,  $-~_              !*|&+^<>=?#.   [!*|&]a    ?n
- dyad: @~  $+-*%&|<>= L[@?]  !,^#_.        a[!#_,]a   n?x
-
-sqrt exp log sin cos; ema div mod bar in bin within
-count first last min max sum avg
-select A by B from T where C  (delete from T where C)
-
-roundtrip: `json?`json@(2.3;"abc";.z.T) `k?`k@x `csv?`csv@x
-time/cuanto: 2m 2d ..   12:34:56.123456789 .z.[dtv]
-date/cuando: 2024.01.01T12:34:56.123456789 .z.[DTV]
-
-atom/list/dict/table (scalar/vector/matrix/tensor)
-limit: sym8(*256) 4K {[param8]local8 global32 const128 jump256}
-error: nyi class rank length type domain limit (value stack parse value)
+Verb                      Adverb                 Noun              System 
+:                         '  each                bool 011b         \l a.k 
++   plus      flip        /  over(eachright)     int  0 2 3        \t:n x 
+-   minus     minus       \  scan(eachleft)      flt  0 2 3.4      \u:n x 
+*   times     first       ': eachprior           char " ab"        \v     
+%   divide                /: conv                name ``ab         \w     
+&   and       where       \: conv                uuid                     
+|   or        reverse                    .z.dtv  time  12:34:56.123456789 
+<   less      asc                        .z.DTV  date 2024.01.01T12:34:56 
+>   more      dsc                                                         
+=   equal     group       $[c;x;y] if else       List (2;3.4;`a)  *\ff [x]
+~   match     not         &[c;f;x] while         Dict {x:2;y:`a}   \fs [x]
+$   value     string      ![n;f;x] do            Func {[x;y]x+y}   \fc [x]
+!   key       enum                               Expr :x+y         \fl [x]
+,   cat       enlist                                                      
+^   cut       sort                                                        
+#   take      count       #[t;c;b[;a]] select    T [[]a:..;b:..]          
+_   drop      floor      *_[t;c;b[;a]] update    NT [[`a..]b:..]          
+?   find+     unique+     ?[x;i;f[;y]] splice    TT [[a:..]b:..]          
+@   at        type        @[x;i;f[;y]] amend                       \cd [x]
+.   dot       eval        .[x;i;f[;y]] dmend                       \\ exit
+sqrt exp log sin cos div mod bar                                          
+count first last min max sum avg  [select A by B from T where C]          
+x~`json?`json x:(23;3.4;"abc");x~`csv?`csv x                              
+                                                                          
+i/o: 0:line 1:char *[2:data 3:kipc/set 4:http/get]                        
+ffi: "./a.so"2:`f!"i"  /I f(I i){return 1+i;}       //cblas ..            
+k/c: "./b.so"2:`f!1    /K f(K x){return ki(1+xi);}  //feeds ..            
+                                                                          
+python: import k;      k.k('+',2,3)                                       
+nodejs: k=require('k');k.k('+',2,3)                                       
+                                                                          
+limit: {[param8]local8 global32 const128 jump256} name8                   
+error: value class rank length type domain (parse stack limit)            
+terms: atom/list/dict/table scalar/vector/matrix  monad/dyad              
 @end verbatim
 @end smallformat
 
@@ -116,9 +114,16 @@ When you first learned arithmetic you likley didn't have a choice.  Now you have
 
 @section Get k9.
 
-https://shakti.com/
+https://shakti.sh
 
-Go to the Shakti website and click on download.  You'll need to enter a few pieces of information and then you'll have a choice to download either a Linux or MacOS version.  Click on the required OS version and you'll download a @file{k.zip} file around 50 kb in size.  Unzip that file and you'll have a single executable file @file{k} which is the language.
+You will find the linux version in the main directory and the mac one under the mac subdirectory.  Once you download the mac version you'll have to change it's file permissions to allow it to execute.
+
+@example
+@ chomd u+x k
+@end example
+
+Again on the mac if you then attempt to run this file you likely won't succeed due to MacOS security.  You'll need to go to ``System Preferences...'' and then ``Security and Privacy'' and select to allow this binary to run.  (You'll have to have tried and failed to have it appear here automatically.)
+
 @section Help/Info Card
 Typing @code{\} in the terminal gives you a concise overview of the language.  This document aims to provide details to beginning users where the help screen is a tad too terse.  Some commands are not yet complete and thus marked with an asterisk, eg. *\l a.k.
 @smallformat
@@ -2438,7 +2443,7 @@ a b|
 2 3|1
 @end example
 
-2020.05.31 (c) shakti
+Aug  6 2020 16GB (c) shakti
 
 @example
 @ =+`a`b!(1 2;1 3)

@@ -16,47 +16,45 @@ very simple terms and is intended for newer developers.  k9 is a
 rapidly evolving platform therefore newer versions may have additional
 functionality not covered in this document.
 
-   This manual is for Shakti (k9) build 2020.05.31.
+   This manual is for Shakti (k9) build 2020.08.06.
 
-2020.05.31 16GB (c) shakti
+Aug  6 2020 16GB (c) shakti
  \
-Verb                      Adverb                 Noun            Type  System
-:                         '  each                bool  011b         b  \k
-+  plus       flip        /  over/right sv       int   2 3 4        i  \l a.k
--  minus      minus       \  scan/left  vs       float 2.3 0w       f  \v [d]
-*  times      first       ': eachprior           char  " ab"        c *\f [d]
-%  divide                 /: [n]over             sym   ``a`b        s  \w [x]
-&  and        where       \: [n]scan             time  12:34:56.789 t  \t:n x
-|  or         reverse                            date  2024.01.01   D  \u:n x
-<  less       asc         I/O                         
->  more       dsc         0: write/read line     List (2;3.4;`ab)   L  \fl line
-=  equal      group       1: write/read char     Dict [a:2;b:`ab]  ??  \fc char
-~  match      not         2: write/read data     Func {[x]+/x%#x}   .
-!  key        key         3: *set/conn
-,  cat        enlist      4: *get/http                        
-^  cut        sort
-$  value      string      $[c;t;f]      cond
-#  take       count       #[t;c;b[;a]]  select   table [[]a:`b`c]   T
-_  drop       floor      *_[t;c;b[;a]]  update  Ttable [[a:..]b:]  TT
-?  find       uniq       *?[x;i;f[;y]]  splice  Stable S! [[]...]  ST
-@  at         type        @[x;i;f[;y]]  amend                          \cd dir
-.  dot        eval        .[x;i;f[;y]]  dmend                          \\  exit
-/comment
-           Atomic            List/Dict     tolerant  RAND   
-monad: @,  $-~_              !*|&+^<>=?#.   [!*|&]a    ?n
- dyad: @~  $+-*%&|<>= L[@?]  !,^#_.        a[!#_,]a   n?x
-
-sqrt exp log sin cos; ema div mod bar in bin within
-count first last min max sum avg
-select A by B from T where C  (delete from T where C)
-
-roundtrip: `json?`json@(2.3;"abc";.z.T) `k?`k@x `csv?`csv@x
-time/cuanto: 2m 2d ..   12:34:56.123456789 .z.[dtv]
-date/cuando: 2024.01.01T12:34:56.123456789 .z.[DTV]
-
-atom/list/dict/table (scalar/vector/matrix/tensor)
-limit: sym8(*256) 4K {[param8]local8 global32 const128 jump256}
-error: nyi class rank length type domain limit (value stack parse value)
+Verb                      Adverb                 Noun              System 
+:                         '  each                bool 011b         \l a.k 
++   plus      flip        /  over(eachright)     int  0 2 3        \t:n x 
+-   minus     minus       \  scan(eachleft)      flt  0 2 3.4      \u:n x 
+*   times     first       ': eachprior           char " ab"        \v     
+%   divide                /: conv                name ``ab         \w     
+&   and       where       \: conv                uuid                     
+|   or        reverse                    .z.dtv  time  12:34:56.123456789 
+<   less      asc                        .z.DTV  date 2024.01.01T12:34:56 
+>   more      dsc                                                         
+=   equal     group       $[c;x;y] if else       List (2;3.4;`a)  *\ff [x]
+~   match     not         &[c;f;x] while         Dict {x:2;y:`a}   \fs [x]
+$   value     string      ![n;f;x] do            Func {[x;y]x+y}   \fc [x]
+!   key       enum                               Expr :x+y         \fl [x]
+,   cat       enlist                                                      
+^   cut       sort                                                        
+#   take      count       #[t;c;b[;a]] select    T [[]a:..;b:..]          
+_   drop      floor      *_[t;c;b[;a]] update    NT [[`a..]b:..]          
+?   find+     unique+     ?[x;i;f[;y]] splice    TT [[a:..]b:..]          
+@   at        type        @[x;i;f[;y]] amend                       \cd [x]
+.   dot       eval        .[x;i;f[;y]] dmend                       \\ exit
+sqrt exp log sin cos div mod bar                                          
+count first last min max sum avg  [select A by B from T where C]          
+x~`json?`json x:(23;3.4;"abc");x~`csv?`csv x                              
+                                                                          
+i/o: 0:line 1:char *[2:data 3:kipc/set 4:http/get]                        
+ffi: "./a.so"2:`f!"i"  /I f(I i){return 1+i;}       //cblas ..            
+k/c: "./b.so"2:`f!1    /K f(K x){return ki(1+xi);}  //feeds ..            
+                                                                          
+python: import k;      k.k('+',2,3)                                       
+nodejs: k=require('k');k.k('+',2,3)                                       
+                                                                          
+limit: {[param8]local8 global32 const128 jump256} name8                   
+error: value class rank length type domain (parse stack limit)            
+terms: atom/list/dict/table scalar/vector/matrix  monad/dyad              
 
 * Menu:
 
@@ -132,14 +130,19 @@ that you'll be happy you gave it a chance.
 1.1 Get k9.
 ===========
 
-https://shakti.com/
+https://shakti.sh
 
-   Go to the Shakti website and click on download.  You'll need to
-enter a few pieces of information and then you'll have a choice to
-download either a Linux or MacOS version.  Click on the required OS
-version and you'll download a 'k.zip' file around 50 kb in size.
-Unzip that file and you'll have a single executable file 'k' which is
-the language.
+   You will find the linux version in the main directory and the mac
+one under the mac subdirectory.  Once you download the mac version
+you'll have to change it's file permissions to allow it to execute.
+
+      chomd u+x k
+
+   Again on the mac if you then attempt to run this file you likely
+won't succeed due to MacOS security.  You'll need to go to "System
+Preferences..."  and then "Security and Privacy" and select to allow
+this binary to run.  (You'll have to have tried and failed to have it
+appear here automatically.)
 
 1.2 Help/Info Card
 ==================
@@ -2694,7 +2697,7 @@ code in this document with a different version of k9.
      1 1|0
      2 3|1
 
-   2020.05.31 (c) shakti
+   Aug 6 2020 16GB (c) shakti
 
       =+`a`b!(1 2;1 3)
      =+`a`b!(1 2;1 3)
@@ -2737,93 +2740,93 @@ Undefined variable is used.
 
 Tag Table:
 Node: Top172
-Node: Intro3032
-Node: Examples13527
-Node: Nouns18623
-Ref: bool20030
-Ref: int20330
-Ref: float20534
-Ref: date20879
-Ref: time21299
-Ref: datetime21913
-Ref: char22585
-Ref: sym22808
-Node: Verbs23221
-Ref: set24245
-Ref: plus24457
-Ref: flip24848
-Ref: minus25098
-Ref: times25361
-Ref: first25492
-Ref: divide25811
-Ref: and25948
-Ref: where26205
-Ref: or26589
-Ref: reverse26853
-Ref: less27023
-Ref: asc27285
-Ref: equal27481
-Ref: group27605
-Ref: match27851
-Ref: not28044
-Ref: key28161
-Ref: enum28379
-Ref: cat29672
-Ref: enlist29791
-Ref: cut29930
-Ref: sort30559
-Ref: cast30735
-Ref: string30924
-Ref: take31032
-Ref: count31651
-Ref: drop31841
-Ref: floor32424
-Ref: find32515
-Ref: unique32962
-Ref: at33199
-Ref: type33412
-Ref: apply33768
-Ref: value34749
-Node: Adverbs35078
-Ref: each35539
-Ref: scan35756
-Ref: left36296
-Ref: right36656
-Ref: eachprior37018
-Ref: n scan37420
-Ref: c scan37905
-Ref: c over38312
-Ref: vs38419
-Ref: sv38538
-Node: Lists38663
-Node: Dictionaries43190
-Node: More functions47503
-Ref: cond49450
-Ref: parse49568
-Ref: amend50843
-Ref: dmend51505
-Node: I/O52206
-Ref: input format52337
-Ref: format53348
-Ref: write line53752
-Ref: read line54137
-Ref: write char54322
-Ref: read char54715
-Ref: write data55077
-Ref: conn/set55578
-Ref: http/get55620
-Node: Tables/kSQL55666
-Ref: Tables55844
-Ref: A_Tables56374
-Ref: S_Tables56828
-Ref: kSQL57335
-Node: System60228
-Ref: Display60383
-Ref: Load File60630
-Ref: Variables60824
-Ref: Memory60925
-Ref: Timing61040
-Node: Errors61132
+Node: Intro3538
+Node: Examples14206
+Node: Nouns19302
+Ref: bool20709
+Ref: int21009
+Ref: float21213
+Ref: date21558
+Ref: time21978
+Ref: datetime22592
+Ref: char23264
+Ref: sym23487
+Node: Verbs23900
+Ref: set24924
+Ref: plus25136
+Ref: flip25527
+Ref: minus25777
+Ref: times26040
+Ref: first26171
+Ref: divide26490
+Ref: and26627
+Ref: where26884
+Ref: or27268
+Ref: reverse27532
+Ref: less27702
+Ref: asc27964
+Ref: equal28160
+Ref: group28284
+Ref: match28530
+Ref: not28723
+Ref: key28840
+Ref: enum29058
+Ref: cat30351
+Ref: enlist30470
+Ref: cut30609
+Ref: sort31238
+Ref: cast31414
+Ref: string31603
+Ref: take31711
+Ref: count32330
+Ref: drop32520
+Ref: floor33103
+Ref: find33194
+Ref: unique33641
+Ref: at33878
+Ref: type34091
+Ref: apply34447
+Ref: value35428
+Node: Adverbs35757
+Ref: each36218
+Ref: scan36435
+Ref: left36975
+Ref: right37335
+Ref: eachprior37697
+Ref: n scan38099
+Ref: c scan38584
+Ref: c over38991
+Ref: vs39098
+Ref: sv39217
+Node: Lists39342
+Node: Dictionaries43869
+Node: More functions48182
+Ref: cond50129
+Ref: parse50247
+Ref: amend51522
+Ref: dmend52184
+Node: I/O52885
+Ref: input format53016
+Ref: format54027
+Ref: write line54431
+Ref: read line54816
+Ref: write char55001
+Ref: read char55394
+Ref: write data55756
+Ref: conn/set56257
+Ref: http/get56299
+Node: Tables/kSQL56345
+Ref: Tables56523
+Ref: A_Tables57053
+Ref: S_Tables57507
+Ref: kSQL58014
+Node: System60907
+Ref: Display61062
+Ref: Load File61309
+Ref: Variables61503
+Ref: Memory61604
+Ref: Timing61719
+Node: Errors61811
 
 End Tag Table
 
