@@ -2,7 +2,7 @@
 <html>
 <!-- This manual is for Shakti (k9) build 2020.05.31.
 
-August 9, 2020
+August 25, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -53,46 +53,47 @@ Next: <a href="Intro.html" accesskey="n" rel="next">Intro</a> &nbsp; [<a href="E
 <span id="k9_003a-Manual"></span><h1 class="top">k9: Manual</h1>
 <p>This document explains the usage of the k9 programming language in very simple terms and is intended for newer developers.  k9 is a rapidly evolving platform therefore newer versions may have additional functionality not covered in this document.
 </p>
-<p>This manual is for Shakti (k9) build 2020.08.06.<br>
+<p>This manual is for Shakti (k9) build 2020.08.19.<br>
 </p>
 <div class="format">
-<pre class="verbatim">Aug  6 2020 16GB (c) shakti
+<pre class="verbatim">Aug 19 2020 16GB (c) shakti
  \
 Verb                      Adverb                 Noun              System 
-:                         '  each                bool 011b         \l a.k 
-+   plus      flip        /  over(eachright)     int  0 2 3        \t:n x 
--   minus     minus       \  scan(eachleft)      flt  0 2 3.4      \u:n x 
-*   times     first       ': eachprior           char &quot; ab&quot;        \v     
-%   divide                /: conv                name ``ab         \w     
-&amp;   and       where       \: conv                uuid                     
-|   or        reverse                    .z.dtv  time  12:34:56.123456789 
-&lt;   less      asc                        .z.DTV  date 2024.01.01T12:34:56 
-&gt;   more      dsc                                                         
-=   equal     group       $[c;x;y] if else       List (2;3.4;`a)  *\ff [x]
-~   match     not         &amp;[c;f;x] while         Dict {x:2;y:`a}   \fs [x]
-$   value     string      ![n;f;x] do            Func {[x;y]x+y}   \fc [x]
-!   key       enum                               Expr :x+y         \fl [x]
-,   cat       enlist                                                      
-^   cut       sort                                                        
-#   take      count       #[t;c;b[;a]] select    T [[]a:..;b:..]          
-_   drop      floor      *_[t;c;b[;a]] update    NT [[`a..]b:..]          
-?   find+     unique+     ?[x;i;f[;y]] splice    TT [[a:..]b:..]          
-@   at        type        @[x;i;f[;y]] amend                       \cd [x]
-.   dot       eval        .[x;i;f[;y]] dmend                       \\ exit
-sqrt exp log sin cos div mod bar                                          
-count first last min max sum avg  [select A by B from T where C]          
-x~`json?`json x:(23;3.4;&quot;abc&quot;);x~`csv?`csv x                              
+:    x         y          f'  each               bool 011b         \l a.k 
++    flip      plus       d/  over      c/ i/    int  0N 0 2 3     \t:n x 
+-    negate    minus      d\  scan      c\ i\    flt  0n 0 2 3.4   \u:n x 
+*    first     times      d': eachprior          char &quot; ab&quot;        \v     
+%              divide     d/: eachright f-over   name ``ab         \w     
+&amp;    where     min/and    d\: eachleft  f-scan   uuid              \cd x  
+|    reverse   max/or                                                     
+&lt;    asc       less                      .z.DTV  date 2024.01.01T12:34:56 
+&gt;    dsc       more                      .z.dtv  time  12:34:56.123456789 
+=    group     equal                                                      
+~    not       match                             Class                    
+!    enum      key                               List (2;3.4;`a)          
+,    enlist    cat                               Dict {x:2;y:`a}          
+^    sort   [f]cut                               Func {[x;y]x+y}          
+#    count  [f]take                              Expr :x+y                
+_    floor  [f]drop                                                       
+$    string    cast/mmu   $[b;x;y]    if else                      \f [x] 
+?    unique    find/rnd  *?[x;i;f[;y]] splice    Table [[]a:..;..] \ft [x]
+@    type      at         @[x;i;f[;y]] amend     NTable `a.![[]..] \fc [x]
+.    value     dot        .[x;i;f[;y]] dmend     TTable [[a:..]..] \fl [x]
                                                                           
-i/o: 0:line 1:char *[2:data 3:kipc/set 4:http/get]                        
-ffi: &quot;./a.so&quot;2:`f!&quot;i&quot;  /I f(I i){return 1+i;}       //cblas ..            
+\\ exit                                                                   
+sqrt exp log sin cos div mod bar; count first last min max sum avg; in bin
+select A by B from T where C (*select[C;T;B;A])                           
+x~`json?`json x:(23;3.4;&quot;ab&quot;); x~`csv?`csv x                              
+                                                                          
+I/O: 0:line 1:char *[2:data 3:kipc/set 4:http/get]                        
+FFI: &quot;./a.so&quot;2:`f!&quot;i&quot;  /I f(I i){return 1+i;}       //cblas ..            
 k/c: &quot;./b.so&quot;2:`f!1    /K f(K x){return ki(1+xi);}  //feeds ..            
                                                                           
 python: import k;      k.k('+',2,3)                                       
 nodejs: k=require('k');k.k('+',2,3)                                       
                                                                           
 limit: {[param8]local8 global32 const128 jump256} name8                   
-error: value class rank length type domain (parse stack limit)            
-terms: atom/list/dict/table scalar/vector/matrix  monad/dyad              
+error: class rank length type domain value(parse stack limit)             
 </pre></div>
 
 <table class="menu" border="0" cellspacing="0">

@@ -23,48 +23,49 @@ Copyright @copyright{} 2020 John Estrada
 @top k9: Manual
 This document explains the usage of the k9 programming language in very simple terms and is intended for newer developers.  k9 is a rapidly evolving platform therefore newer versions may have additional functionality not covered in this document.
 
-This manual is for Shakti (k9) build 2020.08.06.@*
+This manual is for Shakti (k9) build 2020.08.19.@*
 @c @end ifnottex
 
 @smallformat
 @verbatim
-Aug  6 2020 16GB (c) shakti
+Aug 19 2020 16GB (c) shakti
  \
 Verb                      Adverb                 Noun              System 
-:                         '  each                bool 011b         \l a.k 
-+   plus      flip        /  over(eachright)     int  0 2 3        \t:n x 
--   minus     minus       \  scan(eachleft)      flt  0 2 3.4      \u:n x 
-*   times     first       ': eachprior           char " ab"        \v     
-%   divide                /: conv                name ``ab         \w     
-&   and       where       \: conv                uuid                     
-|   or        reverse                    .z.dtv  time  12:34:56.123456789 
-<   less      asc                        .z.DTV  date 2024.01.01T12:34:56 
->   more      dsc                                                         
-=   equal     group       $[c;x;y] if else       List (2;3.4;`a)  *\ff [x]
-~   match     not         &[c;f;x] while         Dict {x:2;y:`a}   \fs [x]
-$   value     string      ![n;f;x] do            Func {[x;y]x+y}   \fc [x]
-!   key       enum                               Expr :x+y         \fl [x]
-,   cat       enlist                                                      
-^   cut       sort                                                        
-#   take      count       #[t;c;b[;a]] select    T [[]a:..;b:..]          
-_   drop      floor      *_[t;c;b[;a]] update    NT [[`a..]b:..]          
-?   find+     unique+     ?[x;i;f[;y]] splice    TT [[a:..]b:..]          
-@   at        type        @[x;i;f[;y]] amend                       \cd [x]
-.   dot       eval        .[x;i;f[;y]] dmend                       \\ exit
-sqrt exp log sin cos div mod bar                                          
-count first last min max sum avg  [select A by B from T where C]          
-x~`json?`json x:(23;3.4;"abc");x~`csv?`csv x                              
+:    x         y          f'  each               bool 011b         \l a.k 
++    flip      plus       d/  over      c/ i/    int  0N 0 2 3     \t:n x 
+-    negate    minus      d\  scan      c\ i\    flt  0n 0 2 3.4   \u:n x 
+*    first     times      d': eachprior          char " ab"        \v     
+%              divide     d/: eachright f-over   name ``ab         \w     
+&    where     min/and    d\: eachleft  f-scan   uuid              \cd x  
+|    reverse   max/or                                                     
+<    asc       less                      .z.DTV  date 2024.01.01T12:34:56 
+>    dsc       more                      .z.dtv  time  12:34:56.123456789 
+=    group     equal                                                      
+~    not       match                             Class                    
+!    enum      key                               List (2;3.4;`a)          
+,    enlist    cat                               Dict {x:2;y:`a}          
+^    sort   [f]cut                               Func {[x;y]x+y}          
+#    count  [f]take                              Expr :x+y                
+_    floor  [f]drop                                                       
+$    string    cast/mmu   $[b;x;y]    if else                      \f [x] 
+?    unique    find/rnd  *?[x;i;f[;y]] splice    Table [[]a:..;..] \ft [x]
+@    type      at         @[x;i;f[;y]] amend     NTable `a.![[]..] \fc [x]
+.    value     dot        .[x;i;f[;y]] dmend     TTable [[a:..]..] \fl [x]
                                                                           
-i/o: 0:line 1:char *[2:data 3:kipc/set 4:http/get]                        
-ffi: "./a.so"2:`f!"i"  /I f(I i){return 1+i;}       //cblas ..            
+\\ exit                                                                   
+sqrt exp log sin cos div mod bar; count first last min max sum avg; in bin
+select A by B from T where C (*select[C;T;B;A])                           
+x~`json?`json x:(23;3.4;"ab"); x~`csv?`csv x                              
+                                                                          
+I/O: 0:line 1:char *[2:data 3:kipc/set 4:http/get]                        
+FFI: "./a.so"2:`f!"i"  /I f(I i){return 1+i;}       //cblas ..            
 k/c: "./b.so"2:`f!1    /K f(K x){return ki(1+xi);}  //feeds ..            
                                                                           
 python: import k;      k.k('+',2,3)                                       
 nodejs: k=require('k');k.k('+',2,3)                                       
                                                                           
 limit: {[param8]local8 global32 const128 jump256} name8                   
-error: value class rank length type domain (parse stack limit)            
-terms: atom/list/dict/table scalar/vector/matrix  monad/dyad              
+error: class rank length type domain value(parse stack limit)             
 @end verbatim
 @end smallformat
 
@@ -128,44 +129,44 @@ Again on the mac if you then attempt to run this file you likely won't succeed d
 Typing @code{\} in the terminal gives you a concise overview of the language.  This document aims to provide details to beginning users where the help screen is a tad too terse.  Some commands are not yet complete and thus marked with an asterisk, eg. *\l a.k.
 @smallformat
 @verbatim
+Aug 19 2020 16GB (c) shakti
  \
-Verb                      Adverb                 Noun            Type  System
-:                         '  each                bool  011b         b  \k
-+  plus       flip        /  over/right          int   2 3 4        i  \l a.k
--  minus      minus       \  scan/left           float 2.3 0w       f  \v [d]
-*  times      first       ': eachprior           char  " ab"        c *\f [d]
-%  divide                 /: [n]over             sym   ``a`b        s  \w [x]
-&  and        where       \: [n]scan             time  12:34:56.789 t  \t:n x
-|  or         reverse                            date  2024.01.01   D  \u:n x
-<  less       asc         I/O                         
->  more       dsc         0: readwrite  line     List (2;3.4;`c)    L  \fl line
-=  equal      group       1: readwrite  char     Dict [a:2;b:`c]   ??  \fc char
-~  match      not         2: readwrite  data     Func {(+/x)%#x}    .
-!  key        key         3: *conn/set
-,  cat        enlist      4: *http/get                        
-^  cut        sort
-$  cast       string      $[c;t;f]      cond
-#  take       count       #[t;c;b[;a]]  select   table [[]a:`b`c]   T
-_  drop       floor      *_[t;c;b[;a]]  update  Ttable [[a:..]b:]  TT
-?  find       uniq       *?[x;i;f[;y]]  splice  Stable S! [[]...]  ST
-@  at         type        @[x;i;f[;y]]  amend                          \cd dir
-.  dot        dot         .[x;i;f[;y]]  dmend                          \\  exit
-
-       Atom(pervasive)    List/Dict     Func     ALDF  tolerant    random
-monad: $-~_               .!#*|+&^<>=?           @,     [*|&!]a     ?a
-dyad:  $+-*%&|<>= L[@?]   .!#_^,        f[#_]    @~    a[,#_!]a    a?x
-
-sqrt exp log sin cos count first last min max sum avg;div mod bar in bin within
-select A by B from T where C; delete from T where C
-
-roundtrip: `json?`json@(2.3;"abc";.z.T) `k?`k@x `csv?`csv@x
-time/cuanto: 2m 2d ..   12:34:56.123456789 .z.[dtv]
-date/cuando: 2024.01.01T12:34:56.123456789 .z.[DTV]
-
-error: nyi class rank length type domain limit (value stack parse value)
-limit: sym8(*256) 4K {[param8]local8 global32 const128 jump256}
-atom/list/dict/table (scalar/vector/matrix/tensor) dyad/monad noun/verb/adverb
-/comment \display [dict] :expr (leading space) OVERLOAD(?)
+Verb                      Adverb                 Noun              System 
+:    x         y          f'  each               bool 011b         \l a.k 
++    flip      plus       d/  over      c/ i/    int  0N 0 2 3     \t:n x 
+-    negate    minus      d\  scan      c\ i\    flt  0n 0 2 3.4   \u:n x 
+*    first     times      d': eachprior          char " ab"        \v     
+%              divide     d/: eachright f-over   name ``ab         \w     
+&    where     min/and    d\: eachleft  f-scan   uuid              \cd x  
+|    reverse   max/or                                                     
+<    asc       less                      .z.DTV  date 2024.01.01T12:34:56 
+>    dsc       more                      .z.dtv  time  12:34:56.123456789 
+=    group     equal                                                      
+~    not       match                             Class                    
+!    enum      key                               List (2;3.4;`a)          
+,    enlist    cat                               Dict {x:2;y:`a}          
+^    sort   [f]cut                               Func {[x;y]x+y}          
+#    count  [f]take                              Expr :x+y                
+_    floor  [f]drop                                                       
+$    string    cast/mmu   $[b;x;y]    if else                      \f [x] 
+?    unique    find/rnd  *?[x;i;f[;y]] splice    Table [[]a:..;..] \ft [x]
+@    type      at         @[x;i;f[;y]] amend     NTable `a.![[]..] \fc [x]
+.    value     dot        .[x;i;f[;y]] dmend     TTable [[a:..]..] \fl [x]
+                                                                          
+\\ exit                                                                   
+sqrt exp log sin cos div mod bar; count first last min max sum avg; in bin
+select A by B from T where C (*select[C;T;B;A])                           
+x~`json?`json x:(23;3.4;"ab"); x~`csv?`csv x                              
+                                                                          
+I/O: 0:line 1:char *[2:data 3:kipc/set 4:http/get]                        
+FFI: "./a.so"2:`f!"i"  /I f(I i){return 1+i;}       //cblas ..            
+k/c: "./b.so"2:`f!1    /K f(K x){return ki(1+xi);}  //feeds ..            
+                                                                          
+python: import k;      k.k('+',2,3)                                       
+nodejs: k=require('k');k.k('+',2,3)                                       
+                                                                          
+limit: {[param8]local8 global32 const128 jump256} name8                   
+error: class rank length type domain value(parse stack limit)             
 @end verbatim
 @end smallformat
 @page
@@ -177,11 +178,11 @@ In order to start k9 you should either run @file{k} or @file{rlwrap k} to get st
 
 @example
  rlwrap ./k
-2020.04.01 (c) shakti
+2020.08.19 (c) shakti
  //
 
  ./k
-2020.04.01 (c) shakti
+2020.08.19 (c) shakti
  //
 @end example
 
@@ -191,7 +192,7 @@ Here I will start up k9, perform some trivial calculations, and then close the s
 
 @example
  rlwrap ./k
-2020.04.01 (c) shakti
+2020.08.19 (c) shakti
 @ n:10000                     / n data points
 @ s:`a`b`c                    / data for symbols a, b, and c
 @ q:+s!(-1+n?3;-1+n?3;-1+n?3) / table of returns (-1,0,1) for each symbol
@@ -649,30 +650,32 @@ This chapter explains functions, aka verbs.  Most functions are overloaded and c
 
 @example
 Verb
-: @xref{set}.
-+ @xref{plus},     @xref{flip}.
-- @xref{minus},    @xref{minus}.
-* @xref{times},    @xref{first}.
-% @xref{divide}.
-& @xref{and},      @xref{where}.
-| @xref{or},       @xref{reverse}.
-< @xref{less},     @xref{asc}.
-> @xref{less,more},      @xref{asc,dsc}.
-= @xref{equal},    @xref{group}.
-~ @xref{match},    @xref{not}.
-! @xref{key},      @xref{enum}.
-, @xref{cat},      @xref{enlist}.
-^ @xref{cut},      @xref{sort}. 
-$ @xref{cast},     @xref{string}.    
-# @xref{take},     @xref{count}.  
-_ @xref{drop},     @xref{floor}.    
-? @xref{find},     @xref{unique}.    
-@@ @xref{at},       @xref{type}.    
-. @xref{apply},    @xref{value}.
+: @xref{x},        @xref{x,y}.
++ @xref{flip},     @xref{plus}.
+- @xref{negate},   @xref{minus}.
+* @xref{first},    @xref{times}.
+%               @xref{divide}.
+& @xref{where},    @xref{min/and}.
+| @xref{reverse},  @xref{max/or}.
+< @xref{asc},      @xref{less}.
+> @xref{asc,dsc},       @xref{less,more}.
+= @xref{group},    @xref{equal}.
+~ @xref{match},    @xref{match}.
+! @xref{enum},     @xref{key}.
+, @xref{enlist},   @xref{cat}.
+^ @xref{sort},     @xref{cut}. 
+# @xref{count},    @xref{take}.  
+_ @xref{floor},    @xref{drop}.    
+$ @xref{string},   @xref{cast/mmu}.    
+? @xref{unique},   @xref{find/rnd}.    
+@@ @xref{type},     @xref{at}.    
+. @xref{value},    @xref{dot}.
 
 @end example
 
-@anchor{set}@section set @result{} x:y
+@anchor{x}@section x @result{} :x
+
+@anchor{y}@section y @result{} x:y
 Set a variable, x, to a value, y.
 
 @example
@@ -689,29 +692,6 @@ blue
 @{x+y@}
 @ c[12;15]
 27
-@end example
-
-@anchor{plus}@section plus @result{} x+y
-Add x and y.
-
-@example
-@ 3+7
-10
-@ a:3;
-@ a+8
-11
-@ 3+4 5 6 7
-7 8 9 10
-@ 3 4 5+4 5 6
-7 9 11
-@ 3 4+1 2 3 / lengths don't match, will error: length
-error: length
-@ 10:00+1         / add a minute
-10:01
-@ 10:00:00+1      / add a second
-10:00:01
-@ 10:00:00.000+1  / add a millisecond
-10:00:00.001
 @end example
 
 @anchor{flip}@section flip @result{} +x
@@ -737,18 +717,30 @@ a b
 5 6
 @end example
 
-@anchor{minus}@section minus @result{} x-y, -x
-Subtract y from x.
+@anchor{plus}@section plus @result{} x+y
+Add x and y.
 
 @example
-@ 5-2
-3
-@ x:4;y:1;
-@ x-y
-3
+@ 3+7
+10
+@ a:3;
+@ a+8
+11
+@ 3+4 5 6 7
+7 8 9 10
+@ 3 4 5+4 5 6
+7 9 11
+@ 3 4+1 2 3 / lengths don't match, will error: length
+error: length
+@ 10:00+1         / add a minute
+10:01
+@ 10:00:00+1      / add a second
+10:00:01
+@ 10:00:00.000+1  / add a millisecond
+10:00:00.001
 @end example
 
-Negative x.
+@anchor{negate}@section negate @result{} -x.
 
 @example
 @ -3
@@ -763,16 +755,18 @@ Negative x.
 a|-1 -2 -3
 b|-4 -5 -6
 @end example
-@anchor{times}@section times @result{}  x*y
-Mutliply x and y.
+
+@anchor{minus}@section minus @result{} x-y.
+Subtract y from x.
+
 @example
-@ 3*4
-12
-@ 3*4 5 6
-12 15 18
-@ 1 2 3*4 5 6
-4 10 18
+@ 5-2
+3
+@ x:4;y:1;
+@ x-y
+3
 @end example
+
 @anchor{first}@section first @result{} *x
 Return the first value of x.  Last can either be determine by taking the first element of the reverse list (*|`a`b`c) or using last syntax ((:/)`a`b`c).
 @example
@@ -785,6 +779,18 @@ Return the first value of x.  Last can either be determine by taking the first e
 @ *`a`b!((1 2 3);(4 5 6))
 1 2 3
 @end example
+
+@anchor{times}@section times @result{}  x*y
+Mutliply x and y.
+@example
+@ 3*4
+12
+@ 3*4 5 6
+12 15 18
+@ 1 2 3*4 5 6
+4 10 18
+@end example
+
 @anchor{divide}@section divide @result{} x%y
 Divide x by y.
 @example
@@ -793,20 +799,7 @@ Divide x by y.
 @ 6%2    / division of two integers returns a float
 3f
 @end example
-@anchor{and}@section and @result{} x&y
-The smaller of x and y.  One can use the over adverb to determine the min value in a list.
-@example
-@ 3&2
-2
-@ 1 2 3&4 5 6
-1 2 3
-@ 010010b&111000b
-010000
-@ `a&`b
-`a
-@ &/ 3 2 10 -200 47
--200
-@end example
+
 @anchor{where}@section where @result{} &x
 Given a list of integer values, eg. x_0, x_1, ..., x_(n-1), generate x_0 values of 0, x_1 values of 1, ..., and x_(n-1) values of n-1.
 
@@ -822,18 +815,22 @@ Given a list of integer values, eg. x_0, x_1, ..., x_(n-1), generate x_0 values 
 @ x@@&30<x:12.7 0.1 35.6 -12.1 101.101  / return values greater than 30
 35.6 101.101
 @end example
-@anchor{or}@section or @result{} x|y
-The greater of x and y.  Max of a list can be determine by use of the adverb over.
+
+@anchor{min/and}@section and @result{} x&y
+The smaller of x and y.  One can use the over adverb to determine the min value in a list.
 @example
-@ 3|2
-3
-@ 1 2 3|4 5 6
-4 5 6
-@ 101101b|000111b
-101111b
-@ |/12 2 3 10 / use over to determine the max of a list
-12
+@ 3&2
+2
+@ 1 2 3&4 5 6
+1 2 3
+@ 010010b&111000b
+010000
+@ `a&`b
+`a
+@ &/ 3 2 10 -200 47
+-200
 @end example
+
 @anchor{reverse}@section reverse @result{} |x
 Reverse the list x.
 @example
@@ -846,6 +843,29 @@ Reverse the list x.
 4    
 1 2 3
 @end example
+
+@anchor{max/or}@section or @result{} x|y
+The greater of x and y.  Max of a list can be determine by use of the adverb over.
+@example
+@ 3|2
+3
+@ 1 2 3|4 5 6
+4 5 6
+@ 101101b|000111b
+101111b
+@ |/12 2 3 10 / use over to determine the max of a list
+12
+@end example
+
+@anchor{asc}@section asc(dsc) @result{} < (>) x
+The indices of a list in order to sort the list in ascending (descending) order.
+@example
+@ <2 3 0 12
+2 0 1 3
+@ x@@<x:2 3 0 12
+0 2 3 12
+@end example
+
 @anchor{less}@section less (more) @result{} x < (>) y
 x less (more) than y.
 @example
@@ -862,24 +882,7 @@ x less (more) than y.
 @ "a"<"b"
 1b
 @end example
-@anchor{asc}@section asc(dsc) @result{} < (>) x
-The indices of a list in order to sort the list in ascending (descending) order.
-@example
-@ <2 3 0 12
-2 0 1 3
-@ x@@<x:2 3 0 12
-0 2 3 12
-@end example
-@anchor{equal}@section equal @result{} x=y
-x equal to y
-@example
-@ 2=2
-1b
-@ 2=3
-0b
-@ "banana"="abnaoo"
-001100b
-@end example
+
 @anchor{group}@section group @result{} =x
 A dictionary of the disinct values of x (key) and indices (values).
 @example
@@ -895,6 +898,29 @@ n|2 4
 10|4    
 12|8    
 @end example
+
+@anchor{equal}@section equal @result{} x=y
+x equal to y
+@example
+@ 2=2
+1b
+@ 2=3
+0b
+@ "banana"="abnaoo"
+001100b
+@end example
+
+@anchor{not}@section not @result{} ~x
+Boolean invert of x
+@example
+@ ~1b
+0b
+@ ~101b
+010b
+@ ~37 0 12
+010b
+@end example
+
 @anchor{match}@section match @result{} x~y
 Compare x and y.
 @example
@@ -907,29 +933,7 @@ Compare x and y.
 @ `a`b=`a`b
 11b
 @end example
-@anchor{not}@section not @result{} ~x
-Boolean invert of x
-@example
-@ ~1b
-0b
-@ ~101b
-010b
-@ ~37 0 12
-010b
-@end example
-@anchor{key}@section key @result{} x!y
-Dictionary of x (key) and y (value).  If looking to key a table then @ref{cut}.
 
-@example
-@ 3!7
-,3!,7
-@ `a`b!3 7
-a|3
-b|7
-@ `a`b!((1 2);(3 4))
-a|1 2
-b|3 4
-@end example
 @anchor{enum}@section enum @result{} !x
 Given an integer, x, generate an integer list from 0 to x-1.
 @example
@@ -975,14 +979,21 @@ Given a list of integers, x, generate a list of lists where each individual inde
 @ 2/:B[12123] / convert to base10 to check it's actually 12123
 12123
 @end example
-@anchor{cat}@section cat @result{} x,y
-Concatenate x and y.
+
+@anchor{key}@section key @result{} x!y
+Dictionary of x (key) and y (value).  If looking to key a table then @ref{cut}.
+
 @example
-@ 3,7
-3 7
-@ "hello"," ","there"
-"hello there"
+@ 3!7
+,3!,7
+@ `a`b!3 7
+a|3
+b|7
+@ `a`b!((1 2);(3 4))
+a|1 2
+b|3 4
 @end example
+
 @anchor{enlist}@section enlist @result{} ,x
 Create a list from x
 @example
@@ -995,6 +1006,26 @@ Create a list from x
 @ 3~,3
 0b
 @end example
+
+@anchor{cat}@section cat @result{} x,y
+Concatenate x and y.
+@example
+@ 3,7
+3 7
+@ "hello"," ","there"
+"hello there"
+@end example
+
+@anchor{sort}@section sort @result{} ^x
+Sort list x into ascending order.
+@example
+@ ^0 3 2 1
+0 1 2 3
+@ ^`b`a!((0 1 2);(7 6 5)) / sort dictionary by key
+a|7 6 5
+b|0 1 2
+@end example
+
 @anchor{cut}@section cut @result{} x^y
 Reshape a list y by size x, indices x or add key x to table y.
 
@@ -1038,36 +1069,17 @@ y 20
 z  1
 @end example 
 
-@anchor{sort}@section sort @result{} ^x
-Sort list x into ascending order.
+@anchor{count}@section count @result{} #x
+Count the number of elements in x.
 @example
-@ ^0 3 2 1
-0 1 2 3
-@ ^`b`a!((0 1 2);(7 6 5)) / sort dictionary by key
-a|7 6 5
-b|0 1 2
+@ #0 1 2 12
+4
+@ #((0 1 2);3;(4 5))
+3
+@ #`a`b!((1 2 3);(4 5 6)) / count the number of keys
+2
 @end example
-@anchor{cast}@section cast @result{} x$y
-Cast string y into type x.
-@example
-@ `i$"23"
-23
-@ `f$"2.3"
-2.3
-@ `t$"12:34:56.789"
-12:34:56.789
-@ `D$"2020.04.20"
-2020-04-20
-@end example
-@anchor{string}@section string @result{} $x
-Cast x to string.
-@example
-@ $`abc`d
-abc
-d
-@ $4.7
-"4.7"
-@end example
+
 @anchor{take}@section take @result{} x#y
 Take is used to return a subset of list y depending if x is a atom, list, or function.  If x is an atom, then postive (negative) x returns the first (last) x elements of y.  If x is a list, then returns any values common in both x and y. If x is a function, then filter out values where the funtion is non-zero.
 @example
@@ -1082,16 +1094,14 @@ Take is used to return a subset of list y depending if x is a atom, list, or fun
 @ (0.5<)#10?1.           / filter
 0.840732 0.5330717 0.7539563 0.643315 0.6993048f
 @end example
-@anchor{count}@section count @result{} #x
-Count the number of elements in x.
+
+@anchor{floor}@section floor @result{} _x
+Return the integer floor of float x.
 @example
-@ #0 1 2 12
-4
-@ #((0 1 2);3;(4 5))
+@ _3.7
 3
-@ #`a`b!((1 2 3);(4 5 6)) / count the number of keys
-2
 @end example
+
 @anchor{drop}@section drop @result{} x_y
 Drop is used to remove a subset of list y depending if x is a atom, list, or function.  If x is an atom, then postive (negative) x removes the first (last) x elements of y.  If x is a list, then remove any values in x from y. If x is a function, then remove values where the funtion is non-zero.
 @example
@@ -1106,13 +1116,40 @@ Drop is used to remove a subset of list y depending if x is a atom, list, or fun
 @ (0.5<)_10?1.           / drop true
 0.4004211 0.2929524f
 @end example
-@anchor{floor}@section floor @result{} _x
-Return the integer floor of float x.
+
+@anchor{string}@section string @result{} $x
+Cast x to string.
 @example
-@ _3.7
-3
+@ $`abc`d
+abc
+d
+@ $4.7
+"4.7"
 @end example
-@anchor{find}@section find @result{} x?y
+
+@anchor{cast/mmu}@section cast/mmu @result{} x$y
+Cast string y into type x.
+@example
+@ `i$"23"
+23
+@ `f$"2.3"
+2.3
+@ `t$"12:34:56.789"
+12:34:56.789
+@ `D$"2020.04.20"
+2020-04-20
+@end example
+
+@anchor{unique}@section unique @result{} ?x
+Return the unique values of the list x.  The @code{?} preceeding the return value explicitly shows that list has no repeat values.
+@example
+@ ?`f`a`b`c`a`b`d`e`a
+?`f`a`b`c`d`e
+@ ?"banana"
+?"ban"
+@end example
+
+@anchor{find/rnd}@section find/rnd @result{} x?y
 Find the first element of x that matches y otherwise return the end of vector. Also, acts to generates random numbers from 0 to y when x and y are integers.
 @example
 @ `a`b`a`c`b`a`a?`b
@@ -1128,25 +1165,7 @@ Find the first element of x that matches y otherwise return the end of vector. A
 @ 3?10         / as above but no repeats
 0 5 6
 @end example
-@anchor{unique}@section unique @result{} ?x
-Return the unique values of the list x.  The @code{?} preceeding the return value explicitly shows that list has no repeat values.
-@example
-@ ?`f`a`b`c`a`b`d`e`a
-?`f`a`b`c`d`e
-@ ?"banana"
-?"ban"
-@end example
-@anchor{at}@section at @result{} x@@y
-Given a list x return the value(s) at index(indices) y.
-@example
-@ (3 4 7 12)@@2
-7
-@ `a`b`c@@2
-`c
-@ ((1 2);3;(4 5 6))@@(0 1)   / values at indices 0 and 1
-1 2
-3
-@end example
+
 @anchor{type}@section type @result{} @@x
 Return the data type of x.
 @example
@@ -1167,8 +1186,50 @@ Return the data type of x.
 @ @@'(1;1.2;`a;"a";2020.04.20;12:34:56.789) / type of elements of the list
 `i`f`s`c`D`t
 @end example
-@anchor{apply}@section apply @result{} x.y
-Given list x return the value at list y.  The action of apply depends on the shape of y.
+
+@anchor{at}@section at @result{} x@@y
+Given a list x return the value(s) at index(indices) y.
+@example
+@ (3 4 7 12)@@2
+7
+@ `a`b`c@@2
+`c
+@ ((1 2);3;(4 5 6))@@(0 1)   / values at indices 0 and 1
+1 2
+3
+@end example
+
+@anchor{value}@section value @result{} .x
+Value a string of valid k code or list of k code.
+
+@example
+@ ."3+2"
+5
+
+@ ."20*1+!3"
+20 40 60
+
+@ .(*;16;3)
+48
+
+@ n:3;p:+(n?(+;-;*;%);1+n?10;1+n?10);p
+% 6 3
+* 2 7
+- 5 5
+
+@ .'p
+2 
+14
+0 
+
+@ (!).(`a`b`c;1 2 3)
+a|1
+b|2
+c|3u
+@end example
+
+@anchor{dot}@section dot @result{} x.y
+Given list x return the value at list y.  The action of dot depends on the shape of y.
 @itemize
 @item Index returns the value(s) at x at each index y, i.e. x@@y@@0, x@@y@@1, ..., x@@y@@(n-1).
 @item Recursive index returns the value(s) at x[y@@0;y@@1].
@@ -1207,34 +1268,6 @@ x30 x31 x32
 x10 x11
 x30 x31
 
-@end example
-@anchor{value}@section value @result{} .x
-Value a string of valid k code or list of k code.
-
-@example
-@ ."3+2"
-5
-
-@ ."20*1+!3"
-20 40 60
-
-@ .(*;16;3)
-48
-
-@ n:3;p:+(n?(+;-;*;%);1+n?10;1+n?10);p
-% 6 3
-* 2 7
-- 5 5
-
-@ .'p
-2 
-14
-0 
-
-@ (!).(`a`b`c;1 2 3)
-a|1
-b|2
-c|3u
 @end example
 
 @node Adverbs

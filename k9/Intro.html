@@ -2,7 +2,7 @@
 <html>
 <!-- This manual is for Shakti (k9) build 2020.05.31.
 
-August 9, 2020
+August 25, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -89,44 +89,44 @@ z@&amp;y&lt;z:?x<br>
 <span id="Help_002fInfo-Card"></span><h3 class="section">1.2 Help/Info Card</h3>
 <p>Typing <code>\</code> in the terminal gives you a concise overview of the language.  This document aims to provide details to beginning users where the help screen is a tad too terse.  Some commands are not yet complete and thus marked with an asterisk, eg. *\l a.k.
 </p><div class="format">
-<pre class="verbatim"> \
-Verb                      Adverb                 Noun            Type  System
-:                         '  each                bool  011b         b  \k
-+  plus       flip        /  over/right          int   2 3 4        i  \l a.k
--  minus      minus       \  scan/left           float 2.3 0w       f  \v [d]
-*  times      first       ': eachprior           char  &quot; ab&quot;        c *\f [d]
-%  divide                 /: [n]over             sym   ``a`b        s  \w [x]
-&amp;  and        where       \: [n]scan             time  12:34:56.789 t  \t:n x
-|  or         reverse                            date  2024.01.01   D  \u:n x
-&lt;  less       asc         I/O                         
-&gt;  more       dsc         0: readwrite  line     List (2;3.4;`c)    L  \fl line
-=  equal      group       1: readwrite  char     Dict [a:2;b:`c]   ??  \fc char
-~  match      not         2: readwrite  data     Func {(+/x)%#x}    .
-!  key        key         3: *conn/set
-,  cat        enlist      4: *http/get                        
-^  cut        sort
-$  cast       string      $[c;t;f]      cond
-#  take       count       #[t;c;b[;a]]  select   table [[]a:`b`c]   T
-_  drop       floor      *_[t;c;b[;a]]  update  Ttable [[a:..]b:]  TT
-?  find       uniq       *?[x;i;f[;y]]  splice  Stable S! [[]...]  ST
-@  at         type        @[x;i;f[;y]]  amend                          \cd dir
-.  dot        dot         .[x;i;f[;y]]  dmend                          \\  exit
-
-       Atom(pervasive)    List/Dict     Func     ALDF  tolerant    random
-monad: $-~_               .!#*|+&amp;^&lt;&gt;=?           @,     [*|&amp;!]a     ?a
-dyad:  $+-*%&amp;|&lt;&gt;= L[@?]   .!#_^,        f[#_]    @~    a[,#_!]a    a?x
-
-sqrt exp log sin cos count first last min max sum avg;div mod bar in bin within
-select A by B from T where C; delete from T where C
-
-roundtrip: `json?`json@(2.3;&quot;abc&quot;;.z.T) `k?`k@x `csv?`csv@x
-time/cuanto: 2m 2d ..   12:34:56.123456789 .z.[dtv]
-date/cuando: 2024.01.01T12:34:56.123456789 .z.[DTV]
-
-error: nyi class rank length type domain limit (value stack parse value)
-limit: sym8(*256) 4K {[param8]local8 global32 const128 jump256}
-atom/list/dict/table (scalar/vector/matrix/tensor) dyad/monad noun/verb/adverb
-/comment \display [dict] :expr (leading space) OVERLOAD(?)
+<pre class="verbatim">Aug 19 2020 16GB (c) shakti
+ \
+Verb                      Adverb                 Noun              System 
+:    x         y          f'  each               bool 011b         \l a.k 
++    flip      plus       d/  over      c/ i/    int  0N 0 2 3     \t:n x 
+-    negate    minus      d\  scan      c\ i\    flt  0n 0 2 3.4   \u:n x 
+*    first     times      d': eachprior          char &quot; ab&quot;        \v     
+%              divide     d/: eachright f-over   name ``ab         \w     
+&amp;    where     min/and    d\: eachleft  f-scan   uuid              \cd x  
+|    reverse   max/or                                                     
+&lt;    asc       less                      .z.DTV  date 2024.01.01T12:34:56 
+&gt;    dsc       more                      .z.dtv  time  12:34:56.123456789 
+=    group     equal                                                      
+~    not       match                             Class                    
+!    enum      key                               List (2;3.4;`a)          
+,    enlist    cat                               Dict {x:2;y:`a}          
+^    sort   [f]cut                               Func {[x;y]x+y}          
+#    count  [f]take                              Expr :x+y                
+_    floor  [f]drop                                                       
+$    string    cast/mmu   $[b;x;y]    if else                      \f [x] 
+?    unique    find/rnd  *?[x;i;f[;y]] splice    Table [[]a:..;..] \ft [x]
+@    type      at         @[x;i;f[;y]] amend     NTable `a.![[]..] \fc [x]
+.    value     dot        .[x;i;f[;y]] dmend     TTable [[a:..]..] \fl [x]
+                                                                          
+\\ exit                                                                   
+sqrt exp log sin cos div mod bar; count first last min max sum avg; in bin
+select A by B from T where C (*select[C;T;B;A])                           
+x~`json?`json x:(23;3.4;&quot;ab&quot;); x~`csv?`csv x                              
+                                                                          
+I/O: 0:line 1:char *[2:data 3:kipc/set 4:http/get]                        
+FFI: &quot;./a.so&quot;2:`f!&quot;i&quot;  /I f(I i){return 1+i;}       //cblas ..            
+k/c: &quot;./b.so&quot;2:`f!1    /K f(K x){return ki(1+xi);}  //feeds ..            
+                                                                          
+python: import k;      k.k('+',2,3)                                       
+nodejs: k=require('k');k.k('+',2,3)                                       
+                                                                          
+limit: {[param8]local8 global32 const128 jump256} name8                   
+error: class rank length type domain value(parse stack limit)             
 </pre></div>
 
 <span id="rlwrap"></span><h3 class="section">1.3 rlwrap</h3>
@@ -136,11 +136,11 @@ atom/list/dict/table (scalar/vector/matrix/tensor) dyad/monad noun/verb/adverb
 </p>
 <div class="example">
 <pre class="example"> rlwrap ./k
-2020.04.01 (c) shakti
+2020.08.19 (c) shakti
  //
 
  ./k
-2020.04.01 (c) shakti
+2020.08.19 (c) shakti
  //
 </pre></div>
 
@@ -150,7 +150,7 @@ atom/list/dict/table (scalar/vector/matrix/tensor) dyad/monad noun/verb/adverb
 </p>
 <div class="example">
 <pre class="example"> rlwrap ./k
-2020.04.01 (c) shakti
+2020.08.19 (c) shakti
 &nbsp;n:10000                     / n data points
 &nbsp;s:`a`b`c                    / data for symbols a, b, and c
 &nbsp;q:+s!(-1+n?3;-1+n?3;-1+n?3) / table of returns (-1,0,1) for each symbol
