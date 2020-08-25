@@ -4,7 +4,7 @@
 @codequotebacktick on
 
 @copying
-This manual is for Shakti (k9) build 2020.05.31.@*
+This manual is for Shakti (k9) build 2020.08.19.@*
 @today{}
 
 Copyright @copyright{} 2020 John Estrada
@@ -126,7 +126,7 @@ You will find the linux version in the main directory and the mac one under the 
 Again on the mac if you then attempt to run this file you likely won't succeed due to MacOS security.  You'll need to go to ``System Preferences...'' and then ``Security and Privacy'' and select to allow this binary to run.  (You'll have to have tried and failed to have it appear here automatically.)
 
 @section Help/Info Card
-Typing @code{\} in the terminal gives you a concise overview of the language.  This document aims to provide details to beginning users where the help screen is a tad too terse.  Some commands are not yet complete and thus marked with an asterisk, eg. *\l a.k.
+Typing @code{\} in the terminal gives you a concise overview of the language.  This document aims to provide details to beginning users where the help screen is a tad too terse.  Some commands are not yet complete and thus marked with an asterisk, eg. *?[x;i;f[;y]] splice.
 @smallformat
 @verbatim
 Aug 19 2020 16GB (c) shakti
@@ -1128,7 +1128,9 @@ d
 @end example
 
 @anchor{cast/mmu}@section cast/mmu @result{} x$y
+
 Cast string y into type x.
+
 @example
 @ `i$"23"
 23
@@ -1138,6 +1140,15 @@ Cast string y into type x.
 12:34:56.789
 @ `D$"2020.04.20"
 2020-04-20
+@end example
+
+Multiple matrices x and y together.
+
+@example
+@ (0 1 2;3 4 5;6 7 8)$(10 11;20 21;30 31)
+ 80  83
+260 272
+440 461
 @end example
 
 @anchor{unique}@section unique @result{} ?x
