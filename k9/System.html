@@ -50,26 +50,18 @@ Next: <a href="Errors.html" accesskey="n" rel="next">Errors</a>, Previous: <a hr
 <hr>
 <span id="System-1"></span><h2 class="chapter">11 System</h2>
 <p>This chapter describes the system settings and functions.
-<span id="Display"></span></p><span id="Display-_21d2-_005ck"></span><h3 class="section">11.1 Display &rArr; \k</h3>
+</p>
 <div class="example">
-<pre class="example">&nbsp;m:(100 101 102;3;14 15);d:`a`b!(1 2;3 4)
-&nbsp;\k 0
-&nbsp;m
-100 101 102
-3          
-14 15      
-
-&nbsp;d
-a|1 2
-b|3 4
-
-&nbsp;\k 1
-&nbsp;m
-(100 101 102;3;14 15)
-&nbsp;d
-[a:1 2;b:3 4]
+<pre class="example">System
+\l a.k See <a href="#load">load</a>
+\t:n x See <a href="#timing">timing</a>
+\u:n
+\v     See <a href="#variables">variables</a>
+\w     See <a href="#memory">memory</a>
+\cd x  See <a href="#cd">cd</a>
 </pre></div>
-<span id="Load-File"></span><span id="Load-File_21d2-_005cl"></span><h3 class="section">11.2 Load File&rArr; \l</h3>
+
+<span id="load"></span><span id="load-_21d2-_005cl-a_002ek"></span><h3 class="section">11.1 load &rArr; \l a.k</h3>
 <p>Load a text file of k9 commands.  The file name must end in .k.
 </p><div class="example">
 <pre class="example">&nbsp;\l func.k
@@ -77,14 +69,23 @@ b|3 4
 &nbsp;\l func.k7  / will error as not .k
 error: nyi
 </pre></div>
-<span id="Variables"></span><span id="Variables-_21d2-_005cv"></span><h3 class="section">11.3 Variables &rArr; \v</h3>
+
+<span id="timing"></span><span id="timing-_21d2-_005ct"></span><h3 class="section">11.2 timing &rArr; \t</h3>
+<p>List time elapsed
+</p><div class="example">
+<pre class="example">&nbsp;\t ^(_1e7)?_1e8
+227
+</pre></div>
+
+<span id="variables"></span><span id="variables-_21d2-_005cv"></span><h3 class="section">11.3 variables &rArr; \v</h3>
 <p>List variables
 </p><div class="example">
 <pre class="example">a:1;b:2;c:3
 &nbsp;\v
 [v:`a`b`c]
 </pre></div>
-<span id="Memory"></span><span id="Memory-_21d2-_005cw"></span><h3 class="section">11.4 Memory &rArr; \w</h3>
+
+<span id="memory"></span><span id="memory-_21d2-_005cw"></span><h3 class="section">11.4 memory &rArr; \w</h3>
 <p>List memory usage
 </p><div class="example">
 <pre class="example">&nbsp;\w
@@ -93,12 +94,14 @@ error: nyi
 &nbsp;\w
 2097158
 </pre></div>
-<span id="Timing"></span><span id="Timing-_21d2-_005ct"></span><h3 class="section">11.5 Timing &rArr; \t</h3>
-<p>List time elapsed
-</p><div class="example">
-<pre class="example">&nbsp;\t ^(`i$1e7)?`i$1e8
-360
+
+<span id="cd"></span><span id="cd-_21d2-_005ccd-x"></span><h3 class="section">11.5 cd &rArr; \cd x</h3>
+<p>Change directory (cd) into x
+</p>
+<div class="example">
+<pre class="example">&nbsp;\cd scripts
 </pre></div>
+
 
 
 

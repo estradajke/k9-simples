@@ -2393,26 +2393,18 @@ c | 7
 @node System
 @chapter System
 This chapter describes the system settings and functions.
-@anchor{Display}@section Display @result{} \k
+
 @example
-@ m:(100 101 102;3;14 15);d:`a`b!(1 2;3 4)
-@ \k 0
-@ m
-100 101 102
-3          
-14 15      
-
-@ d
-a|1 2
-b|3 4
-
-@ \k 1
-@ m
-(100 101 102;3;14 15)
-@ d
-[a:1 2;b:3 4]
+System
+\l a.k @xref{load}
+\t:n x @xref{timing}
+\u:n
+\v     @xref{variables}
+\w     @xref{memory}
+\cd x  @xref{cd}
 @end example
-@anchor{Load File}@section Load File@result{} \l
+
+@anchor{load}@section load @result{} \l a.k
 Load a text file of k9 commands.  The file name must end in .k.
 @example
 @ \l func.k
@@ -2420,14 +2412,23 @@ Load a text file of k9 commands.  The file name must end in .k.
 @ \l func.k7  / will error as not .k
 error: nyi
 @end example
-@anchor{Variables}@section Variables @result{} \v
+
+@anchor{timing}@section timing @result{} \t
+List time elapsed
+@example
+@ \t ^(_1e7)?_1e8
+227
+@end example
+
+@anchor{variables}@section variables @result{} \v
 List variables
 @example
 a:1;b:2;c:3
 @ \v
 [v:`a`b`c]
 @end example
-@anchor{Memory}@section Memory @result{} \w
+
+@anchor{memory}@section memory @result{} \w
 List memory usage
 @example
 @ \w
@@ -2436,12 +2437,14 @@ List memory usage
 @ \w
 2097158
 @end example
-@anchor{Timing}@section Timing @result{} \t
-List time elapsed
+
+@anchor{cd}@section cd @result{} \cd x
+Change directory (cd) into x
+
 @example
-@ \t ^(`i$1e7)?`i$1e8
-360
+@ \cd scripts
 @end example
+
 @node Errors
 @chapter Errors
 This section contains information on the various error messages in k9.

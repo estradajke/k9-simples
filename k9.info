@@ -2605,27 +2605,15 @@ File: k9.info,  Node: System,  Next: Errors,  Prev: Tables/kSQL,  Up: Top
 
 This chapter describes the system settings and functions.
 
-11.1 Display => \k
-==================
+     System
+     \l a.k *Note load::
+     \t:n x *Note timing::
+     \u:n
+     \v     *Note variables::
+     \w     *Note memory::
+     \cd x  *Note cd::
 
-      m:(100 101 102;3;14 15);d:`a`b!(1 2;3 4)
-      \k 0
-      m
-     100 101 102
-     3
-     14 15
-
-      d
-     a|1 2
-     b|3 4
-
-      \k 1
-      m
-     (100 101 102;3;14 15)
-      d
-     [a:1 2;b:3 4]
-
-11.2 Load File=> \l
+11.1 load => \l a.k
 ===================
 
 Load a text file of k9 commands.  The file name must end in .k.
@@ -2634,7 +2622,14 @@ Load a text file of k9 commands.  The file name must end in .k.
       \l func.k7  / will error as not .k
      error: nyi
 
-11.3 Variables => \v
+11.2 timing => \t
+=================
+
+List time elapsed
+      \t ^(_1e7)?_1e8
+     227
+
+11.3 variables => \v
 ====================
 
 List variables
@@ -2642,7 +2637,7 @@ List variables
       \v
      [v:`a`b`c]
 
-11.4 Memory => \w
+11.4 memory => \w
 =================
 
 List memory usage
@@ -2652,12 +2647,12 @@ List memory usage
       \w
      2097158
 
-11.5 Timing => \t
-=================
+11.5 cd => \cd x
+================
 
-List time elapsed
-      \t ^(`i$1e7)?`i$1e8
-     360
+Change directory (cd) into x
+
+      \cd scripts
 
 
 File: k9.info,  Node: Errors,  Prev: System,  Up: Top
@@ -2828,12 +2823,12 @@ Ref: A_Tables57705
 Ref: S_Tables58159
 Ref: kSQL58666
 Node: System61559
-Ref: Display61714
-Ref: Load File61961
-Ref: Variables62155
-Ref: Memory62256
-Ref: Timing62371
-Node: Errors62463
+Ref: load61871
+Ref: timing62065
+Ref: variables62152
+Ref: memory62253
+Ref: cd62368
+Node: Errors62452
 
 End Tag Table
 
