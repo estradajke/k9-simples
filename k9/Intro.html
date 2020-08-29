@@ -2,7 +2,7 @@
 <html>
 <!-- This manual is for Shakti (k9) build 2020.08.19.
 
-August 25, 2020
+August 29, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -132,16 +132,16 @@ error: class rank length type domain value(parse stack limit)
 <span id="rlwrap"></span><h3 class="section">1.3 rlwrap</h3>
 <p>Although you only need the <samp>k</samp> binary to run k9 most will also install rlwrap, if not already installed, in order to get command history in a terminal window.  rlwrap is &ldquo;Readline wrapper: adds readline support to tools that lack it&rdquo; and allows one to arrow up to go through the command buffer generally a useful option to have.
 </p>
-<p>In order to start k9 you should either run <samp>k</samp> or <samp>rlwrap k</samp> to get started.  Here I will show both options but one should run as desired.  In this document lines with input be shown with a leading space and output will be without.  In the examples below the user starts a terminal window in the directory with the <samp>k</samp> file.  Then the users enters <kbd>rlwrap ./k <span class="key">RET</span></kbd>.  k9 starts and displays the date of the build, (c), and shakti and then listens to user input.  In this example I have entered the command to exit k9, <kbd>//</kbd>.  Then I start k9 again without rlwrap and again exit the session.
+<p>In order to start k9 you should either run <samp>k</samp> or <samp>rlwrap k</samp> to get started.  Here I will show both options but one should run as desired.  In this document lines with input be shown with a leading space and output will be without.  In the examples below the user starts a terminal window in the directory with the <samp>k</samp> file.  Then the users enters <kbd>rlwrap ./k <span class="key">RET</span></kbd>.  k9 starts and displays the date of the build, (c), and shakti and then listens to user input.  In this example I have entered the command to exit k9, <kbd>\\</kbd>.  Then I start k9 again without rlwrap and again exit the session.
 </p>
 <div class="example">
 <pre class="example"> rlwrap ./k
 2020.08.19 (c) shakti
- //
+ \\
 
  ./k
 2020.08.19 (c) shakti
- //
+ \\
 </pre></div>
 
 <span id="Simple-example"></span><h3 class="section">1.4 Simple example</h3>

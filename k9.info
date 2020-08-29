@@ -1,7 +1,7 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
 This manual is for Shakti (k9) build 2020.08.19.
-August 25, 2020
+August 29, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -207,16 +207,16 @@ output will be without.  In the examples below the user starts a
 terminal window in the directory with the 'k' file.  Then the users
 enters 'rlwrap ./k <RET>'.  k9 starts and displays the date of the
 build, (c), and shakti and then listens to user input.  In this
-example I have entered the command to exit k9, '//'.  Then I start k9
+example I have entered the command to exit k9, '\\'.  Then I start k9
 again without rlwrap and again exit the session.
 
       rlwrap ./k
      2020.08.19 (c) shakti
-      //
+      \\
 
       ./k
      2020.08.19 (c) shakti
-      //
+      \\
 
 1.4 Simple example
 ==================

@@ -174,16 +174,16 @@ error: class rank length type domain value(parse stack limit)
 @section rlwrap
 Although you only need the @file{k} binary to run k9 most will also install rlwrap, if not already installed, in order to get command history in a terminal window.  rlwrap is ``Readline wrapper: adds readline support to tools that lack it'' and allows one to arrow up to go through the command buffer generally a useful option to have.
 
-In order to start k9 you should either run @file{k} or @file{rlwrap k} to get started.  Here I will show both options but one should run as desired.  In this document lines with input be shown with a leading space and output will be without.  In the examples below the user starts a terminal window in the directory with the @file{k} file.  Then the users enters @kbd{rlwrap ./k @key{RET}}.  k9 starts and displays the date of the build, (c), and shakti and then listens to user input.  In this example I have entered the command to exit k9, @kbd{//}.  Then I start k9 again without rlwrap and again exit the session.
+In order to start k9 you should either run @file{k} or @file{rlwrap k} to get started.  Here I will show both options but one should run as desired.  In this document lines with input be shown with a leading space and output will be without.  In the examples below the user starts a terminal window in the directory with the @file{k} file.  Then the users enters @kbd{rlwrap ./k @key{RET}}.  k9 starts and displays the date of the build, (c), and shakti and then listens to user input.  In this example I have entered the command to exit k9, @kbd{\\}.  Then I start k9 again without rlwrap and again exit the session.
 
 @example
  rlwrap ./k
 2020.08.19 (c) shakti
- //
+ \\
 
  ./k
 2020.08.19 (c) shakti
- //
+ \\
 @end example
 
 @section Simple example
