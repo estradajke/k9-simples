@@ -1026,7 +1026,7 @@ a|7 6 5
 b|0 1 2
 @end example
 
-@anchor{cut}@section cut @result{} x^y
+@anchor{cut}@section [f]cut @result{} x^y
 Reshape a list y by size x, indices x or add key x to table y.
 
 @example
@@ -1080,8 +1080,8 @@ Count the number of elements in x.
 2
 @end example
 
-@anchor{take}@section take @result{} x#y
-Take is used to return a subset of list y depending if x is a atom, list, or function.  If x is an atom, then postive (negative) x returns the first (last) x elements of y.  If x is a list, then returns any values common in both x and y. If x is a function, then filter out values where the funtion is non-zero.
+@anchor{take}@section [f]take @result{} x#y
+Take is used to return a subset of list y depending if x is a atom, list, or function.  If x is an atom, then postive (negative) x returns the first (last) x elements of y.  If x is a list, then returns any values common in both x and y. If x is a function (f), then filter out values where the funtion is non-zero.
 @example
 @ 3#0 1 2 3 4 5          / take first
 0 1 2
@@ -1102,8 +1102,8 @@ Return the integer floor of float x.
 3
 @end example
 
-@anchor{drop}@section drop @result{} x_y
-Drop is used to remove a subset of list y depending if x is a atom, list, or function.  If x is an atom, then postive (negative) x removes the first (last) x elements of y.  If x is a list, then remove any values in x from y. If x is a function, then remove values where the funtion is non-zero.
+@anchor{drop}@section [f]drop @result{} x_y
+Drop is used to remove a subset of list y depending if x is a atom, list, or function.  If x is an atom, then postive (negative) x removes the first (last) x elements of y.  If x is a list, then remove any values in x from y. If x is a function (f), then remove values where the funtion is non-zero.
 @example
 @ 3_0 1 2 3 4 5          / drop first
 3 4 5

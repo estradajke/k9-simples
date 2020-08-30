@@ -429,7 +429,7 @@ a|7 6 5
 b|0 1 2
 </pre></div>
 
-<span id="cut"></span><span id="cut-_21d2-x_005ey"></span><h3 class="section">4.25 cut &rArr; x^y</h3>
+<span id="cut"></span><span id="g_t_005bf_005dcut-_21d2-x_005ey"></span><h3 class="section">4.25 [f]cut &rArr; x^y</h3>
 <p>Reshape a list y by size x, indices x or add key x to table y.
 </p>
 <div class="example">
@@ -483,8 +483,8 @@ z  1
 2
 </pre></div>
 
-<span id="take"></span><span id="take-_21d2-x_0023y"></span><h3 class="section">4.27 take &rArr; x#y</h3>
-<p>Take is used to return a subset of list y depending if x is a atom, list, or function.  If x is an atom, then postive (negative) x returns the first (last) x elements of y.  If x is a list, then returns any values common in both x and y. If x is a function, then filter out values where the funtion is non-zero.
+<span id="take"></span><span id="g_t_005bf_005dtake-_21d2-x_0023y"></span><h3 class="section">4.27 [f]take &rArr; x#y</h3>
+<p>Take is used to return a subset of list y depending if x is a atom, list, or function.  If x is an atom, then postive (negative) x returns the first (last) x elements of y.  If x is a list, then returns any values common in both x and y. If x is a function (f), then filter out values where the funtion is non-zero.
 </p><div class="example">
 <pre class="example">&nbsp;3#0 1 2 3 4 5          / take first
 0 1 2
@@ -505,8 +505,8 @@ z  1
 3
 </pre></div>
 
-<span id="drop"></span><span id="drop-_21d2-x_005fy"></span><h3 class="section">4.29 drop &rArr; x_y</h3>
-<p>Drop is used to remove a subset of list y depending if x is a atom, list, or function.  If x is an atom, then postive (negative) x removes the first (last) x elements of y.  If x is a list, then remove any values in x from y. If x is a function, then remove values where the funtion is non-zero.
+<span id="drop"></span><span id="g_t_005bf_005ddrop-_21d2-x_005fy"></span><h3 class="section">4.29 [f]drop &rArr; x_y</h3>
+<p>Drop is used to remove a subset of list y depending if x is a atom, list, or function.  If x is an atom, then postive (negative) x removes the first (last) x elements of y.  If x is a list, then remove any values in x from y. If x is a function (f), then remove values where the funtion is non-zero.
 </p><div class="example">
 <pre class="example">&nbsp;3_0 1 2 3 4 5          / drop first
 3 4 5

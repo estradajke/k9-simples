@@ -1134,8 +1134,8 @@ Sort list x into ascending order.
      a|7 6 5
      b|0 1 2
 
-4.25 cut => x^y
-===============
+4.25 [f]cut => x^y
+==================
 
 Reshape a list y by size x, indices x or add key x to table y.
 
@@ -1186,14 +1186,14 @@ Count the number of elements in x.
       #`a`b!((1 2 3);(4 5 6)) / count the number of keys
      2
 
-4.27 take => x#y
-================
+4.27 [f]take => x#y
+===================
 
 Take is used to return a subset of list y depending if x is a atom,
 list, or function.  If x is an atom, then postive (negative) x returns
 the first (last) x elements of y.  If x is a list, then returns any
-values common in both x and y.  If x is a function, then filter out
-values where the funtion is non-zero.
+values common in both x and y.  If x is a function (f), then filter
+out values where the funtion is non-zero.
       3#0 1 2 3 4 5          / take first
      0 1 2
       -3#0 1 2 3 4 5         / take last
@@ -1212,14 +1212,14 @@ Return the integer floor of float x.
       _3.7
      3
 
-4.29 drop => x_y
-================
+4.29 [f]drop => x_y
+===================
 
 Drop is used to remove a subset of list y depending if x is a atom,
 list, or function.  If x is an atom, then postive (negative) x removes
 the first (last) x elements of y.  If x is a list, then remove any
-values in x from y.  If x is a function, then remove values where the
-funtion is non-zero.
+values in x from y.  If x is a function (f), then remove values where
+the funtion is non-zero.
       3_0 1 2 3 4 5          / drop first
      3 4 5
       -3_0 1 2 3 4 5         / drop last
@@ -2786,58 +2786,58 @@ Ref: enlist31007
 Ref: cat31146
 Ref: sort31265
 Ref: cut31442
-Ref: count32070
-Ref: take32260
-Ref: floor32879
-Ref: drop32970
-Ref: string33553
-Ref: cast/mmu33661
-Ref: unique33985
-Ref: find/rnd34222
-Ref: type34677
-Ref: at35033
-Ref: value35246
-Ref: dot35574
-Node: Adverbs36549
-Ref: each37010
-Ref: scan37227
-Ref: left37767
-Ref: right38127
-Ref: eachprior38489
-Ref: n scan38891
-Ref: c scan39376
-Ref: c over39783
-Ref: vs39890
-Ref: sv40009
-Node: Lists40134
-Node: Dictionaries44671
-Node: More functions48984
-Ref: cond50931
-Ref: parse51049
-Ref: amend52324
-Ref: dmend52986
-Node: I/O53687
-Ref: input format53818
-Ref: format54829
-Ref: write line55233
-Ref: read line55618
-Ref: write char55803
-Ref: read char56196
-Ref: write data56558
-Ref: conn/set57059
-Ref: http/get57101
-Node: Tables/kSQL57147
-Ref: Tables57325
-Ref: A_Tables57855
-Ref: S_Tables58309
-Ref: kSQL58816
-Node: System61709
-Ref: load62021
-Ref: timing62215
-Ref: variables62302
-Ref: memory62403
-Ref: cd62518
-Node: Errors62602
+Ref: count32076
+Ref: take32266
+Ref: floor32895
+Ref: drop32986
+Ref: string33579
+Ref: cast/mmu33687
+Ref: unique34011
+Ref: find/rnd34248
+Ref: type34703
+Ref: at35059
+Ref: value35272
+Ref: dot35600
+Node: Adverbs36575
+Ref: each37036
+Ref: scan37253
+Ref: left37793
+Ref: right38153
+Ref: eachprior38515
+Ref: n scan38917
+Ref: c scan39402
+Ref: c over39809
+Ref: vs39916
+Ref: sv40035
+Node: Lists40160
+Node: Dictionaries44697
+Node: More functions49010
+Ref: cond50957
+Ref: parse51075
+Ref: amend52350
+Ref: dmend53012
+Node: I/O53713
+Ref: input format53844
+Ref: format54855
+Ref: write line55259
+Ref: read line55644
+Ref: write char55829
+Ref: read char56222
+Ref: write data56584
+Ref: conn/set57085
+Ref: http/get57127
+Node: Tables/kSQL57173
+Ref: Tables57351
+Ref: A_Tables57881
+Ref: S_Tables58335
+Ref: kSQL58842
+Node: System61735
+Ref: load62047
+Ref: timing62241
+Ref: variables62328
+Ref: memory62429
+Ref: cd62544
+Node: Errors62628
 
 End Tag Table
 
