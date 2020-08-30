@@ -1,7 +1,7 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
 This manual is for Shakti (k9) build 2020.08.19.
-August 29, 2020
+August 30, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -1579,9 +1579,9 @@ spaces between elements.
 6.2 List Indexing
 =================
 
-Lists can be indexed by using a few notations.  The  notation is often
-used as it's less characters than [] and the explicit  instead of
-space is likley more clear.
+Lists can be indexed by using a few notations.  The @ notation is
+often used as it's less characters than [] and the explicit @ instead
+of space is likley more clear.
 
       a:2*1+!10  / 2 4 ... 20
       a[10]   / out of range return null
@@ -2809,34 +2809,34 @@ Ref: c over39783
 Ref: vs39890
 Ref: sv40009
 Node: Lists40134
-Node: Dictionaries44661
-Node: More functions48974
-Ref: cond50921
-Ref: parse51039
-Ref: amend52314
-Ref: dmend52976
-Node: I/O53677
-Ref: input format53808
-Ref: format54819
-Ref: write line55223
-Ref: read line55608
-Ref: write char55793
-Ref: read char56186
-Ref: write data56548
-Ref: conn/set57049
-Ref: http/get57091
-Node: Tables/kSQL57137
-Ref: Tables57315
-Ref: A_Tables57845
-Ref: S_Tables58299
-Ref: kSQL58806
-Node: System61699
-Ref: load62011
-Ref: timing62205
-Ref: variables62292
-Ref: memory62393
-Ref: cd62508
-Node: Errors62592
+Node: Dictionaries44663
+Node: More functions48976
+Ref: cond50923
+Ref: parse51041
+Ref: amend52316
+Ref: dmend52978
+Node: I/O53679
+Ref: input format53810
+Ref: format54821
+Ref: write line55225
+Ref: read line55610
+Ref: write char55795
+Ref: read char56188
+Ref: write data56550
+Ref: conn/set57051
+Ref: http/get57093
+Node: Tables/kSQL57139
+Ref: Tables57317
+Ref: A_Tables57847
+Ref: S_Tables58301
+Ref: kSQL58808
+Node: System61701
+Ref: load62013
+Ref: timing62207
+Ref: variables62294
+Ref: memory62395
+Ref: cd62510
+Node: Errors62594
 
 End Tag Table
 
