@@ -558,7 +558,7 @@ File: k9.info,  Node: Benchmarks,  Next: Nouns,  Prev: Examples,  Up: Top
 
 Shakti seems likely to be one of the faster languages out there and
 clear benchmarks always help to illuminate the matter.  The Shakti
-website has a file such purpose, b.k.
+website has a file for such purpose, b.k.
 
    b.k
 
@@ -608,9 +608,9 @@ T is a function which generates a uniform list of times from 09:30 to
 3.2 P, Z, E
 ===========
 
-P is a function to generate values from 10 to 100 (trade sizes).  Z is
-a function to generate values from 100 to 1000 (bid/ask sizes).  E is
-a function to generate values A, B, C, or D (exchange).
+P is a function to generate values from 10 to 100 (price).  Z is a
+function to generate values from 100 to 1000 (size).  E is a function
+to generate values A, B, C, or D (exchange).
 
       P[10]
      78 37 56 85 40 68 88 50 41 78
@@ -2955,93 +2955,93 @@ Node: Top176
 Node: Intro3643
 Node: Examples14821
 Node: Benchmarks19922
-Node: Nouns24594
-Ref: bool26003
-Ref: int26303
-Ref: float26507
-Ref: date26852
-Ref: time27272
-Ref: datetime27886
-Ref: char28558
-Ref: sym28781
-Node: Verbs29194
-Ref: x30247
-Ref: y30272
-Ref: flip30480
-Ref: plus30730
-Ref: negate31121
-Ref: minus31293
-Ref: first31400
-Ref: times31719
-Ref: divide31850
-Ref: where31987
-Ref: min/and32373
-Ref: reverse32632
-Ref: max/or32802
-Ref: asc33066
-Ref: less33262
-Ref: group33524
-Ref: equal33770
-Ref: not33894
-Ref: match34011
-Ref: enum34204
-Ref: key35497
-Ref: enlist35715
-Ref: cat35854
-Ref: sort35973
-Ref: cut36150
-Ref: count36784
-Ref: take36974
-Ref: floor37603
-Ref: drop37694
-Ref: string38287
-Ref: cast/mmu38395
-Ref: unique38719
-Ref: find/rnd38956
-Ref: type39411
-Ref: at39767
-Ref: value39980
-Ref: dot40308
-Node: Adverbs41283
-Ref: each41744
-Ref: scan41961
-Ref: left42501
-Ref: right42861
-Ref: eachprior43223
-Ref: n scan43625
-Ref: c scan44110
-Ref: c over44517
-Ref: vs44624
-Ref: sv44743
-Node: Lists44868
-Node: Dictionaries49405
-Node: More functions53718
-Ref: cond55665
-Ref: parse55783
-Ref: amend57058
-Ref: dmend57720
-Node: I/O58421
-Ref: input format58554
-Ref: format59567
-Ref: write line59973
-Ref: read line60360
-Ref: write char60547
-Ref: read char60942
-Ref: write data61306
-Ref: conn/set61809
-Ref: http/get61853
-Node: Tables/kSQL61901
-Ref: Tables62079
-Ref: A_Tables62609
-Ref: S_Tables63063
-Ref: kSQL63570
-Node: System66463
-Ref: load66775
-Ref: timing66969
-Ref: variables67056
-Ref: memory67157
-Ref: cd67272
-Node: Errors67356
+Node: Nouns24583
+Ref: bool25992
+Ref: int26292
+Ref: float26496
+Ref: date26841
+Ref: time27261
+Ref: datetime27875
+Ref: char28547
+Ref: sym28770
+Node: Verbs29183
+Ref: x30236
+Ref: y30261
+Ref: flip30469
+Ref: plus30719
+Ref: negate31110
+Ref: minus31282
+Ref: first31389
+Ref: times31708
+Ref: divide31839
+Ref: where31976
+Ref: min/and32362
+Ref: reverse32621
+Ref: max/or32791
+Ref: asc33055
+Ref: less33251
+Ref: group33513
+Ref: equal33759
+Ref: not33883
+Ref: match34000
+Ref: enum34193
+Ref: key35486
+Ref: enlist35704
+Ref: cat35843
+Ref: sort35962
+Ref: cut36139
+Ref: count36773
+Ref: take36963
+Ref: floor37592
+Ref: drop37683
+Ref: string38276
+Ref: cast/mmu38384
+Ref: unique38708
+Ref: find/rnd38945
+Ref: type39400
+Ref: at39756
+Ref: value39969
+Ref: dot40297
+Node: Adverbs41272
+Ref: each41733
+Ref: scan41950
+Ref: left42490
+Ref: right42850
+Ref: eachprior43212
+Ref: n scan43614
+Ref: c scan44099
+Ref: c over44506
+Ref: vs44613
+Ref: sv44732
+Node: Lists44857
+Node: Dictionaries49394
+Node: More functions53707
+Ref: cond55654
+Ref: parse55772
+Ref: amend57047
+Ref: dmend57709
+Node: I/O58410
+Ref: input format58543
+Ref: format59556
+Ref: write line59962
+Ref: read line60349
+Ref: write char60536
+Ref: read char60931
+Ref: write data61295
+Ref: conn/set61798
+Ref: http/get61842
+Node: Tables/kSQL61890
+Ref: Tables62068
+Ref: A_Tables62598
+Ref: S_Tables63052
+Ref: kSQL63559
+Node: System66452
+Ref: load66764
+Ref: timing66958
+Ref: variables67045
+Ref: memory67146
+Ref: cd67261
+Node: Errors67345
 
 End Tag Table
 

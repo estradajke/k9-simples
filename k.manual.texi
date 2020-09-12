@@ -482,7 +482,7 @@ And then one can use the where function, @code{&}, to determine the index of the
 
 @node Benchmarks
 @chapter Benchmarks
-Shakti seems likely to be one of the faster languages out there and clear benchmarks always help to illuminate the matter.  The Shakti website has a file such purpose, b.k.
+Shakti seems likely to be one of the faster languages out there and clear benchmarks always help to illuminate the matter.  The Shakti website has a file for such purpose, b.k.
 
 b.k
 
@@ -531,7 +531,7 @@ T is a function which generates a uniform list of times from 09:30 to 16:00.
 @end example
 
 @section P, Z, E
-P is a function to generate values from 10 to 100 (trade sizes).  Z is a function to generate values from 100 to 1000 (bid/ask sizes).  E is a function to generate values A, B, C, or D (exchange).
+P is a function to generate values from 10 to 100 (price).  Z is a function to generate values from 100 to 1000 (size).  E is a function to generate values A, B, C, or D (exchange).
 
 @example
 @ P[10]
