@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is for Shakti (k9) build 2020.08.19.
+<!-- This manual is for Shakti (k9) build 2020.09.11.
 
-August 30, 2020
+September 12, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -48,9 +48,9 @@ ul.no-bullet {list-style: none}
 Next: <a href="System.html" accesskey="n" rel="next">System</a>, Previous: <a href="I_002fO.html" accesskey="p" rel="prev">I/O</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="Errors.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 <hr>
-<span id="Tables-and-kSQL"></span><h2 class="chapter">10 Tables and kSQL</h2>
+<span id="Tables-and-kSQL"></span><h2 class="chapter">11 Tables and kSQL</h2>
 <p>This chapter introduces k9 tables and the kSQL language to query.
-<span id="Tables"></span></p><span id="Tables-1"></span><h3 class="section">10.1 Tables</h3>
+<span id="Tables"></span></p><span id="Tables-1"></span><h3 class="section">11.1 Tables</h3>
 <p>Here is an example of a table with three columns (Day, Weather, and Temp) and three rows.
 </p><div class="example">
 <pre class="example">&nbsp;t:[[]Day:2020.04.10+!3;Weather:`sunny`cold`sunny;Temp:22 12 18]
@@ -67,7 +67,7 @@ Day    |2020-04-10 2020-04-11 2020-04-12
 Weather|sunny cold sunny                
 Temp   |22 12 18                        
 </pre></div>
-<span id="A_005fTables"></span><span id="A_005fTables-1"></span><h3 class="section">10.2 A_Tables</h3>
+<span id="A_005fTables"></span><span id="A_005fTables-1"></span><h3 class="section">11.2 A_Tables</h3>
 <p>Here is an example of a A_table with three columns (Day, Weather, and Temp) and three rows.  One column (Day) will be added as a key.
 </p>
 <div class="example">
@@ -82,7 +82,7 @@ Day       |Weather Temp
 &nbsp;@t                        / A_tables have type `AA
 `AA
 </pre></div>
-<span id="S_005fTables"></span><span id="S_005fTables-1"></span><h3 class="section">10.3 S_Tables</h3>
+<span id="S_005fTables"></span><span id="S_005fTables-1"></span><h3 class="section">11.3 S_Tables</h3>
 <p>TBD
 </p>
 <div class="example">
@@ -101,7 +101,7 @@ fri|1.08194 107.26  0.97244 1.21298
 &nbsp;@x                              / S_tables are type `SA
 `SA
 </pre></div>
-<span id="kSQL"></span><span id="kSQL-1"></span><h3 class="section">10.4 kSQL</h3>
+<span id="kSQL"></span><span id="kSQL-1"></span><h3 class="section">11.4 kSQL</h3>
 <p>kSQL is a powerful query language for tables.
 </p><div class="example">
 <pre class="example">&nbsp;select |/Temp from t where Weather=`sunny
@@ -119,7 +119,7 @@ Temp|20
 &nbsp;select |/Temp from t where Weather=`sunny
 Temp|22
 </pre></div>
-<span id="Joins"></span><h3 class="section">10.5 Joins</h3>
+<span id="Joins"></span><h3 class="section">11.5 Joins</h3>
 <p>Joining tables together.  In this section x, y represent tables and kx and ky represent keyed/A_tables.
 </p>
 <table>
@@ -131,7 +131,7 @@ Temp|22
 </table>
 
 
-<span id="union-join-_21d2-x_002cy"></span><h4 class="subsection">10.5.1 union join &rArr; x,y</h4>
+<span id="union-join-_21d2-x_002cy"></span><h4 class="subsection">11.5.1 union join &rArr; x,y</h4>
 <p>Union join table x with table y.
 </p><div class="example">
 <pre class="example">&nbsp;x:[[]s:`a`b;p:1 2;q:3 4]
@@ -156,7 +156,7 @@ b  2  4
 b 11 21
 c 12 22
 </pre></div>
-<span id="left-join-_21d2-x_002cy"></span><h4 class="subsection">10.5.2 left join &rArr; x,y</h4>
+<span id="left-join-_21d2-x_002cy"></span><h4 class="subsection">11.5.2 left join &rArr; x,y</h4>
 <p>Left join table x with keyed table/A_table.  Result includes all rows from x and values from x where there is no y value.
 </p><div class="example">
 <pre class="example">&nbsp;x:[[]s:`a`b`c;p:1 2 3;q:7 8 9]
@@ -184,7 +184,7 @@ a 1 101 51
 b 2 102 52
 c 3   9  0
 </pre></div>
-<span id="outer-join-_21d2-x_002cy"></span><h4 class="subsection">10.5.3 outer join &rArr; x,y</h4>
+<span id="outer-join-_21d2-x_002cy"></span><h4 class="subsection">11.5.3 outer join &rArr; x,y</h4>
 <p>Outer join key table/A_table x with key table/A_table y. 
 </p><div class="example">
 <pre class="example">&nbsp;x:[[s:`a`b]p:1 2;q:3 4]
@@ -208,10 +208,10 @@ a|1 3
 b|9 7
 c|8 6
 </pre></div>
-<span id="Insert-and-Upsert"></span><h3 class="section">10.6 Insert and Upsert</h3>
+<span id="Insert-and-Upsert"></span><h3 class="section">11.6 Insert and Upsert</h3>
 <p>One can add data to tables via insert or upsert.  The difference between the two is that insert adds data to a table while upsert will add or replace data to a keyed table.  Upsert adds when the key isn&rsquo;t present and replaces when the key is.
 </p>
-<span id="insert-_21d2-x_002cy"></span><h4 class="subsection">10.6.1 insert &rArr; x,y</h4>
+<span id="insert-_21d2-x_002cy"></span><h4 class="subsection">11.6.1 insert &rArr; x,y</h4>
 <p>Insert dictionary y into table x.
 </p><div class="example">
 <pre class="example"> t:[[]c1:`a`b`a;c2:1 2 7];t
@@ -238,7 +238,7 @@ a   7
 c  12
 </pre></div>
 
-<span id="upsert-_21d2-x_002cy"></span><h4 class="subsection">10.6.2 upsert &rArr; x,y</h4>
+<span id="upsert-_21d2-x_002cy"></span><h4 class="subsection">11.6.2 upsert &rArr; x,y</h4>
 <p>Insert dictionary y into keyed table x.
 </p><div class="example">
 <pre class="example"> t:[[c1:`a`b`c]c2:1 2 7];t

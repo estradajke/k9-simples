@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is for Shakti (k9) build 2020.08.19.
+<!-- This manual is for Shakti (k9) build 2020.09.11.
 
-August 30, 2020
+September 12, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -19,7 +19,7 @@ Copyright (C) 2020 John Estrada -->
 <link href="Errors.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="index.html" rel="up" title="Top">
 <link href="Verbs.html" rel="next" title="Verbs">
-<link href="Examples.html" rel="prev" title="Examples">
+<link href="Benchmarks.html" rel="prev" title="Benchmarks">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -45,10 +45,10 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Nouns"></span><div class="header">
 <p>
-Next: <a href="Verbs.html" accesskey="n" rel="next">Verbs</a>, Previous: <a href="Examples.html" accesskey="p" rel="prev">Examples</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="Errors.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Verbs.html" accesskey="n" rel="next">Verbs</a>, Previous: <a href="Benchmarks.html" accesskey="p" rel="prev">Benchmarks</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="Errors.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 <hr>
-<span id="Data-_002f-Nouns"></span><h2 class="chapter">3 Data / Nouns</h2>
+<span id="Data-_002f-Nouns"></span><h2 class="chapter">4 Data / Nouns</h2>
 <p>The basic data types of the k9 language are numbers (interger and float), text (characters and enumerated/name) and temporal (date and time).  It is common to have functions operate on multiple data types.
 </p>
 <p>In additional to the basic data types, data can be put into lists (uniform and non-uniform), dictionaries (key-value pairs), and tables (transposed/flipped dictionaries).  Dictionaries and tables will be covered in a seperate chapter.
@@ -80,7 +80,7 @@ See <a href="#sym">sym</a>,   `a`b`        s
 `i`f`c`s`t`D
 </pre></div>
 
-<span id="bool"></span><span id="bool-_21d2-Boolean-b"></span><h3 class="section">3.1 bool &rArr; Boolean b</h3>
+<span id="bool"></span><span id="bool-_21d2-Boolean-b"></span><h3 class="section">4.1 bool &rArr; Boolean b</h3>
 <p>Booleans have two possible values 0 and 1 and have a &rsquo;b&rsquo; to avoid confusion with integers, eg. 0b or 1b.
 </p>
 <div class="example">
@@ -91,10 +91,10 @@ See <a href="#sym">sym</a>,   `a`b`        s
 &nbsp;10101010b
 10101010b
 </pre></div>
-<span id="Numeric-Data"></span><h3 class="section">3.2 Numeric Data</h3>
+<span id="Numeric-Data"></span><h3 class="section">4.2 Numeric Data</h3>
 <p>Numbers can be stored as integers and floats.
 </p>
-<span id="int"></span><span id="int-_21d2-Integer-i"></span><h4 class="subsection">3.2.1 int &rArr; Integer i</h4>
+<span id="int"></span><span id="int-_21d2-Integer-i"></span><h4 class="subsection">4.2.1 int &rArr; Integer i</h4>
 <p>Integers 
 </p>
 <div class="example">
@@ -110,7 +110,7 @@ See <a href="#sym">sym</a>,   `a`b`        s
 &nbsp;3%1   / result will be float even though inputs are int
 3f
 </pre></div>
-<span id="float"></span><span id="float-_21d2-Float-f"></span><h4 class="subsection">3.2.2 float &rArr; Float f</h4>
+<span id="float"></span><span id="float-_21d2-Float-f"></span><h4 class="subsection">4.2.2 float &rArr; Float f</h4>
 <p>Float
 </p><div class="example">
 <pre class="example">&nbsp;3.1
@@ -128,9 +128,9 @@ See <a href="#sym">sym</a>,   `a`b`        s
 `f
 </pre></div>
 
-<span id="Temporal-Data"></span><h3 class="section">3.3 Temporal Data</h3>
+<span id="Temporal-Data"></span><h3 class="section">4.3 Temporal Data</h3>
 <p>Temporal data can be expressed in time, date, or a combined date and time.
-<span id="date"></span></p><span id="date-_21d2-Date-D"></span><h4 class="subsection">3.3.1 date &rArr; Date D</h4>
+<span id="date"></span></p><span id="date-_21d2-Date-D"></span><h4 class="subsection">4.3.1 date &rArr; Date D</h4>
 <p>Dates are in yyyy.mm.dd format and stored internally as integers.
 </p><div class="example">
 <pre class="example">&nbsp;@2020.04.20               / date
@@ -145,7 +145,7 @@ See <a href="#sym">sym</a>,   `a`b`        s
 2024.01.01
 </pre></div>
 
-<span id="time"></span><span id="time-_21d2-Time-t"></span><h4 class="subsection">3.3.2 time &rArr; Time t</h4>
+<span id="time"></span><span id="time-_21d2-Time-t"></span><h4 class="subsection">4.3.2 time &rArr; Time t</h4>
 <p>Times are stored in hh:mm:ss.123 format and stored internally as integers.
 </p><div class="example">
 <pre class="example">&nbsp;@12:34:56.789             / time
@@ -166,7 +166,7 @@ See <a href="#sym">sym</a>,   `a`b`        s
 00:00:12.345
 </pre></div>
 
-<span id="datetime"></span><span id="datetime-_21d2-Datetime-T"></span><h4 class="subsection">3.3.3 datetime &rArr; Datetime T</h4>
+<span id="datetime"></span><span id="datetime-_21d2-Datetime-T"></span><h4 class="subsection">4.3.3 datetime &rArr; Datetime T</h4>
 <p>Dates and times can be combined as 2020.04.20T12:34:56.789.
 </p>
 <div class="example">
@@ -182,10 +182,10 @@ See <a href="#sym">sym</a>,   `a`b`        s
 2020-04-20T12:34:56.789
 </pre></div>
 
-<span id="Text-Data"></span><h3 class="section">3.4 Text Data</h3>
+<span id="Text-Data"></span><h3 class="section">4.4 Text Data</h3>
 <p>Text data come in characters, lists of characters (aka strings) and enumerated types.  Enumerated types are displayed as text but stored internally as integers.
 </p>
-<span id="char"></span><span id="char-_21d2-Character-c"></span><h4 class="subsection">3.4.1 char &rArr; Character c</h4>
+<span id="char"></span><span id="char-_21d2-Character-c"></span><h4 class="subsection">4.4.1 char &rArr; Character c</h4>
 <p>Characters are stored as their ANSI value and can be seen by conversion to integers.  Character lists are equivalent to strings.
 </p>
 <div class="example">
@@ -195,7 +195,7 @@ See <a href="#sym">sym</a>,   `a`b`        s
 `C 
 </pre></div>
 
-<span id="sym"></span><span id="sym-_21d2-Symbol-s"></span><h4 class="subsection">3.4.2 sym &rArr; Symbol s</h4>
+<span id="sym"></span><span id="sym-_21d2-Symbol-s"></span><h4 class="subsection">4.4.2 sym &rArr; Symbol s</h4>
 <p>Symbols are enumerate type shown as a text string but stored internally as a integer value.
 </p><div class="example">
 <pre class="example">&nbsp;@`blue
@@ -203,7 +203,7 @@ See <a href="#sym">sym</a>,   `a`b`        s
 &nbsp;@`blue`red
 `S
 </pre></div>
-<span id="Extreme-values"></span><h3 class="section">3.5 Extreme values</h3>
+<span id="Extreme-values"></span><h3 class="section">4.5 Extreme values</h3>
 <p>Data types can not only represent in-range values but also null and out-of-range values.
 </p>
 <table>
@@ -215,7 +215,7 @@ See <a href="#sym">sym</a>,   `a`b`        s
 <hr>
 <div class="header">
 <p>
-Next: <a href="Verbs.html" accesskey="n" rel="next">Verbs</a>, Previous: <a href="Examples.html" accesskey="p" rel="prev">Examples</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="Errors.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Verbs.html" accesskey="n" rel="next">Verbs</a>, Previous: <a href="Benchmarks.html" accesskey="p" rel="prev">Benchmarks</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="Errors.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 
 

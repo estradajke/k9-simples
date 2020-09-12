@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is for Shakti (k9) build 2020.08.19.
+<!-- This manual is for Shakti (k9) build 2020.09.11.
 
-August 30, 2020
+September 12, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -48,9 +48,9 @@ ul.no-bullet {list-style: none}
 Next: <a href="Tables_002fkSQL.html" accesskey="n" rel="next">Tables/kSQL</a>, Previous: <a href="More-functions.html" accesskey="p" rel="prev">More functions</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="Errors.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 <hr>
-<span id="I_002fO-1"></span><h2 class="chapter">9 I/O</h2>
+<span id="I_002fO-1"></span><h2 class="chapter">10 I/O</h2>
 <p>Functions for input and ouput (I/O).
-<span id="input-format"></span></p><span id="Input-format-values-to-table"></span><h3 class="section">9.1 Input format values to table</h3>
+<span id="input-format"></span></p><span id="Input-format-values-to-table"></span><h3 class="section">10.1 Input format values to table</h3>
 <p>This section shows you the syntax for reading in data into a table with the correct type.
 </p><div class="example">
 <pre class="example">&nbsp;d:,(`date`time`int`float`char`symbol)            / headers 
@@ -75,7 +75,7 @@ date       time         int float char    symbol
 </pre></div>
 
 
-<span id="format"></span><span id="Format-to-CSV_002fjson_002fk-_21d2-_0060csv-x"></span><h3 class="section">9.2 Format to CSV/json/k &rArr; &lsquo;csv x</h3>
+<span id="format"></span><span id="Format-to-CSV_002fjson_002fk-_21d2-_0060csv-x"></span><h3 class="section">10.2 Format to CSV/json/k &rArr; &lsquo;csv x</h3>
 <p>Convert x to CSV/json/k format.  Works on atoms, lists, and tables.
 </p><div class="example">
 <pre class="example">&nbsp;`csv 3 1 2
@@ -87,7 +87,7 @@ date       time         int float char    symbol
 &nbsp;`csv `a`b!((1 2);(3 4))      / error as dictionary input
 error: class
 </pre></div>
-<span id="write-line"></span><span id="write-line-_21d2-x-0_003ay"></span><h3 class="section">9.3 write line &rArr; x 0:y</h3>
+<span id="write-line"></span><span id="write-line-_21d2-x-0_003ay"></span><h3 class="section">10.3 write line &rArr; x 0:y</h3>
 <p>Output to x the list of strings in y.  y must be a list of strings.  If y is a single stream then convert to list via enlist.
 </p><div class="example">
 <pre class="example">&nbsp;&quot;&quot;0:(&quot;blue&quot;;&quot;red&quot;)      / &quot;&quot; represents stdout
@@ -99,14 +99,14 @@ red
 3
 &nbsp;&quot;some.csv&quot;0:,`csv 3 1 2 / will fail without enlist
 </pre></div>
-<span id="read-line"></span><span id="read-line-_21d2-0_003ax"></span><h3 class="section">9.4 read line &rArr; 0:x</h3>
+<span id="read-line"></span><span id="read-line-_21d2-0_003ax"></span><h3 class="section">10.4 read line &rArr; 0:x</h3>
 <p>Read from file x.
 </p><div class="example">
 <pre class="example">&nbsp;&quot;some.txt&quot;0:,`csv 3 1 2 / first write a file to some.txt
 &nbsp;0:&quot;some.txt&quot;            / now read it back
 3,1,2
 </pre></div>
-<span id="write-char"></span><span id="write-char-_21d2-x-1_003ay"></span><h3 class="section">9.5 write char &rArr; x 1:y</h3>
+<span id="write-char"></span><span id="write-char-_21d2-x-1_003ay"></span><h3 class="section">10.5 write char &rArr; x 1:y</h3>
 <p>Output to x the list of chars in y.  y must be a list of chars.  If y is a single char then convert to list via enlist.
 </p><div class="example">
 <pre class="example">&nbsp;&quot;some.txt&quot;1:&quot;hello here\nis some text\n&quot;
@@ -119,7 +119,7 @@ a b
 2 4
 &nbsp;&quot;some.k&quot;1:`k t      / write table to file in k format
 </pre></div>
-<span id="read-char"></span><span id="read-char-_21d2-1_003ax"></span><h3 class="section">9.6 read char &rArr; 1:x</h3>
+<span id="read-char"></span><span id="read-char-_21d2-1_003ax"></span><h3 class="section">10.6 read char &rArr; 1:x</h3>
 <p>Read from file x.
 </p><div class="example">
 <pre class="example">&nbsp;&quot;some.txt&quot;0:,`csv 3 1 2 / first write a file to some.txt
@@ -136,7 +136,7 @@ a b
 1 3
 2 4
 </pre></div>
-<span id="write-data"></span><span id="Call-shared-library-_21d2-x-2_003a-y"></span><h3 class="section">9.7 Call shared library &rArr; x 2: y</h3>
+<span id="write-data"></span><span id="Call-shared-library-_21d2-x-2_003a-y"></span><h3 class="section">10.7 Call shared library &rArr; x 2: y</h3>
 <p>Load shared library x with dictionary y. 
 </p>
 <p>Contents of file &rsquo;a.c&rsquo;
@@ -160,9 +160,9 @@ int indx(int x[],int y){return x[y];}
 14
 </pre></div>
 
-<span id="conn_002fset"></span><span id="conn_002fset-_21d2-3_003a"></span><h3 class="section">9.8 conn/set &rArr; 3:</h3>
+<span id="conn_002fset"></span><span id="conn_002fset-_21d2-3_003a"></span><h3 class="section">10.8 conn/set &rArr; 3:</h3>
 <p>TBD
-<span id="http_002fget"></span></p><span id="http_002fget-_21d2-4_003a"></span><h3 class="section">9.9 http/get &rArr; 4:</h3>
+<span id="http_002fget"></span></p><span id="http_002fget-_21d2-4_003a"></span><h3 class="section">10.9 http/get &rArr; 4:</h3>
 <p>TBD
 </p><hr>
 <div class="header">
