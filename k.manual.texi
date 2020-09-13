@@ -2392,40 +2392,27 @@ Day    |2020-04-10 2020-04-11 2020-04-12
 Weather|sunny cold sunny                
 Temp   |22 12 18                        
 @end example
-@anchor{A_Tables}@section A_Tables
-Here is an example of a A_table with three columns (Day, Weather, and Temp) and three rows.  One column (Day) will be added as a key.
+@anchor{XTab}@section XTab
+An XTab is a dictionary where the values are tables.  Below is an example where the keys are symbols and the values are end-of-day prices.
 
 @example
-@ t:[[Day:2020.04.10+!3]Weather:`sunny`cold`sunny;Temp:22 12 18]
-@ t
-Day       |Weather Temp
-----------|------- ----
-2020-04-10|sunny     22
-2020-04-11|cold      12
-2020-04-12|sunny     18
+@ x1:+`d`p!(2020.09.08 2020.09.09 2020.09.10;140 139 150)
+@ x2:+`d`p!(2020.09.08 2020.09.10;202 208)
+@ eod:`AB`ZY!(x1;x2)
+@ eod`AB
+d          p  
+---------- ---
+2020.09.08 140
+2020.09.09 139
+2020.09.10 150
 
-@ @@t                        / A_tables have type `AA
-`AA
+@ @@eod
+`NL
 @end example
-@anchor{S_Tables}@section S_Tables
+
+@anchor{TTab}@section TTab
 TBD
 
-@example
-@ e:1.08369 1.07973 1.08194
-@ y:106.917 107.102 107.26 
-@ c:0.97050 0.97297 0.97244
-@ g:1.22257 1.21925 1.21298
-@ x:`wed`thu`fri!+`eurusd`usdjpy`usdchf`gbpusd!(e;y;c;g)
-@ x
-   |eurusd  usdjpy  usdchf  gbpusd 
----|------- ------- ------- -------
-wed|1.08369 106.917 0.9705  1.22257
-thu|1.07973 107.102 0.97297 1.21925
-fri|1.08194 107.26  0.97244 1.21298
-
-@ @@x                              / S_tables are type `SA
-`SA
-@end example
 @anchor{kSQL}@section kSQL
 kSQL is a powerful query language for tables.
 @example

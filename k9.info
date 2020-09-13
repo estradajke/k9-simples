@@ -2600,42 +2600,30 @@ Temp) and three rows.
      Weather|sunny cold sunny
      Temp   |22 12 18
 
-11.2 A_Tables
-=============
+11.2 XTab
+=========
 
-Here is an example of a A_table with three columns (Day, Weather, and
-Temp) and three rows.  One column (Day) will be added as a key.
+An XTab is a dictionary where the values are tables.  Below is an
+example where the keys are symbols and the values are end-of-day
+prices.
 
-      t:[[Day:2020.04.10+!3]Weather:`sunny`cold`sunny;Temp:22 12 18]
-      t
-     Day       |Weather Temp
-     ----------|------- ----
-     2020-04-10|sunny     22
-     2020-04-11|cold      12
-     2020-04-12|sunny     18
+      x1:+`d`p!(2020.09.08 2020.09.09 2020.09.10;140 139 150)
+      x2:+`d`p!(2020.09.08 2020.09.10;202 208)
+      eod:`AB`ZY!(x1;x2)
+      eod`AB
+     d          p
+     ---------- ---
+     2020.09.08 140
+     2020.09.09 139
+     2020.09.10 150
 
-      @t                        / A_tables have type `AA
-     `AA
+      @eod
+     `NL
 
-11.3 S_Tables
-=============
+11.3 TTab
+=========
 
 TBD
-
-      e:1.08369 1.07973 1.08194
-      y:106.917 107.102 107.26
-      c:0.97050 0.97297 0.97244
-      g:1.22257 1.21925 1.21298
-      x:`wed`thu`fri!+`eurusd`usdjpy`usdchf`gbpusd!(e;y;c;g)
-      x
-        |eurusd  usdjpy  usdchf  gbpusd
-     ---|------- ------- ------- -------
-     wed|1.08369 106.917 0.9705  1.22257
-     thu|1.07973 107.102 0.97297 1.21925
-     fri|1.08194 107.26  0.97244 1.21298
-
-      @x                              / S_tables are type `SA
-     `SA
 
 11.4 kSQL
 =========
@@ -3033,16 +3021,16 @@ Ref: conn/set61753
 Ref: http/get61797
 Node: Tables/kSQL61845
 Ref: Tables62023
-Ref: A_Tables62553
-Ref: S_Tables63007
-Ref: kSQL63514
-Node: System66407
-Ref: load66719
-Ref: timing66913
-Ref: variables67000
-Ref: memory67101
-Ref: cd67216
-Node: Errors67300
+Ref: XTab62553
+Ref: TTab62982
+Ref: kSQL63008
+Node: System65900
+Ref: load66212
+Ref: timing66406
+Ref: variables66493
+Ref: memory66594
+Ref: cd66709
+Node: Errors66793
 
 End Tag Table
 
