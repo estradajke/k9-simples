@@ -792,7 +792,7 @@ type '@'' instead and return the type of each element in the list.
       @(3;3.1;"b";`a;12:01:02.123;2020.04.05) / mixed list
      `L
       @'(3;3.1;"b";`a;12:01:02.123;2020.04.05)
-     `i`f`c`s`t`D
+     `i`f`c`n`t`D
 
 4.1 bool => Boolean b
 =====================
@@ -837,10 +837,10 @@ Float
      3.1
       3.1+1.2
      4.3
-      3.1-1.1   / looks like an int but really is a float
-     2
+      3.1-1.1
+     2f
       @3.1-1.1
-     1f
+     `f
       @3.1
      `f
       a:3.1;
@@ -860,9 +860,9 @@ Dates are in yyyy.mm.dd format and stored internally as integers.
       @2020.04.20               / date
      `D
       .z.D                       / current date in GMT
-     2020-04-17
+     2020.09.11
       `i .z.D                    / numeric representation of date
-     -1351
+     -1205
       `i 2024.01.01              / zero date
      0
       `D 0                       / zero date
@@ -883,7 +883,7 @@ integers.
      17:33:59.986
       `i 00:00:00.001            / numeric representation of 1ms
      1
-      `i 00:00:00.001            / numeric representation of 1s
+      `i 00:00:01.000            / numeric representation of 1s
      1000
       `i 00:01:00.000            / numeric representation of 1m
      60000
@@ -1295,7 +1295,7 @@ product of all the x values.
 ===============
 
 Dictionary of x (key) and y (value).  If looking to key a table then
-*note cut::.
+refer to *note cut::.
 
       3!7
      ,3!,7
@@ -1787,16 +1787,16 @@ Lists can be indexed by using a few notations.  The @ notation is
 often used as it's less characters than [] and the explicit @ instead
 of space is likley more clear.
 
-      a:2*1+!10  / 2 4 ... 20
-      a[10]   / out of range return null
+      a:2*1+!10 / 2 4 ... 20
+      a[10]     / out of range return zero
      0
-      a[9]    / square bracket
+      a[9]      / square bracket
      20
-      a@9    / at
+      a@9       / at
      20
-      a 9     / space
+      a 9       / space
      20
-      a(9)    / parenthesis
+      a(9)      / parenthesis
      20
 
 7.3 Updating List Elements
@@ -2960,89 +2960,89 @@ Node: Nouns24557
 Ref: bool25975
 Ref: int26275
 Ref: float26479
-Ref: date26824
-Ref: time27244
-Ref: datetime27858
-Ref: char28530
-Ref: name28753
-Node: Verbs29162
-Ref: x30215
-Ref: y30240
-Ref: flip30448
-Ref: plus30698
-Ref: negate31089
-Ref: minus31261
-Ref: first31368
-Ref: times31687
-Ref: divide31818
-Ref: where31955
-Ref: min/and32341
-Ref: reverse32600
-Ref: max/or32770
-Ref: asc33034
-Ref: less33230
-Ref: group33492
-Ref: equal33738
-Ref: not33862
-Ref: match33979
-Ref: enum34172
-Ref: key35465
-Ref: enlist35683
-Ref: cat35822
-Ref: sort35941
-Ref: cut36118
-Ref: count36752
-Ref: take36942
-Ref: floor37571
-Ref: drop37662
-Ref: string38255
-Ref: cast/mmu38363
-Ref: unique38687
-Ref: find/rnd38924
-Ref: type39379
-Ref: at39735
-Ref: value39948
-Ref: dot40276
-Node: Adverbs41251
-Ref: each41712
-Ref: scan41929
-Ref: left42469
-Ref: right42829
-Ref: eachprior43191
-Ref: n scan43593
-Ref: c scan44078
-Ref: c over44485
-Ref: vs44592
-Ref: sv44711
-Node: Lists44836
-Node: Dictionaries49373
-Node: More functions53686
-Ref: cond55633
-Ref: parse55751
-Ref: amend57026
-Ref: dmend57688
-Node: I/O58389
-Ref: input format58522
-Ref: format59535
-Ref: write line59941
-Ref: read line60328
-Ref: write char60515
-Ref: read char60910
-Ref: write data61274
-Ref: conn/set61777
-Ref: http/get61821
-Node: Tables/kSQL61869
-Ref: Tables62047
-Ref: A_Tables62577
-Ref: S_Tables63031
-Ref: kSQL63538
-Node: System66431
-Ref: load66743
-Ref: timing66937
-Ref: variables67024
-Ref: memory67125
-Ref: cd67240
-Node: Errors67324
+Ref: date26781
+Ref: time27201
+Ref: datetime27815
+Ref: char28487
+Ref: name28710
+Node: Verbs29119
+Ref: x30172
+Ref: y30197
+Ref: flip30405
+Ref: plus30655
+Ref: negate31046
+Ref: minus31218
+Ref: first31325
+Ref: times31644
+Ref: divide31775
+Ref: where31912
+Ref: min/and32298
+Ref: reverse32557
+Ref: max/or32727
+Ref: asc32991
+Ref: less33187
+Ref: group33449
+Ref: equal33695
+Ref: not33819
+Ref: match33936
+Ref: enum34129
+Ref: key35422
+Ref: enlist35649
+Ref: cat35788
+Ref: sort35907
+Ref: cut36084
+Ref: count36718
+Ref: take36908
+Ref: floor37537
+Ref: drop37628
+Ref: string38221
+Ref: cast/mmu38329
+Ref: unique38653
+Ref: find/rnd38890
+Ref: type39345
+Ref: at39701
+Ref: value39914
+Ref: dot40242
+Node: Adverbs41217
+Ref: each41678
+Ref: scan41895
+Ref: left42435
+Ref: right42795
+Ref: eachprior43157
+Ref: n scan43559
+Ref: c scan44044
+Ref: c over44451
+Ref: vs44558
+Ref: sv44677
+Node: Lists44802
+Node: Dictionaries49349
+Node: More functions53662
+Ref: cond55609
+Ref: parse55727
+Ref: amend57002
+Ref: dmend57664
+Node: I/O58365
+Ref: input format58498
+Ref: format59511
+Ref: write line59917
+Ref: read line60304
+Ref: write char60491
+Ref: read char60886
+Ref: write data61250
+Ref: conn/set61753
+Ref: http/get61797
+Node: Tables/kSQL61845
+Ref: Tables62023
+Ref: A_Tables62553
+Ref: S_Tables63007
+Ref: kSQL63514
+Node: System66407
+Ref: load66719
+Ref: timing66913
+Ref: variables67000
+Ref: memory67101
+Ref: cd67216
+Node: Errors67300
 
 End Tag Table
 
