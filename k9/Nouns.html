@@ -2,7 +2,7 @@
 <html>
 <!-- This manual is for Shakti (k9) build 2020.09.11.
 
-September 12, 2020
+September 13, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -49,7 +49,7 @@ Next: <a href="Verbs.html" accesskey="n" rel="next">Verbs</a>, Previous: <a href
 </div>
 <hr>
 <span id="Data-_002f-Nouns"></span><h2 class="chapter">4 Data / Nouns</h2>
-<p>The basic data types of the k9 language are numbers (interger and float), text (characters and enumerated/name) and temporal (date and time).  It is common to have functions operate on multiple data types.
+<p>The basic data types of the k9 language are booleans, numbers (integer and float), text (characters and enumerated/name) and temporal (date and time).  It is common to have functions operate on multiple data types.
 </p>
 <p>In additional to the basic data types, data can be put into lists (uniform and non-uniform), dictionaries (key-value pairs), and tables (transposed/flipped dictionaries).  Dictionaries and tables will be covered in a seperate chapter.
 </p>
@@ -58,12 +58,12 @@ Next: <a href="Verbs.html" accesskey="n" rel="next">Verbs</a>, Previous: <a href
 <div class="example">
 <pre class="example">    Atom   Example      Type  
 See <a href="#bool">bool</a>,  110b         b  
-See <a href="#int">int</a>,   2 3 4        i 
-See <a href="#float">float</a>, 2e3 0n 0w    f  
+See <a href="#int">int</a>,   0N 2 3 4     i 
+See <a href="#float">float</a>, 0n 2 3.4     f
 See <a href="#date">date</a>,  2024.01.01   D 
 See <a href="#time">time</a>,  12:34:56.789 t  
 See <a href="#char">char</a>,  &quot;ab &quot;        c  
-See <a href="#sym">sym</a>,   `a`b`        s  
+See <a href="#name">name</a>,   `a`b`       n  
 </pre></div>
 
 <p>Data types can be determined by using the <code>@</code> function on values or lists of values.  In the case of non-uniform lists <code>@</code> returns the type of the list <code>`L</code> but the function can be modified to evalue each type <code>@'</code> instead and return the type of each element in the list.
@@ -195,13 +195,13 @@ See <a href="#sym">sym</a>,   `a`b`        s
 `C 
 </pre></div>
 
-<span id="sym"></span><span id="sym-_21d2-Symbol-s"></span><h4 class="subsection">4.4.2 sym &rArr; Symbol s</h4>
-<p>Symbols are enumerate type shown as a text string but stored internally as a integer value.
+<span id="name"></span><span id="name-_21d2-Name-n"></span><h4 class="subsection">4.4.2 name &rArr; Name n</h4>
+<p>Names are enumerate type shown as a text string but stored internally as a integer value.
 </p><div class="example">
 <pre class="example">&nbsp;@`blue
-`s
+`n
 &nbsp;@`blue`red
-`S
+`N
 </pre></div>
 <span id="Extreme-values"></span><h3 class="section">4.5 Extreme values</h3>
 <p>Data types can not only represent in-range values but also null and out-of-range values.

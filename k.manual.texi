@@ -110,7 +110,7 @@ Code with symbols@*
 x:(0,12,3,4,1,17,-5,0,3,11);y:5;@*
 z@@&y<z:?x@*
 
-If you're new to k9 and similar languages, then you should likely appreciate symbols is shorter but looks like line noise.  That's true but so did arithetic until you learns the basics.
+If you're new to k9 and similar languages, then you should likely appreciate symbols is shorter but looks like line noise.  That's true but so did arithetic until you learned the basics.
 
 When you first learned arithmetic you likley didn't have a choice.  Now you have a choice about learning k9.  If you give it a try, then I expect you'll get it quickly and move onto the power phase fast enough that you'll be happy you gave it a chance.
 
@@ -118,7 +118,7 @@ When you first learned arithmetic you likley didn't have a choice.  Now you have
 
 https://shakti.sh
 
-You will find the linux version in the main directory and the mac one under the mac subdirectory.  Once you download the mac version you'll have to change it's file permissions to allow it to execute.
+You will find the linux version in the linux directory and the mac one under macos.  Once you download the mac version you'll have to change it's file permissions to allow it to execute.
 
 @example
 @ chomd u+x k
@@ -211,7 +211,7 @@ a  b  c
 At this point you might want to check which symbol has the highest return, most variance, or any other analysis on the data.
 
 @example
-@ #'=+(+q)[]                         / count each unique a/b/c combination
+@ #'=+(+q)[]                  / count each unique a/b/c combination
 a  b  c |   
 -- -- --|---
  0  1  1|407
@@ -220,11 +220,11 @@ a  b  c |
  0 -1 -1|391
  1  1  1|349
 ..
-@ +-1#+\q                       / calculate the return of each symbol
+@ +-1#+\q                     / calculate the return of each symbol
 a|-68
 b|117
 c|73
- @{[x](+/m*m:x-avg x)%#x@}'+q      / calculate the variance of each symbol
+ @{[x](+/m*m:x-avg x)%#x@}'+q  / calculate the variance of each symbol
 a|0.6601538
 b|0.6629631
 c|0.6708467
@@ -667,7 +667,7 @@ t        e p  z    b
 
 @node Nouns
 @chapter Data / Nouns
-The basic data types of the k9 language are numbers (interger and float), text (characters and enumerated/name) and temporal (date and time).  It is common to have functions operate on multiple data types.
+The basic data types of the k9 language are booleans, numbers (integer and float), text (characters and enumerated/name) and temporal (date and time).  It is common to have functions operate on multiple data types.
 
 In additional to the basic data types, data can be put into lists (uniform and non-uniform), dictionaries (key-value pairs), and tables (transposed/flipped dictionaries).  Dictionaries and tables will be covered in a seperate chapter.
 
@@ -676,12 +676,12 @@ The set of k9 data, aka nouns, are as follows.
 @example
     Atom   Example      Type  
 @xref{bool},  110b         b  
-@xref{int},   2 3 4        i 
-@xref{float}, 2e3 0n 0w    f  
+@xref{int},   0N 2 3 4     i 
+@xref{float}, 0n 2 3.4     f
 @xref{date},  2024.01.01   D 
 @xref{time},  12:34:56.789 t  
 @xref{char},  "ab "        c  
-@xref{sym},   `a`b`        s  
+@xref{name},   `a`b`       n  
 @end example
 
 Data types can be determined by using the @code{@@} function on values or lists of values.  In the case of non-uniform lists @code{@@} returns the type of the list @code{`L} but the function can be modified to evalue each type @code{@@'} instead and return the type of each element in the list.
@@ -813,13 +813,13 @@ Characters are stored as their ANSI value and can be seen by conversion to integ
 `C 
 @end example
 
-@anchor{sym}@subsection sym @result{} Symbol s
-Symbols are enumerate type shown as a text string but stored internally as a integer value.
+@anchor{name}@subsection name @result{} Name n
+Names are enumerate type shown as a text string but stored internally as a integer value.
 @example
 @ @@`blue
-`s
+`n
 @ @@`blue`red
-`S
+`N
 @end example
 @section Extreme values
 Data types can not only represent in-range values but also null and out-of-range values.

@@ -1,7 +1,7 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
 This manual is for Shakti (k9) build 2020.09.11.
-September 12, 2020
+September 13, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -122,7 +122,7 @@ z@&y<z:?x
 
    If you're new to k9 and similar languages, then you should likely
 appreciate symbols is shorter but looks like line noise.  That's true
-but so did arithetic until you learns the basics.
+but so did arithetic until you learned the basics.
 
    When you first learned arithmetic you likley didn't have a choice.
 Now you have a choice about learning k9.  If you give it a try, then I
@@ -134,9 +134,9 @@ that you'll be happy you gave it a chance.
 
 https://shakti.sh
 
-   You will find the linux version in the main directory and the mac
-one under the mac subdirectory.  Once you download the mac version
-you'll have to change it's file permissions to allow it to execute.
+   You will find the linux version in the linux directory and the mac
+one under macos.  Once you download the mac version you'll have to
+change it's file permissions to allow it to execute.
 
       chomd u+x k
 
@@ -245,7 +245,7 @@ will have a k9 session running and working in repl mode.  Comments
    At this point you might want to check which symbol has the highest
 return, most variance, or any other analysis on the data.
 
-      #'=+(+q)[]                         / count each unique a/b/c combination
+      #'=+(+q)[]                  / count each unique a/b/c combination
      a  b  c |
      -- -- --|---
       0  1  1|407
@@ -254,11 +254,11 @@ return, most variance, or any other analysis on the data.
       0 -1 -1|391
       1  1  1|349
      ..
-      +-1#+\q                       / calculate the return of each symbol
+      +-1#+\q                     / calculate the return of each symbol
      a|-68
      b|117
      c|73
-      {[x](+/m*m:x-avg x)%#x}'+q      / calculate the variance of each symbol
+      {[x](+/m*m:x-avg x)%#x}'+q  / calculate the variance of each symbol
      a|0.6601538
      b|0.6629631
      c|0.6708467
@@ -758,9 +758,10 @@ File: k9.info,  Node: Nouns,  Next: Verbs,  Prev: Benchmarks,  Up: Top
 4 Data / Nouns
 **************
 
-The basic data types of the k9 language are numbers (interger and
-float), text (characters and enumerated/name) and temporal (date and
-time).  It is common to have functions operate on multiple data types.
+The basic data types of the k9 language are booleans, numbers (integer
+and float), text (characters and enumerated/name) and temporal (date
+and time).  It is common to have functions operate on multiple data
+types.
 
    In additional to the basic data types, data can be put into lists
 (uniform and non-uniform), dictionaries (key-value pairs), and tables
@@ -771,12 +772,12 @@ covered in a seperate chapter.
 
          Atom   Example      Type
      *Note bool::,  110b         b
-     *Note int::,   2 3 4        i
-     *Note float::, 2e3 0n 0w    f
+     *Note int::,   0N 2 3 4     i
+     *Note float::, 0n 2 3.4     f
      *Note date::,  2024.01.01   D
      *Note time::,  12:34:56.789 t
      *Note char::,  "ab "        c
-     *Note sym::,   `a`b`        s
+     *Note name::,   `a`b`       n
 
    Data types can be determined by using the '@' function on values or
 lists of values.  In the case of non-uniform lists '@' returns the
@@ -923,15 +924,15 @@ conversion to integers.  Character lists are equivalent to strings.
       @"bd"
      `C
 
-4.4.2 sym => Symbol s
----------------------
+4.4.2 name => Name n
+--------------------
 
-Symbols are enumerate type shown as a text string but stored
-internally as a integer value.
+Names are enumerate type shown as a text string but stored internally
+as a integer value.
       @`blue
-     `s
+     `n
       @`blue`red
-     `S
+     `N
 
 4.5 Extreme values
 ==================
@@ -2953,95 +2954,95 @@ Undefined variable is used.
 Tag Table:
 Node: Top176
 Node: Intro3643
-Node: Examples14821
-Node: Benchmarks19922
-Node: Nouns24583
-Ref: bool25992
-Ref: int26292
-Ref: float26496
-Ref: date26841
-Ref: time27261
-Ref: datetime27875
-Ref: char28547
-Ref: sym28770
-Node: Verbs29183
-Ref: x30236
-Ref: y30261
-Ref: flip30469
-Ref: plus30719
-Ref: negate31110
-Ref: minus31282
-Ref: first31389
-Ref: times31708
-Ref: divide31839
-Ref: where31976
-Ref: min/and32362
-Ref: reverse32621
-Ref: max/or32791
-Ref: asc33055
-Ref: less33251
-Ref: group33513
-Ref: equal33759
-Ref: not33883
-Ref: match34000
-Ref: enum34193
-Ref: key35486
-Ref: enlist35704
-Ref: cat35843
-Ref: sort35962
-Ref: cut36139
-Ref: count36773
-Ref: take36963
-Ref: floor37592
-Ref: drop37683
-Ref: string38276
-Ref: cast/mmu38384
-Ref: unique38708
-Ref: find/rnd38945
-Ref: type39400
-Ref: at39756
-Ref: value39969
-Ref: dot40297
-Node: Adverbs41272
-Ref: each41733
-Ref: scan41950
-Ref: left42490
-Ref: right42850
-Ref: eachprior43212
-Ref: n scan43614
-Ref: c scan44099
-Ref: c over44506
-Ref: vs44613
-Ref: sv44732
-Node: Lists44857
-Node: Dictionaries49394
-Node: More functions53707
-Ref: cond55654
-Ref: parse55772
-Ref: amend57047
-Ref: dmend57709
-Node: I/O58410
-Ref: input format58543
-Ref: format59556
-Ref: write line59962
-Ref: read line60349
-Ref: write char60536
-Ref: read char60931
-Ref: write data61295
-Ref: conn/set61798
-Ref: http/get61842
-Node: Tables/kSQL61890
-Ref: Tables62068
-Ref: A_Tables62598
-Ref: S_Tables63052
-Ref: kSQL63559
-Node: System66452
-Ref: load66764
-Ref: timing66958
-Ref: variables67045
-Ref: memory67146
-Ref: cd67261
-Node: Errors67345
+Node: Examples14795
+Node: Benchmarks19896
+Node: Nouns24557
+Ref: bool25975
+Ref: int26275
+Ref: float26479
+Ref: date26824
+Ref: time27244
+Ref: datetime27858
+Ref: char28530
+Ref: name28753
+Node: Verbs29162
+Ref: x30215
+Ref: y30240
+Ref: flip30448
+Ref: plus30698
+Ref: negate31089
+Ref: minus31261
+Ref: first31368
+Ref: times31687
+Ref: divide31818
+Ref: where31955
+Ref: min/and32341
+Ref: reverse32600
+Ref: max/or32770
+Ref: asc33034
+Ref: less33230
+Ref: group33492
+Ref: equal33738
+Ref: not33862
+Ref: match33979
+Ref: enum34172
+Ref: key35465
+Ref: enlist35683
+Ref: cat35822
+Ref: sort35941
+Ref: cut36118
+Ref: count36752
+Ref: take36942
+Ref: floor37571
+Ref: drop37662
+Ref: string38255
+Ref: cast/mmu38363
+Ref: unique38687
+Ref: find/rnd38924
+Ref: type39379
+Ref: at39735
+Ref: value39948
+Ref: dot40276
+Node: Adverbs41251
+Ref: each41712
+Ref: scan41929
+Ref: left42469
+Ref: right42829
+Ref: eachprior43191
+Ref: n scan43593
+Ref: c scan44078
+Ref: c over44485
+Ref: vs44592
+Ref: sv44711
+Node: Lists44836
+Node: Dictionaries49373
+Node: More functions53686
+Ref: cond55633
+Ref: parse55751
+Ref: amend57026
+Ref: dmend57688
+Node: I/O58389
+Ref: input format58522
+Ref: format59535
+Ref: write line59941
+Ref: read line60328
+Ref: write char60515
+Ref: read char60910
+Ref: write data61274
+Ref: conn/set61777
+Ref: http/get61821
+Node: Tables/kSQL61869
+Ref: Tables62047
+Ref: A_Tables62577
+Ref: S_Tables63031
+Ref: kSQL63538
+Node: System66431
+Ref: load66743
+Ref: timing66937
+Ref: variables67024
+Ref: memory67125
+Ref: cd67240
+Node: Errors67324
 
 End Tag Table
 

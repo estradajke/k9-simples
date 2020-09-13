@@ -2,7 +2,7 @@
 <html>
 <!-- This manual is for Shakti (k9) build 2020.09.11.
 
-September 12, 2020
+September 13, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -70,7 +70,7 @@ Code with symbols<br>
 x:(0,12,3,4,1,17,-5,0,3,11);y:5;<br>
 z@&amp;y&lt;z:?x<br>
 </p>
-<p>If you&rsquo;re new to k9 and similar languages, then you should likely appreciate symbols is shorter but looks like line noise.  That&rsquo;s true but so did arithetic until you learns the basics.
+<p>If you&rsquo;re new to k9 and similar languages, then you should likely appreciate symbols is shorter but looks like line noise.  That&rsquo;s true but so did arithetic until you learned the basics.
 </p>
 <p>When you first learned arithmetic you likley didn&rsquo;t have a choice.  Now you have a choice about learning k9.  If you give it a try, then I expect you&rsquo;ll get it quickly and move onto the power phase fast enough that you&rsquo;ll be happy you gave it a chance.
 </p>
@@ -78,7 +78,7 @@ z@&amp;y&lt;z:?x<br>
 
 <p>https://shakti.sh
 </p>
-<p>You will find the linux version in the main directory and the mac one under the mac subdirectory.  Once you download the mac version you&rsquo;ll have to change it&rsquo;s file permissions to allow it to execute.
+<p>You will find the linux version in the linux directory and the mac one under macos.  Once you download the mac version you&rsquo;ll have to change it&rsquo;s file permissions to allow it to execute.
 </p>
 <div class="example">
 <pre class="example">&nbsp;chomd u+x k
@@ -168,7 +168,7 @@ a  b  c
 <p>At this point you might want to check which symbol has the highest return, most variance, or any other analysis on the data.
 </p>
 <div class="example">
-<pre class="example">&nbsp;#'=+(+q)[]                         / count each unique a/b/c combination
+<pre class="example">&nbsp;#'=+(+q)[]                  / count each unique a/b/c combination
 a  b  c |   
 -- -- --|---
  0  1  1|407
@@ -177,11 +177,11 @@ a  b  c |
  0 -1 -1|391
  1  1  1|349
 ..
-&nbsp;+-1#+\q                       / calculate the return of each symbol
+&nbsp;+-1#+\q                     / calculate the return of each symbol
 a|-68
 b|117
 c|73
- {[x](+/m*m:x-avg x)%#x}'+q      / calculate the variance of each symbol
+ {[x](+/m*m:x-avg x)%#x}'+q  / calculate the variance of each symbol
 a|0.6601538
 b|0.6629631
 c|0.6708467
