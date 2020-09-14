@@ -263,7 +263,7 @@ Yeah, 2 divide by 5 is written as @code{2%5} and not @code{2/5}.
 @subsection Lists and functions are very similar.
 k9 syntax encourages you to treat lists and functions in a similar function.  They should both be thought of a mapping from a value to another value or from a domain to a range.
 
-If this book wasn't a simples guide then lists (l) and functions (f) would be replaced by maps (m) given the interchangeability.  One way to determine if a map is either a lits or function is via the type function.  Lists and functions do not have the same type.
+If this book wasn't a simples guide then lists (l) and functions (f) would be replaced by maps (m) given the interchangeability.  One way to determine if a map is either a list or function is via the type function.  Lists and functions do not have the same type.
 
 @example
 @ l:3 4 7 12
