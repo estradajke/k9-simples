@@ -1,7 +1,7 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
 This manual is for Shakti (k9) build 2020.09.11.
-September 14, 2020
+September 15, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -1341,7 +1341,10 @@ Sort list x into ascending order.
 5.25 [f]cut => x^y
 ==================
 
-Reshape a list y by size x, indices x or add key x to table y.
+Cut list y by size or indices x.  Also, cut y into a domain (x) and
+range.
+
+   Cut list.
 
       3^!18
       0  1  2
@@ -1357,6 +1360,8 @@ Reshape a list y by size x, indices x or add key x to table y.
       1 5^0 1 2 3 4 5 6 7 8 9
      1 2 3 4
      5 6 7 8 9
+
+   Cut into domain and range.
 
       t:[[]a:`x`y`z;b:1 20 1];t / an unkeyed table
      a b
@@ -2979,58 +2984,58 @@ Ref: enlist35649
 Ref: cat35788
 Ref: sort35907
 Ref: cut36084
-Ref: count36718
-Ref: take36908
-Ref: floor37537
-Ref: drop37628
-Ref: string38221
-Ref: cast/mmu38329
-Ref: unique38653
-Ref: find/rnd38890
-Ref: type39345
-Ref: at39701
-Ref: value39914
-Ref: dot40242
-Node: Adverbs41217
-Ref: each41678
-Ref: scan41895
-Ref: left42435
-Ref: right42795
-Ref: eachprior43157
-Ref: n scan43559
-Ref: c scan44044
-Ref: c over44451
-Ref: vs44558
-Ref: sv44677
-Node: Lists44802
-Node: Dictionaries49349
-Node: More functions53662
-Ref: cond55609
-Ref: parse55727
-Ref: amend57002
-Ref: dmend57664
-Node: I/O58365
-Ref: input format58498
-Ref: format59511
-Ref: write line59917
-Ref: read line60304
-Ref: write char60491
-Ref: read char60886
-Ref: write data61250
-Ref: conn/set61753
-Ref: http/get61797
-Node: Tables/kSQL61845
-Ref: Tables62023
-Ref: XTab62553
-Ref: TTab62982
-Ref: kSQL63008
-Node: System65900
-Ref: load66212
-Ref: timing66406
-Ref: variables66493
-Ref: memory66594
-Ref: cd66709
-Node: Errors66793
+Ref: count36775
+Ref: take36965
+Ref: floor37594
+Ref: drop37685
+Ref: string38278
+Ref: cast/mmu38386
+Ref: unique38710
+Ref: find/rnd38947
+Ref: type39402
+Ref: at39758
+Ref: value39971
+Ref: dot40299
+Node: Adverbs41274
+Ref: each41735
+Ref: scan41952
+Ref: left42492
+Ref: right42852
+Ref: eachprior43214
+Ref: n scan43616
+Ref: c scan44101
+Ref: c over44508
+Ref: vs44615
+Ref: sv44734
+Node: Lists44859
+Node: Dictionaries49406
+Node: More functions53719
+Ref: cond55666
+Ref: parse55784
+Ref: amend57059
+Ref: dmend57721
+Node: I/O58422
+Ref: input format58555
+Ref: format59568
+Ref: write line59974
+Ref: read line60361
+Ref: write char60548
+Ref: read char60943
+Ref: write data61307
+Ref: conn/set61810
+Ref: http/get61854
+Node: Tables/kSQL61902
+Ref: Tables62080
+Ref: XTab62610
+Ref: TTab63039
+Ref: kSQL63065
+Node: System65957
+Ref: load66269
+Ref: timing66463
+Ref: variables66550
+Ref: memory66651
+Ref: cd66766
+Node: Errors66850
 
 End Tag Table
 
