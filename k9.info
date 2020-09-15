@@ -2548,10 +2548,21 @@ Read from file x.
      1 3
      2 4
 
-10.7 Call shared library => x 2: y
-==================================
+10.7 Load file => 2: x
+======================
 
-Load shared library x with dictionary y.
+Load file, eg.  csv.
+
+      2:`t.csv
+     s    t        e p  z
+     ---- -------- - -- ----
+     AABL 09:30:00 D 11 4379
+     AABL 09:30:00 B 40 3950
+
+10.8 Load/save => x 2: y
+========================
+
+Load shared library x with dictionary y
 
    Contents of file 'a.c'
      int add1(int x){return 1+x;}
@@ -2568,13 +2579,13 @@ Load shared library x with dictionary y.
       f[`indx][12 13 14;2]
      14
 
-10.8 conn/set => 3:
+10.9 conn/set => 3:
 ===================
 
 TBD
 
-10.9 http/get => 4:
-===================
+10.10 http/get => 4:
+====================
 
 TBD
 
@@ -3021,21 +3032,22 @@ Ref: write line59974
 Ref: read line60361
 Ref: write char60548
 Ref: read char60943
-Ref: write data61307
-Ref: conn/set61810
-Ref: http/get61854
-Node: Tables/kSQL61902
-Ref: Tables62080
-Ref: XTab62610
-Ref: TTab63050
-Ref: kSQL63076
-Node: System65968
-Ref: load66280
-Ref: timing66474
-Ref: variables66561
-Ref: memory66662
-Ref: cd66777
-Node: Errors66861
+Ref: load data61308
+Ref: write data61506
+Ref: conn/set61987
+Ref: http/get62031
+Node: Tables/kSQL62081
+Ref: Tables62259
+Ref: XTab62789
+Ref: TTab63229
+Ref: kSQL63255
+Node: System66147
+Ref: load66459
+Ref: timing66653
+Ref: variables66740
+Ref: memory66841
+Ref: cd66956
+Node: Errors67040
 
 End Tag Table
 

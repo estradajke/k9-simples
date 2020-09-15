@@ -2348,8 +2348,20 @@ a b
 1 3
 2 4
 @end example
-@anchor{write data}@section Call shared library @result{} x 2: y
-Load shared library x with dictionary y. 
+
+@anchor{load data}@section Load file @result{} 2: x
+Load file, eg. csv.
+
+@example
+@ 2:`t.csv
+s    t        e p  z   
+---- -------- - -- ----
+AABL 09:30:00 D 11 4379
+AABL 09:30:00 B 40 3950
+@end example
+
+@anchor{write data}@section Load/save @result{} x 2: y
+Load shared library x with dictionary y
 
 Contents of file 'a.c'
 @example
