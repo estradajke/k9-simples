@@ -2397,7 +2397,7 @@ Weather|sunny cold sunny
 Temp   |22 12 18                        
 @end example
 @anchor{XTab}@section XTab
-An XTab is a dictionary where the values are tables.  Below is an example where the keys are symbols and the values are end-of-day prices.
+An cross tab (XTab) is a dictionary where the values are tables.  Below is an example where the keys are symbols and the values are end-of-day prices.
 
 @example
 @ x1:+`d`p!(2020.09.08 2020.09.09 2020.09.10;140 139 150)

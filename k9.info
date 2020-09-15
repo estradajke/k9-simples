@@ -2608,9 +2608,9 @@ Temp) and three rows.
 11.2 XTab
 =========
 
-An XTab is a dictionary where the values are tables.  Below is an
-example where the keys are symbols and the values are end-of-day
-prices.
+An cross tab (XTab) is a dictionary where the values are tables.
+Below is an example where the keys are symbols and the values are
+end-of-day prices.
 
       x1:+`d`p!(2020.09.08 2020.09.09 2020.09.10;140 139 150)
       x2:+`d`p!(2020.09.08 2020.09.10;202 208)
@@ -3027,15 +3027,15 @@ Ref: http/get61854
 Node: Tables/kSQL61902
 Ref: Tables62080
 Ref: XTab62610
-Ref: TTab63039
-Ref: kSQL63065
-Node: System65957
-Ref: load66269
-Ref: timing66463
-Ref: variables66550
-Ref: memory66651
-Ref: cd66766
-Node: Errors66850
+Ref: TTab63050
+Ref: kSQL63076
+Node: System65968
+Ref: load66280
+Ref: timing66474
+Ref: variables66561
+Ref: memory66662
+Ref: cd66777
+Node: Errors66861
 
 End Tag Table
 
