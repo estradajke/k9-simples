@@ -2,7 +2,7 @@
 <html>
 <!-- This manual is for Shakti (k9) build 2020.09.11.
 
-September 15, 2020
+September 17, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -88,9 +88,9 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 <p>T is a function which generates a uniform list of times from 09:30 to 16:00.
 </p>
 <div class="example">
-<pre class="example">&nbsp;T:{09:30:00+_6.5*3600*(!x)%x-1}
-&nbsp;T[4]              / generate 4 times with equal timesteps
-^09:30:00 11:40:00 13:50:00 16:00:00
+<pre class="example">&nbsp;T:{09:30:00+_6.5*3600*(!x)%x}
+&nbsp;T[13]             / generate 13 times with equal timesteps over [start;end)
+^09:30:00 10:00:00 10:30:00 11:00:00 11:30:00 12:00:00 12:30:00 13:00:00 13:30:00 14:00:00 14:30:00 15:00:00 15:30:00
 &nbsp;?1_-':T[10000]    / determine the unique timesteps
 ?00:00:02 00:00:03
 </pre></div>

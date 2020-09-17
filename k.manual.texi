@@ -523,9 +523,9 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 T is a function which generates a uniform list of times from 09:30 to 16:00.
 
 @example
-@ T:@{09:30:00+_6.5*3600*(!x)%x-1@}
-@ T[4]              / generate 4 times with equal timesteps
-^09:30:00 11:40:00 13:50:00 16:00:00
+@ T:@{09:30:00+_6.5*3600*(!x)%x@}
+@ T[13]             / generate 13 times with equal timesteps over [start;end)
+^09:30:00 10:00:00 10:30:00 11:00:00 11:30:00 12:00:00 12:30:00 13:00:00 13:30:00 14:00:00 14:30:00 15:00:00 15:30:00
 @ ?1_-':T[10000]    / determine the unique timesteps
 ?00:00:02 00:00:03
 @end example
