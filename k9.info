@@ -366,8 +366,8 @@ much of the examples will be based on financial markets.  For those
 not familiar with this field a short introduction will likley be
 needed.
 
-2.1 A tiny introcution to Finanical Market Data
-===============================================
+2.1 A tiny introduction to Finanical Market Data
+================================================
 
 Financial market data generally are stored as prices and trades.
 Prices will include at a minimum the time, the securtiy, the price to
@@ -611,9 +611,11 @@ File: k9.info,  Node: Benchmarks,  Next: Nouns,  Prev: Examples,  Up: Top
 3 Benchmarks
 ************
 
-Shakti seems likely to be one of the faster languages out there and
-clear benchmarks always help to illuminate the matter.  The Shakti
-website has a file for such purpose, b.k.
+Shakti seems likely to be one of the faster data analysis languages
+out there and clear benchmarks always help to illuminate the matter.
+The Shakti website has a file for such purpose, b.k.  You can see the
+in the below that from the first query (Q1) k0 takes 1ms while
+postgres, spark and mongo are orders of magntitude slower.
 
    b.k
 
@@ -2508,7 +2510,10 @@ File: k9.info,  Node: I/O,  Next: Tables/kSQL,  Prev: More functions,  Up: Top
 10 I/O
 ******
 
-Functions for input and ouput (I/O).
+Given k9 is useful for analyzing data it won't be a surprise that
+input and output (I/O) are supported.  k9 has been optimized to read
+in data quickly so if you have a workflow of making a tea while the
+huge csv file loads you might have an issue.
 
 10.1 Input format values to table
 =================================
@@ -2875,7 +2880,9 @@ File: k9.info,  Node: System,  Next: Errors,  Prev: Tables/kSQL,  Up: Top
 12 System
 *********
 
-This chapter describes the system settings and functions.
+k9 comes with a few system functions and measurement commands.  The
+commands allow you to load a script, change the working directory,
+measure execution times and memory usage, and list defined variables.
 
      System
      \l a.k *Note load::
@@ -2932,7 +2939,11 @@ File: k9.info,  Node: Errors,  Prev: System,  Up: Top
 13 Errors
 *********
 
-This section contains information on the various error messages in k9.
+Given the terse syntax of k9 it likley won't be a surprise to a new
+user that the error messages are rather short also.  The errors are
+listed on the help page and described in more detail below.
+
+error: class rank length type domain limit stack (parse value) 
 
 13.1 error: class
 =================
@@ -2941,12 +2952,14 @@ Calling a function on mismatched types.
       3+`b
      error: class
 
-13.2 error: domain
-==================
+13.2 error: rank
+================
 
-Exhausted the number of input values
-      -12?10   / only 10 unique value exist
-     error: domain
+Calling a function with too many parameters.
+      {x+y}[1;2;3]
+     {x+y}[1;2;3]
+     ^
+     error: rank
 
 13.3 error: length
 ==================
@@ -2955,7 +2968,22 @@ Operations on unequal length lists that require equal length.
       (1 2 3)+(4 5)
      error: length
 
-13.4 error: nyi
+13.4 error: type
+================
+
+Calling a function with an unsupported variable type.
+     `a+`b
+       ^
+     error: type
+
+13.5 error: domain
+==================
+
+Exhausted the number of input values
+      -12?10   / only 10 unique value exist
+     error: domain
+
+13.6 error: nyi
 ===============
 
 Running code that is not yet implemented.  This may come from running
@@ -2976,30 +3004,13 @@ code in this document with a different version of k9.
      ^
      error: nyi
 
-13.5 error: parse
+13.7 error: parse
 =================
 
 Syntax is wrong.  Possible you failed to match characters which must
 match, eg.  (), {}, [], "".
       {37 . "hello"
      error: parse
-
-13.6 error: rank
-================
-
-Calling a function with too many parameters.
-      {x+y}[1;2;3]
-     {x+y}[1;2;3]
-     ^
-     error: rank
-
-13.7 error: type
-================
-
-Calling a function with an unsupported variable type.
-     `a+`b
-       ^
-     error: type
 
 13.8 error: value
 =================
@@ -3014,95 +3025,95 @@ Tag Table:
 Node: Top176
 Node: Intro3740
 Node: Examples14850
-Node: Benchmarks22011
-Node: Nouns26769
-Ref: bool28187
-Ref: int28487
-Ref: float28691
-Ref: date28993
-Ref: time29413
-Ref: datetime30027
-Ref: char30699
-Ref: name30922
-Node: Verbs31331
-Ref: x32384
-Ref: y32409
-Ref: flip32617
-Ref: plus32867
-Ref: negate33258
-Ref: minus33430
-Ref: first33537
-Ref: times33856
-Ref: divide33987
-Ref: where34124
-Ref: min/and34510
-Ref: reverse34769
-Ref: max/or34939
-Ref: asc35203
-Ref: less35399
-Ref: group35661
-Ref: equal35907
-Ref: not36031
-Ref: match36148
-Ref: enum36341
-Ref: key37634
-Ref: enlist37861
-Ref: cat38000
-Ref: sort38119
-Ref: cut38296
-Ref: count38987
-Ref: take39177
-Ref: floor39806
-Ref: drop39897
-Ref: string40490
-Ref: cast/mmu40598
-Ref: unique40922
-Ref: find/rnd41159
-Ref: type41614
-Ref: at41970
-Ref: value42183
-Ref: dot42511
-Node: Adverbs43486
-Ref: each43947
-Ref: scan44164
-Ref: left44704
-Ref: right45064
-Ref: eachprior45426
-Ref: n scan45828
-Ref: c scan46313
-Ref: c over46720
-Ref: vs46827
-Ref: sv46946
-Node: Lists47071
-Node: Dictionaries51618
-Node: More functions55931
-Ref: cond57878
-Ref: parse57996
-Ref: amend59271
-Ref: dmend59933
-Node: I/O60634
-Ref: input format60767
-Ref: format61780
-Ref: write line62186
-Ref: read line62573
-Ref: write char62760
-Ref: read char63155
-Ref: load data63520
-Ref: write data63718
-Ref: conn/set64199
-Ref: http/get64243
-Node: Tables/kSQL64293
-Ref: Tables64471
-Ref: XTab65001
-Ref: TTab65441
-Ref: kSQL65467
-Node: System68359
-Ref: load68671
-Ref: timing68865
-Ref: variables68952
-Ref: memory69053
-Ref: cd69168
-Node: Errors69252
+Node: Benchmarks22013
+Node: Nouns26923
+Ref: bool28341
+Ref: int28641
+Ref: float28845
+Ref: date29147
+Ref: time29567
+Ref: datetime30181
+Ref: char30853
+Ref: name31076
+Node: Verbs31485
+Ref: x32538
+Ref: y32563
+Ref: flip32771
+Ref: plus33021
+Ref: negate33412
+Ref: minus33584
+Ref: first33691
+Ref: times34010
+Ref: divide34141
+Ref: where34278
+Ref: min/and34664
+Ref: reverse34923
+Ref: max/or35093
+Ref: asc35357
+Ref: less35553
+Ref: group35815
+Ref: equal36061
+Ref: not36185
+Ref: match36302
+Ref: enum36495
+Ref: key37788
+Ref: enlist38015
+Ref: cat38154
+Ref: sort38273
+Ref: cut38450
+Ref: count39141
+Ref: take39331
+Ref: floor39960
+Ref: drop40051
+Ref: string40644
+Ref: cast/mmu40752
+Ref: unique41076
+Ref: find/rnd41313
+Ref: type41768
+Ref: at42124
+Ref: value42337
+Ref: dot42665
+Node: Adverbs43640
+Ref: each44101
+Ref: scan44318
+Ref: left44858
+Ref: right45218
+Ref: eachprior45580
+Ref: n scan45982
+Ref: c scan46467
+Ref: c over46874
+Ref: vs46981
+Ref: sv47100
+Node: Lists47225
+Node: Dictionaries51772
+Node: More functions56085
+Ref: cond58032
+Ref: parse58150
+Ref: amend59425
+Ref: dmend60087
+Node: I/O60788
+Ref: input format61134
+Ref: format62145
+Ref: write line62551
+Ref: read line62938
+Ref: write char63125
+Ref: read char63520
+Ref: load data63885
+Ref: write data64083
+Ref: conn/set64564
+Ref: http/get64608
+Node: Tables/kSQL64658
+Ref: Tables64836
+Ref: XTab65366
+Ref: TTab65806
+Ref: kSQL65832
+Node: System68724
+Ref: load69183
+Ref: timing69377
+Ref: variables69464
+Ref: memory69565
+Ref: cd69680
+Node: Errors69764
 
 End Tag Table
 

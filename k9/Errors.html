@@ -48,26 +48,49 @@ Previous: <a href="System.html" accesskey="p" rel="prev">System</a>, Up: <a href
 </div>
 <hr>
 <span id="Errors-1"></span><h2 class="chapter">13 Errors</h2>
-<p>This section contains information on the various error messages in k9.
-</p><span id="error_003a-class"></span><h3 class="section">13.1 error: class</h3>
+<p>Given the terse syntax of k9 it likley won&rsquo;t be a surprise to a new user that the error messages are rather short also.  The errors are listed on the help page and described in more detail below.
+</p>
+<pre class="verbatim">error: class rank length type domain limit stack (parse value) 
+</pre>
+<span id="error_003a-class"></span><h3 class="section">13.1 error: class</h3>
 <p>Calling a function on mismatched types.
 </p><div class="example">
 <pre class="example">&nbsp;3+`b
 error: class
 </pre></div>
-<span id="error_003a-domain"></span><h3 class="section">13.2 error: domain</h3>
-<p>Exhausted the number of input values
+
+<span id="error_003a-rank"></span><h3 class="section">13.2 error: rank</h3>
+<p>Calling a function with too many parameters.
 </p><div class="example">
-<pre class="example">&nbsp;-12?10   / only 10 unique value exist
-error: domain
+<pre class="example">&nbsp;{x+y}[1;2;3]
+{x+y}[1;2;3]
+^
+error: rank
 </pre></div>
+
 <span id="error_003a-length"></span><h3 class="section">13.3 error: length</h3>
 <p>Operations on unequal length lists that require equal length.
 </p><div class="example">
 <pre class="example">&nbsp;(1 2 3)+(4 5)
 error: length
 </pre></div>
-<span id="error_003a-nyi"></span><h3 class="section">13.4 error: nyi</h3>
+
+<span id="error_003a-type"></span><h3 class="section">13.4 error: type</h3>
+<p>Calling a function with an unsupported variable type.
+</p><div class="example">
+<pre class="example">`a+`b
+&nbsp; ^
+error: type
+</pre></div>
+
+<span id="error_003a-domain"></span><h3 class="section">13.5 error: domain</h3>
+<p>Exhausted the number of input values
+</p><div class="example">
+<pre class="example">&nbsp;-12?10   / only 10 unique value exist
+error: domain
+</pre></div>
+
+<span id="error_003a-nyi"></span><h3 class="section">13.6 error: nyi</h3>
 <p>Running code that is not yet implemented.  This may come from running code in this document with a different version of k9.
 </p>
 <p>2020.05.31 (c) shakti
@@ -88,27 +111,13 @@ a b|
 ^
 error: nyi
 </pre></div>
-<span id="error_003a-parse"></span><h3 class="section">13.5 error: parse</h3>
+<span id="error_003a-parse"></span><h3 class="section">13.7 error: parse</h3>
 <p>Syntax is wrong.  Possible you failed to match characters which must match, eg. (), {}, [], &quot;&quot;.
 </p><div class="example">
 <pre class="example">&nbsp;{37 . &quot;hello&quot;
 error: parse
 </pre></div>
-<span id="error_003a-rank"></span><h3 class="section">13.6 error: rank</h3>
-<p>Calling a function with too many parameters.
-</p><div class="example">
-<pre class="example">&nbsp;{x+y}[1;2;3]
-{x+y}[1;2;3]
-^
-error: rank
-</pre></div>
-<span id="error_003a-type"></span><h3 class="section">13.7 error: type</h3>
-<p>Calling a function with an unsupported variable type.
-</p><div class="example">
-<pre class="example">`a+`b
-&nbsp; ^
-error: type
-</pre></div>
+
 <span id="error_003a-value"></span><h3 class="section">13.8 error: value</h3>
 <p>Undefined variable is used.
 </p><div class="example">
@@ -143,7 +152,7 @@ error: value
   </ul></li>
   <li><a id="toc-Examples-1" href="Examples.html#Examples">2 Examples</a>
   <ul class="no-bullet">
-    <li><a id="toc-A-tiny-introcution-to-Finanical-Market-Data" href="Examples.html#A-tiny-introcution-to-Finanical-Market-Data">2.1 A tiny introcution to Finanical Market Data</a></li>
+    <li><a id="toc-A-tiny-introduction-to-Finanical-Market-Data" href="Examples.html#A-tiny-introduction-to-Finanical-Market-Data">2.1 A tiny introduction to Finanical Market Data</a></li>
     <li><a id="toc-Data-Manipulation" href="Examples.html#Data-Manipulation">2.2 Data Manipulation</a></li>
     <li><a id="toc-Understanding-Code-Examples" href="Examples.html#Understanding-Code-Examples">2.3 Understanding Code Examples</a></li>
   </ul></li>
@@ -318,12 +327,12 @@ error: value
   <li><a id="toc-Errors-1" href="#Errors">13 Errors</a>
   <ul class="no-bullet">
     <li><a id="toc-error_003a-class" href="#error_003a-class">13.1 error: class</a></li>
-    <li><a id="toc-error_003a-domain" href="#error_003a-domain">13.2 error: domain</a></li>
+    <li><a id="toc-error_003a-rank" href="#error_003a-rank">13.2 error: rank</a></li>
     <li><a id="toc-error_003a-length" href="#error_003a-length">13.3 error: length</a></li>
-    <li><a id="toc-error_003a-nyi" href="#error_003a-nyi">13.4 error: nyi</a></li>
-    <li><a id="toc-error_003a-parse" href="#error_003a-parse">13.5 error: parse</a></li>
-    <li><a id="toc-error_003a-rank" href="#error_003a-rank">13.6 error: rank</a></li>
-    <li><a id="toc-error_003a-type" href="#error_003a-type">13.7 error: type</a></li>
+    <li><a id="toc-error_003a-type" href="#error_003a-type">13.4 error: type</a></li>
+    <li><a id="toc-error_003a-domain" href="#error_003a-domain">13.5 error: domain</a></li>
+    <li><a id="toc-error_003a-nyi" href="#error_003a-nyi">13.6 error: nyi</a></li>
+    <li><a id="toc-error_003a-parse" href="#error_003a-parse">13.7 error: parse</a></li>
     <li><a id="toc-error_003a-value" href="#error_003a-value">13.8 error: value</a></li>
   </ul></li>
 </ul>

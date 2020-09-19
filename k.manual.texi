@@ -294,7 +294,7 @@ In k9 as the Help/Info card shows data are nouns, functions/lists are verbs and 
 @chapter Examples
 Before jumping into synax let's look at some example problems to get a sense of the speed of k9 as processing data.  Given both the historic use of languages similar to k9 in finance and the author's background much of the examples will be based on financial markets.  For those not familiar with this field a short introduction will likley be needed.
 
-@section A tiny introcution to Finanical Market Data
+@section A tiny introduction to Finanical Market Data
 Financial market data generally are stored as prices and trades.  Prices will include at a minimum the time, the securtiy, the price to buy and the price to sell.  Trades will include at a minimum the time, the security, and the price.  In normal markets there are many more prices than trades.
 
 Let's use k9 to generate a set of random prices for a single security hence elimating the need for that field.
@@ -528,7 +528,7 @@ And then one can use the where function, @code{&}, to determine the index of the
 
 @node Benchmarks
 @chapter Benchmarks
-Shakti seems likely to be one of the faster languages out there and clear benchmarks always help to illuminate the matter.  The Shakti website has a file for such purpose, b.k.
+Shakti seems likely to be one of the faster data analysis languages out there and clear benchmarks always help to illuminate the matter.  The Shakti website has a file for such purpose, b.k.  You can see the in the below that from the first query (Q1) k0 takes 1ms while postgres, spark and mongo are orders of magntitude slower.  
 
 b.k
 
@@ -2307,7 +2307,8 @@ c d x32
 @end example
 @node I/O
 @chapter I/O
-Functions for input and ouput (I/O).
+Given k9 is useful for analyzing data it won't be a surprise that input and output (I/O) are supported.  k9 has been optimized to read in data quickly so if you have a workflow of making a tea while the huge csv file loads you might have an issue.
+
 @anchor{input format}@section Input format values to table
 This section shows you the syntax for reading in data into a table with the correct type.
 @example
@@ -2639,7 +2640,7 @@ c | 7
 
 @node System
 @chapter System
-This chapter describes the system settings and functions.
+k9 comes with a few system functions and measurement commands.  The commands allow you to load a script, change the working directory, measure execution times and memory usage, and list defined variables.
 
 @example
 System
@@ -2694,25 +2695,50 @@ Change directory (cd) into x
 
 @node Errors
 @chapter Errors
-This section contains information on the various error messages in k9.
+Given the terse syntax of k9 it likley won't be a surprise to a new user that the error messages are rather short also.  The errors are listed on the help page and described in more detail below.
+
+@verbatim
+error: class rank length type domain limit stack (parse value) 
+@end verbatim
+
 @section error: class
 Calling a function on mismatched types.
 @example
 @ 3+`b
 error: class
 @end example
-@section error: domain
-Exhausted the number of input values
+
+@section error: rank
+Calling a function with too many parameters.
 @example
-@ -12?10   / only 10 unique value exist
-error: domain
+@ @{x+y@}[1;2;3]
+@{x+y@}[1;2;3]
+^
+error: rank
 @end example
+
 @section error: length
 Operations on unequal length lists that require equal length.
 @example
 @ (1 2 3)+(4 5)
 error: length
 @end example
+
+@section error: type
+Calling a function with an unsupported variable type.
+@example
+`a+`b
+@  ^
+error: type
+@end example
+
+@section error: domain
+Exhausted the number of input values
+@example
+@ -12?10   / only 10 unique value exist
+error: domain
+@end example
+
 @section error: nyi
 Running code that is not yet implemented.  This may come from running code in this document with a different version of k9.
 
@@ -2740,21 +2766,7 @@ Syntax is wrong.  Possible you failed to match characters which must match, eg. 
 @ @{37 . "hello"
 error: parse
 @end example
-@section error: rank
-Calling a function with too many parameters.
-@example
-@ @{x+y@}[1;2;3]
-@{x+y@}[1;2;3]
-^
-error: rank
-@end example
-@section error: type
-Calling a function with an unsupported variable type.
-@example
-`a+`b
-@  ^
-error: type
-@end example
+
 @section error: value
 Undefined variable is used.
 @example
