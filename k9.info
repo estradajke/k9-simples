@@ -1009,8 +1009,16 @@ File: k9.info,  Node: Verbs,  Next: Adverbs,  Prev: Nouns,  Up: Top
 5 Functions / Verbs
 *******************
 
-This chapter explains functions, aka verbs.  Most functions are
-overloaded and change depending on the number and type of arguments.
+This chapter explains functions, aka verbs.  Given how different is it
+to call functions in k9 than many other languages this is probably a
+chapter that will have to be covered a few times.  Once you can
+"speak" k9 you'll read '|x' better than 'reverse(x)'.
+
+   Most functions are overloaded and change depending on the number
+and type of arguments.  This reuse of symbols is also an item that
+causes confusion for new users.  Eg.  '(1 4)++(2 3;5 6;7 8)' contains
+the plus symbol once as flip and then for addition.  (Remember
+evaluation is right to left!)
 
      Verb
      : *Note x::,        *Note y: x.
@@ -3037,84 +3045,84 @@ Ref: datetime30235
 Ref: char30907
 Ref: name31130
 Node: Verbs31539
-Ref: x32592
-Ref: y32617
-Ref: flip32825
-Ref: plus33075
-Ref: negate33466
-Ref: minus33638
-Ref: first33745
-Ref: times34064
-Ref: divide34195
-Ref: where34332
-Ref: min/and34718
-Ref: reverse34977
-Ref: max/or35147
-Ref: asc35411
-Ref: less35607
-Ref: group35869
-Ref: equal36115
-Ref: not36239
-Ref: match36356
-Ref: enum36549
-Ref: key37842
-Ref: enlist38069
-Ref: cat38208
-Ref: sort38327
-Ref: cut38504
-Ref: count39195
-Ref: take39385
-Ref: floor40014
-Ref: drop40105
-Ref: string40698
-Ref: cast/mmu40806
-Ref: unique41130
-Ref: find/rnd41367
-Ref: type41822
-Ref: at42178
-Ref: value42391
-Ref: dot42719
-Node: Adverbs43694
-Ref: each44155
-Ref: scan44372
-Ref: left44912
-Ref: right45272
-Ref: eachprior45634
-Ref: n scan46036
-Ref: c scan46521
-Ref: c over46928
-Ref: vs47035
-Ref: sv47154
-Node: Lists47279
-Node: Dictionaries51826
-Node: More functions56139
-Ref: cond58086
-Ref: parse58204
-Ref: amend59479
-Ref: dmend60141
-Node: I/O60842
-Ref: input format61188
-Ref: format62199
-Ref: write line62605
-Ref: read line62992
-Ref: write char63179
-Ref: read char63574
-Ref: load data63939
-Ref: write data64137
-Ref: conn/set64618
-Ref: http/get64662
-Node: Tables/kSQL64712
-Ref: Tables64890
-Ref: XTab65420
-Ref: TTab65860
-Ref: kSQL65886
-Node: System68778
-Ref: load69237
-Ref: timing69431
-Ref: variables69518
-Ref: memory69619
-Ref: cd69734
-Node: Errors69818
+Ref: x33016
+Ref: y33041
+Ref: flip33249
+Ref: plus33499
+Ref: negate33890
+Ref: minus34062
+Ref: first34169
+Ref: times34488
+Ref: divide34619
+Ref: where34756
+Ref: min/and35142
+Ref: reverse35401
+Ref: max/or35571
+Ref: asc35835
+Ref: less36031
+Ref: group36293
+Ref: equal36539
+Ref: not36663
+Ref: match36780
+Ref: enum36973
+Ref: key38266
+Ref: enlist38493
+Ref: cat38632
+Ref: sort38751
+Ref: cut38928
+Ref: count39619
+Ref: take39809
+Ref: floor40438
+Ref: drop40529
+Ref: string41122
+Ref: cast/mmu41230
+Ref: unique41554
+Ref: find/rnd41791
+Ref: type42246
+Ref: at42602
+Ref: value42815
+Ref: dot43143
+Node: Adverbs44118
+Ref: each44579
+Ref: scan44796
+Ref: left45336
+Ref: right45696
+Ref: eachprior46058
+Ref: n scan46460
+Ref: c scan46945
+Ref: c over47352
+Ref: vs47459
+Ref: sv47578
+Node: Lists47703
+Node: Dictionaries52250
+Node: More functions56563
+Ref: cond58510
+Ref: parse58628
+Ref: amend59903
+Ref: dmend60565
+Node: I/O61266
+Ref: input format61612
+Ref: format62623
+Ref: write line63029
+Ref: read line63416
+Ref: write char63603
+Ref: read char63998
+Ref: load data64363
+Ref: write data64561
+Ref: conn/set65042
+Ref: http/get65086
+Node: Tables/kSQL65136
+Ref: Tables65314
+Ref: XTab65844
+Ref: TTab66284
+Ref: kSQL66310
+Node: System69202
+Ref: load69661
+Ref: timing69855
+Ref: variables69942
+Ref: memory70043
+Ref: cd70158
+Node: Errors70242
 
 End Tag Table
 

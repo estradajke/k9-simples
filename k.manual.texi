@@ -878,7 +878,9 @@ Data types can not only represent in-range values but also null and out-of-range
 
 @node Verbs
 @chapter Functions / Verbs
-This chapter explains functions, aka verbs.  Most functions are overloaded and change depending on the number and type of arguments.
+This chapter explains functions, aka verbs.  Given how different is it to call functions in k9 than many other languages this is probably a chapter that will have to be covered a few times.  Once you can ``speak'' k9 you'll read @code{|x} better than @code{reverse(x)}.  
+
+Most functions are overloaded and change depending on the number and type of arguments.  This reuse of symbols is also an item that causes confusion for new users.  Eg. @code{(1 4)++(2 3;5 6;7 8)} contains the plus symbol once as flip and then for addition.  (Remember evaluation is right to left!)
 
 @example
 Verb
