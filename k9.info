@@ -74,6 +74,7 @@ error: class rank length type domain value(parse stack limit)
 * Tables/kSQL:: Tables and kSQL
 * System:: System
 * Errors:: Errors
+* Conculsion:: Conclusion
 
 
 File: k9.info,  Node: Intro,  Next: Examples,  Prev: Top,  Up: Top
@@ -2943,7 +2944,7 @@ Change directory (cd) into x
       \cd scripts
 
 
-File: k9.info,  Node: Errors,  Prev: System,  Up: Top
+File: k9.info,  Node: Errors,  Next: Conculsion,  Prev: System,  Up: Top
 
 13 Errors
 *********
@@ -3028,101 +3029,122 @@ Undefined variable is used.
       g    / assuming 'g' has not be defining in this session
      error: value
 
+
+File: k9.info,  Node: Conculsion,  Prev: Errors,  Up: Top
+
+14 Conculsion
+*************
+
+At this point I expect you reached the same conclusion I did, this
+manual (not produced by Shakti) isn't that good.  Feel free to ask for
+corrections or improvements in any area that would make it better.
+
+   On a more serious note, I also expect you are surprised by the
+performance possible by k9 and the fact that it all fits into a
+134,152 bytes!  (For comparison the ls program weighs in 51,888 bytes
+and can't even change directory.)
+
+   If you're frustrated by the syntax or terse errors, then you're not
+alone.  I'd expect most had the same problems, persevered, and finally
+came away a power user able to squeeze information from data faster
+than previously imagined.
+
 
 
 Tag Table:
 Node: Top176
-Node: Intro3794
-Node: Examples14904
-Node: Benchmarks22067
-Node: Nouns26977
-Ref: bool28395
-Ref: int28695
-Ref: float28899
-Ref: date29201
-Ref: time29621
-Ref: datetime30235
-Ref: char30907
-Ref: name31130
-Node: Verbs31539
-Ref: x33016
-Ref: y33041
-Ref: flip33249
-Ref: plus33499
-Ref: negate33890
-Ref: minus34062
-Ref: first34169
-Ref: times34488
-Ref: divide34619
-Ref: where34756
-Ref: min/and35142
-Ref: reverse35401
-Ref: max/or35571
-Ref: asc35835
-Ref: less36031
-Ref: group36293
-Ref: equal36539
-Ref: not36663
-Ref: match36780
-Ref: enum36973
-Ref: key38266
-Ref: enlist38493
-Ref: cat38632
-Ref: sort38751
-Ref: cut38928
-Ref: count39619
-Ref: take39809
-Ref: floor40438
-Ref: drop40529
-Ref: string41122
-Ref: cast/mmu41230
-Ref: unique41554
-Ref: find/rnd41791
-Ref: type42246
-Ref: at42602
-Ref: value42815
-Ref: dot43143
-Node: Adverbs44118
-Ref: each44579
-Ref: scan44796
-Ref: left45336
-Ref: right45696
-Ref: eachprior46058
-Ref: n scan46460
-Ref: c scan46945
-Ref: c over47352
-Ref: vs47459
-Ref: sv47578
-Node: Lists47703
-Node: Dictionaries52250
-Node: More functions56563
-Ref: cond58510
-Ref: parse58628
-Ref: amend59903
-Ref: dmend60565
-Node: I/O61266
-Ref: input format61612
-Ref: format62623
-Ref: write line63029
-Ref: read line63416
-Ref: write char63603
-Ref: read char63998
-Ref: load data64363
-Ref: write data64561
-Ref: conn/set65042
-Ref: http/get65086
-Node: Tables/kSQL65136
-Ref: Tables65314
-Ref: XTab65844
-Ref: TTab66284
-Ref: kSQL66310
-Node: System69202
-Ref: load69661
-Ref: timing69855
-Ref: variables69942
-Ref: memory70043
-Ref: cd70158
-Node: Errors70242
+Node: Intro3820
+Node: Examples14930
+Node: Benchmarks22093
+Node: Nouns27003
+Ref: bool28421
+Ref: int28721
+Ref: float28925
+Ref: date29227
+Ref: time29647
+Ref: datetime30261
+Ref: char30933
+Ref: name31156
+Node: Verbs31565
+Ref: x33042
+Ref: y33067
+Ref: flip33275
+Ref: plus33525
+Ref: negate33916
+Ref: minus34088
+Ref: first34195
+Ref: times34514
+Ref: divide34645
+Ref: where34782
+Ref: min/and35168
+Ref: reverse35427
+Ref: max/or35597
+Ref: asc35861
+Ref: less36057
+Ref: group36319
+Ref: equal36565
+Ref: not36689
+Ref: match36806
+Ref: enum36999
+Ref: key38292
+Ref: enlist38519
+Ref: cat38658
+Ref: sort38777
+Ref: cut38954
+Ref: count39645
+Ref: take39835
+Ref: floor40464
+Ref: drop40555
+Ref: string41148
+Ref: cast/mmu41256
+Ref: unique41580
+Ref: find/rnd41817
+Ref: type42272
+Ref: at42628
+Ref: value42841
+Ref: dot43169
+Node: Adverbs44144
+Ref: each44605
+Ref: scan44822
+Ref: left45362
+Ref: right45722
+Ref: eachprior46084
+Ref: n scan46486
+Ref: c scan46971
+Ref: c over47378
+Ref: vs47485
+Ref: sv47604
+Node: Lists47729
+Node: Dictionaries52276
+Node: More functions56589
+Ref: cond58536
+Ref: parse58654
+Ref: amend59929
+Ref: dmend60591
+Node: I/O61292
+Ref: input format61638
+Ref: format62649
+Ref: write line63055
+Ref: read line63442
+Ref: write char63629
+Ref: read char64024
+Ref: load data64389
+Ref: write data64587
+Ref: conn/set65068
+Ref: http/get65112
+Node: Tables/kSQL65162
+Ref: Tables65340
+Ref: XTab65870
+Ref: TTab66310
+Ref: kSQL66336
+Node: System69228
+Ref: load69687
+Ref: timing69881
+Ref: variables69968
+Ref: memory70069
+Ref: cd70184
+Node: Errors70268
+Node: Conculsion71954
 
 End Tag Table
 

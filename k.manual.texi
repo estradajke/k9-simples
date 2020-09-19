@@ -83,6 +83,7 @@ error: class rank length type domain value(parse stack limit)
 * Tables/kSQL:: Tables and kSQL
 * System:: System
 * Errors:: Errors
+* Conculsion:: Conclusion
 @c * Index:: Complete index
 @end menu
 
@@ -2775,6 +2776,16 @@ Undefined variable is used.
 @ g    / assuming 'g' has not be defining in this session
 error: value
 @end example
+
+@node Conculsion
+@chapter Conculsion
+
+At this point I expect you reached the same conclusion I did, this manual (not produced by Shakti) isn't that good.  Feel free to ask for corrections or improvements in any area that would make it better.
+
+On a more serious note, I also expect you are surprised by the performance possible by k9 and the fact that it all fits into a 134,152 bytes!  (For comparison the ls program weighs in 51,888 bytes and can't even change directory.)
+
+If you're frustrated by the syntax or terse errors, then you're not alone.  I'd expect most had the same problems, persevered, and finally came away a power user able to squeeze information from data faster than previously imagined.
+
 @c @node Index
 @c @unnumbered Index
 
