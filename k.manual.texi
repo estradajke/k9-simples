@@ -21,14 +21,14 @@ Copyright @copyright{} 2020 John Estrada
 @c @ifnottex
 @node Top
 @top k9: Manual
-This document explains the usage of the k9 programming language in very simple terms and is intended for newer developers.  k9 is a rapidly evolving platform therefore newer versions may have additional functionality not covered in this document.
+The Shakti programming language is the work of Arthur Whitney and the team at Shakti.  The language comes from lineage of similar languages going back to APL.  It's also known as k9 given the similarties to k, k2, ..., k8 and the fact that Arthur also wrote those.  k9 is still under development so this document may become out of date quickly.
 
-This manual is for Shakti (k9) build 2020.09.11.@*
+This manual is for Shakti (k9) build 2020.09.13.@*
 @c @end ifnottex
 
 @smallformat
 @verbatim
-Sep 11 2020 16GB (c) shakti
+Sep 13 2020 16GB (c) shakti
  \
 Verb                      Adverb                 Noun              System 
 :    x         y          f'  each               bool 011b         \l a.k 
@@ -89,7 +89,7 @@ error: class rank length type domain value(parse stack limit)
 @node Intro
 @chapter Intro
 @c @cindex chapter, first
-Shakti, aka k9, is a programming language built for speed, consice syntax, and data manipulation.  The syntax is a bit special and although it might feel like an impediment at first becomes an advantage with use.
+The k9 programming language is designed primarily for the high-speed analysis of data.  It has a very concise syntax which  might feel like an impediment at first but becomes an advantage with use.
 
 The k9 language is more closely related to mathematics syntax than most programming lanauges.  It requires the developer to learn to speak k9 but once that happens most find an ability to ``speak'' quicker in k9 than in other languages.  At this point an example might help.
 
@@ -110,7 +110,7 @@ Code with symbols@*
 x:(0,12,3,4,1,17,-5,0,3,11);y:5;@*
 z@@&y<z:?x@*
 
-If you're new to k9 and similar languages, then you should likely appreciate symbols is shorter but looks like line noise.  That's true but so did arithetic until you learned the basics.
+If you're new to k9 then you likely appreciate symbols are shorter but look like line noise.  That's true but so did arithetic until you learned the basics.
 
 When you first learned arithmetic you likley didn't have a choice.  Now you have a choice about learning k9.  If you give it a try, then I expect you'll get it quickly and move onto the power phase fast enough that you'll be happy you gave it a chance.
 
@@ -118,7 +118,7 @@ When you first learned arithmetic you likley didn't have a choice.  Now you have
 
 https://shakti.sh
 
-You will find the linux version in the linux directory and the mac one under macos.  Once you download the mac version you'll have to change it's file permissions to allow it to execute.
+You will find the linux version in the linux directory and the mac version under macos.  Once you download the mac version you'll have to change it's file permissions to allow it to execute.
 
 @example
 @ chomd u+x k
@@ -130,7 +130,7 @@ Again on the mac if you then attempt to run this file you likely won't succeed d
 Typing @code{\} in the terminal gives you a concise overview of the language.  This document aims to provide details to beginning users where the help screen is a tad too terse.  Some commands are not yet complete and thus marked with an asterisk, eg. *?[x;i;f[;y]] splice.
 @smallformat
 @verbatim
-Sep 11 2020 16GB (c) shakti
+Sep 13 2020 16GB (c) shakti
  \
 Verb                      Adverb                 Noun              System 
 :    x         y          f'  each               bool 011b         \l a.k 
@@ -251,8 +251,10 @@ Yeah, 2 divide by 5 is written as @code{2%5} and not @code{2/5}.
 
 @subsection Evaluation is done right to left
 2+5*3 is 17 and 2*5+3 is 16.  2+5*3 is first evaluated on the right most portion, 5*3, and once that is computed then it proceeds with 2+15.  2*5+3 goes to 2*8 which becomes 16.
+
 @subsection There is no arithmetic order
 + does not happen specially before or after *.  The order of evaluation is done right to left unless parenthesis are used.  (2+5)*3 = 21 as the 2+5 in parenthesis is done before being multiplied by 3.
+
 @subsection Operators are overloaded depending on the number of arguments.
 @example
 @ *(3;6;9)    / single argument so * is first element of the list
@@ -260,6 +262,7 @@ Yeah, 2 divide by 5 is written as @code{2%5} and not @code{2/5}.
 @ 2*(3;6;9)   / two arguments so * is multiplication
 6 12 18
 @end example
+
 @subsection Lists and functions are very similar.
 k9 syntax encourages you to treat lists and functions in a similar function.  They should both be thought of a mapping from a value to another value or from a domain to a range.
 
@@ -273,6 +276,7 @@ If this book wasn't a simples guide then lists (l) and functions (f) would be re
 @ f@@2
 7
 @end example
+
 @subsection k9 is expressed in terms of grammar.
 k9 uses an analogy with grammar to describe language syntax.  The k9 grammar consists of nouns (data), verbs (functions) and adverbs (function modifiers).
 @itemize
@@ -285,11 +289,53 @@ In k9 as the Help/Info card shows data are nouns, functions/lists are verbs and 
 @item @t{3 >' 0 1 2 3 4 5 (Noun verb adverb noun)}
 @end itemize
 @page
+
 @node Examples
 @chapter Examples
-Examples of k9 in practice.
+Before jumping into synax let's look at some example problems to get a sense of the speed of k9 as processing data.  Given both the historic use of languages similar to k9 in finance and the author's background much of the examples will be based on financial markets.  For those not familiar with this field a short introduction will likley be needed.
+
+@section A tiny introcution to Finanical Market Data
+Financial market data generally are stored as prices and trades.  Prices will include at a minimum the time, the securtiy, the price to buy and the price to sell.  Trades will include at a minimum the time, the security, and the price.  In normal markets there are many more prices than trades.
+
+Let's use k9 to generate a set of random prices for a single security hence elimating the need for that field.
+
+@example
+ n:10
+ T:10:00+`t x@@<x:n?36e5
+ B:100++\-1+n?3
+ A:B+1+n?2
+ q:+`t`b`a!(T;B;A);q
+t            b   a  
+------------ --- ---
+10:01:48.464 100 102
+10:23:12.033 100 102
+10:30:00.432 101 102
+10:34:00.383 101 103
+10:34:36.839 101 102
+10:42:59.230 100 102
+10:46:50.478 100 102
+10:52:42.189  99 100
+10:55:52.208  99 101
+10:59:06.262  98  99
+@end example
+
+Here you see that at 10:42:59.230 the prices update to 100 and 102.  The price one could sell is 100 and the price to buy is 102.  You might think that 100 seems a bit high so sell there.  Later at 10:59:06.262 you might have thought the prices look low and then buy at 99.  Here's the trade table for those two transactions.
+
+@example
+ t:+`t`p!(10:43:00.230 10:59:07.262:;100 99);t
+t            p  
+------------ ---
+10:43:00.230 100
+10:59:07.262  99
+@end example
+
+You'll note that the times didn't line up and that's because it apparently took you 1s to decide to trade.  Because of this delay you'll often have to look back at the previous prices to join trade (t) and quote (q) data.
+
+Now that you've learned enough finance to understand the data, let's scale up to larger problems to see the power of k9.
+
+
 @section Data Manipulation
-Generate a table of financial random data and compute basic statistics quickly.  This table takes about 11 GB and 10 seconds, so scale up or down as required to fit.
+Generate a table of random financial data and compute basic statistics quickly.  This table takes about 4 GB and 5 seconds on a relatively new consumer laptop.
 
 @example
 @ n:_100*1000*1000                         / 100 million rows
@@ -300,7 +346,7 @@ Generate a table of financial random data and compute basic statistics quickly. 
 10263
 @end example 
 
-As this point one might want to check start and stop times, see if the symbol distribution is actual random and look at the distribution of the price deltas.
+As this point one might want to check start and stop times, see if the symbol distribution is actually random and look at the distribution of the price deltas.
 
 @example
 @ select min t, max t from q               / min and max time values

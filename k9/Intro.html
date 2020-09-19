@@ -2,7 +2,7 @@
 <html>
 <!-- This manual is for Shakti (k9) build 2020.09.11.
 
-September 17, 2020
+September 19, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -49,7 +49,7 @@ Next: <a href="Examples.html" accesskey="n" rel="next">Examples</a>, Previous: <
 </div>
 <hr>
 <span id="Intro-1"></span><h2 class="chapter">1 Intro</h2>
-<p>Shakti, aka k9, is a programming language built for speed, consice syntax, and data manipulation.  The syntax is a bit special and although it might feel like an impediment at first becomes an advantage with use.
+<p>The k9 programming language is designed primarily for the high-speed analysis of data.  It has a very concise syntax which  might feel like an impediment at first but becomes an advantage with use.
 </p>
 <p>The k9 language is more closely related to mathematics syntax than most programming lanauges.  It requires the developer to learn to speak k9 but once that happens most find an ability to &ldquo;speak&rdquo; quicker in k9 than in other languages.  At this point an example might help.
 </p>
@@ -70,7 +70,7 @@ Code with symbols<br>
 x:(0,12,3,4,1,17,-5,0,3,11);y:5;<br>
 z@&amp;y&lt;z:?x<br>
 </p>
-<p>If you&rsquo;re new to k9 and similar languages, then you should likely appreciate symbols is shorter but looks like line noise.  That&rsquo;s true but so did arithetic until you learned the basics.
+<p>If you&rsquo;re new to k9 then you likely appreciate symbols are shorter but look like line noise.  That&rsquo;s true but so did arithetic until you learned the basics.
 </p>
 <p>When you first learned arithmetic you likley didn&rsquo;t have a choice.  Now you have a choice about learning k9.  If you give it a try, then I expect you&rsquo;ll get it quickly and move onto the power phase fast enough that you&rsquo;ll be happy you gave it a chance.
 </p>
@@ -78,7 +78,7 @@ z@&amp;y&lt;z:?x<br>
 
 <p>https://shakti.sh
 </p>
-<p>You will find the linux version in the linux directory and the mac one under macos.  Once you download the mac version you&rsquo;ll have to change it&rsquo;s file permissions to allow it to execute.
+<p>You will find the linux version in the linux directory and the mac version under macos.  Once you download the mac version you&rsquo;ll have to change it&rsquo;s file permissions to allow it to execute.
 </p>
 <div class="example">
 <pre class="example">&nbsp;chomd u+x k
@@ -89,7 +89,7 @@ z@&amp;y&lt;z:?x<br>
 <span id="Help_002fInfo-Card"></span><h3 class="section">1.2 Help/Info Card</h3>
 <p>Typing <code>\</code> in the terminal gives you a concise overview of the language.  This document aims to provide details to beginning users where the help screen is a tad too terse.  Some commands are not yet complete and thus marked with an asterisk, eg. *?[x;i;f[;y]] splice.
 </p><div class="format">
-<pre class="verbatim">Sep 11 2020 16GB (c) shakti
+<pre class="verbatim">Sep 13 2020 16GB (c) shakti
  \
 Verb                      Adverb                 Noun              System 
 :    x         y          f'  each               bool 011b         \l a.k 
@@ -208,15 +208,18 @@ c|0.6708467
 </p>
 <span id="Evaluation-is-done-right-to-left"></span><h4 class="subsection">1.6.4 Evaluation is done right to left</h4>
 <p>2+5*3 is 17 and 2*5+3 is 16.  2+5*3 is first evaluated on the right most portion, 5*3, and once that is computed then it proceeds with 2+15.  2*5+3 goes to 2*8 which becomes 16.
-</p><span id="There-is-no-arithmetic-order"></span><h4 class="subsection">1.6.5 There is no arithmetic order</h4>
+</p>
+<span id="There-is-no-arithmetic-order"></span><h4 class="subsection">1.6.5 There is no arithmetic order</h4>
 <p>+ does not happen specially before or after *.  The order of evaluation is done right to left unless parenthesis are used.  (2+5)*3 = 21 as the 2+5 in parenthesis is done before being multiplied by 3.
-</p><span id="Operators-are-overloaded-depending-on-the-number-of-arguments_002e"></span><h4 class="subsection">1.6.6 Operators are overloaded depending on the number of arguments.</h4>
+</p>
+<span id="Operators-are-overloaded-depending-on-the-number-of-arguments_002e"></span><h4 class="subsection">1.6.6 Operators are overloaded depending on the number of arguments.</h4>
 <div class="example">
 <pre class="example">&nbsp;*(3;6;9)    / single argument so * is first element of the list
 3
 &nbsp;2*(3;6;9)   / two arguments so * is multiplication
 6 12 18
 </pre></div>
+
 <span id="Lists-and-functions-are-very-similar_002e"></span><h4 class="subsection">1.6.7 Lists and functions are very similar.</h4>
 <p>k9 syntax encourages you to treat lists and functions in a similar function.  They should both be thought of a mapping from a value to another value or from a domain to a range.
 </p>
@@ -230,6 +233,7 @@ c|0.6708467
 &nbsp;f@2
 7
 </pre></div>
+
 <span id="k9-is-expressed-in-terms-of-grammar_002e"></span><h4 class="subsection">1.6.8 k9 is expressed in terms of grammar.</h4>
 <p>k9 uses an analogy with grammar to describe language syntax.  The k9 grammar consists of nouns (data), verbs (functions) and adverbs (function modifiers).
 </p><ul>
@@ -241,6 +245,7 @@ c|0.6708467
 <li> <tt>3 &gt; 2 (Noun verb noun)</tt>
 </li><li> <tt>3 &gt;' 0 1 2 3 4 5 (Noun verb adverb noun)</tt>
 </li></ul>
+
 <hr>
 <div class="header">
 <p>

@@ -1,7 +1,7 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
 This manual is for Shakti (k9) build 2020.09.11.
-September 17, 2020
+September 19, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -11,14 +11,15 @@ File: k9.info,  Node: Top,  Next: Intro,  Up: (dir)
 k9: Manual
 **********
 
-This document explains the usage of the k9 programming language in
-very simple terms and is intended for newer developers.  k9 is a
-rapidly evolving platform therefore newer versions may have additional
-functionality not covered in this document.
+The Shakti programming language is the work of Arthur Whitney and the
+team at Shakti.  The language comes from lineage of similar languages
+going back to APL. It's also known as k9 given the similarties to k,
+k2, ..., k8 and the fact that Arthur also wrote those.  k9 is still
+under development so this document may become out of date quickly.
 
-   This manual is for Shakti (k9) build 2020.09.11.
+   This manual is for Shakti (k9) build 2020.09.13.
 
-Sep 11 2020 16GB (c) shakti
+Sep 13 2020 16GB (c) shakti
  \
 Verb                      Adverb                 Noun              System 
 :    x         y          f'  each               bool 011b         \l a.k 
@@ -79,10 +80,9 @@ File: k9.info,  Node: Intro,  Next: Examples,  Prev: Top,  Up: Top
 1 Intro
 *******
 
-Shakti, aka k9, is a programming language built for speed, consice
-syntax, and data manipulation.  The syntax is a bit special and
-although it might feel like an impediment at first becomes an
-advantage with use.
+The k9 programming language is designed primarily for the high-speed
+analysis of data.  It has a very concise syntax which might feel like
+an impediment at first but becomes an advantage with use.
 
    The k9 language is more closely related to mathematics syntax than
 most programming lanauges.  It requires the developer to learn to
@@ -120,9 +120,9 @@ Code with symbols
 x:(0,12,3,4,1,17,-5,0,3,11);y:5;
 z@&y<z:?x
 
-   If you're new to k9 and similar languages, then you should likely
-appreciate symbols is shorter but looks like line noise.  That's true
-but so did arithetic until you learned the basics.
+   If you're new to k9 then you likely appreciate symbols are shorter
+but look like line noise.  That's true but so did arithetic until you
+learned the basics.
 
    When you first learned arithmetic you likley didn't have a choice.
 Now you have a choice about learning k9.  If you give it a try, then I
@@ -135,7 +135,7 @@ that you'll be happy you gave it a chance.
 https://shakti.sh
 
    You will find the linux version in the linux directory and the mac
-one under macos.  Once you download the mac version you'll have to
+version under macos.  Once you download the mac version you'll have to
 change it's file permissions to allow it to execute.
 
       chomd u+x k
@@ -153,7 +153,7 @@ Typing '\' in the terminal gives you a concise overview of the
 language.  This document aims to provide details to beginning users
 where the help screen is a tad too terse.  Some commands are not yet
 complete and thus marked with an asterisk, eg.  *?[x;i;f[;y]] splice.
-Sep 11 2020 16GB (c) shakti
+Sep 13 2020 16GB (c) shakti
  \
 Verb                      Adverb                 Noun              System 
 :    x         y          f'  each               bool 011b         \l a.k 
@@ -359,14 +359,69 @@ File: k9.info,  Node: Examples,  Next: Benchmarks,  Prev: Intro,  Up: Top
 2 Examples
 **********
 
-Examples of k9 in practice.
+Before jumping into synax let's look at some example problems to get a
+sense of the speed of k9 as processing data.  Given both the historic
+use of languages similar to k9 in finance and the author's background
+much of the examples will be based on financial markets.  For those
+not familiar with this field a short introduction will likley be
+needed.
 
-2.1 Data Manipulation
+2.1 A tiny introcution to Finanical Market Data
+===============================================
+
+Financial market data generally are stored as prices and trades.
+Prices will include at a minimum the time, the securtiy, the price to
+buy and the price to sell.  Trades will include at a minimum the time,
+the security, and the price.  In normal markets there are many more
+prices than trades.
+
+   Let's use k9 to generate a set of random prices for a single
+security hence elimating the need for that field.
+
+      n:10
+      T:10:00+`t x@<x:n?36e5
+      B:100++\-1+n?3
+      A:B+1+n?2
+      q:+`t`b`a!(T;B;A);q
+     t            b   a
+     ------------ --- ---
+     10:01:48.464 100 102
+     10:23:12.033 100 102
+     10:30:00.432 101 102
+     10:34:00.383 101 103
+     10:34:36.839 101 102
+     10:42:59.230 100 102
+     10:46:50.478 100 102
+     10:52:42.189  99 100
+     10:55:52.208  99 101
+     10:59:06.262  98  99
+
+   Here you see that at 10:42:59.230 the prices update to 100 and 102.
+The price one could sell is 100 and the price to buy is 102.  You
+might think that 100 seems a bit high so sell there.  Later at
+10:59:06.262 you might have thought the prices look low and then buy
+at 99.  Here's the trade table for those two transactions.
+
+      t:+`t`p!(10:43:00.230 10:59:07.262:;100 99);t
+     t            p
+     ------------ ---
+     10:43:00.230 100
+     10:59:07.262  99
+
+   You'll note that the times didn't line up and that's because it
+apparently took you 1s to decide to trade.  Because of this delay
+you'll often have to look back at the previous prices to join trade
+(t) and quote (q) data.
+
+   Now that you've learned enough finance to understand the data,
+let's scale up to larger problems to see the power of k9.
+
+2.2 Data Manipulation
 =====================
 
-Generate a table of financial random data and compute basic statistics
-quickly.  This table takes about 11 GB and 10 seconds, so scale up or
-down as required to fit.
+Generate a table of random financial data and compute basic statistics
+quickly.  This table takes about 4 GB and 5 seconds on a relatively
+new consumer laptop.
 
       n:_100*1000*1000                         / 100 million rows
       t:{[x]g@<g:09:00:00.000+x?10:00:00.000}  / random times
@@ -376,8 +431,8 @@ down as required to fit.
      10263
 
    As this point one might want to check start and stop times, see if
-the symbol distribution is actual random and look at the distribution
-of the price deltas.
+the symbol distribution is actually random and look at the
+distribution of the price deltas.
 
       select min t, max t from q               / min and max time values
      t|09:00:00.000
@@ -408,7 +463,7 @@ of the price deltas.
       4|    6391
       5|      57
 
-2.2 Understanding Code Examples
+2.3 Understanding Code Examples
 ===============================
 
 In the shakti mailing list there is a number of code examples that can
@@ -2957,97 +3012,97 @@ Undefined variable is used.
 
 Tag Table:
 Node: Top176
-Node: Intro3643
-Node: Examples14795
-Node: Benchmarks19896
-Node: Nouns24654
-Ref: bool26072
-Ref: int26372
-Ref: float26576
-Ref: date26878
-Ref: time27298
-Ref: datetime27912
-Ref: char28584
-Ref: name28807
-Node: Verbs29216
-Ref: x30269
-Ref: y30294
-Ref: flip30502
-Ref: plus30752
-Ref: negate31143
-Ref: minus31315
-Ref: first31422
-Ref: times31741
-Ref: divide31872
-Ref: where32009
-Ref: min/and32395
-Ref: reverse32654
-Ref: max/or32824
-Ref: asc33088
-Ref: less33284
-Ref: group33546
-Ref: equal33792
-Ref: not33916
-Ref: match34033
-Ref: enum34226
-Ref: key35519
-Ref: enlist35746
-Ref: cat35885
-Ref: sort36004
-Ref: cut36181
-Ref: count36872
-Ref: take37062
-Ref: floor37691
-Ref: drop37782
-Ref: string38375
-Ref: cast/mmu38483
-Ref: unique38807
-Ref: find/rnd39044
-Ref: type39499
-Ref: at39855
-Ref: value40068
-Ref: dot40396
-Node: Adverbs41371
-Ref: each41832
-Ref: scan42049
-Ref: left42589
-Ref: right42949
-Ref: eachprior43311
-Ref: n scan43713
-Ref: c scan44198
-Ref: c over44605
-Ref: vs44712
-Ref: sv44831
-Node: Lists44956
-Node: Dictionaries49503
-Node: More functions53816
-Ref: cond55763
-Ref: parse55881
-Ref: amend57156
-Ref: dmend57818
-Node: I/O58519
-Ref: input format58652
-Ref: format59665
-Ref: write line60071
-Ref: read line60458
-Ref: write char60645
-Ref: read char61040
-Ref: load data61405
-Ref: write data61603
-Ref: conn/set62084
-Ref: http/get62128
-Node: Tables/kSQL62178
-Ref: Tables62356
-Ref: XTab62886
-Ref: TTab63326
-Ref: kSQL63352
-Node: System66244
-Ref: load66556
-Ref: timing66750
-Ref: variables66837
-Ref: memory66938
-Ref: cd67053
-Node: Errors67137
+Node: Intro3740
+Node: Examples14850
+Node: Benchmarks22011
+Node: Nouns26769
+Ref: bool28187
+Ref: int28487
+Ref: float28691
+Ref: date28993
+Ref: time29413
+Ref: datetime30027
+Ref: char30699
+Ref: name30922
+Node: Verbs31331
+Ref: x32384
+Ref: y32409
+Ref: flip32617
+Ref: plus32867
+Ref: negate33258
+Ref: minus33430
+Ref: first33537
+Ref: times33856
+Ref: divide33987
+Ref: where34124
+Ref: min/and34510
+Ref: reverse34769
+Ref: max/or34939
+Ref: asc35203
+Ref: less35399
+Ref: group35661
+Ref: equal35907
+Ref: not36031
+Ref: match36148
+Ref: enum36341
+Ref: key37634
+Ref: enlist37861
+Ref: cat38000
+Ref: sort38119
+Ref: cut38296
+Ref: count38987
+Ref: take39177
+Ref: floor39806
+Ref: drop39897
+Ref: string40490
+Ref: cast/mmu40598
+Ref: unique40922
+Ref: find/rnd41159
+Ref: type41614
+Ref: at41970
+Ref: value42183
+Ref: dot42511
+Node: Adverbs43486
+Ref: each43947
+Ref: scan44164
+Ref: left44704
+Ref: right45064
+Ref: eachprior45426
+Ref: n scan45828
+Ref: c scan46313
+Ref: c over46720
+Ref: vs46827
+Ref: sv46946
+Node: Lists47071
+Node: Dictionaries51618
+Node: More functions55931
+Ref: cond57878
+Ref: parse57996
+Ref: amend59271
+Ref: dmend59933
+Node: I/O60634
+Ref: input format60767
+Ref: format61780
+Ref: write line62186
+Ref: read line62573
+Ref: write char62760
+Ref: read char63155
+Ref: load data63520
+Ref: write data63718
+Ref: conn/set64199
+Ref: http/get64243
+Node: Tables/kSQL64293
+Ref: Tables64471
+Ref: XTab65001
+Ref: TTab65441
+Ref: kSQL65467
+Node: System68359
+Ref: load68671
+Ref: timing68865
+Ref: variables68952
+Ref: memory69053
+Ref: cd69168
+Node: Errors69252
 
 End Tag Table
 

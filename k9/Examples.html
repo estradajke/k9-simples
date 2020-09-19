@@ -2,7 +2,7 @@
 <html>
 <!-- This manual is for Shakti (k9) build 2020.09.11.
 
-September 17, 2020
+September 19, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -49,9 +49,50 @@ Next: <a href="Benchmarks.html" accesskey="n" rel="next">Benchmarks</a>, Previou
 </div>
 <hr>
 <span id="Examples-1"></span><h2 class="chapter">2 Examples</h2>
-<p>Examples of k9 in practice.
-</p><span id="Data-Manipulation"></span><h3 class="section">2.1 Data Manipulation</h3>
-<p>Generate a table of financial random data and compute basic statistics quickly.  This table takes about 11 GB and 10 seconds, so scale up or down as required to fit.
+<p>Before jumping into synax let&rsquo;s look at some example problems to get a sense of the speed of k9 as processing data.  Given both the historic use of languages similar to k9 in finance and the author&rsquo;s background much of the examples will be based on financial markets.  For those not familiar with this field a short introduction will likley be needed.
+</p>
+<span id="A-tiny-introcution-to-Finanical-Market-Data"></span><h3 class="section">2.1 A tiny introcution to Finanical Market Data</h3>
+<p>Financial market data generally are stored as prices and trades.  Prices will include at a minimum the time, the securtiy, the price to buy and the price to sell.  Trades will include at a minimum the time, the security, and the price.  In normal markets there are many more prices than trades.
+</p>
+<p>Let&rsquo;s use k9 to generate a set of random prices for a single security hence elimating the need for that field.
+</p>
+<div class="example">
+<pre class="example"> n:10
+ T:10:00+`t x@&lt;x:n?36e5
+ B:100++\-1+n?3
+ A:B+1+n?2
+ q:+`t`b`a!(T;B;A);q
+t            b   a  
+------------ --- ---
+10:01:48.464 100 102
+10:23:12.033 100 102
+10:30:00.432 101 102
+10:34:00.383 101 103
+10:34:36.839 101 102
+10:42:59.230 100 102
+10:46:50.478 100 102
+10:52:42.189  99 100
+10:55:52.208  99 101
+10:59:06.262  98  99
+</pre></div>
+
+<p>Here you see that at 10:42:59.230 the prices update to 100 and 102.  The price one could sell is 100 and the price to buy is 102.  You might think that 100 seems a bit high so sell there.  Later at 10:59:06.262 you might have thought the prices look low and then buy at 99.  Here&rsquo;s the trade table for those two transactions.
+</p>
+<div class="example">
+<pre class="example"> t:+`t`p!(10:43:00.230 10:59:07.262:;100 99);t
+t            p  
+------------ ---
+10:43:00.230 100
+10:59:07.262  99
+</pre></div>
+
+<p>You&rsquo;ll note that the times didn&rsquo;t line up and that&rsquo;s because it apparently took you 1s to decide to trade.  Because of this delay you&rsquo;ll often have to look back at the previous prices to join trade (t) and quote (q) data.
+</p>
+<p>Now that you&rsquo;ve learned enough finance to understand the data, let&rsquo;s scale up to larger problems to see the power of k9.
+</p>
+
+<span id="Data-Manipulation"></span><h3 class="section">2.2 Data Manipulation</h3>
+<p>Generate a table of random financial data and compute basic statistics quickly.  This table takes about 4 GB and 5 seconds on a relatively new consumer laptop.
 </p>
 <div class="example">
 <pre class="example">&nbsp;n:_100*1000*1000                         / 100 million rows
@@ -62,7 +103,7 @@ Next: <a href="Benchmarks.html" accesskey="n" rel="next">Benchmarks</a>, Previou
 10263
 </pre></div>
 
-<p>As this point one might want to check start and stop times, see if the symbol distribution is actual random and look at the distribution of the price deltas.
+<p>As this point one might want to check start and stop times, see if the symbol distribution is actually random and look at the distribution of the price deltas.
 </p>
 <div class="example">
 <pre class="example">&nbsp;select min t, max t from q               / min and max time values
@@ -95,7 +136,7 @@ d |d
  5|      57
 </pre></div>
 
-<span id="Understanding-Code-Examples"></span><h3 class="section">2.2 Understanding Code Examples</h3>
+<span id="Understanding-Code-Examples"></span><h3 class="section">2.3 Understanding Code Examples</h3>
 <p>In the shakti mailing list there is a number of code examples that can be used to learn best practice.  In order to make sense of other&rsquo;s codes one needs to be able to effeciently parse the typically dense k9 language.  Here, an example of how one goes about this process is presented.
 </p>
 <div class="example">
