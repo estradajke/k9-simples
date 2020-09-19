@@ -21,15 +21,15 @@ Copyright @copyright{} 2020 John Estrada
 @c @ifnottex
 @node Top
 @top k9: Manual
-The Shakti programming language is the work of Arthur Whitney and the team at Shakti.  The language comes from lineage of similar languages going back to APL.  It's also known as k9 given the similarties to k, k2, ..., k8 and the fact that Arthur also wrote those.  k9 is still under development so this document may become out of date quickly.
+The Shakti programming language is the work of Arthur Whitney and the team at Shakti.  The language comes from lineage of similar languages going back to APL.  It's also known as k9 given the similarties to k, k2, ..., k8 and the fact that Arthur also wrote those.  k9 is still under development so expect a bit of syntax change and likley even more improvements.
 
 This manual is for Shakti (k9) build 2020.09.13.@*
 @c @end ifnottex
 
+The built-in reference screen containing all the k9 commands.
+
 @smallformat
 @verbatim
-Sep 13 2020 16GB (c) shakti
- \
 Verb                      Adverb                 Noun              System 
 :    x         y          f'  each               bool 011b         \l a.k 
 +    flip      plus       d/  over      c/ i/    int  0N 0 2 3     \t:n x 
