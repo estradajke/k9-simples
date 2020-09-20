@@ -61,14 +61,14 @@ error: class rank length type domain value(parse stack limit)
 
 * Menu:
 
-* Intro:: Intro
-* Examples:: Examples
-* Benchmarks:: Benchmarks
-* Nouns:: Data / Noun
-* Verbs:: Functions / Verbs
-* Adverbs:: Function Modifiers / Adverbs
+* Intro:: An introduction to shakti/k9, a novel computer language for data analysis
+* Examples:: Example to motivate the reader to learn the language
+* Benchmarks:: Learn how fast this language is
+* Nouns:: Basic data types
+* Verbs:: Core functions
+* Adverbs:: Function modifiers
 * Lists:: Lists
-* Dictionaries:: Dictionaries and Functions for Dictionaries
+* Dictionaries:: Dictionaries and functions for dictionaries
 * Named Functions:: Named functions
 * More Functions:: More functions
 * I/O:: I/O
@@ -3197,98 +3197,98 @@ than previously imagined.
 
 Tag Table:
 Node: Top176
-Node: Intro3856
-Node: Examples14966
-Node: Benchmarks22129
-Node: Nouns27039
-Ref: bool28457
-Ref: int28757
-Ref: float28961
-Ref: date29263
-Ref: time29683
-Ref: datetime30297
-Ref: char30969
-Ref: name31192
-Node: Verbs31601
-Ref: parse33079
-Ref: set34356
-Ref: flip34568
-Ref: plus34818
-Ref: negate35209
-Ref: minus35381
-Ref: first35488
-Ref: times35807
-Ref: divide35938
-Ref: where36075
-Ref: min/and36461
-Ref: reverse36720
-Ref: max/or36890
-Ref: asc37154
-Ref: less37350
-Ref: group37612
-Ref: equal37858
-Ref: not37982
-Ref: match38099
-Ref: enum38292
-Ref: key39585
-Ref: enlist39812
-Ref: cat39951
-Ref: sort40070
-Ref: cut40247
-Ref: count40938
-Ref: take41128
-Ref: floor41757
-Ref: drop41848
-Ref: string42441
-Ref: cast/mmu42549
-Ref: unique42873
-Ref: find/rnd43110
-Ref: type43565
-Ref: at43921
-Ref: value44134
-Ref: dot44462
-Node: Adverbs45437
-Ref: each45898
-Ref: scan46115
-Ref: left46655
-Ref: right47015
-Ref: eachprior47377
-Ref: n scan47779
-Ref: c scan48264
-Ref: c over48671
-Ref: vs48778
-Ref: sv48897
-Node: Lists49022
-Node: Dictionaries53569
-Node: Named Functions58495
-Node: More Functions60949
-Ref: cond61072
-Ref: amend61192
-Ref: dmend61854
-Node: I/O62557
-Ref: input format62903
-Ref: format63914
-Ref: write line64320
-Ref: read line64707
-Ref: write char64894
-Ref: read char65289
-Ref: load data65654
-Ref: write data67410
-Ref: conn/set71323
-Ref: http/get71367
-Node: Tables/kSQL71417
-Ref: Tables71595
-Ref: XTab72125
-Ref: TTab72565
-Ref: kSQL72591
-Node: System75483
-Ref: load75942
-Ref: timing76136
-Ref: variables76223
-Ref: memory76324
-Ref: cd76439
-Node: Errors76523
-Node: Conculsion78209
+Node: Intro3981
+Node: Examples15091
+Node: Benchmarks22254
+Node: Nouns27164
+Ref: bool28582
+Ref: int28882
+Ref: float29086
+Ref: date29388
+Ref: time29808
+Ref: datetime30422
+Ref: char31094
+Ref: name31317
+Node: Verbs31726
+Ref: parse33204
+Ref: set34481
+Ref: flip34693
+Ref: plus34943
+Ref: negate35334
+Ref: minus35506
+Ref: first35613
+Ref: times35932
+Ref: divide36063
+Ref: where36200
+Ref: min/and36586
+Ref: reverse36845
+Ref: max/or37015
+Ref: asc37279
+Ref: less37475
+Ref: group37737
+Ref: equal37983
+Ref: not38107
+Ref: match38224
+Ref: enum38417
+Ref: key39710
+Ref: enlist39937
+Ref: cat40076
+Ref: sort40195
+Ref: cut40372
+Ref: count41063
+Ref: take41253
+Ref: floor41882
+Ref: drop41973
+Ref: string42566
+Ref: cast/mmu42674
+Ref: unique42998
+Ref: find/rnd43235
+Ref: type43690
+Ref: at44046
+Ref: value44259
+Ref: dot44587
+Node: Adverbs45562
+Ref: each46023
+Ref: scan46240
+Ref: left46780
+Ref: right47140
+Ref: eachprior47502
+Ref: n scan47904
+Ref: c scan48389
+Ref: c over48796
+Ref: vs48903
+Ref: sv49022
+Node: Lists49147
+Node: Dictionaries53694
+Node: Named Functions58620
+Node: More Functions61074
+Ref: cond61197
+Ref: amend61317
+Ref: dmend61979
+Node: I/O62682
+Ref: input format63028
+Ref: format64039
+Ref: write line64445
+Ref: read line64832
+Ref: write char65019
+Ref: read char65414
+Ref: load data65779
+Ref: write data67535
+Ref: conn/set71448
+Ref: http/get71492
+Node: Tables/kSQL71542
+Ref: Tables71720
+Ref: XTab72250
+Ref: TTab72690
+Ref: kSQL72716
+Node: System75608
+Ref: load76067
+Ref: timing76261
+Ref: variables76348
+Ref: memory76449
+Ref: cd76564
+Node: Errors76648
+Node: Conculsion78334
 
 End Tag Table
 
