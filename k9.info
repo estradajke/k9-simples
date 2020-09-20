@@ -69,7 +69,8 @@ error: class rank length type domain value(parse stack limit)
 * Adverbs:: Function Modifiers / Adverbs
 * Lists:: Lists
 * Dictionaries:: Dictionaries and Functions for Dictionaries
-* More functions:: More functions
+* Named Functions:: Named functions
+* More Functions:: More functions
 * I/O:: I/O
 * Tables/kSQL:: Tables and kSQL
 * System:: System
@@ -362,13 +363,13 @@ File: k9.info,  Node: Examples,  Next: Benchmarks,  Prev: Intro,  Up: Top
 **********
 
 Before jumping into synax let's look at some example problems to get a
-sense of the speed of k9 as processing data.  Given both the historic
+sense of the speed of k9 at processing data.  Given both the historic
 use of languages similar to k9 in finance and the author's background
 much of the examples will be based on financial markets.  For those
 not familiar with this field a short introduction will likley be
 needed.
 
-2.1 A tiny introduction to Finanical Market Data
+2.1 A Tiny Introduction to Finanical Market Data
 ================================================
 
 Financial market data generally are stored as prices and trades.
@@ -836,7 +837,7 @@ covered in a seperate chapter.
      *Note date::,  2024.01.01   D
      *Note time::,  12:34:56.789 t
      *Note char::,  "ab "        c
-     *Note name::,   `a`b`       n
+     *Note name::,  `a`b`        n
 
    Data types can be determined by using the '@' function on values or
 lists of values.  In the case of non-uniform lists '@' returns the
@@ -1829,7 +1830,7 @@ take full advantage one should store data in lists or derivatives of
 lists, eg.  dictionaries or tables, and operate on them without
 explicit iteration.
 
-7.1 List syntax
+7.1 List Syntax
 ===============
 
 In general, lists are created by data separated by semicolons and
@@ -2014,7 +2015,7 @@ lists are not required to be equal length.
      1 3 7 9
 
 
-File: k9.info,  Node: Dictionaries,  Next: More functions,  Prev: Lists,  Up: Top
+File: k9.info,  Node: Dictionaries,  Next: Named Functions,  Prev: Lists,  Up: Top
 
 8 Dictionaries and Dictionary Functions
 ***************************************
@@ -2254,33 +2255,61 @@ is a function applied to a dictionary 'd' then 'f d' returns a value.
      3.14
 
 
-File: k9.info,  Node: More functions,  Next: I/O,  Prev: Dictionaries,  Up: Top
+File: k9.info,  Node: Named Functions,  Next: More Functions,  Prev: Dictionaries,  Up: Top
 
-9 More functions
-****************
+9 Named Functions
+*****************
 
-Functions not listed as verbs.
+This chapter covers the non-symbol named functions.  This includes
+some math (eg.  sqrt but not +), wrapper (eg.  count for #) and range
+(eg.  within) functions.
 
-9.1 Math Functions => sqrt exp log sin cos
-==========================================
+math:    sqrt exp log sin cos div mod bar
+wrapper: count first last min max sum avg      
+range:   in bin within
 
-Log is natural log and sin and cos are in radians.
+9.1 Math Functions => sqrt exp log sin cos div mod bar
+======================================================
+
+9.1.1 sqrt => sqrt x
+--------------------
 
       sqrt 2
      1.414214
+
+9.1.2 exp => exp x
+------------------
+
       exp 1
      2.718282
+
+9.1.3 log => log x
+------------------
+
+Log computes the natural log.
+
       log 10
      2.302585
+
+9.1.4 sin => sin x
+------------------
+
+sin computes the sine of x where x is in radians.
       sin 0
      0f
+      sin 3.1416%2
+     1.
+
+9.1.5 cos => cos x
+------------------
+
+cos computes the cosine of x where x is in radians.
       cos 0
      1f
+      cos 3.1416%4
+     0.7071055
 
-9.2 Various Functions => ema div mod bar in bin within
-======================================================
-
-9.2.1 div => x div y
+9.1.6 div => x div y
 --------------------
 
 y divided by x using integer division.  x and y must be integers.
@@ -2290,7 +2319,7 @@ y divided by x using integer division.  x and y must be integers.
       5 div 22
      4
 
-9.2.2 mod => x mod y
+9.1.7 mod => x mod y
 --------------------
 
 The remainder after y divided by x using integer division.  x and y
@@ -2301,7 +2330,7 @@ must be integers.
       5 mod 22
      2
 
-9.2.3 bar => x bar y
+9.1.8 bar => x bar y
 --------------------
 
 For each value in y determine the number of integer multiples of x
@@ -2310,46 +2339,7 @@ that is less than or equal to each x.
       10 bar 9 10 11 19 20 21
      0 10 10 10 20 20
 
-9.2.4 in => x'y
----------------
-
-Determine if y is in list x.
-
-      `a`b`d`e'`c
-     0b
-      `a`b`d`e'`b
-     1b
-      (!10)'2
-     1b
-      (!10)'2. / will error as type is different
-     (!10)'2.
-     ^
-     error: type
-
-9.2.5 bin => x bin y
---------------------
-
-Given a sorted (increasing) list x, find the greatest index, i, where
-y>x[i].
-
-      n:exp 0.01*!5;n
-     1 1.01005 1.020201 1.030455 1.040811
-      1.025 bin n
-     2
-
-9.2.6 within => x within y
---------------------------
-
-Test if x is greater than y[0] and less than y[1].
-
-      3 within (0;12)
-     1b
-      12 within (0;12)
-     0b
-      23 within (0;12)
-     0b
-
-9.3 Wrapper Functions => count first last min max sum avg
+9.2 Wrapper Functions => count first last min max sum avg
 =========================================================
 
 These functions exist as verbs but also can be called with the names
@@ -2361,8 +2351,50 @@ above.
       +/n
      10.5
 
-9.4 cond => $[x;y;z]
-====================
+9.3 Range Functions => in bin within
+====================================
+
+9.3.1 in => x in y
+------------------
+
+Determine if x is in list y.
+
+      `b in `a`b`d`e
+     1b
+      `c in `a`b`d`e
+     0b
+
+9.3.2 bin => x bin y
+--------------------
+
+Given a sorted (increasing) list x, find the greatest index, i, where
+y>x[i].
+
+      n:exp 0.01*!5;n
+     1 1.01005 1.020201 1.030455 1.040811
+      1.025 bin n
+     2
+
+9.3.3 within => x within y
+--------------------------
+
+Test if x is greater than y[0] and less than y[1].
+
+      3 within (0;12)
+     1b
+      12 within (0;12)
+     0b
+      23 within (0;12)
+     0b
+
+
+File: k9.info,  Node: More Functions,  Next: I/O,  Prev: Named Functions,  Up: Top
+
+10 More Functions
+*****************
+
+10.1 cond => $[x;y;z]
+=====================
 
 If x then y else z.
       $[3>2;`a;`b]
@@ -2370,8 +2402,8 @@ If x then y else z.
       $[2>3;`a;`b]
      `b
 
-9.5 parse => :x
-===============
+10.2 parse => :x
+================
 
 Parse allows one to see how a command is parsed into normal k9 form.
 One can value the parse by using the value command, *Note value::.
@@ -2431,8 +2463,8 @@ One can value the parse by using the value command, *Note value::.
 the elements in the output one could manually return the values in the
 list, eg.  p[2;0 1 2].
 
-9.6 amend => @[x;i;f[;y]]
-=========================
+10.3 amend => @[x;i;f[;y]]
+==========================
 
 Replace the values in list x at indices i with f or f[y].
 
@@ -2478,8 +2510,8 @@ Replace the values in list x at indices i with f or f[y].
      30 31 32
 
 
-9.7 dmend => .[x;i;f[;y]]
-=========================
+10.4 dmend => .[x;i;f[;y]]
+==========================
 
 .[x;i;f] examples
 
@@ -2531,9 +2563,9 @@ Replace the values in list x at indices i with f or f[y].
 
 
 
-File: k9.info,  Node: I/O,  Next: Tables/kSQL,  Prev: More functions,  Up: Top
+File: k9.info,  Node: I/O,  Next: Tables/kSQL,  Prev: More Functions,  Up: Top
 
-10 I/O
+11 I/O
 ******
 
 Given k9 is useful for analyzing data it won't be a surprise that
@@ -2541,7 +2573,7 @@ input and output (I/O) are supported.  k9 has been optimized to read
 in data quickly so if you have a workflow of making a tea while the
 huge csv file loads you might have an issue.
 
-10.1 Input format values to table
+11.1 Input format values to table
 =================================
 
 This section shows you the syntax for reading in data into a table
@@ -2566,7 +2598,7 @@ with the correct type.
      ---------- ------------ --- ----- ------- ------
      2020-04-20 12:34:56.789  37 12.3  "hi"    bye
 
-10.2 Format to CSV/json/k => 'csv x
+11.2 Format to CSV/json/k => 'csv x
 ===================================
 
 Convert x to CSV/json/k format.  Works on atoms, lists, and tables.
@@ -2579,7 +2611,7 @@ Convert x to CSV/json/k format.  Works on atoms, lists, and tables.
       `csv `a`b!((1 2);(3 4))      / error as dictionary input
      error: class
 
-10.3 write line => x 0:y
+11.3 write line => x 0:y
 ========================
 
 Output to x the list of strings in y.  y must be a list of strings.
@@ -2593,7 +2625,7 @@ If y is a single stream then convert to list via enlist.
      3
       "some.csv"0:,`csv 3 1 2 / will fail without enlist
 
-10.4 read line => 0:x
+11.4 read line => 0:x
 =====================
 
 Read from file x.
@@ -2601,7 +2633,7 @@ Read from file x.
       0:"some.txt"            / now read it back
      3,1,2
 
-10.5 write char => x 1:y
+11.5 write char => x 1:y
 ========================
 
 Output to x the list of chars in y.  y must be a list of chars.  If y
@@ -2616,7 +2648,7 @@ is a single char then convert to list via enlist.
      2 4
       "some.k"1:`k t      / write table to file in k format
 
-10.6 read char => 1:x
+11.6 read char => 1:x
 =====================
 
 Read from file x.
@@ -2634,7 +2666,7 @@ Read from file x.
      1 3
      2 4
 
-10.7 Load file => 2: x
+11.7 Load file => 2: x
 ======================
 
 Load file, eg.  csv or from a (x 2: y) save.  For the latter one can
@@ -2674,7 +2706,7 @@ find a save then load example in the next section.
      ..
 
 
-10.8 Save/load => x 2: y
+11.8 Save/load => x 2: y
 ========================
 
 The function is used to save data and load shared libraries.  (1) Save
@@ -2764,12 +2796,12 @@ given the file size (800 MB).
       f[`indx][12 13 14;2]
      14
 
-10.9 conn/set => 3:
+11.9 conn/set => 3:
 ===================
 
 TBD
 
-10.10 http/get => 4:
+11.10 http/get => 4:
 ====================
 
 TBD
@@ -2777,12 +2809,12 @@ TBD
 
 File: k9.info,  Node: Tables/kSQL,  Next: System,  Prev: I/O,  Up: Top
 
-11 Tables and kSQL
+12 Tables and kSQL
 ******************
 
 This chapter introduces k9 tables and the kSQL language to query.
 
-11.1 Tables
+12.1 Tables
 ===========
 
 Here is an example of a table with three columns (Day, Weather, and
@@ -2801,7 +2833,7 @@ Temp) and three rows.
      Weather|sunny cold sunny
      Temp   |22 12 18
 
-11.2 XTab
+12.2 XTab
 =========
 
 An cross tab (XTab) is a dictionary where the values are tables.
@@ -2821,12 +2853,12 @@ end-of-day prices.
       @eod
      `NL
 
-11.3 TTab
+12.3 TTab
 =========
 
 TBD
 
-11.4 kSQL
+12.4 kSQL
 =========
 
 kSQL is a powerful query language for tables.
@@ -2845,7 +2877,7 @@ kSQL is a powerful query language for tables.
       select |/Temp from t where Weather=`sunny
      Temp|22
 
-11.5 Joins
+12.5 Joins
 ==========
 
 Joining tables together.  In this section x, y represent tables and kx
@@ -2858,7 +2890,7 @@ left    table   Atable
 outer   Atable  Atable
 asof    table   Atable (by time)
 
-11.5.1 union join => x,y
+12.5.1 union join => x,y
 ------------------------
 
 Union join table x with table y.
@@ -2884,7 +2916,7 @@ Union join table x with table y.
      b 11 21
      c 12 22
 
-11.5.2 left join => x,y
+12.5.2 left join => x,y
 -----------------------
 
 Left join table x with keyed table/A_table.  Result includes all rows
@@ -2914,7 +2946,7 @@ from x and values from x where there is no y value.
      b 2 102 52
      c 3   9  0
 
-11.5.3 outer join => x,y
+12.5.3 outer join => x,y
 ------------------------
 
 Outer join key table/A_table x with key table/A_table y.
@@ -2939,7 +2971,7 @@ Outer join key table/A_table x with key table/A_table y.
      b|9 7
      c|8 6
 
-11.6 Insert and Upsert
+12.6 Insert and Upsert
 ======================
 
 One can add data to tables via insert or upsert.  The difference
@@ -2947,7 +2979,7 @@ between the two is that insert adds data to a table while upsert will
 add or replace data to a keyed table.  Upsert adds when the key isn't
 present and replaces when the key is.
 
-11.6.1 insert => x,y
+12.6.1 insert => x,y
 --------------------
 
 Insert dictionary y into table x.
@@ -2974,7 +3006,7 @@ Insert dictionary y into table x.
      a   7
      c  12
 
-11.6.2 upsert => x,y
+12.6.2 upsert => x,y
 --------------------
 
 Insert dictionary y into keyed table x.
@@ -3002,7 +3034,7 @@ Insert dictionary y into keyed table x.
 
 File: k9.info,  Node: System,  Next: Errors,  Prev: Tables/kSQL,  Up: Top
 
-12 System
+13 System
 *********
 
 k9 comes with a few system functions and measurement commands.  The
@@ -3017,7 +3049,7 @@ measure execution times and memory usage, and list defined variables.
      \w     *Note memory::
      \cd x  *Note cd::
 
-12.1 load => \l a.k
+13.1 load => \l a.k
 ===================
 
 Load a text file of k9 commands.  The file name must end in .k.
@@ -3026,14 +3058,14 @@ Load a text file of k9 commands.  The file name must end in .k.
       \l func.k7  / will error as not .k
      error: nyi
 
-12.2 timing => \t
+13.2 timing => \t
 =================
 
 List time elapsed
       \t ^(_1e7)?_1e8
      227
 
-12.3 variables => \v
+13.3 variables => \v
 ====================
 
 List variables
@@ -3041,7 +3073,7 @@ List variables
       \v
      [v:`a`b`c]
 
-12.4 memory => \w
+13.4 memory => \w
 =================
 
 List memory usage
@@ -3051,7 +3083,7 @@ List memory usage
       \w
      2097158
 
-12.5 cd => \cd x
+13.5 cd => \cd x
 ================
 
 Change directory (cd) into x
@@ -3061,7 +3093,7 @@ Change directory (cd) into x
 
 File: k9.info,  Node: Errors,  Next: Conculsion,  Prev: System,  Up: Top
 
-13 Errors
+14 Errors
 *********
 
 Given the terse syntax of k9 it likley won't be a surprise to a new
@@ -3070,14 +3102,14 @@ listed on the help page and described in more detail below.
 
 error: class rank length type domain limit stack (parse value) 
 
-13.1 error: class
+14.1 error: class
 =================
 
 Calling a function on mismatched types.
       3+`b
      error: class
 
-13.2 error: rank
+14.2 error: rank
 ================
 
 Calling a function with too many parameters.
@@ -3086,14 +3118,14 @@ Calling a function with too many parameters.
      ^
      error: rank
 
-13.3 error: length
+14.3 error: length
 ==================
 
 Operations on unequal length lists that require equal length.
       (1 2 3)+(4 5)
      error: length
 
-13.4 error: type
+14.4 error: type
 ================
 
 Calling a function with an unsupported variable type.
@@ -3101,14 +3133,14 @@ Calling a function with an unsupported variable type.
        ^
      error: type
 
-13.5 error: domain
+14.5 error: domain
 ==================
 
 Exhausted the number of input values
       -12?10   / only 10 unique value exist
      error: domain
 
-13.6 error: nyi
+14.6 error: nyi
 ===============
 
 Running code that is not yet implemented.  This may come from running
@@ -3129,7 +3161,7 @@ code in this document with a different version of k9.
      ^
      error: nyi
 
-13.7 error: parse
+14.7 error: parse
 =================
 
 Syntax is wrong.  Possible you failed to match characters which must
@@ -3137,7 +3169,7 @@ match, eg.  (), {}, [], "".
       {37 . "hello"
      error: parse
 
-13.8 error: value
+14.8 error: value
 =================
 
 Undefined variable is used.
@@ -3147,7 +3179,7 @@ Undefined variable is used.
 
 File: k9.info,  Node: Conculsion,  Prev: Errors,  Up: Top
 
-14 Conculsion
+15 Conculsion
 *************
 
 At this point I expect you reached the same conclusion I did, this
@@ -3168,98 +3200,99 @@ than previously imagined.
 
 Tag Table:
 Node: Top176
-Node: Intro3820
-Node: Examples14930
-Node: Benchmarks22093
-Node: Nouns27003
-Ref: bool28421
-Ref: int28721
-Ref: float28925
-Ref: date29227
-Ref: time29647
-Ref: datetime30261
-Ref: char30933
-Ref: name31156
-Node: Verbs31565
-Ref: x33042
-Ref: y33067
-Ref: flip33275
-Ref: plus33525
-Ref: negate33916
-Ref: minus34088
-Ref: first34195
-Ref: times34514
-Ref: divide34645
-Ref: where34782
-Ref: min/and35168
-Ref: reverse35427
-Ref: max/or35597
-Ref: asc35861
-Ref: less36057
-Ref: group36319
-Ref: equal36565
-Ref: not36689
-Ref: match36806
-Ref: enum36999
-Ref: key38292
-Ref: enlist38519
-Ref: cat38658
-Ref: sort38777
-Ref: cut38954
-Ref: count39645
-Ref: take39835
-Ref: floor40464
-Ref: drop40555
-Ref: string41148
-Ref: cast/mmu41256
-Ref: unique41580
-Ref: find/rnd41817
-Ref: type42272
-Ref: at42628
-Ref: value42841
-Ref: dot43169
-Node: Adverbs44144
-Ref: each44605
-Ref: scan44822
-Ref: left45362
-Ref: right45722
-Ref: eachprior46084
-Ref: n scan46486
-Ref: c scan46971
-Ref: c over47378
-Ref: vs47485
-Ref: sv47604
-Node: Lists47729
-Node: Dictionaries52276
-Node: More functions57201
-Ref: cond59148
-Ref: parse59266
-Ref: amend60541
-Ref: dmend61203
-Node: I/O61904
-Ref: input format62250
-Ref: format63261
-Ref: write line63667
-Ref: read line64054
-Ref: write char64241
-Ref: read char64636
-Ref: load data65001
-Ref: write data66757
-Ref: conn/set70670
-Ref: http/get70714
-Node: Tables/kSQL70764
-Ref: Tables70942
-Ref: XTab71472
-Ref: TTab71912
-Ref: kSQL71938
-Node: System74830
-Ref: load75289
-Ref: timing75483
-Ref: variables75570
-Ref: memory75671
-Ref: cd75786
-Node: Errors75870
-Node: Conculsion77556
+Node: Intro3856
+Node: Examples14966
+Node: Benchmarks22129
+Node: Nouns27039
+Ref: bool28457
+Ref: int28757
+Ref: float28961
+Ref: date29263
+Ref: time29683
+Ref: datetime30297
+Ref: char30969
+Ref: name31192
+Node: Verbs31601
+Ref: x33078
+Ref: y33103
+Ref: flip33311
+Ref: plus33561
+Ref: negate33952
+Ref: minus34124
+Ref: first34231
+Ref: times34550
+Ref: divide34681
+Ref: where34818
+Ref: min/and35204
+Ref: reverse35463
+Ref: max/or35633
+Ref: asc35897
+Ref: less36093
+Ref: group36355
+Ref: equal36601
+Ref: not36725
+Ref: match36842
+Ref: enum37035
+Ref: key38328
+Ref: enlist38555
+Ref: cat38694
+Ref: sort38813
+Ref: cut38990
+Ref: count39681
+Ref: take39871
+Ref: floor40500
+Ref: drop40591
+Ref: string41184
+Ref: cast/mmu41292
+Ref: unique41616
+Ref: find/rnd41853
+Ref: type42308
+Ref: at42664
+Ref: value42877
+Ref: dot43205
+Node: Adverbs44180
+Ref: each44641
+Ref: scan44858
+Ref: left45398
+Ref: right45758
+Ref: eachprior46120
+Ref: n scan46522
+Ref: c scan47007
+Ref: c over47414
+Ref: vs47521
+Ref: sv47640
+Node: Lists47765
+Node: Dictionaries52312
+Node: Named Functions57238
+Node: More Functions59680
+Ref: cond59803
+Ref: parse59923
+Ref: amend61200
+Ref: dmend61864
+Node: I/O62567
+Ref: input format62913
+Ref: format63924
+Ref: write line64330
+Ref: read line64717
+Ref: write char64904
+Ref: read char65299
+Ref: load data65664
+Ref: write data67420
+Ref: conn/set71333
+Ref: http/get71377
+Node: Tables/kSQL71427
+Ref: Tables71605
+Ref: XTab72135
+Ref: TTab72575
+Ref: kSQL72601
+Node: System75493
+Ref: load75952
+Ref: timing76146
+Ref: variables76233
+Ref: memory76334
+Ref: cd76449
+Node: Errors76533
+Node: Conculsion78219
 
 End Tag Table
 

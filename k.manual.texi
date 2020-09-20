@@ -78,7 +78,8 @@ error: class rank length type domain value(parse stack limit)
 * Adverbs:: Function Modifiers / Adverbs
 * Lists:: Lists
 * Dictionaries:: Dictionaries and Functions for Dictionaries
-* More functions:: More functions
+* Named Functions:: Named functions
+* More Functions:: More functions
 * I/O:: I/O
 * Tables/kSQL:: Tables and kSQL
 * System:: System
@@ -293,9 +294,9 @@ In k9 as the Help/Info card shows data are nouns, functions/lists are verbs and 
 
 @node Examples
 @chapter Examples
-Before jumping into synax let's look at some example problems to get a sense of the speed of k9 as processing data.  Given both the historic use of languages similar to k9 in finance and the author's background much of the examples will be based on financial markets.  For those not familiar with this field a short introduction will likley be needed.
+Before jumping into synax let's look at some example problems to get a sense of the speed of k9 at processing data.  Given both the historic use of languages similar to k9 in finance and the author's background much of the examples will be based on financial markets.  For those not familiar with this field a short introduction will likley be needed.
 
-@section A tiny introduction to Finanical Market Data
+@section A Tiny Introduction to Finanical Market Data
 Financial market data generally are stored as prices and trades.  Prices will include at a minimum the time, the securtiy, the price to buy and the price to sell.  Trades will include at a minimum the time, the security, and the price.  In normal markets there are many more prices than trades.
 
 Let's use k9 to generate a set of random prices for a single security hence elimating the need for that field.
@@ -728,7 +729,7 @@ The set of k9 data, aka nouns, are as follows.
 @xref{date},  2024.01.01   D 
 @xref{time},  12:34:56.789 t  
 @xref{char},  "ab "        c  
-@xref{name},   `a`b`       n  
+@xref{name},  `a`b`        n  
 @end example
 
 Data types can be determined by using the @code{@@} function on values or lists of values.  In the case of non-uniform lists @code{@@} returns the type of the list @code{`L} but the function can be modified to evalue each type @code{@@'} instead and return the type of each element in the list.
@@ -1652,7 +1653,7 @@ Convert list y (base x) into base 10.
 @node Lists
 @chapter Lists
 k9 is optimized for operations on uniform lists of data.  In order to take full advantage one should store data in lists or derivatives of lists, eg. dictionaries or tables, and operate on them without explicit iteration.
-@section List syntax
+@section List Syntax
 In general, lists are created by data separated by semicolons and encased by parenthesis.  Uniform lists can use a simpler syntax of spaces between elements.
 
 @example
@@ -2055,27 +2056,55 @@ c |3e+08
 @ *d0
 3.14
 @end example
-@node More functions
-@chapter More functions
-Functions not listed as verbs.
+@node Named Functions
+@chapter Named Functions
+This chapter covers the non-symbol named functions.  This includes some math (eg. sqrt but not +), wrapper (eg. count for #) and range (eg. within) functions.
 
-@section Math Functions @result{} sqrt exp log sin cos
-Log is natural log and sin and cos are in radians.
+@verbatim
+math:    sqrt exp log sin cos div mod bar
+wrapper: count first last min max sum avg      
+range:   in bin within
+@end verbatim
 
+@section Math Functions @result{} sqrt exp log sin cos div mod bar
+
+@subsection sqrt @result{} sqrt x
 @example
 @ sqrt 2
 1.414214
-@ exp 1
-2.718282
-@ log 10
-2.302585
-@ sin 0
-0f
-@ cos 0
-1f
 @end example
 
-@section Various Functions @result{} ema div mod bar in bin within
+@subsection exp @result{} exp x
+@example
+@ exp 1
+2.718282
+@end example
+
+@subsection log @result{} log x
+Log computes the natural log.
+
+@example
+@ log 10
+2.302585
+@end example
+
+@subsection sin @result{} sin x
+sin computes the sine of x where x is in radians.
+@example
+@ sin 0
+0f
+@ sin 3.1416%2
+1.
+@end example
+
+@subsection cos @result{} cos x
+cos computes the cosine of x where x is in radians.
+@example
+@ cos 0
+1f
+@ cos 3.1416%4
+0.7071055
+@end example
 
 @subsection div @result{} x div y
 y divided by x using integer division.  x and y must be integers.
@@ -2105,20 +2134,27 @@ For each value in y determine the number of integer multiples of x that is less 
 0 10 10 10 20 20
 @end example
 
-@subsection in @result{} x'y
-Determine if y is in list x.
+@section Wrapper Functions @result{} count first last min max sum avg      
+These functions exist as verbs but also can be called with the names above.
 
 @example
-@ `a`b`d`e'`c
+@ n:3.2 1.7 5.6
+@ sum n
+10.5
+@ +/n
+10.5
+@end example
+
+@section Range Functions @result{} in bin within
+
+@subsection in @result{} x in y
+Determine if x is in list y.
+
+@example
+@ `b in `a`b`d`e
+1b
+@ `c in `a`b`d`e
 0b
-@ `a`b`d`e'`b
-1b
-@ (!10)'2
-1b
-@ (!10)'2. / will error as type is different
-(!10)'2.
-^
-error: type
 @end example
 
 @subsection bin @result{} x bin y
@@ -2143,16 +2179,8 @@ Test if x is greater than y[0] and less than y[1].
 0b
 @end example
 
-@section Wrapper Functions @result{} count first last min max sum avg
-These functions exist as verbs but also can be called with the names above.
-
-@example
-@ n:3.2 1.7 5.6
-@ sum n
-10.5
-@ +/n
-10.5
-@end example
+@node More Functions
+@chapter More Functions
 
 @anchor{cond}@section cond @result{} $[x;y;z]
 If x then y else z.
