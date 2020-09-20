@@ -55,7 +55,7 @@ Next: <a href="Adverbs.html" accesskey="n" rel="next">Adverbs</a>, Previous: <a 
 </p>
 <div class="example">
 <pre class="example">Verb
-: See <a href="#x">x</a>,        See <a href="#x">y</a>.
+: See <a href="#parse">parse</a>,    See <a href="#set">set</a>.
 + See <a href="#flip">flip</a>,     See <a href="#plus">plus</a>.
 - See <a href="#negate">negate</a>,   See <a href="#minus">minus</a>.
 * See <a href="#first">first</a>,    See <a href="#times">times</a>.
@@ -78,9 +78,67 @@ $ See <a href="#string">string</a>,   See <a href="#cast_002fmmu">cast/mmu</a>.
 
 </pre></div>
 
-<span id="x"></span><span id="x-_21d2-_003ax"></span><h3 class="section">5.1 x &rArr; :x</h3>
-
-<span id="y"></span><span id="y-_21d2-x_003ay"></span><h3 class="section">5.2 y &rArr; x:y</h3>
+<span id="parse"></span><span id="parse-_21d2-_003ax"></span><h3 class="section">5.1 parse &rArr; :x</h3>
+<p>Parse allows one to see how a command is parsed into normal k9 form.  One can value the parse by using the value command, See <a href="#value">value</a>.
+</p><div class="example">
+<pre class="example">&nbsp;:3+2
++
+3
+2
+&nbsp;t:+`a`b!(1 2;3 4)
+&nbsp;:select from t
+t
+&nbsp;:select a from t
+t
+[..]
+&nbsp;p::select a from t  / store output into p
+&nbsp;#p
+2
+&nbsp;p 0
+`t
+&nbsp;p 1
+a|a
+&nbsp;. p                 / value parse expression
+a
+-
+1
+2
+&nbsp;.(`t;`a!`a)         / value expression
+a
+-
+1
+2
+&nbsp;select from t       / orginal statement
+a
+-
+1
+2
+</pre></div>
+<p>Now for an example with a group clause.
+</p><div class="example">
+<pre class="example">&nbsp;t:+`a`b`c!(`x`y`x;0 2 10;1 1 0)
+&nbsp;select avg:+/b%#b by a from t
+a|avg
+-|---
+x|5
+y|2
+&nbsp;p::select avg:+/b%#b by a from t
+&nbsp;.(#;`t;();`a!`a;`avg!(%;(+/;`b);#`b)) / parse form
+&nbsp;#[t;();`a!`a;`avg!(%;(+/;`b);#`b)]    / functional form
+a|avg
+-|---
+x|10 
+y|2  
+&nbsp;p::select avg:+/b%#b by a from t where c=1
+&nbsp;#[t;(=;`c;1);`a!`a;`avg!(%;(+/;`b);#`b)]
+a|avg
+-|---
+x|0  
+y|2  
+</pre></div>
+<p>In the example above the parse output is reduced.  In order to see the elements in the output one could manually return the values in the list, eg. p[2;0 1 2].
+</p>
+<span id="set"></span><span id="set-_21d2-x_003ay"></span><h3 class="section">5.2 set &rArr; x:y</h3>
 <p>Set a variable, x, to a value, y.
 </p>
 <div class="example">

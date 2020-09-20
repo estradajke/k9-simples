@@ -1023,7 +1023,7 @@ the plus symbol once as flip and then for addition.  (Remember
 evaluation is right to left!)
 
      Verb
-     : *Note x::,        *Note y: x.
+     : *Note parse::,    *Note set::.
      + *Note flip::,     *Note plus::.
      - *Note negate::,   *Note minus::.
      * *Note first::,    *Note times::.
@@ -1045,11 +1045,69 @@ evaluation is right to left!)
      . *Note value::,    *Note dot::.
 
 
-5.1 x => :x
-===========
+5.1 parse => :x
+===============
 
-5.2 y => x:y
-============
+Parse allows one to see how a command is parsed into normal k9 form.
+One can value the parse by using the value command, *Note value::.
+      :3+2
+     +
+     3
+     2
+      t:+`a`b!(1 2;3 4)
+      :select from t
+     t
+      :select a from t
+     t
+     [..]
+      p::select a from t  / store output into p
+      #p
+     2
+      p 0
+     `t
+      p 1
+     a|a
+      . p                 / value parse expression
+     a
+     -
+     1
+     2
+      .(`t;`a!`a)         / value expression
+     a
+     -
+     1
+     2
+      select from t       / orginal statement
+     a
+     -
+     1
+     2
+   Now for an example with a group clause.
+      t:+`a`b`c!(`x`y`x;0 2 10;1 1 0)
+      select avg:+/b%#b by a from t
+     a|avg
+     -|---
+     x|5
+     y|2
+      p::select avg:+/b%#b by a from t
+      .(#;`t;();`a!`a;`avg!(%;(+/;`b);#`b)) / parse form
+      #[t;();`a!`a;`avg!(%;(+/;`b);#`b)]    / functional form
+     a|avg
+     -|---
+     x|10
+     y|2
+      p::select avg:+/b%#b by a from t where c=1
+      #[t;(=;`c;1);`a!`a;`avg!(%;(+/;`b);#`b)]
+     a|avg
+     -|---
+     x|0
+     y|2
+   In the example above the parse output is reduced.  In order to see
+the elements in the output one could manually return the values in the
+list, eg.  p[2;0 1 2].
+
+5.2 set => x:y
+==============
 
 Set a variable, x, to a value, y.
 
@@ -2378,7 +2436,7 @@ y>x[i].
 9.3.3 within => x within y
 --------------------------
 
-Test if x is greater than y[0] and less than y[1].
+Test if x is equal to or greater than y[0] and less than y[1].
 
       3 within (0;12)
      1b
@@ -2402,68 +2460,7 @@ If x then y else z.
       $[2>3;`a;`b]
      `b
 
-10.2 parse => :x
-================
-
-Parse allows one to see how a command is parsed into normal k9 form.
-One can value the parse by using the value command, *Note value::.
-      :3+2
-     +
-     3
-     2
-      t:+`a`b!(1 2;3 4)
-      :select from t
-     t
-      :select a from t
-     t
-     [..]
-      p::select a from t  / store output into p
-      #p
-     2
-      p 0
-     `t
-      p 1
-     a|a
-      . p                 / value parse expression
-     a
-     -
-     1
-     2
-      .(`t;`a!`a)         / value expression
-     a
-     -
-     1
-     2
-      select from t       / orginal statement
-     a
-     -
-     1
-     2
-   Now for an example with a group clause.
-      t:+`a`b`c!(`x`y`x;0 2 10;1 1 0)
-      select avg:+/b%#b by a from t
-     a|avg
-     -|---
-     x|5
-     y|2
-      p::select avg:+/b%#b by a from t
-      .(#;`t;();`a!`a;`avg!(%;(+/;`b);#`b)) / parse form
-      #[t;();`a!`a;`avg!(%;(+/;`b);#`b)]    / functional form
-     a|avg
-     -|---
-     x|10
-     y|2
-      p::select avg:+/b%#b by a from t where c=1
-      #[t;(=;`c;1);`a!`a;`avg!(%;(+/;`b);#`b)]
-     a|avg
-     -|---
-     x|0
-     y|2
-   In the example above the parse output is reduced.  In order to see
-the elements in the output one could manually return the values in the
-list, eg.  p[2;0 1 2].
-
-10.3 amend => @[x;i;f[;y]]
+10.2 amend => @[x;i;f[;y]]
 ==========================
 
 Replace the values in list x at indices i with f or f[y].
@@ -2510,7 +2507,7 @@ Replace the values in list x at indices i with f or f[y].
      30 31 32
 
 
-10.4 dmend => .[x;i;f[;y]]
+10.3 dmend => .[x;i;f[;y]]
 ==========================
 
 .[x;i;f] examples
@@ -3213,86 +3210,85 @@ Ref: datetime30297
 Ref: char30969
 Ref: name31192
 Node: Verbs31601
-Ref: x33078
-Ref: y33103
-Ref: flip33311
-Ref: plus33561
-Ref: negate33952
-Ref: minus34124
-Ref: first34231
-Ref: times34550
-Ref: divide34681
-Ref: where34818
-Ref: min/and35204
-Ref: reverse35463
-Ref: max/or35633
-Ref: asc35897
-Ref: less36093
-Ref: group36355
-Ref: equal36601
-Ref: not36725
-Ref: match36842
-Ref: enum37035
-Ref: key38328
-Ref: enlist38555
-Ref: cat38694
-Ref: sort38813
-Ref: cut38990
-Ref: count39681
-Ref: take39871
-Ref: floor40500
-Ref: drop40591
-Ref: string41184
-Ref: cast/mmu41292
-Ref: unique41616
-Ref: find/rnd41853
-Ref: type42308
-Ref: at42664
-Ref: value42877
-Ref: dot43205
-Node: Adverbs44180
-Ref: each44641
-Ref: scan44858
-Ref: left45398
-Ref: right45758
-Ref: eachprior46120
-Ref: n scan46522
-Ref: c scan47007
-Ref: c over47414
-Ref: vs47521
-Ref: sv47640
-Node: Lists47765
-Node: Dictionaries52312
-Node: Named Functions57238
-Node: More Functions59680
-Ref: cond59803
-Ref: parse59923
-Ref: amend61200
-Ref: dmend61864
-Node: I/O62567
-Ref: input format62913
-Ref: format63924
-Ref: write line64330
-Ref: read line64717
-Ref: write char64904
-Ref: read char65299
-Ref: load data65664
-Ref: write data67420
-Ref: conn/set71333
-Ref: http/get71377
-Node: Tables/kSQL71427
-Ref: Tables71605
-Ref: XTab72135
-Ref: TTab72575
-Ref: kSQL72601
-Node: System75493
-Ref: load75952
-Ref: timing76146
-Ref: variables76233
-Ref: memory76334
-Ref: cd76449
-Node: Errors76533
-Node: Conculsion78219
+Ref: parse33079
+Ref: set34356
+Ref: flip34568
+Ref: plus34818
+Ref: negate35209
+Ref: minus35381
+Ref: first35488
+Ref: times35807
+Ref: divide35938
+Ref: where36075
+Ref: min/and36461
+Ref: reverse36720
+Ref: max/or36890
+Ref: asc37154
+Ref: less37350
+Ref: group37612
+Ref: equal37858
+Ref: not37982
+Ref: match38099
+Ref: enum38292
+Ref: key39585
+Ref: enlist39812
+Ref: cat39951
+Ref: sort40070
+Ref: cut40247
+Ref: count40938
+Ref: take41128
+Ref: floor41757
+Ref: drop41848
+Ref: string42441
+Ref: cast/mmu42549
+Ref: unique42873
+Ref: find/rnd43110
+Ref: type43565
+Ref: at43921
+Ref: value44134
+Ref: dot44462
+Node: Adverbs45437
+Ref: each45898
+Ref: scan46115
+Ref: left46655
+Ref: right47015
+Ref: eachprior47377
+Ref: n scan47779
+Ref: c scan48264
+Ref: c over48671
+Ref: vs48778
+Ref: sv48897
+Node: Lists49022
+Node: Dictionaries53569
+Node: Named Functions58495
+Node: More Functions60949
+Ref: cond61072
+Ref: amend61192
+Ref: dmend61854
+Node: I/O62557
+Ref: input format62903
+Ref: format63914
+Ref: write line64320
+Ref: read line64707
+Ref: write char64894
+Ref: read char65289
+Ref: load data65654
+Ref: write data67410
+Ref: conn/set71323
+Ref: http/get71367
+Node: Tables/kSQL71417
+Ref: Tables71595
+Ref: XTab72125
+Ref: TTab72565
+Ref: kSQL72591
+Node: System75483
+Ref: load75942
+Ref: timing76136
+Ref: variables76223
+Ref: memory76324
+Ref: cd76439
+Node: Errors76523
+Node: Conculsion78209
 
 End Tag Table
 

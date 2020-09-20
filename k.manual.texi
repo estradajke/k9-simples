@@ -886,7 +886,7 @@ Most functions are overloaded and change depending on the number and type of arg
 
 @example
 Verb
-: @xref{x},        @xref{x,y}.
+: @xref{parse},    @xref{set}.
 + @xref{flip},     @xref{plus}.
 - @xref{negate},   @xref{minus}.
 * @xref{first},    @xref{times}.
@@ -909,9 +909,67 @@ $ @xref{string},   @xref{cast/mmu}.
 
 @end example
 
-@anchor{x}@section x @result{} :x
+@anchor{parse}@section parse @result{} :x
+Parse allows one to see how a command is parsed into normal k9 form.  One can value the parse by using the value command, @xref{value}.
+@example
+@ :3+2
++
+3
+2
+@ t:+`a`b!(1 2;3 4)
+@ :select from t
+t
+@ :select a from t
+t
+[..]
+@ p::select a from t  / store output into p
+@ #p
+2
+@ p 0
+`t
+@ p 1
+a|a
+@ . p                 / value parse expression
+a
+-
+1
+2
+@ .(`t;`a!`a)         / value expression
+a
+-
+1
+2
+@ select from t       / orginal statement
+a
+-
+1
+2
+@end example
+Now for an example with a group clause.
+@example
+@ t:+`a`b`c!(`x`y`x;0 2 10;1 1 0)
+@ select avg:+/b%#b by a from t
+a|avg
+-|---
+x|5
+y|2
+@ p::select avg:+/b%#b by a from t
+@ .(#;`t;();`a!`a;`avg!(%;(+/;`b);#`b)) / parse form
+@ #[t;();`a!`a;`avg!(%;(+/;`b);#`b)]    / functional form
+a|avg
+-|---
+x|10 
+y|2  
+@ p::select avg:+/b%#b by a from t where c=1
+@ #[t;(=;`c;1);`a!`a;`avg!(%;(+/;`b);#`b)]
+a|avg
+-|---
+x|0  
+y|2  
+@end example
+In the example above the parse output is reduced.  In order to see the elements in the output one could manually return the values in the list, eg. p[2;0 1 2].
 
-@anchor{y}@section y @result{} x:y
+@anchor{set}@section set @result{} x:y
 Set a variable, x, to a value, y.
 
 @example
@@ -2168,7 +2226,7 @@ Given a sorted (increasing) list x, find the greatest index, i, where y>x[i].
 @end example
 
 @subsection within @result{} x within y
-Test if x is greater than y[0] and less than y[1].
+Test if x is equal to or greater than y[0] and less than y[1].
 
 @example
 @ 3 within (0;12)
@@ -2191,65 +2249,6 @@ If x then y else z.
 `b
 @end example
 
-@anchor{parse}@section parse @result{} :x
-Parse allows one to see how a command is parsed into normal k9 form.  One can value the parse by using the value command, @xref{value}.
-@example
-@ :3+2
-+
-3
-2
-@ t:+`a`b!(1 2;3 4)
-@ :select from t
-t
-@ :select a from t
-t
-[..]
-@ p::select a from t  / store output into p
-@ #p
-2
-@ p 0
-`t
-@ p 1
-a|a
-@ . p                 / value parse expression
-a
--
-1
-2
-@ .(`t;`a!`a)         / value expression
-a
--
-1
-2
-@ select from t       / orginal statement
-a
--
-1
-2
-@end example
-Now for an example with a group clause.
-@example
-@ t:+`a`b`c!(`x`y`x;0 2 10;1 1 0)
-@ select avg:+/b%#b by a from t
-a|avg
--|---
-x|5
-y|2
-@ p::select avg:+/b%#b by a from t
-@ .(#;`t;();`a!`a;`avg!(%;(+/;`b);#`b)) / parse form
-@ #[t;();`a!`a;`avg!(%;(+/;`b);#`b)]    / functional form
-a|avg
--|---
-x|10 
-y|2  
-@ p::select avg:+/b%#b by a from t where c=1
-@ #[t;(=;`c;1);`a!`a;`avg!(%;(+/;`b);#`b)]
-a|avg
--|---
-x|0  
-y|2  
-@end example
-In the example above the parse output is reduced.  In order to see the elements in the output one could manually return the values in the list, eg. p[2;0 1 2].
 @anchor{amend}@section amend @result{} @@[x;i;f[;y]]
 Replace the values in list x at indices i with f or f[y].
 

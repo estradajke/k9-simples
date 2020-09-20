@@ -59,66 +59,7 @@ Next: <a href="I_002fO.html" accesskey="n" rel="next">I/O</a>, Previous: <a href
 `b
 </pre></div>
 
-<span id="parse"></span><span id="parse-_21d2-_003ax"></span><h3 class="section">10.2 parse &rArr; :x</h3>
-<p>Parse allows one to see how a command is parsed into normal k9 form.  One can value the parse by using the value command, See <a href="Verbs.html#value">value</a>.
-</p><div class="example">
-<pre class="example">&nbsp;:3+2
-+
-3
-2
-&nbsp;t:+`a`b!(1 2;3 4)
-&nbsp;:select from t
-t
-&nbsp;:select a from t
-t
-[..]
-&nbsp;p::select a from t  / store output into p
-&nbsp;#p
-2
-&nbsp;p 0
-`t
-&nbsp;p 1
-a|a
-&nbsp;. p                 / value parse expression
-a
--
-1
-2
-&nbsp;.(`t;`a!`a)         / value expression
-a
--
-1
-2
-&nbsp;select from t       / orginal statement
-a
--
-1
-2
-</pre></div>
-<p>Now for an example with a group clause.
-</p><div class="example">
-<pre class="example">&nbsp;t:+`a`b`c!(`x`y`x;0 2 10;1 1 0)
-&nbsp;select avg:+/b%#b by a from t
-a|avg
--|---
-x|5
-y|2
-&nbsp;p::select avg:+/b%#b by a from t
-&nbsp;.(#;`t;();`a!`a;`avg!(%;(+/;`b);#`b)) / parse form
-&nbsp;#[t;();`a!`a;`avg!(%;(+/;`b);#`b)]    / functional form
-a|avg
--|---
-x|10 
-y|2  
-&nbsp;p::select avg:+/b%#b by a from t where c=1
-&nbsp;#[t;(=;`c;1);`a!`a;`avg!(%;(+/;`b);#`b)]
-a|avg
--|---
-x|0  
-y|2  
-</pre></div>
-<p>In the example above the parse output is reduced.  In order to see the elements in the output one could manually return the values in the list, eg. p[2;0 1 2].
-<span id="amend"></span></p><span id="amend-_21d2-_0040_005bx_003bi_003bf_005b_003by_005d_005d"></span><h3 class="section">10.3 amend &rArr; @[x;i;f[;y]]</h3>
+<span id="amend"></span><span id="amend-_21d2-_0040_005bx_003bi_003bf_005b_003by_005d_005d"></span><h3 class="section">10.2 amend &rArr; @[x;i;f[;y]]</h3>
 <p>Replace the values in list x at indices i with f or f[y].
 </p>
 <p>@[x;i;f] examples<br><br>
@@ -164,7 +105,7 @@ x30 x31 x32
 30 31 32      
 
 </pre></div>
-<span id="dmend"></span><span id="dmend-_21d2-_002e_005bx_003bi_003bf_005b_003by_005d_005d"></span><h3 class="section">10.4 dmend &rArr; .[x;i;f[;y]]</h3>
+<span id="dmend"></span><span id="dmend-_21d2-_002e_005bx_003bi_003bf_005b_003by_005d_005d"></span><h3 class="section">10.3 dmend &rArr; .[x;i;f[;y]]</h3>
 
 <p>.[x;i;f] examples<br><br>
 </p><div class="example">
@@ -216,11 +157,6 @@ c d x32
 -30 -31 32
 
 </pre></div>
-<hr>
-<div class="header">
-<p>
-Next: <a href="I_002fO.html" accesskey="n" rel="next">I/O</a>, Previous: <a href="Named-Functions.html" accesskey="p" rel="prev">Named Functions</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="Conculsion.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
-</div>
 
 
 
