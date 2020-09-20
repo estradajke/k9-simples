@@ -2412,7 +2412,7 @@ a b
 @end example
 
 @anchor{load data}@section Load file @result{} 2: x
-Load file, eg. csv.
+Load file, eg. csv or from a (x 2: y) save.  For the latter one can find a save then load example in the next section.
 
 @example
 @ 2:`t.csv
@@ -2420,10 +2420,38 @@ s    t        e p  z
 ---- -------- - -- ----
 AABL 09:30:00 D 11 4379
 AABL 09:30:00 B 40 3950
+
+@ 2:`r                / read from file
+a          b          c          d          e         
+---------- ---------- ---------- ---------- ----------
+0.5366064  0.8250996  0.8978589  0.4895149  0.6811532 
+0.1653467  0.05017282 0.4831432  0.4657975  0.4434603 
+0.08842649 0.8885677  0.23108    0.3336785  0.6270692 
+0.3329232  0.3528549  0.2659892  0.1927104  0.4304933 
+0.05392223 0.7969098  0.4312251  0.7799843  0.5060091 
+0.1922035  0.5056334  0.2600317  0.4555804  0.56671   
+0.4545242  0.01599503 0.1710724  0.4320832  0.4520696 
+0.7843445  0.4319026  0.1015124  0.877304   0.9949587 
+0.09920892 0.8340988  0.3119439  0.4945446  0.967994  
+0.5899243  0.4547598  0.436347   0.3572658  0.2969937 
+0.3565662  0.7649578  0.5738509  0.402629   0.7585447 
+0.4563912  0.509789   0.01807586 0.3083831  0.2447315 
+0.1614906  0.601976   0.1165871  0.0395344  0.05975276
+0.1710438  0.1687449  0.7200667  0.9578548  0.7333167 
+0.8933161  0.7996999  0.1117325  0.2385556  0.5339807 
+0.03895895 0.4215705  0.01501522 0.9872831  0.9973345 
+0.4643205  0.5794769  0.5476008  0.8957309  0.1633682 
+0.1797837  0.5683136  0.993727   0.1164099  0.3229972 
+0.3687319  0.8430398  0.5818712  0.5021431  0.8034257 
+0.9274384  0.6739888  0.1821047  0.113806   0.9466886 
+0.8766261  0.05144491 0.8987524  0.2241464  0.617475  
+0.455943   0.449666   0.9678184  0.06839654 0.1232913 
+..
+
 @end example
 
 @anchor{write data}@section Save/load @result{} x 2: y
-(1) Save to file x non-atomic data y (eg. lists, dictionaries, or tables).  (2) Load shared library x with dictionary y.
+The function is used to save data and load shared libraries.  (1) Save to file x non-atomic data y (eg. lists, dictionaries, or tables).  (2) Load shared library x with dictionary y.
 
 (1) Save to file.  This example saves 100mio 8-byte doubles to file.  The session is then closed and a fresh session reads in the file.  Both the write (1s) and read (13ms) have impressive speeds given the file size (800 MB).
 
