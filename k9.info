@@ -1027,7 +1027,7 @@ the plus symbol once as flip and then for addition.  (Remember
 evaluation is right to left!)
 
      Verb
-     : *Note parse::,    *Note set::..
+     : *Note parse::,    *Note set::.
      + *Note flip::,     *Note plus::.
      - *Note negate::,   *Note minus::.
      * *Note first::,    *Note times::.
@@ -1741,7 +1741,7 @@ operate iteratively over lists.
      Adverb
      '  *Note each::.
      /  *Note scan::,   *Note right::.
-     \  *Note over: scan,,   *Note left::.
+     \  *Note over: scan,   *Note left::.
      ': *Note eachprior::.
      /: *Note c over::, *Note n over: n scan.
      \: *Note c scan::, *Note n scan::.
@@ -1782,22 +1782,7 @@ functions except that over only returns the last value.
       {[x;y]y+10*x}/1 20 300
      600
 
-6.3 left => f\[x;y]
-===================
-
-Apply f[;y] to each value in x.
-      {x+y}[100 200 300;1 2 3]  / add the lists together itemize
-     101 202 303
-      {x+y}\[100 200 300;1 2 3] / add the list y to each value of x
-     101 102 103
-     201 202 203
-     301 302 303
-      {x,y}\[`l1`l2`l3;`r1`r2`r3]
-     l1 r1 r2 r3
-     l2 r1 r2 r3
-     l3 r1 r2 r3
-
-6.4 right => f/[x;y]
+6.3 right => f/[x;y]
 ====================
 
 Apply f[x;] to each value in y.
@@ -1811,6 +1796,21 @@ Apply f[x;] to each value in y.
      l1 l2 l3 r1
      l1 l2 l3 r2
      l1 l2 l3 r3
+
+6.4 left => f\[x;y]
+===================
+
+Apply f[;y] to each value in x.
+      {x+y}[100 200 300;1 2 3]  / add the lists together itemize
+     101 202 303
+      {x+y}\[100 200 300;1 2 3] / add the list y to each value of x
+     101 102 103
+     201 202 203
+     301 302 303
+      {x,y}\[`l1`l2`l3;`r1`r2`r3]
+     l1 r1 r2 r3
+     l2 r1 r2 r3
+     l3 r1 r2 r3
 
 6.5 eachprior => f':[x;y]
 =========================
@@ -1850,7 +1850,7 @@ that it only returns the last value.
 Compute f[x], f[f[x]] and continue to call f[previous result] until
 the output converges to a stationary value or the output produces x.
        {x*x}\:.99
-     0.99 0.9801 0.960596 0.9227447 0.8514578 0.7249803 0.5255965 0.2762517 0.07631498 0.005823977 3.391871e-05 1.150479e-09 1.323601e-18 1.751919e-36 3.069222e-72 9.420123e-144 8.873872e-287 0
+     0.99 0.9801 0.960596 0.9227447 .. 9.420123e-144 8.873872e-287 0
 
 6.8 c(onverge) over => f/:x
 ===========================
@@ -2089,7 +2089,7 @@ chapter the market quote and trade data are dictionaries of symbols
 8.1 Dictionary Creation => x!y
 ==============================
 
-      d0:`pi`e`c!3.14 2.72 3e8;d0                         / elements
+      d0:`pi`e`c!3.14 2.72 3e8;d0            / elements
      pi|3.14
      e |2.72
      c |3e+08
@@ -2098,17 +2098,17 @@ chapter the market quote and trade data are dictionaries of symbols
      time|12:00 12:01 12:10
      temp|25 25.1 25.6
 
-      d2:0 10 1!37.4 46.3 0.1;d2                          / keys as numbers
+      d2:0 10 1!37.4 46.3 0.1;d2             / keys as numbers
       0|37.4
      10|46.3
       1|0.1
 
-      d3:`a`b`a!1 2 3;d3                                  / non-unique keys
+      d3:`a`b`a!1 2 3;d3                     / non-unique keys
      a|1
      b|2
      a|3
 
-      d3`a                                                / first value `a value returned
+      d3`a                                   / `a value returned
      1
 
 
@@ -3208,85 +3208,85 @@ Ref: datetime30345
 Ref: char30998
 Ref: name31221
 Node: Verbs31630
-Ref: parse33108
-Ref: set34385
-Ref: flip34597
-Ref: plus34847
-Ref: negate35238
-Ref: minus35410
-Ref: first35517
-Ref: times35836
-Ref: divide35967
-Ref: where36104
-Ref: min/and36490
-Ref: reverse36749
-Ref: max/or36919
-Ref: asc37183
-Ref: less37379
-Ref: group37641
-Ref: equal37887
-Ref: not38011
-Ref: match38128
-Ref: enum38321
-Ref: key39494
-Ref: enlist39721
-Ref: cat39860
-Ref: sort39979
-Ref: cut40156
-Ref: count40847
-Ref: take41037
-Ref: floor41666
-Ref: drop41757
-Ref: string42350
-Ref: cast/mmu42458
-Ref: unique42782
-Ref: find/rnd43019
-Ref: type43474
-Ref: at43830
-Ref: value44043
-Ref: dot44371
-Node: Adverbs45346
-Ref: each45807
-Ref: scan46024
-Ref: left46564
-Ref: right46924
-Ref: eachprior47286
-Ref: n scan47688
-Ref: c scan48173
-Ref: c over48580
-Ref: vs48687
-Ref: sv48806
-Node: Lists48931
-Node: Dictionaries53478
-Node: Named Functions58404
-Node: More Functions60858
-Ref: cond60981
-Ref: amend61101
-Ref: dmend61763
-Node: I/O62466
-Ref: input format62812
-Ref: format63823
-Ref: write line64229
-Ref: read line64616
-Ref: write char64803
-Ref: read char65198
-Ref: load data65563
-Ref: write data67319
-Ref: conn/set71232
-Ref: http/get71276
-Node: Tables/kSQL71326
-Ref: Tables71504
-Ref: XTab72034
-Ref: TTab72474
-Ref: kSQL72500
-Node: System75392
-Ref: load75851
-Ref: timing76045
-Ref: variables76132
-Ref: memory76233
-Ref: cd76348
-Node: Errors76432
-Node: Conculsion78118
+Ref: parse33107
+Ref: set34384
+Ref: flip34596
+Ref: plus34846
+Ref: negate35237
+Ref: minus35409
+Ref: first35516
+Ref: times35835
+Ref: divide35966
+Ref: where36103
+Ref: min/and36489
+Ref: reverse36748
+Ref: max/or36918
+Ref: asc37182
+Ref: less37378
+Ref: group37640
+Ref: equal37886
+Ref: not38010
+Ref: match38127
+Ref: enum38320
+Ref: key39493
+Ref: enlist39720
+Ref: cat39859
+Ref: sort39978
+Ref: cut40155
+Ref: count40846
+Ref: take41036
+Ref: floor41665
+Ref: drop41756
+Ref: string42349
+Ref: cast/mmu42457
+Ref: unique42781
+Ref: find/rnd43018
+Ref: type43473
+Ref: at43829
+Ref: value44042
+Ref: dot44370
+Node: Adverbs45345
+Ref: each45805
+Ref: scan46022
+Ref: right46563
+Ref: left46925
+Ref: eachprior47285
+Ref: n scan47686
+Ref: c scan48171
+Ref: c over48453
+Ref: vs48560
+Ref: sv48679
+Node: Lists48804
+Node: Dictionaries53351
+Node: Named Functions58213
+Node: More Functions60667
+Ref: cond60790
+Ref: amend60910
+Ref: dmend61572
+Node: I/O62275
+Ref: input format62621
+Ref: format63632
+Ref: write line64038
+Ref: read line64425
+Ref: write char64612
+Ref: read char65007
+Ref: load data65372
+Ref: write data67128
+Ref: conn/set71041
+Ref: http/get71085
+Node: Tables/kSQL71135
+Ref: Tables71313
+Ref: XTab71843
+Ref: TTab72283
+Ref: kSQL72309
+Node: System75201
+Ref: load75660
+Ref: timing75854
+Ref: variables75941
+Ref: memory76042
+Ref: cd76157
+Node: Errors76241
+Node: Conculsion77927
 
 End Tag Table
 

@@ -890,7 +890,7 @@ Most functions are overloaded and change depending on the number and type of arg
 
 @example
 Verb
-: @xref{parse},    @xref{set}..
+: @xref{parse},    @xref{set}.
 + @xref{flip},     @xref{plus}.
 - @xref{negate},   @xref{minus}.
 * @xref{first},    @xref{times}.
@@ -1585,11 +1585,22 @@ k9 uses function modifiers / adverbs in order to have functions operate iterativ
 Adverb
 '  @xref{each}.
 /  @xref{scan},   @xref{right}.
-\  @xref{scan,over},,   @xref{left}.
+\  @xref{scan,over,over}, @ @ @xref{left}.
 ': @xref{eachprior}.
 /: @xref{c over}, @xref{n scan,n over}.
 \: @xref{c scan}, @xref{n scan}.
 @end example
+
+@c @multitable {\:} {see eacheach 4} {see eacheach 4}
+@c @multitable @columnfractions .05 .25 .25
+@c @headitem Adverb @ @ 
+@c @item ' @tab @xref{each}.
+@c @item / @tab @xref{scan}, @tab @xref{right}.
+@c @item \ @tab @xref{scan,over}, @tab @xref{left}.
+@c @item ': @tab @xref{eachprior}
+@c @item /: @tab @xref{c over}, @tab @xref{n scan,n over}.
+@c @item \: @tab @xref{c scan}, @tab @xref{n scan}.
+@c @end multitable
 
 @anchor{each}@section each @result{} f'x
 Apply function f to each value in list x.
@@ -1626,20 +1637,7 @@ abc
 @ @{[x;y]y+10*x@}/1 20 300
 600
 @end example
-@anchor{left}@section left @result{} f\[x;y]
-Apply f[;y] to each value in x.
-@example
-@ @{x+y@}[100 200 300;1 2 3]  / add the lists together itemize
-101 202 303
-@ @{x+y@}\[100 200 300;1 2 3] / add the list y to each value of x
-101 102 103
-201 202 203
-301 302 303
-@ @{x,y@}\[`l1`l2`l3;`r1`r2`r3]
-l1 r1 r2 r3
-l2 r1 r2 r3
-l3 r1 r2 r3
-@end example
+
 @anchor{right}@section right @result{} f/[x;y]
 Apply f[x;] to each value in y.
 @example
@@ -1654,6 +1652,22 @@ l1 l2 l3 r1
 l1 l2 l3 r2
 l1 l2 l3 r3
 @end example
+
+@anchor{left}@section left @result{} f\[x;y]
+Apply f[;y] to each value in x.
+@example
+@ @{x+y@}[100 200 300;1 2 3]  / add the lists together itemize
+101 202 303
+@ @{x+y@}\[100 200 300;1 2 3] / add the list y to each value of x
+101 102 103
+201 202 203
+301 302 303
+@ @{x,y@}\[`l1`l2`l3;`r1`r2`r3]
+l1 r1 r2 r3
+l2 r1 r2 r3
+l3 r1 r2 r3
+@end example
+
 @anchor{eachprior}@section eachprior @result{} f':[x;y]
 Apply f[y_n;y_@{n-1@}].  f_0 is a special case of f[y_0;x].
 @example
@@ -1686,7 +1700,7 @@ xy0y1 y2
 Compute f[x], f[f[x]] and continue to call f[previous result] until the output converges to a stationary value or the output produces x.
 @example
 @  @{x*x@}\:.99
-0.99 0.9801 0.960596 0.9227447 0.8514578 0.7249803 0.5255965 0.2762517 0.07631498 0.005823977 3.391871e-05 1.150479e-09 1.323601e-18 1.751919e-36 3.069222e-72 9.420123e-144 8.873872e-287 0
+0.99 0.9801 0.960596 0.9227447 .. 9.420123e-144 8.873872e-287 0
 @end example
 @anchor{c over}@section c(onverge) over @result{} f/:x
 Same as converge scan but only return last value.
@@ -1895,7 +1909,7 @@ Dictionaries in k9 are often used.  As an example in the benchmark chapter the m
 
 @section Dictionary Creation @result{} x!y
 @example
-@ d0:`pi`e`c!3.14 2.72 3e8;d0                         / elements
+@ d0:`pi`e`c!3.14 2.72 3e8;d0            / elements
 pi|3.14 
 e |2.72 
 c |3e+08
@@ -1904,17 +1918,17 @@ c |3e+08
 time|12:00 12:01 12:10
 temp|25 25.1 25.6
 
-@ d2:0 10 1!37.4 46.3 0.1;d2                          / keys as numbers
+@ d2:0 10 1!37.4 46.3 0.1;d2             / keys as numbers
 @ 0|37.4
 10|46.3
 @ 1|0.1
 
-@ d3:`a`b`a!1 2 3;d3                                  / non-unique keys
+@ d3:`a`b`a!1 2 3;d3                     / non-unique keys
 a|1
 b|2
 a|3
 
-@ d3`a                                                / first value `a value returned
+@ d3`a                                   / `a value returned
 1
 
 @end example
