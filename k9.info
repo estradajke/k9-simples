@@ -1027,7 +1027,7 @@ the plus symbol once as flip and then for addition.  (Remember
 evaluation is right to left!)
 
      Verb
-     : *Note parse::,    *Note set::.
+     : *Note parse::,    *Note set::..
      + *Note flip::,     *Note plus::.
      - *Note negate::,   *Note minus::.
      * *Note first::,    *Note times::.
@@ -1387,10 +1387,10 @@ place can have a separate base and the total number of lists is the
 product of all the x values.
 
       !2 8 16  / an odometer where the values are 0-1, 0-7, and 0-15.
-     0 0 0 0 0 0 0 0 0 0  0  0  0  0  0  0 0 0 0 0 0 0 0 0 0 0  0  0  0  0  0  0 0 0
-     0 0 0 0 0 0 0 0 0 0  0  0  0  0  0  0 1 1 1 1 1 1 1 1 1 1  1  1  1  1  1  1 2 2
-     0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 0 1
-      18#+!2 8 16 / flip the output and display first 18 rows
+     0 0 0 0 0 0 0 0 0 0  0  0  0  0  0  0 0 0 0 0 0 0 0 0 0 0  0  0
+     0 0 0 0 0 0 0 0 0 0  0  0  0  0  0  0 1 1 1 1 1 1 1 1 1 1  1  1
+     0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 0 1 2 3 4 5 6 7 8 9 10 11
+      12#+!2 8 16 / flip the output and display first 18 rows
      0 0  0
      0 0  1
      0 0  2
@@ -1403,12 +1403,6 @@ product of all the x values.
      0 0  9
      0 0 10
      0 0 11
-     0 0 12
-     0 0 13
-     0 0 14
-     0 0 15
-     0 1  0
-     0 1  1
       5_+!2 8 16 / flip the output and display last 5 rows
      1 7 11
      1 7 12
@@ -3214,85 +3208,85 @@ Ref: datetime30345
 Ref: char30998
 Ref: name31221
 Node: Verbs31630
-Ref: parse33107
-Ref: set34384
-Ref: flip34596
-Ref: plus34846
-Ref: negate35237
-Ref: minus35409
-Ref: first35516
-Ref: times35835
-Ref: divide35966
-Ref: where36103
-Ref: min/and36489
-Ref: reverse36748
-Ref: max/or36918
-Ref: asc37182
-Ref: less37378
-Ref: group37640
-Ref: equal37886
-Ref: not38010
-Ref: match38127
-Ref: enum38320
-Ref: key39613
-Ref: enlist39840
-Ref: cat39979
-Ref: sort40098
-Ref: cut40275
-Ref: count40966
-Ref: take41156
-Ref: floor41785
-Ref: drop41876
-Ref: string42469
-Ref: cast/mmu42577
-Ref: unique42901
-Ref: find/rnd43138
-Ref: type43593
-Ref: at43949
-Ref: value44162
-Ref: dot44490
-Node: Adverbs45465
-Ref: each45926
-Ref: scan46143
-Ref: left46683
-Ref: right47043
-Ref: eachprior47405
-Ref: n scan47807
-Ref: c scan48292
-Ref: c over48699
-Ref: vs48806
-Ref: sv48925
-Node: Lists49050
-Node: Dictionaries53597
-Node: Named Functions58523
-Node: More Functions60977
-Ref: cond61100
-Ref: amend61220
-Ref: dmend61882
-Node: I/O62585
-Ref: input format62931
-Ref: format63942
-Ref: write line64348
-Ref: read line64735
-Ref: write char64922
-Ref: read char65317
-Ref: load data65682
-Ref: write data67438
-Ref: conn/set71351
-Ref: http/get71395
-Node: Tables/kSQL71445
-Ref: Tables71623
-Ref: XTab72153
-Ref: TTab72593
-Ref: kSQL72619
-Node: System75511
-Ref: load75970
-Ref: timing76164
-Ref: variables76251
-Ref: memory76352
-Ref: cd76467
-Node: Errors76551
-Node: Conculsion78237
+Ref: parse33108
+Ref: set34385
+Ref: flip34597
+Ref: plus34847
+Ref: negate35238
+Ref: minus35410
+Ref: first35517
+Ref: times35836
+Ref: divide35967
+Ref: where36104
+Ref: min/and36490
+Ref: reverse36749
+Ref: max/or36919
+Ref: asc37183
+Ref: less37379
+Ref: group37641
+Ref: equal37887
+Ref: not38011
+Ref: match38128
+Ref: enum38321
+Ref: key39494
+Ref: enlist39721
+Ref: cat39860
+Ref: sort39979
+Ref: cut40156
+Ref: count40847
+Ref: take41037
+Ref: floor41666
+Ref: drop41757
+Ref: string42350
+Ref: cast/mmu42458
+Ref: unique42782
+Ref: find/rnd43019
+Ref: type43474
+Ref: at43830
+Ref: value44043
+Ref: dot44371
+Node: Adverbs45346
+Ref: each45807
+Ref: scan46024
+Ref: left46564
+Ref: right46924
+Ref: eachprior47286
+Ref: n scan47688
+Ref: c scan48173
+Ref: c over48580
+Ref: vs48687
+Ref: sv48806
+Node: Lists48931
+Node: Dictionaries53478
+Node: Named Functions58404
+Node: More Functions60858
+Ref: cond60981
+Ref: amend61101
+Ref: dmend61763
+Node: I/O62466
+Ref: input format62812
+Ref: format63823
+Ref: write line64229
+Ref: read line64616
+Ref: write char64803
+Ref: read char65198
+Ref: load data65563
+Ref: write data67319
+Ref: conn/set71232
+Ref: http/get71276
+Node: Tables/kSQL71326
+Ref: Tables71504
+Ref: XTab72034
+Ref: TTab72474
+Ref: kSQL72500
+Node: System75392
+Ref: load75851
+Ref: timing76045
+Ref: variables76132
+Ref: memory76233
+Ref: cd76348
+Node: Errors76432
+Node: Conculsion78118
 
 End Tag Table
 

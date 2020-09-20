@@ -890,7 +890,7 @@ Most functions are overloaded and change depending on the number and type of arg
 
 @example
 Verb
-: @xref{parse},    @xref{set}.
+: @xref{parse},    @xref{set}..
 + @xref{flip},     @xref{plus}.
 - @xref{negate},   @xref{minus}.
 * @xref{first},    @xref{times}.
@@ -1243,10 +1243,10 @@ Given a list of integers, x, generate a list of lists where each individual inde
 
 @example
 @ !2 8 16  / an odometer where the values are 0-1, 0-7, and 0-15.
-0 0 0 0 0 0 0 0 0 0  0  0  0  0  0  0 0 0 0 0 0 0 0 0 0 0  0  0  0  0  0  0 0 0
-0 0 0 0 0 0 0 0 0 0  0  0  0  0  0  0 1 1 1 1 1 1 1 1 1 1  1  1  1  1  1  1 2 2
-0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 0 1
-@ 18#+!2 8 16 / flip the output and display first 18 rows
+0 0 0 0 0 0 0 0 0 0  0  0  0  0  0  0 0 0 0 0 0 0 0 0 0 0  0  0
+0 0 0 0 0 0 0 0 0 0  0  0  0  0  0  0 1 1 1 1 1 1 1 1 1 1  1  1
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 0 1 2 3 4 5 6 7 8 9 10 11
+@ 12#+!2 8 16 / flip the output and display first 18 rows
 0 0  0
 0 0  1
 0 0  2
@@ -1259,12 +1259,6 @@ Given a list of integers, x, generate a list of lists where each individual inde
 0 0  9
 0 0 10
 0 0 11
-0 0 12
-0 0 13
-0 0 14
-0 0 15
-0 1  0
-0 1  1
 @ 5_+!2 8 16 / flip the output and display last 5 rows
 1 7 11
 1 7 12
