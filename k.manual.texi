@@ -4,7 +4,7 @@
 @codequotebacktick on
 
 @copying
-This manual is for Shakti (k9) build 2020.09.11.@*
+This manual is for Shakti (k9) build 2020.09.13.@*
 @today{}
 
 Copyright @copyright{} 2020 John Estrada
@@ -181,11 +181,11 @@ In order to start k9 you should either run @file{k} or @file{rlwrap k} to get st
 
 @example
  rlwrap ./k
-2020.09.11 (c) shakti
+Sep 13 2020 16GB (c) shakti
  \\
 
  ./k
-2020.09.11 (c) shakti
+Sep 13 2020 16GB (c) shakti
  \\
 @end example
 
@@ -195,7 +195,7 @@ Here I will start up k9, perform some trivial calculations, and then close the s
 
 @example
  rlwrap ./k
-2020.09.11 (c) shakti
+Sep 13 2020 16GB (c) shakti
 @ n:10000                     / n data points
 @ s:`a`b`c                    / data for symbols a, b, and c
 @ q:+s!(-1+n?3;-1+n?3;-1+n?3) / table of returns (-1,0,1) for each symbol
@@ -806,7 +806,7 @@ Dates are in yyyy.mm.dd format and stored internally as integers.
 @ @@2020.04.20               / date
 `D
 @ .z.D                       / current date in GMT
-2020.09.11
+2020.09.13
 @ `i .z.D                    / numeric representation of date
 -1205
 @ `i 2024.01.01              / zero date
