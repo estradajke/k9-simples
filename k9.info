@@ -369,7 +369,7 @@ much of the examples will be based on financial markets.  For those
 not familiar with this field a short introduction will likley be
 needed.
 
-2.1 A Tiny Introduction to Finanical Market Data
+2.1 A Tiny Introduction to Financial Market Data
 ================================================
 
 Financial market data generally are stored as prices and trades.
@@ -432,7 +432,7 @@ new consumer laptop.
       m:0,(|m),365378984,m:271810244 42800467 2636454 62769 572 2;
       d:{[x](-6+!13)@(+\m)bin x?_1e9}
       \t q:+`t`s`d!(t[n];s[n];d[n])            / time data generation in ms
-     10263
+     4863
 
    As this point one might want to check start and stop times, see if
 the symbol distribution is actually random and look at the
@@ -3197,96 +3197,96 @@ Tag Table:
 Node: Top176
 Node: Intro3981
 Node: Examples15091
-Node: Benchmarks22241
-Node: Nouns27087
-Ref: bool28505
-Ref: int28805
-Ref: float29009
-Ref: date29311
-Ref: time29731
-Ref: datetime30345
-Ref: char30998
-Ref: name31221
-Node: Verbs31630
-Ref: parse33107
-Ref: set34384
-Ref: flip34596
-Ref: plus34846
-Ref: negate35237
-Ref: minus35409
-Ref: first35516
-Ref: times35835
-Ref: divide35966
-Ref: where36103
-Ref: min/and36489
-Ref: reverse36748
-Ref: max/or36918
-Ref: asc37182
-Ref: less37378
-Ref: group37640
-Ref: equal37886
-Ref: not38010
-Ref: match38127
-Ref: enum38320
-Ref: key39493
-Ref: enlist39720
-Ref: cat39859
-Ref: sort39978
-Ref: cut40155
-Ref: count40846
-Ref: take41036
-Ref: floor41665
-Ref: drop41756
-Ref: string42349
-Ref: cast/mmu42457
-Ref: unique42781
-Ref: find/rnd43018
-Ref: type43473
-Ref: at43829
-Ref: value44042
-Ref: dot44370
-Node: Adverbs45345
-Ref: each45805
-Ref: scan46022
-Ref: right46563
-Ref: left46925
-Ref: eachprior47285
-Ref: n scan47686
-Ref: c scan48171
-Ref: c over48453
-Ref: vs48560
-Ref: sv48679
-Node: Lists48804
-Node: Dictionaries53351
-Node: Named Functions58213
-Node: More Functions60667
-Ref: cond60790
-Ref: amend60910
-Ref: dmend61572
-Node: I/O62275
-Ref: input format62621
-Ref: format63632
-Ref: write line64038
-Ref: read line64425
-Ref: write char64612
-Ref: read char65007
-Ref: load data65372
-Ref: write data67128
-Ref: conn/set71041
-Ref: http/get71085
-Node: Tables/kSQL71135
-Ref: Tables71313
-Ref: XTab71843
-Ref: TTab72283
-Ref: kSQL72309
-Node: System75201
-Ref: load75660
-Ref: timing75854
-Ref: variables75941
-Ref: memory76042
-Ref: cd76157
-Node: Errors76241
-Node: Conculsion77927
+Node: Benchmarks22240
+Node: Nouns27086
+Ref: bool28504
+Ref: int28804
+Ref: float29008
+Ref: date29310
+Ref: time29730
+Ref: datetime30344
+Ref: char30997
+Ref: name31220
+Node: Verbs31629
+Ref: parse33106
+Ref: set34383
+Ref: flip34595
+Ref: plus34845
+Ref: negate35236
+Ref: minus35408
+Ref: first35515
+Ref: times35834
+Ref: divide35965
+Ref: where36102
+Ref: min/and36488
+Ref: reverse36747
+Ref: max/or36917
+Ref: asc37181
+Ref: less37377
+Ref: group37639
+Ref: equal37885
+Ref: not38009
+Ref: match38126
+Ref: enum38319
+Ref: key39492
+Ref: enlist39719
+Ref: cat39858
+Ref: sort39977
+Ref: cut40154
+Ref: count40845
+Ref: take41035
+Ref: floor41664
+Ref: drop41755
+Ref: string42348
+Ref: cast/mmu42456
+Ref: unique42780
+Ref: find/rnd43017
+Ref: type43472
+Ref: at43828
+Ref: value44041
+Ref: dot44369
+Node: Adverbs45344
+Ref: each45804
+Ref: scan46021
+Ref: right46562
+Ref: left46924
+Ref: eachprior47284
+Ref: n scan47685
+Ref: c scan48170
+Ref: c over48452
+Ref: vs48559
+Ref: sv48678
+Node: Lists48803
+Node: Dictionaries53350
+Node: Named Functions58212
+Node: More Functions60666
+Ref: cond60789
+Ref: amend60909
+Ref: dmend61571
+Node: I/O62274
+Ref: input format62620
+Ref: format63631
+Ref: write line64037
+Ref: read line64424
+Ref: write char64611
+Ref: read char65006
+Ref: load data65371
+Ref: write data67127
+Ref: conn/set71040
+Ref: http/get71084
+Node: Tables/kSQL71134
+Ref: Tables71312
+Ref: XTab71842
+Ref: TTab72282
+Ref: kSQL72308
+Node: System75200
+Ref: load75659
+Ref: timing75853
+Ref: variables75940
+Ref: memory76041
+Ref: cd76156
+Node: Errors76240
+Node: Conculsion77926
 
 End Tag Table
 

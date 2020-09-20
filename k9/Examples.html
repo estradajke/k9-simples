@@ -51,7 +51,7 @@ Next: <a href="Benchmarks.html" accesskey="n" rel="next">Benchmarks</a>, Previou
 <span id="Examples-1"></span><h2 class="chapter">2 Examples</h2>
 <p>Before jumping into synax let&rsquo;s look at some example problems to get a sense of the speed of k9 at processing data.  Given both the historic use of languages similar to k9 in finance and the author&rsquo;s background much of the examples will be based on financial markets.  For those not familiar with this field a short introduction will likley be needed.
 </p>
-<span id="A-Tiny-Introduction-to-Finanical-Market-Data"></span><h3 class="section">2.1 A Tiny Introduction to Finanical Market Data</h3>
+<span id="A-Tiny-Introduction-to-Financial-Market-Data"></span><h3 class="section">2.1 A Tiny Introduction to Financial Market Data</h3>
 <p>Financial market data generally are stored as prices and trades.  Prices will include at a minimum the time, the securtiy, the price to buy and the price to sell.  Trades will include at a minimum the time, the security, and the price.  In normal markets there are many more prices than trades.
 </p>
 <p>Let&rsquo;s use k9 to generate a set of random prices for a single security hence elimating the need for that field.
@@ -101,7 +101,7 @@ t            p
 &nbsp;m:0,(|m),365378984,m:271810244 42800467 2636454 62769 572 2;
 &nbsp;d:{[x](-6+!13)@(+\m)bin x?_1e9}
 &nbsp;\t q:+`t`s`d!(t[n];s[n];d[n])            / time data generation in ms
-10263
+4863
 </pre></div>
 
 <p>As this point one might want to check start and stop times, see if the symbol distribution is actually random and look at the distribution of the price deltas.
