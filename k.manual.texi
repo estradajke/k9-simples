@@ -1832,7 +1832,8 @@ These functions are symmetric in the inputs f[x;y]=f[y;x] and the lists are not 
 
 @node Dictionaries
 @chapter Dictionaries and Dictionary Functions
-Dictionaries are key-value pairs of data.  The values in the dictionary can be single elements or lists.  
+Dictionaries are a data type of key-value pairs.  Keys should be unique in order to avoid lookup values confusion but uniqueness is not enforced.  The values in the dictionary can be single elements, lists or tables.  
+
 @section Dictionary Creation @result{} x!y
 @example
 @ d0:`pi`e`c!3.14 2.72 3e8;d0                         / elements
@@ -1844,10 +1845,19 @@ c |3e+08
 time|12:00 12:01 12:10
 temp|25 25.1 25.6
 
-@ d2:0 10 1!37.4 46.3 0.1;d2
+@ d2:0 10 1!37.4 46.3 0.1;d2                          / keys as numbers
 @ 0|37.4
 10|46.3
-@ 1|0.1 
+@ 1|0.1
+
+@ d3:`a`b`a!1 2 3;d3                                  / non-unique keys
+a|1
+b|2
+a|3
+
+@ d3`a                                                / first value `a value returned
+1
+
 @end example
 @section Dictionary Indexing @result{} x@@y
 Dictionary indexing, like lists, can be indexed in a number of ways.

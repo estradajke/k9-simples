@@ -1,7 +1,7 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
 This manual is for Shakti (k9) build 2020.09.11.
-September 19, 2020
+September 20, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -2019,8 +2019,10 @@ File: k9.info,  Node: Dictionaries,  Next: More functions,  Prev: Lists,  Up: To
 8 Dictionaries and Dictionary Functions
 ***************************************
 
-Dictionaries are key-value pairs of data.  The values in the
-dictionary can be single elements or lists.
+Dictionaries are a data type of key-value pairs.  Keys should be
+unique in order to avoid lookup values confusion but uniqueness is not
+enforced.  The values in the dictionary can be single elements, lists
+or tables.
 
 8.1 Dictionary Creation => x!y
 ==============================
@@ -2034,10 +2036,19 @@ dictionary can be single elements or lists.
      time|12:00 12:01 12:10
      temp|25 25.1 25.6
 
-      d2:0 10 1!37.4 46.3 0.1;d2
+      d2:0 10 1!37.4 46.3 0.1;d2                          / keys as numbers
       0|37.4
      10|46.3
       1|0.1
+
+      d3:`a`b`a!1 2 3;d3                                  / non-unique keys
+     a|1
+     b|2
+     a|3
+
+      d3`a                                                / first value `a value returned
+     1
+
 
 8.2 Dictionary Indexing => x@y
 ==============================
@@ -3116,35 +3127,35 @@ Ref: vs47485
 Ref: sv47604
 Node: Lists47729
 Node: Dictionaries52276
-Node: More functions56589
-Ref: cond58536
-Ref: parse58654
-Ref: amend59929
-Ref: dmend60591
-Node: I/O61292
-Ref: input format61638
-Ref: format62649
-Ref: write line63055
-Ref: read line63442
-Ref: write char63629
-Ref: read char64024
-Ref: load data64389
-Ref: write data64587
-Ref: conn/set65068
-Ref: http/get65112
-Node: Tables/kSQL65162
-Ref: Tables65340
-Ref: XTab65870
-Ref: TTab66310
-Ref: kSQL66336
-Node: System69228
-Ref: load69687
-Ref: timing69881
-Ref: variables69968
-Ref: memory70069
-Ref: cd70184
-Node: Errors70268
-Node: Conculsion71954
+Node: More functions56947
+Ref: cond58894
+Ref: parse59012
+Ref: amend60287
+Ref: dmend60949
+Node: I/O61650
+Ref: input format61996
+Ref: format63007
+Ref: write line63413
+Ref: read line63800
+Ref: write char63987
+Ref: read char64382
+Ref: load data64747
+Ref: write data64945
+Ref: conn/set65426
+Ref: http/get65470
+Node: Tables/kSQL65520
+Ref: Tables65698
+Ref: XTab66228
+Ref: TTab66668
+Ref: kSQL66694
+Node: System69586
+Ref: load70045
+Ref: timing70239
+Ref: variables70326
+Ref: memory70427
+Ref: cd70542
+Node: Errors70626
+Node: Conculsion72312
 
 End Tag Table
 
