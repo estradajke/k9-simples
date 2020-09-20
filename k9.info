@@ -2019,10 +2019,15 @@ File: k9.info,  Node: Dictionaries,  Next: More functions,  Prev: Lists,  Up: To
 8 Dictionaries and Dictionary Functions
 ***************************************
 
-Dictionaries are a data type of key-value pairs.  Keys should be
-unique in order to avoid lookup values confusion but uniqueness is not
+Dictionaries are a data type of key-value pairs.  In other computer
+languages they are also known as associative arrays and maps.  Keys
+should be unique to avoid lookup value confusion but uniqueness is not
 enforced.  The values in the dictionary can be single elements, lists
 or tables.
+
+   Dictionaries in k9 are often used.  As an example in the benchmark
+chapter the market quote and trade data are dictionaries of symbols
+(name keys) and market data (table values).
 
 8.1 Dictionary Creation => x!y
 ==============================
@@ -2640,10 +2645,79 @@ Load file, eg.  csv.
      AABL 09:30:00 D 11 4379
      AABL 09:30:00 B 40 3950
 
-10.8 Load/save => x 2: y
+10.8 Save/load => x 2: y
 ========================
 
-Load shared library x with dictionary y
+(1) Save to file x non-atomic data y (eg.  lists, dictionaries, or
+tables).  (2) Load shared library x with dictionary y.
+
+   (1) Save to file.  This example saves 100mio 8-byte doubles to
+file.  The session is then closed and a fresh session reads in the
+file.  Both the write (1s) and read (13ms) have impressive speeds
+given the file size (800 MB).
+
+      n:_1e8
+      r:+`a`b`c`d`e!5^n?1.;r
+      `r 2:r              / write to file
+     a          b          c          d          e
+     ---------- ---------- ---------- ---------- ----------
+     0.5366064  0.8250996  0.8978589  0.4895149  0.6811532
+     0.1653467  0.05017282 0.4831432  0.4657975  0.4434603
+     0.08842649 0.8885677  0.23108    0.3336785  0.6270692
+     0.3329232  0.3528549  0.2659892  0.1927104  0.4304933
+     0.05392223 0.7969098  0.4312251  0.7799843  0.5060091
+     0.1922035  0.5056334  0.2600317  0.4555804  0.56671
+     0.4545242  0.01599503 0.1710724  0.4320832  0.4520696
+     0.7843445  0.4319026  0.1015124  0.877304   0.9949587
+     0.09920892 0.8340988  0.3119439  0.4945446  0.967994
+     0.5899243  0.4547598  0.436347   0.3572658  0.2969937
+     0.3565662  0.7649578  0.5738509  0.402629   0.7585447
+     0.4563912  0.509789   0.01807586 0.3083831  0.2447315
+     0.1614906  0.601976   0.1165871  0.0395344  0.05975276
+     0.1710438  0.1687449  0.7200667  0.9578548  0.7333167
+     0.8933161  0.7996999  0.1117325  0.2385556  0.5339807
+     0.03895895 0.4215705  0.01501522 0.9872831  0.9973345
+     0.4643205  0.5794769  0.5476008  0.8957309  0.1633682
+     0.1797837  0.5683136  0.993727   0.1164099  0.3229972
+     0.3687319  0.8430398  0.5818712  0.5021431  0.8034257
+     0.9274384  0.6739888  0.1821047  0.113806   0.9466886
+     0.8766261  0.05144491 0.8987524  0.2241464  0.617475
+     0.455943   0.449666   0.9678184  0.06839654 0.1232913
+     ..
+
+      ,"r"
+      \\
+     bash-3.2$ ./k
+     Sep 13 2020 16GB (c) shakti
+      2:`r                / read from file
+     a          b          c          d          e
+     ---------- ---------- ---------- ---------- ----------
+     0.5366064  0.8250996  0.8978589  0.4895149  0.6811532
+     0.1653467  0.05017282 0.4831432  0.4657975  0.4434603
+     0.08842649 0.8885677  0.23108    0.3336785  0.6270692
+     0.3329232  0.3528549  0.2659892  0.1927104  0.4304933
+     0.05392223 0.7969098  0.4312251  0.7799843  0.5060091
+     0.1922035  0.5056334  0.2600317  0.4555804  0.56671
+     0.4545242  0.01599503 0.1710724  0.4320832  0.4520696
+     0.7843445  0.4319026  0.1015124  0.877304   0.9949587
+     0.09920892 0.8340988  0.3119439  0.4945446  0.967994
+     0.5899243  0.4547598  0.436347   0.3572658  0.2969937
+     0.3565662  0.7649578  0.5738509  0.402629   0.7585447
+     0.4563912  0.509789   0.01807586 0.3083831  0.2447315
+     0.1614906  0.601976   0.1165871  0.0395344  0.05975276
+     0.1710438  0.1687449  0.7200667  0.9578548  0.7333167
+     0.8933161  0.7996999  0.1117325  0.2385556  0.5339807
+     0.03895895 0.4215705  0.01501522 0.9872831  0.9973345
+     0.4643205  0.5794769  0.5476008  0.8957309  0.1633682
+     0.1797837  0.5683136  0.993727   0.1164099  0.3229972
+     0.3687319  0.8430398  0.5818712  0.5021431  0.8034257
+     0.9274384  0.6739888  0.1821047  0.113806   0.9466886
+     0.8766261  0.05144491 0.8987524  0.2241464  0.617475
+     0.455943   0.449666   0.9678184  0.06839654 0.1232913
+     ..
+
+
+   (2) Load shared library.
 
    Contents of file 'a.c'
      int add1(int x){return 1+x;}
@@ -3127,35 +3201,35 @@ Ref: vs47485
 Ref: sv47604
 Node: Lists47729
 Node: Dictionaries52276
-Node: More functions56947
-Ref: cond58894
-Ref: parse59012
-Ref: amend60287
-Ref: dmend60949
-Node: I/O61650
-Ref: input format61996
-Ref: format63007
-Ref: write line63413
-Ref: read line63800
-Ref: write char63987
-Ref: read char64382
-Ref: load data64747
-Ref: write data64945
-Ref: conn/set65426
-Ref: http/get65470
-Node: Tables/kSQL65520
-Ref: Tables65698
-Ref: XTab66228
-Ref: TTab66668
-Ref: kSQL66694
-Node: System69586
-Ref: load70045
-Ref: timing70239
-Ref: variables70326
-Ref: memory70427
-Ref: cd70542
-Node: Errors70626
-Node: Conculsion72312
+Node: More functions57201
+Ref: cond59148
+Ref: parse59266
+Ref: amend60541
+Ref: dmend61203
+Node: I/O61904
+Ref: input format62250
+Ref: format63261
+Ref: write line63667
+Ref: read line64054
+Ref: write char64241
+Ref: read char64636
+Ref: load data65001
+Ref: write data65199
+Ref: conn/set69051
+Ref: http/get69095
+Node: Tables/kSQL69145
+Ref: Tables69323
+Ref: XTab69853
+Ref: TTab70293
+Ref: kSQL70319
+Node: System73211
+Ref: load73670
+Ref: timing73864
+Ref: variables73951
+Ref: memory74052
+Ref: cd74167
+Node: Errors74251
+Node: Conculsion75937
 
 End Tag Table
 
