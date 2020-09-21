@@ -1,7 +1,7 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
 This manual is for Shakti (k9) build 2020.09.13.
-September 20, 2020
+September 21, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -1027,7 +1027,7 @@ the plus symbol once as flip and then for addition.  (Remember
 evaluation is right to left!)
 
      Verb
-     : *Note parse::,    *Note set::.
+     : *Note x::,        *Note set::.
      + *Note flip::,     *Note plus::.
      - *Note negate::,   *Note minus::.
      * *Note first::,    *Note times::.
@@ -1035,7 +1035,7 @@ evaluation is right to left!)
      & *Note where::,    *Note min/and::.
      | *Note reverse::,  *Note max/or::.
      < *Note asc::,      *Note less::.
-     > *Note dsc: asc,      *Note more: less.
+     > *Note dsc: asc,       *Note more: less.
      = *Note group::,    *Note equal::.
      ~ *Note match::,    *Note match::.
      ! *Note enum::,     *Note key::.
@@ -1049,66 +1049,8 @@ evaluation is right to left!)
      . *Note value::,    *Note dot::.
 
 
-5.1 parse => :x
-===============
-
-Parse allows one to see how a command is parsed into normal k9 form.
-One can value the parse by using the value command, *Note value::.
-      :3+2
-     +
-     3
-     2
-      t:+`a`b!(1 2;3 4)
-      :select from t
-     t
-      :select a from t
-     t
-     [..]
-      p::select a from t  / store output into p
-      #p
-     2
-      p 0
-     `t
-      p 1
-     a|a
-      . p                 / value parse expression
-     a
-     -
-     1
-     2
-      .(`t;`a!`a)         / value expression
-     a
-     -
-     1
-     2
-      select from t       / orginal statement
-     a
-     -
-     1
-     2
-   Now for an example with a group clause.
-      t:+`a`b`c!(`x`y`x;0 2 10;1 1 0)
-      select avg:+/b%#b by a from t
-     a|avg
-     -|---
-     x|5
-     y|2
-      p::select avg:+/b%#b by a from t
-      .(#;`t;();`a!`a;`avg!(%;(+/;`b);#`b)) / parse form
-      #[t;();`a!`a;`avg!(%;(+/;`b);#`b)]    / functional form
-     a|avg
-     -|---
-     x|10
-     y|2
-      p::select avg:+/b%#b by a from t where c=1
-      #[t;(=;`c;1);`a!`a;`avg!(%;(+/;`b);#`b)]
-     a|avg
-     -|---
-     x|0
-     y|2
-   In the example above the parse output is reduced.  In order to see
-the elements in the output one could manually return the values in the
-list, eg.  p[2;0 1 2].
+5.1 x => :x
+===========
 
 5.2 set => x:y
 ==============
@@ -3177,14 +3119,9 @@ File: k9.info,  Node: Conculsion,  Prev: Errors,  Up: Top
 15 Conculsion
 *************
 
-At this point I expect you reached the same conclusion I did, this
-manual (not produced by Shakti) isn't that good.  Feel free to ask for
-corrections or improvements in any area that would make it better.
-
-   On a more serious note, I also expect you are surprised by the
-performance possible by k9 and the fact that it all fits into a
-134,152 bytes!  (For comparison the ls program weighs in 51,888 bytes
-and can't even change directory.)
+I expect you are surprised by the performance possible by k9 and the
+fact that it all fits into a 134,152 bytes!  (For comparison the ls
+program weighs in 51,888 bytes and can't even change directory.)
 
    If you're frustrated by the syntax or terse errors, then you're not
 alone.  I'd expect most had the same problems, persevered, and finally
@@ -3208,85 +3145,85 @@ Ref: datetime30362
 Ref: char31015
 Ref: name31238
 Node: Verbs31647
-Ref: parse33124
-Ref: set34401
-Ref: flip34613
-Ref: plus34863
-Ref: negate35254
-Ref: minus35426
-Ref: first35533
-Ref: times35852
-Ref: divide35983
-Ref: where36120
-Ref: min/and36506
-Ref: reverse36765
-Ref: max/or36935
-Ref: asc37199
-Ref: less37395
-Ref: group37657
-Ref: equal37903
-Ref: not38027
-Ref: match38144
-Ref: enum38337
-Ref: key39510
-Ref: enlist39737
-Ref: cat39876
-Ref: sort39995
-Ref: cut40172
-Ref: count40863
-Ref: take41053
-Ref: floor41682
-Ref: drop41773
-Ref: string42366
-Ref: cast/mmu42474
-Ref: unique42798
-Ref: find/rnd43035
-Ref: type43490
-Ref: at43846
-Ref: value44059
-Ref: dot44387
-Node: Adverbs45362
-Ref: each45822
-Ref: scan46039
-Ref: right46580
-Ref: left46942
-Ref: eachprior47302
-Ref: n scan47703
-Ref: c scan48188
-Ref: c over48470
-Ref: vs48577
-Ref: sv48696
-Node: Lists48821
-Node: Dictionaries53368
-Node: Named Functions58230
-Node: More Functions60684
-Ref: cond60807
-Ref: amend60927
-Ref: dmend61589
-Node: I/O62292
-Ref: input format62638
-Ref: format63649
-Ref: write line64055
-Ref: read line64442
-Ref: write char64629
-Ref: read char65024
-Ref: load data65389
-Ref: write data67145
-Ref: conn/set71058
-Ref: http/get71102
-Node: Tables/kSQL71152
-Ref: Tables71330
-Ref: XTab71860
-Ref: TTab72300
-Ref: kSQL72326
-Node: System75218
-Ref: load75677
-Ref: timing75871
-Ref: variables75958
-Ref: memory76059
-Ref: cd76174
-Node: Errors76258
-Node: Conculsion77944
+Ref: x33125
+Ref: set33150
+Ref: flip33362
+Ref: plus33612
+Ref: negate34003
+Ref: minus34175
+Ref: first34282
+Ref: times34601
+Ref: divide34732
+Ref: where34869
+Ref: min/and35255
+Ref: reverse35514
+Ref: max/or35684
+Ref: asc35948
+Ref: less36144
+Ref: group36406
+Ref: equal36652
+Ref: not36776
+Ref: match36893
+Ref: enum37086
+Ref: key38259
+Ref: enlist38486
+Ref: cat38625
+Ref: sort38744
+Ref: cut38921
+Ref: count39612
+Ref: take39802
+Ref: floor40431
+Ref: drop40522
+Ref: string41115
+Ref: cast/mmu41223
+Ref: unique41547
+Ref: find/rnd41784
+Ref: type42239
+Ref: at42595
+Ref: value42808
+Ref: dot43136
+Node: Adverbs44111
+Ref: each44571
+Ref: scan44788
+Ref: right45329
+Ref: left45691
+Ref: eachprior46051
+Ref: n scan46452
+Ref: c scan46937
+Ref: c over47219
+Ref: vs47326
+Ref: sv47445
+Node: Lists47570
+Node: Dictionaries52117
+Node: Named Functions56979
+Node: More Functions59433
+Ref: cond59556
+Ref: amend59676
+Ref: dmend60338
+Node: I/O61041
+Ref: input format61387
+Ref: format62398
+Ref: write line62804
+Ref: read line63191
+Ref: write char63378
+Ref: read char63773
+Ref: load data64138
+Ref: write data65894
+Ref: conn/set69807
+Ref: http/get69851
+Node: Tables/kSQL69901
+Ref: Tables70079
+Ref: XTab70609
+Ref: TTab71049
+Ref: kSQL71075
+Node: System73967
+Ref: load74426
+Ref: timing74620
+Ref: variables74707
+Ref: memory74808
+Ref: cd74923
+Node: Errors75007
+Node: Conculsion76693
 
 End Tag Table
 

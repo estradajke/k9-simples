@@ -890,7 +890,7 @@ Most functions are overloaded and change depending on the number and type of arg
 
 @example
 Verb
-: @xref{parse},    @xref{set}.
+: @xref{x},        @xref{set}.
 + @xref{flip},     @xref{plus}.
 - @xref{negate},   @xref{minus}.
 * @xref{first},    @xref{times}.
@@ -898,7 +898,7 @@ Verb
 & @xref{where},    @xref{min/and}.
 | @xref{reverse},  @xref{max/or}.
 < @xref{asc},      @xref{less}.
-> @xref{asc,dsc},      @xref{less,more}.
+> @xref{asc,dsc},       @xref{less,more}.
 = @xref{group},    @xref{equal}.
 ~ @xref{match},    @xref{match}.
 ! @xref{enum},     @xref{key}.
@@ -913,65 +913,66 @@ $ @xref{string},   @xref{cast/mmu}.
 
 @end example
 
-@anchor{parse}@section parse @result{} :x
-Parse allows one to see how a command is parsed into normal k9 form.  One can value the parse by using the value command, @xref{value}.
-@example
-@ :3+2
-+
-3
-2
-@ t:+`a`b!(1 2;3 4)
-@ :select from t
-t
-@ :select a from t
-t
-[..]
-@ p::select a from t  / store output into p
-@ #p
-2
-@ p 0
-`t
-@ p 1
-a|a
-@ . p                 / value parse expression
-a
--
-1
-2
-@ .(`t;`a!`a)         / value expression
-a
--
-1
-2
-@ select from t       / orginal statement
-a
--
-1
-2
-@end example
-Now for an example with a group clause.
-@example
-@ t:+`a`b`c!(`x`y`x;0 2 10;1 1 0)
-@ select avg:+/b%#b by a from t
-a|avg
--|---
-x|5
-y|2
-@ p::select avg:+/b%#b by a from t
-@ .(#;`t;();`a!`a;`avg!(%;(+/;`b);#`b)) / parse form
-@ #[t;();`a!`a;`avg!(%;(+/;`b);#`b)]    / functional form
-a|avg
--|---
-x|10 
-y|2  
-@ p::select avg:+/b%#b by a from t where c=1
-@ #[t;(=;`c;1);`a!`a;`avg!(%;(+/;`b);#`b)]
-a|avg
--|---
-x|0  
-y|2  
-@end example
-In the example above the parse output is reduced.  In order to see the elements in the output one could manually return the values in the list, eg. p[2;0 1 2].
+@anchor{x}@section x @result{} :x
+@c @anchor{parse}@section parse @result{} :x
+@c Parse allows one to see how a command is parsed into normal k9 form.  One can value the parse by using the value command, @xref{value}.
+@c @example
+@c @ :3+2
+@c +
+@c 3
+@c 2
+@c @ t:+`a`b!(1 2;3 4)
+@c @ :select from t
+@c t
+@c @ :select a from t
+@c t
+@c [..]
+@c @ p::select a from t  / store output into p
+@c @ #p
+@c 2
+@c @ p 0
+@c `t
+@c @ p 1
+@c a|a
+@c @ . p                 / value parse expression
+@c a
+@c -
+@c 1
+@c 2
+@c @ .(`t;`a!`a)         / value expression
+@c a
+@c -
+@c 1
+@c 2
+@c @ select from t       / orginal statement
+@c a
+@c -
+@c 1
+@c 2
+@c @end example
+@c Now for an example with a group clause.
+@c @example
+@c @ t:+`a`b`c!(`x`y`x;0 2 10;1 1 0)
+@c @ select avg:+/b%#b by a from t
+@c a|avg
+@c -|---
+@c x|5
+@c y|2
+@c @ p::select avg:+/b%#b by a from t
+@c @ .(#;`t;();`a!`a;`avg!(%;(+/;`b);#`b)) / parse form
+@c @ #[t;();`a!`a;`avg!(%;(+/;`b);#`b)]    / functional form
+@c a|avg
+@c -|---
+@c x|10 
+@c y|2  
+@c @ p::select avg:+/b%#b by a from t where c=1
+@c @ #[t;(=;`c;1);`a!`a;`avg!(%;(+/;`b);#`b)]
+@c a|avg
+@c -|---
+@c x|0  
+@c y|2  
+@c @end example
+@c In the example above the parse output is reduced.  In order to see the elements in the output one could manually return the values in the list, eg. p[2;0 1 2].
 
 @anchor{set}@section set @result{} x:y
 Set a variable, x, to a value, y.
@@ -2927,9 +2928,7 @@ error: value
 @node Conculsion
 @chapter Conculsion
 
-At this point I expect you reached the same conclusion I did, this manual (not produced by Shakti) isn't that good.  Feel free to ask for corrections or improvements in any area that would make it better.
-
-On a more serious note, I also expect you are surprised by the performance possible by k9 and the fact that it all fits into a 134,152 bytes!  (For comparison the ls program weighs in 51,888 bytes and can't even change directory.)
+I expect you are surprised by the performance possible by k9 and the fact that it all fits into a 134,152 bytes!  (For comparison the ls program weighs in 51,888 bytes and can't even change directory.)
 
 If you're frustrated by the syntax or terse errors, then you're not alone.  I'd expect most had the same problems, persevered, and finally came away a power user able to squeeze information from data faster than previously imagined.
 
@@ -2941,3 +2940,8 @@ If you're frustrated by the syntax or terse errors, then you're not alone.  I'd 
 @c @printindex cp
 
 @bye
+
+
+@c At this point I expect you reached the same conclusion I did, this manual (not produced by Shakti) isn't that good.  Feel free to ask for corrections or improvements in any area that would make it better.
+@c 
+@c On a more serious note, 
