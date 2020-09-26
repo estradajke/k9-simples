@@ -1,7 +1,7 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
 This manual is for Shakti (k9) build 2020.09.13.
-September 21, 2020
+September 26, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -62,7 +62,7 @@ error: class rank length type domain value(parse stack limit)
 * Menu:
 
 * Intro:: An introduction to shakti/k9, a novel computer language for data analysis
-* Examples:: Example to motivate the reader to learn the language
+* Examples:: Examples to motivate the reader to learn the language
 * Benchmarks:: Learn how fast this language is
 * Nouns:: Basic data types
 * Verbs:: Core functions
@@ -620,9 +620,9 @@ File: k9.info,  Node: Benchmarks,  Next: Nouns,  Prev: Examples,  Up: Top
 
 Shakti seems likely to be one of the faster data analysis languages
 out there and clear benchmarks always help to illuminate the matter.
-The Shakti website has a file for such purpose, b.k.  You can see the
-in the below that from the first query (Q1) k0 takes 1ms while
-postgres, spark and mongo are orders of magntitude slower.
+The Shakti website has a file for such purpose, b.k.  You can see
+below for the first query (Q1) k9 takes 1ms while postgres, spark and
+mongo are orders of magntitude slower.
 
    b.k
 
@@ -657,8 +657,11 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 960 billion quotes (S has 170 billion. QQQ has 6 billion.)
  48 billion trades (S has 12 billion. QQQ has 80 million.)
 
-3.1 T
-=====
+3.1 Understanding the benchmark script
+======================================
+
+3.1.1 T
+-------
 
 T is a function which generates a uniform list of times from 09:30 to
 16:00.
@@ -669,8 +672,8 @@ T is a function which generates a uniform list of times from 09:30 to
       ?1_-':T[10000]  / determine the unique timesteps
      ?00:00:02 00:00:03
 
-3.2 P, Z, E
-===========
+3.1.2 P, Z, E
+-------------
 
 P is a function to generate values from 10 to 100 (price).  Z is a
 function to generate values from 100 to 1000 (size).  E is a function
@@ -683,8 +686,8 @@ to generate values A, B, C, or D (exchange).
       E[10]
      "AADCBCCCBC"
 
-3.3 m, n, S, N
-==============
+3.1.3 m, n, S, N
+----------------
 
 m is the number of symbols.  n is the number of trades.  S is the list
 of symbol names.  N is a list of decreasing numbers which sum
@@ -698,8 +701,8 @@ integers).
       +/N
      5604390
 
-3.4 t
-=====
+3.1.4 t
+-------
 
 t is an XTab of trades.  The fields are time (t), exchange (e), price
 (p), and size (z).  The number of trades is set by n.
@@ -720,8 +723,8 @@ t is an XTab of trades.  The fields are time (t), exchange (e), price
      11:12:37 A 14 5255
      12:24:28 A 48 3634
 
-3.5 q
-=====
+3.1.5 q
+-------
 
 q is a XTab of quotes.  The fields are time (t), exchange (e), and bid
 (b).  The number of quotes is set by 6*n.
@@ -740,16 +743,16 @@ q is a XTab of quotes.  The fields are time (t), exchange (e), and bid
      11:31:41 D 66
      14:41:38 A 63
 
-3.6 a, A
-========
+3.1.6 a, A
+----------
 
 a is the first symbol of S. A is the first 100 symbols of S.
 
       a
      `PKEM
 
-3.7 Max price by exchange
-=========================
+3.1.7 Max price by exchange
+---------------------------
 
 The query takes 100 tables from the trade XTab and computes the max
 price by exchange.
@@ -764,8 +767,8 @@ price by exchange.
       \t  {select max p by e from x}'t A
      22
 
-3.8 Compute sum of trade size by hour.
-======================================
+3.1.8 Compute sum of trade size by hour.
+----------------------------------------
 
 This query takes 100 tables from the trade XTab and computes the sum
 of trade size done by hour.
@@ -783,8 +786,8 @@ of trade size done by hour.
       \t  {select sum z by `o t from x}'t A
      27
 
-3.9 Compute last bid by symbol
-==============================
+3.1.9 Compute last bid by symbol
+--------------------------------
 
 This query takes the 100 tables from the quote XTab and returns the
 last bid.
@@ -799,8 +802,8 @@ last bid.
       \t:10 {select last b from x}'q A
      2
 
-3.10 Find trades below the bid
-==============================
+3.1.10 Find trades below the bid
+--------------------------------
 
 This query operates on one symbol from the q and t XTabs, i.e.  a
 single quote and trade table.  The quote table is joined to the trade
@@ -3132,98 +3135,98 @@ than previously imagined.
 
 Tag Table:
 Node: Top176
-Node: Intro3981
-Node: Examples15109
-Node: Benchmarks22258
-Node: Nouns27104
-Ref: bool28522
-Ref: int28822
-Ref: float29026
-Ref: date29328
-Ref: time29748
-Ref: datetime30362
-Ref: char31015
-Ref: name31238
-Node: Verbs31647
-Ref: x33125
-Ref: set33150
-Ref: flip33362
-Ref: plus33612
-Ref: negate34003
-Ref: minus34175
-Ref: first34282
-Ref: times34601
-Ref: divide34732
-Ref: where34869
-Ref: min/and35255
-Ref: reverse35514
-Ref: max/or35684
-Ref: asc35948
-Ref: less36144
-Ref: group36406
-Ref: equal36652
-Ref: not36776
-Ref: match36893
-Ref: enum37086
-Ref: key38259
-Ref: enlist38486
-Ref: cat38625
-Ref: sort38744
-Ref: cut38921
-Ref: count39612
-Ref: take39802
-Ref: floor40431
-Ref: drop40522
-Ref: string41115
-Ref: cast/mmu41223
-Ref: unique41547
-Ref: find/rnd41784
-Ref: type42239
-Ref: at42595
-Ref: value42808
-Ref: dot43136
-Node: Adverbs44111
-Ref: each44571
-Ref: scan44788
-Ref: right45329
-Ref: left45691
-Ref: eachprior46051
-Ref: n scan46452
-Ref: c scan46937
-Ref: c over47219
-Ref: vs47326
-Ref: sv47445
-Node: Lists47570
-Node: Dictionaries52117
-Node: Named Functions56979
-Node: More Functions59433
-Ref: cond59556
-Ref: amend59676
-Ref: dmend60338
-Node: I/O61041
-Ref: input format61387
-Ref: format62398
-Ref: write line62804
-Ref: read line63191
-Ref: write char63378
-Ref: read char63773
-Ref: load data64138
-Ref: write data65896
-Ref: conn/set69809
-Ref: http/get69853
-Node: Tables/kSQL69903
-Ref: Tables70081
-Ref: XTab70611
-Ref: TTab71051
-Ref: kSQL71077
-Node: System73969
-Ref: load74428
-Ref: timing74622
-Ref: variables74709
-Ref: memory74810
-Ref: cd74925
-Node: Errors75009
-Node: Conculsion76695
+Node: Intro3982
+Node: Examples15110
+Node: Benchmarks22259
+Node: Nouns27207
+Ref: bool28625
+Ref: int28925
+Ref: float29129
+Ref: date29431
+Ref: time29851
+Ref: datetime30465
+Ref: char31118
+Ref: name31341
+Node: Verbs31750
+Ref: x33228
+Ref: set33253
+Ref: flip33465
+Ref: plus33715
+Ref: negate34106
+Ref: minus34278
+Ref: first34385
+Ref: times34704
+Ref: divide34835
+Ref: where34972
+Ref: min/and35358
+Ref: reverse35617
+Ref: max/or35787
+Ref: asc36051
+Ref: less36247
+Ref: group36509
+Ref: equal36755
+Ref: not36879
+Ref: match36996
+Ref: enum37189
+Ref: key38362
+Ref: enlist38589
+Ref: cat38728
+Ref: sort38847
+Ref: cut39024
+Ref: count39715
+Ref: take39905
+Ref: floor40534
+Ref: drop40625
+Ref: string41218
+Ref: cast/mmu41326
+Ref: unique41650
+Ref: find/rnd41887
+Ref: type42342
+Ref: at42698
+Ref: value42911
+Ref: dot43239
+Node: Adverbs44214
+Ref: each44674
+Ref: scan44891
+Ref: right45432
+Ref: left45794
+Ref: eachprior46154
+Ref: n scan46555
+Ref: c scan47040
+Ref: c over47322
+Ref: vs47429
+Ref: sv47548
+Node: Lists47673
+Node: Dictionaries52220
+Node: Named Functions57082
+Node: More Functions59536
+Ref: cond59659
+Ref: amend59779
+Ref: dmend60441
+Node: I/O61144
+Ref: input format61490
+Ref: format62501
+Ref: write line62907
+Ref: read line63294
+Ref: write char63481
+Ref: read char63876
+Ref: load data64241
+Ref: write data65999
+Ref: conn/set69912
+Ref: http/get69956
+Node: Tables/kSQL70006
+Ref: Tables70184
+Ref: XTab70714
+Ref: TTab71154
+Ref: kSQL71180
+Node: System74072
+Ref: load74531
+Ref: timing74725
+Ref: variables74812
+Ref: memory74913
+Ref: cd75028
+Node: Errors75112
+Node: Conculsion76798
 
 End Tag Table
 

@@ -71,7 +71,7 @@ error: class rank length type domain value(parse stack limit)
 
 @menu
 * Intro:: An introduction to shakti/k9, a novel computer language for data analysis
-* Examples:: Example to motivate the reader to learn the language
+* Examples:: Examples to motivate the reader to learn the language
 * Benchmarks:: Learn how fast this language is
 * Nouns:: Basic data types
 * Verbs:: Core functions
@@ -534,7 +534,7 @@ And then one can use the where function, @code{&}, to determine the index of the
 
 @node Benchmarks
 @chapter Benchmarks
-Shakti seems likely to be one of the faster data analysis languages out there and clear benchmarks always help to illuminate the matter.  The Shakti website has a file for such purpose, b.k.  You can see the in the below that from the first query (Q1) k0 takes 1ms while postgres, spark and mongo are orders of magntitude slower.  
+Shakti seems likely to be one of the faster data analysis languages out there and clear benchmarks always help to illuminate the matter.  The Shakti website has a file for such purpose, b.k.  You can see below for the first query (Q1) k9 takes 1ms while postgres, spark and mongo are orders of magntitude slower.  
 
 b.k
 
@@ -571,7 +571,9 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
  48 billion trades (S has 12 billion. QQQ has 80 million.)
 @end verbatim
 
-@section T
+@section Understanding the benchmark script
+
+@subsection T
 T is a function which generates a uniform list of times from 09:30 to 16:00.
 
 @example
@@ -582,7 +584,7 @@ T is a function which generates a uniform list of times from 09:30 to 16:00.
 ?00:00:02 00:00:03
 @end example
 
-@section P, Z, E
+@subsection P, Z, E
 P is a function to generate values from 10 to 100 (price).  Z is a function to generate values from 100 to 1000 (size).  E is a function to generate values A, B, C, or D (exchange).
 
 @example
@@ -594,7 +596,7 @@ P is a function to generate values from 10 to 100 (price).  Z is a function to g
 "AADCBCCCBC"
 @end example
 
-@section m, n, S, N
+@subsection m, n, S, N
 m is the number of symbols.  n is the number of trades.  S is the list of symbol names.  N is a list of decreasing numbers which sum approximately to n.  (Approximately as the values are ceil to integers).
 
 @example
@@ -606,7 +608,7 @@ m is the number of symbols.  n is the number of trades.  S is the list of symbol
 5604390
 @end example
 
-@section t
+@subsection t
 t is an XTab of trades.  The fields are time (t), exchange (e), price (p), and size (z).  The number of trades is set by n.
 
 Pulling 1 random table from t and showing 10 random rows.  
@@ -627,7 +629,7 @@ t        e p  z
 12:24:28 A 48 3634
 @end example
 
-@section q
+@subsection q
 q is a XTab of quotes.  The fields are time (t), exchange (e), and bid (b).  The number of quotes is set by 6*n.
 
 @example
@@ -646,7 +648,7 @@ t        e b
 14:41:38 A 63
 @end example
 
-@section a, A
+@subsection a, A
 a is the first symbol of S.  A is the first 100 symbols of S.
 
 @example
@@ -654,7 +656,7 @@ a is the first symbol of S.  A is the first 100 symbols of S.
 `PKEM
 @end example
 
-@section Max price by exchange
+@subsection Max price by exchange
 The query takes 100 tables from the trade XTab and computes the max price by exchange.
 
 @example
@@ -669,7 +671,7 @@ D|99
 22
 @end example
 
-@section Compute sum of trade size by hour.
+@subsection Compute sum of trade size by hour.
 This query takes 100 tables from the trade XTab and computes the sum of trade size done by hour.
 
 @example
@@ -687,7 +689,7 @@ t |z
 27
 @end example
 
-@section Compute last bid by symbol
+@subsection Compute last bid by symbol
 This query takes the 100 tables from the quote XTab and returns the last bid.
 
 @example
@@ -702,7 +704,7 @@ b
 2
 @end example
 
-@section Find trades below the bid
+@subsection Find trades below the bid
 This query operates on one symbol from the q and t XTabs, i.e. a single quote and trade table.  The quote table is joined to the trade table giving the current bid on each trade.
 
 @example

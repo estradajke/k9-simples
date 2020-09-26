@@ -2,7 +2,7 @@
 <html>
 <!-- This manual is for Shakti (k9) build 2020.09.13.
 
-September 21, 2020
+September 26, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -49,7 +49,7 @@ Next: <a href="Nouns.html" accesskey="n" rel="next">Nouns</a>, Previous: <a href
 </div>
 <hr>
 <span id="Benchmarks-1"></span><h2 class="chapter">3 Benchmarks</h2>
-<p>Shakti seems likely to be one of the faster data analysis languages out there and clear benchmarks always help to illuminate the matter.  The Shakti website has a file for such purpose, b.k.  You can see the in the below that from the first query (Q1) k0 takes 1ms while postgres, spark and mongo are orders of magntitude slower.  
+<p>Shakti seems likely to be one of the faster data analysis languages out there and clear benchmarks always help to illuminate the matter.  The Shakti website has a file for such purpose, b.k.  You can see below for the first query (Q1) k9 takes 1ms while postgres, spark and mongo are orders of magntitude slower.  
 </p>
 <p>b.k
 </p>
@@ -84,7 +84,9 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 960 billion quotes (S has 170 billion. QQQ has 6 billion.)
  48 billion trades (S has 12 billion. QQQ has 80 million.)
 </pre>
-<span id="T"></span><h3 class="section">3.1 T</h3>
+<span id="Understanding-the-benchmark-script"></span><h3 class="section">3.1 Understanding the benchmark script</h3>
+
+<span id="T"></span><h4 class="subsection">3.1.1 T</h4>
 <p>T is a function which generates a uniform list of times from 09:30 to 16:00.
 </p>
 <div class="example">
@@ -95,7 +97,7 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 ?00:00:02 00:00:03
 </pre></div>
 
-<span id="P_002c-Z_002c-E"></span><h3 class="section">3.2 P, Z, E</h3>
+<span id="P_002c-Z_002c-E"></span><h4 class="subsection">3.1.2 P, Z, E</h4>
 <p>P is a function to generate values from 10 to 100 (price).  Z is a function to generate values from 100 to 1000 (size).  E is a function to generate values A, B, C, or D (exchange).
 </p>
 <div class="example">
@@ -107,7 +109,7 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 &quot;AADCBCCCBC&quot;
 </pre></div>
 
-<span id="m_002c-n_002c-S_002c-N"></span><h3 class="section">3.3 m, n, S, N</h3>
+<span id="m_002c-n_002c-S_002c-N"></span><h4 class="subsection">3.1.3 m, n, S, N</h4>
 <p>m is the number of symbols.  n is the number of trades.  S is the list of symbol names.  N is a list of decreasing numbers which sum approximately to n.  (Approximately as the values are ceil to integers).
 </p>
 <div class="example">
@@ -119,7 +121,7 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 5604390
 </pre></div>
 
-<span id="t"></span><h3 class="section">3.4 t</h3>
+<span id="t"></span><h4 class="subsection">3.1.4 t</h4>
 <p>t is an XTab of trades.  The fields are time (t), exchange (e), price (p), and size (z).  The number of trades is set by n.
 </p>
 <p>Pulling 1 random table from t and showing 10 random rows.  
@@ -140,7 +142,7 @@ t        e p  z
 12:24:28 A 48 3634
 </pre></div>
 
-<span id="q"></span><h3 class="section">3.5 q</h3>
+<span id="q"></span><h4 class="subsection">3.1.5 q</h4>
 <p>q is a XTab of quotes.  The fields are time (t), exchange (e), and bid (b).  The number of quotes is set by 6*n.
 </p>
 <div class="example">
@@ -159,7 +161,7 @@ t        e b
 14:41:38 A 63
 </pre></div>
 
-<span id="a_002c-A"></span><h3 class="section">3.6 a, A</h3>
+<span id="a_002c-A"></span><h4 class="subsection">3.1.6 a, A</h4>
 <p>a is the first symbol of S.  A is the first 100 symbols of S.
 </p>
 <div class="example">
@@ -167,7 +169,7 @@ t        e b
 `PKEM
 </pre></div>
 
-<span id="Max-price-by-exchange"></span><h3 class="section">3.7 Max price by exchange</h3>
+<span id="Max-price-by-exchange"></span><h4 class="subsection">3.1.7 Max price by exchange</h4>
 <p>The query takes 100 tables from the trade XTab and computes the max price by exchange.
 </p>
 <div class="example">
@@ -182,7 +184,7 @@ D|99
 22
 </pre></div>
 
-<span id="Compute-sum-of-trade-size-by-hour_002e"></span><h3 class="section">3.8 Compute sum of trade size by hour.</h3>
+<span id="Compute-sum-of-trade-size-by-hour_002e"></span><h4 class="subsection">3.1.8 Compute sum of trade size by hour.</h4>
 <p>This query takes 100 tables from the trade XTab and computes the sum of trade size done by hour.
 </p>
 <div class="example">
@@ -200,7 +202,7 @@ t |z
 27
 </pre></div>
 
-<span id="Compute-last-bid-by-symbol"></span><h3 class="section">3.9 Compute last bid by symbol</h3>
+<span id="Compute-last-bid-by-symbol"></span><h4 class="subsection">3.1.9 Compute last bid by symbol</h4>
 <p>This query takes the 100 tables from the quote XTab and returns the last bid.
 </p>
 <div class="example">
@@ -215,7 +217,7 @@ b
 2
 </pre></div>
 
-<span id="Find-trades-below-the-bid"></span><h3 class="section">3.10 Find trades below the bid</h3>
+<span id="Find-trades-below-the-bid"></span><h4 class="subsection">3.1.10 Find trades below the bid</h4>
 <p>This query operates on one symbol from the q and t XTabs, i.e. a single quote and trade table.  The quote table is joined to the trade table giving the current bid on each trade.
 </p>
 <div class="example">
