@@ -1,0 +1,284 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for Shakti (k9) build 2020.09.13.
+
+September 27, 2020
+
+Copyright (C) 2020 John Estrada -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>I/O (Shakti tutorial)</title>
+
+<meta name="description" content="I/O (Shakti tutorial)">
+<meta name="keywords" content="I/O (Shakti tutorial)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Conculsion.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html" rel="up" title="Top">
+<link href="Tables_002fkSQL.html" rel="next" title="Tables/kSQL">
+<link href="More-Functions.html" rel="prev" title="More Functions">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="I_002fO"></span><div class="header">
+<p>
+Next: <a href="Tables_002fkSQL.html" accesskey="n" rel="next">Tables/kSQL</a>, Previous: <a href="More-Functions.html" accesskey="p" rel="prev">More Functions</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="Conculsion.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<span id="I_002fO-1"></span><h2 class="chapter">11 I/O</h2>
+<p>Given k9 is useful for analyzing data it won&rsquo;t be a surprise that input and output (I/O) are supported.  k9 has been optimized to read in data quickly so if you have a workflow of making a tea while the huge csv file loads you might have an issue.
+</p>
+<span id="input-format"></span><span id="Input-format-values-to-table"></span><h3 class="section">11.1 Input format values to table</h3>
+<p>This section shows you the syntax for reading in data into a table with the correct type.
+</p><div class="example">
+<pre class="example">&nbsp;d:,(`date`time`int`float`char`symbol)            / headers 
+&nbsp;d,:,(2020.04.20;12:34:56.789;37;12.3;&quot;hi&quot;;`bye)) /data
+&nbsp;d                                          
+date       time         int float char  symbol
+2020-04-20 12:34:56.789 37  12.3  hi    bye   
+
+&nbsp;`csv'd                                           / to csv
+date,time,int,float,char,symbol            
+2020-04-20,12:34:56.789,37,12.3,&quot;hi&quot;,bye
+
+&nbsp;&quot;some.csv&quot;0:`csv'd                               / write to some.csv
+&nbsp;0:&quot;some.csv&quot;                                     / read from some.csv
+date,time,int,float,char,symbol            
+2020-04-20,12:34:56.789,37,12.3,&quot;hi&quot;,bye
+
+&nbsp;(&quot;Dtifs*&quot;;,&quot;,&quot;)0:&quot;some.csv&quot;                      / read into table
+date       time         int float char    symbol
+---------- ------------ --- ----- ------- ------
+2020-04-20 12:34:56.789  37 12.3  &quot;hi&quot;    bye   
+</pre></div>
+
+
+<span id="format"></span><span id="Format-to-CSV_002fjson_002fk-_21d2-_0060csv-x"></span><h3 class="section">11.2 Format to CSV/json/k &rArr; &lsquo;csv x</h3>
+<p>Convert x to CSV/json/k format.  Works on atoms, lists, and tables.
+</p><div class="example">
+<pre class="example">&nbsp;`csv 3 1 2
+&quot;3,1,2&quot;
+&nbsp;`json (3;`abc;2.3;&quot;blue&quot;)
+&quot;[\&quot;3\&quot;,\&quot;abc\&quot;,2.3,\&quot;blue\&quot;]&quot;
+&nbsp;`k [[]i:!5;s:`a`b`c`d`e;v:5?10]
+&quot;[[]i:0 1 2 3 4;s:`a`b`c`d`e;v:7 4 7 3 2]&quot;
+&nbsp;`csv `a`b!((1 2);(3 4))      / error as dictionary input
+:class
+</pre></div>
+<span id="write-line"></span><span id="write-line-_21d2-x-0_003ay"></span><h3 class="section">11.3 write line &rArr; x 0:y</h3>
+<p>Output to x the list of strings in y.  y must be a list of strings.  If y is a single stream then convert to list via enlist.
+</p><div class="example">
+<pre class="example">&nbsp;&quot;&quot;0:(&quot;blue&quot;;&quot;red&quot;)      / &quot;&quot; represents stdout
+blue
+red
+&nbsp;&quot;&quot;0:$'(&quot;blue&quot;;&quot;red&quot;;3)  / each element to string
+blue
+red
+3
+&nbsp;&quot;some.csv&quot;0:,`csv 3 1 2 / will fail without enlist
+</pre></div>
+<span id="read-line"></span><span id="read-line-_21d2-0_003ax"></span><h3 class="section">11.4 read line &rArr; 0:x</h3>
+<p>Read from file x.
+</p><div class="example">
+<pre class="example">&nbsp;&quot;some.txt&quot;0:,`csv 3 1 2 / first write a file to some.txt
+&nbsp;0:&quot;some.txt&quot;            / now read it back
+3,1,2
+</pre></div>
+<span id="write-char"></span><span id="write-char-_21d2-x-1_003ay"></span><h3 class="section">11.5 write char &rArr; x 1:y</h3>
+<p>Output to x the list of chars in y.  y must be a list of chars.  If y is a single char then convert to list via enlist.
+</p><div class="example">
+<pre class="example">&nbsp;&quot;some.txt&quot;1:&quot;hello here\nis some text\n&quot;
+&nbsp;1:&quot;some.txt&quot;
+&quot;hello here\nis some text\n&quot;
+&nbsp; t:+`a`b!(1 2;3 4);t
+a b
+- -
+1 3
+2 4
+&nbsp;&quot;some.k&quot;1:`k t      / write table to file in k format
+</pre></div>
+<span id="read-char"></span><span id="read-char-_21d2-1_003ax"></span><h3 class="section">11.6 read char &rArr; 1:x</h3>
+<p>Read from file x.
+</p><div class="example">
+<pre class="example">&nbsp;&quot;some.txt&quot;0:,`csv 3 1 2 / first write a file to some.txt
+&nbsp;1:&quot;some.txt&quot;            / now read it back
+&quot;3,1,2\n&quot;
+&nbsp; t:+`a`b!(1 2;3 4);t
+a b
+- -
+1 3
+2 4
+&nbsp;t:`k?1:&quot;some.k&quot;;t   / read file stored in k format (as shown above)
+a b
+- -
+1 3
+2 4
+</pre></div>
+
+<span id="load-data"></span><span id="Load-file-_21d2-2_003a-x"></span><h3 class="section">11.7 Load file &rArr; 2: x</h3>
+<p>Load file, eg. csv or from a (x 2: y) save.  For the latter one can find a &ldquo;save then load&rdquo; example in the next section.
+</p>
+<div class="example">
+<pre class="example">&nbsp;2:`t.csv
+s    t        e p  z   
+---- -------- - -- ----
+AABL 09:30:00 D 11 4379
+AABL 09:30:00 B 40 3950
+
+&nbsp;2:`r                / read from file
+a          b          c          d          e         
+---------- ---------- ---------- ---------- ----------
+0.5366064  0.8250996  0.8978589  0.4895149  0.6811532 
+0.1653467  0.05017282 0.4831432  0.4657975  0.4434603 
+0.08842649 0.8885677  0.23108    0.3336785  0.6270692 
+0.3329232  0.3528549  0.2659892  0.1927104  0.4304933 
+0.05392223 0.7969098  0.4312251  0.7799843  0.5060091 
+0.1922035  0.5056334  0.2600317  0.4555804  0.56671   
+0.4545242  0.01599503 0.1710724  0.4320832  0.4520696 
+0.7843445  0.4319026  0.1015124  0.877304   0.9949587 
+0.09920892 0.8340988  0.3119439  0.4945446  0.967994  
+0.5899243  0.4547598  0.436347   0.3572658  0.2969937 
+0.3565662  0.7649578  0.5738509  0.402629   0.7585447 
+0.4563912  0.509789   0.01807586 0.3083831  0.2447315 
+0.1614906  0.601976   0.1165871  0.0395344  0.05975276
+0.1710438  0.1687449  0.7200667  0.9578548  0.7333167 
+0.8933161  0.7996999  0.1117325  0.2385556  0.5339807 
+0.03895895 0.4215705  0.01501522 0.9872831  0.9973345 
+0.4643205  0.5794769  0.5476008  0.8957309  0.1633682 
+0.1797837  0.5683136  0.993727   0.1164099  0.3229972 
+0.3687319  0.8430398  0.5818712  0.5021431  0.8034257 
+0.9274384  0.6739888  0.1821047  0.113806   0.9466886 
+0.8766261  0.05144491 0.8987524  0.2241464  0.617475  
+0.455943   0.449666   0.9678184  0.06839654 0.1232913 
+..
+
+</pre></div>
+
+<span id="write-data"></span><span id="Save_002fload-_21d2-x-2_003a-y"></span><h3 class="section">11.8 Save/load &rArr; x 2: y</h3>
+<p>The function is used to save data and load shared libraries.  (1) Save to file x non-atomic data y (eg. lists, dictionaries, or tables).  (2) Load shared library x with dictionary y.
+</p>
+<p>(1) Save to file.  This example saves 100mio 8-byte doubles to file.  The session is then closed and a fresh session reads in the file.  Both the write (1s) and read (13ms) have impressive speeds given the file size (800 MB).
+</p>
+<div class="example">
+<pre class="example">&nbsp;n:_1e8
+&nbsp;r:+`a`b`c`d`e!5^n?1.;r
+&nbsp;`r 2:r              / write to file 
+a          b          c          d          e         
+---------- ---------- ---------- ---------- ----------
+0.5366064  0.8250996  0.8978589  0.4895149  0.6811532 
+0.1653467  0.05017282 0.4831432  0.4657975  0.4434603 
+0.08842649 0.8885677  0.23108    0.3336785  0.6270692 
+0.3329232  0.3528549  0.2659892  0.1927104  0.4304933 
+0.05392223 0.7969098  0.4312251  0.7799843  0.5060091 
+0.1922035  0.5056334  0.2600317  0.4555804  0.56671   
+0.4545242  0.01599503 0.1710724  0.4320832  0.4520696 
+0.7843445  0.4319026  0.1015124  0.877304   0.9949587 
+0.09920892 0.8340988  0.3119439  0.4945446  0.967994  
+0.5899243  0.4547598  0.436347   0.3572658  0.2969937 
+0.3565662  0.7649578  0.5738509  0.402629   0.7585447 
+0.4563912  0.509789   0.01807586 0.3083831  0.2447315 
+0.1614906  0.601976   0.1165871  0.0395344  0.05975276
+0.1710438  0.1687449  0.7200667  0.9578548  0.7333167 
+0.8933161  0.7996999  0.1117325  0.2385556  0.5339807 
+0.03895895 0.4215705  0.01501522 0.9872831  0.9973345 
+0.4643205  0.5794769  0.5476008  0.8957309  0.1633682 
+0.1797837  0.5683136  0.993727   0.1164099  0.3229972 
+0.3687319  0.8430398  0.5818712  0.5021431  0.8034257 
+0.9274384  0.6739888  0.1821047  0.113806   0.9466886 
+0.8766261  0.05144491 0.8987524  0.2241464  0.617475  
+0.455943   0.449666   0.9678184  0.06839654 0.1232913 
+..
+
+ ,&quot;r&quot;
+&nbsp;\\
+bash-3.2$ ./k
+Sep 13 2020 16GB (c) shakti
+&nbsp;2:`r                / read from file
+a          b          c          d          e         
+---------- ---------- ---------- ---------- ----------
+0.5366064  0.8250996  0.8978589  0.4895149  0.6811532 
+0.1653467  0.05017282 0.4831432  0.4657975  0.4434603 
+0.08842649 0.8885677  0.23108    0.3336785  0.6270692 
+0.3329232  0.3528549  0.2659892  0.1927104  0.4304933 
+0.05392223 0.7969098  0.4312251  0.7799843  0.5060091 
+0.1922035  0.5056334  0.2600317  0.4555804  0.56671   
+0.4545242  0.01599503 0.1710724  0.4320832  0.4520696 
+0.7843445  0.4319026  0.1015124  0.877304   0.9949587 
+0.09920892 0.8340988  0.3119439  0.4945446  0.967994  
+0.5899243  0.4547598  0.436347   0.3572658  0.2969937 
+0.3565662  0.7649578  0.5738509  0.402629   0.7585447 
+0.4563912  0.509789   0.01807586 0.3083831  0.2447315 
+0.1614906  0.601976   0.1165871  0.0395344  0.05975276
+0.1710438  0.1687449  0.7200667  0.9578548  0.7333167 
+0.8933161  0.7996999  0.1117325  0.2385556  0.5339807 
+0.03895895 0.4215705  0.01501522 0.9872831  0.9973345 
+0.4643205  0.5794769  0.5476008  0.8957309  0.1633682 
+0.1797837  0.5683136  0.993727   0.1164099  0.3229972 
+0.3687319  0.8430398  0.5818712  0.5021431  0.8034257 
+0.9274384  0.6739888  0.1821047  0.113806   0.9466886 
+0.8766261  0.05144491 0.8987524  0.2241464  0.617475  
+0.455943   0.449666   0.9678184  0.06839654 0.1232913 
+..
+
+</pre></div>
+
+<p>(2) Load shared library.
+</p>
+<p>Contents of file &rsquo;a.c&rsquo;
+</p><div class="example">
+<pre class="example">int add1(int x){return 1+x;}
+int add2(int x){return 2+x;}
+int indx(int x[],int y){return x[y];}
+</pre></div>
+
+<p>Compile into a shared library (done on macos here)
+</p><div class="example">
+<pre class="example">% clang -dynamiclib -o a.so a.c
+</pre></div>
+
+<p>Load the shared library into the session.
+</p><div class="example">
+<pre class="example">&nbsp;f:&quot;./dev/a.so&quot;2:{add1:&quot;i&quot;;add2:&quot;i&quot;;indx:&quot;Ii&quot;}
+&nbsp;f[`add1] 12
+13
+&nbsp;f[`indx][12 13 14;2]
+14
+</pre></div>
+
+<span id="conn_002fset"></span><span id="conn_002fset-_21d2-3_003a"></span><h3 class="section">11.9 conn/set &rArr; 3:</h3>
+<p>TBD
+<span id="http_002fget"></span></p><span id="http_002fget-_21d2-4_003a"></span><h3 class="section">11.10 http/get &rArr; 4:</h3>
+<p>TBD
+</p><hr>
+<div class="header">
+<p>
+Next: <a href="Tables_002fkSQL.html" accesskey="n" rel="next">Tables/kSQL</a>, Previous: <a href="More-Functions.html" accesskey="p" rel="prev">More Functions</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="Conculsion.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+
+
+
+</body>
+</html>
