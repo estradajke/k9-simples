@@ -22,42 +22,43 @@ and likley even more improvements.
 
    The built-in reference screen containing all the k9 commands.
 
-Verb                      Adverb                 Noun              System 
-:    x         y          f'  each               bool 011b         \l a.k 
-+    flip      plus       d/  over      c/ i/    int  0N 0 2 3     \t:n x 
--    negate    minus      d\  scan      c\ i\    flt  0n 0 2 3.4   \u:n x 
-*    first     times      d': eachprior          char " ab"        \v     
-%              divide     d/: eachright f-over   name ``ab         \w     
-&    where     min/and    d\: eachleft  f-scan   uuid              \cd x  
-|    reverse   max/or                                                     
-<    asc       less                      .z.DTV  date 2024.01.01T12:34:56 
->    dsc       more                      .z.dtv  time  12:34:56.123456789 
-=    group     equal                                                      
-~    not       match                             Class                    
-!    enum      key                               List (2;3.4;`a)          
-,    enlist    cat                               Dict {x:2;y:`a}          
-^    sort   [f]cut                               Func {[x;y]x+y}          
-#    count  [f]take                              Expr :x+y                
-_    floor  [f]drop                                                       
-$    string    cast/mmu   $[b;x;y]    if else                      \f [x] 
-?    unique    find/rnd  *?[x;i;f[;y]] splice    Table [[]a:..;..] \ft [x]
-@    type      at         @[x;i;f[;y]] amend     NTable `a.![[]..] \fc [x]
-.    value     dot        .[x;i;f[;y]] dmend     TTable [[a:..]..] \fl [x]
-                                                                          
-\\ exit                                                                   
-sqrt exp log sin cos div mod bar; count first last min max sum avg; in bin
-select A by B from T where C (*select[C;T;B;A])                           
-x~`json?`json x:(23;3.4;"ab"); x~`csv?`csv x                              
-                                                                          
-I/O: 0:line 1:char *[2:data 3:kipc/set 4:http/get]                        
-FFI: "./a.so"2:`f!"i"  /I f(I i){return 1+i;}       //cblas ..            
-k/c: "./b.so"2:`f!1    /K f(K x){return ki(1+xi);}  //feeds ..            
-                                                                          
-python: import k;      k.k('+',2,3)                                       
-nodejs: k=require('k');k.k('+',2,3)                                       
-                                                                          
-limit: {[param8]local8 global32 const128 jump256} name8                   
-error: class rank length type domain value(parse stack limit)             
+Verb                      Adverb               Noun              System 
+:    x         y          f/  over  c/  join   bool 011b         \l a.k 
++    flip      plus       f\  scan  c\  split  int  0N 0 2 3     \t:n x 
+-    negate    minus      f'  each  v'  has    flt  0n 0 2 3.4   \u:n x 
+*    first     times      f': eachp v': bin    char " ab"        \v     
+%              divide     f/: eachr ([n;]f)/:  name ``ab         \w     
+&    where     min/and    f\: eachl ([n;]f)\:  uuid              \cd [x]
+|    reverse   max/or                                                   
+<    asc       less                   .z.DTV   date 2024.01.01T12:34:56 
+>    dsc       more                   .z.dtv   time  12:34:56.123456789 
+=    group     equal                                                    
+~    not       match                           Class                    
+!    enum      key                             List (2;3.4;`a)          
+,    enlist    cat                             Dict `i`f!(2;3.4)        
+^    sort   [f]cut                             Func {[a;b]a+b}          
+#    count  [f]take                            Expr :a+b                
+_    floor  [f]drop                                                     
+$    string    cast+      $[b;x;y] if else                       \f     
+?    unique+   find+     *?[x;i;f[;y]] splice  Table [[]a:..;..] \ft x  
+@   *type   [f]at         @[x;i;f[;y]] amend   XTab  `a..![[]..] \fc x  
+.    value  [f]dot        .[x;i;f[;y]] dmend   TTab   [[a:..]..] \fl x  
+                                                                        
+\\ exit      / comment   *(if do while)                                 
+sqrt exp log sin cos div mod bar;count first last min max sum avg       
+select A by B from T where C; in bin within                             
+                                                                        
+t:[[]i:2 3;f:2.3 3.4;s:("ab";"abc")]; t~`json?`json t ; t~`csv?`csv t   
+                                                                        
+I/O: 0:line 1:char *[2:data 3:kipc/set 4:http/get]                      
+FFI: "./a.so"2:`f!"i"  /I f(I i){return 1+i;}       //cblas ..          
+k/c: "./b.so"2:`f!1    /K f(K x){return ki(1+xi);}  //feeds ..          
+python: import k;      k.k('+',2,3)                                     
+nodejs: k=require('k');k.k('+',2,3)                                     
+                                                                        
+limit: {[param8]local8 global32 const128 jump256} name8(*64) m[i;j]     
+error: class rank length type domain limit stack (parse value)          
+terms: noun/verb/adverb atom/list/dict func(monadic/dyadic/..)          
 
 * Menu:
 
@@ -89,7 +90,7 @@ data.  It may surprise new users with two rather different paradigms,
 After some familiarity these changes will both seem normal and going
 back to slow and verbose programming will be surprisingly difficult.
 
-1.1 Going Fast
+1.1 Going fast
 ==============
 
 Imagine you have a small, on-disk, 40 million row database containing
@@ -122,7 +123,7 @@ Speed of course will depend on your hardware setup so times will vary.
      q:`eurusd`usdjpy`usdchf!@{select t,b,a:b+s from +`t`b`s!(T;B;S)@'x@}'_20e6 10e6 10e6
      `q 2:q
 
-1.2 Going Concise
+1.2 Going concise
 =================
 
 The k9 language is more closely related to mathematics syntax than
@@ -3238,122 +3239,122 @@ than previously imagined.
 
 Tag Table:
 Node: Top176
-Node: Intro3978
-Node: Examples16506
-Node: Benchmarks23627
-Node: Verb28574
-Ref: x30040
-Ref: set30065
-Ref: flip30277
-Ref: plus30527
-Ref: negate30912
-Ref: minus31084
-Ref: first31191
-Ref: times31510
-Ref: divide31641
-Ref: where31778
-Ref: min/and32164
-Ref: reverse32423
-Ref: max/or32593
-Ref: asc32857
-Ref: less33053
-Ref: group33315
-Ref: equal33561
-Ref: not33685
-Ref: match33802
-Ref: enum33995
-Ref: key35168
-Ref: enlist35395
-Ref: cat35534
-Ref: sort35653
-Ref: cut35830
-Ref: count36538
-Ref: take36728
-Ref: floor37357
-Ref: drop37448
-Ref: string38041
-Ref: cast/mmu38149
-Ref: unique38473
-Ref: find/rnd38710
-Ref: type39165
-Ref: at39521
-Ref: value39734
-Ref: dot40062
-Node: Adverb41032
-Ref: scan41744
-Ref: join42284
-Ref: split42459
-Ref: each42650
-Ref: has42868
-Ref: eachp43041
-Ref: bin243481
-Ref: eachr43684
-Ref: eachl43881
-Ref: n scan44065
-Ref: c scan44550
-Ref: c over44834
-Ref: vs44944
-Ref: sv45064
-Node: Noun45188
-Ref: bool46580
-Ref: int46880
-Ref: float47084
-Ref: date47386
-Ref: time47806
-Ref: datetime48420
-Ref: char49073
-Ref: name49296
-Node: List49713
-Node: Dictionary54234
-Node: Named Functions59039
-Ref: sqrt59654
-Ref: exp59725
-Ref: log59791
-Ref: sin59889
-Ref: cos60026
-Ref: div60172
-Ref: mod60326
-Ref: bar60502
-Ref: in61036
-Ref: bin61212
-Ref: within61424
-Node: More Functions61636
-Ref: cond61759
-Ref: amend61879
-Ref: dmend62541
-Node: I/O63244
-Ref: input format63590
-Ref: format64601
-Ref: write line65001
-Ref: read line65388
-Ref: write char65575
-Ref: read char65970
-Ref: load data66335
-Ref: write data68092
-Ref: conn/set72005
-Ref: http/get72049
-Node: Tables/kSQL72099
-Ref: Tables72279
-Ref: XTab72807
-Ref: TTab73247
-Ref: kSQL73273
-Node: System76165
-Ref: load76624
-Ref: timing76812
-Ref: variables76899
-Ref: memory77000
-Ref: cd77115
-Node: Errors77199
-Ref: class77639
-Ref: rank77728
-Ref: length77850
-Ref: _type77971
-Ref: domain78080
-Ref: limit78202
-Ref: nyi78403
-Ref: parse78736
-Ref: _value78891
-Node: Conculsion79019
+Node: Intro3979
+Node: Examples16507
+Node: Benchmarks23628
+Node: Verb28575
+Ref: x30041
+Ref: set30066
+Ref: flip30278
+Ref: plus30528
+Ref: negate30913
+Ref: minus31085
+Ref: first31192
+Ref: times31511
+Ref: divide31642
+Ref: where31779
+Ref: min/and32165
+Ref: reverse32424
+Ref: max/or32594
+Ref: asc32858
+Ref: less33054
+Ref: group33316
+Ref: equal33562
+Ref: not33686
+Ref: match33803
+Ref: enum33996
+Ref: key35169
+Ref: enlist35396
+Ref: cat35535
+Ref: sort35654
+Ref: cut35831
+Ref: count36539
+Ref: take36729
+Ref: floor37358
+Ref: drop37449
+Ref: string38042
+Ref: cast/mmu38150
+Ref: unique38474
+Ref: find/rnd38711
+Ref: type39166
+Ref: at39522
+Ref: value39735
+Ref: dot40063
+Node: Adverb41033
+Ref: scan41745
+Ref: join42285
+Ref: split42460
+Ref: each42651
+Ref: has42869
+Ref: eachp43042
+Ref: bin243482
+Ref: eachr43685
+Ref: eachl43882
+Ref: n scan44066
+Ref: c scan44551
+Ref: c over44835
+Ref: vs44945
+Ref: sv45065
+Node: Noun45189
+Ref: bool46581
+Ref: int46881
+Ref: float47085
+Ref: date47387
+Ref: time47807
+Ref: datetime48421
+Ref: char49074
+Ref: name49297
+Node: List49714
+Node: Dictionary54235
+Node: Named Functions59040
+Ref: sqrt59655
+Ref: exp59726
+Ref: log59792
+Ref: sin59890
+Ref: cos60027
+Ref: div60173
+Ref: mod60327
+Ref: bar60503
+Ref: in61037
+Ref: bin61213
+Ref: within61425
+Node: More Functions61637
+Ref: cond61760
+Ref: amend61880
+Ref: dmend62542
+Node: I/O63245
+Ref: input format63591
+Ref: format64602
+Ref: write line65002
+Ref: read line65389
+Ref: write char65576
+Ref: read char65971
+Ref: load data66336
+Ref: write data68093
+Ref: conn/set72006
+Ref: http/get72050
+Node: Tables/kSQL72100
+Ref: Tables72280
+Ref: XTab72808
+Ref: TTab73248
+Ref: kSQL73274
+Node: System76166
+Ref: load76625
+Ref: timing76813
+Ref: variables76900
+Ref: memory77001
+Ref: cd77116
+Node: Errors77200
+Ref: class77640
+Ref: rank77729
+Ref: length77851
+Ref: _type77972
+Ref: domain78081
+Ref: limit78203
+Ref: nyi78404
+Ref: parse78737
+Ref: _value78892
+Node: Conculsion79020
 
 End Tag Table
 

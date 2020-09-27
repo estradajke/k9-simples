@@ -51,7 +51,7 @@ Next: <a href="Examples.html" accesskey="n" rel="next">Examples</a>, Previous: <
 <span id="Intro-1"></span><h2 class="chapter">1 Intro</h2>
 <p>The k9 programming language is designed primarily for the analysis of data.  It may surprise new users with two rather different paradigms, (1) extremely fast data analysis and (2) an extremely concise syntax.  After some familiarity these changes will both seem normal and going back to slow and verbose programming will be surprisingly difficult.
 </p>
-<span id="Going-Fast"></span><h3 class="section">1.1 Going Fast</h3>
+<span id="Going-fast"></span><h3 class="section">1.1 Going fast</h3>
 <p>Imagine you have a small, on-disk, 40 million row database containing a time-series with two float values at each time.  Additionally this data could be split in three different tables covering different measurements.  Here&rsquo;s how fast k9 can read in the data to memory and compute a statistic, average difference over each table, which uses each and every row.
 </p>
 <div class="example">
@@ -80,7 +80,7 @@ q:`eurusd`usdjpy`usdchf!@{select t,b,a:b+s from +`t`b`s!(T;B;S)@'x@}'_20e6 10e6 
 `q 2:q
 </pre></div>
 
-<span id="Going-Concise"></span><h3 class="section">1.2 Going Concise</h3>
+<span id="Going-concise"></span><h3 class="section">1.2 Going concise</h3>
 
 <p>The k9 language is more closely related to mathematics syntax than most programming lanauges.  It requires the developer to learn to speak k9 but once that happens most find an ability to &ldquo;speak&rdquo; quicker in k9 than in other languages.  At this point an example might help.
 </p>
