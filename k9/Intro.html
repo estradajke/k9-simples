@@ -49,10 +49,6 @@ Next: <a href="Examples.html" accesskey="n" rel="next">Examples</a>, Previous: <
 </div>
 <hr>
 <span id="Intro-1"></span><h2 class="chapter">1 Intro</h2>
-<p>The k9 programming language is designed primarily for the high-speed analysis of data.  It has a very concise syntax which  might feel like an impediment at first but becomes an advantage with use.
-</p>
-
-
 <p>The k9 programming language is designed primarily for the analysis of data.  It may surprise new users with two rather different paradigms, (1) extremely fast data analysis and (2) an extremely concise syntax.  After some familiarity these changes will both seem normal and going back to slow and verbose programming will be surprisingly difficult.
 </p>
 <span id="Going-Fast"></span><h3 class="section">1.1 Going Fast</h3>
@@ -64,7 +60,7 @@ Next: <a href="Examples.html" accesskey="n" rel="next">Examples</a>, Previous: <
 415
 </pre></div>
 
-<p>That&rsquo;s 415ms to read the data in and compute over all the 40 million values.  The data read is the biggest bit.  If the data was already in memory then you having the computation is much faster.
+<p>That&rsquo;s 415ms to read the data in from disk and compute over all the 40 million values.  The data read is the biggest bit.  If the data was already in memory then it&rsquo;s even faster.
 </p>
 <div class="example">
 <pre class="example"> \t {select s:avg a-b from x}'q[!q]

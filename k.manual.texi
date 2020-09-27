@@ -91,10 +91,6 @@ error: class rank length type domain value(parse stack limit)
 @node Intro
 @chapter Intro
 @c @cindex chapter, first
-The k9 programming language is designed primarily for the high-speed analysis of data.  It has a very concise syntax which  might feel like an impediment at first but becomes an advantage with use.
-
-
-
 The k9 programming language is designed primarily for the analysis of data.  It may surprise new users with two rather different paradigms, (1) extremely fast data analysis and (2) an extremely concise syntax.  After some familiarity these changes will both seem normal and going back to slow and verbose programming will be surprisingly difficult.
 
 @section Going Fast
@@ -106,7 +102,7 @@ Imagine you have a small, on-disk, 40 million row database containing a time-ser
 415
 @end example
 
-That's 415ms to read the data in and compute over all the 40 million values.  The data read is the biggest bit.  If the data was already in memory then you having the computation is much faster.
+That's 415ms to read the data in from disk and compute over all the 40 million values.  The data read is the biggest bit.  If the data was already in memory then it's even faster.
 
 @example
  \t @{select s:avg a-b from x@}'q[!q]

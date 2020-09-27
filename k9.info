@@ -83,16 +83,11 @@ File: k9.info,  Node: Intro,  Next: Examples,  Prev: Top,  Up: Top
 1 Intro
 *******
 
-The k9 programming language is designed primarily for the high-speed
-analysis of data.  It has a very concise syntax which might feel like
-an impediment at first but becomes an advantage with use.
-
-   The k9 programming language is designed primarily for the analysis
-of data.  It may surprise new users with two rather different
-paradigms, (1) extremely fast data analysis and (2) an extremely
-concise syntax.  After some familiarity these changes will both seem
-normal and going back to slow and verbose programming will be
-surprisingly difficult.
+The k9 programming language is designed primarily for the analysis of
+data.  It may surprise new users with two rather different paradigms,
+(1) extremely fast data analysis and (2) an extremely concise syntax.
+After some familiarity these changes will both seem normal and going
+back to slow and verbose programming will be surprisingly difficult.
 
 1.1 Going Fast
 ==============
@@ -108,9 +103,9 @@ each and every row.
       \t q:2:`q;{select s:avg a-b from x}'q[!q]
      415
 
-   That's 415ms to read the data in and compute over all the 40
-million values.  The data read is the biggest bit.  If the data was
-already in memory then you having the computation is much faster.
+   That's 415ms to read the data in from disk and compute over all the
+40 million values.  The data read is the biggest bit.  If the data was
+already in memory then it's even faster.
 
       \t {select s:avg a-b from x}'q[!q]
      105
@@ -3244,121 +3239,121 @@ than previously imagined.
 Tag Table:
 Node: Top176
 Node: Intro3978
-Node: Examples16723
-Node: Benchmarks23844
-Node: Verb28791
-Ref: x30257
-Ref: set30282
-Ref: flip30494
-Ref: plus30744
-Ref: negate31129
-Ref: minus31301
-Ref: first31408
-Ref: times31727
-Ref: divide31858
-Ref: where31995
-Ref: min/and32381
-Ref: reverse32640
-Ref: max/or32810
-Ref: asc33074
-Ref: less33270
-Ref: group33532
-Ref: equal33778
-Ref: not33902
-Ref: match34019
-Ref: enum34212
-Ref: key35385
-Ref: enlist35612
-Ref: cat35751
-Ref: sort35870
-Ref: cut36047
-Ref: count36755
-Ref: take36945
-Ref: floor37574
-Ref: drop37665
-Ref: string38258
-Ref: cast/mmu38366
-Ref: unique38690
-Ref: find/rnd38927
-Ref: type39382
-Ref: at39738
-Ref: value39951
-Ref: dot40279
-Node: Adverb41249
-Ref: scan41961
-Ref: join42501
-Ref: split42676
-Ref: each42867
-Ref: has43085
-Ref: eachp43258
-Ref: bin243698
-Ref: eachr43901
-Ref: eachl44098
-Ref: n scan44282
-Ref: c scan44767
-Ref: c over45051
-Ref: vs45161
-Ref: sv45281
-Node: Noun45405
-Ref: bool46797
-Ref: int47097
-Ref: float47301
-Ref: date47603
-Ref: time48023
-Ref: datetime48637
-Ref: char49290
-Ref: name49513
-Node: List49930
-Node: Dictionary54451
-Node: Named Functions59256
-Ref: sqrt59871
-Ref: exp59942
-Ref: log60008
-Ref: sin60106
-Ref: cos60243
-Ref: div60389
-Ref: mod60543
-Ref: bar60719
-Ref: in61253
-Ref: bin61429
-Ref: within61641
-Node: More Functions61853
-Ref: cond61976
-Ref: amend62096
-Ref: dmend62758
-Node: I/O63461
-Ref: input format63807
-Ref: format64818
-Ref: write line65218
-Ref: read line65605
-Ref: write char65792
-Ref: read char66187
-Ref: load data66552
-Ref: write data68309
-Ref: conn/set72222
-Ref: http/get72266
-Node: Tables/kSQL72316
-Ref: Tables72496
-Ref: XTab73024
-Ref: TTab73464
-Ref: kSQL73490
-Node: System76382
-Ref: load76841
-Ref: timing77029
-Ref: variables77116
-Ref: memory77217
-Ref: cd77332
-Node: Errors77416
-Ref: class77856
-Ref: rank77945
-Ref: length78067
-Ref: _type78188
-Ref: domain78297
-Ref: limit78419
-Ref: nyi78620
-Ref: parse78953
-Ref: _value79108
-Node: Conculsion79236
+Node: Examples16506
+Node: Benchmarks23627
+Node: Verb28574
+Ref: x30040
+Ref: set30065
+Ref: flip30277
+Ref: plus30527
+Ref: negate30912
+Ref: minus31084
+Ref: first31191
+Ref: times31510
+Ref: divide31641
+Ref: where31778
+Ref: min/and32164
+Ref: reverse32423
+Ref: max/or32593
+Ref: asc32857
+Ref: less33053
+Ref: group33315
+Ref: equal33561
+Ref: not33685
+Ref: match33802
+Ref: enum33995
+Ref: key35168
+Ref: enlist35395
+Ref: cat35534
+Ref: sort35653
+Ref: cut35830
+Ref: count36538
+Ref: take36728
+Ref: floor37357
+Ref: drop37448
+Ref: string38041
+Ref: cast/mmu38149
+Ref: unique38473
+Ref: find/rnd38710
+Ref: type39165
+Ref: at39521
+Ref: value39734
+Ref: dot40062
+Node: Adverb41032
+Ref: scan41744
+Ref: join42284
+Ref: split42459
+Ref: each42650
+Ref: has42868
+Ref: eachp43041
+Ref: bin243481
+Ref: eachr43684
+Ref: eachl43881
+Ref: n scan44065
+Ref: c scan44550
+Ref: c over44834
+Ref: vs44944
+Ref: sv45064
+Node: Noun45188
+Ref: bool46580
+Ref: int46880
+Ref: float47084
+Ref: date47386
+Ref: time47806
+Ref: datetime48420
+Ref: char49073
+Ref: name49296
+Node: List49713
+Node: Dictionary54234
+Node: Named Functions59039
+Ref: sqrt59654
+Ref: exp59725
+Ref: log59791
+Ref: sin59889
+Ref: cos60026
+Ref: div60172
+Ref: mod60326
+Ref: bar60502
+Ref: in61036
+Ref: bin61212
+Ref: within61424
+Node: More Functions61636
+Ref: cond61759
+Ref: amend61879
+Ref: dmend62541
+Node: I/O63244
+Ref: input format63590
+Ref: format64601
+Ref: write line65001
+Ref: read line65388
+Ref: write char65575
+Ref: read char65970
+Ref: load data66335
+Ref: write data68092
+Ref: conn/set72005
+Ref: http/get72049
+Node: Tables/kSQL72099
+Ref: Tables72279
+Ref: XTab72807
+Ref: TTab73247
+Ref: kSQL73273
+Node: System76165
+Ref: load76624
+Ref: timing76812
+Ref: variables76899
+Ref: memory77000
+Ref: cd77115
+Node: Errors77199
+Ref: class77639
+Ref: rank77728
+Ref: length77850
+Ref: _type77971
+Ref: domain78080
+Ref: limit78202
+Ref: nyi78403
+Ref: parse78736
+Ref: _value78891
+Node: Conculsion79019
 
 End Tag Table
 
