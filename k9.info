@@ -825,10 +825,10 @@ File: k9.info,  Node: Verb,  Next: Adverb,  Prev: Benchmarks,  Up: Top
 4 Verb
 ******
 
-This chapter covers verbs, aka function functions.  Given how
-different is it to call functions in k9 than many other languages this
-is probably a chapter that will have to be covered a few times.  Once
-you can "speak" k9 you'll read '|x' better than 'reverse(x)'.
+This chapter covers verbs which are the corefunctions of k9.  Given
+how different is it to call functions in k9 than many other languages
+this is probably a chapter that will have to be covered a few times.
+Once you can "speak" k9 you'll read '|x' better than 'reverse(x)'.
 
    Most functions are overloaded and change depending on the number
 and type of arguments.  This reuse of symbols is also an item that
@@ -3203,118 +3203,118 @@ Node: Intro3978
 Node: Examples15106
 Node: Benchmarks22227
 Node: Verb27174
-Ref: x28631
-Ref: set28656
-Ref: flip28868
-Ref: plus29118
-Ref: negate29503
-Ref: minus29675
-Ref: first29782
-Ref: times30101
-Ref: divide30232
-Ref: where30369
-Ref: min/and30755
-Ref: reverse31014
-Ref: max/or31184
-Ref: asc31448
-Ref: less31644
-Ref: group31906
-Ref: equal32152
-Ref: not32276
-Ref: match32393
-Ref: enum32586
-Ref: key33759
-Ref: enlist33986
-Ref: cat34125
-Ref: sort34244
-Ref: cut34421
-Ref: count35129
-Ref: take35319
-Ref: floor35948
-Ref: drop36039
-Ref: string36632
-Ref: cast/mmu36740
-Ref: unique37064
-Ref: find/rnd37301
-Ref: type37756
-Ref: at38112
-Ref: value38325
-Ref: dot38653
-Node: Adverb39623
-Ref: scan40335
-Ref: join40875
-Ref: split41050
-Ref: each41241
-Ref: has41459
-Ref: eachp41632
-Ref: bin242072
-Ref: eachr42275
-Ref: eachl42472
-Ref: n scan42656
-Ref: c scan43141
-Ref: c over43425
-Ref: vs43535
-Ref: sv43655
-Node: Noun43779
-Ref: bool45171
-Ref: int45471
-Ref: float45675
-Ref: date45977
-Ref: time46397
-Ref: datetime47011
-Ref: char47664
-Ref: name47887
-Node: List48304
-Node: Dictionary52825
-Node: Named Functions57630
-Ref: sqrt58245
-Ref: exp58316
-Ref: log58382
-Ref: sin58480
-Ref: cos58617
-Ref: div58763
-Ref: mod58917
-Ref: bar59093
-Ref: in59627
-Ref: bin59803
-Ref: within60015
-Node: More Functions60227
-Ref: cond60350
-Ref: amend60470
-Ref: dmend61132
-Node: I/O61835
-Ref: input format62181
-Ref: format63192
-Ref: write line63592
-Ref: read line63979
-Ref: write char64166
-Ref: read char64561
-Ref: load data64926
-Ref: write data66683
-Ref: conn/set70596
-Ref: http/get70640
-Node: Tables/kSQL70690
-Ref: Tables70870
-Ref: XTab71398
-Ref: TTab71838
-Ref: kSQL71864
-Node: System74756
-Ref: load75215
-Ref: timing75403
-Ref: variables75490
-Ref: memory75591
-Ref: cd75706
-Node: Errors75790
-Ref: class76230
-Ref: rank76319
-Ref: length76441
-Ref: _type76562
-Ref: domain76671
-Ref: limit76793
-Ref: nyi76994
-Ref: parse77327
-Ref: _value77482
-Node: Conculsion77610
+Ref: x28640
+Ref: set28665
+Ref: flip28877
+Ref: plus29127
+Ref: negate29512
+Ref: minus29684
+Ref: first29791
+Ref: times30110
+Ref: divide30241
+Ref: where30378
+Ref: min/and30764
+Ref: reverse31023
+Ref: max/or31193
+Ref: asc31457
+Ref: less31653
+Ref: group31915
+Ref: equal32161
+Ref: not32285
+Ref: match32402
+Ref: enum32595
+Ref: key33768
+Ref: enlist33995
+Ref: cat34134
+Ref: sort34253
+Ref: cut34430
+Ref: count35138
+Ref: take35328
+Ref: floor35957
+Ref: drop36048
+Ref: string36641
+Ref: cast/mmu36749
+Ref: unique37073
+Ref: find/rnd37310
+Ref: type37765
+Ref: at38121
+Ref: value38334
+Ref: dot38662
+Node: Adverb39632
+Ref: scan40344
+Ref: join40884
+Ref: split41059
+Ref: each41250
+Ref: has41468
+Ref: eachp41641
+Ref: bin242081
+Ref: eachr42284
+Ref: eachl42481
+Ref: n scan42665
+Ref: c scan43150
+Ref: c over43434
+Ref: vs43544
+Ref: sv43664
+Node: Noun43788
+Ref: bool45180
+Ref: int45480
+Ref: float45684
+Ref: date45986
+Ref: time46406
+Ref: datetime47020
+Ref: char47673
+Ref: name47896
+Node: List48313
+Node: Dictionary52834
+Node: Named Functions57639
+Ref: sqrt58254
+Ref: exp58325
+Ref: log58391
+Ref: sin58489
+Ref: cos58626
+Ref: div58772
+Ref: mod58926
+Ref: bar59102
+Ref: in59636
+Ref: bin59812
+Ref: within60024
+Node: More Functions60236
+Ref: cond60359
+Ref: amend60479
+Ref: dmend61141
+Node: I/O61844
+Ref: input format62190
+Ref: format63201
+Ref: write line63601
+Ref: read line63988
+Ref: write char64175
+Ref: read char64570
+Ref: load data64935
+Ref: write data66692
+Ref: conn/set70605
+Ref: http/get70649
+Node: Tables/kSQL70699
+Ref: Tables70879
+Ref: XTab71407
+Ref: TTab71847
+Ref: kSQL71873
+Node: System74765
+Ref: load75224
+Ref: timing75412
+Ref: variables75499
+Ref: memory75600
+Ref: cd75715
+Node: Errors75799
+Ref: class76239
+Ref: rank76328
+Ref: length76450
+Ref: _type76571
+Ref: domain76680
+Ref: limit76802
+Ref: nyi77003
+Ref: parse77336
+Ref: _value77491
+Node: Conculsion77619
 
 End Tag Table
 
