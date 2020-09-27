@@ -297,7 +297,7 @@ In k9 as the Help/Info card shows data are nouns, functions/lists are verbs and 
 Before jumping into synax let's look at some example problems to get a sense of the speed of k9 at processing data.  Given both the historic use of languages similar to k9 in finance and the author's background much of the examples will be based on financial markets.  For those not familiar with this field a short introduction will likley be needed.
 
 @section A Tiny Introduction to Financial Market Data
-Financial market data generally are stored as prices and trades.  Prices will include at a minimum the time, the securtiy, the price to buy and the price to sell.  Trades will include at a minimum the time, the security, and the price.  In normal markets there are many more prices than trades.
+Financial market data generally are stored as prices and trades.  Prices will include at a minimum time, securtiy, price to buy and price to sell.  Trades will include at a minimum time, security, and trade price.  In normal markets there are many more prices than trades.
 
 Let's use k9 to generate a set of random prices for a single security hence elimating the need for that field.
 
@@ -438,7 +438,7 @@ In order to easily check our understand we can wrap this in a function and call 
 @ @{!#x@}["Find the +++ needle in + the ++ text";"++"]
 @{!#x@}["Find the +++ needle in + the ++ text";"++"]
 ^
-error: rank
+:rank
 @end example
 
 This won't work as one cannot call a function with two arguments and then only use one.  In order to get around this we will insert code for the second argument but not use it.
@@ -728,14 +728,14 @@ In additional to the basic data types, data can be put into lists (uniform and n
 The set of k9 data, aka nouns, are as follows.
 
 @example
-    Atom   Example      Type  
-@xref{bool},  110b         b  
-@xref{int},   0N 2 3 4     i 
-@xref{float}, 0n 2 3.4     f
-@xref{date},  2024.01.01   D 
-@xref{time},  12:34:56.789 t  
-@xref{char},  "ab "        c  
-@xref{name},  `a`b`        n  
+Atom   Example      Type  
+@ref{bool},  110b         b  
+@ref{int},   0N 2 3 4     i 
+@ref{float}, 0n 2 3.4     f
+@ref{date},  2024.01.01   D 
+@ref{time},  12:34:56.789 t  
+@ref{char},  "ab "        c  
+@ref{name},  `a`b`        n  
 @end example
 
 Data types can be determined by using the @code{@@} function on values or lists of values.  In the case of non-uniform lists @code{@@} returns the type of the list @code{`L} but the function can be modified to evalue each type @code{@@'} instead and return the type of each element in the list.
@@ -892,26 +892,26 @@ Most functions are overloaded and change depending on the number and type of arg
 
 @example
 Verb
-: @xref{x},        @xref{set}.
-+ @xref{flip},     @xref{plus}.
-- @xref{negate},   @xref{minus}.
-* @xref{first},    @xref{times}.
-%               @xref{divide}.
-& @xref{where},    @xref{min/and}.
-| @xref{reverse},  @xref{max/or}.
-< @xref{asc},      @xref{less}.
-> @xref{asc,dsc},       @xref{less,more}.
-= @xref{group},    @xref{equal}.
-~ @xref{match},    @xref{match}.
-! @xref{enum},     @xref{key}.
-, @xref{enlist},   @xref{cat}.
-^ @xref{sort},     @xref{cut}. 
-# @xref{count},    @xref{take}.  
-_ @xref{floor},    @xref{drop}.    
-$ @xref{string},   @xref{cast/mmu}.    
-? @xref{unique},   @xref{find/rnd}.    
-@@ @xref{type},     @xref{at}.    
-. @xref{value},    @xref{dot}.
+: @ref{x},        @ref{set}.
++ @ref{flip},     @ref{plus}.
+- @ref{negate},   @ref{minus}.
+* @ref{first},    @ref{times}.
+%           @ref{divide}.
+& @ref{where},    @ref{min/and}.
+| @ref{reverse},  @ref{max/or}.
+< @ref{asc},      @ref{less}.
+> @ref{asc,dsc},      @ref{less,more}.
+= @ref{group},    @ref{equal}.
+~ @ref{match},    @ref{match}.
+! @ref{enum},     @ref{key}.
+, @ref{enlist},   @ref{cat}.
+^ @ref{sort},     @ref{cut}. 
+# @ref{count},    @ref{take}.  
+_ @ref{floor},    @ref{drop}.    
+$ @ref{string},   @ref{cast/mmu}.    
+? @ref{unique},   @ref{find/rnd}.    
+@@ @ref{type},     @ref{at}.    
+. @ref{value},    @ref{dot}.
 
 @end example
 
@@ -1031,8 +1031,8 @@ Add x and y.
 7 8 9 10
 @ 3 4 5+4 5 6
 7 9 11
-@ 3 4+1 2 3 / lengths don't match, will error: length
-error: length
+@ 3 4+1 2 3 / lengths don't match, will error :length
+:length
 @ 10:00+1         / add a minute
 10:01
 @ 10:00:00+1      / add a second
@@ -1546,13 +1546,17 @@ Given list x return the value at list y.  The action of dot depends on the shape
 @item Recursive index over returns x[y[0;0];y[1]], x[y[0;1];y[1]], ..., x[y[0;n-1];y[1]].
 @end itemize
 
+@flushleft
 @multitable @columnfractions .3 .1 .1 .2
-@headitem action @tab @@y @tab #y @tab example
+@c @headitem action @tab @@y @tab #y @tab example
+@item @b{action} @tab @b{@@y} @tab @b{#y} @tab @b{example}
+@headitem @tab @tab @tab
 @item simple index @tab `I @tab 1 @tab ,2
 @item simple indices @tab `I @tab 1 @tab ,1 3
 @item recursive index @tab `L @tab 1 @tab 0 2
 @item recursive index over @tab `L @tab 2 @tab (0 2;1 3)
 @end multitable
+@end flushleft
 
 @example
 @ (3 4 7 12).,2
@@ -1586,12 +1590,12 @@ k9 uses function modifiers / adverbs in order to have functions operate iterativ
 
 @example
 Adverb
-'  @xref{each}.
-/  @xref{scan},   @xref{right}.
-\  @xref{scan,over,over}, @ @ @xref{left}.
-': @xref{eachprior}.
-/: @xref{c over}, @xref{n scan,n over}.
-\: @xref{c scan}, @xref{n scan}.
+'  @ref{each}.
+/  @ref{scan},   @ref{right}.
+\  @ref{scan,over,over}, @ @ @ref{left}.
+': @ref{eachprior}.
+/: @ref{c over}, @ref{n scan,n over}.
+\: @ref{c scan}, @ref{n scan}.
 @end example
 
 @c @multitable {\:} {see eacheach 4} {see eacheach 4}
@@ -1744,7 +1748,7 @@ In general, lists are created by data separated by semicolons and encased by par
 @ @@'c
 `i`f`c`s
 @ c:1i 2f "c" `d  / incorrect syntax for nonuniform list
-error: type
+:type
 @end example
 
 @section List Indexing
@@ -1799,9 +1803,9 @@ Often the developer will need to determine which indices to modify and in cases 
 @ @@[!10;1 3 5;:;10 20 30]
 0 10 2 20 4 30 6 7 8 9
 @ @@[!10;1 3 5;:;10 20]   / index and value array length mistmatch
-error: length
+:length
 @ @@[!10;1 3;:;10 20 30]  / index and value array length mistmatch
-error: length
+:length
 @end example
 
 @section Fuction of Two Lists
@@ -2402,7 +2406,7 @@ Convert x to CSV/json/k format.  Works on atoms, lists, and tables.
 @ `k [[]i:!5;s:`a`b`c`d`e;v:5?10]
 "[[]i:0 1 2 3 4;s:`a`b`c`d`e;v:7 4 7 3 2]"
 @ `csv `a`b!((1 2);(3 4))      / error as dictionary input
-error: class
+:class
 @end example
 @anchor{write line}@section write line @result{} x 0:y
 Output to x the list of strings in y.  y must be a list of strings.  If y is a single stream then convert to list via enlist.
@@ -2797,12 +2801,12 @@ k9 comes with a few system functions and measurement commands.  The commands all
 
 @example
 System
-\l a.k @xref{load}
-\t:n x @xref{timing}
+\l a.k @ref{load}
+\t:n x @ref{timing}
 \u:n
-\v     @xref{variables}
-\w     @xref{memory}
-\cd x  @xref{cd}
+\v     @ref{variables}
+\w     @ref{memory}
+\cd x  @ref{cd}
 @end example
 
 @anchor{load}@section load @result{} \l a.k
@@ -2811,7 +2815,7 @@ Load a text file of k9 commands.  The file name must end in .k.
 @ \l func.k
 \l func.k
 @ \l func.k7  / will error as not .k
-error: nyi
+:nyi
 @end example
 
 @anchor{timing}@section timing @result{} \t
@@ -2850,49 +2854,49 @@ Change directory (cd) into x
 @chapter Errors
 Given the terse syntax of k9 it likley won't be a surprise to a new user that the error messages are rather short also.  The errors are listed on the help page and described in more detail below.
 
-@verbatim
-error: class rank length type domain limit stack (parse value) 
-@end verbatim
+@example
+error: @ref{class} @ref{rank} @ref{length} @ref{_type,type} @ref{domain} @ref{limit} stack (@ref{parse} @ref{_value,value}) 
+@end example
 
-@section error: class
+@anchor{class}@section :class
 Calling a function on mismatched types.
 @example
 @ 3+`b
-error: class
+:class
 @end example
 
-@section error: rank
+@anchor{rank}@section rank
 Calling a function with too many parameters.
 @example
 @ @{x+y@}[1;2;3]
 @{x+y@}[1;2;3]
 ^
-error: rank
+:rank
 @end example
 
-@section error: length
+@anchor{length}@section length
 Operations on unequal length lists that require equal length.
 @example
 @ (1 2 3)+(4 5)
-error: length
+:length
 @end example
 
-@section error: type
+@anchor{_type}@section :type
 Calling a function with an unsupported variable type.
 @example
 `a+`b
 @  ^
-error: type
+:type
 @end example
 
-@section error: domain
+@anchor{domain}@section :domain
 Exhausted the number of input values
 @example
 @ -12?10   / only 10 unique value exist
-error: domain
+:domain
 @end example
 
-@section error: limit
+@anchor{limit}@section :limit
 Exceeded a limit above the software maximum, eg. writing a single file above 1GB.
 @example
 @ n:_100e6;d:+`x`y!(!n;n?1.);`d 2:d
@@ -2901,7 +2905,7 @@ n:_100e6;d:+`x`y!(!n;n?1.);`d 2:d
 :limit
 @end example
 
-@section error: nyi
+@anchor{nyi}@section :nyi
 Running code that is not yet implemented.  This may come from running code in this document with a different version of k9.
 
 2020.05.31 (c) shakti
@@ -2920,20 +2924,21 @@ Aug  6 2020 16GB (c) shakti
 @ =+`a`b!(1 2;1 3)
 =+`a`b!(1 2;1 3)
 ^
-error: nyi
+:nyi
 @end example
-@section error: parse
+
+@anchor{parse}@section :parse
 Syntax is wrong.  Possible you failed to match characters which must match, eg. (), @{@}, [], "".
 @example
 @ @{37 . "hello"
-error: parse
+:parse
 @end example
 
-@section error: value
+@anchor{_value}@section :value
 Undefined variable is used.
 @example
 @ g    / assuming 'g' has not be defining in this session
-error: value
+:value
 @end example
 
 @node Conculsion

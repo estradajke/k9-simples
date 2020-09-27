@@ -373,10 +373,10 @@ needed.
 ================================================
 
 Financial market data generally are stored as prices and trades.
-Prices will include at a minimum the time, the securtiy, the price to
-buy and the price to sell.  Trades will include at a minimum the time,
-the security, and the price.  In normal markets there are many more
-prices than trades.
+Prices will include at a minimum time, securtiy, price to buy and
+price to sell.  Trades will include at a minimum time, security, and
+trade price.  In normal markets there are many more prices than
+trades.
 
    Let's use k9 to generate a set of random prices for a single
 security hence elimating the need for that field.
@@ -521,7 +521,7 @@ build up the code until it is complete.
       {!#x}["Find the +++ needle in + the ++ text";"++"]
      {!#x}["Find the +++ needle in + the ++ text";"++"]
      ^
-     error: rank
+     :rank
 
    This won't work as one cannot call a function with two arguments
 and then only use one.  In order to get around this we will insert
@@ -837,14 +837,14 @@ covered in a seperate chapter.
 
    The set of k9 data, aka nouns, are as follows.
 
-         Atom   Example      Type
-     *Note bool::,  110b         b
-     *Note int::,   0N 2 3 4     i
-     *Note float::, 0n 2 3.4     f
-     *Note date::,  2024.01.01   D
-     *Note time::,  12:34:56.789 t
-     *Note char::,  "ab "        c
-     *Note name::,  `a`b`        n
+     Atom   Example      Type
+     *note bool::,  110b         b
+     *note int::,   0N 2 3 4     i
+     *note float::, 0n 2 3.4     f
+     *note date::,  2024.01.01   D
+     *note time::,  12:34:56.789 t
+     *note char::,  "ab "        c
+     *note name::,  `a`b`        n
 
    Data types can be determined by using the '@' function on values or
 lists of values.  In the case of non-uniform lists '@' returns the
@@ -1030,26 +1030,26 @@ the plus symbol once as flip and then for addition.  (Remember
 evaluation is right to left!)
 
      Verb
-     : *Note x::,        *Note set::.
-     + *Note flip::,     *Note plus::.
-     - *Note negate::,   *Note minus::.
-     * *Note first::,    *Note times::.
-     %               *Note divide::.
-     & *Note where::,    *Note min/and::.
-     | *Note reverse::,  *Note max/or::.
-     < *Note asc::,      *Note less::.
-     > *Note dsc: asc,       *Note more: less.
-     = *Note group::,    *Note equal::.
-     ~ *Note match::,    *Note match::.
-     ! *Note enum::,     *Note key::.
-     , *Note enlist::,   *Note cat::.
-     ^ *Note sort::,     *Note cut::.
-     # *Note count::,    *Note take::.
-     _ *Note floor::,    *Note drop::.
-     $ *Note string::,   *Note cast/mmu::.
-     ? *Note unique::,   *Note find/rnd::.
-     @ *Note type::,     *Note at::.
-     . *Note value::,    *Note dot::.
+     : *note x::,        *note set::.
+     + *note flip::,     *note plus::.
+     - *note negate::,   *note minus::.
+     * *note first::,    *note times::.
+     %           *note divide::.
+     & *note where::,    *note min/and::.
+     | *note reverse::,  *note max/or::.
+     < *note asc::,      *note less::.
+     > *note dsc: asc,      *note more: less.
+     = *note group::,    *note equal::.
+     ~ *note match::,    *note match::.
+     ! *note enum::,     *note key::.
+     , *note enlist::,   *note cat::.
+     ^ *note sort::,     *note cut::.
+     # *note count::,    *note take::.
+     _ *note floor::,    *note drop::.
+     $ *note string::,   *note cast/mmu::.
+     ? *note unique::,   *note find/rnd::.
+     @ *note type::,     *note at::.
+     . *note value::,    *note dot::.
 
 
 5.1 x => :x
@@ -1111,8 +1111,8 @@ Add x and y.
      7 8 9 10
       3 4 5+4 5 6
      7 9 11
-      3 4+1 2 3 / lengths don't match, will error: length
-     error: length
+      3 4+1 2 3 / lengths don't match, will error :length
+     :length
       10:00+1         / add a minute
      10:01
       10:00:00+1      / add a second
@@ -1647,8 +1647,7 @@ action                @y      #y      example
 simple index          'I      1       ,2
 simple indices        'I      1       ,1 3
 recursive index       'L      1       0 2
-recursive index       'L      2       (0 2;1 3)
-over
+recursive index over  'L      2       (0 2;1 3)
 
       (3 4 7 12).,2
      7
@@ -1684,12 +1683,12 @@ k9 uses function modifiers / adverbs in order to have functions
 operate iteratively over lists.
 
      Adverb
-     '  *Note each::.
-     /  *Note scan::,   *Note right::.
-     \  *Note over: scan,   *Note left::.
-     ': *Note eachprior::.
-     /: *Note c over::, *Note n over: n scan.
-     \: *Note c scan::, *Note n scan::.
+     '  *note each::.
+     /  *note scan::,   *note right::.
+     \  *note over: scan,   *note left::.
+     ': *note eachprior::.
+     /: *note c over::, *note n over: n scan.
+     \: *note c scan::, *note n scan::.
 
 6.1 each => f'x
 ===============
@@ -1852,7 +1851,7 @@ spaces between elements.
       @'c
      `i`f`c`s
       c:1i 2f "c" `d  / incorrect syntax for nonuniform list
-     error: type
+     :type
 
 7.2 List Indexing
 =================
@@ -1912,9 +1911,9 @@ and in cases where this isn't onerous it can be done in the function.
       @[!10;1 3 5;:;10 20 30]
      0 10 2 20 4 30 6 7 8 9
       @[!10;1 3 5;:;10 20]   / index and value array length mistmatch
-     error: length
+     :length
       @[!10;1 3;:;10 20 30]  / index and value array length mistmatch
-     error: length
+     :length
 
 7.4 Fuction of Two Lists
 ========================
@@ -2549,7 +2548,7 @@ Convert x to CSV/json/k format.  Works on atoms, lists, and tables.
       `k [[]i:!5;s:`a`b`c`d`e;v:5?10]
      "[[]i:0 1 2 3 4;s:`a`b`c`d`e;v:7 4 7 3 2]"
       `csv `a`b!((1 2);(3 4))      / error as dictionary input
-     error: class
+     :class
 
 11.3 write line => x 0:y
 ========================
@@ -2982,12 +2981,12 @@ commands allow you to load a script, change the working directory,
 measure execution times and memory usage, and list defined variables.
 
      System
-     \l a.k *Note load::
-     \t:n x *Note timing::
+     \l a.k *note load::
+     \t:n x *note timing::
      \u:n
-     \v     *Note variables::
-     \w     *Note memory::
-     \cd x  *Note cd::
+     \v     *note variables::
+     \w     *note memory::
+     \cd x  *note cd::
 
 13.1 load => \l a.k
 ===================
@@ -2996,7 +2995,7 @@ Load a text file of k9 commands.  The file name must end in .k.
       \l func.k
      \l func.k
       \l func.k7  / will error as not .k
-     error: nyi
+     :nyi
 
 13.2 timing => \t
 =================
@@ -3040,48 +3039,48 @@ Given the terse syntax of k9 it likley won't be a surprise to a new
 user that the error messages are rather short also.  The errors are
 listed on the help page and described in more detail below.
 
-error: class rank length type domain limit stack (parse value) 
+     error: *note class:: *note rank:: *note length:: *note type: _type. *note domain:: *note limit:: stack (*note parse:: *note value: _value.)
 
-14.1 error: class
-=================
+14.1 :class
+===========
 
 Calling a function on mismatched types.
       3+`b
-     error: class
+     :class
 
-14.2 error: rank
-================
+14.2 rank
+=========
 
 Calling a function with too many parameters.
       {x+y}[1;2;3]
      {x+y}[1;2;3]
      ^
-     error: rank
+     :rank
 
-14.3 error: length
-==================
+14.3 length
+===========
 
 Operations on unequal length lists that require equal length.
       (1 2 3)+(4 5)
-     error: length
+     :length
 
-14.4 error: type
-================
+14.4 :type
+==========
 
 Calling a function with an unsupported variable type.
      `a+`b
        ^
-     error: type
+     :type
 
-14.5 error: domain
-==================
+14.5 :domain
+============
 
 Exhausted the number of input values
       -12?10   / only 10 unique value exist
-     error: domain
+     :domain
 
-14.6 error: limit
-=================
+14.6 :limit
+===========
 
 Exceeded a limit above the software maximum, eg.  writing a single
 file above 1GB.
@@ -3090,8 +3089,8 @@ file above 1GB.
 
      :limit
 
-14.7 error: nyi
-===============
+14.7 :nyi
+=========
 
 Running code that is not yet implemented.  This may come from running
 code in this document with a different version of k9.
@@ -3109,22 +3108,22 @@ code in this document with a different version of k9.
       =+`a`b!(1 2;1 3)
      =+`a`b!(1 2;1 3)
      ^
-     error: nyi
+     :nyi
 
-14.8 error: parse
-=================
+14.8 :parse
+===========
 
 Syntax is wrong.  Possible you failed to match characters which must
 match, eg.  (), {}, [], "".
       {37 . "hello"
-     error: parse
+     :parse
 
-14.9 error: value
-=================
+14.9 :value
+===========
 
 Undefined variable is used.
       g    / assuming 'g' has not be defining in this session
-     error: value
+     :value
 
 
 File: k9.info,  Node: Conculsion,  Prev: Errors,  Up: Top
@@ -3147,96 +3146,105 @@ Tag Table:
 Node: Top176
 Node: Intro3984
 Node: Examples15112
-Node: Benchmarks22261
-Node: Nouns27209
-Ref: bool28627
-Ref: int28927
-Ref: float29131
-Ref: date29433
-Ref: time29853
-Ref: datetime30467
-Ref: char31120
-Ref: name31343
-Node: Verbs31752
-Ref: x33230
-Ref: set33255
-Ref: flip33467
-Ref: plus33717
-Ref: negate34108
-Ref: minus34280
-Ref: first34387
-Ref: times34706
-Ref: divide34837
-Ref: where34974
-Ref: min/and35360
-Ref: reverse35619
-Ref: max/or35789
-Ref: asc36053
-Ref: less36249
-Ref: group36511
-Ref: equal36757
-Ref: not36881
-Ref: match36998
-Ref: enum37191
-Ref: key38364
-Ref: enlist38591
-Ref: cat38730
-Ref: sort38849
-Ref: cut39026
-Ref: count39717
-Ref: take39907
-Ref: floor40536
-Ref: drop40627
-Ref: string41220
-Ref: cast/mmu41328
-Ref: unique41652
-Ref: find/rnd41889
-Ref: type42344
-Ref: at42700
-Ref: value42913
-Ref: dot43241
-Node: Adverbs44216
-Ref: each44676
-Ref: scan44893
-Ref: right45434
-Ref: left45796
-Ref: eachprior46156
-Ref: n scan46557
-Ref: c scan47042
-Ref: c over47324
-Ref: vs47431
-Ref: sv47550
-Node: Lists47675
-Node: Dictionaries52222
-Node: Named Functions57084
-Node: More Functions59538
-Ref: cond59661
-Ref: amend59781
-Ref: dmend60443
-Node: I/O61146
-Ref: input format61492
-Ref: format62503
-Ref: write line62909
-Ref: read line63296
-Ref: write char63483
-Ref: read char63878
-Ref: load data64243
-Ref: write data66000
-Ref: conn/set69913
-Ref: http/get69957
-Node: Tables/kSQL70007
-Ref: Tables70185
-Ref: XTab70715
-Ref: TTab71155
-Ref: kSQL71181
-Node: System74073
-Ref: load74532
-Ref: timing74726
-Ref: variables74813
-Ref: memory74914
-Ref: cd75029
-Node: Errors75113
-Node: Conculsion77012
+Node: Benchmarks22233
+Node: Nouns27181
+Ref: bool28595
+Ref: int28895
+Ref: float29099
+Ref: date29401
+Ref: time29821
+Ref: datetime30435
+Ref: char31088
+Ref: name31311
+Node: Verbs31720
+Ref: x33193
+Ref: set33218
+Ref: flip33430
+Ref: plus33680
+Ref: negate34065
+Ref: minus34237
+Ref: first34344
+Ref: times34663
+Ref: divide34794
+Ref: where34931
+Ref: min/and35317
+Ref: reverse35576
+Ref: max/or35746
+Ref: asc36010
+Ref: less36206
+Ref: group36468
+Ref: equal36714
+Ref: not36838
+Ref: match36955
+Ref: enum37148
+Ref: key38321
+Ref: enlist38548
+Ref: cat38687
+Ref: sort38806
+Ref: cut38983
+Ref: count39674
+Ref: take39864
+Ref: floor40493
+Ref: drop40584
+Ref: string41177
+Ref: cast/mmu41285
+Ref: unique41609
+Ref: find/rnd41846
+Ref: type42301
+Ref: at42657
+Ref: value42870
+Ref: dot43198
+Node: Adverbs44168
+Ref: each44628
+Ref: scan44845
+Ref: right45386
+Ref: left45748
+Ref: eachprior46108
+Ref: n scan46509
+Ref: c scan46994
+Ref: c over47276
+Ref: vs47383
+Ref: sv47502
+Node: Lists47627
+Node: Dictionaries52156
+Node: Named Functions57018
+Node: More Functions59472
+Ref: cond59595
+Ref: amend59715
+Ref: dmend60377
+Node: I/O61080
+Ref: input format61426
+Ref: format62437
+Ref: write line62837
+Ref: read line63224
+Ref: write char63411
+Ref: read char63806
+Ref: load data64171
+Ref: write data65928
+Ref: conn/set69841
+Ref: http/get69885
+Node: Tables/kSQL69935
+Ref: Tables70113
+Ref: XTab70643
+Ref: TTab71083
+Ref: kSQL71109
+Node: System74001
+Ref: load74460
+Ref: timing74648
+Ref: variables74735
+Ref: memory74836
+Ref: cd74951
+Node: Errors75035
+Ref: class75475
+Ref: rank75564
+Ref: length75686
+Ref: _type75807
+Ref: domain75916
+Ref: limit76038
+Ref: nyi76239
+Ref: parse76572
+Ref: _value76727
+Node: Conculsion76855
 
 End Tag Table
 
