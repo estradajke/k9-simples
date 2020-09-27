@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for Shakti (k9) build 2020.09.13.
+
+September 27, 2020
+
+Copyright (C) 2020 John Estrada -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Top (Shakti tutorial)</title>
+
+<meta name="description" content="Top (Shakti tutorial)">
+<meta name="keywords" content="Top (Shakti tutorial)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="#Top" rel="start" title="Top">
+<link href="Conculsion.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Intro.html" rel="next" title="Intro">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<h1 class="settitle" align="center">Shakti tutorial</h1>
+
+
+
+<span id="Top"></span><div class="header">
+<p>
+Next: <a href="Intro.html" accesskey="n" rel="next">Intro</a> &nbsp; [<a href="Conculsion.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<span id="k9_003a-Manual"></span><h1 class="top">k9: Manual</h1>
+<p>The Shakti programming language is the work of Arthur Whitney and the team at Shakti.  The language comes from a lineage of similar languages going back to APL.  It&rsquo;s also known as k9 given the similarties to k, k2, ..., k8 and the fact that Arthur also wrote those.  k9 is still under development so expect a bit of syntax change and likley even more improvements.
+</p>
+<p>This manual is for Shakti (k9) build 2020.09.13.<br>
+</p>
+<p>The built-in reference screen containing all the k9 commands.
+</p>
+<div class="format">
+<pre class="verbatim">Verb                      Adverb                 Noun              System 
+:    x         y          f'  each               bool 011b         \l a.k 
++    flip      plus       d/  over      c/ i/    int  0N 0 2 3     \t:n x 
+-    negate    minus      d\  scan      c\ i\    flt  0n 0 2 3.4   \u:n x 
+*    first     times      d': eachprior          char &quot; ab&quot;        \v     
+%              divide     d/: eachright f-over   name ``ab         \w     
+&amp;    where     min/and    d\: eachleft  f-scan   uuid              \cd x  
+|    reverse   max/or                                                     
+&lt;    asc       less                      .z.DTV  date 2024.01.01T12:34:56 
+&gt;    dsc       more                      .z.dtv  time  12:34:56.123456789 
+=    group     equal                                                      
+~    not       match                             Class                    
+!    enum      key                               List (2;3.4;`a)          
+,    enlist    cat                               Dict {x:2;y:`a}          
+^    sort   [f]cut                               Func {[x;y]x+y}          
+#    count  [f]take                              Expr :x+y                
+_    floor  [f]drop                                                       
+$    string    cast/mmu   $[b;x;y]    if else                      \f [x] 
+?    unique    find/rnd  *?[x;i;f[;y]] splice    Table [[]a:..;..] \ft [x]
+@    type      at         @[x;i;f[;y]] amend     NTable `a.![[]..] \fc [x]
+.    value     dot        .[x;i;f[;y]] dmend     TTable [[a:..]..] \fl [x]
+                                                                          
+\\ exit                                                                   
+sqrt exp log sin cos div mod bar; count first last min max sum avg; in bin
+select A by B from T where C (*select[C;T;B;A])                           
+x~`json?`json x:(23;3.4;&quot;ab&quot;); x~`csv?`csv x                              
+                                                                          
+I/O: 0:line 1:char *[2:data 3:kipc/set 4:http/get]                        
+FFI: &quot;./a.so&quot;2:`f!&quot;i&quot;  /I f(I i){return 1+i;}       //cblas ..            
+k/c: &quot;./b.so&quot;2:`f!1    /K f(K x){return ki(1+xi);}  //feeds ..            
+                                                                          
+python: import k;      k.k('+',2,3)                                       
+nodejs: k=require('k');k.k('+',2,3)                                       
+                                                                          
+limit: {[param8]local8 global32 const128 jump256} name8                   
+error: class rank length type domain value(parse stack limit)             
+</pre></div>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="Intro.html" accesskey="1">Intro</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">An introduction to shakti/k9, a novel computer language for data analysis
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Examples.html" accesskey="2">Examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Examples to motivate the reader to learn the language
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Benchmarks.html" accesskey="3">Benchmarks</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Learn how fast this language is
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Verb.html" accesskey="4">Verb</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Core functions
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Adverb.html" accesskey="5">Adverb</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Function modifiers
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Noun.html" accesskey="6">Noun</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Basic data types
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="List.html" accesskey="7">List</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Lists
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Dictionary.html" accesskey="8">Dictionary</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Dictionaries and functions for dictionaries
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Named-Functions.html" accesskey="9">Named Functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Named functions
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="More-Functions.html">More Functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">More functions
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="I_002fO.html">I/O</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">I/O
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Tables_002fkSQL.html">Tables/kSQL</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Tables and kSQL
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="System.html">System</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">System
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Errors.html">Errors</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Errors
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Conculsion.html">Conculsion</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Conclusion
+</td></tr>
+</table>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Intro.html" accesskey="n" rel="next">Intro</a> &nbsp; [<a href="Conculsion.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+
+
+
+</body>
+</html>
