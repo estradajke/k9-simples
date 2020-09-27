@@ -721,7 +721,7 @@ t        e p  z    b
 
 @node Verb
 @chapter Verb
-This chapter explains functions, aka verbs.  Given how different is it to call functions in k9 than many other languages this is probably a chapter that will have to be covered a few times.  Once you can ``speak'' k9 you'll read @code{|x} better than @code{reverse(x)}.  
+This chapter covers verbs, aka function functions.  Given how different is it to call functions in k9 than many other languages this is probably a chapter that will have to be covered a few times.  Once you can ``speak'' k9 you'll read @code{|x} better than @code{reverse(x)}.  
 
 Most functions are overloaded and change depending on the number and type of arguments.  This reuse of symbols is also an item that causes confusion for new users.  Eg. @code{(1 4)++(2 3;5 6;7 8)} contains the plus symbol once as flip and then for addition.  (Remember evaluation is right to left!)
 
@@ -2658,6 +2658,7 @@ TBD
 @node Tables/kSQL
 @chapter Tables and kSQL
 This chapter introduces k9 tables and the kSQL language to query.
+
 @anchor{Tables}@section Tables
 Here is an example of a table with three columns (Day, Weather, and Temp) and three rows.
 @example
