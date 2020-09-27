@@ -21,7 +21,7 @@ Copyright @copyright{} 2020 John Estrada
 @c @ifnottex
 @node Top
 @top k9: Manual
-The Shakti programming language is the work of Arthur Whitney and the team at Shakti.  The language comes from lineage of similar languages going back to APL.  It's also known as k9 given the similarties to k, k2, ..., k8 and the fact that Arthur also wrote those.  k9 is still under development so expect a bit of syntax change and likley even more improvements.
+The Shakti programming language is the work of Arthur Whitney and the team at Shakti.  The language comes from a lineage of similar languages going back to APL.  It's also known as k9 given the similarties to k, k2, ..., k8 and the fact that Arthur also wrote those.  k9 is still under development so expect a bit of syntax change and likley even more improvements.
 
 This manual is for Shakti (k9) build 2020.09.13.@*
 @c @end ifnottex
@@ -2455,7 +2455,7 @@ a b
 @end example
 
 @anchor{load data}@section Load file @result{} 2: x
-Load file, eg. csv or from a (x 2: y) save.  For the latter one can find a ``save then load'' example in the next section.
+Load file, eg.@: csv or from a (x 2: y) save.  For the latter one can find a ``save then load'' example in the next section.
 
 @example
 @ 2:`t.csv
@@ -2890,6 +2890,15 @@ Exhausted the number of input values
 @example
 @ -12?10   / only 10 unique value exist
 error: domain
+@end example
+
+@section error: limit
+Exceeded a limit above the software maximum, eg. writing a single file above 1GB.
+@example
+@ n:_100e6;d:+`x`y!(!n;n?1.);`d 2:d
+n:_100e6;d:+`x`y!(!n;n?1.);`d 2:d
+
+:limit
 @end example
 
 @section error: nyi

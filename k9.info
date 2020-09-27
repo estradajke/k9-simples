@@ -1,7 +1,7 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
 This manual is for Shakti (k9) build 2020.09.13.
-September 26, 2020
+September 27, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -12,11 +12,11 @@ k9: Manual
 **********
 
 The Shakti programming language is the work of Arthur Whitney and the
-team at Shakti.  The language comes from lineage of similar languages
-going back to APL. It's also known as k9 given the similarties to k,
-k2, ..., k8 and the fact that Arthur also wrote those.  k9 is still
-under development so expect a bit of syntax change and likley even
-more improvements.
+team at Shakti.  The language comes from a lineage of similar
+languages going back to APL. It's also known as k9 given the
+similarties to k, k2, ..., k8 and the fact that Arthur also wrote
+those.  k9 is still under development so expect a bit of syntax change
+and likley even more improvements.
 
    This manual is for Shakti (k9) build 2020.09.13.
 
@@ -2609,7 +2609,7 @@ Read from file x.
 11.7 Load file => 2: x
 ======================
 
-Load file, eg.  csv or from a (x 2: y) save.  For the latter one can
+Load file, eg. csv or from a (x 2: y) save.  For the latter one can
 find a "save then load" example in the next section.
 
       2:`t.csv
@@ -3080,7 +3080,17 @@ Exhausted the number of input values
       -12?10   / only 10 unique value exist
      error: domain
 
-14.6 error: nyi
+14.6 error: limit
+=================
+
+Exceeded a limit above the software maximum, eg.  writing a single
+file above 1GB.
+      n:_100e6;d:+`x`y!(!n;n?1.);`d 2:d
+     n:_100e6;d:+`x`y!(!n;n?1.);`d 2:d
+
+     :limit
+
+14.7 error: nyi
 ===============
 
 Running code that is not yet implemented.  This may come from running
@@ -3101,7 +3111,7 @@ code in this document with a different version of k9.
      ^
      error: nyi
 
-14.7 error: parse
+14.8 error: parse
 =================
 
 Syntax is wrong.  Possible you failed to match characters which must
@@ -3109,7 +3119,7 @@ match, eg.  (), {}, [], "".
       {37 . "hello"
      error: parse
 
-14.8 error: value
+14.9 error: value
 =================
 
 Undefined variable is used.
@@ -3135,98 +3145,98 @@ than previously imagined.
 
 Tag Table:
 Node: Top176
-Node: Intro3982
-Node: Examples15110
-Node: Benchmarks22259
-Node: Nouns27207
-Ref: bool28625
-Ref: int28925
-Ref: float29129
-Ref: date29431
-Ref: time29851
-Ref: datetime30465
-Ref: char31118
-Ref: name31341
-Node: Verbs31750
-Ref: x33228
-Ref: set33253
-Ref: flip33465
-Ref: plus33715
-Ref: negate34106
-Ref: minus34278
-Ref: first34385
-Ref: times34704
-Ref: divide34835
-Ref: where34972
-Ref: min/and35358
-Ref: reverse35617
-Ref: max/or35787
-Ref: asc36051
-Ref: less36247
-Ref: group36509
-Ref: equal36755
-Ref: not36879
-Ref: match36996
-Ref: enum37189
-Ref: key38362
-Ref: enlist38589
-Ref: cat38728
-Ref: sort38847
-Ref: cut39024
-Ref: count39715
-Ref: take39905
-Ref: floor40534
-Ref: drop40625
-Ref: string41218
-Ref: cast/mmu41326
-Ref: unique41650
-Ref: find/rnd41887
-Ref: type42342
-Ref: at42698
-Ref: value42911
-Ref: dot43239
-Node: Adverbs44214
-Ref: each44674
-Ref: scan44891
-Ref: right45432
-Ref: left45794
-Ref: eachprior46154
-Ref: n scan46555
-Ref: c scan47040
-Ref: c over47322
-Ref: vs47429
-Ref: sv47548
-Node: Lists47673
-Node: Dictionaries52220
-Node: Named Functions57082
-Node: More Functions59536
-Ref: cond59659
-Ref: amend59779
-Ref: dmend60441
-Node: I/O61144
-Ref: input format61490
-Ref: format62501
-Ref: write line62907
-Ref: read line63294
-Ref: write char63481
-Ref: read char63876
-Ref: load data64241
-Ref: write data65999
-Ref: conn/set69912
-Ref: http/get69956
-Node: Tables/kSQL70006
-Ref: Tables70184
-Ref: XTab70714
-Ref: TTab71154
-Ref: kSQL71180
-Node: System74072
-Ref: load74531
-Ref: timing74725
-Ref: variables74812
-Ref: memory74913
-Ref: cd75028
-Node: Errors75112
-Node: Conculsion76798
+Node: Intro3984
+Node: Examples15112
+Node: Benchmarks22261
+Node: Nouns27209
+Ref: bool28627
+Ref: int28927
+Ref: float29131
+Ref: date29433
+Ref: time29853
+Ref: datetime30467
+Ref: char31120
+Ref: name31343
+Node: Verbs31752
+Ref: x33230
+Ref: set33255
+Ref: flip33467
+Ref: plus33717
+Ref: negate34108
+Ref: minus34280
+Ref: first34387
+Ref: times34706
+Ref: divide34837
+Ref: where34974
+Ref: min/and35360
+Ref: reverse35619
+Ref: max/or35789
+Ref: asc36053
+Ref: less36249
+Ref: group36511
+Ref: equal36757
+Ref: not36881
+Ref: match36998
+Ref: enum37191
+Ref: key38364
+Ref: enlist38591
+Ref: cat38730
+Ref: sort38849
+Ref: cut39026
+Ref: count39717
+Ref: take39907
+Ref: floor40536
+Ref: drop40627
+Ref: string41220
+Ref: cast/mmu41328
+Ref: unique41652
+Ref: find/rnd41889
+Ref: type42344
+Ref: at42700
+Ref: value42913
+Ref: dot43241
+Node: Adverbs44216
+Ref: each44676
+Ref: scan44893
+Ref: right45434
+Ref: left45796
+Ref: eachprior46156
+Ref: n scan46557
+Ref: c scan47042
+Ref: c over47324
+Ref: vs47431
+Ref: sv47550
+Node: Lists47675
+Node: Dictionaries52222
+Node: Named Functions57084
+Node: More Functions59538
+Ref: cond59661
+Ref: amend59781
+Ref: dmend60443
+Node: I/O61146
+Ref: input format61492
+Ref: format62503
+Ref: write line62909
+Ref: read line63296
+Ref: write char63483
+Ref: read char63878
+Ref: load data64243
+Ref: write data66000
+Ref: conn/set69913
+Ref: http/get69957
+Node: Tables/kSQL70007
+Ref: Tables70185
+Ref: XTab70715
+Ref: TTab71155
+Ref: kSQL71181
+Node: System74073
+Ref: load74532
+Ref: timing74726
+Ref: variables74813
+Ref: memory74914
+Ref: cd75029
+Node: Errors75113
+Node: Conculsion77012
 
 End Tag Table
 

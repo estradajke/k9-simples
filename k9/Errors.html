@@ -2,7 +2,7 @@
 <html>
 <!-- This manual is for Shakti (k9) build 2020.09.13.
 
-September 26, 2020
+September 27, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -91,7 +91,16 @@ error: type
 error: domain
 </pre></div>
 
-<span id="error_003a-nyi"></span><h3 class="section">14.6 error: nyi</h3>
+<span id="error_003a-limit"></span><h3 class="section">14.6 error: limit</h3>
+<p>Exceeded a limit above the software maximum, eg. writing a single file above 1GB.
+</p><div class="example">
+<pre class="example">&nbsp;n:_100e6;d:+`x`y!(!n;n?1.);`d 2:d
+n:_100e6;d:+`x`y!(!n;n?1.);`d 2:d
+
+:limit
+</pre></div>
+
+<span id="error_003a-nyi"></span><h3 class="section">14.7 error: nyi</h3>
 <p>Running code that is not yet implemented.  This may come from running code in this document with a different version of k9.
 </p>
 <p>2020.05.31 (c) shakti
@@ -112,14 +121,14 @@ a b|
 ^
 error: nyi
 </pre></div>
-<span id="error_003a-parse"></span><h3 class="section">14.7 error: parse</h3>
+<span id="error_003a-parse"></span><h3 class="section">14.8 error: parse</h3>
 <p>Syntax is wrong.  Possible you failed to match characters which must match, eg. (), {}, [], &quot;&quot;.
 </p><div class="example">
 <pre class="example">&nbsp;{37 . &quot;hello&quot;
 error: parse
 </pre></div>
 
-<span id="error_003a-value"></span><h3 class="section">14.8 error: value</h3>
+<span id="error_003a-value"></span><h3 class="section">14.9 error: value</h3>
 <p>Undefined variable is used.
 </p><div class="example">
 <pre class="example">&nbsp;g    / assuming 'g' has not be defining in this session
