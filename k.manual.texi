@@ -73,11 +73,11 @@ error: class rank length type domain value(parse stack limit)
 * Intro:: An introduction to shakti/k9, a novel computer language for data analysis
 * Examples:: Examples to motivate the reader to learn the language
 * Benchmarks:: Learn how fast this language is
-* Nouns:: Basic data types
-* Verbs:: Core functions
-* Adverbs:: Function modifiers
-* Lists:: Lists
-* Dictionaries:: Dictionaries and functions for dictionaries
+* Verb:: Core functions
+* Adverb:: Function modifiers
+* Noun:: Basic data types
+* List:: Lists
+* Dictionary:: Dictionaries and functions for dictionaries
 * Named Functions:: Named functions
 * More Functions:: More functions
 * I/O:: I/O
@@ -719,182 +719,8 @@ t        e p  z    b
 3
 @end example
 
-@node Nouns
-@chapter Data / Nouns
-The basic data types of the k9 language are booleans, numbers (integer and float), text (characters and enumerated/name) and temporal (date and time).  It is common to have functions operate on multiple data types.
-
-In additional to the basic data types, data can be put into lists (uniform and non-uniform), dictionaries (key-value pairs), and tables (transposed/flipped dictionaries).  Dictionaries and tables will be covered in a seperate chapter.
-
-The set of k9 data, aka nouns, are as follows.
-
-@example
-Atom   Example      Type  
-@ref{bool},  110b         b  
-@ref{int},   0N 2 3 4     i 
-@ref{float}, 0n 2 3.4     f
-@ref{date},  2024.01.01   D 
-@ref{time},  12:34:56.789 t  
-@ref{char},  "ab "        c  
-@ref{name},  `a`b`        n  
-@end example
-
-Data types can be determined by using the @code{@@} function on values or lists of values.  In the case of non-uniform lists @code{@@} returns the type of the list @code{`L} but the function can be modified to evalue each type @code{@@'} instead and return the type of each element in the list.
-
-@example
-@ @@1            / integer atom
-`i
-@ @@1 2 3        / integer list
-`I
-@ @@12:34:56.789 / time atom
-@ @@(3;3.1;"b";`a;12:01:02.123;2020.04.05) / mixed list
-`L
-@ @@'(3;3.1;"b";`a;12:01:02.123;2020.04.05)
-`i`f`c`n`t`D
-@end example
-
-@anchor{bool}@section bool @result{} Boolean b
-Booleans have two possible values 0 and 1 and have a 'b' to avoid confusion with integers, eg. 0b or 1b.
-
-@example
-@ 0b
-0b
-@ 1b
-1b
-@ 10101010b
-10101010b
-@end example
-@section Numeric Data
-Numbers can be stored as integers and floats.
-
-@anchor{int}@subsection int @result{} Integer i
-Integers 
-
-@example
-@ 3
-3
-@ 3+1
-4
-@ @@3
-`i
-@ a:3;
-@ @@a
-`i
-@ 3%1   / result will be float even though inputs are int
-3f
-@end example
-@anchor{float}@subsection float @result{} Float f
-Float
-@example
-@ 3.1
-3.1
-@ 3.1+1.2
-4.3
-@ 3.1-1.1   
-2f
-@ @@3.1-1.1
-`f
-@ @@3.1
-`f
-@ a:3.1;
-@ @@a
-`f
-@end example
-
-@section Temporal Data
-Temporal data can be expressed in time, date, or a combined date and time.
-@anchor{date}@subsection date @result{} Date D
-Dates are in yyyy.mm.dd format and stored internally as integers.
-@example
-@ @@2020.04.20               / date
-`D
-@ .z.D                       / current date in GMT
-2020.09.13
-@ `i .z.D                    / numeric representation of date
--1205
-@ `i 2024.01.01              / zero date
-0
-@ `D 0                       / zero date
-2024.01.01
-@end example
-
-@anchor{time}@subsection time @result{} Time t
-Times are stored in hh:mm:ss.123 format and stored internally as integers.
-@example
-@ @@12:34:56.789             / time
-`t
-@ .z.t                       / current time in GMT
-17:32:57.995
-@ (t:.z.t)-17:30:00.000
-00:03:59.986
-@ t
-17:33:59.986
-@ `i 00:00:00.001            / numeric representation of 1ms
-1
-@ `i 00:00:01.000            / numeric representation of 1s
-1000
-@ `i 00:01:00.000            / numeric representation of 1m
-60000
-@ `t 12345                   / convert milliseconds to time
-00:00:12.345
-@end example
-
-@anchor{datetime}@subsection datetime @result{} Datetime T
-Dates and times can be combined as 2020.04.20T12:34:56.789.
-
-@example
-@ @@2020.04.20T12:34:56.789  / date and time
-`T
-@ "T"$"2020.04.20 12:34:56.789" / converting from string
-2020-04-20T12:34:56.789
-@ "T"$"2020-04-20 12:34:56.789"
-2020-04-20T12:34:56.789
-@ "T"$"2020.04.20T12:34:56.789"
-2020-04-20T12:34:56.789
-@ "T"$"2020-04-20T12:34:56.789"
-2020-04-20T12:34:56.789
-@end example
-
-@section Text Data
-Text data come in characters, lists of characters (aka strings) and enumerated types.  Enumerated types are displayed as text but stored internally as integers.
-
-@anchor{char}@subsection char @result{} Character c
-Characters are stored as their ANSI value and can be seen by conversion to integers.  Character lists are equivalent to strings.
-
-@example
-@ @@"b"
-`c
-@ @@"bd"
-`C 
-@end example
-
-@anchor{name}@subsection name @result{} Name n
-Names are enumerate type shown as a text string but stored internally as a integer value.
-@example
-@ @@`blue
-`n
-@ @@`blue`red
-`N
-@end example
-@section Extreme values
-Data types can represent in-range, null, and out-of-range values.
-
-@multitable @columnfractions .15 .15 .2
-@c @headitem type @tab null @tab out of range
-@item @b{type} @tab @b{null} @tab @b{out of range}
-@item @tab @tab
-@item i @tab 0N @tab 0W
-@item f @tab 0n @tab 0w
-@end multitable
-
-@example
-@ 0%0
-0n
-@ 1e500
-0w
-@end example
-
-@node Verbs
-@chapter Functions / Verbs
+@node Verb
+@chapter Verb
 This chapter explains functions, aka verbs.  Given how different is it to call functions in k9 than many other languages this is probably a chapter that will have to be covered a few times.  Once you can ``speak'' k9 you'll read @code{|x} better than @code{reverse(x)}.  
 
 Most functions are overloaded and change depending on the number and type of arguments.  This reuse of symbols is also an item that causes confusion for new users.  Eg. @code{(1 4)++(2 3;5 6;7 8)} contains the plus symbol once as flip and then for addition.  (Remember evaluation is right to left!)
@@ -1593,18 +1419,18 @@ x30 x31
 
 @end example
 
-@node Adverbs
-@chapter Function Modifiers / Adverbs
-k9 uses function modifiers / adverbs in order to have functions operate iteratively over lists.
+@node Adverb
+@chapter Adverb
+Adverbs modify verbs to operative iteritvely over nouns.  This previous sentence likley will only make sense once you understand it so let's jump into an example.  Imagine you have a list of 4 lists.  Using @code{first} you will retrieve the first sub-list.  In order to retrieve the first element of each sub-list you'll have to modify the function @code{first} with a modifier @code{each}.
 
 @example
-Adverb
-'  @ref{each}.
-/  @ref{scan},   @ref{right}.
-\  @ref{scan,over,over}, @ @ @ref{left}.
-': @ref{eachprior}.
-/: @ref{c over}, @ref{n scan,n over}.
-\: @ref{c scan}, @ref{n scan}.
+Adverb             
+f/  @ref{scan,over}  c/  @ref{join}
+f\  @ref{scan}  c\  @ref{split}
+f'  @ref{each}  v'  @ref{has}  
+f': @ref{eachp} v': @ref{bin2,bin}.
+f/: @ref{eachr} ([n;]f)/:
+f\: @ref{eachl} ([n;]f)\:
 @end example
 
 @c @multitable {\:} {see eacheach 4} {see eacheach 4}
@@ -1618,14 +1444,6 @@ Adverb
 @c @item \: @tab @xref{c scan}, @tab @xref{n scan}.
 @c @end multitable
 
-@anchor{each}@section each @result{} f'x
-Apply function f to each value in list x.
-@example
-@ *((1 2 3);4;(5 6);7)   / first element of the list
-1 2 3
-@ *'((1 2 3);4;(5 6);7)  / first element of each element
-1 4 5 7
-@end example
 @anchor{scan}@section scan (over) @result{} f\x (f/x)
 Compute f[x;y] such that f@@i=f[f@@i-1;x@@i].  Scan and over are the same functions except that over only returns the last value.
 
@@ -1654,38 +1472,49 @@ abc
 600
 @end example
 
-@anchor{right}@section right @result{} f/[x;y]
-Apply f[x;] to each value in y.
+@anchor{join}@section join @result{} c/x
+Join the list of strings x using character c between each pair.
+
 @example
-@ @{x+y@}[100 200 300;1 2 3]  / add the lists together itemize
-101 202 303
-@ @{x+y@}/[100 200 300;1 2 3] / add the list y to each value of x
-101 201 301
-102 202 302
-103 203 303
-@ @{x,y@}/[`l1`l2`l3;`r1`r2`r3]
-l1 l2 l3 r1
-l1 l2 l3 r2
-l1 l2 l3 r3
+@ "-"/("Some";"random text";"plus";,".")
+"Some-random text-plus-."
 @end example
 
-@anchor{left}@section left @result{} f\[x;y]
-Apply f[;y] to each value in x.
+@anchor{split}@section split @result{} c\x
+Split the string x using character c to determine the locations.
+
 @example
-@ @{x+y@}[100 200 300;1 2 3]  / add the lists together itemize
-101 202 303
-@ @{x+y@}\[100 200 300;1 2 3] / add the list y to each value of x
-101 102 103
-201 202 203
-301 302 303
-@ @{x,y@}\[`l1`l2`l3;`r1`r2`r3]
-l1 r1 r2 r3
-l2 r1 r2 r3
-l3 r1 r2 r3
+@ " "\"Here is a short sentence."
+Here     
+is       
+a        
+short    
+sentence.
 @end example
 
-@anchor{eachprior}@section eachprior @result{} f':[x;y]
-Apply f[y_n;y_@{n-1@}].  f_0 is a special case of f[y_0;x].
+@anchor{each}@section each @result{} f'x
+Apply function f to each value in list x.
+@example
+@ *((1 2 3);4;(5 6);7)   / first element of the list
+1 2 3
+@ *'((1 2 3);4;(5 6);7)  / first element of each element
+1 4 5 7
+@end example
+
+@anchor{has}@section has @result{} v'x
+Determine if vector v has element x.  Simliar to @ref{in} but arguments reversed.
+
+@example
+ `a`b`c`a`b'`a
+1b
+
+`a`b`c`a`b'`d
+0b
+@end example
+
+@anchor{eachp}@section eachp @result{} f':[x;y]
+Apply f[x;y] using the prior value of y, eg. f[y@@n;y@@n-1].  The first value, n=0, returns f[y@@0;x].
+
 @example
 @ ,':[`x;(`$"y",'$!5)]
 y0 x 
@@ -1693,11 +1522,54 @@ y1 y0
 y2 y1
 y3 y2
 y4 y3
+
 @ %':[100;100 101.9 105.1 102.3 106.1] / compute returns
 1 1.019 1.031403 0.9733587 1.037146
+
 @ 100%':100 101.9 105.1 102.3 106.1    / using infix notation
 1 1.019 1.031403 0.9733587 1.037146
 @end example
+
+@anchor{bin2}@subsection bin @result{} x':y
+Given a sorted (increasing) list x, find the greatest index, i, where y>x[i].
+
+@example
+@ n:exp 0.01*!5;n
+1 1.01005 1.020201 1.030455 1.040811
+@ n':1.025
+2
+@end example
+
+@anchor{eachr}@section eachr @result{} f/:
+Apply f[x;y] to each value of y, i.e. the right one.
+
+@example
+ (!2)+/:!4
+0 1
+1 2
+2 3
+3 4
+
+ +/:[!2;!4]
+0 1
+1 2
+2 3
+3 4
+@end example
+
+@anchor{eachl}@section eachl @result{} f\[x;y]
+Apply f[x;y] to each value of x, i.e. the left one.
+
+@example
+ (!2)+\:!4
+0 1 2 3
+1 2 3 4
+
+ +\:[!2;!4]
+0 1 2 3
+1 2 3 4
+@end example
+
 @anchor{n scan}@section n scan (n over) @result{} x f\:y (x f/:y)
 Compute f with initial value x and over list y.  f[i] = f[f[i-1];y[i]] except for the case of f[0]=f[x;y[0]].  n over differs from n scan in that it only returns the last value.
 @example
@@ -1712,14 +1584,17 @@ xy0y1 y2
 @ `x f/: `y0`y1`y2
 xy0y1 y2
 @end example
+
 @anchor{c scan}@section c(onverge) scan @result{} f\:x
 Compute f[x], f[f[x]] and continue to call f[previous result] until the output converges to a stationary value or the output produces x.
 @example
 @  @{x*x@}\:.99
 0.99 0.9801 0.960596 0.9227447 .. 9.420123e-144 8.873872e-287 0
 @end example
+
 @anchor{c over}@section c(onverge) over @result{} f/:x
 Same as converge scan but only return last value.
+
 @anchor{vs}@section vs @result{} x\:y
 Convert y (base 10) into base x.
 @example
@@ -1728,6 +1603,7 @@ Convert y (base 10) into base x.
 @ 16\:255
 15 15
 @end example
+
 @anchor{sv}@section sv @result{} x/:y
 Convert list y (base x) into base 10.
 @example
@@ -1736,8 +1612,183 @@ Convert list y (base x) into base 10.
 @ 16/:15 0 15
 3855
 @end example
-@node Lists
-@chapter Lists
+
+@node Noun
+@chapter Noun
+The basic data types of the k9 language are booleans, numbers (integer and float), text (characters and enumerated/name) and temporal (date and time).  It is common to have functions operate on multiple data types.
+
+In additional to the basic data types, data can be put into lists (uniform and non-uniform), dictionaries (key-value pairs), and tables (transposed/flipped dictionaries).  Dictionaries and tables will be covered in a seperate chapter.
+
+The set of k9 data, aka nouns, are as follows.
+
+@example
+Atom   Example      Type  
+@ref{bool},  110b         b  
+@ref{int},   0N 2 3 4     i 
+@ref{float}, 0n 2 3.4     f
+@ref{date},  2024.01.01   D 
+@ref{time},  12:34:56.789 t  
+@ref{char},  "ab "        c  
+@ref{name},  `a`b`        n  
+@end example
+
+Data types can be determined by using the @code{@@} function on values or lists of values.  In the case of non-uniform lists @code{@@} returns the type of the list @code{`L} but the function can be modified to evalue each type @code{@@'} instead and return the type of each element in the list.
+
+@example
+@ @@1            / integer atom
+`i
+@ @@1 2 3        / integer list
+`I
+@ @@12:34:56.789 / time atom
+@ @@(3;3.1;"b";`a;12:01:02.123;2020.04.05) / mixed list
+`L
+@ @@'(3;3.1;"b";`a;12:01:02.123;2020.04.05)
+`i`f`c`n`t`D
+@end example
+
+@anchor{bool}@section bool @result{} Boolean b
+Booleans have two possible values 0 and 1 and have a 'b' to avoid confusion with integers, eg. 0b or 1b.
+
+@example
+@ 0b
+0b
+@ 1b
+1b
+@ 10101010b
+10101010b
+@end example
+@section Numeric Data
+Numbers can be stored as integers and floats.
+
+@anchor{int}@subsection int @result{} Integer i
+Integers 
+
+@example
+@ 3
+3
+@ 3+1
+4
+@ @@3
+`i
+@ a:3;
+@ @@a
+`i
+@ 3%1   / result will be float even though inputs are int
+3f
+@end example
+@anchor{float}@subsection float @result{} Float f
+Float
+@example
+@ 3.1
+3.1
+@ 3.1+1.2
+4.3
+@ 3.1-1.1   
+2f
+@ @@3.1-1.1
+`f
+@ @@3.1
+`f
+@ a:3.1;
+@ @@a
+`f
+@end example
+
+@section Temporal Data
+Temporal data can be expressed in time, date, or a combined date and time.
+@anchor{date}@subsection date @result{} Date D
+Dates are in yyyy.mm.dd format and stored internally as integers.
+@example
+@ @@2020.04.20               / date
+`D
+@ .z.D                       / current date in GMT
+2020.09.13
+@ `i .z.D                    / numeric representation of date
+-1205
+@ `i 2024.01.01              / zero date
+0
+@ `D 0                       / zero date
+2024.01.01
+@end example
+
+@anchor{time}@subsection time @result{} Time t
+Times are stored in hh:mm:ss.123 format and stored internally as integers.
+@example
+@ @@12:34:56.789             / time
+`t
+@ .z.t                       / current time in GMT
+17:32:57.995
+@ (t:.z.t)-17:30:00.000
+00:03:59.986
+@ t
+17:33:59.986
+@ `i 00:00:00.001            / numeric representation of 1ms
+1
+@ `i 00:00:01.000            / numeric representation of 1s
+1000
+@ `i 00:01:00.000            / numeric representation of 1m
+60000
+@ `t 12345                   / convert milliseconds to time
+00:00:12.345
+@end example
+
+@anchor{datetime}@subsection datetime @result{} Datetime T
+Dates and times can be combined as 2020.04.20T12:34:56.789.
+
+@example
+@ @@2020.04.20T12:34:56.789  / date and time
+`T
+@ "T"$"2020.04.20 12:34:56.789" / converting from string
+2020-04-20T12:34:56.789
+@ "T"$"2020-04-20 12:34:56.789"
+2020-04-20T12:34:56.789
+@ "T"$"2020.04.20T12:34:56.789"
+2020-04-20T12:34:56.789
+@ "T"$"2020-04-20T12:34:56.789"
+2020-04-20T12:34:56.789
+@end example
+
+@section Text Data
+Text data come in characters, lists of characters (aka strings) and enumerated types.  Enumerated types are displayed as text but stored internally as integers.
+
+@anchor{char}@subsection char @result{} Character c
+Characters are stored as their ANSI value and can be seen by conversion to integers.  Character lists are equivalent to strings.
+
+@example
+@ @@"b"
+`c
+@ @@"bd"
+`C 
+@end example
+
+@anchor{name}@subsection name @result{} Name n
+Names are enumerate type shown as a text string but stored internally as a integer value.
+@example
+@ @@`blue
+`n
+@ @@`blue`red
+`N
+@end example
+@section Extreme values
+Data types can represent in-range, null, and out-of-range values.
+
+@multitable @columnfractions .15 .15 .2
+@c @headitem type @tab null @tab out of range
+@item @b{type} @tab @b{null} @tab @b{out of range}
+@item @tab @tab
+@item i @tab 0N @tab 0W
+@item f @tab 0n @tab 0w
+@end multitable
+
+@example
+@ 0%0
+0n
+@ 1e500
+0w
+@end example
+
+@node List
+@chapter List
 k9 is optimized for operations on uniform lists of data.  In order to take full advantage one should store data in lists or derivatives of lists, eg. dictionaries or tables, and operate on them without explicit iteration.
 @section List Syntax
 In general, lists are created by data separated by semicolons and encased by parenthesis.  Uniform lists can use a simpler syntax of spaces between elements.
@@ -1917,8 +1968,8 @@ These functions are symmetric in the inputs f[x;y]=f[y;x] and the lists are not 
 @end example
 
 
-@node Dictionaries
-@chapter Dictionaries and Dictionary Functions
+@node Dictionary
+@chapter Dictionary
 Dictionaries are a data type of key-value pairs.  In other computer languages they are also known as associative arrays and maps.  Keys should be unique to avoid lookup value confusion but uniqueness is not enforced.  The values in the dictionary can be single elements, lists or tables.
 
 Dictionaries in k9 are often used.  As an example in the benchmark chapter the market quote and trade data are dictionaries of symbols (name keys) and market data (table values).  
@@ -1966,6 +2017,7 @@ c|5 6
 @ x `b;  / space
 @ x[`b]; / square bracket
 @end example
+
 @section Dictionary Key @result{} !x
 The keys from a dictionary are retreived by using the ! function.
 
@@ -2147,27 +2199,29 @@ c |3e+08
 @chapter Named Functions
 This chapter covers the non-symbol named functions.  This includes some math (eg. sqrt but not +), wrapper (eg. count for #) and range (eg. within) functions.
 
-@verbatim
-math:    sqrt exp log sin cos div mod bar
+@smallformat
+@example
+math:    @ref{sqrt} @ref{exp} @ref{log} @ref{sin} @ref{cos} @ref{div} @ref{mod} @ref{bar}
 wrapper: count first last min max sum avg      
-range:   in bin within
-@end verbatim
+range:   @ref{in} @ref{bin} @ref{within}
+@end example
+@end smallformat
 
 @section Math Functions @result{} sqrt exp log sin cos div mod bar
 
-@subsection sqrt @result{} sqrt x
+@anchor{sqrt}@subsection sqrt @result{} sqrt x
 @example
 @ sqrt 2
 1.414214
 @end example
 
-@subsection exp @result{} exp x
+@anchor{exp}@subsection exp @result{} exp x
 @example
 @ exp 1
 2.718282
 @end example
 
-@subsection log @result{} log x
+@anchor{log}@subsection log @result{} log x
 Log computes the natural log.
 
 @example
@@ -2175,7 +2229,7 @@ Log computes the natural log.
 2.302585
 @end example
 
-@subsection sin @result{} sin x
+@anchor{sin}@subsection sin @result{} sin x
 sin computes the sine of x where x is in radians.
 @example
 @ sin 0
@@ -2184,7 +2238,7 @@ sin computes the sine of x where x is in radians.
 1.
 @end example
 
-@subsection cos @result{} cos x
+@anchor{cos}@subsection cos @result{} cos x
 cos computes the cosine of x where x is in radians.
 @example
 @ cos 0
@@ -2193,7 +2247,7 @@ cos computes the cosine of x where x is in radians.
 0.7071055
 @end example
 
-@subsection div @result{} x div y
+@anchor{div}@subsection div @result{} x div y
 y divided by x using integer division.  x and y must be integers.
 
 @example
@@ -2203,7 +2257,7 @@ y divided by x using integer division.  x and y must be integers.
 4
 @end example
 
-@subsection mod @result{} x mod y
+@anchor{mod}@subsection mod @result{} x mod y
 The remainder after y divided by x using integer division.  x and y must be integers.
 
 @example
@@ -2213,7 +2267,7 @@ The remainder after y divided by x using integer division.  x and y must be inte
 2
 @end example
 
-@subsection bar @result{} x bar y
+@anchor{bar}@subsection bar @result{} x bar y
 For each value in y determine the number of integer multiples of x that is less than or equal to each x.
 
 @example
@@ -2234,8 +2288,8 @@ These functions exist as verbs but also can be called with the names above.
 
 @section Range Functions @result{} in bin within
 
-@subsection in @result{} x in y
-Determine if x is in list y.
+@anchor{in}@subsection in @result{} x in y
+Determine if x is in list y.  Similar to @ref{has} but arguments reversed.
 
 @example
 @ `b in `a`b`d`e
@@ -2244,7 +2298,7 @@ Determine if x is in list y.
 0b
 @end example
 
-@subsection bin @result{} x bin y
+@anchor{bin}@subsection bin @result{} x bin y
 Given a sorted (increasing) list x, find the greatest index, i, where y>x[i].
 
 @example
@@ -2254,7 +2308,7 @@ Given a sorted (increasing) list x, find the greatest index, i, where y>x[i].
 2
 @end example
 
-@subsection within @result{} x within y
+@anchor{within}@subsection within @result{} x within y
 Test if x is equal to or greater than y[0] and less than y[1].
 
 @example
