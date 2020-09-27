@@ -878,11 +878,20 @@ Names are enumerate type shown as a text string but stored internally as a integ
 @section Extreme values
 Data types can not only represent in-range values but also null and out-of-range values.
 
-@multitable @columnfractions .1 .1 .2
-@headitem type @tab null @tab out of range
+@multitable @columnfractions .15 .15 .2
+@c @headitem type @tab null @tab out of range
+@item @b{type} @tab @b{null} @tab @b{out of range}
+@item @tab @tab
 @item i @tab 0N @tab 0W
 @item f @tab 0n @tab 0w
 @end multitable
+
+@example
+@ 0%0
+0n
+@ 1e500
+0w
+@end example
 
 @node Verbs
 @chapter Functions / Verbs

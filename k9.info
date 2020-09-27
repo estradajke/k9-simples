@@ -1007,10 +1007,14 @@ as a integer value.
 Data types can not only represent in-range values but also null and
 out-of-range values.
 
-type    null    out of range
--------------------------------
-i       0N      0W
-f       0n      0w
+type        null        out of range
+i           0N          0W
+f           0n          0w
+
+      0%0
+     0n
+      1e500
+     0w
 
 
 File: k9.info,  Node: Verbs,  Next: Adverbs,  Prev: Nouns,  Up: Top
@@ -3156,95 +3160,95 @@ Ref: time29821
 Ref: datetime30435
 Ref: char31088
 Ref: name31311
-Node: Verbs31720
-Ref: x33193
-Ref: set33218
-Ref: flip33430
-Ref: plus33680
-Ref: negate34065
-Ref: minus34237
-Ref: first34344
-Ref: times34663
-Ref: divide34794
-Ref: where34931
-Ref: min/and35317
-Ref: reverse35576
-Ref: max/or35746
-Ref: asc36010
-Ref: less36206
-Ref: group36468
-Ref: equal36714
-Ref: not36838
-Ref: match36955
-Ref: enum37148
-Ref: key38321
-Ref: enlist38548
-Ref: cat38687
-Ref: sort38806
-Ref: cut38983
-Ref: count39674
-Ref: take39864
-Ref: floor40493
-Ref: drop40584
-Ref: string41177
-Ref: cast/mmu41285
-Ref: unique41609
-Ref: find/rnd41846
-Ref: type42301
-Ref: at42657
-Ref: value42870
-Ref: dot43198
-Node: Adverbs44168
-Ref: each44628
-Ref: scan44845
-Ref: right45386
-Ref: left45748
-Ref: eachprior46108
-Ref: n scan46509
-Ref: c scan46994
-Ref: c over47276
-Ref: vs47383
-Ref: sv47502
-Node: Lists47627
-Node: Dictionaries52156
-Node: Named Functions57018
-Node: More Functions59472
-Ref: cond59595
-Ref: amend59715
-Ref: dmend60377
-Node: I/O61080
-Ref: input format61426
-Ref: format62437
-Ref: write line62837
-Ref: read line63224
-Ref: write char63411
-Ref: read char63806
-Ref: load data64171
-Ref: write data65928
-Ref: conn/set69841
-Ref: http/get69885
-Node: Tables/kSQL69935
-Ref: Tables70113
-Ref: XTab70643
-Ref: TTab71083
-Ref: kSQL71109
-Node: System74001
-Ref: load74460
-Ref: timing74648
-Ref: variables74735
-Ref: memory74836
-Ref: cd74951
-Node: Errors75035
-Ref: class75475
-Ref: rank75564
-Ref: length75686
-Ref: _type75807
-Ref: domain75916
-Ref: limit76038
-Ref: nyi76239
-Ref: parse76572
-Ref: _value76727
-Node: Conculsion76855
+Node: Verbs31751
+Ref: x33224
+Ref: set33249
+Ref: flip33461
+Ref: plus33711
+Ref: negate34096
+Ref: minus34268
+Ref: first34375
+Ref: times34694
+Ref: divide34825
+Ref: where34962
+Ref: min/and35348
+Ref: reverse35607
+Ref: max/or35777
+Ref: asc36041
+Ref: less36237
+Ref: group36499
+Ref: equal36745
+Ref: not36869
+Ref: match36986
+Ref: enum37179
+Ref: key38352
+Ref: enlist38579
+Ref: cat38718
+Ref: sort38837
+Ref: cut39014
+Ref: count39705
+Ref: take39895
+Ref: floor40524
+Ref: drop40615
+Ref: string41208
+Ref: cast/mmu41316
+Ref: unique41640
+Ref: find/rnd41877
+Ref: type42332
+Ref: at42688
+Ref: value42901
+Ref: dot43229
+Node: Adverbs44199
+Ref: each44659
+Ref: scan44876
+Ref: right45417
+Ref: left45779
+Ref: eachprior46139
+Ref: n scan46540
+Ref: c scan47025
+Ref: c over47307
+Ref: vs47414
+Ref: sv47533
+Node: Lists47658
+Node: Dictionaries52187
+Node: Named Functions57049
+Node: More Functions59503
+Ref: cond59626
+Ref: amend59746
+Ref: dmend60408
+Node: I/O61111
+Ref: input format61457
+Ref: format62468
+Ref: write line62868
+Ref: read line63255
+Ref: write char63442
+Ref: read char63837
+Ref: load data64202
+Ref: write data65959
+Ref: conn/set69872
+Ref: http/get69916
+Node: Tables/kSQL69966
+Ref: Tables70144
+Ref: XTab70674
+Ref: TTab71114
+Ref: kSQL71140
+Node: System74032
+Ref: load74491
+Ref: timing74679
+Ref: variables74766
+Ref: memory74867
+Ref: cd74982
+Node: Errors75066
+Ref: class75506
+Ref: rank75595
+Ref: length75717
+Ref: _type75838
+Ref: domain75947
+Ref: limit76069
+Ref: nyi76270
+Ref: parse76603
+Ref: _value76758
+Node: Conculsion76886
 
 End Tag Table
 
