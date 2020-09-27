@@ -87,7 +87,50 @@ The k9 programming language is designed primarily for the high-speed
 analysis of data.  It has a very concise syntax which might feel like
 an impediment at first but becomes an advantage with use.
 
-   The k9 language is more closely related to mathematics syntax than
+   The k9 programming language is designed primarily for the analysis
+of data.  It may surprise new users with two rather different
+paradigms, (1) extremely fast data analysis and (2) an extremely
+concise syntax.  After some familiarity these changes will both seem
+normal and going back to slow and verbose programming will be
+surprisingly difficult.
+
+1.1 Going Fast
+==============
+
+Imagine you have a small, on-disk, 40 million row database containing
+a time-series with two float values at each time.  Additionally this
+data could be split in three different tables covering different
+measurements.  Here's how fast k9 can read in the data to memory and
+compute a statistic, average difference over each table, which uses
+each and every row.
+
+      bash-3.2$ 2020.09.20 17GB 4core (c) shakti
+      \t q:2:`q;{select s:avg a-b from x}'q[!q]
+     415
+
+   That's 415ms to read the data in and compute over all the 40
+million values.  The data read is the biggest bit.  If the data was
+already in memory then you having the computation is much faster.
+
+      \t {select s:avg a-b from x}'q[!q]
+     105
+
+   105ms, not bad.
+
+   The code to generate the on-disk database is presented below.
+Speed of course will depend on your hardware setup so times will vary.
+
+     nf:d+*|d:(|-d),d:683 954 997 1000;
+     T:{`t'_+\(-1+86.4e6)*x%+/x}?[;1.]@
+     B:100++\1e-2*-3+nf bin/:?[;*|nf]@
+     S:?[;1e-2*2,2,8#1]@
+     q:`eurusd`usdjpy`usdchf!@{select t,b,a:b+s from +`t`b`s!(T;B;S)@'x@}'_20e6 10e6 10e6
+     `q 2:q
+
+1.2 Going Concise
+=================
+
+The k9 language is more closely related to mathematics syntax than
 most programming lanauges.  It requires the developer to learn to
 speak k9 but once that happens most find an ability to "speak" quicker
 in k9 than in other languages.  At this point an example might help.
@@ -132,7 +175,7 @@ Now you have a choice about learning k9.  If you give it a try, then I
 expect you'll get it quickly and move onto the power phase fast enough
 that you'll be happy you gave it a chance.
 
-1.1 Get k9.
+1.3 Get k9.
 ===========
 
 https://shakti.sh
@@ -149,7 +192,7 @@ Preferences..."  and then "Security and Privacy" and select to allow
 this binary to run.  (You'll have to have tried and failed to have it
 appear here automatically.)
 
-1.2 Help/Info Card
+1.4 Help/Info Card
 ==================
 
 Typing '\' in the terminal gives you a concise overview of the
@@ -195,7 +238,7 @@ nodejs: k=require('k');k.k('+',2,3)
 limit: {[param8]local8 global32 const128 jump256} name8                   
 error: class rank length type domain value(parse stack limit)             
 
-1.3 rlwrap
+1.5 rlwrap
 ==========
 
 Although you only need the 'k' binary to run k9 most will also install
@@ -222,7 +265,7 @@ again without rlwrap and again exit the session.
      Sep 13 2020 16GB (c) shakti
       \\
 
-1.4 Simple example
+1.6 Simple example
 ==================
 
 Here I will start up k9, perform some trivial calculations, and then
@@ -266,7 +309,7 @@ return, most variance, or any other analysis on the data.
      b|0.6629631
      c|0.6708467
 
-1.5 Document formatting for code examples
+1.7 Document formatting for code examples
 =========================================
 
 This document uses a number of examples to help clarify k9.  The sytax
@@ -276,13 +319,13 @@ without.
       3+2 / this is input
      5    / this is output
 
-1.6 k9 nuances
+1.8 k9 nuances
 ==============
 
 One will need to understand some basic rules of k9 in order to
 progress.  These will likely seem strange at first.
 
-1.6.1 The language changes often.
+1.8.1 The language changes often.
 ---------------------------------
 
 There may be examples in this document which work on the version
@@ -291,32 +334,32 @@ If so, then feel free to drop the author a note.  Items which
 currently error but are likley to come back 'soon' will be left in the
 document.
 
-1.6.2 ':' is used to set a variable to a value
+1.8.2 ':' is used to set a variable to a value
 ----------------------------------------------
 
 'a:3' is used to set the variable, a, to the value, 3.  'a=3' is an
 equality test to determine if a is equal to 3.
 
-1.6.3 '%' is used to divide numbers
+1.8.3 '%' is used to divide numbers
 -----------------------------------
 
 Yeah, 2 divide by 5 is written as '2%5' and not '2/5'.
 
-1.6.4 Evaluation is done right to left
+1.8.4 Evaluation is done right to left
 --------------------------------------
 
 2+5*3 is 17 and 2*5+3 is 16.  2+5*3 is first evaluated on the right
 most portion, 5*3, and once that is computed then it proceeds with
 2+15.  2*5+3 goes to 2*8 which becomes 16.
 
-1.6.5 There is no arithmetic order
+1.8.5 There is no arithmetic order
 ----------------------------------
 
 + does not happen specially before or after *.  The order of
 evaluation is done right to left unless parenthesis are used.  (2+5)*3
 = 21 as the 2+5 in parenthesis is done before being multiplied by 3.
 
-1.6.6 Operators are overloaded depending on the number of arguments.
+1.8.6 Operators are overloaded depending on the number of arguments.
 --------------------------------------------------------------------
 
       *(3;6;9)    / single argument so * is first element of the list
@@ -324,7 +367,7 @@ evaluation is done right to left unless parenthesis are used.  (2+5)*3
       2*(3;6;9)   / two arguments so * is multiplication
      6 12 18
 
-1.6.7 Lists and functions are very similar.
+1.8.7 Lists and functions are very similar.
 -------------------------------------------
 
 k9 syntax encourages you to treat lists and functions in a similar
@@ -343,7 +386,7 @@ function.  Lists and functions do not have the same type.
       f@2
      7
 
-1.6.8 k9 is expressed in terms of grammar.
+1.8.8 k9 is expressed in terms of grammar.
 ------------------------------------------
 
 k9 uses an analogy with grammar to describe language syntax.  The k9
@@ -3200,121 +3243,121 @@ than previously imagined.
 Tag Table:
 Node: Top176
 Node: Intro3978
-Node: Examples15106
-Node: Benchmarks22227
-Node: Verb27174
-Ref: x28640
-Ref: set28665
-Ref: flip28877
-Ref: plus29127
-Ref: negate29512
-Ref: minus29684
-Ref: first29791
-Ref: times30110
-Ref: divide30241
-Ref: where30378
-Ref: min/and30764
-Ref: reverse31023
-Ref: max/or31193
-Ref: asc31457
-Ref: less31653
-Ref: group31915
-Ref: equal32161
-Ref: not32285
-Ref: match32402
-Ref: enum32595
-Ref: key33768
-Ref: enlist33995
-Ref: cat34134
-Ref: sort34253
-Ref: cut34430
-Ref: count35138
-Ref: take35328
-Ref: floor35957
-Ref: drop36048
-Ref: string36641
-Ref: cast/mmu36749
-Ref: unique37073
-Ref: find/rnd37310
-Ref: type37765
-Ref: at38121
-Ref: value38334
-Ref: dot38662
-Node: Adverb39632
-Ref: scan40344
-Ref: join40884
-Ref: split41059
-Ref: each41250
-Ref: has41468
-Ref: eachp41641
-Ref: bin242081
-Ref: eachr42284
-Ref: eachl42481
-Ref: n scan42665
-Ref: c scan43150
-Ref: c over43434
-Ref: vs43544
-Ref: sv43664
-Node: Noun43788
-Ref: bool45180
-Ref: int45480
-Ref: float45684
-Ref: date45986
-Ref: time46406
-Ref: datetime47020
-Ref: char47673
-Ref: name47896
-Node: List48313
-Node: Dictionary52834
-Node: Named Functions57639
-Ref: sqrt58254
-Ref: exp58325
-Ref: log58391
-Ref: sin58489
-Ref: cos58626
-Ref: div58772
-Ref: mod58926
-Ref: bar59102
-Ref: in59636
-Ref: bin59812
-Ref: within60024
-Node: More Functions60236
-Ref: cond60359
-Ref: amend60479
-Ref: dmend61141
-Node: I/O61844
-Ref: input format62190
-Ref: format63201
-Ref: write line63601
-Ref: read line63988
-Ref: write char64175
-Ref: read char64570
-Ref: load data64935
-Ref: write data66692
-Ref: conn/set70605
-Ref: http/get70649
-Node: Tables/kSQL70699
-Ref: Tables70879
-Ref: XTab71407
-Ref: TTab71847
-Ref: kSQL71873
-Node: System74765
-Ref: load75224
-Ref: timing75412
-Ref: variables75499
-Ref: memory75600
-Ref: cd75715
-Node: Errors75799
-Ref: class76239
-Ref: rank76328
-Ref: length76450
-Ref: _type76571
-Ref: domain76680
-Ref: limit76802
-Ref: nyi77003
-Ref: parse77336
-Ref: _value77491
-Node: Conculsion77619
+Node: Examples16647
+Node: Benchmarks23768
+Node: Verb28715
+Ref: x30181
+Ref: set30206
+Ref: flip30418
+Ref: plus30668
+Ref: negate31053
+Ref: minus31225
+Ref: first31332
+Ref: times31651
+Ref: divide31782
+Ref: where31919
+Ref: min/and32305
+Ref: reverse32564
+Ref: max/or32734
+Ref: asc32998
+Ref: less33194
+Ref: group33456
+Ref: equal33702
+Ref: not33826
+Ref: match33943
+Ref: enum34136
+Ref: key35309
+Ref: enlist35536
+Ref: cat35675
+Ref: sort35794
+Ref: cut35971
+Ref: count36679
+Ref: take36869
+Ref: floor37498
+Ref: drop37589
+Ref: string38182
+Ref: cast/mmu38290
+Ref: unique38614
+Ref: find/rnd38851
+Ref: type39306
+Ref: at39662
+Ref: value39875
+Ref: dot40203
+Node: Adverb41173
+Ref: scan41885
+Ref: join42425
+Ref: split42600
+Ref: each42791
+Ref: has43009
+Ref: eachp43182
+Ref: bin243622
+Ref: eachr43825
+Ref: eachl44022
+Ref: n scan44206
+Ref: c scan44691
+Ref: c over44975
+Ref: vs45085
+Ref: sv45205
+Node: Noun45329
+Ref: bool46721
+Ref: int47021
+Ref: float47225
+Ref: date47527
+Ref: time47947
+Ref: datetime48561
+Ref: char49214
+Ref: name49437
+Node: List49854
+Node: Dictionary54375
+Node: Named Functions59180
+Ref: sqrt59795
+Ref: exp59866
+Ref: log59932
+Ref: sin60030
+Ref: cos60167
+Ref: div60313
+Ref: mod60467
+Ref: bar60643
+Ref: in61177
+Ref: bin61353
+Ref: within61565
+Node: More Functions61777
+Ref: cond61900
+Ref: amend62020
+Ref: dmend62682
+Node: I/O63385
+Ref: input format63731
+Ref: format64742
+Ref: write line65142
+Ref: read line65529
+Ref: write char65716
+Ref: read char66111
+Ref: load data66476
+Ref: write data68233
+Ref: conn/set72146
+Ref: http/get72190
+Node: Tables/kSQL72240
+Ref: Tables72420
+Ref: XTab72948
+Ref: TTab73388
+Ref: kSQL73414
+Node: System76306
+Ref: load76765
+Ref: timing76953
+Ref: variables77040
+Ref: memory77141
+Ref: cd77256
+Node: Errors77340
+Ref: class77780
+Ref: rank77869
+Ref: length77991
+Ref: _type78112
+Ref: domain78221
+Ref: limit78343
+Ref: nyi78544
+Ref: parse78877
+Ref: _value79032
+Node: Conculsion79160
 
 End Tag Table
 

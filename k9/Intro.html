@@ -51,6 +51,41 @@ Next: <a href="Examples.html" accesskey="n" rel="next">Examples</a>, Previous: <
 <span id="Intro-1"></span><h2 class="chapter">1 Intro</h2>
 <p>The k9 programming language is designed primarily for the high-speed analysis of data.  It has a very concise syntax which  might feel like an impediment at first but becomes an advantage with use.
 </p>
+
+
+<p>The k9 programming language is designed primarily for the analysis of data.  It may surprise new users with two rather different paradigms, (1) extremely fast data analysis and (2) an extremely concise syntax.  After some familiarity these changes will both seem normal and going back to slow and verbose programming will be surprisingly difficult.
+</p>
+<span id="Going-Fast"></span><h3 class="section">1.1 Going Fast</h3>
+<p>Imagine you have a small, on-disk, 40 million row database containing a time-series with two float values at each time.  Additionally this data could be split in three different tables covering different measurements.  Here&rsquo;s how fast k9 can read in the data to memory and compute a statistic, average difference over each table, which uses each and every row.
+</p>
+<div class="example">
+<pre class="example"> bash-3.2$ 2020.09.20 17GB 4core (c) shakti
+ \t q:2:`q;{select s:avg a-b from x}'q[!q]
+415
+</pre></div>
+
+<p>That&rsquo;s 415ms to read the data in and compute over all the 40 million values.  The data read is the biggest bit.  If the data was already in memory then you having the computation is much faster.
+</p>
+<div class="example">
+<pre class="example"> \t {select s:avg a-b from x}'q[!q]
+105
+</pre></div>
+
+<p>105ms, not bad.
+</p>
+<p>The code to generate the on-disk database is presented below.  Speed of course will depend on your hardware setup so times will vary.
+</p>
+<div class="example">
+<pre class="example">nf:d+*|d:(|-d),d:683 954 997 1000;
+T:{`t'_+\(-1+86.4e6)*x%+/x}?[;1.]@
+B:100++\1e-2*-3+nf bin/:?[;*|nf]@
+S:?[;1e-2*2,2,8#1]@
+q:`eurusd`usdjpy`usdchf!@{select t,b,a:b+s from +`t`b`s!(T;B;S)@'x@}'_20e6 10e6 10e6
+`q 2:q
+</pre></div>
+
+<span id="Going-Concise"></span><h3 class="section">1.2 Going Concise</h3>
+
 <p>The k9 language is more closely related to mathematics syntax than most programming lanauges.  It requires the developer to learn to speak k9 but once that happens most find an ability to &ldquo;speak&rdquo; quicker in k9 than in other languages.  At this point an example might help.
 </p>
 <p>In mathematics, &ldquo;3+2&rdquo; is read as &ldquo;3 plus 2&rdquo; as you learn at an early age that &ldquo;+&rdquo; is the &ldquo;plus&rdquo; sign.  For trival operations like arithmetic most programming languages use symbols also.  Moving on to something less math like most programming lanauges switch to clear words while k9 remains with symbols which turn out to have the same level of clarity.  As an example, to determine the distinct values of a list most programming languages might use a synatx like <code>distinct()</code> while k9 uses <code>?</code>.  This requires the developer to learn how to say a number of symbols but once that happens it results in much shorter code that is quicker to write, harder to bug, and easier to maintain.
@@ -74,7 +109,7 @@ z@&amp;y&lt;z:?x<br>
 </p>
 <p>When you first learned arithmetic you likley didn&rsquo;t have a choice.  Now you have a choice about learning k9.  If you give it a try, then I expect you&rsquo;ll get it quickly and move onto the power phase fast enough that you&rsquo;ll be happy you gave it a chance.
 </p>
-<span id="Get-k9_002e"></span><h3 class="section">1.1 Get k9.</h3>
+<span id="Get-k9_002e"></span><h3 class="section">1.3 Get k9.</h3>
 
 <p>https://shakti.sh
 </p>
@@ -86,7 +121,7 @@ z@&amp;y&lt;z:?x<br>
 
 <p>Again on the mac if you then attempt to run this file you likely won&rsquo;t succeed due to MacOS security.  You&rsquo;ll need to go to &ldquo;System Preferences...&rdquo; and then &ldquo;Security and Privacy&rdquo; and select to allow this binary to run.  (You&rsquo;ll have to have tried and failed to have it appear here automatically.)
 </p>
-<span id="Help_002fInfo-Card"></span><h3 class="section">1.2 Help/Info Card</h3>
+<span id="Help_002fInfo-Card"></span><h3 class="section">1.4 Help/Info Card</h3>
 <p>Typing <code>\</code> in the terminal gives you a concise overview of the language.  This document aims to provide details to beginning users where the help screen is a tad too terse.  Some commands are not yet complete and thus marked with an asterisk, eg. *?[x;i;f[;y]] splice.
 </p><div class="format">
 <pre class="verbatim">Sep 13 2020 16GB (c) shakti
@@ -129,7 +164,7 @@ limit: {[param8]local8 global32 const128 jump256} name8
 error: class rank length type domain value(parse stack limit)             
 </pre></div>
 
-<span id="rlwrap"></span><h3 class="section">1.3 rlwrap</h3>
+<span id="rlwrap"></span><h3 class="section">1.5 rlwrap</h3>
 <p>Although you only need the <samp>k</samp> binary to run k9 most will also install rlwrap, if not already installed, in order to get command history in a terminal window.  rlwrap is &ldquo;Readline wrapper: adds readline support to tools that lack it&rdquo; and allows one to arrow up to go through the command buffer generally a useful option to have.
 </p>
 <p>In order to start k9 you should either run <samp>k</samp> or <samp>rlwrap k</samp> to get started.  Here I will show both options but one should run as desired.  In this document lines with input be shown with a leading space and output will be without.  In the examples below the user starts a terminal window in the directory with the <samp>k</samp> file.  Then the users enters <kbd>rlwrap ./k <span class="key">RET</span></kbd>.  k9 starts and displays the date of the build, (c), and shakti and then listens to user input.  In this example I have entered the command to exit k9, <kbd>\\</kbd>.  Then I start k9 again without rlwrap and again exit the session.
@@ -144,7 +179,7 @@ Sep 13 2020 16GB (c) shakti
  \\
 </pre></div>
 
-<span id="Simple-example"></span><h3 class="section">1.4 Simple example</h3>
+<span id="Simple-example"></span><h3 class="section">1.6 Simple example</h3>
 
 <p>Here I will start up k9, perform some trivial calculations, and then close the session.  After this example it will be assumed the user will have a k9 session running and working in repl mode.  Comments (<code>/</code>) will be added to the end of lines as needed.
 </p>
@@ -187,32 +222,32 @@ b|0.6629631
 c|0.6708467
 </pre></div>
 
-<span id="Document-formatting-for-code-examples"></span><h3 class="section">1.5 Document formatting for code examples</h3>
+<span id="Document-formatting-for-code-examples"></span><h3 class="section">1.7 Document formatting for code examples</h3>
 <p>This document uses a number of examples to help clarify k9.  The sytax is that input has a leading space and output does not.  This follows the terminal syntax where the REPL input has space but prints output without.
 </p><div class="example">
 <pre class="example">&nbsp;3+2 / this is input
 5    / this is output
 </pre></div>
 
-<span id="k9-nuances"></span><h3 class="section">1.6 k9 nuances</h3>
+<span id="k9-nuances"></span><h3 class="section">1.8 k9 nuances</h3>
 <p>One will need to understand some basic rules of k9 in order to progress.  These will likely seem strange at first.
 </p>
-<span id="The-language-changes-often_002e"></span><h4 class="subsection">1.6.1 The language changes often.</h4>
+<span id="The-language-changes-often_002e"></span><h4 class="subsection">1.8.1 The language changes often.</h4>
 <p>There may be examples in this document which work on the version idicated but do not with the version currently available to download.  If so, then feel free to drop the author a note.  Items which currently error but are likley to come back &rsquo;soon&rsquo; will be left in the document.
 </p>
-<span id="g_t_003a-is-used-to-set-a-variable-to-a-value"></span><h4 class="subsection">1.6.2 <code>:</code> is used to set a variable to a value</h4>
+<span id="g_t_003a-is-used-to-set-a-variable-to-a-value"></span><h4 class="subsection">1.8.2 <code>:</code> is used to set a variable to a value</h4>
 <p><code>a:3</code> is used to set the variable, a, to the value, 3.  <code>a=3</code> is an equality test to determine if a is equal to 3.
 </p>
-<span id="g_t_0025-is-used-to-divide-numbers"></span><h4 class="subsection">1.6.3 <code>%</code> is used to divide numbers</h4>
+<span id="g_t_0025-is-used-to-divide-numbers"></span><h4 class="subsection">1.8.3 <code>%</code> is used to divide numbers</h4>
 <p>Yeah, 2 divide by 5 is written as <code>2%5</code> and not <code>2/5</code>.
 </p>
-<span id="Evaluation-is-done-right-to-left"></span><h4 class="subsection">1.6.4 Evaluation is done right to left</h4>
+<span id="Evaluation-is-done-right-to-left"></span><h4 class="subsection">1.8.4 Evaluation is done right to left</h4>
 <p>2+5*3 is 17 and 2*5+3 is 16.  2+5*3 is first evaluated on the right most portion, 5*3, and once that is computed then it proceeds with 2+15.  2*5+3 goes to 2*8 which becomes 16.
 </p>
-<span id="There-is-no-arithmetic-order"></span><h4 class="subsection">1.6.5 There is no arithmetic order</h4>
+<span id="There-is-no-arithmetic-order"></span><h4 class="subsection">1.8.5 There is no arithmetic order</h4>
 <p>+ does not happen specially before or after *.  The order of evaluation is done right to left unless parenthesis are used.  (2+5)*3 = 21 as the 2+5 in parenthesis is done before being multiplied by 3.
 </p>
-<span id="Operators-are-overloaded-depending-on-the-number-of-arguments_002e"></span><h4 class="subsection">1.6.6 Operators are overloaded depending on the number of arguments.</h4>
+<span id="Operators-are-overloaded-depending-on-the-number-of-arguments_002e"></span><h4 class="subsection">1.8.6 Operators are overloaded depending on the number of arguments.</h4>
 <div class="example">
 <pre class="example">&nbsp;*(3;6;9)    / single argument so * is first element of the list
 3
@@ -220,7 +255,7 @@ c|0.6708467
 6 12 18
 </pre></div>
 
-<span id="Lists-and-functions-are-very-similar_002e"></span><h4 class="subsection">1.6.7 Lists and functions are very similar.</h4>
+<span id="Lists-and-functions-are-very-similar_002e"></span><h4 class="subsection">1.8.7 Lists and functions are very similar.</h4>
 <p>k9 syntax encourages you to treat lists and functions in a similar function.  They should both be thought of a mapping from a value to another value or from a domain to a range.
 </p>
 <p>If this book wasn&rsquo;t a simples guide then lists (l) and functions (f) would be replaced by maps (m) given the interchangeability.  One way to determine if a map is either a list or function is via the type function.  Lists and functions do not have the same type.
@@ -234,7 +269,7 @@ c|0.6708467
 7
 </pre></div>
 
-<span id="k9-is-expressed-in-terms-of-grammar_002e"></span><h4 class="subsection">1.6.8 k9 is expressed in terms of grammar.</h4>
+<span id="k9-is-expressed-in-terms-of-grammar_002e"></span><h4 class="subsection">1.8.8 k9 is expressed in terms of grammar.</h4>
 <p>k9 uses an analogy with grammar to describe language syntax.  The k9 grammar consists of nouns (data), verbs (functions) and adverbs (function modifiers).
 </p><ul>
 <li> <tt>The boy ate an appple. (Noun verb noun)</tt>

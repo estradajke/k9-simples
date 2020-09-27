@@ -93,6 +93,41 @@ error: class rank length type domain value(parse stack limit)
 @c @cindex chapter, first
 The k9 programming language is designed primarily for the high-speed analysis of data.  It has a very concise syntax which  might feel like an impediment at first but becomes an advantage with use.
 
+
+
+The k9 programming language is designed primarily for the analysis of data.  It may surprise new users with two rather different paradigms, (1) extremely fast data analysis and (2) an extremely concise syntax.  After some familiarity these changes will both seem normal and going back to slow and verbose programming will be surprisingly difficult.
+
+@section Going Fast
+Imagine you have a small, on-disk, 40 million row database containing a time-series with two float values at each time.  Additionally this data could be split in three different tables covering different measurements.  Here's how fast k9 can read in the data to memory and compute a statistic, average difference over each table, which uses each and every row.
+
+@example
+ bash-3.2$ 2020.09.20 17GB 4core (c) shakti
+ \t q:2:`q;@{select s:avg a-b from x@}'q[!q]
+415
+@end example
+
+That's 415ms to read the data in and compute over all the 40 million values.  The data read is the biggest bit.  If the data was already in memory then you having the computation is much faster.
+
+@example
+ \t @{select s:avg a-b from x@}'q[!q]
+105
+@end example
+
+105ms, not bad.
+
+The code to generate the on-disk database is presented below.  Speed of course will depend on your hardware setup so times will vary.
+
+@example
+nf:d+*|d:(|-d),d:683 954 997 1000;
+T:@{`t'_+\(-1+86.4e6)*x%+/x@}?[;1.]@@
+B:100++\1e-2*-3+nf bin/:?[;*|nf]@@
+S:?[;1e-2*2,2,8#1]@@
+q:`eurusd`usdjpy`usdchf!@@@{select t,b,a:b+s from +`t`b`s!(T;B;S)@@'x@@@}'_20e6 10e6 10e6
+`q 2:q
+@end example
+
+@section Going Concise
+
 The k9 language is more closely related to mathematics syntax than most programming lanauges.  It requires the developer to learn to speak k9 but once that happens most find an ability to ``speak'' quicker in k9 than in other languages.  At this point an example might help.
 
 In mathematics, ``3+2'' is read as ``3 plus 2'' as you learn at an early age that ``+'' is the ``plus'' sign.  For trival operations like arithmetic most programming languages use symbols also.  Moving on to something less math like most programming lanauges switch to clear words while k9 remains with symbols which turn out to have the same level of clarity.  As an example, to determine the distinct values of a list most programming languages might use a synatx like @code{distinct()} while k9 uses @code{?}.  This requires the developer to learn how to say a number of symbols but once that happens it results in much shorter code that is quicker to write, harder to bug, and easier to maintain.
