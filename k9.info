@@ -1,7 +1,7 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
 This manual is for Shakti (k9) build 2020.09.13.
-September 27, 2020
+September 28, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -73,7 +73,8 @@ terms: noun/verb/adverb atom/list/dict func(monadic/dyadic/..)
 * Named Functions:: Named functions
 * More Functions:: More functions
 * I/O:: I/O
-* Tables/kSQL:: Tables and kSQL
+* Tables:: Tables to store data
+* kSQL:: kSQL to query tables
 * System:: System
 * Errors:: Errors
 * Conculsion:: Conclusion
@@ -2598,7 +2599,7 @@ Replace the values in list x at indices i with f or f[y].
 
 
 
-File: k9.info,  Node: I/O,  Next: Tables/kSQL,  Prev: More Functions,  Up: Top
+File: k9.info,  Node: I/O,  Next: Tables,  Prev: More Functions,  Up: Top
 
 11 I/O
 ******
@@ -2842,38 +2843,95 @@ TBD
 TBD
 
 
-File: k9.info,  Node: Tables/kSQL,  Next: System,  Prev: I/O,  Up: Top
+File: k9.info,  Node: Tables,  Next: kSQL,  Prev: I/O,  Up: Top
 
-12 Tables and kSQL
-******************
+12 Tables
+*********
 
-This chapter introduces k9 tables and the kSQL language to query.
+This chapter introduces the different types of tables available in k9.
+Table, XTab and TTab are very similar and as you'll see in the kSQL
+chapter are easy to query.  In the benchmark chapter tables were shown
+to be fast to save, read, and query.
 
-12.1 Tables
-===========
+     *note Table:: [[]a:..;..]
+     *note XTab::  `a..![[]..]
+     *note TTab::  [[a:..]..]
 
-Here is an example of a table with three columns (Day, Weather, and
-Temp) and three rows.
-      t:[[]Day:2020.04.10+!3;Weather:`sunny`cold`sunny;Temp:22 12 18]
-      t
-     Day        Weather Temp
-     ---------- ------- ----
-     2020-04-10 sunny     22
-     2020-04-11 cold      12
-     2020-04-12 sunny     18
-      @t                             / tables are type `A (`t is for time)
-     `A
-      +t
-     Day    |2020-04-10 2020-04-11 2020-04-12
-     Weather|sunny cold sunny
-     Temp   |22 12 18
+12.1 Table
+==========
+
+The table is the most basic of the three types.  A table consists of
+columns and rows of information where each column has a name.  Tables
+can be created in three different ways (1) specification via table
+format, (2) flipping a dictionary, or (3) reading in from a file.
+
+12.1.1 Table format
+-------------------
+
+Tables can be created with the table square bracket notation.
+
+   As an example let's create a table with two columns named "a" and
+"col2" with three rows.  The syntax is to surround the defintion with
+square brackeets and then have a first element of empty square
+brackets.  In general this in square bracket pair will contain any
+keys but more on this will happen in TTab.  After that it's first
+column name, colon, and the list of values, then second column, and
+continuing for all the columns.
+
+      [[] a:1 20 3; col2: 3.6 4.8 0.1]
+     a  col2
+     -- ----
+      1 3.6
+     20 4.8
+      3 0.1
+
+      [[] a:1; col2:3.6]   / will error :class as values but be a list
+     [[] a:1; col2:3.6]
+
+     :class
+
+      [[] a:,1; col2:,3.6] / using enlist will succeed
+     [[]a:,1;col2:,3.6]
+
+12.1.2 Dictionary format
+------------------------
+
+Tables can also be created by flipping a dictionary into a table.
+
+      +`a`col2!(1 20 3; col2: 3.6 4.8 0.1)
+     a  col2
+     -- ----
+      1 3.6
+     20 4.8
+      3 0.1
+
+12.1.3 File import
+------------------
+
+Tables can also be created by reading in a file.
+
+   t.csv
+a, col2
+1, 3.6
+20, 4.8
+3, 0.1
+
+   Use load file '2:x' which returns a table.
+
+      2:`t.csv
+     a   col2
+     -- -----
+      1  3.6
+     20  4.8
+      3  0.1
 
 12.2 XTab
 =========
 
-An cross tab (XTab) is a dictionary where the values are tables.
-Below is an example where the keys are symbols and the values are
-end-of-day prices.
+An cross tab (XTab) is a collection of tables stored in a dictionary
+where the keys are symbols and the values are tables.  Below is an
+example where the keys are symbols and the values are end-of-day
+prices.
 
       x1:+`d`p!(2020.09.08 2020.09.09 2020.09.10;140 139 150)
       x2:+`d`p!(2020.09.08 2020.09.10;202 208)
@@ -2885,47 +2943,84 @@ end-of-day prices.
      2020.09.09 139
      2020.09.10 150
 
-      @eod
-     `NL
-
 12.3 TTab
 =========
 
-TBD
+TTab is a table where some of the columns are keyed and thus should
+not have duplicate values.
 
-12.4 kSQL
-=========
+      [[d:2020.09.08 2020.09.09 2020.09.10]p:140 139 150]
+     d         |p
+     ----------|---
+     2020.09.08|140
+     2020.09.09|139
+     2020.09.10|150
 
-kSQL is a powerful query language for tables.
-      select |/Temp from t where Weather=`sunny
-     Temp|22
+      `d^ [[]d:2020.09.08 2020.09.09 2020.09.10;p:140 139 150]
+     d         |p
+     ----------|---
+     2020.09.08|140
+     2020.09.09|139
+     2020.09.10|150
 
-      select from t where Weather=`sunny
-     Day        Weather Temp
-     ---------- ------- ----
-     2020-04-10 sunny     22
-     2020-04-12 sunny     18
+
+File: k9.info,  Node: kSQL,  Next: System,  Prev: Tables,  Up: Top
 
-      select {+/x%#x}Temp from t where Weather=`sunny
-     Temp|20
+13 kSQL
+*******
 
-      select |/Temp from t where Weather=`sunny
-     Temp|22
+kSQL is a powerful query language for tables.  The benchmark chapter
+has shown how quickly k9 can process big tables.  Here we'll work on a
+small table in order to make things clear and repeatable.
 
-12.5 Joins
+   Here's a small sample table.
+
+      t:[[]day: 2020.01.06 2020.01.06 2020.01.07 2020.01.07;sym:`a`b`a`b;price:100 50 101 49];t
+     day        sym price
+     ---------- --- -----
+     2020.01.06 a     100
+     2020.01.06 b      50
+     2020.01.07 a     101
+     2020.01.07 b      49
+
+   kSQL looks similar to SQL as can be shown from the built-in
+reference screen.
+
+select A by B from T where C
+
+      select from t
+     day        sym price
+     ---------- --- -----
+     2020.01.06 a     100
+     2020.01.06 b      50
+     2020.01.07 a     101
+     2020.01.07 b      49
+
+      select from t where sym=`a
+     day        sym price
+     ---------- --- -----
+     2020.01.06 a     100
+     2020.01.07 a     101
+
+      select avg price by sym from t
+     sym|price
+     ---|-----
+     a  |100.5
+     b  |49.5
+
+13.1 Joins
 ==========
 
 Joining tables together.  In this section x, y represent tables and kx
-and ky represent keyed/A_tables.
+and ky represent TTabs.
 
-join    x       y
---------------------------------------
-union   table   table
-left    table   Atable
-outer   Atable  Atable
-asof    table   Atable (by time)
+join           x       y
+*note union::  table   table
+*note left::   table   TTab
+*note outer::  TTab    TTab
+*note asof::   table   TTab (by time)
 
-12.5.1 union join => x,y
+13.1.1 union join => x,y
 ------------------------
 
 Union join table x with table y.
@@ -2951,11 +3046,11 @@ Union join table x with table y.
      b 11 21
      c 12 22
 
-12.5.2 left join => x,y
+13.1.2 left join => x,y
 -----------------------
 
-Left join table x with keyed table/A_table.  Result includes all rows
-from x and values from x where there is no y value.
+Left join table x with TTab.  Result includes all rows from x and
+values from x where there is no y value.
       x:[[]s:`a`b`c;p:1 2 3;q:7 8 9]
       y:[[s:`a`b`x`y`z]q:101 102 103 104 105;r:51 52 53 54 55]
       x
@@ -2981,10 +3076,11 @@ from x and values from x where there is no y value.
      b 2 102 52
      c 3   9  0
 
-12.5.3 outer join => x,y
+13.1.3 outer join => x,y
 ------------------------
 
-Outer join key table/A_table x with key table/A_table y.
+Outer join TTab x with key TTab y.
+
       x:[[s:`a`b]p:1 2;q:3 4]
       y:[[s:`b`c]p:9 8;q:7 6]
       x
@@ -3006,7 +3102,10 @@ Outer join key table/A_table x with key table/A_table y.
      b|9 7
      c|8 6
 
-12.6 Insert and Upsert
+13.1.4 asof join
+----------------
+
+13.2 Insert and Upsert
 ======================
 
 One can add data to tables via insert or upsert.  The difference
@@ -3014,7 +3113,7 @@ between the two is that insert adds data to a table while upsert will
 add or replace data to a keyed table.  Upsert adds when the key isn't
 present and replaces when the key is.
 
-12.6.1 insert => x,y
+13.2.1 insert => x,y
 --------------------
 
 Insert dictionary y into table x.
@@ -3041,7 +3140,7 @@ Insert dictionary y into table x.
      a   7
      c  12
 
-12.6.2 upsert => x,y
+13.2.2 upsert => x,y
 --------------------
 
 Insert dictionary y into keyed table x.
@@ -3067,9 +3166,9 @@ Insert dictionary y into keyed table x.
      c | 7
 
 
-File: k9.info,  Node: System,  Next: Errors,  Prev: Tables/kSQL,  Up: Top
+File: k9.info,  Node: System,  Next: Errors,  Prev: kSQL,  Up: Top
 
-13 System
+14 System
 *********
 
 k9 comes with a few system functions and measurement commands.  The
@@ -3084,7 +3183,7 @@ measure execution times and memory usage, and list defined variables.
      \w     *note memory::
      \cd x  *note cd::
 
-13.1 load => \l a.k
+14.1 load => \l a.k
 ===================
 
 Load a text file of k9 commands.  The file name must end in .k.
@@ -3093,14 +3192,14 @@ Load a text file of k9 commands.  The file name must end in .k.
       \l func.k7  / will error as not .k
      :nyi
 
-13.2 timing => \t
+14.2 timing => \t
 =================
 
 List time elapsed
       \t ^(_1e7)?_1e8
      227
 
-13.3 variables => \v
+14.3 variables => \v
 ====================
 
 List variables
@@ -3108,7 +3207,7 @@ List variables
       \v
      [v:`a`b`c]
 
-13.4 memory => \w
+14.4 memory => \w
 =================
 
 List memory usage
@@ -3118,7 +3217,7 @@ List memory usage
       \w
      2097158
 
-13.5 cd => \cd x
+14.5 cd => \cd x
 ================
 
 Change directory (cd) into x
@@ -3128,7 +3227,7 @@ Change directory (cd) into x
 
 File: k9.info,  Node: Errors,  Next: Conculsion,  Prev: System,  Up: Top
 
-14 Errors
+15 Errors
 *********
 
 Given the terse syntax of k9 it likley won't be a surprise to a new
@@ -3137,14 +3236,14 @@ listed on the help page and described in more detail below.
 
      error: *note class:: *note rank:: *note length:: *note type: _type. *note domain:: *note limit:: stack (*note parse:: *note value: _value.)
 
-14.1 :class
+15.1 :class
 ===========
 
 Calling a function on mismatched types.
       3+`b
      :class
 
-14.2 rank
+15.2 rank
 =========
 
 Calling a function with too many parameters.
@@ -3153,14 +3252,14 @@ Calling a function with too many parameters.
      ^
      :rank
 
-14.3 length
+15.3 length
 ===========
 
 Operations on unequal length lists that require equal length.
       (1 2 3)+(4 5)
      :length
 
-14.4 :type
+15.4 :type
 ==========
 
 Calling a function with an unsupported variable type.
@@ -3168,14 +3267,14 @@ Calling a function with an unsupported variable type.
        ^
      :type
 
-14.5 :domain
+15.5 :domain
 ============
 
 Exhausted the number of input values
       -12?10   / only 10 unique value exist
      :domain
 
-14.6 :limit
+15.6 :limit
 ===========
 
 Exceeded a limit above the software maximum, eg.  writing a single
@@ -3185,7 +3284,7 @@ file above 1GB.
 
      :limit
 
-14.7 :nyi
+15.7 :nyi
 =========
 
 Running code that is not yet implemented.  This may come from running
@@ -3206,7 +3305,7 @@ code in this document with a different version of k9.
      ^
      :nyi
 
-14.8 :parse
+15.8 :parse
 ===========
 
 Syntax is wrong.  Possible you failed to match characters which must
@@ -3214,7 +3313,7 @@ match, eg.  (), {}, [], "".
       {37 . "hello"
      :parse
 
-14.9 :value
+15.9 :value
 ===========
 
 Undefined variable is used.
@@ -3224,7 +3323,7 @@ Undefined variable is used.
 
 File: k9.info,  Node: Conculsion,  Prev: Errors,  Up: Top
 
-15 Conculsion
+16 Conculsion
 *************
 
 I expect you are surprised by the performance possible by k9 and the
@@ -3240,122 +3339,126 @@ than previously imagined.
 
 Tag Table:
 Node: Top176
-Node: Intro3979
-Node: Examples16508
-Node: Benchmarks23629
-Node: Verb28576
-Ref: x30042
-Ref: set30067
-Ref: flip30279
-Ref: plus30529
-Ref: negate30914
-Ref: minus31086
-Ref: first31193
-Ref: times31512
-Ref: divide31643
-Ref: where31780
-Ref: min/and32166
-Ref: reverse32425
-Ref: max/or32595
-Ref: asc32859
-Ref: less33055
-Ref: group33317
-Ref: equal33563
-Ref: not33687
-Ref: match33804
-Ref: enum33997
-Ref: key35170
-Ref: enlist35397
-Ref: cat35536
-Ref: sort35655
-Ref: cut35832
-Ref: count36540
-Ref: take36730
-Ref: floor37359
-Ref: drop37450
-Ref: string38043
-Ref: cast/mmu38151
-Ref: unique38475
-Ref: find/rnd38712
-Ref: type39167
-Ref: at39523
-Ref: value39736
-Ref: dot40064
-Node: Adverb41034
-Ref: scan41746
-Ref: join42286
-Ref: split42461
-Ref: each42652
-Ref: has42870
-Ref: eachp43043
-Ref: bin243483
-Ref: eachr43686
-Ref: eachl43883
-Ref: n scan44067
-Ref: c scan44552
-Ref: c over44836
-Ref: vs44946
-Ref: sv45066
-Node: Noun45190
-Ref: bool46582
-Ref: int46882
-Ref: float47086
-Ref: date47388
-Ref: time47808
-Ref: datetime48422
-Ref: char49075
-Ref: name49298
-Node: List49715
-Node: Dictionary54236
-Node: Named Functions59041
-Ref: sqrt59656
-Ref: exp59727
-Ref: log59793
-Ref: sin59891
-Ref: cos60028
-Ref: div60174
-Ref: mod60328
-Ref: bar60504
-Ref: in61038
-Ref: bin61214
-Ref: within61426
-Node: More Functions61638
-Ref: cond61761
-Ref: amend61881
-Ref: dmend62543
-Node: I/O63246
-Ref: input format63592
-Ref: format64603
-Ref: write line65003
-Ref: read line65390
-Ref: write char65577
-Ref: read char65972
-Ref: load data66337
-Ref: write data68094
-Ref: conn/set72007
-Ref: http/get72051
-Node: Tables/kSQL72101
-Ref: Tables72281
-Ref: XTab72809
-Ref: TTab73249
-Ref: kSQL73275
-Node: System76167
-Ref: load76626
-Ref: timing76814
-Ref: variables76901
-Ref: memory77002
-Ref: cd77117
-Node: Errors77201
-Ref: class77641
-Ref: rank77730
-Ref: length77852
-Ref: _type77973
-Ref: domain78082
-Ref: limit78204
-Ref: nyi78405
-Ref: parse78738
-Ref: _value78893
-Node: Conculsion79021
+Node: Intro4009
+Node: Examples16538
+Node: Benchmarks23659
+Node: Verb28606
+Ref: x30072
+Ref: set30097
+Ref: flip30309
+Ref: plus30559
+Ref: negate30944
+Ref: minus31116
+Ref: first31223
+Ref: times31542
+Ref: divide31673
+Ref: where31810
+Ref: min/and32196
+Ref: reverse32455
+Ref: max/or32625
+Ref: asc32889
+Ref: less33085
+Ref: group33347
+Ref: equal33593
+Ref: not33717
+Ref: match33834
+Ref: enum34027
+Ref: key35200
+Ref: enlist35427
+Ref: cat35566
+Ref: sort35685
+Ref: cut35862
+Ref: count36570
+Ref: take36760
+Ref: floor37389
+Ref: drop37480
+Ref: string38073
+Ref: cast/mmu38181
+Ref: unique38505
+Ref: find/rnd38742
+Ref: type39197
+Ref: at39553
+Ref: value39766
+Ref: dot40094
+Node: Adverb41064
+Ref: scan41776
+Ref: join42316
+Ref: split42491
+Ref: each42682
+Ref: has42900
+Ref: eachp43073
+Ref: bin243513
+Ref: eachr43716
+Ref: eachl43913
+Ref: n scan44097
+Ref: c scan44582
+Ref: c over44866
+Ref: vs44976
+Ref: sv45096
+Node: Noun45220
+Ref: bool46612
+Ref: int46912
+Ref: float47116
+Ref: date47418
+Ref: time47838
+Ref: datetime48452
+Ref: char49105
+Ref: name49328
+Node: List49745
+Node: Dictionary54266
+Node: Named Functions59071
+Ref: sqrt59686
+Ref: exp59757
+Ref: log59823
+Ref: sin59921
+Ref: cos60058
+Ref: div60204
+Ref: mod60358
+Ref: bar60534
+Ref: in61068
+Ref: bin61244
+Ref: within61456
+Node: More Functions61668
+Ref: cond61791
+Ref: amend61911
+Ref: dmend62573
+Node: I/O63276
+Ref: input format63617
+Ref: format64628
+Ref: write line65028
+Ref: read line65415
+Ref: write char65602
+Ref: read char65997
+Ref: load data66362
+Ref: write data68119
+Ref: conn/set72032
+Ref: http/get72076
+Node: Tables72126
+Ref: Table72555
+Ref: XTab74165
+Ref: TTab74642
+Node: kSQL75078
+Ref: union76442
+Ref: left76793
+Ref: outer77309
+Ref: asof77628
+Node: System78629
+Ref: load79081
+Ref: timing79269
+Ref: variables79356
+Ref: memory79457
+Ref: cd79572
+Node: Errors79656
+Ref: class80096
+Ref: rank80185
+Ref: length80307
+Ref: _type80428
+Ref: domain80537
+Ref: limit80659
+Ref: nyi80860
+Ref: parse81193
+Ref: _value81348
+Node: Conculsion81476
 
 End Tag Table
 
