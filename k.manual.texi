@@ -4,7 +4,7 @@
 @codequotebacktick on
 
 @copying
-This manual is for Shakti (k9) build 2020.09.13.@*
+This manual is for Shakti (k9) build 2020.09.29.@*
 @today{}
 
 Copyright @copyright{} 2020 John Estrada
@@ -23,50 +23,51 @@ Copyright @copyright{} 2020 John Estrada
 @top k9: Manual
 The Shakti programming language is the work of Arthur Whitney and the team at Shakti.  The language comes from a lineage of similar languages going back to APL.  It's also known as k9 given the similarties to k, k2, ..., k8 and the fact that Arthur also wrote those.  k9 is still under development so expect a bit of syntax change and likley even more improvements.
 
-This manual is for Shakti (k9) build 2020.09.13.@*
+This manual is for Shakti (k9) build 2020.09.29.@*
 @c @end ifnottex
 
 The built-in reference screen containing all the k9 commands.
 
 @smallformat
 @verbatim
-Verb                      Adverb               Noun              System 
-:    x         y          f/  over  c/  join   bool 011b         \l a.k 
-+    flip      plus       f\  scan  c\  split  int  0N 0 2 3     \t:n x 
--    negate    minus      f'  each  v'  has    flt  0n 0 2 3.4   \u:n x 
-*    first     times      f': eachp v': bin    char " ab"        \v     
-%              divide     f/: eachr ([n;]f)/:  name ``ab         \w     
-&    where     min/and    f\: eachl ([n;]f)\:  uuid              \cd [x]
-|    reverse   max/or                                                   
-<    asc       less                   .z.DTV   date 2024.01.01T12:34:56 
->    dsc       more                   .z.dtv   time  12:34:56.123456789 
-=    group     equal                                                    
-~    not       match                           Class                    
-!    enum      key                             List (2;3.4;`a)          
-,    enlist    cat                             Dict `i`f!(2;3.4)        
-^    sort   [f]cut                             Func {[a;b]a+b}          
-#    count  [f]take                            Expr :a+b                
-_    floor  [f]drop                                                     
-$    string    cast+      $[b;x;y] if else                       \f     
-?    unique+   find+     *?[x;i;f[;y]] splice  Table [[]a:..;..] \ft x  
-@   *type   [f]at         @[x;i;f[;y]] amend   XTab  `a..![[]..] \fc x  
-.    value  [f]dot        .[x;i;f[;y]] dmend   TTab   [[a:..]..] \fl x  
-                                                                        
-\\ exit      / comment   *(if do while)                                 
-sqrt exp log sin cos div mod bar;count first last min max sum avg       
-select A by B from T where C; in bin within                             
-                                                                        
-t:[[]i:2 3;f:2.3 3.4;s:("ab";"abc")]; t~`json?`json t ; t~`csv?`csv t   
-                                                                        
-I/O: 0:line 1:char *[2:data 3:kipc/set 4:http/get]                      
-FFI: "./a.so"2:`f!"i"  /I f(I i){return 1+i;}       //cblas ..          
-k/c: "./b.so"2:`f!1    /K f(K x){return ki(1+xi);}  //feeds ..          
-python: import k;      k.k('+',2,3)                                     
-nodejs: k=require('k');k.k('+',2,3)                                     
-                                                                        
-limit: {[param8]local8 global32 const128 jump256} name8(*64) m[i;j]     
-error: class rank length type domain limit stack (parse value)          
-terms: noun/verb/adverb atom/list/dict func(monadic/dyadic/..)          
+2020.09.29 17GB 4core (c) shakti
+ \
+Verb                      Adverb               Noun              System         
+:    x         y          f/  over  c/  join   bool 011b         \l a.k         
++    flip      plus       f\  scan  c\  split  int  0N 0 2 3     \t:n x         
+-    negate    minus      f'  each  v'  has    flt  0n 0 2 3.4   \u:n x         
+*    first     times      f': eachp v': bin    char " ab"        \v             
+%              divide     f/: eachr ([n;]f)/:  name ``ab         \w             
+&    where     min/and    f\: eachl ([n;]f)\:  uuid              \cd [x]        
+|    reverse   max/or                   .z.dtv time  12:34:56.123456789         
+<    asc       less                     .z.DTV date 2024.01.01T12:34:56         
+>    dsc       more                                                             
+=    group     equal      I/O                                                   
+~    not       match      0:  r/w line         Class                            
+!    enum      key        1:  r/w char         List (2;3.4;`a)                  
+,    enlist    cat       *2:  r/w data         Dict `i`f!(2;3.4)                
+^    sort   [f]cut       *3:  kipc set         Func {[a;b]a+b}                  
+#    count  [f]take      *4:  http get         Expr :a+b                        
+_    floor  [f]drop                                                             
+$    string    cast+      $[b;x;y] if else                       \f             
+?    unique+   find+      ?[x;i;f[;y]] splice  Table [[]a:..;..] \ft x          
+@    type   [f]at         @[x;i;f[;y]] amend   XTab  `a..![[]..] \fc x          
+.    value  [f]dot        .[x;i;f[;y]] dmend   TTab   [[a:..]..] \fl x          
+sqrt sqr exp log sin cos div mod bar in bin within                              
+count first last min max sum avg                                                
+[select|*update] A by B from T where C ; *delete from T where C                 
+t:[[]i:2 3;f:2.3 3.4;s:`ab`abc]; `json t ; t~`csv?`csv t                        
+\\ exit      / comment   #[if do while select update]                           
+                                                                                
+*ffi: "./a.so"5:`f!"ii" /I f(I i){return 2+i;}       //cblas ..                 
+*c/k: "./b.so"5:`f!1    /K f(K x){return ki(2+xi);}  //feeds ..                 
+python: import k;      k.k('+',2,3)                                             
+nodejs: k=require('k');k.k('+',2,3)                                             
+                                                                                
+error: class rank length type domain value (parse limit stack)                  
+limit: {[param8]local8 global32 const128 jump256} name256                       
+                                                                                
+*production: no limits -- 10 times faster than trial (1GB 1core)
 @end verbatim
 @end smallformat
 
@@ -99,7 +100,7 @@ The k9 programming language is designed primarily for the analysis of data.  It 
 Imagine you have a small, on-disk, 40 million row database containing a time-series with two float values at each time.  Additionally this data could be split in three different tables covering different measurements.  Here's how fast k9 can read in the data to memory and compute a statistic, average difference over each table, which uses each and every row.
 
 @example
- bash-3.2$ 2020.09.20 17GB 4core (c) shakti
+ bash-3.2$ 2020.09.29 17GB 4core (c) shakti
  \t q:2:`q;@{select s:avg a-b from x@}'q[!q]
 415
 @end example
@@ -165,45 +166,44 @@ Again on the mac if you then attempt to run this file you likely won't succeed d
 Typing @code{\} in the terminal gives you a concise overview of the language.  This document aims to provide details to beginning users where the help screen is a tad too terse.  Some commands are not yet complete and thus marked with an asterisk, eg. *?[x;i;f[;y]] splice.
 @smallformat
 @verbatim
-Sep 13 2020 16GB (c) shakti
+2020.09.29 17GB 4core (c) shakti
  \
-Verb                      Adverb               Noun              System 
-:    x         y          f/  over  c/  join   bool 011b         \l a.k 
-+    flip      plus       f\  scan  c\  split  int  0N 0 2 3     \t:n x 
--    negate    minus      f'  each  v'  has    flt  0n 0 2 3.4   \u:n x 
-*    first     times      f': eachp v': bin    char " ab"        \v     
-%              divide     f/: eachr ([n;]f)/:  name ``ab         \w     
-&    where     min/and    f\: eachl ([n;]f)\:  uuid              \cd [x]
-|    reverse   max/or                                                   
-<    asc       less                   .z.DTV   date 2024.01.01T12:34:56 
->    dsc       more                   .z.dtv   time  12:34:56.123456789 
-=    group     equal                                                    
-~    not       match                           Class                    
-!    enum      key                             List (2;3.4;`a)          
-,    enlist    cat                             Dict `i`f!(2;3.4)        
-^    sort   [f]cut                             Func {[a;b]a+b}          
-#    count  [f]take                            Expr :a+b                
-_    floor  [f]drop                                                     
-$    string    cast+      $[b;x;y] if else                       \f     
-?    unique+   find+     *?[x;i;f[;y]] splice  Table [[]a:..;..] \ft x  
-@   *type   [f]at         @[x;i;f[;y]] amend   XTab  `a..![[]..] \fc x  
-.    value  [f]dot        .[x;i;f[;y]] dmend   TTab   [[a:..]..] \fl x  
-                                                                        
-\\ exit      / comment   *(if do while)                                 
-sqrt exp log sin cos div mod bar;count first last min max sum avg       
-select A by B from T where C; in bin within                             
-                                                                        
-t:[[]i:2 3;f:2.3 3.4;s:("ab";"abc")]; t~`json?`json t ; t~`csv?`csv t   
-                                                                        
-I/O: 0:line 1:char *[2:data 3:kipc/set 4:http/get]                      
-FFI: "./a.so"2:`f!"i"  /I f(I i){return 1+i;}       //cblas ..          
-k/c: "./b.so"2:`f!1    /K f(K x){return ki(1+xi);}  //feeds ..          
-python: import k;      k.k('+',2,3)                                     
-nodejs: k=require('k');k.k('+',2,3)                                     
-                                                                        
-limit: {[param8]local8 global32 const128 jump256} name8(*64) m[i;j]     
-error: class rank length type domain limit stack (parse value)          
-terms: noun/verb/adverb atom/list/dict func(monadic/dyadic/..)          
+Verb                      Adverb               Noun              System         
+:    x         y          f/  over  c/  join   bool 011b         \l a.k         
++    flip      plus       f\  scan  c\  split  int  0N 0 2 3     \t:n x         
+-    negate    minus      f'  each  v'  has    flt  0n 0 2 3.4   \u:n x         
+*    first     times      f': eachp v': bin    char " ab"        \v             
+%              divide     f/: eachr ([n;]f)/:  name ``ab         \w             
+&    where     min/and    f\: eachl ([n;]f)\:  uuid              \cd [x]        
+|    reverse   max/or                   .z.dtv time  12:34:56.123456789         
+<    asc       less                     .z.DTV date 2024.01.01T12:34:56         
+>    dsc       more                                                             
+=    group     equal      I/O                                                   
+~    not       match      0:  r/w line         Class                            
+!    enum      key        1:  r/w char         List (2;3.4;`a)                  
+,    enlist    cat       *2:  r/w data         Dict `i`f!(2;3.4)                
+^    sort   [f]cut       *3:  kipc set         Func {[a;b]a+b}                  
+#    count  [f]take      *4:  http get         Expr :a+b                        
+_    floor  [f]drop                                                             
+$    string    cast+      $[b;x;y] if else                       \f             
+?    unique+   find+      ?[x;i;f[;y]] splice  Table [[]a:..;..] \ft x          
+@    type   [f]at         @[x;i;f[;y]] amend   XTab  `a..![[]..] \fc x          
+.    value  [f]dot        .[x;i;f[;y]] dmend   TTab   [[a:..]..] \fl x          
+sqrt sqr exp log sin cos div mod bar in bin within                              
+count first last min max sum avg                                                
+[select|*update] A by B from T where C ; *delete from T where C                 
+t:[[]i:2 3;f:2.3 3.4;s:`ab`abc]; `json t ; t~`csv?`csv t                        
+\\ exit      / comment   #[if do while select update]                           
+                                                                                
+*ffi: "./a.so"5:`f!"ii" /I f(I i){return 2+i;}       //cblas ..                 
+*c/k: "./b.so"5:`f!1    /K f(K x){return ki(2+xi);}  //feeds ..                 
+python: import k;      k.k('+',2,3)                                             
+nodejs: k=require('k');k.k('+',2,3)                                             
+                                                                                
+error: class rank length type domain value (parse limit stack)                  
+limit: {[param8]local8 global32 const128 jump256} name256                       
+                                                                                
+*production: no limits -- 10 times faster than trial (1GB 1core)
 @end verbatim
 @end smallformat
 @page
@@ -771,16 +771,16 @@ Verb
 < @ref{asc},      @ref{less}.
 > @ref{asc,dsc},      @ref{less,more}.
 = @ref{group},    @ref{equal}.
-~ @ref{match},    @ref{match}.
+~ @ref{not},      @ref{match}.
 ! @ref{enum},     @ref{key}.
 , @ref{enlist},   @ref{cat}.
-^ @ref{sort},     @ref{cut}. 
-# @ref{count},    @ref{take}.  
-_ @ref{floor},    @ref{drop}.    
-$ @ref{string},   @ref{cast/mmu}.    
-? @ref{unique},   @ref{find/rnd}.    
-@@ @ref{type},     @ref{at}.    
-. @ref{value},    @ref{dot}.
+^ @ref{sort},  @ref{[f]cut}. 
+# @ref{count}, @ref{[f]take}.  
+_ @ref{floor}, @ref{[f]drop}.    
+$ @ref{string},   @ref{cast+}.    
+? @ref{unique+},  @ref{find+}.    
+@@ @ref{type},  @ref{[f]at}.    
+. @ref{value}, @ref{[f]dot}.
 
 @end example
 
@@ -1145,7 +1145,7 @@ Given a list of integers, x, generate a list of lists where each individual inde
 @end example
 
 @anchor{key}@section key @result{} x!y
-Dictionary of x (key) and y (value).  If looking to key a table then refer to @ref{cut}.
+Dictionary of x (key) and y (value).  If looking to key a table then refer to @ref{[f]cut}.
 
 @example
 @ 3!7
@@ -1190,7 +1190,7 @@ a|7 6 5
 b|0 1 2
 @end example
 
-@anchor{cut}@section [f]cut @result{} x^y
+@anchor{[f]cut}@section [f]cut @result{} x^y
 Cut list y by size or indices x.  Also, cut y into a domain (x) and range.
 
 Cut list.
@@ -1248,7 +1248,7 @@ Count the number of elements in x.
 2
 @end example
 
-@anchor{take}@section [f]take @result{} x#y
+@anchor{[f]take}@section [f]take @result{} x#y
 Take is used to return a subset of list y depending if x is a atom, list, or function.  If x is an atom, then postive (negative) x returns the first (last) x elements of y.  If x is a list, then returns any values common in both x and y. If x is a function (f), then filter out values where the funtion is non-zero.
 @example
 @ 3#0 1 2 3 4 5          / take first
@@ -1270,7 +1270,7 @@ Return the integer floor of float x.
 3
 @end example
 
-@anchor{drop}@section [f]drop @result{} x_y
+@anchor{[f]drop}@section [f]drop @result{} x_y
 Drop is used to remove a subset of list y depending if x is a atom, list, or function.  If x is an atom, then postive (negative) x removes the first (last) x elements of y.  If x is a list, then remove any values in x from y. If x is a function (f), then remove values where the funtion is non-zero.
 @example
 @ 3_0 1 2 3 4 5          / drop first
@@ -1295,7 +1295,7 @@ d
 "4.7"
 @end example
 
-@anchor{cast/mmu}@section cast/mmu @result{} x$y
+@anchor{cast+}@section cast+ @result{} x$y
 
 Cast string y into type x.
 
@@ -1319,7 +1319,7 @@ Multiple matrices x and y together.
 440 461
 @end example
 
-@anchor{unique}@section unique @result{} ?x
+@anchor{unique+}@section unique+ @result{} ?x
 Return the unique values of the list x.  The @code{?} preceeding the return value explicitly shows that list has no repeat values.
 @example
 @ ?`f`a`b`c`a`b`d`e`a
@@ -1328,7 +1328,7 @@ Return the unique values of the list x.  The @code{?} preceeding the return valu
 ?"ban"
 @end example
 
-@anchor{find/rnd}@section find/rnd @result{} x?y
+@anchor{find+}@section find+ @result{} x?y
 Find the first element of x that matches y otherwise return the end of vector. Also, acts to generates random numbers from 0 to y when x and y are integers.
 @example
 @ `a`b`a`c`b`a`a?`b
@@ -1366,7 +1366,7 @@ Return the data type of x.
 `i`f`s`c`D`t
 @end example
 
-@anchor{at}@section at @result{} x@@y
+@anchor{[f]at}@section [f]at @result{} x@@y
 Given a list x return the value(s) at index(indices) y.
 @example
 @ (3 4 7 12)@@2
@@ -1407,7 +1407,7 @@ b|2
 c|3u
 @end example
 
-@anchor{dot}@section dot @result{} x.y
+@anchor{[f]dot}@section [f]dot @result{} x.y
 Given list x return the value at list y.  The action of dot depends on the shape of y.
 @itemize
 @item Index returns the value(s) at x at each index y, i.e. x@@y@@0, x@@y@@1, ..., x@@y@@(n-1).
@@ -1656,14 +1656,15 @@ In additional to the basic data types, data can be put into lists (uniform and n
 The set of k9 data, aka nouns, are as follows.
 
 @example
-Atom   Example      Type  
-@ref{bool},  110b         b  
-@ref{int},   0N 2 3 4     i 
-@ref{float}, 0n 2 3.4     f
-@ref{date},  2024.01.01   D 
-@ref{time},  12:34:56.789 t  
-@ref{char},  "ab "        c  
-@ref{name},  `a`b`        n  
+Atom   Example     
+@ref{bool},  011b           
+@ref{int},   0N 2 3       
+@ref{flt},   0n 2 3.4     
+@ref{char},  " ab"          
+@ref{name},  ``ab
+@ref{uuid},  
+@ref{time},  12:34:56.123456789   
+@ref{date}, 2024.01.01T12:34:56 
 @end example
 
 Data types can be determined by using the @code{@@} function on values or lists of values.  In the case of non-uniform lists @code{@@} returns the type of the list @code{`L} but the function can be modified to evalue each type @code{@@'} instead and return the type of each element in the list.
@@ -1710,7 +1711,7 @@ Integers
 @ 3%1   / result will be float even though inputs are int
 3f
 @end example
-@anchor{float}@subsection float @result{} Float f
+@anchor{flt}@subsection flt @result{} Float f
 Float
 @example
 @ 3.1
@@ -1728,22 +1729,37 @@ Float
 `f
 @end example
 
+@section Text Data
+Text data come in characters, lists of characters (aka strings) and enumerated types.  Enumerated types are displayed as text but stored internally as integers.
+
+@anchor{char}@subsection char @result{} Character c
+Characters are stored as their ANSI value and can be seen by conversion to integers.  Character lists are equivalent to strings.
+
+@example
+@ @@"b"
+`c
+@ @@"bd"
+`C 
+@end example
+
+@anchor{name}@subsection name @result{} Name n
+Names are enumerate type shown as a text string but stored internally as a integer value.
+
+@example
+@ @@`blue
+`n
+@ @@`blue`red
+`N
+@end example
+
+@section Unique Identifier
+TBD
+
+@anchor{uuid}@subsection uuid @result{} Uuid
+TBD
+
 @section Temporal Data
 Temporal data can be expressed in time, date, or a combined date and time.
-@anchor{date}@subsection date @result{} Date D
-Dates are in yyyy.mm.dd format and stored internally as integers.
-@example
-@ @@2020.04.20               / date
-`D
-@ .z.D                       / current date in GMT
-2020.09.13
-@ `i .z.D                    / numeric representation of date
--1205
-@ `i 2024.01.01              / zero date
-0
-@ `D 0                       / zero date
-2024.01.01
-@end example
 
 @anchor{time}@subsection time @result{} Time t
 Times are stored in hh:mm:ss.123 format and stored internally as integers.
@@ -1766,7 +1782,22 @@ Times are stored in hh:mm:ss.123 format and stored internally as integers.
 00:00:12.345
 @end example
 
-@anchor{datetime}@subsection datetime @result{} Datetime T
+@anchor{date}@subsection date @result{} Date D
+Dates are in yyyy.mm.dd format and stored internally as integers.
+@example
+@ @@2020.04.20               / date
+`D
+@ .z.D                       / current date in GMT
+2020.09.13
+@ `i .z.D                    / numeric representation of date
+-1205
+@ `i 2024.01.01              / zero date
+0
+@ `D 0                       / zero date
+2024.01.01
+@end example
+
+@anchor{datetime}@subsection datetime @result{} Datetime S
 Dates and times can be combined as 2020.04.20T12:34:56.789.
 
 @example
@@ -1782,27 +1813,6 @@ Dates and times can be combined as 2020.04.20T12:34:56.789.
 2020-04-20T12:34:56.789
 @end example
 
-@section Text Data
-Text data come in characters, lists of characters (aka strings) and enumerated types.  Enumerated types are displayed as text but stored internally as integers.
-
-@anchor{char}@subsection char @result{} Character c
-Characters are stored as their ANSI value and can be seen by conversion to integers.  Character lists are equivalent to strings.
-
-@example
-@ @@"b"
-`c
-@ @@"bd"
-`C 
-@end example
-
-@anchor{name}@subsection name @result{} Name n
-Names are enumerate type shown as a text string but stored internally as a integer value.
-@example
-@ @@`blue
-`n
-@ @@`blue`red
-`N
-@end example
 @section Extreme values
 Data types can represent in-range, null, and out-of-range values.
 

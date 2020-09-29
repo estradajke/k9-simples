@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is for Shakti (k9) build 2020.09.13.
+<!-- This manual is for Shakti (k9) build 2020.09.29.
 
-September 28, 2020
+September 29, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -135,13 +135,13 @@ Previous: <a href="Errors.html" accesskey="p" rel="prev">Errors</a>, Up: <a href
     <li><a id="toc-floor-_21d2-_005fx" href="Verb.html#floor-_21d2-_005fx">4.28 floor &rArr; _x</a></li>
     <li><a id="toc-_005bf_005ddrop-_21d2-x_005fy" href="Verb.html#g_t_005bf_005ddrop-_21d2-x_005fy">4.29 [f]drop &rArr; x_y</a></li>
     <li><a id="toc-string-_21d2-_0024x" href="Verb.html#string-_21d2-_0024x">4.30 string &rArr; $x</a></li>
-    <li><a id="toc-cast_002fmmu-_21d2-x_0024y" href="Verb.html#cast_002fmmu-_21d2-x_0024y">4.31 cast/mmu &rArr; x$y</a></li>
-    <li><a id="toc-unique-_21d2-_003fx" href="Verb.html#unique-_21d2-_003fx">4.32 unique &rArr; ?x</a></li>
-    <li><a id="toc-find_002frnd-_21d2-x_003fy" href="Verb.html#find_002frnd-_21d2-x_003fy">4.33 find/rnd &rArr; x?y</a></li>
+    <li><a id="toc-cast_002b-_21d2-x_0024y" href="Verb.html#cast_002b-_21d2-x_0024y">4.31 cast+ &rArr; x$y</a></li>
+    <li><a id="toc-unique_002b-_21d2-_003fx" href="Verb.html#unique_002b-_21d2-_003fx">4.32 unique+ &rArr; ?x</a></li>
+    <li><a id="toc-find_002b-_21d2-x_003fy" href="Verb.html#find_002b-_21d2-x_003fy">4.33 find+ &rArr; x?y</a></li>
     <li><a id="toc-type-_21d2-_0040x" href="Verb.html#type-_21d2-_0040x">4.34 type &rArr; @x</a></li>
-    <li><a id="toc-at-_21d2-x_0040y" href="Verb.html#at-_21d2-x_0040y">4.35 at &rArr; x@y</a></li>
+    <li><a id="toc-_005bf_005dat-_21d2-x_0040y" href="Verb.html#g_t_005bf_005dat-_21d2-x_0040y">4.35 [f]at &rArr; x@y</a></li>
     <li><a id="toc-value-_21d2-_002ex" href="Verb.html#value-_21d2-_002ex">4.36 value &rArr; .x</a></li>
-    <li><a id="toc-dot-_21d2-x_002ey" href="Verb.html#dot-_21d2-x_002ey">4.37 dot &rArr; x.y</a></li>
+    <li><a id="toc-_005bf_005ddot-_21d2-x_002ey" href="Verb.html#g_t_005bf_005ddot-_21d2-x_002ey">4.37 [f]dot &rArr; x.y</a></li>
   </ul></li>
   <li><a id="toc-Adverb-1" href="Adverb.html#Adverb">5 Adverb</a>
   <ul class="no-bullet">
@@ -168,20 +168,24 @@ Previous: <a href="Errors.html" accesskey="p" rel="prev">Errors</a>, Up: <a href
     <li><a id="toc-Numeric-Data" href="Noun.html#Numeric-Data">6.2 Numeric Data</a>
     <ul class="no-bullet">
       <li><a id="toc-int-_21d2-Integer-i" href="Noun.html#int-_21d2-Integer-i">6.2.1 int &rArr; Integer i</a></li>
-      <li><a id="toc-float-_21d2-Float-f" href="Noun.html#float-_21d2-Float-f">6.2.2 float &rArr; Float f</a></li>
+      <li><a id="toc-flt-_21d2-Float-f" href="Noun.html#flt-_21d2-Float-f">6.2.2 flt &rArr; Float f</a></li>
     </ul></li>
-    <li><a id="toc-Temporal-Data" href="Noun.html#Temporal-Data">6.3 Temporal Data</a>
+    <li><a id="toc-Text-Data" href="Noun.html#Text-Data">6.3 Text Data</a>
     <ul class="no-bullet">
-      <li><a id="toc-date-_21d2-Date-D" href="Noun.html#date-_21d2-Date-D">6.3.1 date &rArr; Date D</a></li>
-      <li><a id="toc-time-_21d2-Time-t" href="Noun.html#time-_21d2-Time-t">6.3.2 time &rArr; Time t</a></li>
-      <li><a id="toc-datetime-_21d2-Datetime-T" href="Noun.html#datetime-_21d2-Datetime-T">6.3.3 datetime &rArr; Datetime T</a></li>
+      <li><a id="toc-char-_21d2-Character-c" href="Noun.html#char-_21d2-Character-c">6.3.1 char &rArr; Character c</a></li>
+      <li><a id="toc-name-_21d2-Name-n" href="Noun.html#name-_21d2-Name-n">6.3.2 name &rArr; Name n</a></li>
     </ul></li>
-    <li><a id="toc-Text-Data" href="Noun.html#Text-Data">6.4 Text Data</a>
+    <li><a id="toc-Unique-Identifier" href="Noun.html#Unique-Identifier">6.4 Unique Identifier</a>
     <ul class="no-bullet">
-      <li><a id="toc-char-_21d2-Character-c" href="Noun.html#char-_21d2-Character-c">6.4.1 char &rArr; Character c</a></li>
-      <li><a id="toc-name-_21d2-Name-n" href="Noun.html#name-_21d2-Name-n">6.4.2 name &rArr; Name n</a></li>
+      <li><a id="toc-uuid-_21d2-Uuid" href="Noun.html#uuid-_21d2-Uuid">6.4.1 uuid &rArr; Uuid</a></li>
     </ul></li>
-    <li><a id="toc-Extreme-values" href="Noun.html#Extreme-values">6.5 Extreme values</a></li>
+    <li><a id="toc-Temporal-Data" href="Noun.html#Temporal-Data">6.5 Temporal Data</a>
+    <ul class="no-bullet">
+      <li><a id="toc-time-_21d2-Time-t" href="Noun.html#time-_21d2-Time-t">6.5.1 time &rArr; Time t</a></li>
+      <li><a id="toc-date-_21d2-Date-D" href="Noun.html#date-_21d2-Date-D">6.5.2 date &rArr; Date D</a></li>
+      <li><a id="toc-datetime-_21d2-Datetime-S" href="Noun.html#datetime-_21d2-Datetime-S">6.5.3 datetime &rArr; Datetime S</a></li>
+    </ul></li>
+    <li><a id="toc-Extreme-values" href="Noun.html#Extreme-values">6.6 Extreme values</a></li>
   </ul></li>
   <li><a id="toc-List-1" href="List.html#List">7 List</a>
   <ul class="no-bullet">

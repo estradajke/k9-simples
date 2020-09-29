@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is for Shakti (k9) build 2020.09.13.
+<!-- This manual is for Shakti (k9) build 2020.09.29.
 
-September 28, 2020
+September 29, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -65,16 +65,16 @@ Next: <a href="Adverb.html" accesskey="n" rel="next">Adverb</a>, Previous: <a hr
 &lt; <a href="#asc">asc</a>,      <a href="#less">less</a>.
 &gt; <a href="#asc">dsc</a>,      <a href="#less">more</a>.
 = <a href="#group">group</a>,    <a href="#equal">equal</a>.
-~ <a href="#match">match</a>,    <a href="#match">match</a>.
+~ <a href="#not">not</a>,      <a href="#match">match</a>.
 ! <a href="#enum">enum</a>,     <a href="#key">key</a>.
 , <a href="#enlist">enlist</a>,   <a href="#cat">cat</a>.
-^ <a href="#sort">sort</a>,     <a href="#cut">cut</a>. 
-# <a href="#count">count</a>,    <a href="#take">take</a>.  
-_ <a href="#floor">floor</a>,    <a href="#drop">drop</a>.    
-$ <a href="#string">string</a>,   <a href="#cast_002fmmu">cast/mmu</a>.    
-? <a href="#unique">unique</a>,   <a href="#find_002frnd">find/rnd</a>.    
-@ <a href="#type">type</a>,     <a href="#at">at</a>.    
-. <a href="#value">value</a>,    <a href="#dot">dot</a>.
+^ <a href="#sort">sort</a>,  <a href="#g_t_005bf_005dcut">[f]cut</a>. 
+# <a href="#count">count</a>, <a href="#g_t_005bf_005dtake">[f]take</a>.  
+_ <a href="#floor">floor</a>, <a href="#g_t_005bf_005ddrop">[f]drop</a>.    
+$ <a href="#string">string</a>,   <a href="#cast_002b">cast+</a>.    
+? <a href="#unique_002b">unique+</a>,  <a href="#find_002b">find+</a>.    
+@ <a href="#type">type</a>,  <a href="#g_t_005bf_005dat">[f]at</a>.    
+. <a href="#value">value</a>, <a href="#g_t_005bf_005ddot">[f]dot</a>.
 
 </pre></div>
 
@@ -380,7 +380,7 @@ n|2 4
 </pre></div>
 
 <span id="key"></span><span id="key-_21d2-x_0021y"></span><h3 class="section">4.21 key &rArr; x!y</h3>
-<p>Dictionary of x (key) and y (value).  If looking to key a table then refer to <a href="#cut">cut</a>.
+<p>Dictionary of x (key) and y (value).  If looking to key a table then refer to <a href="#g_t_005bf_005dcut">[f]cut</a>.
 </p>
 <div class="example">
 <pre class="example">&nbsp;3!7
@@ -425,7 +425,7 @@ a|7 6 5
 b|0 1 2
 </pre></div>
 
-<span id="cut"></span><span id="g_t_005bf_005dcut-_21d2-x_005ey"></span><h3 class="section">4.25 [f]cut &rArr; x^y</h3>
+<span id="g_t_005bf_005dcut"></span><span id="g_t_005bf_005dcut-_21d2-x_005ey"></span><h3 class="section">4.25 [f]cut &rArr; x^y</h3>
 <p>Cut list y by size or indices x.  Also, cut y into a domain (x) and range.
 </p>
 <p>Cut list.
@@ -483,7 +483,7 @@ z  1
 2
 </pre></div>
 
-<span id="take"></span><span id="g_t_005bf_005dtake-_21d2-x_0023y"></span><h3 class="section">4.27 [f]take &rArr; x#y</h3>
+<span id="g_t_005bf_005dtake"></span><span id="g_t_005bf_005dtake-_21d2-x_0023y"></span><h3 class="section">4.27 [f]take &rArr; x#y</h3>
 <p>Take is used to return a subset of list y depending if x is a atom, list, or function.  If x is an atom, then postive (negative) x returns the first (last) x elements of y.  If x is a list, then returns any values common in both x and y. If x is a function (f), then filter out values where the funtion is non-zero.
 </p><div class="example">
 <pre class="example">&nbsp;3#0 1 2 3 4 5          / take first
@@ -505,7 +505,7 @@ z  1
 3
 </pre></div>
 
-<span id="drop"></span><span id="g_t_005bf_005ddrop-_21d2-x_005fy"></span><h3 class="section">4.29 [f]drop &rArr; x_y</h3>
+<span id="g_t_005bf_005ddrop"></span><span id="g_t_005bf_005ddrop-_21d2-x_005fy"></span><h3 class="section">4.29 [f]drop &rArr; x_y</h3>
 <p>Drop is used to remove a subset of list y depending if x is a atom, list, or function.  If x is an atom, then postive (negative) x removes the first (last) x elements of y.  If x is a list, then remove any values in x from y. If x is a function (f), then remove values where the funtion is non-zero.
 </p><div class="example">
 <pre class="example">&nbsp;3_0 1 2 3 4 5          / drop first
@@ -530,7 +530,7 @@ d
 &quot;4.7&quot;
 </pre></div>
 
-<span id="cast_002fmmu"></span><span id="cast_002fmmu-_21d2-x_0024y"></span><h3 class="section">4.31 cast/mmu &rArr; x$y</h3>
+<span id="cast_002b"></span><span id="cast_002b-_21d2-x_0024y"></span><h3 class="section">4.31 cast+ &rArr; x$y</h3>
 
 <p>Cast string y into type x.
 </p>
@@ -554,7 +554,7 @@ d
 440 461
 </pre></div>
 
-<span id="unique"></span><span id="unique-_21d2-_003fx"></span><h3 class="section">4.32 unique &rArr; ?x</h3>
+<span id="unique_002b"></span><span id="unique_002b-_21d2-_003fx"></span><h3 class="section">4.32 unique+ &rArr; ?x</h3>
 <p>Return the unique values of the list x.  The <code>?</code> preceeding the return value explicitly shows that list has no repeat values.
 </p><div class="example">
 <pre class="example">&nbsp;?`f`a`b`c`a`b`d`e`a
@@ -563,7 +563,7 @@ d
 ?&quot;ban&quot;
 </pre></div>
 
-<span id="find_002frnd"></span><span id="find_002frnd-_21d2-x_003fy"></span><h3 class="section">4.33 find/rnd &rArr; x?y</h3>
+<span id="find_002b"></span><span id="find_002b-_21d2-x_003fy"></span><h3 class="section">4.33 find+ &rArr; x?y</h3>
 <p>Find the first element of x that matches y otherwise return the end of vector. Also, acts to generates random numbers from 0 to y when x and y are integers.
 </p><div class="example">
 <pre class="example">&nbsp;`a`b`a`c`b`a`a?`b
@@ -601,7 +601,7 @@ d
 `i`f`s`c`D`t
 </pre></div>
 
-<span id="at"></span><span id="at-_21d2-x_0040y"></span><h3 class="section">4.35 at &rArr; x@y</h3>
+<span id="g_t_005bf_005dat"></span><span id="g_t_005bf_005dat-_21d2-x_0040y"></span><h3 class="section">4.35 [f]at &rArr; x@y</h3>
 <p>Given a list x return the value(s) at index(indices) y.
 </p><div class="example">
 <pre class="example">&nbsp;(3 4 7 12)@2
@@ -642,7 +642,7 @@ b|2
 c|3u
 </pre></div>
 
-<span id="dot"></span><span id="dot-_21d2-x_002ey"></span><h3 class="section">4.37 dot &rArr; x.y</h3>
+<span id="g_t_005bf_005ddot"></span><span id="g_t_005bf_005ddot-_21d2-x_002ey"></span><h3 class="section">4.37 [f]dot &rArr; x.y</h3>
 <p>Given list x return the value at list y.  The action of dot depends on the shape of y.
 </p><ul>
 <li> Index returns the value(s) at x at each index y, i.e. x@y@0, x@y@1, ..., x@y@(n-1).
