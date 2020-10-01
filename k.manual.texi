@@ -2940,7 +2940,35 @@ b|9 7
 c|8 6
 @end example
 
-@anchor{asof}@subsection asof join
+@anchor{asof}@subsection asof join @result{} T,TT
+Asof joins a table T to a TTab TT (key by time) such that the T values show the preceeding or equal time value of TT.
+
+@example
+ T:[[]t:09:30+5*!5;p:100+!5];T
+t     p  
+----- ---
+09:30 100
+09:35 101
+09:40 102
+09:45 103
+09:50 104
+
+ TT:[[t:09:32 09:41 09:45]q:50 51 52];TT
+t    |q 
+-----|--
+09:32|50
+09:41|51
+09:45|52
+
+ T,TT
+t     p   q 
+----- --- --
+09:30 100  0
+09:35 101 50
+09:40 102 50
+09:45 103 52
+09:50 104 52
+@end example
 
 @section Insert and Upsert
 One can add data to tables via insert or upsert.  The difference between the two is that insert adds data to a table while upsert will add or replace data to a keyed table.  Upsert adds when the key isn't present and replaces when the key is.

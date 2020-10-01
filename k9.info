@@ -3115,8 +3115,36 @@ Outer join TTab TT1 with key TTab TT2.
      b|9 7
      c|8 6
 
-13.1.4 asof join
-----------------
+13.1.4 asof join => T,TT
+------------------------
+
+Asof joins a table T to a TTab TT (key by time) such that the T values
+show the preceeding or equal time value of TT.
+
+      T:[[]t:09:30+5*!5;p:100+!5];T
+     t     p
+     ----- ---
+     09:30 100
+     09:35 101
+     09:40 102
+     09:45 103
+     09:50 104
+
+      TT:[[t:09:32 09:41 09:45]q:50 51 52];TT
+     t    |q
+     -----|--
+     09:32|50
+     09:41|51
+     09:45|52
+
+      T,TT
+     t     p   q
+     ----- --- --
+     09:30 100  0
+     09:35 101 50
+     09:40 102 50
+     09:45 103 52
+     09:50 104 52
 
 13.2 Insert and Upsert
 ======================
@@ -3456,23 +3484,23 @@ Ref: union77002
 Ref: left77377
 Ref: outer77901
 Ref: asof78256
-Node: System79257
-Ref: load79709
-Ref: timing79897
-Ref: variables79984
-Ref: memory80085
-Ref: cd80200
-Node: Errors80284
-Ref: class80724
-Ref: rank80813
-Ref: length80935
-Ref: _type81056
-Ref: domain81165
-Ref: limit81287
-Ref: nyi81488
-Ref: parse81821
-Ref: _value81976
-Node: Conculsion82104
+Node: System79785
+Ref: load80237
+Ref: timing80425
+Ref: variables80512
+Ref: memory80613
+Ref: cd80728
+Node: Errors80812
+Ref: class81252
+Ref: rank81341
+Ref: length81463
+Ref: _type81584
+Ref: domain81693
+Ref: limit81815
+Ref: nyi82016
+Ref: parse82349
+Ref: _value82504
+Node: Conculsion82632
 
 End Tag Table
 
