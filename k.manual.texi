@@ -2945,8 +2945,8 @@ c|8 6
 @section Insert and Upsert
 One can add data to tables via insert or upsert.  The difference between the two is that insert adds data to a table while upsert will add or replace data to a keyed table.  Upsert adds when the key isn't present and replaces when the key is.
 
-@subsection insert @result{} T,y
-Insert dictionary y into table T.
+@subsection insert @result{} T,d
+Insert dictionary d into table T.
 @example
  T:[[]c1:`a`b`a;c2:1 2 7];T
 c1 c2
@@ -2972,8 +2972,8 @@ a   7
 c  12
 @end example
 
-@subsection upsert @result{} TT,y
-Insert dictionary y into TTab TT.
+@subsection upsert @result{} TT,d
+Insert dictionary d into TTab TT.
 @example
  TT:[[c1:`a`b`c]c2:1 2 7];TT
 c1|c2
