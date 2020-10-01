@@ -211,6 +211,31 @@ t     p   q
 09:50 104 52
 </pre></div>
 
+<p>Scaling this up to a bigger set of tables one can see the performance of k9 on joins.
+</p>
+<div class="example">
+<pre class="example"> N:_1e8;T:[[]t:N?`t 0;q:N?100];5#T
+t            q 
+------------ --
+00:00:00.001 44
+00:00:00.002 46
+00:00:00.002 48
+00:00:00.003 35
+00:00:00.003 43
+
+ n:_1e5;TT:[[t:n?`t 0]p:n?100];5#TT
+t           |p 
+------------|--
+00:00:00.481|54
+00:00:00.961|63
+00:00:01.094|67
+00:00:01.479|16
+00:00:01.917|58
+
+ \t T,TT
+222
+</pre></div>
+
 <span id="Insert-and-Upsert"></span><h3 class="section">13.2 Insert and Upsert</h3>
 <p>One can add data to tables via insert or upsert.  The difference between the two is that insert adds data to a table while upsert will add or replace data to a keyed table.  Upsert adds when the key isn&rsquo;t present and replaces when the key is.
 </p>

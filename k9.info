@@ -3146,6 +3146,30 @@ show the preceeding or equal time value of TT.
      09:45 103 52
      09:50 104 52
 
+   Scaling this up to a bigger set of tables one can see the
+performance of k9 on joins.
+
+      N:_1e8;T:[[]t:N?`t 0;q:N?100];5#T
+     t            q
+     ------------ --
+     00:00:00.001 44
+     00:00:00.002 46
+     00:00:00.002 48
+     00:00:00.003 35
+     00:00:00.003 43
+
+      n:_1e5;TT:[[t:n?`t 0]p:n?100];5#TT
+     t           |p
+     ------------|--
+     00:00:00.481|54
+     00:00:00.961|63
+     00:00:01.094|67
+     00:00:01.479|16
+     00:00:01.917|58
+
+      \t T,TT
+     222
+
 13.2 Insert and Upsert
 ======================
 
@@ -3484,23 +3508,23 @@ Ref: union77002
 Ref: left77377
 Ref: outer77901
 Ref: asof78256
-Node: System79785
-Ref: load80237
-Ref: timing80425
-Ref: variables80512
-Ref: memory80613
-Ref: cd80728
-Node: Errors80812
-Ref: class81252
-Ref: rank81341
-Ref: length81463
-Ref: _type81584
-Ref: domain81693
-Ref: limit81815
-Ref: nyi82016
-Ref: parse82349
-Ref: _value82504
-Node: Conculsion82632
+Node: System80274
+Ref: load80726
+Ref: timing80914
+Ref: variables81001
+Ref: memory81102
+Ref: cd81217
+Node: Errors81301
+Ref: class81741
+Ref: rank81830
+Ref: length81952
+Ref: _type82073
+Ref: domain82182
+Ref: limit82304
+Ref: nyi82505
+Ref: parse82838
+Ref: _value82993
+Node: Conculsion83121
 
 End Tag Table
 
