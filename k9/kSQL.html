@@ -186,17 +186,17 @@ c|8 6
 <span id="Insert-and-Upsert"></span><h3 class="section">13.2 Insert and Upsert</h3>
 <p>One can add data to tables via insert or upsert.  The difference between the two is that insert adds data to a table while upsert will add or replace data to a keyed table.  Upsert adds when the key isn&rsquo;t present and replaces when the key is.
 </p>
-<span id="insert-_21d2-x_002cy"></span><h4 class="subsection">13.2.1 insert &rArr; x,y</h4>
-<p>Insert dictionary y into table x.
+<span id="insert-_21d2-T_002cy"></span><h4 class="subsection">13.2.1 insert &rArr; T,y</h4>
+<p>Insert dictionary y into table T.
 </p><div class="example">
-<pre class="example"> t:[[]c1:`a`b`a;c2:1 2 7];t
+<pre class="example"> T:[[]c1:`a`b`a;c2:1 2 7];T
 c1 c2
 -- --
 a   1
 b   2
 a   7
 
- t,`c1`c2!(`a;12)
+ T,`c1`c2!(`a;12)
 c1 c2
 -- --
 a   1
@@ -204,7 +204,7 @@ b   2
 a   7
 a  12
 
- t,`c1`c2!(`c;12)
+ T,`c1`c2!(`c;12)
 c1 c2
 -- --
 a   1
@@ -213,24 +213,24 @@ a   7
 c  12
 </pre></div>
 
-<span id="upsert-_21d2-x_002cy"></span><h4 class="subsection">13.2.2 upsert &rArr; x,y</h4>
-<p>Insert dictionary y into keyed table x.
+<span id="upsert-_21d2-TT_002cy"></span><h4 class="subsection">13.2.2 upsert &rArr; TT,y</h4>
+<p>Insert dictionary y into TTab TT.
 </p><div class="example">
-<pre class="example"> t:[[c1:`a`b`c]c2:1 2 7];t
+<pre class="example"> TT:[[c1:`a`b`c]c2:1 2 7];TT
 c1|c2
 --|--
 a | 1
 b | 2
 c | 7
 
- t,`c1`c2!(`a;12)
+ TT,`c1`c2!(`a;12)
 c1|c2
 --|--
 a |12
 b | 2
 c | 7
 
- t,`c1`c2!(`b;12)
+ TT,`c1`c2!(`b;12)
 c1|c2
 --|--
 a | 1

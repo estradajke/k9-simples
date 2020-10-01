@@ -3126,18 +3126,18 @@ between the two is that insert adds data to a table while upsert will
 add or replace data to a keyed table.  Upsert adds when the key isn't
 present and replaces when the key is.
 
-13.2.1 insert => x,y
+13.2.1 insert => T,y
 --------------------
 
-Insert dictionary y into table x.
-      t:[[]c1:`a`b`a;c2:1 2 7];t
+Insert dictionary y into table T.
+      T:[[]c1:`a`b`a;c2:1 2 7];T
      c1 c2
      -- --
      a   1
      b   2
      a   7
 
-      t,`c1`c2!(`a;12)
+      T,`c1`c2!(`a;12)
      c1 c2
      -- --
      a   1
@@ -3145,7 +3145,7 @@ Insert dictionary y into table x.
      a   7
      a  12
 
-      t,`c1`c2!(`c;12)
+      T,`c1`c2!(`c;12)
      c1 c2
      -- --
      a   1
@@ -3153,25 +3153,25 @@ Insert dictionary y into table x.
      a   7
      c  12
 
-13.2.2 upsert => x,y
---------------------
+13.2.2 upsert => TT,y
+---------------------
 
-Insert dictionary y into keyed table x.
-      t:[[c1:`a`b`c]c2:1 2 7];t
+Insert dictionary y into TTab TT.
+      TT:[[c1:`a`b`c]c2:1 2 7];TT
      c1|c2
      --|--
      a | 1
      b | 2
      c | 7
 
-      t,`c1`c2!(`a;12)
+      TT,`c1`c2!(`a;12)
      c1|c2
      --|--
      a |12
      b | 2
      c | 7
 
-      t,`c1`c2!(`b;12)
+      TT,`c1`c2!(`b;12)
      c1|c2
      --|--
      a | 1
