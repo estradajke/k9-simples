@@ -1,7 +1,7 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
 This manual is for Shakti (k9) build 2020.09.29.
-September 29, 2020
+October 1, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -3023,8 +3023,9 @@ select A by B from T where C
 13.1 Joins
 ==========
 
-Joining tables together.  In this section x, y represent tables and kx
-and ky represent TTabs.
+k9 has a number of methods to join tables together which are described
+below.  In this section T1 and T2 represent tables and TT1 and TT2
+represent TTabs.
 
 join           x       y
 *note union::  table   table
@@ -3032,25 +3033,25 @@ join           x       y
 *note outer::  TTab    TTab
 *note asof::   table   TTab (by time)
 
-13.1.1 union join => x,y
-------------------------
+13.1.1 union join => T_{1},T_{2}
+--------------------------------
 
-Union join table x with table y.
-      x:[[]s:`a`b;p:1 2;q:3 4]
-      y:[[]s:`b`c;p:11 12;q:21 22]
-      x
+Union join table T1 with table T2.
+      T1:[[]s:`a`b;p:1 2;q:3 4]
+      T2:[[]s:`b`c;p:11 12;q:21 22]
+      T1
      s p q
      - - -
      a 1 3
      b 2 4
 
-      y
+      T2
      s p  q
      - -- --
      b 11 21
      c 12 22
 
-      x,y
+      T1,T2
      s p  q
      - -- --
      a  1  3
@@ -3058,21 +3059,21 @@ Union join table x with table y.
      b 11 21
      c 12 22
 
-13.1.2 left join => x,y
------------------------
+13.1.2 left join => T,TT
+------------------------
 
-Left join table x with TTab.  Result includes all rows from x and
-values from x where there is no y value.
-      x:[[]s:`a`b`c;p:1 2 3;q:7 8 9]
-      y:[[s:`a`b`x`y`z]q:101 102 103 104 105;r:51 52 53 54 55]
-      x
+Left join table T with TTab TT. Result includes all rows from T and
+values from T where there is no TT value.
+      T:[[]s:`a`b`c;p:1 2 3;q:7 8 9]
+      TT:[[s:`a`b`x`y`z]q:101 102 103 104 105;r:51 52 53 54 55]
+      T
      s p q
      - - -
      a 1 7
      b 2 8
      c 3 9
 
-      y
+      TT
      s|q   r
      -|--- --
      a|101 51
@@ -3081,33 +3082,33 @@ values from x where there is no y value.
      y|104 54
      z|105 55
 
-      x,y
+      T,TT
      s p q   r
      - - --- --
      a 1 101 51
      b 2 102 52
      c 3   9  0
 
-13.1.3 outer join => x,y
-------------------------
+13.1.3 outer join => TT_{1},TT_{2}
+----------------------------------
 
-Outer join TTab x with key TTab y.
+Outer join TTab TT1 with key TTab TT2.
 
-      x:[[s:`a`b]p:1 2;q:3 4]
-      y:[[s:`b`c]p:9 8;q:7 6]
-      x
+      TT1:[[s:`a`b]p:1 2;q:3 4]
+      TT2:[[s:`b`c]p:9 8;q:7 6]
+      TT1
      s|p q
      -|- -
      a|1 3
      b|2 4
 
-      y
+      TT2
      s|p q
      -|- -
      b|9 7
      c|8 6
 
-      x,y
+      TT1,TT2
      s|p q
      -|- -
      a|1 3
@@ -3350,128 +3351,128 @@ than previously imagined.
 
 
 Tag Table:
-Node: Top176
-Node: Intro4244
-Node: Examples16977
-Node: Benchmarks24098
-Node: Verb29045
-Ref: x30505
-Ref: set30530
-Ref: flip30742
-Ref: plus30992
-Ref: negate31377
-Ref: minus31549
-Ref: first31656
-Ref: times31975
-Ref: divide32106
-Ref: where32243
-Ref: min/and32629
-Ref: reverse32888
-Ref: max/or33058
-Ref: asc33322
-Ref: less33518
-Ref: group33780
-Ref: equal34026
-Ref: not34150
-Ref: match34267
-Ref: enum34460
-Ref: key35633
-Ref: enlist35863
-Ref: cat36002
-Ref: sort36121
-Ref: [f]cut36298
-Ref: count37006
-Ref: [f]take37196
-Ref: floor37825
-Ref: [f]drop37916
-Ref: string38509
-Ref: cast+38617
-Ref: unique+38935
-Ref: find+39174
-Ref: type39623
-Ref: [f]at39979
-Ref: value40198
-Ref: [f]dot40526
-Node: Adverb41502
-Ref: scan42214
-Ref: join42754
-Ref: split42929
-Ref: each43120
-Ref: has43338
-Ref: eachp43511
-Ref: bin243951
-Ref: eachr44154
-Ref: eachl44351
-Ref: n scan44535
-Ref: c scan45020
-Ref: c over45304
-Ref: vs45414
-Ref: sv45534
-Node: Noun45658
-Ref: bool47024
-Ref: int47324
-Ref: flt47528
-Ref: char47906
-Ref: name48129
-Ref: uuid48360
-Ref: time48517
-Ref: date49131
-Ref: datetime49549
-Node: List50248
-Node: Dictionary54769
-Node: Named Functions59574
-Ref: sqrt60189
-Ref: exp60260
-Ref: log60326
-Ref: sin60424
-Ref: cos60561
-Ref: div60707
-Ref: mod60861
-Ref: bar61037
-Ref: in61571
-Ref: bin61747
-Ref: within61959
-Node: More Functions62171
-Ref: cond62294
-Ref: amend62414
-Ref: dmend63076
-Node: I/O63779
-Ref: input format64120
-Ref: format65131
-Ref: write line65531
-Ref: read line65918
-Ref: write char66105
-Ref: read char66500
-Ref: load data66865
-Ref: write data68622
-Ref: conn/set72535
-Ref: http/get72579
-Node: Tables72629
-Ref: Table73058
-Ref: XTab74668
-Ref: TTab75145
-Node: kSQL75581
-Ref: union76945
-Ref: left77296
-Ref: outer77812
-Ref: asof78131
-Node: System79132
-Ref: load79584
-Ref: timing79772
-Ref: variables79859
-Ref: memory79960
-Ref: cd80075
-Node: Errors80159
-Ref: class80599
-Ref: rank80688
-Ref: length80810
-Ref: _type80931
-Ref: domain81040
-Ref: limit81162
-Ref: nyi81363
-Ref: parse81696
-Ref: _value81851
-Node: Conculsion81979
+Node: Top173
+Node: Intro4241
+Node: Examples16974
+Node: Benchmarks24095
+Node: Verb29042
+Ref: x30502
+Ref: set30527
+Ref: flip30739
+Ref: plus30989
+Ref: negate31374
+Ref: minus31546
+Ref: first31653
+Ref: times31972
+Ref: divide32103
+Ref: where32240
+Ref: min/and32626
+Ref: reverse32885
+Ref: max/or33055
+Ref: asc33319
+Ref: less33515
+Ref: group33777
+Ref: equal34023
+Ref: not34147
+Ref: match34264
+Ref: enum34457
+Ref: key35630
+Ref: enlist35860
+Ref: cat35999
+Ref: sort36118
+Ref: [f]cut36295
+Ref: count37003
+Ref: [f]take37193
+Ref: floor37822
+Ref: [f]drop37913
+Ref: string38506
+Ref: cast+38614
+Ref: unique+38932
+Ref: find+39171
+Ref: type39620
+Ref: [f]at39976
+Ref: value40195
+Ref: [f]dot40523
+Node: Adverb41499
+Ref: scan42211
+Ref: join42751
+Ref: split42926
+Ref: each43117
+Ref: has43335
+Ref: eachp43508
+Ref: bin243948
+Ref: eachr44151
+Ref: eachl44348
+Ref: n scan44532
+Ref: c scan45017
+Ref: c over45301
+Ref: vs45411
+Ref: sv45531
+Node: Noun45655
+Ref: bool47021
+Ref: int47321
+Ref: flt47525
+Ref: char47903
+Ref: name48126
+Ref: uuid48357
+Ref: time48514
+Ref: date49128
+Ref: datetime49546
+Node: List50245
+Node: Dictionary54766
+Node: Named Functions59571
+Ref: sqrt60186
+Ref: exp60257
+Ref: log60323
+Ref: sin60421
+Ref: cos60558
+Ref: div60704
+Ref: mod60858
+Ref: bar61034
+Ref: in61568
+Ref: bin61744
+Ref: within61956
+Node: More Functions62168
+Ref: cond62291
+Ref: amend62411
+Ref: dmend63073
+Node: I/O63776
+Ref: input format64117
+Ref: format65128
+Ref: write line65528
+Ref: read line65915
+Ref: write char66102
+Ref: read char66497
+Ref: load data66862
+Ref: write data68619
+Ref: conn/set72532
+Ref: http/get72576
+Node: Tables72626
+Ref: Table73055
+Ref: XTab74665
+Ref: TTab75142
+Node: kSQL75578
+Ref: union77002
+Ref: left77377
+Ref: outer77901
+Ref: asof78256
+Node: System79257
+Ref: load79709
+Ref: timing79897
+Ref: variables79984
+Ref: memory80085
+Ref: cd80200
+Node: Errors80284
+Ref: class80724
+Ref: rank80813
+Ref: length80935
+Ref: _type81056
+Ref: domain81165
+Ref: limit81287
+Ref: nyi81488
+Ref: parse81821
+Ref: _value81976
+Node: Conculsion82104
 
 End Tag Table
 
