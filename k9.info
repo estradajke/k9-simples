@@ -66,18 +66,18 @@ limit: {[param8]local8 global32 const128 jump256} name256
 * Intro:: An introduction to shakti/k9, a novel computer language for data analysis
 * Examples:: Examples to motivate the reader to learn the language
 * Benchmarks:: Learn how fast this language is
-* Verb:: Core functions
+* Verb:: Elementary functions
 * Adverb:: Function modifiers
 * Noun:: Basic data types
 * List:: Lists
 * Dictionary:: Dictionaries and functions for dictionaries
 * Named Functions:: Named functions
 * More Functions:: More functions
-* I/O:: I/O
+* I/O:: Input and output
 * Tables:: Tables to store data
 * kSQL:: kSQL to query tables
-* System:: System
-* Errors:: Errors
+* System:: System functions and measurements
+* Errors:: Error messages
 * Conculsion:: Conclusion
 
 
@@ -1988,7 +1988,7 @@ updating many elements and there is a syntax for doing so.
 
       a:2*1+!10
       a
-     2 4 6 8 10 12 14 16 18 20
+     ?2 4 6 8 10 12 14 16 18 20
       a[3]:80
       a
      2 4 6 80 10 12 14 16 18 20
@@ -1997,6 +1997,7 @@ updating many elements and there is a syntax for doing so.
       a:@[a;1 3 5;*;100];a
      0 400 0 8000 0 1200 0 16 0 20
       a:@[a;!#a;:;0];a
+     0 0 0 0 0 0 0 0 0 0
 
    List amend syntax has a few options so will be explained in more
 detail.
@@ -2167,7 +2168,7 @@ chapter the market quote and trade data are dictionaries of symbols
 8.2 Dictionary Indexing => x@y
 ==============================
 
-Dictionary indexing, like lists, can be indexed in a number of ways.
+Dictionaries, like lists, can be indexed in a number of ways.
       x:`a`b`c!(1 2;3 4;5 6);x
      a|1 2
      b|3 4
@@ -2201,15 +2202,12 @@ The keys from a dictionary are retreived by using the !  function.
 The values from a dictionary are retreived by bracket notation.
 
       d0[]
-     pi   e    c
      3.14 2.72 3e+08
-
       d1[]
-     time              temp
-     12:00 12:01 12:10 25 25.1 25.6
+     12:00 12:01 12:10
+     25.   25.1  25.6
 
       d2[]
-     0    10   1
      37.4 46.3 0.1
 
    One could return a specific value by indexing into a specific
@@ -2229,7 +2227,7 @@ temp 1), and then query the first value (element 0).
       d1[][1]
      25 25.1 25.6
       d1[][1;0]
-     25f
+     25.
 
 8.5 Sorting a Dictionary by Key => ^x
 =====================================
@@ -2312,7 +2310,7 @@ dictionary with the same keys and the values are application of 'f'.
    * <d : Sort Ascending
    * >d : Sort Descending
    * ~d : Not d
-   * &d : Given d:x!y repeate each x, y times, where y must be an
+   * &d : Given d:x!y output each x, y times, where y must be an
      integer
    * =d : Given d:x!y y!x
 
@@ -2350,8 +2348,8 @@ dictionary with the same keys and the values are application of 'f'.
 8.9 Functions that operate over values in a dictionary
 ======================================================
 
-There are functions on dictions that operate over the values.  If 'f'
-is a function applied to a dictionary 'd' then 'f d' returns a value.
+There are functions on dictions that operate over the values.  Given
+function f applied to a dictionary d then f d returns a value.
 
    * *d : First value
       d0
@@ -3404,127 +3402,127 @@ than previously imagined.
 
 Tag Table:
 Node: Top173
-Node: Intro4241
-Node: Examples16974
-Node: Benchmarks24105
-Node: Verb29052
-Ref: x30512
-Ref: set30537
-Ref: flip30749
-Ref: plus30999
-Ref: negate31384
-Ref: minus31556
-Ref: first31663
-Ref: times31982
-Ref: divide32113
-Ref: where32250
-Ref: min/and32636
-Ref: reverse32895
-Ref: max/or33065
-Ref: asc33329
-Ref: less33525
-Ref: group33787
-Ref: equal34033
-Ref: not34157
-Ref: match34274
-Ref: enum34467
-Ref: key35640
-Ref: enlist35870
-Ref: cat36009
-Ref: sort36128
-Ref: [f]cut36305
-Ref: count37013
-Ref: [f]take37203
-Ref: floor37832
-Ref: [f]drop37923
-Ref: string38516
-Ref: cast+38624
-Ref: unique+38942
-Ref: find+39181
-Ref: type39630
-Ref: [f]at39986
-Ref: value40205
-Ref: [f]dot40533
-Node: Adverb41509
-Ref: scan42221
-Ref: join42761
-Ref: split42936
-Ref: each43127
-Ref: has43345
-Ref: eachp43518
-Ref: bin243958
-Ref: eachr44161
-Ref: eachl44358
-Ref: n scan44542
-Ref: c scan45027
-Ref: c over45311
-Ref: vs45421
-Ref: sv45541
-Node: Noun45665
-Ref: bool47031
-Ref: int47331
-Ref: flt47535
-Ref: char47913
-Ref: name48136
-Ref: uuid48367
-Ref: time48524
-Ref: date49138
-Ref: datetime49556
-Node: List50255
-Node: Dictionary54776
-Node: Named Functions59581
-Ref: sqrt60196
-Ref: exp60267
-Ref: log60333
-Ref: sin60431
-Ref: cos60568
-Ref: div60714
-Ref: mod60868
-Ref: bar61044
-Ref: in61578
-Ref: bin61754
-Ref: within61966
-Node: More Functions62178
-Ref: cond62301
-Ref: amend62421
-Ref: dmend63083
-Node: I/O63786
-Ref: input format64127
-Ref: format65138
-Ref: write line65538
-Ref: read line65925
-Ref: write char66112
-Ref: read char66507
-Ref: load data66872
-Ref: write data68629
-Ref: conn/set72542
-Ref: http/get72586
-Node: Tables72636
-Ref: Table73065
-Ref: XTab74675
-Ref: TTab75152
-Node: kSQL75588
-Ref: union77012
-Ref: left77387
-Ref: outer77911
-Ref: asof78266
-Node: System80284
-Ref: load80736
-Ref: timing80924
-Ref: variables81011
-Ref: memory81112
-Ref: cd81227
-Node: Errors81311
-Ref: class81751
-Ref: rank81840
-Ref: length81962
-Ref: _type82083
-Ref: domain82192
-Ref: limit82314
-Ref: nyi82515
-Ref: parse82848
-Ref: _value83003
-Node: Conculsion83131
+Node: Intro4295
+Node: Examples17028
+Node: Benchmarks24159
+Node: Verb29106
+Ref: x30566
+Ref: set30591
+Ref: flip30803
+Ref: plus31053
+Ref: negate31438
+Ref: minus31610
+Ref: first31717
+Ref: times32036
+Ref: divide32167
+Ref: where32304
+Ref: min/and32690
+Ref: reverse32949
+Ref: max/or33119
+Ref: asc33383
+Ref: less33579
+Ref: group33841
+Ref: equal34087
+Ref: not34211
+Ref: match34328
+Ref: enum34521
+Ref: key35694
+Ref: enlist35924
+Ref: cat36063
+Ref: sort36182
+Ref: [f]cut36359
+Ref: count37067
+Ref: [f]take37257
+Ref: floor37886
+Ref: [f]drop37977
+Ref: string38570
+Ref: cast+38678
+Ref: unique+38996
+Ref: find+39235
+Ref: type39684
+Ref: [f]at40040
+Ref: value40259
+Ref: [f]dot40587
+Node: Adverb41563
+Ref: scan42275
+Ref: join42815
+Ref: split42990
+Ref: each43181
+Ref: has43399
+Ref: eachp43572
+Ref: bin244012
+Ref: eachr44215
+Ref: eachl44412
+Ref: n scan44596
+Ref: c scan45081
+Ref: c over45365
+Ref: vs45475
+Ref: sv45595
+Node: Noun45719
+Ref: bool47085
+Ref: int47385
+Ref: flt47589
+Ref: char47967
+Ref: name48190
+Ref: uuid48421
+Ref: time48578
+Ref: date49192
+Ref: datetime49610
+Node: List50309
+Node: Dictionary54856
+Node: Named Functions59591
+Ref: sqrt60206
+Ref: exp60277
+Ref: log60343
+Ref: sin60441
+Ref: cos60578
+Ref: div60724
+Ref: mod60878
+Ref: bar61054
+Ref: in61588
+Ref: bin61764
+Ref: within61976
+Node: More Functions62188
+Ref: cond62311
+Ref: amend62431
+Ref: dmend63093
+Node: I/O63796
+Ref: input format64137
+Ref: format65148
+Ref: write line65548
+Ref: read line65935
+Ref: write char66122
+Ref: read char66517
+Ref: load data66882
+Ref: write data68639
+Ref: conn/set72552
+Ref: http/get72596
+Node: Tables72646
+Ref: Table73075
+Ref: XTab74685
+Ref: TTab75162
+Node: kSQL75598
+Ref: union77022
+Ref: left77397
+Ref: outer77921
+Ref: asof78276
+Node: System80294
+Ref: load80746
+Ref: timing80934
+Ref: variables81021
+Ref: memory81122
+Ref: cd81237
+Node: Errors81321
+Ref: class81761
+Ref: rank81850
+Ref: length81972
+Ref: _type82093
+Ref: domain82202
+Ref: limit82324
+Ref: nyi82525
+Ref: parse82858
+Ref: _value83013
+Node: Conculsion83141
 
 End Tag Table
 
