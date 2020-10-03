@@ -414,11 +414,11 @@ needed.
 2.1 A Tiny Introduction to Financial Market Data
 ================================================
 
-Financial market data generally are stored as prices and trades.
-Prices will include at a minimum time, securtiy, price to buy and
-price to sell.  Trades will include at a minimum time, security, and
-trade price.  In normal markets there are many more prices than
-trades.
+Financial market data generally are stored as prices (often call
+quotes) and trades.  Prices will include at a minimum time, securtiy,
+price to buy and price to sell.  Trades will include at a minimum
+time, security, and trade price.  In normal markets there are many
+more prices than trades.
 
    Let's use k9 to generate a set of random prices for a single
 security hence elimating the need for that field.
@@ -3406,125 +3406,125 @@ Tag Table:
 Node: Top173
 Node: Intro4241
 Node: Examples16974
-Node: Benchmarks24084
-Node: Verb29031
-Ref: x30491
-Ref: set30516
-Ref: flip30728
-Ref: plus30978
-Ref: negate31363
-Ref: minus31535
-Ref: first31642
-Ref: times31961
-Ref: divide32092
-Ref: where32229
-Ref: min/and32615
-Ref: reverse32874
-Ref: max/or33044
-Ref: asc33308
-Ref: less33504
-Ref: group33766
-Ref: equal34012
-Ref: not34136
-Ref: match34253
-Ref: enum34446
-Ref: key35619
-Ref: enlist35849
-Ref: cat35988
-Ref: sort36107
-Ref: [f]cut36284
-Ref: count36992
-Ref: [f]take37182
-Ref: floor37811
-Ref: [f]drop37902
-Ref: string38495
-Ref: cast+38603
-Ref: unique+38921
-Ref: find+39160
-Ref: type39609
-Ref: [f]at39965
-Ref: value40184
-Ref: [f]dot40512
-Node: Adverb41488
-Ref: scan42200
-Ref: join42740
-Ref: split42915
-Ref: each43106
-Ref: has43324
-Ref: eachp43497
-Ref: bin243937
-Ref: eachr44140
-Ref: eachl44337
-Ref: n scan44521
-Ref: c scan45006
-Ref: c over45290
-Ref: vs45400
-Ref: sv45520
-Node: Noun45644
-Ref: bool47010
-Ref: int47310
-Ref: flt47514
-Ref: char47892
-Ref: name48115
-Ref: uuid48346
-Ref: time48503
-Ref: date49117
-Ref: datetime49535
-Node: List50234
-Node: Dictionary54755
-Node: Named Functions59560
-Ref: sqrt60175
-Ref: exp60246
-Ref: log60312
-Ref: sin60410
-Ref: cos60547
-Ref: div60693
-Ref: mod60847
-Ref: bar61023
-Ref: in61557
-Ref: bin61733
-Ref: within61945
-Node: More Functions62157
-Ref: cond62280
-Ref: amend62400
-Ref: dmend63062
-Node: I/O63765
-Ref: input format64106
-Ref: format65117
-Ref: write line65517
-Ref: read line65904
-Ref: write char66091
-Ref: read char66486
-Ref: load data66851
-Ref: write data68608
-Ref: conn/set72521
-Ref: http/get72565
-Node: Tables72615
-Ref: Table73044
-Ref: XTab74654
-Ref: TTab75131
-Node: kSQL75567
-Ref: union76991
-Ref: left77366
-Ref: outer77890
-Ref: asof78245
-Node: System80263
-Ref: load80715
-Ref: timing80903
-Ref: variables80990
-Ref: memory81091
-Ref: cd81206
-Node: Errors81290
-Ref: class81730
-Ref: rank81819
-Ref: length81941
-Ref: _type82062
-Ref: domain82171
-Ref: limit82293
-Ref: nyi82494
-Ref: parse82827
-Ref: _value82982
-Node: Conculsion83110
+Node: Benchmarks24105
+Node: Verb29052
+Ref: x30512
+Ref: set30537
+Ref: flip30749
+Ref: plus30999
+Ref: negate31384
+Ref: minus31556
+Ref: first31663
+Ref: times31982
+Ref: divide32113
+Ref: where32250
+Ref: min/and32636
+Ref: reverse32895
+Ref: max/or33065
+Ref: asc33329
+Ref: less33525
+Ref: group33787
+Ref: equal34033
+Ref: not34157
+Ref: match34274
+Ref: enum34467
+Ref: key35640
+Ref: enlist35870
+Ref: cat36009
+Ref: sort36128
+Ref: [f]cut36305
+Ref: count37013
+Ref: [f]take37203
+Ref: floor37832
+Ref: [f]drop37923
+Ref: string38516
+Ref: cast+38624
+Ref: unique+38942
+Ref: find+39181
+Ref: type39630
+Ref: [f]at39986
+Ref: value40205
+Ref: [f]dot40533
+Node: Adverb41509
+Ref: scan42221
+Ref: join42761
+Ref: split42936
+Ref: each43127
+Ref: has43345
+Ref: eachp43518
+Ref: bin243958
+Ref: eachr44161
+Ref: eachl44358
+Ref: n scan44542
+Ref: c scan45027
+Ref: c over45311
+Ref: vs45421
+Ref: sv45541
+Node: Noun45665
+Ref: bool47031
+Ref: int47331
+Ref: flt47535
+Ref: char47913
+Ref: name48136
+Ref: uuid48367
+Ref: time48524
+Ref: date49138
+Ref: datetime49556
+Node: List50255
+Node: Dictionary54776
+Node: Named Functions59581
+Ref: sqrt60196
+Ref: exp60267
+Ref: log60333
+Ref: sin60431
+Ref: cos60568
+Ref: div60714
+Ref: mod60868
+Ref: bar61044
+Ref: in61578
+Ref: bin61754
+Ref: within61966
+Node: More Functions62178
+Ref: cond62301
+Ref: amend62421
+Ref: dmend63083
+Node: I/O63786
+Ref: input format64127
+Ref: format65138
+Ref: write line65538
+Ref: read line65925
+Ref: write char66112
+Ref: read char66507
+Ref: load data66872
+Ref: write data68629
+Ref: conn/set72542
+Ref: http/get72586
+Node: Tables72636
+Ref: Table73065
+Ref: XTab74675
+Ref: TTab75152
+Node: kSQL75588
+Ref: union77012
+Ref: left77387
+Ref: outer77911
+Ref: asof78266
+Node: System80284
+Ref: load80736
+Ref: timing80924
+Ref: variables81011
+Ref: memory81112
+Ref: cd81227
+Node: Errors81311
+Ref: class81751
+Ref: rank81840
+Ref: length81962
+Ref: _type82083
+Ref: domain82192
+Ref: limit82314
+Ref: nyi82515
+Ref: parse82848
+Ref: _value83003
+Node: Conculsion83131
 
 End Tag Table
 
