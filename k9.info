@@ -1,7 +1,7 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
 This manual is for Shakti (k9) build 2020.09.29.
-October 1, 2020
+October 3, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -424,7 +424,7 @@ trades.
 security hence elimating the need for that field.
 
       n:10
-      T:10:00+`t x@<x:n?36e5
+      T:10:00+`t n?36e5
       B:100++\-1+n?3
       A:B+1+n?2
       q:+`t`b`a!(T;B;A);q
@@ -465,16 +465,16 @@ let's scale up to larger problems to see the power of k9.
 =====================
 
 Generate a table of random financial data and compute basic statistics
-quickly.  This table takes about 4 GB and 5 seconds on a relatively
+quickly.  This table takes about 4 GB and 3.3 seconds on a relatively
 new consumer laptop.
 
-      n:_100*1000*1000                         / 100 million rows
-      t:{[x]g@<g:09:00:00.000+x?10:00:00.000}  / random times
-      s:{[x]x?`a`b`c`d`e}                      / random symbols
+      n:_100e6                               / 100 million rows
+      t:{[x]09:00:00.000+x?10:00:00.000}     / random times
+      s:{[x]x?`a`b`c`d`e}                    / random symbols
       m:0,(|m),365378984,m:271810244 42800467 2636454 62769 572 2;
       d:{[x](-6+!13)@(+\m)bin x?_1e9}
-      \t q:+`t`s`d!(t[n];s[n];d[n])            / time data generation in ms
-     4863
+      \t q:+`t`s`d!(t[n];s[n];d[n])          / time data generation in ms
+     3391
 
    As this point one might want to check start and stop times, see if
 the symbol distribution is actually random and look at the
@@ -3406,125 +3406,125 @@ Tag Table:
 Node: Top173
 Node: Intro4241
 Node: Examples16974
-Node: Benchmarks24095
-Node: Verb29042
-Ref: x30502
-Ref: set30527
-Ref: flip30739
-Ref: plus30989
-Ref: negate31374
-Ref: minus31546
-Ref: first31653
-Ref: times31972
-Ref: divide32103
-Ref: where32240
-Ref: min/and32626
-Ref: reverse32885
-Ref: max/or33055
-Ref: asc33319
-Ref: less33515
-Ref: group33777
-Ref: equal34023
-Ref: not34147
-Ref: match34264
-Ref: enum34457
-Ref: key35630
-Ref: enlist35860
-Ref: cat35999
-Ref: sort36118
-Ref: [f]cut36295
-Ref: count37003
-Ref: [f]take37193
-Ref: floor37822
-Ref: [f]drop37913
-Ref: string38506
-Ref: cast+38614
-Ref: unique+38932
-Ref: find+39171
-Ref: type39620
-Ref: [f]at39976
-Ref: value40195
-Ref: [f]dot40523
-Node: Adverb41499
-Ref: scan42211
-Ref: join42751
-Ref: split42926
-Ref: each43117
-Ref: has43335
-Ref: eachp43508
-Ref: bin243948
-Ref: eachr44151
-Ref: eachl44348
-Ref: n scan44532
-Ref: c scan45017
-Ref: c over45301
-Ref: vs45411
-Ref: sv45531
-Node: Noun45655
-Ref: bool47021
-Ref: int47321
-Ref: flt47525
-Ref: char47903
-Ref: name48126
-Ref: uuid48357
-Ref: time48514
-Ref: date49128
-Ref: datetime49546
-Node: List50245
-Node: Dictionary54766
-Node: Named Functions59571
-Ref: sqrt60186
-Ref: exp60257
-Ref: log60323
-Ref: sin60421
-Ref: cos60558
-Ref: div60704
-Ref: mod60858
-Ref: bar61034
-Ref: in61568
-Ref: bin61744
-Ref: within61956
-Node: More Functions62168
-Ref: cond62291
-Ref: amend62411
-Ref: dmend63073
-Node: I/O63776
-Ref: input format64117
-Ref: format65128
-Ref: write line65528
-Ref: read line65915
-Ref: write char66102
-Ref: read char66497
-Ref: load data66862
-Ref: write data68619
-Ref: conn/set72532
-Ref: http/get72576
-Node: Tables72626
-Ref: Table73055
-Ref: XTab74665
-Ref: TTab75142
-Node: kSQL75578
-Ref: union77002
-Ref: left77377
-Ref: outer77901
-Ref: asof78256
-Node: System80274
-Ref: load80726
-Ref: timing80914
-Ref: variables81001
-Ref: memory81102
-Ref: cd81217
-Node: Errors81301
-Ref: class81741
-Ref: rank81830
-Ref: length81952
-Ref: _type82073
-Ref: domain82182
-Ref: limit82304
-Ref: nyi82505
-Ref: parse82838
-Ref: _value82993
-Node: Conculsion83121
+Node: Benchmarks24084
+Node: Verb29031
+Ref: x30491
+Ref: set30516
+Ref: flip30728
+Ref: plus30978
+Ref: negate31363
+Ref: minus31535
+Ref: first31642
+Ref: times31961
+Ref: divide32092
+Ref: where32229
+Ref: min/and32615
+Ref: reverse32874
+Ref: max/or33044
+Ref: asc33308
+Ref: less33504
+Ref: group33766
+Ref: equal34012
+Ref: not34136
+Ref: match34253
+Ref: enum34446
+Ref: key35619
+Ref: enlist35849
+Ref: cat35988
+Ref: sort36107
+Ref: [f]cut36284
+Ref: count36992
+Ref: [f]take37182
+Ref: floor37811
+Ref: [f]drop37902
+Ref: string38495
+Ref: cast+38603
+Ref: unique+38921
+Ref: find+39160
+Ref: type39609
+Ref: [f]at39965
+Ref: value40184
+Ref: [f]dot40512
+Node: Adverb41488
+Ref: scan42200
+Ref: join42740
+Ref: split42915
+Ref: each43106
+Ref: has43324
+Ref: eachp43497
+Ref: bin243937
+Ref: eachr44140
+Ref: eachl44337
+Ref: n scan44521
+Ref: c scan45006
+Ref: c over45290
+Ref: vs45400
+Ref: sv45520
+Node: Noun45644
+Ref: bool47010
+Ref: int47310
+Ref: flt47514
+Ref: char47892
+Ref: name48115
+Ref: uuid48346
+Ref: time48503
+Ref: date49117
+Ref: datetime49535
+Node: List50234
+Node: Dictionary54755
+Node: Named Functions59560
+Ref: sqrt60175
+Ref: exp60246
+Ref: log60312
+Ref: sin60410
+Ref: cos60547
+Ref: div60693
+Ref: mod60847
+Ref: bar61023
+Ref: in61557
+Ref: bin61733
+Ref: within61945
+Node: More Functions62157
+Ref: cond62280
+Ref: amend62400
+Ref: dmend63062
+Node: I/O63765
+Ref: input format64106
+Ref: format65117
+Ref: write line65517
+Ref: read line65904
+Ref: write char66091
+Ref: read char66486
+Ref: load data66851
+Ref: write data68608
+Ref: conn/set72521
+Ref: http/get72565
+Node: Tables72615
+Ref: Table73044
+Ref: XTab74654
+Ref: TTab75131
+Node: kSQL75567
+Ref: union76991
+Ref: left77366
+Ref: outer77890
+Ref: asof78245
+Node: System80263
+Ref: load80715
+Ref: timing80903
+Ref: variables80990
+Ref: memory81091
+Ref: cd81206
+Node: Errors81290
+Ref: class81730
+Ref: rank81819
+Ref: length81941
+Ref: _type82062
+Ref: domain82171
+Ref: limit82293
+Ref: nyi82494
+Ref: parse82827
+Ref: _value82982
+Node: Conculsion83110
 
 End Tag Table
 

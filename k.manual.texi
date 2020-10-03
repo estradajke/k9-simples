@@ -337,7 +337,7 @@ Let's use k9 to generate a set of random prices for a single security hence elim
 
 @example
  n:10
- T:10:00+`t x@@<x:n?36e5
+ T:10:00+`t n?36e5
  B:100++\-1+n?3
  A:B+1+n?2
  q:+`t`b`a!(T;B;A);q
@@ -371,16 +371,16 @@ Now that you've learned enough finance to understand the data, let's scale up to
 
 
 @section Data Manipulation
-Generate a table of random financial data and compute basic statistics quickly.  This table takes about 4 GB and 5 seconds on a relatively new consumer laptop.
+Generate a table of random financial data and compute basic statistics quickly.  This table takes about 4 GB and 3.3 seconds on a relatively new consumer laptop.
 
 @example
-@ n:_100*1000*1000                         / 100 million rows
-@ t:@{[x]g@@<g:09:00:00.000+x?10:00:00.000@}  / random times
-@ s:@{[x]x?`a`b`c`d`e@}                      / random symbols
+@ n:_100e6                               / 100 million rows
+@ t:@{[x]09:00:00.000+x?10:00:00.000@}     / random times
+@ s:@{[x]x?`a`b`c`d`e@}                    / random symbols
 @ m:0,(|m),365378984,m:271810244 42800467 2636454 62769 572 2;
 @ d:@{[x](-6+!13)@@(+\m)bin x?_1e9@}
-@ \t q:+`t`s`d!(t[n];s[n];d[n])            / time data generation in ms
-4863
+@ \t q:+`t`s`d!(t[n];s[n];d[n])          / time data generation in ms
+3391
 @end example 
 
 As this point one might want to check start and stop times, see if the symbol distribution is actually random and look at the distribution of the price deltas.

@@ -2,7 +2,7 @@
 <html>
 <!-- This manual is for Shakti (k9) build 2020.09.29.
 
-October 1, 2020
+October 3, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -58,7 +58,7 @@ Next: <a href="Benchmarks.html" accesskey="n" rel="next">Benchmarks</a>, Previou
 </p>
 <div class="example">
 <pre class="example"> n:10
- T:10:00+`t x@&lt;x:n?36e5
+ T:10:00+`t n?36e5
  B:100++\-1+n?3
  A:B+1+n?2
  q:+`t`b`a!(T;B;A);q
@@ -92,16 +92,16 @@ t            p
 </p>
 
 <span id="Data-Manipulation"></span><h3 class="section">2.2 Data Manipulation</h3>
-<p>Generate a table of random financial data and compute basic statistics quickly.  This table takes about 4 GB and 5 seconds on a relatively new consumer laptop.
+<p>Generate a table of random financial data and compute basic statistics quickly.  This table takes about 4 GB and 3.3 seconds on a relatively new consumer laptop.
 </p>
 <div class="example">
-<pre class="example">&nbsp;n:_100*1000*1000                         / 100 million rows
-&nbsp;t:{[x]g@&lt;g:09:00:00.000+x?10:00:00.000}  / random times
-&nbsp;s:{[x]x?`a`b`c`d`e}                      / random symbols
+<pre class="example">&nbsp;n:_100e6                               / 100 million rows
+&nbsp;t:{[x]09:00:00.000+x?10:00:00.000}     / random times
+&nbsp;s:{[x]x?`a`b`c`d`e}                    / random symbols
 &nbsp;m:0,(|m),365378984,m:271810244 42800467 2636454 62769 572 2;
 &nbsp;d:{[x](-6+!13)@(+\m)bin x?_1e9}
-&nbsp;\t q:+`t`s`d!(t[n];s[n];d[n])            / time data generation in ms
-4863
+&nbsp;\t q:+`t`s`d!(t[n];s[n];d[n])          / time data generation in ms
+3391
 </pre></div>
 
 <p>As this point one might want to check start and stop times, see if the symbol distribution is actually random and look at the distribution of the price deltas.
