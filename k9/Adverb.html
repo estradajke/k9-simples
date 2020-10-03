@@ -84,9 +84,9 @@ ab
 abc
 &nbsp;+\1 20 300
 1 21 321
-&nbsp;{[x;y]y+10*x}\1 20 300
+&nbsp;{y+10*x}\1 20 300
 1 30 600
-&nbsp;{[x;y]y+10*x}/1 20 300
+&nbsp;{y+10*x}/1 20 300
 600
 </pre></div>
 
@@ -194,7 +194,7 @@ y4 y3
 <pre class="example">&nbsp;f:{(0.1*x)+0.9*y}      / ema
 &nbsp;0. f\:1+!3
 0.9 1.89 2.889
-&nbsp;f:{[x;y](`$,/$x),(`$,/$y)} / join and collapse
+&nbsp;f:{(`$,/$x),(`$,/$y)} / join and collapse
 &nbsp;`x f\: `y0`y1`y2
 x     y0
 xy0   y1

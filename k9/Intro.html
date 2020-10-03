@@ -212,7 +212,7 @@ a  b  c |
 a|-68
 b|117
 c|73
- {[x](+/m*m:x-avg x)%#x}'+q  / calculate the variance of each symbol
+ {(+/m*m:x-avg x)%#x}'+q  / calculate the variance of each symbol
 a|0.6601538
 b|0.6629631
 c|0.6708467
@@ -258,7 +258,7 @@ c|0.6708467
 </p>
 <div class="example">
 <pre class="example">&nbsp;l:3 4 7 12
-&nbsp;f:{[x]3+x*x}
+&nbsp;f:{3+x*x}
 &nbsp;l@2
 7
 &nbsp;f@2
@@ -274,7 +274,7 @@ c|0.6708467
 <p>In k9 as the Help/Info card shows data are nouns, functions/lists are verbs and modifiers are adverbs.
 </p><ul>
 <li> <tt>3 &gt; 2 (Noun verb noun)</tt>
-</li><li> <tt>3 &gt;' 0 1 2 3 4 5 (Noun verb adverb noun)</tt>
+</li><li> <tt>3 &gt;' (1 12;1 4 5) (Noun verb adverb noun)</tt>
 </li></ul>
 
 <hr>

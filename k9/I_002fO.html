@@ -58,21 +58,21 @@ Next: <a href="Tables.html" accesskey="n" rel="next">Tables</a>, Previous: <a hr
 &nbsp;d,:,(2020.04.20;12:34:56.789;37;12.3;&quot;hi&quot;;`bye)) /data
 &nbsp;d                                          
 date       time         int float char  symbol
-2020-04-20 12:34:56.789 37  12.3  hi    bye   
+2020.04.20 12:34:56.789 37  12.3  hi    bye   
 
 &nbsp;`csv'd                                           / to csv
 date,time,int,float,char,symbol            
-2020-04-20,12:34:56.789,37,12.3,&quot;hi&quot;,bye
+2020.04.20,12:34:56.789,37,12.3,&quot;hi&quot;,bye
 
 &nbsp;&quot;some.csv&quot;0:`csv'd                               / write to some.csv
 &nbsp;0:&quot;some.csv&quot;                                     / read from some.csv
 date,time,int,float,char,symbol            
-2020-04-20,12:34:56.789,37,12.3,&quot;hi&quot;,bye
+2020.04.20,12:34:56.789,37,12.3,&quot;hi&quot;,bye
 
 &nbsp;(&quot;Dtifs*&quot;;,&quot;,&quot;)0:&quot;some.csv&quot;                      / read into table
 date       time         int float char    symbol
 ---------- ------------ --- ----- ------- ------
-2020-04-20 12:34:56.789  37 12.3  &quot;hi&quot;    bye   
+2020.04.20 12:34:56.789  37 12.3  &quot;hi&quot;    bye   
 </pre></div>
 
 

@@ -69,7 +69,7 @@ limit: {[param8]local8 global32 const128 jump256} name256
 * Verb:: Elementary functions
 * Adverb:: Function modifiers
 * Noun:: Basic data types
-* List:: Lists
+* List:: Uniform and non-uniform lists
 * Dictionary:: Dictionaries and functions for dictionaries
 * Named Functions:: Named functions
 * More Functions:: More functions
@@ -396,7 +396,7 @@ grammar consists of nouns (data), verbs (functions) and adverbs
    In k9 as the Help/Info card shows data are nouns, functions/lists
 are verbs and modifiers are adverbs.
    * 3 > 2 (Noun verb noun)
-   * 3 >' 0 1 2 3 4 5 (Noun verb adverb noun)
+   * 3 >' (1 12;1 4 5) (Noun verb adverb noun)
 
 
 File: k9.info,  Node: Examples,  Next: Benchmarks,  Prev: Intro,  Up: Top
@@ -1398,7 +1398,7 @@ Cast string y into type x.
       `t$"12:34:56.789"
      12:34:56.789
       `D$"2020.04.20"
-     2020-04-20
+     2020.04.20
 
    Multiple matrices x and y together.
 
@@ -1583,9 +1583,9 @@ functions except that over only returns the last value.
      abc
       +\1 20 300
      1 21 321
-      {[x;y]y+10*x}\1 20 300
+      {y+10*x}\1 20 300
      1 30 600
-      {[x;y]y+10*x}/1 20 300
+      {y+10*x}/1 20 300
      600
 
 5.2 join => c/x
@@ -1698,7 +1698,7 @@ that it only returns the last value.
       f:{(0.1*x)+0.9*y}      / ema
       0. f\:1+!3
      0.9 1.89 2.889
-      f:{[x;y](`$,/$x),(`$,/$y)} / join and collapse
+      f:{(`$,/$x),(`$,/$y)} / join and collapse
       `x f\: `y0`y1`y2
      x     y0
      xy0   y1
@@ -1924,11 +1924,11 @@ Dates and times can be combined as 2020.04.20T12:34:56.789.
      `T
       "T"$"2020.04.20 12:34:56.789" / converting from string
      2020.04.20T12:34:56.789
-      "T"$"2020-04-20 12:34:56.789"
+      "T"$"2020.04.20 12:34:56.789"
      2020.04.20T12:34:56.789
       "T"$"2020.04.20T12:34:56.789"
      2020.04.20T12:34:56.789
-      "T"$"2020-04-20T12:34:56.789"
+      "T"$"2020.04.20T12:34:56.789"
      2020.04.20T12:34:56.789
 
 6.6 Extreme values
@@ -2649,21 +2649,21 @@ with the correct type.
       d,:,(2020.04.20;12:34:56.789;37;12.3;"hi";`bye)) /data
       d
      date       time         int float char  symbol
-     2020-04-20 12:34:56.789 37  12.3  hi    bye
+     2020.04.20 12:34:56.789 37  12.3  hi    bye
 
       `csv'd                                           / to csv
      date,time,int,float,char,symbol
-     2020-04-20,12:34:56.789,37,12.3,"hi",bye
+     2020.04.20,12:34:56.789,37,12.3,"hi",bye
 
       "some.csv"0:`csv'd                               / write to some.csv
       0:"some.csv"                                     / read from some.csv
      date,time,int,float,char,symbol
-     2020-04-20,12:34:56.789,37,12.3,"hi",bye
+     2020.04.20,12:34:56.789,37,12.3,"hi",bye
 
       ("Dtifs*";,",")0:"some.csv"                      / read into table
      date       time         int float char    symbol
      ---------- ------------ --- ----- ------- ------
-     2020-04-20 12:34:56.789  37 12.3  "hi"    bye
+     2020.04.20 12:34:56.789  37 12.3  "hi"    bye
 
 11.2 Format to CSV/json/k => 'csv x
 ===================================
@@ -3423,49 +3423,49 @@ than previously imagined.
 
 Tag Table:
 Node: Top173
-Node: Intro4295
-Node: Examples17028
-Node: Benchmarks24159
-Node: Verb29106
-Ref: x30566
-Ref: set30591
-Ref: flip30803
-Ref: plus31053
-Ref: negate31438
-Ref: minus31610
-Ref: first31717
-Ref: times32036
-Ref: divide32167
-Ref: where32304
-Ref: min/and32690
-Ref: reverse32949
-Ref: max/or33119
-Ref: asc33383
-Ref: less33756
-Ref: group34018
-Ref: equal34264
-Ref: not34388
-Ref: match34505
-Ref: enum34698
-Ref: key35950
-Ref: enlist36180
-Ref: cat36319
-Ref: sort36438
-Ref: [f]cut36670
-Ref: count37378
-Ref: [f]take37568
-Ref: floor38197
-Ref: [f]drop38288
-Ref: string38881
-Ref: cast+38989
-Ref: unique+39307
-Ref: find+39546
-Ref: type39995
-Ref: [f]at40351
-Ref: value40570
-Ref: [f]dot40898
-Node: Adverb41874
-Ref: scan42586
+Node: Intro4319
+Node: Examples17047
+Node: Benchmarks24169
+Node: Verb29116
+Ref: x30576
+Ref: set30601
+Ref: flip30813
+Ref: plus31063
+Ref: negate31448
+Ref: minus31620
+Ref: first31727
+Ref: times32046
+Ref: divide32177
+Ref: where32314
+Ref: min/and32700
+Ref: reverse32959
+Ref: max/or33129
+Ref: asc33393
+Ref: less33766
+Ref: group34028
+Ref: equal34274
+Ref: not34398
+Ref: match34515
+Ref: enum34708
+Ref: key35960
+Ref: enlist36190
+Ref: cat36329
+Ref: sort36448
+Ref: [f]cut36680
+Ref: count37388
+Ref: [f]take37578
+Ref: floor38207
+Ref: [f]drop38298
+Ref: string38891
+Ref: cast+38999
+Ref: unique+39317
+Ref: find+39556
+Ref: type40005
+Ref: [f]at40361
+Ref: value40580
+Ref: [f]dot40908
+Node: Adverb41884
+Ref: scan42596
 Ref: join43126
 Ref: split43301
 Ref: each43492
@@ -3475,75 +3475,75 @@ Ref: bin244323
 Ref: eachr44526
 Ref: eachl44723
 Ref: n scan44907
-Ref: c scan45392
-Ref: c over45676
-Ref: vs45786
-Ref: sv45906
-Node: Noun46030
-Ref: bool47396
-Ref: int47696
-Ref: flt47900
-Ref: char48278
-Ref: name48501
-Ref: uuid48732
-Ref: time48889
-Ref: date49503
-Ref: datetime49921
-Node: List50620
-Node: Dictionary55331
-Node: Named Functions60120
-Ref: sqrt60735
-Ref: exp60806
-Ref: log60872
-Ref: sin60970
-Ref: cos61107
-Ref: div61253
-Ref: mod61407
-Ref: bar61583
-Ref: in62117
-Ref: bin62293
-Ref: within62505
-Node: More Functions62717
-Ref: cond62840
-Ref: amend62960
-Ref: dmend63622
-Node: I/O64325
-Ref: input format64666
-Ref: format65677
-Ref: write line66077
-Ref: read line66464
-Ref: write char66651
-Ref: read char67046
-Ref: load data67411
-Ref: write data69168
-Ref: conn/set73081
-Ref: http/get73125
-Node: Tables73175
-Ref: Table73604
-Ref: XTab75214
-Ref: TTab75691
-Node: kSQL76127
-Ref: union77551
-Ref: left77926
-Ref: outer78450
-Ref: asof78805
-Node: System80823
-Ref: load81275
-Ref: timing81463
-Ref: variables81550
-Ref: memory81651
-Ref: cd81766
-Node: Errors81850
-Ref: class82290
-Ref: rank82379
-Ref: length82501
-Ref: _type82622
-Ref: domain82731
-Ref: limit82853
-Ref: nyi83054
-Ref: parse83387
-Ref: _value83542
-Node: Conculsion83670
+Ref: c scan45387
+Ref: c over45671
+Ref: vs45781
+Ref: sv45901
+Node: Noun46025
+Ref: bool47391
+Ref: int47691
+Ref: flt47895
+Ref: char48273
+Ref: name48496
+Ref: uuid48727
+Ref: time48884
+Ref: date49498
+Ref: datetime49916
+Node: List50615
+Node: Dictionary55326
+Node: Named Functions60115
+Ref: sqrt60730
+Ref: exp60801
+Ref: log60867
+Ref: sin60965
+Ref: cos61102
+Ref: div61248
+Ref: mod61402
+Ref: bar61578
+Ref: in62112
+Ref: bin62288
+Ref: within62500
+Node: More Functions62712
+Ref: cond62835
+Ref: amend62955
+Ref: dmend63617
+Node: I/O64320
+Ref: input format64661
+Ref: format65672
+Ref: write line66072
+Ref: read line66459
+Ref: write char66646
+Ref: read char67041
+Ref: load data67406
+Ref: write data69163
+Ref: conn/set73076
+Ref: http/get73120
+Node: Tables73170
+Ref: Table73599
+Ref: XTab75209
+Ref: TTab75686
+Node: kSQL76122
+Ref: union77546
+Ref: left77921
+Ref: outer78445
+Ref: asof78800
+Node: System80818
+Ref: load81270
+Ref: timing81458
+Ref: variables81545
+Ref: memory81646
+Ref: cd81761
+Node: Errors81845
+Ref: class82285
+Ref: rank82374
+Ref: length82496
+Ref: _type82617
+Ref: domain82726
+Ref: limit82848
+Ref: nyi83049
+Ref: parse83382
+Ref: _value83537
+Node: Conculsion83665
 
 End Tag Table
 

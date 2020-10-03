@@ -96,10 +96,10 @@ t            p
 </p>
 <div class="example">
 <pre class="example">&nbsp;n:_100e6                               / 100 million rows
-&nbsp;t:{[x]09:00:00.000+x?10:00:00.000}     / random times
-&nbsp;s:{[x]x?`a`b`c`d`e}                    / random symbols
+&nbsp;t:{09:00:00.000+x?10:00:00.000}     / random times
+&nbsp;s:{x?`a`b`c`d`e}                    / random symbols
 &nbsp;m:0,(|m),365378984,m:271810244 42800467 2636454 62769 572 2;
-&nbsp;d:{[x](-6+!13)@(+\m)bin x?_1e9}
+&nbsp;d:{(-6+!13)@(+\m)bin x?_1e9}
 &nbsp;\t q:+`t`s`d!(t[n];s[n];d[n])          / time data generation in ms
 3391
 </pre></div>
