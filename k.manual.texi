@@ -80,6 +80,7 @@ limit: {[param8]local8 global32 const128 jump256} name256
 * Noun:: Basic data types
 * List:: Uniform and non-uniform lists
 * Dictionary:: Dictionaries and functions for dictionaries
+* User Functions:: User-defined functions
 * Named Functions:: Named functions
 * More Functions:: More functions
 * I/O:: Input and output
@@ -2251,6 +2252,80 @@ c |3e+08
 @ *d0
 3.14
 @end example
+
+@node User Functions
+@chapter User Functions
+New, user-defined functions can be created.  As these functions are built on top of the fast internal functions of k9 they should be performant also.  
+
+@verbatim
+Func {[a;b]a+b}
+@end verbatim
+
+@section Function arguments
+Functions default to arguments of x, y, and z for the first three parameters but this can be explicitly shown or modified as needed.  Given k9's terseness it's rare to see good k9 code with long variable names.
+
+@example
+ f1:@{x+2*y@}         / implicit arguements
+ f1[2;10]
+22
+ f2:@{[x;y]x+2*y@}    / explicit
+ f2[2;10]
+22
+ f3:@{[g;h]g+2*h@}    / explicit and renamed
+ f3[2;10]
+22
+ f4:@{[please;dont]please+2*dont@} / ouch
+ f4[2;10]
+22
+ @@f1
+`.
+@end example
+
+@section Calling functions
+Functions, like lists, can be called with a number of notations.  Typically one uses square bracket notation when the function takes multiple argruments.  If a function is called with less than the required number of arguments then it will return a function that requires the remaining arguemnts.
+
+@example
+ f1:@{[x] x@}
+ f2:@{[x;y](x;y)@}
+ f3:@{[x;y;z](x;y;z)@}
+ f1[`a]
+`a
+ f2[37;`a]
+37
+a 
+
+ f3["hi";37;`a]
+hi
+37
+a 
+
+ f2[37]     
+@{[x;y](x;y)@}[37]
+ f2[;`a]
+@{[x;y](x;y)@}[;`a]
+
+ f1[`a]
+`a
+ f1 `a
+`a
+ f1@`a
+`a
+@end example 
+
+@section Anonymous functions
+
+@example
+ @{x+2*y@}[2;10]
+22
+@end example
+
+@section Recursive functions
+
+@example
+ f:@{$[x>1;x*f@@x-1;1]@};f 5
+120
+@end example
+
 
 @node Named Functions
 @chapter Named Functions
