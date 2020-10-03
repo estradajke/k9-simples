@@ -302,7 +302,7 @@ return, most variance, or any other analysis on the data.
      a|-68
      b|117
      c|73
-      {[x](+/m*m:x-avg x)%#x}'+q  / calculate the variance of each symbol
+      {(+/m*m:x-avg x)%#x}'+q  / calculate the variance of each symbol
      a|0.6601538
      b|0.6629631
      c|0.6708467
@@ -379,7 +379,7 @@ way to determine if a map is either a list or function is via the type
 function.  Lists and functions do not have the same type.
 
       l:3 4 7 12
-      f:{[x]3+x*x}
+      f:{3+x*x}
       l@2
      7
       f@2
@@ -469,10 +469,10 @@ quickly.  This table takes about 4 GB and 3.3 seconds on a relatively
 new consumer laptop.
 
       n:_100e6                               / 100 million rows
-      t:{[x]09:00:00.000+x?10:00:00.000}     / random times
-      s:{[x]x?`a`b`c`d`e}                    / random symbols
+      t:{09:00:00.000+x?10:00:00.000}     / random times
+      s:{x?`a`b`c`d`e}                    / random symbols
       m:0,(|m),365378984,m:271810244 42800467 2636454 62769 572 2;
-      d:{[x](-6+!13)@(+\m)bin x?_1e9}
+      d:{(-6+!13)@(+\m)bin x?_1e9}
       \t q:+`t`s`d!(t[n];s[n];d[n])          / time data generation in ms
      3391
 
