@@ -2288,8 +2288,10 @@ Functions, like lists, can be called with a number of notations.  Typically one 
  f1:@{[x] x@}
  f2:@{[x;y](x;y)@}
  f3:@{[x;y;z](x;y;z)@}
+ 
  f1[`a]
 `a
+
  f2[37;`a]
 37
 a 
@@ -2325,7 +2327,6 @@ a
  f:@{$[x>1;x*f@@x-1;1]@};f 5
 120
 @end example
-
 
 @node Named Functions
 @chapter Named Functions
