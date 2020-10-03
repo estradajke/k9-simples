@@ -1093,12 +1093,25 @@ adverb over.
 4.14 asc(dsc) => < (>) x
 ========================
 
-The indices of a list in order to sort the list in ascending
-(descending) order.
+Sort a list or dictionary in ascending (<) or descending (>) order.
+Applied to a list will return the indices to be used while a
+dictionary is directly sorted by value
+
       <2 3 0 12
      2 0 1 3
+
       x@<x:2 3 0 12
      0 2 3 12
+
+      d:`a`b`c!3 2 1;d
+     a|3
+     b|2
+     c|1
+
+      <d
+     c|1
+     b|2
+     a|3
 
 4.15 less (more) => x < (>) y
 =============================
@@ -1171,9 +1184,13 @@ Compare x and y.
 4.20 enum => !x
 ===============
 
-Given an integer, x, generate an integer list from 0 to x-1.
+Given an integer, x, generate an integer list from 0 to x-1.  Given a
+dictionary, x, return all key values
       !3
      0 1 2
+
+      !`a`b`c!3 2 1
+     `a`b`c
 
    Given a list of integers, x, generate a list of lists where each
 individual index goes from 0 to n-1.  Aka an odometer where the each
@@ -1249,7 +1266,8 @@ Concatenate x and y.
 4.24 sort => ^x
 ===============
 
-Sort list x into ascending order.
+Sort list or dictionary x into ascending order.  Dictionaries are
+sorted using the keys.
       ^0 3 2 1
      0 1 2 3
       ^`b`a!((0 1 2);(7 6 5)) / sort dictionary by key
@@ -2132,11 +2150,11 @@ File: k9.info,  Node: Dictionary,  Next: Named Functions,  Prev: List,  Up: Top
 8 Dictionary
 ************
 
-Dictionaries are a data type of key-value pairs.  In other computer
-languages they are also known as associative arrays and maps.  Keys
-should be unique to avoid lookup value confusion but uniqueness is not
-enforced.  The values in the dictionary can be single elements, lists
-or tables.
+Dictionaries are a data type of key-value pairs typically used to
+retrieve the value by using the key.  In other computer languages they
+are also known as associative arrays and maps.  Keys should be unique
+to avoid lookup value confusion but uniqueness is not enforced.  The
+values in the dictionary can be single elements, lists or tables.
 
    Dictionaries in k9 are often used.  As an example in the benchmark
 chapter the market quote and trade data are dictionaries of symbols
@@ -3423,109 +3441,109 @@ Ref: min/and32690
 Ref: reverse32949
 Ref: max/or33119
 Ref: asc33383
-Ref: less33579
-Ref: group33841
-Ref: equal34087
-Ref: not34211
-Ref: match34328
-Ref: enum34521
-Ref: key35694
-Ref: enlist35924
-Ref: cat36063
-Ref: sort36182
-Ref: [f]cut36359
-Ref: count37067
-Ref: [f]take37257
-Ref: floor37886
-Ref: [f]drop37977
-Ref: string38570
-Ref: cast+38678
-Ref: unique+38996
-Ref: find+39235
-Ref: type39684
-Ref: [f]at40040
-Ref: value40259
-Ref: [f]dot40587
-Node: Adverb41563
-Ref: scan42275
-Ref: join42815
-Ref: split42990
-Ref: each43181
-Ref: has43399
-Ref: eachp43572
-Ref: bin244012
-Ref: eachr44215
-Ref: eachl44412
-Ref: n scan44596
-Ref: c scan45081
-Ref: c over45365
-Ref: vs45475
-Ref: sv45595
-Node: Noun45719
-Ref: bool47085
-Ref: int47385
-Ref: flt47589
-Ref: char47967
-Ref: name48190
-Ref: uuid48421
-Ref: time48578
-Ref: date49192
-Ref: datetime49610
-Node: List50309
-Node: Dictionary55020
-Node: Named Functions59755
-Ref: sqrt60370
-Ref: exp60441
-Ref: log60507
-Ref: sin60605
-Ref: cos60742
-Ref: div60888
-Ref: mod61042
-Ref: bar61218
-Ref: in61752
-Ref: bin61928
-Ref: within62140
-Node: More Functions62352
-Ref: cond62475
-Ref: amend62595
-Ref: dmend63257
-Node: I/O63960
-Ref: input format64301
-Ref: format65312
-Ref: write line65712
-Ref: read line66099
-Ref: write char66286
-Ref: read char66681
-Ref: load data67046
-Ref: write data68803
-Ref: conn/set72716
-Ref: http/get72760
-Node: Tables72810
-Ref: Table73239
-Ref: XTab74849
-Ref: TTab75326
-Node: kSQL75762
-Ref: union77186
-Ref: left77561
-Ref: outer78085
-Ref: asof78440
-Node: System80458
-Ref: load80910
-Ref: timing81098
-Ref: variables81185
-Ref: memory81286
-Ref: cd81401
-Node: Errors81485
-Ref: class81925
-Ref: rank82014
-Ref: length82136
-Ref: _type82257
-Ref: domain82366
-Ref: limit82488
-Ref: nyi82689
-Ref: parse83022
-Ref: _value83177
-Node: Conculsion83305
+Ref: less33756
+Ref: group34018
+Ref: equal34264
+Ref: not34388
+Ref: match34505
+Ref: enum34698
+Ref: key35950
+Ref: enlist36180
+Ref: cat36319
+Ref: sort36438
+Ref: [f]cut36670
+Ref: count37378
+Ref: [f]take37568
+Ref: floor38197
+Ref: [f]drop38288
+Ref: string38881
+Ref: cast+38989
+Ref: unique+39307
+Ref: find+39546
+Ref: type39995
+Ref: [f]at40351
+Ref: value40570
+Ref: [f]dot40898
+Node: Adverb41874
+Ref: scan42586
+Ref: join43126
+Ref: split43301
+Ref: each43492
+Ref: has43710
+Ref: eachp43883
+Ref: bin244323
+Ref: eachr44526
+Ref: eachl44723
+Ref: n scan44907
+Ref: c scan45392
+Ref: c over45676
+Ref: vs45786
+Ref: sv45906
+Node: Noun46030
+Ref: bool47396
+Ref: int47696
+Ref: flt47900
+Ref: char48278
+Ref: name48501
+Ref: uuid48732
+Ref: time48889
+Ref: date49503
+Ref: datetime49921
+Node: List50620
+Node: Dictionary55331
+Node: Named Functions60120
+Ref: sqrt60735
+Ref: exp60806
+Ref: log60872
+Ref: sin60970
+Ref: cos61107
+Ref: div61253
+Ref: mod61407
+Ref: bar61583
+Ref: in62117
+Ref: bin62293
+Ref: within62505
+Node: More Functions62717
+Ref: cond62840
+Ref: amend62960
+Ref: dmend63622
+Node: I/O64325
+Ref: input format64666
+Ref: format65677
+Ref: write line66077
+Ref: read line66464
+Ref: write char66651
+Ref: read char67046
+Ref: load data67411
+Ref: write data69168
+Ref: conn/set73081
+Ref: http/get73125
+Node: Tables73175
+Ref: Table73604
+Ref: XTab75214
+Ref: TTab75691
+Node: kSQL76127
+Ref: union77551
+Ref: left77926
+Ref: outer78450
+Ref: asof78805
+Node: System80823
+Ref: load81275
+Ref: timing81463
+Ref: variables81550
+Ref: memory81651
+Ref: cd81766
+Node: Errors81850
+Ref: class82290
+Ref: rank82379
+Ref: length82501
+Ref: _type82622
+Ref: domain82731
+Ref: limit82853
+Ref: nyi83054
+Ref: parse83387
+Ref: _value83542
+Node: Conculsion83670
 
 End Tag Table
 

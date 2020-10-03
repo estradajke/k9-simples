@@ -263,12 +263,24 @@ b|-4 -5 -6
 </pre></div>
 
 <span id="asc"></span><span id="asc_0028dsc_0029-_21d2-_003c-_0028_003e_0029-x"></span><h3 class="section">4.14 asc(dsc) &rArr; &lt; (&gt;) x</h3>
-<p>The indices of a list in order to sort the list in ascending (descending) order.
-</p><div class="example">
-<pre class="example">&nbsp;&lt;2 3 0 12
+<p>Sort a list or dictionary in ascending (&lt;) or descending (&gt;) order.  Applied to a list will return the indices to be used while a dictionary is directly sorted by value
+</p>
+<div class="example">
+<pre class="example"> &lt;2 3 0 12
 2 0 1 3
-&nbsp;x@&lt;x:2 3 0 12
+
+ x@&lt;x:2 3 0 12
 0 2 3 12
+
+ d:`a`b`c!3 2 1;d
+a|3
+b|2
+c|1
+
+ &lt;d
+c|1
+b|2
+a|3
 </pre></div>
 
 <span id="less"></span><span id="less-_0028more_0029-_21d2-x-_003c-_0028_003e_0029-y"></span><h3 class="section">4.15 less (more) &rArr; x &lt; (&gt;) y</h3>
@@ -340,10 +352,13 @@ n|2 4
 </pre></div>
 
 <span id="enum"></span><span id="enum-_21d2-_0021x"></span><h3 class="section">4.20 enum &rArr; !x</h3>
-<p>Given an integer, x, generate an integer list from 0 to x-1.
+<p>Given an integer, x, generate an integer list from 0 to x-1.  Given a dictionary, x, return all key values
 </p><div class="example">
-<pre class="example">&nbsp;!3
+<pre class="example"> !3
 0 1 2
+
+ !`a`b`c!3 2 1
+`a`b`c
 </pre></div>
 
 <p>Given a list of integers, x, generate a list of lists where each individual index goes from 0 to n-1.  Aka an odometer where the each place can have a separate base and the total number of lists is the product of all the x values.
@@ -416,7 +431,7 @@ b|3 4
 </pre></div>
 
 <span id="sort"></span><span id="sort-_21d2-_005ex"></span><h3 class="section">4.24 sort &rArr; ^x</h3>
-<p>Sort list x into ascending order.
+<p>Sort list or dictionary x into ascending order.  Dictionaries are sorted using the keys.
 </p><div class="example">
 <pre class="example">&nbsp;^0 3 2 1
 0 1 2 3
