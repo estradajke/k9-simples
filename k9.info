@@ -2000,11 +2000,14 @@ updating many elements and there is a syntax for doing so.
      0 0 0 0 0 0 0 0 0 0
 
    List amend syntax has a few options so will be explained in more
-detail.
+detail.  In this section 's I v : f' represent list, indices, value,
+identify function and function respectively.  Spaces have been added
+for readability but are not needed and l is easily confused with 1
+hence use of s.
 
-   * @[list;indices;value]
-   * @[list;indices;identity function;value]
-   * @[list;indices;function;value]
+   * @[s; I; v]
+   * @[s; I; :; v]
+   * @[s; I; f; v]
 
    The first syntax sets the list at the indices to value.  The second
 syntax performs the same modificaiton but explicitly lists the
@@ -2034,8 +2037,8 @@ infix notation (x+y) but prefix notation (+[x;y]) is also permissible.
 7.4.1 Pairwise
 --------------
 
-These function only operates on x[i] and y[i] and thus requires that x
-and y are equal length.
+These functions operate on list elements pairwise and thus requires
+that x and y are equal length.
    * x+y : Add
    * x-y : Subtract
    * x*y : Multiply
@@ -2116,7 +2119,7 @@ to its inputs, i.e.  f[x;y] does not equal f[y;x];
 These functions are symmetric in the inputs f[x;y]=f[y;x] and the
 lists are not required to be equal length.
 
-   * x_y : Unique values to only one of the two lists
+   * x_y : Values present in only one of the two lists
 
       x:2 8 20
       y:1 2 3 7 8 9
@@ -3469,60 +3472,60 @@ Ref: time48578
 Ref: date49192
 Ref: datetime49610
 Node: List50309
-Node: Dictionary54856
-Node: Named Functions59591
-Ref: sqrt60206
-Ref: exp60277
-Ref: log60343
-Ref: sin60441
-Ref: cos60578
-Ref: div60724
-Ref: mod60878
-Ref: bar61054
-Ref: in61588
-Ref: bin61764
-Ref: within61976
-Node: More Functions62188
-Ref: cond62311
-Ref: amend62431
-Ref: dmend63093
-Node: I/O63796
-Ref: input format64137
-Ref: format65148
-Ref: write line65548
-Ref: read line65935
-Ref: write char66122
-Ref: read char66517
-Ref: load data66882
-Ref: write data68639
-Ref: conn/set72552
-Ref: http/get72596
-Node: Tables72646
-Ref: Table73075
-Ref: XTab74685
-Ref: TTab75162
-Node: kSQL75598
-Ref: union77022
-Ref: left77397
-Ref: outer77921
-Ref: asof78276
-Node: System80294
-Ref: load80746
-Ref: timing80934
-Ref: variables81021
-Ref: memory81122
-Ref: cd81237
-Node: Errors81321
-Ref: class81761
-Ref: rank81850
-Ref: length81972
-Ref: _type82093
-Ref: domain82202
-Ref: limit82324
-Ref: nyi82525
-Ref: parse82858
-Ref: _value83013
-Node: Conculsion83141
+Node: Dictionary55020
+Node: Named Functions59755
+Ref: sqrt60370
+Ref: exp60441
+Ref: log60507
+Ref: sin60605
+Ref: cos60742
+Ref: div60888
+Ref: mod61042
+Ref: bar61218
+Ref: in61752
+Ref: bin61928
+Ref: within62140
+Node: More Functions62352
+Ref: cond62475
+Ref: amend62595
+Ref: dmend63257
+Node: I/O63960
+Ref: input format64301
+Ref: format65312
+Ref: write line65712
+Ref: read line66099
+Ref: write char66286
+Ref: read char66681
+Ref: load data67046
+Ref: write data68803
+Ref: conn/set72716
+Ref: http/get72760
+Node: Tables72810
+Ref: Table73239
+Ref: XTab74849
+Ref: TTab75326
+Node: kSQL75762
+Ref: union77186
+Ref: left77561
+Ref: outer78085
+Ref: asof78440
+Node: System80458
+Ref: load80910
+Ref: timing81098
+Ref: variables81185
+Ref: memory81286
+Ref: cd81401
+Node: Errors81485
+Ref: class81925
+Ref: rank82014
+Ref: length82136
+Ref: _type82257
+Ref: domain82366
+Ref: limit82488
+Ref: nyi82689
+Ref: parse83022
+Ref: _value83177
+Node: Conculsion83305
 
 End Tag Table
 

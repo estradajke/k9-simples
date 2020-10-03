@@ -1889,12 +1889,12 @@ Lists can be updated element wise but typically one is likely to be updating man
 0 0 0 0 0 0 0 0 0 0
 @end example
 
-List amend syntax has a few options so will be explained in more detail.
+List amend syntax has a few options so will be explained in more detail.  In this section @code{s I v : f} represent list, indices, value, identify function and function respectively.  Spaces have been added for readability but are not needed and l is easily confused with 1 hence use of s.
 
 @itemize
-@item @@[list;indices;value]
-@item @@[list;indices;identity function;value]
-@item @@[list;indices;function;value]
+@item @@[s; I; v]
+@item @@[s; I; :; v]
+@item @@[s; I; f; v]
 @end itemize
 
 The first syntax sets the list at the indices to value.  The second syntax performs the same modificaiton but explicitly lists the identity function, :.  The third synatx is the same as the preceeding but uses an arbitrary fuction.
@@ -1918,7 +1918,7 @@ This section will focus on functions (f) that operate on two lists (x and y).  A
 
 
 @subsection Pairwise
-These function only operates on x[i] and y[i] and thus requires that x and y are equal length.
+These functions operate on list elements pairwise and thus requires that x and y are equal length.
 @itemize
 @item @t{x+y : Add}
 @item @t{x-y : Subtract}
@@ -2002,7 +2002,7 @@ These functions compare x[i] to y or x to y[i] and f is not symmetric to its inp
 These functions are symmetric in the inputs f[x;y]=f[y;x] and the lists are not required to be equal length.
 
 @itemize
-@item @t{x_y : Unique values to only one of the two lists}
+@item @t{x_y : Values present in only one of the two lists}
 @end itemize
 
 @example
