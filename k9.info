@@ -1,7 +1,7 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
 This manual is for Shakti (k9) build 2020.09.29.
-October 3, 2020
+October 4, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -73,7 +73,7 @@ limit: {[param8]local8 global32 const128 jump256} name256
 * Dictionary:: Dictionaries and functions for dictionaries
 * User Functions:: User-defined functions
 * Named Functions:: Named functions
-* More Functions:: More functions
+* Additional Functions:: Additional functions
 * I/O:: Input and output
 * Tables:: Tables to store data
 * kSQL:: kSQL to query tables
@@ -2068,7 +2068,6 @@ that x and y are equal length.
    * x<y : Less Than
    * x=y : Equals
    * x!y : Dictionary
-   * x$y : Take
 
       x:1+!5;y:10-2*!5
       x
@@ -2100,12 +2099,6 @@ that x and y are equal length.
      4| 4
      5| 2
 
-      x$y
-     10
-     8 8
-     6 6 6
-     4 4 4 4
-     2 2 2 2 2
 
 7.4.2 Each Element of One List Compared to Entire Other List
 ------------------------------------------------------------
@@ -2467,7 +2460,7 @@ requires the remaining arguemnts.
      120
 
 
-File: k9.info,  Node: Named Functions,  Next: More Functions,  Prev: User Functions,  Up: Top
+File: k9.info,  Node: Named Functions,  Next: Additional Functions,  Prev: User Functions,  Up: Top
 
 10 Named Functions
 ******************
@@ -2601,10 +2594,10 @@ Test if x is equal to or greater than y[0] and less than y[1].
      0b
 
 
-File: k9.info,  Node: More Functions,  Next: I/O,  Prev: Named Functions,  Up: Top
+File: k9.info,  Node: Additional Functions,  Next: I/O,  Prev: Named Functions,  Up: Top
 
-11 More Functions
-*****************
+11 Additional Functions
+***********************
 
 11.1 cond => $[x;y;z]
 =====================
@@ -2715,7 +2708,7 @@ Replace the values in list x at indices i with f or f[y].
 
 
 
-File: k9.info,  Node: I/O,  Next: Tables,  Prev: More Functions,  Up: Top
+File: k9.info,  Node: I/O,  Next: Tables,  Prev: Additional Functions,  Up: Top
 
 12 I/O
 ******
@@ -3508,128 +3501,128 @@ than previously imagined.
 
 Tag Table:
 Node: Top173
-Node: Intro4361
-Node: Examples17089
-Node: Benchmarks24211
-Node: Verb29158
-Ref: x30618
-Ref: set30643
-Ref: flip30855
-Ref: plus31105
-Ref: negate31490
-Ref: minus31662
-Ref: first31769
-Ref: times32088
-Ref: divide32219
-Ref: where32356
-Ref: min/and32742
-Ref: reverse33001
-Ref: max/or33171
-Ref: asc33435
-Ref: less33808
-Ref: group34070
-Ref: equal34316
-Ref: not34440
-Ref: match34557
-Ref: enum34750
-Ref: key36002
-Ref: enlist36232
-Ref: cat36371
-Ref: sort36490
-Ref: [f]cut36722
-Ref: count37430
-Ref: [f]take37620
-Ref: floor38249
-Ref: [f]drop38340
-Ref: string38933
-Ref: cast+39041
-Ref: unique+39359
-Ref: find+39598
-Ref: type40047
-Ref: [f]at40403
-Ref: value40622
-Ref: [f]dot40950
-Node: Adverb41926
-Ref: scan42638
-Ref: join43168
-Ref: split43343
-Ref: each43534
-Ref: has43752
-Ref: eachp43925
-Ref: bin244365
-Ref: eachr44568
-Ref: eachl44765
-Ref: n scan44949
-Ref: c scan45429
-Ref: c over45713
-Ref: vs45823
-Ref: sv45943
-Node: Noun46067
-Ref: bool47433
-Ref: int47733
-Ref: flt47937
-Ref: char48315
-Ref: name48538
-Ref: uuid48769
-Ref: time48926
-Ref: date49540
-Ref: datetime49958
-Node: List50657
-Node: Dictionary55368
-Node: User Functions60156
-Node: Named Functions61806
-Ref: sqrt62429
-Ref: exp62502
-Ref: log62570
-Ref: sin62670
-Ref: cos62809
-Ref: div62957
-Ref: mod63113
-Ref: bar63291
-Ref: in63831
-Ref: bin64009
-Ref: within64223
-Node: More Functions64437
-Ref: cond64560
-Ref: amend64680
-Ref: dmend65342
-Node: I/O66045
-Ref: input format66386
-Ref: format67397
-Ref: write line67797
-Ref: read line68184
-Ref: write char68371
-Ref: read char68766
-Ref: load data69131
-Ref: write data70888
-Ref: conn/set74801
-Ref: http/get74845
-Node: Tables74895
-Ref: Table75324
-Ref: XTab76934
-Ref: TTab77411
-Node: kSQL77847
-Ref: union79271
-Ref: left79646
-Ref: outer80170
-Ref: asof80525
-Node: System82543
-Ref: load82995
-Ref: timing83183
-Ref: variables83270
-Ref: memory83371
-Ref: cd83486
-Node: Errors83570
-Ref: class84010
-Ref: rank84099
-Ref: length84221
-Ref: _type84342
-Ref: domain84451
-Ref: limit84573
-Ref: nyi84774
-Ref: parse85107
-Ref: _value85262
-Node: Conculsion85390
+Node: Intro4373
+Node: Examples17101
+Node: Benchmarks24223
+Node: Verb29170
+Ref: x30630
+Ref: set30655
+Ref: flip30867
+Ref: plus31117
+Ref: negate31502
+Ref: minus31674
+Ref: first31781
+Ref: times32100
+Ref: divide32231
+Ref: where32368
+Ref: min/and32754
+Ref: reverse33013
+Ref: max/or33183
+Ref: asc33447
+Ref: less33820
+Ref: group34082
+Ref: equal34328
+Ref: not34452
+Ref: match34569
+Ref: enum34762
+Ref: key36014
+Ref: enlist36244
+Ref: cat36383
+Ref: sort36502
+Ref: [f]cut36734
+Ref: count37442
+Ref: [f]take37632
+Ref: floor38261
+Ref: [f]drop38352
+Ref: string38945
+Ref: cast+39053
+Ref: unique+39371
+Ref: find+39610
+Ref: type40059
+Ref: [f]at40415
+Ref: value40634
+Ref: [f]dot40962
+Node: Adverb41938
+Ref: scan42650
+Ref: join43180
+Ref: split43355
+Ref: each43546
+Ref: has43764
+Ref: eachp43937
+Ref: bin244377
+Ref: eachr44580
+Ref: eachl44777
+Ref: n scan44961
+Ref: c scan45441
+Ref: c over45725
+Ref: vs45835
+Ref: sv45955
+Node: Noun46079
+Ref: bool47445
+Ref: int47745
+Ref: flt47949
+Ref: char48327
+Ref: name48550
+Ref: uuid48781
+Ref: time48938
+Ref: date49552
+Ref: datetime49970
+Node: List50669
+Node: Dictionary55298
+Node: User Functions60086
+Node: Named Functions61736
+Ref: sqrt62365
+Ref: exp62438
+Ref: log62506
+Ref: sin62606
+Ref: cos62745
+Ref: div62893
+Ref: mod63049
+Ref: bar63227
+Ref: in63767
+Ref: bin63945
+Ref: within64159
+Node: Additional Functions64373
+Ref: cond64514
+Ref: amend64634
+Ref: dmend65296
+Node: I/O65999
+Ref: input format66346
+Ref: format67357
+Ref: write line67757
+Ref: read line68144
+Ref: write char68331
+Ref: read char68726
+Ref: load data69091
+Ref: write data70848
+Ref: conn/set74761
+Ref: http/get74805
+Node: Tables74855
+Ref: Table75284
+Ref: XTab76894
+Ref: TTab77371
+Node: kSQL77807
+Ref: union79231
+Ref: left79606
+Ref: outer80130
+Ref: asof80485
+Node: System82503
+Ref: load82955
+Ref: timing83143
+Ref: variables83230
+Ref: memory83331
+Ref: cd83446
+Node: Errors83530
+Ref: class83970
+Ref: rank84059
+Ref: length84181
+Ref: _type84302
+Ref: domain84411
+Ref: limit84533
+Ref: nyi84734
+Ref: parse85067
+Ref: _value85222
+Node: Conculsion85350
 
 End Tag Table
 

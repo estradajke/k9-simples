@@ -82,7 +82,7 @@ limit: {[param8]local8 global32 const128 jump256} name256
 * Dictionary:: Dictionaries and functions for dictionaries
 * User Functions:: User-defined functions
 * Named Functions:: Named functions
-* More Functions:: More functions
+* Additional Functions:: Additional functions
 * I/O:: Input and output
 * Tables:: Tables to store data
 * kSQL:: kSQL to query tables
@@ -2446,8 +2446,8 @@ Test if x is equal to or greater than y[0] and less than y[1].
 0b
 @end example
 
-@node More Functions
-@chapter More Functions
+@node Additional Functions
+@chapter Additional Functions
 
 @anchor{cond}@section cond @result{} $[x;y;z]
 If x then y else z.
