@@ -1946,7 +1946,6 @@ These functions operate on list elements pairwise and thus requires that x and y
 @item @t{x<y : Less Than}
 @item @t{x=y : Equals}
 @item @t{x!y : Dictionary}
-@item @t{x$y : Take}
 @end itemize
 
 @example
@@ -1980,12 +1979,6 @@ These functions operate on list elements pairwise and thus requires that x and y
 4| 4
 5| 2
 
-@ x$y
-10       
-8 8      
-6 6 6    
-4 4 4 4  
-2 2 2 2 2
 @end example
 
 @subsection Each Element of One List Compared to Entire Other List
