@@ -1401,9 +1401,12 @@ Cast string y into type x.
       `D$"2020.04.20"
      2020.04.20
 
-   Multiple matrices x and y together.
+   Multiply matrices x and y together.
 
-      (0 1 2;3 4 5;6 7 8)$(10 11;20 21;30 31)
+      (1.*!3)$(3.+!3)
+     14.
+
+     (0 1 2;3 4 5;6 7 8)$(10 11;20 21;30 31)
       80  83
      260 272
      440 461
@@ -3536,93 +3539,93 @@ Ref: floor38261
 Ref: [f]drop38352
 Ref: string38945
 Ref: cast+39053
-Ref: unique+39371
-Ref: find+39610
-Ref: type40059
-Ref: [f]at40415
-Ref: value40634
-Ref: [f]dot40962
-Node: Adverb41938
-Ref: scan42650
-Ref: join43180
-Ref: split43355
-Ref: each43546
-Ref: has43764
-Ref: eachp43937
-Ref: bin244377
-Ref: eachr44580
-Ref: eachl44777
-Ref: n scan44961
-Ref: c scan45441
-Ref: c over45725
-Ref: vs45835
-Ref: sv45955
-Node: Noun46079
-Ref: bool47445
-Ref: int47745
-Ref: flt47949
-Ref: char48327
-Ref: name48550
-Ref: uuid48781
-Ref: time48938
-Ref: date49552
-Ref: datetime49970
-Node: List50669
-Node: Dictionary55298
-Node: User Functions60086
-Node: Named Functions61736
-Ref: sqrt62365
-Ref: exp62438
-Ref: log62506
-Ref: sin62606
-Ref: cos62745
-Ref: div62893
-Ref: mod63049
-Ref: bar63227
-Ref: in63767
-Ref: bin63945
-Ref: within64159
-Node: Additional Functions64373
-Ref: cond64514
-Ref: amend64634
-Ref: dmend65296
-Node: I/O65999
-Ref: input format66346
-Ref: format67357
-Ref: write line67757
-Ref: read line68144
-Ref: write char68331
-Ref: read char68726
-Ref: load data69091
-Ref: write data70848
-Ref: conn/set74761
-Ref: http/get74805
-Node: Tables74855
-Ref: Table75284
-Ref: XTab76894
-Ref: TTab77371
-Node: kSQL77807
-Ref: union79231
-Ref: left79606
-Ref: outer80130
-Ref: asof80485
-Node: System82503
-Ref: load82955
-Ref: timing83143
-Ref: variables83230
-Ref: memory83331
-Ref: cd83446
-Node: Errors83530
-Ref: class83970
-Ref: rank84059
-Ref: length84181
-Ref: _type84302
-Ref: domain84411
-Ref: limit84533
-Ref: nyi84734
-Ref: parse85067
-Ref: _value85222
-Node: Conculsion85350
+Ref: unique+39402
+Ref: find+39641
+Ref: type40090
+Ref: [f]at40446
+Ref: value40665
+Ref: [f]dot40993
+Node: Adverb41969
+Ref: scan42681
+Ref: join43211
+Ref: split43386
+Ref: each43577
+Ref: has43795
+Ref: eachp43968
+Ref: bin244408
+Ref: eachr44611
+Ref: eachl44808
+Ref: n scan44992
+Ref: c scan45472
+Ref: c over45756
+Ref: vs45866
+Ref: sv45986
+Node: Noun46110
+Ref: bool47476
+Ref: int47776
+Ref: flt47980
+Ref: char48358
+Ref: name48581
+Ref: uuid48812
+Ref: time48969
+Ref: date49583
+Ref: datetime50001
+Node: List50700
+Node: Dictionary55329
+Node: User Functions60117
+Node: Named Functions61767
+Ref: sqrt62396
+Ref: exp62469
+Ref: log62537
+Ref: sin62637
+Ref: cos62776
+Ref: div62924
+Ref: mod63080
+Ref: bar63258
+Ref: in63798
+Ref: bin63976
+Ref: within64190
+Node: Additional Functions64404
+Ref: cond64545
+Ref: amend64665
+Ref: dmend65327
+Node: I/O66030
+Ref: input format66377
+Ref: format67388
+Ref: write line67788
+Ref: read line68175
+Ref: write char68362
+Ref: read char68757
+Ref: load data69122
+Ref: write data70879
+Ref: conn/set74792
+Ref: http/get74836
+Node: Tables74886
+Ref: Table75315
+Ref: XTab76925
+Ref: TTab77402
+Node: kSQL77838
+Ref: union79262
+Ref: left79637
+Ref: outer80161
+Ref: asof80516
+Node: System82534
+Ref: load82986
+Ref: timing83174
+Ref: variables83261
+Ref: memory83362
+Ref: cd83477
+Node: Errors83561
+Ref: class84001
+Ref: rank84090
+Ref: length84212
+Ref: _type84333
+Ref: domain84442
+Ref: limit84564
+Ref: nyi84765
+Ref: parse85098
+Ref: _value85253
+Node: Conculsion85381
 
 End Tag Table
 
