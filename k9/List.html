@@ -113,7 +113,7 @@ Next: <a href="Dictionary.html" accesskey="n" rel="next">Dictionary</a>, Previou
 </li><li> @[s; I; f; v]
 </li></ul>
 
-<p>The first syntax sets the list at the indices to value.  The second syntax performs the same modificaiton but explicitly lists the identity function, :.  The third synatx is the same as the preceeding but uses an arbitrary fuction.
+<p>The first syntax sets the list at the indices to value.  The second syntax performs the same modificaiton but explicitly lists the identity function, :.  The third synatx is the same as the preceeding but uses an arbitrary function.
 </p>
 <p>Often the developer will need to determine which indices to modify and in cases where this isn&rsquo;t onerous it can be done in the function.
 </p>
@@ -129,7 +129,7 @@ Next: <a href="Dictionary.html" accesskey="n" rel="next">Dictionary</a>, Previou
 :length
 </pre></div>
 
-<span id="Fuction-of-Two-Lists"></span><h3 class="section">7.4 Fuction of Two Lists</h3>
+<span id="Function-of-Two-Lists"></span><h3 class="section">7.4 Function of Two Lists</h3>
 <p>This section will focus on functions (f) that operate on two lists (x and y).  As these are internal functions examples will be shown with infix notation (x+y) but prefix notation (+[x;y]) is also permissible.
 </p>
 
@@ -146,6 +146,7 @@ Next: <a href="Dictionary.html" accesskey="n" rel="next">Dictionary</a>, Previou
 </li><li> <tt>x&lt;y : Less Than</tt>
 </li><li> <tt>x=y : Equals</tt>
 </li><li> <tt>x!y : Dictionary</tt>
+</li><li> <tt>x$y : Sumproduct</tt>
 </li></ul>
 
 <div class="example">
@@ -178,7 +179,8 @@ Next: <a href="Dictionary.html" accesskey="n" rel="next">Dictionary</a>, Previou
 3| 6
 4| 4
 5| 2
-
+&nbsp;x$y
+70
 </pre></div>
 
 <span id="Each-Element-of-One-List-Compared-to-Entire-Other-List"></span><h4 class="subsection">7.4.2 Each Element of One List Compared to Entire Other List</h4>

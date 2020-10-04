@@ -1916,7 +1916,7 @@ List amend syntax has a few options so will be explained in more detail.  In thi
 @item @@[s; I; f; v]
 @end itemize
 
-The first syntax sets the list at the indices to value.  The second syntax performs the same modificaiton but explicitly lists the identity function, :.  The third synatx is the same as the preceeding but uses an arbitrary fuction.
+The first syntax sets the list at the indices to value.  The second syntax performs the same modificaiton but explicitly lists the identity function, :.  The third synatx is the same as the preceeding but uses an arbitrary function.
 
 Often the developer will need to determine which indices to modify and in cases where this isn't onerous it can be done in the function.
 
@@ -1932,7 +1932,7 @@ Often the developer will need to determine which indices to modify and in cases 
 :length
 @end example
 
-@section Fuction of Two Lists
+@section Function of Two Lists
 This section will focus on functions (f) that operate on two lists (x and y).  As these are internal functions examples will be shown with infix notation (x+y) but prefix notation (+[x;y]) is also permissible.
 
 
@@ -1949,6 +1949,7 @@ These functions operate on list elements pairwise and thus requires that x and y
 @item @t{x<y : Less Than}
 @item @t{x=y : Equals}
 @item @t{x!y : Dictionary}
+@item @t{x$y : Sumproduct}
 @end itemize
 
 @example
@@ -1981,7 +1982,8 @@ These functions operate on list elements pairwise and thus requires that x and y
 3| 6
 4| 4
 5| 2
-
+@ x$y
+70
 @end example
 
 @subsection Each Element of One List Compared to Entire Other List

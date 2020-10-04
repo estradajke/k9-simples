@@ -2034,7 +2034,7 @@ hence use of s.
    The first syntax sets the list at the indices to value.  The second
 syntax performs the same modificaiton but explicitly lists the
 identity function, :.  The third synatx is the same as the preceeding
-but uses an arbitrary fuction.
+but uses an arbitrary function.
 
    Often the developer will need to determine which indices to modify
 and in cases where this isn't onerous it can be done in the function.
@@ -2049,8 +2049,8 @@ and in cases where this isn't onerous it can be done in the function.
       @[!10;1 3;:;10 20 30]  / index and value array length mistmatch
      :length
 
-7.4 Fuction of Two Lists
-========================
+7.4 Function of Two Lists
+=========================
 
 This section will focus on functions (f) that operate on two lists (x
 and y).  As these are internal functions examples will be shown with
@@ -2071,6 +2071,7 @@ that x and y are equal length.
    * x<y : Less Than
    * x=y : Equals
    * x!y : Dictionary
+   * x$y : Sumproduct
 
       x:1+!5;y:10-2*!5
       x
@@ -2101,7 +2102,8 @@ that x and y are equal length.
      3| 6
      4| 4
      5| 2
-
+      x$y
+     70
 
 7.4.2 Each Element of One List Compared to Entire Other List
 ------------------------------------------------------------
@@ -3571,61 +3573,61 @@ Ref: time48969
 Ref: date49583
 Ref: datetime50001
 Node: List50700
-Node: Dictionary55329
-Node: User Functions60117
-Node: Named Functions61767
-Ref: sqrt62396
-Ref: exp62469
-Ref: log62537
-Ref: sin62637
-Ref: cos62776
-Ref: div62924
-Ref: mod63080
-Ref: bar63258
-Ref: in63798
-Ref: bin63976
-Ref: within64190
-Node: Additional Functions64404
-Ref: cond64545
-Ref: amend64665
-Ref: dmend65327
-Node: I/O66030
-Ref: input format66377
-Ref: format67388
-Ref: write line67788
-Ref: read line68175
-Ref: write char68362
-Ref: read char68757
-Ref: load data69122
-Ref: write data70879
-Ref: conn/set74792
-Ref: http/get74836
-Node: Tables74886
-Ref: Table75315
-Ref: XTab76925
-Ref: TTab77402
-Node: kSQL77838
-Ref: union79262
-Ref: left79637
-Ref: outer80161
-Ref: asof80516
-Node: System82534
-Ref: load82986
-Ref: timing83174
-Ref: variables83261
-Ref: memory83362
-Ref: cd83477
-Node: Errors83561
-Ref: class84001
-Ref: rank84090
-Ref: length84212
-Ref: _type84333
-Ref: domain84442
-Ref: limit84564
-Ref: nyi84765
-Ref: parse85098
-Ref: _value85253
-Node: Conculsion85381
+Node: Dictionary55371
+Node: User Functions60159
+Node: Named Functions61809
+Ref: sqrt62438
+Ref: exp62511
+Ref: log62579
+Ref: sin62679
+Ref: cos62818
+Ref: div62966
+Ref: mod63122
+Ref: bar63300
+Ref: in63840
+Ref: bin64018
+Ref: within64232
+Node: Additional Functions64446
+Ref: cond64587
+Ref: amend64707
+Ref: dmend65369
+Node: I/O66072
+Ref: input format66419
+Ref: format67430
+Ref: write line67830
+Ref: read line68217
+Ref: write char68404
+Ref: read char68799
+Ref: load data69164
+Ref: write data70921
+Ref: conn/set74834
+Ref: http/get74878
+Node: Tables74928
+Ref: Table75357
+Ref: XTab76967
+Ref: TTab77444
+Node: kSQL77880
+Ref: union79304
+Ref: left79679
+Ref: outer80203
+Ref: asof80558
+Node: System82576
+Ref: load83028
+Ref: timing83216
+Ref: variables83303
+Ref: memory83404
+Ref: cd83519
+Node: Errors83603
+Ref: class84043
+Ref: rank84132
+Ref: length84254
+Ref: _type84375
+Ref: domain84484
+Ref: limit84606
+Ref: nyi84807
+Ref: parse85140
+Ref: _value85295
+Node: Conculsion85423
 
 End Tag Table
 
