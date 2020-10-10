@@ -2744,7 +2744,7 @@ The table is the most basic of the three types.  A table consists of columns and
 @subsection Table format
 Tables can be created with the table square bracket notation.
 
-As an example let's create a table with two columns named ``a'' and ``col2'' with three rows.  The syntax is to surround the defintion with square brackeets and then have a first element of empty square brackets.  In general this in square bracket pair will contain any keys but more on this will happen in TTab.  After that it's first column name, colon, and the list of values, then second column, and continuing for all the columns.
+As an example let's create a table with two columns named ``a'' and ``col2'' with three rows.  The syntax is to surround the defintion with square brackeets and then have a first element of empty square brackets.  In general this in square bracket pair will contain any keys but more on this will happen in ktable.  After that it's first column name, colon, and the list of values, then second column, and continuing for all the columns.
 
 @example
  [[] a:1 20 3; col2: 3.6 4.8 0.1]
@@ -2877,7 +2877,7 @@ b  |49.5
 @end example
 
 @section Joins
-k9 has a number of methods to join tables together which are described below.  In this section T1 and T2 represent tables and TT1 and TT2 represent ktables.
+k9 has a number of methods to join tables together which are described below.  In this section T1 and T2 represent tables and K1 and K2 represent ktables.
 
 @multitable @columnfractions .2 .1 .3
 @item @b{join} @tab @b{x} @tab @b{y}
@@ -2889,6 +2889,7 @@ k9 has a number of methods to join tables together which are described below.  I
 
 @anchor{union}@subsection union join @result{} T@sub{1},T@sub{2}
 Union join table T1 with table T2.
+
 @example
 @ T1:[[]s:`a`b;p:1 2;q:3 4]
 @ T2:[[]s:`b`c;p:11 12;q:21 22]
@@ -2913,11 +2914,12 @@ b 11 21
 c 12 22
 @end example
 
-@anchor{left}@subsection left join @result{} T,TT
-Left join table T with ktable TT.  Result includes all rows from T and values from T where there is no TT value.
+@anchor{left}@subsection left join @result{} T,K
+Left join table T with ktable K.  Result includes all rows from T and values from T where there is no K value.
+
 @example
 @ T:[[]s:`a`b`c;p:1 2 3;q:7 8 9]
-@ TT:[[s:`a`b`x`y`z]q:101 102 103 104 105;r:51 52 53 54 55]
+@ K:[[s:`a`b`x`y`z]q:101 102 103 104 105;r:51 52 53 54 55]
 @ T
 s p q
 - - -
@@ -2925,7 +2927,7 @@ a 1 7
 b 2 8
 c 3 9
 
-@ TT
+@ K
 s|q   r 
 -|--- --
 a|101 51
@@ -2934,7 +2936,7 @@ x|103 53
 y|104 54
 z|105 55
 
-@ T,TT
+@ T,K
 s p q   r 
 - - --- --
 a 1 101 51
@@ -2942,25 +2944,25 @@ b 2 102 52
 c 3   9  0
 @end example
 
-@anchor{outer}@subsection outer join @result{} TT@sub{1},TT@sub{2}
-Outer join ktable TT1 with key ktable TT2. 
+@anchor{outer}@subsection outer join @result{} K@sub{1},K@sub{2}
+Outer join ktable K1 with key ktable K2. 
 
 @example
-@ TT1:[[s:`a`b]p:1 2;q:3 4]
-@ TT2:[[s:`b`c]p:9 8;q:7 6]
-@ TT1
+@ K1:[[s:`a`b]p:1 2;q:3 4]
+@ K2:[[s:`b`c]p:9 8;q:7 6]
+@ K1
 s|p q
 -|- -
 a|1 3
 b|2 4
 
-@ TT2
+@ K2
 s|p q
 -|- -
 b|9 7
 c|8 6
 
-@ TT1,TT2
+@ K1,K2
 s|p q
 -|- -
 a|1 3
@@ -2968,8 +2970,8 @@ b|9 7
 c|8 6
 @end example
 
-@anchor{asof}@subsection asof join @result{} T,TT
-Asof joins a table T to a ktable TT (key by time) such that the T values show the preceeding or equal time value of TT.
+@anchor{asof}@subsection asof join @result{} T,K
+Asof joins a table T to a ktable K (key by time) such that the T values show the preceeding or equal time value of K.
 
 @example
  T:[[]t:09:30+5*!5;p:100+!5];T
@@ -2981,14 +2983,14 @@ t     p
 09:45 103
 09:50 104
 
- TT:[[t:09:32 09:41 09:45]q:50 51 52];TT
+ K:[[t:09:32 09:41 09:45]q:50 51 52];K
 t    |q 
 -----|--
 09:32|50
 09:41|51
 09:45|52
 
- T,TT
+ T,K
 t     p   q 
 ----- --- --
 09:30 100  0
@@ -3010,7 +3012,7 @@ t            q
 00:00:00.003 35
 00:00:00.003 43
 
- n:_1e5;TT:[[t:n?`t 0]p:n?100];5#TT
+ n:_1e5;K:[[t:n?`t 0]p:n?100];5#K
 t           |p 
 ------------|--
 00:00:00.481|54
@@ -3019,7 +3021,7 @@ t           |p
 00:00:01.479|16
 00:00:01.917|58
 
- \t T,TT
+ \t T,K
 222
 @end example
 
@@ -3053,24 +3055,24 @@ a   7
 c  12
 @end example
 
-@subsection upsert @result{} TT,d
-Insert dictionary d into ktable TT.
+@subsection upsert @result{} K,d
+Insert dictionary d into ktable K.
 @example
- TT:[[c1:`a`b`c]c2:1 2 7];TT
+ K:[[c1:`a`b`c]c2:1 2 7];K
 c1|c2
 --|--
 a | 1
 b | 2
 c | 7
 
- TT,`c1`c2!(`a;12)
+ K,`c1`c2!(`a;12)
 c1|c2
 --|--
 a |12
 b | 2
 c | 7
 
- TT,`c1`c2!(`b;12)
+ K,`c1`c2!(`b;12)
 c1|c2
 --|--
 a | 1
