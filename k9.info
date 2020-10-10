@@ -1,7 +1,7 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
 This manual is for Shakti (k9) build 2020.09.29.
-October 6, 2020
+October 10, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -14,7 +14,7 @@ k9: Manual
 The Shakti programming language is the work of Arthur Whitney and the
 team at Shakti.  The language comes from a lineage of similar
 languages going back to APL. It's also known as k9 given the
-similarties to k, k2, ..., k8 and the fact that Arthur also wrote
+similarties to k, k2, ..., k6, k7 and the fact that Arthur also wrote
 those.  k9 is still under development so expect a bit of syntax change
 and likley even more improvements.
 
@@ -3522,129 +3522,129 @@ than previously imagined.
 
 
 Tag Table:
-Node: Top173
-Node: Intro4373
-Node: Examples17101
-Node: Benchmarks24223
-Node: Verb29170
-Ref: x30630
-Ref: set30655
-Ref: flip30867
-Ref: plus31117
-Ref: negate31502
-Ref: minus31674
-Ref: first31781
-Ref: times32100
-Ref: divide32231
-Ref: where32368
-Ref: min/and32754
-Ref: reverse33013
-Ref: max/or33183
-Ref: asc33447
-Ref: less33820
-Ref: group34082
-Ref: equal34328
-Ref: not34452
-Ref: match34569
-Ref: enum34762
-Ref: key36014
-Ref: enlist36244
-Ref: cat36383
-Ref: sort36502
-Ref: [f]cut36734
-Ref: count37442
-Ref: [f]take37632
-Ref: floor38261
-Ref: [f]drop38352
-Ref: string38945
-Ref: cast+39053
-Ref: unique+39402
-Ref: find+39641
-Ref: type40360
-Ref: [f]at40716
-Ref: value40935
-Ref: [f]dot41263
-Node: Adverb42239
-Ref: scan42951
-Ref: join43481
-Ref: split43656
-Ref: each43847
-Ref: has44065
-Ref: eachp44238
-Ref: bin244678
-Ref: eachr44881
-Ref: eachl45078
-Ref: n scan45262
-Ref: c scan45742
-Ref: c over46026
-Ref: vs46136
-Ref: sv46256
-Node: Noun46380
-Ref: bool47746
-Ref: int48046
-Ref: flt48250
-Ref: char48628
-Ref: name48851
-Ref: uuid49082
-Ref: time49239
-Ref: date49853
-Ref: datetime50271
-Node: List50970
-Node: Dictionary55641
-Node: User Functions60429
-Node: Named Functions62079
-Ref: sqrt62708
-Ref: exp62781
-Ref: log62849
-Ref: sin62949
-Ref: cos63088
-Ref: div63236
-Ref: mod63392
-Ref: bar63570
-Ref: in64110
-Ref: bin64288
-Ref: within64502
-Node: Additional Functions64716
-Ref: cond64857
-Ref: amend64977
-Ref: dmend65639
-Node: I/O66342
-Ref: input format66689
-Ref: format67700
-Ref: write line68100
-Ref: read line68487
-Ref: write char68674
-Ref: read char69069
-Ref: load data69434
-Ref: write data71191
-Ref: conn/set75104
-Ref: http/get75148
-Node: Tables75198
-Ref: Table75627
-Ref: XTab77237
-Ref: TTab77714
-Node: kSQL78150
-Ref: union79574
-Ref: left79949
-Ref: outer80473
-Ref: asof80828
-Node: System82846
-Ref: load83298
-Ref: timing83486
-Ref: variables83573
-Ref: memory83674
-Ref: cd83789
-Node: Errors83873
-Ref: class84313
-Ref: rank84402
-Ref: length84524
-Ref: _type84645
-Ref: domain84754
-Ref: limit84876
-Ref: nyi85077
-Ref: parse85410
-Ref: _value85565
-Node: Conculsion85693
+Node: Top174
+Node: Intro4378
+Node: Examples17106
+Node: Benchmarks24228
+Node: Verb29175
+Ref: x30635
+Ref: set30660
+Ref: flip30872
+Ref: plus31122
+Ref: negate31507
+Ref: minus31679
+Ref: first31786
+Ref: times32105
+Ref: divide32236
+Ref: where32373
+Ref: min/and32759
+Ref: reverse33018
+Ref: max/or33188
+Ref: asc33452
+Ref: less33825
+Ref: group34087
+Ref: equal34333
+Ref: not34457
+Ref: match34574
+Ref: enum34767
+Ref: key36019
+Ref: enlist36249
+Ref: cat36388
+Ref: sort36507
+Ref: [f]cut36739
+Ref: count37447
+Ref: [f]take37637
+Ref: floor38266
+Ref: [f]drop38357
+Ref: string38950
+Ref: cast+39058
+Ref: unique+39407
+Ref: find+39646
+Ref: type40365
+Ref: [f]at40721
+Ref: value40940
+Ref: [f]dot41268
+Node: Adverb42244
+Ref: scan42956
+Ref: join43486
+Ref: split43661
+Ref: each43852
+Ref: has44070
+Ref: eachp44243
+Ref: bin244683
+Ref: eachr44886
+Ref: eachl45083
+Ref: n scan45267
+Ref: c scan45747
+Ref: c over46031
+Ref: vs46141
+Ref: sv46261
+Node: Noun46385
+Ref: bool47751
+Ref: int48051
+Ref: flt48255
+Ref: char48633
+Ref: name48856
+Ref: uuid49087
+Ref: time49244
+Ref: date49858
+Ref: datetime50276
+Node: List50975
+Node: Dictionary55646
+Node: User Functions60434
+Node: Named Functions62084
+Ref: sqrt62713
+Ref: exp62786
+Ref: log62854
+Ref: sin62954
+Ref: cos63093
+Ref: div63241
+Ref: mod63397
+Ref: bar63575
+Ref: in64115
+Ref: bin64293
+Ref: within64507
+Node: Additional Functions64721
+Ref: cond64862
+Ref: amend64982
+Ref: dmend65644
+Node: I/O66347
+Ref: input format66694
+Ref: format67705
+Ref: write line68105
+Ref: read line68492
+Ref: write char68679
+Ref: read char69074
+Ref: load data69439
+Ref: write data71196
+Ref: conn/set75109
+Ref: http/get75153
+Node: Tables75203
+Ref: Table75632
+Ref: XTab77242
+Ref: TTab77719
+Node: kSQL78155
+Ref: union79579
+Ref: left79954
+Ref: outer80478
+Ref: asof80833
+Node: System82851
+Ref: load83303
+Ref: timing83491
+Ref: variables83578
+Ref: memory83679
+Ref: cd83794
+Node: Errors83878
+Ref: class84318
+Ref: rank84407
+Ref: length84529
+Ref: _type84650
+Ref: domain84759
+Ref: limit84881
+Ref: nyi85082
+Ref: parse85415
+Ref: _value85570
+Node: Conculsion85698
 
 End Tag Table
 
