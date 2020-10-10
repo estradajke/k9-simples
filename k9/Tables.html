@@ -49,15 +49,15 @@ Next: <a href="kSQL.html" accesskey="n" rel="next">kSQL</a>, Previous: <a href="
 </div>
 <hr>
 <span id="Tables-1"></span><h2 class="chapter">13 Tables</h2>
-<p>This chapter introduces the different types of tables available in k9.  Table, XTab and TTab are very similar and as you&rsquo;ll see in the kSQL chapter are easy to query.  In the benchmark chapter tables were shown to be fast to save, read, and query.
+<p>This chapter introduces the different types of tables available in k9.  Table, xtable and ktable are very similar and as you&rsquo;ll see in the kSQL chapter are easy to query.  In the benchmark chapter tables were shown to be fast to save, read, and query.
 </p>
 <div class="example">
-<pre class="example"><a href="#Table">Table</a> [[]a:..;..]  
-<a href="#XTab">XTab</a>  `a..![[]..]  
-<a href="#TTab">TTab</a>  [[a:..]..]  
+<pre class="example"><a href="#t">t</a>:[[]i:2 3;f:3 4.;s:`a`b]
+<a href="#ktable">ktable</a> [[b:..]a:..]      
+<a href="#xtable">xtable</a> `..![[]a:..]      
 </pre></div>
 
-<span id="Table"></span><span id="Table-1"></span><h3 class="section">13.1 Table</h3>
+<span id="t"></span><span id="Table"></span><h3 class="section">13.1 Table</h3>
 <p>The table is the most basic of the three types.  A table consists of columns and rows of information where each column has a name.  Tables can be created in three different ways (1) specification via table format, (2) flipping a dictionary, or (3) reading in from a file.
 </p>
 <span id="Table-format"></span><h4 class="subsection">13.1.1 Table format</h4>
@@ -114,8 +114,8 @@ a   col2
  3  0.1 
 </pre></div>
 
-<span id="XTab"></span><span id="XTab-1"></span><h3 class="section">13.2 XTab</h3>
-<p>An cross tab (XTab) is a collection of tables stored in a dictionary where the keys are symbols and the values are tables.  Below is an example where the keys are symbols and the values are
+<span id="xtable"></span><span id="xtable-1"></span><h3 class="section">13.2 xtable</h3>
+<p>An cross tab (xtable) is a collection of tables stored in a dictionary where the keys are symbols and the values are tables.  Below is an example where the keys are symbols and the values are
 end-of-day prices.
 </p>
 <div class="example">
@@ -130,8 +130,8 @@ d          p
 2020.09.10 150
 </pre></div>
 
-<span id="TTab"></span><span id="TTab-1"></span><h3 class="section">13.3 TTab</h3>
-<p>TTab is a table where some of the columns are keyed and thus should not have duplicate values.
+<span id="ktable"></span><span id="ktable-1"></span><h3 class="section">13.3 ktable</h3>
+<p>ktable (or key table) is a table where some of the columns are keyed and thus should not have duplicate values.
 </p>
 <div class="example">
 <pre class="example"> [[d:2020.09.08 2020.09.09 2020.09.10]p:140 139 150]

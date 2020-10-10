@@ -756,8 +756,8 @@ integers).
 3.1.4 t
 -------
 
-t is an XTab of trades.  The fields are time (t), exchange (e), price
-(p), and size (z).  The number of trades is set by n.
+t is an xtable of trades.  The fields are time (t), exchange (e),
+price (p), and size (z).  The number of trades is set by n.
 
    Pulling 1 random table from t and showing 10 random rows.
 
@@ -778,8 +778,8 @@ t is an XTab of trades.  The fields are time (t), exchange (e), price
 3.1.5 q
 -------
 
-q is a XTab of quotes.  The fields are time (t), exchange (e), and bid
-(b).  The number of quotes is set by 6*n.
+q is a xtable of quotes.  The fields are time (t), exchange (e), and
+bid (b).  The number of quotes is set by 6*n.
 
       10?*q@1?S
      t        e b
@@ -806,7 +806,7 @@ a is the first symbol of S. A is the first 100 symbols of S.
 3.1.7 Max price by exchange
 ---------------------------
 
-The query takes 100 tables from the trade XTab and computes the max
+The query takes 100 tables from the trade xtable and computes the max
 price by exchange.
 
       *{select max p by e from x}'t A
@@ -822,7 +822,7 @@ price by exchange.
 3.1.8 Compute sum of trade size by hour.
 ----------------------------------------
 
-This query takes 100 tables from the trade XTab and computes the sum
+This query takes 100 tables from the trade xtable and computes the sum
 of trade size done by hour.
 
       *{select sum z by `o t from x}'t A
@@ -841,7 +841,7 @@ of trade size done by hour.
 3.1.9 Compute last bid by symbol
 --------------------------------
 
-This query takes the 100 tables from the quote XTab and returns the
+This query takes the 100 tables from the quote xtable and returns the
 last bid.
 
       3?{select last b from x}'q A
@@ -857,7 +857,7 @@ last bid.
 3.1.10 Find trades below the bid
 --------------------------------
 
-This query operates on one symbol from the q and t XTabs, i.e.  a
+This query operates on one symbol from the q and t xtables, i.e.  a
 single quote and trade table.  The quote table is joined to the trade
 table giving the current bid on each trade.
 
@@ -2989,13 +2989,13 @@ File: k9.info,  Node: Tables,  Next: kSQL,  Prev: I/O,  Up: Top
 *********
 
 This chapter introduces the different types of tables available in k9.
-Table, XTab and TTab are very similar and as you'll see in the kSQL
-chapter are easy to query.  In the benchmark chapter tables were shown
-to be fast to save, read, and query.
+Table, xtable and ktable are very similar and as you'll see in the
+kSQL chapter are easy to query.  In the benchmark chapter tables were
+shown to be fast to save, read, and query.
 
-     *note Table:: [[]a:..;..]
-     *note XTab::  `a..![[]..]
-     *note TTab::  [[a:..]..]
+     *note t:::[[]i:2 3;f:3 4.;s:`a`b]
+     *note ktable:: [[b:..]a:..]
+     *note xtable:: `..![[]a:..]
 
 13.1 Table
 ==========
@@ -3065,10 +3065,10 @@ a, col2
      20  4.8
       3  0.1
 
-13.2 XTab
-=========
+13.2 xtable
+===========
 
-An cross tab (XTab) is a collection of tables stored in a dictionary
+An cross tab (xtable) is a collection of tables stored in a dictionary
 where the keys are symbols and the values are tables.  Below is an
 example where the keys are symbols and the values are end-of-day
 prices.
@@ -3083,11 +3083,11 @@ prices.
      2020.09.09 139
      2020.09.10 150
 
-13.3 TTab
-=========
+13.3 ktable
+===========
 
-TTab is a table where some of the columns are keyed and thus should
-not have duplicate values.
+ktable (or key table) is a table where some of the columns are keyed
+and thus should not have duplicate values.
 
       [[d:2020.09.08 2020.09.09 2020.09.10]p:140 139 150]
      d         |p
@@ -3153,13 +3153,13 @@ select A by B from T where C
 
 k9 has a number of methods to join tables together which are described
 below.  In this section T1 and T2 represent tables and TT1 and TT2
-represent TTabs.
+represent ktables.
 
 join           x       y
 *note union::  table   table
-*note left::   table   TTab
-*note outer::  TTab    TTab
-*note asof::   table   TTab (by time)
+*note left::   table   ktable
+*note outer::  ktable  ktable
+*note asof::   table   ktable (by time)
 
 14.1.1 union join => T_{1},T_{2}
 --------------------------------
@@ -3190,7 +3190,7 @@ Union join table T1 with table T2.
 14.1.2 left join => T,TT
 ------------------------
 
-Left join table T with TTab TT. Result includes all rows from T and
+Left join table T with ktable TT. Result includes all rows from T and
 values from T where there is no TT value.
       T:[[]s:`a`b`c;p:1 2 3;q:7 8 9]
       TT:[[s:`a`b`x`y`z]q:101 102 103 104 105;r:51 52 53 54 55]
@@ -3220,7 +3220,7 @@ values from T where there is no TT value.
 14.1.3 outer join => TT_{1},TT_{2}
 ----------------------------------
 
-Outer join TTab TT1 with key TTab TT2.
+Outer join ktable TT1 with key ktable TT2.
 
       TT1:[[s:`a`b]p:1 2;q:3 4]
       TT2:[[s:`b`c]p:9 8;q:7 6]
@@ -3246,8 +3246,8 @@ Outer join TTab TT1 with key TTab TT2.
 14.1.4 asof join => T,TT
 ------------------------
 
-Asof joins a table T to a TTab TT (key by time) such that the T values
-show the preceeding or equal time value of TT.
+Asof joins a table T to a ktable TT (key by time) such that the T
+values show the preceeding or equal time value of TT.
 
       T:[[]t:09:30+5*!5;p:100+!5];T
      t     p
@@ -3336,7 +3336,7 @@ Insert dictionary d into table T.
 14.2.2 upsert => TT,d
 ---------------------
 
-Insert dictionary d into TTab TT.
+Insert dictionary d into ktable TT.
       TT:[[c1:`a`b`c]c2:1 2 7];TT
      c1|c2
      --|--
@@ -3535,125 +3535,125 @@ Node: Top174
 Node: Intro3608
 Node: Examples15567
 Node: Benchmarks22689
-Node: Verb27636
-Ref: x29096
-Ref: set29121
-Ref: flip29333
-Ref: plus29583
-Ref: negate29968
-Ref: minus30140
-Ref: first30247
-Ref: times30566
-Ref: divide30697
-Ref: where30834
-Ref: min/and31220
-Ref: reverse31479
-Ref: max/or31649
-Ref: asc31913
-Ref: less32286
-Ref: group32548
-Ref: equal32794
-Ref: not32918
-Ref: match33035
-Ref: enum33228
-Ref: key34480
-Ref: enlist34710
-Ref: cat34849
-Ref: sort34968
-Ref: [f]cut35200
-Ref: count35908
-Ref: [f]take36098
-Ref: floor36727
-Ref: [f]drop36818
-Ref: string37411
-Ref: cast+37519
-Ref: unique+37868
-Ref: find+38107
-Ref: type38826
-Ref: [f]at39182
-Ref: value39401
-Ref: [f]dot39729
-Node: Adverb40705
-Ref: scan41417
-Ref: join41947
-Ref: split42122
-Ref: each42313
-Ref: has42531
-Ref: eachp42704
-Ref: bin243144
-Ref: eachr43347
-Ref: eachl43544
-Ref: n scan43728
-Ref: c scan44208
-Ref: c over44492
-Ref: vs44602
-Ref: sv44722
-Node: Noun44846
-Ref: bool46212
-Ref: int46512
-Ref: flt46716
-Ref: char47094
-Ref: name47317
-Ref: uuid47548
-Ref: time47705
-Ref: date48319
-Ref: datetime48737
-Node: List49436
-Node: Dictionary54107
-Node: User Functions58895
-Node: Named Functions60545
-Ref: sqrt61174
-Ref: exp61247
-Ref: log61315
-Ref: sin61415
-Ref: cos61554
-Ref: div61702
-Ref: mod61858
-Ref: bar62036
-Ref: in62576
-Ref: bin62754
-Ref: within62968
-Node: Additional Functions63182
-Ref: cond63323
-Ref: amend63443
-Ref: dmend64105
-Node: I/O64808
-Ref: input format65155
-Ref: format66166
-Ref: write line66566
-Ref: read line66953
-Ref: write char67140
-Ref: read char67535
-Ref: load data67900
-Ref: write data69657
-Ref: conn/set73570
-Ref: http/get73614
-Node: Tables73664
-Ref: Table74093
-Ref: XTab75703
-Ref: TTab76180
-Node: kSQL76616
-Ref: union78040
-Ref: left78415
-Ref: outer78939
-Ref: asof79294
-Node: System81312
-Ref: load81764
-Ref: timing81952
-Ref: variables82039
-Ref: memory82140
-Ref: cd82255
-Node: Errors82339
-Ref: class82779
-Ref: rank82868
-Ref: length82990
-Ref: _type83111
-Ref: domain83220
-Ref: limit83342
-Ref: nyi83543
-Ref: parse83876
-Ref: _value84031
-Node: Conculsion84159
+Node: Verb27648
+Ref: x29108
+Ref: set29133
+Ref: flip29345
+Ref: plus29595
+Ref: negate29980
+Ref: minus30152
+Ref: first30259
+Ref: times30578
+Ref: divide30709
+Ref: where30846
+Ref: min/and31232
+Ref: reverse31491
+Ref: max/or31661
+Ref: asc31925
+Ref: less32298
+Ref: group32560
+Ref: equal32806
+Ref: not32930
+Ref: match33047
+Ref: enum33240
+Ref: key34492
+Ref: enlist34722
+Ref: cat34861
+Ref: sort34980
+Ref: [f]cut35212
+Ref: count35920
+Ref: [f]take36110
+Ref: floor36739
+Ref: [f]drop36830
+Ref: string37423
+Ref: cast+37531
+Ref: unique+37880
+Ref: find+38119
+Ref: type38838
+Ref: [f]at39194
+Ref: value39413
+Ref: [f]dot39741
+Node: Adverb40717
+Ref: scan41429
+Ref: join41959
+Ref: split42134
+Ref: each42325
+Ref: has42543
+Ref: eachp42716
+Ref: bin243156
+Ref: eachr43359
+Ref: eachl43556
+Ref: n scan43740
+Ref: c scan44220
+Ref: c over44504
+Ref: vs44614
+Ref: sv44734
+Node: Noun44858
+Ref: bool46224
+Ref: int46524
+Ref: flt46728
+Ref: char47106
+Ref: name47329
+Ref: uuid47560
+Ref: time47717
+Ref: date48331
+Ref: datetime48749
+Node: List49448
+Node: Dictionary54119
+Node: User Functions58907
+Node: Named Functions60557
+Ref: sqrt61186
+Ref: exp61259
+Ref: log61327
+Ref: sin61427
+Ref: cos61566
+Ref: div61714
+Ref: mod61870
+Ref: bar62048
+Ref: in62588
+Ref: bin62766
+Ref: within62980
+Node: Additional Functions63194
+Ref: cond63335
+Ref: amend63455
+Ref: dmend64117
+Node: I/O64820
+Ref: input format65167
+Ref: format66178
+Ref: write line66578
+Ref: read line66965
+Ref: write char67152
+Ref: read char67547
+Ref: load data67912
+Ref: write data69669
+Ref: conn/set73582
+Ref: http/get73626
+Node: Tables73676
+Ref: t74122
+Ref: xtable75732
+Ref: ktable76215
+Node: kSQL76672
+Ref: union78104
+Ref: left78479
+Ref: outer79005
+Ref: asof79364
+Node: System81386
+Ref: load81838
+Ref: timing82026
+Ref: variables82113
+Ref: memory82214
+Ref: cd82329
+Node: Errors82413
+Ref: class82853
+Ref: rank82942
+Ref: length83064
+Ref: _type83185
+Ref: domain83294
+Ref: limit83416
+Ref: nyi83617
+Ref: parse83950
+Ref: _value84105
+Node: Conculsion84233
 
 End Tag Table
 

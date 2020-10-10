@@ -90,14 +90,14 @@ b  |49.5
 </pre></div>
 
 <span id="Joins"></span><h3 class="section">14.1 Joins</h3>
-<p>k9 has a number of methods to join tables together which are described below.  In this section T1 and T2 represent tables and TT1 and TT2 represent TTabs.
+<p>k9 has a number of methods to join tables together which are described below.  In this section T1 and T2 represent tables and TT1 and TT2 represent ktables.
 </p>
 <table>
 <tr><td width="20%"><b>join</b></td><td width="10%"><b>x</b></td><td width="30%"><b>y</b></td></tr>
 <tr><td width="20%"><a href="#union">union</a></td><td width="10%">table</td><td width="30%">table</td></tr>
-<tr><td width="20%"><a href="#left">left</a></td><td width="10%">table</td><td width="30%">TTab</td></tr>
-<tr><td width="20%"><a href="#outer">outer</a></td><td width="10%">TTab</td><td width="30%">TTab</td></tr>
-<tr><td width="20%"><a href="#asof">asof</a></td><td width="10%">table</td><td width="30%">TTab (by time)</td></tr>
+<tr><td width="20%"><a href="#left">left</a></td><td width="10%">table</td><td width="30%">ktable</td></tr>
+<tr><td width="20%"><a href="#outer">outer</a></td><td width="10%">ktable</td><td width="30%">ktable</td></tr>
+<tr><td width="20%"><a href="#asof">asof</a></td><td width="10%">table</td><td width="30%">ktable (by time)</td></tr>
 </table>
 
 <span id="union"></span><span id="union-join-_21d2-T1_002cT2"></span><h4 class="subsection">14.1.1 union join &rArr; T<sub>1</sub>,T<sub>2</sub></h4>
@@ -127,7 +127,7 @@ c 12 22
 </pre></div>
 
 <span id="left"></span><span id="left-join-_21d2-T_002cTT"></span><h4 class="subsection">14.1.2 left join &rArr; T,TT</h4>
-<p>Left join table T with TTab TT.  Result includes all rows from T and values from T where there is no TT value.
+<p>Left join table T with ktable TT.  Result includes all rows from T and values from T where there is no TT value.
 </p><div class="example">
 <pre class="example">&nbsp;T:[[]s:`a`b`c;p:1 2 3;q:7 8 9]
 &nbsp;TT:[[s:`a`b`x`y`z]q:101 102 103 104 105;r:51 52 53 54 55]
@@ -156,7 +156,7 @@ c 3   9  0
 </pre></div>
 
 <span id="outer"></span><span id="outer-join-_21d2-TT1_002cTT2"></span><h4 class="subsection">14.1.3 outer join &rArr; TT<sub>1</sub>,TT<sub>2</sub></h4>
-<p>Outer join TTab TT1 with key TTab TT2. 
+<p>Outer join ktable TT1 with key ktable TT2. 
 </p>
 <div class="example">
 <pre class="example">&nbsp;TT1:[[s:`a`b]p:1 2;q:3 4]
@@ -182,7 +182,7 @@ c|8 6
 </pre></div>
 
 <span id="asof"></span><span id="asof-join-_21d2-T_002cTT"></span><h4 class="subsection">14.1.4 asof join &rArr; T,TT</h4>
-<p>Asof joins a table T to a TTab TT (key by time) such that the T values show the preceeding or equal time value of TT.
+<p>Asof joins a table T to a ktable TT (key by time) such that the T values show the preceeding or equal time value of TT.
 </p>
 <div class="example">
 <pre class="example"> T:[[]t:09:30+5*!5;p:100+!5];T
@@ -267,7 +267,7 @@ c  12
 </pre></div>
 
 <span id="upsert-_21d2-TT_002cd"></span><h4 class="subsection">14.2.2 upsert &rArr; TT,d</h4>
-<p>Insert dictionary d into TTab TT.
+<p>Insert dictionary d into ktable TT.
 </p><div class="example">
 <pre class="example"> TT:[[c1:`a`b`c]c2:1 2 7];TT
 c1|c2
