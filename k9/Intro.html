@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is for Shakti (k9) build 2020.09.29.
+<!-- This manual is for Shakti (k9) build 2020.10.09.
 
 October 10, 2020
 
@@ -55,7 +55,7 @@ Next: <a href="Examples.html" accesskey="n" rel="next">Examples</a>, Previous: <
 <p>Imagine you have a small, on-disk, 40 million row database containing a time-series with two float values at each time.  Additionally this data could be split in three different tables covering different measurements.  Here&rsquo;s how fast k9 can read in the data to memory and compute a statistic, average difference over each table, which uses each and every row.
 </p>
 <div class="example">
-<pre class="example"> bash-3.2$ 2020.09.29 17GB 4core (c) shakti
+<pre class="example"> bash-3.2$ 2020.xx.xx 17GB 4core (c) shakti
  \t q:2:`q;{select s:avg a-b from x}'q[!q]
 415
 </pre></div>
@@ -119,45 +119,50 @@ z@&amp;y&lt;z:?x<br>
 </p>
 <span id="Help_002fInfo-Card"></span><h3 class="section">1.4 Help/Info Card</h3>
 <p>Typing <code>\</code> in the terminal gives you a concise overview of the language.  This document aims to provide details to beginning users where the help screen is a tad too terse.  Some commands are not yet complete and thus marked with an asterisk, eg. *?[x;i;f[;y]] splice.
-</p><div class="format">
-<pre class="verbatim">2020.09.29 17GB 4core (c) shakti
- \
-Verb                      Adverb               Noun              System         
-:    x         y          f/  over  c/  join   bool 011b         \l a.k         
-+    flip      plus       f\  scan  c\  split  int  0N 0 2 3     \t:n x         
--    negate    minus      f'  each  v'  has    flt  0n 0 2 3.4   \u:n x         
-*    first     times      f': eachp v': bin    char &quot; ab&quot;        \v             
-%              divide     f/: eachr ([n;]f)/:  name ``ab         \w             
-&amp;    where     min/and    f\: eachl ([n;]f)\:  uuid              \cd [x]        
-|    reverse   max/or                   .z.dtv time  12:34:56.123456789         
-&lt;    asc       less                     .z.DTV date 2024.01.01T12:34:56         
-&gt;    dsc       more                                                             
-=    group     equal      I/O                                                   
-~    not       match      0:  r/w line         Class                            
-!    enum      key        1:  r/w char         List (2;3.4;`a)                  
-,    enlist    cat       *2:  r/w data         Dict `i`f!(2;3.4)                
-^    sort   [f]cut       *3:  kipc set         Func {[a;b]a+b}                  
-#    count  [f]take      *4:  http get         Expr :a+b                        
-_    floor  [f]drop                                                             
-$    string    cast+      $[b;x;y] if else                       \f             
-?    unique+   find+      ?[x;i;f[;y]] splice  Table [[]a:..;..] \ft x          
-@    type   [f]at         @[x;i;f[;y]] amend   XTab  `a..![[]..] \fc x          
-.    value  [f]dot        .[x;i;f[;y]] dmend   TTab   [[a:..]..] \fl x          
-sqrt sqr exp log sin cos div mod bar in bin within                              
-count first last min max sum avg                                                
-[select|*update] A by B from T where C ; *delete from T where C                 
-t:[[]i:2 3;f:2.3 3.4;s:`ab`abc]; `json t ; t~`csv?`csv t                        
-\\ exit      / comment   #[if do while select update]                           
-                                                                                
-*ffi: &quot;./a.so&quot;5:`f!&quot;ii&quot; /I f(I i){return 2+i;}       //cblas ..                 
-*c/k: &quot;./b.so&quot;5:`f!1    /K f(K x){return ki(2+xi);}  //feeds ..                 
-python: import k;      k.k('+',2,3)                                             
-nodejs: k=require('k');k.k('+',2,3)                                             
-                                                                                
-error: class rank length type domain value (parse limit stack)                  
-limit: {[param8]local8 global32 const128 jump256} name256                       
-                                                                                
-*production: no limits -- 10 times faster than trial (1GB 1core)
+</p>
+<div class="format">
+<pre class="verbatim">universal database and language - full stack.
+
+select [count first last min max sum avg ..]A by B from T where C
+delete from T where C               *update A by B from T where C
+x,y      / union, insert, upsert, outerjoin, leftjoin, asofjoin ..
+x+y      / equi and asof outer joins: combine markets through time
+x#y x_y  / take/drop, intersect/except, inner join
+
+Verb                      Adverb               Noun              System
+:    x         y          f/  over  c/  join   bool 011b         \l a.k
++    flip      plus       f\  scan  c\  split  int  0N 0 2 3     \t:n x
+-    negate    minus      f'  each  v'  has    flt  0n 0 2 3.4   \u:n x
+*    first     times      f': eachp v': bin    char &quot; ab&quot;        \v
+%              divide     f/: eachr ([n;]f)/:  name ``ab         \w
+&amp;    where     min/and    f\: eachl ([n;]f)\:  uuid              \cd x
+|    reverse   max/or                         
+&lt;    asc       less                     .z.DTV date 2024.01.01T12:34:56
+&gt;    dsc       more                     .z.dtv time  12:34:56.123456789
+=    group     equal      I/O                     
+~    not       match      0:  r/w line         Class             \f
+!    enum      key        1:  r/w char         List (2;3.4;`a)   \ft x
+,    enlist    cat       *2:  r/w data         Dict `i`f!(2;3.4) \fl x
+^    sort   [f]cut       *3:  kipc set         Func {[a;b]a+b}   \fc x
+#    count  [f]take      *4:  http get         Expr :a+b
+_    floor  [f]drop
+$    string    cast+      
+?    unique+   find+      $[b;x;y] if else     t:[[]i:2 3;f:3 4.;s:`a`b]
+@    type   [f]at         @[x;i;f[;y]] amend   utable [[b:..]a:..]
+.    value  [f]dot        .[x;i;f[;y]] dmend   xtable `..![[]a:..]
+math: sqrt sqr exp log sin cos div mod bar ..  util: in bin within ..
+\\   exit      / comment  #[if do while]
+
+`csv?`csv t    / read/write csv
+`json?`json t  / read/write json
+python: import k;  k.k('+',2,3)   
+nodejs: require('k').k('+',2,3)
+
+*ffi: &quot;./a.so&quot;5:`f!&quot;ii&quot; /I f(I i){return 2+i;}       //cblas ..
+*c/k: &quot;./b.so&quot;5:`f!1    /K f(K x){return ki(2+xi);}  //feeds ..
+*enterprise: multi user/thread/core/machine. no limit.
+
+connect to all - depend on none - fast af.
 </pre></div>
 
 <span id="rlwrap"></span><h3 class="section">1.5 rlwrap</h3>

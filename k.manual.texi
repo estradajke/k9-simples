@@ -4,7 +4,7 @@
 @codequotebacktick on
 
 @copying
-This manual is for Shakti (k9) build 2020.09.29.@*
+This manual is for Shakti (k9) build 2020.10.09.@*
 @today{}
 
 Copyright @copyright{} 2020 John Estrada
@@ -23,52 +23,13 @@ Copyright @copyright{} 2020 John Estrada
 @top k9: Manual
 The Shakti programming language is the work of Arthur Whitney and the team at Shakti.  The language comes from a lineage of similar languages going back to APL.  It's also known as k9 given the similarties to k, k2, ..., k6, k7 and the fact that Arthur also wrote those.  k9 is still under development so expect a bit of syntax change and likley even more improvements.
 
-This manual is for Shakti (k9) build 2020.09.29.@*
+This manual is for Shakti (k9) build 2020.10.09.@*
 @c @end ifnottex
 
 The built-in reference screen containing all the k9 commands.
 
 @smallformat
-@verbatim
-2020.09.29 17GB 4core (c) shakti
- \
-Verb                      Adverb               Noun              System         
-:    x         y          f/  over  c/  join   bool 011b         \l a.k         
-+    flip      plus       f\  scan  c\  split  int  0N 0 2 3     \t:n x         
--    negate    minus      f'  each  v'  has    flt  0n 0 2 3.4   \u:n x         
-*    first     times      f': eachp v': bin    char " ab"        \v             
-%              divide     f/: eachr ([n;]f)/:  name ``ab         \w             
-&    where     min/and    f\: eachl ([n;]f)\:  uuid              \cd [x]        
-|    reverse   max/or                   .z.dtv time  12:34:56.123456789         
-<    asc       less                     .z.DTV date 2024.01.01T12:34:56         
->    dsc       more                                                             
-=    group     equal      I/O                                                   
-~    not       match      0:  r/w line         Class                            
-!    enum      key        1:  r/w char         List (2;3.4;`a)                  
-,    enlist    cat       *2:  r/w data         Dict `i`f!(2;3.4)                
-^    sort   [f]cut       *3:  kipc set         Func {[a;b]a+b}                  
-#    count  [f]take      *4:  http get         Expr :a+b                        
-_    floor  [f]drop                                                             
-$    string    cast+      $[b;x;y] if else                       \f             
-?    unique+   find+      ?[x;i;f[;y]] splice  Table [[]a:..;..] \ft x          
-@    type   [f]at         @[x;i;f[;y]] amend   XTab  `a..![[]..] \fc x          
-.    value  [f]dot        .[x;i;f[;y]] dmend   TTab   [[a:..]..] \fl x          
-sqrt sqr exp log sin cos div mod bar in bin within                              
-count first last min max sum avg                                                
-[select|*update] A by B from T where C ; *delete from T where C                 
-t:[[]i:2 3;f:2.3 3.4;s:`ab`abc]; `json t ; t~`csv?`csv t                        
-\\ exit      / comment   #[if do while select update]                           
-                                                                                
-*ffi: "./a.so"5:`f!"ii" /I f(I i){return 2+i;}       //cblas ..                 
-*c/k: "./b.so"5:`f!1    /K f(K x){return ki(2+xi);}  //feeds ..                 
-python: import k;      k.k('+',2,3)                                             
-nodejs: k=require('k');k.k('+',2,3)                                             
-                                                                                
-error: class rank length type domain value (parse limit stack)                  
-limit: {[param8]local8 global32 const128 jump256} name256                       
-                                                                                
-*production: no limits -- 10 times faster than trial (1GB 1core)
-@end verbatim
+@verbatiminclude k.d
 @end smallformat
 
 @menu
@@ -101,7 +62,7 @@ The k9 programming language is designed primarily for the analysis of data.  It 
 Imagine you have a small, on-disk, 40 million row database containing a time-series with two float values at each time.  Additionally this data could be split in three different tables covering different measurements.  Here's how fast k9 can read in the data to memory and compute a statistic, average difference over each table, which uses each and every row.
 
 @example
- bash-3.2$ 2020.09.29 17GB 4core (c) shakti
+ bash-3.2$ 2020.xx.xx 17GB 4core (c) shakti
  \t q:2:`q;@{select s:avg a-b from x@}'q[!q]
 415
 @end example
@@ -165,47 +126,9 @@ Again on the mac if you then attempt to run this file you likely won't succeed d
 
 @section Help/Info Card
 Typing @code{\} in the terminal gives you a concise overview of the language.  This document aims to provide details to beginning users where the help screen is a tad too terse.  Some commands are not yet complete and thus marked with an asterisk, eg. *?[x;i;f[;y]] splice.
+
 @smallformat
-@verbatim
-2020.09.29 17GB 4core (c) shakti
- \
-Verb                      Adverb               Noun              System         
-:    x         y          f/  over  c/  join   bool 011b         \l a.k         
-+    flip      plus       f\  scan  c\  split  int  0N 0 2 3     \t:n x         
--    negate    minus      f'  each  v'  has    flt  0n 0 2 3.4   \u:n x         
-*    first     times      f': eachp v': bin    char " ab"        \v             
-%              divide     f/: eachr ([n;]f)/:  name ``ab         \w             
-&    where     min/and    f\: eachl ([n;]f)\:  uuid              \cd [x]        
-|    reverse   max/or                   .z.dtv time  12:34:56.123456789         
-<    asc       less                     .z.DTV date 2024.01.01T12:34:56         
->    dsc       more                                                             
-=    group     equal      I/O                                                   
-~    not       match      0:  r/w line         Class                            
-!    enum      key        1:  r/w char         List (2;3.4;`a)                  
-,    enlist    cat       *2:  r/w data         Dict `i`f!(2;3.4)                
-^    sort   [f]cut       *3:  kipc set         Func {[a;b]a+b}                  
-#    count  [f]take      *4:  http get         Expr :a+b                        
-_    floor  [f]drop                                                             
-$    string    cast+      $[b;x;y] if else                       \f             
-?    unique+   find+      ?[x;i;f[;y]] splice  Table [[]a:..;..] \ft x          
-@    type   [f]at         @[x;i;f[;y]] amend   XTab  `a..![[]..] \fc x          
-.    value  [f]dot        .[x;i;f[;y]] dmend   TTab   [[a:..]..] \fl x          
-sqrt sqr exp log sin cos div mod bar in bin within                              
-count first last min max sum avg                                                
-[select|*update] A by B from T where C ; *delete from T where C                 
-t:[[]i:2 3;f:2.3 3.4;s:`ab`abc]; `json t ; t~`csv?`csv t                        
-\\ exit      / comment   #[if do while select update]                           
-                                                                                
-*ffi: "./a.so"5:`f!"ii" /I f(I i){return 2+i;}       //cblas ..                 
-*c/k: "./b.so"5:`f!1    /K f(K x){return ki(2+xi);}  //feeds ..                 
-python: import k;      k.k('+',2,3)                                             
-nodejs: k=require('k');k.k('+',2,3)                                             
-                                                                                
-error: class rank length type domain value (parse limit stack)                  
-limit: {[param8]local8 global32 const128 jump256} name256                       
-                                                                                
-*production: no limits -- 10 times faster than trial (1GB 1core)
-@end verbatim
+@verbatiminclude k.d
 @end smallformat
 @page
 
