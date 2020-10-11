@@ -2877,14 +2877,15 @@ b  |49.5
 @end example
 
 @section Joins
-k9 has a number of methods to join tables together which are described below.  In this section t,t1 and t2 represent tables and k, k1 and k2 represent ktables.
+k9 has a number of methods to join tables together which are described below.  In this section t, t1 and t2 represent tables and k, k1 and k2 represent ktables.
 
-@multitable @columnfractions .2 .1 .3
-@item @b{join} @tab @b{x} @tab @b{y}
-@item @ref{union} @tab t1 @tab t2
-@item @ref{left} @tab t @tab k
-@item @ref{outer} @tab k1 @tab k2
-@item @ref{asof} @tab t @tab k (by time)
+@multitable @columnfractions .15 .6
+@item @b{join} @tab @b{syntax}
+@item @ref{union} @tab t1,t2
+@item @ref{left} @tab t,k
+@item @ref{outer} @tab k1,k2
+@item @ref{asof} @tab t,k
+@item @ref{asof+} @tab k1+k2
 @end multitable
 
 @anchor{union}@subsection union join @result{} t1,t2
@@ -3023,6 +3024,38 @@ t           |p
 
  \t T,K
 222
+@end example
+
+@anchor{asof+}@subsection asof+ join @result{} k1+k2
+Asof+ joins ktables adding the non-key fields to represent the sum asof the key field usually time.  This join allows one to aggregate over markets to find the total available at a given time.  The ktables need to be specified with @code{`a}.
+
+@example
+ k1:`a [[t:09:30+5*!5]bs:100*1 2 3 2 1];k1
+t    |bs 
+-----|---
+09:30|100
+09:35|200
+09:40|300
+09:45|200
+09:50|100
+
+ k2:`a [[t:09:32 09:41 09:45]bs:1 2 3];k2
+t    |bs
+-----|--
+09:32| 1
+09:41| 2
+09:45| 3
+
+ k1+k2
+t    |bs 
+-----|---
+09:30|100
+09:32|101
+09:35|201
+09:40|301
+09:41|302
+09:45|203
+09:50|103
 @end example
 
 @section Insert and Upsert
