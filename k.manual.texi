@@ -2876,6 +2876,97 @@ a  |100.5
 b  |49.5 
 @end example
 
+@section Queries
+
+
+@subsection Trivial Query
+There a number of ways to return a complete table with kSQL.  You can use the table name, a kSQL query without columns, or a fully specified query with columns.
+
+@example
+ t:[[]x:!3;y:sin !3]
+ t
+x y        
+- ---------
+0 0.       
+1 0.841471 
+2 0.9092974
+
+ select from t
+x y        
+- ---------
+0 0.       
+1 0.841471 
+2 0.9092974
+
+ select x,y from t
+x y        
+- ---------
+0 0.       
+1 0.841471 
+2 0.9092974
+@end example
+
+@subsection Query with Where
+kSQL makes it easy to build up a where clause to filter down the table.
+
+@example
+ t:[[]x:!3;y:sin !3]
+ select from t where x>0
+x y        
+- ---------
+1 0.841471 
+2 0.9092974
+
+ select from t where y within 0 .9
+x y       
+- --------
+0 0.      
+1 0.841471
+@end example
+
+@subsection Query with By
+kSQL also has a way to group rows using @code{by}.  The result is a ktable where the key is the now unique field in the @code{by}.
+
+@example
+ t:[[]x:6#0 1;y:sin !6]
+ t
+x y         
+- ----------
+0 0.        
+1 0.841471  
+0 0.9092974 
+1 0.14112   
+0 -0.7568025
+1 -0.9589243
+
+ select sum y by x from t
+x|y         
+-|----------
+0|0.1524949 
+1|0.02366672
+@end example
+
+@subsection Query with By and Where
+
+@example
+ t:[[]x:6#0 1;y:sin !6]
+ t
+x y         
+- ----------
+0 0.        
+1 0.841471  
+0 0.9092974 
+1 0.14112   
+0 -0.7568025
+1 -0.9589243
+
+ select sum y by x from t where y>0
+x|y        
+-|---------
+0|0.9092974
+1|0.982591 
+@end example
+
 @section Joins
 k9 has a number of methods to join tables together which are described below.  In this section t, t1 and t2 represent tables and k, k1 and k2 represent ktables.
 

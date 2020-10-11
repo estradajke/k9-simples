@@ -3148,7 +3148,101 @@ select A by B from T where C
      a  |100.5
      b  |49.5
 
-14.1 Joins
+14.1 Queries
+============
+
+14.1.1 Trivial Query
+--------------------
+
+There a number of ways to return a complete table with kSQL. You can
+use the table name, a kSQL query without columns, or a fully specified
+query with columns.
+
+      t:[[]x:!3;y:sin !3]
+      t
+     x y
+     - ---------
+     0 0.
+     1 0.841471
+     2 0.9092974
+
+      select from t
+     x y
+     - ---------
+     0 0.
+     1 0.841471
+     2 0.9092974
+
+      select x,y from t
+     x y
+     - ---------
+     0 0.
+     1 0.841471
+     2 0.9092974
+
+14.1.2 Query with Where
+-----------------------
+
+kSQL makes it easy to build up a where clause to filter down the
+table.
+
+      t:[[]x:!3;y:sin !3]
+      select from t where x>0
+     x y
+     - ---------
+     1 0.841471
+     2 0.9092974
+
+      select from t where y within 0 .9
+     x y
+     - --------
+     0 0.
+     1 0.841471
+
+14.1.3 Query with By
+--------------------
+
+kSQL also has a way to group rows using 'by'.  The result is a ktable
+where the key is the now unique field in the 'by'.
+
+      t:[[]x:6#0 1;y:sin !6]
+      t
+     x y
+     - ----------
+     0 0.
+     1 0.841471
+     0 0.9092974
+     1 0.14112
+     0 -0.7568025
+     1 -0.9589243
+
+      select sum y by x from t
+     x|y
+     -|----------
+     0|0.1524949
+     1|0.02366672
+
+14.1.4 Query with By and Where
+------------------------------
+
+      t:[[]x:6#0 1;y:sin !6]
+      t
+     x y
+     - ----------
+     0 0.
+     1 0.841471
+     0 0.9092974
+     1 0.14112
+     0 -0.7568025
+     1 -0.9589243
+
+      select sum y by x from t where y>0
+     x|y
+     -|---------
+     0|0.9092974
+     1|0.982591
+
+14.2 Joins
 ==========
 
 k9 has a number of methods to join tables together which are described
@@ -3162,7 +3256,7 @@ join        syntax
 *note asof::t,k
 *note asof+::k1+k2
 
-14.1.1 union join => t1,t2
+14.2.1 union join => t1,t2
 --------------------------
 
 Union join table t1 with table t2.  The tables should have the same
@@ -3191,7 +3285,7 @@ the tables do not have the same columns then return t1.
      b 11 21
      c 12 22
 
-14.1.2 left join => t,k
+14.2.2 left join => t,k
 -----------------------
 
 Left join table t with ktable k.  Result includes all rows from t and
@@ -3222,7 +3316,7 @@ values from t where there is no k value.
      b 2 102 52
      c 3   9  0
 
-14.1.3 outer join => k1,k2
+14.2.3 outer join => k1,k2
 --------------------------
 
 Outer join ktable k1 with key ktable k2.
@@ -3248,7 +3342,7 @@ Outer join ktable k1 with key ktable k2.
      b|9 7
      c|8 6
 
-14.1.4 asof join => t,k
+14.2.4 asof join => t,k
 -----------------------
 
 Asof joins a table t to a ktable k (key by time) such that the t
@@ -3303,7 +3397,7 @@ performance of k9 on joins.
       \t T,K
      222
 
-14.1.5 asof+ join => k1+k2
+14.2.5 asof+ join => k1+k2
 --------------------------
 
 Asof+ joins ktables adding the non-key fields to represent the sum
@@ -3338,7 +3432,7 @@ need to be specified with '`a'.
      09:45|203
      09:50|103
 
-14.2 Insert and Upsert
+14.3 Insert and Upsert
 ======================
 
 One can add data to tables via insert or upsert.  The difference
@@ -3346,7 +3440,7 @@ between the two is that insert adds data to a table while upsert will
 add or replace data to a keyed table.  Upsert adds when the key isn't
 present and replaces when the key is.
 
-14.2.1 insert => t,d
+14.3.1 insert => t,d
 --------------------
 
 Insert dictionary d into table t.
@@ -3373,7 +3467,7 @@ Insert dictionary d into table t.
      a   7
      c  12
 
-14.2.2 upsert => k,d
+14.3.2 upsert => k,d
 --------------------
 
 Insert dictionary d into ktable k.
@@ -3673,28 +3767,28 @@ Ref: t74122
 Ref: xtable75734
 Ref: ktable76217
 Node: kSQL76674
-Ref: union78064
-Ref: left78585
-Ref: outer79106
-Ref: asof79441
-Ref: asof+80485
-Node: System82158
-Ref: load82610
-Ref: timing82798
-Ref: variables82885
-Ref: memory82986
-Ref: cd83101
-Node: Errors83185
-Ref: class83625
-Ref: rank83714
-Ref: length83836
-Ref: _type83957
-Ref: domain84066
-Ref: limit84188
-Ref: nyi84389
-Ref: parse84722
-Ref: _value84877
-Node: Conculsion85005
+Ref: union79654
+Ref: left80175
+Ref: outer80696
+Ref: asof81031
+Ref: asof+82075
+Node: System83748
+Ref: load84200
+Ref: timing84388
+Ref: variables84475
+Ref: memory84576
+Ref: cd84691
+Node: Errors84775
+Ref: class85215
+Ref: rank85304
+Ref: length85426
+Ref: _type85547
+Ref: domain85656
+Ref: limit85778
+Ref: nyi85979
+Ref: parse86312
+Ref: _value86467
+Node: Conculsion86595
 
 End Tag Table
 
