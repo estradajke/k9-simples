@@ -23,6 +23,8 @@ Copyright @copyright{} 2020 John Estrada
 @top k9: Manual
 The Shakti programming language is the work of Arthur Whitney and the team at Shakti.  The language comes from a lineage of similar languages going back to APL.  It's also known as k9 given the similarties to k, k2, ..., k6, k7 and the fact that Arthur also wrote those.  k9 is still under development so expect a bit of syntax change and likley even more improvements.
 
+Learning k9 means code like @code{@{x@@(!#x)+\!#y@}} is clear and actually prefered to something much longer and wordy.  You'll have to go a bit down the rabbit hole before it starts to come together but once it does you'll probably be happy you gave it a chance and end up learning a few things.  You'll understand how fast k9 can be in processing and analyzing data and how terse code is less likley to contain errors.  Unfortunatley you will be less likley to be content using more bloated and slow frameworks.  
+
 This manual is for Shakti (k9) build 2020.10.09.@*
 @c @end ifnottex
 
@@ -56,10 +58,10 @@ The built-in reference screen containing all the k9 commands.
 @node Intro
 @chapter Intro
 @c @cindex chapter, first
-The k9 programming language is designed primarily for the analysis of data.  It may surprise new users with two rather different paradigms, (1) extremely fast data analysis and (2) an extremely concise syntax.  After some familiarity these changes will both seem normal and going back to slow and verbose programming will be surprisingly difficult.
+The k9 programming language is designed primarily for the analysis of data.  It may surprise new users with two rather different paradigms, (1) fast data analysis and (2) concise syntax.  After some familiarity these changes will both seem normal and going back to slow and verbose programming will be surprisingly difficult.
 
 @section Going fast
-Imagine you have a small, on-disk, 40 million row database containing a time-series with two float values at each time.  Additionally this data could be split in three different tables covering different measurements.  Here's how fast k9 can read in the data to memory and compute a statistic, average difference over each table, which uses each and every row.
+Imagine you have a small, on-disk, 40 million row database containing a time-series with two float values at each time.  Additionally this data could be split in three different tables covering different measurements.  Here's how fast k9 can read in the data from disk and compute a statistic, average difference over each table, which uses each and every row.
 
 @example
  bash-3.2$ 2020.xx.xx 17GB 4core (c) shakti
@@ -83,7 +85,7 @@ nf:d+*|d:(|-d),d:683 954 997 1000;
 T:@{`t'_+\(-1+86.4e6)*x%+/x@}?[;1.]@@
 B:100++\1e-2*-3+nf bin/:?[;*|nf]@@
 S:?[;1e-2*2,2,8#1]@@
-q:`eurusd`usdjpy`usdchf!@@@{select t,b,a:b+s from +`t`b`s!(T;B;S)@@'x@@@}'_20e6 10e6 10e6
+q:`eurusd`usdjpy`usdchf!@{select t,b,a:b+s from +`t`b`s!(T;B;S)@@'x@}'_20e6 10e6 10e6
 `q 2:q
 @end example
 

@@ -2,7 +2,7 @@
 <html>
 <!-- This manual is for Shakti (k9) build 2020.10.09.
 
-October 11, 2020
+October 14, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -49,10 +49,10 @@ Next: <a href="Examples.html" accesskey="n" rel="next">Examples</a>, Previous: <
 </div>
 <hr>
 <span id="Intro-1"></span><h2 class="chapter">1 Intro</h2>
-<p>The k9 programming language is designed primarily for the analysis of data.  It may surprise new users with two rather different paradigms, (1) extremely fast data analysis and (2) an extremely concise syntax.  After some familiarity these changes will both seem normal and going back to slow and verbose programming will be surprisingly difficult.
+<p>The k9 programming language is designed primarily for the analysis of data.  It may surprise new users with two rather different paradigms, (1) fast data analysis and (2) concise syntax.  After some familiarity these changes will both seem normal and going back to slow and verbose programming will be surprisingly difficult.
 </p>
 <span id="Going-fast"></span><h3 class="section">1.1 Going fast</h3>
-<p>Imagine you have a small, on-disk, 40 million row database containing a time-series with two float values at each time.  Additionally this data could be split in three different tables covering different measurements.  Here&rsquo;s how fast k9 can read in the data to memory and compute a statistic, average difference over each table, which uses each and every row.
+<p>Imagine you have a small, on-disk, 40 million row database containing a time-series with two float values at each time.  Additionally this data could be split in three different tables covering different measurements.  Here&rsquo;s how fast k9 can read in the data from disk and compute a statistic, average difference over each table, which uses each and every row.
 </p>
 <div class="example">
 <pre class="example"> bash-3.2$ 2020.xx.xx 17GB 4core (c) shakti
@@ -76,7 +76,7 @@ Next: <a href="Examples.html" accesskey="n" rel="next">Examples</a>, Previous: <
 T:{`t'_+\(-1+86.4e6)*x%+/x}?[;1.]@
 B:100++\1e-2*-3+nf bin/:?[;*|nf]@
 S:?[;1e-2*2,2,8#1]@
-q:`eurusd`usdjpy`usdchf!@{select t,b,a:b+s from +`t`b`s!(T;B;S)@'x@}'_20e6 10e6 10e6
+q:`eurusd`usdjpy`usdchf!{select t,b,a:b+s from +`t`b`s!(T;B;S)@'x}'_20e6 10e6 10e6
 `q 2:q
 </pre></div>
 

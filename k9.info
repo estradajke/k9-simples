@@ -1,7 +1,7 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
 This manual is for Shakti (k9) build 2020.10.09.
-October 11, 2020
+October 14, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -17,6 +17,15 @@ languages going back to APL. It's also known as k9 given the
 similarties to k, k2, ..., k6, k7 and the fact that Arthur also wrote
 those.  k9 is still under development so expect a bit of syntax change
 and likley even more improvements.
+
+   Learning k9 means code like '{x@(!#x)+\!#y}' is clear and actually
+prefered to something much longer and wordy.  You'll have to go a bit
+down the rabbit hole before it starts to come together but once it
+does you'll probably be happy you gave it a chance and end up learning
+a few things.  You'll understand how fast k9 can be in processing and
+analyzing data and how terse code is less likley to contain errors.
+Unfortunatley you will be less likley to be content using more bloated
+and slow frameworks.
 
    This manual is for Shakti (k9) build 2020.10.09.
 
@@ -93,9 +102,9 @@ File: k9.info,  Node: Intro,  Next: Examples,  Prev: Top,  Up: Top
 
 The k9 programming language is designed primarily for the analysis of
 data.  It may surprise new users with two rather different paradigms,
-(1) extremely fast data analysis and (2) an extremely concise syntax.
-After some familiarity these changes will both seem normal and going
-back to slow and verbose programming will be surprisingly difficult.
+(1) fast data analysis and (2) concise syntax.  After some familiarity
+these changes will both seem normal and going back to slow and verbose
+programming will be surprisingly difficult.
 
 1.1 Going fast
 ==============
@@ -103,7 +112,7 @@ back to slow and verbose programming will be surprisingly difficult.
 Imagine you have a small, on-disk, 40 million row database containing
 a time-series with two float values at each time.  Additionally this
 data could be split in three different tables covering different
-measurements.  Here's how fast k9 can read in the data to memory and
+measurements.  Here's how fast k9 can read in the data from disk and
 compute a statistic, average difference over each table, which uses
 each and every row.
 
@@ -127,7 +136,7 @@ Speed of course will depend on your hardware setup so times will vary.
      T:{`t'_+\(-1+86.4e6)*x%+/x}?[;1.]@
      B:100++\1e-2*-3+nf bin/:?[;*|nf]@
      S:?[;1e-2*2,2,8#1]@
-     q:`eurusd`usdjpy`usdchf!@{select t,b,a:b+s from +`t`b`s!(T;B;S)@'x@}'_20e6 10e6 10e6
+     q:`eurusd`usdjpy`usdchf!{select t,b,a:b+s from +`t`b`s!(T;B;S)@'x}'_20e6 10e6 10e6
      `q 2:q
 
 1.2 Going concise
@@ -3666,129 +3675,129 @@ than previously imagined.
 
 Tag Table:
 Node: Top174
-Node: Intro3608
-Node: Examples15567
-Node: Benchmarks22689
-Node: Verb27648
-Ref: x29108
-Ref: set29133
-Ref: flip29345
-Ref: plus29595
-Ref: negate29980
-Ref: minus30152
-Ref: first30259
-Ref: times30578
-Ref: divide30709
-Ref: where30846
-Ref: min/and31232
-Ref: reverse31491
-Ref: max/or31661
-Ref: asc31925
-Ref: less32298
-Ref: group32560
-Ref: equal32806
-Ref: not32930
-Ref: match33047
-Ref: enum33240
-Ref: key34492
-Ref: enlist34722
-Ref: cat34861
-Ref: sort34980
-Ref: [f]cut35212
-Ref: count35920
-Ref: [f]take36110
-Ref: floor36739
-Ref: [f]drop36830
-Ref: string37423
-Ref: cast+37531
-Ref: unique+37880
-Ref: find+38119
-Ref: type38838
-Ref: [f]at39194
-Ref: value39413
-Ref: [f]dot39741
-Node: Adverb40717
-Ref: scan41429
-Ref: join41959
-Ref: split42134
-Ref: each42325
-Ref: has42543
-Ref: eachp42716
-Ref: bin243156
-Ref: eachr43359
-Ref: eachl43556
-Ref: n scan43740
-Ref: c scan44220
-Ref: c over44504
-Ref: vs44614
-Ref: sv44734
-Node: Noun44858
-Ref: bool46224
-Ref: int46524
-Ref: flt46728
-Ref: char47106
-Ref: name47329
-Ref: uuid47560
-Ref: time47717
-Ref: date48331
-Ref: datetime48749
-Node: List49448
-Node: Dictionary54119
-Node: User Functions58907
-Node: Named Functions60558
-Ref: sqrt61187
-Ref: exp61260
-Ref: log61328
-Ref: sin61428
-Ref: cos61567
-Ref: div61715
-Ref: mod61871
-Ref: bar62049
-Ref: in62589
-Ref: bin62767
-Ref: within62981
-Node: Additional Functions63195
-Ref: cond63336
-Ref: amend63456
-Ref: dmend64118
-Node: I/O64821
-Ref: input format65168
-Ref: format66179
-Ref: write line66579
-Ref: read line66966
-Ref: write char67153
-Ref: read char67548
-Ref: load data67913
-Ref: write data69670
-Ref: conn/set73583
-Ref: http/get73627
-Node: Tables73677
-Ref: t74123
-Ref: xtable75735
-Ref: ktable76218
-Node: kSQL76675
-Ref: union79655
-Ref: left80176
-Ref: outer80697
-Ref: asof81032
-Ref: asof+82076
-Node: System83749
-Ref: load84201
-Ref: timing84389
-Ref: variables84476
-Ref: memory84577
-Ref: cd84692
-Node: Errors84776
-Ref: class85216
-Ref: rank85305
-Ref: length85427
-Ref: _type85548
-Ref: domain85657
-Ref: limit85779
-Ref: nyi85980
-Ref: parse86313
-Ref: _value86468
-Node: Conculsion86596
+Node: Intro4117
+Node: Examples16052
+Node: Benchmarks23174
+Node: Verb28133
+Ref: x29593
+Ref: set29618
+Ref: flip29830
+Ref: plus30080
+Ref: negate30465
+Ref: minus30637
+Ref: first30744
+Ref: times31063
+Ref: divide31194
+Ref: where31331
+Ref: min/and31717
+Ref: reverse31976
+Ref: max/or32146
+Ref: asc32410
+Ref: less32783
+Ref: group33045
+Ref: equal33291
+Ref: not33415
+Ref: match33532
+Ref: enum33725
+Ref: key34977
+Ref: enlist35207
+Ref: cat35346
+Ref: sort35465
+Ref: [f]cut35697
+Ref: count36405
+Ref: [f]take36595
+Ref: floor37224
+Ref: [f]drop37315
+Ref: string37908
+Ref: cast+38016
+Ref: unique+38365
+Ref: find+38604
+Ref: type39323
+Ref: [f]at39679
+Ref: value39898
+Ref: [f]dot40226
+Node: Adverb41202
+Ref: scan41914
+Ref: join42444
+Ref: split42619
+Ref: each42810
+Ref: has43028
+Ref: eachp43201
+Ref: bin243641
+Ref: eachr43844
+Ref: eachl44041
+Ref: n scan44225
+Ref: c scan44705
+Ref: c over44989
+Ref: vs45099
+Ref: sv45219
+Node: Noun45343
+Ref: bool46709
+Ref: int47009
+Ref: flt47213
+Ref: char47591
+Ref: name47814
+Ref: uuid48045
+Ref: time48202
+Ref: date48816
+Ref: datetime49234
+Node: List49933
+Node: Dictionary54604
+Node: User Functions59392
+Node: Named Functions61043
+Ref: sqrt61672
+Ref: exp61745
+Ref: log61813
+Ref: sin61913
+Ref: cos62052
+Ref: div62200
+Ref: mod62356
+Ref: bar62534
+Ref: in63074
+Ref: bin63252
+Ref: within63466
+Node: Additional Functions63680
+Ref: cond63821
+Ref: amend63941
+Ref: dmend64603
+Node: I/O65306
+Ref: input format65653
+Ref: format66664
+Ref: write line67064
+Ref: read line67451
+Ref: write char67638
+Ref: read char68033
+Ref: load data68398
+Ref: write data70155
+Ref: conn/set74068
+Ref: http/get74112
+Node: Tables74162
+Ref: t74608
+Ref: xtable76220
+Ref: ktable76703
+Node: kSQL77160
+Ref: union80140
+Ref: left80661
+Ref: outer81182
+Ref: asof81517
+Ref: asof+82561
+Node: System84234
+Ref: load84686
+Ref: timing84874
+Ref: variables84961
+Ref: memory85062
+Ref: cd85177
+Node: Errors85261
+Ref: class85701
+Ref: rank85790
+Ref: length85912
+Ref: _type86033
+Ref: domain86142
+Ref: limit86264
+Ref: nyi86465
+Ref: parse86798
+Ref: _value86953
+Node: Conculsion87081
 
 End Tag Table
 
