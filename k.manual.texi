@@ -903,17 +903,17 @@ Divide x by y.
 @end example
 
 @anchor{where}@section where @result{} &x
-Given a list of integer values, eg. x[0], x[1], ..., x[n-1], generate x[0] values of 0, x[1] values of 1, ..., and x[n-1] values of n-1.  Given a list of binary values return the indices where the value is non-zero.
+Given a list of binary values return the indices where the value is non-zero.  Given a list of non-negative integer values, eg. x[0], x[1], ..., x[n-1], generate x[0] values of 0, x[1] values of 1, ..., and x[n-1] values of n-1.  
 
 @example
- & 3 1 0 2
-0 0 0 1 3 3
  &001001b
 2 5
  "banana"="a"
 010101b
  &"banana"="a"
 1 3 5
+ & 3 1 0 2
+0 0 0 1 3 3
  x@@&30<x:12.7 0.1 35.6 -12.1 101.101  / return values greater than 30
 35.6 101.101
 @end example
@@ -981,7 +981,7 @@ a|3
 @end example
 
 @anchor{less}@section less (more) @result{} x < (>) y
-x less (more) than y.
+Return 1b if x less (more) than y else 0b.
 @example
 @ 3<2
 0b
@@ -1014,7 +1014,7 @@ n|2 4
 @end example
 
 @anchor{equal}@section equal @result{} x=y
-x equal to y
+Return 1b if x equal to y else 0b.
 @example
 @ 2=2
 1b

@@ -208,17 +208,17 @@ b|-4 -5 -6
 </pre></div>
 
 <span id="where"></span><span id="where-_21d2-_0026x"></span><h3 class="section">4.10 where &rArr; &amp;x</h3>
-<p>Given a list of integer values, eg. x[0], x[1], ..., x[n-1], generate x[0] values of 0, x[1] values of 1, ..., and x[n-1] values of n-1.  Given a list of binary values return the indices where the value is non-zero.
+<p>Given a list of binary values return the indices where the value is non-zero.  Given a list of non-negative integer values, eg. x[0], x[1], ..., x[n-1], generate x[0] values of 0, x[1] values of 1, ..., and x[n-1] values of n-1.  
 </p>
 <div class="example">
-<pre class="example"> &amp; 3 1 0 2
-0 0 0 1 3 3
- &amp;001001b
+<pre class="example"> &amp;001001b
 2 5
  &quot;banana&quot;=&quot;a&quot;
 010101b
  &amp;&quot;banana&quot;=&quot;a&quot;
 1 3 5
+ &amp; 3 1 0 2
+0 0 0 1 3 3
  x@&amp;30&lt;x:12.7 0.1 35.6 -12.1 101.101  / return values greater than 30
 35.6 101.101
 </pre></div>
@@ -286,7 +286,7 @@ a|3
 </pre></div>
 
 <span id="less"></span><span id="less-_0028more_0029-_21d2-x-_003c-_0028_003e_0029-y"></span><h3 class="section">4.15 less (more) &rArr; x &lt; (&gt;) y</h3>
-<p>x less (more) than y.
+<p>Return 1b if x less (more) than y else 0b.
 </p><div class="example">
 <pre class="example">&nbsp;3&lt;2
 0b
@@ -319,7 +319,7 @@ n|2 4
 </pre></div>
 
 <span id="equal"></span><span id="equal-_21d2-x_003dy"></span><h3 class="section">4.17 equal &rArr; x=y</h3>
-<p>x equal to y
+<p>Return 1b if x equal to y else 0b.
 </p><div class="example">
 <pre class="example">&nbsp;2=2
 1b
