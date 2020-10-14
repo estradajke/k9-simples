@@ -981,7 +981,7 @@ a|3
 @end example
 
 @anchor{less}@section less (more) @result{} x < (>) y
-Return 1b if x less (more) than y else 0b.
+Return true (1b) if x is less (more) than y else false (0b).
 @example
 @ 3<2
 0b
@@ -1014,7 +1014,7 @@ n|2 4
 @end example
 
 @anchor{equal}@section equal @result{} x=y
-Return 1b if x equal to y else 0b.
+Return true (1b) if x is equal to y else false (0b).
 @example
 @ 2=2
 1b
@@ -1036,20 +1036,25 @@ Boolean invert of x
 @end example
 
 @anchor{match}@section match @result{} x~y
-Compare x and y.
+Return true (1b) if x matches y else false (0b).  A match happens if the two arguments evaluate to the same expression.
+
 @example
-@ 2~2
+ 2~2
 1b
-@ 2~3
+ 2~3
 0b
-@ `a`b~`a`b  / different than = which is element-wise comparison
+ `a`b~`a`b  / different than = which is element-wise comparison
 1b
-@ `a`b=`a`b
+ `a`b=`a`b
 11b
+ f:@{x+y@}
+ f~@{x+y@}
+1b
 @end example
 
 @anchor{enum}@section enum @result{} !x
 Given an integer, x, generate an integer list from 0 to x-1.  Given a dictionary, x, return all key values
+
 @example
  !3
 0 1 2

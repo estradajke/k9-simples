@@ -286,7 +286,7 @@ a|3
 </pre></div>
 
 <span id="less"></span><span id="less-_0028more_0029-_21d2-x-_003c-_0028_003e_0029-y"></span><h3 class="section">4.15 less (more) &rArr; x &lt; (&gt;) y</h3>
-<p>Return 1b if x less (more) than y else 0b.
+<p>Return true (1b) if x is less (more) than y else false (0b).
 </p><div class="example">
 <pre class="example">&nbsp;3&lt;2
 0b
@@ -319,7 +319,7 @@ n|2 4
 </pre></div>
 
 <span id="equal"></span><span id="equal-_21d2-x_003dy"></span><h3 class="section">4.17 equal &rArr; x=y</h3>
-<p>Return 1b if x equal to y else 0b.
+<p>Return true (1b) if x is equal to y else false (0b).
 </p><div class="example">
 <pre class="example">&nbsp;2=2
 1b
@@ -341,21 +341,26 @@ n|2 4
 </pre></div>
 
 <span id="match"></span><span id="match-_21d2-x_007ey"></span><h3 class="section">4.19 match &rArr; x~y</h3>
-<p>Compare x and y.
-</p><div class="example">
-<pre class="example">&nbsp;2~2
+<p>Return true (1b) if x matches y else false (0b).  A match happens if the two arguments evaluate to the same expression.
+</p>
+<div class="example">
+<pre class="example"> 2~2
 1b
-&nbsp;2~3
+ 2~3
 0b
-&nbsp;`a`b~`a`b  / different than = which is element-wise comparison
+ `a`b~`a`b  / different than = which is element-wise comparison
 1b
-&nbsp;`a`b=`a`b
+ `a`b=`a`b
 11b
+ f:{x+y}
+ f~{x+y}
+1b
 </pre></div>
 
 <span id="enum"></span><span id="enum-_21d2-_0021x"></span><h3 class="section">4.20 enum &rArr; !x</h3>
 <p>Given an integer, x, generate an integer list from 0 to x-1.  Given a dictionary, x, return all key values
-</p><div class="example">
+</p>
+<div class="example">
 <pre class="example"> !3
 0 1 2
 

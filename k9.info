@@ -1143,7 +1143,7 @@ dictionary is directly sorted by value
 4.15 less (more) => x < (>) y
 =============================
 
-Return 1b if x less (more) than y else 0b.
+Return true (1b) if x is less (more) than y else false (0b).
       3<2
      0b
       2<3
@@ -1176,7 +1176,7 @@ A dictionary of the disinct values of x (key) and indices (values).
 4.17 equal => x=y
 =================
 
-Return 1b if x equal to y else 0b.
+Return true (1b) if x is equal to y else false (0b).
       2=2
      1b
       2=3
@@ -1198,7 +1198,9 @@ Boolean invert of x
 4.19 match => x~y
 =================
 
-Compare x and y.
+Return true (1b) if x matches y else false (0b).  A match happens if
+the two arguments evaluate to the same expression.
+
       2~2
      1b
       2~3
@@ -1207,12 +1209,16 @@ Compare x and y.
      1b
       `a`b=`a`b
      11b
+      f:{x+y}
+      f~{x+y}
+     1b
 
 4.20 enum => !x
 ===============
 
 Given an integer, x, generate an integer list from 0 to x-1.  Given a
 dictionary, x, return all key values
+
       !3
      0 1 2
 
@@ -3702,110 +3708,110 @@ Ref: reverse32064
 Ref: max/or32234
 Ref: asc32498
 Ref: less32871
-Ref: group33154
-Ref: equal33400
-Ref: not33546
-Ref: match33663
-Ref: enum33856
-Ref: key35108
-Ref: enlist35338
-Ref: cat35477
-Ref: sort35596
-Ref: [f]cut35828
-Ref: count36536
-Ref: [f]take36726
-Ref: floor37355
-Ref: [f]drop37446
-Ref: string38039
-Ref: cast+38147
-Ref: unique+38496
-Ref: find+38735
-Ref: type39454
-Ref: [f]at39810
-Ref: value40029
-Ref: [f]dot40357
-Node: Adverb41333
-Ref: scan42045
-Ref: join42575
-Ref: split42750
-Ref: each42941
-Ref: has43159
-Ref: eachp43332
-Ref: bin243772
-Ref: eachr43975
-Ref: eachl44172
-Ref: n scan44356
-Ref: c scan44836
-Ref: c over45120
-Ref: vs45230
-Ref: sv45350
-Node: Noun45474
-Ref: bool46840
-Ref: int47140
-Ref: flt47344
-Ref: char47722
-Ref: name47945
-Ref: uuid48176
-Ref: time48333
-Ref: date48947
-Ref: datetime49365
-Node: List50064
-Node: Dictionary54735
-Node: User Functions59523
-Node: Named Functions61174
-Ref: sqrt61803
-Ref: exp61876
-Ref: log61944
-Ref: sin62044
-Ref: cos62183
-Ref: div62331
-Ref: mod62487
-Ref: bar62665
-Ref: in63205
-Ref: bin63383
-Ref: within63597
-Node: Additional Functions63811
-Ref: cond63952
-Ref: amend64072
-Ref: dmend64734
-Node: I/O65437
-Ref: input format65784
-Ref: format66795
-Ref: write line67195
-Ref: read line67582
-Ref: write char67769
-Ref: read char68164
-Ref: load data68529
-Ref: write data70286
-Ref: conn/set74199
-Ref: http/get74243
-Node: Tables74293
-Ref: t74739
-Ref: xtable76351
-Ref: ktable76834
-Node: kSQL77291
-Ref: union80271
-Ref: left80792
-Ref: outer81313
-Ref: asof81648
-Ref: asof+82692
-Node: System84365
-Ref: load84817
-Ref: timing85005
-Ref: variables85092
-Ref: memory85193
-Ref: cd85308
-Node: Errors85392
-Ref: class85832
-Ref: rank85921
-Ref: length86043
-Ref: _type86164
-Ref: domain86273
-Ref: limit86395
-Ref: nyi86596
-Ref: parse86929
-Ref: _value87084
-Node: Conculsion87212
+Ref: group33172
+Ref: equal33418
+Ref: not33582
+Ref: match33699
+Ref: enum34032
+Ref: key35285
+Ref: enlist35515
+Ref: cat35654
+Ref: sort35773
+Ref: [f]cut36005
+Ref: count36713
+Ref: [f]take36903
+Ref: floor37532
+Ref: [f]drop37623
+Ref: string38216
+Ref: cast+38324
+Ref: unique+38673
+Ref: find+38912
+Ref: type39631
+Ref: [f]at39987
+Ref: value40206
+Ref: [f]dot40534
+Node: Adverb41510
+Ref: scan42222
+Ref: join42752
+Ref: split42927
+Ref: each43118
+Ref: has43336
+Ref: eachp43509
+Ref: bin243949
+Ref: eachr44152
+Ref: eachl44349
+Ref: n scan44533
+Ref: c scan45013
+Ref: c over45297
+Ref: vs45407
+Ref: sv45527
+Node: Noun45651
+Ref: bool47017
+Ref: int47317
+Ref: flt47521
+Ref: char47899
+Ref: name48122
+Ref: uuid48353
+Ref: time48510
+Ref: date49124
+Ref: datetime49542
+Node: List50241
+Node: Dictionary54912
+Node: User Functions59700
+Node: Named Functions61351
+Ref: sqrt61980
+Ref: exp62053
+Ref: log62121
+Ref: sin62221
+Ref: cos62360
+Ref: div62508
+Ref: mod62664
+Ref: bar62842
+Ref: in63382
+Ref: bin63560
+Ref: within63774
+Node: Additional Functions63988
+Ref: cond64129
+Ref: amend64249
+Ref: dmend64911
+Node: I/O65614
+Ref: input format65961
+Ref: format66972
+Ref: write line67372
+Ref: read line67759
+Ref: write char67946
+Ref: read char68341
+Ref: load data68706
+Ref: write data70463
+Ref: conn/set74376
+Ref: http/get74420
+Node: Tables74470
+Ref: t74916
+Ref: xtable76528
+Ref: ktable77011
+Node: kSQL77468
+Ref: union80448
+Ref: left80969
+Ref: outer81490
+Ref: asof81825
+Ref: asof+82869
+Node: System84542
+Ref: load84994
+Ref: timing85182
+Ref: variables85269
+Ref: memory85370
+Ref: cd85485
+Node: Errors85569
+Ref: class86009
+Ref: rank86098
+Ref: length86220
+Ref: _type86341
+Ref: domain86450
+Ref: limit86572
+Ref: nyi86773
+Ref: parse87106
+Ref: _value87261
+Node: Conculsion87389
 
 End Tag Table
 
