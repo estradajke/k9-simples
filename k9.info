@@ -130,7 +130,7 @@ already in memory then it's even faster.
    65ms, not bad.
 
    The code to generate the on-disk database is presented below.
-Speed of course will depend on your hardware setup so times will vary.
+Speed of course will depend on your hardware so times will vary.
 
      nf:d+*|d:(|-d),d:683 954 997 1000;
      T:{`t'_+\(-1+86.4e6)*x%+/x}?[;1.]@
@@ -144,19 +144,19 @@ Speed of course will depend on your hardware setup so times will vary.
 
 The k9 language is more closely related to mathematics syntax than
 most programming lanauges.  It requires the developer to learn to
-speak k9 but once that happens most find an ability to "speak" quicker
+"speak" k9 but once that happens most find an ability to speak quicker
 in k9 than in other languages.  At this point an example might help.
 
    In mathematics, "3+2" is read as "3 plus 2" as you learn at an
 early age that "+" is the "plus" sign.  For trival operations like
 arithmetic most programming languages use symbols also.  Moving on to
-something less math like most programming lanauges switch to clear
-words while k9 remains with symbols which turn out to have the same
-level of clarity.  As an example, to determine the distinct values of
-a list most programming languages might use a synatx like 'distinct()'
-while k9 uses '?'.  This requires the developer to learn how to say a
-number of symbols but once that happens it results in much shorter
-code that is quicker to write, harder to bug, and easier to maintain.
+something less math like most programming lanauges switch to words
+while k9 remains with symbols which turn out to have the same level of
+clarity.  As an example, to determine the distinct values of a list
+most programming languages might use a synatx like 'distinct()' while
+k9 uses '?'.  This requires the developer to learn how to say a number
+of symbols but once that happens it results in much shorter code that
+is quicker to write, harder to bug, and easier to maintain.
 
    In math which do you find easier to answer?
 
@@ -208,8 +208,8 @@ appear here automatically.)
 ==================
 
 Typing '\' in the terminal gives you a concise overview of the
-language.  This document aims to provide details to beginning users
-where the help screen is a tad too terse.  Some commands are not yet
+language.  This document aims to provide details to beginning user
+where the help screen is a bit too terse.  Some commands are not yet
 complete and thus marked with an asterisk, eg.  *?[x;i;f[;y]] splice.
 
 universal database and language - full stack.
@@ -262,7 +262,7 @@ Although you only need the 'k' binary to run k9 most will also install
 rlwrap, if not already installed, in order to get command history in a
 terminal window.  rlwrap is "Readline wrapper: adds readline support
 to tools that lack it" and allows one to arrow up to go through the
-command buffer generally a useful option to have.
+command buffer.
 
    In order to start k9 you should either run 'k' or 'rlwrap k' to get
 started.  Here I will show both options but one should run as desired.
@@ -3676,128 +3676,128 @@ than previously imagined.
 Tag Table:
 Node: Top174
 Node: Intro4117
-Node: Examples16050
-Node: Benchmarks23172
-Node: Verb28131
-Ref: x29591
-Ref: set29616
-Ref: flip29828
-Ref: plus30078
-Ref: negate30463
-Ref: minus30635
-Ref: first30742
-Ref: times31061
-Ref: divide31192
-Ref: where31329
-Ref: min/and31715
-Ref: reverse31974
-Ref: max/or32144
-Ref: asc32408
-Ref: less32781
-Ref: group33043
-Ref: equal33289
-Ref: not33413
-Ref: match33530
-Ref: enum33723
-Ref: key34975
-Ref: enlist35205
-Ref: cat35344
-Ref: sort35463
-Ref: [f]cut35695
-Ref: count36403
-Ref: [f]take36593
-Ref: floor37222
-Ref: [f]drop37313
-Ref: string37906
-Ref: cast+38014
-Ref: unique+38363
-Ref: find+38602
-Ref: type39321
-Ref: [f]at39677
-Ref: value39896
-Ref: [f]dot40224
-Node: Adverb41200
-Ref: scan41912
-Ref: join42442
-Ref: split42617
-Ref: each42808
-Ref: has43026
-Ref: eachp43199
-Ref: bin243639
-Ref: eachr43842
-Ref: eachl44039
-Ref: n scan44223
-Ref: c scan44703
-Ref: c over44987
-Ref: vs45097
-Ref: sv45217
-Node: Noun45341
-Ref: bool46707
-Ref: int47007
-Ref: flt47211
-Ref: char47589
-Ref: name47812
-Ref: uuid48043
-Ref: time48200
-Ref: date48814
-Ref: datetime49232
-Node: List49931
-Node: Dictionary54602
-Node: User Functions59390
-Node: Named Functions61041
-Ref: sqrt61670
-Ref: exp61743
-Ref: log61811
-Ref: sin61911
-Ref: cos62050
-Ref: div62198
-Ref: mod62354
-Ref: bar62532
-Ref: in63072
-Ref: bin63250
-Ref: within63464
-Node: Additional Functions63678
-Ref: cond63819
-Ref: amend63939
-Ref: dmend64601
-Node: I/O65304
-Ref: input format65651
-Ref: format66662
-Ref: write line67062
-Ref: read line67449
-Ref: write char67636
-Ref: read char68031
-Ref: load data68396
-Ref: write data70153
-Ref: conn/set74066
-Ref: http/get74110
-Node: Tables74160
-Ref: t74606
-Ref: xtable76218
-Ref: ktable76701
-Node: kSQL77158
-Ref: union80138
-Ref: left80659
-Ref: outer81180
-Ref: asof81515
-Ref: asof+82559
-Node: System84232
-Ref: load84684
-Ref: timing84872
-Ref: variables84959
-Ref: memory85060
-Ref: cd85175
-Node: Errors85259
-Ref: class85699
-Ref: rank85788
-Ref: length85910
-Ref: _type86031
-Ref: domain86140
-Ref: limit86262
-Ref: nyi86463
-Ref: parse86796
-Ref: _value86951
-Node: Conculsion87079
+Node: Examples16003
+Node: Benchmarks23125
+Node: Verb28084
+Ref: x29544
+Ref: set29569
+Ref: flip29781
+Ref: plus30031
+Ref: negate30416
+Ref: minus30588
+Ref: first30695
+Ref: times31014
+Ref: divide31145
+Ref: where31282
+Ref: min/and31668
+Ref: reverse31927
+Ref: max/or32097
+Ref: asc32361
+Ref: less32734
+Ref: group32996
+Ref: equal33242
+Ref: not33366
+Ref: match33483
+Ref: enum33676
+Ref: key34928
+Ref: enlist35158
+Ref: cat35297
+Ref: sort35416
+Ref: [f]cut35648
+Ref: count36356
+Ref: [f]take36546
+Ref: floor37175
+Ref: [f]drop37266
+Ref: string37859
+Ref: cast+37967
+Ref: unique+38316
+Ref: find+38555
+Ref: type39274
+Ref: [f]at39630
+Ref: value39849
+Ref: [f]dot40177
+Node: Adverb41153
+Ref: scan41865
+Ref: join42395
+Ref: split42570
+Ref: each42761
+Ref: has42979
+Ref: eachp43152
+Ref: bin243592
+Ref: eachr43795
+Ref: eachl43992
+Ref: n scan44176
+Ref: c scan44656
+Ref: c over44940
+Ref: vs45050
+Ref: sv45170
+Node: Noun45294
+Ref: bool46660
+Ref: int46960
+Ref: flt47164
+Ref: char47542
+Ref: name47765
+Ref: uuid47996
+Ref: time48153
+Ref: date48767
+Ref: datetime49185
+Node: List49884
+Node: Dictionary54555
+Node: User Functions59343
+Node: Named Functions60994
+Ref: sqrt61623
+Ref: exp61696
+Ref: log61764
+Ref: sin61864
+Ref: cos62003
+Ref: div62151
+Ref: mod62307
+Ref: bar62485
+Ref: in63025
+Ref: bin63203
+Ref: within63417
+Node: Additional Functions63631
+Ref: cond63772
+Ref: amend63892
+Ref: dmend64554
+Node: I/O65257
+Ref: input format65604
+Ref: format66615
+Ref: write line67015
+Ref: read line67402
+Ref: write char67589
+Ref: read char67984
+Ref: load data68349
+Ref: write data70106
+Ref: conn/set74019
+Ref: http/get74063
+Node: Tables74113
+Ref: t74559
+Ref: xtable76171
+Ref: ktable76654
+Node: kSQL77111
+Ref: union80091
+Ref: left80612
+Ref: outer81133
+Ref: asof81468
+Ref: asof+82512
+Node: System84185
+Ref: load84637
+Ref: timing84825
+Ref: variables84912
+Ref: memory85013
+Ref: cd85128
+Node: Errors85212
+Ref: class85652
+Ref: rank85741
+Ref: length85863
+Ref: _type85984
+Ref: domain86093
+Ref: limit86215
+Ref: nyi86416
+Ref: parse86749
+Ref: _value86904
+Node: Conculsion87032
 
 End Tag Table
 

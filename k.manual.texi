@@ -78,7 +78,7 @@ That's 233ms to read the data in from disk and compute over all the 40 million v
 
 65ms, not bad.
 
-The code to generate the on-disk database is presented below.  Speed of course will depend on your hardware setup so times will vary.
+The code to generate the on-disk database is presented below.  Speed of course will depend on your hardware so times will vary.
 
 @example
 nf:d+*|d:(|-d),d:683 954 997 1000;
@@ -91,9 +91,9 @@ q:`eurusd`usdjpy`usdchf!@{select t,b,a:b+s from +`t`b`s!(T;B;S)@@'x@}'_20e6 10e6
 
 @section Going concise
 
-The k9 language is more closely related to mathematics syntax than most programming lanauges.  It requires the developer to learn to speak k9 but once that happens most find an ability to ``speak'' quicker in k9 than in other languages.  At this point an example might help.
+The k9 language is more closely related to mathematics syntax than most programming lanauges.  It requires the developer to learn to ``speak'' k9 but once that happens most find an ability to speak quicker in k9 than in other languages.  At this point an example might help.
 
-In mathematics, ``3+2'' is read as ``3 plus 2'' as you learn at an early age that ``+'' is the ``plus'' sign.  For trival operations like arithmetic most programming languages use symbols also.  Moving on to something less math like most programming lanauges switch to clear words while k9 remains with symbols which turn out to have the same level of clarity.  As an example, to determine the distinct values of a list most programming languages might use a synatx like @code{distinct()} while k9 uses @code{?}.  This requires the developer to learn how to say a number of symbols but once that happens it results in much shorter code that is quicker to write, harder to bug, and easier to maintain.
+In mathematics, ``3+2'' is read as ``3 plus 2'' as you learn at an early age that ``+'' is the ``plus'' sign.  For trival operations like arithmetic most programming languages use symbols also.  Moving on to something less math like most programming lanauges switch to words while k9 remains with symbols which turn out to have the same level of clarity.  As an example, to determine the distinct values of a list most programming languages might use a synatx like @code{distinct()} while k9 uses @code{?}.  This requires the developer to learn how to say a number of symbols but once that happens it results in much shorter code that is quicker to write, harder to bug, and easier to maintain.
 
 In math which do you find easier to answer?@*@*
 Math with text@*
@@ -127,7 +127,7 @@ You will find the Linux version in the linux directory and the MacOS version und
 Again on the mac if you then attempt to run this file you likely won't succeed due to MacOS security.  You'll need to go to ``System Preferences...'' and then ``Security and Privacy'' and select to allow this binary to run.  (You'll have to have tried and failed to have it appear here automatically.)
 
 @section Help/Info Card
-Typing @code{\} in the terminal gives you a concise overview of the language.  This document aims to provide details to beginning users where the help screen is a tad too terse.  Some commands are not yet complete and thus marked with an asterisk, eg. *?[x;i;f[;y]] splice.
+Typing @code{\} in the terminal gives you a concise overview of the language.  This document aims to provide details to beginning user where the help screen is a bit too terse.  Some commands are not yet complete and thus marked with an asterisk, eg. *?[x;i;f[;y]] splice.
 
 @smallformat
 @verbatiminclude k.d
@@ -135,7 +135,7 @@ Typing @code{\} in the terminal gives you a concise overview of the language.  T
 @page
 
 @section rlwrap
-Although you only need the @file{k} binary to run k9 most will also install rlwrap, if not already installed, in order to get command history in a terminal window.  rlwrap is ``Readline wrapper: adds readline support to tools that lack it'' and allows one to arrow up to go through the command buffer generally a useful option to have.
+Although you only need the @file{k} binary to run k9 most will also install rlwrap, if not already installed, in order to get command history in a terminal window.  rlwrap is ``Readline wrapper: adds readline support to tools that lack it'' and allows one to arrow up to go through the command buffer.
 
 In order to start k9 you should either run @file{k} or @file{rlwrap k} to get started.  Here I will show both options but one should run as desired.  In this document lines with input be shown with a leading space and output will be without.  In the examples below the user starts a terminal window in the directory with the @file{k} file.  Then the users enters @kbd{rlwrap ./k @key{RET}}.  k9 starts and displays the date of the build, (c), and shakti and then listens to user input.  In this example I have entered the command to exit k9, @kbd{\\}.  Then I start k9 again without rlwrap and again exit the session.
 
