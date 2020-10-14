@@ -66,17 +66,17 @@ Imagine you have a small, on-disk, 40 million row database containing a time-ser
 @example
  bash-3.2$ 2020.xx.xx 17GB 4core (c) shakti
  \t q:2:`q;@{select s:avg a-b from x@}'q[!q]
-415
+233
 @end example
 
-That's 415ms to read the data in from disk and compute over all the 40 million values.  The data read is the biggest bit.  If the data was already in memory then it's even faster.
+That's 233ms to read the data in from disk and compute over all the 40 million values.  The data read is the biggest bit.  If the data was already in memory then it's even faster.
 
 @example
  \t @{select s:avg a-b from x@}'q[!q]
-105
+65
 @end example
 
-105ms, not bad.
+65ms, not bad.
 
 The code to generate the on-disk database is presented below.  Speed of course will depend on your hardware setup so times will vary.
 
