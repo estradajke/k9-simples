@@ -224,9 +224,9 @@ c|0.6708467
 </pre></div>
 
 <span id="Document-formatting-for-code-examples"></span><h3 class="section">1.7 Document formatting for code examples</h3>
-<p>This document uses a number of examples to help clarify k9.  The sytax is that input has a leading space and output does not.  This follows the terminal syntax where the REPL input has space but prints output without.
+<p>This document uses a number of examples to familiarize the reader with k9.  The sytax is input has a leading space and output does not.  This follows the terminal syntax where the REPL input has space but prints output without.
 </p><div class="example">
-<pre class="example">&nbsp;3+2 / this is input
+<pre class="example"> 3+2 / this is input
 5    / this is output
 </pre></div>
 
@@ -234,7 +234,7 @@ c|0.6708467
 <p>One will need to understand some basic rules of k9 in order to progress.  These will likely seem strange at first but the faster you learn a few nuances the faster you&rsquo;ll move forward.
 </p>
 <span id="The-language-changes-often_002e"></span><h4 class="subsection">1.8.1 The language changes often.</h4>
-<p>There may be examples in this document which work on the version idicated but do not with the version currently available to download.  If so, then feel free to drop the author a note.  Items which currently error but are likley to come back &rsquo;soon&rsquo; will be left in the document.
+<p>There may be examples in this document which work on the version indicated but do not with the version currently available to download.  If so, then feel free to drop the author a note.  Items which currently error but are likley to come back &rsquo;soon&rsquo; will be left in the document.
 </p>
 <span id="g_t_003a-is-used-to-set-a-variable-to-a-value"></span><h4 class="subsection">1.8.2 <code>:</code> is used to set a variable to a value</h4>
 <p><code>a:3</code> is used to set the variable, a, to the value, 3.  <code>a=3</code> is an equality test to determine if a is equal to 3.
@@ -246,13 +246,13 @@ c|0.6708467
 <p>2+5*3 is 17 and 2*5+3 is 16.  2+5*3 is first evaluated on the right most portion, 5*3, and once that is computed then it proceeds with 2+15.  2*5+3 goes to 2*8 which becomes 16.
 </p>
 <span id="There-is-no-arithmetic-order"></span><h4 class="subsection">1.8.5 There is no arithmetic order</h4>
-<p>+ does not happen specially before or after *.  The order of evaluation is done right to left unless parenthesis are used.  (2+5)*3 = 21 as the 2+5 in parenthesis is done before being multiplied by 3.
+<p>+ does not happen generally before or after *.  The order of evaluation is done right to left unless parenthesis are used.  (2+5)*3 = 21 as the 2+5 in parenthesis is done before being multiplied by 3.
 </p>
 <span id="Operators-are-overloaded-depending-on-the-number-of-arguments_002e"></span><h4 class="subsection">1.8.6 Operators are overloaded depending on the number of arguments.</h4>
 <div class="example">
-<pre class="example">&nbsp;*(3;6;9)    / single argument so * is first element of the list
+<pre class="example">&nbsp;*(3;6;9)    / single argument: * is first
 3
-&nbsp;2*(3;6;9)   / two arguments so * is multiplication
+&nbsp;2*(3;6;9)   / two arguments: * is multiplication
 6 12 18
 </pre></div>
 
@@ -262,12 +262,16 @@ c|0.6708467
 <p>If this book wasn&rsquo;t a simples guide then lists (l) and functions (f) would be replaced by maps (m) given the interchangeability.  One way to determine if a map is either a list or function is via the type function.  Lists and functions do not have the same type.
 </p>
 <div class="example">
-<pre class="example">&nbsp;l:3 4 7 12
-&nbsp;f:{3+x*x}
-&nbsp;l@2
+<pre class="example"> l:3 4 7 12
+ f:{3+x*x}
+ l@2
 7
-&nbsp;f@2
+ f@2
 7
+ @l
+`I
+ @f
+`.
 </pre></div>
 
 <span id="k9-is-expressed-in-terms-of-grammar_002e"></span><h4 class="subsection">1.8.8 k9 is expressed in terms of grammar.</h4>

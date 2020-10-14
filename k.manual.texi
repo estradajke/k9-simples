@@ -193,9 +193,9 @@ c|0.6708467
 @end example
 
 @section Document formatting for code examples
-This document uses a number of examples to help clarify k9.  The sytax is that input has a leading space and output does not.  This follows the terminal syntax where the REPL input has space but prints output without.
+This document uses a number of examples to familiarize the reader with k9.  The sytax is input has a leading space and output does not.  This follows the terminal syntax where the REPL input has space but prints output without.
 @example
-@ 3+2 / this is input
+ 3+2 / this is input
 5    / this is output
 @end example
 
@@ -203,7 +203,7 @@ This document uses a number of examples to help clarify k9.  The sytax is that i
 One will need to understand some basic rules of k9 in order to progress.  These will likely seem strange at first but the faster you learn a few nuances the faster you'll move forward.
 
 @subsection The language changes often.
-There may be examples in this document which work on the version idicated but do not with the version currently available to download.  If so, then feel free to drop the author a note.  Items which currently error but are likley to come back 'soon' will be left in the document.
+There may be examples in this document which work on the version indicated but do not with the version currently available to download.  If so, then feel free to drop the author a note.  Items which currently error but are likley to come back 'soon' will be left in the document.
 
 @subsection @code{:} is used to set a variable to a value
 @code{a:3} is used to set the variable, a, to the value, 3.  @code{a=3} is an equality test to determine if a is equal to 3.
@@ -215,13 +215,13 @@ Yeah, 2 divide by 5 is written as @code{2%5} and not @code{2/5}.
 2+5*3 is 17 and 2*5+3 is 16.  2+5*3 is first evaluated on the right most portion, 5*3, and once that is computed then it proceeds with 2+15.  2*5+3 goes to 2*8 which becomes 16.
 
 @subsection There is no arithmetic order
-+ does not happen specially before or after *.  The order of evaluation is done right to left unless parenthesis are used.  (2+5)*3 = 21 as the 2+5 in parenthesis is done before being multiplied by 3.
++ does not happen generally before or after *.  The order of evaluation is done right to left unless parenthesis are used.  (2+5)*3 = 21 as the 2+5 in parenthesis is done before being multiplied by 3.
 
 @subsection Operators are overloaded depending on the number of arguments.
 @example
-@ *(3;6;9)    / single argument so * is first element of the list
+@ *(3;6;9)    / single argument: * is first
 3
-@ 2*(3;6;9)   / two arguments so * is multiplication
+@ 2*(3;6;9)   / two arguments: * is multiplication
 6 12 18
 @end example
 
@@ -231,12 +231,16 @@ k9 syntax encourages you to treat lists and functions in a similar function.  Th
 If this book wasn't a simples guide then lists (l) and functions (f) would be replaced by maps (m) given the interchangeability.  One way to determine if a map is either a list or function is via the type function.  Lists and functions do not have the same type.
 
 @example
-@ l:3 4 7 12
-@ f:@{3+x*x@}
-@ l@@2
+ l:3 4 7 12
+ f:@{3+x*x@}
+ l@@2
 7
-@ f@@2
+ f@@2
 7
+ @@l
+`I
+ @@f
+`.
 @end example
 
 @subsection k9 is expressed in terms of grammar.
@@ -681,7 +685,7 @@ t        e p  z    b
 
 @node Verb
 @chapter Verb
-This chapter covers verbs which are the corefunctions of k9.  Given how different is it to call functions in k9 than many other languages this is probably a chapter that will have to be covered a few times.  Once you can ``speak'' k9 you'll read @code{|x} better than @code{reverse(x)}.  
+This chapter covers verbs which are the core functions of k9.  Given how different is it to call functions in k9 than many other languages this is probably a chapter that will have to be covered a few times.  Once you can ``speak'' k9 you'll read @code{|x} better than @code{reverse(x)}.  
 
 Most functions are overloaded and change depending on the number and type of arguments.  This reuse of symbols is also an item that causes confusion for new users.  Eg. @code{(1 4)++(2 3;5 6;7 8)} contains the plus symbol once as flip and then for addition.  (Remember evaluation is right to left!)
 
@@ -866,14 +870,16 @@ Subtract y from x.
 @anchor{first}@section first @result{} *x
 Return the first value of x.  Last can either be determine by taking the first element of the reverse list (*|`a`b`c) or using last syntax ((:/)`a`b`c).
 @example
-@ *1 2 3
+ *1 2 3
 1
-@ *((1 2);(3 4);(5 6))
+ *((1 2);(3 4);(5 6))
 1 2
-@ **((1 2);(3 4);(5 6))
+ **((1 2);(3 4);(5 6))
 1
-@ *`a`b!((1 2 3);(4 5 6))
+ *`a`b!((1 2 3);(4 5 6))
 1 2 3
+ *|1 2 3
+3
 @end example
 
 @anchor{times}@section times @result{}  x*y
@@ -897,18 +903,18 @@ Divide x by y.
 @end example
 
 @anchor{where}@section where @result{} &x
-Given a list of integer values, eg. x_0, x_1, ..., x_(n-1), generate x_0 values of 0, x_1 values of 1, ..., and x_(n-1) values of n-1.
+Given a list of integer values, eg. x[0], x[1], ..., x[n-1], generate x[0] values of 0, x[1] values of 1, ..., and x[n-1] values of n-1.  Given a list of binary values return the indices where the value is non-zero.
 
 @example
-@ & 3 1 0 2
+ & 3 1 0 2
 0 0 0 1 3 3
-@ &001001b
+ &001001b
 2 5
-@ "banana"="a"
+ "banana"="a"
 010101b
-@ &"banana"="a"
+ &"banana"="a"
 1 3 5
-@ x@@&30<x:12.7 0.1 35.6 -12.1 101.101  / return values greater than 30
+ x@@&30<x:12.7 0.1 35.6 -12.1 101.101  / return values greater than 30
 35.6 101.101
 @end example
 
