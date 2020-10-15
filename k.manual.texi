@@ -25,6 +25,8 @@ The Shakti programming language is the work of Arthur Whitney and the team at Sh
 
 Learning k9 means code like @code{@{x@@(!#x)+\!#y@}} is clear and actually prefered to something much longer and wordy.  You'll have to go a bit down the rabbit hole before it starts to come together but once it does you'll probably be happy you gave it a chance and end up learning a few things.  You'll understand how fast k9 can be in processing and analyzing data and how terse code is less likley to contain errors.  Unfortunatley you will be less likley to be content using more bloated and slow frameworks.  
 
+Unfortuantely this manual is not as elegant as the language it tries to describe hence the length.  
+
 This manual is for Shakti (k9) build 2020.10.09.@*
 @c @end ifnottex
 
@@ -1144,25 +1146,27 @@ b|0 1 2
 @end example
 
 @anchor{[f]cut}@section [f]cut @result{} x^y
-Cut list y by size or indices x.  Also, cut y into a domain (x) and range.
+Cut list y by size, indices, ot function x.  
 
 Cut list.
 
 @example
-@ 3^!18
- 0  1  2
- 3  4  5
- 6  7  8
- 9 10 11
-12 13 14
-15 16 17
-@ 0 1 5^0 1 2 3 4 5 6 7 8 9
+ 3^!10
+0 1 2
+3 4 5
+6 7 8
+
+ 0 1 5^!10
 0        
-1 2 3 4
-5 6 7 8 9
-@ 1 5^0 1 2 3 4 5 6 7 8 9
 1 2 3 4  
 5 6 7 8 9
+
+ @{(x*x)within .5 1.5@}^.1*!20
+0.8                            
+0.9                            
+1.                             
+1.1                            
+1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9
 @end example
 
 Cut into domain and range, aka key a table.
@@ -3360,10 +3364,18 @@ I expect you are surprised by the performance possible by k9 and the fact that i
 
 If you're frustrated by the syntax or terse errors, then you're not alone.  I'd expect most had the same problems, persevered, and finally came away a power user able to squeeze information from data faster than previously imagined.
 
+If you're come along enough to get it, then you'll probably realised this manual isn't needed and it's all here...
+
+The built-in reference screen containing all the k9 commands.
+
+@smallformat
+@verbatiminclude k.d
+@end smallformat
+
+
 @c @node Index
 @c @unnumbered Index
 
-@contents
 
 @c @printindex cp
 
