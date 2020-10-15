@@ -2,7 +2,7 @@
 <html>
 <!-- This manual is for Shakti (k9) build 2020.10.09.
 
-October 14, 2020
+October 15, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -96,88 +96,77 @@ b  |49.5
 <p>There a number of ways to return a complete table with kSQL.  You can use the table name, a kSQL query without columns, or a fully specified query with columns.
 </p>
 <div class="example">
-<pre class="example"> t:[[]x:!3;y:sin !3]
+<pre class="example"> n:5;t:[[]x:!n;y:sin !n]
  t
-x y        
-- ---------
-0 0.       
-1 0.841471 
-2 0.9092974
+x y         
+- ----------
+0 0.        
+1 0.841471  
+2 0.9092974 
+3 0.14112   
+4 -0.7568025
 
  select from t
-x y        
-- ---------
-0 0.       
-1 0.841471 
-2 0.9092974
+x y         
+- ----------
+0 0.        
+1 0.841471  
+2 0.9092974 
+3 0.14112   
+4 -0.7568025
 
  select x,y from t
-x y        
-- ---------
-0 0.       
-1 0.841471 
-2 0.9092974
+x y         
+- ----------
+0 0.        
+1 0.841471  
+2 0.9092974 
+3 0.14112   
+4 -0.7568025
 </pre></div>
 
 <span id="Query-with-Where"></span><h4 class="subsection">14.1.2 Query with Where</h4>
 <p>kSQL makes it easy to build up a where clause to filter down the table.
 </p>
 <div class="example">
-<pre class="example"> t:[[]x:!3;y:sin !3]
+<pre class="example"> n:5;t:[[]x:!n;y:sin !n]
  select from t where x&gt;0
-x y        
-- ---------
-1 0.841471 
-2 0.9092974
+x y         
+- ----------
+1 0.841471  
+2 0.9092974 
+3 0.14112   
+4 -0.7568025
 
- select from t where y within 0 .9
+select from t where (x&gt;0)&amp;y within 0 .9
 x y       
 - --------
-0 0.      
 1 0.841471
+3 0.14112 
 </pre></div>
 
 <span id="Query-with-By"></span><h4 class="subsection">14.1.3 Query with By</h4>
 <p>kSQL also has a way to group rows using <code>by</code>.  The result is a ktable where the key is the now unique field in the <code>by</code>.
 </p>
 <div class="example">
-<pre class="example"> t:[[]x:6#0 1;y:sin !6]
- t
-x y         
-- ----------
-0 0.        
-1 0.841471  
-0 0.9092974 
-1 0.14112   
-0 -0.7568025
-1 -0.9589243
-
- select sum y by x from t
+<pre class="example">n:5;t:[[]x:!n;y:sin !n]
+ 
+ select sum y by x&gt;2 from t
 x|y         
 -|----------
-0|0.1524949 
-1|0.02366672
+0|1.750768  
+1|-0.6156825
 </pre></div>
 
 <span id="Query-with-By-and-Where"></span><h4 class="subsection">14.1.4 Query with By and Where</h4>
 
 <div class="example">
-<pre class="example"> t:[[]x:6#0 1;y:sin !6]
- t
-x y         
-- ----------
-0 0.        
-1 0.841471  
-0 0.9092974 
-1 0.14112   
-0 -0.7568025
-1 -0.9589243
-
- select sum y by x from t where y&gt;0
-x|y        
--|---------
-0|0.9092974
-1|0.982591 
+<pre class="example"> n:5;t:[[]x:!n;y:sin !n]
+ select sum y by x&gt;2 from t where y&gt;0
+x|y       
+-|--------
+0|1.750768
+1|0.14112 
 </pre></div>
 
 <span id="Joins"></span><h3 class="section">14.2 Joins</h3>

@@ -2897,88 +2897,77 @@ b  |49.5
 There a number of ways to return a complete table with kSQL.  You can use the table name, a kSQL query without columns, or a fully specified query with columns.
 
 @example
- t:[[]x:!3;y:sin !3]
+ n:5;t:[[]x:!n;y:sin !n]
  t
-x y        
-- ---------
-0 0.       
-1 0.841471 
-2 0.9092974
+x y         
+- ----------
+0 0.        
+1 0.841471  
+2 0.9092974 
+3 0.14112   
+4 -0.7568025
 
  select from t
-x y        
-- ---------
-0 0.       
-1 0.841471 
-2 0.9092974
+x y         
+- ----------
+0 0.        
+1 0.841471  
+2 0.9092974 
+3 0.14112   
+4 -0.7568025
 
  select x,y from t
-x y        
-- ---------
-0 0.       
-1 0.841471 
-2 0.9092974
+x y         
+- ----------
+0 0.        
+1 0.841471  
+2 0.9092974 
+3 0.14112   
+4 -0.7568025
 @end example
 
 @subsection Query with Where
 kSQL makes it easy to build up a where clause to filter down the table.
 
 @example
- t:[[]x:!3;y:sin !3]
+ n:5;t:[[]x:!n;y:sin !n]
  select from t where x>0
-x y        
-- ---------
-1 0.841471 
-2 0.9092974
+x y         
+- ----------
+1 0.841471  
+2 0.9092974 
+3 0.14112   
+4 -0.7568025
 
- select from t where y within 0 .9
+select from t where (x>0)&y within 0 .9
 x y       
 - --------
-0 0.      
 1 0.841471
+3 0.14112 
 @end example
 
 @subsection Query with By
 kSQL also has a way to group rows using @code{by}.  The result is a ktable where the key is the now unique field in the @code{by}.
 
 @example
- t:[[]x:6#0 1;y:sin !6]
- t
-x y         
-- ----------
-0 0.        
-1 0.841471  
-0 0.9092974 
-1 0.14112   
-0 -0.7568025
-1 -0.9589243
-
- select sum y by x from t
+n:5;t:[[]x:!n;y:sin !n]
+ 
+ select sum y by x>2 from t
 x|y         
 -|----------
-0|0.1524949 
-1|0.02366672
+0|1.750768  
+1|-0.6156825
 @end example
 
 @subsection Query with By and Where
 
 @example
- t:[[]x:6#0 1;y:sin !6]
- t
-x y         
-- ----------
-0 0.        
-1 0.841471  
-0 0.9092974 
-1 0.14112   
-0 -0.7568025
-1 -0.9589243
-
- select sum y by x from t where y>0
-x|y        
--|---------
-0|0.9092974
-1|0.982591 
+ n:5;t:[[]x:!n;y:sin !n]
+ select sum y by x>2 from t where y>0
+x|y       
+-|--------
+0|1.750768
+1|0.14112 
 @end example
 
 @section Joins
