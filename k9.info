@@ -35,7 +35,7 @@ almost as big as the binary of the language.
 
    The built-in reference screen containing all the k9 commands.
 
-universal database and language - full stack.
+universal database and language - beauty and performance.
 
 select [count first last min max sum avg ..]A by B from T where C
 delete from T where C               *update A by B from T where C
@@ -74,9 +74,8 @@ nodejs: require('k').k('+',2,3)
 
 *ffi: "./a.so"5:`f!"ii" /I f(I i){return 2+i;}       //cblas ..
 *c/k: "./b.so"5:`f!1    /K f(K x){return ki(2+xi);}  //feeds ..
-*enterprise: multi user/thread/core/machine. no limit.
-
-connect to all - depend on none - fast af.
+*enterprise: multi user/thread/core/machine. no limit. fast.
+connect to all - depend on none
 
 * Menu:
 
@@ -216,7 +215,7 @@ language.  This document aims to provide details to beginning user
 where the help screen is a bit too terse.  Some commands are not yet
 complete and thus marked with an asterisk, eg.  *?[x;i;f[;y]] splice.
 
-universal database and language - full stack.
+universal database and language - beauty and performance.
 
 select [count first last min max sum avg ..]A by B from T where C
 delete from T where C               *update A by B from T where C
@@ -255,9 +254,8 @@ nodejs: require('k').k('+',2,3)
 
 *ffi: "./a.so"5:`f!"ii" /I f(I i){return 2+i;}       //cblas ..
 *c/k: "./b.so"5:`f!1    /K f(K x){return ki(2+xi);}  //feeds ..
-*enterprise: multi user/thread/core/machine. no limit.
-
-connect to all - depend on none - fast af.
+*enterprise: multi user/thread/core/machine. no limit. fast.
+connect to all - depend on none
 
 1.5 rlwrap
 ==========
@@ -3684,7 +3682,7 @@ realised this manual isn't needed and it's all here...
 
    The built-in reference screen containing all the k9 commands.
 
-universal database and language - full stack.
+universal database and language - beauty and performance.
 
 select [count first last min max sum avg ..]A by B from T where C
 delete from T where C               *update A by B from T where C
@@ -3723,137 +3721,136 @@ nodejs: require('k').k('+',2,3)
 
 *ffi: "./a.so"5:`f!"ii" /I f(I i){return 2+i;}       //cblas ..
 *c/k: "./b.so"5:`f!1    /K f(K x){return ki(2+xi);}  //feeds ..
-*enterprise: multi user/thread/core/machine. no limit.
-
-connect to all - depend on none - fast af.
+*enterprise: multi user/thread/core/machine. no limit. fast.
+connect to all - depend on none
 
 
 
 Tag Table:
 Node: Top174
-Node: Intro4300
-Node: Examples16207
-Node: Benchmarks23329
-Node: Verb28288
-Ref: x29749
-Ref: set29774
-Ref: flip29986
-Ref: plus30236
-Ref: negate30621
-Ref: minus30793
-Ref: first30900
-Ref: times31240
-Ref: divide31371
-Ref: where31508
-Ref: min/and31988
-Ref: reverse32247
-Ref: max/or32417
-Ref: asc32681
-Ref: less33054
-Ref: group33355
-Ref: equal33601
-Ref: not33765
-Ref: match33882
-Ref: enum34215
-Ref: key35468
-Ref: enlist35698
-Ref: cat35837
-Ref: sort35956
-Ref: [f]cut36188
-Ref: count36848
-Ref: [f]take37038
-Ref: floor37667
-Ref: [f]drop37758
-Ref: string38351
-Ref: cast+38459
-Ref: unique+38808
-Ref: find+39047
-Ref: type39766
-Ref: [f]at40122
-Ref: value40341
-Ref: [f]dot40669
-Node: Adverb41645
-Ref: scan42357
-Ref: join42887
-Ref: split43062
-Ref: each43253
-Ref: has43471
-Ref: eachp43644
-Ref: bin244084
-Ref: eachr44287
-Ref: eachl44484
-Ref: n scan44668
-Ref: c scan45148
-Ref: c over45432
-Ref: vs45542
-Ref: sv45662
-Node: Noun45786
-Ref: bool47152
-Ref: int47452
-Ref: flt47656
-Ref: char48034
-Ref: name48257
-Ref: uuid48488
-Ref: time48645
-Ref: date49259
-Ref: datetime49677
-Node: List50376
-Node: Dictionary55047
-Node: User Functions59835
-Node: Named Functions61486
-Ref: sqrt62115
-Ref: exp62188
-Ref: log62256
-Ref: sin62356
-Ref: cos62495
-Ref: div62643
-Ref: mod62799
-Ref: bar62977
-Ref: in63517
-Ref: bin63695
-Ref: within63909
-Node: Additional Functions64123
-Ref: cond64264
-Ref: amend64384
-Ref: dmend65046
-Node: I/O65749
-Ref: input format66096
-Ref: format67107
-Ref: write line67507
-Ref: read line67894
-Ref: write char68081
-Ref: read char68476
-Ref: load data68841
-Ref: write data70598
-Ref: conn/set74511
-Ref: http/get74555
-Node: Tables74605
-Ref: t75051
-Ref: xtable76663
-Ref: ktable77146
-Node: kSQL77603
-Ref: union80479
-Ref: left81000
-Ref: outer81521
-Ref: asof81856
-Ref: asof+82900
-Node: System84573
-Ref: load85025
-Ref: timing85213
-Ref: variables85300
-Ref: memory85401
-Ref: cd85516
-Node: Errors85600
-Ref: class86040
-Ref: rank86129
-Ref: length86251
-Ref: _type86372
-Ref: domain86481
-Ref: limit86603
-Ref: nyi86804
-Ref: parse87137
-Ref: _value87292
-Node: Conculsion87420
+Node: Intro4306
+Node: Examples16219
+Node: Benchmarks23341
+Node: Verb28300
+Ref: x29761
+Ref: set29786
+Ref: flip29998
+Ref: plus30248
+Ref: negate30633
+Ref: minus30805
+Ref: first30912
+Ref: times31252
+Ref: divide31383
+Ref: where31520
+Ref: min/and32000
+Ref: reverse32259
+Ref: max/or32429
+Ref: asc32693
+Ref: less33066
+Ref: group33367
+Ref: equal33613
+Ref: not33777
+Ref: match33894
+Ref: enum34227
+Ref: key35480
+Ref: enlist35710
+Ref: cat35849
+Ref: sort35968
+Ref: [f]cut36200
+Ref: count36860
+Ref: [f]take37050
+Ref: floor37679
+Ref: [f]drop37770
+Ref: string38363
+Ref: cast+38471
+Ref: unique+38820
+Ref: find+39059
+Ref: type39778
+Ref: [f]at40134
+Ref: value40353
+Ref: [f]dot40681
+Node: Adverb41657
+Ref: scan42369
+Ref: join42899
+Ref: split43074
+Ref: each43265
+Ref: has43483
+Ref: eachp43656
+Ref: bin244096
+Ref: eachr44299
+Ref: eachl44496
+Ref: n scan44680
+Ref: c scan45160
+Ref: c over45444
+Ref: vs45554
+Ref: sv45674
+Node: Noun45798
+Ref: bool47164
+Ref: int47464
+Ref: flt47668
+Ref: char48046
+Ref: name48269
+Ref: uuid48500
+Ref: time48657
+Ref: date49271
+Ref: datetime49689
+Node: List50388
+Node: Dictionary55059
+Node: User Functions59847
+Node: Named Functions61498
+Ref: sqrt62127
+Ref: exp62200
+Ref: log62268
+Ref: sin62368
+Ref: cos62507
+Ref: div62655
+Ref: mod62811
+Ref: bar62989
+Ref: in63529
+Ref: bin63707
+Ref: within63921
+Node: Additional Functions64135
+Ref: cond64276
+Ref: amend64396
+Ref: dmend65058
+Node: I/O65761
+Ref: input format66108
+Ref: format67119
+Ref: write line67519
+Ref: read line67906
+Ref: write char68093
+Ref: read char68488
+Ref: load data68853
+Ref: write data70610
+Ref: conn/set74523
+Ref: http/get74567
+Node: Tables74617
+Ref: t75063
+Ref: xtable76675
+Ref: ktable77158
+Node: kSQL77615
+Ref: union80491
+Ref: left81012
+Ref: outer81533
+Ref: asof81868
+Ref: asof+82912
+Node: System84585
+Ref: load85037
+Ref: timing85225
+Ref: variables85312
+Ref: memory85413
+Ref: cd85528
+Node: Errors85612
+Ref: class86052
+Ref: rank86141
+Ref: length86263
+Ref: _type86384
+Ref: domain86493
+Ref: limit86615
+Ref: nyi86816
+Ref: parse87149
+Ref: _value87304
+Node: Conculsion87432
 
 End Tag Table
 
