@@ -1430,9 +1430,8 @@ the funtion is non-zero.
 =================
 
 Cast x to string.
-      $`abc`d
-     abc
-     d
+      $`abc
+     "abc"
       $4.7
      "4.7"
 
@@ -3835,96 +3834,96 @@ Ref: [f]take37440
 Ref: floor38069
 Ref: [f]drop38160
 Ref: string38753
-Ref: cast+38861
-Ref: unique+39210
-Ref: find+39449
-Ref: type40168
-Ref: [f]at40524
-Ref: value40840
-Ref: [f]dot41114
-Node: Adverb42363
-Ref: scan43075
-Ref: join43605
-Ref: split43780
-Ref: each43971
-Ref: has44189
-Ref: eachp44362
-Ref: bin244802
-Ref: eachr45005
-Ref: eachl45202
-Ref: n scan45386
-Ref: c scan45866
-Ref: c over46150
-Ref: vs46260
-Ref: sv46380
-Node: Noun46504
-Ref: bool47870
-Ref: int48170
-Ref: flt48374
-Ref: char48752
-Ref: name48975
-Ref: uuid49206
-Ref: time49363
-Ref: date49977
-Ref: datetime50395
-Node: List51094
-Node: Dictionary55765
-Node: User Functions60553
-Node: Named Functions62204
-Ref: sqrt62833
-Ref: exp62906
-Ref: log62974
-Ref: sin63074
-Ref: cos63213
-Ref: div63361
-Ref: mod63517
-Ref: bar63695
-Ref: in64235
-Ref: bin64413
-Ref: within64627
-Node: Additional Functions64841
-Ref: cond64982
-Ref: amend65102
-Ref: dmend65764
-Node: I/O66467
-Ref: input format66814
-Ref: format67825
-Ref: write line68225
-Ref: read line68612
-Ref: write char68799
-Ref: read char69194
-Ref: load data69559
-Ref: write data71316
-Ref: conn/set75229
-Ref: http/get75273
-Node: Tables75323
-Ref: t75769
-Ref: xtable77381
-Ref: ktable77864
-Node: kSQL78321
-Ref: union81197
-Ref: left81718
-Ref: outer82239
-Ref: asof82574
-Ref: asof+83618
-Node: System85291
-Ref: load85739
-Ref: timing85927
-Ref: variables86014
-Ref: memory86115
-Ref: cd86230
-Node: .z86314
-Node: Errors87030
-Ref: class87466
-Ref: rank87555
-Ref: length87677
-Ref: _type87798
-Ref: domain87907
-Ref: limit88029
-Ref: nyi88230
-Ref: parse88563
-Ref: _value88718
-Node: Conculsion88846
+Ref: cast+38854
+Ref: unique+39203
+Ref: find+39442
+Ref: type40161
+Ref: [f]at40517
+Ref: value40833
+Ref: [f]dot41107
+Node: Adverb42356
+Ref: scan43068
+Ref: join43598
+Ref: split43773
+Ref: each43964
+Ref: has44182
+Ref: eachp44355
+Ref: bin244795
+Ref: eachr44998
+Ref: eachl45195
+Ref: n scan45379
+Ref: c scan45859
+Ref: c over46143
+Ref: vs46253
+Ref: sv46373
+Node: Noun46497
+Ref: bool47863
+Ref: int48163
+Ref: flt48367
+Ref: char48745
+Ref: name48968
+Ref: uuid49199
+Ref: time49356
+Ref: date49970
+Ref: datetime50388
+Node: List51087
+Node: Dictionary55758
+Node: User Functions60546
+Node: Named Functions62197
+Ref: sqrt62826
+Ref: exp62899
+Ref: log62967
+Ref: sin63067
+Ref: cos63206
+Ref: div63354
+Ref: mod63510
+Ref: bar63688
+Ref: in64228
+Ref: bin64406
+Ref: within64620
+Node: Additional Functions64834
+Ref: cond64975
+Ref: amend65095
+Ref: dmend65757
+Node: I/O66460
+Ref: input format66807
+Ref: format67818
+Ref: write line68218
+Ref: read line68605
+Ref: write char68792
+Ref: read char69187
+Ref: load data69552
+Ref: write data71309
+Ref: conn/set75222
+Ref: http/get75266
+Node: Tables75316
+Ref: t75762
+Ref: xtable77374
+Ref: ktable77857
+Node: kSQL78314
+Ref: union81190
+Ref: left81711
+Ref: outer82232
+Ref: asof82567
+Ref: asof+83611
+Node: System85284
+Ref: load85732
+Ref: timing85920
+Ref: variables86007
+Ref: memory86108
+Ref: cd86223
+Node: .z86307
+Node: Errors87023
+Ref: class87459
+Ref: rank87548
+Ref: length87670
+Ref: _type87791
+Ref: domain87900
+Ref: limit88022
+Ref: nyi88223
+Ref: parse88556
+Ref: _value88711
+Node: Conculsion88839
 
 End Tag Table
 

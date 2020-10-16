@@ -1257,10 +1257,9 @@ Drop is used to remove a subset of list y depending if x is a atom, list, or fun
 @anchor{string}@section string @result{} $x
 Cast x to string.
 @example
-@ $`abc`d
-abc
-d
-@ $4.7
+ $`abc
+"abc"
+ $4.7
 "4.7"
 @end example
 
