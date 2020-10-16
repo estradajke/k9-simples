@@ -654,7 +654,7 @@ d
 </pre></div>
 
 <span id="g_t_005bf_005dat"></span><span id="g_t_005bf_005dat-_21d2-x_0040y"></span><h3 class="section">4.35 [f]at &rArr; x@y</h3>
-<p>Given a list x return the value(s) at index(indices) y.
+<p>Given a list x return the value(s) at index(indices) y.  
 </p><div class="example">
 <pre class="example">&nbsp;(3 4 7 12)@2
 7
@@ -663,6 +663,13 @@ d
 &nbsp;((1 2);3;(4 5 6))@(0 1)   / values at indices 0 and 1
 1 2
 3
+</pre></div>
+
+<p>If x is a function then determine the function with (at) pararmeter y.
+</p>
+<div class="example">
+<pre class="example"> {x*x}@3
+9
 </pre></div>
 
 <span id="value"></span><span id="value-_21d2-_002ex"></span><h3 class="section">4.36 value &rArr; .x</h3>
@@ -734,7 +741,26 @@ x30 x31 x32
 &nbsp;x . (1 3;0 1)
 x10 x11
 x30 x31
+</pre></div>
 
+<p>If x is a function then apply the function to y.
+</p>
+<div class="example">
+<pre class="example"> (+). 3 2
+5
+
+ (+;-;*;%).\: 3 2
+5  
+1  
+6  
+1.5
+
+ a:{x+y};b:{x*sin y};a . 3 1
+4
+ a . 3 1
+4
+ b . 3 1
+2.524413
 </pre></div>
 
 <hr>

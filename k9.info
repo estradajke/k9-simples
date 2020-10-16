@@ -1538,6 +1538,12 @@ Given a list x return the value(s) at index(indices) y.
      1 2
      3
 
+   If x is a function then determine the function with (at) pararmeter
+y.
+
+      {x*x}@3
+     9
+
 4.36 value => .x
 ================
 
@@ -1608,6 +1614,23 @@ recursive index over  'L      2       (0 2;1 3)
      x10 x11
      x30 x31
 
+   If x is a function then apply the function to y.
+
+      (+). 3 2
+     5
+
+      (+;-;*;%).\: 3 2
+     5
+     1
+     6
+     1.5
+
+      a:{x+y};b:{x*sin y};a . 3 1
+     4
+      a . 3 1
+     4
+      b . 3 1
+     2.524413
 
 
 File: k9.info,  Node: Adverb,  Next: Noun,  Prev: Verb,  Up: Top
@@ -3816,91 +3839,91 @@ Ref: unique+39145
 Ref: find+39384
 Ref: type40103
 Ref: [f]at40459
-Ref: value40678
-Ref: [f]dot41006
-Node: Adverb41982
-Ref: scan42694
-Ref: join43224
-Ref: split43399
-Ref: each43590
-Ref: has43808
-Ref: eachp43981
-Ref: bin244421
-Ref: eachr44624
-Ref: eachl44821
-Ref: n scan45005
-Ref: c scan45485
-Ref: c over45769
-Ref: vs45879
-Ref: sv45999
-Node: Noun46123
-Ref: bool47489
-Ref: int47789
-Ref: flt47993
-Ref: char48371
-Ref: name48594
-Ref: uuid48825
-Ref: time48982
-Ref: date49596
-Ref: datetime50014
-Node: List50713
-Node: Dictionary55384
-Node: User Functions60172
-Node: Named Functions61823
-Ref: sqrt62452
-Ref: exp62525
-Ref: log62593
-Ref: sin62693
-Ref: cos62832
-Ref: div62980
-Ref: mod63136
-Ref: bar63314
-Ref: in63854
-Ref: bin64032
-Ref: within64246
-Node: Additional Functions64460
-Ref: cond64601
-Ref: amend64721
-Ref: dmend65383
-Node: I/O66086
-Ref: input format66433
-Ref: format67444
-Ref: write line67844
-Ref: read line68231
-Ref: write char68418
-Ref: read char68813
-Ref: load data69178
-Ref: write data70935
-Ref: conn/set74848
-Ref: http/get74892
-Node: Tables74942
-Ref: t75388
-Ref: xtable77000
-Ref: ktable77483
-Node: kSQL77940
-Ref: union80816
-Ref: left81337
-Ref: outer81858
-Ref: asof82193
-Ref: asof+83237
-Node: System84910
-Ref: load85358
-Ref: timing85546
-Ref: variables85633
-Ref: memory85734
-Ref: cd85849
-Node: .z85933
-Node: Errors86649
-Ref: class87085
-Ref: rank87174
-Ref: length87296
-Ref: _type87417
-Ref: domain87526
-Ref: limit87648
-Ref: nyi87849
-Ref: parse88182
-Ref: _value88337
-Node: Conculsion88465
+Ref: value40775
+Ref: [f]dot41103
+Node: Adverb42299
+Ref: scan43011
+Ref: join43541
+Ref: split43716
+Ref: each43907
+Ref: has44125
+Ref: eachp44298
+Ref: bin244738
+Ref: eachr44941
+Ref: eachl45138
+Ref: n scan45322
+Ref: c scan45802
+Ref: c over46086
+Ref: vs46196
+Ref: sv46316
+Node: Noun46440
+Ref: bool47806
+Ref: int48106
+Ref: flt48310
+Ref: char48688
+Ref: name48911
+Ref: uuid49142
+Ref: time49299
+Ref: date49913
+Ref: datetime50331
+Node: List51030
+Node: Dictionary55701
+Node: User Functions60489
+Node: Named Functions62140
+Ref: sqrt62769
+Ref: exp62842
+Ref: log62910
+Ref: sin63010
+Ref: cos63149
+Ref: div63297
+Ref: mod63453
+Ref: bar63631
+Ref: in64171
+Ref: bin64349
+Ref: within64563
+Node: Additional Functions64777
+Ref: cond64918
+Ref: amend65038
+Ref: dmend65700
+Node: I/O66403
+Ref: input format66750
+Ref: format67761
+Ref: write line68161
+Ref: read line68548
+Ref: write char68735
+Ref: read char69130
+Ref: load data69495
+Ref: write data71252
+Ref: conn/set75165
+Ref: http/get75209
+Node: Tables75259
+Ref: t75705
+Ref: xtable77317
+Ref: ktable77800
+Node: kSQL78257
+Ref: union81133
+Ref: left81654
+Ref: outer82175
+Ref: asof82510
+Ref: asof+83554
+Node: System85227
+Ref: load85675
+Ref: timing85863
+Ref: variables85950
+Ref: memory86051
+Ref: cd86166
+Node: .z86250
+Node: Errors86966
+Ref: class87402
+Ref: rank87491
+Ref: length87613
+Ref: _type87734
+Ref: domain87843
+Ref: limit87965
+Ref: nyi88166
+Ref: parse88499
+Ref: _value88654
+Node: Conculsion88782
 
 End Tag Table
 
