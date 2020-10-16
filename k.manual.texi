@@ -4,7 +4,6 @@
 @codequotebacktick on
 
 @copying
-This manual is for Shakti (k9) build 2020.10.14.@*
 @today{}
 
 Copyright @copyright{} 2020 John Estrada
@@ -21,16 +20,18 @@ Copyright @copyright{} 2020 John Estrada
 @c @ifnottex
 @node Top
 @top k9: Manual
+This manual is for Shakti (k9) build 2020.10.14.@*
+
 The Shakti programming language is the work of Arthur Whitney and the team at Shakti.  The language comes from a lineage of similar languages going back to APL.  It's also known as k9 given the similarties to k, k2, ..., k6, k7 and the fact that Arthur also wrote those.  k9 is still under development so expect a bit of syntax change and likley even more improvements.
 
-Learning k9 means code like @code{@{x@@(!#x)+\!#y@}} is clear and actually prefered to something much longer and wordy.  You'll have to go a bit down the rabbit hole before it starts to come together but once it does you'll probably be happy you gave it a chance and end up learning a few things.  You'll understand how fast k9 can be in processing and analyzing data and how terse code is less likley to contain errors.  Unfortunatley you will be less likley to be content using more bloated and slow frameworks.  
+Learning k9 means code like @code{@{x@@(!#x)+\!#y@}} is clear and actually prefered to something much longer and verbose.  You'll have to go a bit down the rabbit hole before it starts to come together but once it does you'll probably be happy you gave it a chance and end up learning a few things.  You'll understand how fast k9 can be in processing and analyzing data and how terse code is less likley to contain errors.  Unfortunatley you will be less likley to be content using more bloated and slow frameworks.  
 
-Unfortuantely this manual is not as elegant as the language it tries to describe.  As an example the text version of this document is almost as big as the binary of the language.  
+Unfortuantely this manual is not as elegant as the k9 language such that the text version of this document is almost as big as the binary of the language.  
 
-This manual is for Shakti (k9) build 2020.10.14.@*
+@c This manual is for Shakti (k9) build 2020.10.14.@*
 @c @end ifnottex
 
-The built-in reference screen containing all the k9 commands.
+The built-in reference screen (@code{\}) containing all the k9 commands.
 
 @smallformat
 @verbatiminclude k.d
@@ -63,22 +64,22 @@ The built-in reference screen containing all the k9 commands.
 The k9 programming language is designed primarily for the analysis of data.  It may surprise new users with two rather different paradigms, (1) fast data analysis and (2) concise syntax.  After some familiarity these changes will both seem normal and going back to slow and verbose programming will be surprisingly difficult.
 
 @section Going fast
-Imagine you have a small, on-disk, 40 million row database containing a time-series with two float values at each time.  Additionally this data could be split in three different tables covering different measurements.  Here's how fast k9 can read in the data from disk and compute a statistic, average difference over each table, which uses each and every row.
+Imagine you have a small, on-disk, 100 million row database containing a time-series with two float values at each time.  Additionally this data could be split in three different tables covering different measurements.  Here's how fast k9 can read in the data from disk and compute a statistic, average difference over each table, which uses each and every row.
 
 @example
  bash-3.2$ 2020.xx.xx 17GB 4core (c) shakti
  \t q:2:`q;@{select s:avg a-b from x@}'q[!q]
-233
+495
 @end example
 
-That's 233ms to read the data in from disk and compute over all the 40 million values.  The data read is the biggest bit.  If the data was already in memory then it's even faster.
+That's 495 ms to read the data in from disk and compute over all the 100 million values.  The data read is the biggest bit.  If the data was already in memory then it's even faster.
 
 @example
  \t @{select s:avg a-b from x@}'q[!q]
-65
+230
 @end example
 
-65ms, not bad.
+230 ms, not bad for 100 million calculations.
 
 The code to generate the on-disk database is presented below.  Speed of course will depend on your hardware so times will vary.
 
@@ -93,9 +94,9 @@ q:`eurusd`usdjpy`usdchf!@{select t,b,a:b+s from +`t`b`s!(T;B;S)@@'x@}'_20e6 10e6
 
 @section Going concise
 
-The k9 language is more closely related to mathematics syntax than most programming lanauges.  It requires the developer to learn to ``speak'' k9 but once that happens most find an ability to speak quicker in k9 than in other languages.  At this point an example might help.
+The k9 language is more closely related to mathematics syntax than most programming lanauges.  It requires the developer to learn to ``speak'' k9 but once that happens most find an ability to speak quicker and more accurately in k9 than in other languages.  At this point an example might help.
 
-In mathematics, ``3+2'' is read as ``3 plus 2'' as you learn at an early age that ``+'' is the ``plus'' sign.  For trival operations like arithmetic most programming languages use symbols also.  Moving on to something less math like most programming lanauges switch to words while k9 remains with symbols which turn out to have the same level of clarity.  As an example, to determine the distinct values of a list most programming languages might use a synatx like @code{distinct()} while k9 uses @code{?}.  This requires the developer to learn how to say a number of symbols but once that happens it results in much shorter code that is quicker to write, harder to bug, and easier to maintain.
+In mathematics, ``3+2'' is read as ``3 plus 2'' as you learn at an early age that ``+'' is the ``plus'' sign.  For trival operations like arithmetic most programming languages use symbols also.  Moving on to something less math like most programming lanauges switch to words while k9 remains with symbols which turn out to have additional clarity.  As an example, to determine the distinct values of a list most programming languages might use a synatx like @code{distinct()} while k9 uses @code{?}.  This requires the developer to learn how to say a number of symbols but once that happens it results in much shorter code that is quicker to write, harder to bug, and easier to maintain.  The reason it's actually more clear is that as your write out @code{distinct} you might write @code{disinct} instead.  
 
 In math which do you find easier to answer?@*@*
 Math with text@*

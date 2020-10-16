@@ -1,8 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is for Shakti (k9) build 2020.10.14.
-
-October 15, 2020
+<!-- October 16, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -51,22 +49,22 @@ Next: <a href="Examples.html" accesskey="n" rel="next">Examples</a>, Previous: <
 <p>The k9 programming language is designed primarily for the analysis of data.  It may surprise new users with two rather different paradigms, (1) fast data analysis and (2) concise syntax.  After some familiarity these changes will both seem normal and going back to slow and verbose programming will be surprisingly difficult.
 </p>
 <span id="Going-fast"></span><h3 class="section">1.1 Going fast</h3>
-<p>Imagine you have a small, on-disk, 40 million row database containing a time-series with two float values at each time.  Additionally this data could be split in three different tables covering different measurements.  Here&rsquo;s how fast k9 can read in the data from disk and compute a statistic, average difference over each table, which uses each and every row.
+<p>Imagine you have a small, on-disk, 100 million row database containing a time-series with two float values at each time.  Additionally this data could be split in three different tables covering different measurements.  Here&rsquo;s how fast k9 can read in the data from disk and compute a statistic, average difference over each table, which uses each and every row.
 </p>
 <div class="example">
 <pre class="example"> bash-3.2$ 2020.xx.xx 17GB 4core (c) shakti
  \t q:2:`q;{select s:avg a-b from x}'q[!q]
-233
+495
 </pre></div>
 
-<p>That&rsquo;s 233ms to read the data in from disk and compute over all the 40 million values.  The data read is the biggest bit.  If the data was already in memory then it&rsquo;s even faster.
+<p>That&rsquo;s 495 ms to read the data in from disk and compute over all the 100 million values.  The data read is the biggest bit.  If the data was already in memory then it&rsquo;s even faster.
 </p>
 <div class="example">
 <pre class="example"> \t {select s:avg a-b from x}'q[!q]
-65
+230
 </pre></div>
 
-<p>65ms, not bad.
+<p>230 ms, not bad for 100 million calculations.
 </p>
 <p>The code to generate the on-disk database is presented below.  Speed of course will depend on your hardware so times will vary.
 </p>
@@ -81,9 +79,9 @@ q:`eurusd`usdjpy`usdchf!{select t,b,a:b+s from +`t`b`s!(T;B;S)@'x}'_20e6 10e6 10
 
 <span id="Going-concise"></span><h3 class="section">1.2 Going concise</h3>
 
-<p>The k9 language is more closely related to mathematics syntax than most programming lanauges.  It requires the developer to learn to &ldquo;speak&rdquo; k9 but once that happens most find an ability to speak quicker in k9 than in other languages.  At this point an example might help.
+<p>The k9 language is more closely related to mathematics syntax than most programming lanauges.  It requires the developer to learn to &ldquo;speak&rdquo; k9 but once that happens most find an ability to speak quicker and more accurately in k9 than in other languages.  At this point an example might help.
 </p>
-<p>In mathematics, &ldquo;3+2&rdquo; is read as &ldquo;3 plus 2&rdquo; as you learn at an early age that &ldquo;+&rdquo; is the &ldquo;plus&rdquo; sign.  For trival operations like arithmetic most programming languages use symbols also.  Moving on to something less math like most programming lanauges switch to words while k9 remains with symbols which turn out to have the same level of clarity.  As an example, to determine the distinct values of a list most programming languages might use a synatx like <code>distinct()</code> while k9 uses <code>?</code>.  This requires the developer to learn how to say a number of symbols but once that happens it results in much shorter code that is quicker to write, harder to bug, and easier to maintain.
+<p>In mathematics, &ldquo;3+2&rdquo; is read as &ldquo;3 plus 2&rdquo; as you learn at an early age that &ldquo;+&rdquo; is the &ldquo;plus&rdquo; sign.  For trival operations like arithmetic most programming languages use symbols also.  Moving on to something less math like most programming lanauges switch to words while k9 remains with symbols which turn out to have additional clarity.  As an example, to determine the distinct values of a list most programming languages might use a synatx like <code>distinct()</code> while k9 uses <code>?</code>.  This requires the developer to learn how to say a number of symbols but once that happens it results in much shorter code that is quicker to write, harder to bug, and easier to maintain.  The reason it&rsquo;s actually more clear is that as your write out <code>distinct</code> you might write <code>disinct</code> instead.  
 </p>
 <p>In math which do you find easier to answer?<br><br>
 Math with text<br>

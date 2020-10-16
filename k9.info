@@ -1,7 +1,6 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
-This manual is for Shakti (k9) build 2020.10.14.
-October 15, 2020
+October 16, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -11,29 +10,29 @@ File: k9.info,  Node: Top,  Next: Intro,  Up: (dir)
 k9: Manual
 **********
 
-The Shakti programming language is the work of Arthur Whitney and the
-team at Shakti.  The language comes from a lineage of similar
+This manual is for Shakti (k9) build 2020.10.14.
+
+   The Shakti programming language is the work of Arthur Whitney and
+the team at Shakti.  The language comes from a lineage of similar
 languages going back to APL. It's also known as k9 given the
 similarties to k, k2, ..., k6, k7 and the fact that Arthur also wrote
 those.  k9 is still under development so expect a bit of syntax change
 and likley even more improvements.
 
    Learning k9 means code like '{x@(!#x)+\!#y}' is clear and actually
-prefered to something much longer and wordy.  You'll have to go a bit
-down the rabbit hole before it starts to come together but once it
+prefered to something much longer and verbose.  You'll have to go a
+bit down the rabbit hole before it starts to come together but once it
 does you'll probably be happy you gave it a chance and end up learning
 a few things.  You'll understand how fast k9 can be in processing and
 analyzing data and how terse code is less likley to contain errors.
 Unfortunatley you will be less likley to be content using more bloated
 and slow frameworks.
 
-   Unfortuantely this manual is not as elegant as the language it
-tries to describe.  As an example the text version of this document is
-almost as big as the binary of the language.
+   Unfortuantely this manual is not as elegant as the k9 language such
+that the text version of this document is almost as big as the binary
+of the language.
 
-   This manual is for Shakti (k9) build 2020.10.14.
-
-   The built-in reference screen containing all the k9 commands.
+   The built-in reference screen ('\') containing all the k9 commands.
 
 universal database and language - beauty and performance.
 
@@ -112,7 +111,7 @@ programming will be surprisingly difficult.
 1.1 Going fast
 ==============
 
-Imagine you have a small, on-disk, 40 million row database containing
+Imagine you have a small, on-disk, 100 million row database containing
 a time-series with two float values at each time.  Additionally this
 data could be split in three different tables covering different
 measurements.  Here's how fast k9 can read in the data from disk and
@@ -121,16 +120,16 @@ each and every row.
 
       bash-3.2$ 2020.xx.xx 17GB 4core (c) shakti
       \t q:2:`q;{select s:avg a-b from x}'q[!q]
-     233
+     495
 
-   That's 233ms to read the data in from disk and compute over all the
-40 million values.  The data read is the biggest bit.  If the data was
-already in memory then it's even faster.
+   That's 495 ms to read the data in from disk and compute over all
+the 100 million values.  The data read is the biggest bit.  If the
+data was already in memory then it's even faster.
 
       \t {select s:avg a-b from x}'q[!q]
-     65
+     230
 
-   65ms, not bad.
+   230 ms, not bad for 100 million calculations.
 
    The code to generate the on-disk database is presented below.
 Speed of course will depend on your hardware so times will vary.
@@ -148,18 +147,21 @@ Speed of course will depend on your hardware so times will vary.
 The k9 language is more closely related to mathematics syntax than
 most programming lanauges.  It requires the developer to learn to
 "speak" k9 but once that happens most find an ability to speak quicker
-in k9 than in other languages.  At this point an example might help.
+and more accurately in k9 than in other languages.  At this point an
+example might help.
 
    In mathematics, "3+2" is read as "3 plus 2" as you learn at an
 early age that "+" is the "plus" sign.  For trival operations like
 arithmetic most programming languages use symbols also.  Moving on to
 something less math like most programming lanauges switch to words
-while k9 remains with symbols which turn out to have the same level of
+while k9 remains with symbols which turn out to have additional
 clarity.  As an example, to determine the distinct values of a list
 most programming languages might use a synatx like 'distinct()' while
 k9 uses '?'.  This requires the developer to learn how to say a number
 of symbols but once that happens it results in much shorter code that
-is quicker to write, harder to bug, and easier to maintain.
+is quicker to write, harder to bug, and easier to maintain.  The
+reason it's actually more clear is that as your write out 'distinct'
+you might write 'disinct' instead.
 
    In math which do you find easier to answer?
 
@@ -3727,130 +3729,130 @@ connect to all - depend on none
 
 
 Tag Table:
-Node: Top174
-Node: Intro4306
-Node: Examples16219
-Node: Benchmarks23341
-Node: Verb28300
-Ref: x29761
-Ref: set29786
-Ref: flip29998
-Ref: plus30248
-Ref: negate30633
-Ref: minus30805
-Ref: first30912
-Ref: times31252
-Ref: divide31383
-Ref: where31520
-Ref: min/and32000
-Ref: reverse32259
-Ref: max/or32429
-Ref: asc32693
-Ref: less33066
-Ref: group33367
-Ref: equal33613
-Ref: not33777
-Ref: match33894
-Ref: enum34227
-Ref: key35480
-Ref: enlist35710
-Ref: cat35849
-Ref: sort35968
-Ref: [f]cut36200
-Ref: count36860
-Ref: [f]take37050
-Ref: floor37679
-Ref: [f]drop37770
-Ref: string38363
-Ref: cast+38471
-Ref: unique+38820
-Ref: find+39059
-Ref: type39778
-Ref: [f]at40134
-Ref: value40353
-Ref: [f]dot40681
-Node: Adverb41657
-Ref: scan42369
-Ref: join42899
-Ref: split43074
-Ref: each43265
-Ref: has43483
-Ref: eachp43656
-Ref: bin244096
-Ref: eachr44299
-Ref: eachl44496
-Ref: n scan44680
-Ref: c scan45160
-Ref: c over45444
-Ref: vs45554
-Ref: sv45674
-Node: Noun45798
-Ref: bool47164
-Ref: int47464
-Ref: flt47668
-Ref: char48046
-Ref: name48269
-Ref: uuid48500
-Ref: time48657
-Ref: date49271
-Ref: datetime49689
-Node: List50388
-Node: Dictionary55059
-Node: User Functions59847
-Node: Named Functions61498
-Ref: sqrt62127
-Ref: exp62200
-Ref: log62268
-Ref: sin62368
-Ref: cos62507
-Ref: div62655
-Ref: mod62811
-Ref: bar62989
-Ref: in63529
-Ref: bin63707
-Ref: within63921
-Node: Additional Functions64135
-Ref: cond64276
-Ref: amend64396
-Ref: dmend65058
-Node: I/O65761
-Ref: input format66108
-Ref: format67119
-Ref: write line67519
-Ref: read line67906
-Ref: write char68093
-Ref: read char68488
-Ref: load data68853
-Ref: write data70610
-Ref: conn/set74523
-Ref: http/get74567
-Node: Tables74617
-Ref: t75063
-Ref: xtable76675
-Ref: ktable77158
-Node: kSQL77615
-Ref: union80491
-Ref: left81012
-Ref: outer81533
-Ref: asof81868
-Ref: asof+82912
-Node: System84585
-Ref: load85037
-Ref: timing85225
-Ref: variables85312
-Ref: memory85413
-Ref: cd85528
-Node: Errors85612
-Ref: class86052
-Ref: rank86141
-Ref: length86263
-Ref: _type86384
-Ref: domain86493
-Ref: limit86615
-Ref: nyi86816
-Ref: parse87149
-Ref: _value87304
-Node: Conculsion87432
+Node: Top125
+Node: Intro4241
+Node: Examples16311
+Node: Benchmarks23433
+Node: Verb28392
+Ref: x29853
+Ref: set29878
+Ref: flip30090
+Ref: plus30340
+Ref: negate30725
+Ref: minus30897
+Ref: first31004
+Ref: times31344
+Ref: divide31475
+Ref: where31612
+Ref: min/and32092
+Ref: reverse32351
+Ref: max/or32521
+Ref: asc32785
+Ref: less33158
+Ref: group33459
+Ref: equal33705
+Ref: not33869
+Ref: match33986
+Ref: enum34319
+Ref: key35572
+Ref: enlist35802
+Ref: cat35941
+Ref: sort36060
+Ref: [f]cut36292
+Ref: count36952
+Ref: [f]take37142
+Ref: floor37771
+Ref: [f]drop37862
+Ref: string38455
+Ref: cast+38563
+Ref: unique+38912
+Ref: find+39151
+Ref: type39870
+Ref: [f]at40226
+Ref: value40445
+Ref: [f]dot40773
+Node: Adverb41749
+Ref: scan42461
+Ref: join42991
+Ref: split43166
+Ref: each43357
+Ref: has43575
+Ref: eachp43748
+Ref: bin244188
+Ref: eachr44391
+Ref: eachl44588
+Ref: n scan44772
+Ref: c scan45252
+Ref: c over45536
+Ref: vs45646
+Ref: sv45766
+Node: Noun45890
+Ref: bool47256
+Ref: int47556
+Ref: flt47760
+Ref: char48138
+Ref: name48361
+Ref: uuid48592
+Ref: time48749
+Ref: date49363
+Ref: datetime49781
+Node: List50480
+Node: Dictionary55151
+Node: User Functions59939
+Node: Named Functions61590
+Ref: sqrt62219
+Ref: exp62292
+Ref: log62360
+Ref: sin62460
+Ref: cos62599
+Ref: div62747
+Ref: mod62903
+Ref: bar63081
+Ref: in63621
+Ref: bin63799
+Ref: within64013
+Node: Additional Functions64227
+Ref: cond64368
+Ref: amend64488
+Ref: dmend65150
+Node: I/O65853
+Ref: input format66200
+Ref: format67211
+Ref: write line67611
+Ref: read line67998
+Ref: write char68185
+Ref: read char68580
+Ref: load data68945
+Ref: write data70702
+Ref: conn/set74615
+Ref: http/get74659
+Node: Tables74709
+Ref: t75155
+Ref: xtable76767
+Ref: ktable77250
+Node: kSQL77707
+Ref: union80583
+Ref: left81104
+Ref: outer81625
+Ref: asof81960
+Ref: asof+83004
+Node: System84677
+Ref: load85129
+Ref: timing85317
+Ref: variables85404
+Ref: memory85505
+Ref: cd85620
+Node: Errors85704
+Ref: class86144
+Ref: rank86233
+Ref: length86355
+Ref: _type86476
+Ref: domain86585
+Ref: limit86707
+Ref: nyi86908
+Ref: parse87241
+Ref: _value87396
+Node: Conculsion87524
 
 End Tag Table
 
