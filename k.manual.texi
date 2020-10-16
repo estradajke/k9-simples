@@ -53,6 +53,7 @@ The built-in reference screen (@code{\}) containing all the k9 commands.
 * Tables:: Tables to store data
 * kSQL:: kSQL to query tables
 * System:: System functions and measurements
+* .z:: Functions for current date and time
 * Errors:: Error messages
 * Conculsion:: Conclusion
 @c * Index:: Complete index
@@ -1017,14 +1018,20 @@ n|2 4
 @end example
 
 @anchor{equal}@section equal @result{} x=y
-Return true (1b) if x is equal to y else false (0b).
+Return true (1b) if x is equal to y else false (0b).  
+
 @example
-@ 2=2
+ 2=2
 1b
-@ 2=3
+ 2=3
 0b
-@ "banana"="abnaoo"
+ 2=2.
+1b
+ "banana"="abnaoo" / check strings of equal length by character
 001100b
+ "banana"="apple"  / unequal length strings error
+^
+:length
 @end example
 
 @anchor{not}@section not @result{} ~x
@@ -1045,6 +1052,10 @@ Return true (1b) if x matches y else false (0b).  A match happens if the two arg
  2~2
 1b
  2~3
+0b
+ 2~2.
+0b
+ "banana"~"apple"
 0b
  `a`b~`a`b  / different than = which is element-wise comparison
 1b
@@ -3265,6 +3276,34 @@ Change directory (cd) into x
 
 @example
 @ \cd scripts
+@end example
+
+@node .z
+@chapter .z
+There are functions to get the current date, time, and date-time in k9.  These functions all being with @code{.z}
+
+@section .z Date
+These function retrieve the date (D), date & time (ms) (T), and date & time (ns) (V).
+
+@example
+ .z.D
+2020.10.16
+ .z.T
+2020.10.16T13:42:06.516
+ .z.V
+2020.10.16T13:42:09.962610000
+@end example
+
+@section .z Time
+These functions determine the amount of time (in integer days) since Monday 00:00 (d), time (ms) since 00:00 today (t), and time (ns) since 00:00 today (v).
+
+@example
+ .z.d  / running at Friday 13:46
+4d
+ .z.t
+13:46:33.b644
+ .z.v
+13:46:36.040654000
 @end example
 
 @node Errors

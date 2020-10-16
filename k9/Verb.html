@@ -316,14 +316,20 @@ n|2 4
 </pre></div>
 
 <span id="equal"></span><span id="equal-_21d2-x_003dy"></span><h3 class="section">4.17 equal &rArr; x=y</h3>
-<p>Return true (1b) if x is equal to y else false (0b).
-</p><div class="example">
-<pre class="example">&nbsp;2=2
+<p>Return true (1b) if x is equal to y else false (0b).  
+</p>
+<div class="example">
+<pre class="example"> 2=2
 1b
-&nbsp;2=3
+ 2=3
 0b
-&nbsp;&quot;banana&quot;=&quot;abnaoo&quot;
+ 2=2.
+1b
+ &quot;banana&quot;=&quot;abnaoo&quot; / check strings of equal length by character
 001100b
+ &quot;banana&quot;=&quot;apple&quot;  / unequal length strings error
+^
+:length
 </pre></div>
 
 <span id="not"></span><span id="not-_21d2-_007ex"></span><h3 class="section">4.18 not &rArr; ~x</h3>
@@ -344,6 +350,10 @@ n|2 4
 <pre class="example"> 2~2
 1b
  2~3
+0b
+ 2~2.
+0b
+ &quot;banana&quot;~&quot;apple&quot;
 0b
  `a`b~`a`b  / different than = which is element-wise comparison
 1b
