@@ -73,7 +73,7 @@ Next: <a href="Examples.html" accesskey="n" rel="next">Examples</a>, Previous: <
 T:{`t'_+\(-1+86.4e6)*x%+/x}?[;1.]@
 B:100++\1e-2*-3+nf bin/:?[;*|nf]@
 S:?[;1e-2*2,2,8#1]@
-q:`eurusd`usdjpy`usdchf!{select t,b,a:b+s from +`t`b`s!(T;B;S)@'x}'_20e6 10e6 10e6
+q:`eurusd`usdjpy`usdchf!{select t,b,a:b+s from +`t`b`s!(T;B;S)@'x}'_60e6 20e6 20e6
 `q 2:q
 </pre></div>
 
@@ -115,7 +115,7 @@ z@&amp;y&lt;z:?x<br>
 <p>Again on the mac if you then attempt to run this file you likely won&rsquo;t succeed due to MacOS security.  You&rsquo;ll need to go to &ldquo;System Preferences...&rdquo; and then &ldquo;Security and Privacy&rdquo; and select to allow this binary to run.  (You&rsquo;ll have to have tried and failed to have it appear here automatically.)
 </p>
 <span id="Help_002fInfo-Card"></span><h3 class="section">1.4 Help/Info Card</h3>
-<p>Typing <code>\</code> in the terminal gives you a concise overview of the language.  This document aims to provide details to beginning user where the help screen is a bit too terse.  Some commands are not yet complete and thus marked with an asterisk, eg. *?[x;i;f[;y]] splice.
+<p>Typing <code>\</code> in the terminal gives you a concise overview of the language.  This document aims to provide details to beginning user where the help screen is a bit too terse.  Some commands are not yet complete and thus marked with an asterisk, eg. *update A by B from T where C.
 </p>
 <div class="format">
 <pre class="verbatim">universal database and language - beauty and performance.
@@ -229,13 +229,13 @@ c|0.6708467
 <span id="k9-nuances"></span><h3 class="section">1.8 k9 nuances</h3>
 <p>One will need to understand some basic rules of k9 in order to progress.  These will likely seem strange at first but the faster you learn a few nuances the faster you&rsquo;ll move forward.
 </p>
-<span id="The-language-changes-often_002e"></span><h4 class="subsection">1.8.1 The language changes often.</h4>
+<span id="The-language-changes-often-_0028for-now_0029_002e"></span><h4 class="subsection">1.8.1 The language changes often (for now).</h4>
 <p>There may be examples in this document which work on the version indicated but do not with the version currently available to download.  If so, then feel free to drop the author a note.  Items which currently error but are likley to come back &rsquo;soon&rsquo; will be left in the document.
 </p>
-<span id="g_t_003a-is-used-to-set-a-variable-to-a-value"></span><h4 class="subsection">1.8.2 <code>:</code> is used to set a variable to a value</h4>
+<span id="Colon-_0028_003a_0029-is-used-to-set-a-variable-to-a-value"></span><h4 class="subsection">1.8.2 Colon (<code>:</code>) is used to set a variable to a value</h4>
 <p><code>a:3</code> is used to set the variable, a, to the value, 3.  <code>a=3</code> is an equality test to determine if a is equal to 3.
 </p>
-<span id="g_t_0025-is-used-to-divide-numbers"></span><h4 class="subsection">1.8.3 <code>%</code> is used to divide numbers</h4>
+<span id="Percent-_0028_0025_0029-is-used-to-divide-numbers"></span><h4 class="subsection">1.8.3 Percent (<code>%</code>) is used to divide numbers</h4>
 <p>Yeah, 2 divide by 5 is written as <code>2%5</code> and not <code>2/5</code>.
 </p>
 <span id="Evaluation-is-done-right-to-left"></span><h4 class="subsection">1.8.4 Evaluation is done right to left</h4>

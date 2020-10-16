@@ -139,7 +139,7 @@ Speed of course will depend on your hardware so times will vary.
      T:{`t'_+\(-1+86.4e6)*x%+/x}?[;1.]@
      B:100++\1e-2*-3+nf bin/:?[;*|nf]@
      S:?[;1e-2*2,2,8#1]@
-     q:`eurusd`usdjpy`usdchf!{select t,b,a:b+s from +`t`b`s!(T;B;S)@'x}'_20e6 10e6 10e6
+     q:`eurusd`usdjpy`usdchf!{select t,b,a:b+s from +`t`b`s!(T;B;S)@'x}'_60e6 20e6 20e6
      `q 2:q
 
 1.2 Going concise
@@ -216,7 +216,8 @@ appear here automatically.)
 Typing '\' in the terminal gives you a concise overview of the
 language.  This document aims to provide details to beginning user
 where the help screen is a bit too terse.  Some commands are not yet
-complete and thus marked with an asterisk, eg.  *?[x;i;f[;y]] splice.
+complete and thus marked with an asterisk, eg.  *update A by B from T
+where C.
 
 universal database and language - beauty and performance.
 
@@ -348,8 +349,8 @@ One will need to understand some basic rules of k9 in order to
 progress.  These will likely seem strange at first but the faster you
 learn a few nuances the faster you'll move forward.
 
-1.8.1 The language changes often.
----------------------------------
+1.8.1 The language changes often (for now).
+-------------------------------------------
 
 There may be examples in this document which work on the version
 indicated but do not with the version currently available to download.
@@ -357,14 +358,14 @@ If so, then feel free to drop the author a note.  Items which
 currently error but are likley to come back 'soon' will be left in the
 document.
 
-1.8.2 ':' is used to set a variable to a value
-----------------------------------------------
+1.8.2 Colon (':') is used to set a variable to a value
+------------------------------------------------------
 
 'a:3' is used to set the variable, a, to the value, 3.  'a=3' is an
 equality test to determine if a is equal to 3.
 
-1.8.3 '%' is used to divide numbers
------------------------------------
+1.8.3 Percent ('%') is used to divide numbers
+---------------------------------------------
 
 Yeah, 2 divide by 5 is written as '2%5' and not '2/5'.
 
@@ -3801,129 +3802,129 @@ connect to all - depend on none
 Tag Table:
 Node: Top125
 Node: Intro4284
-Node: Examples16354
-Node: Benchmarks23476
-Node: Verb28435
-Ref: x29896
-Ref: set29921
-Ref: flip30133
-Ref: plus30383
-Ref: negate30768
-Ref: minus30940
-Ref: first31047
-Ref: times31387
-Ref: divide31518
-Ref: where31655
-Ref: min/and32135
-Ref: reverse32394
-Ref: max/or32564
-Ref: asc32828
-Ref: less33201
-Ref: group33502
-Ref: equal33748
-Ref: not34052
-Ref: match34169
-Ref: enum34552
-Ref: key35805
-Ref: enlist36035
-Ref: cat36174
-Ref: sort36293
-Ref: [f]cut36525
-Ref: count37185
-Ref: [f]take37375
-Ref: floor38004
-Ref: [f]drop38095
-Ref: string38688
-Ref: cast+38796
-Ref: unique+39145
-Ref: find+39384
-Ref: type40103
-Ref: [f]at40459
-Ref: value40775
-Ref: [f]dot41049
-Node: Adverb42298
-Ref: scan43010
-Ref: join43540
-Ref: split43715
-Ref: each43906
-Ref: has44124
-Ref: eachp44297
-Ref: bin244737
-Ref: eachr44940
-Ref: eachl45137
-Ref: n scan45321
-Ref: c scan45801
-Ref: c over46085
-Ref: vs46195
-Ref: sv46315
-Node: Noun46439
-Ref: bool47805
-Ref: int48105
-Ref: flt48309
-Ref: char48687
-Ref: name48910
-Ref: uuid49141
-Ref: time49298
-Ref: date49912
-Ref: datetime50330
-Node: List51029
-Node: Dictionary55700
-Node: User Functions60488
-Node: Named Functions62139
-Ref: sqrt62768
-Ref: exp62841
-Ref: log62909
-Ref: sin63009
-Ref: cos63148
-Ref: div63296
-Ref: mod63452
-Ref: bar63630
-Ref: in64170
-Ref: bin64348
-Ref: within64562
-Node: Additional Functions64776
-Ref: cond64917
-Ref: amend65037
-Ref: dmend65699
-Node: I/O66402
-Ref: input format66749
-Ref: format67760
-Ref: write line68160
-Ref: read line68547
-Ref: write char68734
-Ref: read char69129
-Ref: load data69494
-Ref: write data71251
-Ref: conn/set75164
-Ref: http/get75208
-Node: Tables75258
-Ref: t75704
-Ref: xtable77316
-Ref: ktable77799
-Node: kSQL78256
-Ref: union81132
-Ref: left81653
-Ref: outer82174
-Ref: asof82509
-Ref: asof+83553
-Node: System85226
-Ref: load85674
-Ref: timing85862
-Ref: variables85949
-Ref: memory86050
-Ref: cd86165
-Node: .z86249
-Node: Errors86965
-Ref: class87401
-Ref: rank87490
-Ref: length87612
-Ref: _type87733
-Ref: domain87842
-Ref: limit87964
-Ref: nyi88165
-Ref: parse88498
-Ref: _value88653
-Node: Conculsion88781
+Node: Examples16419
+Node: Benchmarks23541
+Node: Verb28500
+Ref: x29961
+Ref: set29986
+Ref: flip30198
+Ref: plus30448
+Ref: negate30833
+Ref: minus31005
+Ref: first31112
+Ref: times31452
+Ref: divide31583
+Ref: where31720
+Ref: min/and32200
+Ref: reverse32459
+Ref: max/or32629
+Ref: asc32893
+Ref: less33266
+Ref: group33567
+Ref: equal33813
+Ref: not34117
+Ref: match34234
+Ref: enum34617
+Ref: key35870
+Ref: enlist36100
+Ref: cat36239
+Ref: sort36358
+Ref: [f]cut36590
+Ref: count37250
+Ref: [f]take37440
+Ref: floor38069
+Ref: [f]drop38160
+Ref: string38753
+Ref: cast+38861
+Ref: unique+39210
+Ref: find+39449
+Ref: type40168
+Ref: [f]at40524
+Ref: value40840
+Ref: [f]dot41114
+Node: Adverb42363
+Ref: scan43075
+Ref: join43605
+Ref: split43780
+Ref: each43971
+Ref: has44189
+Ref: eachp44362
+Ref: bin244802
+Ref: eachr45005
+Ref: eachl45202
+Ref: n scan45386
+Ref: c scan45866
+Ref: c over46150
+Ref: vs46260
+Ref: sv46380
+Node: Noun46504
+Ref: bool47870
+Ref: int48170
+Ref: flt48374
+Ref: char48752
+Ref: name48975
+Ref: uuid49206
+Ref: time49363
+Ref: date49977
+Ref: datetime50395
+Node: List51094
+Node: Dictionary55765
+Node: User Functions60553
+Node: Named Functions62204
+Ref: sqrt62833
+Ref: exp62906
+Ref: log62974
+Ref: sin63074
+Ref: cos63213
+Ref: div63361
+Ref: mod63517
+Ref: bar63695
+Ref: in64235
+Ref: bin64413
+Ref: within64627
+Node: Additional Functions64841
+Ref: cond64982
+Ref: amend65102
+Ref: dmend65764
+Node: I/O66467
+Ref: input format66814
+Ref: format67825
+Ref: write line68225
+Ref: read line68612
+Ref: write char68799
+Ref: read char69194
+Ref: load data69559
+Ref: write data71316
+Ref: conn/set75229
+Ref: http/get75273
+Node: Tables75323
+Ref: t75769
+Ref: xtable77381
+Ref: ktable77864
+Node: kSQL78321
+Ref: union81197
+Ref: left81718
+Ref: outer82239
+Ref: asof82574
+Ref: asof+83618
+Node: System85291
+Ref: load85739
+Ref: timing85927
+Ref: variables86014
+Ref: memory86115
+Ref: cd86230
+Node: .z86314
+Node: Errors87030
+Ref: class87466
+Ref: rank87555
+Ref: length87677
+Ref: _type87798
+Ref: domain87907
+Ref: limit88029
+Ref: nyi88230
+Ref: parse88563
+Ref: _value88718
+Node: Conculsion88846
 
 End Tag Table
 
