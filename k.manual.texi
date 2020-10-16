@@ -1397,11 +1397,6 @@ Value a string of valid k code or list of k code.
 2 
 14
 0 
-
-@ (!).(`a`b`c;1 2 3)
-a|1
-b|2
-c|3u
 @end example
 
 @anchor{[f]dot}@section [f]dot @result{} x.y
@@ -1467,6 +1462,11 @@ If x is a function then apply the function to y.
 4
  b . 3 1
 2.524413
+
+ (!).(`a`b`c;1 2 3)
+a|1
+b|2
+c|3
 @end example
 
 @node Adverb
