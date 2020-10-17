@@ -89,7 +89,8 @@ nf:d+*|d:(|-d),d:683 954 997 1000;
 T:@{`t'_+\(-1+86.4e6)*x%+/x@}?[;1.]@@
 B:100++\1e-2*-3+nf bin/:?[;*|nf]@@
 S:?[;1e-2*2,2,8#1]@@
-q:`eurusd`usdjpy`usdchf!@{select t,b,a:b+s from +`t`b`s!(T;B;S)@@'x@}'_60e6 20e6 20e6
+L:@{select t,b,a:b+s from +`t`b`s!(T;B;S)@@'x@}
+q:`eurusd`usdjpy`usdchf!L'60e6 20e6 20e6
 `q 2:q
 @end example
 
