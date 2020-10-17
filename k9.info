@@ -1804,13 +1804,31 @@ that it only returns the last value.
 
 Compute f[x], f[f[x]] and continue to call f[previous result] until
 the output converges to a stationary value or the output produces x.
-       {x*x}\:.99
-     0.99 0.9801 0.960596 0.9227447 .. 9.420123e-144 8.873872e-287 0
+
+       {x*x}\:.99  / converge to value
+     0.99 0.9801 0.9605961 ... 1.323698e-18 1.752177e-36 0.
+
+      l:3 4 2 1 4 99 / until output is x
+      l\:0
+     0 3 1 4
+
+      / the latter example worked out manually
+      l 0
+     3
+      l 3
+     1
+      l 1
+     4
+      l 4            / f[4]=4 so will stop
+     4
 
 5.11 c(onverge) over => f/:x
 ============================
 
 Same as converge scan but only return last value.
+
+       {x*x}\:.99
+     0.
 
 5.12 vs => x\:y
 ===============
@@ -3875,77 +3893,77 @@ Ref: eachr45036
 Ref: eachl45233
 Ref: n scan45417
 Ref: c scan45897
-Ref: c over46181
-Ref: vs46291
-Ref: sv46411
-Node: Noun46535
-Ref: bool47901
-Ref: int48201
-Ref: flt48405
-Ref: char48783
-Ref: name49006
-Ref: uuid49237
-Ref: time49394
-Ref: date50008
-Ref: datetime50426
-Node: List51125
-Node: Dictionary55796
-Node: User Functions60584
-Node: Named Functions62704
-Ref: sqrt63333
-Ref: exp63406
-Ref: log63474
-Ref: sin63574
-Ref: cos63713
-Ref: div63861
-Ref: mod64017
-Ref: bar64195
-Ref: in64735
-Ref: bin64913
-Ref: within65127
-Node: Additional Functions65341
-Ref: cond65482
-Ref: amend65602
-Ref: dmend66264
-Node: I/O66967
-Ref: input format67314
-Ref: format68325
-Ref: write line68725
-Ref: read line69112
-Ref: write char69299
-Ref: read char69694
-Ref: load data70059
-Ref: write data71816
-Ref: conn/set75729
-Ref: http/get75773
-Node: Tables75823
-Ref: t76269
-Ref: xtable77881
-Ref: ktable78364
-Node: kSQL78821
-Ref: union81697
-Ref: left82218
-Ref: outer82739
-Ref: asof83074
-Ref: asof+84118
-Node: System85791
-Ref: load86239
-Ref: timing86427
-Ref: variables86514
-Ref: memory86615
-Ref: cd86730
-Node: .z86814
-Node: Errors87530
-Ref: class87966
-Ref: rank88055
-Ref: length88177
-Ref: _type88298
-Ref: domain88407
-Ref: limit88529
-Ref: nyi88730
-Ref: parse89063
-Ref: _value89218
-Node: Conculsion89346
+Ref: c over46409
+Ref: vs46546
+Ref: sv46666
+Node: Noun46790
+Ref: bool48156
+Ref: int48456
+Ref: flt48660
+Ref: char49038
+Ref: name49261
+Ref: uuid49492
+Ref: time49649
+Ref: date50263
+Ref: datetime50681
+Node: List51380
+Node: Dictionary56051
+Node: User Functions60839
+Node: Named Functions62959
+Ref: sqrt63588
+Ref: exp63661
+Ref: log63729
+Ref: sin63829
+Ref: cos63968
+Ref: div64116
+Ref: mod64272
+Ref: bar64450
+Ref: in64990
+Ref: bin65168
+Ref: within65382
+Node: Additional Functions65596
+Ref: cond65737
+Ref: amend65857
+Ref: dmend66519
+Node: I/O67222
+Ref: input format67569
+Ref: format68580
+Ref: write line68980
+Ref: read line69367
+Ref: write char69554
+Ref: read char69949
+Ref: load data70314
+Ref: write data72071
+Ref: conn/set75984
+Ref: http/get76028
+Node: Tables76078
+Ref: t76524
+Ref: xtable78136
+Ref: ktable78619
+Node: kSQL79076
+Ref: union81952
+Ref: left82473
+Ref: outer82994
+Ref: asof83329
+Ref: asof+84373
+Node: System86046
+Ref: load86494
+Ref: timing86682
+Ref: variables86769
+Ref: memory86870
+Ref: cd86985
+Node: .z87069
+Node: Errors87785
+Ref: class88221
+Ref: rank88310
+Ref: length88432
+Ref: _type88553
+Ref: domain88662
+Ref: limit88784
+Ref: nyi88985
+Ref: parse89318
+Ref: _value89473
+Node: Conculsion89601
 
 End Tag Table
 

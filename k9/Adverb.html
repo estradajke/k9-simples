@@ -202,14 +202,34 @@ xy0y1 y2
 
 <span id="c-scan"></span><span id="c_0028onverge_0029-scan-_21d2-f_005c_003ax"></span><h3 class="section">5.10 c(onverge) scan &rArr; f\:x</h3>
 <p>Compute f[x], f[f[x]] and continue to call f[previous result] until the output converges to a stationary value or the output produces x.
-</p><div class="example">
-<pre class="example">&nbsp; {x*x}\:.99
-0.99 0.9801 0.960596 0.9227447 .. 9.420123e-144 8.873872e-287 0
+</p>
+<div class="example">
+<pre class="example">  {x*x}\:.99  / converge to value
+0.99 0.9801 0.9605961 ... 1.323698e-18 1.752177e-36 0.
+
+ l:3 4 2 1 4 99 / until output is x
+ l\:0
+0 3 1 4
+
+ / the latter example worked out manually
+ l 0
+3
+ l 3
+1
+ l 1
+4
+ l 4            / f[4]=4 so will stop
+4
 </pre></div>
 
 <span id="c-over"></span><span id="c_0028onverge_0029-over-_21d2-f_002f_003ax"></span><h3 class="section">5.11 c(onverge) over &rArr; f/:x</h3>
 <p>Same as converge scan but only return last value.
 </p>
+<div class="example">
+<pre class="example">  {x*x}\:.99
+0.
+</pre></div>
+
 <span id="vs"></span><span id="vs-_21d2-x_005c_003ay"></span><h3 class="section">5.12 vs &rArr; x\:y</h3>
 <p>Convert y (base 10) into base x.
 </p><div class="example">

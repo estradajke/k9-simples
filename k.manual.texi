@@ -1637,13 +1637,33 @@ xy0y1 y2
 
 @anchor{c scan}@section c(onverge) scan @result{} f\:x
 Compute f[x], f[f[x]] and continue to call f[previous result] until the output converges to a stationary value or the output produces x.
+
 @example
-@  @{x*x@}\:.99
-0.99 0.9801 0.960596 0.9227447 .. 9.420123e-144 8.873872e-287 0
+  @{x*x@}\:.99  / converge to value
+0.99 0.9801 0.9605961 ... 1.323698e-18 1.752177e-36 0.
+
+ l:3 4 2 1 4 99 / until output is x
+ l\:0
+0 3 1 4
+
+ / the latter example worked out manually
+ l 0
+3
+ l 3
+1
+ l 1
+4
+ l 4            / f[4]=4 so will stop
+4
 @end example
 
 @anchor{c over}@section c(onverge) over @result{} f/:x
 Same as converge scan but only return last value.
+
+@example
+  @{x*x@}\:.99
+0.
+@end example
 
 @anchor{vs}@section vs @result{} x\:y
 Convert y (base 10) into base x.
