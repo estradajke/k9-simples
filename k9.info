@@ -1,6 +1,6 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
-October 16, 2020
+October 17, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -2553,6 +2553,27 @@ requires the remaining arguemnts.
       f:{$[x>1;x*f@x-1;1]};f 5
      120
 
+9.5 Chained functions
+=====================
+
+It may be neccesary to define a function to call a function without
+specifying arguments.  Imagine this trivial case.
+
+      f1:{!x}
+      f2:{x+2} f1
+     {x+2}
+     ^
+     :rank
+
+   In order to succeed f1 needs to have an '@' in the definition of
+f2.  This is only required when the function calls a function that is
+not completely specified with input parameters.
+
+      f1:{!x}
+      f2:{x+2} f1@
+      f2 3
+     2 3 4
+
 
 File: k9.info,  Node: Named Functions,  Next: Additional Functions,  Prev: User Functions,  Up: Top
 
@@ -3870,61 +3891,61 @@ Ref: datetime50396
 Node: List51095
 Node: Dictionary55766
 Node: User Functions60554
-Node: Named Functions62205
-Ref: sqrt62834
-Ref: exp62907
-Ref: log62975
-Ref: sin63075
-Ref: cos63214
-Ref: div63362
-Ref: mod63518
-Ref: bar63696
-Ref: in64236
-Ref: bin64414
-Ref: within64628
-Node: Additional Functions64842
-Ref: cond64983
-Ref: amend65103
-Ref: dmend65765
-Node: I/O66468
-Ref: input format66815
-Ref: format67826
-Ref: write line68226
-Ref: read line68613
-Ref: write char68800
-Ref: read char69195
-Ref: load data69560
-Ref: write data71317
-Ref: conn/set75230
-Ref: http/get75274
-Node: Tables75324
-Ref: t75770
-Ref: xtable77382
-Ref: ktable77865
-Node: kSQL78322
-Ref: union81198
-Ref: left81719
-Ref: outer82240
-Ref: asof82575
-Ref: asof+83619
-Node: System85292
-Ref: load85740
-Ref: timing85928
-Ref: variables86015
-Ref: memory86116
-Ref: cd86231
-Node: .z86315
-Node: Errors87031
-Ref: class87467
-Ref: rank87556
-Ref: length87678
-Ref: _type87799
-Ref: domain87908
-Ref: limit88030
-Ref: nyi88231
-Ref: parse88564
-Ref: _value88719
-Node: Conculsion88847
+Node: Named Functions62674
+Ref: sqrt63303
+Ref: exp63376
+Ref: log63444
+Ref: sin63544
+Ref: cos63683
+Ref: div63831
+Ref: mod63987
+Ref: bar64165
+Ref: in64705
+Ref: bin64883
+Ref: within65097
+Node: Additional Functions65311
+Ref: cond65452
+Ref: amend65572
+Ref: dmend66234
+Node: I/O66937
+Ref: input format67284
+Ref: format68295
+Ref: write line68695
+Ref: read line69082
+Ref: write char69269
+Ref: read char69664
+Ref: load data70029
+Ref: write data71786
+Ref: conn/set75699
+Ref: http/get75743
+Node: Tables75793
+Ref: t76239
+Ref: xtable77851
+Ref: ktable78334
+Node: kSQL78791
+Ref: union81667
+Ref: left82188
+Ref: outer82709
+Ref: asof83044
+Ref: asof+84088
+Node: System85761
+Ref: load86209
+Ref: timing86397
+Ref: variables86484
+Ref: memory86585
+Ref: cd86700
+Node: .z86784
+Node: Errors87500
+Ref: class87936
+Ref: rank88025
+Ref: length88147
+Ref: _type88268
+Ref: domain88377
+Ref: limit88499
+Ref: nyi88700
+Ref: parse89033
+Ref: _value89188
+Node: Conculsion89316
 
 End Tag Table
 

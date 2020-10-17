@@ -2323,6 +2323,27 @@ a
 120
 @end example
 
+@section Chained functions
+It may be neccesary to define a function to call a function without specifying arguments.  Imagine this trivial case.
+
+@example
+ f1:@{!x@}
+ f2:@{x+2@} f1
+@{x+2@}
+^
+:rank
+@end example
+
+In order to succeed f1 needs to have an @code{@@} in the definition of f2.  This is only required when the function calls a function that is not completely specified with input parameters.
+
+@example
+ f1:@{!x@}
+ f2:@{x+2@} f1@@
+ f2 3
+2 3 4
+@end example
+
+
 @node Named Functions
 @chapter Named Functions
 This chapter covers the non-symbol named functions.  This includes some math (eg. sqrt but not +), wrapper (eg. count for #) and range (eg. within) functions.
