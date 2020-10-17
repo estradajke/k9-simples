@@ -1651,8 +1651,8 @@ function 'first' with a modifier 'each'.
      f\  *note scan::  c\  *note split::
      f'  *note each::  v'  *note has::
      f': *note eachp:: v': *note bin: bin2.
-     f/: *note eachr:: ([n;]f)/:
-     f\: *note eachl:: ([n;]f)\:
+     f/: *note eachr:: ([n;]f)/: *note c over::
+     f\: *note eachl:: ([n;]f)\: *note c scan::
 
 5.1 scan (over) => f\x (f/x)
 ============================
@@ -3864,88 +3864,88 @@ Ref: [f]at40525
 Ref: value40841
 Ref: [f]dot41115
 Node: Adverb42364
-Ref: scan43076
-Ref: join43606
-Ref: split43781
-Ref: each43972
-Ref: has44190
-Ref: eachp44363
-Ref: bin244803
-Ref: eachr45006
-Ref: eachl45203
-Ref: n scan45387
-Ref: c scan45867
-Ref: c over46151
-Ref: vs46261
-Ref: sv46381
-Node: Noun46505
-Ref: bool47871
-Ref: int48171
-Ref: flt48375
-Ref: char48753
-Ref: name48976
-Ref: uuid49207
-Ref: time49364
-Ref: date49978
-Ref: datetime50396
-Node: List51095
-Node: Dictionary55766
-Node: User Functions60554
-Node: Named Functions62674
-Ref: sqrt63303
-Ref: exp63376
-Ref: log63444
-Ref: sin63544
-Ref: cos63683
-Ref: div63831
-Ref: mod63987
-Ref: bar64165
-Ref: in64705
-Ref: bin64883
-Ref: within65097
-Node: Additional Functions65311
-Ref: cond65452
-Ref: amend65572
-Ref: dmend66234
-Node: I/O66937
-Ref: input format67284
-Ref: format68295
-Ref: write line68695
-Ref: read line69082
-Ref: write char69269
-Ref: read char69664
-Ref: load data70029
-Ref: write data71786
-Ref: conn/set75699
-Ref: http/get75743
-Node: Tables75793
-Ref: t76239
-Ref: xtable77851
-Ref: ktable78334
-Node: kSQL78791
-Ref: union81667
-Ref: left82188
-Ref: outer82709
-Ref: asof83044
-Ref: asof+84088
-Node: System85761
-Ref: load86209
-Ref: timing86397
-Ref: variables86484
-Ref: memory86585
-Ref: cd86700
-Node: .z86784
-Node: Errors87500
-Ref: class87936
-Ref: rank88025
-Ref: length88147
-Ref: _type88268
-Ref: domain88377
-Ref: limit88499
-Ref: nyi88700
-Ref: parse89033
-Ref: _value89188
-Node: Conculsion89316
+Ref: scan43106
+Ref: join43636
+Ref: split43811
+Ref: each44002
+Ref: has44220
+Ref: eachp44393
+Ref: bin244833
+Ref: eachr45036
+Ref: eachl45233
+Ref: n scan45417
+Ref: c scan45897
+Ref: c over46181
+Ref: vs46291
+Ref: sv46411
+Node: Noun46535
+Ref: bool47901
+Ref: int48201
+Ref: flt48405
+Ref: char48783
+Ref: name49006
+Ref: uuid49237
+Ref: time49394
+Ref: date50008
+Ref: datetime50426
+Node: List51125
+Node: Dictionary55796
+Node: User Functions60584
+Node: Named Functions62704
+Ref: sqrt63333
+Ref: exp63406
+Ref: log63474
+Ref: sin63574
+Ref: cos63713
+Ref: div63861
+Ref: mod64017
+Ref: bar64195
+Ref: in64735
+Ref: bin64913
+Ref: within65127
+Node: Additional Functions65341
+Ref: cond65482
+Ref: amend65602
+Ref: dmend66264
+Node: I/O66967
+Ref: input format67314
+Ref: format68325
+Ref: write line68725
+Ref: read line69112
+Ref: write char69299
+Ref: read char69694
+Ref: load data70059
+Ref: write data71816
+Ref: conn/set75729
+Ref: http/get75773
+Node: Tables75823
+Ref: t76269
+Ref: xtable77881
+Ref: ktable78364
+Node: kSQL78821
+Ref: union81697
+Ref: left82218
+Ref: outer82739
+Ref: asof83074
+Ref: asof+84118
+Node: System85791
+Ref: load86239
+Ref: timing86427
+Ref: variables86514
+Ref: memory86615
+Ref: cd86730
+Node: .z86814
+Node: Errors87530
+Ref: class87966
+Ref: rank88055
+Ref: length88177
+Ref: _type88298
+Ref: domain88407
+Ref: limit88529
+Ref: nyi88730
+Ref: parse89063
+Ref: _value89218
+Node: Conculsion89346
 
 End Tag Table
 

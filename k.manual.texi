@@ -1479,8 +1479,8 @@ f/  @ref{scan,over}  c/  @ref{join}
 f\  @ref{scan}  c\  @ref{split}
 f'  @ref{each}  v'  @ref{has}  
 f': @ref{eachp} v': @ref{bin2,bin}.
-f/: @ref{eachr} ([n;]f)/:
-f\: @ref{eachl} ([n;]f)\:
+f/: @ref{eachr} ([n;]f)/: @ref{c over}
+f\: @ref{eachl} ([n;]f)\: @ref{c scan}
 @end example
 
 @c @multitable {\:} {see eacheach 4} {see eacheach 4}
