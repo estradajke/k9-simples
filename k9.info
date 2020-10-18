@@ -95,7 +95,7 @@ connect to all - depend on none
 * System:: System functions and measurements
 * .z:: Functions for current date and time
 * Errors:: Error messages
-* Conculsion:: Conclusion
+* Conclusion:: Conclusion
 
 
 File: k9.info,  Node: Intro,  Next: Examples,  Prev: Top,  Up: Top
@@ -445,13 +445,14 @@ needed.
 ================================================
 
 Financial market data generally are stored as prices (often call
-quotes) and trades.  Prices will include at a minimum time, securtiy,
-price to buy and price to sell.  Trades will include at a minimum
-time, security, and trade price.  In normal markets there are many
-more prices than trades.
+quotes) and trades.  At a minimum, prices will include time (t), price
+to buy (b for bid) and price to sell (a for ask).  Trades will include
+at a minimum time (t) and trade price (p).  In normal markets there
+are many more prices than trades.  (Additionally, the data normally
+includes the name of the security (s) and the exchange (x) from which
+the data comes.)
 
-   Let's use k9 to generate a set of random prices for a single
-security hence elimating the need for that field.
+   Let's use k9 to generate a set of random prices.
 
       n:10
       T:10:00+`t n?36e5
@@ -484,9 +485,9 @@ at 99.  Here's the trade table for those two transactions.
      10:59:07.262  99
 
    You'll note that the times didn't line up and that's because it
-apparently took you 1s to decide to trade.  Because of this delay
-you'll often have to look back at the previous prices to join trade
-(t) and quote (q) data.
+apparently took you a second to decide to trade.  Because of this
+delay you'll often have to look back at the previous prices to join
+trade (t) and quote (q) data.
 
    Now that you've learned enough finance to understand the data,
 let's scale up to larger problems to see the power of k9.
@@ -494,50 +495,69 @@ let's scale up to larger problems to see the power of k9.
 2.2 Data Manipulation
 =====================
 
-Generate a table of random financial data and compute basic statistics
-quickly.  This table takes about 4 GB and 3.3 seconds on a relatively
-new consumer laptop.
+Generate a table of random data and compute basic statistics quickly.
+The data here includes time (t), security (s), and price delta (d).
+This table takes about 4 GB and 3.3 seconds on a relatively new
+consumer laptop.
 
-      n:_100e6                               / 100 million rows
-      t:{09:00:00.000+x?10:00:00.000}     / random times
-      s:{x?`a`b`c`d`e}                    / random symbols
+      n:_100e6                         / 100 million rows
+      t:{09:00:00.000+x?10:00:00.000}  /  random times
+      s:{x?`a`b`c`d`e}                 / random symbols
       m:0,(|m),365378984,m:271810244 42800467 2636454 62769 572 2;
       d:{(-6+!13)@(+\m)bin x?_1e9}
-      \t q:+`t`s`d!(t[n];s[n];d[n])          / time data generation in ms
+      \t q:+`t`s`d!(t[n];s[n];d[n])    / time data generation in ms
      3391
 
    As this point one might want to check start and stop times, see if
 the symbol distribution is actually random and look at the
 distribution of the price deltas.
 
-      select min t, max t from q        / min and max time values
-     t|09:00:00.000
-     t|18:59:59.999
+      select ti:min t, tf:max t from q / min and max time values
+     ti|09:00:00.000
+     tf|18:59:59.999
 
-      select #s by s from q             / count each symbol
-     s|s
+      select c:#s by s from q          / count each symbol
+     s|c
      -|--------
-     a|19999325
-     b|20000982
-     c|19996938
-     d|20001721
-     e|20001034
+     a|20003490
+     b|19997344
+     c|19998874
+     d|20000640
+     e|19999652
 
-      select #d by d from q             / check the normal distribution
-     d |d
+      select c:#d by d from q          / check the normal distribution (2s to run)
+     d |c
      --|--------
-     -6|       1
-     -5|      46
-     -4|    6284
-     -3|  263124
-     -2| 4276881
-     -1|27184896
-      0|36538226
-      1|27182073
-      2| 4278498
-      3|  263523
-      4|    6391
-      5|      57
+     -6|1
+     -5|55
+     -4|6226
+     -3|263801
+     -2|4280721
+     -1|27179734
+      0|36531595
+      1|27188092
+      2|4279872
+      3|263610
+      4|6245
+      5|48
+
+      select gain:sum d by s from q    / profit (or loss) over each symbol
+     s|gain
+     -|-----
+     a|  872
+     b| 2765
+     c| 2668
+     d| 2171
+     e|-2354
+
+      select loss:min +\d by s from q  / worst loss over the period
+     s|loss
+     -|-----
+     a|-1803
+     b| -846
+     c|-2732
+     d|-2101
+     e|-2903
 
 2.3 Understanding Code Examples
 ===============================
@@ -3631,7 +3651,7 @@ Monday 00:00 (d), time (ms) since 00:00 today (t), and time (ns) since
      13:46:36.040654000
 
 
-File: k9.info,  Node: Errors,  Next: Conculsion,  Prev: .z,  Up: Top
+File: k9.info,  Node: Errors,  Next: Conclusion,  Prev: .z,  Up: Top
 
 17 Errors
 *********
@@ -3640,7 +3660,7 @@ Given the terse syntax of k9 it likley won't be a surprise to a new
 user that the error messages are rather short also.  The errors are
 listed on the help page and described in more detail below.
 
-     error: *note class:: *note rank:: *note length:: *note type: _type. *note domain:: *note limit:: stack (*note parse:: *note value: _value.)
+     error: *note class:: *note rank:: *note length:: *note type: _type. *note domain:: *note limit:: stack *note parse:: *note value: _value.
 
 17.1 :class
 ===========
@@ -3649,8 +3669,8 @@ Calling a function on mismatched types.
       3+`b
      :class
 
-17.2 rank
-=========
+17.2 :rank
+==========
 
 Calling a function with too many parameters.
       {x+y}[1;2;3]
@@ -3658,8 +3678,8 @@ Calling a function with too many parameters.
      ^
      :rank
 
-17.3 length
-===========
+17.3 :length
+============
 
 Operations on unequal length lists that require equal length.
       (1 2 3)+(4 5)
@@ -3727,9 +3747,9 @@ Undefined variable is used.
      :value
 
 
-File: k9.info,  Node: Conculsion,  Prev: Errors,  Up: Top
+File: k9.info,  Node: Conclusion,  Prev: Errors,  Up: Top
 
-18 Conculsion
+18 Conclusion
 *************
 
 I expect you are surprised by the performance possible by k9 and the
@@ -3741,10 +3761,8 @@ alone.  I'd expect most had the same problems, persevered, and finally
 came away a power user able to squeeze information from data faster
 than previously imagined.
 
-   If you're come along enough to get it, then you'll probably
+   If you've come along enough to get it, then you'll probably
 realised this manual isn't needed and it's all here...
-
-   The built-in reference screen containing all the k9 commands.
 
 universal database and language - beauty and performance.
 
@@ -3794,132 +3812,132 @@ Tag Table:
 Node: Top125
 Node: Intro4284
 Node: Examples16427
-Node: Benchmarks23549
-Node: Verb28508
-Ref: x29969
-Ref: set29994
-Ref: flip30206
-Ref: plus30456
-Ref: negate30841
-Ref: minus31013
-Ref: first31120
-Ref: times31460
-Ref: divide31591
-Ref: where31728
-Ref: min/and32208
-Ref: reverse32467
-Ref: max/or32637
-Ref: asc32901
-Ref: less33274
-Ref: group33575
-Ref: equal33821
-Ref: not34125
-Ref: match34242
-Ref: enum34625
-Ref: key35878
-Ref: enlist36108
-Ref: cat36247
-Ref: sort36366
-Ref: [f]cut36598
-Ref: count37343
-Ref: [f]take37533
-Ref: floor38162
-Ref: [f]drop38253
-Ref: string38846
-Ref: cast+38947
-Ref: unique+39296
-Ref: find+39535
-Ref: type40254
-Ref: [f]at40610
-Ref: value40926
-Ref: [f]dot41200
-Node: Adverb42449
-Ref: scan43191
-Ref: join43721
-Ref: split43896
-Ref: each44087
-Ref: has44305
-Ref: eachp44478
-Ref: bin244918
-Ref: eachr45121
-Ref: eachl45318
-Ref: n scan45502
-Ref: c scan45982
-Ref: c over46494
-Ref: vs46631
-Ref: sv46751
-Node: Noun46875
-Ref: bool48241
-Ref: int48541
-Ref: flt48745
-Ref: char49123
-Ref: name49346
-Ref: uuid49577
-Ref: time49734
-Ref: date50348
-Ref: datetime50766
-Node: List51465
-Node: Dictionary56136
-Node: User Functions60924
-Node: Named Functions63044
-Ref: sqrt63673
-Ref: exp63746
-Ref: log63814
-Ref: sin63914
-Ref: cos64053
-Ref: div64201
-Ref: mod64357
-Ref: bar64535
-Ref: in65075
-Ref: bin65253
-Ref: within65467
-Node: Additional Functions65681
-Ref: cond65822
-Ref: amend65942
-Ref: dmend66604
-Node: I/O67307
-Ref: input format68301
-Ref: read csv69312
-Ref: write csv69490
-Ref: read json69654
-Ref: write json69844
-Ref: w line70017
-Ref: r line70325
-Ref: w char70438
-Ref: r char70832
-Ref: r data71197
-Ref: w data71838
-Ref: conn/set72386
-Ref: http/get72447
-Ref: lib72508
-Node: Tables72973
-Ref: t73419
-Ref: xtable75031
-Ref: ktable75514
-Node: kSQL75971
-Ref: union78300
-Ref: left78821
-Ref: outer79342
-Ref: asof79677
-Ref: asof+80721
-Node: System82394
-Ref: load82842
-Ref: timing83030
-Ref: variables83117
-Ref: memory83218
-Ref: cd83333
-Node: .z83417
-Node: Errors84133
-Ref: class84569
-Ref: rank84658
-Ref: length84780
-Ref: _type84901
-Ref: domain85010
-Ref: limit85132
-Ref: nyi85333
-Ref: parse85666
-Ref: _value85821
-Node: Conculsion85949
+Node: Benchmarks23973
+Node: Verb28932
+Ref: x30393
+Ref: set30418
+Ref: flip30630
+Ref: plus30880
+Ref: negate31265
+Ref: minus31437
+Ref: first31544
+Ref: times31884
+Ref: divide32015
+Ref: where32152
+Ref: min/and32632
+Ref: reverse32891
+Ref: max/or33061
+Ref: asc33325
+Ref: less33698
+Ref: group33999
+Ref: equal34245
+Ref: not34549
+Ref: match34666
+Ref: enum35049
+Ref: key36302
+Ref: enlist36532
+Ref: cat36671
+Ref: sort36790
+Ref: [f]cut37022
+Ref: count37767
+Ref: [f]take37957
+Ref: floor38586
+Ref: [f]drop38677
+Ref: string39270
+Ref: cast+39371
+Ref: unique+39720
+Ref: find+39959
+Ref: type40678
+Ref: [f]at41034
+Ref: value41350
+Ref: [f]dot41624
+Node: Adverb42873
+Ref: scan43615
+Ref: join44145
+Ref: split44320
+Ref: each44511
+Ref: has44729
+Ref: eachp44902
+Ref: bin245342
+Ref: eachr45545
+Ref: eachl45742
+Ref: n scan45926
+Ref: c scan46406
+Ref: c over46918
+Ref: vs47055
+Ref: sv47175
+Node: Noun47299
+Ref: bool48665
+Ref: int48965
+Ref: flt49169
+Ref: char49547
+Ref: name49770
+Ref: uuid50001
+Ref: time50158
+Ref: date50772
+Ref: datetime51190
+Node: List51889
+Node: Dictionary56560
+Node: User Functions61348
+Node: Named Functions63468
+Ref: sqrt64097
+Ref: exp64170
+Ref: log64238
+Ref: sin64338
+Ref: cos64477
+Ref: div64625
+Ref: mod64781
+Ref: bar64959
+Ref: in65499
+Ref: bin65677
+Ref: within65891
+Node: Additional Functions66105
+Ref: cond66246
+Ref: amend66366
+Ref: dmend67028
+Node: I/O67731
+Ref: input format68725
+Ref: read csv69736
+Ref: write csv69914
+Ref: read json70078
+Ref: write json70268
+Ref: w line70441
+Ref: r line70749
+Ref: w char70862
+Ref: r char71256
+Ref: r data71621
+Ref: w data72262
+Ref: conn/set72810
+Ref: http/get72871
+Ref: lib72932
+Node: Tables73397
+Ref: t73843
+Ref: xtable75455
+Ref: ktable75938
+Node: kSQL76395
+Ref: union78724
+Ref: left79245
+Ref: outer79766
+Ref: asof80101
+Ref: asof+81145
+Node: System82818
+Ref: load83266
+Ref: timing83454
+Ref: variables83541
+Ref: memory83642
+Ref: cd83757
+Node: .z83841
+Node: Errors84557
+Ref: class84991
+Ref: rank85080
+Ref: length85204
+Ref: _type85327
+Ref: domain85436
+Ref: limit85558
+Ref: nyi85759
+Ref: parse86092
+Ref: _value86247
+Node: Conclusion86375
 
 End Tag Table
 

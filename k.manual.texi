@@ -55,7 +55,7 @@ The built-in reference screen (@code{\}) containing all the k9 commands.
 * System:: System functions and measurements
 * .z:: Functions for current date and time
 * Errors:: Error messages
-* Conculsion:: Conclusion
+* Conclusion:: Conclusion
 @c * Index:: Complete index
 @end menu
 
@@ -266,9 +266,9 @@ In k9 as the Help/Info card shows data are nouns, functions/lists are verbs and 
 Before jumping into synax let's look at some example problems to get a sense of the speed of k9 at processing data.  Given both the historic use of languages similar to k9 in finance and the author's background much of the examples will be based on financial markets.  For those not familiar with this field a short introduction will likley be needed.
 
 @section A Tiny Introduction to Financial Market Data
-Financial market data generally are stored as prices (often call quotes) and trades.  Prices will include at a minimum time, securtiy, price to buy and price to sell.  Trades will include at a minimum time, security, and trade price.  In normal markets there are many more prices than trades.
+Financial market data generally are stored as prices (often call quotes) and trades.  At a minimum, prices will include time (t), price to buy (b for bid) and price to sell (a for ask).  Trades will include at a minimum time (t) and trade price (p).  In normal markets there are many more prices than trades.  (Additionally, the data normally includes the name of the security (s) and the exchange (x) from which the data comes.)  
 
-Let's use k9 to generate a set of random prices for a single security hence elimating the need for that field.
+Let's use k9 to generate a set of random prices.
 
 @example
  n:10
@@ -300,55 +300,73 @@ t            p
 10:59:07.262  99
 @end example
 
-You'll note that the times didn't line up and that's because it apparently took you 1s to decide to trade.  Because of this delay you'll often have to look back at the previous prices to join trade (t) and quote (q) data.
+You'll note that the times didn't line up and that's because it apparently took you a second to decide to trade.  Because of this delay you'll often have to look back at the previous prices to join trade (t) and quote (q) data.
 
 Now that you've learned enough finance to understand the data, let's scale up to larger problems to see the power of k9.
 
 
 @section Data Manipulation
-Generate a table of random financial data and compute basic statistics quickly.  This table takes about 4 GB and 3.3 seconds on a relatively new consumer laptop.
+Generate a table of random data and compute basic statistics quickly.  The data here includes time (t), security (s), and price delta (d).  This table takes about 4 GB and 3.3 seconds on a relatively new consumer laptop.
 
 @example
-@ n:_100e6                               / 100 million rows
-@ t:@{09:00:00.000+x?10:00:00.000@}     / random times
-@ s:@{x?`a`b`c`d`e@}                    / random symbols
+@ n:_100e6                         / 100 million rows
+@ t:@{09:00:00.000+x?10:00:00.000@}  /  random times
+@ s:@{x?`a`b`c`d`e@}                 / random symbols
 @ m:0,(|m),365378984,m:271810244 42800467 2636454 62769 572 2;
 @ d:@{(-6+!13)@@(+\m)bin x?_1e9@}
-@ \t q:+`t`s`d!(t[n];s[n];d[n])          / time data generation in ms
+@ \t q:+`t`s`d!(t[n];s[n];d[n])    / time data generation in ms
 3391
 @end example 
 
 As this point one might want to check start and stop times, see if the symbol distribution is actually random and look at the distribution of the price deltas.
 
 @example
-@ select min t, max t from q        / min and max time values
-t|09:00:00.000
-t|18:59:59.999
+ select ti:min t, tf:max t from q / min and max time values
+ti|09:00:00.000
+tf|18:59:59.999
 
-@ select #s by s from q             / count each symbol
-s|s       
+ select c:#s by s from q          / count each symbol
+s|c       
 -|--------
-a|19999325
-b|20000982
-c|19996938
-d|20001721
-e|20001034
+a|20003490
+b|19997344
+c|19998874
+d|20000640
+e|19999652
 
-@ select #d by d from q             / check the normal distribution
-d |d       
+ select c:#d by d from q          / check the normal distribution (2s to run)
+d |c       
 --|--------
--6|       1
--5|      46
--4|    6284
--3|  263124
--2| 4276881
--1|27184896
- 0|36538226
- 1|27182073
- 2| 4278498
- 3|  263523
- 4|    6391
- 5|      57
+-6|1       
+-5|55      
+-4|6226    
+-3|263801  
+-2|4280721 
+-1|27179734
+ 0|36531595
+ 1|27188092
+ 2|4279872 
+ 3|263610  
+ 4|6245    
+ 5|48
+
+ select gain:sum d by s from q    / profit (or loss) over each symbol
+s|gain 
+-|-----
+a|  872
+b| 2765
+c| 2668
+d| 2171
+e|-2354
+
+ select loss:min +\d by s from q  / worst loss over the period
+s|loss 
+-|-----
+a|-1803
+b| -846
+c|-2732
+d|-2101
+e|-2903
 @end example
 
 @section Understanding Code Examples
@@ -3334,7 +3352,7 @@ These functions determine the amount of time (in integer days) since Monday 00:0
 Given the terse syntax of k9 it likley won't be a surprise to a new user that the error messages are rather short also.  The errors are listed on the help page and described in more detail below.
 
 @example
-error: @ref{class} @ref{rank} @ref{length} @ref{_type,type} @ref{domain} @ref{limit} stack (@ref{parse} @ref{_value,value}) 
+error: @ref{class} @ref{rank} @ref{length} @ref{_type,type} @ref{domain} @ref{limit} stack @ref{parse} @ref{_value,value}
 @end example
 
 @anchor{class}@section :class
@@ -3344,7 +3362,7 @@ Calling a function on mismatched types.
 :class
 @end example
 
-@anchor{rank}@section rank
+@anchor{rank}@section :rank
 Calling a function with too many parameters.
 @example
 @ @{x+y@}[1;2;3]
@@ -3353,7 +3371,7 @@ Calling a function with too many parameters.
 :rank
 @end example
 
-@anchor{length}@section length
+@anchor{length}@section :length
 Operations on unequal length lists that require equal length.
 @example
 @ (1 2 3)+(4 5)
@@ -3420,16 +3438,14 @@ Undefined variable is used.
 :value
 @end example
 
-@node Conculsion
-@chapter Conculsion
+@node Conclusion
+@chapter Conclusion
 
 I expect you are surprised by the performance possible by k9 and the fact that it all fits into a 134,152 bytes!  (For comparison the ls program weighs in 51,888 bytes and can't even change directory.)
 
 If you're frustrated by the syntax or terse errors, then you're not alone.  I'd expect most had the same problems, persevered, and finally came away a power user able to squeeze information from data faster than previously imagined.
 
-If you're come along enough to get it, then you'll probably realised this manual isn't needed and it's all here...
-
-The built-in reference screen containing all the k9 commands.
+If you've come along enough to get it, then you'll probably realised this manual isn't needed and it's all here...
 
 @smallformat
 @verbatiminclude k.d

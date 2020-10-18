@@ -49,9 +49,9 @@ Next: <a href="Benchmarks.html" accesskey="n" rel="next">Benchmarks</a>, Previou
 <p>Before jumping into synax let&rsquo;s look at some example problems to get a sense of the speed of k9 at processing data.  Given both the historic use of languages similar to k9 in finance and the author&rsquo;s background much of the examples will be based on financial markets.  For those not familiar with this field a short introduction will likley be needed.
 </p>
 <span id="A-Tiny-Introduction-to-Financial-Market-Data"></span><h3 class="section">2.1 A Tiny Introduction to Financial Market Data</h3>
-<p>Financial market data generally are stored as prices (often call quotes) and trades.  Prices will include at a minimum time, securtiy, price to buy and price to sell.  Trades will include at a minimum time, security, and trade price.  In normal markets there are many more prices than trades.
+<p>Financial market data generally are stored as prices (often call quotes) and trades.  At a minimum, prices will include time (t), price to buy (b for bid) and price to sell (a for ask).  Trades will include at a minimum time (t) and trade price (p).  In normal markets there are many more prices than trades.  (Additionally, the data normally includes the name of the security (s) and the exchange (x) from which the data comes.)  
 </p>
-<p>Let&rsquo;s use k9 to generate a set of random prices for a single security hence elimating the need for that field.
+<p>Let&rsquo;s use k9 to generate a set of random prices.
 </p>
 <div class="example">
 <pre class="example"> n:10
@@ -83,55 +83,73 @@ t            p
 10:59:07.262  99
 </pre></div>
 
-<p>You&rsquo;ll note that the times didn&rsquo;t line up and that&rsquo;s because it apparently took you 1s to decide to trade.  Because of this delay you&rsquo;ll often have to look back at the previous prices to join trade (t) and quote (q) data.
+<p>You&rsquo;ll note that the times didn&rsquo;t line up and that&rsquo;s because it apparently took you a second to decide to trade.  Because of this delay you&rsquo;ll often have to look back at the previous prices to join trade (t) and quote (q) data.
 </p>
 <p>Now that you&rsquo;ve learned enough finance to understand the data, let&rsquo;s scale up to larger problems to see the power of k9.
 </p>
 
 <span id="Data-Manipulation"></span><h3 class="section">2.2 Data Manipulation</h3>
-<p>Generate a table of random financial data and compute basic statistics quickly.  This table takes about 4 GB and 3.3 seconds on a relatively new consumer laptop.
+<p>Generate a table of random data and compute basic statistics quickly.  The data here includes time (t), security (s), and price delta (d).  This table takes about 4 GB and 3.3 seconds on a relatively new consumer laptop.
 </p>
 <div class="example">
-<pre class="example">&nbsp;n:_100e6                               / 100 million rows
-&nbsp;t:{09:00:00.000+x?10:00:00.000}     / random times
-&nbsp;s:{x?`a`b`c`d`e}                    / random symbols
+<pre class="example">&nbsp;n:_100e6                         / 100 million rows
+&nbsp;t:{09:00:00.000+x?10:00:00.000}  /  random times
+&nbsp;s:{x?`a`b`c`d`e}                 / random symbols
 &nbsp;m:0,(|m),365378984,m:271810244 42800467 2636454 62769 572 2;
 &nbsp;d:{(-6+!13)@(+\m)bin x?_1e9}
-&nbsp;\t q:+`t`s`d!(t[n];s[n];d[n])          / time data generation in ms
+&nbsp;\t q:+`t`s`d!(t[n];s[n];d[n])    / time data generation in ms
 3391
 </pre></div>
 
 <p>As this point one might want to check start and stop times, see if the symbol distribution is actually random and look at the distribution of the price deltas.
 </p>
 <div class="example">
-<pre class="example">&nbsp;select min t, max t from q        / min and max time values
-t|09:00:00.000
-t|18:59:59.999
+<pre class="example"> select ti:min t, tf:max t from q / min and max time values
+ti|09:00:00.000
+tf|18:59:59.999
 
-&nbsp;select #s by s from q             / count each symbol
-s|s       
+ select c:#s by s from q          / count each symbol
+s|c       
 -|--------
-a|19999325
-b|20000982
-c|19996938
-d|20001721
-e|20001034
+a|20003490
+b|19997344
+c|19998874
+d|20000640
+e|19999652
 
-&nbsp;select #d by d from q             / check the normal distribution
-d |d       
+ select c:#d by d from q          / check the normal distribution (2s to run)
+d |c       
 --|--------
--6|       1
--5|      46
--4|    6284
--3|  263124
--2| 4276881
--1|27184896
- 0|36538226
- 1|27182073
- 2| 4278498
- 3|  263523
- 4|    6391
- 5|      57
+-6|1       
+-5|55      
+-4|6226    
+-3|263801  
+-2|4280721 
+-1|27179734
+ 0|36531595
+ 1|27188092
+ 2|4279872 
+ 3|263610  
+ 4|6245    
+ 5|48
+
+ select gain:sum d by s from q    / profit (or loss) over each symbol
+s|gain 
+-|-----
+a|  872
+b| 2765
+c| 2668
+d| 2171
+e|-2354
+
+ select loss:min +\d by s from q  / worst loss over the period
+s|loss 
+-|-----
+a|-1803
+b| -846
+c|-2732
+d|-2101
+e|-2903
 </pre></div>
 
 <span id="Understanding-Code-Examples"></span><h3 class="section">2.3 Understanding Code Examples</h3>
