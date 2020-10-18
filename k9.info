@@ -3194,43 +3194,13 @@ File: k9.info,  Node: kSQL,  Next: System,  Prev: Tables,  Up: Top
 *******
 
 kSQL is a powerful query language for tables.  The benchmark chapter
-has shown how quickly k9 can process big tables.  Here we'll work on a
-small table in order to make things clear and repeatable.
+has shown how quickly k9 can process big tables.
 
-   Here's a small sample table.
-
-      t:[[]day: 2020.01.06 2020.01.06 2020.01.07 2020.01.07;sym:`a`b`a`b;price:100 50 101 49];t
-     day        sym price
-     ---------- --- -----
-     2020.01.06 a     100
-     2020.01.06 b      50
-     2020.01.07 a     101
-     2020.01.07 b      49
-
-   kSQL looks similar to SQL as can be shown from the built-in
-reference screen.
-
-select A by B from T where C
-
-      select from t
-     day        sym price
-     ---------- --- -----
-     2020.01.06 a     100
-     2020.01.06 b      50
-     2020.01.07 a     101
-     2020.01.07 b      49
-
-      select from t where sym=`a
-     day        sym price
-     ---------- --- -----
-     2020.01.06 a     100
-     2020.01.07 a     101
-
-      select avg price by sym from t
-     sym|price
-     ---|-----
-     a  |100.5
-     b  |49.5
+     select [count first last min max sum avg ..]A by B from T where C
+     delete from T where C               *update A by B from T where C
+     x,y      / union, insert, upsert, outerjoin, leftjoin, asofjoin ..
+     x+y      / equi and asof outer joins: combine markets through time
+     x#y x_y  / take/drop, intersect/except, inner join
 
 14.1 Queries
 ============
@@ -3927,29 +3897,29 @@ Ref: t73419
 Ref: xtable75031
 Ref: ktable75514
 Node: kSQL75971
-Ref: union78847
-Ref: left79368
-Ref: outer79889
-Ref: asof80224
-Ref: asof+81268
-Node: System82941
-Ref: load83389
-Ref: timing83577
-Ref: variables83664
-Ref: memory83765
-Ref: cd83880
-Node: .z83964
-Node: Errors84680
-Ref: class85116
-Ref: rank85205
-Ref: length85327
-Ref: _type85448
-Ref: domain85557
-Ref: limit85679
-Ref: nyi85880
-Ref: parse86213
-Ref: _value86368
-Node: Conculsion86496
+Ref: union78300
+Ref: left78821
+Ref: outer79342
+Ref: asof79677
+Ref: asof+80721
+Node: System82394
+Ref: load82842
+Ref: timing83030
+Ref: variables83117
+Ref: memory83218
+Ref: cd83333
+Node: .z83417
+Node: Errors84133
+Ref: class84569
+Ref: rank84658
+Ref: length84780
+Ref: _type84901
+Ref: domain85010
+Ref: limit85132
+Ref: nyi85333
+Ref: parse85666
+Ref: _value85821
+Node: Conculsion85949
 
 End Tag Table
 

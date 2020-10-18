@@ -2920,50 +2920,17 @@ d         |p
 
 @node kSQL
 @chapter kSQL
-kSQL is a powerful query language for tables.  The benchmark chapter has shown how quickly k9 can process big tables.  Here we'll work on a small table in order to make things clear and repeatable.
-
-Here's a small sample table.
+kSQL is a powerful query language for tables.  The benchmark chapter has shown how quickly k9 can process big tables.  
 
 @example
- t:[[]day: 2020.01.06 2020.01.06 2020.01.07 2020.01.07;sym:`a`b`a`b;price:100 50 101 49];t
-day        sym price
----------- --- -----
-2020.01.06 a     100
-2020.01.06 b      50
-2020.01.07 a     101
-2020.01.07 b      49
-@end example
-
-kSQL looks similar to SQL as can be shown from the built-in reference screen.
-
-@verbatim
-select A by B from T where C
-@end verbatim
-
-@example
- select from t
-day        sym price
----------- --- -----
-2020.01.06 a     100
-2020.01.06 b      50
-2020.01.07 a     101
-2020.01.07 b      49
-
- select from t where sym=`a
-day        sym price
----------- --- -----
-2020.01.06 a     100
-2020.01.07 a     101
-
- select avg price by sym from t
-sym|price
----|-----
-a  |100.5
-b  |49.5 
+select [count first last min max sum avg ..]A by B from T where C
+delete from T where C               *update A by B from T where C
+x,y      / union, insert, upsert, outerjoin, leftjoin, asofjoin ..
+x+y      / equi and asof outer joins: combine markets through time
+x#y x_y  / take/drop, intersect/except, inner join
 @end example
 
 @section Queries
-
 
 @subsection Trivial Query
 There a number of ways to return a complete table with kSQL.  You can use the table name, a kSQL query without columns, or a fully specified query with columns.
