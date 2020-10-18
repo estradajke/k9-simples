@@ -2848,13 +2848,29 @@ Replace the values in list x at indices i with f or f[y].
 
 File: k9.info,  Node: I/O,  Next: Tables,  Prev: Additional Functions,  Up: Top
 
-12 I/O
-******
+12 I/O and Interface
+********************
 
 Given k9 is useful for analyzing data it won't be a surprise that
 input and output (I/O) are supported.  k9 has been optimized to read
 in data quickly so if you have a workflow of making a tea while the
 huge csv file loads you might have an issue.
+
+   k9 is also able to interface with other languages so one doesn't
+need to rewrite everything already written into k9.
+
+      I/O
+      0:  *note r: r line./*note w: w line. line
+      1:  *note r: r char./*note w: w char. char
+     *2:  *note r: r data./*note w: w data. data
+     *3:  kipc set
+     *4:  http get
+
+      Interface
+     `csv?`csv t    / *note read: read csv./*note write: write csv. csv
+     `json?`json t  / *note read: read json./*note write: write json. json
+     *ffi: "./a.so"5:`f!"ii" /I f(I i){return 2+i;}       //cblas ..
+     *c/k: "./b.so"5:`f!1    /K f(K x){return ki(2+xi);}  //feeds ..
 
 12.1 Input format values to table
 =================================
@@ -2881,20 +2897,48 @@ with the correct type.
      ---------- ------------ --- ----- ------- ------
      2020.04.20 12:34:56.789  37 12.3  "hi"    bye
 
-12.2 Format to CSV/json/k => 'csv x
-===================================
+12.2 read CSV => 'csv?x
+=======================
 
-Convert x to CSV/json/k format.  Works on atoms, lists, and tables.
-      `csv 3 1 2
-     "3,1,2"
-      `json (3;`abc;2.3;"blue")
-     "[\"3\",\"abc\",2.3,\"blue\"]"
-      `k [[]i:!5;s:`a`b`c`d`e;v:5?10]
-     "[[]i:0 1 2 3 4;s:`a`b`c`d`e;v:7 4 7 3 2]"
-      `csv `a`b!((1 2);(3 4))      / error as dictionary input
-     :class
+Convert x from CSV format.  Works on lists and tables.
 
-12.3 write line => x 0:y
+      `csv?("a,b";"1,3.";"2,4.")
+     a b
+     - --
+     1 3.
+     2 4.
+
+12.3 write csv => 'csv x
+========================
+
+Convert x to CSV format.  Works on lists and tables.
+
+      `csv [[]a:1 2;b:3. 4.]
+     a,b
+     1,3.
+     2,4.
+
+12.4 read json => 'json?x
+=========================
+
+Convert x from json format.  Works on lists and tables.
+
+      `json?("{a:1,b:3.}";"{a:2,b:4.}")
+     a b
+     - --
+     1 3.
+     2 4.
+
+12.5 write json => 'json x
+==========================
+
+Convert x to json format.  Works on lists and tables.
+
+      `json [[]a:1 2;b:3. 4.]
+     {a:1,b:3.}
+     {a:2,b:4.}
+
+12.6 write line => x 0:y
 ========================
 
 Output to x the list of strings in y.  y must be a list of strings.
@@ -2902,21 +2946,21 @@ If y is a single stream then convert to list via enlist.
       ""0:("blue";"red")      / "" represents stdout
      blue
      red
-      ""0:$'("blue";"red";3)  / each element to string
-     blue
-     red
-     3
-      "some.csv"0:,`csv 3 1 2 / will fail without enlist
 
-12.4 read line => 0:x
+      "some.csv" 0:`csv [[]a:1 2;b:3. 4.]
+     "some.csv"
+
+12.7 read line => 0:x
 =====================
 
 Read from file x.
-      "some.txt"0:,`csv 3 1 2 / first write a file to some.txt
-      0:"some.txt"            / now read it back
-     3,1,2
 
-12.5 write char => x 1:y
+      0:"some.csv"
+     a,b
+     1,3.
+     2,4.
+
+12.8 write char => x 1:y
 ========================
 
 Output to x the list of chars in y.  y must be a list of chars.  If y
@@ -2931,7 +2975,7 @@ is a single char then convert to list via enlist.
      2 4
       "some.k"1:`k t      / write table to file in k format
 
-12.6 read char => 1:x
+12.9 read char => 1:x
 =====================
 
 Read from file x.
@@ -2949,8 +2993,8 @@ Read from file x.
      1 3
      2 4
 
-12.7 Load file => 2: x
-======================
+12.10 read data => 2: x
+=======================
 
 Load file, eg. csv or from a (x 2: y) save.  For the latter one can
 find a "save then load" example in the next section.
@@ -2967,30 +3011,11 @@ find a "save then load" example in the next section.
      0.5366064  0.8250996  0.8978589  0.4895149  0.6811532
      0.1653467  0.05017282 0.4831432  0.4657975  0.4434603
      0.08842649 0.8885677  0.23108    0.3336785  0.6270692
-     0.3329232  0.3528549  0.2659892  0.1927104  0.4304933
-     0.05392223 0.7969098  0.4312251  0.7799843  0.5060091
-     0.1922035  0.5056334  0.2600317  0.4555804  0.56671
-     0.4545242  0.01599503 0.1710724  0.4320832  0.4520696
-     0.7843445  0.4319026  0.1015124  0.877304   0.9949587
-     0.09920892 0.8340988  0.3119439  0.4945446  0.967994
-     0.5899243  0.4547598  0.436347   0.3572658  0.2969937
-     0.3565662  0.7649578  0.5738509  0.402629   0.7585447
-     0.4563912  0.509789   0.01807586 0.3083831  0.2447315
-     0.1614906  0.601976   0.1165871  0.0395344  0.05975276
-     0.1710438  0.1687449  0.7200667  0.9578548  0.7333167
-     0.8933161  0.7996999  0.1117325  0.2385556  0.5339807
-     0.03895895 0.4215705  0.01501522 0.9872831  0.9973345
-     0.4643205  0.5794769  0.5476008  0.8957309  0.1633682
-     0.1797837  0.5683136  0.993727   0.1164099  0.3229972
-     0.3687319  0.8430398  0.5818712  0.5021431  0.8034257
-     0.9274384  0.6739888  0.1821047  0.113806   0.9466886
-     0.8766261  0.05144491 0.8987524  0.2241464  0.617475
-     0.455943   0.449666   0.9678184  0.06839654 0.1232913
      ..
 
 
-12.8 Save/load => x 2: y
-========================
+12.11 write data => x 2: y
+==========================
 
 Save to file x non-atomic data y (eg.  lists, dictionaries, or
 tables).
@@ -3009,17 +3034,17 @@ speeds given the file size (800 MB).
       \t r:2:`r;select avg a,sum b, max c, min d, sum e from r
      148
 
-12.9 conn/set => 3:
-===================
-
-Enterprise only.
-
-12.10 http/get => 4:
+12.12 conn/set => 3:
 ====================
 
 Enterprise only.
 
-12.11 lib => 5:
+12.13 http/get => 4:
+====================
+
+Enterprise only.
+
+12.14 lib => 5:
 ===============
 
 Enterprise only.
@@ -3883,45 +3908,48 @@ Ref: cond65822
 Ref: amend65942
 Ref: dmend66604
 Node: I/O67307
-Ref: input format67654
-Ref: format68665
-Ref: write line69065
-Ref: read line69452
-Ref: write char69639
-Ref: read char70034
-Ref: load data70399
-Ref: write data72156
-Ref: conn/set72700
-Ref: http/get72759
-Ref: lib72820
-Node: Tables73285
-Ref: t73731
-Ref: xtable75343
-Ref: ktable75826
-Node: kSQL76283
-Ref: union79159
-Ref: left79680
-Ref: outer80201
-Ref: asof80536
-Ref: asof+81580
-Node: System83253
-Ref: load83701
-Ref: timing83889
-Ref: variables83976
-Ref: memory84077
-Ref: cd84192
-Node: .z84276
-Node: Errors84992
-Ref: class85428
-Ref: rank85517
-Ref: length85639
-Ref: _type85760
-Ref: domain85869
-Ref: limit85991
-Ref: nyi86192
-Ref: parse86525
-Ref: _value86680
-Node: Conculsion86808
+Ref: input format68301
+Ref: read csv69312
+Ref: write csv69490
+Ref: read json69654
+Ref: write json69844
+Ref: w line70017
+Ref: r line70325
+Ref: w char70438
+Ref: r char70832
+Ref: r data71197
+Ref: w data71838
+Ref: conn/set72386
+Ref: http/get72447
+Ref: lib72508
+Node: Tables72973
+Ref: t73419
+Ref: xtable75031
+Ref: ktable75514
+Node: kSQL75971
+Ref: union78847
+Ref: left79368
+Ref: outer79889
+Ref: asof80224
+Ref: asof+81268
+Node: System82941
+Ref: load83389
+Ref: timing83577
+Ref: variables83664
+Ref: memory83765
+Ref: cd83880
+Node: .z83964
+Node: Errors84680
+Ref: class85116
+Ref: rank85205
+Ref: length85327
+Ref: _type85448
+Ref: domain85557
+Ref: limit85679
+Ref: nyi85880
+Ref: parse86213
+Ref: _value86368
+Node: Conculsion86496
 
 End Tag Table
 

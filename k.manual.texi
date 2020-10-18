@@ -2605,8 +2605,25 @@ c d x32
 
 @end example
 @node I/O
-@chapter I/O
+@chapter I/O and Interface
 Given k9 is useful for analyzing data it won't be a surprise that input and output (I/O) are supported.  k9 has been optimized to read in data quickly so if you have a workflow of making a tea while the huge csv file loads you might have an issue.
+
+k9 is also able to interface with other languages so one doesn't need to rewrite everything already written into k9.
+
+@example
+ I/O         
+ 0:  @ref{r line,r}/@ref{w line,w} line
+ 1:  @ref{r char,r}/@ref{w char,w} char
+*2:  @ref{r data,r}/@ref{w data,w} data
+*3:  kipc set
+*4:  http get
+
+ Interface
+`csv?`csv t    / @ref{read csv,read}/@ref{write csv,write} csv
+`json?`json t  / @ref{read json,read}/@ref{write json,write} json
+*ffi: "./a.so"5:`f!"ii" /I f(I i)@{return 2+i;@}       //cblas ..
+*c/k: "./b.so"5:`f!1    /K f(K x)@{return ki(2+xi);@}  //feeds ..
+@end example
 
 @anchor{input format}@section Input format values to table
 This section shows you the syntax for reading in data into a table with the correct type.
@@ -2633,38 +2650,69 @@ date       time         int float char    symbol
 @end example
 
 
-@anchor{format}@section Format to CSV/json/k @result{} `csv x
-Convert x to CSV/json/k format.  Works on atoms, lists, and tables.
+@anchor{read csv}@section read CSV @result{} `csv?x
+Convert x from CSV format.  Works on lists and tables.
+
 @example
-@ `csv 3 1 2
-"3,1,2"
-@ `json (3;`abc;2.3;"blue")
-"[\"3\",\"abc\",2.3,\"blue\"]"
-@ `k [[]i:!5;s:`a`b`c`d`e;v:5?10]
-"[[]i:0 1 2 3 4;s:`a`b`c`d`e;v:7 4 7 3 2]"
-@ `csv `a`b!((1 2);(3 4))      / error as dictionary input
-:class
+ `csv?("a,b";"1,3.";"2,4.")
+a b 
+- --
+1 3.
+2 4.
 @end example
-@anchor{write line}@section write line @result{} x 0:y
+
+@anchor{write csv}@section write csv @result{} `csv x
+Convert x to CSV format.  Works on lists and tables.
+
+@example
+ `csv [[]a:1 2;b:3. 4.]
+a,b 
+1,3.
+2,4.
+@end example
+
+@anchor{read json}@section read json @result{} `json?x
+Convert x from json format.  Works on lists and tables.
+
+@example
+ `json?("@{a:1,b:3.@}";"@{a:2,b:4.@}")
+a b 
+- --
+1 3.
+2 4.
+@end example
+
+@anchor{write json}@section write json @result{} `json x
+Convert x to json format.  Works on lists and tables.
+
+@example
+ `json [[]a:1 2;b:3. 4.]
+@{a:1,b:3.@}
+@{a:2,b:4.@}
+@end example
+
+@anchor{w line}@section write line @result{} x 0:y
 Output to x the list of strings in y.  y must be a list of strings.  If y is a single stream then convert to list via enlist.
 @example
-@ ""0:("blue";"red")      / "" represents stdout
+ ""0:("blue";"red")      / "" represents stdout
 blue
 red
-@ ""0:$'("blue";"red";3)  / each element to string
-blue
-red
-3
-@ "some.csv"0:,`csv 3 1 2 / will fail without enlist
+
+ "some.csv" 0:`csv [[]a:1 2;b:3. 4.]
+"some.csv"
 @end example
-@anchor{read line}@section read line @result{} 0:x
+
+@anchor{r line}@section read line @result{} 0:x
 Read from file x.
+
 @example
-@ "some.txt"0:,`csv 3 1 2 / first write a file to some.txt
-@ 0:"some.txt"            / now read it back
-3,1,2
+ 0:"some.csv"
+a,b 
+1,3.
+2,4.
 @end example
-@anchor{write char}@section write char @result{} x 1:y
+
+@anchor{w char}@section write char @result{} x 1:y
 Output to x the list of chars in y.  y must be a list of chars.  If y is a single char then convert to list via enlist.
 @example
 @ "some.txt"1:"hello here\nis some text\n"
@@ -2677,7 +2725,7 @@ a b
 2 4
 @ "some.k"1:`k t      / write table to file in k format
 @end example
-@anchor{read char}@section read char @result{} 1:x
+@anchor{r char}@section read char @result{} 1:x
 Read from file x.
 @example
 @ "some.txt"0:,`csv 3 1 2 / first write a file to some.txt
@@ -2695,7 +2743,7 @@ a b
 2 4
 @end example
 
-@anchor{load data}@section Load file @result{} 2: x
+@anchor{r data}@section read data @result{} 2: x
 Load file, eg.@: csv or from a (x 2: y) save.  For the latter one can find a ``save then load'' example in the next section.
 
 @example
@@ -2711,30 +2759,11 @@ a          b          c          d          e
 0.5366064  0.8250996  0.8978589  0.4895149  0.6811532 
 0.1653467  0.05017282 0.4831432  0.4657975  0.4434603 
 0.08842649 0.8885677  0.23108    0.3336785  0.6270692 
-0.3329232  0.3528549  0.2659892  0.1927104  0.4304933 
-0.05392223 0.7969098  0.4312251  0.7799843  0.5060091 
-0.1922035  0.5056334  0.2600317  0.4555804  0.56671   
-0.4545242  0.01599503 0.1710724  0.4320832  0.4520696 
-0.7843445  0.4319026  0.1015124  0.877304   0.9949587 
-0.09920892 0.8340988  0.3119439  0.4945446  0.967994  
-0.5899243  0.4547598  0.436347   0.3572658  0.2969937 
-0.3565662  0.7649578  0.5738509  0.402629   0.7585447 
-0.4563912  0.509789   0.01807586 0.3083831  0.2447315 
-0.1614906  0.601976   0.1165871  0.0395344  0.05975276
-0.1710438  0.1687449  0.7200667  0.9578548  0.7333167 
-0.8933161  0.7996999  0.1117325  0.2385556  0.5339807 
-0.03895895 0.4215705  0.01501522 0.9872831  0.9973345 
-0.4643205  0.5794769  0.5476008  0.8957309  0.1633682 
-0.1797837  0.5683136  0.993727   0.1164099  0.3229972 
-0.3687319  0.8430398  0.5818712  0.5021431  0.8034257 
-0.9274384  0.6739888  0.1821047  0.113806   0.9466886 
-0.8766261  0.05144491 0.8987524  0.2241464  0.617475  
-0.455943   0.449666   0.9678184  0.06839654 0.1232913 
 ..
 
 @end example
 
-@anchor{write data}@section Save/load @result{} x 2: y
+@anchor{w data}@section write data @result{} x 2: y
 Save to file x non-atomic data y (eg. lists, dictionaries, or tables). 
 
 This example saves 100mio 8-byte doubles to file.  The session is then closed and a fresh session reads in the file.  Both the write (420 ms) and compute statistc from file (146 ms) have impressive speeds given the file size (800 MB).
