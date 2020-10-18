@@ -1,6 +1,6 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
-October 17, 2020
+October 18, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -1329,8 +1329,6 @@ sorted using the keys.
 
 Cut list y by size, indices, ot function x.
 
-   Cut list.
-
       3^!10
      0 1 2
      3 4 5
@@ -1340,6 +1338,13 @@ Cut list y by size, indices, ot function x.
      0
      1 2 3 4
      5 6 7 8 9
+
+      8 9 10 11 12^.1*!20
+     0.8
+     0.9
+     1.
+     1.1
+     1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9
 
       {(x*x)within .5 1.5}^.1*!20
      0.8
@@ -3077,12 +3082,12 @@ given the file size (800 MB).
 12.9 conn/set => 3:
 ===================
 
-TBD
+Enterprise only.
 
 12.10 http/get => 4:
 ====================
 
-TBD
+Enterprise only.
 
 
 File: k9.info,  Node: Tables,  Next: kSQL,  Prev: I/O,  Up: Top
@@ -3869,101 +3874,101 @@ Ref: enlist36108
 Ref: cat36247
 Ref: sort36366
 Ref: [f]cut36598
-Ref: count37258
-Ref: [f]take37448
-Ref: floor38077
-Ref: [f]drop38168
-Ref: string38761
-Ref: cast+38862
-Ref: unique+39211
-Ref: find+39450
-Ref: type40169
-Ref: [f]at40525
-Ref: value40841
-Ref: [f]dot41115
-Node: Adverb42364
-Ref: scan43106
-Ref: join43636
-Ref: split43811
-Ref: each44002
-Ref: has44220
-Ref: eachp44393
-Ref: bin244833
-Ref: eachr45036
-Ref: eachl45233
-Ref: n scan45417
-Ref: c scan45897
-Ref: c over46409
-Ref: vs46546
-Ref: sv46666
-Node: Noun46790
-Ref: bool48156
-Ref: int48456
-Ref: flt48660
-Ref: char49038
-Ref: name49261
-Ref: uuid49492
-Ref: time49649
-Ref: date50263
-Ref: datetime50681
-Node: List51380
-Node: Dictionary56051
-Node: User Functions60839
-Node: Named Functions62959
-Ref: sqrt63588
-Ref: exp63661
-Ref: log63729
-Ref: sin63829
-Ref: cos63968
-Ref: div64116
-Ref: mod64272
-Ref: bar64450
-Ref: in64990
-Ref: bin65168
-Ref: within65382
-Node: Additional Functions65596
-Ref: cond65737
-Ref: amend65857
-Ref: dmend66519
-Node: I/O67222
-Ref: input format67569
-Ref: format68580
-Ref: write line68980
-Ref: read line69367
-Ref: write char69554
-Ref: read char69949
-Ref: load data70314
-Ref: write data72071
-Ref: conn/set75984
-Ref: http/get76028
-Node: Tables76078
-Ref: t76524
-Ref: xtable78136
-Ref: ktable78619
-Node: kSQL79076
-Ref: union81952
-Ref: left82473
-Ref: outer82994
-Ref: asof83329
-Ref: asof+84373
-Node: System86046
-Ref: load86494
-Ref: timing86682
-Ref: variables86769
-Ref: memory86870
-Ref: cd86985
-Node: .z87069
-Node: Errors87785
-Ref: class88221
-Ref: rank88310
-Ref: length88432
-Ref: _type88553
-Ref: domain88662
-Ref: limit88784
-Ref: nyi88985
-Ref: parse89318
-Ref: _value89473
-Node: Conculsion89601
+Ref: count37343
+Ref: [f]take37533
+Ref: floor38162
+Ref: [f]drop38253
+Ref: string38846
+Ref: cast+38947
+Ref: unique+39296
+Ref: find+39535
+Ref: type40254
+Ref: [f]at40610
+Ref: value40926
+Ref: [f]dot41200
+Node: Adverb42449
+Ref: scan43191
+Ref: join43721
+Ref: split43896
+Ref: each44087
+Ref: has44305
+Ref: eachp44478
+Ref: bin244918
+Ref: eachr45121
+Ref: eachl45318
+Ref: n scan45502
+Ref: c scan45982
+Ref: c over46494
+Ref: vs46631
+Ref: sv46751
+Node: Noun46875
+Ref: bool48241
+Ref: int48541
+Ref: flt48745
+Ref: char49123
+Ref: name49346
+Ref: uuid49577
+Ref: time49734
+Ref: date50348
+Ref: datetime50766
+Node: List51465
+Node: Dictionary56136
+Node: User Functions60924
+Node: Named Functions63044
+Ref: sqrt63673
+Ref: exp63746
+Ref: log63814
+Ref: sin63914
+Ref: cos64053
+Ref: div64201
+Ref: mod64357
+Ref: bar64535
+Ref: in65075
+Ref: bin65253
+Ref: within65467
+Node: Additional Functions65681
+Ref: cond65822
+Ref: amend65942
+Ref: dmend66604
+Node: I/O67307
+Ref: input format67654
+Ref: format68665
+Ref: write line69065
+Ref: read line69452
+Ref: write char69639
+Ref: read char70034
+Ref: load data70399
+Ref: write data72156
+Ref: conn/set76069
+Ref: http/get76128
+Node: Tables76189
+Ref: t76635
+Ref: xtable78247
+Ref: ktable78730
+Node: kSQL79187
+Ref: union82063
+Ref: left82584
+Ref: outer83105
+Ref: asof83440
+Ref: asof+84484
+Node: System86157
+Ref: load86605
+Ref: timing86793
+Ref: variables86880
+Ref: memory86981
+Ref: cd87096
+Node: .z87180
+Node: Errors87896
+Ref: class88332
+Ref: rank88421
+Ref: length88543
+Ref: _type88664
+Ref: domain88773
+Ref: limit88895
+Ref: nyi89096
+Ref: parse89429
+Ref: _value89584
+Node: Conculsion89712
 
 End Tag Table
 
