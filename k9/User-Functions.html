@@ -46,26 +46,32 @@ Next: <a href="Named-Functions.html" accesskey="n" rel="next">Named Functions</a
 </div>
 <hr>
 <span id="User-Functions-1"></span><h2 class="chapter">9 User Functions</h2>
-<p>New, user-defined functions can be created.  As these functions are built on top of the fast internal functions of k9 they should be performant also.  
+<p>User-defined functions can be created.  As these functions are built on top of the fast internal functions of k9 they should be performant also.  
 </p>
-<pre class="verbatim">Func {[a;b]a+b}
-</pre>
+<div class="example">
+<pre class="example">Func {[a;b]a+b}
+</pre></div>
+
 <span id="Function-arguments"></span><h3 class="section">9.1 Function arguments</h3>
-<p>Functions default to arguments of x, y, and z for the first three parameters but this can be explicitly shown or modified as needed.  Given k9&rsquo;s terseness it&rsquo;s rare to see good k9 code with long variable names.
+<p>Functions default to arguments of x, y, and z for the first three parameters but this can be explicitly added or modified as needed.  Given k9&rsquo;s terseness it&rsquo;s rare to see good k9 code with long variable names.
 </p>
 <div class="example">
 <pre class="example"> f1:{x+2*y}         / implicit arguements
  f1[2;10]
 22
+
  f2:{[x;y]x+2*y}    / explicit
  f2[2;10]
 22
+
  f3:{[g;h]g+2*h}    / explicit and renamed
  f3[2;10]
 22
+
  f4:{[please;dont]please+2*dont} / ouch
  f4[2;10]
 22
+
  @f1
 `.
 </pre></div>
