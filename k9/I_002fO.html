@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- October 18, 2020
+<!-- October 25, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -166,8 +166,10 @@ a b
 &nbsp;&quot;some.k&quot;1:`k t      / write table to file in k format
 </pre></div>
 <span id="r-char"></span><span id="read-char-_21d2-1_003ax"></span><h3 class="section">12.9 read char &rArr; 1:x</h3>
+
 <p>Read from file x.
-</p><div class="example">
+</p>
+<div class="example">
 <pre class="example">&nbsp;&quot;some.txt&quot;0:,`csv 3 1 2 / first write a file to some.txt
 &nbsp;1:&quot;some.txt&quot;            / now read it back
 &quot;3,1,2\n&quot;
@@ -184,6 +186,9 @@ a b
 </pre></div>
 
 <span id="r-data"></span><span id="read-data-_21d2-2_003a-x"></span><h3 class="section">12.10 read data &rArr; 2: x</h3>
+
+<p>Enterprise Only
+</p>
 <p>Load file, eg. csv or from a (x 2: y) save.  For the latter one can find a &ldquo;save then load&rdquo; example in the next section.
 </p>
 <div class="example">
@@ -204,6 +209,9 @@ a          b          c          d          e
 </pre></div>
 
 <span id="w-data"></span><span id="write-data-_21d2-x-2_003a-y"></span><h3 class="section">12.11 write data &rArr; x 2: y</h3>
+
+<p>Enterprise only
+</p>
 <p>Save to file x non-atomic data y (eg. lists, dictionaries, or tables). 
 </p>
 <p>This example saves 100mio 8-byte doubles to file.  The session is then closed and a fresh session reads in the file.  Both the write (420 ms) and compute statistc from file (146 ms) have impressive speeds given the file size (800 MB).
@@ -223,13 +231,16 @@ a          b          c          d          e
 
 
 <span id="conn_002fset"></span><span id="conn_002fset-_21d2-3_003a"></span><h3 class="section">12.12 conn/set &rArr; 3:</h3>
-<p>Enterprise only.
+
+<p>Enterprise only
 </p>
 <span id="http_002fget"></span><span id="http_002fget-_21d2-4_003a"></span><h3 class="section">12.13 http/get &rArr; 4:</h3>
-<p>Enterprise only.
+
+<p>Enterprise only
 </p>
 <span id="lib"></span><span id="lib-_21d2-5_003a"></span><h3 class="section">12.14 lib &rArr; 5:</h3>
-<p>Enterprise only.
+
+<p>Enterprise only
 </p>
 <p>Load shared library.
 </p>

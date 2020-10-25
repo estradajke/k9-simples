@@ -2105,37 +2105,42 @@ These functions are symmetric in the inputs f[x;y]=f[y;x] and the lists are not 
 
 @node Dictionary
 @chapter Dictionary
-Dictionaries are a data type of key-value pairs typically used to retrieve the value by using the key.  In other computer languages they are also known as associative arrays and maps.  Keys should be unique to avoid lookup value confusion but uniqueness is not enforced.  The values in the dictionary can be single elements, lists or tables.
+Dictionaries are a data type of key-value pairs typically used to retrieve the value by using the key.  In other computer languages they are also known as associative arrays and maps.  Keys should be unique to avoid lookup value confusion but uniqueness is not enforced.  The values in the dictionary can be single elements, lists, tables, or even dictionaries.
 
 Dictionaries in k9 are often used.  As an example in the benchmark chapter the market quote and trade data are dictionaries of symbols (name keys) and market data (table values).  
 
 @section Dictionary Creation @result{} x!y
+
+Dictionaries are created by using the key symbol and listing the keys (x) and values (y).  
+
 @example
-@ d0:`pi`e`c!3.14 2.72 3e8;d0            / elements
+ d0:`a37!12;d0                               / single entry
+`a37!12
+
+d1:`pi`e`c!3.14 2.72 3e8;d1                  / elements
 pi|3.14 
 e |2.72 
 c |3e+08
 
-@ d1:`time`temp!(12:00 12:01 12:10;25.0 25.1 25.6);d1 / lists
-time|12:00 12:01 12:10
-temp|25 25.1 25.6
+ d2:`time`time!(12:00+!3;25.0 25.1 25.6);d2  / lists
+time|12:00 12:01 12:02
+time|25. 25.1 25.6    
 
-@ d2:0 10 1!37.4 46.3 0.1;d2             / keys as numbers
-@ 0|37.4
+ d3:0 10 1!37.4 46.3 0.1;d3                  / keys as numbers
+ 0|37.4
 10|46.3
-@ 1|0.1
+ 1|0.1 
 
-@ d3:`a`b`a!1 2 3;d3                     / non-unique keys
+ d4:`a`b`a!1 2 3;d4                          / non-unique keys
 a|1
 b|2
 a|3
-
-@ d3`a                                   / `a value returned
-1
-
 @end example
+
 @section Dictionary Indexing @result{} x@@y
+
 Dictionaries, like lists, can be indexed in a number of ways.
+
 @example
 @ x:`a`b`c!(1 2;3 4;5 6);x
 a|1 2
@@ -2784,7 +2789,9 @@ a b
 @ "some.k"1:`k t      / write table to file in k format
 @end example
 @anchor{r char}@section read char @result{} 1:x
+
 Read from file x.
+
 @example
 @ "some.txt"0:,`csv 3 1 2 / first write a file to some.txt
 @ 1:"some.txt"            / now read it back
@@ -2802,6 +2809,9 @@ a b
 @end example
 
 @anchor{r data}@section read data @result{} 2: x
+
+Enterprise Only
+
 Load file, eg.@: csv or from a (x 2: y) save.  For the latter one can find a ``save then load'' example in the next section.
 
 @example
@@ -2822,6 +2832,9 @@ a          b          c          d          e
 @end example
 
 @anchor{w data}@section write data @result{} x 2: y
+
+Enterprise only
+
 Save to file x non-atomic data y (eg. lists, dictionaries, or tables). 
 
 This example saves 100mio 8-byte doubles to file.  The session is then closed and a fresh session reads in the file.  Both the write (420 ms) and compute statistc from file (146 ms) have impressive speeds given the file size (800 MB).
@@ -2841,13 +2854,16 @@ Start new session.
 
 
 @anchor{conn/set}@section conn/set @result{} 3:
-Enterprise only.
+
+Enterprise only
 
 @anchor{http/get}@section http/get @result{} 4:
-Enterprise only.
+
+Enterprise only
 
 @anchor{lib}@section lib @result{} 5:
-Enterprise only.
+
+Enterprise only
 
 Load shared library.
 

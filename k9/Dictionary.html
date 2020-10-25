@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- October 18, 2020
+<!-- October 25, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -46,38 +46,43 @@ Next: <a href="User-Functions.html" accesskey="n" rel="next">User Functions</a>,
 </div>
 <hr>
 <span id="Dictionary-1"></span><h2 class="chapter">8 Dictionary</h2>
-<p>Dictionaries are a data type of key-value pairs typically used to retrieve the value by using the key.  In other computer languages they are also known as associative arrays and maps.  Keys should be unique to avoid lookup value confusion but uniqueness is not enforced.  The values in the dictionary can be single elements, lists or tables.
+<p>Dictionaries are a data type of key-value pairs typically used to retrieve the value by using the key.  In other computer languages they are also known as associative arrays and maps.  Keys should be unique to avoid lookup value confusion but uniqueness is not enforced.  The values in the dictionary can be single elements, lists, tables, or even dictionaries.
 </p>
 <p>Dictionaries in k9 are often used.  As an example in the benchmark chapter the market quote and trade data are dictionaries of symbols (name keys) and market data (table values).  
 </p>
 <span id="Dictionary-Creation-_21d2-x_0021y"></span><h3 class="section">8.1 Dictionary Creation &rArr; x!y</h3>
+
+<p>Dictionaries are created by using the key symbol and listing the keys (x) and values (y).  
+</p>
 <div class="example">
-<pre class="example">&nbsp;d0:`pi`e`c!3.14 2.72 3e8;d0            / elements
+<pre class="example"> d0:`a37!12;d0                               / single entry
+`a37!12
+
+d1:`pi`e`c!3.14 2.72 3e8;d1                  / elements
 pi|3.14 
 e |2.72 
 c |3e+08
 
-&nbsp;d1:`time`temp!(12:00 12:01 12:10;25.0 25.1 25.6);d1 / lists
-time|12:00 12:01 12:10
-temp|25 25.1 25.6
+ d2:`time`time!(12:00+!3;25.0 25.1 25.6);d2  / lists
+time|12:00 12:01 12:02
+time|25. 25.1 25.6    
 
-&nbsp;d2:0 10 1!37.4 46.3 0.1;d2             / keys as numbers
-&nbsp;0|37.4
+ d3:0 10 1!37.4 46.3 0.1;d3                  / keys as numbers
+ 0|37.4
 10|46.3
-&nbsp;1|0.1
+ 1|0.1 
 
-&nbsp;d3:`a`b`a!1 2 3;d3                     / non-unique keys
+ d4:`a`b`a!1 2 3;d4                          / non-unique keys
 a|1
 b|2
 a|3
-
-&nbsp;d3`a                                   / `a value returned
-1
-
 </pre></div>
+
 <span id="Dictionary-Indexing-_21d2-x_0040y"></span><h3 class="section">8.2 Dictionary Indexing &rArr; x@y</h3>
+
 <p>Dictionaries, like lists, can be indexed in a number of ways.
-</p><div class="example">
+</p>
+<div class="example">
 <pre class="example">&nbsp;x:`a`b`c!(1 2;3 4;5 6);x
 a|1 2
 b|3 4

@@ -1,6 +1,6 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
-October 18, 2020
+October 25, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -2317,7 +2317,8 @@ Dictionaries are a data type of key-value pairs typically used to
 retrieve the value by using the key.  In other computer languages they
 are also known as associative arrays and maps.  Keys should be unique
 to avoid lookup value confusion but uniqueness is not enforced.  The
-values in the dictionary can be single elements, lists or tables.
+values in the dictionary can be single elements, lists, tables, or
+even dictionaries.
 
    Dictionaries in k9 are often used.  As an example in the benchmark
 chapter the market quote and trade data are dictionaries of symbols
@@ -2326,33 +2327,36 @@ chapter the market quote and trade data are dictionaries of symbols
 8.1 Dictionary Creation => x!y
 ==============================
 
-      d0:`pi`e`c!3.14 2.72 3e8;d0            / elements
+Dictionaries are created by using the key symbol and listing the keys
+(x) and values (y).
+
+      d0:`a37!12;d0                               / single entry
+     `a37!12
+
+     d1:`pi`e`c!3.14 2.72 3e8;d1                  / elements
      pi|3.14
      e |2.72
      c |3e+08
 
-      d1:`time`temp!(12:00 12:01 12:10;25.0 25.1 25.6);d1 / lists
-     time|12:00 12:01 12:10
-     temp|25 25.1 25.6
+      d2:`time`time!(12:00+!3;25.0 25.1 25.6);d2  / lists
+     time|12:00 12:01 12:02
+     time|25. 25.1 25.6
 
-      d2:0 10 1!37.4 46.3 0.1;d2             / keys as numbers
+      d3:0 10 1!37.4 46.3 0.1;d3                  / keys as numbers
       0|37.4
      10|46.3
       1|0.1
 
-      d3:`a`b`a!1 2 3;d3                     / non-unique keys
+      d4:`a`b`a!1 2 3;d4                          / non-unique keys
      a|1
      b|2
      a|3
-
-      d3`a                                   / `a value returned
-     1
-
 
 8.2 Dictionary Indexing => x@y
 ==============================
 
 Dictionaries, like lists, can be indexed in a number of ways.
+
       x:`a`b`c!(1 2;3 4;5 6);x
      a|1 2
      b|3 4
@@ -3035,6 +3039,7 @@ is a single char then convert to list via enlist.
 =====================
 
 Read from file x.
+
       "some.txt"0:,`csv 3 1 2 / first write a file to some.txt
       1:"some.txt"            / now read it back
      "3,1,2\n"
@@ -3052,7 +3057,9 @@ Read from file x.
 12.10 read data => 2: x
 =======================
 
-Load file, eg. csv or from a (x 2: y) save.  For the latter one can
+Enterprise Only
+
+   Load file, eg. csv or from a (x 2: y) save.  For the latter one can
 find a "save then load" example in the next section.
 
       2:`t.csv
@@ -3073,7 +3080,9 @@ find a "save then load" example in the next section.
 12.11 write data => x 2: y
 ==========================
 
-Save to file x non-atomic data y (eg.  lists, dictionaries, or
+Enterprise only
+
+   Save to file x non-atomic data y (eg.  lists, dictionaries, or
 tables).
 
    This example saves 100mio 8-byte doubles to file.  The session is
@@ -3093,17 +3102,17 @@ speeds given the file size (800 MB).
 12.12 conn/set => 3:
 ====================
 
-Enterprise only.
+Enterprise only
 
 12.13 http/get => 4:
 ====================
 
-Enterprise only.
+Enterprise only
 
 12.14 lib => 5:
 ===============
 
-Enterprise only.
+Enterprise only
 
    Load shared library.
 
@@ -3914,66 +3923,66 @@ Ref: date50867
 Ref: datetime51285
 Node: List51984
 Node: Dictionary57259
-Node: User Functions62047
-Node: Named Functions64171
-Ref: sqrt64800
-Ref: exp64873
-Ref: log64941
-Ref: sin65041
-Ref: cos65180
-Ref: div65328
-Ref: mod65484
-Ref: bar65662
-Ref: in66202
-Ref: bin66380
-Ref: within66594
-Node: Additional Functions66808
-Ref: cond66949
-Ref: amend67069
-Ref: dmend67731
-Node: I/O68434
-Ref: input format69428
-Ref: read csv70439
-Ref: write csv70617
-Ref: read json70781
-Ref: write json70971
-Ref: w line71144
-Ref: r line71452
-Ref: w char71565
-Ref: r char71959
-Ref: r data72324
-Ref: w data72965
-Ref: conn/set73513
-Ref: http/get73574
-Ref: lib73635
-Node: Tables74100
-Ref: t74546
-Ref: xtable76158
-Ref: ktable76641
-Node: kSQL77098
-Ref: union79427
-Ref: left79948
-Ref: outer80469
-Ref: asof80804
-Ref: asof+81848
-Node: System83521
-Ref: load83969
-Ref: timing84157
-Ref: variables84244
-Ref: memory84345
-Ref: cd84460
-Node: .z84544
-Node: Errors85260
-Ref: class85694
-Ref: rank85783
-Ref: length85907
-Ref: _type86030
-Ref: domain86139
-Ref: limit86261
-Ref: nyi86462
-Ref: parse86795
-Ref: _value86950
-Node: Conclusion87078
+Node: User Functions62172
+Node: Named Functions64296
+Ref: sqrt64925
+Ref: exp64998
+Ref: log65066
+Ref: sin65166
+Ref: cos65305
+Ref: div65453
+Ref: mod65609
+Ref: bar65787
+Ref: in66327
+Ref: bin66505
+Ref: within66719
+Node: Additional Functions66933
+Ref: cond67074
+Ref: amend67194
+Ref: dmend67856
+Node: I/O68559
+Ref: input format69553
+Ref: read csv70564
+Ref: write csv70742
+Ref: read json70906
+Ref: write json71096
+Ref: w line71269
+Ref: r line71577
+Ref: w char71690
+Ref: r char72084
+Ref: r data72450
+Ref: w data73111
+Ref: conn/set73679
+Ref: http/get73739
+Ref: lib73799
+Node: Tables74263
+Ref: t74709
+Ref: xtable76321
+Ref: ktable76804
+Node: kSQL77261
+Ref: union79590
+Ref: left80111
+Ref: outer80632
+Ref: asof80967
+Ref: asof+82011
+Node: System83684
+Ref: load84132
+Ref: timing84320
+Ref: variables84407
+Ref: memory84508
+Ref: cd84623
+Node: .z84707
+Node: Errors85423
+Ref: class85857
+Ref: rank85946
+Ref: length86070
+Ref: _type86193
+Ref: domain86302
+Ref: limit86424
+Ref: nyi86625
+Ref: parse86958
+Ref: _value87113
+Node: Conclusion87241
 
 End Tag Table
 
