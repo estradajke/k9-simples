@@ -87,7 +87,7 @@ The code to generate the on-disk database is presented below.  Speed of course w
 
 @example
 nf:d+*|d:(|-d),d:683 954 997 1000;
-T:^`t ?[;_8.64e7]@
+T:^`t ?[;_8.64e7]@@
 B:100++\1e-2*-3+nf bin/:?[;*|nf]@@
 S:?[;1e-2*2,2,8#1]@@
 L:@{select t,b,a:b+s from +`t`b`s!(T;B;S)@@'x@}
