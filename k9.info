@@ -88,11 +88,12 @@ connect to all - depend on none
 * Dictionary:: Dictionaries and functions for dictionaries
 * User Functions:: User-defined functions
 * Named Functions:: Named functions
-* Additional Functions:: Additional functions
+* Modification Functions:: Function to modify lists and dictionaries
 * I/O:: Input and output
 * Tables:: Tables to store data
 * kSQL:: kSQL to query tables
 * System:: System functions and measurements
+* Control Flow:: If/Do/While Statements
 * .z:: Functions for current date and time
 * Errors:: Error messages
 * Conclusion:: Conclusion
@@ -2658,7 +2659,7 @@ not completely specified with input parameters.
      2 3 4
 
 
-File: k9.info,  Node: Named Functions,  Next: Additional Functions,  Prev: User Functions,  Up: Top
+File: k9.info,  Node: Named Functions,  Next: Modification Functions,  Prev: User Functions,  Up: Top
 
 10 Named Functions
 ******************
@@ -2792,121 +2793,71 @@ Test if x is equal to or greater than y[0] and less than y[1].
      0b
 
 
-File: k9.info,  Node: Additional Functions,  Next: I/O,  Prev: Named Functions,  Up: Top
+File: k9.info,  Node: Modification Functions,  Next: I/O,  Prev: Named Functions,  Up: Top
 
-11 Additional Functions
-***********************
+11 Modification Functions
+*************************
 
-11.1 cond => $[x;y;z]
-=====================
+These functions modify lists and dictionaries.
 
-If x then y else z.
-      $[3>2;`a;`b]
-     `a
-      $[2>3;`a;`b]
-     `b
+@[x;i;f[;y]] amend
+.[x;i;f[;y]] dmend
 
-11.2 amend => @[x;i;f[;y]]
+11.1 amend => @[x;i;f[;y]]
 ==========================
 
-Replace the values in list x at indices i with f or f[y].
+Replace the values in list/dictionary x at indices i with f or f[y].
 
-   @[x;i;f] examples
+   @[x;i;f] and @[x;i;f;y] examples
 
-      x:(`x00`x01;`x10`x11`x12;`x20;`x30`x31`x32);x
-     x00 x01
-     x10 x11 x12
-     x20
-     x30 x31 x32
+      x:(1 2;3 4;5 6);x
+     1 2
+     3 4
+     5 6
 
-      @[x;,1;`newValue]
-     x00 x01
-     newValue
-     x20
-     x30 x31 x32
+      @[x;2 0;0]
+     0
+     3 4
+     0
 
-      @[x;1 2;`newValue]
-     x00 x01
-     newValue
-     newValue
-     x30 x31 x32
+      x:(1 2;3 4;5 6);x
+     1 2
+     3 4
+     5 6
 
+      @[x;2 0;+;100]
+     101 102
+       3   4
+     105 106
 
-   @[x;i;f;y] examples
-
-      x:(0 1;10 11 12;20;30 31 32);x
-     0 1
-     10 11 12
-     20
-     30 31 32
-
-      @[x;,1;*;100]
-     0 1
-     1000 1100 1200
-     20
-     30 31 32
-
-      @[x;1 2;*;100]
-     0 1
-     1000 1100 1200
-     2000
-     30 31 32
-
-
-11.3 dmend => .[x;i;f[;y]]
+11.2 dmend => .[x;i;f[;y]]
 ==========================
 
-.[x;i;f] examples
+.[x;i;f] and .[x;i;f;y] examples
 
-      x:(`x00`x01;`x10`x11`x12;`x20;`x30`x31`x32);x
-     x00 x01
-     x10 x11 x12
-     x20
-     x30 x31 x32
+      x:(1 2;3 4;5 6);x
+     1 2
+     3 4
+     5 6
 
-      .[x;1 2;`newValue]
-     x00 x01
-     x10 x11 newValue
-     x20
-     x30 x31 x32
+      .[x;2 0;0]
+     1 2
+     3 4
+     0 6
 
-   .[x;i;f;y] examples
 
-      x:(`x00`x01;`x10`x11`x12;`x20;`x30`x31`x32);x
-     x00 x01
-     x10 x11 x12
-     x20
-     x30 x31 x32
+      x:(1 2;3 4;5 6);x
+     1 2
+     3 4
+     5 6
 
-      i:(1 3; 0 1);i
-     1 3
-     0 1
-
-      y:(`a`b;`c`d);y
-     a b
-     c d
-
-      .[x;i;:;y]
-     x00 x01
-     a b x12
-     x20
-     c d x32
-
-      x:(0 1;10 11 12;20;30 31 32);x
-     0 1
-     10 11 12
-     20
-     30 31 32
-
-      .[x;i;*;-1]
-     0 1
-     -10 -11 12
-     20
-     -30 -31 32
-
+      .[x;2 0;+;100]
+       1 2
+       3 4
+     105 6
 
 
-File: k9.info,  Node: I/O,  Next: Tables,  Prev: Additional Functions,  Up: Top
+File: k9.info,  Node: I/O,  Next: Tables,  Prev: Modification Functions,  Up: Top
 
 12 I/O and Interface
 ********************
@@ -3601,7 +3552,7 @@ Insert dictionary d into ktable k.
      c | 7
 
 
-File: k9.info,  Node: System,  Next: .z,  Prev: kSQL,  Up: Top
+File: k9.info,  Node: System,  Next: Control Flow,  Prev: kSQL,  Up: Top
 
 15 System
 *********
@@ -3660,29 +3611,65 @@ Change directory (cd) into x
       \cd scripts
 
 
-File: k9.info,  Node: .z,  Next: Errors,  Prev: System,  Up: Top
+File: k9.info,  Node: Control Flow,  Next: .z,  Prev: System,  Up: Top
 
-16 .z
+16 Control Flow
+***************
+
+Although not heavily used in k9, control flow statements will still be
+required occasionally.
+
+$[b;x;y] if else
+
+16.1 cond => $[b;x;y]
+=====================
+
+If b is non zero then x else y.  x and y are not required to be the
+same type.
+
+      $[3>2;`a;`b]
+     `a
+
+      $[2>3;`a;`b]
+     `b
+
+      $[37;12;10]
+     12
+
+      $[1b;`a`b!(1 2;3 4);`n]
+     a|1 2
+     b|3 4
+
+
+File: k9.info,  Node: .z,  Next: Errors,  Prev: Control Flow,  Up: Top
+
+17 .z
 *****
 
-There are functions to get the current date, time, and date-time in
-k9.  These functions all being with '.z'
+k9 has functions (within '.z') to get the current date, time, and
+date-time.  Uppercase is used to include a date and lower case for
+time only.
 
-16.1 .z Date
-============
+.z.DTV date 2024.01.01T12:34:56 
+.z.dtv time  12:34:56.123456789 
+
+17.1 .z.DTV date
+================
 
 These function retrieve the date (D), date & time (ms) (T), and date &
 time (ns) (V).
 
       .z.D
      2020.10.16
-      .z.T
-     2020.10.16T13:42:06.516
-      .z.V
-     2020.10.16T13:42:09.962610000
 
-16.2 .z Time
-============
+     .z.T
+     2020.10.16T13:46:36.040
+
+     .z.V
+     2020.10.16T13:46:36.040654000
+
+17.2 .z.dtv time
+================
 
 These functions determine the amount of time (in integer days) since
 Monday 00:00 (d), time (ms) since 00:00 today (t), and time (ns) since
@@ -3690,15 +3677,26 @@ Monday 00:00 (d), time (ms) since 00:00 today (t), and time (ns) since
 
       .z.d  / running at Friday 13:46
      4d
-      .z.t
-     13:46:33.b644
-      .z.v
+
+     .z.t
+     13:46:36.040
+
+     .z.v
      13:46:36.040654000
+
+   One could use the current time commands to measure run time but
+typically this is done via '\t'
+
+      t1:.z.v;(_2e8)?1.;t2:.z.v;t2-t1
+     00:00:00.609207008
+
+     \t (_2e8)?1.
+     610
 
 
 File: k9.info,  Node: Errors,  Next: Conclusion,  Prev: .z,  Up: Top
 
-17 Errors
+18 Errors
 *********
 
 Given the terse syntax of k9 it likley won't be a surprise to a new
@@ -3707,14 +3705,14 @@ listed on the help page and described in more detail below.
 
      error: *note class:: *note rank:: *note length:: *note type: _type. *note domain:: *note limit:: stack *note parse:: *note value: _value.
 
-17.1 :class
+18.1 :class
 ===========
 
 Calling a function on mismatched types.
       3+`b
      :class
 
-17.2 :rank
+18.2 :rank
 ==========
 
 Calling a function with too many parameters.
@@ -3723,14 +3721,14 @@ Calling a function with too many parameters.
      ^
      :rank
 
-17.3 :length
+18.3 :length
 ============
 
 Operations on unequal length lists that require equal length.
       (1 2 3)+(4 5)
      :length
 
-17.4 :type
+18.4 :type
 ==========
 
 Calling a function with an unsupported variable type.
@@ -3738,14 +3736,14 @@ Calling a function with an unsupported variable type.
        ^
      :type
 
-17.5 :domain
+18.5 :domain
 ============
 
 Exhausted the number of input values
       -12?10   / only 10 unique value exist
      :domain
 
-17.6 :limit
+18.6 :limit
 ===========
 
 Exceeded a limit above the software maximum, eg.  writing a single
@@ -3755,7 +3753,7 @@ file above 1GB.
 
      :limit
 
-17.7 :nyi
+18.7 :nyi
 =========
 
 Running code that is not yet implemented.  This may come from running
@@ -3776,7 +3774,7 @@ code in this document with a different version of k9.
      ^
      :nyi
 
-17.8 :parse
+18.8 :parse
 ===========
 
 Syntax is wrong.  Possible you failed to match characters which must
@@ -3784,7 +3782,7 @@ match, eg.  (), {}, [], "".
       {37 . "hello"
      :parse
 
-17.9 :value
+18.9 :value
 ===========
 
 Undefined variable is used.
@@ -3794,7 +3792,7 @@ Undefined variable is used.
 
 File: k9.info,  Node: Conclusion,  Prev: Errors,  Up: Top
 
-18 Conclusion
+19 Conclusion
 *************
 
 I expect you are surprised by the performance possible by k9 and the
@@ -3855,134 +3853,135 @@ connect to all - depend on none
 
 Tag Table:
 Node: Top125
-Node: Intro4284
-Node: Examples16427
-Node: Benchmarks23973
-Node: Verb28932
-Ref: x30393
-Ref: set30418
-Ref: flip30630
-Ref: plus30880
-Ref: negate31265
-Ref: minus31437
-Ref: first31544
-Ref: times31884
-Ref: divide32015
-Ref: where32152
-Ref: min/and32632
-Ref: reverse32891
-Ref: max/or33061
-Ref: asc33325
-Ref: less33698
-Ref: group33999
-Ref: equal34245
-Ref: not34549
-Ref: match34666
-Ref: enum35049
-Ref: key36302
-Ref: enlist36532
-Ref: cat36671
-Ref: sort36790
-Ref: [f]cut37022
-Ref: count37767
-Ref: [f]take37957
-Ref: floor38586
-Ref: [f]drop38677
-Ref: string39270
-Ref: cast+39371
-Ref: unique+39720
-Ref: find+39959
-Ref: type40678
-Ref: [f]at41129
-Ref: value41445
-Ref: [f]dot41719
-Node: Adverb42968
-Ref: scan43710
-Ref: join44240
-Ref: split44415
-Ref: each44606
-Ref: has44824
-Ref: eachp44997
-Ref: bin245437
-Ref: eachr45640
-Ref: eachl45837
-Ref: n scan46021
-Ref: c scan46501
-Ref: c over47013
-Ref: vs47150
-Ref: sv47270
-Node: Noun47394
-Ref: bool48760
-Ref: int49060
-Ref: flt49264
-Ref: char49642
-Ref: name49865
-Ref: uuid50096
-Ref: time50253
-Ref: date50867
-Ref: datetime51285
-Node: List51984
-Node: Dictionary57259
-Node: User Functions62172
-Node: Named Functions64296
-Ref: sqrt64925
-Ref: exp64998
-Ref: log65066
-Ref: sin65166
-Ref: cos65305
-Ref: div65453
-Ref: mod65609
-Ref: bar65787
-Ref: in66327
-Ref: bin66505
-Ref: within66719
-Node: Additional Functions66933
-Ref: cond67074
-Ref: amend67194
-Ref: dmend67856
-Node: I/O68559
-Ref: input format69553
-Ref: read csv70564
-Ref: write csv70742
-Ref: read json70906
-Ref: write json71096
-Ref: w line71269
-Ref: r line71577
-Ref: w char71690
-Ref: r char72084
-Ref: r data72450
-Ref: w data73111
-Ref: conn/set73679
-Ref: http/get73739
-Ref: lib73799
-Node: Tables74263
-Ref: t74709
-Ref: xtable76321
-Ref: ktable76804
-Node: kSQL77261
-Ref: union79590
-Ref: left80111
-Ref: outer80632
-Ref: asof80967
-Ref: asof+82011
-Node: System83684
-Ref: load84132
-Ref: timing84320
-Ref: variables84407
-Ref: memory84508
-Ref: cd84623
-Node: .z84707
-Node: Errors85423
-Ref: class85857
-Ref: rank85946
-Ref: length86070
-Ref: _type86193
-Ref: domain86302
-Ref: limit86424
-Ref: nyi86625
-Ref: parse86958
-Ref: _value87113
-Node: Conclusion87241
+Node: Intro4347
+Node: Examples16490
+Node: Benchmarks24036
+Node: Verb28995
+Ref: x30456
+Ref: set30481
+Ref: flip30693
+Ref: plus30943
+Ref: negate31328
+Ref: minus31500
+Ref: first31607
+Ref: times31947
+Ref: divide32078
+Ref: where32215
+Ref: min/and32695
+Ref: reverse32954
+Ref: max/or33124
+Ref: asc33388
+Ref: less33761
+Ref: group34062
+Ref: equal34308
+Ref: not34612
+Ref: match34729
+Ref: enum35112
+Ref: key36365
+Ref: enlist36595
+Ref: cat36734
+Ref: sort36853
+Ref: [f]cut37085
+Ref: count37830
+Ref: [f]take38020
+Ref: floor38649
+Ref: [f]drop38740
+Ref: string39333
+Ref: cast+39434
+Ref: unique+39783
+Ref: find+40022
+Ref: type40741
+Ref: [f]at41192
+Ref: value41508
+Ref: [f]dot41782
+Node: Adverb43031
+Ref: scan43773
+Ref: join44303
+Ref: split44478
+Ref: each44669
+Ref: has44887
+Ref: eachp45060
+Ref: bin245500
+Ref: eachr45703
+Ref: eachl45900
+Ref: n scan46084
+Ref: c scan46564
+Ref: c over47076
+Ref: vs47213
+Ref: sv47333
+Node: Noun47457
+Ref: bool48823
+Ref: int49123
+Ref: flt49327
+Ref: char49705
+Ref: name49928
+Ref: uuid50159
+Ref: time50316
+Ref: date50930
+Ref: datetime51348
+Node: List52047
+Node: Dictionary57322
+Node: User Functions62235
+Node: Named Functions64359
+Ref: sqrt64990
+Ref: exp65063
+Ref: log65131
+Ref: sin65231
+Ref: cos65370
+Ref: div65518
+Ref: mod65674
+Ref: bar65852
+Ref: in66392
+Ref: bin66570
+Ref: within66784
+Node: Modification Functions66998
+Ref: amend67232
+Ref: dmend67600
+Node: I/O67894
+Ref: input format68890
+Ref: read csv69901
+Ref: write csv70079
+Ref: read json70243
+Ref: write json70433
+Ref: w line70606
+Ref: r line70914
+Ref: w char71027
+Ref: r char71421
+Ref: r data71787
+Ref: w data72448
+Ref: conn/set73016
+Ref: http/get73076
+Ref: lib73136
+Node: Tables73600
+Ref: t74046
+Ref: xtable75658
+Ref: ktable76141
+Node: kSQL76598
+Ref: union78927
+Ref: left79448
+Ref: outer79969
+Ref: asof80304
+Ref: asof+81348
+Node: System83021
+Ref: load83479
+Ref: timing83667
+Ref: variables83754
+Ref: memory83855
+Ref: cd83970
+Node: Control Flow84054
+Ref: cond84274
+Node: .z84535
+Node: Errors85565
+Ref: class85999
+Ref: rank86088
+Ref: length86212
+Ref: _type86335
+Ref: domain86444
+Ref: limit86566
+Ref: nyi86767
+Ref: parse87100
+Ref: _value87255
+Node: Conclusion87383
 
 End Tag Table
 

@@ -48,11 +48,12 @@ The built-in reference screen (@code{\}) containing all the k9 commands.
 * Dictionary:: Dictionaries and functions for dictionaries
 * User Functions:: User-defined functions
 * Named Functions:: Named functions
-* Additional Functions:: Additional functions
+* Modification Functions:: Function to modify lists and dictionaries
 * I/O:: Input and output
 * Tables:: Tables to store data
 * kSQL:: kSQL to query tables
 * System:: System functions and measurements
+* Control Flow:: If/Do/While Statements 
 * .z:: Functions for current date and time
 * Errors:: Error messages
 * Conclusion:: Conclusion
@@ -2557,116 +2558,69 @@ Test if x is equal to or greater than y[0] and less than y[1].
 0b
 @end example
 
-@node Additional Functions
-@chapter Additional Functions
+@node Modification Functions
+@chapter Modification Functions
+These functions modify lists and dictionaries.
 
-@anchor{cond}@section cond @result{} $[x;y;z]
-If x then y else z.
-@example
-@ $[3>2;`a;`b]
-`a
-@ $[2>3;`a;`b]
-`b
-@end example
+@verbatim
+@[x;i;f[;y]] amend
+.[x;i;f[;y]] dmend
+@end verbatim
 
 @anchor{amend}@section amend @result{} @@[x;i;f[;y]]
-Replace the values in list x at indices i with f or f[y].
+Replace the values in list/dictionary x at indices i with f or f[y].
 
-@@[x;i;f] examples@*@*
+@@[x;i;f] and @@[x;i;f;y] examples
+
 @example
-@ x:(`x00`x01;`x10`x11`x12;`x20;`x30`x31`x32);x
-x00 x01    
-x10 x11 x12
-x20        
-x30 x31 x32
+ x:(1 2;3 4;5 6);x
+1 2
+3 4
+5 6
 
-@ @@[x;,1;`newValue]
-x00 x01    
-newValue   
-x20        
-x30 x31 x32
+ @@[x;2 0;0]
+0  
+3 4
+0  
 
-@ @@[x;1 2;`newValue]
-x00 x01    
-newValue   
-newValue   
-x30 x31 x32
+ x:(1 2;3 4;5 6);x
+1 2
+3 4
+5 6
 
+ @@[x;2 0;+;100]
+101 102
+  3   4
+105 106
 @end example
 
-@@[x;i;f;y] examples@*@*
-@example
-@ x:(0 1;10 11 12;20;30 31 32);x
-0 1     
-10 11 12
-20      
-30 31 32
-
-@ @@[x;,1;*;100]
-0 1           
-1000 1100 1200
-20            
-30 31 32      
-
-@ @@[x;1 2;*;100]
-0 1           
-1000 1100 1200
-2000          
-30 31 32      
-
-@end example
 @anchor{dmend}@section dmend @result{} .[x;i;f[;y]]
 
-.[x;i;f] examples@*@*
+.[x;i;f] and .[x;i;f;y] examples
+
 @example
-@ x:(`x00`x01;`x10`x11`x12;`x20;`x30`x31`x32);x
-x00 x01    
-x10 x11 x12
-x20        
-x30 x31 x32
+ x:(1 2;3 4;5 6);x
+1 2
+3 4
+5 6
 
-@ .[x;1 2;`newValue]
-x00 x01         
-x10 x11 newValue
-x20             
-x30 x31 x32     
+ .[x;2 0;0]
+1 2
+3 4
+0 6
 
+ 
+ x:(1 2;3 4;5 6);x
+1 2
+3 4
+5 6
+
+ .[x;2 0;+;100]
+  1 2
+  3 4
+105 6
 @end example
-.[x;i;f;y] examples@*@*
-@example
-@ x:(`x00`x01;`x10`x11`x12;`x20;`x30`x31`x32);x
-x00 x01    
-x10 x11 x12
-x20        
-x30 x31 x32
 
-@ i:(1 3; 0 1);i
-1 3
-0 1
-
-@ y:(`a`b;`c`d);y
-a b
-c d
-
-@ .[x;i;:;y]
-x00 x01
-a b x12
-x20    
-c d x32
-
-@ x:(0 1;10 11 12;20;30 31 32);x
-0 1     
-10 11 12
-20      
-30 31 32
-
-@ .[x;i;*;-1]
-0 1       
--10 -11 12
-20        
--30 -31 32
-
-@end example
 @node I/O
 @chapter I/O and Interface
 Given k9 is useful for analyzing data it won't be a surprise that input and output (I/O) are supported.  k9 has been optimized to read in data quickly so if you have a workflow of making a tea while the huge csv file loads you might have an issue.
@@ -3375,32 +3329,77 @@ Change directory (cd) into x
 @ \cd scripts
 @end example
 
+@node Control Flow
+@chapter Control Flow
+Although not heavily used in k9, control flow statements will still be required occasionally.
+
+@verbatim
+$[b;x;y] if else
+@end verbatim
+
+@anchor{cond}@section cond @result{} $[b;x;y]
+If b is non zero then x else y.  x and y are not required to be the same type.
+
+@example
+ $[3>2;`a;`b]
+`a
+
+ $[2>3;`a;`b]
+`b
+
+ $[37;12;10]
+12
+
+ $[1b;`a`b!(1 2;3 4);`n]
+a|1 2
+b|3 4
+@end example
+
 @node .z
 @chapter .z
-There are functions to get the current date, time, and date-time in k9.  These functions all being with @code{.z}
+k9 has functions (within @code{.z}) to get the current date, time, and date-time.  Uppercase is used to include a date and lower case for time only.
 
-@section .z Date
+@verbatim
+.z.DTV date 2024.01.01T12:34:56 
+.z.dtv time  12:34:56.123456789 
+@end verbatim
+
+@section .z.DTV date
 These function retrieve the date (D), date & time (ms) (T), and date & time (ns) (V).
 
 @example
  .z.D
 2020.10.16
- .z.T
-2020.10.16T13:42:06.516
- .z.V
-2020.10.16T13:42:09.962610000
+
+.z.T
+2020.10.16T13:46:36.040
+
+.z.V
+2020.10.16T13:46:36.040654000
 @end example
 
-@section .z Time
+@section .z.dtv time
 These functions determine the amount of time (in integer days) since Monday 00:00 (d), time (ms) since 00:00 today (t), and time (ns) since 00:00 today (v).
 
 @example
  .z.d  / running at Friday 13:46
 4d
- .z.t
-13:46:33.b644
- .z.v
+
+.z.t
+13:46:36.040
+
+.z.v
 13:46:36.040654000
+@end example
+
+One could use the current time commands to measure run time but typically this is done via @code{\t}
+
+@example
+ t1:.z.v;(_2e8)?1.;t2:.z.v;t2-t1
+00:00:00.609207008
+
+\t (_2e8)?1.
+610
 @end example
 
 @node Errors
