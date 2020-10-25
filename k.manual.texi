@@ -2365,6 +2365,35 @@ Functions default to arguments of x, y, and z for the first three parameters but
 `.
 @end example
 
+@section Function Defitions
+Functions can have intermediate calcuations and local variables.
+
+@example
+ a:3;a
+3
+
+ f:@{a:12;x:sqrt x;x+a@}
+
+ f 10
+15.16228
+
+a
+3
+@end example
+
+@section Function Return
+Function return the last value in the definition unless the definition ends with a semicolon in which case the function returns nothing.
+
+@example
+ f:@{x+2;@};f 10
+
+ f:@{x+2;27@};f 10
+27
+
+ f:@{x+2@};f 10
+12
+@end example
+
 @section Calling functions
 Functions, like lists, can be called with a number of notations.  Typically one uses square bracket notation when the function takes multiple argruments.  If a function is called with less than the required number of arguments then it will return a function that requires the remaining arguemnts.
 

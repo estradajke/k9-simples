@@ -2588,7 +2588,37 @@ names.
       @f1
      `.
 
-9.2 Calling functions
+9.2 Function Defitions
+======================
+
+Functions can have intermediate calcuations and local variables.
+
+      a:3;a
+     3
+
+      f:{a:12;x:sqrt x;x+a}
+
+      f 10
+     15.16228
+
+     a
+     3
+
+9.3 Function Return
+===================
+
+Function return the last value in the definition unless the definition
+ends with a semicolon in which case the function returns nothing.
+
+      f:{x+2;};f 10
+
+      f:{x+2;27};f 10
+     27
+
+      f:{x+2};f 10
+     12
+
+9.4 Calling functions
 =====================
 
 Functions, like lists, can be called with a number of notations.
@@ -2625,19 +2655,19 @@ requires the remaining arguemnts.
       f1@`a
      `a
 
-9.3 Anonymous functions
+9.5 Anonymous functions
 =======================
 
       {x+2*y}[2;10]
      22
 
-9.4 Recursive functions
+9.6 Recursive functions
 =======================
 
       f:{$[x>1;x*f@x-1;1]};f 5
      120
 
-9.5 Chained functions
+9.7 Chained functions
 =====================
 
 It may be neccesary to define a function to call a function without
@@ -3925,66 +3955,66 @@ Ref: datetime51333
 Node: List52032
 Node: Dictionary57307
 Node: User Functions62220
-Node: Named Functions64344
-Ref: sqrt64975
-Ref: exp65048
-Ref: log65116
-Ref: sin65216
-Ref: cos65355
-Ref: div65503
-Ref: mod65659
-Ref: bar65837
-Ref: in66377
-Ref: bin66555
-Ref: within66769
-Node: Modification Functions66983
-Ref: amend67276
-Ref: dmend67644
-Node: I/O68009
-Ref: input format69005
-Ref: read csv70016
-Ref: write csv70194
-Ref: read json70358
-Ref: write json70548
-Ref: w line70721
-Ref: r line71029
-Ref: w char71142
-Ref: r char71536
-Ref: r data71902
-Ref: w data72563
-Ref: conn/set73131
-Ref: http/get73191
-Ref: lib73251
-Node: Tables73715
-Ref: t74161
-Ref: xtable75767
-Ref: ktable76250
-Node: kSQL76707
-Ref: union79036
-Ref: left79557
-Ref: outer80078
-Ref: asof80413
-Ref: asof+81457
-Node: System83130
-Ref: load83588
-Ref: timing83776
-Ref: variables83863
-Ref: memory83964
-Ref: cd84079
-Node: Control Flow84163
-Ref: cond84383
-Node: .z84644
-Node: Errors85674
-Ref: class86108
-Ref: rank86197
-Ref: length86321
-Ref: _type86444
-Ref: domain86553
-Ref: limit86675
-Ref: nyi86876
-Ref: parse87209
-Ref: _value87364
-Node: Conclusion87492
+Node: Named Functions64806
+Ref: sqrt65437
+Ref: exp65510
+Ref: log65578
+Ref: sin65678
+Ref: cos65817
+Ref: div65965
+Ref: mod66121
+Ref: bar66299
+Ref: in66839
+Ref: bin67017
+Ref: within67231
+Node: Modification Functions67445
+Ref: amend67738
+Ref: dmend68106
+Node: I/O68471
+Ref: input format69467
+Ref: read csv70478
+Ref: write csv70656
+Ref: read json70820
+Ref: write json71010
+Ref: w line71183
+Ref: r line71491
+Ref: w char71604
+Ref: r char71998
+Ref: r data72364
+Ref: w data73025
+Ref: conn/set73593
+Ref: http/get73653
+Ref: lib73713
+Node: Tables74177
+Ref: t74623
+Ref: xtable76229
+Ref: ktable76712
+Node: kSQL77169
+Ref: union79498
+Ref: left80019
+Ref: outer80540
+Ref: asof80875
+Ref: asof+81919
+Node: System83592
+Ref: load84050
+Ref: timing84238
+Ref: variables84325
+Ref: memory84426
+Ref: cd84541
+Node: Control Flow84625
+Ref: cond84845
+Node: .z85106
+Node: Errors86136
+Ref: class86570
+Ref: rank86659
+Ref: length86783
+Ref: _type86906
+Ref: domain87015
+Ref: limit87137
+Ref: nyi87338
+Ref: parse87671
+Ref: _value87826
+Node: Conclusion87954
 
 End Tag Table
 
