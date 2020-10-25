@@ -2560,7 +2560,7 @@ Test if x is equal to or greater than y[0] and less than y[1].
 
 @node Modification Functions
 @chapter Modification Functions
-These functions modify lists and dictionaries.
+These functions modify lists and dictionaries given a list of indices and functions or values to replace.
 
 @verbatim
 @[x;i;f[;y]] amend
@@ -2595,6 +2595,7 @@ Replace the values in list/dictionary x at indices i with f or f[y].
 @end example
 
 @anchor{dmend}@section dmend @result{} .[x;i;f[;y]]
+Replace the values in list/dictionary x at index i with f or f[y].
 
 .[x;i;f] and .[x;i;f;y] examples
 

@@ -46,7 +46,7 @@ Next: <a href="I_002fO.html" accesskey="n" rel="next">I/O</a>, Previous: <a href
 </div>
 <hr>
 <span id="Modification-Functions-1"></span><h2 class="chapter">11 Modification Functions</h2>
-<p>These functions modify lists and dictionaries.
+<p>These functions modify lists and dictionaries given a list of indices and functions or values to replace.
 </p>
 <pre class="verbatim">@[x;i;f[;y]] amend
 .[x;i;f[;y]] dmend
@@ -79,7 +79,8 @@ Next: <a href="I_002fO.html" accesskey="n" rel="next">I/O</a>, Previous: <a href
 </pre></div>
 
 <span id="dmend"></span><span id="dmend-_21d2-_002e_005bx_003bi_003bf_005b_003by_005d_005d"></span><h3 class="section">11.2 dmend &rArr; .[x;i;f[;y]]</h3>
-
+<p>Replace the values in list/dictionary x at index i with f or f[y].
+</p>
 <p>.[x;i;f] and .[x;i;f;y] examples
 </p>
 <div class="example">

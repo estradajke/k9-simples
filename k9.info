@@ -2798,7 +2798,8 @@ File: k9.info,  Node: Modification Functions,  Next: I/O,  Prev: Named Functions
 11 Modification Functions
 *************************
 
-These functions modify lists and dictionaries.
+These functions modify lists and dictionaries given a list of indices
+and functions or values to replace.
 
 @[x;i;f[;y]] amend
 .[x;i;f[;y]] dmend
@@ -2833,7 +2834,9 @@ Replace the values in list/dictionary x at indices i with f or f[y].
 11.2 dmend => .[x;i;f[;y]]
 ==========================
 
-.[x;i;f] and .[x;i;f;y] examples
+Replace the values in list/dictionary x at index i with f or f[y].
+
+   .[x;i;f] and .[x;i;f;y] examples
 
       x:(1 2;3 4;5 6);x
      1 2
@@ -3935,53 +3938,53 @@ Ref: in66392
 Ref: bin66570
 Ref: within66784
 Node: Modification Functions66998
-Ref: amend67232
-Ref: dmend67600
-Node: I/O67894
-Ref: input format68890
-Ref: read csv69901
-Ref: write csv70079
-Ref: read json70243
-Ref: write json70433
-Ref: w line70606
-Ref: r line70914
-Ref: w char71027
-Ref: r char71421
-Ref: r data71787
-Ref: w data72448
-Ref: conn/set73016
-Ref: http/get73076
-Ref: lib73136
-Node: Tables73600
-Ref: t74046
-Ref: xtable75658
-Ref: ktable76141
-Node: kSQL76598
-Ref: union78927
-Ref: left79448
-Ref: outer79969
-Ref: asof80304
-Ref: asof+81348
-Node: System83021
-Ref: load83479
-Ref: timing83667
-Ref: variables83754
-Ref: memory83855
-Ref: cd83970
-Node: Control Flow84054
-Ref: cond84274
-Node: .z84535
-Node: Errors85565
-Ref: class85999
-Ref: rank86088
-Ref: length86212
-Ref: _type86335
-Ref: domain86444
-Ref: limit86566
-Ref: nyi86767
-Ref: parse87100
-Ref: _value87255
-Node: Conclusion87383
+Ref: amend67291
+Ref: dmend67659
+Node: I/O68024
+Ref: input format69020
+Ref: read csv70031
+Ref: write csv70209
+Ref: read json70373
+Ref: write json70563
+Ref: w line70736
+Ref: r line71044
+Ref: w char71157
+Ref: r char71551
+Ref: r data71917
+Ref: w data72578
+Ref: conn/set73146
+Ref: http/get73206
+Ref: lib73266
+Node: Tables73730
+Ref: t74176
+Ref: xtable75788
+Ref: ktable76271
+Node: kSQL76728
+Ref: union79057
+Ref: left79578
+Ref: outer80099
+Ref: asof80434
+Ref: asof+81478
+Node: System83151
+Ref: load83609
+Ref: timing83797
+Ref: variables83884
+Ref: memory83985
+Ref: cd84100
+Node: Control Flow84184
+Ref: cond84404
+Node: .z84665
+Node: Errors85695
+Ref: class86129
+Ref: rank86218
+Ref: length86342
+Ref: _type86465
+Ref: domain86574
+Ref: limit86696
+Ref: nyi86897
+Ref: parse87230
+Ref: _value87385
+Node: Conclusion87513
 
 End Tag Table
 
