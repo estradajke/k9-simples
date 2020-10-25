@@ -137,8 +137,7 @@ data was already in memory then it's even faster.
 Speed of course will depend on your hardware so times will vary.
 
      nf:d+*|d:(|-d),d:683 954 997 1000;
-     T:{`t'_+\(-1+86.4e6)*x%+/x}?[;1.]@
-     B:100++\1e-2*-3+nf bin/:?[;*|nf]@
+     T:^`t ?[;_8.64e7] B:100++\1e-2*-3+nf bin/:?[;*|nf]@
      S:?[;1e-2*2,2,8#1]@
      L:{select t,b,a:b+s from +`t`b`s!(T;B;S)@'x}
      q:`eurusd`usdjpy`usdchf!L'60e6 20e6 20e6
@@ -456,7 +455,7 @@ the data comes.)
    Let's use k9 to generate a set of random prices.
 
       n:10
-      T:10:00+`t n?36e5
+      T:^10:00+`t n?36e5
       B:100++\-1+n?3
       A:B+1+n?2
       q:+`t`b`a!(T;B;A);q
@@ -3128,7 +3127,7 @@ continuing for all the columns.
      20 4.8
       3 0.1
 
-      [[] a:1; col2:3.6]   / will error :class as values but be a list
+      [[] a:1; col2:3.6]   / will error :class as lists required
      [[] a:1; col2:3.6]
 
      :class
@@ -3857,134 +3856,134 @@ connect to all - depend on none
 Tag Table:
 Node: Top125
 Node: Intro4347
-Node: Examples16490
-Node: Benchmarks24036
-Node: Verb28995
-Ref: x30456
-Ref: set30481
-Ref: flip30693
-Ref: plus30943
-Ref: negate31328
-Ref: minus31500
-Ref: first31607
-Ref: times31947
-Ref: divide32078
-Ref: where32215
-Ref: min/and32695
-Ref: reverse32954
-Ref: max/or33124
-Ref: asc33388
-Ref: less33761
-Ref: group34062
-Ref: equal34308
-Ref: not34612
-Ref: match34729
-Ref: enum35112
-Ref: key36365
-Ref: enlist36595
-Ref: cat36734
-Ref: sort36853
-Ref: [f]cut37085
-Ref: count37830
-Ref: [f]take38020
-Ref: floor38649
-Ref: [f]drop38740
-Ref: string39333
-Ref: cast+39434
-Ref: unique+39783
-Ref: find+40022
-Ref: type40741
-Ref: [f]at41192
-Ref: value41508
-Ref: [f]dot41782
-Node: Adverb43031
-Ref: scan43773
-Ref: join44303
-Ref: split44478
-Ref: each44669
-Ref: has44887
-Ref: eachp45060
-Ref: bin245500
-Ref: eachr45703
-Ref: eachl45900
-Ref: n scan46084
-Ref: c scan46564
-Ref: c over47076
-Ref: vs47213
-Ref: sv47333
-Node: Noun47457
-Ref: bool48823
-Ref: int49123
-Ref: flt49327
-Ref: char49705
-Ref: name49928
-Ref: uuid50159
-Ref: time50316
-Ref: date50930
-Ref: datetime51348
-Node: List52047
-Node: Dictionary57322
-Node: User Functions62235
-Node: Named Functions64359
-Ref: sqrt64990
-Ref: exp65063
-Ref: log65131
-Ref: sin65231
-Ref: cos65370
-Ref: div65518
-Ref: mod65674
-Ref: bar65852
-Ref: in66392
-Ref: bin66570
-Ref: within66784
-Node: Modification Functions66998
-Ref: amend67291
-Ref: dmend67659
-Node: I/O68024
-Ref: input format69020
-Ref: read csv70031
-Ref: write csv70209
-Ref: read json70373
-Ref: write json70563
-Ref: w line70736
-Ref: r line71044
-Ref: w char71157
-Ref: r char71551
-Ref: r data71917
-Ref: w data72578
-Ref: conn/set73146
-Ref: http/get73206
-Ref: lib73266
-Node: Tables73730
-Ref: t74176
-Ref: xtable75788
-Ref: ktable76271
-Node: kSQL76728
-Ref: union79057
-Ref: left79578
-Ref: outer80099
-Ref: asof80434
-Ref: asof+81478
-Node: System83151
-Ref: load83609
-Ref: timing83797
-Ref: variables83884
-Ref: memory83985
-Ref: cd84100
-Node: Control Flow84184
-Ref: cond84404
-Node: .z84665
-Node: Errors85695
-Ref: class86129
-Ref: rank86218
-Ref: length86342
-Ref: _type86465
-Ref: domain86574
-Ref: limit86696
-Ref: nyi86897
-Ref: parse87230
-Ref: _value87385
-Node: Conclusion87513
+Node: Examples16468
+Node: Benchmarks24015
+Node: Verb28974
+Ref: x30435
+Ref: set30460
+Ref: flip30672
+Ref: plus30922
+Ref: negate31307
+Ref: minus31479
+Ref: first31586
+Ref: times31926
+Ref: divide32057
+Ref: where32194
+Ref: min/and32674
+Ref: reverse32933
+Ref: max/or33103
+Ref: asc33367
+Ref: less33740
+Ref: group34041
+Ref: equal34287
+Ref: not34591
+Ref: match34708
+Ref: enum35091
+Ref: key36344
+Ref: enlist36574
+Ref: cat36713
+Ref: sort36832
+Ref: [f]cut37064
+Ref: count37809
+Ref: [f]take37999
+Ref: floor38628
+Ref: [f]drop38719
+Ref: string39312
+Ref: cast+39413
+Ref: unique+39762
+Ref: find+40001
+Ref: type40720
+Ref: [f]at41171
+Ref: value41487
+Ref: [f]dot41761
+Node: Adverb43010
+Ref: scan43752
+Ref: join44282
+Ref: split44457
+Ref: each44648
+Ref: has44866
+Ref: eachp45039
+Ref: bin245479
+Ref: eachr45682
+Ref: eachl45879
+Ref: n scan46063
+Ref: c scan46543
+Ref: c over47055
+Ref: vs47192
+Ref: sv47312
+Node: Noun47436
+Ref: bool48802
+Ref: int49102
+Ref: flt49306
+Ref: char49684
+Ref: name49907
+Ref: uuid50138
+Ref: time50295
+Ref: date50909
+Ref: datetime51327
+Node: List52026
+Node: Dictionary57301
+Node: User Functions62214
+Node: Named Functions64338
+Ref: sqrt64969
+Ref: exp65042
+Ref: log65110
+Ref: sin65210
+Ref: cos65349
+Ref: div65497
+Ref: mod65653
+Ref: bar65831
+Ref: in66371
+Ref: bin66549
+Ref: within66763
+Node: Modification Functions66977
+Ref: amend67270
+Ref: dmend67638
+Node: I/O68003
+Ref: input format68999
+Ref: read csv70010
+Ref: write csv70188
+Ref: read json70352
+Ref: write json70542
+Ref: w line70715
+Ref: r line71023
+Ref: w char71136
+Ref: r char71530
+Ref: r data71896
+Ref: w data72557
+Ref: conn/set73125
+Ref: http/get73185
+Ref: lib73245
+Node: Tables73709
+Ref: t74155
+Ref: xtable75761
+Ref: ktable76244
+Node: kSQL76701
+Ref: union79030
+Ref: left79551
+Ref: outer80072
+Ref: asof80407
+Ref: asof+81451
+Node: System83124
+Ref: load83582
+Ref: timing83770
+Ref: variables83857
+Ref: memory83958
+Ref: cd84073
+Node: Control Flow84157
+Ref: cond84377
+Node: .z84638
+Node: Errors85668
+Ref: class86102
+Ref: rank86191
+Ref: length86315
+Ref: _type86438
+Ref: domain86547
+Ref: limit86669
+Ref: nyi86870
+Ref: parse87203
+Ref: _value87358
+Node: Conclusion87486
 
 End Tag Table
 

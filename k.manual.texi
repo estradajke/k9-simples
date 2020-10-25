@@ -87,7 +87,7 @@ The code to generate the on-disk database is presented below.  Speed of course w
 
 @example
 nf:d+*|d:(|-d),d:683 954 997 1000;
-T:@{`t'_+\(-1+86.4e6)*x%+/x@}?[;1.]@@
+T:^`t ?[;_8.64e7]@
 B:100++\1e-2*-3+nf bin/:?[;*|nf]@@
 S:?[;1e-2*2,2,8#1]@@
 L:@{select t,b,a:b+s from +`t`b`s!(T;B;S)@@'x@}
@@ -273,7 +273,7 @@ Let's use k9 to generate a set of random prices.
 
 @example
  n:10
- T:10:00+`t n?36e5
+ T:^10:00+`t n?36e5
  B:100++\-1+n?3
  A:B+1+n?2
  q:+`t`b`a!(T;B;A);q
@@ -2869,7 +2869,7 @@ a  col2
 20 4.8 
  3 0.1
 
- [[] a:1; col2:3.6]   / will error :class as values but be a list
+ [[] a:1; col2:3.6]   / will error :class as lists required
 [[] a:1; col2:3.6]
 
 :class
