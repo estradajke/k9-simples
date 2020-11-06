@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- October 25, 2020
+<!-- November 6, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -46,21 +46,21 @@ Next: <a href="kSQL.html" accesskey="n" rel="next">kSQL</a>, Previous: <a href="
 </div>
 <hr>
 <span id="Tables-1"></span><h2 class="chapter">13 Tables</h2>
-<p>This chapter introduces the different types of tables available in k9.  Table, xtable and ktable are very similar and as you&rsquo;ll see in the kSQL chapter are easy to query.  In the benchmark chapter tables were shown to be fast to save, read, and query.
+<p>This chapter introduces the different types of tables available in k9.  Table, utable and xtable are very similar and as you&rsquo;ll see in the kSQL chapter are easy to query.  In the benchmark chapter tables were shown to be fast to save, read, and query.
 </p>
 <div class="example">
 <pre class="example"><a href="#t">t</a>:[[]i:2 3;f:3 4.;s:`a`b]
-<a href="#ktable">ktable</a> [[b:..]a:..]      
+<a href="#utable">utable</a> [[b:..]a:..]      
 <a href="#xtable">xtable</a> `..![[]a:..]      
 </pre></div>
 
-<span id="t"></span><span id="Table"></span><h3 class="section">13.1 Table</h3>
+<span id="t"></span><span id="table"></span><h3 class="section">13.1 table</h3>
 <p>The table is the most basic of the three types.  A table consists of columns and rows of information where each column has a name.  Tables can be created in three different ways (1) specification via table format, (2) flipping a dictionary, or (3) reading in from a file.
 </p>
 <span id="Table-format"></span><h4 class="subsection">13.1.1 Table format</h4>
 <p>Tables can be created with the table square bracket notation.
 </p>
-<p>As an example let&rsquo;s create a table with two columns named &ldquo;a&rdquo; and &ldquo;col2&rdquo; with three rows.  The syntax is to surround the defintion with square brackeets and then have a first element of empty square brackets.  In general this in square bracket pair will contain any keys but more on this will happen in ktable.  After that it&rsquo;s first column name, colon, and the list of values, then second column, and continuing for all the columns.
+<p>As an example let&rsquo;s create a table with two columns named &ldquo;a&rdquo; and &ldquo;col2&rdquo; with three rows.  The syntax is to surround the defintion with square brackeets and then have a first element of empty square brackets.  In general this in square bracket pair will contain any keys but more on this will happen in utable.  After that it&rsquo;s first column name, colon, and the list of values, then second column, and continuing for all the columns.
 </p>
 <div class="example">
 <pre class="example"> [[] a:1 20 3; col2: 3.6 4.8 0.1]
@@ -127,8 +127,8 @@ d          p
 2020.09.10 150
 </pre></div>
 
-<span id="ktable"></span><span id="ktable-1"></span><h3 class="section">13.3 ktable</h3>
-<p>ktable (or key table) is a table where some of the columns are keyed and thus should not have duplicate values.
+<span id="utable"></span><span id="utable-1"></span><h3 class="section">13.3 utable</h3>
+<p>utable (or key table) is a table where some of the columns are keyed and thus should not have duplicate values.
 </p>
 <div class="example">
 <pre class="example"> [[d:2020.09.08 2020.09.09 2020.09.10]p:140 139 150]

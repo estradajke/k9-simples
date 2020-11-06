@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- October 25, 2020
+<!-- November 6, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -112,7 +112,7 @@ x y
 </pre></div>
 
 <span id="Query-with-By"></span><h4 class="subsection">14.1.3 Query with By</h4>
-<p>kSQL also has a way to group rows using <code>by</code>.  The result is a ktable where the key is the now unique field in the <code>by</code>.
+<p>kSQL also has a way to group rows using <code>by</code>.  The result is a utable where the key is the now unique field in the <code>by</code>.
 </p>
 <div class="example">
 <pre class="example">n:5;t:[[]x:!n;y:sin !n]
@@ -136,7 +136,7 @@ x|y
 </pre></div>
 
 <span id="Joins"></span><h3 class="section">14.2 Joins</h3>
-<p>k9 has a number of methods to join tables together which are described below.  In this section t, t1 and t2 represent tables and k, k1 and k2 represent ktables.
+<p>k9 has a number of methods to join tables together which are described below.  In this section t, t1 and t2 represent tables and k, k1 and k2 represent utables.
 </p>
 <table>
 <tr><td width="15%"><b>join</b></td><td width="60%"><b>syntax</b></td></tr>
@@ -175,7 +175,7 @@ c 12 22
 </pre></div>
 
 <span id="left"></span><span id="left-join-_21d2-t_002ck"></span><h4 class="subsection">14.2.2 left join &rArr; t,k</h4>
-<p>Left join table t with ktable k.  Result includes all rows from t and values from t where there is no k value.
+<p>bLeft join table t with utable k.  Result includes all rows from t and values from t where there is no k value.
 </p>
 <div class="example">
 <pre class="example">&nbsp;t:[[]s:`a`b`c;p:1 2 3;q:7 8 9]
@@ -205,7 +205,7 @@ c 3   9  0
 </pre></div>
 
 <span id="outer"></span><span id="outer-join-_21d2-k1_002ck2"></span><h4 class="subsection">14.2.3 outer join &rArr; k1,k2</h4>
-<p>Outer join ktable k1 with key ktable k2. 
+<p>Outer join utable k1 with key utable k2. 
 </p>
 <div class="example">
 <pre class="example">&nbsp;k1:[[s:`a`b]p:1 2;q:3 4]
@@ -231,7 +231,7 @@ c|8 6
 </pre></div>
 
 <span id="asof"></span><span id="asof-join-_21d2-t_002ck"></span><h4 class="subsection">14.2.4 asof join &rArr; t,k</h4>
-<p>Asof joins a table t to a ktable k (key by time) such that the t values show the preceeding or equal time value of k.
+<p>Asof joins a table t to a utable k (key by time) such that the t values show the preceeding or equal time value of k.
 </p>
 <div class="example">
 <pre class="example"> t:[[]t:09:30+5*!5;p:100+!5];t
@@ -286,7 +286,7 @@ t           |p
 </pre></div>
 
 <span id="asof_002b"></span><span id="asof_002b-join-_21d2-k1_002bk2"></span><h4 class="subsection">14.2.5 asof+ join &rArr; k1+k2</h4>
-<p>Asof+ joins ktables adding the non-key fields to represent the sum asof the key field usually time.  This join allows one to aggregate over markets to find the total available at a given time.  The ktables need to be specified with <code>`a</code>.
+<p>Asof+ joins utables adding the non-key fields to represent the sum asof the key field usually time.  This join allows one to aggregate over markets to find the total available at a given time.  The utables need to be specified with <code>`a</code>.
 </p>
 <div class="example">
 <pre class="example"> k1:`a [[t:09:30+5*!5]bs:100*1 2 3 2 1];k1
@@ -348,7 +348,7 @@ c  12
 </pre></div>
 
 <span id="upsert-_21d2-k_002cd"></span><h4 class="subsection">14.3.2 upsert &rArr; k,d</h4>
-<p>Insert dictionary d into ktable k.
+<p>Insert dictionary d into utable k.
 </p><div class="example">
 <pre class="example"> k:[[c1:`a`b`c]c2:1 2 7];k
 c1|c2

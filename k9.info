@@ -1,6 +1,6 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
-October 25, 2020
+November 6, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -3122,15 +3122,15 @@ File: k9.info,  Node: Tables,  Next: kSQL,  Prev: I/O,  Up: Top
 *********
 
 This chapter introduces the different types of tables available in k9.
-Table, xtable and ktable are very similar and as you'll see in the
+Table, utable and xtable are very similar and as you'll see in the
 kSQL chapter are easy to query.  In the benchmark chapter tables were
 shown to be fast to save, read, and query.
 
      *note t:::[[]i:2 3;f:3 4.;s:`a`b]
-     *note ktable:: [[b:..]a:..]
+     *note utable:: [[b:..]a:..]
      *note xtable:: `..![[]a:..]
 
-13.1 Table
+13.1 table
 ==========
 
 The table is the most basic of the three types.  A table consists of
@@ -3147,7 +3147,7 @@ Tables can be created with the table square bracket notation.
 "col2" with three rows.  The syntax is to surround the defintion with
 square brackeets and then have a first element of empty square
 brackets.  In general this in square bracket pair will contain any
-keys but more on this will happen in ktable.  After that it's first
+keys but more on this will happen in utable.  After that it's first
 column name, colon, and the list of values, then second column, and
 continuing for all the columns.
 
@@ -3216,10 +3216,10 @@ prices.
      2020.09.09 139
      2020.09.10 150
 
-13.3 ktable
+13.3 utable
 ===========
 
-ktable (or key table) is a table where some of the columns are keyed
+utable (or key table) is a table where some of the columns are keyed
 and thus should not have duplicate values.
 
       [[d:2020.09.08 2020.09.09 2020.09.10]p:140 139 150]
@@ -3313,7 +3313,7 @@ table.
 14.1.3 Query with By
 --------------------
 
-kSQL also has a way to group rows using 'by'.  The result is a ktable
+kSQL also has a way to group rows using 'by'.  The result is a utable
 where the key is the now unique field in the 'by'.
 
      n:5;t:[[]x:!n;y:sin !n]
@@ -3339,7 +3339,7 @@ where the key is the now unique field in the 'by'.
 
 k9 has a number of methods to join tables together which are described
 below.  In this section t, t1 and t2 represent tables and k, k1 and k2
-represent ktables.
+represent utables.
 
 join        syntax
 *note union::t1,t2
@@ -3380,7 +3380,7 @@ the tables do not have the same columns then return t1.
 14.2.2 left join => t,k
 -----------------------
 
-Left join table t with ktable k.  Result includes all rows from t and
+bLeft join table t with utable k.  Result includes all rows from t and
 values from t where there is no k value.
 
       t:[[]s:`a`b`c;p:1 2 3;q:7 8 9]
@@ -3411,7 +3411,7 @@ values from t where there is no k value.
 14.2.3 outer join => k1,k2
 --------------------------
 
-Outer join ktable k1 with key ktable k2.
+Outer join utable k1 with key utable k2.
 
       k1:[[s:`a`b]p:1 2;q:3 4]
       k2:[[s:`b`c]p:9 8;q:7 6]
@@ -3437,7 +3437,7 @@ Outer join ktable k1 with key ktable k2.
 14.2.4 asof join => t,k
 -----------------------
 
-Asof joins a table t to a ktable k (key by time) such that the t
+Asof joins a table t to a utable k (key by time) such that the t
 values show the preceeding or equal time value of k.
 
       t:[[]t:09:30+5*!5;p:100+!5];t
@@ -3492,9 +3492,9 @@ performance of k9 on joins.
 14.2.5 asof+ join => k1+k2
 --------------------------
 
-Asof+ joins ktables adding the non-key fields to represent the sum
+Asof+ joins utables adding the non-key fields to represent the sum
 asof the key field usually time.  This join allows one to aggregate
-over markets to find the total available at a given time.  The ktables
+over markets to find the total available at a given time.  The utables
 need to be specified with '`a'.
 
       k1:`a [[t:09:30+5*!5]bs:100*1 2 3 2 1];k1
@@ -3562,7 +3562,7 @@ Insert dictionary d into table t.
 14.3.2 upsert => k,d
 --------------------
 
-Insert dictionary d into ktable k.
+Insert dictionary d into utable k.
       k:[[c1:`a`b`c]c2:1 2 7];k
      c1|c2
      --|--
@@ -3988,33 +3988,33 @@ Ref: lib73713
 Node: Tables74177
 Ref: t74623
 Ref: xtable76229
-Ref: ktable76712
+Ref: utable76712
 Node: kSQL77169
 Ref: union79498
 Ref: left80019
-Ref: outer80540
-Ref: asof80875
-Ref: asof+81919
-Node: System83592
-Ref: load84050
-Ref: timing84238
-Ref: variables84325
-Ref: memory84426
-Ref: cd84541
-Node: Control Flow84625
-Ref: cond84845
-Node: .z85106
-Node: Errors86136
-Ref: class86570
-Ref: rank86659
-Ref: length86783
-Ref: _type86906
-Ref: domain87015
-Ref: limit87137
-Ref: nyi87338
-Ref: parse87671
-Ref: _value87826
-Node: Conclusion87954
+Ref: outer80541
+Ref: asof80876
+Ref: asof+81920
+Node: System83593
+Ref: load84051
+Ref: timing84239
+Ref: variables84326
+Ref: memory84427
+Ref: cd84542
+Node: Control Flow84626
+Ref: cond84846
+Node: .z85107
+Node: Errors86137
+Ref: class86571
+Ref: rank86660
+Ref: length86784
+Ref: _type86907
+Ref: domain87016
+Ref: limit87138
+Ref: nyi87339
+Ref: parse87672
+Ref: _value87827
+Node: Conclusion87955
 
 End Tag Table
 

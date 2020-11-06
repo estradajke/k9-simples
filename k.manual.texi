@@ -2874,21 +2874,21 @@ Load the shared library into the session.
 
 @node Tables
 @chapter Tables
-This chapter introduces the different types of tables available in k9.  Table, xtable and ktable are very similar and as you'll see in the kSQL chapter are easy to query.  In the benchmark chapter tables were shown to be fast to save, read, and query.
+This chapter introduces the different types of tables available in k9.  Table, utable and xtable are very similar and as you'll see in the kSQL chapter are easy to query.  In the benchmark chapter tables were shown to be fast to save, read, and query.
 
 @example
 @ref{t}:[[]i:2 3;f:3 4.;s:`a`b]
-@ref{ktable} [[b:..]a:..]      
+@ref{utable} [[b:..]a:..]      
 @ref{xtable} `..![[]a:..]      
 @end example
 
-@anchor{t}@section Table
+@anchor{t}@section table
 The table is the most basic of the three types.  A table consists of columns and rows of information where each column has a name.  Tables can be created in three different ways (1) specification via table format, (2) flipping a dictionary, or (3) reading in from a file.
 
 @subsection Table format
 Tables can be created with the table square bracket notation.
 
-As an example let's create a table with two columns named ``a'' and ``col2'' with three rows.  The syntax is to surround the defintion with square brackeets and then have a first element of empty square brackets.  In general this in square bracket pair will contain any keys but more on this will happen in ktable.  After that it's first column name, colon, and the list of values, then second column, and continuing for all the columns.
+As an example let's create a table with two columns named ``a'' and ``col2'' with three rows.  The syntax is to surround the defintion with square brackeets and then have a first element of empty square brackets.  In general this in square bracket pair will contain any keys but more on this will happen in utable.  After that it's first column name, colon, and the list of values, then second column, and continuing for all the columns.
 
 @example
  [[] a:1 20 3; col2: 3.6 4.8 0.1]
@@ -2957,8 +2957,8 @@ d          p
 2020.09.10 150
 @end example
 
-@anchor{ktable}@section ktable
-ktable (or key table) is a table where some of the columns are keyed and thus should not have duplicate values.
+@anchor{utable}@section utable
+utable (or key table) is a table where some of the columns are keyed and thus should not have duplicate values.
 
 @example
  [[d:2020.09.08 2020.09.09 2020.09.10]p:140 139 150]
@@ -3044,7 +3044,7 @@ x y
 @end example
 
 @subsection Query with By
-kSQL also has a way to group rows using @code{by}.  The result is a ktable where the key is the now unique field in the @code{by}.
+kSQL also has a way to group rows using @code{by}.  The result is a utable where the key is the now unique field in the @code{by}.
 
 @example
 n:5;t:[[]x:!n;y:sin !n]
@@ -3068,7 +3068,7 @@ x|y
 @end example
 
 @section Joins
-k9 has a number of methods to join tables together which are described below.  In this section t, t1 and t2 represent tables and k, k1 and k2 represent ktables.
+k9 has a number of methods to join tables together which are described below.  In this section t, t1 and t2 represent tables and k, k1 and k2 represent utables.
 
 @multitable @columnfractions .15 .6
 @item @b{join} @tab @b{syntax}
@@ -3107,7 +3107,7 @@ c 12 22
 @end example
 
 @anchor{left}@subsection left join @result{} t,k
-Left join table t with ktable k.  Result includes all rows from t and values from t where there is no k value.
+bLeft join table t with utable k.  Result includes all rows from t and values from t where there is no k value.
 
 @example
 @ t:[[]s:`a`b`c;p:1 2 3;q:7 8 9]
@@ -3137,7 +3137,7 @@ c 3   9  0
 @end example
 
 @anchor{outer}@subsection outer join @result{} k1,k2
-Outer join ktable k1 with key ktable k2. 
+Outer join utable k1 with key utable k2. 
 
 @example
 @ k1:[[s:`a`b]p:1 2;q:3 4]
@@ -3163,7 +3163,7 @@ c|8 6
 @end example
 
 @anchor{asof}@subsection asof join @result{} t,k
-Asof joins a table t to a ktable k (key by time) such that the t values show the preceeding or equal time value of k.
+Asof joins a table t to a utable k (key by time) such that the t values show the preceeding or equal time value of k.
 
 @example
  t:[[]t:09:30+5*!5;p:100+!5];t
@@ -3218,7 +3218,7 @@ t           |p
 @end example
 
 @anchor{asof+}@subsection asof+ join @result{} k1+k2
-Asof+ joins ktables adding the non-key fields to represent the sum asof the key field usually time.  This join allows one to aggregate over markets to find the total available at a given time.  The ktables need to be specified with @code{`a}.
+Asof+ joins utables adding the non-key fields to represent the sum asof the key field usually time.  This join allows one to aggregate over markets to find the total available at a given time.  The utables need to be specified with @code{`a}.
 
 @example
  k1:`a [[t:09:30+5*!5]bs:100*1 2 3 2 1];k1
@@ -3280,7 +3280,7 @@ c  12
 @end example
 
 @subsection upsert @result{} k,d
-Insert dictionary d into ktable k.
+Insert dictionary d into utable k.
 @example
  k:[[c1:`a`b`c]c2:1 2 7];k
 c1|c2
