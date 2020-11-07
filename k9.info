@@ -1,6 +1,6 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
-November 6, 2020
+November 7, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -80,7 +80,7 @@ connect to all - depend on none
 
 * Intro:: An introduction to shakti/k9, a novel computer language for data analysis
 * Examples:: Examples to motivate the reader to learn the language
-* Benchmarks:: Learn how fast this language is
+* Benchmark:: Learn how fast this language is
 * Verb:: Elementary functions
 * Adverb:: Function modifiers
 * Noun:: Basic data types
@@ -430,7 +430,7 @@ are verbs and modifiers are adverbs.
    * 3 >' (1 12;1 4 5) (Noun verb adverb noun)
 
 
-File: k9.info,  Node: Examples,  Next: Benchmarks,  Prev: Intro,  Up: Top
+File: k9.info,  Node: Examples,  Next: Benchmark,  Prev: Intro,  Up: Top
 
 2 Examples
 **********
@@ -706,10 +706,10 @@ index of the matches.
      9 10 29
 
 
-File: k9.info,  Node: Benchmarks,  Next: Verb,  Prev: Examples,  Up: Top
+File: k9.info,  Node: Benchmark,  Next: Verb,  Prev: Examples,  Up: Top
 
-3 Benchmarks
-************
+3 Benchmark
+***********
 
 Shakti seems likely to be one of the faster data analysis languages
 out there and clear benchmarks always help to illuminate the matter.
@@ -913,7 +913,7 @@ table giving the current bid on each trade.
      3
 
 
-File: k9.info,  Node: Verb,  Next: Adverb,  Prev: Benchmarks,  Up: Top
+File: k9.info,  Node: Verb,  Next: Adverb,  Prev: Benchmark,  Up: Top
 
 4 Verb
 ******
@@ -1741,14 +1741,20 @@ Apply function f to each value in list x.
 5.5 has => v'x
 ==============
 
-Determine if vector v has element x.  Simliar to *note in:: but
-arguments reversed.
+Determine if vector v has element or list x.  Simliar to *note in::
+but arguments reversed.
 
       `a`b`c`a`b'`a
      1b
 
      `a`b`c`a`b'`d
      0b
+
+      `a`b`c`a`b'`a`b`x`y`z
+     11000b
+
+      (1 2;4 5 6;7 9)'(1 2;8 9)
+     10b
 
 5.6 eachp => f':[x;y]
 =====================
@@ -3121,10 +3127,14 @@ File: k9.info,  Node: Tables,  Next: kSQL,  Prev: I/O,  Up: Top
 13 Tables
 *********
 
-This chapter introduces the different types of tables available in k9.
-Table, utable and xtable are very similar and as you'll see in the
-kSQL chapter are easy to query.  In the benchmark chapter tables were
-shown to be fast to save, read, and query.
+k9 has the ability to store data in a tabular format containing named
+columns and rows of information as tables.  If the data to be stored
+and queried is large then tables should be the default data type to be
+considered.  This chapter introduces the different types of data
+tables available in k9.  Table, utable and xtable are very similar and
+as you'll see in the *note kSQL:: chapter are easy to query.  In the
+*note Benchmark:: chapter, tables were shown to be fast to save, read,
+and query.
 
      *note t:::[[]i:2 3;f:3 4.;s:`a`b]
      *note utable:: [[b:..]a:..]
@@ -3201,7 +3211,7 @@ a, col2
 13.2 xtable
 ===========
 
-An cross tab (xtable) is a collection of tables stored in a dictionary
+A cross tab (xtable) is a collection of tables stored in a dictionary
 where the keys are symbols and the values are tables.  Below is an
 example where the keys are symbols and the values are end-of-day
 prices.
@@ -3886,135 +3896,135 @@ connect to all - depend on none
 
 Tag Table:
 Node: Top125
-Node: Intro4347
-Node: Examples16474
-Node: Benchmarks24021
-Node: Verb28980
-Ref: x30441
-Ref: set30466
-Ref: flip30678
-Ref: plus30928
-Ref: negate31313
-Ref: minus31485
-Ref: first31592
-Ref: times31932
-Ref: divide32063
-Ref: where32200
-Ref: min/and32680
-Ref: reverse32939
-Ref: max/or33109
-Ref: asc33373
-Ref: less33746
-Ref: group34047
-Ref: equal34293
-Ref: not34597
-Ref: match34714
-Ref: enum35097
-Ref: key36350
-Ref: enlist36580
-Ref: cat36719
-Ref: sort36838
-Ref: [f]cut37070
-Ref: count37815
-Ref: [f]take38005
-Ref: floor38634
-Ref: [f]drop38725
-Ref: string39318
-Ref: cast+39419
-Ref: unique+39768
-Ref: find+40007
-Ref: type40726
-Ref: [f]at41177
-Ref: value41493
-Ref: [f]dot41767
-Node: Adverb43016
-Ref: scan43758
-Ref: join44288
-Ref: split44463
-Ref: each44654
-Ref: has44872
-Ref: eachp45045
-Ref: bin245485
-Ref: eachr45688
-Ref: eachl45885
-Ref: n scan46069
-Ref: c scan46549
-Ref: c over47061
-Ref: vs47198
-Ref: sv47318
-Node: Noun47442
-Ref: bool48808
-Ref: int49108
-Ref: flt49312
-Ref: char49690
-Ref: name49913
-Ref: uuid50144
-Ref: time50301
-Ref: date50915
-Ref: datetime51333
-Node: List52032
-Node: Dictionary57307
-Node: User Functions62220
-Node: Named Functions64806
-Ref: sqrt65437
-Ref: exp65510
-Ref: log65578
-Ref: sin65678
-Ref: cos65817
-Ref: div65965
-Ref: mod66121
-Ref: bar66299
-Ref: in66839
-Ref: bin67017
-Ref: within67231
-Node: Modification Functions67445
-Ref: amend67738
-Ref: dmend68106
-Node: I/O68471
-Ref: input format69467
-Ref: read csv70478
-Ref: write csv70656
-Ref: read json70820
-Ref: write json71010
-Ref: w line71183
-Ref: r line71491
-Ref: w char71604
-Ref: r char71998
-Ref: r data72364
-Ref: w data73025
-Ref: conn/set73593
-Ref: http/get73653
-Ref: lib73713
-Node: Tables74177
-Ref: t74623
-Ref: xtable76229
-Ref: utable76712
-Node: kSQL77169
-Ref: union79498
-Ref: left80019
-Ref: outer80541
-Ref: asof80876
-Ref: asof+81920
-Node: System83593
-Ref: load84051
-Ref: timing84239
-Ref: variables84326
-Ref: memory84427
-Ref: cd84542
-Node: Control Flow84626
-Ref: cond84846
-Node: .z85107
-Node: Errors86137
-Ref: class86571
-Ref: rank86660
-Ref: length86784
-Ref: _type86907
-Ref: domain87016
-Ref: limit87138
-Ref: nyi87339
-Ref: parse87672
-Ref: _value87827
-Node: Conclusion87955
+Node: Intro4346
+Node: Examples16473
+Node: Benchmark24019
+Node: Verb28975
+Ref: x30435
+Ref: set30460
+Ref: flip30672
+Ref: plus30922
+Ref: negate31307
+Ref: minus31479
+Ref: first31586
+Ref: times31926
+Ref: divide32057
+Ref: where32194
+Ref: min/and32674
+Ref: reverse32933
+Ref: max/or33103
+Ref: asc33367
+Ref: less33740
+Ref: group34041
+Ref: equal34287
+Ref: not34591
+Ref: match34708
+Ref: enum35091
+Ref: key36344
+Ref: enlist36574
+Ref: cat36713
+Ref: sort36832
+Ref: [f]cut37064
+Ref: count37809
+Ref: [f]take37999
+Ref: floor38628
+Ref: [f]drop38719
+Ref: string39312
+Ref: cast+39413
+Ref: unique+39762
+Ref: find+40001
+Ref: type40720
+Ref: [f]at41171
+Ref: value41487
+Ref: [f]dot41761
+Node: Adverb43010
+Ref: scan43752
+Ref: join44282
+Ref: split44457
+Ref: each44648
+Ref: has44866
+Ref: eachp45130
+Ref: bin245570
+Ref: eachr45773
+Ref: eachl45970
+Ref: n scan46154
+Ref: c scan46634
+Ref: c over47146
+Ref: vs47283
+Ref: sv47403
+Node: Noun47527
+Ref: bool48893
+Ref: int49193
+Ref: flt49397
+Ref: char49775
+Ref: name49998
+Ref: uuid50229
+Ref: time50386
+Ref: date51000
+Ref: datetime51418
+Node: List52117
+Node: Dictionary57392
+Node: User Functions62305
+Node: Named Functions64891
+Ref: sqrt65522
+Ref: exp65595
+Ref: log65663
+Ref: sin65763
+Ref: cos65902
+Ref: div66050
+Ref: mod66206
+Ref: bar66384
+Ref: in66924
+Ref: bin67102
+Ref: within67316
+Node: Modification Functions67530
+Ref: amend67823
+Ref: dmend68191
+Node: I/O68556
+Ref: input format69552
+Ref: read csv70563
+Ref: write csv70741
+Ref: read json70905
+Ref: write json71095
+Ref: w line71268
+Ref: r line71576
+Ref: w char71689
+Ref: r char72083
+Ref: r data72449
+Ref: w data73110
+Ref: conn/set73678
+Ref: http/get73738
+Ref: lib73798
+Node: Tables74262
+Ref: t74954
+Ref: xtable76560
+Ref: utable77042
+Node: kSQL77499
+Ref: union79828
+Ref: left80349
+Ref: outer80871
+Ref: asof81206
+Ref: asof+82250
+Node: System83923
+Ref: load84381
+Ref: timing84569
+Ref: variables84656
+Ref: memory84757
+Ref: cd84872
+Node: Control Flow84956
+Ref: cond85176
+Node: .z85437
+Node: Errors86467
+Ref: class86901
+Ref: rank86990
+Ref: length87114
+Ref: _type87237
+Ref: domain87346
+Ref: limit87468
+Ref: nyi87669
+Ref: parse88002
+Ref: _value88157
+Node: Conclusion88285
 
 End Tag Table
 

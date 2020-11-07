@@ -40,7 +40,7 @@ The built-in reference screen (@code{\}) containing all the k9 commands.
 @menu
 * Intro:: An introduction to shakti/k9, a novel computer language for data analysis
 * Examples:: Examples to motivate the reader to learn the language
-* Benchmarks:: Learn how fast this language is
+* Benchmark:: Learn how fast this language is
 * Verb:: Elementary functions
 * Adverb:: Function modifiers
 * Noun:: Basic data types
@@ -520,8 +520,8 @@ And then one can use the where function, @code{&}, to determine the index of the
 9 10 29
 @end example
 
-@node Benchmarks
-@chapter Benchmarks
+@node Benchmark
+@chapter Benchmark
 Shakti seems likely to be one of the faster data analysis languages out there and clear benchmarks always help to illuminate the matter.  The Shakti website has a file for such purpose, b.k.  You can see below for the first query (Q1) k9 takes 1ms while postgres, spark and mongo are orders of magntitude slower.  
 
 b.k
@@ -1577,7 +1577,7 @@ Apply function f to each value in list x.
 @end example
 
 @anchor{has}@section has @result{} v'x
-Determine if vector v has element x.  Simliar to @ref{in} but arguments reversed.
+Determine if vector v has element or list x.  Simliar to @ref{in} but arguments reversed.
 
 @example
  `a`b`c`a`b'`a
@@ -1585,6 +1585,12 @@ Determine if vector v has element x.  Simliar to @ref{in} but arguments reversed
 
 `a`b`c`a`b'`d
 0b
+
+ `a`b`c`a`b'`a`b`x`y`z
+11000b
+
+ (1 2;4 5 6;7 9)'(1 2;8 9)
+10b
 @end example
 
 @anchor{eachp}@section eachp @result{} f':[x;y]
@@ -2874,7 +2880,7 @@ Load the shared library into the session.
 
 @node Tables
 @chapter Tables
-This chapter introduces the different types of tables available in k9.  Table, utable and xtable are very similar and as you'll see in the kSQL chapter are easy to query.  In the benchmark chapter tables were shown to be fast to save, read, and query.
+k9 has the ability to store data in a tabular format containing named columns and rows of information as tables.  If the data to be stored and queried is large then tables should be the default data type to be considered.  This chapter introduces the different types of data tables available in k9.  Table, utable and xtable are very similar and as you'll see in the @ref{kSQL} chapter are easy to query.  In the @ref{Benchmark} chapter, tables were shown to be fast to save, read, and query.
 
 @example
 @ref{t}:[[]i:2 3;f:3 4.;s:`a`b]
@@ -2942,7 +2948,7 @@ a   col2
 @end example
 
 @anchor{xtable}@section xtable
-An cross tab (xtable) is a collection of tables stored in a dictionary where the keys are symbols and the values are tables.  Below is an example where the keys are symbols and the values are
+A cross tab (xtable) is a collection of tables stored in a dictionary where the keys are symbols and the values are tables.  Below is an example where the keys are symbols and the values are
 end-of-day prices.
 
 @example

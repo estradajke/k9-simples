@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- November 6, 2020
+<!-- November 7, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -46,7 +46,7 @@ Next: <a href="kSQL.html" accesskey="n" rel="next">kSQL</a>, Previous: <a href="
 </div>
 <hr>
 <span id="Tables-1"></span><h2 class="chapter">13 Tables</h2>
-<p>This chapter introduces the different types of tables available in k9.  Table, utable and xtable are very similar and as you&rsquo;ll see in the kSQL chapter are easy to query.  In the benchmark chapter tables were shown to be fast to save, read, and query.
+<p>k9 has the ability to store data in a tabular format containing named columns and rows of information as tables.  If the data to be stored and queried is large then tables should be the default data type to be considered.  This chapter introduces the different types of data tables available in k9.  Table, utable and xtable are very similar and as you&rsquo;ll see in the <a href="kSQL.html">kSQL</a> chapter are easy to query.  In the <a href="Benchmark.html">Benchmark</a> chapter, tables were shown to be fast to save, read, and query.
 </p>
 <div class="example">
 <pre class="example"><a href="#t">t</a>:[[]i:2 3;f:3 4.;s:`a`b]
@@ -112,7 +112,7 @@ a   col2
 </pre></div>
 
 <span id="xtable"></span><span id="xtable-1"></span><h3 class="section">13.2 xtable</h3>
-<p>An cross tab (xtable) is a collection of tables stored in a dictionary where the keys are symbols and the values are tables.  Below is an example where the keys are symbols and the values are
+<p>A cross tab (xtable) is a collection of tables stored in a dictionary where the keys are symbols and the values are tables.  Below is an example where the keys are symbols and the values are
 end-of-day prices.
 </p>
 <div class="example">
