@@ -1,11 +1,11 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
-November 7, 2020
+November 8, 2020
 
    Copyright (C) 2020 John Estrada
 
 
-File: k9.info,  Node: Top,  Next: Intro,  Up: (dir)
+File: k9.info,  Node: Top,  Next: Introduction,  Up: (dir)
 
 k9: Manual
 **********
@@ -28,9 +28,9 @@ analyzing data and how terse code is less likley to contain errors.
 Unfortunatley you will be less likley to be content using more bloated
 and slow frameworks.
 
-   Unfortuantely this manual is not as elegant as the k9 language such
-that the text version of this document is almost as big as the binary
-of the language.
+   Alas this manual is not as elegant as the k9 language such that the
+text version of this document is almost as big as the binary of the
+language.
 
    The built-in reference screen ('\') containing all the k9 commands.
 
@@ -78,7 +78,7 @@ connect to all - depend on none
 
 * Menu:
 
-* Intro:: An introduction to shakti/k9, a novel computer language for data analysis
+* Introduction:: An introduction to shakti/k9, a novel computer language for data analysis
 * Examples:: Examples to motivate the reader to learn the language
 * Benchmark:: Learn how fast this language is
 * Verb:: Elementary functions
@@ -99,10 +99,10 @@ connect to all - depend on none
 * Conclusion:: Conclusion
 
 
-File: k9.info,  Node: Intro,  Next: Examples,  Prev: Top,  Up: Top
+File: k9.info,  Node: Introduction,  Next: Examples,  Prev: Top,  Up: Top
 
-1 Intro
-*******
+1 Introduction
+**************
 
 The k9 programming language is designed primarily for the analysis of
 data.  It may surprise new users with two rather different paradigms,
@@ -334,6 +334,11 @@ return, most variance, or any other analysis on the data.
      b|0.6629631
      c|0.6708467
 
+   Now let's exit the session.
+
+      \\
+     bash-3.2$
+
 1.7 Document formatting for code examples
 =========================================
 
@@ -430,7 +435,7 @@ are verbs and modifiers are adverbs.
    * 3 >' (1 12;1 4 5) (Noun verb adverb noun)
 
 
-File: k9.info,  Node: Examples,  Next: Benchmark,  Prev: Intro,  Up: Top
+File: k9.info,  Node: Examples,  Next: Benchmark,  Prev: Introduction,  Up: Top
 
 2 Examples
 **********
@@ -3896,135 +3901,135 @@ connect to all - depend on none
 
 Tag Table:
 Node: Top125
-Node: Intro4346
-Node: Examples16473
-Node: Benchmark24019
-Node: Verb28975
-Ref: x30435
-Ref: set30460
-Ref: flip30672
-Ref: plus30922
-Ref: negate31307
-Ref: minus31479
-Ref: first31586
-Ref: times31926
-Ref: divide32057
-Ref: where32194
-Ref: min/and32674
-Ref: reverse32933
-Ref: max/or33103
-Ref: asc33367
-Ref: less33740
-Ref: group34041
-Ref: equal34287
-Ref: not34591
-Ref: match34708
-Ref: enum35091
-Ref: key36344
-Ref: enlist36574
-Ref: cat36713
-Ref: sort36832
-Ref: [f]cut37064
-Ref: count37809
-Ref: [f]take37999
-Ref: floor38628
-Ref: [f]drop38719
-Ref: string39312
-Ref: cast+39413
-Ref: unique+39762
-Ref: find+40001
-Ref: type40720
-Ref: [f]at41171
-Ref: value41487
-Ref: [f]dot41761
-Node: Adverb43010
-Ref: scan43752
-Ref: join44282
-Ref: split44457
-Ref: each44648
-Ref: has44866
-Ref: eachp45130
-Ref: bin245570
-Ref: eachr45773
-Ref: eachl45970
-Ref: n scan46154
-Ref: c scan46634
-Ref: c over47146
-Ref: vs47283
-Ref: sv47403
-Node: Noun47527
-Ref: bool48893
-Ref: int49193
-Ref: flt49397
-Ref: char49775
-Ref: name49998
-Ref: uuid50229
-Ref: time50386
-Ref: date51000
-Ref: datetime51418
-Node: List52117
-Node: Dictionary57392
-Node: User Functions62305
-Node: Named Functions64891
-Ref: sqrt65522
-Ref: exp65595
-Ref: log65663
-Ref: sin65763
-Ref: cos65902
-Ref: div66050
-Ref: mod66206
-Ref: bar66384
-Ref: in66924
-Ref: bin67102
-Ref: within67316
-Node: Modification Functions67530
-Ref: amend67823
-Ref: dmend68191
-Node: I/O68556
-Ref: input format69552
-Ref: read csv70563
-Ref: write csv70741
-Ref: read json70905
-Ref: write json71095
-Ref: w line71268
-Ref: r line71576
-Ref: w char71689
-Ref: r char72083
-Ref: r data72449
-Ref: w data73110
-Ref: conn/set73678
-Ref: http/get73738
-Ref: lib73798
-Node: Tables74262
-Ref: t74954
-Ref: xtable76560
-Ref: utable77042
-Node: kSQL77499
-Ref: union79828
-Ref: left80349
-Ref: outer80871
-Ref: asof81206
-Ref: asof+82250
-Node: System83923
-Ref: load84381
-Ref: timing84569
-Ref: variables84656
-Ref: memory84757
-Ref: cd84872
-Node: Control Flow84956
-Ref: cond85176
-Node: .z85437
-Node: Errors86467
-Ref: class86901
-Ref: rank86990
-Ref: length87114
-Ref: _type87237
-Ref: domain87346
-Ref: limit87468
-Ref: nyi87669
-Ref: parse88002
-Ref: _value88157
-Node: Conclusion88285
+Node: Introduction4351
+Node: Examples16556
+Node: Benchmark24109
+Node: Verb29065
+Ref: x30525
+Ref: set30550
+Ref: flip30762
+Ref: plus31012
+Ref: negate31397
+Ref: minus31569
+Ref: first31676
+Ref: times32016
+Ref: divide32147
+Ref: where32284
+Ref: min/and32764
+Ref: reverse33023
+Ref: max/or33193
+Ref: asc33457
+Ref: less33830
+Ref: group34131
+Ref: equal34377
+Ref: not34681
+Ref: match34798
+Ref: enum35181
+Ref: key36434
+Ref: enlist36664
+Ref: cat36803
+Ref: sort36922
+Ref: [f]cut37154
+Ref: count37899
+Ref: [f]take38089
+Ref: floor38718
+Ref: [f]drop38809
+Ref: string39402
+Ref: cast+39503
+Ref: unique+39852
+Ref: find+40091
+Ref: type40810
+Ref: [f]at41261
+Ref: value41577
+Ref: [f]dot41851
+Node: Adverb43100
+Ref: scan43842
+Ref: join44372
+Ref: split44547
+Ref: each44738
+Ref: has44956
+Ref: eachp45220
+Ref: bin245660
+Ref: eachr45863
+Ref: eachl46060
+Ref: n scan46244
+Ref: c scan46724
+Ref: c over47236
+Ref: vs47373
+Ref: sv47493
+Node: Noun47617
+Ref: bool48983
+Ref: int49283
+Ref: flt49487
+Ref: char49865
+Ref: name50088
+Ref: uuid50319
+Ref: time50476
+Ref: date51090
+Ref: datetime51508
+Node: List52207
+Node: Dictionary57482
+Node: User Functions62395
+Node: Named Functions64981
+Ref: sqrt65612
+Ref: exp65685
+Ref: log65753
+Ref: sin65853
+Ref: cos65992
+Ref: div66140
+Ref: mod66296
+Ref: bar66474
+Ref: in67014
+Ref: bin67192
+Ref: within67406
+Node: Modification Functions67620
+Ref: amend67913
+Ref: dmend68281
+Node: I/O68646
+Ref: input format69642
+Ref: read csv70653
+Ref: write csv70831
+Ref: read json70995
+Ref: write json71185
+Ref: w line71358
+Ref: r line71666
+Ref: w char71779
+Ref: r char72173
+Ref: r data72539
+Ref: w data73200
+Ref: conn/set73768
+Ref: http/get73828
+Ref: lib73888
+Node: Tables74352
+Ref: t75044
+Ref: xtable76650
+Ref: utable77132
+Node: kSQL77589
+Ref: union79918
+Ref: left80439
+Ref: outer80961
+Ref: asof81296
+Ref: asof+82340
+Node: System84013
+Ref: load84471
+Ref: timing84659
+Ref: variables84746
+Ref: memory84847
+Ref: cd84962
+Node: Control Flow85046
+Ref: cond85266
+Node: .z85527
+Node: Errors86557
+Ref: class86991
+Ref: rank87080
+Ref: length87204
+Ref: _type87327
+Ref: domain87436
+Ref: limit87558
+Ref: nyi87759
+Ref: parse88092
+Ref: _value88247
+Node: Conclusion88375
 
 End Tag Table
 

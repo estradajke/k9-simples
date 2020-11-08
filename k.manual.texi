@@ -26,7 +26,7 @@ The Shakti programming language is the work of Arthur Whitney and the team at Sh
 
 Learning k9 means code like @code{@{x@@(!#x)+\!#y@}} is clear and actually prefered to something much longer and verbose.  You'll have to go a bit down the rabbit hole before it starts to come together but once it does you'll probably be happy you gave it a chance and end up learning a few things.  You'll understand how fast k9 can be in processing and analyzing data and how terse code is less likley to contain errors.  Unfortunatley you will be less likley to be content using more bloated and slow frameworks.  
 
-Unfortuantely this manual is not as elegant as the k9 language such that the text version of this document is almost as big as the binary of the language.  
+Alas this manual is not as elegant as the k9 language such that the text version of this document is almost as big as the binary of the language.  
 
 @c This manual is for Shakti (k9) build 2020.10.14.@*
 @c @end ifnottex
@@ -38,7 +38,7 @@ The built-in reference screen (@code{\}) containing all the k9 commands.
 @end smallformat
 
 @menu
-* Intro:: An introduction to shakti/k9, a novel computer language for data analysis
+* Introduction:: An introduction to shakti/k9, a novel computer language for data analysis
 * Examples:: Examples to motivate the reader to learn the language
 * Benchmark:: Learn how fast this language is
 * Verb:: Elementary functions
@@ -60,8 +60,8 @@ The built-in reference screen (@code{\}) containing all the k9 commands.
 @c * Index:: Complete index
 @end menu
 
-@node Intro
-@chapter Intro
+@node Introduction
+@chapter Introduction
 @c @cindex chapter, first
 The k9 programming language is designed primarily for the analysis of data.  It may surprise new users with two rather different paradigms, (1) fast data analysis and (2) concise syntax.  After some familiarity these changes will both seem normal and going back to slow and verbose programming will be surprisingly difficult.
 
@@ -196,6 +196,13 @@ c|73
 a|0.6601538
 b|0.6629631
 c|0.6708467
+@end example
+
+Now let's exit the session.
+
+@example
+ \\
+bash-3.2$ 
 @end example
 
 @section Document formatting for code examples
