@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- November 14, 2020
+
+Copyright (C) 2020 John Estrada -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Named Functions (Shakti tutorial)</title>
+
+<meta name="description" content="Named Functions (Shakti tutorial)">
+<meta name="keywords" content="Named Functions (Shakti tutorial)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="index.html" rel="up" title="Top">
+<link href="Knit-Functions.html" rel="next" title="Knit Functions">
+<link href="User-Functions.html" rel="prev" title="User Functions">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Named-Functions"></span><div class="header">
+<p>
+Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>, Previous: <a href="User-Functions.html" accesskey="p" rel="prev">User Functions</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+</div>
+<hr>
+<span id="Named-Functions-1"></span><h2 class="chapter">10 Named Functions</h2>
+<p>This chapter covers the non-symbol named functions.  This includes some math (eg. sqrt but not +), wrapper (eg. count for #) and range (eg. within) functions.
+</p>
+<div class="format">
+<div class="example">
+<pre class="example">math:    <a href="#sqrt">sqrt</a> <a href="#exp">exp</a> <a href="#log">log</a> <a href="#sin">sin</a> <a href="#cos">cos</a> <a href="#div">div</a> <a href="#mod">mod</a> <a href="#bar">bar</a>
+wrapper: count first last min max sum avg      
+range:   <a href="#in">in</a> <a href="#bin">bin</a> <a href="#within">within</a>
+</pre></div>
+</div>
+
+<span id="Math-Functions-_21d2-sqrt-exp-log-sin-cos-div-mod-bar"></span><h3 class="section">10.1 Math Functions &rArr; sqrt exp log sin cos div mod bar</h3>
+
+<span id="sqrt"></span><span id="sqrt-_21d2-sqrt-x"></span><h4 class="subsection">10.1.1 sqrt &rArr; sqrt x</h4>
+<div class="example">
+<pre class="example">&nbsp;sqrt 2
+1.414214
+</pre></div>
+
+<span id="exp"></span><span id="exp-_21d2-exp-x"></span><h4 class="subsection">10.1.2 exp &rArr; exp x</h4>
+<div class="example">
+<pre class="example">&nbsp;exp 1
+2.718282
+</pre></div>
+
+<span id="log"></span><span id="log-_21d2-log-x"></span><h4 class="subsection">10.1.3 log &rArr; log x</h4>
+<p>Log computes the natural log.
+</p>
+<div class="example">
+<pre class="example">&nbsp;log 10
+2.302585
+</pre></div>
+
+<span id="sin"></span><span id="sin-_21d2-sin-x"></span><h4 class="subsection">10.1.4 sin &rArr; sin x</h4>
+<p>sin computes the sine of x where x is in radians.
+</p><div class="example">
+<pre class="example">&nbsp;sin 0
+0f
+&nbsp;sin 3.1416%2
+1.
+</pre></div>
+
+<span id="cos"></span><span id="cos-_21d2-cos-x"></span><h4 class="subsection">10.1.5 cos &rArr; cos x</h4>
+<p>cos computes the cosine of x where x is in radians.
+</p><div class="example">
+<pre class="example">&nbsp;cos 0
+1f
+&nbsp;cos 3.1416%4
+0.7071055
+</pre></div>
+
+<span id="div"></span><span id="div-_21d2-x-div-y"></span><h4 class="subsection">10.1.6 div &rArr; x div y</h4>
+<p>y divided by x using integer division.  x and y must be integers.
+</p>
+<div class="example">
+<pre class="example">&nbsp;2 div 7
+3
+&nbsp;5 div 22
+4
+</pre></div>
+
+<span id="mod"></span><span id="mod-_21d2-x-mod-y"></span><h4 class="subsection">10.1.7 mod &rArr; x mod y</h4>
+<p>The remainder after y divided by x using integer division.  x and y must be integers.
+</p>
+<div class="example">
+<pre class="example">&nbsp;12 mod 27
+3
+&nbsp;5 mod 22
+2
+</pre></div>
+
+<span id="bar"></span><span id="bar-_21d2-x-bar-y"></span><h4 class="subsection">10.1.8 bar &rArr; x bar y</h4>
+<p>For each value in y determine the number of integer multiples of x that is less than or equal to each x.
+</p>
+<div class="example">
+<pre class="example">&nbsp;10 bar 9 10 11 19 20 21
+0 10 10 10 20 20
+</pre></div>
+
+<span id="Wrapper-Functions-_21d2-count-first-last-min-max-sum-avg"></span><h3 class="section">10.2 Wrapper Functions &rArr; count first last min max sum avg</h3>
+<p>These functions exist as verbs but also can be called with the names above.
+</p>
+<div class="example">
+<pre class="example">&nbsp;n:3.2 1.7 5.6
+&nbsp;sum n
+10.5
+&nbsp;+/n
+10.5
+</pre></div>
+
+<span id="Range-Functions-_21d2-in-bin-within"></span><h3 class="section">10.3 Range Functions &rArr; in bin within</h3>
+
+<span id="in"></span><span id="in-_21d2-x-in-y"></span><h4 class="subsection">10.3.1 in &rArr; x in y</h4>
+<p>Determine if x is in list y.  Similar to <a href="Adverb.html#has">has</a> but arguments reversed.
+</p>
+<div class="example">
+<pre class="example">&nbsp;`b in `a`b`d`e
+1b
+&nbsp;`c in `a`b`d`e
+0b
+</pre></div>
+
+<span id="bin"></span><span id="bin-_21d2-x-bin-y"></span><h4 class="subsection">10.3.2 bin &rArr; x bin y</h4>
+<p>Given a sorted (increasing) list x, find the greatest index, i, where y&gt;x[i].
+</p>
+<div class="example">
+<pre class="example">&nbsp;n:exp 0.01*!5;n
+1 1.01005 1.020201 1.030455 1.040811
+&nbsp;1.025 bin n
+2
+</pre></div>
+
+<span id="within"></span><span id="within-_21d2-x-within-y"></span><h4 class="subsection">10.3.3 within &rArr; x within y</h4>
+<p>Test if x is equal to or greater than y[0] and less than y[1].
+</p>
+<div class="example">
+<pre class="example">&nbsp;3 within (0;12)
+1b
+&nbsp;12 within (0;12)
+0b
+&nbsp;23 within (0;12)
+0b
+</pre></div>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>, Previous: <a href="User-Functions.html" accesskey="p" rel="prev">User Functions</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+</div>
+
+
+
+</body>
+</html>
