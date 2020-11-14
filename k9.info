@@ -1,6 +1,6 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
-November 8, 2020
+November 14, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -88,7 +88,7 @@ connect to all - depend on none
 * Dictionary:: Dictionaries and functions for dictionaries
 * User Functions:: User-defined functions
 * Named Functions:: Named functions
-* Modification Functions:: Function to modify lists and dictionaries
+* Knit Functions:: Function to modify lists and dictionaries
 * I/O:: Input and output
 * Tables:: Tables to store data
 * kSQL:: kSQL to query tables
@@ -1948,22 +1948,32 @@ confusion with integers, eg.  0b or 1b.
 
 Numbers can be stored as integers and floats.
 
-6.2.1 int => Integer i
-----------------------
+6.2.1 int => Integer g, h, i, j
+-------------------------------
 
-Integers
+Integers can be stored in four different ways which correspond 1, 2,
+4, and 8 bytes.  The first three are unsigned and the last (j) is
+signed.  Positive numbers default to i and negative and very large
+numbers default to j.  One can specify a non-default type by adding
+one of the four letters immediately following the number.
 
-      3
-     3
-      3+1
-     4
-      @3
+      @37    / will default to i
      `i
-      a:3;
-      @a
-     `i
-      3%1   / result will be float even though inputs are int
-     3f
+      @-37   / negative so will default to j
+     `j
+
+      @37g   / cast as g
+     `g
+
+     b:{-1+*/x#256}
+      `g b[1]
+     255g
+      `h b[2]
+     65535h
+      `i b[4]
+     4294967295
+      `j b[7]
+     72057594037927935
 
 6.2.2 flt => Float f
 --------------------
@@ -2700,7 +2710,7 @@ not completely specified with input parameters.
      2 3 4
 
 
-File: k9.info,  Node: Named Functions,  Next: Modification Functions,  Prev: User Functions,  Up: Top
+File: k9.info,  Node: Named Functions,  Next: Knit Functions,  Prev: User Functions,  Up: Top
 
 10 Named Functions
 ******************
@@ -2834,10 +2844,10 @@ Test if x is equal to or greater than y[0] and less than y[1].
      0b
 
 
-File: k9.info,  Node: Modification Functions,  Next: I/O,  Prev: Named Functions,  Up: Top
+File: k9.info,  Node: Knit Functions,  Next: I/O,  Prev: Named Functions,  Up: Top
 
-11 Modification Functions
-*************************
+11 Knit Functions
+*****************
 
 These functions modify lists and dictionaries given a list of indices
 and functions or values to replace.
@@ -2901,7 +2911,7 @@ Replace the values in list/dictionary x at index i with f or f[y].
      105 6
 
 
-File: k9.info,  Node: I/O,  Next: Tables,  Prev: Modification Functions,  Up: Top
+File: k9.info,  Node: I/O,  Next: Tables,  Prev: Knit Functions,  Up: Top
 
 12 I/O and Interface
 ********************
@@ -2927,7 +2937,14 @@ need to rewrite everything already written into k9.
      *ffi: "./a.so"5:`f!"ii" /I f(I i){return 2+i;}       //cblas ..
      *c/k: "./b.so"5:`f!1    /K f(K x){return ki(2+xi);}  //feeds ..
 
-12.1 Input format values to table
+12.1 Example of Data I/O
+========================
+
+Let's start with a simple example to see how k9 does I/O. We'll
+generate 5 tables of random numbers that have 10 fields and 50 million
+rows each.  This represents 2 gigabytes of data.
+
+12.2 Input format values to table
 =================================
 
 This section shows you the syntax for reading in data into a table
@@ -2952,7 +2969,7 @@ with the correct type.
      ---------- ------------ --- ----- ------- ------
      2020.04.20 12:34:56.789  37 12.3  "hi"    bye
 
-12.2 read CSV => 'csv?x
+12.3 read CSV => 'csv?x
 =======================
 
 Convert x from CSV format.  Works on lists and tables.
@@ -2963,7 +2980,7 @@ Convert x from CSV format.  Works on lists and tables.
      1 3.
      2 4.
 
-12.3 write csv => 'csv x
+12.4 write csv => 'csv x
 ========================
 
 Convert x to CSV format.  Works on lists and tables.
@@ -2973,7 +2990,7 @@ Convert x to CSV format.  Works on lists and tables.
      1,3.
      2,4.
 
-12.4 read json => 'json?x
+12.5 read json => 'json?x
 =========================
 
 Convert x from json format.  Works on lists and tables.
@@ -2984,7 +3001,7 @@ Convert x from json format.  Works on lists and tables.
      1 3.
      2 4.
 
-12.5 write json => 'json x
+12.6 write json => 'json x
 ==========================
 
 Convert x to json format.  Works on lists and tables.
@@ -2993,7 +3010,7 @@ Convert x to json format.  Works on lists and tables.
      {a:1,b:3.}
      {a:2,b:4.}
 
-12.6 write line => x 0:y
+12.7 write line => x 0:y
 ========================
 
 Output to x the list of strings in y.  y must be a list of strings.
@@ -3005,7 +3022,7 @@ If y is a single stream then convert to list via enlist.
       "some.csv" 0:`csv [[]a:1 2;b:3. 4.]
      "some.csv"
 
-12.7 read line => 0:x
+12.8 read line => 0:x
 =====================
 
 Read from file x.
@@ -3015,7 +3032,7 @@ Read from file x.
      1,3.
      2,4.
 
-12.8 write char => x 1:y
+12.9 write char => x 1:y
 ========================
 
 Output to x the list of chars in y.  y must be a list of chars.  If y
@@ -3030,8 +3047,8 @@ is a single char then convert to list via enlist.
      2 4
       "some.k"1:`k t      / write table to file in k format
 
-12.9 read char => 1:x
-=====================
+12.10 read char => 1:x
+======================
 
 Read from file x.
 
@@ -3049,7 +3066,7 @@ Read from file x.
      1 3
      2 4
 
-12.10 read data => 2: x
+12.11 read data => 2: x
 =======================
 
 Enterprise Only
@@ -3072,7 +3089,7 @@ find a "save then load" example in the next section.
      ..
 
 
-12.11 write data => x 2: y
+12.12 write data => x 2: y
 ==========================
 
 Enterprise only
@@ -3094,17 +3111,17 @@ speeds given the file size (800 MB).
       \t r:2:`r;select avg a,sum b, max c, min d, sum e from r
      148
 
-12.12 conn/set => 3:
+12.13 conn/set => 3:
 ====================
 
 Enterprise only
 
-12.13 http/get => 4:
+12.14 http/get => 4:
 ====================
 
 Enterprise only
 
-12.14 lib => 5:
+12.15 lib => 5:
 ===============
 
 Enterprise only
@@ -3900,136 +3917,136 @@ connect to all - depend on none
 
 
 Tag Table:
-Node: Top125
-Node: Introduction4351
-Node: Examples16556
-Node: Benchmark24109
-Node: Verb29065
-Ref: x30525
-Ref: set30550
-Ref: flip30762
-Ref: plus31012
-Ref: negate31397
-Ref: minus31569
-Ref: first31676
-Ref: times32016
-Ref: divide32147
-Ref: where32284
-Ref: min/and32764
-Ref: reverse33023
-Ref: max/or33193
-Ref: asc33457
-Ref: less33830
-Ref: group34131
-Ref: equal34377
-Ref: not34681
-Ref: match34798
-Ref: enum35181
-Ref: key36434
-Ref: enlist36664
-Ref: cat36803
-Ref: sort36922
-Ref: [f]cut37154
-Ref: count37899
-Ref: [f]take38089
-Ref: floor38718
-Ref: [f]drop38809
-Ref: string39402
-Ref: cast+39503
-Ref: unique+39852
-Ref: find+40091
-Ref: type40810
-Ref: [f]at41261
-Ref: value41577
-Ref: [f]dot41851
-Node: Adverb43100
-Ref: scan43842
-Ref: join44372
-Ref: split44547
-Ref: each44738
-Ref: has44956
-Ref: eachp45220
-Ref: bin245660
-Ref: eachr45863
-Ref: eachl46060
-Ref: n scan46244
-Ref: c scan46724
-Ref: c over47236
-Ref: vs47373
-Ref: sv47493
-Node: Noun47617
-Ref: bool48983
-Ref: int49283
-Ref: flt49487
-Ref: char49865
-Ref: name50088
-Ref: uuid50319
-Ref: time50476
-Ref: date51090
-Ref: datetime51508
-Node: List52207
-Node: Dictionary57482
-Node: User Functions62395
-Node: Named Functions64981
-Ref: sqrt65612
-Ref: exp65685
-Ref: log65753
-Ref: sin65853
-Ref: cos65992
-Ref: div66140
-Ref: mod66296
-Ref: bar66474
-Ref: in67014
-Ref: bin67192
-Ref: within67406
-Node: Modification Functions67620
-Ref: amend67913
-Ref: dmend68281
-Node: I/O68646
-Ref: input format69642
-Ref: read csv70653
-Ref: write csv70831
-Ref: read json70995
-Ref: write json71185
-Ref: w line71358
-Ref: r line71666
-Ref: w char71779
-Ref: r char72173
-Ref: r data72539
-Ref: w data73200
-Ref: conn/set73768
-Ref: http/get73828
-Ref: lib73888
-Node: Tables74352
-Ref: t75044
-Ref: xtable76650
-Ref: utable77132
-Node: kSQL77589
-Ref: union79918
-Ref: left80439
-Ref: outer80961
-Ref: asof81296
-Ref: asof+82340
-Node: System84013
-Ref: load84471
-Ref: timing84659
-Ref: variables84746
-Ref: memory84847
-Ref: cd84962
-Node: Control Flow85046
-Ref: cond85266
-Node: .z85527
-Node: Errors86557
-Ref: class86991
-Ref: rank87080
-Ref: length87204
-Ref: _type87327
-Ref: domain87436
-Ref: limit87558
-Ref: nyi87759
-Ref: parse88092
-Ref: _value88247
-Node: Conclusion88375
+Node: Top126
+Node: Introduction4344
+Node: Examples16549
+Node: Benchmark24102
+Node: Verb29058
+Ref: x30518
+Ref: set30543
+Ref: flip30755
+Ref: plus31005
+Ref: negate31390
+Ref: minus31562
+Ref: first31669
+Ref: times32009
+Ref: divide32140
+Ref: where32277
+Ref: min/and32757
+Ref: reverse33016
+Ref: max/or33186
+Ref: asc33450
+Ref: less33823
+Ref: group34124
+Ref: equal34370
+Ref: not34674
+Ref: match34791
+Ref: enum35174
+Ref: key36427
+Ref: enlist36657
+Ref: cat36796
+Ref: sort36915
+Ref: [f]cut37147
+Ref: count37892
+Ref: [f]take38082
+Ref: floor38711
+Ref: [f]drop38802
+Ref: string39395
+Ref: cast+39496
+Ref: unique+39845
+Ref: find+40084
+Ref: type40803
+Ref: [f]at41254
+Ref: value41570
+Ref: [f]dot41844
+Node: Adverb43093
+Ref: scan43835
+Ref: join44365
+Ref: split44540
+Ref: each44731
+Ref: has44949
+Ref: eachp45213
+Ref: bin245653
+Ref: eachr45856
+Ref: eachl46053
+Ref: n scan46237
+Ref: c scan46717
+Ref: c over47229
+Ref: vs47366
+Ref: sv47486
+Node: Noun47610
+Ref: bool48976
+Ref: int49276
+Ref: flt49937
+Ref: char50314
+Ref: name50537
+Ref: uuid50768
+Ref: time50925
+Ref: date51539
+Ref: datetime51957
+Node: List52656
+Node: Dictionary57931
+Node: User Functions62844
+Node: Named Functions65430
+Ref: sqrt66053
+Ref: exp66126
+Ref: log66194
+Ref: sin66294
+Ref: cos66433
+Ref: div66581
+Ref: mod66737
+Ref: bar66915
+Ref: in67455
+Ref: bin67633
+Ref: within67847
+Node: Knit Functions68061
+Ref: amend68330
+Ref: dmend68698
+Node: I/O69063
+Ref: input format70287
+Ref: read csv71298
+Ref: write csv71476
+Ref: read json71640
+Ref: write json71830
+Ref: w line72003
+Ref: r line72311
+Ref: w char72424
+Ref: r char72818
+Ref: r data73186
+Ref: w data73847
+Ref: conn/set74415
+Ref: http/get74475
+Ref: lib74535
+Node: Tables74999
+Ref: t75691
+Ref: xtable77297
+Ref: utable77779
+Node: kSQL78236
+Ref: union80565
+Ref: left81086
+Ref: outer81608
+Ref: asof81943
+Ref: asof+82987
+Node: System84660
+Ref: load85118
+Ref: timing85306
+Ref: variables85393
+Ref: memory85494
+Ref: cd85609
+Node: Control Flow85693
+Ref: cond85913
+Node: .z86174
+Node: Errors87204
+Ref: class87638
+Ref: rank87727
+Ref: length87851
+Ref: _type87974
+Ref: domain88083
+Ref: limit88205
+Ref: nyi88406
+Ref: parse88739
+Ref: _value88894
+Node: Conclusion89022
 
 End Tag Table
 

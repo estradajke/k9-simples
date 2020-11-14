@@ -48,7 +48,7 @@ The built-in reference screen (@code{\}) containing all the k9 commands.
 * Dictionary:: Dictionaries and functions for dictionaries
 * User Functions:: User-defined functions
 * Named Functions:: Named functions
-* Modification Functions:: Function to modify lists and dictionaries
+* Knit Functions:: Function to modify lists and dictionaries
 * I/O:: Input and output
 * Tables:: Tables to store data
 * kSQL:: kSQL to query tables
@@ -1769,22 +1769,29 @@ Booleans have two possible values 0 and 1 and have a 'b' to avoid confusion with
 @section Numeric Data
 Numbers can be stored as integers and floats.
 
-@anchor{int}@subsection int @result{} Integer i
-Integers 
+@anchor{int}@subsection int @result{} Integer g, h, i, j
+Integers can be stored in four different ways which correspond 1, 2, 4, and 8 bytes.  The first three are unsigned and the last (j) is signed.  Positive numbers default to i and negative and very large numbers default to j.  One can specify a non-default type by adding one of the four letters immediately following the number.
 
 @example
-@ 3
-3
-@ 3+1
-4
-@ @@3
+ @@37    / will default to i
 `i
-@ a:3;
-@ @@a
-`i
-@ 3%1   / result will be float even though inputs are int
-3f
+ @@-37   / negative so will default to j
+`j
+
+ @@37g   / cast as g
+`g
+
+b:@{-1+*/x#256@}
+ `g b[1]
+255g
+ `h b[2]
+65535h
+ `i b[4]
+4294967295
+ `j b[7]
+72057594037927935
 @end example
+
 @anchor{flt}@subsection flt @result{} Float f
 Float
 @example
@@ -2600,8 +2607,8 @@ Test if x is equal to or greater than y[0] and less than y[1].
 0b
 @end example
 
-@node Modification Functions
-@chapter Modification Functions
+@node Knit Functions
+@chapter Knit Functions
 These functions modify lists and dictionaries given a list of indices and functions or values to replace.
 
 @verbatim
@@ -2684,6 +2691,9 @@ k9 is also able to interface with other languages so one doesn't need to rewrite
 *ffi: "./a.so"5:`f!"ii" /I f(I i)@{return 2+i;@}       //cblas ..
 *c/k: "./b.so"5:`f!1    /K f(K x)@{return ki(2+xi);@}  //feeds ..
 @end example
+
+@section Example of Data I/O
+Let's start with a simple example to see how k9 does I/O.  We'll generate 5 tables of random numbers that have 10 fields and 50 million rows each.  This represents 2 gigabytes of data.
 
 @anchor{input format}@section Input format values to table
 This section shows you the syntax for reading in data into a table with the correct type.

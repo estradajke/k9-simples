@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- November 8, 2020
+<!-- November 14, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -92,22 +92,29 @@ Next: <a href="List.html" accesskey="n" rel="next">List</a>, Previous: <a href="
 <span id="Numeric-Data"></span><h3 class="section">6.2 Numeric Data</h3>
 <p>Numbers can be stored as integers and floats.
 </p>
-<span id="int"></span><span id="int-_21d2-Integer-i"></span><h4 class="subsection">6.2.1 int &rArr; Integer i</h4>
-<p>Integers 
+<span id="int"></span><span id="int-_21d2-Integer-g_002c-h_002c-i_002c-j"></span><h4 class="subsection">6.2.1 int &rArr; Integer g, h, i, j</h4>
+<p>Integers can be stored in four different ways which correspond 1, 2, 4, and 8 bytes.  The first three are unsigned and the last (j) is signed.  Positive numbers default to i and negative and very large numbers default to j.  One can specify a non-default type by adding one of the four letters immediately following the number.
 </p>
 <div class="example">
-<pre class="example">&nbsp;3
-3
-&nbsp;3+1
-4
-&nbsp;@3
+<pre class="example"> @37    / will default to i
 `i
-&nbsp;a:3;
-&nbsp;@a
-`i
-&nbsp;3%1   / result will be float even though inputs are int
-3f
+ @-37   / negative so will default to j
+`j
+
+ @37g   / cast as g
+`g
+
+b:{-1+*/x#256}
+ `g b[1]
+255g
+ `h b[2]
+65535h
+ `i b[4]
+4294967295
+ `j b[7]
+72057594037927935
 </pre></div>
+
 <span id="flt"></span><span id="flt-_21d2-Float-f"></span><h4 class="subsection">6.2.2 flt &rArr; Float f</h4>
 <p>Float
 </p><div class="example">
