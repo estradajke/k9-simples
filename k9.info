@@ -2071,7 +2071,9 @@ time.
 
 Time has four types depending on the level of precision.  The types
 are seconds (s), milliseconds (t), microseconds (u), and nanoseconds
-(v).
+(v).  The times are all stored internally as integers.  The integers
+are the number of time units.  For example 00:00:00.012 and
+00:00:00.000000012 are both stored as 12 internally.
 
       @12:34:56.789             / time
      `t
@@ -2093,7 +2095,8 @@ are seconds (s), milliseconds (t), microseconds (u), and nanoseconds
 6.6.2 date => Date D
 --------------------
 
-Dates are in yyyy.mm.dd format.
+Dates are in yyyy.mm.dd format.  Dates are stored internally as
+integers with 0 corresponding to 2001.01.01.
 
       @2020.04.20               / date
      `D
@@ -2112,7 +2115,9 @@ Dates are in yyyy.mm.dd format.
 Dates and times can be combined into a single datetime element by
 combing a date, the letter T, and the time together without spaces.
 The datetime use the same lettering as the time precision but in
-uppercase.
+uppercase.  Datetimes are stored interally as integers.  For example
+2001.01.02T00:00:00.000 is stored as 86,400,000, the number of
+milliseconds in a day.
 
       @2020.04.20T12:34:56.789  / date and time
      `T
@@ -4023,70 +4028,70 @@ Ref: char51562
 Ref: name51785
 Ref: uuid52016
 Ref: time52173
-Ref: date52873
-Ref: datetime53258
-Node: List53929
-Node: Dictionary59204
-Node: User Functions64117
-Node: Named Functions66703
-Ref: sqrt67326
-Ref: exp67399
-Ref: log67467
-Ref: sin67567
-Ref: cos67706
-Ref: div67854
-Ref: mod68010
-Ref: bar68188
-Ref: in68728
-Ref: bin68906
-Ref: within69120
-Node: Knit Functions69334
-Ref: amend69603
-Ref: dmend69971
-Node: I/O70336
-Ref: read csv72439
-Ref: write csv72617
-Ref: read json72781
-Ref: write json72971
-Ref: w line73144
-Ref: r line73452
-Ref: w char73565
-Ref: r char73959
-Ref: r data74325
-Ref: w data74986
-Ref: conn/set75554
-Ref: http/get75614
-Ref: lib75674
-Node: Tables76138
-Ref: t76830
-Ref: xtable78436
-Ref: utable78918
-Node: kSQL79375
-Ref: union81704
-Ref: left82225
-Ref: outer82747
-Ref: asof83082
-Ref: asof+84126
-Node: System85799
-Ref: load86257
-Ref: timing86445
-Ref: variables86532
-Ref: memory86633
-Ref: cd86748
-Node: Control Flow86832
-Ref: cond87052
-Node: .z87313
-Node: Errors88343
-Ref: class88777
-Ref: rank88866
-Ref: length88990
-Ref: _type89113
-Ref: domain89222
-Ref: limit89344
-Ref: nyi89545
-Ref: parse89878
-Ref: _value90033
-Node: Conclusion90161
+Ref: date53050
+Ref: datetime53512
+Node: List54327
+Node: Dictionary59602
+Node: User Functions64515
+Node: Named Functions67101
+Ref: sqrt67724
+Ref: exp67797
+Ref: log67865
+Ref: sin67965
+Ref: cos68104
+Ref: div68252
+Ref: mod68408
+Ref: bar68586
+Ref: in69126
+Ref: bin69304
+Ref: within69518
+Node: Knit Functions69732
+Ref: amend70001
+Ref: dmend70369
+Node: I/O70734
+Ref: read csv72837
+Ref: write csv73015
+Ref: read json73179
+Ref: write json73369
+Ref: w line73542
+Ref: r line73850
+Ref: w char73963
+Ref: r char74357
+Ref: r data74723
+Ref: w data75384
+Ref: conn/set75952
+Ref: http/get76012
+Ref: lib76072
+Node: Tables76536
+Ref: t77228
+Ref: xtable78834
+Ref: utable79316
+Node: kSQL79773
+Ref: union82102
+Ref: left82623
+Ref: outer83145
+Ref: asof83480
+Ref: asof+84524
+Node: System86197
+Ref: load86655
+Ref: timing86843
+Ref: variables86930
+Ref: memory87031
+Ref: cd87146
+Node: Control Flow87230
+Ref: cond87450
+Node: .z87711
+Node: Errors88741
+Ref: class89175
+Ref: rank89264
+Ref: length89388
+Ref: _type89511
+Ref: domain89620
+Ref: limit89742
+Ref: nyi89943
+Ref: parse90276
+Ref: _value90431
+Node: Conclusion90559
 
 End Tag Table
 
