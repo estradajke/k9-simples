@@ -1755,29 +1755,30 @@ Data types can be determined by using the @code{@@} function on values or lists 
 `i`f`c`n`t`D
 @end example
 
-@section Atom Types
+@anchor{Atom Types}@section Atom Types
 This section lists all the different types available.  Generally lower case specifies atoms and upper case as lists.
 
-@multitable @columnfractions .15 .15 .4
-@item @b{name} @tab @b{type} @tab @b{note}
+@multitable @columnfractions .1 .15 .45 .4
+@item @b{name} @tab @b{type} @tab @b{example} @tab @b{note}
 @item @tab @tab
-@item b @tab boolean @tab 
-@item c @tab character @tab
-@item D @tab date @tab upper case for atom
-@item e @tab float @tab
-@item f @tab float @tab
-@item g @tab int @tab 1 byte unsigned
-@item h @tab int @tab 2 byte unsigned
-@item i @tab int @tab 4 byte unsigned
-@item j @tab int @tab 8 byte signed
-@item s @tab time @tab 12:34:56
-@item S @tab datetime @tab 2020.06.15T12:34:56
-@item t @tab time @tab 12:34:56.123
-@item T @tab datetime @tab 2020.06.15T12:34:56.123
-@item u @tab time @tab 12:34:56.123456
-@item U @tab datetime @tab 2020.06.15T12:34:56.123456
-@item v @tab time @tab 12:34:56.123456789
-@item V @tab datetime @tab 2020.06.15T12:34:56.123456789
+@item b @tab boolean @tab 1b @tab 
+@item c @tab character @tab ``a'' @tab
+@item D @tab date @tab 2020.06.14 @tab upper case for atom
+@item e @tab float @tab 3.1
+@item f @tab float @tab 3.1f
+@item g @tab int @tab 2g @tab 1 byte unsigned
+@item h @tab int @tab 2h @tab 2 byte unsigned
+@item i @tab int @tab 2 @tab 4 byte unsigned
+@item j @tab int @tab 2j @tab 8 byte signed
+@item n @tab name @tab `abc @tab 8 char max
+@item s @tab time @tab 12:34:56 @tab second
+@item S @tab datetime @tab 2020.06.15T12:34:56 @tab second
+@item t @tab time @tab 12:34:56.123 @tab millisecond
+@item T @tab datetime @tab 2020.06.15T12:34:56.123 @tab millisecond
+@item u @tab time @tab 12:34:56.123456 @tab microsecond
+@item U @tab datetime @tab 2020.06.15T12:34:56.123456 @tab microsecond
+@item v @tab time @tab 12:34:56.123456789 @tab nanosecond
+@item V @tab datetime @tab 2020.06.15T12:34:56.123456789 @tab nanosecond
 @end multitable
 
 
@@ -2717,7 +2718,7 @@ k9 is also able to interface with other languages so one doesn't need to rewrite
 @end example
 
 @section Example of Data I/O
-Let's being with a small trivial example to show how to read data from a csv file.  We'll generate a small table and save it with and without headers (wHeader.csv and woHeader.csv respectively).  Then we'll read it back in a specifying types and with the csv reader.
+Let's being with a small trivial example to show how to read data from a csv file.  We'll generate a small table and save it with and without headers (wHeader.csv and woHeader.csv respectively).  Then we'll read it back in a specifying types and with the csv reader.  Types are specifed by one letter and the full list can be found in @ref{Atom Types}.
 
 @example
  t:[[]a:3 2 1;b:1. 2. 4.;c:`x`y`z];t   / generate a table of data

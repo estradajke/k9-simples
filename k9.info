@@ -1936,24 +1936,25 @@ type '@'' instead and return the type of each element in the list.
 This section lists all the different types available.  Generally lower
 case specifies atoms and upper case as lists.
 
-name        type        note
-b           boolean
-c           character
-D           date        upper case for atom
-e           float
-f           float
-g           int         1 byte unsigned
-h           int         2 byte unsigned
-i           int         4 byte unsigned
-j           int         8 byte signed
-s           time        12:34:56
-S           datetime    2020.06.15T12:34:56
-t           time        12:34:56.123
-T           datetime    2020.06.15T12:34:56.123
-u           time        12:34:56.123456
-U           datetime    2020.06.15T12:34:56.123456
-v           time        12:34:56.123456789
-V           datetime    2020.06.15T12:34:56.123456789
+name    type        example                          note
+b       boolean     1b
+c       character   "a"
+D       date        2020.06.14                       upper case for atom
+e       float       3.1
+f       float       3.1f
+g       int         2g                               1 byte unsigned
+h       int         2h                               2 byte unsigned
+i       int         2                                4 byte unsigned
+j       int         2j                               8 byte signed
+n       name        'abc                             8 char max
+s       time        12:34:56                         second
+S       datetime    2020.06.15T12:34:56              second
+t       time        12:34:56.123                     millisecond
+T       datetime    2020.06.15T12:34:56.123          millisecond
+u       time        12:34:56.123456                  microsecond
+U       datetime    2020.06.15T12:34:56.123456       microsecond
+v       time        12:34:56.123456789               nanosecond
+V       datetime    2020.06.15T12:34:56.123456789    nanosecond
 
 6.2 bool => Boolean b
 =====================
@@ -2970,7 +2971,9 @@ need to rewrite everything already written into k9.
 Let's being with a small trivial example to show how to read data from
 a csv file.  We'll generate a small table and save it with and without
 headers (wHeader.csv and woHeader.csv respectively).  Then we'll read
-it back in a specifying types and with the csv reader.
+it back in a specifying types and with the csv reader.  Types are
+specifed by one letter and the full list can be found in *note Atom
+Types::.
 
       t:[[]a:3 2 1;b:1. 2. 4.;c:`x`y`z];t   / generate a table of data
      a b  c
@@ -4012,77 +4015,78 @@ Ref: c over47229
 Ref: vs47366
 Ref: sv47486
 Node: Noun47610
-Ref: bool49785
-Ref: int50085
-Ref: flt50746
-Ref: char51148
-Ref: name51371
-Ref: uuid51602
-Ref: time51759
-Ref: date52459
-Ref: datetime52844
-Node: List53515
-Node: Dictionary58790
-Node: User Functions63703
-Node: Named Functions66289
-Ref: sqrt66912
-Ref: exp66985
-Ref: log67053
-Ref: sin67153
-Ref: cos67292
-Ref: div67440
-Ref: mod67596
-Ref: bar67774
-Ref: in68314
-Ref: bin68492
-Ref: within68706
-Node: Knit Functions68920
-Ref: amend69189
-Ref: dmend69557
-Node: I/O69922
-Ref: read csv71937
-Ref: write csv72115
-Ref: read json72279
-Ref: write json72469
-Ref: w line72642
-Ref: r line72950
-Ref: w char73063
-Ref: r char73457
-Ref: r data73823
-Ref: w data74484
-Ref: conn/set75052
-Ref: http/get75112
-Ref: lib75172
-Node: Tables75636
-Ref: t76328
-Ref: xtable77934
-Ref: utable78416
-Node: kSQL78873
-Ref: union81202
-Ref: left81723
-Ref: outer82245
-Ref: asof82580
-Ref: asof+83624
-Node: System85297
-Ref: load85755
-Ref: timing85943
-Ref: variables86030
-Ref: memory86131
-Ref: cd86246
-Node: Control Flow86330
-Ref: cond86550
-Node: .z86811
-Node: Errors87841
-Ref: class88275
-Ref: rank88364
-Ref: length88488
-Ref: _type88611
-Ref: domain88720
-Ref: limit88842
-Ref: nyi89043
-Ref: parse89376
-Ref: _value89531
-Node: Conclusion89659
+Ref: Atom Types48976
+Ref: bool50199
+Ref: int50499
+Ref: flt51160
+Ref: char51562
+Ref: name51785
+Ref: uuid52016
+Ref: time52173
+Ref: date52873
+Ref: datetime53258
+Node: List53929
+Node: Dictionary59204
+Node: User Functions64117
+Node: Named Functions66703
+Ref: sqrt67326
+Ref: exp67399
+Ref: log67467
+Ref: sin67567
+Ref: cos67706
+Ref: div67854
+Ref: mod68010
+Ref: bar68188
+Ref: in68728
+Ref: bin68906
+Ref: within69120
+Node: Knit Functions69334
+Ref: amend69603
+Ref: dmend69971
+Node: I/O70336
+Ref: read csv72439
+Ref: write csv72617
+Ref: read json72781
+Ref: write json72971
+Ref: w line73144
+Ref: r line73452
+Ref: w char73565
+Ref: r char73959
+Ref: r data74325
+Ref: w data74986
+Ref: conn/set75554
+Ref: http/get75614
+Ref: lib75674
+Node: Tables76138
+Ref: t76830
+Ref: xtable78436
+Ref: utable78918
+Node: kSQL79375
+Ref: union81704
+Ref: left82225
+Ref: outer82747
+Ref: asof83082
+Ref: asof+84126
+Node: System85799
+Ref: load86257
+Ref: timing86445
+Ref: variables86532
+Ref: memory86633
+Ref: cd86748
+Node: Control Flow86832
+Ref: cond87052
+Node: .z87313
+Node: Errors88343
+Ref: class88777
+Ref: rank88866
+Ref: length88990
+Ref: _type89113
+Ref: domain89222
+Ref: limit89344
+Ref: nyi89545
+Ref: parse89878
+Ref: _value90033
+Node: Conclusion90161
 
 End Tag Table
 
