@@ -1755,6 +1755,32 @@ Data types can be determined by using the @code{@@} function on values or lists 
 `i`f`c`n`t`D
 @end example
 
+@section Atom Types
+This section lists all the different types available.  Generally lower case specifies atoms and upper case as lists.
+
+@multitable @columnfractions .15 .15 .4
+@item @b{name} @tab @b{type} @tab @b{note}
+@item @tab @tab
+@item b @tab boolean @tab 
+@item c @tab character @tab
+@item D @tab date @tab upper case for atom
+@item e @tab float @tab
+@item f @tab float @tab
+@item g @tab int @tab 1 byte unsigned
+@item h @tab int @tab 2 byte unsigned
+@item i @tab int @tab 4 byte unsigned
+@item j @tab int @tab 8 byte signed
+@item s @tab time @tab 12:34:56
+@item S @tab datetime @tab 2020.06.15T12:34:56
+@item t @tab time @tab 12:34:56.123
+@item T @tab datetime @tab 2020.06.15T12:34:56.123
+@item u @tab time @tab 12:34:56.123456
+@item U @tab datetime @tab 2020.06.15T12:34:56.123456
+@item v @tab time @tab 12:34:56.123456789
+@item V @tab datetime @tab 2020.06.15T12:34:56.123456789
+@end multitable
+
+
 @anchor{bool}@section bool @result{} Boolean b
 Booleans have two possible values 0 and 1 and have a 'b' to avoid confusion with integers, eg. 0b or 1b.
 
@@ -1792,21 +1818,23 @@ b:@{-1+*/x#256@}
 72057594037927935
 @end example
 
-@anchor{flt}@subsection flt @result{} Float f
+@anchor{flt}@subsection flt @result{} Float e, f
 Float
 @example
-@ 3.1
+ 3.1
 3.1
-@ 3.1+1.2
+ 3.1+1.2
 4.3
-@ 3.1-1.1   
-2f
-@ @@3.1-1.1
-`f
-@ @@3.1
-`f
-@ a:3.1;
-@ @@a
+ 3.1-1.1   
+2.
+ @@3.1-1.1
+`e
+ @@3.1
+`e
+ a:3.1;
+ @@a
+`e
+ @@1%3
 `f
 @end example
 
@@ -1842,55 +1870,51 @@ TBD
 @section Temporal Data
 Temporal data can be expressed in time, date, or a combined date and time.
 
-@anchor{time}@subsection time @result{} Time t
-Times are stored in hh:mm:ss.123 format and stored internally as integers.
+@anchor{time}@subsection time @result{} Time s, t, u, v
+Time has four types depending on the level of precision.  The types are seconds (s), milliseconds (t), microseconds (u), and nanoseconds (v).
+
 @example
-@ @@12:34:56.789             / time
+ @@12:34:56.789             / time
 `t
 @ .z.t                       / current time in GMT
 17:32:57.995
-@ (t:.z.t)-17:30:00.000
+ (t:.z.t)-17:30:00.000
 00:03:59.986
-@ t
+ t
 17:33:59.986
-@ `i 00:00:00.001            / numeric representation of 1ms
+ `i 00:00:00.001            / numeric representation of 1ms
 1
-@ `i 00:00:01.000            / numeric representation of 1s
+ `i 00:00:01.000            / numeric representation of 1s
 1000
-@ `i 00:01:00.000            / numeric representation of 1m
+ `i 00:01:00.000            / numeric representation of 1m
 60000
-@ `t 12345                   / convert milliseconds to time
+ `t 12345                   / convert milliseconds to time
 00:00:12.345
 @end example
 
 @anchor{date}@subsection date @result{} Date D
-Dates are in yyyy.mm.dd format and stored internally as integers.
+Dates are in yyyy.mm.dd format.
+
 @example
-@ @@2020.04.20               / date
+ @@2020.04.20               / date
 `D
-@ .z.D                       / current date in GMT
+ .z.D                       / current date in GMT
 2020.09.13
-@ `i .z.D                    / numeric representation of date
+ `i .z.D                    / numeric representation of date
 -1205
-@ `i 2024.01.01              / zero date
+ `i 2001.01.01              / zero date
 0
-@ `D 0                       / zero date
-2024.01.01
+ `D 0                       / zero date
+2001.01.01
 @end example
 
-@anchor{datetime}@subsection datetime @result{} Datetime S
-Dates and times can be combined as 2020.04.20T12:34:56.789.
+@anchor{datetime}@subsection datetime @result{} Datetime S, T, U, V
+Dates and times can be combined into a single datetime element by combing a date, the letter T, and the time together without spaces.  The datetime use the same lettering as the time precision but in uppercase.
 
 @example
-@ @@2020.04.20T12:34:56.789  / date and time
+ @@2020.04.20T12:34:56.789  / date and time
 `T
-@ "T"$"2020.04.20 12:34:56.789" / converting from string
-2020.04.20T12:34:56.789
-@ "T"$"2020.04.20 12:34:56.789"
-2020.04.20T12:34:56.789
-@ "T"$"2020.04.20T12:34:56.789"
-2020.04.20T12:34:56.789
-@ "T"$"2020.04.20T12:34:56.789"
+ `T$"2020.04.20 12:34:56.789" / converting from string
 2020.04.20T12:34:56.789
 @end example
 
@@ -2693,32 +2717,43 @@ k9 is also able to interface with other languages so one doesn't need to rewrite
 @end example
 
 @section Example of Data I/O
-Let's start with a simple example to see how k9 does I/O.  We'll generate 5 tables of random numbers that have 10 fields and 50 million rows each.  This represents 2 gigabytes of data.
+Let's being with a small trivial example to show how to read data from a csv file.  We'll generate a small table and save it with and without headers (wHeader.csv and woHeader.csv respectively).  Then we'll read it back in a specifying types and with the csv reader.
 
-@anchor{input format}@section Input format values to table
-This section shows you the syntax for reading in data into a table with the correct type.
 @example
-@ d:,(`date`time`int`float`char`symbol)            / headers 
-@ d,:,(2020.04.20;12:34:56.789;37;12.3;"hi";`bye)) /data
-@ d                                          
-date       time         int float char  symbol
-2020.04.20 12:34:56.789 37  12.3  hi    bye   
+ t:[[]a:3 2 1;b:1. 2. 4.;c:`x`y`z];t   / generate a table of data
+a b  c
+- -- -
+3 1. x
+2 2. y
+1 4. z
 
-@ `csv'd                                           / to csv
-date,time,int,float,char,symbol            
-2020.04.20,12:34:56.789,37,12.3,"hi",bye
+ "wHeader.csv"0:`csv t                 / save with column headers
+wHeader.csv
 
-@ "some.csv"0:`csv'd                               / write to some.csv
-@ 0:"some.csv"                                     / read from some.csv
-date,time,int,float,char,symbol            
-2020.04.20,12:34:56.789,37,12.3,"hi",bye
+"woHeader.csv"0:1_`csv t              / save without col headers
+woHeader.csv
 
-@ ("Dtifs*";,",")0:"some.csv"                      / read into table
-date       time         int float char    symbol
----------- ------------ --- ----- ------- ------
-2020.04.20 12:34:56.789  37 12.3  "hi"    bye   
+`csv?0:"wHeader.csv"                  / default reader
+a b  c
+- -- -
+3 1. x
+2 2. y
+1 4. z
+
+ (",";"ifn")0:"wHeader.csv"            / specify separator and types
+a b  c
+- -- -
+3 1. x
+2 2. y
+1 4. z
+
+ (`e`f`g;",";"ifn")0:"woHeader.csv"    / speicfy names, separator and types
+e f  g
+- -- -
+3 1. x
+2 2. y
+1 4. z
 @end example
-
 
 @anchor{read csv}@section read CSV @result{} `csv?x
 Convert x from CSV format.  Works on lists and tables.

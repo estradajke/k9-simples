@@ -1,6 +1,6 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
-November 14, 2020
+November 15, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -1930,7 +1930,32 @@ type '@'' instead and return the type of each element in the list.
       @'(3;3.1;"b";`a;12:01:02.123;2020.04.05)
      `i`f`c`n`t`D
 
-6.1 bool => Boolean b
+6.1 Atom Types
+==============
+
+This section lists all the different types available.  Generally lower
+case specifies atoms and upper case as lists.
+
+name        type        note
+b           boolean
+c           character
+D           date        upper case for atom
+e           float
+f           float
+g           int         1 byte unsigned
+h           int         2 byte unsigned
+i           int         4 byte unsigned
+j           int         8 byte signed
+s           time        12:34:56
+S           datetime    2020.06.15T12:34:56
+t           time        12:34:56.123
+T           datetime    2020.06.15T12:34:56.123
+u           time        12:34:56.123456
+U           datetime    2020.06.15T12:34:56.123456
+v           time        12:34:56.123456789
+V           datetime    2020.06.15T12:34:56.123456789
+
+6.2 bool => Boolean b
 =====================
 
 Booleans have two possible values 0 and 1 and have a 'b' to avoid
@@ -1943,12 +1968,12 @@ confusion with integers, eg.  0b or 1b.
       10101010b
      10101010b
 
-6.2 Numeric Data
+6.3 Numeric Data
 ================
 
 Numbers can be stored as integers and floats.
 
-6.2.1 int => Integer g, h, i, j
+6.3.1 int => Integer g, h, i, j
 -------------------------------
 
 Integers can be stored in four different ways which correspond 1, 2,
@@ -1975,8 +2000,8 @@ one of the four letters immediately following the number.
       `j b[7]
      72057594037927935
 
-6.2.2 flt => Float f
---------------------
+6.3.2 flt => Float e, f
+-----------------------
 
 Float
       3.1
@@ -1984,23 +2009,25 @@ Float
       3.1+1.2
      4.3
       3.1-1.1
-     2f
+     2.
       @3.1-1.1
-     `f
+     `e
       @3.1
-     `f
+     `e
       a:3.1;
       @a
+     `e
+      @1%3
      `f
 
-6.3 Text Data
+6.4 Text Data
 =============
 
 Text data come in characters, lists of characters (aka strings) and
 enumerated types.  Enumerated types are displayed as text but stored
 internally as integers.
 
-6.3.1 char => Character c
+6.4.1 char => Character c
 -------------------------
 
 Characters are stored as their ANSI value and can be seen by
@@ -2011,7 +2038,7 @@ conversion to integers.  Character lists are equivalent to strings.
       @"bd"
      `C
 
-6.3.2 name => Name n
+6.4.2 name => Name n
 --------------------
 
 Names are enumerate type shown as a text string but stored internally
@@ -2022,27 +2049,29 @@ as a integer value.
       @`blue`red
      `N
 
-6.4 Unique Identifier
+6.5 Unique Identifier
 =====================
 
 TBD
 
-6.4.1 uuid => Uuid
+6.5.1 uuid => Uuid
 ------------------
 
 TBD
 
-6.5 Temporal Data
+6.6 Temporal Data
 =================
 
 Temporal data can be expressed in time, date, or a combined date and
 time.
 
-6.5.1 time => Time t
---------------------
+6.6.1 time => Time s, t, u, v
+-----------------------------
 
-Times are stored in hh:mm:ss.123 format and stored internally as
-integers.
+Time has four types depending on the level of precision.  The types
+are seconds (s), milliseconds (t), microseconds (u), and nanoseconds
+(v).
+
       @12:34:56.789             / time
      `t
       .z.t                       / current time in GMT
@@ -2060,38 +2089,36 @@ integers.
       `t 12345                   / convert milliseconds to time
      00:00:12.345
 
-6.5.2 date => Date D
+6.6.2 date => Date D
 --------------------
 
-Dates are in yyyy.mm.dd format and stored internally as integers.
+Dates are in yyyy.mm.dd format.
+
       @2020.04.20               / date
      `D
       .z.D                       / current date in GMT
      2020.09.13
       `i .z.D                    / numeric representation of date
      -1205
-      `i 2024.01.01              / zero date
+      `i 2001.01.01              / zero date
      0
       `D 0                       / zero date
-     2024.01.01
+     2001.01.01
 
-6.5.3 datetime => Datetime S
-----------------------------
+6.6.3 datetime => Datetime S, T, U, V
+-------------------------------------
 
-Dates and times can be combined as 2020.04.20T12:34:56.789.
+Dates and times can be combined into a single datetime element by
+combing a date, the letter T, and the time together without spaces.
+The datetime use the same lettering as the time precision but in
+uppercase.
 
       @2020.04.20T12:34:56.789  / date and time
      `T
-      "T"$"2020.04.20 12:34:56.789" / converting from string
-     2020.04.20T12:34:56.789
-      "T"$"2020.04.20 12:34:56.789"
-     2020.04.20T12:34:56.789
-      "T"$"2020.04.20T12:34:56.789"
-     2020.04.20T12:34:56.789
-      "T"$"2020.04.20T12:34:56.789"
+      `T$"2020.04.20 12:34:56.789" / converting from string
      2020.04.20T12:34:56.789
 
-6.6 Extreme values
+6.7 Extreme values
 ==================
 
 Data types can represent in-range, null, and out-of-range values.
@@ -2940,36 +2967,46 @@ need to rewrite everything already written into k9.
 12.1 Example of Data I/O
 ========================
 
-Let's start with a simple example to see how k9 does I/O. We'll
-generate 5 tables of random numbers that have 10 fields and 50 million
-rows each.  This represents 2 gigabytes of data.
+Let's being with a small trivial example to show how to read data from
+a csv file.  We'll generate a small table and save it with and without
+headers (wHeader.csv and woHeader.csv respectively).  Then we'll read
+it back in a specifying types and with the csv reader.
 
-12.2 Input format values to table
-=================================
+      t:[[]a:3 2 1;b:1. 2. 4.;c:`x`y`z];t   / generate a table of data
+     a b  c
+     - -- -
+     3 1. x
+     2 2. y
+     1 4. z
 
-This section shows you the syntax for reading in data into a table
-with the correct type.
-      d:,(`date`time`int`float`char`symbol)            / headers
-      d,:,(2020.04.20;12:34:56.789;37;12.3;"hi";`bye)) /data
-      d
-     date       time         int float char  symbol
-     2020.04.20 12:34:56.789 37  12.3  hi    bye
+      "wHeader.csv"0:`csv t                 / save with column headers
+     wHeader.csv
 
-      `csv'd                                           / to csv
-     date,time,int,float,char,symbol
-     2020.04.20,12:34:56.789,37,12.3,"hi",bye
+     "woHeader.csv"0:1_`csv t              / save without col headers
+     woHeader.csv
 
-      "some.csv"0:`csv'd                               / write to some.csv
-      0:"some.csv"                                     / read from some.csv
-     date,time,int,float,char,symbol
-     2020.04.20,12:34:56.789,37,12.3,"hi",bye
+     `csv?0:"wHeader.csv"                  / default reader
+     a b  c
+     - -- -
+     3 1. x
+     2 2. y
+     1 4. z
 
-      ("Dtifs*";,",")0:"some.csv"                      / read into table
-     date       time         int float char    symbol
-     ---------- ------------ --- ----- ------- ------
-     2020.04.20 12:34:56.789  37 12.3  "hi"    bye
+      (",";"ifn")0:"wHeader.csv"            / specify separator and types
+     a b  c
+     - -- -
+     3 1. x
+     2 2. y
+     1 4. z
 
-12.3 read CSV => 'csv?x
+      (`e`f`g;",";"ifn")0:"woHeader.csv"    / speicfy names, separator and types
+     e f  g
+     - -- -
+     3 1. x
+     2 2. y
+     1 4. z
+
+12.2 read CSV => 'csv?x
 =======================
 
 Convert x from CSV format.  Works on lists and tables.
@@ -2980,7 +3017,7 @@ Convert x from CSV format.  Works on lists and tables.
      1 3.
      2 4.
 
-12.4 write csv => 'csv x
+12.3 write csv => 'csv x
 ========================
 
 Convert x to CSV format.  Works on lists and tables.
@@ -2990,7 +3027,7 @@ Convert x to CSV format.  Works on lists and tables.
      1,3.
      2,4.
 
-12.5 read json => 'json?x
+12.4 read json => 'json?x
 =========================
 
 Convert x from json format.  Works on lists and tables.
@@ -3001,7 +3038,7 @@ Convert x from json format.  Works on lists and tables.
      1 3.
      2 4.
 
-12.6 write json => 'json x
+12.5 write json => 'json x
 ==========================
 
 Convert x to json format.  Works on lists and tables.
@@ -3010,7 +3047,7 @@ Convert x to json format.  Works on lists and tables.
      {a:1,b:3.}
      {a:2,b:4.}
 
-12.7 write line => x 0:y
+12.6 write line => x 0:y
 ========================
 
 Output to x the list of strings in y.  y must be a list of strings.
@@ -3022,7 +3059,7 @@ If y is a single stream then convert to list via enlist.
       "some.csv" 0:`csv [[]a:1 2;b:3. 4.]
      "some.csv"
 
-12.8 read line => 0:x
+12.7 read line => 0:x
 =====================
 
 Read from file x.
@@ -3032,7 +3069,7 @@ Read from file x.
      1,3.
      2,4.
 
-12.9 write char => x 1:y
+12.8 write char => x 1:y
 ========================
 
 Output to x the list of chars in y.  y must be a list of chars.  If y
@@ -3047,8 +3084,8 @@ is a single char then convert to list via enlist.
      2 4
       "some.k"1:`k t      / write table to file in k format
 
-12.10 read char => 1:x
-======================
+12.9 read char => 1:x
+=====================
 
 Read from file x.
 
@@ -3066,7 +3103,7 @@ Read from file x.
      1 3
      2 4
 
-12.11 read data => 2: x
+12.10 read data => 2: x
 =======================
 
 Enterprise Only
@@ -3089,7 +3126,7 @@ find a "save then load" example in the next section.
      ..
 
 
-12.12 write data => x 2: y
+12.11 write data => x 2: y
 ==========================
 
 Enterprise only
@@ -3111,17 +3148,17 @@ speeds given the file size (800 MB).
       \t r:2:`r;select avg a,sum b, max c, min d, sum e from r
      148
 
-12.13 conn/set => 3:
+12.12 conn/set => 3:
 ====================
 
 Enterprise only
 
-12.14 http/get => 4:
+12.13 http/get => 4:
 ====================
 
 Enterprise only
 
-12.15 lib => 5:
+12.14 lib => 5:
 ===============
 
 Enterprise only
@@ -3975,78 +4012,77 @@ Ref: c over47229
 Ref: vs47366
 Ref: sv47486
 Node: Noun47610
-Ref: bool48976
-Ref: int49276
-Ref: flt49937
-Ref: char50314
-Ref: name50537
-Ref: uuid50768
-Ref: time50925
-Ref: date51539
-Ref: datetime51957
-Node: List52656
-Node: Dictionary57931
-Node: User Functions62844
-Node: Named Functions65430
-Ref: sqrt66053
-Ref: exp66126
-Ref: log66194
-Ref: sin66294
-Ref: cos66433
-Ref: div66581
-Ref: mod66737
-Ref: bar66915
-Ref: in67455
-Ref: bin67633
-Ref: within67847
-Node: Knit Functions68061
-Ref: amend68330
-Ref: dmend68698
-Node: I/O69063
-Ref: input format70287
-Ref: read csv71298
-Ref: write csv71476
-Ref: read json71640
-Ref: write json71830
-Ref: w line72003
-Ref: r line72311
-Ref: w char72424
-Ref: r char72818
-Ref: r data73186
-Ref: w data73847
-Ref: conn/set74415
-Ref: http/get74475
-Ref: lib74535
-Node: Tables74999
-Ref: t75691
-Ref: xtable77297
-Ref: utable77779
-Node: kSQL78236
-Ref: union80565
-Ref: left81086
-Ref: outer81608
-Ref: asof81943
-Ref: asof+82987
-Node: System84660
-Ref: load85118
-Ref: timing85306
-Ref: variables85393
-Ref: memory85494
-Ref: cd85609
-Node: Control Flow85693
-Ref: cond85913
-Node: .z86174
-Node: Errors87204
-Ref: class87638
-Ref: rank87727
-Ref: length87851
-Ref: _type87974
-Ref: domain88083
-Ref: limit88205
-Ref: nyi88406
-Ref: parse88739
-Ref: _value88894
-Node: Conclusion89022
+Ref: bool49785
+Ref: int50085
+Ref: flt50746
+Ref: char51148
+Ref: name51371
+Ref: uuid51602
+Ref: time51759
+Ref: date52459
+Ref: datetime52844
+Node: List53515
+Node: Dictionary58790
+Node: User Functions63703
+Node: Named Functions66289
+Ref: sqrt66912
+Ref: exp66985
+Ref: log67053
+Ref: sin67153
+Ref: cos67292
+Ref: div67440
+Ref: mod67596
+Ref: bar67774
+Ref: in68314
+Ref: bin68492
+Ref: within68706
+Node: Knit Functions68920
+Ref: amend69189
+Ref: dmend69557
+Node: I/O69922
+Ref: read csv71937
+Ref: write csv72115
+Ref: read json72279
+Ref: write json72469
+Ref: w line72642
+Ref: r line72950
+Ref: w char73063
+Ref: r char73457
+Ref: r data73823
+Ref: w data74484
+Ref: conn/set75052
+Ref: http/get75112
+Ref: lib75172
+Node: Tables75636
+Ref: t76328
+Ref: xtable77934
+Ref: utable78416
+Node: kSQL78873
+Ref: union81202
+Ref: left81723
+Ref: outer82245
+Ref: asof82580
+Ref: asof+83624
+Node: System85297
+Ref: load85755
+Ref: timing85943
+Ref: variables86030
+Ref: memory86131
+Ref: cd86246
+Node: Control Flow86330
+Ref: cond86550
+Node: .z86811
+Node: Errors87841
+Ref: class88275
+Ref: rank88364
+Ref: length88488
+Ref: _type88611
+Ref: domain88720
+Ref: limit88842
+Ref: nyi89043
+Ref: parse89376
+Ref: _value89531
+Node: Conclusion89659
 
 End Tag Table
 

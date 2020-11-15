@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- November 14, 2020
+<!-- November 15, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -78,7 +78,33 @@ Next: <a href="List.html" accesskey="n" rel="next">List</a>, Previous: <a href="
 `i`f`c`n`t`D
 </pre></div>
 
-<span id="bool"></span><span id="bool-_21d2-Boolean-b"></span><h3 class="section">6.1 bool &rArr; Boolean b</h3>
+<span id="Atom-Types"></span><h3 class="section">6.1 Atom Types</h3>
+<p>This section lists all the different types available.  Generally lower case specifies atoms and upper case as lists.
+</p>
+<table>
+<tr><td width="15%"><b>name</b></td><td width="15%"><b>type</b></td><td width="40%"><b>note</b></td></tr>
+<tr><td width="15%"></td><td width="15%"></td><td width="40%"></td></tr>
+<tr><td width="15%">b</td><td width="15%">boolean</td><td width="40%"></td></tr>
+<tr><td width="15%">c</td><td width="15%">character</td><td width="40%"></td></tr>
+<tr><td width="15%">D</td><td width="15%">date</td><td width="40%">upper case for atom</td></tr>
+<tr><td width="15%">e</td><td width="15%">float</td><td width="40%"></td></tr>
+<tr><td width="15%">f</td><td width="15%">float</td><td width="40%"></td></tr>
+<tr><td width="15%">g</td><td width="15%">int</td><td width="40%">1 byte unsigned</td></tr>
+<tr><td width="15%">h</td><td width="15%">int</td><td width="40%">2 byte unsigned</td></tr>
+<tr><td width="15%">i</td><td width="15%">int</td><td width="40%">4 byte unsigned</td></tr>
+<tr><td width="15%">j</td><td width="15%">int</td><td width="40%">8 byte signed</td></tr>
+<tr><td width="15%">s</td><td width="15%">time</td><td width="40%">12:34:56</td></tr>
+<tr><td width="15%">S</td><td width="15%">datetime</td><td width="40%">2020.06.15T12:34:56</td></tr>
+<tr><td width="15%">t</td><td width="15%">time</td><td width="40%">12:34:56.123</td></tr>
+<tr><td width="15%">T</td><td width="15%">datetime</td><td width="40%">2020.06.15T12:34:56.123</td></tr>
+<tr><td width="15%">u</td><td width="15%">time</td><td width="40%">12:34:56.123456</td></tr>
+<tr><td width="15%">U</td><td width="15%">datetime</td><td width="40%">2020.06.15T12:34:56.123456</td></tr>
+<tr><td width="15%">v</td><td width="15%">time</td><td width="40%">12:34:56.123456789</td></tr>
+<tr><td width="15%">V</td><td width="15%">datetime</td><td width="40%">2020.06.15T12:34:56.123456789</td></tr>
+</table>
+
+
+<span id="bool"></span><span id="bool-_21d2-Boolean-b"></span><h3 class="section">6.2 bool &rArr; Boolean b</h3>
 <p>Booleans have two possible values 0 and 1 and have a &rsquo;b&rsquo; to avoid confusion with integers, eg. 0b or 1b.
 </p>
 <div class="example">
@@ -89,10 +115,10 @@ Next: <a href="List.html" accesskey="n" rel="next">List</a>, Previous: <a href="
 &nbsp;10101010b
 10101010b
 </pre></div>
-<span id="Numeric-Data"></span><h3 class="section">6.2 Numeric Data</h3>
+<span id="Numeric-Data"></span><h3 class="section">6.3 Numeric Data</h3>
 <p>Numbers can be stored as integers and floats.
 </p>
-<span id="int"></span><span id="int-_21d2-Integer-g_002c-h_002c-i_002c-j"></span><h4 class="subsection">6.2.1 int &rArr; Integer g, h, i, j</h4>
+<span id="int"></span><span id="int-_21d2-Integer-g_002c-h_002c-i_002c-j"></span><h4 class="subsection">6.3.1 int &rArr; Integer g, h, i, j</h4>
 <p>Integers can be stored in four different ways which correspond 1, 2, 4, and 8 bytes.  The first three are unsigned and the last (j) is signed.  Positive numbers default to i and negative and very large numbers default to j.  One can specify a non-default type by adding one of the four letters immediately following the number.
 </p>
 <div class="example">
@@ -115,7 +141,7 @@ b:{-1+*/x#256}
 72057594037927935
 </pre></div>
 
-<span id="flt"></span><span id="flt-_21d2-Float-f"></span><h4 class="subsection">6.2.2 flt &rArr; Float f</h4>
+<span id="flt"></span><span id="flt-_21d2-Float-f"></span><h4 class="subsection">6.3.2 flt &rArr; Float f</h4>
 <p>Float
 </p><div class="example">
 <pre class="example">&nbsp;3.1
@@ -133,10 +159,10 @@ b:{-1+*/x#256}
 `f
 </pre></div>
 
-<span id="Text-Data"></span><h3 class="section">6.3 Text Data</h3>
+<span id="Text-Data"></span><h3 class="section">6.4 Text Data</h3>
 <p>Text data come in characters, lists of characters (aka strings) and enumerated types.  Enumerated types are displayed as text but stored internally as integers.
 </p>
-<span id="char"></span><span id="char-_21d2-Character-c"></span><h4 class="subsection">6.3.1 char &rArr; Character c</h4>
+<span id="char"></span><span id="char-_21d2-Character-c"></span><h4 class="subsection">6.4.1 char &rArr; Character c</h4>
 <p>Characters are stored as their ANSI value and can be seen by conversion to integers.  Character lists are equivalent to strings.
 </p>
 <div class="example">
@@ -146,7 +172,7 @@ b:{-1+*/x#256}
 `C 
 </pre></div>
 
-<span id="name"></span><span id="name-_21d2-Name-n"></span><h4 class="subsection">6.3.2 name &rArr; Name n</h4>
+<span id="name"></span><span id="name-_21d2-Name-n"></span><h4 class="subsection">6.4.2 name &rArr; Name n</h4>
 <p>Names are enumerate type shown as a text string but stored internally as a integer value.
 </p>
 <div class="example">
@@ -156,16 +182,16 @@ b:{-1+*/x#256}
 `N
 </pre></div>
 
-<span id="Unique-Identifier"></span><h3 class="section">6.4 Unique Identifier</h3>
+<span id="Unique-Identifier"></span><h3 class="section">6.5 Unique Identifier</h3>
 <p>TBD
 </p>
-<span id="uuid"></span><span id="uuid-_21d2-Uuid"></span><h4 class="subsection">6.4.1 uuid &rArr; Uuid</h4>
+<span id="uuid"></span><span id="uuid-_21d2-Uuid"></span><h4 class="subsection">6.5.1 uuid &rArr; Uuid</h4>
 <p>TBD
 </p>
-<span id="Temporal-Data"></span><h3 class="section">6.5 Temporal Data</h3>
+<span id="Temporal-Data"></span><h3 class="section">6.6 Temporal Data</h3>
 <p>Temporal data can be expressed in time, date, or a combined date and time.
 </p>
-<span id="time"></span><span id="time-_21d2-Time-t"></span><h4 class="subsection">6.5.1 time &rArr; Time t</h4>
+<span id="time"></span><span id="time-_21d2-Time-t"></span><h4 class="subsection">6.6.1 time &rArr; Time t</h4>
 <p>Times are stored in hh:mm:ss.123 format and stored internally as integers.
 </p><div class="example">
 <pre class="example">&nbsp;@12:34:56.789             / time
@@ -186,7 +212,7 @@ b:{-1+*/x#256}
 00:00:12.345
 </pre></div>
 
-<span id="date"></span><span id="date-_21d2-Date-D"></span><h4 class="subsection">6.5.2 date &rArr; Date D</h4>
+<span id="date"></span><span id="date-_21d2-Date-D"></span><h4 class="subsection">6.6.2 date &rArr; Date D</h4>
 <p>Dates are in yyyy.mm.dd format and stored internally as integers.
 </p><div class="example">
 <pre class="example">&nbsp;@2020.04.20               / date
@@ -201,7 +227,7 @@ b:{-1+*/x#256}
 2024.01.01
 </pre></div>
 
-<span id="datetime"></span><span id="datetime-_21d2-Datetime-S"></span><h4 class="subsection">6.5.3 datetime &rArr; Datetime S</h4>
+<span id="datetime"></span><span id="datetime-_21d2-Datetime-S"></span><h4 class="subsection">6.6.3 datetime &rArr; Datetime S</h4>
 <p>Dates and times can be combined as 2020.04.20T12:34:56.789.
 </p>
 <div class="example">
@@ -217,7 +243,7 @@ b:{-1+*/x#256}
 2020.04.20T12:34:56.789
 </pre></div>
 
-<span id="Extreme-values"></span><h3 class="section">6.6 Extreme values</h3>
+<span id="Extreme-values"></span><h3 class="section">6.7 Extreme values</h3>
 <p>Data types can represent in-range, null, and out-of-range values.
 </p>
 <table>

@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- November 14, 2020
+<!-- November 15, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -66,34 +66,45 @@ Next: <a href="Tables.html" accesskey="n" rel="next">Tables</a>, Previous: <a hr
 </pre></div>
 
 <span id="Example-of-Data-I_002fO"></span><h3 class="section">12.1 Example of Data I/O</h3>
-<p>Let&rsquo;s start with a simple example to see how k9 does I/O.  We&rsquo;ll generate 5 tables of random numbers that have 10 fields and 50 million rows each.  This represents 2 gigabytes of data.
+<p>Let&rsquo;s being with a small trivial example to show how to read data from a csv file.  We&rsquo;ll generate a small table and save it with and without headers (wHeader.csv and woHeader.csv respectively).  Then we&rsquo;ll read it back in a specifying types and with the csv reader.
 </p>
-<span id="input-format"></span><span id="Input-format-values-to-table"></span><h3 class="section">12.2 Input format values to table</h3>
-<p>This section shows you the syntax for reading in data into a table with the correct type.
-</p><div class="example">
-<pre class="example">&nbsp;d:,(`date`time`int`float`char`symbol)            / headers 
-&nbsp;d,:,(2020.04.20;12:34:56.789;37;12.3;&quot;hi&quot;;`bye)) /data
-&nbsp;d                                          
-date       time         int float char  symbol
-2020.04.20 12:34:56.789 37  12.3  hi    bye   
+<div class="example">
+<pre class="example"> t:[[]a:3 2 1;b:1. 2. 4.;c:`x`y`z];t   / generate a table of data
+a b  c
+- -- -
+3 1. x
+2 2. y
+1 4. z
 
-&nbsp;`csv'd                                           / to csv
-date,time,int,float,char,symbol            
-2020.04.20,12:34:56.789,37,12.3,&quot;hi&quot;,bye
+ &quot;wHeader.csv&quot;0:`csv t                 / save with column headers
+wHeader.csv
 
-&nbsp;&quot;some.csv&quot;0:`csv'd                               / write to some.csv
-&nbsp;0:&quot;some.csv&quot;                                     / read from some.csv
-date,time,int,float,char,symbol            
-2020.04.20,12:34:56.789,37,12.3,&quot;hi&quot;,bye
+&quot;woHeader.csv&quot;0:1_`csv t              / save without col headers
+woHeader.csv
 
-&nbsp;(&quot;Dtifs*&quot;;,&quot;,&quot;)0:&quot;some.csv&quot;                      / read into table
-date       time         int float char    symbol
----------- ------------ --- ----- ------- ------
-2020.04.20 12:34:56.789  37 12.3  &quot;hi&quot;    bye   
+`csv?0:&quot;wHeader.csv&quot;                  / default reader
+a b  c
+- -- -
+3 1. x
+2 2. y
+1 4. z
+
+ (&quot;,&quot;;&quot;ifn&quot;)0:&quot;wHeader.csv&quot;            / specify separator and types
+a b  c
+- -- -
+3 1. x
+2 2. y
+1 4. z
+
+ (`e`f`g;&quot;,&quot;;&quot;ifn&quot;)0:&quot;woHeader.csv&quot;    / speicfy names, separator and types
+e f  g
+- -- -
+3 1. x
+2 2. y
+1 4. z
 </pre></div>
 
-
-<span id="read-csv"></span><span id="read-CSV-_21d2-_0060csv_003fx"></span><h3 class="section">12.3 read CSV &rArr; &lsquo;csv?x</h3>
+<span id="read-csv"></span><span id="read-CSV-_21d2-_0060csv_003fx"></span><h3 class="section">12.2 read CSV &rArr; &lsquo;csv?x</h3>
 <p>Convert x from CSV format.  Works on lists and tables.
 </p>
 <div class="example">
@@ -104,7 +115,7 @@ a b
 2 4.
 </pre></div>
 
-<span id="write-csv"></span><span id="write-csv-_21d2-_0060csv-x"></span><h3 class="section">12.4 write csv &rArr; &lsquo;csv x</h3>
+<span id="write-csv"></span><span id="write-csv-_21d2-_0060csv-x"></span><h3 class="section">12.3 write csv &rArr; &lsquo;csv x</h3>
 <p>Convert x to CSV format.  Works on lists and tables.
 </p>
 <div class="example">
@@ -114,7 +125,7 @@ a,b
 2,4.
 </pre></div>
 
-<span id="read-json"></span><span id="read-json-_21d2-_0060json_003fx"></span><h3 class="section">12.5 read json &rArr; &lsquo;json?x</h3>
+<span id="read-json"></span><span id="read-json-_21d2-_0060json_003fx"></span><h3 class="section">12.4 read json &rArr; &lsquo;json?x</h3>
 <p>Convert x from json format.  Works on lists and tables.
 </p>
 <div class="example">
@@ -125,7 +136,7 @@ a b
 2 4.
 </pre></div>
 
-<span id="write-json"></span><span id="write-json-_21d2-_0060json-x"></span><h3 class="section">12.6 write json &rArr; &lsquo;json x</h3>
+<span id="write-json"></span><span id="write-json-_21d2-_0060json-x"></span><h3 class="section">12.5 write json &rArr; &lsquo;json x</h3>
 <p>Convert x to json format.  Works on lists and tables.
 </p>
 <div class="example">
@@ -134,7 +145,7 @@ a b
 {a:2,b:4.}
 </pre></div>
 
-<span id="w-line"></span><span id="write-line-_21d2-x-0_003ay"></span><h3 class="section">12.7 write line &rArr; x 0:y</h3>
+<span id="w-line"></span><span id="write-line-_21d2-x-0_003ay"></span><h3 class="section">12.6 write line &rArr; x 0:y</h3>
 <p>Output to x the list of strings in y.  y must be a list of strings.  If y is a single stream then convert to list via enlist.
 </p><div class="example">
 <pre class="example"> &quot;&quot;0:(&quot;blue&quot;;&quot;red&quot;)      / &quot;&quot; represents stdout
@@ -145,7 +156,7 @@ red
 &quot;some.csv&quot;
 </pre></div>
 
-<span id="r-line"></span><span id="read-line-_21d2-0_003ax"></span><h3 class="section">12.8 read line &rArr; 0:x</h3>
+<span id="r-line"></span><span id="read-line-_21d2-0_003ax"></span><h3 class="section">12.7 read line &rArr; 0:x</h3>
 <p>Read from file x.
 </p>
 <div class="example">
@@ -155,7 +166,7 @@ a,b
 2,4.
 </pre></div>
 
-<span id="w-char"></span><span id="write-char-_21d2-x-1_003ay"></span><h3 class="section">12.9 write char &rArr; x 1:y</h3>
+<span id="w-char"></span><span id="write-char-_21d2-x-1_003ay"></span><h3 class="section">12.8 write char &rArr; x 1:y</h3>
 <p>Output to x the list of chars in y.  y must be a list of chars.  If y is a single char then convert to list via enlist.
 </p><div class="example">
 <pre class="example">&nbsp;&quot;some.txt&quot;1:&quot;hello here\nis some text\n&quot;
@@ -168,7 +179,7 @@ a b
 2 4
 &nbsp;&quot;some.k&quot;1:`k t      / write table to file in k format
 </pre></div>
-<span id="r-char"></span><span id="read-char-_21d2-1_003ax"></span><h3 class="section">12.10 read char &rArr; 1:x</h3>
+<span id="r-char"></span><span id="read-char-_21d2-1_003ax"></span><h3 class="section">12.9 read char &rArr; 1:x</h3>
 
 <p>Read from file x.
 </p>
@@ -188,7 +199,7 @@ a b
 2 4
 </pre></div>
 
-<span id="r-data"></span><span id="read-data-_21d2-2_003a-x"></span><h3 class="section">12.11 read data &rArr; 2: x</h3>
+<span id="r-data"></span><span id="read-data-_21d2-2_003a-x"></span><h3 class="section">12.10 read data &rArr; 2: x</h3>
 
 <p>Enterprise Only
 </p>
@@ -211,7 +222,7 @@ a          b          c          d          e
 
 </pre></div>
 
-<span id="w-data"></span><span id="write-data-_21d2-x-2_003a-y"></span><h3 class="section">12.12 write data &rArr; x 2: y</h3>
+<span id="w-data"></span><span id="write-data-_21d2-x-2_003a-y"></span><h3 class="section">12.11 write data &rArr; x 2: y</h3>
 
 <p>Enterprise only
 </p>
@@ -233,15 +244,15 @@ a          b          c          d          e
 </pre></div>
 
 
-<span id="conn_002fset"></span><span id="conn_002fset-_21d2-3_003a"></span><h3 class="section">12.13 conn/set &rArr; 3:</h3>
+<span id="conn_002fset"></span><span id="conn_002fset-_21d2-3_003a"></span><h3 class="section">12.12 conn/set &rArr; 3:</h3>
 
 <p>Enterprise only
 </p>
-<span id="http_002fget"></span><span id="http_002fget-_21d2-4_003a"></span><h3 class="section">12.14 http/get &rArr; 4:</h3>
+<span id="http_002fget"></span><span id="http_002fget-_21d2-4_003a"></span><h3 class="section">12.13 http/get &rArr; 4:</h3>
 
 <p>Enterprise only
 </p>
-<span id="lib"></span><span id="lib-_21d2-5_003a"></span><h3 class="section">12.15 lib &rArr; 5:</h3>
+<span id="lib"></span><span id="lib-_21d2-5_003a"></span><h3 class="section">12.14 lib &rArr; 5:</h3>
 
 <p>Enterprise only
 </p>
