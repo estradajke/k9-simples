@@ -1,0 +1,285 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- November 16, 2020
+
+Copyright (C) 2020 John Estrada -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Dictionary (Shakti tutorial)</title>
+
+<meta name="description" content="Dictionary (Shakti tutorial)">
+<meta name="keywords" content="Dictionary (Shakti tutorial)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="index.html" rel="up" title="Top">
+<link href="User-Functions.html" rel="next" title="User Functions">
+<link href="List.html" rel="prev" title="List">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Dictionary"></span><div class="header">
+<p>
+Next: <a href="User-Functions.html" accesskey="n" rel="next">User Functions</a>, Previous: <a href="List.html" accesskey="p" rel="prev">List</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+</div>
+<hr>
+<span id="Dictionary-1"></span><h2 class="chapter">8 Dictionary</h2>
+<p>Dictionaries are a data type of key-value pairs typically used to retrieve the value by using the key.  In other computer languages they are also known as associative arrays and maps.  Keys should be unique to avoid lookup value confusion but uniqueness is not enforced.  The values in the dictionary can be single elements, lists, tables, or even dictionaries.
+</p>
+<p>Dictionaries in k9 are often used.  As an example in the benchmark chapter the market quote and trade data are dictionaries of symbols (name keys) and market data (table values).  
+</p>
+<span id="Dictionary-Creation-_21d2-x_0021y"></span><h3 class="section">8.1 Dictionary Creation &rArr; x!y</h3>
+
+<p>Dictionaries are created by using the key symbol and listing the keys (x) and values (y).  
+</p>
+<div class="example">
+<pre class="example"> d0:`a37!12;d0                               / single entry
+`a37!12
+
+d1:`pi`e`c!3.14 2.72 3e8;d1                  / elements
+pi|3.14 
+e |2.72 
+c |3e+08
+
+ d2:`time`time!(12:00+!3;25.0 25.1 25.6);d2  / lists
+time|12:00 12:01 12:02
+time|25. 25.1 25.6    
+
+ d3:0 10 1!37.4 46.3 0.1;d3                  / keys as numbers
+ 0|37.4
+10|46.3
+ 1|0.1 
+
+ d4:`a`b`a!1 2 3;d4                          / non-unique keys
+a|1
+b|2
+a|3
+</pre></div>
+
+<span id="Dictionary-Indexing-_21d2-x_0040y"></span><h3 class="section">8.2 Dictionary Indexing &rArr; x@y</h3>
+
+<p>Dictionaries, like lists, can be indexed in a number of ways.
+</p>
+<div class="example">
+<pre class="example">&nbsp;x:`a`b`c!(1 2;3 4;5 6);x
+a|1 2
+b|3 4
+c|5 6
+&nbsp;x@`a      
+1 2
+&nbsp;x@`a`c    
+1 2
+5 6
+&nbsp;/ all these notaions for indexing work, output surpressed
+&nbsp;x@`b;  / at
+&nbsp;x(`b); / parenthesis
+&nbsp;x `b;  / space
+&nbsp;x[`b]; / square bracket
+</pre></div>
+
+<span id="Dictionary-Key-_21d2-_0021x"></span><h3 class="section">8.3 Dictionary Key &rArr; !x</h3>
+<p>The keys from a dictionary are retreived by using the ! function.
+</p>
+<div class="example">
+<pre class="example">&nbsp;!d0
+`pi`e`c
+&nbsp;!d1
+`time`temp
+&nbsp;!d2
+0 10 1
+</pre></div>
+
+<span id="Dictionary-Value-_21d2-x_005b_005d"></span><h3 class="section">8.4 Dictionary Value &rArr; x[]</h3>
+<p>The values from a dictionary are retreived by bracket notation.
+</p>
+<div class="example">
+<pre class="example"> d0[]
+3.14 2.72 3e+08
+ d1[]
+12:00 12:01 12:10
+25.   25.1  25.6 
+
+ d2[]
+37.4 46.3 0.1
+</pre></div>
+
+<p>One could return a specific value by indexing into a specific location.  As an example in order to query the first value of the temp from d1, one would convert d1 into values (as value .), take the second index (take the value 1), take the second element (take the temp 1), and then query the first value (element 0).
+</p>
+<div class="example">
+<pre class="example">&nbsp;d1
+time|12:00 12:01 12:10
+temp|25 25.1 25.6     
+
+&nbsp;d1[]
+12:00 12:01 12:10
+25    25.1  25.6 
+
+&nbsp;d1[][1]
+25 25.1 25.6
+&nbsp;d1[][1;0]
+25.
+</pre></div>
+
+<span id="Sorting-a-Dictionary-by-Key-_21d2-_005ex"></span><h3 class="section">8.5 Sorting a Dictionary by Key &rArr; ^x</h3>
+
+<div class="example">
+<pre class="example">&nbsp;d0
+pi|3.14 
+e |2.72 
+c |3e+08
+
+&nbsp;^d0
+c |3e+08
+e |2.72 
+pi|3.14 
+</pre></div>
+
+<span id="Sorting-a-Dictionary-by-Value-_21d2-_003cx-_0028_003ex_0029"></span><h3 class="section">8.6 Sorting a Dictionary by Value &rArr; &lt;x (&gt;x)</h3>
+
+<div class="example">
+<pre class="example">&nbsp;d0
+pi|3.14 
+e |2.72 
+c |3e+08
+
+&nbsp;&lt;d0
+e |2.72 
+pi|3.14 
+c |3e+08
+
+&nbsp;&gt;d0
+c |3e+08
+pi|3.14 
+e |2.72 
+</pre></div>
+
+<span id="Flipping-a-Dictionary-into-a-Table-_21d2-_002bx"></span><h3 class="section">8.7 Flipping a Dictionary into a Table &rArr; +x</h3>
+<p>This command flips a dictionary into a table but will be covered in detail in the table section.  Flipping a dictionary whose values are a single element has no effect.
+</p>
+<div class="example">
+<pre class="example">&nbsp;d0
+pi|3.14 
+e |2.72 
+c |3e+08
+
+&nbsp;+d0
+pi|3.14 
+e |2.72 
+c |3e+08
+
+&nbsp;do~+d0
+1b
+
+&nbsp;d1
+time|12:00 12:01 12:10
+temp|25 25.1 25.6     
+
+&nbsp;+d1
+time  temp
+----- ----
+12:00 25  
+12:01 25.1
+12:10 25.6
+
+&nbsp;d1~+d1
+0b
+</pre></div>
+
+<span id="Functions-that-operate-on-each-value-in-a-dictionary"></span><h3 class="section">8.8 Functions that operate on each value in a dictionary</h3>
+<p>There a number of simple functions on dictionaries that operate on the values.  If &rsquo;f&rsquo; is a function then f applied to a dictionary return a dictionary with the same keys and the values are application of &rsquo;f&rsquo;.
+</p>
+<ul>
+<li> <tt>-d : Negate</tt>
+</li><li> <tt>d + N : Add N to d</tt>
+</li><li> <tt>d - N : Subtract N from d</tt>
+</li><li> <tt>d * N : Multiple d by N</tt>
+</li><li> <tt>d % N : Divide d by N</tt>
+</li><li> <tt>|d : Reverse</tt>
+</li><li> <tt>&lt;d : Sort Ascending</tt>
+</li><li> <tt>&gt;d : Sort Descending</tt>
+</li><li> <tt>~d : Not d</tt>
+</li><li> <tt>&amp;d : Given d:x!y output each x, y times, where y must be an integer</tt>
+</li><li> <tt>=d : Given d:x!y y!x</tt>
+</li></ul>
+
+<p>Examples
+</p><div class="example">
+<pre class="example">&nbsp;d2
+&nbsp;0|37.4
+10|46.3
+&nbsp;1|0.1 
+
+&nbsp;-d2
+&nbsp;0|-37.4
+10|-46.3
+&nbsp;1|-0.1 
+
+&nbsp;d2+3
+&nbsp;0|40.4
+10|49.3
+&nbsp;1|3.1 
+
+&nbsp;d2-1.7
+&nbsp;0|35.7
+10|44.6
+&nbsp;1|-1.6
+
+&nbsp;d2*10
+&nbsp;0|374
+10|463
+&nbsp;1|1  
+
+&nbsp;d2%100
+&nbsp;0|0.374
+10|0.463
+&nbsp;1|0.001
+</pre></div>
+
+<span id="Functions-that-operate-over-values-in-a-dictionary"></span><h3 class="section">8.9 Functions that operate over values in a dictionary</h3>
+<p>There are functions on dictions that operate over the values.  Given function f applied to a dictionary d then f d returns a value.
+</p>
+<ul>
+<li> *d : First value
+</li></ul>
+<div class="example">
+<pre class="example">&nbsp;d0
+pi|3.14
+e |2.72
+c |3e+08
+
+&nbsp;*d0
+3.14
+</pre></div>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="User-Functions.html" accesskey="n" rel="next">User Functions</a>, Previous: <a href="List.html" accesskey="p" rel="prev">List</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+</div>
+
+
+
+</body>
+</html>
