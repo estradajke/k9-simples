@@ -20,7 +20,7 @@ Copyright @copyright{} 2020 John Estrada
 @c @ifnottex
 @node Top
 @top k9: Manual
-This manual is for Shakti (k9) build 2020.10.14.@*
+This manual is for Shakti (k9) build 2020.11.16.@*
 
 The Shakti programming language is the work of Arthur Whitney and the team at Shakti.  The language comes from a lineage of similar languages going back to APL.  It's also known as k9 given the similarties to k, k2, ..., k6, k7 and the fact that Arthur also wrote those.  k9 is still under development so expect a bit of syntax change and likley even more improvements.
 
@@ -1763,7 +1763,7 @@ This section lists all the different types available.  Generally lower case spec
 @item @tab @tab
 @item b @tab boolean @tab 1b @tab 
 @item c @tab character @tab ``a'' @tab
-@item D @tab date @tab 2020.06.14 @tab upper case for atom
+@item d @tab date @tab 2020.06.14 @tab
 @item e @tab float @tab 3.1
 @item f @tab float @tab 3.1f
 @item g @tab int @tab 2g @tab 1 byte unsigned
@@ -1893,7 +1893,7 @@ Time has four types depending on the level of precision.  The types are seconds 
 00:00:12.345
 @end example
 
-@anchor{date}@subsection date @result{} Date D
+@anchor{date}@subsection date @result{} Date d
 Dates are in yyyy.mm.dd format.  Dates are stored internally as integers with 0 corresponding to 2001.01.01.
 
 @example

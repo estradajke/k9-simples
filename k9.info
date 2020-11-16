@@ -1,6 +1,6 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
-November 15, 2020
+November 16, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -10,7 +10,7 @@ File: k9.info,  Node: Top,  Next: Introduction,  Up: (dir)
 k9: Manual
 **********
 
-This manual is for Shakti (k9) build 2020.10.14.
+This manual is for Shakti (k9) build 2020.11.16.
 
    The Shakti programming language is the work of Arthur Whitney and
 the team at Shakti.  The language comes from a lineage of similar
@@ -34,47 +34,49 @@ language.
 
    The built-in reference screen ('\') containing all the k9 commands.
 
-universal database and language - beauty and performance.
+Universal database, webserver and language -- full stack -- fast
 
-select [count first last min max sum avg ..]A by B from T where C
-delete from T where C               *update A by B from T where C
-x,y      / union, insert, upsert, outerjoin, leftjoin, asofjoin ..
-x+y      / equi and asof outer joins: combine markets through time
-x#y x_y  / take/drop, intersect/except, inner join
+Database
+select A by B from T where C; update A from T
+x,y      / insert, upsert, union, equi-and-asof leftjoin
+x+y      / equi-and-asof outerjoin (e.g. combine markets through time)
+x#y      / take/intersect innerjoin (x_y for drop/difference)
+count last sum min max avg -var -dev -med .. meta key unkey ..
 
-Verb                      Adverb               Noun              System
+Language 
+verb                      adverb               type              system
 :    x         y          f/  over  c/  join   bool 011b         \l a.k
 +    flip      plus       f\  scan  c\  split  int  0N 0 2 3     \t:n x
--    negate    minus      f'  each  v'  has    flt  0n 0 2 3.4   \u:n x
-*    first     times      f': eachp v': bin    char " ab"        \v
+-    negate    minus      f'  each  v'  +has   flt  0n 0 2 3.4   \u:n x
+*    first     times      f': eachp v': +bin   char " ab"        \v
 %              divide     f/: eachr ([n;]f)/:  name ``ab         \w
 &    where     min/and    f\: eachl ([n;]f)\:  uuid              \cd x
 |    reverse   max/or                         
-<    asc       less                     .z.DTV date 2024.01.01T12:34:56
->    dsc       more                     .z.dtv time  12:34:56.123456789
-=    group     equal      I/O                     
+<    asc       less              .z.[md]       date 2024.01.01
+>    dsc       more              .z.[hrstuv]   time 12:34:56.123456789
+=    group     equal      I/O
 ~    not       match      0:  r/w line         Class             \f
-!    enum      key        1:  r/w char         List (2;3.4;`a)   \ft x
+!    enum      key        1:  r/w byte         List (2;3.4;`a)   \ft x
 ,    enlist    cat       *2:  r/w data         Dict `i`f!(2;3.4) \fl x
-^    sort   [f]cut       *3:  kipc set         Func {[a;b]a+b}   \fc x
-#    count  [f]take      *4:  http get         Expr :a+b
+^    sort   [f]cut       *3:  k-ipc set        Func {[a;b]a+b}   \fc x
+#    count  [f]take      *4:  https get        Expr :a+b 
 _    floor  [f]drop
-$    string    cast+      
+$    string    cast                            Table
 ?    unique+   find+      $[b;x;y] if else     t:[[]i:2 3;f:3 4.;s:`a`b]
 @    type   [f]at         @[x;i;f[;y]] amend   utable [[b:..]a:..]
 .    value  [f]dot        .[x;i;f[;y]] dmend   xtable `..![[]a:..]
-math: sqrt sqr exp log sin cos div mod bar ..  util: in bin within ..
-\\   exit      / comment  #[if do while]
+sqrt sqr exp log sin cos div mod bar .. freq rank msum .. in bin within ..
+\\   exit      / comment  -[if do while select[a;b;t;c]]
 
+Interface
 `csv?`csv t    / read/write csv
 `json?`json t  / read/write json
-python: import k;  k.k('+',2,3)   
-nodejs: require('k').k('+',2,3)
-
+-python:   import k;k.k('+',2,3)   
+-nodejs: require('k').k('+',2,3)
 *ffi: "./a.so"5:`f!"ii" /I f(I i){return 2+i;}       //cblas ..
 *c/k: "./b.so"5:`f!1    /K f(K x){return ki(2+xi);}  //feeds ..
-*enterprise: multi user/thread/core/machine. no limit. fast.
-connect to all - depend on none
+
+*enterprise[unlimited data/users/machines/..] +overload -todo
 
 * Menu:
 
@@ -221,47 +223,49 @@ where the help screen is a bit too terse.  Some commands are not yet
 complete and thus marked with an asterisk, eg.  *update A by B from T
 where C.
 
-universal database and language - beauty and performance.
+Universal database, webserver and language -- full stack -- fast
 
-select [count first last min max sum avg ..]A by B from T where C
-delete from T where C               *update A by B from T where C
-x,y      / union, insert, upsert, outerjoin, leftjoin, asofjoin ..
-x+y      / equi and asof outer joins: combine markets through time
-x#y x_y  / take/drop, intersect/except, inner join
+Database
+select A by B from T where C; update A from T
+x,y      / insert, upsert, union, equi-and-asof leftjoin
+x+y      / equi-and-asof outerjoin (e.g. combine markets through time)
+x#y      / take/intersect innerjoin (x_y for drop/difference)
+count last sum min max avg -var -dev -med .. meta key unkey ..
 
-Verb                      Adverb               Noun              System
+Language 
+verb                      adverb               type              system
 :    x         y          f/  over  c/  join   bool 011b         \l a.k
 +    flip      plus       f\  scan  c\  split  int  0N 0 2 3     \t:n x
--    negate    minus      f'  each  v'  has    flt  0n 0 2 3.4   \u:n x
-*    first     times      f': eachp v': bin    char " ab"        \v
+-    negate    minus      f'  each  v'  +has   flt  0n 0 2 3.4   \u:n x
+*    first     times      f': eachp v': +bin   char " ab"        \v
 %              divide     f/: eachr ([n;]f)/:  name ``ab         \w
 &    where     min/and    f\: eachl ([n;]f)\:  uuid              \cd x
 |    reverse   max/or                         
-<    asc       less                     .z.DTV date 2024.01.01T12:34:56
->    dsc       more                     .z.dtv time  12:34:56.123456789
-=    group     equal      I/O                     
+<    asc       less              .z.[md]       date 2024.01.01
+>    dsc       more              .z.[hrstuv]   time 12:34:56.123456789
+=    group     equal      I/O
 ~    not       match      0:  r/w line         Class             \f
-!    enum      key        1:  r/w char         List (2;3.4;`a)   \ft x
+!    enum      key        1:  r/w byte         List (2;3.4;`a)   \ft x
 ,    enlist    cat       *2:  r/w data         Dict `i`f!(2;3.4) \fl x
-^    sort   [f]cut       *3:  kipc set         Func {[a;b]a+b}   \fc x
-#    count  [f]take      *4:  http get         Expr :a+b
+^    sort   [f]cut       *3:  k-ipc set        Func {[a;b]a+b}   \fc x
+#    count  [f]take      *4:  https get        Expr :a+b 
 _    floor  [f]drop
-$    string    cast+      
+$    string    cast                            Table
 ?    unique+   find+      $[b;x;y] if else     t:[[]i:2 3;f:3 4.;s:`a`b]
 @    type   [f]at         @[x;i;f[;y]] amend   utable [[b:..]a:..]
 .    value  [f]dot        .[x;i;f[;y]] dmend   xtable `..![[]a:..]
-math: sqrt sqr exp log sin cos div mod bar ..  util: in bin within ..
-\\   exit      / comment  #[if do while]
+sqrt sqr exp log sin cos div mod bar .. freq rank msum .. in bin within ..
+\\   exit      / comment  -[if do while select[a;b;t;c]]
 
+Interface
 `csv?`csv t    / read/write csv
 `json?`json t  / read/write json
-python: import k;  k.k('+',2,3)   
-nodejs: require('k').k('+',2,3)
-
+-python:   import k;k.k('+',2,3)   
+-nodejs: require('k').k('+',2,3)
 *ffi: "./a.so"5:`f!"ii" /I f(I i){return 2+i;}       //cblas ..
 *c/k: "./b.so"5:`f!1    /K f(K x){return ki(2+xi);}  //feeds ..
-*enterprise: multi user/thread/core/machine. no limit. fast.
-connect to all - depend on none
+
+*enterprise[unlimited data/users/machines/..] +overload -todo
 
 1.5 rlwrap
 ==========
@@ -1939,7 +1943,7 @@ case specifies atoms and upper case as lists.
 name    type        example                          note
 b       boolean     1b
 c       character   "a"
-D       date        2020.06.14                       upper case for atom
+d       date        2020.06.14
 e       float       3.1
 f       float       3.1f
 g       int         2g                               1 byte unsigned
@@ -2092,7 +2096,7 @@ are the number of time units.  For example 00:00:00.012 and
       `t 12345                   / convert milliseconds to time
      00:00:12.345
 
-6.6.2 date => Date D
+6.6.2 date => Date d
 --------------------
 
 Dates are in yyyy.mm.dd format.  Dates are stored internally as
@@ -3917,181 +3921,183 @@ than previously imagined.
    If you've come along enough to get it, then you'll probably
 realised this manual isn't needed and it's all here...
 
-universal database and language - beauty and performance.
+Universal database, webserver and language -- full stack -- fast
 
-select [count first last min max sum avg ..]A by B from T where C
-delete from T where C               *update A by B from T where C
-x,y      / union, insert, upsert, outerjoin, leftjoin, asofjoin ..
-x+y      / equi and asof outer joins: combine markets through time
-x#y x_y  / take/drop, intersect/except, inner join
+Database
+select A by B from T where C; update A from T
+x,y      / insert, upsert, union, equi-and-asof leftjoin
+x+y      / equi-and-asof outerjoin (e.g. combine markets through time)
+x#y      / take/intersect innerjoin (x_y for drop/difference)
+count last sum min max avg -var -dev -med .. meta key unkey ..
 
-Verb                      Adverb               Noun              System
+Language 
+verb                      adverb               type              system
 :    x         y          f/  over  c/  join   bool 011b         \l a.k
 +    flip      plus       f\  scan  c\  split  int  0N 0 2 3     \t:n x
--    negate    minus      f'  each  v'  has    flt  0n 0 2 3.4   \u:n x
-*    first     times      f': eachp v': bin    char " ab"        \v
+-    negate    minus      f'  each  v'  +has   flt  0n 0 2 3.4   \u:n x
+*    first     times      f': eachp v': +bin   char " ab"        \v
 %              divide     f/: eachr ([n;]f)/:  name ``ab         \w
 &    where     min/and    f\: eachl ([n;]f)\:  uuid              \cd x
 |    reverse   max/or                         
-<    asc       less                     .z.DTV date 2024.01.01T12:34:56
->    dsc       more                     .z.dtv time  12:34:56.123456789
-=    group     equal      I/O                     
+<    asc       less              .z.[md]       date 2024.01.01
+>    dsc       more              .z.[hrstuv]   time 12:34:56.123456789
+=    group     equal      I/O
 ~    not       match      0:  r/w line         Class             \f
-!    enum      key        1:  r/w char         List (2;3.4;`a)   \ft x
+!    enum      key        1:  r/w byte         List (2;3.4;`a)   \ft x
 ,    enlist    cat       *2:  r/w data         Dict `i`f!(2;3.4) \fl x
-^    sort   [f]cut       *3:  kipc set         Func {[a;b]a+b}   \fc x
-#    count  [f]take      *4:  http get         Expr :a+b
+^    sort   [f]cut       *3:  k-ipc set        Func {[a;b]a+b}   \fc x
+#    count  [f]take      *4:  https get        Expr :a+b 
 _    floor  [f]drop
-$    string    cast+      
+$    string    cast                            Table
 ?    unique+   find+      $[b;x;y] if else     t:[[]i:2 3;f:3 4.;s:`a`b]
 @    type   [f]at         @[x;i;f[;y]] amend   utable [[b:..]a:..]
 .    value  [f]dot        .[x;i;f[;y]] dmend   xtable `..![[]a:..]
-math: sqrt sqr exp log sin cos div mod bar ..  util: in bin within ..
-\\   exit      / comment  #[if do while]
+sqrt sqr exp log sin cos div mod bar .. freq rank msum .. in bin within ..
+\\   exit      / comment  -[if do while select[a;b;t;c]]
 
+Interface
 `csv?`csv t    / read/write csv
 `json?`json t  / read/write json
-python: import k;  k.k('+',2,3)   
-nodejs: require('k').k('+',2,3)
-
+-python:   import k;k.k('+',2,3)   
+-nodejs: require('k').k('+',2,3)
 *ffi: "./a.so"5:`f!"ii" /I f(I i){return 2+i;}       //cblas ..
 *c/k: "./b.so"5:`f!1    /K f(K x){return ki(2+xi);}  //feeds ..
-*enterprise: multi user/thread/core/machine. no limit. fast.
-connect to all - depend on none
+
+*enterprise[unlimited data/users/machines/..] +overload -todo
 
 
 
 Tag Table:
 Node: Top126
-Node: Introduction4344
-Node: Examples16549
-Node: Benchmark24102
-Node: Verb29058
-Ref: x30518
-Ref: set30543
-Ref: flip30755
-Ref: plus31005
-Ref: negate31390
-Ref: minus31562
-Ref: first31669
-Ref: times32009
-Ref: divide32140
-Ref: where32277
-Ref: min/and32757
-Ref: reverse33016
-Ref: max/or33186
-Ref: asc33450
-Ref: less33823
-Ref: group34124
-Ref: equal34370
-Ref: not34674
-Ref: match34791
-Ref: enum35174
-Ref: key36427
-Ref: enlist36657
-Ref: cat36796
-Ref: sort36915
-Ref: [f]cut37147
-Ref: count37892
-Ref: [f]take38082
-Ref: floor38711
-Ref: [f]drop38802
-Ref: string39395
-Ref: cast+39496
-Ref: unique+39845
-Ref: find+40084
-Ref: type40803
-Ref: [f]at41254
-Ref: value41570
-Ref: [f]dot41844
-Node: Adverb43093
-Ref: scan43835
-Ref: join44365
-Ref: split44540
-Ref: each44731
-Ref: has44949
-Ref: eachp45213
-Ref: bin245653
-Ref: eachr45856
-Ref: eachl46053
-Ref: n scan46237
-Ref: c scan46717
-Ref: c over47229
-Ref: vs47366
-Ref: sv47486
-Node: Noun47610
-Ref: Atom Types48976
-Ref: bool50199
-Ref: int50499
-Ref: flt51160
-Ref: char51562
-Ref: name51785
-Ref: uuid52016
-Ref: time52173
-Ref: date53050
-Ref: datetime53512
-Node: List54327
-Node: Dictionary59602
-Node: User Functions64515
-Node: Named Functions67101
-Ref: sqrt67724
-Ref: exp67797
-Ref: log67865
-Ref: sin67965
-Ref: cos68104
-Ref: div68252
-Ref: mod68408
-Ref: bar68586
-Ref: in69126
-Ref: bin69304
-Ref: within69518
-Node: Knit Functions69732
-Ref: amend70001
-Ref: dmend70369
-Node: I/O70734
-Ref: read csv72837
-Ref: write csv73015
-Ref: read json73179
-Ref: write json73369
-Ref: w line73542
-Ref: r line73850
-Ref: w char73963
-Ref: r char74357
-Ref: r data74723
-Ref: w data75384
-Ref: conn/set75952
-Ref: http/get76012
-Ref: lib76072
-Node: Tables76536
-Ref: t77228
-Ref: xtable78834
-Ref: utable79316
-Node: kSQL79773
-Ref: union82102
-Ref: left82623
-Ref: outer83145
-Ref: asof83480
-Ref: asof+84524
-Node: System86197
-Ref: load86655
-Ref: timing86843
-Ref: variables86930
-Ref: memory87031
-Ref: cd87146
-Node: Control Flow87230
-Ref: cond87450
-Node: .z87711
-Node: Errors88741
-Ref: class89175
-Ref: rank89264
-Ref: length89388
-Ref: _type89511
-Ref: domain89620
-Ref: limit89742
-Ref: nyi89943
-Ref: parse90276
-Ref: _value90431
-Node: Conclusion90559
+Node: Introduction4350
+Node: Examples16561
+Node: Benchmark24114
+Node: Verb29070
+Ref: x30530
+Ref: set30555
+Ref: flip30767
+Ref: plus31017
+Ref: negate31402
+Ref: minus31574
+Ref: first31681
+Ref: times32021
+Ref: divide32152
+Ref: where32289
+Ref: min/and32769
+Ref: reverse33028
+Ref: max/or33198
+Ref: asc33462
+Ref: less33835
+Ref: group34136
+Ref: equal34382
+Ref: not34686
+Ref: match34803
+Ref: enum35186
+Ref: key36439
+Ref: enlist36669
+Ref: cat36808
+Ref: sort36927
+Ref: [f]cut37159
+Ref: count37904
+Ref: [f]take38094
+Ref: floor38723
+Ref: [f]drop38814
+Ref: string39407
+Ref: cast+39508
+Ref: unique+39857
+Ref: find+40096
+Ref: type40815
+Ref: [f]at41266
+Ref: value41582
+Ref: [f]dot41856
+Node: Adverb43105
+Ref: scan43847
+Ref: join44377
+Ref: split44552
+Ref: each44743
+Ref: has44961
+Ref: eachp45225
+Ref: bin245665
+Ref: eachr45868
+Ref: eachl46065
+Ref: n scan46249
+Ref: c scan46729
+Ref: c over47241
+Ref: vs47378
+Ref: sv47498
+Node: Noun47622
+Ref: Atom Types48988
+Ref: bool50169
+Ref: int50469
+Ref: flt51130
+Ref: char51532
+Ref: name51755
+Ref: uuid51986
+Ref: time52143
+Ref: date53020
+Ref: datetime53482
+Node: List54297
+Node: Dictionary59572
+Node: User Functions64485
+Node: Named Functions67071
+Ref: sqrt67694
+Ref: exp67767
+Ref: log67835
+Ref: sin67935
+Ref: cos68074
+Ref: div68222
+Ref: mod68378
+Ref: bar68556
+Ref: in69096
+Ref: bin69274
+Ref: within69488
+Node: Knit Functions69702
+Ref: amend69971
+Ref: dmend70339
+Node: I/O70704
+Ref: read csv72807
+Ref: write csv72985
+Ref: read json73149
+Ref: write json73339
+Ref: w line73512
+Ref: r line73820
+Ref: w char73933
+Ref: r char74327
+Ref: r data74693
+Ref: w data75354
+Ref: conn/set75922
+Ref: http/get75982
+Ref: lib76042
+Node: Tables76506
+Ref: t77198
+Ref: xtable78804
+Ref: utable79286
+Node: kSQL79743
+Ref: union82072
+Ref: left82593
+Ref: outer83115
+Ref: asof83450
+Ref: asof+84494
+Node: System86167
+Ref: load86625
+Ref: timing86813
+Ref: variables86900
+Ref: memory87001
+Ref: cd87116
+Node: Control Flow87200
+Ref: cond87420
+Node: .z87681
+Node: Errors88711
+Ref: class89145
+Ref: rank89234
+Ref: length89358
+Ref: _type89481
+Ref: domain89590
+Ref: limit89712
+Ref: nyi89913
+Ref: parse90246
+Ref: _value90401
+Node: Conclusion90529
 
 End Tag Table
 
