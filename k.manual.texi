@@ -1730,15 +1730,16 @@ In additional to the basic data types, data can be put into lists (uniform and n
 The set of k9 data, aka nouns, are as follows.
 
 @example
-Atom   Example     
-@ref{bool},  011b           
-@ref{int},   0N 2 3       
-@ref{flt},   0n 2 3.4     
-@ref{char},  " ab"          
-@ref{name},  ``ab
-@ref{uuid},  
-@ref{time},  12:34:56.123456789   
-@ref{date}, 2024.01.01T12:34:56 
+type              
+@ref{bool} 011b
+@ref{int}  0N 0 2 3
+@ref{flt}  0n 0 2 3.4   
+@ref{char} " ab"        
+@ref{name} ``ab         
+@ref{uuid}
+
+@ref{date} 2024.01.01
+@ref{time} 12:34:56.123456789
 @end example
 
 Data types can be determined by using the @code{@@} function on values or lists of values.  In the case of non-uniform lists @code{@@} returns the type of the list @code{`L} but the function can be modified to evalue each type @code{@@'} instead and return the type of each element in the list.

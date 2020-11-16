@@ -1919,6 +1919,17 @@ covered in a seperate chapter.
      *note time::,  12:34:56.123456789
      *note date::, 2024.01.01T12:34:56
 
+     type
+     *note bool:: 011b
+     *note int::  0N 0 2 3
+     *note flt::  0n 0 2 3.4
+     *note char:: " ab"
+     *note name:: ``ab
+     *note uuid::
+
+     *note date:: 2024.01.01
+     *note time:: 12:34:56.123456789
+
    Data types can be determined by using the '@' function on values or
 lists of values.  In the case of non-uniform lists '@' returns the
 type of the list '`L' but the function can be modified to evalue each
@@ -4026,78 +4037,78 @@ Ref: c over47241
 Ref: vs47378
 Ref: sv47498
 Node: Noun47622
-Ref: Atom Types48988
-Ref: bool50169
-Ref: int50469
-Ref: flt51130
-Ref: char51532
-Ref: name51755
-Ref: uuid51986
-Ref: time52143
-Ref: date53020
-Ref: datetime53482
-Node: List54297
-Node: Dictionary59572
-Node: User Functions64485
-Node: Named Functions67071
-Ref: sqrt67694
-Ref: exp67767
-Ref: log67835
-Ref: sin67935
-Ref: cos68074
-Ref: div68222
-Ref: mod68378
-Ref: bar68556
-Ref: in69096
-Ref: bin69274
-Ref: within69488
-Node: Knit Functions69702
-Ref: amend69971
-Ref: dmend70339
-Node: I/O70704
-Ref: read csv72807
-Ref: write csv72985
-Ref: read json73149
-Ref: write json73339
-Ref: w line73512
-Ref: r line73820
-Ref: w char73933
-Ref: r char74327
-Ref: r data74693
-Ref: w data75354
-Ref: conn/set75922
-Ref: http/get75982
-Ref: lib76042
-Node: Tables76506
-Ref: t77198
-Ref: xtable78804
-Ref: utable79286
-Node: kSQL79743
-Ref: union82072
-Ref: left82593
-Ref: outer83115
-Ref: asof83450
-Ref: asof+84494
-Node: System86167
-Ref: load86625
-Ref: timing86813
-Ref: variables86900
-Ref: memory87001
-Ref: cd87116
-Node: Control Flow87200
-Ref: cond87420
-Node: .z87681
-Node: Errors88711
-Ref: class89145
-Ref: rank89234
-Ref: length89358
-Ref: _type89481
-Ref: domain89590
-Ref: limit89712
-Ref: nyi89913
-Ref: parse90246
-Ref: _value90401
-Node: Conclusion90529
+Ref: Atom Types49210
+Ref: bool50391
+Ref: int50691
+Ref: flt51352
+Ref: char51754
+Ref: name51977
+Ref: uuid52208
+Ref: time52365
+Ref: date53242
+Ref: datetime53704
+Node: List54519
+Node: Dictionary59794
+Node: User Functions64707
+Node: Named Functions67293
+Ref: sqrt67916
+Ref: exp67989
+Ref: log68057
+Ref: sin68157
+Ref: cos68296
+Ref: div68444
+Ref: mod68600
+Ref: bar68778
+Ref: in69318
+Ref: bin69496
+Ref: within69710
+Node: Knit Functions69924
+Ref: amend70193
+Ref: dmend70561
+Node: I/O70926
+Ref: read csv73029
+Ref: write csv73207
+Ref: read json73371
+Ref: write json73561
+Ref: w line73734
+Ref: r line74042
+Ref: w char74155
+Ref: r char74549
+Ref: r data74915
+Ref: w data75576
+Ref: conn/set76144
+Ref: http/get76204
+Ref: lib76264
+Node: Tables76728
+Ref: t77420
+Ref: xtable79026
+Ref: utable79508
+Node: kSQL79965
+Ref: union82294
+Ref: left82815
+Ref: outer83337
+Ref: asof83672
+Ref: asof+84716
+Node: System86389
+Ref: load86847
+Ref: timing87035
+Ref: variables87122
+Ref: memory87223
+Ref: cd87338
+Node: Control Flow87422
+Ref: cond87642
+Node: .z87903
+Node: Errors88933
+Ref: class89367
+Ref: rank89456
+Ref: length89580
+Ref: _type89703
+Ref: domain89812
+Ref: limit89934
+Ref: nyi90135
+Ref: parse90468
+Ref: _value90623
+Node: Conclusion90751
 
 End Tag Table
 

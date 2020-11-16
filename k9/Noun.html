@@ -53,15 +53,16 @@ Next: <a href="List.html" accesskey="n" rel="next">List</a>, Previous: <a href="
 <p>The set of k9 data, aka nouns, are as follows.
 </p>
 <div class="example">
-<pre class="example">Atom   Example     
-<a href="#bool">bool</a>,  011b           
-<a href="#int">int</a>,   0N 2 3       
-<a href="#flt">flt</a>,   0n 2 3.4     
-<a href="#char">char</a>,  &quot; ab&quot;          
-<a href="#name">name</a>,  ``ab
-<a href="#uuid">uuid</a>,  
-<a href="#time">time</a>,  12:34:56.123456789   
-<a href="#date">date</a>, 2024.01.01T12:34:56 
+<pre class="example">type              
+<a href="#bool">bool</a> 011b
+<a href="#int">int</a>  0N 0 2 3
+<a href="#flt">flt</a>  0n 0 2 3.4   
+<a href="#char">char</a> &quot; ab&quot;        
+<a href="#name">name</a> ``ab         
+<a href="#uuid">uuid</a>
+
+<a href="#date">date</a> 2024.01.01
+<a href="#time">time</a> 12:34:56.123456789
 </pre></div>
 
 <p>Data types can be determined by using the <code>@</code> function on values or lists of values.  In the case of non-uniform lists <code>@</code> returns the type of the list <code>`L</code> but the function can be modified to evalue each type <code>@'</code> instead and return the type of each element in the list.
