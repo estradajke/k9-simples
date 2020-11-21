@@ -1505,7 +1505,7 @@ c|3
 
 @node Adverb
 @chapter Adverb
-Adverbs modify verbs to operative iteritvely over nouns.  This previous sentence likley will only make sense once you understand it so let's jump into an example.  Imagine you have a list of 4 lists.  Using @code{first} you will retrieve the first sub-list.  In order to retrieve the first element of each sub-list you'll have to modify the function @code{first} with a modifier @code{each}.
+Adverbs modify verbs to operative iteratively over nouns.  This previous sentence likley will only make sense once you understand it so let's jump into an example.  Imagine you have a list of 4 lists.  Using @code{first} you will retrieve the first sub-list.  In order to retrieve the first element of each sub-list you'll have to modify the function @code{first} with a modifier @code{each}.
 
 @example
 Adverb             
@@ -1516,17 +1516,6 @@ f': @ref{eachp} v': @ref{bin2,+bin}.
 f/: @ref{eachr} ([n;]f)/: @ref{c over}
 f\: @ref{eachl} ([n;]f)\: @ref{c scan}
 @end example
-
-@c @multitable {\:} {see eacheach 4} {see eacheach 4}
-@c @multitable @columnfractions .05 .25 .25
-@c @headitem Adverb @ @ 
-@c @item ' @tab @xref{each}.
-@c @item / @tab @xref{scan}, @tab @xref{right}.
-@c @item \ @tab @xref{scan,over}, @tab @xref{left}.
-@c @item ': @tab @xref{eachprior}
-@c @item /: @tab @xref{c over}, @tab @xref{n scan,n over}.
-@c @item \: @tab @xref{c scan}, @tab @xref{n scan}.
-@c @end multitable
 
 @anchor{scan}@section scan (over) @result{} f\x (f/x)
 Compute f[x;y] such that f@@i=f[f@@i-1;x@@i].  Scan and over are the same functions except that over only returns the last value.
@@ -1577,11 +1566,12 @@ sentence.
 @end example
 
 @anchor{each}@section each @result{} f'x
-Apply function f to each value in list x in a single thread.  Multithread operation is done with @ref{bin2,+bin}.  
+Apply function f to each value in list x in a single thread.  Multithread operation is done with @ref{eachp}.  
 
 @example
 @ *((1 2 3);4;(5 6);7)   / first element of the list
 1 2 3
+
 @ *'((1 2 3);4;(5 6);7)  / first element of each element
 1 4 5 7
 @end example
@@ -1621,6 +1611,16 @@ y4 y3
 1 1.019 1.031403 0.9733587 1.037146
 @end example
 
+Additionally eachp is each parallel.  This will allow a function to run using multiple threads over a list of arguments.
+
+@example
+\t @{L:x?1.;sum L%sin L*cos L*sin L+L*L@}':8#2e7 / run over multiple threads
+1655
+
+\t @{L:x?1.;sum L%sin L*cos L*sin L+L*L@}'8#2e7  / run in a single thread
+4144
+@end example
+
 @anchor{bin2}@subsection +bin @result{} x':y
 Given a sorted (increasing) list x, find the greatest index, i, where y>x[i].  
 
@@ -1629,16 +1629,6 @@ Given a sorted (increasing) list x, find the greatest index, i, where y>x[i].
 1 1.01005 1.020201 1.030455 1.040811
 @ n':1.025
 2
-@end example
-
-Additionally +bin is multithreaded each.  This will allow a function to run in parallel over a list of arguments.
-
-@example
-\t @{L:x?1.;sum L%sin L*cos L*sin L+L*L@}':8#2e7 / run over multiple threads
-1655
-
-\t @{L:x?1.;sum L%sin L*cos L*sin L+L*L@}'8#2e7  / run in a single thread
-4144
 @end example
 
 @anchor{eachr}@section eachr @result{} f/:

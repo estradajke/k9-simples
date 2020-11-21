@@ -1677,7 +1677,7 @@ File: k9.info,  Node: Adverb,  Next: Noun,  Prev: Verb,  Up: Top
 5 Adverb
 ********
 
-Adverbs modify verbs to operative iteritvely over nouns.  This
+Adverbs modify verbs to operative iteratively over nouns.  This
 previous sentence likley will only make sense once you understand it
 so let's jump into an example.  Imagine you have a list of 4 lists.
 Using 'first' you will retrieve the first sub-list.  In order to
@@ -1743,10 +1743,11 @@ Split the string x using character c to determine the locations.
 ===============
 
 Apply function f to each value in list x in a single thread.
-Multithread operation is done with *note +bin: bin2.
+Multithread operation is done with *note eachp::.
 
       *((1 2 3);4;(5 6);7)   / first element of the list
      1 2 3
+
       *'((1 2 3);4;(5 6);7)  / first element of each element
      1 4 5 7
 
@@ -1787,6 +1788,15 @@ value, n=0, returns f[y@0;x].
       100%':100 101.9 105.1 102.3 106.1    / using infix notation
      1 1.019 1.031403 0.9733587 1.037146
 
+   Additionally eachp is each parallel.  This will allow a function to
+run using multiple threads over a list of arguments.
+
+     \t {L:x?1.;sum L%sin L*cos L*sin L+L*L}':8#2e7 / run over multiple threads
+     1655
+
+     \t {L:x?1.;sum L%sin L*cos L*sin L+L*L}'8#2e7  / run in a single thread
+     4144
+
 5.6.1 +bin => x':y
 ------------------
 
@@ -1797,15 +1807,6 @@ y>x[i].
      1 1.01005 1.020201 1.030455 1.040811
       n':1.025
      2
-
-   Additionally +bin is multithreaded each.  This will allow a
-function to run in parallel over a list of arguments.
-
-     \t {L:x?1.;sum L%sin L*cos L*sin L+L*L}':8#2e7 / run over multiple threads
-     1655
-
-     \t {L:x?1.;sum L%sin L*cos L*sin L+L*L}'8#2e7  / run in a single thread
-     4144
 
 5.7 eachr => f/:
 ================
@@ -4024,93 +4025,93 @@ Ref: [f]at41204
 Ref: value41520
 Ref: [f]dot41794
 Node: Adverb43043
-Ref: scan43787
-Ref: join44317
-Ref: split44492
-Ref: each44683
-Ref: +has44974
-Ref: eachp45240
-Ref: bin245680
-Ref: eachr46182
-Ref: eachl46379
-Ref: n scan46563
-Ref: c scan47043
-Ref: c over47555
-Ref: vs47692
-Ref: sv47812
-Node: Noun47936
-Ref: Atom Types49274
-Ref: bool50455
-Ref: int50755
-Ref: flt51416
-Ref: char51818
-Ref: name52041
-Ref: uuid52272
-Ref: time52429
-Ref: date53306
-Ref: datetime53768
-Node: List54583
-Node: Dictionary59858
-Node: User Functions64771
-Node: Named Functions67357
-Ref: sqrt67980
-Ref: exp68053
-Ref: log68121
-Ref: sin68221
-Ref: cos68360
-Ref: div68508
-Ref: mod68664
-Ref: bar68842
-Ref: in69382
-Ref: bin69561
-Ref: within69775
-Node: Knit Functions69989
-Ref: amend70258
-Ref: dmend70626
-Node: I/O70991
-Ref: read csv73094
-Ref: write csv73272
-Ref: read json73436
-Ref: write json73626
-Ref: w line73799
-Ref: r line74107
-Ref: w char74220
-Ref: r char74614
-Ref: r data74980
-Ref: w data75641
-Ref: conn/set76209
-Ref: http/get76269
-Ref: lib76329
-Node: Tables76793
-Ref: t77485
-Ref: xtable79091
-Ref: utable79573
-Node: kSQL80030
-Ref: union82359
-Ref: left82880
-Ref: outer83402
-Ref: asof83737
-Ref: asof+84781
-Node: System86454
-Ref: load86912
-Ref: timing87100
-Ref: variables87187
-Ref: memory87288
-Ref: cd87403
-Node: Control Flow87487
-Ref: cond87707
-Node: .z87968
-Node: Errors88998
-Ref: class89432
-Ref: rank89521
-Ref: length89645
-Ref: _type89768
-Ref: domain89877
-Ref: limit89999
-Ref: nyi90200
-Ref: parse90533
-Ref: _value90688
-Node: Conclusion90816
+Ref: scan43788
+Ref: join44318
+Ref: split44493
+Ref: each44684
+Ref: +has44973
+Ref: eachp45239
+Ref: bin245983
+Ref: eachr46188
+Ref: eachl46385
+Ref: n scan46569
+Ref: c scan47049
+Ref: c over47561
+Ref: vs47698
+Ref: sv47818
+Node: Noun47942
+Ref: Atom Types49280
+Ref: bool50461
+Ref: int50761
+Ref: flt51422
+Ref: char51824
+Ref: name52047
+Ref: uuid52278
+Ref: time52435
+Ref: date53312
+Ref: datetime53774
+Node: List54589
+Node: Dictionary59864
+Node: User Functions64777
+Node: Named Functions67363
+Ref: sqrt67986
+Ref: exp68059
+Ref: log68127
+Ref: sin68227
+Ref: cos68366
+Ref: div68514
+Ref: mod68670
+Ref: bar68848
+Ref: in69388
+Ref: bin69567
+Ref: within69781
+Node: Knit Functions69995
+Ref: amend70264
+Ref: dmend70632
+Node: I/O70997
+Ref: read csv73100
+Ref: write csv73278
+Ref: read json73442
+Ref: write json73632
+Ref: w line73805
+Ref: r line74113
+Ref: w char74226
+Ref: r char74620
+Ref: r data74986
+Ref: w data75647
+Ref: conn/set76215
+Ref: http/get76275
+Ref: lib76335
+Node: Tables76799
+Ref: t77491
+Ref: xtable79097
+Ref: utable79579
+Node: kSQL80036
+Ref: union82365
+Ref: left82886
+Ref: outer83408
+Ref: asof83743
+Ref: asof+84787
+Node: System86460
+Ref: load86918
+Ref: timing87106
+Ref: variables87193
+Ref: memory87294
+Ref: cd87409
+Node: Control Flow87493
+Ref: cond87713
+Node: .z87974
+Node: Errors89004
+Ref: class89438
+Ref: rank89527
+Ref: length89651
+Ref: _type89774
+Ref: domain89883
+Ref: limit90005
+Ref: nyi90206
+Ref: parse90539
+Ref: _value90694
+Node: Conclusion90822
 
 End Tag Table
 

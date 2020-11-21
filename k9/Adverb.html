@@ -46,7 +46,7 @@ Next: <a href="Noun.html" accesskey="n" rel="next">Noun</a>, Previous: <a href="
 </div>
 <hr>
 <span id="Adverb-1"></span><h2 class="chapter">5 Adverb</h2>
-<p>Adverbs modify verbs to operative iteritvely over nouns.  This previous sentence likley will only make sense once you understand it so let&rsquo;s jump into an example.  Imagine you have a list of 4 lists.  Using <code>first</code> you will retrieve the first sub-list.  In order to retrieve the first element of each sub-list you&rsquo;ll have to modify the function <code>first</code> with a modifier <code>each</code>.
+<p>Adverbs modify verbs to operative iteratively over nouns.  This previous sentence likley will only make sense once you understand it so let&rsquo;s jump into an example.  Imagine you have a list of 4 lists.  Using <code>first</code> you will retrieve the first sub-list.  In order to retrieve the first element of each sub-list you&rsquo;ll have to modify the function <code>first</code> with a modifier <code>each</code>.
 </p>
 <div class="example">
 <pre class="example">Adverb             
@@ -57,7 +57,6 @@ f': <a href="#eachp">eachp</a> v': <a href="#bin2">+bin</a>.
 f/: <a href="#eachr">eachr</a> ([n;]f)/: <a href="#c-over">c over</a>
 f\: <a href="#eachl">eachl</a> ([n;]f)\: <a href="#c-scan">c scan</a>
 </pre></div>
-
 
 <span id="scan"></span><span id="scan-_0028over_0029-_21d2-f_005cx-_0028f_002fx_0029"></span><h3 class="section">5.1 scan (over) &rArr; f\x (f/x)</h3>
 <p>Compute f[x;y] such that f@i=f[f@i-1;x@i].  Scan and over are the same functions except that over only returns the last value.
@@ -108,11 +107,12 @@ sentence.
 </pre></div>
 
 <span id="each"></span><span id="each-_21d2-f_0027x"></span><h3 class="section">5.4 each &rArr; f&rsquo;x</h3>
-<p>Apply function f to each value in list x in a single thread.  Multithread operation is done with <a href="#bin2">+bin</a>.  
+<p>Apply function f to each value in list x in a single thread.  Multithread operation is done with <a href="#eachp">eachp</a>.  
 </p>
 <div class="example">
 <pre class="example">&nbsp;*((1 2 3);4;(5 6);7)   / first element of the list
 1 2 3
+
 &nbsp;*'((1 2 3);4;(5 6);7)  / first element of each element
 1 4 5 7
 </pre></div>
@@ -152,6 +152,16 @@ y4 y3
 1 1.019 1.031403 0.9733587 1.037146
 </pre></div>
 
+<p>Additionally eachp is each parallel.  This will allow a function to run using multiple threads over a list of arguments.
+</p>
+<div class="example">
+<pre class="example">\t {L:x?1.;sum L%sin L*cos L*sin L+L*L}':8#2e7 / run over multiple threads
+1655
+
+\t {L:x?1.;sum L%sin L*cos L*sin L+L*L}'8#2e7  / run in a single thread
+4144
+</pre></div>
+
 <span id="bin2"></span><span id="g_t_002bbin-_21d2-x_0027_003ay"></span><h4 class="subsection">5.6.1 +bin &rArr; x&rsquo;:y</h4>
 <p>Given a sorted (increasing) list x, find the greatest index, i, where y&gt;x[i].  
 </p>
@@ -160,16 +170,6 @@ y4 y3
 1 1.01005 1.020201 1.030455 1.040811
 &nbsp;n':1.025
 2
-</pre></div>
-
-<p>Additionally +bin is multithreaded each.  This will allow a function to run in parallel over a list of arguments.
-</p>
-<div class="example">
-<pre class="example">\t {L:x?1.;sum L%sin L*cos L*sin L+L*L}':8#2e7 / run over multiple threads
-1655
-
-\t {L:x?1.;sum L%sin L*cos L*sin L+L*L}'8#2e7  / run in a single thread
-4144
 </pre></div>
 
 <span id="eachr"></span><span id="eachr-_21d2-f_002f_003a"></span><h3 class="section">5.7 eachr &rArr; f/:</h3>
