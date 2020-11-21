@@ -1250,17 +1250,19 @@ Count the number of elements in x.
 @end example
 
 @anchor{[f]take}@section [f]take @result{} x#y
-Take is used to return a subset of list y depending if x is a atom, list, or function.  If x is an atom, then postive (negative) x returns the first (last) x elements of y.  If x is a list, then returns any values common in both x and y. If x is a function (f), then filter out values where the funtion is non-zero.
+Take returns a subset of list.  If x is an atom, then postive (negative) x returns the first (last) x elements of y.  If x is a list, then take returns any values common in both x and y. If x is a function, then filter out values where the funtion is non-zero.
+
 @example
-@ 3#0 1 2 3 4 5          / take first
+ 3#0 1 2 3 4 5          / take first
 0 1 2
-@ -3#0 1 2 3 4 5         / take last
+
+ -3#0 1 2 3 4 5         / take last
 3 4 5
-@ 2#"hello"
-"he"
-@ (1 2 3 7 8 9)#(2 8 20) / common
+
+ (1 2 3 7 8 9)#(2 8 20) / common
 2 8
-@ (0.5<)#10?1.           / filter
+
+ (0.5<)#10?1.           / filter
 0.840732 0.5330717 0.7539563 0.643315 0.6993048f
 @end example
 

@@ -1,6 +1,6 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
-November 16, 2020
+November 21, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -1420,19 +1420,20 @@ Count the number of elements in x.
 4.27 [f]take => x#y
 ===================
 
-Take is used to return a subset of list y depending if x is a atom,
-list, or function.  If x is an atom, then postive (negative) x returns
-the first (last) x elements of y.  If x is a list, then returns any
-values common in both x and y.  If x is a function (f), then filter
-out values where the funtion is non-zero.
+Take returns a subset of list.  If x is an atom, then postive
+(negative) x returns the first (last) x elements of y.  If x is a
+list, then take returns any values common in both x and y.  If x is a
+function, then filter out values where the funtion is non-zero.
+
       3#0 1 2 3 4 5          / take first
      0 1 2
+
       -3#0 1 2 3 4 5         / take last
      3 4 5
-      2#"hello"
-     "he"
+
       (1 2 3 7 8 9)#(2 8 20) / common
      2 8
+
       (0.5<)#10?1.           / filter
      0.840732 0.5330717 0.7539563 0.643315 0.6993048f
 
@@ -4001,104 +4002,104 @@ Ref: sort36927
 Ref: [f]cut37159
 Ref: count37904
 Ref: [f]take38094
-Ref: floor38723
-Ref: [f]drop38814
-Ref: string39407
-Ref: cast+39508
-Ref: unique+39857
-Ref: find+40096
-Ref: type40815
-Ref: [f]at41266
-Ref: value41582
-Ref: [f]dot41856
-Node: Adverb43105
-Ref: scan43847
-Ref: join44377
-Ref: split44552
-Ref: each44743
-Ref: has44961
-Ref: eachp45225
-Ref: bin245665
-Ref: eachr45868
-Ref: eachl46065
-Ref: n scan46249
-Ref: c scan46729
-Ref: c over47241
-Ref: vs47378
-Ref: sv47498
-Node: Noun47622
-Ref: Atom Types48960
-Ref: bool50141
-Ref: int50441
-Ref: flt51102
-Ref: char51504
-Ref: name51727
-Ref: uuid51958
-Ref: time52115
-Ref: date52992
-Ref: datetime53454
-Node: List54269
-Node: Dictionary59544
-Node: User Functions64457
-Node: Named Functions67043
-Ref: sqrt67666
-Ref: exp67739
-Ref: log67807
-Ref: sin67907
-Ref: cos68046
-Ref: div68194
-Ref: mod68350
-Ref: bar68528
-Ref: in69068
-Ref: bin69246
-Ref: within69460
-Node: Knit Functions69674
-Ref: amend69943
-Ref: dmend70311
-Node: I/O70676
-Ref: read csv72779
-Ref: write csv72957
-Ref: read json73121
-Ref: write json73311
-Ref: w line73484
-Ref: r line73792
-Ref: w char73905
-Ref: r char74299
-Ref: r data74665
-Ref: w data75326
-Ref: conn/set75894
-Ref: http/get75954
-Ref: lib76014
-Node: Tables76478
-Ref: t77170
-Ref: xtable78776
-Ref: utable79258
-Node: kSQL79715
-Ref: union82044
-Ref: left82565
-Ref: outer83087
-Ref: asof83422
-Ref: asof+84466
-Node: System86139
-Ref: load86597
-Ref: timing86785
-Ref: variables86872
-Ref: memory86973
-Ref: cd87088
-Node: Control Flow87172
-Ref: cond87392
-Node: .z87653
-Node: Errors88683
-Ref: class89117
-Ref: rank89206
-Ref: length89330
-Ref: _type89453
-Ref: domain89562
-Ref: limit89684
-Ref: nyi89885
-Ref: parse90218
-Ref: _value90373
-Node: Conclusion90501
+Ref: floor38646
+Ref: [f]drop38737
+Ref: string39330
+Ref: cast+39431
+Ref: unique+39780
+Ref: find+40019
+Ref: type40738
+Ref: [f]at41189
+Ref: value41505
+Ref: [f]dot41779
+Node: Adverb43028
+Ref: scan43770
+Ref: join44300
+Ref: split44475
+Ref: each44666
+Ref: has44884
+Ref: eachp45148
+Ref: bin245588
+Ref: eachr45791
+Ref: eachl45988
+Ref: n scan46172
+Ref: c scan46652
+Ref: c over47164
+Ref: vs47301
+Ref: sv47421
+Node: Noun47545
+Ref: Atom Types48883
+Ref: bool50064
+Ref: int50364
+Ref: flt51025
+Ref: char51427
+Ref: name51650
+Ref: uuid51881
+Ref: time52038
+Ref: date52915
+Ref: datetime53377
+Node: List54192
+Node: Dictionary59467
+Node: User Functions64380
+Node: Named Functions66966
+Ref: sqrt67589
+Ref: exp67662
+Ref: log67730
+Ref: sin67830
+Ref: cos67969
+Ref: div68117
+Ref: mod68273
+Ref: bar68451
+Ref: in68991
+Ref: bin69169
+Ref: within69383
+Node: Knit Functions69597
+Ref: amend69866
+Ref: dmend70234
+Node: I/O70599
+Ref: read csv72702
+Ref: write csv72880
+Ref: read json73044
+Ref: write json73234
+Ref: w line73407
+Ref: r line73715
+Ref: w char73828
+Ref: r char74222
+Ref: r data74588
+Ref: w data75249
+Ref: conn/set75817
+Ref: http/get75877
+Ref: lib75937
+Node: Tables76401
+Ref: t77093
+Ref: xtable78699
+Ref: utable79181
+Node: kSQL79638
+Ref: union81967
+Ref: left82488
+Ref: outer83010
+Ref: asof83345
+Ref: asof+84389
+Node: System86062
+Ref: load86520
+Ref: timing86708
+Ref: variables86795
+Ref: memory86896
+Ref: cd87011
+Node: Control Flow87095
+Ref: cond87315
+Node: .z87576
+Node: Errors88606
+Ref: class89040
+Ref: rank89129
+Ref: length89253
+Ref: _type89376
+Ref: domain89485
+Ref: limit89607
+Ref: nyi89808
+Ref: parse90141
+Ref: _value90296
+Node: Conclusion90424
 
 End Tag Table
 

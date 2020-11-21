@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- November 16, 2020
+<!-- November 21, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -520,17 +520,19 @@ z  1
 </pre></div>
 
 <span id="g_t_005bf_005dtake"></span><span id="g_t_005bf_005dtake-_21d2-x_0023y"></span><h3 class="section">4.27 [f]take &rArr; x#y</h3>
-<p>Take is used to return a subset of list y depending if x is a atom, list, or function.  If x is an atom, then postive (negative) x returns the first (last) x elements of y.  If x is a list, then returns any values common in both x and y. If x is a function (f), then filter out values where the funtion is non-zero.
-</p><div class="example">
-<pre class="example">&nbsp;3#0 1 2 3 4 5          / take first
+<p>Take returns a subset of list.  If x is an atom, then postive (negative) x returns the first (last) x elements of y.  If x is a list, then take returns any values common in both x and y. If x is a function, then filter out values where the funtion is non-zero.
+</p>
+<div class="example">
+<pre class="example"> 3#0 1 2 3 4 5          / take first
 0 1 2
-&nbsp;-3#0 1 2 3 4 5         / take last
+
+ -3#0 1 2 3 4 5         / take last
 3 4 5
-&nbsp;2#&quot;hello&quot;
-&quot;he&quot;
-&nbsp;(1 2 3 7 8 9)#(2 8 20) / common
+
+ (1 2 3 7 8 9)#(2 8 20) / common
 2 8
-&nbsp;(0.5&lt;)#10?1.           / filter
+
+ (0.5&lt;)#10?1.           / filter
 0.840732 0.5330717 0.7539563 0.643315 0.6993048f
 </pre></div>
 
