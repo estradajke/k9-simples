@@ -52,8 +52,8 @@ Next: <a href="Noun.html" accesskey="n" rel="next">Noun</a>, Previous: <a href="
 <pre class="example">Adverb             
 f/  <a href="#scan">over</a>  c/  <a href="#join">join</a>
 f\  <a href="#scan">scan</a>  c\  <a href="#split">split</a>
-f'  <a href="#each">each</a>  v'  <a href="#has">has</a>  
-f': <a href="#eachp">eachp</a> v': <a href="#bin2">bin</a>.
+f'  <a href="#each">each</a>  v' <a href="#g_t_002bhas">+has</a>  
+f': <a href="#eachp">eachp</a> v':<a href="#bin2">+bin</a>.
 f/: <a href="#eachr">eachr</a> ([n;]f)/: <a href="#c-over">c over</a>
 f\: <a href="#eachl">eachl</a> ([n;]f)\: <a href="#c-scan">c scan</a>
 </pre></div>
@@ -108,15 +108,16 @@ sentence.
 </pre></div>
 
 <span id="each"></span><span id="each-_21d2-f_0027x"></span><h3 class="section">5.4 each &rArr; f&rsquo;x</h3>
-<p>Apply function f to each value in list x.
-</p><div class="example">
+<p>Apply function f to each value in list x in a single thread.  Multithread operation is done with <a href="#bin2">+bin</a>.  
+</p>
+<div class="example">
 <pre class="example">&nbsp;*((1 2 3);4;(5 6);7)   / first element of the list
 1 2 3
 &nbsp;*'((1 2 3);4;(5 6);7)  / first element of each element
 1 4 5 7
 </pre></div>
 
-<span id="has"></span><span id="has-_21d2-v_0027x"></span><h3 class="section">5.5 has &rArr; v&rsquo;x</h3>
+<span id="g_t_002bhas"></span><span id="g_t_002bhas-_21d2-v_0027x"></span><h3 class="section">5.5 +has &rArr; v&rsquo;x</h3>
 <p>Determine if vector v has element or list x.  Simliar to <a href="Named-Functions.html#in">in</a> but arguments reversed.
 </p>
 <div class="example">
@@ -151,14 +152,24 @@ y4 y3
 1 1.019 1.031403 0.9733587 1.037146
 </pre></div>
 
-<span id="bin2"></span><span id="bin-_21d2-x_0027_003ay"></span><h4 class="subsection">5.6.1 bin &rArr; x&rsquo;:y</h4>
-<p>Given a sorted (increasing) list x, find the greatest index, i, where y&gt;x[i].
+<span id="bin2"></span><span id="g_t_002bbin-_21d2-x_0027_003ay"></span><h4 class="subsection">5.6.1 +bin &rArr; x&rsquo;:y</h4>
+<p>Given a sorted (increasing) list x, find the greatest index, i, where y&gt;x[i].  
 </p>
 <div class="example">
 <pre class="example">&nbsp;n:exp 0.01*!5;n
 1 1.01005 1.020201 1.030455 1.040811
 &nbsp;n':1.025
 2
+</pre></div>
+
+<p>Additionally +bin is multithreaded each.  This will allow a function to run in parallel over a list of arguments.
+</p>
+<div class="example">
+<pre class="example">\t {L:x?1.;sum L%sin L*cos L*sin L+L*L}':8#2e7 / run over multiple threads
+1655
+
+\t {L:x?1.;sum L%sin L*cos L*sin L+L*L}'8#2e7  / run in a single thread
+4144
 </pre></div>
 
 <span id="eachr"></span><span id="eachr-_21d2-f_002f_003a"></span><h3 class="section">5.7 eachr &rArr; f/:</h3>
