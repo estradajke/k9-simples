@@ -3041,19 +3041,19 @@ d         |p
 
 @node kSQL
 @chapter kSQL
-kSQL is a powerful query language for tables.  The benchmark chapter has shown how quickly k9 can process big tables.  
+kSQL is a powerful query language for tables.  It has similarities to ANSI SQL but additional features to make it easier to work with data.
 
 @example
-select [count first last min max sum avg ..]A by B from T where C
-delete from T where C               *update A by B from T where C
-x,y      / union, insert, upsert, outerjoin, leftjoin, asofjoin ..
-x+y      / equi and asof outer joins: combine markets through time
-x#y x_y  / take/drop, intersect/except, inner join
+Database
+@ref{select} A @ref{by} B from T @ref{whereSQL,where} C; @ref{update} A from T
+x,y      / @ref{insert}, @ref{upsert}, @ref{union}, equi-and-asof @ref{leftjoin}
+x+y      / equi-and-asof outerjoin (e.g. combine markets through time)
+x#y      / take/intersect innerjoin (x_y for drop/difference)
 @end example
 
 @section Queries
 
-@subsection Trivial Query
+@anchor{select}@subsection select
 There a number of ways to return a complete table with kSQL.  You can use the table name, a kSQL query without columns, or a fully specified query with columns.
 
 @example
@@ -3086,7 +3086,20 @@ x y
 4 -0.7568025
 @end example
 
-@subsection Query with Where
+@anchor{by}@subsection by
+kSQL also has a way to group rows using @code{by}.  The result is a utable where the key is the now unique field in the @code{by}.
+
+@example
+n:5;t:[[]x:!n;y:sin !n]
+ 
+ select sum y by x>2 from t
+x|y         
+-|----------
+0|1.750768  
+1|-0.6156825
+@end example
+
+@anchor{whereSQL}@subsection where
 kSQL makes it easy to build up a where clause to filter down the table.
 
 @example
@@ -3106,19 +3119,6 @@ x y
 3 0.14112 
 @end example
 
-@subsection Query with By
-kSQL also has a way to group rows using @code{by}.  The result is a utable where the key is the now unique field in the @code{by}.
-
-@example
-n:5;t:[[]x:!n;y:sin !n]
- 
- select sum y by x>2 from t
-x|y         
--|----------
-0|1.750768  
-1|-0.6156825
-@end example
-
 @subsection Query with By and Where
 
 @example
@@ -3130,13 +3130,46 @@ x|y
 1|0.14112 
 @end example
 
+@anchor{update}@subsection update
+update allows one to modify values without specifying all the fields that pass through.  update is also used to add new columns in a table.  update does not save the table that requires an assignment.
+
+@example
+ t:[[]x:`a`b`c;y:1 2 3];t
+x y
+- -
+a 1
+b 2
+c 3
+
+ update y+18 from t
+x y 
+- --
+a 19
+b 20
+c 21
+
+ update z:y+18 from t
+x y z 
+- - --
+a 1 19
+b 2 20
+c 3 21
+
+ t:update z:y+18 from t;t
+x y z 
+- - --
+a 1 19
+b 2 20
+c 3 21
+@end example
+
 @section Joins
 k9 has a number of methods to join tables together which are described below.  In this section t, t1 and t2 represent tables and k, k1 and k2 represent utables.
 
 @multitable @columnfractions .15 .6
 @item @b{join} @tab @b{syntax}
 @item @ref{union} @tab t1,t2
-@item @ref{left} @tab t,k
+@item @ref{leftjoin} @tab t,k
 @item @ref{outer} @tab k1,k2
 @item @ref{asof} @tab t,k
 @item @ref{asof+} @tab k1+k2
@@ -3169,8 +3202,8 @@ b 11 21
 c 12 22
 @end example
 
-@anchor{left}@subsection left join @result{} t,k
-bLeft join table t with utable k.  Result includes all rows from t and values from t where there is no k value.
+@anchor{leftjoin}@subsection leftjoin @result{} t,k
+leftjoin table t with utable k.  Result includes all rows from t and values from t where there is no k value.
 
 @example
 @ t:[[]s:`a`b`c;p:1 2 3;q:7 8 9]
@@ -3315,7 +3348,7 @@ t    |bs
 @section Insert and Upsert
 One can add data to tables via insert or upsert.  The difference between the two is that insert adds data to a table while upsert will add or replace data to a keyed table.  Upsert adds when the key isn't present and replaces when the key is.
 
-@subsection insert @result{} t,d
+@anchor{insert}@subsection insert @result{} t,d
 Insert dictionary d into table t.
 @example
  t:[[]c1:`a`b`a;c2:1 2 7];t
@@ -3342,7 +3375,7 @@ a   7
 c  12
 @end example
 
-@subsection upsert @result{} k,d
+@anchor{upsert}@subsection upsert @result{} k,d
 Insert dictionary d into utable k.
 @example
  k:[[c1:`a`b`c]c2:1 2 7];k

@@ -3337,20 +3337,20 @@ File: k9.info,  Node: kSQL,  Next: System,  Prev: Tables,  Up: Top
 14 kSQL
 *******
 
-kSQL is a powerful query language for tables.  The benchmark chapter
-has shown how quickly k9 can process big tables.
+kSQL is a powerful query language for tables.  It has similarities to
+ANSI SQL but additional features to make it easier to work with data.
 
-     select [count first last min max sum avg ..]A by B from T where C
-     delete from T where C               *update A by B from T where C
-     x,y      / union, insert, upsert, outerjoin, leftjoin, asofjoin ..
-     x+y      / equi and asof outer joins: combine markets through time
-     x#y x_y  / take/drop, intersect/except, inner join
+     Database
+     *note select:: A *note by:: B from T *note where: whereSQL. C; *note update:: A from T
+     x,y      / *note insert::, *note upsert::, *note union::, equi-and-asof *note leftjoin::
+     x+y      / equi-and-asof outerjoin (e.g. combine markets through time)
+     x#y      / take/intersect innerjoin (x_y for drop/difference)
 
 14.1 Queries
 ============
 
-14.1.1 Trivial Query
---------------------
+14.1.1 select
+-------------
 
 There a number of ways to return a complete table with kSQL. You can
 use the table name, a kSQL query without columns, or a fully specified
@@ -3384,8 +3384,22 @@ query with columns.
      3 0.14112
      4 -0.7568025
 
-14.1.2 Query with Where
------------------------
+14.1.2 by
+---------
+
+kSQL also has a way to group rows using 'by'.  The result is a utable
+where the key is the now unique field in the 'by'.
+
+     n:5;t:[[]x:!n;y:sin !n]
+
+      select sum y by x>2 from t
+     x|y
+     -|----------
+     0|1.750768
+     1|-0.6156825
+
+14.1.3 where
+------------
 
 kSQL makes it easy to build up a where clause to filter down the
 table.
@@ -3405,20 +3419,6 @@ table.
      1 0.841471
      3 0.14112
 
-14.1.3 Query with By
---------------------
-
-kSQL also has a way to group rows using 'by'.  The result is a utable
-where the key is the now unique field in the 'by'.
-
-     n:5;t:[[]x:!n;y:sin !n]
-
-      select sum y by x>2 from t
-     x|y
-     -|----------
-     0|1.750768
-     1|-0.6156825
-
 14.1.4 Query with By and Where
 ------------------------------
 
@@ -3429,6 +3429,41 @@ where the key is the now unique field in the 'by'.
      0|1.750768
      1|0.14112
 
+14.1.5 update
+-------------
+
+update allows one to modify values without specifying all the fields
+that pass through.  update is also used to add new columns in a table.
+update does not save the table that requires an assignment.
+
+      t:[[]x:`a`b`c;y:1 2 3];t
+     x y
+     - -
+     a 1
+     b 2
+     c 3
+
+      update y+18 from t
+     x y
+     - --
+     a 19
+     b 20
+     c 21
+
+      update z:y+18 from t
+     x y z
+     - - --
+     a 1 19
+     b 2 20
+     c 3 21
+
+      t:update z:y+18 from t;t
+     x y z
+     - - --
+     a 1 19
+     b 2 20
+     c 3 21
+
 14.2 Joins
 ==========
 
@@ -3438,7 +3473,7 @@ represent utables.
 
 join        syntax
 *note union::t1,t2
-*note left::t,k
+*note leftjoin::t,k
 *note outer::k1,k2
 *note asof::t,k
 *note asof+::k1+k2
@@ -3472,10 +3507,10 @@ the tables do not have the same columns then return t1.
      b 11 21
      c 12 22
 
-14.2.2 left join => t,k
------------------------
+14.2.2 leftjoin => t,k
+----------------------
 
-bLeft join table t with utable k.  Result includes all rows from t and
+leftjoin table t with utable k.  Result includes all rows from t and
 values from t where there is no k value.
 
       t:[[]s:`a`b`c;p:1 2 3;q:7 8 9]
@@ -4087,31 +4122,37 @@ Ref: t77491
 Ref: xtable79097
 Ref: utable79579
 Node: kSQL80036
-Ref: union82365
-Ref: left82886
-Ref: outer83408
-Ref: asof83743
-Ref: asof+84787
-Node: System86460
-Ref: load86918
-Ref: timing87106
-Ref: variables87193
-Ref: memory87294
-Ref: cd87409
-Node: Control Flow87493
-Ref: cond87713
-Node: .z87974
-Node: Errors89004
-Ref: class89438
-Ref: rank89527
-Ref: length89651
-Ref: _type89774
-Ref: domain89883
-Ref: limit90005
-Ref: nyi90206
-Ref: parse90539
-Ref: _value90694
-Node: Conclusion90822
+Ref: select80635
+Ref: by81219
+Ref: whereSQL81487
+Ref: update82036
+Ref: union82894
+Ref: leftjoin83415
+Ref: outer83933
+Ref: asof84268
+Ref: asof+85312
+Ref: insert86315
+Ref: upsert86661
+Node: System86985
+Ref: load87443
+Ref: timing87631
+Ref: variables87718
+Ref: memory87819
+Ref: cd87934
+Node: Control Flow88018
+Ref: cond88238
+Node: .z88499
+Node: Errors89529
+Ref: class89963
+Ref: rank90052
+Ref: length90176
+Ref: _type90299
+Ref: domain90408
+Ref: limit90530
+Ref: nyi90731
+Ref: parse91064
+Ref: _value91219
+Node: Conclusion91347
 
 End Tag Table
 
