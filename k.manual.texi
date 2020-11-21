@@ -3045,7 +3045,7 @@ kSQL is a powerful query language for tables.  It has similarities to ANSI SQL b
 
 @example
 Database
-@ref{select} A @ref{by} B from T @ref{whereSQL,where} C; @ref{update} A from T
+@ref{select} @ref{A} @ref{by} @ref{B} from T @ref{whereSQL,where} C; @ref{update} A from T
 x,y      / @ref{insert}, @ref{upsert}, @ref{union}, equi-and-asof @ref{leftjoin}
 x+y      / equi-and-asof outerjoin (e.g. combine markets through time)
 x#y      / take/intersect innerjoin (x_y for drop/difference)
@@ -3086,6 +3086,56 @@ x y
 4 -0.7568025
 @end example
 
+@anchor{A}@subsection A
+A is the list of fields to return from the select query.  If A is missing then all fields will be returned.  A can create new column names.  A is probably called A because it's before B and C.
+
+@example
+ n:5;t:[[]x:!n;y:sin !n];t
+x y         
+- ----------
+0 0.        
+1 0.841471  
+2 0.9092974 
+3 0.14112   
+4 -0.7568025
+
+ select from t
+x y         
+- ----------
+0 0.        
+1 0.841471  
+2 0.9092974 
+3 0.14112   
+4 -0.7568025
+
+ select x from t
+x
+-
+0
+1
+2
+3
+4
+
+ select y,x from t    / reorder columns
+y          x
+---------- -
+0.         0
+0.841471   1
+0.9092974  2
+0.14112    3
+-0.7568025 4
+
+ select x,z:y from t  / create new column z
+x z         
+- ----------
+0 0.        
+1 0.841471  
+2 0.9092974 
+3 0.14112   
+4 -0.7568025
+@end example
+
 @anchor{by}@subsection by
 kSQL also has a way to group rows using @code{by}.  The result is a utable where the key is the now unique field in the @code{by}.
 
@@ -3098,6 +3148,9 @@ x|y
 0|1.750768  
 1|-0.6156825
 @end example
+
+@anchor{B}@subsection B
+B is the list of fields to use with by.
 
 @anchor{whereSQL}@subsection where
 kSQL makes it easy to build up a where clause to filter down the table.

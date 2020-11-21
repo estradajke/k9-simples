@@ -3341,7 +3341,7 @@ kSQL is a powerful query language for tables.  It has similarities to
 ANSI SQL but additional features to make it easier to work with data.
 
      Database
-     *note select:: A *note by:: B from T *note where: whereSQL. C; *note update:: A from T
+     *note select:: *note A:: *note by:: *note B:: from T *note where: whereSQL. C; *note update:: A from T
      x,y      / *note insert::, *note upsert::, *note union::, equi-and-asof *note leftjoin::
      x+y      / equi-and-asof outerjoin (e.g. combine markets through time)
      x#y      / take/intersect innerjoin (x_y for drop/difference)
@@ -3384,7 +3384,59 @@ query with columns.
      3 0.14112
      4 -0.7568025
 
-14.1.2 by
+14.1.2 A
+--------
+
+A is the list of fields to return from the select query.  If A is
+missing then all fields will be returned.  A can create new column
+names.  A is probably called A because it's before B and C.
+
+      n:5;t:[[]x:!n;y:sin !n];t
+     x y
+     - ----------
+     0 0.
+     1 0.841471
+     2 0.9092974
+     3 0.14112
+     4 -0.7568025
+
+      select from t
+     x y
+     - ----------
+     0 0.
+     1 0.841471
+     2 0.9092974
+     3 0.14112
+     4 -0.7568025
+
+      select x from t
+     x
+     -
+     0
+     1
+     2
+     3
+     4
+
+      select y,x from t    / reorder columns
+     y          x
+     ---------- -
+     0.         0
+     0.841471   1
+     0.9092974  2
+     0.14112    3
+     -0.7568025 4
+
+      select x,z:y from t  / create new column z
+     x z
+     - ----------
+     0 0.
+     1 0.841471
+     2 0.9092974
+     3 0.14112
+     4 -0.7568025
+
+14.1.3 by
 ---------
 
 kSQL also has a way to group rows using 'by'.  The result is a utable
@@ -3398,7 +3450,12 @@ where the key is the now unique field in the 'by'.
      0|1.750768
      1|-0.6156825
 
-14.1.3 where
+14.1.4 B
+--------
+
+B is the list of fields to use with by.
+
+14.1.5 where
 ------------
 
 kSQL makes it easy to build up a where clause to filter down the
@@ -3419,7 +3476,7 @@ table.
      1 0.841471
      3 0.14112
 
-14.1.4 Query with By and Where
+14.1.6 Query with By and Where
 ------------------------------
 
       n:5;t:[[]x:!n;y:sin !n]
@@ -3429,7 +3486,7 @@ table.
      0|1.750768
      1|0.14112
 
-14.1.5 update
+14.1.7 update
 -------------
 
 update allows one to modify values without specifying all the fields
@@ -4122,37 +4179,39 @@ Ref: t77491
 Ref: xtable79097
 Ref: utable79579
 Node: kSQL80036
-Ref: select80635
-Ref: by81219
-Ref: whereSQL81487
-Ref: update82036
-Ref: union82894
-Ref: leftjoin83415
-Ref: outer83933
-Ref: asof84268
-Ref: asof+85312
-Ref: insert86315
-Ref: upsert86661
-Node: System86985
-Ref: load87443
-Ref: timing87631
-Ref: variables87718
-Ref: memory87819
-Ref: cd87934
-Node: Control Flow88018
-Ref: cond88238
-Node: .z88499
-Node: Errors89529
-Ref: class89963
-Ref: rank90052
-Ref: length90176
-Ref: _type90299
-Ref: domain90408
-Ref: limit90530
-Ref: nyi90731
-Ref: parse91064
-Ref: _value91219
-Node: Conclusion91347
+Ref: select80651
+Ref: A81235
+Ref: by82105
+Ref: B82373
+Ref: whereSQL82433
+Ref: update82982
+Ref: union83840
+Ref: leftjoin84361
+Ref: outer84879
+Ref: asof85214
+Ref: asof+86258
+Ref: insert87261
+Ref: upsert87607
+Node: System87931
+Ref: load88389
+Ref: timing88577
+Ref: variables88664
+Ref: memory88765
+Ref: cd88880
+Node: Control Flow88964
+Ref: cond89184
+Node: .z89445
+Node: Errors90475
+Ref: class90909
+Ref: rank90998
+Ref: length91122
+Ref: _type91245
+Ref: domain91354
+Ref: limit91476
+Ref: nyi91677
+Ref: parse92010
+Ref: _value92165
+Node: Conclusion92293
 
 End Tag Table
 

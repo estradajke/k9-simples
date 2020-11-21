@@ -50,7 +50,7 @@ Next: <a href="System.html" accesskey="n" rel="next">System</a>, Previous: <a hr
 </p>
 <div class="example">
 <pre class="example">Database
-<a href="#select">select</a> A <a href="#by">by</a> B from T <a href="#whereSQL">where</a> C; <a href="#update">update</a> A from T
+<a href="#select">select</a> <a href="#A">A</a> <a href="#by">by</a> <a href="#B">B</a> from T <a href="#whereSQL">where</a> C; <a href="#update">update</a> A from T
 x,y      / <a href="#insert">insert</a>, <a href="#upsert">upsert</a>, <a href="#union">union</a>, equi-and-asof <a href="#leftjoin">leftjoin</a>
 x+y      / equi-and-asof outerjoin (e.g. combine markets through time)
 x#y      / take/intersect innerjoin (x_y for drop/difference)
@@ -91,7 +91,57 @@ x y
 4 -0.7568025
 </pre></div>
 
-<span id="by"></span><span id="by-1"></span><h4 class="subsection">14.1.2 by</h4>
+<span id="A"></span><span id="A-1"></span><h4 class="subsection">14.1.2 A</h4>
+<p>A is the list of fields to return from the select query.  If A is missing then all fields will be returned.  A can create new column names.  A is probably called A because it&rsquo;s before B and C.
+</p>
+<div class="example">
+<pre class="example"> n:5;t:[[]x:!n;y:sin !n];t
+x y         
+- ----------
+0 0.        
+1 0.841471  
+2 0.9092974 
+3 0.14112   
+4 -0.7568025
+
+ select from t
+x y         
+- ----------
+0 0.        
+1 0.841471  
+2 0.9092974 
+3 0.14112   
+4 -0.7568025
+
+ select x from t
+x
+-
+0
+1
+2
+3
+4
+
+ select y,x from t    / reorder columns
+y          x
+---------- -
+0.         0
+0.841471   1
+0.9092974  2
+0.14112    3
+-0.7568025 4
+
+ select x,z:y from t  / create new column z
+x z         
+- ----------
+0 0.        
+1 0.841471  
+2 0.9092974 
+3 0.14112   
+4 -0.7568025
+</pre></div>
+
+<span id="by"></span><span id="by-1"></span><h4 class="subsection">14.1.3 by</h4>
 <p>kSQL also has a way to group rows using <code>by</code>.  The result is a utable where the key is the now unique field in the <code>by</code>.
 </p>
 <div class="example">
@@ -104,7 +154,10 @@ x|y
 1|-0.6156825
 </pre></div>
 
-<span id="whereSQL"></span><span id="where-1"></span><h4 class="subsection">14.1.3 where</h4>
+<span id="B"></span><span id="B-1"></span><h4 class="subsection">14.1.4 B</h4>
+<p>B is the list of fields to use with by.
+</p>
+<span id="whereSQL"></span><span id="where-1"></span><h4 class="subsection">14.1.5 where</h4>
 <p>kSQL makes it easy to build up a where clause to filter down the table.
 </p>
 <div class="example">
@@ -124,7 +177,7 @@ x y
 3 0.14112 
 </pre></div>
 
-<span id="Query-with-By-and-Where"></span><h4 class="subsection">14.1.4 Query with By and Where</h4>
+<span id="Query-with-By-and-Where"></span><h4 class="subsection">14.1.6 Query with By and Where</h4>
 
 <div class="example">
 <pre class="example"> n:5;t:[[]x:!n;y:sin !n]
@@ -135,7 +188,7 @@ x|y
 1|0.14112 
 </pre></div>
 
-<span id="update"></span><span id="update-1"></span><h4 class="subsection">14.1.5 update</h4>
+<span id="update"></span><span id="update-1"></span><h4 class="subsection">14.1.7 update</h4>
 <p>update allows one to modify values without specifying all the fields that pass through.  update is also used to add new columns in a table.  update does not save the table that requires an assignment.
 </p>
 <div class="example">
