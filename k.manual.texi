@@ -141,9 +141,9 @@ Typing @code{\} in the terminal gives you a concise overview of the language.  T
 @page
 
 @section rlwrap
-Although you only need the @file{k} binary to run k9 most will also install rlwrap, if not already installed, in order to get command history in a terminal window.  rlwrap is ``Readline wrapper: adds readline support to tools that lack it'' and allows one to arrow up to go through the command buffer.
+Although you only need the @file{k} binary to run k9 most will also install rlwrap, if not already installed, in order to get command history in a terminal window.  rlwrap is ``Readline wrapper: adds readline support to tools that lack it'' and allows one to arrow up to go through the command buffer history.
 
-In order to start k9 you should either run @file{k} or @file{rlwrap k} to get started.  Here I will show both options but one should run as desired.  In this document lines with input be shown with a leading space and output will be without.  In the examples below the user starts a terminal window in the directory with the @file{k} file.  Then the users enters @kbd{rlwrap ./k @key{RET}}.  k9 starts and displays the date of the build, (c), and shakti and then listens to user input.  In this example I have entered the command to exit k9, @kbd{\\}.  Then I start k9 again without rlwrap and again exit the session.
+In order to start k9 you should either run @file{k} or @file{rlwrap k} to get started.  Here I will show both options but one should run as desired.  In this document lines with input be shown with a leading space and output will be without.  In the examples below the user starts a terminal window in the directory with the @file{k} binary file.  Then the users enters @kbd{rlwrap ./k @key{RET}}.  k9 starts and displays the date of the build, (c), and shakti and then listens to user input.  In this example I have entered the command to exit k9, @kbd{\\}.  Then I start k9 again without rlwrap and again exit the session.
 
 @example
  rlwrap ./k
@@ -1511,8 +1511,8 @@ Adverbs modify verbs to operative iteritvely over nouns.  This previous sentence
 Adverb             
 f/  @ref{scan,over}  c/  @ref{join}
 f\  @ref{scan}  c\  @ref{split}
-f'  @ref{each}  v'  @ref{has}  
-f': @ref{eachp} v': @ref{bin2,bin}.
+f'  @ref{each}  v' @ref{+has}  
+f': @ref{eachp} v':@ref{bin2,+bin}.
 f/: @ref{eachr} ([n;]f)/: @ref{c over}
 f\: @ref{eachl} ([n;]f)\: @ref{c scan}
 @end example
@@ -1577,7 +1577,8 @@ sentence.
 @end example
 
 @anchor{each}@section each @result{} f'x
-Apply function f to each value in list x.
+Apply function f to each value in list x in a single thread.  Multithread operation is done with @ref{bin2,+bin}.  
+
 @example
 @ *((1 2 3);4;(5 6);7)   / first element of the list
 1 2 3
@@ -1585,7 +1586,7 @@ Apply function f to each value in list x.
 1 4 5 7
 @end example
 
-@anchor{has}@section has @result{} v'x
+@anchor{+has}@section +has @result{} v'x
 Determine if vector v has element or list x.  Simliar to @ref{in} but arguments reversed.
 
 @example
@@ -1620,14 +1621,24 @@ y4 y3
 1 1.019 1.031403 0.9733587 1.037146
 @end example
 
-@anchor{bin2}@subsection bin @result{} x':y
-Given a sorted (increasing) list x, find the greatest index, i, where y>x[i].
+@anchor{bin2}@subsection +bin @result{} x':y
+Given a sorted (increasing) list x, find the greatest index, i, where y>x[i].  
 
 @example
 @ n:exp 0.01*!5;n
 1 1.01005 1.020201 1.030455 1.040811
 @ n':1.025
 2
+@end example
+
+Additionally +bin is multithreaded each.  This will allow a function to run in parallel over a list of arguments.
+
+@example
+\t @{L:x?1.;sum L%sin L*cos L*sin L+L*L@}':8#2e7 / run over multiple threads
+1655
+
+\t @{L:x?1.;sum L%sin L*cos L*sin L+L*L@}'8#2e7  / run in a single thread
+4144
 @end example
 
 @anchor{eachr}@section eachr @result{} f/:
@@ -2604,7 +2615,7 @@ These functions exist as verbs but also can be called with the names above.
 @section Range Functions @result{} in bin within
 
 @anchor{in}@subsection in @result{} x in y
-Determine if x is in list y.  Similar to @ref{has} but arguments reversed.
+Determine if x is in list y.  Similar to @ref{+has} but arguments reversed.
 
 @example
 @ `b in `a`b`d`e

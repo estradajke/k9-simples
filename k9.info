@@ -274,15 +274,15 @@ Although you only need the 'k' binary to run k9 most will also install
 rlwrap, if not already installed, in order to get command history in a
 terminal window.  rlwrap is "Readline wrapper: adds readline support
 to tools that lack it" and allows one to arrow up to go through the
-command buffer.
+command buffer history.
 
    In order to start k9 you should either run 'k' or 'rlwrap k' to get
 started.  Here I will show both options but one should run as desired.
 In this document lines with input be shown with a leading space and
 output will be without.  In the examples below the user starts a
-terminal window in the directory with the 'k' file.  Then the users
-enters 'rlwrap ./k <RET>'.  k9 starts and displays the date of the
-build, (c), and shakti and then listens to user input.  In this
+terminal window in the directory with the 'k' binary file.  Then the
+users enters 'rlwrap ./k <RET>'.  k9 starts and displays the date of
+the build, (c), and shakti and then listens to user input.  In this
 example I have entered the command to exit k9, '\\'.  Then I start k9
 again without rlwrap and again exit the session.
 
@@ -1687,8 +1687,8 @@ function 'first' with a modifier 'each'.
      Adverb
      f/  *note over: scan.  c/  *note join::
      f\  *note scan::  c\  *note split::
-     f'  *note each::  v'  *note has::
-     f': *note eachp:: v': *note bin: bin2.
+     f'  *note each::  v' *note +has::
+     f': *note eachp:: v':*note +bin: bin2.
      f/: *note eachr:: ([n;]f)/: *note c over::
      f\: *note eachl:: ([n;]f)\: *note c scan::
 
@@ -1742,14 +1742,16 @@ Split the string x using character c to determine the locations.
 5.4 each => f'x
 ===============
 
-Apply function f to each value in list x.
+Apply function f to each value in list x in a single thread.
+Multithread operation is done with *note +bin: bin2.
+
       *((1 2 3);4;(5 6);7)   / first element of the list
      1 2 3
       *'((1 2 3);4;(5 6);7)  / first element of each element
      1 4 5 7
 
-5.5 has => v'x
-==============
+5.5 +has => v'x
+===============
 
 Determine if vector v has element or list x.  Simliar to *note in::
 but arguments reversed.
@@ -1785,8 +1787,8 @@ value, n=0, returns f[y@0;x].
       100%':100 101.9 105.1 102.3 106.1    / using infix notation
      1 1.019 1.031403 0.9733587 1.037146
 
-5.6.1 bin => x':y
------------------
+5.6.1 +bin => x':y
+------------------
 
 Given a sorted (increasing) list x, find the greatest index, i, where
 y>x[i].
@@ -1795,6 +1797,15 @@ y>x[i].
      1 1.01005 1.020201 1.030455 1.040811
       n':1.025
      2
+
+   Additionally +bin is multithreaded each.  This will allow a
+function to run in parallel over a list of arguments.
+
+     \t {L:x?1.;sum L%sin L*cos L*sin L+L*L}':8#2e7 / run over multiple threads
+     1655
+
+     \t {L:x?1.;sum L%sin L*cos L*sin L+L*L}'8#2e7  / run in a single thread
+     4144
 
 5.7 eachr => f/:
 ================
@@ -2851,7 +2862,7 @@ above.
 10.3.1 in => x in y
 -------------------
 
-Determine if x is in list y.  Similar to *note has:: but arguments
+Determine if x is in list y.  Similar to *note +has:: but arguments
 reversed.
 
       `b in `a`b`d`e
@@ -3972,134 +3983,134 @@ Interface
 Tag Table:
 Node: Top126
 Node: Introduction4350
-Node: Examples16561
-Node: Benchmark24114
-Node: Verb29070
-Ref: x30530
-Ref: set30555
-Ref: flip30767
-Ref: plus31017
-Ref: negate31402
-Ref: minus31574
-Ref: first31681
-Ref: times32021
-Ref: divide32152
-Ref: where32289
-Ref: min/and32769
-Ref: reverse33028
-Ref: max/or33198
-Ref: asc33462
-Ref: less33835
-Ref: group34136
-Ref: equal34382
-Ref: not34686
-Ref: match34803
-Ref: enum35186
-Ref: key36439
-Ref: enlist36669
-Ref: cat36808
-Ref: sort36927
-Ref: [f]cut37159
-Ref: count37904
-Ref: [f]take38094
-Ref: floor38646
-Ref: [f]drop38737
-Ref: string39330
-Ref: cast+39431
-Ref: unique+39780
-Ref: find+40019
-Ref: type40738
-Ref: [f]at41189
-Ref: value41505
-Ref: [f]dot41779
-Node: Adverb43028
-Ref: scan43770
-Ref: join44300
-Ref: split44475
-Ref: each44666
-Ref: has44884
-Ref: eachp45148
-Ref: bin245588
-Ref: eachr45791
-Ref: eachl45988
-Ref: n scan46172
-Ref: c scan46652
-Ref: c over47164
-Ref: vs47301
-Ref: sv47421
-Node: Noun47545
-Ref: Atom Types48883
-Ref: bool50064
-Ref: int50364
-Ref: flt51025
-Ref: char51427
-Ref: name51650
-Ref: uuid51881
-Ref: time52038
-Ref: date52915
-Ref: datetime53377
-Node: List54192
-Node: Dictionary59467
-Node: User Functions64380
-Node: Named Functions66966
-Ref: sqrt67589
-Ref: exp67662
-Ref: log67730
-Ref: sin67830
-Ref: cos67969
-Ref: div68117
-Ref: mod68273
-Ref: bar68451
-Ref: in68991
-Ref: bin69169
-Ref: within69383
-Node: Knit Functions69597
-Ref: amend69866
-Ref: dmend70234
-Node: I/O70599
-Ref: read csv72702
-Ref: write csv72880
-Ref: read json73044
-Ref: write json73234
-Ref: w line73407
-Ref: r line73715
-Ref: w char73828
-Ref: r char74222
-Ref: r data74588
-Ref: w data75249
-Ref: conn/set75817
-Ref: http/get75877
-Ref: lib75937
-Node: Tables76401
-Ref: t77093
-Ref: xtable78699
-Ref: utable79181
-Node: kSQL79638
-Ref: union81967
-Ref: left82488
-Ref: outer83010
-Ref: asof83345
-Ref: asof+84389
-Node: System86062
-Ref: load86520
-Ref: timing86708
-Ref: variables86795
-Ref: memory86896
-Ref: cd87011
-Node: Control Flow87095
-Ref: cond87315
-Node: .z87576
-Node: Errors88606
-Ref: class89040
-Ref: rank89129
-Ref: length89253
-Ref: _type89376
-Ref: domain89485
-Ref: limit89607
-Ref: nyi89808
-Ref: parse90141
-Ref: _value90296
-Node: Conclusion90424
+Node: Examples16576
+Node: Benchmark24129
+Node: Verb29085
+Ref: x30545
+Ref: set30570
+Ref: flip30782
+Ref: plus31032
+Ref: negate31417
+Ref: minus31589
+Ref: first31696
+Ref: times32036
+Ref: divide32167
+Ref: where32304
+Ref: min/and32784
+Ref: reverse33043
+Ref: max/or33213
+Ref: asc33477
+Ref: less33850
+Ref: group34151
+Ref: equal34397
+Ref: not34701
+Ref: match34818
+Ref: enum35201
+Ref: key36454
+Ref: enlist36684
+Ref: cat36823
+Ref: sort36942
+Ref: [f]cut37174
+Ref: count37919
+Ref: [f]take38109
+Ref: floor38661
+Ref: [f]drop38752
+Ref: string39345
+Ref: cast+39446
+Ref: unique+39795
+Ref: find+40034
+Ref: type40753
+Ref: [f]at41204
+Ref: value41520
+Ref: [f]dot41794
+Node: Adverb43043
+Ref: scan43785
+Ref: join44315
+Ref: split44490
+Ref: each44681
+Ref: +has44972
+Ref: eachp45238
+Ref: bin245678
+Ref: eachr46180
+Ref: eachl46377
+Ref: n scan46561
+Ref: c scan47041
+Ref: c over47553
+Ref: vs47690
+Ref: sv47810
+Node: Noun47934
+Ref: Atom Types49272
+Ref: bool50453
+Ref: int50753
+Ref: flt51414
+Ref: char51816
+Ref: name52039
+Ref: uuid52270
+Ref: time52427
+Ref: date53304
+Ref: datetime53766
+Node: List54581
+Node: Dictionary59856
+Node: User Functions64769
+Node: Named Functions67355
+Ref: sqrt67978
+Ref: exp68051
+Ref: log68119
+Ref: sin68219
+Ref: cos68358
+Ref: div68506
+Ref: mod68662
+Ref: bar68840
+Ref: in69380
+Ref: bin69559
+Ref: within69773
+Node: Knit Functions69987
+Ref: amend70256
+Ref: dmend70624
+Node: I/O70989
+Ref: read csv73092
+Ref: write csv73270
+Ref: read json73434
+Ref: write json73624
+Ref: w line73797
+Ref: r line74105
+Ref: w char74218
+Ref: r char74612
+Ref: r data74978
+Ref: w data75639
+Ref: conn/set76207
+Ref: http/get76267
+Ref: lib76327
+Node: Tables76791
+Ref: t77483
+Ref: xtable79089
+Ref: utable79571
+Node: kSQL80028
+Ref: union82357
+Ref: left82878
+Ref: outer83400
+Ref: asof83735
+Ref: asof+84779
+Node: System86452
+Ref: load86910
+Ref: timing87098
+Ref: variables87185
+Ref: memory87286
+Ref: cd87401
+Node: Control Flow87485
+Ref: cond87705
+Node: .z87966
+Node: Errors88996
+Ref: class89430
+Ref: rank89519
+Ref: length89643
+Ref: _type89766
+Ref: domain89875
+Ref: limit89997
+Ref: nyi90198
+Ref: parse90531
+Ref: _value90686
+Node: Conclusion90814
 
 End Tag Table
 
