@@ -3045,7 +3045,7 @@ kSQL is a powerful query language for tables.  It has similarities to ANSI SQL b
 
 @example
 Database
-@ref{select} @ref{A} @ref{by} @ref{B} from T @ref{whereSQL,where} C; @ref{update} A from T
+@ref{select} @ref{A} @ref{by B} from T @ref{where C}; @ref{update} A from T
 x,y      / @ref{insert}, @ref{upsert}, @ref{union}, equi-and-asof @ref{leftjoin}
 x+y      / equi-and-asof outerjoin (e.g. combine markets through time)
 x#y      / take/intersect innerjoin (x_y for drop/difference)
@@ -3136,7 +3136,7 @@ x z
 4 -0.7568025
 @end example
 
-@anchor{by}@subsection by
+@anchor{by B}@subsection by B
 kSQL also has a way to group rows using @code{by}.  The result is a utable where the key is the now unique field in the @code{by}.
 
 @example
@@ -3149,11 +3149,8 @@ x|y
 1|-0.6156825
 @end example
 
-@anchor{B}@subsection B
-B is the list of fields to use with by.
-
-@anchor{whereSQL}@subsection where
-kSQL makes it easy to build up a where clause to filter down the table.
+@anchor{where C}@subsection where C
+kSQL makes it easy to build up a where clause to filter down the table.  C is the list of contraints.
 
 @example
  n:5;t:[[]x:!n;y:sin !n]
