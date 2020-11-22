@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- November 21, 2020
+
+Copyright (C) 2020 John Estrada -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Top (Shakti tutorial)</title>
+
+<meta name="description" content="Top (Shakti tutorial)">
+<meta name="keywords" content="Top (Shakti tutorial)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="#Top" rel="start" title="Top">
+<link href="Introduction.html" rel="next" title="Introduction">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<h1 class="settitle" align="center">Shakti tutorial</h1>
+
+
+
+<span id="Top"></span><div class="header">
+<p>
+Next: <a href="Introduction.html" accesskey="n" rel="next">Introduction</a> &nbsp; </p>
+</div>
+<hr>
+<span id="k9_003a-Manual"></span><h1 class="top">k9: Manual</h1>
+<p>This manual is for Shakti (k9) build 2020.11.16.<br>
+</p>
+<p>The Shakti programming language is the work of Arthur Whitney and the team at Shakti.  The language comes from a lineage of similar languages going back to APL.  It&rsquo;s also known as k9 given the similarties to k, k2, ..., k6, k7 and the fact that Arthur also wrote those.  k9 is still under development so expect a bit of syntax change and likley even more improvements.
+</p>
+<p>Learning k9 means code like <code>{x@(!#x)+\!#y}</code> is clear and actually prefered to something much longer and verbose.  You&rsquo;ll have to go a bit down the rabbit hole before it starts to come together but once it does you&rsquo;ll probably be happy you gave it a chance and end up learning a few things.  You&rsquo;ll understand how fast k9 can be in processing and analyzing data and how terse code is less likley to contain errors.  Unfortunatley you will be less likley to be content using more bloated and slow frameworks.  
+</p>
+<p>Alas this manual is not as elegant as the k9 language such that the text version of this document is almost as big as the binary of the language.  
+</p>
+
+<p>The built-in reference screen (<code>\</code>) containing all the k9 commands.
+</p>
+<div class="format">
+<pre class="verbatim">Universal database, webserver and language -- full stack -- fast
+
+Database
+select A by B from T where C; update A from T
+x,y      / insert, upsert, union, equi-and-asof leftjoin
+x+y      / equi-and-asof outerjoin (e.g. combine markets through time)
+x#y      / take/intersect innerjoin (x_y for drop/difference)
+count last sum min max avg -var -dev -med .. meta key unkey ..
+
+Language 
+verb                      adverb               type              system
+:    x         y          f/  over  c/  join   bool 011b         \l a.k
++    flip      plus       f\  scan  c\  split  int  0N 0 2 3     \t:n x
+-    negate    minus      f'  each  v'  +has   flt  0n 0 2 3.4   \u:n x
+*    first     times      f': eachp v': +bin   char &quot; ab&quot;        \v
+%              divide     f/: eachr ([n;]f)/:  name ``ab         \w
+&amp;    where     min/and    f\: eachl ([n;]f)\:  uuid              \cd x
+|    reverse   max/or                         
+&lt;    asc       less              .z.[md]       date 2024.01.01
+&gt;    dsc       more              .z.[hrstuv]   time 12:34:56.123456789
+=    group     equal      I/O
+~    not       match      0:  r/w line         Class             \f
+!    enum      key        1:  r/w byte         List (2;3.4;`a)   \ft x
+,    enlist    cat       *2:  r/w data         Dict `i`f!(2;3.4) \fl x
+^    sort   [f]cut       *3:  k-ipc set        Func {[a;b]a+b}   \fc x
+#    count  [f]take      *4:  https get        Expr :a+b 
+_    floor  [f]drop
+$    string    cast                            Table
+?    unique+   find+      $[b;x;y] if else     t:[[]i:2 3;f:3 4.;s:`a`b]
+@    type   [f]at         @[x;i;f[;y]] amend   utable [[b:..]a:..]
+.    value  [f]dot        .[x;i;f[;y]] dmend   xtable `..![[]a:..]
+sqrt sqr exp log sin cos div mod bar .. freq rank msum .. in bin within ..
+\\   exit      / comment  -[if do while select[a;b;t;c]]
+
+Interface
+`csv?`csv t    / read/write csv
+`json?`json t  / read/write json
+-python:   import k;k.k('+',2,3)   
+-nodejs: require('k').k('+',2,3)
+*ffi: &quot;./a.so&quot;5:`f!&quot;ii&quot; /I f(I i){return 2+i;}       //cblas ..
+*c/k: &quot;./b.so&quot;5:`f!1    /K f(K x){return ki(2+xi);}  //feeds ..
+
+*enterprise[unlimited data/users/machines/..] +overload -todo</pre></div>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="Introduction.html" accesskey="1">Introduction</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">An introduction to shakti/k9, a novel computer language for data analysis
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Examples.html" accesskey="2">Examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Examples to motivate the reader to learn the language
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Benchmark.html" accesskey="3">Benchmark</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Learn how fast this language is
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Verb.html" accesskey="4">Verb</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Elementary functions
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Adverb.html" accesskey="5">Adverb</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Function modifiers
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Noun.html" accesskey="6">Noun</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Basic data types
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="List.html" accesskey="7">List</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Uniform and non-uniform lists
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Dictionary.html" accesskey="8">Dictionary</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Dictionaries and functions for dictionaries
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="User-Functions.html" accesskey="9">User Functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">User-defined functions
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Named-Functions.html">Named Functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Named functions
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Knit-Functions.html">Knit Functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Function to modify lists and dictionaries
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="I_002fO.html">I/O</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Input and output
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Tables.html">Tables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Tables to store data
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="kSQL.html">kSQL</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">kSQL to query tables
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="System.html">System</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">System functions and measurements
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Control-Flow.html">Control Flow</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">If/Do/While Statements 
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="_002ez.html">.z</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Functions for current date and time
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Errors.html">Errors</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Error messages
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Conclusion.html">Conclusion</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Conclusion
+</td></tr>
+</table>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Introduction.html" accesskey="n" rel="next">Introduction</a> &nbsp; </p>
+</div>
+
+
+
+</body>
+</html>
