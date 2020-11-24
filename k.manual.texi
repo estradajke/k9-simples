@@ -1333,6 +1333,16 @@ Return the unique values of the list x.  The @code{?} preceeding the return valu
 ?"ban"
 @end example
 
+Generate x random values of uniform distribution from [0,1) or -x random value of uniform distribtuion (mean=0, sd=1).
+
+@example
+ ?3     / 3 uniform
+0.1654719 0.172977 0.4808443
+
+?-3     / 3 normal
+0.05384196 1.228946 -0.7144561
+@end example
+
 @anchor{find+}@section find+ @result{} x?y
 Find the first element of x that matches y otherwise return the end of vector.
 

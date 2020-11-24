@@ -1,6 +1,6 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
-November 21, 2020
+November 24, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -1505,6 +1505,15 @@ value explicitly shows that list has no repeat values.
      ?`f`a`b`c`d`e
       ?"banana"
      ?"ban"
+
+   Generate x random values of uniform distribution from [0,1) or -x
+random value of uniform distribtuion (mean=0, sd=1).
+
+      ?3     / 3 uniform
+     0.1654719 0.172977 0.4808443
+
+     ?-3     / 3 normal
+     0.05384196 1.228946 -0.7144561
 
 4.33 find+ => x?y
 =================
@@ -4106,106 +4115,106 @@ Ref: [f]drop38752
 Ref: string39345
 Ref: cast+39446
 Ref: unique+39795
-Ref: find+40034
-Ref: type40753
-Ref: [f]at41204
-Ref: value41520
-Ref: [f]dot41794
-Node: Adverb43043
-Ref: scan43788
-Ref: join44318
-Ref: split44493
-Ref: each44684
-Ref: +has44973
-Ref: eachp45239
-Ref: bin245983
-Ref: eachr46188
-Ref: eachl46385
-Ref: n scan46569
-Ref: c scan47049
-Ref: c over47561
-Ref: vs47698
-Ref: sv47818
-Node: Noun47942
-Ref: Atom Types49280
-Ref: bool50461
-Ref: int50761
-Ref: flt51422
-Ref: char51824
-Ref: name52047
-Ref: uuid52278
-Ref: time52435
-Ref: date53312
-Ref: datetime53774
-Node: List54589
-Node: Dictionary59864
-Node: User Functions64777
-Node: Named Functions67363
-Ref: sqrt67986
-Ref: exp68059
-Ref: log68127
-Ref: sin68227
-Ref: cos68366
-Ref: div68514
-Ref: mod68670
-Ref: bar68848
-Ref: in69388
-Ref: bin69567
-Ref: within69781
-Node: Knit Functions69995
-Ref: amend70264
-Ref: dmend70632
-Node: I/O70997
-Ref: read csv73100
-Ref: write csv73278
-Ref: read json73442
-Ref: write json73632
-Ref: w line73805
-Ref: r line74113
-Ref: w char74226
-Ref: r char74620
-Ref: r data74986
-Ref: w data75647
-Ref: conn/set76215
-Ref: http/get76275
-Ref: lib76335
-Node: Tables76799
-Ref: t77491
-Ref: xtable79097
-Ref: utable79579
-Node: kSQL80036
-Ref: select80634
-Ref: A81218
-Ref: by B82088
-Ref: where C82360
-Ref: update82943
-Ref: union83801
-Ref: leftjoin84322
-Ref: outer84840
-Ref: asof85175
-Ref: asof+86219
-Ref: insert87222
-Ref: upsert87568
-Node: System87892
-Ref: load88350
-Ref: timing88538
-Ref: variables88625
-Ref: memory88726
-Ref: cd88841
-Node: Control Flow88925
-Ref: cond89145
-Node: .z89406
-Node: Errors90436
-Ref: class90870
-Ref: rank90959
-Ref: length91083
-Ref: _type91206
-Ref: domain91315
-Ref: limit91437
-Ref: nyi91638
-Ref: parse91971
-Ref: _value92126
-Node: Conclusion92254
+Ref: find+40278
+Ref: type40997
+Ref: [f]at41448
+Ref: value41764
+Ref: [f]dot42038
+Node: Adverb43287
+Ref: scan44032
+Ref: join44562
+Ref: split44737
+Ref: each44928
+Ref: +has45217
+Ref: eachp45483
+Ref: bin246227
+Ref: eachr46432
+Ref: eachl46629
+Ref: n scan46813
+Ref: c scan47293
+Ref: c over47805
+Ref: vs47942
+Ref: sv48062
+Node: Noun48186
+Ref: Atom Types49524
+Ref: bool50705
+Ref: int51005
+Ref: flt51666
+Ref: char52068
+Ref: name52291
+Ref: uuid52522
+Ref: time52679
+Ref: date53556
+Ref: datetime54018
+Node: List54833
+Node: Dictionary60108
+Node: User Functions65021
+Node: Named Functions67607
+Ref: sqrt68230
+Ref: exp68303
+Ref: log68371
+Ref: sin68471
+Ref: cos68610
+Ref: div68758
+Ref: mod68914
+Ref: bar69092
+Ref: in69632
+Ref: bin69811
+Ref: within70025
+Node: Knit Functions70239
+Ref: amend70508
+Ref: dmend70876
+Node: I/O71241
+Ref: read csv73344
+Ref: write csv73522
+Ref: read json73686
+Ref: write json73876
+Ref: w line74049
+Ref: r line74357
+Ref: w char74470
+Ref: r char74864
+Ref: r data75230
+Ref: w data75891
+Ref: conn/set76459
+Ref: http/get76519
+Ref: lib76579
+Node: Tables77043
+Ref: t77735
+Ref: xtable79341
+Ref: utable79823
+Node: kSQL80280
+Ref: select80878
+Ref: A81462
+Ref: by B82332
+Ref: where C82604
+Ref: update83187
+Ref: union84045
+Ref: leftjoin84566
+Ref: outer85084
+Ref: asof85419
+Ref: asof+86463
+Ref: insert87466
+Ref: upsert87812
+Node: System88136
+Ref: load88594
+Ref: timing88782
+Ref: variables88869
+Ref: memory88970
+Ref: cd89085
+Node: Control Flow89169
+Ref: cond89389
+Node: .z89650
+Node: Errors90680
+Ref: class91114
+Ref: rank91203
+Ref: length91327
+Ref: _type91450
+Ref: domain91559
+Ref: limit91681
+Ref: nyi91882
+Ref: parse92215
+Ref: _value92370
+Node: Conclusion92498
 
 End Tag Table
 
