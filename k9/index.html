@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- November 26, 2020
+<!-- November 28, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -59,51 +59,51 @@ Next: <a href="Introduction.html" accesskey="n" rel="next">Introduction</a> &nbs
 
 <p>The built-in reference screen (<code>\</code>) containing all the k9 commands.
 </p>
-<div class="format">
-<pre class="verbatim">Universal database, webserver and language -- full stack -- fast
 
-Database
-select A by B from T where C; update A from T
-x,y      / insert, upsert, union, equi-and-asof leftjoin
-x+y      / equi-and-asof outerjoin (e.g. combine markets through time)
-x#y      / take/intersect innerjoin (x_y for drop/difference)
-count last sum min max avg -var -dev -med .. meta key unkey ..
-
-Language 
-verb                      adverb               type              system
-:    x         y          f/  over  c/  join   bool 011b         \l a.k
-+    flip      plus       f\  scan  c\  split  int  0N 0 2 3     \t:n x
--    negate    minus      f'  each  v'  +has   flt  0n 0 2 3.4   \u:n x
-*    first     times      f': eachp v': +bin   char &quot; ab&quot;        \v
-%              divide     f/: eachr ([n;]f)/:  name ``ab         \w
-&amp;    where     min/and    f\: eachl ([n;]f)\:  uuid              \cd x
-|    reverse   max/or                         
-&lt;    asc       less              .z.[md]       date 2024.01.01
-&gt;    dsc       more              .z.[hrstuv]   time 12:34:56.123456789
-=    group     equal      I/O
-~    not       match      0:  r/w line         Class             \f
-!    enum      key        1:  r/w byte         List (2;3.4;`a)   \ft x
-,    enlist    cat       *2:  r/w data         Dict `i`f!(2;3.4) \fl x
-^    sort   [f]cut       *3:  k-ipc set        Func {[a;b]a+b}   \fc x
-#    count  [f]take      *4:  https get        Expr :a+b 
-_    floor  [f]drop
-$    string    cast                            Table
-?    unique+   find+      $[b;x;y] if else     t:[[]i:2 3;f:3 4.;s:`a`b]
-@    type   [f]at         @[x;i;f[;y]] amend   utable [[b:..]a:..]
-.    value  [f]dot        .[x;i;f[;y]] dmend   xtable `..![[]a:..]
-sqrt sqr exp log sin cos div mod bar .. freq rank msum .. in bin within ..
-\\   exit      / comment  -[if do while select[a;b;t;c]]
-
-Interface
-`csv?`csv t    / read/write csv
-`json?`json t  / read/write json
--python:   import k;k.k('+',2,3)   
--nodejs: require('k').k('+',2,3)
-*ffi: &quot;./a.so&quot;5:`f!&quot;ii&quot; /I f(I i){return 2+i;}       //cblas ..
-*c/k: &quot;./b.so&quot;5:`f!1    /K f(K x){return ki(2+xi);}  //feeds ..
-
-*enterprise[unlimited data/users/machines/..] +overload -todo</pre></div>
-
+<p><tt>Universal&nbsp;database,&nbsp;webserver&nbsp;and&nbsp;language&nbsp;--&nbsp;full&nbsp;stack&nbsp;--&nbsp;fast</tt><br>
+<tt></tt><br>
+<tt>Database</tt><br>
+<tt>select&nbsp;A&nbsp;by&nbsp;B&nbsp;from&nbsp;T&nbsp;<a href="Verb.html#where">where</a>&nbsp;C;&nbsp;update&nbsp;A&nbsp;from&nbsp;T</tt><br>
+<tt>x,y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;insert,&nbsp;upsert,&nbsp;union,&nbsp;equi-and-asof&nbsp;leftjoin</tt><br>
+<tt>x+y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;equi-and-asof&nbsp;outerjoin&nbsp;(e.g.&nbsp;combine&nbsp;markets&nbsp;through&nbsp;time)</tt><br>
+<tt>x#y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;take/intersect&nbsp;innerjoin&nbsp;(x_y&nbsp;for&nbsp;drop/difference)</tt><br>
+<tt>count&nbsp;last&nbsp;sum&nbsp;min&nbsp;max&nbsp;avg&nbsp;-var&nbsp;-dev&nbsp;-med&nbsp;..&nbsp;meta&nbsp;key&nbsp;unkey&nbsp;..</tt><br>
+<tt></tt><br>
+<tt>Language&nbsp;</tt><br>
+<tt>verb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adverb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#type">type</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;system</tt><br>
+<tt>:&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f/&nbsp;&nbsp;over&nbsp;&nbsp;c/&nbsp;&nbsp;join&nbsp;&nbsp;&nbsp;bool&nbsp;011b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\l&nbsp;a.k</tt><br>
+<tt>+&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#flip">flip</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#plus">plus</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f\&nbsp;&nbsp;scan&nbsp;&nbsp;c\&nbsp;&nbsp;split&nbsp;&nbsp;int&nbsp;&nbsp;0N&nbsp;0&nbsp;2&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\t:n&nbsp;x</tt><br>
+<tt>-&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#negate">negate</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#minus">minus</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f'&nbsp;&nbsp;each&nbsp;&nbsp;v'&nbsp;&nbsp;+has&nbsp;&nbsp;&nbsp;flt&nbsp;&nbsp;0n&nbsp;0&nbsp;2&nbsp;3.4&nbsp;&nbsp;&nbsp;\u:n&nbsp;x</tt><br>
+<tt>*&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#first">first</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#times">times</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f':&nbsp;eachp&nbsp;v':&nbsp;+bin&nbsp;&nbsp;&nbsp;char&nbsp;&quot;&nbsp;ab&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\v</tt><br>
+<tt>%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#divide">divide</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f/:&nbsp;eachr&nbsp;([n;]f)/:&nbsp;&nbsp;name&nbsp;``ab&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\w</tt><br>
+<tt>&amp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#where">where</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#min_002fand">min/and</a>&nbsp;&nbsp;&nbsp;&nbsp;f\:&nbsp;eachl&nbsp;([n;]f)\:&nbsp;&nbsp;uuid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\cd&nbsp;x</tt><br>
+<tt>|&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#reverse">reverse</a>&nbsp;&nbsp;&nbsp;<a href="Verb.html#max_002for">max/or</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
+<tt>&lt;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#asc">asc</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#less">less</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.z.[md]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;date&nbsp;2024.01.01</tt><br>
+<tt>&gt;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#asc">dsc</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#less">more</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.z.[hrstuv]&nbsp;&nbsp;&nbsp;time&nbsp;12:34:56.123456789</tt><br>
+<tt>=&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#group">group</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#equal">equal</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I/O</tt><br>
+<tt>~&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#not">not</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#match">match</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0:&nbsp;&nbsp;r/w&nbsp;line&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\f</tt><br>
+<tt>!&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#enum">enum</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1:&nbsp;&nbsp;r/w&nbsp;byte&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;(2;3.4;`a)&nbsp;&nbsp;&nbsp;\ft&nbsp;x</tt><br>
+<tt>,&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#enlist">enlist</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#cat">cat</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*2:&nbsp;&nbsp;r/w&nbsp;data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dict&nbsp;`i`f!(2;3.4)&nbsp;\fl&nbsp;x</tt><br>
+<tt>^&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#sort">sort</a>&nbsp;&nbsp;&nbsp;<a href="Verb.html#g_t_005bf_005dcut">[f]cut</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*3:&nbsp;&nbsp;k-ipc&nbsp;set&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Func&nbsp;{[a;b]a+b}&nbsp;&nbsp;&nbsp;\fc&nbsp;x</tt><br>
+<tt>#&nbsp;&nbsp;&nbsp;&nbsp;count&nbsp;&nbsp;<a href="Verb.html#g_t_005bf_005dtake">[f]take</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*4:&nbsp;&nbsp;https&nbsp;get&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expr&nbsp;:a+b&nbsp;</tt><br>
+<tt>_&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#floor">floor</a>&nbsp;&nbsp;<a href="Verb.html#g_t_005bf_005ddrop">[f]drop</a></tt><br>
+<tt>$&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#string">string</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#cast">cast</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Table</tt><br>
+<tt>?&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#unique_002b">unique+</a>&nbsp;&nbsp;&nbsp;<a href="Verb.html#find_002b">find+</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$[b;x;y]&nbsp;if&nbsp;else&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t:[[]i:2&nbsp;3;f:3&nbsp;4.;s:`a`b]</tt><br>
+<tt>@&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#type">type</a>&nbsp;&nbsp;&nbsp;<a href="Verb.html#g_t_005bf_005dat">[f]at</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@[x;i;f[;y]]&nbsp;amend&nbsp;&nbsp;&nbsp;utable&nbsp;[[b:..]a:..]</tt><br>
+<tt>.&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#value">value</a>&nbsp;&nbsp;<a href="Verb.html#g_t_005bf_005ddot">[f]dot</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.[x;i;f[;y]]&nbsp;dmend&nbsp;&nbsp;&nbsp;xtable&nbsp;`..![[]a:..]</tt><br>
+<tt>sqrt&nbsp;sqr&nbsp;exp&nbsp;log&nbsp;sin&nbsp;cos&nbsp;div&nbsp;mod&nbsp;bar&nbsp;..&nbsp;freq&nbsp;rank&nbsp;msum&nbsp;..&nbsp;in&nbsp;bin&nbsp;within&nbsp;..</tt><br>
+<tt>\\&nbsp;&nbsp;&nbsp;exit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;comment&nbsp;&nbsp;-[if&nbsp;do&nbsp;while&nbsp;select[a;b;t;c]]</tt><br>
+<tt></tt><br>
+<tt>Interface</tt><br>
+<tt>`csv?`csv&nbsp;t&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;read/write&nbsp;csv</tt><br>
+<tt>`json?`json&nbsp;t&nbsp;&nbsp;/&nbsp;read/write&nbsp;json</tt><br>
+<tt>-python:&nbsp;&nbsp;&nbsp;import&nbsp;k;k.k('+',2,3)&nbsp;&nbsp;&nbsp;</tt><br>
+<tt>-nodejs:&nbsp;require('k').k('+',2,3)</tt><br>
+<tt>*ffi:&nbsp;&quot;./a.so&quot;5:`f!&quot;ii&quot;&nbsp;/I&nbsp;f(I&nbsp;i){return&nbsp;2+i;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//cblas&nbsp;..</tt><br>
+<tt>*c/k:&nbsp;&quot;./b.so&quot;5:`f!1&nbsp;&nbsp;&nbsp;&nbsp;/K&nbsp;f(K&nbsp;x){return&nbsp;ki(2+xi);}&nbsp;&nbsp;//feeds&nbsp;..</tt><br>
+<tt></tt><br>
+<tt>*enterprise[unlimited&nbsp;data/users/machines/..]&nbsp;+overload&nbsp;-todo</tt><br>
+</p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="Introduction.html" accesskey="1">Introduction</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">An introduction to shakti/k9, a novel computer language for data analysis
 </td></tr>

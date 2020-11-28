@@ -33,9 +33,11 @@ Alas this manual is not as elegant as the k9 language such that the text version
 
 The built-in reference screen (@code{\}) containing all the k9 commands.
 
-@smallformat
-@verbatiminclude k.d
-@end smallformat
+@c@smallformat
+@c@verbatiminclude k.d
+@c@end smallformat
+
+@include k.d2
 
 @menu
 * Introduction:: An introduction to shakti/k9, a novel computer language for data analysis
@@ -738,7 +740,7 @@ Verb
 ^ @ref{sort},  @ref{[f]cut}. 
 # @ref{count}, @ref{[f]take}.  
 _ @ref{floor}, @ref{[f]drop}.    
-$ @ref{string},   @ref{cast+}.    
+$ @ref{string},   @ref{cast}.    
 ? @ref{unique+},  @ref{find+}.    
 @@ @ref{type},  @ref{[f]at}.    
 . @ref{value}, @ref{[f]dot}.
@@ -1297,7 +1299,7 @@ Cast x to string.
 "4.7"
 @end example
 
-@anchor{cast+}@section cast+ @result{} x$y
+@anchor{cast}@section cast @result{} x$y
 
 Cast string y into type x.
 
