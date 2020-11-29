@@ -47,29 +47,30 @@ count last sum min max avg -var -dev -med .. meta key unkey ..
 
 Language 
 *note verb: Verb.                      *note adverb:
-Adverb.               *note type: Noun.              system
+Adverb.               *note type: Noun.              *note system:
+System.
 :    x         y          f/  *note over: scan.  c/  *note
-join::   bool 011b         \l a.k
+join::   *note bool:: 011b         \l a.k
 +    *note flip::      *note plus::       f\  *note scan::  c\  *note
-split::  int  0N 0 2 3     \t:n x
+split::  *note int::  0N 0 2 3     \t:n x
 -    *note negate::    *note minus::      f'  *note each::  v'  *note
-+has::   flt  0n 0 2 3.4   \u:n x
++has::   *note flt::  0n 0 2 3.4   \u:n x
 *    *note first::     *note times::      f': *note eachp:: v': *note
-+bin: bin2.   char " ab"        \v
-%              *note divide::     f/: *note
-eachr:: ([n;]f)/:  name ``ab         \w
++bin: bin2.   *note char:: " ab"        \v
+%              *note divide::     f/: *note eachr:: ([n;]f)/:  *note
+name:: ``ab         \w
 &    *note where::     *note min/and::    f\: *note
-eachl:: ([n;]f)\:  uuid              \cd x
+eachl:: ([n;]f)\:  *note uuid::              \cd x
 |    *note reverse::   *note max/or::                         
 <    *note asc::       *note less::              *note
 .z::.[md]       *note date:: 2024.01.01
 >    *note dsc: asc.       *note more: less.              *note
 .z::.[hrstuv]   *note time:: 12:34:56.123456789
 =    *note group::     *note equal::      *note I/O::
-~    *note not::       *note
-match::      0:  r/w line         Class             \f
-!    *note enum::      *note key::        1:  r/w byte         *note
-List:: (2;3.4;`a)   \ft x
+~    *note not::       *note match::      0:  *note r: r line./*note w:
+w line. line         Class             \f
+!    *note enum::      *note key::        1:  *note r: r byte./*note w:
+w byte. byte         *note List:: (2;3.4;`a)   \ft x
 ,    *note enlist::    *note cat::       *2:  r/w data         *note
 Dict: Dictionary. `i`f!(2;3.4) \fl x
 ^    *note sort::   *note [f]cut::       *3:  k-ipc set        *note
@@ -88,8 +89,8 @@ sqrt sqr exp log sin cos div mod bar .. freq rank msum .. in bin within ..
 \\   exit      / comment  -[if do while select[a;b;t;c]]
 
 Interface
-`csv?`csv t    / read/write csv
-`json?`json t  / read/write json
+`csv?`csv t    / *note read: read csv./*note write: write csv. csv
+`json?`json t  / *note read: read json./*note write: write json. json
 -python:   import k;k.k('+',2,3)   
 -nodejs: require('k').k('+',2,3)
 *ffi: "./a.so"5:`f!"ii" /I f(I i){return 2+i;}       //cblas ..
@@ -2998,7 +2999,7 @@ to rewrite everything already written into k9.
 
       I/O
       0:  *note r: r line./*note w: w line. line
-      1:  *note r: r char./*note w: w char. char
+      1:  *note r: r byte./*note w: w byte. char
      *2:  *note r: r data./*note w: w data. data
      *3:  kipc set
      *4:  http get
@@ -3115,39 +3116,25 @@ Read from file x.
      1,3.
      2,4.
 
-12.8 write char => x 1:y
+12.8 write byte => x 1:y
 ========================
 
-Output to x the list of chars in y.  y must be a list of chars.  If y is
-a single char then convert to list via enlist.
-      "some.txt"1:"hello here\nis some text\n"
-      1:"some.txt"
-     "hello here\nis some text\n"
-       t:+`a`b!(1 2;3 4);t
-     a b
-     - -
-     1 3
-     2 4
-      "some.k"1:`k t      / write table to file in k format
+Output to file x the list of chars in y as bytes.
 
-12.9 read char => 1:x
+      "some.txt"1:"0123ABab"
+     "some.txt"
+
+     t:1:"some.txt";t
+     48 49 50 51 65 66 97 98g
+
+     `c t
+     "0123ABab"
+
+12.9 read byte => 1:x
 =====================
 
-Read from file x.
-
-      "some.txt"0:,`csv 3 1 2 / first write a file to some.txt
-      1:"some.txt"            / now read it back
-     "3,1,2\n"
-       t:+`a`b!(1 2;3 4);t
-     a b
-     - -
-     1 3
-     2 4
-      t:`k?1:"some.k";t   / read file stored in k format (as shown above)
-     a b
-     - -
-     1 3
-     2 4
+Read from byte data from file x.  See *note w byte:: for an example to
+write and then read byte data.
 
 12.10 read data => 2: x
 =======================
@@ -4089,142 +4076,142 @@ Interface
 
 Tag Table:
 Node: Top126
-Node: Introduction5019
-Node: Examples17243
-Node: Benchmark24797
-Node: Verb29754
-Ref: x31214
-Ref: set31239
-Ref: flip31451
-Ref: plus31701
-Ref: negate32086
-Ref: minus32258
-Ref: first32365
-Ref: times32705
-Ref: divide32836
-Ref: where32973
-Ref: min/and33453
-Ref: reverse33712
-Ref: max/or33882
-Ref: asc34146
-Ref: less34519
-Ref: group34820
-Ref: equal35066
-Ref: not35370
-Ref: match35487
-Ref: enum35870
-Ref: key37123
-Ref: enlist37353
-Ref: cat37492
-Ref: sort37611
-Ref: [f]cut37843
-Ref: count38588
-Ref: [f]take38778
-Ref: floor39330
-Ref: [f]drop39421
-Ref: string40014
-Ref: cast40115
-Ref: unique+40462
-Ref: find+40945
-Ref: type41664
-Ref: [f]at42115
-Ref: value42431
-Ref: [f]dot42705
-Node: Adverb43960
-Ref: scan44706
-Ref: join45236
-Ref: split45411
-Ref: each45602
-Ref: +has45891
-Ref: eachp46157
-Ref: bin246901
-Ref: eachr47106
-Ref: eachl47303
-Ref: n scan47487
-Ref: c scan47967
-Ref: c over48479
-Ref: vs48616
-Ref: sv48736
-Node: Noun48860
-Ref: Atom Types50198
-Ref: bool51379
-Ref: int51679
-Ref: flt52339
-Ref: char52741
-Ref: name52964
-Ref: uuid53195
-Ref: time53352
-Ref: date54228
-Ref: datetime54690
-Node: List55505
-Node: Dictionary60780
-Node: User Functions65688
-Node: Named Functions68273
-Ref: sqrt68895
-Ref: exp68968
-Ref: log69036
-Ref: sin69136
-Ref: cos69275
-Ref: div69423
-Ref: mod69579
-Ref: bar69757
-Ref: in70297
-Ref: bin70476
-Ref: within70690
-Node: Knit Functions70904
-Ref: amend71173
-Ref: dmend71541
-Node: I/O71906
-Ref: read csv74009
-Ref: write csv74187
-Ref: read json74351
-Ref: write json74541
-Ref: w line74714
-Ref: r line75023
-Ref: w char75136
-Ref: r char75530
-Ref: r data75896
-Ref: w data76557
-Ref: conn/set77125
-Ref: http/get77185
-Ref: lib77245
-Node: Tables77709
-Ref: t78401
-Ref: xtable80006
-Ref: utable80488
-Node: kSQL80945
-Ref: select81543
-Ref: A82127
-Ref: by B82997
-Ref: where C83269
-Ref: update83851
-Ref: union84709
-Ref: leftjoin85230
-Ref: outer85748
-Ref: asof86083
-Ref: asof+87127
-Ref: insert88130
-Ref: upsert88476
-Node: System88800
-Ref: load89258
-Ref: timing89446
-Ref: variables89533
-Ref: memory89634
-Ref: cd89749
-Node: Control Flow89833
-Ref: cond90053
-Node: .z90314
-Node: Errors91344
-Ref: class91778
-Ref: rank91867
-Ref: length91991
-Ref: _type92114
-Ref: domain92223
-Ref: limit92345
-Ref: nyi92546
-Ref: parse92879
-Ref: _value93034
-Node: Conclusion93162
+Node: Introduction5214
+Node: Examples17438
+Node: Benchmark24992
+Node: Verb29949
+Ref: x31409
+Ref: set31434
+Ref: flip31646
+Ref: plus31896
+Ref: negate32281
+Ref: minus32453
+Ref: first32560
+Ref: times32900
+Ref: divide33031
+Ref: where33168
+Ref: min/and33648
+Ref: reverse33907
+Ref: max/or34077
+Ref: asc34341
+Ref: less34714
+Ref: group35015
+Ref: equal35261
+Ref: not35565
+Ref: match35682
+Ref: enum36065
+Ref: key37318
+Ref: enlist37548
+Ref: cat37687
+Ref: sort37806
+Ref: [f]cut38038
+Ref: count38783
+Ref: [f]take38973
+Ref: floor39525
+Ref: [f]drop39616
+Ref: string40209
+Ref: cast40310
+Ref: unique+40657
+Ref: find+41140
+Ref: type41859
+Ref: [f]at42310
+Ref: value42626
+Ref: [f]dot42900
+Node: Adverb44155
+Ref: scan44901
+Ref: join45431
+Ref: split45606
+Ref: each45797
+Ref: +has46086
+Ref: eachp46352
+Ref: bin247096
+Ref: eachr47301
+Ref: eachl47498
+Ref: n scan47682
+Ref: c scan48162
+Ref: c over48674
+Ref: vs48811
+Ref: sv48931
+Node: Noun49055
+Ref: Atom Types50393
+Ref: bool51574
+Ref: int51874
+Ref: flt52534
+Ref: char52936
+Ref: name53159
+Ref: uuid53390
+Ref: time53547
+Ref: date54423
+Ref: datetime54885
+Node: List55700
+Node: Dictionary60975
+Node: User Functions65883
+Node: Named Functions68468
+Ref: sqrt69090
+Ref: exp69163
+Ref: log69231
+Ref: sin69331
+Ref: cos69470
+Ref: div69618
+Ref: mod69774
+Ref: bar69952
+Ref: in70492
+Ref: bin70671
+Ref: within70885
+Node: Knit Functions71099
+Ref: amend71368
+Ref: dmend71736
+Node: I/O72101
+Ref: read csv74204
+Ref: write csv74382
+Ref: read json74546
+Ref: write json74736
+Ref: w line74909
+Ref: r line75218
+Ref: w byte75331
+Ref: r byte75559
+Ref: r data75707
+Ref: w data76368
+Ref: conn/set76936
+Ref: http/get76996
+Ref: lib77056
+Node: Tables77520
+Ref: t78212
+Ref: xtable79817
+Ref: utable80299
+Node: kSQL80756
+Ref: select81354
+Ref: A81938
+Ref: by B82808
+Ref: where C83080
+Ref: update83662
+Ref: union84520
+Ref: leftjoin85041
+Ref: outer85559
+Ref: asof85894
+Ref: asof+86938
+Ref: insert87941
+Ref: upsert88287
+Node: System88611
+Ref: load89069
+Ref: timing89257
+Ref: variables89344
+Ref: memory89445
+Ref: cd89560
+Node: Control Flow89644
+Ref: cond89864
+Node: .z90125
+Node: Errors91155
+Ref: class91589
+Ref: rank91678
+Ref: length91802
+Ref: _type91925
+Ref: domain92034
+Ref: limit92156
+Ref: nyi92357
+Ref: parse92690
+Ref: _value92845
+Node: Conclusion92973
 
 End Tag Table
 

@@ -2721,7 +2721,7 @@ k9 is also able to interface with other languages so one doesn't need to rewrite
 @example
  I/O         
  0:  @ref{r line,r}/@ref{w line,w} line
- 1:  @ref{r char,r}/@ref{w char,w} char
+ 1:  @ref{r byte,r}/@ref{w byte,w} char
 *2:  @ref{r data,r}/@ref{w data,w} data
 *3:  kipc set
 *4:  http get
@@ -2834,38 +2834,22 @@ a,b
 2,4.
 @end example
 
-@anchor{w char}@section write char @result{} x 1:y
-Output to x the list of chars in y.  y must be a list of chars.  If y is a single char then convert to list via enlist.
-@example
-@ "some.txt"1:"hello here\nis some text\n"
-@ 1:"some.txt"
-"hello here\nis some text\n"
-@  t:+`a`b!(1 2;3 4);t
-a b
-- -
-1 3
-2 4
-@ "some.k"1:`k t      / write table to file in k format
-@end example
-@anchor{r char}@section read char @result{} 1:x
-
-Read from file x.
+@anchor{w byte}@section write byte @result{} x 1:y
+Output to file x the list of chars in y as bytes.
 
 @example
-@ "some.txt"0:,`csv 3 1 2 / first write a file to some.txt
-@ 1:"some.txt"            / now read it back
-"3,1,2\n"
-@  t:+`a`b!(1 2;3 4);t
-a b
-- -
-1 3
-2 4
-@ t:`k?1:"some.k";t   / read file stored in k format (as shown above)
-a b
-- -
-1 3
-2 4
+ "some.txt"1:"0123ABab"
+"some.txt"
+
+t:1:"some.txt";t
+48 49 50 51 65 66 97 98g
+
+`c t
+"0123ABab"
 @end example
+
+@anchor{r byte}@section read byte @result{} 1:x
+Read from byte data from file x.  See @ref{w byte} for an example to write and then read byte data.
 
 @anchor{r data}@section read data @result{} 2: x
 
