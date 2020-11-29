@@ -1515,7 +1515,7 @@ b|2
 c|3
 @end example
 
-@node Adverb
+@anchor{adverb}@node Adverb
 @chapter Adverb
 Adverbs modify verbs to operative iteratively over nouns.  This previous sentence likley will only make sense once you understand it so let's jump into an example.  Imagine you have a list of 4 lists.  Using @code{first} you will retrieve the first sub-list.  In order to retrieve the first element of each sub-list you'll have to modify the function @code{first} with a modifier @code{each}.
 
