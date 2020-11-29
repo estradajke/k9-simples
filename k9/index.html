@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- November 28, 2020
+<!-- November 29, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -63,20 +63,20 @@ Next: <a href="Introduction.html" accesskey="n" rel="next">Introduction</a> &nbs
 <p><tt>Universal&nbsp;database,&nbsp;webserver&nbsp;and&nbsp;language&nbsp;--&nbsp;full&nbsp;stack&nbsp;--&nbsp;fast</tt><br>
 <tt></tt><br>
 <tt>Database</tt><br>
-<tt>select&nbsp;A&nbsp;by&nbsp;B&nbsp;from&nbsp;T&nbsp;<a href="Verb.html#where">where</a>&nbsp;C;&nbsp;update&nbsp;A&nbsp;from&nbsp;T</tt><br>
-<tt>x,y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;insert,&nbsp;upsert,&nbsp;union,&nbsp;equi-and-asof&nbsp;leftjoin</tt><br>
+<tt><a href="kSQL.html#select">select</a>&nbsp;<a href="kSQL.html#A">A</a>&nbsp;<a href="kSQL.html#by-B">by B</a>&nbsp;from&nbsp;T&nbsp;<a href="kSQL.html#where-C">where C</a>;&nbsp;<a href="kSQL.html#update">update</a>&nbsp;<a href="kSQL.html#A">A</a>&nbsp;from&nbsp;T</tt><br>
+<tt>x,y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;<a href="kSQL.html#insert">insert</a>,&nbsp;<a href="kSQL.html#upsert">upsert</a>,&nbsp;<a href="kSQL.html#union">union</a>,&nbsp;equi-and-asof&nbsp;<a href="kSQL.html#leftjoin">leftjoin</a></tt><br>
 <tt>x+y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;equi-and-asof&nbsp;outerjoin&nbsp;(e.g.&nbsp;combine&nbsp;markets&nbsp;through&nbsp;time)</tt><br>
 <tt>x#y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;take/intersect&nbsp;innerjoin&nbsp;(x_y&nbsp;for&nbsp;drop/difference)</tt><br>
 <tt>count&nbsp;last&nbsp;sum&nbsp;min&nbsp;max&nbsp;avg&nbsp;-var&nbsp;-dev&nbsp;-med&nbsp;..&nbsp;meta&nbsp;key&nbsp;unkey&nbsp;..</tt><br>
 <tt></tt><br>
 <tt>Language&nbsp;</tt><br>
-<tt>verb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adverb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#type">type</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;system</tt><br>
-<tt>:&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f/&nbsp;&nbsp;over&nbsp;&nbsp;c/&nbsp;&nbsp;join&nbsp;&nbsp;&nbsp;bool&nbsp;011b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\l&nbsp;a.k</tt><br>
-<tt>+&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#flip">flip</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#plus">plus</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f\&nbsp;&nbsp;scan&nbsp;&nbsp;c\&nbsp;&nbsp;split&nbsp;&nbsp;int&nbsp;&nbsp;0N&nbsp;0&nbsp;2&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\t:n&nbsp;x</tt><br>
-<tt>-&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#negate">negate</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#minus">minus</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f'&nbsp;&nbsp;each&nbsp;&nbsp;v'&nbsp;&nbsp;+has&nbsp;&nbsp;&nbsp;flt&nbsp;&nbsp;0n&nbsp;0&nbsp;2&nbsp;3.4&nbsp;&nbsp;&nbsp;\u:n&nbsp;x</tt><br>
-<tt>*&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#first">first</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#times">times</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f':&nbsp;eachp&nbsp;v':&nbsp;+bin&nbsp;&nbsp;&nbsp;char&nbsp;&quot;&nbsp;ab&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\v</tt><br>
-<tt>%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#divide">divide</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f/:&nbsp;eachr&nbsp;([n;]f)/:&nbsp;&nbsp;name&nbsp;``ab&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\w</tt><br>
-<tt>&amp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#where">where</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#min_002fand">min/and</a>&nbsp;&nbsp;&nbsp;&nbsp;f\:&nbsp;eachl&nbsp;([n;]f)\:&nbsp;&nbsp;uuid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\cd&nbsp;x</tt><br>
+<tt><a href="Verb.html">verb</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Adverb.html">adverb</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;system</tt><br>
+<tt>:&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f/&nbsp;&nbsp;<a href="Adverb.html#scan">over</a>&nbsp;&nbsp;c/&nbsp;&nbsp;<a href="Adverb.html#join">join</a>&nbsp;&nbsp;&nbsp;bool&nbsp;011b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\l&nbsp;a.k</tt><br>
+<tt>+&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#flip">flip</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#plus">plus</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f\&nbsp;&nbsp;<a href="Adverb.html#scan">scan</a>&nbsp;&nbsp;c\&nbsp;&nbsp;<a href="Adverb.html#split">split</a>&nbsp;&nbsp;int&nbsp;&nbsp;0N&nbsp;0&nbsp;2&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\t:n&nbsp;x</tt><br>
+<tt>-&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#negate">negate</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#minus">minus</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f'&nbsp;&nbsp;<a href="Adverb.html#each">each</a>&nbsp;&nbsp;v'&nbsp;&nbsp;<a href="Adverb.html#g_t_002bhas">+has</a>&nbsp;&nbsp;&nbsp;flt&nbsp;&nbsp;0n&nbsp;0&nbsp;2&nbsp;3.4&nbsp;&nbsp;&nbsp;\u:n&nbsp;x</tt><br>
+<tt>*&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#first">first</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#times">times</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f':&nbsp;<a href="Adverb.html#eachp">eachp</a>&nbsp;v':&nbsp;<a href="Adverb.html#bin2">+bin</a>&nbsp;&nbsp;&nbsp;char&nbsp;&quot;&nbsp;ab&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\v</tt><br>
+<tt>%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#divide">divide</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f/:&nbsp;<a href="Adverb.html#eachr">eachr</a>&nbsp;([n;]f)/:&nbsp;&nbsp;name&nbsp;``ab&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\w</tt><br>
+<tt>&amp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#where">where</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#min_002fand">min/and</a>&nbsp;&nbsp;&nbsp;&nbsp;f\:&nbsp;<a href="Adverb.html#eachl">eachl</a>&nbsp;([n;]f)\:&nbsp;&nbsp;uuid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\cd&nbsp;x</tt><br>
 <tt>|&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#reverse">reverse</a>&nbsp;&nbsp;&nbsp;<a href="Verb.html#max_002for">max/or</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
 <tt>&lt;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#asc">asc</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#less">less</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.z.[md]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;date&nbsp;2024.01.01</tt><br>
 <tt>&gt;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#asc">dsc</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#less">more</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.z.[hrstuv]&nbsp;&nbsp;&nbsp;time&nbsp;12:34:56.123456789</tt><br>
@@ -102,7 +102,7 @@ Next: <a href="Introduction.html" accesskey="n" rel="next">Introduction</a> &nbs
 <tt>*ffi:&nbsp;&quot;./a.so&quot;5:`f!&quot;ii&quot;&nbsp;/I&nbsp;f(I&nbsp;i){return&nbsp;2+i;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//cblas&nbsp;..</tt><br>
 <tt>*c/k:&nbsp;&quot;./b.so&quot;5:`f!1&nbsp;&nbsp;&nbsp;&nbsp;/K&nbsp;f(K&nbsp;x){return&nbsp;ki(2+xi);}&nbsp;&nbsp;//feeds&nbsp;..</tt><br>
 <tt></tt><br>
-<tt>*enterprise[unlimited&nbsp;data/users/machines/..]&nbsp;+overload&nbsp;-todo</tt><br>
+<tt>*enterprise[unlimited&nbsp;data/users/machines/..]&nbsp;+<a href="Adverb.html#scan">over</a>load&nbsp;-todo</tt><br>
 </p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="Introduction.html" accesskey="1">Introduction</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">An introduction to shakti/k9, a novel computer language for data analysis
