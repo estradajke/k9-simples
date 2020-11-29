@@ -62,9 +62,9 @@ eachr:: ([n;]f)/:  name ``ab         \w
 eachl:: ([n;]f)\:  uuid              \cd x
 |    *note reverse::   *note max/or::                         
 <    *note asc::       *note less::              *note
-.z::.[md]       date 2024.01.01
+.z::.[md]       *note date:: 2024.01.01
 >    *note dsc: asc.       *note more: less.              *note
-.z::.[hrstuv]   time 12:34:56.123456789
+.z::.[hrstuv]   *note time:: 12:34:56.123456789
 =    *note group::     *note equal::      *note I/O::
 ~    *note not::       *note
 match::      0:  r/w line         Class             \f
@@ -78,8 +78,8 @@ Func: User Functions. {[a;b]a+b}   \fc x
 _    *note floor::  *note [f]drop::
 $    *note string::    *note cast::                            *note
 Table: Tables.
-?    *note unique+::   *note find+::      $[b;x;y] if else     *note
-t:::[[]i:2 3;f:3 4.;s:`a`b]
+?    *note unique+::   *note find+::      $[b;x;y] *note if else:
+cond.     *note t:::[[]i:2 3;f:3 4.;s:`a`b]
 @    *note type::   *note [f]at::         @[x;i;f[;y]] *note
 amend::   *note utable:: [[b:..]a:..]
 .    *note value::  *note [f]dot::        .[x;i;f[;y]] *note
@@ -4090,142 +4090,142 @@ Interface
 
 Tag Table:
 Node: Top126
-Node: Introduction5011
-Node: Examples17235
-Node: Benchmark24789
-Node: Verb29746
-Ref: x31206
-Ref: set31231
-Ref: flip31443
-Ref: plus31693
-Ref: negate32078
-Ref: minus32250
-Ref: first32357
-Ref: times32697
-Ref: divide32828
-Ref: where32965
-Ref: min/and33445
-Ref: reverse33704
-Ref: max/or33874
-Ref: asc34138
-Ref: less34511
-Ref: group34812
-Ref: equal35058
-Ref: not35362
-Ref: match35479
-Ref: enum35862
-Ref: key37115
-Ref: enlist37345
-Ref: cat37484
-Ref: sort37603
-Ref: [f]cut37835
-Ref: count38580
-Ref: [f]take38770
-Ref: floor39322
-Ref: [f]drop39413
-Ref: string40006
-Ref: cast40107
-Ref: unique+40454
-Ref: find+40937
-Ref: type41656
-Ref: [f]at42107
-Ref: value42423
-Ref: [f]dot42697
-Node: Adverb43952
-Ref: scan44698
-Ref: join45228
-Ref: split45403
-Ref: each45594
-Ref: +has45883
-Ref: eachp46149
-Ref: bin246893
-Ref: eachr47098
-Ref: eachl47295
-Ref: n scan47479
-Ref: c scan47959
-Ref: c over48471
-Ref: vs48608
-Ref: sv48728
-Node: Noun48852
-Ref: Atom Types50190
-Ref: bool51371
-Ref: int51671
-Ref: flt52331
-Ref: char52733
-Ref: name52956
-Ref: uuid53187
-Ref: time53344
-Ref: date54220
-Ref: datetime54682
-Node: List55497
-Node: Dictionary60772
-Node: User Functions65680
-Node: Named Functions68265
-Ref: sqrt68887
-Ref: exp68960
-Ref: log69028
-Ref: sin69128
-Ref: cos69267
-Ref: div69415
-Ref: mod69571
-Ref: bar69749
-Ref: in70289
-Ref: bin70468
-Ref: within70682
-Node: Knit Functions70896
-Ref: amend71165
-Ref: dmend71533
-Node: I/O71898
-Ref: read csv74001
-Ref: write csv74179
-Ref: read json74343
-Ref: write json74533
-Ref: w line74706
-Ref: r line75015
-Ref: w char75128
-Ref: r char75522
-Ref: r data75888
-Ref: w data76549
-Ref: conn/set77117
-Ref: http/get77177
-Ref: lib77237
-Node: Tables77701
-Ref: t78393
-Ref: xtable79998
-Ref: utable80480
-Node: kSQL80937
-Ref: select81535
-Ref: A82119
-Ref: by B82989
-Ref: where C83261
-Ref: update83843
-Ref: union84701
-Ref: leftjoin85222
-Ref: outer85740
-Ref: asof86075
-Ref: asof+87119
-Ref: insert88122
-Ref: upsert88468
-Node: System88792
-Ref: load89250
-Ref: timing89438
-Ref: variables89525
-Ref: memory89626
-Ref: cd89741
-Node: Control Flow89825
-Ref: cond90045
-Node: .z90306
-Node: Errors91336
-Ref: class91770
-Ref: rank91859
-Ref: length91983
-Ref: _type92106
-Ref: domain92215
-Ref: limit92337
-Ref: nyi92538
-Ref: parse92871
-Ref: _value93026
-Node: Conclusion93154
+Node: Introduction5040
+Node: Examples17264
+Node: Benchmark24818
+Node: Verb29775
+Ref: x31235
+Ref: set31260
+Ref: flip31472
+Ref: plus31722
+Ref: negate32107
+Ref: minus32279
+Ref: first32386
+Ref: times32726
+Ref: divide32857
+Ref: where32994
+Ref: min/and33474
+Ref: reverse33733
+Ref: max/or33903
+Ref: asc34167
+Ref: less34540
+Ref: group34841
+Ref: equal35087
+Ref: not35391
+Ref: match35508
+Ref: enum35891
+Ref: key37144
+Ref: enlist37374
+Ref: cat37513
+Ref: sort37632
+Ref: [f]cut37864
+Ref: count38609
+Ref: [f]take38799
+Ref: floor39351
+Ref: [f]drop39442
+Ref: string40035
+Ref: cast40136
+Ref: unique+40483
+Ref: find+40966
+Ref: type41685
+Ref: [f]at42136
+Ref: value42452
+Ref: [f]dot42726
+Node: Adverb43981
+Ref: scan44727
+Ref: join45257
+Ref: split45432
+Ref: each45623
+Ref: +has45912
+Ref: eachp46178
+Ref: bin246922
+Ref: eachr47127
+Ref: eachl47324
+Ref: n scan47508
+Ref: c scan47988
+Ref: c over48500
+Ref: vs48637
+Ref: sv48757
+Node: Noun48881
+Ref: Atom Types50219
+Ref: bool51400
+Ref: int51700
+Ref: flt52360
+Ref: char52762
+Ref: name52985
+Ref: uuid53216
+Ref: time53373
+Ref: date54249
+Ref: datetime54711
+Node: List55526
+Node: Dictionary60801
+Node: User Functions65709
+Node: Named Functions68294
+Ref: sqrt68916
+Ref: exp68989
+Ref: log69057
+Ref: sin69157
+Ref: cos69296
+Ref: div69444
+Ref: mod69600
+Ref: bar69778
+Ref: in70318
+Ref: bin70497
+Ref: within70711
+Node: Knit Functions70925
+Ref: amend71194
+Ref: dmend71562
+Node: I/O71927
+Ref: read csv74030
+Ref: write csv74208
+Ref: read json74372
+Ref: write json74562
+Ref: w line74735
+Ref: r line75044
+Ref: w char75157
+Ref: r char75551
+Ref: r data75917
+Ref: w data76578
+Ref: conn/set77146
+Ref: http/get77206
+Ref: lib77266
+Node: Tables77730
+Ref: t78422
+Ref: xtable80027
+Ref: utable80509
+Node: kSQL80966
+Ref: select81564
+Ref: A82148
+Ref: by B83018
+Ref: where C83290
+Ref: update83872
+Ref: union84730
+Ref: leftjoin85251
+Ref: outer85769
+Ref: asof86104
+Ref: asof+87148
+Ref: insert88151
+Ref: upsert88497
+Node: System88821
+Ref: load89279
+Ref: timing89467
+Ref: variables89554
+Ref: memory89655
+Ref: cd89770
+Node: Control Flow89854
+Ref: cond90074
+Node: .z90335
+Node: Errors91365
+Ref: class91799
+Ref: rank91888
+Ref: length92012
+Ref: _type92135
+Ref: domain92244
+Ref: limit92366
+Ref: nyi92567
+Ref: parse92900
+Ref: _value93055
+Node: Conclusion93183
 
 End Tag Table
 
