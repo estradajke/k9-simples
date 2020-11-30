@@ -716,7 +716,7 @@ t        e p  z    b
 3
 @end example
 
-@anchor{verb}@node Verb
+@node Verb
 @chapter Verb
 This chapter covers verbs which are the core functions of k9.  Given how different is it to call functions in k9 than many other languages this is probably a chapter that will have to be covered a few times.  Once you can ``speak'' k9 you'll read @code{|x} better than @code{reverse(x)}.  
 
@@ -1515,7 +1515,7 @@ b|2
 c|3
 @end example
 
-@anchor{adverb}@node Adverb
+@node Adverb
 @chapter Adverb
 Adverbs modify verbs to operative iteratively over nouns.  This previous sentence likley will only make sense once you understand it so let's jump into an example.  Imagine you have a list of 4 lists.  Using @code{first} you will retrieve the first sub-list.  In order to retrieve the first element of each sub-list you'll have to modify the function @code{first} with a modifier @code{each}.
 
@@ -2772,8 +2772,8 @@ e f  g
 1 4. z
 @end example
 
-@anchor{read csv}@section read CSV @result{} `csv?x
-Convert x from CSV format.  Works on lists and tables.
+@anchor{read csv}@section read csv @result{} `csv?x
+Convert x from csv format.  Works on lists and tables.
 
 @example
  `csv?("a,b";"1,3.";"2,4.")
