@@ -2640,11 +2640,16 @@ Given a sorted (increasing) list x, find the greatest index, i, where y>x[i].
 Test if x is equal to or greater than y[0] and less than y[1].
 
 @example
-@ 3 within (0;12)
+ 3 within 0 12
 1b
-@ 12 within (0;12)
+
+0 within 0 12
+1b
+
+12 within 0 12
 0b
-@ 23 within (0;12)
+
+23 within 0 12
 0b
 @end example
 

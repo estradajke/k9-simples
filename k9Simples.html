@@ -2733,11 +2733,16 @@ range:   <a href="#in">in</a> <a href="#bin">bin</a> <a href="#within">within</a
 <p>Test if x is equal to or greater than y[0] and less than y[1].
 </p>
 <div class="example">
-<pre class="example">&nbsp;3 within (0;12)
+<pre class="example"> 3 within 0 12
 1b
-&nbsp;12 within (0;12)
+
+0 within 0 12
+1b
+
+12 within 0 12
 0b
-&nbsp;23 within (0;12)
+
+23 within 0 12
 0b
 </pre></div>
 
