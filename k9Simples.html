@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- November 30, 2020
+<!-- December 3, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -48,9 +48,9 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; <
 <span id="k9_003a-Manual"></span><h1 class="top">k9: Manual</h1>
 <p>This manual is for Shakti (k9) build 2020.11.16.<br>
 </p>
-<p>The Shakti programming language is the work of Arthur Whitney and the team at Shakti.  The language comes from a lineage of similar languages going back to APL.  It&rsquo;s also known as k9 given the similarties to k, k2, ..., k6, k7 and the fact that Arthur also wrote those.  k9 is still under development so expect a bit of syntax change and likley even more improvements.
+<p>The Shakti programming language is the work of Arthur Whitney and the team at Shakti.  The language comes from a lineage of similar languages going back to APL.  It&rsquo;s also known as k9 given the similarities to k, k2, ..., k6, k7 and the fact that Arthur also wrote those.  k9 is still under development so expect a bit of syntax change and likely even more improvements.
 </p>
-<p>Learning k9 means code like <code>{x@(!#x)+\!#y}</code> is clear and actually prefered to something much longer and verbose.  You&rsquo;ll have to go a bit down the rabbit hole before it starts to come together but once it does you&rsquo;ll probably be happy you gave it a chance and end up learning a few things.  You&rsquo;ll understand how fast k9 can be in processing and analyzing data and how terse code is less likley to contain errors.  Unfortunatley you will be less likley to be content using more bloated and slow frameworks.  
+<p>Learning k9 means code like <code>{x@(!#x)+\!#y}</code> is clear and actually prefered to something much longer and verbose.  You&rsquo;ll have to go a bit down the rabbit hole before it starts to come together but once it does you&rsquo;ll probably be happy you gave it a chance and end up learning a few things.  You&rsquo;ll understand how fast k9 can be in processing and analyzing data and how terse code is less likely to contain errors.  Unfortunately you will be less likely to be content using more bloated and slow frameworks.  
 </p>
 <p>Alas this manual is not as elegant as the k9 language such that the text version of this document is almost as big as the binary of the language.  
 </p>
@@ -205,13 +205,13 @@ z@&amp;y&lt;z:?x<br>
 </p>
 <p>If you&rsquo;re new to k9 then you likely appreciate symbols are shorter but look like line noise.  That&rsquo;s true but so did arithetic until you learned the basics.
 </p>
-<p>When you first learned arithmetic you likley didn&rsquo;t have a choice.  Now you have a choice about learning k9.  If you give it a try, then I expect you&rsquo;ll get it quickly and move onto the power phase fast enough that you&rsquo;ll be happy you gave it a chance.
+<p>When you first learned arithmetic you likely didn&rsquo;t have a choice.  Now you have a choice about learning k9.  If you give it a try, then I expect you&rsquo;ll get it quickly and move onto the power phase fast enough that you&rsquo;ll be happy you gave it a chance.
 </p>
 <span id="Get-k9_002e"></span><h3 class="section">1.3 Get k9.</h3>
 
 <p><a href="https://shakti.sh">https://shakti.sh</a>
 </p>
-<p>You will find the Linux version in the linux directory and the MacOS version under macos.  Once you download the MacOS version you&rsquo;ll have to change it&rsquo;s file permissions to allow it to execute.
+<p>You will find the Linux version in the linux directory and the MacOS version under macos.  Once you download the MacOS version you&rsquo;ll have to change its file permissions to allow it to execute.
 </p>
 <div class="example">
 <pre class="example">&nbsp;chomd u+x k
@@ -271,7 +271,7 @@ Interface
 <span id="rlwrap"></span><h3 class="section">1.5 rlwrap</h3>
 <p>Although you only need the <samp>k</samp> binary to run k9 most will also install rlwrap, if not already installed, in order to get command history in a terminal window.  rlwrap is &ldquo;Readline wrapper: adds readline support to tools that lack it&rdquo; and allows one to arrow up to go through the command buffer history.
 </p>
-<p>In order to start k9 you should either run <samp>k</samp> or <samp>rlwrap k</samp> to get started.  Here I will show both options but one should run as desired.  In this document lines with input be shown with a leading space and output will be without.  In the examples below the user starts a terminal window in the directory with the <samp>k</samp> binary file.  Then the users enters <kbd>rlwrap ./k <span class="key">RET</span></kbd>.  k9 starts and displays the date of the build, (c), and shakti and then listens to user input.  In this example I have entered the command to exit k9, <kbd>\\</kbd>.  Then I start k9 again without rlwrap and again exit the session.
+<p>In order to start k9 you should either run <samp>k</samp> or <samp>rlwrap k</samp> to get started.  Here I will show both options but one should run as desired.  In this document lines with input are shown with a leading space and output will be without.  In the examples below the user starts a terminal window in the directory with the <samp>k</samp> binary file.  Then the users enters <kbd>rlwrap ./k <span class="key">RET</span></kbd>.  k9 starts and displays the date of the build, (c), and shakti and then listens to user input.  In this example I have entered the command to exit k9, <kbd>\\</kbd>.  Then I start k9 again without rlwrap and again exit the session.
 </p>
 <div class="example">
 <pre class="example"> rlwrap ./k
@@ -334,7 +334,7 @@ bash-3.2$
 </pre></div>
 
 <span id="Document-formatting-for-code-examples"></span><h3 class="section">1.7 Document formatting for code examples</h3>
-<p>This document uses a number of examples to familiarize the reader with k9.  The sytax is input has a leading space and output does not.  This follows the terminal syntax where the REPL input has space but prints output without.
+<p>This document uses a number of examples to familiarize the reader with k9.  The sytax is to have input with a leading space and output without a leading space.  This follows the terminal syntax where the REPL input has space but prints output without.
 </p><div class="example">
 <pre class="example"> 3+2 / this is input
 5    / this is output
@@ -344,7 +344,7 @@ bash-3.2$
 <p>One will need to understand some basic rules of k9 in order to progress.  These will likely seem strange at first but the faster you learn a few nuances the faster you&rsquo;ll move forward.
 </p>
 <span id="The-language-changes-often-_0028for-now_0029_002e"></span><h4 class="subsection">1.8.1 The language changes often (for now).</h4>
-<p>There may be examples in this document which work on the version indicated but do not with the version currently available to download.  If so, then feel free to drop the author a note.  Items which currently error but are likley to come back &rsquo;soon&rsquo; will be left in the document.
+<p>There may be examples in this document which work on the version indicated but do not with the version currently available to download.  If so, then feel free to drop the author a note.  Items which currently error but are likely to come back &rsquo;soon&rsquo; will be left in the document.
 </p>
 <span id="Colon-_0028_003a_0029-is-used-to-set-a-variable-to-a-value"></span><h4 class="subsection">1.8.2 Colon (<code>:</code>) is used to set a variable to a value</h4>
 <p><code>a:3</code> is used to set the variable, a, to the value, 3.  <code>a=3</code> is an equality test to determine if a is equal to 3.
@@ -356,7 +356,7 @@ bash-3.2$
 <p>2+5*3 is 17 and 2*5+3 is 16.  2+5*3 is first evaluated on the right most portion, 5*3, and once that is computed then it proceeds with 2+15.  2*5+3 goes to 2*8 which becomes 16.
 </p>
 <span id="There-is-no-arithmetic-order"></span><h4 class="subsection">1.8.5 There is no arithmetic order</h4>
-<p>+ does not happen generally before or after *.  The order of evaluation is done right to left unless parenthesis are used.  (2+5)*3 = 21 as the 2+5 in parenthesis is done before being multiplied by 3.
+<p>+ has equal precedence as *.  The order of evaluation is done right to left unless parenthesis are used.  (2+5)*3 = 21 as the 2+5 in parenthesis is done before being multiplied by 3.
 </p>
 <span id="Operators-are-overloaded-depending-on-the-number-of-arguments_002e"></span><h4 class="subsection">1.8.6 Operators are overloaded depending on the number of arguments.</h4>
 <div class="example">
@@ -402,7 +402,7 @@ bash-3.2$
 Next: <a href="#Benchmark" accesskey="n" rel="next">Benchmark</a>, Previous: <a href="#Introduction" accesskey="p" rel="prev">Introduction</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <span id="Examples-1"></span><h2 class="chapter">2 Examples</h2>
-<p>Before jumping into synax let&rsquo;s look at some example problems to get a sense of the speed of k9 at processing data.  Given both the historic use of languages similar to k9 in finance and the author&rsquo;s background much of the examples will be based on financial markets.  For those not familiar with this field a short introduction will likley be needed.
+<p>Before jumping into synax let&rsquo;s look at some example problems to get a sense of the speed of k9 at processing data.  Given both the historic use of languages similar to k9 in finance and the author&rsquo;s background much of the examples will be based on financial markets.  For those not familiar with this field a short introduction will likely be needed.
 </p>
 <span id="A-Tiny-Introduction-to-Financial-Market-Data"></span><h3 class="section">2.1 A Tiny Introduction to Financial Market Data</h3>
 <p>Financial market data generally are stored as prices (often call quotes) and trades.  At a minimum, prices will include time (t), price to buy (b for bid) and price to sell (a for ask).  Trades will include at a minimum time (t) and trade price (p).  In normal markets there are many more prices than trades.  (Additionally, the data normally includes the name of the security (s) and the exchange (x) from which the data comes.)  
@@ -509,7 +509,7 @@ e|-2903
 </pre></div>
 
 <span id="Understanding-Code-Examples"></span><h3 class="section">2.3 Understanding Code Examples</h3>
-<p>In the shakti mailing list there is a number of code examples that can be used to learn best practice.  In order to make sense of other&rsquo;s codes one needs to be able to effeciently parse the typically dense k9 language.  Here, an example of how one goes about this process is presented.
+<p>In the shakti mailing list there is a number of code examples that can be used to learn best practice.  In order to make sense of other&rsquo;s codes one needs to be able to efficiently parse the typically dense k9 language.  Here, an example of how one goes about this process is presented.
 </p>
 <div class="example">
 <pre class="example">ss:{*{
@@ -1591,7 +1591,7 @@ c|3
 Next: <a href="#Noun" accesskey="n" rel="next">Noun</a>, Previous: <a href="#Verb" accesskey="p" rel="prev">Verb</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <span id="Adverb-1"></span><h2 class="chapter">5 Adverb</h2>
-<p>Adverbs modify verbs to operative iteratively over nouns.  This previous sentence likley will only make sense once you understand it so let&rsquo;s jump into an example.  Imagine you have a list of 4 lists.  Using <code>first</code> you will retrieve the first sub-list.  In order to retrieve the first element of each sub-list you&rsquo;ll have to modify the function <code>first</code> with a modifier <code>each</code>.
+<p>Adverbs modify verbs to operative iteratively over nouns.  This previous sentence likely will only make sense once you understand it so let&rsquo;s jump into an example.  Imagine you have a list of 4 lists.  Using <code>first</code> you will retrieve the first sub-list.  In order to retrieve the first element of each sub-list you&rsquo;ll have to modify the function <code>first</code> with a modifier <code>each</code>.
 </p>
 <div class="example">
 <pre class="example">Adverb             
@@ -2094,7 +2094,7 @@ L
 </pre></div>
 
 <span id="List-Indexing"></span><h3 class="section">7.2 List Indexing</h3>
-<p>Lists can be indexed by using a few notations.  The @ notation is often used as it&rsquo;s less characters than [] and the explicit @ instead of space is likley more clear.
+<p>Lists can be indexed by using a few notations.  The @ notation is often used as it&rsquo;s less characters than [] and the explicit @ instead of space is likely more clear.
 </p>
 <div class="example">
 <pre class="example"> a:2*1+!10 / 2 4 ... 20
@@ -3693,7 +3693,7 @@ Next: <a href="#Errors" accesskey="n" rel="next">Errors</a>, Previous: <a href="
 Next: <a href="#Conclusion" accesskey="n" rel="next">Conclusion</a>, Previous: <a href="#g_t_002ez" accesskey="p" rel="prev">.z</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <span id="Errors-1"></span><h2 class="chapter">18 Errors</h2>
-<p>Given the terse syntax of k9 it likley won&rsquo;t be a surprise to a new user that the error messages are rather short also.  The errors are listed on the help page and described in more detail below.
+<p>Given the terse syntax of k9 it likely won&rsquo;t be a surprise to a new user that the error messages are rather short also.  The errors are listed on the help page and described in more detail below.
 </p>
 <div class="example">
 <pre class="example">error: <a href="#class">class</a> <a href="#rank">rank</a> <a href="#length">length</a> <a href="#g_t_005ftype">type</a> <a href="#domain">domain</a> <a href="#limit">limit</a> stack <a href="#parse">parse</a> <a href="#g_t_005fvalue">value</a>

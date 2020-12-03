@@ -1,6 +1,6 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
-November 30, 2020
+December 3, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -14,9 +14,9 @@ This manual is for Shakti (k9) build 2020.11.16.
 
    The Shakti programming language is the work of Arthur Whitney and the
 team at Shakti.  The language comes from a lineage of similar languages
-going back to APL. It's also known as k9 given the similarties to k, k2,
-..., k6, k7 and the fact that Arthur also wrote those.  k9 is still
-under development so expect a bit of syntax change and likley even more
+going back to APL. It's also known as k9 given the similarities to k,
+k2, ..., k6, k7 and the fact that Arthur also wrote those.  k9 is still
+under development so expect a bit of syntax change and likely even more
 improvements.
 
    Learning k9 means code like '{x@(!#x)+\!#y}' is clear and actually
@@ -24,8 +24,8 @@ prefered to something much longer and verbose.  You'll have to go a bit
 down the rabbit hole before it starts to come together but once it does
 you'll probably be happy you gave it a chance and end up learning a few
 things.  You'll understand how fast k9 can be in processing and
-analyzing data and how terse code is less likley to contain errors.
-Unfortunatley you will be less likley to be content using more bloated
+analyzing data and how terse code is less likely to contain errors.
+Unfortunately you will be less likely to be content using more bloated
 and slow frameworks.
 
    Alas this manual is not as elegant as the k9 language such that the
@@ -212,7 +212,7 @@ z@&y<z:?x
 but look like line noise.  That's true but so did arithetic until you
 learned the basics.
 
-   When you first learned arithmetic you likley didn't have a choice.
+   When you first learned arithmetic you likely didn't have a choice.
 Now you have a choice about learning k9.  If you give it a try, then I
 expect you'll get it quickly and move onto the power phase fast enough
 that you'll be happy you gave it a chance.
@@ -224,7 +224,7 @@ that you'll be happy you gave it a chance.
 
    You will find the Linux version in the linux directory and the MacOS
 version under macos.  Once you download the MacOS version you'll have to
-change it's file permissions to allow it to execute.
+change its file permissions to allow it to execute.
 
       chomd u+x k
 
@@ -298,7 +298,7 @@ buffer history.
 
    In order to start k9 you should either run 'k' or 'rlwrap k' to get
 started.  Here I will show both options but one should run as desired.
-In this document lines with input be shown with a leading space and
+In this document lines with input are shown with a leading space and
 output will be without.  In the examples below the user starts a
 terminal window in the directory with the 'k' binary file.  Then the
 users enters 'rlwrap ./k <RET>'.  k9 starts and displays the date of the
@@ -367,9 +367,9 @@ return, most variance, or any other analysis on the data.
 =========================================
 
 This document uses a number of examples to familiarize the reader with
-k9.  The sytax is input has a leading space and output does not.  This
-follows the terminal syntax where the REPL input has space but prints
-output without.
+k9.  The sytax is to have input with a leading space and output without
+a leading space.  This follows the terminal syntax where the REPL input
+has space but prints output without.
       3+2 / this is input
      5    / this is output
 
@@ -386,7 +386,7 @@ nuances the faster you'll move forward.
 There may be examples in this document which work on the version
 indicated but do not with the version currently available to download.
 If so, then feel free to drop the author a note.  Items which currently
-error but are likley to come back 'soon' will be left in the document.
+error but are likely to come back 'soon' will be left in the document.
 
 1.8.2 Colon (':') is used to set a variable to a value
 ------------------------------------------------------
@@ -409,9 +409,9 @@ portion, 5*3, and once that is computed then it proceeds with 2+15.
 1.8.5 There is no arithmetic order
 ----------------------------------
 
-+ does not happen generally before or after *.  The order of evaluation
-is done right to left unless parenthesis are used.  (2+5)*3 = 21 as the
-2+5 in parenthesis is done before being multiplied by 3.
++ has equal precedence as *.  The order of evaluation is done right to
+left unless parenthesis are used.  (2+5)*3 = 21 as the 2+5 in
+parenthesis is done before being multiplied by 3.
 
 1.8.6 Operators are overloaded depending on the number of arguments.
 --------------------------------------------------------------------
@@ -467,7 +467,7 @@ Before jumping into synax let's look at some example problems to get a
 sense of the speed of k9 at processing data.  Given both the historic
 use of languages similar to k9 in finance and the author's background
 much of the examples will be based on financial markets.  For those not
-familiar with this field a short introduction will likley be needed.
+familiar with this field a short introduction will likely be needed.
 
 2.1 A Tiny Introduction to Financial Market Data
 ================================================
@@ -592,7 +592,7 @@ of the price deltas.
 
 In the shakti mailing list there is a number of code examples that can
 be used to learn best practice.  In order to make sense of other's codes
-one needs to be able to effeciently parse the typically dense k9
+one needs to be able to efficiently parse the typically dense k9
 language.  Here, an example of how one goes about this process is
 presented.
 
@@ -1704,7 +1704,7 @@ File: k9.info,  Node: Adverb,  Next: Noun,  Prev: Verb,  Up: Top
 ********
 
 Adverbs modify verbs to operative iteratively over nouns.  This previous
-sentence likley will only make sense once you understand it so let's
+sentence likely will only make sense once you understand it so let's
 jump into an example.  Imagine you have a list of 4 lists.  Using
 'first' you will retrieve the first sub-list.  In order to retrieve the
 first element of each sub-list you'll have to modify the function
@@ -2251,7 +2251,7 @@ encased by parenthesis.
 
 Lists can be indexed by using a few notations.  The @ notation is often
 used as it's less characters than [] and the explicit @ instead of space
-is likley more clear.
+is likely more clear.
 
       a:2*1+!10 / 2 4 ... 20
       a[9]      / square bracket
@@ -3921,7 +3921,7 @@ File: k9.info,  Node: Errors,  Next: Conclusion,  Prev: .z,  Up: Top
 18 Errors
 *********
 
-Given the terse syntax of k9 it likley won't be a surprise to a new user
+Given the terse syntax of k9 it likely won't be a surprise to a new user
 that the error messages are rather short also.  The errors are listed on
 the help page and described in more detail below.
 
@@ -4077,143 +4077,143 @@ Interface
 
 
 Tag Table:
-Node: Top126
+Node: Top125
 Node: Introduction5128
-Node: Examples17293
-Node: Benchmark24847
-Node: Verb29804
-Ref: x31264
-Ref: set31289
-Ref: flip31501
-Ref: plus31751
-Ref: negate32136
-Ref: minus32308
-Ref: first32415
-Ref: times32755
-Ref: divide32886
-Ref: where33023
-Ref: min/and33503
-Ref: reverse33762
-Ref: max/or33932
-Ref: asc34196
-Ref: less34569
-Ref: group34870
-Ref: equal35116
-Ref: not35420
-Ref: match35537
-Ref: enum35920
-Ref: key37173
-Ref: enlist37403
-Ref: cat37542
-Ref: sort37661
-Ref: [f]cut37893
-Ref: count38638
-Ref: [f]take38828
-Ref: floor39380
-Ref: [f]drop39471
-Ref: string40064
-Ref: cast40165
-Ref: unique+40512
-Ref: find+40995
-Ref: type41714
-Ref: [f]at42165
-Ref: value42481
-Ref: [f]dot42755
-Node: Adverb44010
-Ref: scan44756
-Ref: join45286
-Ref: split45461
-Ref: each45652
-Ref: +has45941
-Ref: eachp46207
-Ref: bin246951
-Ref: eachr47156
-Ref: eachl47353
-Ref: n scan47537
-Ref: c scan48017
-Ref: c over48529
-Ref: vs48666
-Ref: sv48786
-Node: Noun48910
-Ref: Atom Types50248
-Ref: bool51429
-Ref: int51729
-Ref: flt52389
-Ref: char52791
-Ref: name53014
-Ref: uuid53245
-Ref: time53402
-Ref: date54278
-Ref: datetime54740
-Node: List55555
-Node: Dictionary60830
-Node: User Functions65738
-Node: Named Functions68323
-Ref: sqrt68945
-Ref: exp69018
-Ref: log69086
-Ref: sin69186
-Ref: cos69325
-Ref: div69473
-Ref: mod69629
-Ref: bar69807
-Ref: in70347
-Ref: bin70526
-Ref: within70740
-Node: Knit Functions70954
-Ref: amend71223
-Ref: dmend71591
-Node: I/O71956
-Ref: read csv74059
-Ref: write csv74237
-Ref: read json74401
-Ref: write json74591
-Ref: w line74764
-Ref: r line75073
-Ref: w byte75186
-Ref: r byte75414
-Ref: r data75562
-Ref: w data76223
-Ref: conn/set76791
-Ref: http/get76851
-Ref: lib76911
-Node: Tables77375
-Ref: t78067
-Ref: xtable79672
-Ref: utable80154
-Node: kSQL80611
-Ref: select81209
-Ref: A81793
-Ref: by B82663
-Ref: where C82935
-Ref: update83517
-Ref: union84375
-Ref: leftjoin84896
-Ref: outer85414
-Ref: asof85749
-Ref: asof+86793
-Ref: insert87796
-Ref: upsert88142
-Node: System88466
-Ref: load88924
-Ref: timing89112
-Ref: variables89199
-Ref: memory89300
-Ref: cd89415
-Node: Control Flow89499
-Ref: cond89719
-Node: .z89980
-Node: Errors91010
-Ref: class91444
-Ref: rank91533
-Ref: length91657
-Ref: _type91780
-Ref: domain91889
-Ref: limit92011
-Ref: nyi92212
-Ref: parse92545
-Ref: _value92700
-Node: Conclusion92828
+Node: Examples17299
+Node: Benchmark24853
+Node: Verb29810
+Ref: x31270
+Ref: set31295
+Ref: flip31507
+Ref: plus31757
+Ref: negate32142
+Ref: minus32314
+Ref: first32421
+Ref: times32761
+Ref: divide32892
+Ref: where33029
+Ref: min/and33509
+Ref: reverse33768
+Ref: max/or33938
+Ref: asc34202
+Ref: less34575
+Ref: group34876
+Ref: equal35122
+Ref: not35426
+Ref: match35543
+Ref: enum35926
+Ref: key37179
+Ref: enlist37409
+Ref: cat37548
+Ref: sort37667
+Ref: [f]cut37899
+Ref: count38644
+Ref: [f]take38834
+Ref: floor39386
+Ref: [f]drop39477
+Ref: string40070
+Ref: cast40171
+Ref: unique+40518
+Ref: find+41001
+Ref: type41720
+Ref: [f]at42171
+Ref: value42487
+Ref: [f]dot42761
+Node: Adverb44016
+Ref: scan44762
+Ref: join45292
+Ref: split45467
+Ref: each45658
+Ref: +has45947
+Ref: eachp46213
+Ref: bin246957
+Ref: eachr47162
+Ref: eachl47359
+Ref: n scan47543
+Ref: c scan48023
+Ref: c over48535
+Ref: vs48672
+Ref: sv48792
+Node: Noun48916
+Ref: Atom Types50254
+Ref: bool51435
+Ref: int51735
+Ref: flt52395
+Ref: char52797
+Ref: name53020
+Ref: uuid53251
+Ref: time53408
+Ref: date54284
+Ref: datetime54746
+Node: List55561
+Node: Dictionary60836
+Node: User Functions65744
+Node: Named Functions68329
+Ref: sqrt68951
+Ref: exp69024
+Ref: log69092
+Ref: sin69192
+Ref: cos69331
+Ref: div69479
+Ref: mod69635
+Ref: bar69813
+Ref: in70353
+Ref: bin70532
+Ref: within70746
+Node: Knit Functions70960
+Ref: amend71229
+Ref: dmend71597
+Node: I/O71962
+Ref: read csv74065
+Ref: write csv74243
+Ref: read json74407
+Ref: write json74597
+Ref: w line74770
+Ref: r line75079
+Ref: w byte75192
+Ref: r byte75420
+Ref: r data75568
+Ref: w data76229
+Ref: conn/set76797
+Ref: http/get76857
+Ref: lib76917
+Node: Tables77381
+Ref: t78073
+Ref: xtable79678
+Ref: utable80160
+Node: kSQL80617
+Ref: select81215
+Ref: A81799
+Ref: by B82669
+Ref: where C82941
+Ref: update83523
+Ref: union84381
+Ref: leftjoin84902
+Ref: outer85420
+Ref: asof85755
+Ref: asof+86799
+Ref: insert87802
+Ref: upsert88148
+Node: System88472
+Ref: load88930
+Ref: timing89118
+Ref: variables89205
+Ref: memory89306
+Ref: cd89421
+Node: Control Flow89505
+Ref: cond89725
+Node: .z89986
+Node: Errors91016
+Ref: class91450
+Ref: rank91539
+Ref: length91663
+Ref: _type91786
+Ref: domain91895
+Ref: limit92017
+Ref: nyi92218
+Ref: parse92551
+Ref: _value92706
+Node: Conclusion92834
 
 End Tag Table
 
