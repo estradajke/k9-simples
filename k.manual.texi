@@ -56,7 +56,7 @@ The built-in reference screen (@code{\}) containing all the k9 commands.
 * kSQL:: kSQL to query tables
 * System:: System functions and measurements
 * Control Flow:: If/Do/While Statements 
-* .z:: Functions for current date and time
+* .z and more:: Functions for current date and time
 * Errors:: Error messages
 * Conclusion:: Conclusion
 @c * Index:: Complete index
@@ -3543,8 +3543,8 @@ a|1 2
 b|3 4
 @end example
 
-@node .z
-@chapter .z
+@node .z and more
+@chapter .z and more
 k9 has functions (within @code{.z}) to get the current date, time, and date-time.  Uppercase is used to include a date and lower case for time only.  There are also functions to retrieve partial date and time (within @code{.mdhrstuv}).
 
 @verbatim

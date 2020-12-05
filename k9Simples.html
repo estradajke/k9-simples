@@ -77,8 +77,8 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; <
 <tt>%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#divide">divide</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f/:&nbsp;<a href="#eachr">eachr</a>&nbsp;([n;]f)/:&nbsp;&nbsp;<a href="#name">name</a>&nbsp;``ab&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\w</tt><br>
 <tt>&amp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#where">where</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#min_002fand">min/and</a>&nbsp;&nbsp;&nbsp;&nbsp;f\:&nbsp;<a href="#eachl">eachl</a>&nbsp;([n;]f)\:&nbsp;&nbsp;<a href="#uuid">uuid</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\cd&nbsp;x</tt><br>
 <tt>|&nbsp;&nbsp;&nbsp;&nbsp;<a href="#reverse">reverse</a>&nbsp;&nbsp;&nbsp;<a href="#max_002for">max/or</a></tt><br>
-<tt>&lt;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#asc">asc</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#less">less</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#g_t_002ez">.z</a>.[md]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#date">date</a>&nbsp;2001.01.01</tt><br>
-<tt>&gt;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#asc">dsc</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#less">more</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#g_t_002ez">.z</a>.[hrstuv]&nbsp;&nbsp;&nbsp;<a href="#time">time</a>&nbsp;12:34:56.123456789</tt><br>
+<tt>&lt;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#asc">asc</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#less">less</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#g_t_002ez-and-more">.z and more</a>.[md]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#date">date</a>&nbsp;2001.01.01</tt><br>
+<tt>&gt;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#asc">dsc</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#less">more</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#g_t_002ez-and-more">.z and more</a>.[hrstuv]&nbsp;&nbsp;&nbsp;<a href="#time">time</a>&nbsp;12:34:56.123456789</tt><br>
 <tt>=&nbsp;&nbsp;&nbsp;&nbsp;<a href="#group">group</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#equal">equal</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#I_002fO">I/O</a></tt><br>
 <tt>~&nbsp;&nbsp;&nbsp;&nbsp;<a href="#not">not</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#match">match</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0:&nbsp;&nbsp;<a href="#r-line">r</a>/<a href="#w-line">w</a>&nbsp;line&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\f</tt><br>
 <tt>!&nbsp;&nbsp;&nbsp;&nbsp;<a href="#enum">enum</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#key">key</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1:&nbsp;&nbsp;<a href="#r-byte">r</a>/<a href="#w-byte">w</a>&nbsp;byte&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#List">List</a>&nbsp;(2;3.4;`c)&nbsp;&nbsp;&nbsp;\ft&nbsp;x</tt><br>
@@ -134,7 +134,7 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; <
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Control-Flow">Control Flow</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">If/Do/While Statements 
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#g_t_002ez">.z</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Functions for current date and time
+<tr><td align="left" valign="top">&bull; <a href="#g_t_002ez-and-more">.z and more</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Functions for current date and time
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Errors">Errors</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Error messages
 </td></tr>
@@ -3626,7 +3626,7 @@ Next: <a href="#Control-Flow" accesskey="n" rel="next">Control Flow</a>, Previou
 <hr>
 <span id="Control-Flow"></span><div class="header">
 <p>
-Next: <a href="#g_t_002ez" accesskey="n" rel="next">.z</a>, Previous: <a href="#System" accesskey="p" rel="prev">System</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#g_t_002ez-and-more" accesskey="n" rel="next">.z and more</a>, Previous: <a href="#System" accesskey="p" rel="prev">System</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <span id="Control-Flow-1"></span><h2 class="chapter">16 Control Flow</h2>
 <p>Although not heavily used in k9, control flow statements will still be required occasionally.
@@ -3652,11 +3652,11 @@ b|3 4
 </pre></div>
 
 <hr>
-<span id="g_t_002ez"></span><div class="header">
+<span id="g_t_002ez-and-more"></span><div class="header">
 <p>
 Next: <a href="#Errors" accesskey="n" rel="next">Errors</a>, Previous: <a href="#Control-Flow" accesskey="p" rel="prev">Control Flow</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<span id="g_t_002ez-1"></span><h2 class="chapter">17 .z</h2>
+<span id="g_t_002ez-and-more-1"></span><h2 class="chapter">17 .z and more</h2>
 <p>k9 has functions (within <code>.z</code>) to get the current date, time, and date-time.  Uppercase is used to include a date and lower case for time only.  There are also functions to retrieve partial date and time (within <code>.mdhrstuv</code>).
 </p>
 <pre class="verbatim">.z.[md]       date 2001.01.01
@@ -3740,7 +3740,7 @@ now:.z.v;now   / with time
 <hr>
 <span id="Errors"></span><div class="header">
 <p>
-Next: <a href="#Conclusion" accesskey="n" rel="next">Conclusion</a>, Previous: <a href="#g_t_002ez" accesskey="p" rel="prev">.z</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#Conclusion" accesskey="n" rel="next">Conclusion</a>, Previous: <a href="#g_t_002ez-and-more" accesskey="p" rel="prev">.z and more</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <span id="Errors-1"></span><h2 class="chapter">18 Errors</h2>
 <p>Given the terse syntax of k9 it likely won&rsquo;t be a surprise to a new user that the error messages are rather short also.  The errors are listed on the help page and described in more detail below.
