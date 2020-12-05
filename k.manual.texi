@@ -1802,6 +1802,22 @@ Booleans have two possible values 0 and 1 and have a 'b' to avoid confusion with
 @ 10101010b
 10101010b
 @end example
+
+@subsection boolean logic
+k9 implements logic operations in the usual way.
+
+@example
+ x:0101b;y:0011b
+
+[[x:x;y:y]AND:x&y;OR:x|y;NAND:~x&y;NOR:~x|y;XOR:~x=y;XNOR:x=y]
+x y|AND OR NAND NOR XOR XNOR
+- -|--- -- ---- --- --- ----
+0 0|  0  0    1   1   0    1
+1 0|  0  1    1   0   1    0
+0 1|  0  1    1   0   1    0
+1 1|  1  1    0   0   0    1
+@end example
+
 @section Numeric Data
 Numbers can be stored as integers and floats.
 
@@ -2856,7 +2872,7 @@ Enterprise Only
 Load file, eg.@: csv or from a (x 2: y) save.  For the latter one can find a ``save then load'' example in the next section.
 
 @example
-@ 2:`t.csv
+ 2:`t.csv
 s    t        e p  z   
 ---- -------- - -- ----
 AABL 09:30:00 D 11 4379
@@ -3527,11 +3543,14 @@ b|3 4
 
 @node .z
 @chapter .z
-k9 has functions (within @code{.z}) to get the current date, time, and date-time.  Uppercase is used to include a date and lower case for time only.
+k9 has functions (within @code{.z}) to get the current date, time, and date-time.  Uppercase is used to include a date and lower case for time only.  There are also functions to retrieve partial date and time.
 
 @verbatim
-.z.DTV date 2024.01.01T12:34:56 
-.z.dtv time  12:34:56.123456789 
+.z.[md]       date 2001.01.01
+.z.[hrstuv]   time 12:34:56.123456789
+
+time(cuanto) .z.t mdhrstuv (month day hour minute second milli micro nano)
+date(cuando) .z.d mdHRSTUV (month day hour minute second milli micro nano)
 @end verbatim
 
 @section .z.DTV date
@@ -3570,6 +3589,40 @@ One could use the current time commands to measure run time but typically this i
 
 \t (_2e8)?1.
 610
+@end example
+
+@section Temporal dot functions
+These functions use dot notation to retrieve partial date and times.
+
+@example
+ now:.z.V;now   / with datetime
+2020.12.05T11:28:04.881110016
+ now.d
+2020.12.05
+ now.H
+2020.12.05T11
+ now.S
+2020.12.05T11:28:04
+ now.U
+2020.12.05T11:28:04.881110
+
+ now:.z.d;now  / with date
+2020.12.05
+ now.m
+2020.12.
+ now.d
+2020.12.05
+ now.m.d       / convert to month and then day to get 1st of current month
+2020.12.01
+
+now:.z.v;now   / with time
+11:28:08.518104064
+ now.r
+11:28
+ now.s
+11:28:08
+ now.u
+11:28:08.518104
 @end example
 
 @node Errors

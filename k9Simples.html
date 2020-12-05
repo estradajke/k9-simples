@@ -1877,6 +1877,22 @@ Next: <a href="#List" accesskey="n" rel="next">List</a>, Previous: <a href="#Adv
 &nbsp;10101010b
 10101010b
 </pre></div>
+
+<span id="boolean-logic"></span><h4 class="subsection">6.2.1 boolean logic</h4>
+<p>k9 implements logic operations in the usual way.
+</p>
+<div class="example">
+<pre class="example"> x:0101b;y:0011b
+
+[[x:x;y:y]AND:x&amp;y;OR:x|y;NAND:~x&amp;y;NOR:~x|y;XOR:~x=y;XNOR:x=y]
+x y|AND OR NAND NOR XOR XNOR
+- -|--- -- ---- --- --- ----
+0 0|  0  0    1   1   0    1
+1 0|  0  1    1   0   1    0
+0 1|  0  1    1   0   1    0
+1 1|  1  1    0   0   0    1
+</pre></div>
+
 <span id="Numeric-Data"></span><h3 class="section">6.3 Numeric Data</h3>
 <p>Numbers can be stored as integers and floats.
 </p>
@@ -2952,7 +2968,7 @@ t:1:&quot;some.txt&quot;;t
 <p>Load file, eg. csv or from a (x 2: y) save.  For the latter one can find a &ldquo;save then load&rdquo; example in the next section.
 </p>
 <div class="example">
-<pre class="example">&nbsp;2:`t.csv
+<pre class="example"> 2:`t.csv
 s    t        e p  z   
 ---- -------- - -- ----
 AABL 09:30:00 D 11 4379
@@ -3639,10 +3655,13 @@ b|3 4
 Next: <a href="#Errors" accesskey="n" rel="next">Errors</a>, Previous: <a href="#Control-Flow" accesskey="p" rel="prev">Control Flow</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <span id="g_t_002ez-1"></span><h2 class="chapter">17 .z</h2>
-<p>k9 has functions (within <code>.z</code>) to get the current date, time, and date-time.  Uppercase is used to include a date and lower case for time only.
+<p>k9 has functions (within <code>.z</code>) to get the current date, time, and date-time.  Uppercase is used to include a date and lower case for time only.  There are also functions to retrieve partial date and time.
 </p>
-<pre class="verbatim">.z.DTV date 2024.01.01T12:34:56 
-.z.dtv time  12:34:56.123456789 
+<pre class="verbatim">.z.[md]       date 2001.01.01
+.z.[hrstuv]   time 12:34:56.123456789
+
+time(cuanto) .z.t mdhrstuv (month day hour minute second milli micro nano)
+date(cuando) .z.d mdHRSTUV (month day hour minute second milli micro nano)
 </pre>
 <span id="g_t_002ez_002eDTV-date"></span><h3 class="section">17.1 .z.DTV date</h3>
 <p>These function retrieve the date (D), date &amp; time (ms) (T), and date &amp; time (ns) (V).
@@ -3680,6 +3699,40 @@ Next: <a href="#Errors" accesskey="n" rel="next">Errors</a>, Previous: <a href="
 
 \t (_2e8)?1.
 610
+</pre></div>
+
+<span id="Temporal-dot-functions"></span><h3 class="section">17.3 Temporal dot functions</h3>
+<p>These functions use dot notation to retrieve partial date and times.
+</p>
+<div class="example">
+<pre class="example"> now:.z.V;now   / with datetime
+2020.12.05T11:28:04.881110016
+ now.d
+2020.12.05
+ now.H
+2020.12.05T11
+ now.S
+2020.12.05T11:28:04
+ now.U
+2020.12.05T11:28:04.881110
+
+ now:.z.d;now  / with date
+2020.12.05
+ now.m
+2020.12.
+ now.d
+2020.12.05
+ now.m.d       / convert to month and then day to get 1st of current month
+2020.12.01
+
+now:.z.v;now   / with time
+11:28:08.518104064
+ now.r
+11:28
+ now.s
+11:28:08
+ now.u
+11:28:08.518104
 </pre></div>
 
 <hr>

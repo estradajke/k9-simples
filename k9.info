@@ -2010,6 +2010,21 @@ confusion with integers, eg.  0b or 1b.
       10101010b
      10101010b
 
+6.2.1 boolean logic
+-------------------
+
+k9 implements logic operations in the usual way.
+
+      x:0101b;y:0011b
+
+     [[x:x;y:y]AND:x&y;OR:x|y;NAND:~x&y;NOR:~x|y;XOR:~x=y;XNOR:x=y]
+     x y|AND OR NAND NOR XOR XNOR
+     - -|--- -- ---- --- --- ----
+     0 0|  0  0    1   1   0    1
+     1 0|  0  1    1   0   1    0
+     0 1|  0  1    1   0   1    0
+     1 1|  1  1    0   0   0    1
+
 6.3 Numeric Data
 ================
 
@@ -3873,10 +3888,13 @@ File: k9.info,  Node: .z,  Next: Errors,  Prev: Control Flow,  Up: Top
 
 k9 has functions (within '.z') to get the current date, time, and
 date-time.  Uppercase is used to include a date and lower case for time
-only.
+only.  There are also functions to retrieve partial date and time.
 
-.z.DTV date 2024.01.01T12:34:56 
-.z.dtv time  12:34:56.123456789 
+.z.[md]       date 2001.01.01
+.z.[hrstuv]   time 12:34:56.123456789
+
+time(cuanto) .z.t mdhrstuv (month day hour minute second milli micro nano)
+date(cuando) .z.d mdHRSTUV (month day hour minute second milli micro nano)
 
 17.1 .z.DTV date
 ================
@@ -3917,6 +3935,40 @@ typically this is done via '\t'
 
      \t (_2e8)?1.
      610
+
+17.3 Temporal dot functions
+===========================
+
+These functions use dot notation to retrieve partial date and times.
+
+      now:.z.V;now   / with datetime
+     2020.12.05T11:28:04.881110016
+      now.d
+     2020.12.05
+      now.H
+     2020.12.05T11
+      now.S
+     2020.12.05T11:28:04
+      now.U
+     2020.12.05T11:28:04.881110
+
+      now:.z.d;now  / with date
+     2020.12.05
+      now.m
+     2020.12.
+      now.d
+     2020.12.05
+      now.m.d       / convert to month and then day to get 1st of current month
+     2020.12.01
+
+     now:.z.v;now   / with time
+     11:28:08.518104064
+      now.r
+     11:28
+      now.s
+     11:28:08
+      now.u
+     11:28:08.518104
 
 
 File: k9.info,  Node: Errors,  Next: Conclusion,  Prev: .z,  Up: Top
@@ -4138,83 +4190,83 @@ Ref: sv48940
 Node: Noun49064
 Ref: Atom Types50402
 Ref: bool51583
-Ref: int51883
-Ref: flt52543
-Ref: char52945
-Ref: name53168
-Ref: uuid53399
-Ref: time53556
-Ref: date54432
-Ref: datetime54893
-Node: List55690
-Node: Dictionary60965
-Node: User Functions65873
-Node: Named Functions68458
-Ref: sqrt69080
-Ref: exp69153
-Ref: log69221
-Ref: sin69321
-Ref: cos69460
-Ref: div69608
-Ref: mod69764
-Ref: bar69942
-Ref: in70482
-Ref: bin70661
-Ref: within70875
-Node: Knit Functions71111
-Ref: amend71380
-Ref: dmend71748
-Node: I/O72113
-Ref: read csv74216
-Ref: write csv74394
-Ref: read json74558
-Ref: write json74748
-Ref: w line74921
-Ref: r line75230
-Ref: w byte75343
-Ref: r byte75571
-Ref: r data75719
-Ref: w data76380
-Ref: conn/set76948
-Ref: http/get77008
-Ref: lib77068
-Node: Tables77532
-Ref: t78224
-Ref: xtable79829
-Ref: utable80311
-Node: kSQL80768
-Ref: select81366
-Ref: A81950
-Ref: by B82820
-Ref: where C83092
-Ref: update83674
-Ref: union84532
-Ref: leftjoin85053
-Ref: outer85571
-Ref: asof85906
-Ref: asof+86950
-Ref: insert87953
-Ref: upsert88299
-Node: System88623
-Ref: load89081
-Ref: timing89269
-Ref: variables89356
-Ref: memory89457
-Ref: cd89572
-Node: Control Flow89656
-Ref: cond89876
-Node: .z90137
-Node: Errors91167
-Ref: class91601
-Ref: rank91690
-Ref: length91814
-Ref: _type91937
-Ref: domain92046
-Ref: limit92168
-Ref: nyi92369
-Ref: parse92702
-Ref: _value92857
-Node: Conclusion92985
+Ref: int52270
+Ref: flt52930
+Ref: char53332
+Ref: name53555
+Ref: uuid53786
+Ref: time53943
+Ref: date54819
+Ref: datetime55280
+Node: List56077
+Node: Dictionary61352
+Node: User Functions66260
+Node: Named Functions68845
+Ref: sqrt69467
+Ref: exp69540
+Ref: log69608
+Ref: sin69708
+Ref: cos69847
+Ref: div69995
+Ref: mod70151
+Ref: bar70329
+Ref: in70869
+Ref: bin71048
+Ref: within71262
+Node: Knit Functions71498
+Ref: amend71767
+Ref: dmend72135
+Node: I/O72500
+Ref: read csv74603
+Ref: write csv74781
+Ref: read json74945
+Ref: write json75135
+Ref: w line75308
+Ref: r line75617
+Ref: w byte75730
+Ref: r byte75958
+Ref: r data76106
+Ref: w data76767
+Ref: conn/set77335
+Ref: http/get77395
+Ref: lib77455
+Node: Tables77919
+Ref: t78611
+Ref: xtable80216
+Ref: utable80698
+Node: kSQL81155
+Ref: select81753
+Ref: A82337
+Ref: by B83207
+Ref: where C83479
+Ref: update84061
+Ref: union84919
+Ref: leftjoin85440
+Ref: outer85958
+Ref: asof86293
+Ref: asof+87337
+Ref: insert88340
+Ref: upsert88686
+Node: System89010
+Ref: load89468
+Ref: timing89656
+Ref: variables89743
+Ref: memory89844
+Ref: cd89959
+Node: Control Flow90043
+Ref: cond90263
+Node: .z90524
+Node: Errors92446
+Ref: class92880
+Ref: rank92969
+Ref: length93093
+Ref: _type93216
+Ref: domain93325
+Ref: limit93447
+Ref: nyi93648
+Ref: parse93981
+Ref: _value94136
+Node: Conclusion94264
 
 End Tag Table
 
