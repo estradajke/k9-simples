@@ -3545,7 +3545,7 @@ b|3 4
 
 @node .z
 @chapter .z
-k9 has functions (within @code{.z}) to get the current date, time, and date-time.  Uppercase is used to include a date and lower case for time only.  There are also functions to retrieve partial date and time.
+k9 has functions (within @code{.z}) to get the current date, time, and date-time.  Uppercase is used to include a date and lower case for time only.  There are also functions to retrieve partial date and time (within @code{.mdhrstuv}).
 
 @verbatim
 .z.[md]       date 2001.01.01

@@ -3892,7 +3892,8 @@ File: k9.info,  Node: .z,  Next: Errors,  Prev: Control Flow,  Up: Top
 
 k9 has functions (within '.z') to get the current date, time, and
 date-time.  Uppercase is used to include a date and lower case for time
-only.  There are also functions to retrieve partial date and time.
+only.  There are also functions to retrieve partial date and time
+(within '.mdhrstuv').
 
 .z.[md]       date 2001.01.01
 .z.[hrstuv]   time 12:34:56.123456789
@@ -4260,17 +4261,17 @@ Ref: cd90122
 Node: Control Flow90206
 Ref: cond90426
 Node: .z90687
-Node: Errors92609
-Ref: class93043
-Ref: rank93132
-Ref: length93256
-Ref: _type93379
-Ref: domain93488
-Ref: limit93610
-Ref: nyi93811
-Ref: parse94144
-Ref: _value94299
-Node: Conclusion94427
+Node: Errors92630
+Ref: class93064
+Ref: rank93153
+Ref: length93277
+Ref: _type93400
+Ref: domain93509
+Ref: limit93631
+Ref: nyi93832
+Ref: parse94165
+Ref: _value94320
+Node: Conclusion94448
 
 End Tag Table
 
