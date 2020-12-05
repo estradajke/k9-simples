@@ -1491,7 +1491,7 @@ multiply) or not (cast).
      2.3
       `t$"12:34:56.789"
      12:34:56.789
-      `D$"2020.04.20"
+      `d$"2020.04.20"
      2020.04.20
 
    Multiply matrices x and y together.
@@ -1581,13 +1581,13 @@ upper-case represents a list of type indicated.
       @"a"
      `c
       @2020.04.20
-     `D
+     `d
       @12:34:56.789
      `t
       @(1;1.2;`a;"a";2020.04.20;12:34:56.789)  / type of a list
      `L
       @'(1;1.2;`a;"a";2020.04.20;12:34:56.789) / type of elements of the list
-     `i`f`s`c`D`t
+     `i`f`s`c`d`t
 
 4.35 [f]at => x@y
 =================
@@ -1969,7 +1969,7 @@ of the list '`L' but the function can be modified to evalue each type
       @(3;3.1;"b";`a;12:01:02.123;2020.04.05) / mixed list
      `L
       @'(3;3.1;"b";`a;12:01:02.123;2020.04.05)
-     `i`f`c`n`t`D
+     `i`f`c`n`t`d
 
 6.1 Atom Types
 ==============

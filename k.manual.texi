@@ -1298,7 +1298,7 @@ Cast string y into type x.
 2.3
 @ `t$"12:34:56.789"
 12:34:56.789
-@ `D$"2020.04.20"
+ `d$"2020.04.20"
 2020.04.20
 @end example
 
@@ -1377,22 +1377,22 @@ Generate x random values from 0 to less than y (int, float, time, bit) or from y
 Return the data type of x.  Lower-case represents a single element while upper-case represents a list of type indicated.
 
 @example
-@ @@1
+ @@1
 `i
-@ @@1.2
+ @@1.2
 `f
-@ @@`a
+ @@`a
 `s
-@ @@"a"
+ @@"a"
 `c
-@ @@2020.04.20
-`D
-@ @@12:34:56.789
+ @@2020.04.20
+`d
+ @@12:34:56.789
 `t
-@ @@(1;1.2;`a;"a";2020.04.20;12:34:56.789)  / type of a list
+ @@(1;1.2;`a;"a";2020.04.20;12:34:56.789)  / type of a list
 `L
-@ @@'(1;1.2;`a;"a";2020.04.20;12:34:56.789) / type of elements of the list
-`i`f`s`c`D`t
+ @@'(1;1.2;`a;"a";2020.04.20;12:34:56.789) / type of elements of the list
+`i`f`s`c`d`t
 @end example
 
 @anchor{[f]at}@section [f]at @result{} x@@y
@@ -1761,7 +1761,7 @@ Data types can be determined by using the @code{@@} function on values or lists 
 @ @@(3;3.1;"b";`a;12:01:02.123;2020.04.05) / mixed list
 `L
 @ @@'(3;3.1;"b";`a;12:01:02.123;2020.04.05)
-`i`f`c`n`t`D
+`i`f`c`n`t`d
 @end example
 
 @anchor{Atom Types}@section Atom Types
