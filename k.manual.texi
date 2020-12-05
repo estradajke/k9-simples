@@ -1100,7 +1100,7 @@ Return true (1b) if x matches y else false (0b).  A match happens if the two arg
 @end example
 
 @anchor{enum}@section enum @result{} !x
-Given an integer, x, generate an integer list from 0 to x-1.  Given a dictionary, x, return all key values
+Enumerate the domain of x.  Given an integer, x, generate an integer list from 0 to x-1.  Given a dictionary, x, return all key values.  
 
 @example
  !3
@@ -1516,8 +1516,8 @@ Adverbs modify verbs to operative iteratively over nouns.  This previous sentenc
 
 @example
 Adverb             
-f/  @ref{scan,over}  c/  @ref{join}
-f\  @ref{scan}  c\  @ref{split}
+f/  @ref{scan,over}  c/  @ref{+join}
+f\  @ref{scan}  c\  @ref{+split}
 f'  @ref{each}  v'  @ref{+has}  
 f': @ref{eachp} v': @ref{bin2,+bin}.
 f/: @ref{eachr} ([n;]f)/: @ref{c over}
@@ -1552,15 +1552,22 @@ abc
 600
 @end example
 
-@anchor{join}@section join @result{} c/x
-Join the list of strings x using character c between each pair.
+@anchor{+join}@section +join @result{} c/x
+Join a list of strings x using character c between each pair.
 
 @example
 @ "-"/("Some";"random text";"plus";,".")
 "Some-random text-plus-."
 @end example
 
-@anchor{split}@section split @result{} c\x
+Convert a list of integers x via base c.
+
+@example
+ 8/2 0 1  / 1 + (0*8) + (2*8*8)
+129
+@end example
+
+@anchor{+split}@section +split @result{} c\x
 Split the string x using character c to determine the locations.
 
 @example
@@ -1570,6 +1577,13 @@ is
 a        
 short    
 sentence.
+@end example
+
+Split a number x into base c units.
+
+@example
+ 8\129
+2 0 1
 @end example
 
 @anchor{each}@section each @result{} f'x

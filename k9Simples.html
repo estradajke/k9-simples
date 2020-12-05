@@ -70,8 +70,8 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; <
 <tt></tt><br>
 <tt>Language&nbsp;*enterprise[unlimited&nbsp;data/users/machines/..]&nbsp;+<a href="#scan">over</a>load&nbsp;-todo</tt><br>
 <tt><a href="#Verb">Verb</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Adverb">Adverb</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Noun">Type</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System</tt><br>
-<tt>:&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f/&nbsp;&nbsp;<a href="#scan">over</a>&nbsp;&nbsp;c/&nbsp;&nbsp;+<a href="#join">join</a>&nbsp;&nbsp;<a href="#bool">bool</a>&nbsp;011b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\l&nbsp;a.k</tt><br>
-<tt>+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#flip">flip</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#plus">plus</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f\&nbsp;&nbsp;<a href="#scan">scan</a>&nbsp;&nbsp;c\&nbsp;&nbsp;+<a href="#split">split</a>&nbsp;<a href="#int">int</a>&nbsp;&nbsp;0N&nbsp;0&nbsp;2&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\t:n&nbsp;x</tt><br>
+<tt>:&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f/&nbsp;&nbsp;<a href="#scan">over</a>&nbsp;&nbsp;c/&nbsp;&nbsp;<a href="#g_t_002bjoin">+join</a>&nbsp;&nbsp;<a href="#bool">bool</a>&nbsp;011b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\l&nbsp;a.k</tt><br>
+<tt>+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#flip">flip</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#plus">plus</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f\&nbsp;&nbsp;<a href="#scan">scan</a>&nbsp;&nbsp;c\&nbsp;&nbsp;<a href="#g_t_002bsplit">+split</a>&nbsp;<a href="#int">int</a>&nbsp;&nbsp;0N&nbsp;0&nbsp;2&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\t:n&nbsp;x</tt><br>
 <tt>-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#negate">negate</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#minus">minus</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f'&nbsp;&nbsp;<a href="#each">each</a>&nbsp;&nbsp;v'&nbsp;&nbsp;<a href="#g_t_002bhas">+has</a>&nbsp;&nbsp;&nbsp;<a href="#flt">flt</a>&nbsp;&nbsp;0n&nbsp;0&nbsp;2&nbsp;3.&nbsp;&nbsp;&nbsp;&nbsp;\u:n&nbsp;x</tt><br>
 <tt>*&nbsp;&nbsp;&nbsp;&nbsp;<a href="#first">first</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#times">times</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f':&nbsp;<a href="#eachp">eachp</a>&nbsp;v':&nbsp;<a href="#bin2">+bin</a>&nbsp;&nbsp;&nbsp;<a href="#char">char</a>&nbsp;&quot;&nbsp;ab&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\v</tt><br>
 <tt>%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#divide">divide</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f/:&nbsp;<a href="#eachr">eachr</a>&nbsp;([n;]f)/:&nbsp;&nbsp;<a href="#name">name</a>&nbsp;``ab&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\w</tt><br>
@@ -1170,7 +1170,7 @@ n|2 4
 </pre></div>
 
 <span id="enum"></span><span id="enum-_21d2-_0021x"></span><h3 class="section">4.20 enum &rArr; !x</h3>
-<p>Given an integer, x, generate an integer list from 0 to x-1.  Given a dictionary, x, return all key values
+<p>Enumerate the domain of x.  Given an integer, x, generate an integer list from 0 to x-1.  Given a dictionary, x, return all key values.  
 </p>
 <div class="example">
 <pre class="example"> !3
@@ -1587,8 +1587,8 @@ Next: <a href="#Noun" accesskey="n" rel="next">Noun</a>, Previous: <a href="#Ver
 </p>
 <div class="example">
 <pre class="example">Adverb             
-f/  <a href="#scan">over</a>  c/  <a href="#join">join</a>
-f\  <a href="#scan">scan</a>  c\  <a href="#split">split</a>
+f/  <a href="#scan">over</a>  c/  <a href="#g_t_002bjoin">+join</a>
+f\  <a href="#scan">scan</a>  c\  <a href="#g_t_002bsplit">+split</a>
 f'  <a href="#each">each</a>  v'  <a href="#g_t_002bhas">+has</a>  
 f': <a href="#eachp">eachp</a> v': <a href="#bin2">+bin</a>.
 f/: <a href="#eachr">eachr</a> ([n;]f)/: <a href="#c-over">c over</a>
@@ -1623,15 +1623,22 @@ abc
 600
 </pre></div>
 
-<span id="join"></span><span id="join-_21d2-c_002fx"></span><h3 class="section">5.2 join &rArr; c/x</h3>
-<p>Join the list of strings x using character c between each pair.
+<span id="g_t_002bjoin"></span><span id="g_t_002bjoin-_21d2-c_002fx"></span><h3 class="section">5.2 +join &rArr; c/x</h3>
+<p>Join a list of strings x using character c between each pair.
 </p>
 <div class="example">
 <pre class="example">&nbsp;&quot;-&quot;/(&quot;Some&quot;;&quot;random text&quot;;&quot;plus&quot;;,&quot;.&quot;)
 &quot;Some-random text-plus-.&quot;
 </pre></div>
 
-<span id="split"></span><span id="split-_21d2-c_005cx"></span><h3 class="section">5.3 split &rArr; c\x</h3>
+<p>Convert a list of integers x via base c.
+</p>
+<div class="example">
+<pre class="example"> 8/2 0 1  / 1 + (0*8) + (2*8*8)
+129
+</pre></div>
+
+<span id="g_t_002bsplit"></span><span id="g_t_002bsplit-_21d2-c_005cx"></span><h3 class="section">5.3 +split &rArr; c\x</h3>
 <p>Split the string x using character c to determine the locations.
 </p>
 <div class="example">
@@ -1641,6 +1648,13 @@ is
 a        
 short    
 sentence.
+</pre></div>
+
+<p>Split a number x into base c units.
+</p>
+<div class="example">
+<pre class="example"> 8\129
+2 0 1
 </pre></div>
 
 <span id="each"></span><span id="each-_21d2-f_0027x"></span><h3 class="section">5.4 each &rArr; f&rsquo;x</h3>

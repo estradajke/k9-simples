@@ -51,10 +51,10 @@ Language *enterprise[unlimited data/users/machines/..] +*note over:
 scan.load -todo
 *note Verb::                      *note Adverb::               *note
 Type: Noun.              System
-:    x         y          f/  *note over: scan.  c/  +*note
-join::  *note bool:: 011b         \l a.k
-+    *note flip::      *note plus::       f\  *note scan::  c\  +*note
-split:: *note int::  0N 0 2 3     \t:n x
+:    x         y          f/  *note over: scan.  c/  *note
++join::  *note bool:: 011b         \l a.k
++    *note flip::      *note plus::       f\  *note scan::  c\  *note
++split:: *note int::  0N 0 2 3     \t:n x
 -    *note negate::    *note minus::      f'  *note each::  v'  *note
 +has::   *note flt::  0n 0 2 3.    \u:n x
 *    *note first::     *note times::      f': *note eachp:: v': *note
@@ -1286,8 +1286,8 @@ two arguments evaluate to the same expression.
 4.20 enum => !x
 ===============
 
-Given an integer, x, generate an integer list from 0 to x-1.  Given a
-dictionary, x, return all key values
+Enumerate the domain of x.  Given an integer, x, generate an integer
+list from 0 to x-1.  Given a dictionary, x, return all key values.
 
       !3
      0 1 2
@@ -1713,8 +1713,8 @@ first element of each sub-list you'll have to modify the function
 'first' with a modifier 'each'.
 
      Adverb
-     f/  *note over: scan.  c/  *note join::
-     f\  *note scan::  c\  *note split::
+     f/  *note over: scan.  c/  *note +join::
+     f\  *note scan::  c\  *note +split::
      f'  *note each::  v'  *note +has::
      f': *note eachp:: v': *note +bin: bin2.
      f/: *note eachr:: ([n;]f)/: *note c over::
@@ -1747,16 +1747,21 @@ functions except that over only returns the last value.
       {y+10*x}/1 20 300
      600
 
-5.2 join => c/x
-===============
+5.2 +join => c/x
+================
 
-Join the list of strings x using character c between each pair.
+Join a list of strings x using character c between each pair.
 
       "-"/("Some";"random text";"plus";,".")
      "Some-random text-plus-."
 
-5.3 split => c\x
-================
+   Convert a list of integers x via base c.
+
+      8/2 0 1  / 1 + (0*8) + (2*8*8)
+     129
+
+5.3 +split => c\x
+=================
 
 Split the string x using character c to determine the locations.
 
@@ -1766,6 +1771,11 @@ Split the string x using character c to determine the locations.
      a
      short
      sentence.
+
+   Split a number x into base c units.
+
+      8\129
+     2 0 1
 
 5.4 each => f'x
 ===============
@@ -4160,118 +4170,118 @@ Ref: equal35529
 Ref: not35833
 Ref: match35950
 Ref: enum36333
-Ref: key37097
-Ref: enlist37327
-Ref: cat37467
-Ref: sort37586
-Ref: [f]cut37819
-Ref: count38564
-Ref: [f]take38754
-Ref: floor39306
-Ref: [f]drop39397
-Ref: string39990
-Ref: cast+40091
-Ref: unique+40579
-Ref: find+41185
-Ref: type42023
-Ref: [f]at42474
-Ref: value42790
-Ref: [f]dot43064
-Node: Adverb44319
-Ref: scan45065
-Ref: join45595
-Ref: split45770
-Ref: each45961
-Ref: +has46250
-Ref: eachp46516
-Ref: bin247260
-Ref: eachr47465
-Ref: eachl47662
-Ref: n scan47846
-Ref: c scan48326
-Ref: c over48838
-Ref: vs48975
-Ref: sv49095
-Node: Noun49219
-Ref: Atom Types50557
-Ref: bool51738
-Ref: int52425
-Ref: flt53085
-Ref: char53487
-Ref: name53710
-Ref: uuid53941
-Ref: time54098
-Ref: date54974
-Ref: datetime55435
-Node: List56232
-Node: Dictionary61507
-Node: User Functions66415
-Node: Named Functions69000
-Ref: sqrt69622
-Ref: exp69695
-Ref: log69763
-Ref: sin69863
-Ref: cos70002
-Ref: div70150
-Ref: mod70306
-Ref: bar70484
-Ref: in71024
-Ref: bin71203
-Ref: within71417
-Node: Knit Functions71653
-Ref: amend71922
-Ref: dmend72290
-Node: I/O72655
-Ref: read csv74758
-Ref: write csv74936
-Ref: read json75100
-Ref: write json75290
-Ref: w line75463
-Ref: r line75772
-Ref: w byte75885
-Ref: r byte76113
-Ref: r data76261
-Ref: w data76922
-Ref: conn/set77490
-Ref: http/get77550
-Ref: lib77610
-Node: Tables78074
-Ref: t78766
-Ref: xtable80371
-Ref: utable80853
-Node: kSQL81310
-Ref: select81908
-Ref: A82492
-Ref: by B83362
-Ref: where C83634
-Ref: update84216
-Ref: union85074
-Ref: leftjoin85595
-Ref: outer86113
-Ref: asof86448
-Ref: asof+87492
-Ref: insert88495
-Ref: upsert88841
-Node: System89165
-Ref: load89623
-Ref: timing89811
-Ref: variables89898
-Ref: memory89999
-Ref: cd90114
-Node: Control Flow90198
-Ref: cond90434
-Node: Temporal Functions90695
-Node: Errors92686
-Ref: class93136
-Ref: rank93225
-Ref: length93349
-Ref: _type93472
-Ref: domain93581
-Ref: limit93703
-Ref: nyi93904
-Ref: parse94237
-Ref: _value94392
-Node: Conclusion94520
+Ref: key37126
+Ref: enlist37356
+Ref: cat37496
+Ref: sort37615
+Ref: [f]cut37848
+Ref: count38593
+Ref: [f]take38783
+Ref: floor39335
+Ref: [f]drop39426
+Ref: string40019
+Ref: cast+40120
+Ref: unique+40608
+Ref: find+41214
+Ref: type42052
+Ref: [f]at42503
+Ref: value42819
+Ref: [f]dot43093
+Node: Adverb44348
+Ref: scan45096
+Ref: +join45626
+Ref: +split45893
+Ref: each46150
+Ref: +has46439
+Ref: eachp46705
+Ref: bin247449
+Ref: eachr47654
+Ref: eachl47851
+Ref: n scan48035
+Ref: c scan48515
+Ref: c over49027
+Ref: vs49164
+Ref: sv49284
+Node: Noun49408
+Ref: Atom Types50746
+Ref: bool51927
+Ref: int52614
+Ref: flt53274
+Ref: char53676
+Ref: name53899
+Ref: uuid54130
+Ref: time54287
+Ref: date55163
+Ref: datetime55624
+Node: List56421
+Node: Dictionary61696
+Node: User Functions66604
+Node: Named Functions69189
+Ref: sqrt69811
+Ref: exp69884
+Ref: log69952
+Ref: sin70052
+Ref: cos70191
+Ref: div70339
+Ref: mod70495
+Ref: bar70673
+Ref: in71213
+Ref: bin71392
+Ref: within71606
+Node: Knit Functions71842
+Ref: amend72111
+Ref: dmend72479
+Node: I/O72844
+Ref: read csv74947
+Ref: write csv75125
+Ref: read json75289
+Ref: write json75479
+Ref: w line75652
+Ref: r line75961
+Ref: w byte76074
+Ref: r byte76302
+Ref: r data76450
+Ref: w data77111
+Ref: conn/set77679
+Ref: http/get77739
+Ref: lib77799
+Node: Tables78263
+Ref: t78955
+Ref: xtable80560
+Ref: utable81042
+Node: kSQL81499
+Ref: select82097
+Ref: A82681
+Ref: by B83551
+Ref: where C83823
+Ref: update84405
+Ref: union85263
+Ref: leftjoin85784
+Ref: outer86302
+Ref: asof86637
+Ref: asof+87681
+Ref: insert88684
+Ref: upsert89030
+Node: System89354
+Ref: load89812
+Ref: timing90000
+Ref: variables90087
+Ref: memory90188
+Ref: cd90303
+Node: Control Flow90387
+Ref: cond90623
+Node: Temporal Functions90884
+Node: Errors92875
+Ref: class93325
+Ref: rank93414
+Ref: length93538
+Ref: _type93661
+Ref: domain93770
+Ref: limit93892
+Ref: nyi94093
+Ref: parse94426
+Ref: _value94581
+Node: Conclusion94709
 
 End Tag Table
 

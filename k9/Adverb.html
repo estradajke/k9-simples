@@ -50,8 +50,8 @@ Next: <a href="Noun.html" accesskey="n" rel="next">Noun</a>, Previous: <a href="
 </p>
 <div class="example">
 <pre class="example">Adverb             
-f/  <a href="#scan">over</a>  c/  <a href="#join">join</a>
-f\  <a href="#scan">scan</a>  c\  <a href="#split">split</a>
+f/  <a href="#scan">over</a>  c/  <a href="#g_t_002bjoin">+join</a>
+f\  <a href="#scan">scan</a>  c\  <a href="#g_t_002bsplit">+split</a>
 f'  <a href="#each">each</a>  v'  <a href="#g_t_002bhas">+has</a>  
 f': <a href="#eachp">eachp</a> v': <a href="#bin2">+bin</a>.
 f/: <a href="#eachr">eachr</a> ([n;]f)/: <a href="#c-over">c over</a>
@@ -86,15 +86,22 @@ abc
 600
 </pre></div>
 
-<span id="join"></span><span id="join-_21d2-c_002fx"></span><h3 class="section">5.2 join &rArr; c/x</h3>
-<p>Join the list of strings x using character c between each pair.
+<span id="g_t_002bjoin"></span><span id="g_t_002bjoin-_21d2-c_002fx"></span><h3 class="section">5.2 +join &rArr; c/x</h3>
+<p>Join a list of strings x using character c between each pair.
 </p>
 <div class="example">
 <pre class="example">&nbsp;&quot;-&quot;/(&quot;Some&quot;;&quot;random text&quot;;&quot;plus&quot;;,&quot;.&quot;)
 &quot;Some-random text-plus-.&quot;
 </pre></div>
 
-<span id="split"></span><span id="split-_21d2-c_005cx"></span><h3 class="section">5.3 split &rArr; c\x</h3>
+<p>Convert a list of integers x via base c.
+</p>
+<div class="example">
+<pre class="example"> 8/2 0 1  / 1 + (0*8) + (2*8*8)
+129
+</pre></div>
+
+<span id="g_t_002bsplit"></span><span id="g_t_002bsplit-_21d2-c_005cx"></span><h3 class="section">5.3 +split &rArr; c\x</h3>
 <p>Split the string x using character c to determine the locations.
 </p>
 <div class="example">
@@ -104,6 +111,13 @@ is
 a        
 short    
 sentence.
+</pre></div>
+
+<p>Split a number x into base c units.
+</p>
+<div class="example">
+<pre class="example"> 8\129
+2 0 1
 </pre></div>
 
 <span id="each"></span><span id="each-_21d2-f_0027x"></span><h3 class="section">5.4 each &rArr; f&rsquo;x</h3>
