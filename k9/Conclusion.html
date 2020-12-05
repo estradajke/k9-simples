@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 3, 2020
+<!-- December 5, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -56,14 +56,14 @@ Previous: <a href="Errors.html" accesskey="p" rel="prev">Errors</a>, Up: <a href
 <pre class="verbatim">Universal database, webserver and language -- full stack -- fast
 
 Database
- select A by B from T where C; update A from T
- count first last sum min max *[avg var dev med ..]
+ select C from T where B;update C from T where B;delete from T where B
+ select[C] count first last sum min max *[avg var dev med ..] from T ..
  x,y      / insert, upsert, union, equi+asof leftjoin
  x+y      / equi+asof outerjoin (e.g. combine markets through time)
  x#y      / take/intersect
  x_y      / drop/difference
 
-Language
+Language *enterprise[unlimited data/users/machines/..] +overload -todo
 Verb                      Adverb               Type              System
 :    x         y          f/  over  c/  +join  bool 011b         \l a.k
 +    flip      plus       f\  scan  c\  +split int  0N 0 2 3     \t:n x
@@ -76,17 +76,17 @@ Verb                      Adverb               Type              System
 &gt;    dsc       more              .z.[hrstuv]   time 12:34:56.123456789
 =    group     equal      I/O
 ~    not       match      0:  r/w line         Class             \f
-!    enum      key        1:  r/w byte         List (2;3.4;`a)   \ft x
-,    enlist    cat       *2:  r/w data         Dict `i`f!(2;3.4) \fl x
+!    enum      key        1:  r/w byte         List (2;3.4;`c)   \ft x
+,    enlist    cat       *2:  r/w data         Dict [a:2;b:`c]   \fl x
 ^    sort   [f]cut       *3:  k-ipc set        Func {[a;b]a+b}   \fc x
 #    count  [f]take      *4:  https get        Expr :a+b
 _    floor  [f]drop
-$    string    cast+                           Table
-?    unique+   find+      $[b;x;y] if else     t:[[]i:2 3;f:3 4.;s:`a`b]
-@    type   [f]at         @[x;i;f[;y]] amend   utable [[b:..]a:..]
-.    value  [f]dot        .[x;i;f[;y]] dmend   xtable `..![[]a:..]
+$    string    cast+      $[b;t;f] Control     Table
+?    unique+   find+                           t:[[]i:2 3;f:3 4.;s:`a`b]
+@    type   [f]at         @[r;i;f[;y]] amend   utable [[b:..]a:..]
+.    value  [f]dot        .[r;i;f[;y]] dmend   xtable `..![[]a:..]
 sqrt sqr exp log sin cos div mod bar .. freq rank msum .. in bin within ..
-\\   exit      / comment  *[if do while select[a;b;t;c]]
+\\   exit      / comment  -[if do while]
 
 Interface
 `csv?`csv t    / read/write csv
@@ -94,9 +94,7 @@ Interface
 -python:   import k;k.k('+',2,3)
 -nodejs: require('k').k('+',2,3)
 *ffi: &quot;./a.so&quot;5:`f!&quot;i&quot;  /I f(I i){return 2+i;}       //cblas ..
-*c/k: &quot;./b.so&quot;5:`f!1    /K f(K x){return ki(2+xi);}  //feeds ..
-
-*enterprise[unlimited data/users/machines/..] +overload</pre></div>
+*c/k: &quot;./b.so&quot;5:`f!1    /K f(K x){return ki(2+xi);}  //feeds ..</pre></div>
 
 
 

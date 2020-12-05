@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 3, 2020
+<!-- December 5, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -46,7 +46,7 @@ ul.no-bullet {list-style: none}
 Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; </p>
 </div>
 <span id="k9_003a-Manual"></span><h1 class="top">k9: Manual</h1>
-<p>This manual is for Shakti (k9) build 2020.11.16.<br>
+<p>This manual is for Shakti (k9) build 2020.12.04.<br>
 </p>
 <p>The Shakti programming language is the work of Arthur Whitney and the team at Shakti.  The language comes from a lineage of similar languages going back to APL.  It&rsquo;s also known as k9 given the similarities to k, k2, ..., k6, k7 and the fact that Arthur also wrote those.  k9 is still under development so expect a bit of syntax change and likely even more improvements.
 </p>
@@ -61,14 +61,14 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; <
 <p><tt>Universal&nbsp;database,&nbsp;webserver&nbsp;and&nbsp;language&nbsp;--&nbsp;full&nbsp;stack&nbsp;--&nbsp;fast</tt><br>
 <tt></tt><br>
 <tt>Database</tt><br>
-<tt>&nbsp;<a href="#select">select</a>&nbsp;<a href="#A">A</a>&nbsp;<a href="#by-B">by B</a>&nbsp;from&nbsp;T&nbsp;<a href="#where-C">where C</a>;&nbsp;<a href="#update">update</a>&nbsp;<a href="#A">A</a>&nbsp;from&nbsp;T</tt><br>
-<tt>&nbsp;count&nbsp;first&nbsp;last&nbsp;sum&nbsp;min&nbsp;max&nbsp;*[avg&nbsp;var&nbsp;dev&nbsp;med&nbsp;..]</tt><br>
+<tt>&nbsp;<a href="#select">select</a>&nbsp;C&nbsp;from&nbsp;T&nbsp;where&nbsp;B;<a href="#update">update</a>&nbsp;C&nbsp;from&nbsp;T&nbsp;where&nbsp;B;delete&nbsp;from&nbsp;T&nbsp;where&nbsp;B</tt><br>
+<tt>&nbsp;<a href="#select">select</a>[C]&nbsp;count&nbsp;first&nbsp;last&nbsp;sum&nbsp;min&nbsp;max&nbsp;*[avg&nbsp;var&nbsp;dev&nbsp;med&nbsp;..]&nbsp;from&nbsp;T&nbsp;..</tt><br>
 <tt>&nbsp;x,y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;<a href="#insert">insert</a>,&nbsp;<a href="#upsert">upsert</a>,&nbsp;<a href="#union">union</a>,&nbsp;equi+asof&nbsp;<a href="#leftjoin">leftjoin</a></tt><br>
 <tt>&nbsp;x+y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;equi+asof&nbsp;outerjoin&nbsp;(e.g.&nbsp;combine&nbsp;markets&nbsp;through&nbsp;time)</tt><br>
 <tt>&nbsp;x#y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;take/intersect</tt><br>
 <tt>&nbsp;x_y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;drop/difference</tt><br>
 <tt></tt><br>
-<tt>Language</tt><br>
+<tt>Language&nbsp;*enterprise[unlimited&nbsp;data/users/machines/..]&nbsp;+<a href="#scan">over</a>load&nbsp;-todo</tt><br>
 <tt><a href="#Verb">Verb</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Adverb">Adverb</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Noun">Type</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System</tt><br>
 <tt>:&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f/&nbsp;&nbsp;<a href="#scan">over</a>&nbsp;&nbsp;c/&nbsp;&nbsp;+<a href="#join">join</a>&nbsp;&nbsp;<a href="#bool">bool</a>&nbsp;011b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\l&nbsp;a.k</tt><br>
 <tt>+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#flip">flip</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#plus">plus</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f\&nbsp;&nbsp;<a href="#scan">scan</a>&nbsp;&nbsp;c\&nbsp;&nbsp;+<a href="#split">split</a>&nbsp;<a href="#int">int</a>&nbsp;&nbsp;0N&nbsp;0&nbsp;2&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\t:n&nbsp;x</tt><br>
@@ -81,17 +81,17 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; <
 <tt>&gt;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#asc">dsc</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#less">more</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#g_t_002ez">.z</a>.[hrstuv]&nbsp;&nbsp;&nbsp;<a href="#time">time</a>&nbsp;12:34:56.123456789</tt><br>
 <tt>=&nbsp;&nbsp;&nbsp;&nbsp;<a href="#group">group</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#equal">equal</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#I_002fO">I/O</a></tt><br>
 <tt>~&nbsp;&nbsp;&nbsp;&nbsp;<a href="#not">not</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#match">match</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0:&nbsp;&nbsp;<a href="#r-line">r</a>/<a href="#w-line">w</a>&nbsp;line&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\f</tt><br>
-<tt>!&nbsp;&nbsp;&nbsp;&nbsp;<a href="#enum">enum</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#key">key</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1:&nbsp;&nbsp;<a href="#r-byte">r</a>/<a href="#w-byte">w</a>&nbsp;byte&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#List">List</a>&nbsp;(2;3.4;`a)&nbsp;&nbsp;&nbsp;\ft&nbsp;x</tt><br>
-<tt>,&nbsp;&nbsp;&nbsp;&nbsp;<a href="#enlist">enlist</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#cat">cat</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*2:&nbsp;&nbsp;r/w&nbsp;data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Dictionary">Dict</a>&nbsp;`i`f!(2;3.4)&nbsp;\fl&nbsp;x</tt><br>
+<tt>!&nbsp;&nbsp;&nbsp;&nbsp;<a href="#enum">enum</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#key">key</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1:&nbsp;&nbsp;<a href="#r-byte">r</a>/<a href="#w-byte">w</a>&nbsp;byte&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#List">List</a>&nbsp;(2;3.4;`c)&nbsp;&nbsp;&nbsp;\ft&nbsp;x</tt><br>
+<tt>,&nbsp;&nbsp;&nbsp;&nbsp;<a href="#enlist">enlist</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#cat">cat</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*2:&nbsp;&nbsp;r/w&nbsp;data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Dictionary">Dict</a>&nbsp;[a:2;b:`c]&nbsp;&nbsp;&nbsp;\fl&nbsp;x</tt><br>
 <tt>^&nbsp;&nbsp;&nbsp;&nbsp;<a href="#sort">sort</a>&nbsp;&nbsp;&nbsp;<a href="#g_t_005bf_005dcut">[f]cut</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*3:&nbsp;&nbsp;k-ipc&nbsp;set&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#User-Functions">Func</a>&nbsp;{[a;b]a+b}&nbsp;&nbsp;&nbsp;\fc&nbsp;x</tt><br>
 <tt>#&nbsp;&nbsp;&nbsp;&nbsp;count&nbsp;&nbsp;<a href="#g_t_005bf_005dtake">[f]take</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*4:&nbsp;&nbsp;https&nbsp;get&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expr&nbsp;:a+b</tt><br>
 <tt>_&nbsp;&nbsp;&nbsp;&nbsp;<a href="#floor">floor</a>&nbsp;&nbsp;<a href="#g_t_005bf_005ddrop">[f]drop</a></tt><br>
-<tt>$&nbsp;&nbsp;&nbsp;&nbsp;<a href="#string">string</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#cast">cast</a>+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Tables">Table</a></tt><br>
-<tt>?&nbsp;&nbsp;&nbsp;&nbsp;<a href="#unique_002b">unique+</a>&nbsp;&nbsp;&nbsp;<a href="#find_002b">find+</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$[b;x;y]&nbsp;<a href="#cond">if else</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#t">t</a>:[[]i:2&nbsp;3;f:3&nbsp;4.;s:`a`b]</tt><br>
-<tt>@&nbsp;&nbsp;&nbsp;&nbsp;<a href="#type">type</a>&nbsp;&nbsp;&nbsp;<a href="#g_t_005bf_005dat">[f]at</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@[x;i;f[;y]]&nbsp;<a href="#amend">amend</a>&nbsp;&nbsp;&nbsp;<a href="#utable">utable</a>&nbsp;[[b:..]a:..]</tt><br>
-<tt>.&nbsp;&nbsp;&nbsp;&nbsp;<a href="#value">value</a>&nbsp;&nbsp;<a href="#g_t_005bf_005ddot">[f]dot</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.[x;i;f[;y]]&nbsp;<a href="#dmend">dmend</a>&nbsp;&nbsp;&nbsp;<a href="#xtable">xtable</a>&nbsp;`..![[]a:..]</tt><br>
+<tt>$&nbsp;&nbsp;&nbsp;&nbsp;<a href="#string">string</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#cast_002b">cast+</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$[b;t;f]&nbsp;Control&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Tables">Table</a></tt><br>
+<tt>?&nbsp;&nbsp;&nbsp;&nbsp;<a href="#unique_002b">unique+</a>&nbsp;&nbsp;&nbsp;<a href="#find_002b">find+</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#t">t</a>:[[]i:2&nbsp;3;f:3&nbsp;4.;s:`a`b]</tt><br>
+<tt>@&nbsp;&nbsp;&nbsp;&nbsp;<a href="#type">type</a>&nbsp;&nbsp;&nbsp;<a href="#g_t_005bf_005dat">[f]at</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@[r;i;f[;y]]&nbsp;<a href="#amend">amend</a>&nbsp;&nbsp;&nbsp;<a href="#utable">utable</a>&nbsp;[[b:..]a:..]</tt><br>
+<tt>.&nbsp;&nbsp;&nbsp;&nbsp;<a href="#value">value</a>&nbsp;&nbsp;<a href="#g_t_005bf_005ddot">[f]dot</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.[r;i;f[;y]]&nbsp;<a href="#dmend">dmend</a>&nbsp;&nbsp;&nbsp;<a href="#xtable">xtable</a>&nbsp;`..![[]a:..]</tt><br>
 <tt>sqrt&nbsp;sqr&nbsp;exp&nbsp;log&nbsp;sin&nbsp;cos&nbsp;div&nbsp;mod&nbsp;bar&nbsp;..&nbsp;freq&nbsp;rank&nbsp;msum&nbsp;..&nbsp;in&nbsp;bin&nbsp;within&nbsp;..</tt><br>
-<tt>\\&nbsp;&nbsp;&nbsp;exit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;comment&nbsp;&nbsp;*[if&nbsp;do&nbsp;while&nbsp;select[a;b;t;c]]</tt><br>
+<tt>\\&nbsp;&nbsp;&nbsp;exit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;comment&nbsp;&nbsp;-[if&nbsp;do&nbsp;while]</tt><br>
 <tt></tt><br>
 <tt>Interface</tt><br>
 <tt>`csv?`csv&nbsp;t&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;<a href="#read-csv">read</a>/<a href="#write-csv">write</a>&nbsp;csv</tt><br>
@@ -100,8 +100,6 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; <
 <tt>-nodejs:&nbsp;require('k').k('+',2,3)</tt><br>
 <tt>*ffi:&nbsp;&quot;./a.so&quot;5:`f!&quot;i&quot;&nbsp;&nbsp;/I&nbsp;f(I&nbsp;i){return&nbsp;2+i;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//cblas&nbsp;..</tt><br>
 <tt>*c/k:&nbsp;&quot;./b.so&quot;5:`f!1&nbsp;&nbsp;&nbsp;&nbsp;/K&nbsp;f(K&nbsp;x){return&nbsp;ki(2+xi);}&nbsp;&nbsp;//feeds&nbsp;..</tt><br>
-<tt></tt><br>
-<tt>*enterprise[unlimited&nbsp;data/users/machines/..]&nbsp;+overload</tt><br>
 </p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Introduction" accesskey="1">Introduction</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">An introduction to shakti/k9, a novel computer language for data analysis
@@ -226,14 +224,14 @@ z@&amp;y&lt;z:?x<br>
 <pre class="verbatim">Universal database, webserver and language -- full stack -- fast
 
 Database
- select A by B from T where C; update A from T
- count first last sum min max *[avg var dev med ..]
+ select C from T where B;update C from T where B;delete from T where B
+ select[C] count first last sum min max *[avg var dev med ..] from T ..
  x,y      / insert, upsert, union, equi+asof leftjoin
  x+y      / equi+asof outerjoin (e.g. combine markets through time)
  x#y      / take/intersect
  x_y      / drop/difference
 
-Language
+Language *enterprise[unlimited data/users/machines/..] +overload -todo
 Verb                      Adverb               Type              System
 :    x         y          f/  over  c/  +join  bool 011b         \l a.k
 +    flip      plus       f\  scan  c\  +split int  0N 0 2 3     \t:n x
@@ -246,17 +244,17 @@ Verb                      Adverb               Type              System
 &gt;    dsc       more              .z.[hrstuv]   time 12:34:56.123456789
 =    group     equal      I/O
 ~    not       match      0:  r/w line         Class             \f
-!    enum      key        1:  r/w byte         List (2;3.4;`a)   \ft x
-,    enlist    cat       *2:  r/w data         Dict `i`f!(2;3.4) \fl x
+!    enum      key        1:  r/w byte         List (2;3.4;`c)   \ft x
+,    enlist    cat       *2:  r/w data         Dict [a:2;b:`c]   \fl x
 ^    sort   [f]cut       *3:  k-ipc set        Func {[a;b]a+b}   \fc x
 #    count  [f]take      *4:  https get        Expr :a+b
 _    floor  [f]drop
-$    string    cast+                           Table
-?    unique+   find+      $[b;x;y] if else     t:[[]i:2 3;f:3 4.;s:`a`b]
-@    type   [f]at         @[x;i;f[;y]] amend   utable [[b:..]a:..]
-.    value  [f]dot        .[x;i;f[;y]] dmend   xtable `..![[]a:..]
+$    string    cast+      $[b;t;f] Control     Table
+?    unique+   find+                           t:[[]i:2 3;f:3 4.;s:`a`b]
+@    type   [f]at         @[r;i;f[;y]] amend   utable [[b:..]a:..]
+.    value  [f]dot        .[r;i;f[;y]] dmend   xtable `..![[]a:..]
 sqrt sqr exp log sin cos div mod bar .. freq rank msum .. in bin within ..
-\\   exit      / comment  *[if do while select[a;b;t;c]]
+\\   exit      / comment  -[if do while]
 
 Interface
 `csv?`csv t    / read/write csv
@@ -264,9 +262,7 @@ Interface
 -python:   import k;k.k('+',2,3)
 -nodejs: require('k').k('+',2,3)
 *ffi: &quot;./a.so&quot;5:`f!&quot;i&quot;  /I f(I i){return 2+i;}       //cblas ..
-*c/k: &quot;./b.so&quot;5:`f!1    /K f(K x){return ki(2+xi);}  //feeds ..
-
-*enterprise[unlimited data/users/machines/..] +overload</pre></div>
+*c/k: &quot;./b.so&quot;5:`f!1    /K f(K x){return ki(2+xi);}  //feeds ..</pre></div>
 
 <span id="rlwrap"></span><h3 class="section">1.5 rlwrap</h3>
 <p>Although you only need the <samp>k</samp> binary to run k9 most will also install rlwrap, if not already installed, in order to get command history in a terminal window.  rlwrap is &ldquo;Readline wrapper: adds readline support to tools that lack it&rdquo; and allows one to arrow up to go through the command buffer history.
@@ -853,7 +849,11 @@ Next: <a href="#Adverb" accesskey="n" rel="next">Adverb</a>, Previous: <a href="
 <span id="Verb-1"></span><h2 class="chapter">4 Verb</h2>
 <p>This chapter covers verbs which are the core functions of k9.  Given how different is it to call functions in k9 than many other languages this is probably a chapter that will have to be covered a few times.  Once you can &ldquo;speak&rdquo; k9 you&rsquo;ll read <code>|x</code> better than <code>reverse(x)</code>.  
 </p>
-<p>Most functions are overloaded and change depending on the number and type of arguments.  This reuse of symbols is also an item that causes confusion for new users.  Eg. <code>(1 4)++(2 3;5 6;7 8)</code> contains the plus symbol once as flip and then for addition.  (Remember evaluation is right to left!)
+<p>Most functions are overloaded and change depending on the number.  This reuse of symbols is also an item that causes confusion for new users.  Eg. <code>(1 4)++(2 3;5 6;7 8)</code> contains the plus symbol once as flip and then for addition.  (Remember evaluation is right to left!)
+</p>
+<p>Some functions are overloaded into materially different use and these are called out with a &rsquo;+&rsquo; ending.  This includes cast+, unique+, and find+ which become matrix multiply, unit random, and non-unit random respectively.
+</p>
+<p>There are also functions that can take a function argument and these are identified with a &rsquo;[f]&rsquo; prefix.  These include [f]cut, [f]take, [f]drop, [f]at, and [f]dot.
 </p>
 <div class="example">
 <pre class="example">Verb
@@ -873,7 +873,7 @@ Next: <a href="#Adverb" accesskey="n" rel="next">Adverb</a>, Previous: <a href="
 ^ <a href="#sort">sort</a>,  <a href="#g_t_005bf_005dcut">[f]cut</a>. 
 # <a href="#count">count</a>, <a href="#g_t_005bf_005dtake">[f]take</a>.  
 _ <a href="#floor">floor</a>, <a href="#g_t_005bf_005ddrop">[f]drop</a>.    
-$ <a href="#string">string</a>,   <a href="#cast">cast</a>.    
+$ <a href="#string">string</a>,   <a href="#cast_002b">cast+</a>.    
 ? <a href="#unique_002b">unique+</a>,  <a href="#find_002b">find+</a>.    
 @ <a href="#type">type</a>,  <a href="#g_t_005bf_005dat">[f]at</a>.    
 . <a href="#value">value</a>, <a href="#g_t_005bf_005ddot">[f]dot</a>.
@@ -1180,36 +1180,20 @@ n|2 4
 `a`b`c
 </pre></div>
 
-<p>Given a list of integers, x, generate a list of lists where each individual index goes from 0 to n-1.  Aka an odometer where the each place can have a separate base and the total number of lists is the product of all the x values.
+<p>In the case where x is a list of integers, generate a multidigit counter over all values from 0 to n-1 for each element.
 </p>
 <div class="example">
-<pre class="example">&nbsp;!2 8 16  / an odometer where the values are 0-1, 0-7, and 0-15.
-0 0 0 0 0 0 0 0 0 0  0  0  0  0  0  0 0 0 0 0 0 0 0 0 0 0  0  0
-0 0 0 0 0 0 0 0 0 0  0  0  0  0  0  0 1 1 1 1 1 1 1 1 1 1  1  1
-0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 0 1 2 3 4 5 6 7 8 9 10 11
-&nbsp;12#+!2 8 16 / flip the output and display first 18 rows
-0 0  0
-0 0  1
-0 0  2
-0 0  3
-0 0  4
-0 0  5
-0 0  6
-0 0  7
-0 0  8
-0 0  9
-0 0 10
-0 0 11
-&nbsp;5_+!2 8 16 / flip the output and display last 5 rows
-1 7 11
-1 7 12
-1 7 13
-1 7 14
-1 7 15
-&nbsp;B:`b$+!16#2 / create a list of 16-bit binary numbers from 0 to 65535
-&nbsp;B[12123]    / pull the element 12,123
+<pre class="example"> !2 3 2 / 1st index 0,1, 2nd index 0,1,2, 3rd index 0,1
+0 0 0 0 0 0 1 1 1 1 1 1
+0 0 1 1 2 2 0 0 1 1 2 2
+0 1 0 1 0 1 0 1 0 1 0 1
+
+ B:`b'+!16#2 / create a list of 16-bit binary numbers from 0 to 65535
+
+B[12123]    / pull the element 12,123
 0010111101011011b
-&nbsp;2/:B[12123] / convert to base10 to check it's actually 12123
+
+2/B[12123] / convert to base10 to check it's actually 12123
 12123
 </pre></div>
 
@@ -1372,8 +1356,9 @@ z  1
 &quot;4.7&quot;
 </pre></div>
 
-<span id="cast"></span><span id="cast-_21d2-x_0024y"></span><h3 class="section">4.31 cast &rArr; x$y</h3>
-
+<span id="cast_002b"></span><span id="cast_002b-_21d2-x_0024y"></span><h3 class="section">4.31 cast+ &rArr; x$y</h3>
+<p>As cast+ is a &rsquo;+&rsquo; verb its use depends on whether x is a list (matrix multiply) or not (cast).
+</p>
 <p>Cast string y into type x.
 </p>
 <div class="example">
@@ -1400,15 +1385,18 @@ z  1
 </pre></div>
 
 <span id="unique_002b"></span><span id="unique_002b-_21d2-_003fx"></span><h3 class="section">4.32 unique+ &rArr; ?x</h3>
+<p>As unique+ is a &rsquo;+&rsquo; verb its use depends on whether x is a list (unique) or not (unit random).
+</p>
 <p>Return the unique values of the list x.  The <code>?</code> preceeding the return value explicitly shows that list has no repeat values.
-</p><div class="example">
+</p>
+<div class="example">
 <pre class="example">&nbsp;?`f`a`b`c`a`b`d`e`a
 ?`f`a`b`c`d`e
 &nbsp;?&quot;banana&quot;
 ?&quot;ban&quot;
 </pre></div>
 
-<p>Generate x random values of uniform distribution from [0,1) or -x random value of uniform distribtuion (mean=0, sd=1).
+<p>Generate x random values of uniform distribution from [0,1) or -x random values of normal distribtuion (mean=0, sd=1).
 </p>
 <div class="example">
 <pre class="example"> ?3     / 3 uniform
@@ -1419,10 +1407,12 @@ z  1
 </pre></div>
 
 <span id="find_002b"></span><span id="find_002b-_21d2-x_003fy"></span><h3 class="section">4.33 find+ &rArr; x?y</h3>
+<p>As find+ is a &rsquo;+&rsquo; verb its use depends on whether x is a list (find) or not (range random).
+</p>
 <p>Find the first element of x that matches y otherwise return the end of vector.
 </p>
 <div class="example">
-<pre class="example">&nbsp;`a`b`a`c`b`a`a?`b
+<pre class="example"> `a`b`a`c`b`a`a?`b
 1
 &nbsp;`a`b`a`c`b`a`a?`d
 7
@@ -1992,23 +1982,23 @@ b:{-1+*/x#256}
 </p>
 <div class="example">
 <pre class="example"> @2020.04.20               / date
-`D
- .z.D                       / current date in GMT
-2020.09.13
- `i .z.D                    / numeric representation of date
--1205
+`d
+ .z.d                       / current date in GMT
+2020.12.05
+ `i .z.d                    / numeric representation of date
+7278
  `i 2001.01.01              / zero date
 0
- `D 0                       / zero date
+ `d 0                       / zero date
 2001.01.01
 </pre></div>
 
-<span id="datetime"></span><span id="datetime-_21d2-Datetime-S_002c-T_002c-U_002c-V"></span><h4 class="subsection">6.6.3 datetime &rArr; Datetime S, T, U, V</h4>
+<span id="datetime"></span><span id="datetime-_21d2-Datetime-d"></span><h4 class="subsection">6.6.3 datetime &rArr; Datetime d</h4>
 <p>Dates and times can be combined into a single datetime element by combing a date, the letter T, and the time together without spaces.  The datetime use the same lettering as the time precision but in uppercase.  Datetimes are stored interally as integers.  For example 2001.01.02T00:00:00.000 is stored as 86,400,000, the number of milliseconds in a day.
 </p>
 <div class="example">
 <pre class="example"> @2020.04.20T12:34:56.789  / date and time
-`T
+`d
  `T$&quot;2020.04.20 12:34:56.789&quot; / converting from string
 2020.04.20T12:34:56.789
 </pre></div>
@@ -3804,14 +3794,14 @@ Previous: <a href="#Errors" accesskey="p" rel="prev">Errors</a>, Up: <a href="#T
 <pre class="verbatim">Universal database, webserver and language -- full stack -- fast
 
 Database
- select A by B from T where C; update A from T
- count first last sum min max *[avg var dev med ..]
+ select C from T where B;update C from T where B;delete from T where B
+ select[C] count first last sum min max *[avg var dev med ..] from T ..
  x,y      / insert, upsert, union, equi+asof leftjoin
  x+y      / equi+asof outerjoin (e.g. combine markets through time)
  x#y      / take/intersect
  x_y      / drop/difference
 
-Language
+Language *enterprise[unlimited data/users/machines/..] +overload -todo
 Verb                      Adverb               Type              System
 :    x         y          f/  over  c/  +join  bool 011b         \l a.k
 +    flip      plus       f\  scan  c\  +split int  0N 0 2 3     \t:n x
@@ -3824,17 +3814,17 @@ Verb                      Adverb               Type              System
 &gt;    dsc       more              .z.[hrstuv]   time 12:34:56.123456789
 =    group     equal      I/O
 ~    not       match      0:  r/w line         Class             \f
-!    enum      key        1:  r/w byte         List (2;3.4;`a)   \ft x
-,    enlist    cat       *2:  r/w data         Dict `i`f!(2;3.4) \fl x
+!    enum      key        1:  r/w byte         List (2;3.4;`c)   \ft x
+,    enlist    cat       *2:  r/w data         Dict [a:2;b:`c]   \fl x
 ^    sort   [f]cut       *3:  k-ipc set        Func {[a;b]a+b}   \fc x
 #    count  [f]take      *4:  https get        Expr :a+b
 _    floor  [f]drop
-$    string    cast+                           Table
-?    unique+   find+      $[b;x;y] if else     t:[[]i:2 3;f:3 4.;s:`a`b]
-@    type   [f]at         @[x;i;f[;y]] amend   utable [[b:..]a:..]
-.    value  [f]dot        .[x;i;f[;y]] dmend   xtable `..![[]a:..]
+$    string    cast+      $[b;t;f] Control     Table
+?    unique+   find+                           t:[[]i:2 3;f:3 4.;s:`a`b]
+@    type   [f]at         @[r;i;f[;y]] amend   utable [[b:..]a:..]
+.    value  [f]dot        .[r;i;f[;y]] dmend   xtable `..![[]a:..]
 sqrt sqr exp log sin cos div mod bar .. freq rank msum .. in bin within ..
-\\   exit      / comment  *[if do while select[a;b;t;c]]
+\\   exit      / comment  -[if do while]
 
 Interface
 `csv?`csv t    / read/write csv
@@ -3842,9 +3832,7 @@ Interface
 -python:   import k;k.k('+',2,3)
 -nodejs: require('k').k('+',2,3)
 *ffi: &quot;./a.so&quot;5:`f!&quot;i&quot;  /I f(I i){return 2+i;}       //cblas ..
-*c/k: &quot;./b.so&quot;5:`f!1    /K f(K x){return ki(2+xi);}  //feeds ..
-
-*enterprise[unlimited data/users/machines/..] +overload</pre></div>
+*c/k: &quot;./b.so&quot;5:`f!1    /K f(K x){return ki(2+xi);}  //feeds ..</pre></div>
 
 
 

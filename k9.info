@@ -1,6 +1,6 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
-December 3, 2020
+December 5, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -10,7 +10,7 @@ File: k9.info,  Node: Top,  Next: Introduction,  Up: (dir)
 k9: Manual
 **********
 
-This manual is for Shakti (k9) build 2020.11.16.
+This manual is for Shakti (k9) build 2020.12.04.
 
    The Shakti programming language is the work of Arthur Whitney and the
 team at Shakti.  The language comes from a lineage of similar languages
@@ -37,16 +37,18 @@ language.
    Universal database, webserver and language -- full stack -- fast
 
 Database
- *note select:: *note A:: *note by B:: from T *note where C::; *note
-update:: *note A:: from T
- count first last sum min max *[avg var dev med ..]
+ *note select:: C from T where B;*note
+update:: C from T where B;delete from T where B
+ *note
+select::[C] count first last sum min max *[avg var dev med ..] from T ..
  x,y      / *note insert::, *note upsert::, *note
 union::, equi+asof *note leftjoin::
  x+y      / equi+asof outerjoin (e.g. combine markets through time)
  x#y      / take/intersect
  x_y      / drop/difference
 
-Language
+Language *enterprise[unlimited data/users/machines/..] +*note over:
+scan.load -todo
 *note Verb::                      *note Adverb::               *note
 Type: Noun.              System
 :    x         y          f/  *note over: scan.  c/  +*note
@@ -70,23 +72,23 @@ eachl:: ([n;]f)\:  *note uuid::              \cd x
 ~    *note not::       *note match::      0:  *note r: r line./*note w:
 w line. line         Class             \f
 !    *note enum::      *note key::        1:  *note r: r byte./*note w:
-w byte. byte         *note List:: (2;3.4;`a)   \ft x
+w byte. byte         *note List:: (2;3.4;`c)   \ft x
 ,    *note enlist::    *note cat::       *2:  r/w data         *note
-Dict: Dictionary. `i`f!(2;3.4) \fl x
+Dict: Dictionary. [a:2;b:`c]   \fl x
 ^    *note sort::   *note [f]cut::       *3:  k-ipc set        *note
 Func: User Functions. {[a;b]a+b}   \fc x
 #    count  *note [f]take::      *4:  https get        Expr :a+b
 _    *note floor::  *note [f]drop::
-$    *note string::    *note cast::+                           *note
+$    *note string::    *note cast+::      $[b;t;f] Control     *note
 Table: Tables.
-?    *note unique+::   *note find+::      $[b;x;y] *note if else:
-cond.     *note t:::[[]i:2 3;f:3 4.;s:`a`b]
-@    *note type::   *note [f]at::         @[x;i;f[;y]] *note
+?    *note unique+::   *note find+::                           *note
+t:::[[]i:2 3;f:3 4.;s:`a`b]
+@    *note type::   *note [f]at::         @[r;i;f[;y]] *note
 amend::   *note utable:: [[b:..]a:..]
-.    *note value::  *note [f]dot::        .[x;i;f[;y]] *note
+.    *note value::  *note [f]dot::        .[r;i;f[;y]] *note
 dmend::   *note xtable:: `..![[]a:..]
 sqrt sqr exp log sin cos div mod bar .. freq rank msum .. in bin within ..
-\\   exit      / comment  *[if do while select[a;b;t;c]]
+\\   exit      / comment  -[if do while]
 
 Interface
 `csv?`csv t    / *note read: read csv./*note write: write csv. csv
@@ -95,8 +97,6 @@ Interface
 -nodejs: require('k').k('+',2,3)
 *ffi: "./a.so"5:`f!"i"  /I f(I i){return 2+i;}       //cblas ..
 *c/k: "./b.so"5:`f!1    /K f(K x){return ki(2+xi);}  //feeds ..
-
-*enterprise[unlimited data/users/machines/..] +overload
 
 * Menu:
 
@@ -245,14 +245,14 @@ marked with an asterisk, eg.  *update A by B from T where C.
 Universal database, webserver and language -- full stack -- fast
 
 Database
- select A by B from T where C; update A from T
- count first last sum min max *[avg var dev med ..]
+ select C from T where B;update C from T where B;delete from T where B
+ select[C] count first last sum min max *[avg var dev med ..] from T ..
  x,y      / insert, upsert, union, equi+asof leftjoin
  x+y      / equi+asof outerjoin (e.g. combine markets through time)
  x#y      / take/intersect
  x_y      / drop/difference
 
-Language
+Language *enterprise[unlimited data/users/machines/..] +overload -todo
 Verb                      Adverb               Type              System
 :    x         y          f/  over  c/  +join  bool 011b         \l a.k
 +    flip      plus       f\  scan  c\  +split int  0N 0 2 3     \t:n x
@@ -265,17 +265,17 @@ Verb                      Adverb               Type              System
 >    dsc       more              .z.[hrstuv]   time 12:34:56.123456789
 =    group     equal      I/O
 ~    not       match      0:  r/w line         Class             \f
-!    enum      key        1:  r/w byte         List (2;3.4;`a)   \ft x
-,    enlist    cat       *2:  r/w data         Dict `i`f!(2;3.4) \fl x
+!    enum      key        1:  r/w byte         List (2;3.4;`c)   \ft x
+,    enlist    cat       *2:  r/w data         Dict [a:2;b:`c]   \fl x
 ^    sort   [f]cut       *3:  k-ipc set        Func {[a;b]a+b}   \fc x
 #    count  [f]take      *4:  https get        Expr :a+b
 _    floor  [f]drop
-$    string    cast+                           Table
-?    unique+   find+      $[b;x;y] if else     t:[[]i:2 3;f:3 4.;s:`a`b]
-@    type   [f]at         @[x;i;f[;y]] amend   utable [[b:..]a:..]
-.    value  [f]dot        .[x;i;f[;y]] dmend   xtable `..![[]a:..]
+$    string    cast+      $[b;t;f] Control     Table
+?    unique+   find+                           t:[[]i:2 3;f:3 4.;s:`a`b]
+@    type   [f]at         @[r;i;f[;y]] amend   utable [[b:..]a:..]
+.    value  [f]dot        .[r;i;f[;y]] dmend   xtable `..![[]a:..]
 sqrt sqr exp log sin cos div mod bar .. freq rank msum .. in bin within ..
-\\   exit      / comment  *[if do while select[a;b;t;c]]
+\\   exit      / comment  -[if do while]
 
 Interface
 `csv?`csv t    / read/write csv
@@ -284,8 +284,6 @@ Interface
 -nodejs: require('k').k('+',2,3)
 *ffi: "./a.so"5:`f!"i"  /I f(I i){return 2+i;}       //cblas ..
 *c/k: "./b.so"5:`f!1    /K f(K x){return ki(2+xi);}  //feeds ..
-
-*enterprise[unlimited data/users/machines/..] +overload
 
 1.5 rlwrap
 ==========
@@ -949,11 +947,19 @@ different is it to call functions in k9 than many other languages this
 is probably a chapter that will have to be covered a few times.  Once
 you can "speak" k9 you'll read '|x' better than 'reverse(x)'.
 
-   Most functions are overloaded and change depending on the number and
-type of arguments.  This reuse of symbols is also an item that causes
-confusion for new users.  Eg.  '(1 4)++(2 3;5 6;7 8)' contains the plus
-symbol once as flip and then for addition.  (Remember evaluation is
-right to left!)
+   Most functions are overloaded and change depending on the number.
+This reuse of symbols is also an item that causes confusion for new
+users.  Eg.  '(1 4)++(2 3;5 6;7 8)' contains the plus symbol once as
+flip and then for addition.  (Remember evaluation is right to left!)
+
+   Some functions are overloaded into materially different use and these
+are called out with a '+' ending.  This includes cast+, unique+, and
+find+ which become matrix multiply, unit random, and non-unit random
+respectively.
+
+   There are also functions that can take a function argument and these
+are identified with a '[f]' prefix.  These include [f]cut, [f]take,
+[f]drop, [f]at, and [f]dot.
 
      Verb
      : *note x::,        *note set::.
@@ -972,7 +978,7 @@ right to left!)
      ^ *note sort::,  *note [f]cut::.
      # *note count::, *note [f]take::.
      _ *note floor::, *note [f]drop::.
-     $ *note string::,   *note cast::.
+     $ *note string::,   *note cast+::.
      ? *note unique+::,  *note find+::.
      @ *note type::,  *note [f]at::.
      . *note value::, *note [f]dot::.
@@ -1289,38 +1295,20 @@ dictionary, x, return all key values
       !`a`b`c!3 2 1
      `a`b`c
 
-   Given a list of integers, x, generate a list of lists where each
-individual index goes from 0 to n-1.  Aka an odometer where the each
-place can have a separate base and the total number of lists is the
-product of all the x values.
+   In the case where x is a list of integers, generate a multidigit
+counter over all values from 0 to n-1 for each element.
 
-      !2 8 16  / an odometer where the values are 0-1, 0-7, and 0-15.
-     0 0 0 0 0 0 0 0 0 0  0  0  0  0  0  0 0 0 0 0 0 0 0 0 0 0  0  0
-     0 0 0 0 0 0 0 0 0 0  0  0  0  0  0  0 1 1 1 1 1 1 1 1 1 1  1  1
-     0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 0 1 2 3 4 5 6 7 8 9 10 11
-      12#+!2 8 16 / flip the output and display first 18 rows
-     0 0  0
-     0 0  1
-     0 0  2
-     0 0  3
-     0 0  4
-     0 0  5
-     0 0  6
-     0 0  7
-     0 0  8
-     0 0  9
-     0 0 10
-     0 0 11
-      5_+!2 8 16 / flip the output and display last 5 rows
-     1 7 11
-     1 7 12
-     1 7 13
-     1 7 14
-     1 7 15
-      B:`b$+!16#2 / create a list of 16-bit binary numbers from 0 to 65535
-      B[12123]    / pull the element 12,123
+      !2 3 2 / 1st index 0,1, 2nd index 0,1,2, 3rd index 0,1
+     0 0 0 0 0 0 1 1 1 1 1 1
+     0 0 1 1 2 2 0 0 1 1 2 2
+     0 1 0 1 0 1 0 1 0 1 0 1
+
+      B:`b'+!16#2 / create a list of 16-bit binary numbers from 0 to 65535
+
+     B[12123]    / pull the element 12,123
      0010111101011011b
-      2/:B[12123] / convert to base10 to check it's actually 12123
+
+     2/B[12123] / convert to base10 to check it's actually 12123
      12123
 
 4.21 key => x!y
@@ -1489,10 +1477,13 @@ Cast x to string.
       $4.7
      "4.7"
 
-4.31 cast => x$y
-================
+4.31 cast+ => x$y
+=================
 
-Cast string y into type x.
+As cast+ is a '+' verb its use depends on whether x is a list (matrix
+multiply) or not (cast).
+
+   Cast string y into type x.
 
       `i$"23"
      23
@@ -1516,15 +1507,19 @@ Cast string y into type x.
 4.32 unique+ => ?x
 ==================
 
-Return the unique values of the list x.  The '?' preceeding the return
-value explicitly shows that list has no repeat values.
+As unique+ is a '+' verb its use depends on whether x is a list (unique)
+or not (unit random).
+
+   Return the unique values of the list x.  The '?' preceeding the
+return value explicitly shows that list has no repeat values.
+
       ?`f`a`b`c`a`b`d`e`a
      ?`f`a`b`c`d`e
       ?"banana"
      ?"ban"
 
    Generate x random values of uniform distribution from [0,1) or -x
-random value of uniform distribtuion (mean=0, sd=1).
+random values of normal distribtuion (mean=0, sd=1).
 
       ?3     / 3 uniform
      0.1654719 0.172977 0.4808443
@@ -1535,8 +1530,11 @@ random value of uniform distribtuion (mean=0, sd=1).
 4.33 find+ => x?y
 =================
 
-Find the first element of x that matches y otherwise return the end of
-vector.
+As find+ is a '+' verb its use depends on whether x is a list (find) or
+not (range random).
+
+   Find the first element of x that matches y otherwise return the end
+of vector.
 
       `a`b`a`c`b`a`a?`b
      1
@@ -2142,18 +2140,18 @@ Dates are in yyyy.mm.dd format.  Dates are stored internally as integers
 with 0 corresponding to 2001.01.01.
 
       @2020.04.20               / date
-     `D
-      .z.D                       / current date in GMT
-     2020.09.13
-      `i .z.D                    / numeric representation of date
-     -1205
+     `d
+      .z.d                       / current date in GMT
+     2020.12.05
+      `i .z.d                    / numeric representation of date
+     7278
       `i 2001.01.01              / zero date
      0
-      `D 0                       / zero date
+      `d 0                       / zero date
      2001.01.01
 
-6.6.3 datetime => Datetime S, T, U, V
--------------------------------------
+6.6.3 datetime => Datetime d
+----------------------------
 
 Dates and times can be combined into a single datetime element by
 combing a date, the letter T, and the time together without spaces.  The
@@ -2163,7 +2161,7 @@ Datetimes are stored interally as integers.  For example
 milliseconds in a day.
 
       @2020.04.20T12:34:56.789  / date and time
-     `T
+     `d
       `T$"2020.04.20 12:34:56.789" / converting from string
      2020.04.20T12:34:56.789
 
@@ -4037,14 +4035,14 @@ this manual isn't needed and it's all here...
 Universal database, webserver and language -- full stack -- fast
 
 Database
- select A by B from T where C; update A from T
- count first last sum min max *[avg var dev med ..]
+ select C from T where B;update C from T where B;delete from T where B
+ select[C] count first last sum min max *[avg var dev med ..] from T ..
  x,y      / insert, upsert, union, equi+asof leftjoin
  x+y      / equi+asof outerjoin (e.g. combine markets through time)
  x#y      / take/intersect
  x_y      / drop/difference
 
-Language
+Language *enterprise[unlimited data/users/machines/..] +overload -todo
 Verb                      Adverb               Type              System
 :    x         y          f/  over  c/  +join  bool 011b         \l a.k
 +    flip      plus       f\  scan  c\  +split int  0N 0 2 3     \t:n x
@@ -4057,17 +4055,17 @@ Verb                      Adverb               Type              System
 >    dsc       more              .z.[hrstuv]   time 12:34:56.123456789
 =    group     equal      I/O
 ~    not       match      0:  r/w line         Class             \f
-!    enum      key        1:  r/w byte         List (2;3.4;`a)   \ft x
-,    enlist    cat       *2:  r/w data         Dict `i`f!(2;3.4) \fl x
+!    enum      key        1:  r/w byte         List (2;3.4;`c)   \ft x
+,    enlist    cat       *2:  r/w data         Dict [a:2;b:`c]   \fl x
 ^    sort   [f]cut       *3:  k-ipc set        Func {[a;b]a+b}   \fc x
 #    count  [f]take      *4:  https get        Expr :a+b
 _    floor  [f]drop
-$    string    cast+                           Table
-?    unique+   find+      $[b;x;y] if else     t:[[]i:2 3;f:3 4.;s:`a`b]
-@    type   [f]at         @[x;i;f[;y]] amend   utable [[b:..]a:..]
-.    value  [f]dot        .[x;i;f[;y]] dmend   xtable `..![[]a:..]
+$    string    cast+      $[b;t;f] Control     Table
+?    unique+   find+                           t:[[]i:2 3;f:3 4.;s:`a`b]
+@    type   [f]at         @[r;i;f[;y]] amend   utable [[b:..]a:..]
+.    value  [f]dot        .[r;i;f[;y]] dmend   xtable `..![[]a:..]
 sqrt sqr exp log sin cos div mod bar .. freq rank msum .. in bin within ..
-\\   exit      / comment  *[if do while select[a;b;t;c]]
+\\   exit      / comment  -[if do while]
 
 Interface
 `csv?`csv t    / read/write csv
@@ -4077,148 +4075,146 @@ Interface
 *ffi: "./a.so"5:`f!"i"  /I f(I i){return 2+i;}       //cblas ..
 *c/k: "./b.so"5:`f!1    /K f(K x){return ki(2+xi);}  //feeds ..
 
-*enterprise[unlimited data/users/machines/..] +overload
-
 
 
 Tag Table:
 Node: Top125
-Node: Introduction5128
-Node: Examples17299
-Node: Benchmark24853
-Node: Verb29810
-Ref: x31270
-Ref: set31295
-Ref: flip31507
-Ref: plus31757
-Ref: negate32142
-Ref: minus32314
-Ref: first32421
-Ref: times32761
-Ref: divide32892
-Ref: where33029
-Ref: min/and33509
-Ref: reverse33768
-Ref: max/or33938
-Ref: asc34202
-Ref: less34575
-Ref: group34876
-Ref: equal35122
-Ref: not35426
-Ref: match35543
-Ref: enum35926
-Ref: key37179
-Ref: enlist37409
-Ref: cat37548
-Ref: sort37667
-Ref: [f]cut37899
-Ref: count38644
-Ref: [f]take38834
-Ref: floor39386
-Ref: [f]drop39477
-Ref: string40070
-Ref: cast40171
-Ref: unique+40518
-Ref: find+41001
-Ref: type41720
-Ref: [f]at42171
-Ref: value42487
-Ref: [f]dot42761
-Node: Adverb44016
-Ref: scan44762
-Ref: join45292
-Ref: split45467
-Ref: each45658
-Ref: +has45947
-Ref: eachp46213
-Ref: bin246957
-Ref: eachr47162
-Ref: eachl47359
-Ref: n scan47543
-Ref: c scan48023
-Ref: c over48535
-Ref: vs48672
-Ref: sv48792
-Node: Noun48916
-Ref: Atom Types50254
-Ref: bool51435
-Ref: int51735
-Ref: flt52395
-Ref: char52797
-Ref: name53020
-Ref: uuid53251
-Ref: time53408
-Ref: date54284
-Ref: datetime54746
-Node: List55561
-Node: Dictionary60836
-Node: User Functions65744
-Node: Named Functions68329
-Ref: sqrt68951
-Ref: exp69024
-Ref: log69092
-Ref: sin69192
-Ref: cos69331
-Ref: div69479
-Ref: mod69635
-Ref: bar69813
-Ref: in70353
-Ref: bin70532
-Ref: within70746
-Node: Knit Functions70982
-Ref: amend71251
-Ref: dmend71619
-Node: I/O71984
-Ref: read csv74087
-Ref: write csv74265
-Ref: read json74429
-Ref: write json74619
-Ref: w line74792
-Ref: r line75101
-Ref: w byte75214
-Ref: r byte75442
-Ref: r data75590
-Ref: w data76251
-Ref: conn/set76819
-Ref: http/get76879
-Ref: lib76939
-Node: Tables77403
-Ref: t78095
-Ref: xtable79700
-Ref: utable80182
-Node: kSQL80639
-Ref: select81237
-Ref: A81821
-Ref: by B82691
-Ref: where C82963
-Ref: update83545
-Ref: union84403
-Ref: leftjoin84924
-Ref: outer85442
-Ref: asof85777
-Ref: asof+86821
-Ref: insert87824
-Ref: upsert88170
-Node: System88494
-Ref: load88952
-Ref: timing89140
-Ref: variables89227
-Ref: memory89328
-Ref: cd89443
-Node: Control Flow89527
-Ref: cond89747
-Node: .z90008
-Node: Errors91038
-Ref: class91472
-Ref: rank91561
-Ref: length91685
-Ref: _type91808
-Ref: domain91917
-Ref: limit92039
-Ref: nyi92240
-Ref: parse92573
-Ref: _value92728
-Node: Conclusion92856
+Node: Introduction5137
+Node: Examples17341
+Node: Benchmark24895
+Node: Verb29852
+Ref: x31685
+Ref: set31710
+Ref: flip31922
+Ref: plus32172
+Ref: negate32557
+Ref: minus32729
+Ref: first32836
+Ref: times33176
+Ref: divide33307
+Ref: where33444
+Ref: min/and33924
+Ref: reverse34183
+Ref: max/or34353
+Ref: asc34617
+Ref: less34990
+Ref: group35291
+Ref: equal35537
+Ref: not35841
+Ref: match35958
+Ref: enum36341
+Ref: key37030
+Ref: enlist37260
+Ref: cat37399
+Ref: sort37518
+Ref: [f]cut37750
+Ref: count38495
+Ref: [f]take38685
+Ref: floor39237
+Ref: [f]drop39328
+Ref: string39921
+Ref: cast+40022
+Ref: unique+40470
+Ref: find+41053
+Ref: type41868
+Ref: [f]at42319
+Ref: value42635
+Ref: [f]dot42909
+Node: Adverb44164
+Ref: scan44910
+Ref: join45440
+Ref: split45615
+Ref: each45806
+Ref: +has46095
+Ref: eachp46361
+Ref: bin247105
+Ref: eachr47310
+Ref: eachl47507
+Ref: n scan47691
+Ref: c scan48171
+Ref: c over48683
+Ref: vs48820
+Ref: sv48940
+Node: Noun49064
+Ref: Atom Types50402
+Ref: bool51583
+Ref: int51883
+Ref: flt52543
+Ref: char52945
+Ref: name53168
+Ref: uuid53399
+Ref: time53556
+Ref: date54432
+Ref: datetime54893
+Node: List55690
+Node: Dictionary60965
+Node: User Functions65873
+Node: Named Functions68458
+Ref: sqrt69080
+Ref: exp69153
+Ref: log69221
+Ref: sin69321
+Ref: cos69460
+Ref: div69608
+Ref: mod69764
+Ref: bar69942
+Ref: in70482
+Ref: bin70661
+Ref: within70875
+Node: Knit Functions71111
+Ref: amend71380
+Ref: dmend71748
+Node: I/O72113
+Ref: read csv74216
+Ref: write csv74394
+Ref: read json74558
+Ref: write json74748
+Ref: w line74921
+Ref: r line75230
+Ref: w byte75343
+Ref: r byte75571
+Ref: r data75719
+Ref: w data76380
+Ref: conn/set76948
+Ref: http/get77008
+Ref: lib77068
+Node: Tables77532
+Ref: t78224
+Ref: xtable79829
+Ref: utable80311
+Node: kSQL80768
+Ref: select81366
+Ref: A81950
+Ref: by B82820
+Ref: where C83092
+Ref: update83674
+Ref: union84532
+Ref: leftjoin85053
+Ref: outer85571
+Ref: asof85906
+Ref: asof+86950
+Ref: insert87953
+Ref: upsert88299
+Node: System88623
+Ref: load89081
+Ref: timing89269
+Ref: variables89356
+Ref: memory89457
+Ref: cd89572
+Node: Control Flow89656
+Ref: cond89876
+Node: .z90137
+Node: Errors91167
+Ref: class91601
+Ref: rank91690
+Ref: length91814
+Ref: _type91937
+Ref: domain92046
+Ref: limit92168
+Ref: nyi92369
+Ref: parse92702
+Ref: _value92857
+Node: Conclusion92985
 
 End Tag Table
 

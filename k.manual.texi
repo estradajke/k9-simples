@@ -20,7 +20,7 @@ Copyright @copyright{} 2020 John Estrada
 @c @ifnottex
 @node Top
 @top k9: Manual
-This manual is for Shakti (k9) build 2020.11.16.@*
+This manual is for Shakti (k9) build 2020.12.04.@*
 
 The Shakti programming language is the work of Arthur Whitney and the team at Shakti.  The language comes from a lineage of similar languages going back to APL.  It's also known as k9 given the similarities to k, k2, ..., k6, k7 and the fact that Arthur also wrote those.  k9 is still under development so expect a bit of syntax change and likely even more improvements.
 
@@ -720,7 +720,11 @@ t        e p  z    b
 @chapter Verb
 This chapter covers verbs which are the core functions of k9.  Given how different is it to call functions in k9 than many other languages this is probably a chapter that will have to be covered a few times.  Once you can ``speak'' k9 you'll read @code{|x} better than @code{reverse(x)}.  
 
-Most functions are overloaded and change depending on the number and type of arguments.  This reuse of symbols is also an item that causes confusion for new users.  Eg. @code{(1 4)++(2 3;5 6;7 8)} contains the plus symbol once as flip and then for addition.  (Remember evaluation is right to left!)
+Most functions are overloaded and change depending on the number.  This reuse of symbols is also an item that causes confusion for new users.  Eg. @code{(1 4)++(2 3;5 6;7 8)} contains the plus symbol once as flip and then for addition.  (Remember evaluation is right to left!)
+
+Some functions are overloaded into materially different use and these are called out with a '+' ending.  This includes cast+, unique+, and find+ which become matrix multiply, unit random, and non-unit random respectively.
+
+There are also functions that can take a function argument and these are identified with a '[f]' prefix.  These include [f]cut, [f]take, [f]drop, [f]at, and [f]dot.
 
 @example
 Verb
@@ -740,7 +744,7 @@ Verb
 ^ @ref{sort},  @ref{[f]cut}. 
 # @ref{count}, @ref{[f]take}.  
 _ @ref{floor}, @ref{[f]drop}.    
-$ @ref{string},   @ref{cast}.    
+$ @ref{string},   @ref{cast+}.    
 ? @ref{unique+},  @ref{find+}.    
 @@ @ref{type},  @ref{[f]at}.    
 . @ref{value}, @ref{[f]dot}.
@@ -1098,7 +1102,6 @@ Return true (1b) if x matches y else false (0b).  A match happens if the two arg
 @anchor{enum}@section enum @result{} !x
 Given an integer, x, generate an integer list from 0 to x-1.  Given a dictionary, x, return all key values
 
-@c @U{1CC5}
 @example
  !3
 0 1 2
@@ -1107,36 +1110,20 @@ Given an integer, x, generate an integer list from 0 to x-1.  Given a dictionary
 `a`b`c
 @end example
 
-Given a list of integers, x, generate a list of lists where each individual index goes from 0 to n-1.  Aka an odometer where the each place can have a separate base and the total number of lists is the product of all the x values.
+In the case where x is a list of integers, generate a multidigit counter over all values from 0 to n-1 for each element.
 
 @example
-@ !2 8 16  / an odometer where the values are 0-1, 0-7, and 0-15.
-0 0 0 0 0 0 0 0 0 0  0  0  0  0  0  0 0 0 0 0 0 0 0 0 0 0  0  0
-0 0 0 0 0 0 0 0 0 0  0  0  0  0  0  0 1 1 1 1 1 1 1 1 1 1  1  1
-0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 0 1 2 3 4 5 6 7 8 9 10 11
-@ 12#+!2 8 16 / flip the output and display first 18 rows
-0 0  0
-0 0  1
-0 0  2
-0 0  3
-0 0  4
-0 0  5
-0 0  6
-0 0  7
-0 0  8
-0 0  9
-0 0 10
-0 0 11
-@ 5_+!2 8 16 / flip the output and display last 5 rows
-1 7 11
-1 7 12
-1 7 13
-1 7 14
-1 7 15
-@ B:`b$+!16#2 / create a list of 16-bit binary numbers from 0 to 65535
-@ B[12123]    / pull the element 12,123
+ !2 3 2 / 1st index 0,1, 2nd index 0,1,2, 3rd index 0,1
+0 0 0 0 0 0 1 1 1 1 1 1
+0 0 1 1 2 2 0 0 1 1 2 2
+0 1 0 1 0 1 0 1 0 1 0 1
+
+ B:`b'+!16#2 / create a list of 16-bit binary numbers from 0 to 65535
+
+B[12123]    / pull the element 12,123
 0010111101011011b
-@ 2/:B[12123] / convert to base10 to check it's actually 12123
+
+2/B[12123] / convert to base10 to check it's actually 12123
 12123
 @end example
 
@@ -1299,7 +1286,8 @@ Cast x to string.
 "4.7"
 @end example
 
-@anchor{cast}@section cast @result{} x$y
+@anchor{cast+}@section cast+ @result{} x$y
+As cast+ is a '+' verb its use depends on whether x is a list (matrix multiply) or not (cast).
 
 Cast string y into type x.
 
@@ -1327,7 +1315,10 @@ Multiply matrices x and y together.
 @end example
 
 @anchor{unique+}@section unique+ @result{} ?x
+As unique+ is a '+' verb its use depends on whether x is a list (unique) or not (unit random).
+
 Return the unique values of the list x.  The @code{?} preceeding the return value explicitly shows that list has no repeat values.
+
 @example
 @ ?`f`a`b`c`a`b`d`e`a
 ?`f`a`b`c`d`e
@@ -1335,7 +1326,7 @@ Return the unique values of the list x.  The @code{?} preceeding the return valu
 ?"ban"
 @end example
 
-Generate x random values of uniform distribution from [0,1) or -x random value of uniform distribtuion (mean=0, sd=1).
+Generate x random values of uniform distribution from [0,1) or -x random values of normal distribtuion (mean=0, sd=1).
 
 @example
  ?3     / 3 uniform
@@ -1346,10 +1337,12 @@ Generate x random values of uniform distribution from [0,1) or -x random value o
 @end example
 
 @anchor{find+}@section find+ @result{} x?y
+As find+ is a '+' verb its use depends on whether x is a list (find) or not (range random).
+
 Find the first element of x that matches y otherwise return the end of vector.
 
 @example
-@ `a`b`a`c`b`a`a?`b
+ `a`b`a`c`b`a`a?`b
 1
 @ `a`b`a`c`b`a`a?`d
 7
@@ -1914,23 +1907,23 @@ Dates are in yyyy.mm.dd format.  Dates are stored internally as integers with 0 
 
 @example
  @@2020.04.20               / date
-`D
- .z.D                       / current date in GMT
-2020.09.13
- `i .z.D                    / numeric representation of date
--1205
+`d
+ .z.d                       / current date in GMT
+2020.12.05
+ `i .z.d                    / numeric representation of date
+7278
  `i 2001.01.01              / zero date
 0
- `D 0                       / zero date
+ `d 0                       / zero date
 2001.01.01
 @end example
 
-@anchor{datetime}@subsection datetime @result{} Datetime S, T, U, V
+@anchor{datetime}@subsection datetime @result{} Datetime d
 Dates and times can be combined into a single datetime element by combing a date, the letter T, and the time together without spaces.  The datetime use the same lettering as the time precision but in uppercase.  Datetimes are stored interally as integers.  For example 2001.01.02T00:00:00.000 is stored as 86,400,000, the number of milliseconds in a day.
 
 @example
  @@2020.04.20T12:34:56.789  / date and time
-`T
+`d
  `T$"2020.04.20 12:34:56.789" / converting from string
 2020.04.20T12:34:56.789
 @end example

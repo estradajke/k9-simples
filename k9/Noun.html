@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 3, 2020
+<!-- December 5, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -222,23 +222,23 @@ b:{-1+*/x#256}
 </p>
 <div class="example">
 <pre class="example"> @2020.04.20               / date
-`D
- .z.D                       / current date in GMT
-2020.09.13
- `i .z.D                    / numeric representation of date
--1205
+`d
+ .z.d                       / current date in GMT
+2020.12.05
+ `i .z.d                    / numeric representation of date
+7278
  `i 2001.01.01              / zero date
 0
- `D 0                       / zero date
+ `d 0                       / zero date
 2001.01.01
 </pre></div>
 
-<span id="datetime"></span><span id="datetime-_21d2-Datetime-S_002c-T_002c-U_002c-V"></span><h4 class="subsection">6.6.3 datetime &rArr; Datetime S, T, U, V</h4>
+<span id="datetime"></span><span id="datetime-_21d2-Datetime-d"></span><h4 class="subsection">6.6.3 datetime &rArr; Datetime d</h4>
 <p>Dates and times can be combined into a single datetime element by combing a date, the letter T, and the time together without spaces.  The datetime use the same lettering as the time precision but in uppercase.  Datetimes are stored interally as integers.  For example 2001.01.02T00:00:00.000 is stored as 86,400,000, the number of milliseconds in a day.
 </p>
 <div class="example">
 <pre class="example"> @2020.04.20T12:34:56.789  / date and time
-`T
+`d
  `T$&quot;2020.04.20 12:34:56.789&quot; / converting from string
 2020.04.20T12:34:56.789
 </pre></div>

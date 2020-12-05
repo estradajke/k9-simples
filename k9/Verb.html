@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 3, 2020
+<!-- December 5, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -48,7 +48,11 @@ Next: <a href="Adverb.html" accesskey="n" rel="next">Adverb</a>, Previous: <a hr
 <span id="Verb-1"></span><h2 class="chapter">4 Verb</h2>
 <p>This chapter covers verbs which are the core functions of k9.  Given how different is it to call functions in k9 than many other languages this is probably a chapter that will have to be covered a few times.  Once you can &ldquo;speak&rdquo; k9 you&rsquo;ll read <code>|x</code> better than <code>reverse(x)</code>.  
 </p>
-<p>Most functions are overloaded and change depending on the number and type of arguments.  This reuse of symbols is also an item that causes confusion for new users.  Eg. <code>(1 4)++(2 3;5 6;7 8)</code> contains the plus symbol once as flip and then for addition.  (Remember evaluation is right to left!)
+<p>Most functions are overloaded and change depending on the number.  This reuse of symbols is also an item that causes confusion for new users.  Eg. <code>(1 4)++(2 3;5 6;7 8)</code> contains the plus symbol once as flip and then for addition.  (Remember evaluation is right to left!)
+</p>
+<p>Some functions are overloaded into materially different use and these are called out with a &rsquo;+&rsquo; ending.  This includes cast+, unique+, and find+ which become matrix multiply, unit random, and non-unit random respectively.
+</p>
+<p>There are also functions that can take a function argument and these are identified with a &rsquo;[f]&rsquo; prefix.  These include [f]cut, [f]take, [f]drop, [f]at, and [f]dot.
 </p>
 <div class="example">
 <pre class="example">Verb
@@ -68,7 +72,7 @@ Next: <a href="Adverb.html" accesskey="n" rel="next">Adverb</a>, Previous: <a hr
 ^ <a href="#sort">sort</a>,  <a href="#g_t_005bf_005dcut">[f]cut</a>. 
 # <a href="#count">count</a>, <a href="#g_t_005bf_005dtake">[f]take</a>.  
 _ <a href="#floor">floor</a>, <a href="#g_t_005bf_005ddrop">[f]drop</a>.    
-$ <a href="#string">string</a>,   <a href="#cast">cast</a>.    
+$ <a href="#string">string</a>,   <a href="#cast_002b">cast+</a>.    
 ? <a href="#unique_002b">unique+</a>,  <a href="#find_002b">find+</a>.    
 @ <a href="#type">type</a>,  <a href="#g_t_005bf_005dat">[f]at</a>.    
 . <a href="#value">value</a>, <a href="#g_t_005bf_005ddot">[f]dot</a>.
@@ -375,36 +379,20 @@ n|2 4
 `a`b`c
 </pre></div>
 
-<p>Given a list of integers, x, generate a list of lists where each individual index goes from 0 to n-1.  Aka an odometer where the each place can have a separate base and the total number of lists is the product of all the x values.
+<p>In the case where x is a list of integers, generate a multidigit counter over all values from 0 to n-1 for each element.
 </p>
 <div class="example">
-<pre class="example">&nbsp;!2 8 16  / an odometer where the values are 0-1, 0-7, and 0-15.
-0 0 0 0 0 0 0 0 0 0  0  0  0  0  0  0 0 0 0 0 0 0 0 0 0 0  0  0
-0 0 0 0 0 0 0 0 0 0  0  0  0  0  0  0 1 1 1 1 1 1 1 1 1 1  1  1
-0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 0 1 2 3 4 5 6 7 8 9 10 11
-&nbsp;12#+!2 8 16 / flip the output and display first 18 rows
-0 0  0
-0 0  1
-0 0  2
-0 0  3
-0 0  4
-0 0  5
-0 0  6
-0 0  7
-0 0  8
-0 0  9
-0 0 10
-0 0 11
-&nbsp;5_+!2 8 16 / flip the output and display last 5 rows
-1 7 11
-1 7 12
-1 7 13
-1 7 14
-1 7 15
-&nbsp;B:`b$+!16#2 / create a list of 16-bit binary numbers from 0 to 65535
-&nbsp;B[12123]    / pull the element 12,123
+<pre class="example"> !2 3 2 / 1st index 0,1, 2nd index 0,1,2, 3rd index 0,1
+0 0 0 0 0 0 1 1 1 1 1 1
+0 0 1 1 2 2 0 0 1 1 2 2
+0 1 0 1 0 1 0 1 0 1 0 1
+
+ B:`b'+!16#2 / create a list of 16-bit binary numbers from 0 to 65535
+
+B[12123]    / pull the element 12,123
 0010111101011011b
-&nbsp;2/:B[12123] / convert to base10 to check it's actually 12123
+
+2/B[12123] / convert to base10 to check it's actually 12123
 12123
 </pre></div>
 
@@ -567,8 +555,9 @@ z  1
 &quot;4.7&quot;
 </pre></div>
 
-<span id="cast"></span><span id="cast-_21d2-x_0024y"></span><h3 class="section">4.31 cast &rArr; x$y</h3>
-
+<span id="cast_002b"></span><span id="cast_002b-_21d2-x_0024y"></span><h3 class="section">4.31 cast+ &rArr; x$y</h3>
+<p>As cast+ is a &rsquo;+&rsquo; verb its use depends on whether x is a list (matrix multiply) or not (cast).
+</p>
 <p>Cast string y into type x.
 </p>
 <div class="example">
@@ -595,15 +584,18 @@ z  1
 </pre></div>
 
 <span id="unique_002b"></span><span id="unique_002b-_21d2-_003fx"></span><h3 class="section">4.32 unique+ &rArr; ?x</h3>
+<p>As unique+ is a &rsquo;+&rsquo; verb its use depends on whether x is a list (unique) or not (unit random).
+</p>
 <p>Return the unique values of the list x.  The <code>?</code> preceeding the return value explicitly shows that list has no repeat values.
-</p><div class="example">
+</p>
+<div class="example">
 <pre class="example">&nbsp;?`f`a`b`c`a`b`d`e`a
 ?`f`a`b`c`d`e
 &nbsp;?&quot;banana&quot;
 ?&quot;ban&quot;
 </pre></div>
 
-<p>Generate x random values of uniform distribution from [0,1) or -x random value of uniform distribtuion (mean=0, sd=1).
+<p>Generate x random values of uniform distribution from [0,1) or -x random values of normal distribtuion (mean=0, sd=1).
 </p>
 <div class="example">
 <pre class="example"> ?3     / 3 uniform
@@ -614,10 +606,12 @@ z  1
 </pre></div>
 
 <span id="find_002b"></span><span id="find_002b-_21d2-x_003fy"></span><h3 class="section">4.33 find+ &rArr; x?y</h3>
+<p>As find+ is a &rsquo;+&rsquo; verb its use depends on whether x is a list (find) or not (range random).
+</p>
 <p>Find the first element of x that matches y otherwise return the end of vector.
 </p>
 <div class="example">
-<pre class="example">&nbsp;`a`b`a`c`b`a`a?`b
+<pre class="example"> `a`b`a`c`b`a`a?`b
 1
 &nbsp;`a`b`a`c`b`a`a?`d
 7
