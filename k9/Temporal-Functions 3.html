@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- December 5, 2020
+
+Copyright (C) 2020 John Estrada -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Temporal Functions (Shakti tutorial)</title>
+
+<meta name="description" content="Temporal Functions (Shakti tutorial)">
+<meta name="keywords" content="Temporal Functions (Shakti tutorial)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="index.html" rel="up" title="Top">
+<link href="Errors.html" rel="next" title="Errors">
+<link href="Control-Flow.html" rel="prev" title="Control Flow">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Temporal-Functions"></span><div class="header">
+<p>
+Next: <a href="Errors.html" accesskey="n" rel="next">Errors</a>, Previous: <a href="Control-Flow.html" accesskey="p" rel="prev">Control Flow</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+</div>
+<hr>
+<span id="Temporal-Functions-1"></span><h2 class="chapter">17 Temporal Functions</h2>
+<p>k9 has functions (within <code>.z</code>) to get the current date, time, and date-time.  Uppercase is used to include a date and lower case for time only.  There are also functions to retrieve partial date and time (within <code>.mdhrstuv</code>).
+</p>
+<pre class="verbatim">.z.[md]       date 2001.01.01
+.z.[hrstuv]   time 12:34:56.123456789
+
+time(cuanto) .z.t mdhrstuv (month day hour minute second milli micro nano)
+date(cuando) .z.d mdHRSTUV (month day hour minute second milli micro nano)
+</pre>
+<span id="g_t_002ez_002eDTV-date"></span><h3 class="section">17.1 .z.DTV date</h3>
+<p>These function retrieve the date (D), date &amp; time (ms) (T), and date &amp; time (ns) (V).
+</p>
+<div class="example">
+<pre class="example"> .z.D
+2020.10.16
+
+.z.T
+2020.10.16T13:46:36.040
+
+.z.V
+2020.10.16T13:46:36.040654000
+</pre></div>
+
+<span id="g_t_002ez_002edtv-time"></span><h3 class="section">17.2 .z.dtv time</h3>
+<p>These functions determine the amount of time (in integer days) since Monday 00:00 (d), time (ms) since 00:00 today (t), and time (ns) since 00:00 today (v).
+</p>
+<div class="example">
+<pre class="example"> .z.d  / running at Friday 13:46
+4d
+
+.z.t
+13:46:36.040
+
+.z.v
+13:46:36.040654000
+</pre></div>
+
+<p>One could use the current time commands to measure run time but typically this is done via <code>\t</code>
+</p>
+<div class="example">
+<pre class="example"> t1:.z.v;(_2e8)?1.;t2:.z.v;t2-t1
+00:00:00.609207008
+
+\t (_2e8)?1.
+610
+</pre></div>
+
+<span id="Temporal-dot-functions"></span><h3 class="section">17.3 Temporal dot functions</h3>
+<p>These functions use dot notation to retrieve partial date and times.
+</p>
+<div class="example">
+<pre class="example"> now:.z.V;now   / with datetime
+2020.12.05T11:28:04.881110016
+ now.d
+2020.12.05
+ now.H
+2020.12.05T11
+ now.S
+2020.12.05T11:28:04
+ now.U
+2020.12.05T11:28:04.881110
+
+ now:.z.d;now  / with date
+2020.12.05
+ now.m
+2020.12.
+ now.d
+2020.12.05
+ now.m.d       / convert to month and then day to get 1st of current month
+2020.12.01
+
+now:.z.v;now   / with time
+11:28:08.518104064
+ now.r
+11:28
+ now.s
+11:28:08
+ now.u
+11:28:08.518104
+</pre></div>
+
+
+
+
+</body>
+</html>
