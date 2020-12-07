@@ -1668,12 +1668,11 @@ the shape of y.
    * Recursive index over returns x[y[0;0];y[1]], x[y[0;1];y[1]], ...,
      x[y[0;n-1];y[1]].
 
-action                 @y      #y      example
-------------------------------------------------------
-simple index           'I      1       ,2
-simple indices         'I      1       ,1 3
-recursive index        'L      1       0 2
-recursive index over   'L      2       (0 2;1 3)
+action@y    #y    example
+simple index'I1   ,2
+simple indices'I1 ,1 3
+recursive index'L10 2
+recursive index over'L2(0 2;1 3)
 
       (3 4 7 12).,2
      7
@@ -2317,48 +2316,15 @@ is likely more clear.
 7.3 Updating List Elements
 ==========================
 
-Lists can be updated element wise but typically one is likely to be
-updating many elements and there is a syntax for doing so.
+Lists can be updated element wise by specifiying setting the indexed
+element to a required value.  There is also a syntax for updating many
+elements and that it found at *note amend::.
 
-      a:2*1+!10
-      a
-     ?2 4 6 8 10 12 14 16 18 20
+      a:2*1+!10;a
+     2 4 6 8 10 12 14 16 18 20
       a[3]:80
       a
      2 4 6 80 10 12 14 16 18 20
-      a:@[a;0 2 4 6 8;0];a
-     0 4 0 80 0 12 0 16 0 20
-      a:@[a;1 3 5;*;100];a
-     0 400 0 8000 0 1200 0 16 0 20
-      a:@[a;!#a;:;0];a
-     0 0 0 0 0 0 0 0 0 0
-
-   List amend syntax has a few options so will be explained in more
-detail.  In this section list (L), indices (I), value (v), identity
-fucntion (:), and general function (f) will be represented by a single
-character.  Spaces have been added for readability but are not needed.
-
-   * @[L; I; v]
-   * @[L; I; :; v]
-   * @[L; I; f; v]
-
-   The first syntax sets the list at the indices to value.  The second
-syntax performs the same modificaiton but explicitly lists the identity
-function, :.  The third synatx is the same as the preceeding but uses an
-arbitrary function.
-
-   Often the developer will need to determine which indices to modify
-and in cases where this isn't onerous it can be done in the function.
-
-      a:2*1+!10
-      @[a;&a<14;:;-3]
-     -3 -3 -3 -3 -3 -3 14 16 18 20
-      @[!10;1 3 5;:;10 20 30]
-     0 10 2 20 4 30 6 7 8 9
-      @[!10;1 3 5;:;10 20]   / index and value array length mistmatch
-     :length
-      @[!10;1 3;:;10 20 30]  / index and value array length mistmatch
-     :length
 
 7.4 Function of Two Lists
 =========================
@@ -2991,63 +2957,129 @@ File: k9.info,  Node: Knit Functions,  Next: I/O,  Prev: Named Functions,  Up: T
 These functions modify lists and dictionaries given a list of indices
 and functions or values to replace.
 
-@[x;i;f[;y]] amend
-.[x;i;f[;y]] dmend
+     @[r;i;f[;y]] *note amend::
+     .[r;i;f[;y]] *note dmend::
 
-11.1 amend => @[x;i;f[;y]]
+11.1 amend => @[r;i;f[;y]]
 ==========================
 
-Replace the values in list/dictionary x at indices i with f or f[y].
+Replace the values in list/dictionary r at indices i with element f or
+function f and parameter y.  The original list is not modified.
 
-   @[x;i;f] and @[x;i;f;y] examples
+action                           f             y
+*note amend with element: amend1.element       n/a
+*note amend with element/array: amend2.:       element/list
+*note amend with function 1 param: amend3.functionn/a
+*note amend with function 2 param: amend4.function2nd param
 
-      x:(1 2;3 4;5 6);x
-     1 2
-     3 4
-     5 6
+   Amend to element.
 
-      @[x;2 0;0]
+      r:(0 1;2 3;4 5;6);r
+     0 1
+     2 3
+     4 5
+     6
+
+      @[r;0 3;29]
+     29
+     2 3
+     4 5
+     29
+
+   Amend with element/array.  If using an array, then the 'i' and 'y'
+must be arrays of equal length.
+
+      r:(0 1;2 3;4 5;6);r
+     0 1
+     2 3
+     4 5
+     6
+
+      @[r;1 2;:;(0;3 5)]
+     0 1
      0
-     3 4
-     0
+     3 5
+     6
 
-      x:(1 2;3 4;5 6);x
-     1 2
-     3 4
-     5 6
+   Amend with function f[r] at indices i.
 
-      @[x;2 0;+;100]
-     101 102
-       3   4
-     105 106
+      r:(0 1;2 3;4 5;6);r
+     0 1
+     2 3
+     4 5
+     6
 
-11.2 dmend => .[x;i;f[;y]]
+      @[r;1 2;sqrt]
+     0 1
+     1.414214 1.732051
+     2.0 2.236068
+     6
+
+   Amend with function f[r;y] at indices i.
+
+      r:(0 1;2 3;4 5;6);r
+     0 1
+     2 3
+     4 5
+     6
+
+      @[r;1 2;*;10 100]
+     0 1
+     20 30
+     400 500
+     6
+
+11.2 dmend => .[r;i;f[;y]]
 ==========================
 
-Replace the values in list/dictionary x at index i with f or f[y].
+Similar to *note amend:: but using 'i' to fully index 'r'.
 
-   .[x;i;f] and .[x;i;f;y] examples
+action                           f             y
+*note dmend with element: dmend1.element       n/a
+*note dmend with function 1 param: dmend3.functionn/a
+*note dmend with function 2 param: dmend4.function2nd param
 
-      x:(1 2;3 4;5 6);x
-     1 2
-     3 4
-     5 6
+   Dmend to element.
 
-      .[x;2 0;0]
-     1 2
-     3 4
-     0 6
+      r:(0 1;2 3;4 5;6);r
+     0 1
+     2 3
+     4 5
+     6
 
+      .[r;0 1;12]
+     0 12
+     2 3
+     4 5
+     6
 
-      x:(1 2;3 4;5 6);x
-     1 2
-     3 4
-     5 6
+   Dmend with function f[r] at indices i.
 
-      .[x;2 0;+;100]
-       1 2
-       3 4
-     105 6
+      r:(0 1;2 3;4 5;6);r
+     0 1
+     2 3
+     4 5
+     6
+
+      .[r;1 1;sqrt]
+     0 1
+     2.0 1.732051
+     4 5
+     6
+
+   Dmend with function f[r;y] at indices i.
+
+      r:(0 1;2 3;4 5;6);r
+     0 1
+     2 3
+     4 5
+     6
+
+      .[r;1 1;+;100]
+     0 1
+     2 103
+     4 5
+     6
 
 
 File: k9.info,  Node: I/O,  Next: Tables,  Prev: Knit Functions,  Up: Top
@@ -3595,7 +3627,7 @@ k9 has a number of methods to join tables together which are described
 below.  In this section t, t1 and t2 represent tables and k, k1 and k2
 represent utables.
 
-join        syntax
+joinsyntax
 *note union::t1,t2
 *note leftjoin::t,k
 *note outer::k1,k2
@@ -4223,101 +4255,108 @@ Ref: type42657
 Ref: [f]at43108
 Ref: value43424
 Ref: [f]dot43698
-Node: Adverb44953
-Ref: scan45701
-Ref: +join46231
-Ref: +split46498
-Ref: each46755
-Ref: +has47044
-Ref: eachp47310
-Ref: bin248054
-Ref: eachr48259
-Ref: eachl48456
-Ref: n scan48640
-Ref: c scan49120
-Ref: c over49632
-Ref: vs49769
-Ref: sv49889
-Node: Noun50013
-Ref: Atom Types51351
-Ref: bool52532
-Ref: int53219
-Ref: flt53879
-Ref: char54281
-Ref: name54504
-Ref: uuid54735
-Ref: time54892
-Ref: date55768
-Ref: datetime56229
-Node: List57026
-Node: Dictionary62301
-Node: User Functions67209
-Node: Named Functions70258
-Ref: sqrt70880
-Ref: exp70953
-Ref: log71021
-Ref: sin71121
-Ref: cos71260
-Ref: div71408
-Ref: mod71564
-Ref: bar71742
-Ref: in72282
-Ref: bin72461
-Ref: within72675
-Node: Knit Functions72911
-Ref: amend73180
-Ref: dmend73548
-Node: I/O73913
-Ref: read csv76016
-Ref: write csv76194
-Ref: read json76358
-Ref: write json76548
-Ref: w line76721
-Ref: r line77030
-Ref: w byte77143
-Ref: r byte77371
-Ref: r data77519
-Ref: w data78180
-Ref: conn/set78748
-Ref: http/get78808
-Ref: lib78868
-Node: Tables79332
-Ref: t80024
-Ref: xtable81629
-Ref: utable82111
-Node: kSQL82568
-Ref: select83166
-Ref: A83750
-Ref: by B84620
-Ref: where C84892
-Ref: update85474
-Ref: union86332
-Ref: leftjoin86853
-Ref: outer87371
-Ref: asof87706
-Ref: asof+88750
-Ref: insert89753
-Ref: upsert90099
-Node: System90423
-Ref: load90881
-Ref: timing91069
-Ref: variables91156
-Ref: memory91257
-Ref: cd91372
-Node: Control Flow91456
-Ref: cond91692
-Node: Temporal Functions91953
-Node: Errors93944
-Ref: class94394
-Ref: rank94483
-Ref: length94607
-Ref: _type94730
-Ref: domain94839
-Ref: limit94961
-Ref: nyi95162
-Ref: parse95495
-Ref: _value95650
-Node: Conclusion95778
+Node: Adverb44798
+Ref: scan45546
+Ref: +join46076
+Ref: +split46343
+Ref: each46600
+Ref: +has46889
+Ref: eachp47155
+Ref: bin247899
+Ref: eachr48104
+Ref: eachl48301
+Ref: n scan48485
+Ref: c scan48965
+Ref: c over49477
+Ref: vs49614
+Ref: sv49734
+Node: Noun49858
+Ref: Atom Types51196
+Ref: bool52377
+Ref: int53064
+Ref: flt53724
+Ref: char54126
+Ref: name54349
+Ref: uuid54580
+Ref: time54737
+Ref: date55613
+Ref: datetime56074
+Node: List56871
+Node: Dictionary61021
+Node: User Functions65929
+Node: Named Functions68978
+Ref: sqrt69600
+Ref: exp69673
+Ref: log69741
+Ref: sin69841
+Ref: cos69980
+Ref: div70128
+Ref: mod70284
+Ref: bar70462
+Ref: in71002
+Ref: bin71181
+Ref: within71395
+Node: Knit Functions71631
+Ref: amend71926
+Ref: amend172392
+Ref: amend272528
+Ref: amend372750
+Ref: amend472932
+Ref: dmend73103
+Ref: dmend173433
+Ref: dmend373570
+Ref: dmend473738
+Node: I/O73902
+Ref: read csv76005
+Ref: write csv76183
+Ref: read json76347
+Ref: write json76537
+Ref: w line76710
+Ref: r line77019
+Ref: w byte77132
+Ref: r byte77360
+Ref: r data77508
+Ref: w data78169
+Ref: conn/set78737
+Ref: http/get78797
+Ref: lib78857
+Node: Tables79321
+Ref: t80013
+Ref: xtable81618
+Ref: utable82100
+Node: kSQL82557
+Ref: select83155
+Ref: A83739
+Ref: by B84609
+Ref: where C84881
+Ref: update85463
+Ref: union86313
+Ref: leftjoin86834
+Ref: outer87352
+Ref: asof87687
+Ref: asof+88731
+Ref: insert89734
+Ref: upsert90080
+Node: System90404
+Ref: load90862
+Ref: timing91050
+Ref: variables91137
+Ref: memory91238
+Ref: cd91353
+Node: Control Flow91437
+Ref: cond91673
+Node: Temporal Functions91934
+Node: Errors93925
+Ref: class94375
+Ref: rank94464
+Ref: length94588
+Ref: _type94711
+Ref: domain94820
+Ref: limit94942
+Ref: nyi95143
+Ref: parse95476
+Ref: _value95631
+Node: Conclusion95759
 
 End Tag Table
 

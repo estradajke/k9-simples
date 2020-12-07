@@ -34,7 +34,7 @@ span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 table, th, td {
-  table-layout: auto;
+/*  table-layout: auto;*/
   border-collapse: collapse;
   border: 1px solid blue;
   font-family: monospace;
@@ -42,13 +42,14 @@ table, th, td {
 }
 
 th, td {
-  padding: 5px;
-  text-align: left;
+  padding: 5px;     
+/*  text-align: left; */
 }
 
 tr:nth-child(1) {
-    background-color:lightsteelblue; // Replace it with your desired color
+/*    background-color:lightsteelblue; // Replace it with your desired color */
 }
+
 
 -->
 </style>
@@ -1566,12 +1567,11 @@ z  1
 </li></ul>
 
 <table>
-<tr><td width="30%"><b>action</b></td><td width="10%"><b>@y</b></td><td width="10%"><b>#y</b></td><td width="20%"><b>example</b></td></tr>
-<thead><tr><th width="30%"></th><th width="10%"></th><th width="10%"></th><th width="20%"></th></tr></thead>
-<tr><td width="30%">simple index</td><td width="10%">&lsquo;I</td><td width="10%">1</td><td width="20%">,2</td></tr>
-<tr><td width="30%">simple indices</td><td width="10%">&lsquo;I</td><td width="10%">1</td><td width="20%">,1 3</td></tr>
-<tr><td width="30%">recursive index</td><td width="10%">&lsquo;L</td><td width="10%">1</td><td width="20%">0 2</td></tr>
-<tr><td width="30%">recursive index over</td><td width="10%">&lsquo;L</td><td width="10%">2</td><td width="20%">(0 2;1 3)</td></tr>
+<tr><td><b>action</b></td><td><b>@y</b></td><td><b>#y</b></td><td><b>example</b></td></tr>
+<tr><td>simple index</td><td>&lsquo;I</td><td>1</td><td>,2</td></tr>
+<tr><td>simple indices</td><td>&lsquo;I</td><td>1</td><td>,1 3</td></tr>
+<tr><td>recursive index</td><td>&lsquo;L</td><td>1</td><td>0 2</td></tr>
+<tr><td>recursive index over</td><td>&lsquo;L</td><td>2</td><td>(0 2;1 3)</td></tr>
 </table>
 
 <div class="example">
@@ -2178,45 +2178,14 @@ L
 0
 </pre></div>
 <span id="Updating-List-Elements"></span><h3 class="section">7.3 Updating List Elements</h3>
-<p>Lists can be updated element wise but typically one is likely to be updating many elements and there is a syntax for doing so.
+<p>Lists can be updated element wise by specifiying setting the indexed element to a required value.  There is also a syntax for updating many elements and that it found at <a href="#amend">amend</a>.
 </p>
 <div class="example">
-<pre class="example"> a:2*1+!10
- a
-?2 4 6 8 10 12 14 16 18 20
+<pre class="example"> a:2*1+!10;a
+2 4 6 8 10 12 14 16 18 20
  a[3]:80
  a
 2 4 6 80 10 12 14 16 18 20
- a:@[a;0 2 4 6 8;0];a
-0 4 0 80 0 12 0 16 0 20
- a:@[a;1 3 5;*;100];a
-0 400 0 8000 0 1200 0 16 0 20
- a:@[a;!#a;:;0];a
-0 0 0 0 0 0 0 0 0 0
-</pre></div>
-
-<p>List amend syntax has a few options so will be explained in more detail.  In this section list (L), indices (I), value (v), identity fucntion (:), and general function (f) will be represented by a single character. Spaces have been added for readability but are not needed.
-</p>
-<ul>
-<li> @[L; I; v]
-</li><li> @[L; I; :; v]
-</li><li> @[L; I; f; v]
-</li></ul>
-
-<p>The first syntax sets the list at the indices to value.  The second syntax performs the same modificaiton but explicitly lists the identity function, :.  The third synatx is the same as the preceeding but uses an arbitrary function.
-</p>
-<p>Often the developer will need to determine which indices to modify and in cases where this isn&rsquo;t onerous it can be done in the function.
-</p>
-<div class="example">
-<pre class="example"> a:2*1+!10
- @[a;&amp;a&lt;14;:;-3]
--3 -3 -3 -3 -3 -3 14 16 18 20
- @[!10;1 3 5;:;10 20 30]
-0 10 2 20 4 30 6 7 8 9
- @[!10;1 3 5;:;10 20]   / index and value array length mistmatch
-:length
- @[!10;1 3;:;10 20 30]  / index and value array length mistmatch
-:length
 </pre></div>
 
 <span id="Function-of-Two-Lists"></span><h3 class="section">7.4 Function of Two Lists</h3>
@@ -2825,62 +2794,142 @@ Next: <a href="#I_002fO" accesskey="n" rel="next">I/O</a>, Previous: <a href="#N
 <span id="Knit-Functions-1"></span><h2 class="chapter">11 Knit Functions</h2>
 <p>These functions modify lists and dictionaries given a list of indices and functions or values to replace.
 </p>
-<pre class="verbatim">@[x;i;f[;y]] amend
-.[x;i;f[;y]] dmend
-</pre>
-<span id="amend"></span><span id="amend-_21d2-_0040_005bx_003bi_003bf_005b_003by_005d_005d"></span><h3 class="section">11.1 amend &rArr; @[x;i;f[;y]]</h3>
-<p>Replace the values in list/dictionary x at indices i with f or f[y].
-</p>
-<p>@[x;i;f] and @[x;i;f;y] examples
-</p>
 <div class="example">
-<pre class="example"> x:(1 2;3 4;5 6);x
-1 2
-3 4
-5 6
-
- @[x;2 0;0]
-0  
-3 4
-0  
-
- x:(1 2;3 4;5 6);x
-1 2
-3 4
-5 6
-
- @[x;2 0;+;100]
-101 102
-  3   4
-105 106
+<pre class="example">@[r;i;f[;y]] <a href="#amend">amend</a>
+.[r;i;f[;y]] <a href="#dmend">dmend</a>
 </pre></div>
 
-<span id="dmend"></span><span id="dmend-_21d2-_002e_005bx_003bi_003bf_005b_003by_005d_005d"></span><h3 class="section">11.2 dmend &rArr; .[x;i;f[;y]]</h3>
-<p>Replace the values in list/dictionary x at index i with f or f[y].
+<span id="amend"></span><span id="amend-_21d2-_0040_005br_003bi_003bf_005b_003by_005d_005d"></span><h3 class="section">11.1 amend &rArr; @[r;i;f[;y]]</h3>
+<p>Replace the values in list/dictionary r at indices i with element f or function f and parameter y.  The original list is not modified.
 </p>
-<p>.[x;i;f] and .[x;i;f;y] examples
+<table>
+<tr><td><b>action</b></td><td><b>f</b></td><td><b>y</b></td></tr>
+<tr><td><a href="#amend1">amend with element</a></td><td>element</td><td>n/a</td></tr>
+<tr><td><a href="#amend2">amend with element/array</a></td><td>:</td><td>element/list</td></tr>
+<tr><td><a href="#amend3">amend with function 1 param</a></td><td>function</td><td>n/a</td></tr>
+<tr><td><a href="#amend4">amend with function 2 param</a></td><td>function</td><td>2nd param</td></tr>
+</table>
+
+<span id="amend1"></span><p>Amend to element.
 </p>
 <div class="example">
-<pre class="example"> x:(1 2;3 4;5 6);x
-1 2
-3 4
-5 6
+<pre class="example"> r:(0 1;2 3;4 5;6);r
+0 1
+2 3
+4 5
+6  
 
- .[x;2 0;0]
-1 2
-3 4
-0 6
+ @[r;0 3;29]
+29 
+2 3
+4 5
+29 
+</pre></div>
 
- 
- x:(1 2;3 4;5 6);x
-1 2
-3 4
-5 6
+<span id="amend2"></span><p>Amend with element/array.  If using an array, then the <code>i</code> and <code>y</code> must be arrays of equal length.
+</p>
+<div class="example">
+<pre class="example"> r:(0 1;2 3;4 5;6);r
+0 1
+2 3
+4 5
+6  
 
- .[x;2 0;+;100]
-  1 2
-  3 4
-105 6
+ @[r;1 2;:;(0;3 5)]
+0 1
+0  
+3 5
+6  
+</pre></div>
+
+<span id="amend3"></span><p>Amend with function f[r] at indices i.
+</p>
+<div class="example">
+<pre class="example"> r:(0 1;2 3;4 5;6);r
+0 1
+2 3
+4 5
+6  
+
+ @[r;1 2;sqrt]
+0 1              
+1.414214 1.732051
+2.0 2.236068     
+6                
+</pre></div>
+
+<span id="amend4"></span><p>Amend with function f[r;y] at indices i.
+</p>
+<div class="example">
+<pre class="example"> r:(0 1;2 3;4 5;6);r
+0 1
+2 3
+4 5
+6  
+
+ @[r;1 2;*;10 100]
+0 1    
+20 30  
+400 500
+6      
+</pre></div>
+
+<span id="dmend"></span><span id="dmend-_21d2-_002e_005br_003bi_003bf_005b_003by_005d_005d"></span><h3 class="section">11.2 dmend &rArr; .[r;i;f[;y]]</h3>
+<p>Similar to <a href="#amend">amend</a> but using <code>i</code> to fully index <code>r</code>.
+</p>
+<table>
+<tr><td><b>action</b></td><td><b>f</b></td><td><b>y</b></td></tr>
+<tr><td><a href="#dmend1">dmend with element</a></td><td>element</td><td>n/a</td></tr>
+<tr><td><a href="#dmend3">dmend with function 1 param</a></td><td>function</td><td>n/a</td></tr>
+<tr><td><a href="#dmend4">dmend with function 2 param</a></td><td>function</td><td>2nd param</td></tr>
+</table>
+
+<span id="dmend1"></span><p>Dmend to element.
+</p>
+<div class="example">
+<pre class="example"> r:(0 1;2 3;4 5;6);r
+0 1
+2 3
+4 5
+6  
+
+ .[r;0 1;12]
+0 12
+2 3 
+4 5 
+6   
+</pre></div>
+
+<span id="dmend3"></span><p>Dmend with function f[r] at indices i.
+</p>
+<div class="example">
+<pre class="example"> r:(0 1;2 3;4 5;6);r
+0 1
+2 3
+4 5
+6  
+
+ .[r;1 1;sqrt]
+0 1         
+2.0 1.732051
+4 5         
+6           
+</pre></div>
+
+<span id="dmend4"></span><p>Dmend with function f[r;y] at indices i.
+</p>
+<div class="example">
+<pre class="example"> r:(0 1;2 3;4 5;6);r
+0 1
+2 3
+4 5
+6  
+
+ .[r;1 1;+;100]
+0 1  
+2 103
+4 5  
+6    
 </pre></div>
 
 <hr>
@@ -3394,12 +3443,12 @@ c 3 21
 <p>k9 has a number of methods to join tables together which are described below.  In this section t, t1 and t2 represent tables and k, k1 and k2 represent utables.
 </p>
 <table>
-<tr><td width="15%"><b>join</b></td><td width="60%"><b>syntax</b></td></tr>
-<tr><td width="15%"><a href="#union">union</a></td><td width="60%">t1,t2</td></tr>
-<tr><td width="15%"><a href="#leftjoin">leftjoin</a></td><td width="60%">t,k</td></tr>
-<tr><td width="15%"><a href="#outer">outer</a></td><td width="60%">k1,k2</td></tr>
-<tr><td width="15%"><a href="#asof">asof</a></td><td width="60%">t,k</td></tr>
-<tr><td width="15%"><a href="#asof_002b">asof+</a></td><td width="60%">k1+k2</td></tr>
+<tr><td><b>join</b></td><td><b>syntax</b></td></tr>
+<tr><td><a href="#union">union</a></td><td>t1,t2</td></tr>
+<tr><td><a href="#leftjoin">leftjoin</a></td><td>t,k</td></tr>
+<tr><td><a href="#outer">outer</a></td><td>k1,k2</td></tr>
+<tr><td><a href="#asof">asof</a></td><td>t,k</td></tr>
+<tr><td><a href="#asof_002b">asof+</a></td><td>k1+k2</td></tr>
 </table>
 
 <span id="union"></span><span id="union-join-_21d2-t1_002ct2"></span><h4 class="subsection">14.2.1 union join &rArr; t1,t2</h4>

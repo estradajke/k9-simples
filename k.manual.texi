@@ -1481,10 +1481,9 @@ Given list x return the value at list y.  The action of dot depends on the shape
 @end itemize
 
 @flushleft
-@multitable @columnfractions .3 .1 .1 .2
+@multitable {abc} {def} {ghi} {123}
 @c @headitem action @tab @@y @tab #y @tab example
 @item @b{action} @tab @b{@@y} @tab @b{#y} @tab @b{example}
-@headitem @tab @tab @tab
 @item simple index @tab `I @tab 1 @tab ,2
 @item simple indices @tab `I @tab 1 @tab ,1 3
 @item recursive index @tab `L @tab 1 @tab 0 2
@@ -2086,45 +2085,14 @@ Lists can be indexed by using a few notations.  The @@ notation is often used as
 0
 @end example
 @section Updating List Elements
-Lists can be updated element wise but typically one is likely to be updating many elements and there is a syntax for doing so.
+Lists can be updated element wise by specifiying setting the indexed element to a required value.  There is also a syntax for updating many elements and that it found at @ref{amend}.
 
 @example
- a:2*1+!10
- a
-?2 4 6 8 10 12 14 16 18 20
+ a:2*1+!10;a
+2 4 6 8 10 12 14 16 18 20
  a[3]:80
  a
 2 4 6 80 10 12 14 16 18 20
- a:@@[a;0 2 4 6 8;0];a
-0 4 0 80 0 12 0 16 0 20
- a:@@[a;1 3 5;*;100];a
-0 400 0 8000 0 1200 0 16 0 20
- a:@@[a;!#a;:;0];a
-0 0 0 0 0 0 0 0 0 0
-@end example
-
-List amend syntax has a few options so will be explained in more detail.  In this section list (L), indices (I), value (v), identity fucntion (:), and general function (f) will be represented by a single character. Spaces have been added for readability but are not needed.
-
-@itemize
-@item @@[L; I; v]
-@item @@[L; I; :; v]
-@item @@[L; I; f; v]
-@end itemize
-
-The first syntax sets the list at the indices to value.  The second syntax performs the same modificaiton but explicitly lists the identity function, :.  The third synatx is the same as the preceeding but uses an arbitrary function.
-
-Often the developer will need to determine which indices to modify and in cases where this isn't onerous it can be done in the function.
-
-@example
- a:2*1+!10
- @@[a;&a<14;:;-3]
--3 -3 -3 -3 -3 -3 14 16 18 20
- @@[!10;1 3 5;:;10 20 30]
-0 10 2 20 4 30 6 7 8 9
- @@[!10;1 3 5;:;10 20]   / index and value array length mistmatch
-:length
- @@[!10;1 3;:;10 20 30]  / index and value array length mistmatch
-:length
 @end example
 
 @section Function of Two Lists
@@ -2717,64 +2685,154 @@ Test if x is equal to or greater than y[0] and less than y[1].
 @chapter Knit Functions
 These functions modify lists and dictionaries given a list of indices and functions or values to replace.
 
-@verbatim
-@[x;i;f[;y]] amend
-.[x;i;f[;y]] dmend
-@end verbatim
-
-@anchor{amend}@section amend @result{} @@[x;i;f[;y]]
-Replace the values in list/dictionary x at indices i with f or f[y].
-
-@@[x;i;f] and @@[x;i;f;y] examples
-
 @example
- x:(1 2;3 4;5 6);x
-1 2
-3 4
-5 6
-
- @@[x;2 0;0]
-0  
-3 4
-0  
-
- x:(1 2;3 4;5 6);x
-1 2
-3 4
-5 6
-
- @@[x;2 0;+;100]
-101 102
-  3   4
-105 106
+@@[r;i;f[;y]] @ref{amend}
+.[r;i;f[;y]] @ref{dmend}
 @end example
 
-@anchor{dmend}@section dmend @result{} .[x;i;f[;y]]
-Replace the values in list/dictionary x at index i with f or f[y].
+@anchor{amend}@section amend @result{} @@[r;i;f[;y]]
+Replace the values in list/dictionary r at indices i with element f or function f and parameter y.  The original list is not modified.
 
-.[x;i;f] and .[x;i;f;y] examples
+@flushleft
+@multitable {amend with function 2 param123} {function123} {2nd param123}
+@item @b{action} @tab @b{f} @tab @b{y} 
+@item @ref{amend1,amend with element} @tab element @tab n/a
+@item @ref{amend2,amend with element/array} @tab : @tab element/list
+@item @ref{amend3,amend with function 1 param} @tab function @tab n/a
+@item @ref{amend4,amend with function 2 param} @tab function @tab 2nd param
+@end multitable
+@end flushleft
+
+@anchor{amend1}
+Amend to element.
 
 @example
- x:(1 2;3 4;5 6);x
-1 2
-3 4
-5 6
+ r:(0 1;2 3;4 5;6);r
+0 1
+2 3
+4 5
+6  
 
- .[x;2 0;0]
-1 2
-3 4
-0 6
+ @@[r;0 3;29]
+29 
+2 3
+4 5
+29 
+@end example
 
- 
- x:(1 2;3 4;5 6);x
-1 2
-3 4
-5 6
+@anchor{amend2}
+Amend with element/array.  If using an array, then the @code{i} and @code{y} must be arrays of equal length.
 
- .[x;2 0;+;100]
-  1 2
-  3 4
-105 6
+@example
+ r:(0 1;2 3;4 5;6);r
+0 1
+2 3
+4 5
+6  
+
+ @@[r;1 2;:;(0;3 5)]
+0 1
+0  
+3 5
+6  
+@end example
+
+@anchor{amend3}
+Amend with function f[r] at indices i.
+
+@example
+ r:(0 1;2 3;4 5;6);r
+0 1
+2 3
+4 5
+6  
+
+ @@[r;1 2;sqrt]
+0 1              
+1.414214 1.732051
+2.0 2.236068     
+6                
+@end example
+
+@anchor{amend4}
+Amend with function f[r;y] at indices i.
+
+@example
+ r:(0 1;2 3;4 5;6);r
+0 1
+2 3
+4 5
+6  
+
+ @@[r;1 2;*;10 100]
+0 1    
+20 30  
+400 500
+6      
+@end example
+
+@anchor{dmend}@section dmend @result{} .[r;i;f[;y]]
+Similar to @ref{amend} but using @code{i} to fully index @code{r}.
+
+@flushleft
+@multitable {dmend with function 2 param123} {function123} {2nd param123}
+@item @b{action} @tab @b{f} @tab @b{y} 
+@item @ref{dmend1,dmend with element} @tab element @tab n/a
+@c@item @ref{dmend2,dmend with element/array} @tab : @tab element/list
+@item @ref{dmend3,dmend with function 1 param} @tab function @tab n/a
+@item @ref{dmend4,dmend with function 2 param} @tab function @tab 2nd param
+@end multitable
+@end flushleft
+
+@anchor{dmend1}
+Dmend to element.
+
+@example
+ r:(0 1;2 3;4 5;6);r
+0 1
+2 3
+4 5
+6  
+
+ .[r;0 1;12]
+0 12
+2 3 
+4 5 
+6   
+@end example
+
+@anchor{dmend3}
+Dmend with function f[r] at indices i.
+
+@example
+ r:(0 1;2 3;4 5;6);r
+0 1
+2 3
+4 5
+6  
+
+ .[r;1 1;sqrt]
+0 1         
+2.0 1.732051
+4 5         
+6           
+@end example
+
+@anchor{dmend4}
+Dmend with function f[r;y] at indices i.
+
+@example
+ r:(0 1;2 3;4 5;6);r
+0 1
+2 3
+4 5
+6  
+
+ .[r;1 1;+;100]
+0 1  
+2 103
+4 5  
+6    
 @end example
 
 @node I/O
@@ -3277,7 +3335,7 @@ c 3 21
 @section Joins
 k9 has a number of methods to join tables together which are described below.  In this section t, t1 and t2 represent tables and k, k1 and k2 represent utables.
 
-@multitable @columnfractions .15 .6
+@multitable {a} {b}
 @item @b{join} @tab @b{syntax}
 @item @ref{union} @tab t1,t2
 @item @ref{leftjoin} @tab t,k

@@ -37,7 +37,7 @@ span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 table, th, td {
-  table-layout: auto;
+/*  table-layout: auto;*/
   border-collapse: collapse;
   border: 1px solid blue;
   font-family: monospace;
@@ -45,13 +45,14 @@ table, th, td {
 }
 
 th, td {
-  padding: 5px;
-  text-align: left;
+  padding: 5px;     
+/*  text-align: left; */
 }
 
 tr:nth-child(1) {
-    background-color:lightsteelblue; // Replace it with your desired color
+/*    background-color:lightsteelblue; // Replace it with your desired color */
 }
+
 
 -->
 </style>
@@ -765,12 +766,11 @@ z  1
 </li></ul>
 
 <table>
-<tr><td width="30%"><b>action</b></td><td width="10%"><b>@y</b></td><td width="10%"><b>#y</b></td><td width="20%"><b>example</b></td></tr>
-<thead><tr><th width="30%"></th><th width="10%"></th><th width="10%"></th><th width="20%"></th></tr></thead>
-<tr><td width="30%">simple index</td><td width="10%">&lsquo;I</td><td width="10%">1</td><td width="20%">,2</td></tr>
-<tr><td width="30%">simple indices</td><td width="10%">&lsquo;I</td><td width="10%">1</td><td width="20%">,1 3</td></tr>
-<tr><td width="30%">recursive index</td><td width="10%">&lsquo;L</td><td width="10%">1</td><td width="20%">0 2</td></tr>
-<tr><td width="30%">recursive index over</td><td width="10%">&lsquo;L</td><td width="10%">2</td><td width="20%">(0 2;1 3)</td></tr>
+<tr><td><b>action</b></td><td><b>@y</b></td><td><b>#y</b></td><td><b>example</b></td></tr>
+<tr><td>simple index</td><td>&lsquo;I</td><td>1</td><td>,2</td></tr>
+<tr><td>simple indices</td><td>&lsquo;I</td><td>1</td><td>,1 3</td></tr>
+<tr><td>recursive index</td><td>&lsquo;L</td><td>1</td><td>0 2</td></tr>
+<tr><td>recursive index over</td><td>&lsquo;L</td><td>2</td><td>(0 2;1 3)</td></tr>
 </table>
 
 <div class="example">
