@@ -1,6 +1,6 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
-December 5, 2020
+December 7, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -1428,16 +1428,38 @@ Count the number of elements in x.
 4.27 [f]take => x#y
 ===================
 
-Take returns a subset of list.  If x is an atom, then postive (negative)
-x returns the first (last) x elements of y.  If x is a list, then take
-returns any values common in both x and y.  If x is a function, then
-filter out values where the funtion is non-zero.
+[f]take has a number of different actions depending on x.  This include
+head (take from front of list), tail (take from back of list), common
+(take common elements), and filter (take where function is non-zero).
+
+action                     x
+*note head: take1.         positive int
+*note tail: take1.         negative int
+*note common: take2.       list
+*note filter: take3.       function
+
+   Postive (negative) x returns the first (last) x elements of y.  If
+abs[x]>count[y] then repeatedly pull from y.
 
       3#0 1 2 3 4 5          / take first
      0 1 2
 
       -3#0 1 2 3 4 5         / take last
      3 4 5
+
+      10#0 1 2               / take repeat
+     0 1 2 0 1 2 0 1 2 0
+
+   If x is a list, then take returns any values common in both x and y.
+
+      (1 2 3 7 8 9)#(2 8 20) / common
+     2 8
+
+      (0.5<)#10?1.           / filter
+     0.840732 0.5330717 0.7539563 0.643315 0.6993048f
+
+   If x is a function, then filter out values where the funtion is
+non-zero.
 
       (1 2 3 7 8 9)#(2 8 20) / common
      2 8
@@ -2678,8 +2700,13 @@ File: k9.info,  Node: User Functions,  Next: Named Functions,  Prev: Dictionary,
 9 User Functions
 ****************
 
-User-defined functions can be created.  As these functions are built on
-top of the fast internal functions of k9 they should be performant also.
+User-defined functions are used to define a set of operations to be
+easily called.  As these functions are built on top of the fast internal
+functions of k9 they should be performant also.
+
+   Multi-line functions must be defined with an initial space on all
+lines except the first.  These can be loaded into memory by using the
+*note \l: load. command and then used by calling by name.
 
      Func {[a;b]a+b}
 
@@ -2714,6 +2741,7 @@ names.
 ======================
 
 Functions can have intermediate calcuations and local variables.
+Function local variable do not collide with global variables.
 
       a:3;a
      3
@@ -2780,11 +2808,16 @@ requires the remaining arguemnts.
 9.5 Anonymous functions
 =======================
 
+Functions not set with a function name are anonymous.
+
       {x+2*y}[2;10]
      22
 
 9.6 Recursive functions
 =======================
+
+k9 allows one to define a function which calls itself.  Care should be
+taken to avoid an infitine loop.
 
       f:{$[x>1;x*f@x-1;1]};f 5
      120
@@ -4177,111 +4210,114 @@ Ref: sort37615
 Ref: [f]cut37848
 Ref: count38593
 Ref: [f]take38783
-Ref: floor39335
-Ref: [f]drop39426
-Ref: string40019
-Ref: cast+40120
-Ref: unique+40608
-Ref: find+41214
-Ref: type42052
-Ref: [f]at42503
-Ref: value42819
-Ref: [f]dot43093
-Node: Adverb44348
-Ref: scan45096
-Ref: +join45626
-Ref: +split45893
-Ref: each46150
-Ref: +has46439
-Ref: eachp46705
-Ref: bin247449
-Ref: eachr47654
-Ref: eachl47851
-Ref: n scan48035
-Ref: c scan48515
-Ref: c over49027
-Ref: vs49164
-Ref: sv49284
-Node: Noun49408
-Ref: Atom Types50746
-Ref: bool51927
-Ref: int52614
-Ref: flt53274
-Ref: char53676
-Ref: name53899
-Ref: uuid54130
-Ref: time54287
-Ref: date55163
-Ref: datetime55624
-Node: List56421
-Node: Dictionary61696
-Node: User Functions66604
-Node: Named Functions69189
-Ref: sqrt69811
-Ref: exp69884
-Ref: log69952
-Ref: sin70052
-Ref: cos70191
-Ref: div70339
-Ref: mod70495
-Ref: bar70673
-Ref: in71213
-Ref: bin71392
-Ref: within71606
-Node: Knit Functions71842
-Ref: amend72111
-Ref: dmend72479
-Node: I/O72844
-Ref: read csv74947
-Ref: write csv75125
-Ref: read json75289
-Ref: write json75479
-Ref: w line75652
-Ref: r line75961
-Ref: w byte76074
-Ref: r byte76302
-Ref: r data76450
-Ref: w data77111
-Ref: conn/set77679
-Ref: http/get77739
-Ref: lib77799
-Node: Tables78263
-Ref: t78955
-Ref: xtable80560
-Ref: utable81042
-Node: kSQL81499
-Ref: select82097
-Ref: A82681
-Ref: by B83551
-Ref: where C83823
-Ref: update84405
-Ref: union85263
-Ref: leftjoin85784
-Ref: outer86302
-Ref: asof86637
-Ref: asof+87681
-Ref: insert88684
-Ref: upsert89030
-Node: System89354
-Ref: load89812
-Ref: timing90000
-Ref: variables90087
-Ref: memory90188
-Ref: cd90303
-Node: Control Flow90387
-Ref: cond90623
-Node: Temporal Functions90884
-Node: Errors92875
-Ref: class93325
-Ref: rank93414
-Ref: length93538
-Ref: _type93661
-Ref: domain93770
-Ref: limit93892
-Ref: nyi94093
-Ref: parse94426
-Ref: _value94581
-Node: Conclusion94709
+Ref: take139215
+Ref: take239507
+Ref: take339721
+Ref: floor39940
+Ref: [f]drop40031
+Ref: string40624
+Ref: cast+40725
+Ref: unique+41213
+Ref: find+41819
+Ref: type42657
+Ref: [f]at43108
+Ref: value43424
+Ref: [f]dot43698
+Node: Adverb44953
+Ref: scan45701
+Ref: +join46231
+Ref: +split46498
+Ref: each46755
+Ref: +has47044
+Ref: eachp47310
+Ref: bin248054
+Ref: eachr48259
+Ref: eachl48456
+Ref: n scan48640
+Ref: c scan49120
+Ref: c over49632
+Ref: vs49769
+Ref: sv49889
+Node: Noun50013
+Ref: Atom Types51351
+Ref: bool52532
+Ref: int53219
+Ref: flt53879
+Ref: char54281
+Ref: name54504
+Ref: uuid54735
+Ref: time54892
+Ref: date55768
+Ref: datetime56229
+Node: List57026
+Node: Dictionary62301
+Node: User Functions67209
+Node: Named Functions70258
+Ref: sqrt70880
+Ref: exp70953
+Ref: log71021
+Ref: sin71121
+Ref: cos71260
+Ref: div71408
+Ref: mod71564
+Ref: bar71742
+Ref: in72282
+Ref: bin72461
+Ref: within72675
+Node: Knit Functions72911
+Ref: amend73180
+Ref: dmend73548
+Node: I/O73913
+Ref: read csv76016
+Ref: write csv76194
+Ref: read json76358
+Ref: write json76548
+Ref: w line76721
+Ref: r line77030
+Ref: w byte77143
+Ref: r byte77371
+Ref: r data77519
+Ref: w data78180
+Ref: conn/set78748
+Ref: http/get78808
+Ref: lib78868
+Node: Tables79332
+Ref: t80024
+Ref: xtable81629
+Ref: utable82111
+Node: kSQL82568
+Ref: select83166
+Ref: A83750
+Ref: by B84620
+Ref: where C84892
+Ref: update85474
+Ref: union86332
+Ref: leftjoin86853
+Ref: outer87371
+Ref: asof87706
+Ref: asof+88750
+Ref: insert89753
+Ref: upsert90099
+Node: System90423
+Ref: load90881
+Ref: timing91069
+Ref: variables91156
+Ref: memory91257
+Ref: cd91372
+Node: Control Flow91456
+Ref: cond91692
+Node: Temporal Functions91953
+Node: Errors93944
+Ref: class94394
+Ref: rank94483
+Ref: length94607
+Ref: _type94730
+Ref: domain94839
+Ref: limit94961
+Ref: nyi95162
+Ref: parse95495
+Ref: _value95650
+Node: Conclusion95778
 
 End Tag Table
 

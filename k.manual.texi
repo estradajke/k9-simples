@@ -1241,7 +1241,20 @@ Count the number of elements in x.
 @end example
 
 @anchor{[f]take}@section [f]take @result{} x#y
-Take returns a subset of list.  If x is an atom, then postive (negative) x returns the first (last) x elements of y.  If x is a list, then take returns any values common in both x and y. If x is a function, then filter out values where the funtion is non-zero.
+[f]take has a number of different actions depending on x.  This include head (take from front of list), tail (take from back of list), common (take common elements), and filter (take where function is non-zero).
+
+@flushleft
+@multitable {@b{some text for column one}} {for column two}
+@item @b{action} @tab @b{x} 
+@item @ref{take1,head} @tab positive int
+@item @ref{take1,tail} @tab negative int
+@item @ref{take2,common} @tab list
+@item @ref{take3,filter} @tab function
+@end multitable
+@end flushleft
+
+@anchor{take1}
+Postive (negative) x returns the first (last) x elements of y.  If abs[x]>count[y] then repeatedly pull from y.
 
 @example
  3#0 1 2 3 4 5          / take first
@@ -1250,6 +1263,25 @@ Take returns a subset of list.  If x is an atom, then postive (negative) x retur
  -3#0 1 2 3 4 5         / take last
 3 4 5
 
+ 10#0 1 2               / take repeat
+0 1 2 0 1 2 0 1 2 0
+@end example
+
+@anchor{take2}
+If x is a list, then take returns any values common in both x and y. 
+
+@example
+ (1 2 3 7 8 9)#(2 8 20) / common
+2 8
+
+ (0.5<)#10?1.           / filter
+0.840732 0.5330717 0.7539563 0.643315 0.6993048f
+@end example
+
+@anchor{take3}
+If x is a function, then filter out values where the funtion is non-zero.
+
+@example
  (1 2 3 7 8 9)#(2 8 20) / common
 2 8
 
@@ -1789,8 +1821,8 @@ This section lists all the different types available.  Generally lower case spec
 @item b @tab boolean @tab 1b @tab 
 @item c @tab character @tab ``a'' @tab
 @item d @tab date @tab 2020.06.14 @tab
-@item e @tab float @tab 3.1
-@item f @tab float @tab 3.1f
+@item e @tab float @tab 3.1 @tab
+@item f @tab float @tab 3.1f @tab
 @item g @tab int @tab 2g @tab 1 byte unsigned
 @item h @tab int @tab 2h @tab 2 byte unsigned
 @item i @tab int @tab 2 @tab 4 byte unsigned
@@ -1966,7 +1998,7 @@ Data types can represent in-range, null, and out-of-range values.
 @multitable @columnfractions .15 .15 .2
 @c @headitem type @tab null @tab out of range
 @item @b{type} @tab @b{null} @tab @b{out of range}
-@item @tab @tab
+@c@item @tab @tab
 @item i @tab 0N @tab 0W
 @item f @tab 0n @tab 0w
 @end multitable
@@ -2421,7 +2453,9 @@ c |3e+08
 
 @node User Functions
 @chapter User Functions
-User-defined functions can be created.  As these functions are built on top of the fast internal functions of k9 they should be performant also.  
+User-defined functions are used to define a set of operations to be easily called.  As these functions are built on top of the fast internal functions of k9 they should be performant also.
+
+Multi-line functions must be defined with an initial space on all lines except the first.  These can be loaded into memory by using the @ref{load,\l} command and then used by calling by name.
 
 @example
 Func @{[a;b]a+b@}
@@ -2452,7 +2486,7 @@ Functions default to arguments of x, y, and z for the first three parameters but
 @end example
 
 @section Function Defitions
-Functions can have intermediate calcuations and local variables.
+Functions can have intermediate calcuations and local variables.  Function local variable do not collide with global variables.
 
 @example
  a:3;a
@@ -2514,6 +2548,7 @@ a
 @end example 
 
 @section Anonymous functions
+Functions not set with a function name are anonymous.
 
 @example
  @{x+2*y@}[2;10]
@@ -2521,6 +2556,7 @@ a
 @end example
 
 @section Recursive functions
+k9 allows one to define a function which calls itself.  Care should be taken to avoid an infitine loop.
 
 @example
  f:@{$[x>1;x*f@@x-1;1]@};f 5
@@ -2546,7 +2582,6 @@ In order to succeed f1 needs to have an @code{@@} in the definition of f2.  This
  f2 3
 2 3 4
 @end example
-
 
 @node Named Functions
 @chapter Named Functions

@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 5, 2020
+<!-- December 7, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -19,6 +19,9 @@ Copyright (C) 2020 John Estrada -->
 <link href="Dictionary.html" rel="prev" title="Dictionary">
 <style type="text/css">
 <!--
+/* spacing */
+
+
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
@@ -33,6 +36,23 @@ span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
+table, th, td {
+  table-layout: auto;
+  border-collapse: collapse;
+  border: 1px solid blue;
+  font-family: monospace;
+  
+}
+
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+
+tr:nth-child(1) {
+    background-color:lightsteelblue; // Replace it with your desired color
+}
+
 -->
 </style>
 
@@ -46,7 +66,9 @@ Next: <a href="Named-Functions.html" accesskey="n" rel="next">Named Functions</a
 </div>
 <hr>
 <span id="User-Functions-1"></span><h2 class="chapter">9 User Functions</h2>
-<p>User-defined functions can be created.  As these functions are built on top of the fast internal functions of k9 they should be performant also.  
+<p>User-defined functions are used to define a set of operations to be easily called.  As these functions are built on top of the fast internal functions of k9 they should be performant also.
+</p>
+<p>Multi-line functions must be defined with an initial space on all lines except the first.  These can be loaded into memory by using the <a href="System.html#load">\l</a> command and then used by calling by name.
 </p>
 <div class="example">
 <pre class="example">Func {[a;b]a+b}
@@ -77,7 +99,7 @@ Next: <a href="Named-Functions.html" accesskey="n" rel="next">Named Functions</a
 </pre></div>
 
 <span id="Function-Defitions"></span><h3 class="section">9.2 Function Defitions</h3>
-<p>Functions can have intermediate calcuations and local variables.
+<p>Functions can have intermediate calcuations and local variables.  Function local variable do not collide with global variables.
 </p>
 <div class="example">
 <pre class="example"> a:3;a
@@ -139,14 +161,16 @@ a
 </pre></div>
 
 <span id="Anonymous-functions"></span><h3 class="section">9.5 Anonymous functions</h3>
-
+<p>Functions not set with a function name are anonymous.
+</p>
 <div class="example">
 <pre class="example"> {x+2*y}[2;10]
 22
 </pre></div>
 
 <span id="Recursive-functions"></span><h3 class="section">9.6 Recursive functions</h3>
-
+<p>k9 allows one to define a function which calls itself.  Care should be taken to avoid an infitine loop.
+</p>
 <div class="example">
 <pre class="example"> f:{$[x&gt;1;x*f@x-1;1]};f 5
 120
@@ -171,7 +195,6 @@ a
  f2 3
 2 3 4
 </pre></div>
-
 
 <hr>
 <div class="header">

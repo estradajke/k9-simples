@@ -4,5 +4,5 @@ sed -e 's/@/@@/g' -e 's/}/@}/g' -e 's/{/@{/g' -e 's/ /@ /g' -e 's/^/@t{/; s/$/}@
 
 makeinfo k.manual.texi
 texi2any --pdf k.manual.texi
-texi2any --html k.manual.texi
-texi2any --html --no-split k.manual.texi -o k9Simples.html
+texi2any --css-include=style.css --html k.manual.texi
+texi2any --css-include=style.css --html --no-split k.manual.texi -o k9Simples.html

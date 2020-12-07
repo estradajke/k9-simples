@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 5, 2020
+<!-- December 7, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -16,6 +16,9 @@ Copyright (C) 2020 John Estrada -->
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--
+/* spacing */
+
+
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
@@ -30,6 +33,23 @@ span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
+table, th, td {
+  table-layout: auto;
+  border-collapse: collapse;
+  border: 1px solid blue;
+  font-family: monospace;
+  
+}
+
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+
+tr:nth-child(1) {
+    background-color:lightsteelblue; // Replace it with your desired color
+}
+
 -->
 </style>
 
@@ -1311,7 +1331,17 @@ z  1
 </pre></div>
 
 <span id="g_t_005bf_005dtake"></span><span id="g_t_005bf_005dtake-_21d2-x_0023y"></span><h3 class="section">4.27 [f]take &rArr; x#y</h3>
-<p>Take returns a subset of list.  If x is an atom, then postive (negative) x returns the first (last) x elements of y.  If x is a list, then take returns any values common in both x and y. If x is a function, then filter out values where the funtion is non-zero.
+<p>[f]take has a number of different actions depending on x.  This include head (take from front of list), tail (take from back of list), common (take common elements), and filter (take where function is non-zero).
+</p>
+<table>
+<tr><td><b>action</b></td><td><b>x</b></td></tr>
+<tr><td><a href="#take1">head</a></td><td>positive int</td></tr>
+<tr><td><a href="#take1">tail</a></td><td>negative int</td></tr>
+<tr><td><a href="#take2">common</a></td><td>list</td></tr>
+<tr><td><a href="#take3">filter</a></td><td>function</td></tr>
+</table>
+
+<span id="take1"></span><p>Postive (negative) x returns the first (last) x elements of y.  If abs[x]&gt;count[y] then repeatedly pull from y.
 </p>
 <div class="example">
 <pre class="example"> 3#0 1 2 3 4 5          / take first
@@ -1320,7 +1350,24 @@ z  1
  -3#0 1 2 3 4 5         / take last
 3 4 5
 
- (1 2 3 7 8 9)#(2 8 20) / common
+ 10#0 1 2               / take repeat
+0 1 2 0 1 2 0 1 2 0
+</pre></div>
+
+<span id="take2"></span><p>If x is a list, then take returns any values common in both x and y. 
+</p>
+<div class="example">
+<pre class="example"> (1 2 3 7 8 9)#(2 8 20) / common
+2 8
+
+ (0.5&lt;)#10?1.           / filter
+0.840732 0.5330717 0.7539563 0.643315 0.6993048f
+</pre></div>
+
+<span id="take3"></span><p>If x is a function, then filter out values where the funtion is non-zero.
+</p>
+<div class="example">
+<pre class="example"> (1 2 3 7 8 9)#(2 8 20) / common
 2 8
 
  (0.5&lt;)#10?1.           / filter
@@ -1864,8 +1911,8 @@ Next: <a href="#List" accesskey="n" rel="next">List</a>, Previous: <a href="#Adv
 <tr><td width="10%">b</td><td width="15%">boolean</td><td width="45%">1b</td><td width="40%"></td></tr>
 <tr><td width="10%">c</td><td width="15%">character</td><td width="45%">&ldquo;a&rdquo;</td><td width="40%"></td></tr>
 <tr><td width="10%">d</td><td width="15%">date</td><td width="45%">2020.06.14</td><td width="40%"></td></tr>
-<tr><td width="10%">e</td><td width="15%">float</td><td width="45%">3.1</td></tr>
-<tr><td width="10%">f</td><td width="15%">float</td><td width="45%">3.1f</td></tr>
+<tr><td width="10%">e</td><td width="15%">float</td><td width="45%">3.1</td><td width="40%"></td></tr>
+<tr><td width="10%">f</td><td width="15%">float</td><td width="45%">3.1f</td><td width="40%"></td></tr>
 <tr><td width="10%">g</td><td width="15%">int</td><td width="45%">2g</td><td width="40%">1 byte unsigned</td></tr>
 <tr><td width="10%">h</td><td width="15%">int</td><td width="45%">2h</td><td width="40%">2 byte unsigned</td></tr>
 <tr><td width="10%">i</td><td width="15%">int</td><td width="45%">2</td><td width="40%">4 byte unsigned</td></tr>
@@ -2040,7 +2087,6 @@ b:{-1+*/x#256}
 </p>
 <table>
 <tr><td width="15%"><b>type</b></td><td width="15%"><b>null</b></td><td width="20%"><b>out of range</b></td></tr>
-<tr><td width="15%"></td><td width="15%"></td><td width="20%"></td></tr>
 <tr><td width="15%">i</td><td width="15%">0N</td><td width="20%">0W</td></tr>
 <tr><td width="15%">f</td><td width="15%">0n</td><td width="20%">0w</td></tr>
 </table>
@@ -2507,7 +2553,9 @@ c |3e+08
 Next: <a href="#Named-Functions" accesskey="n" rel="next">Named Functions</a>, Previous: <a href="#Dictionary" accesskey="p" rel="prev">Dictionary</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <span id="User-Functions-1"></span><h2 class="chapter">9 User Functions</h2>
-<p>User-defined functions can be created.  As these functions are built on top of the fast internal functions of k9 they should be performant also.  
+<p>User-defined functions are used to define a set of operations to be easily called.  As these functions are built on top of the fast internal functions of k9 they should be performant also.
+</p>
+<p>Multi-line functions must be defined with an initial space on all lines except the first.  These can be loaded into memory by using the <a href="#load">\l</a> command and then used by calling by name.
 </p>
 <div class="example">
 <pre class="example">Func {[a;b]a+b}
@@ -2538,7 +2586,7 @@ Next: <a href="#Named-Functions" accesskey="n" rel="next">Named Functions</a>, P
 </pre></div>
 
 <span id="Function-Defitions"></span><h3 class="section">9.2 Function Defitions</h3>
-<p>Functions can have intermediate calcuations and local variables.
+<p>Functions can have intermediate calcuations and local variables.  Function local variable do not collide with global variables.
 </p>
 <div class="example">
 <pre class="example"> a:3;a
@@ -2600,14 +2648,16 @@ a
 </pre></div>
 
 <span id="Anonymous-functions"></span><h3 class="section">9.5 Anonymous functions</h3>
-
+<p>Functions not set with a function name are anonymous.
+</p>
 <div class="example">
 <pre class="example"> {x+2*y}[2;10]
 22
 </pre></div>
 
 <span id="Recursive-functions"></span><h3 class="section">9.6 Recursive functions</h3>
-
+<p>k9 allows one to define a function which calls itself.  Care should be taken to avoid an infitine loop.
+</p>
 <div class="example">
 <pre class="example"> f:{$[x&gt;1;x*f@x-1;1]};f 5
 120
@@ -2632,7 +2682,6 @@ a
  f2 3
 2 3 4
 </pre></div>
-
 
 <hr>
 <span id="Named-Functions"></span><div class="header">

@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 5, 2020
+<!-- December 7, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -19,6 +19,9 @@ Copyright (C) 2020 John Estrada -->
 <link href="Adverb.html" rel="prev" title="Adverb">
 <style type="text/css">
 <!--
+/* spacing */
+
+
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
@@ -33,6 +36,23 @@ span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
+table, th, td {
+  table-layout: auto;
+  border-collapse: collapse;
+  border: 1px solid blue;
+  font-family: monospace;
+  
+}
+
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+
+tr:nth-child(1) {
+    background-color:lightsteelblue; // Replace it with your desired color
+}
+
 -->
 </style>
 
@@ -88,8 +108,8 @@ Next: <a href="List.html" accesskey="n" rel="next">List</a>, Previous: <a href="
 <tr><td width="10%">b</td><td width="15%">boolean</td><td width="45%">1b</td><td width="40%"></td></tr>
 <tr><td width="10%">c</td><td width="15%">character</td><td width="45%">&ldquo;a&rdquo;</td><td width="40%"></td></tr>
 <tr><td width="10%">d</td><td width="15%">date</td><td width="45%">2020.06.14</td><td width="40%"></td></tr>
-<tr><td width="10%">e</td><td width="15%">float</td><td width="45%">3.1</td></tr>
-<tr><td width="10%">f</td><td width="15%">float</td><td width="45%">3.1f</td></tr>
+<tr><td width="10%">e</td><td width="15%">float</td><td width="45%">3.1</td><td width="40%"></td></tr>
+<tr><td width="10%">f</td><td width="15%">float</td><td width="45%">3.1f</td><td width="40%"></td></tr>
 <tr><td width="10%">g</td><td width="15%">int</td><td width="45%">2g</td><td width="40%">1 byte unsigned</td></tr>
 <tr><td width="10%">h</td><td width="15%">int</td><td width="45%">2h</td><td width="40%">2 byte unsigned</td></tr>
 <tr><td width="10%">i</td><td width="15%">int</td><td width="45%">2</td><td width="40%">4 byte unsigned</td></tr>
@@ -264,7 +284,6 @@ b:{-1+*/x#256}
 </p>
 <table>
 <tr><td width="15%"><b>type</b></td><td width="15%"><b>null</b></td><td width="20%"><b>out of range</b></td></tr>
-<tr><td width="15%"></td><td width="15%"></td><td width="20%"></td></tr>
 <tr><td width="15%">i</td><td width="15%">0N</td><td width="20%">0W</td></tr>
 <tr><td width="15%">f</td><td width="15%">0n</td><td width="20%">0w</td></tr>
 </table>
