@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 8, 2020
+<!-- December 9, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -95,7 +95,7 @@ Next: <a href="Adverb.html" accesskey="n" rel="next">Adverb</a>, Previous: <a hr
 </p>
 <p>Most functions are overloaded and change depending on the number.  This reuse of symbols is also an item that causes confusion for new users.  Eg. <code>(1 4)++(2 3;5 6;7 8)</code> contains the plus symbol once as flip and then for addition.  (Remember evaluation is right to left!)
 </p>
-<p>Some functions are overloaded into materially different use and these are called out with a &rsquo;+&rsquo; ending.  This includes cast+, unique+, and find+ which become matrix multiply, unit random, and non-unit random respectively.
+<p>Some functions are overloaded into materially different use and these are called out with a &rsquo;+&rsquo; ending.  This includes unique+ and find+ which become unit random and non-unit random respectively.
 </p>
 <p>There are also functions that can take a function argument and these are identified with a &rsquo;[f]&rsquo; prefix.  These include [f]cut, [f]take, [f]drop, [f]at, and [f]dot.
 </p>
@@ -117,7 +117,7 @@ Next: <a href="Adverb.html" accesskey="n" rel="next">Adverb</a>, Previous: <a hr
 ^ <a href="#sort">sort</a>,  <a href="#g_t_005bf_005dcut">[f]cut</a>. 
 # <a href="#count">count</a>, <a href="#g_t_005bf_005dtake">[f]take</a>.  
 _ <a href="#floor">floor</a>, <a href="#g_t_005bf_005ddrop">[f]drop</a>.    
-$ <a href="#string">string</a>,   <a href="#cast_002b">cast+</a>.    
+$ <a href="#string">string</a>,   <a href="#cast">cast</a>.    
 ? <a href="#unique_002b">unique+</a>,  <a href="#find_002b">find+</a>.    
 @ <a href="#type">type</a>,  <a href="#g_t_005bf_005dat">[f]at</a>.    
 . <a href="#value">value</a>, <a href="#g_t_005bf_005ddot">[f]dot</a>.
@@ -629,10 +629,8 @@ z  1
 &quot;4.7&quot;
 </pre></div>
 
-<span id="cast_002b"></span><span id="cast_002b-_21d2-x_0024y"></span><h3 class="section">4.31 cast+ &rArr; x$y</h3>
-<p>As cast+ is a &rsquo;+&rsquo; verb its use depends on whether x is an atom (cast) or a list/matrix (matrix multiply).
-</p>
-<p>x is atom: Cast string y into type x.
+<span id="cast"></span><span id="cast-_21d2-x_0024y"></span><h3 class="section">4.31 cast &rArr; x$y</h3>
+<p>Cast string y into type x.
 </p>
 <div class="example">
 <pre class="example"> `i$&quot;23&quot;
@@ -643,18 +641,6 @@ z  1
 12:34:56.789
  `d$&quot;2020.04.20&quot;
 2020.04.20
-</pre></div>
-
-<p>x is list/matrix: Multiply matrices x and y together.
-</p>
-<div class="example">
-<pre class="example"> (1.*!3)$(3.+!3)
-14.
-
-(0 1 2;3 4 5;6 7 8)$(10 11;20 21;30 31)
- 80  83
-260 272
-440 461
 </pre></div>
 
 <span id="unique_002b"></span><span id="unique_002b-_21d2-_003fx"></span><h3 class="section">4.32 unique+ &rArr; ?x</h3>

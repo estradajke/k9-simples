@@ -722,7 +722,7 @@ This chapter covers verbs which are the core functions of k9.  Given how differe
 
 Most functions are overloaded and change depending on the number.  This reuse of symbols is also an item that causes confusion for new users.  Eg. @code{(1 4)++(2 3;5 6;7 8)} contains the plus symbol once as flip and then for addition.  (Remember evaluation is right to left!)
 
-Some functions are overloaded into materially different use and these are called out with a '+' ending.  This includes cast+, unique+, and find+ which become matrix multiply, unit random, and non-unit random respectively.
+Some functions are overloaded into materially different use and these are called out with a '+' ending.  This includes unique+ and find+ which become unit random and non-unit random respectively.
 
 There are also functions that can take a function argument and these are identified with a '[f]' prefix.  These include [f]cut, [f]take, [f]drop, [f]at, and [f]dot.
 
@@ -744,7 +744,7 @@ Verb
 ^ @ref{sort},  @ref{[f]cut}. 
 # @ref{count}, @ref{[f]take}.  
 _ @ref{floor}, @ref{[f]drop}.    
-$ @ref{string},   @ref{cast+}.    
+$ @ref{string},   @ref{cast}.    
 ? @ref{unique+},  @ref{find+}.    
 @@ @ref{type},  @ref{[f]at}.    
 . @ref{value}, @ref{[f]dot}.
@@ -1320,10 +1320,8 @@ Cast x to string.
 "4.7"
 @end example
 
-@anchor{cast+}@section cast+ @result{} x$y
-As cast+ is a '+' verb its use depends on whether x is an atom (cast) or a list/matrix (matrix multiply).
-
-x is atom: Cast string y into type x.
+@anchor{cast}@section cast @result{} x$y
+Cast string y into type x.
 
 @example
  `i$"23"
@@ -1334,18 +1332,6 @@ x is atom: Cast string y into type x.
 12:34:56.789
  `d$"2020.04.20"
 2020.04.20
-@end example
-
-x is list/matrix: Multiply matrices x and y together.
-
-@example
- (1.*!3)$(3.+!3)
-14.
-
-(0 1 2;3 4 5;6 7 8)$(10 11;20 21;30 31)
- 80  83
-260 272
-440 461
 @end example
 
 @anchor{unique+}@section unique+ @result{} ?x
@@ -2557,19 +2543,11 @@ This chapter covers the non-symbol named functions.  This includes some math (eg
 
 @smallformat
 @example
-math:    @ref{sqrt} @ref{exp} @ref{log} @ref{sin} @ref{cos} @ref{div} @ref{mod} @ref{bar}
-wrapper: count first last min max sum avg      
-range:   @ref{in} @ref{bin} @ref{within}
+@ref{exp} @ref{log} @ref{sin} @ref{cos} @ref{sqr} @ref{sqrt} @ref{div} @ref{mod} @ref{bar};  @ref{topX,top} @ref{freq} @ref{msum} @ref{mavg} @ref{sums} @ref{deltas} @ref{prm} @ref{cmb}
 @end example
 @end smallformat
 
-@section Math Functions @result{} sqrt exp log sin cos div mod bar
-
-@anchor{sqrt}@subsection sqrt @result{} sqrt x
-@example
-@ sqrt 2
-1.414214
-@end example
+@section Math Functions @result{} exp log sin cos sqr sqrt div mod bar
 
 @anchor{exp}@subsection exp @result{} exp x
 @example
@@ -2603,6 +2581,18 @@ cos computes the cosine of x where x is in radians.
 0.7071055
 @end example
 
+@anchor{sqr}@subsection sqr @result{} sqr x
+@example
+@ sqr 2
+4.0
+@end example
+
+@anchor{sqrt}@subsection sqrt @result{} sqrt x
+@example
+@ sqrt 2
+1.414214
+@end example
+
 @anchor{div}@subsection div @result{} x div y
 y divided by x using integer division.  x and y must be integers.
 
@@ -2631,18 +2621,13 @@ For each value in y determine the number of integer multiples of x that is less 
 0 10 10 10 20 20
 @end example
 
-@section Wrapper Functions @result{} count first last min max sum avg      
-These functions exist as verbs but also can be called with the names above.
+@section Helper Functions @result{} top freq msum mavg sums deltas prm cmb
+TBD
 
-@example
-@ n:3.2 1.7 5.6
-@ sum n
-10.5
-@ +/n
-10.5
-@end example
+@anchor{topX}@anchor{freq}@anchor{msum}@anchor{mavg}@anchor{sums}@anchor{deltas}@anchor{prm}@anchor{cmb}
 
-@section Range Functions @result{} in bin within
+@section Range Functions @result{} key unkey meta in bin within
+TBD
 
 @anchor{in}@subsection in @result{} x in y
 Determine if x is in list y.  Similar to @ref{+has} but arguments reversed.
