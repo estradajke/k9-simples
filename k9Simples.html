@@ -106,7 +106,7 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; <
 <p><tt><a href="#Verb">Verb</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Adverb">Adverb</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Noun">Type</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#System">System</a></tt><br>
 <tt>:&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f/&nbsp;&nbsp;<a href="#scan">over</a>&nbsp;&nbsp;c/&nbsp;&nbsp;+join&nbsp;&nbsp;<a href="#char">char</a>&nbsp;&quot;&nbsp;ab&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\l&nbsp;a.k</tt><br>
 <tt>+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#flip">flip</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#plus">plus</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f\&nbsp;&nbsp;<a href="#scan">scan</a>&nbsp;&nbsp;c\&nbsp;&nbsp;<a href="#g_t_002bsplit">+split</a>&nbsp;<a href="#name">name</a>&nbsp;``ab&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\t:n&nbsp;x</tt><br>
-<tt>-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#negate">negate</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#minus">minus</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f'&nbsp;&nbsp;<a href="#each">each</a>&nbsp;&nbsp;v'&nbsp;&nbsp;<a href="#g_t_002bhas">+has</a>&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;0&nbsp;2&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u:n&nbsp;x</tt><br>
+<tt>-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#negate">negate</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#minus">minus</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f'&nbsp;&nbsp;<a href="#each">each</a>&nbsp;&nbsp;v'&nbsp;&nbsp;<a href="#g_t_002bhas">+has</a>&nbsp;&nbsp;&nbsp;<a href="#int">int</a>&nbsp;&nbsp;0&nbsp;2&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u:n&nbsp;x</tt><br>
 <tt>*&nbsp;&nbsp;&nbsp;&nbsp;<a href="#first">first</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#times">times</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f':&nbsp;<a href="#eachp">eachp</a>&nbsp;v':&nbsp;<a href="#bin2">+bin</a>&nbsp;&nbsp;&nbsp;<a href="#flt">flt</a>&nbsp;&nbsp;0&nbsp;2&nbsp;3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\v</tt><br>
 <tt>%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#divide">divide</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f/:&nbsp;<a href="#eachr">eachr</a>&nbsp;([n;]f)/:&nbsp;&nbsp;<a href="#date">date</a>&nbsp;2001.01.01&nbsp;&nbsp;&nbsp;.z.d</tt><br>
 <tt>&amp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#where">where</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#min_002fand">min/and</a>&nbsp;&nbsp;&nbsp;&nbsp;f\:&nbsp;<a href="#eachl">eachl</a>&nbsp;([n;]f)\:&nbsp;&nbsp;<a href="#time">time</a>&nbsp;12:34:56.789&nbsp;.z.t</tt><br>
@@ -126,9 +126,9 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; <
 <tt>.&nbsp;&nbsp;&nbsp;&nbsp;<a href="#value">value</a>&nbsp;&nbsp;&nbsp;<a href="#g_t_005bf_005ddot">[f]dot</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.[r;i;f[;y]]&nbsp;<a href="#dmend">dmend</a>&nbsp;&nbsp;&nbsp;<a href="#xtable">xtable</a>&nbsp;`..![[]a:..]</tt><br>
 <tt>\\&nbsp;&nbsp;&nbsp;exit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;comment&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[if&nbsp;do&nbsp;while]</tt><br>
 <tt></tt><br>
-<tt><a href="#select">select</a>[C]{count&nbsp;<a href="#first">first</a>&nbsp;last&nbsp;sum&nbsp;min&nbsp;max&nbsp;*[avg&nbsp;var&nbsp;dev&nbsp;med&nbsp;..]}from&nbsp;T&nbsp;where&nbsp;B</tt><br>
-<tt><a href="#update">update</a>&nbsp;C&nbsp;from&nbsp;T&nbsp;where&nbsp;B;&nbsp;delete&nbsp;from&nbsp;T&nbsp;where&nbsp;B;&nbsp;<a href="#key">key</a>&nbsp;un<a href="#key">key</a>&nbsp;<a href="#meta">meta</a>&nbsp;in&nbsp;<a href="#bin">bin</a>&nbsp; <a href="#within">within</a></tt><br>
-<tt><a href="#exp">exp</a>&nbsp;<a href="#log">log</a>&nbsp;<a href="#sin">sin</a>&nbsp;<a href="#cos">cos</a>&nbsp;<a href="#sqr">sqr</a>&nbsp;<a href="#sqr">sqr</a>t&nbsp;<a href="#div">div</a>&nbsp;<a href="#mod">mod</a>&nbsp;<a href="#bar">bar</a>;&nbsp;<a href="#topX">topX</a>&nbsp;<a href="#freq">freq</a>&nbsp;<a href="#msum">msum</a>&nbsp;<a href="#mavg">mavg</a>&nbsp;<a href="#sums">sums</a>&nbsp;<a href="#deltas">deltas</a>&nbsp;<a href="#prm">prm</a>&nbsp;<a href="#cmb">cmb</a></tt><br>
+<tt><a href="#select">select</a>[C]{count&nbsp;first&nbsp;last&nbsp;sum&nbsp;min&nbsp;max&nbsp;*[avg&nbsp;var&nbsp;dev&nbsp;med&nbsp;..]}from&nbsp;T&nbsp;where&nbsp;B</tt><br>
+<tt><a href="#update">update</a>&nbsp;C&nbsp;from&nbsp;T&nbsp;where&nbsp;B;&nbsp;delete&nbsp;from&nbsp;T&nbsp;where&nbsp;B;&nbsp;<a href="#key">key</a>&nbsp;<a href="#unkey">unkey</a>&nbsp;<a href="#meta">meta</a>&nbsp;in&nbsp;<a href="#bin">bin</a>&nbsp; <a href="#within">within</a></tt><br>
+<tt><a href="#exp">exp</a>&nbsp;<a href="#log">log</a>&nbsp;<a href="#sin">sin</a>&nbsp;<a href="#cos">cos</a>&nbsp;<a href="#sqr">sqr</a>&nbsp;<a href="#sqr">sqr</a>t&nbsp;<a href="#div">div</a>&nbsp;<a href="#mod">mod</a>&nbsp;<a href="#bar">bar</a>;&nbsp;<a href="#topX">top</a>&nbsp;<a href="#freq">freq</a>&nbsp;<a href="#msum">msum</a>&nbsp;<a href="#mavg">mavg</a>&nbsp;<a href="#sums">sums</a>&nbsp;<a href="#deltas">deltas</a>&nbsp;<a href="#prm">prm</a>&nbsp;<a href="#cmb">cmb</a></tt><br>
 </p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Introduction" accesskey="1">Introduction</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">An introduction to shakti/k9, a novel computer language for data analysis
@@ -2795,8 +2795,14 @@ y 2
 </pre></div>
 
 <span id="meta"></span><span id="meta-_21d2-meta"></span><h4 class="subsection">10.3.3 meta &rArr; meta</h4>
-<p>TBD
+<p>Determine the types of the fields in a table.
 </p>
+<div class="example">
+<pre class="example"> meta [[]a:`x`y;b:1 2]
+a|n
+b|i
+</pre></div>
+
 <span id="in"></span><span id="in-_21d2-x-in-y"></span><h4 class="subsection">10.3.4 in &rArr; x in y</h4>
 <p>Determine if x is in list y.  Similar to <a href="#g_t_002bhas">+has</a> but arguments reversed.
 </p>
