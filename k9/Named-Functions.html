@@ -176,11 +176,83 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 <span id="Helper-Functions-_21d2-top-freq-msum-mavg-sums-deltas-prm-cmb"></span><h3 class="section">10.2 Helper Functions &rArr; top freq msum mavg sums deltas prm cmb</h3>
 <p>TBD
 </p>
-<span id="topX"></span><span id="freq"></span><span id="msum"></span><span id="mavg"></span><span id="sums"></span><span id="deltas"></span><span id="prm"></span><span id="cmb"></span>
-<span id="Range-Functions-_21d2-key-unkey-meta-in-bin-within"></span><h3 class="section">10.3 Range Functions &rArr; key unkey meta in bin within</h3>
+<span id="topX"></span><span id="top-_21d2"></span><h4 class="subsection">10.2.1 top &rArr;</h4>
 <p>TBD
 </p>
-<span id="in"></span><span id="in-_21d2-x-in-y"></span><h4 class="subsection">10.3.1 in &rArr; x in y</h4>
+<span id="freq"></span><span id="freq-_21d2"></span><h4 class="subsection">10.2.2 freq &rArr;</h4>
+<p>TBD
+</p>
+<span id="msum"></span><span id="msum-_21d2"></span><h4 class="subsection">10.2.3 msum &rArr;</h4>
+<p>TBD
+</p>
+<span id="mavg"></span><span id="mavg-_21d2"></span><h4 class="subsection">10.2.4 mavg &rArr;</h4>
+<p>TBD
+</p>
+<span id="sums"></span><span id="sums-_21d2"></span><h4 class="subsection">10.2.5 sums &rArr;</h4>
+<p>TBD
+</p>
+<span id="deltas"></span><span id="deltas-_21d2"></span><h4 class="subsection">10.2.6 deltas &rArr;</h4>
+<p>TBD
+</p>
+<span id="prm"></span><span id="prm-_21d2-prm-x"></span><h4 class="subsection">10.2.7 prm &rArr; prm x</h4>
+<p>Determine all permutations of up x-1.
+</p>
+<div class="example">
+<pre class="example"> prm 3
+0 1 1 0 2 2
+1 0 2 2 0 1
+2 2 0 1 1 0
+</pre></div>
+
+<span id="cmb"></span><span id="cmb-_21d2-x-cmb-y"></span><h4 class="subsection">10.2.8 cmb &rArr; x cmb y</h4>
+<p>Determine all x value combinations up to y.
+</p>
+<div class="example">
+<pre class="example"> 2 cmb 4
+2 3
+1 3
+1 2
+0 3
+0 2
+0 1
+
+ `a`b`c`d@2 cmb 4 / choose from `a`b`c`d
+`c`d
+`b`d
+`b`c
+`a`d
+`a`c
+`a`b
+</pre></div>
+
+<span id="Range-Functions-_21d2-key-unkey-meta-in-bin-within"></span><h3 class="section">10.3 Range Functions &rArr; key unkey meta in bin within</h3>
+
+<span id="keyF"></span><span id="key-_21d2-x-key-y"></span><h4 class="subsection">10.3.1 key &rArr; x key y</h4>
+<p>Key table y with x.
+</p>
+<div class="example">
+<pre class="example"> `a key [[]a:`x`y;b:1 2]
+a|b
+-|-
+x|1
+y|2
+</pre></div>
+
+<span id="unkey"></span><span id="unkey-_21d2-unkey-x"></span><h4 class="subsection">10.3.2 unkey &rArr; unkey x</h4>
+<p>Remove key from table x.
+</p>
+<div class="example">
+<pre class="example"> unkey [[a:`x`y]b:1 2]
+a b
+- -
+x 1
+y 2
+</pre></div>
+
+<span id="meta"></span><span id="meta-_21d2-meta"></span><h4 class="subsection">10.3.3 meta &rArr; meta</h4>
+<p>TBD
+</p>
+<span id="in"></span><span id="in-_21d2-x-in-y"></span><h4 class="subsection">10.3.4 in &rArr; x in y</h4>
 <p>Determine if x is in list y.  Similar to <a href="Adverb.html#g_t_002bhas">+has</a> but arguments reversed.
 </p>
 <div class="example">
@@ -190,7 +262,7 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 0b
 </pre></div>
 
-<span id="bin"></span><span id="bin-_21d2-x-bin-y"></span><h4 class="subsection">10.3.2 bin &rArr; x bin y</h4>
+<span id="bin"></span><span id="bin-_21d2-x-bin-y"></span><h4 class="subsection">10.3.5 bin &rArr; x bin y</h4>
 <p>Given a sorted (increasing) list x, find the greatest index, i, where y&gt;x[i].
 </p>
 <div class="example">
@@ -200,7 +272,7 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 2
 </pre></div>
 
-<span id="within"></span><span id="within-_21d2-x-within-y"></span><h4 class="subsection">10.3.3 within &rArr; x within y</h4>
+<span id="within"></span><span id="within-_21d2-x-within-y"></span><h4 class="subsection">10.3.6 within &rArr; x within y</h4>
 <p>Test if x is equal to or greater than y[0] and less than y[1].
 </p>
 <div class="example">

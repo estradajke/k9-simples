@@ -2624,9 +2624,80 @@ For each value in y determine the number of integer multiples of x that is less 
 @section Helper Functions @result{} top freq msum mavg sums deltas prm cmb
 TBD
 
-@anchor{topX}@anchor{freq}@anchor{msum}@anchor{mavg}@anchor{sums}@anchor{deltas}@anchor{prm}@anchor{cmb}
+@anchor{topX}@subsection top @result{}
+TBD
+
+@anchor{freq}@subsection freq @result{}
+TBD
+
+@anchor{msum}@subsection msum @result{}
+TBD
+
+@anchor{mavg}@subsection mavg @result{}
+TBD
+
+@anchor{sums}@subsection sums @result{}
+TBD
+
+@anchor{deltas}@subsection deltas @result{}
+TBD
+
+@anchor{prm}@subsection prm @result{} prm x
+Determine all permutations of up x-1.
+
+@example
+ prm 3
+0 1 1 0 2 2
+1 0 2 2 0 1
+2 2 0 1 1 0
+@end example
+
+@anchor{cmb}@subsection cmb @result{} x cmb y
+Determine all x value combinations up to y.
+
+@example
+ 2 cmb 4
+2 3
+1 3
+1 2
+0 3
+0 2
+0 1
+
+ `a`b`c`d@@2 cmb 4 / choose from `a`b`c`d
+`c`d
+`b`d
+`b`c
+`a`d
+`a`c
+`a`b
+@end example
 
 @section Range Functions @result{} key unkey meta in bin within
+
+@anchor{keyF}@subsection key @result{} x key y
+Key table y with x.
+
+@example
+ `a key [[]a:`x`y;b:1 2]
+a|b
+-|-
+x|1
+y|2
+@end example
+
+@anchor{unkey}@subsection unkey @result{} unkey x
+Remove key from table x.
+
+@example
+ unkey [[a:`x`y]b:1 2]
+a b
+- -
+x 1
+y 2
+@end example
+
+@anchor{meta}@subsection meta @result{} meta
 TBD
 
 @anchor{in}@subsection in @result{} x in y

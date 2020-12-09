@@ -75,9 +75,12 @@ dmend::   *note xtable:: `..![[]a:..]
 
 *note select::[C]{count *note
 first:: last sum min max *[avg var dev med ..]}from T where B
-*note
-update:: C from T where B; delete from T where B; key unkey meta in bin within
-exp log sin cos sqr sqrt div mod bar; top freq msum mavg sums deltas prm cmb
+*note update:: C from T where B; delete from T where B; *note
+key:: un*note key:: *note meta:: in *note bin::  *note within::
+*note exp:: *note log:: *note sin:: *note cos:: *note sqr:: *note
+sqr::t *note div:: *note mod:: *note bar::; *note topX:: *note
+freq:: *note msum:: *note mavg:: *note sums:: *note deltas:: *note
+prm:: *note cmb::
 
 * Menu:
 
@@ -2854,12 +2857,98 @@ is less than or equal to each x.
 
 TBD
 
-10.3 Range Functions => key unkey meta in bin within
-====================================================
+10.2.1 top =>
+-------------
 
 TBD
 
-10.3.1 in => x in y
+10.2.2 freq =>
+--------------
+
+TBD
+
+10.2.3 msum =>
+--------------
+
+TBD
+
+10.2.4 mavg =>
+--------------
+
+TBD
+
+10.2.5 sums =>
+--------------
+
+TBD
+
+10.2.6 deltas =>
+----------------
+
+TBD
+
+10.2.7 prm => prm x
+-------------------
+
+Determine all permutations of up x-1.
+
+      prm 3
+     0 1 1 0 2 2
+     1 0 2 2 0 1
+     2 2 0 1 1 0
+
+10.2.8 cmb => x cmb y
+---------------------
+
+Determine all x value combinations up to y.
+
+      2 cmb 4
+     2 3
+     1 3
+     1 2
+     0 3
+     0 2
+     0 1
+
+      `a`b`c`d@2 cmb 4 / choose from `a`b`c`d
+     `c`d
+     `b`d
+     `b`c
+     `a`d
+     `a`c
+     `a`b
+
+10.3 Range Functions => key unkey meta in bin within
+====================================================
+
+10.3.1 key => x key y
+---------------------
+
+Key table y with x.
+
+      `a key [[]a:`x`y;b:1 2]
+     a|b
+     -|-
+     x|1
+     y|2
+
+10.3.2 unkey => unkey x
+-----------------------
+
+Remove key from table x.
+
+      unkey [[a:`x`y]b:1 2]
+     a b
+     - -
+     x 1
+     y 2
+
+10.3.3 meta => meta
+-------------------
+
+TBD
+
+10.3.4 in => x in y
 -------------------
 
 Determine if x is in list y.  Similar to *note +has:: but arguments
@@ -2870,7 +2959,7 @@ reversed.
       `c in `a`b`d`e
      0b
 
-10.3.2 bin => x bin y
+10.3.5 bin => x bin y
 ---------------------
 
 Given a sorted (increasing) list x, find the greatest index, i, where
@@ -2881,7 +2970,7 @@ y>x[i].
       1.025 bin n
      2
 
-10.3.3 within => x within y
+10.3.6 within => x within y
 ---------------------------
 
 Test if x is equal to or greater than y[0] and less than y[1].
@@ -4145,161 +4234,164 @@ exp log sin cos sqr sqrt div mod bar; top freq msum mavg sums deltas prm cmb
 
 Tag Table:
 Node: Top125
-Node: Introduction4363
-Node: Examples15950
-Node: Benchmark23504
-Node: Verb28461
-Ref: x30267
-Ref: set30292
-Ref: flip30504
-Ref: plus30754
-Ref: negate31139
-Ref: minus31311
-Ref: first31418
-Ref: times31758
-Ref: divide31889
-Ref: where32026
-Ref: min/and32506
-Ref: reverse32765
-Ref: max/or32935
-Ref: asc33199
-Ref: less33572
-Ref: group33873
-Ref: equal34119
-Ref: not34423
-Ref: match34540
-Ref: enum34923
-Ref: key35716
-Ref: enlist35946
-Ref: cat36086
-Ref: sort36205
-Ref: [f]cut36438
-Ref: count37183
-Ref: [f]take37373
-Ref: take137805
-Ref: take238097
-Ref: take338311
-Ref: floor38530
-Ref: [f]drop38621
-Ref: string39214
-Ref: cast39315
-Ref: unique+39505
-Ref: find+40111
-Ref: type40949
-Ref: [f]at41400
-Ref: value41716
-Ref: [f]dot41990
-Node: Adverb43090
-Ref: scan43838
-Ref: +join44368
-Ref: +split44635
-Ref: each44892
-Ref: +has45181
-Ref: eachp45447
-Ref: bin246191
-Ref: eachr46396
-Ref: eachl46593
-Ref: n scan46777
-Ref: c scan47257
-Ref: c over47769
-Ref: vs47906
-Ref: sv48026
-Node: Noun48150
-Ref: Atom Types49488
-Ref: bool50669
-Ref: int51356
-Ref: flt52016
-Ref: char52418
-Ref: name52641
-Ref: uuid52872
-Ref: time53029
-Ref: date53905
-Ref: datetime54366
-Node: List55163
-Node: Dictionary59313
-Node: User Functions64221
-Node: Named Functions67270
-Ref: exp67914
-Ref: log67982
-Ref: sin68082
-Ref: cos68221
-Ref: sqr68369
-Ref: sqrt68432
-Ref: div68505
-Ref: mod68661
-Ref: bar68839
-Ref: topX69177
-Ref: freq69177
-Ref: msum69177
-Ref: mavg69177
-Ref: sums69177
-Ref: deltas69177
-Ref: prm69177
-Ref: cmb69177
-Ref: in69289
-Ref: bin69468
-Ref: within69682
-Node: Knit Functions69918
-Ref: amend70213
-Ref: amend170679
-Ref: amend270815
-Ref: amend371037
-Ref: amend471219
-Ref: dmend71390
-Ref: dmend171720
-Ref: dmend371857
-Ref: dmend472025
-Node: I/O72189
-Ref: read csv74292
-Ref: write csv74470
-Ref: read json74634
-Ref: write json74824
-Ref: w line74997
-Ref: r line75306
-Ref: w byte75419
-Ref: r byte75647
-Ref: r data75795
-Ref: w data76456
-Ref: conn/set77024
-Ref: http/get77084
-Ref: lib77144
-Node: Tables77608
-Ref: t78300
-Ref: xtable79905
-Ref: utable80387
-Node: kSQL80844
-Ref: select81442
-Ref: A82026
-Ref: by B82896
-Ref: where C83168
-Ref: update83750
-Ref: union84600
-Ref: leftjoin85121
-Ref: outer85639
-Ref: asof85974
-Ref: asof+87018
-Ref: insert88021
-Ref: upsert88367
-Node: System88691
-Ref: load89149
-Ref: timing89337
-Ref: variables89424
-Ref: memory89525
-Ref: cd89640
-Node: Control Flow89724
-Ref: cond89960
-Node: Temporal Functions90221
-Node: Errors92212
-Ref: class92662
-Ref: rank92751
-Ref: length92875
-Ref: _type92998
-Ref: domain93107
-Ref: limit93229
-Ref: nyi93430
-Ref: parse93763
-Ref: _value93918
-Node: Conclusion94046
+Node: Introduction4541
+Node: Examples16128
+Node: Benchmark23682
+Node: Verb28639
+Ref: x30445
+Ref: set30470
+Ref: flip30682
+Ref: plus30932
+Ref: negate31317
+Ref: minus31489
+Ref: first31596
+Ref: times31936
+Ref: divide32067
+Ref: where32204
+Ref: min/and32684
+Ref: reverse32943
+Ref: max/or33113
+Ref: asc33377
+Ref: less33750
+Ref: group34051
+Ref: equal34297
+Ref: not34601
+Ref: match34718
+Ref: enum35101
+Ref: key35894
+Ref: enlist36124
+Ref: cat36264
+Ref: sort36383
+Ref: [f]cut36616
+Ref: count37361
+Ref: [f]take37551
+Ref: take137983
+Ref: take238275
+Ref: take338489
+Ref: floor38708
+Ref: [f]drop38799
+Ref: string39392
+Ref: cast39493
+Ref: unique+39683
+Ref: find+40289
+Ref: type41127
+Ref: [f]at41578
+Ref: value41894
+Ref: [f]dot42168
+Node: Adverb43268
+Ref: scan44016
+Ref: +join44546
+Ref: +split44813
+Ref: each45070
+Ref: +has45359
+Ref: eachp45625
+Ref: bin246369
+Ref: eachr46574
+Ref: eachl46771
+Ref: n scan46955
+Ref: c scan47435
+Ref: c over47947
+Ref: vs48084
+Ref: sv48204
+Node: Noun48328
+Ref: Atom Types49666
+Ref: bool50847
+Ref: int51534
+Ref: flt52194
+Ref: char52596
+Ref: name52819
+Ref: uuid53050
+Ref: time53207
+Ref: date54083
+Ref: datetime54544
+Node: List55341
+Node: Dictionary59491
+Node: User Functions64399
+Node: Named Functions67448
+Ref: exp68092
+Ref: log68160
+Ref: sin68260
+Ref: cos68399
+Ref: sqr68547
+Ref: sqrt68610
+Ref: div68683
+Ref: mod68839
+Ref: bar69017
+Ref: topX69355
+Ref: freq69389
+Ref: msum69425
+Ref: mavg69461
+Ref: sums69497
+Ref: deltas69533
+Ref: prm69573
+Ref: cmb69717
+Ref: keyF70090
+Ref: unkey70223
+Ref: meta70363
+Ref: in70409
+Ref: bin70588
+Ref: within70802
+Node: Knit Functions71038
+Ref: amend71333
+Ref: amend171799
+Ref: amend271935
+Ref: amend372157
+Ref: amend472339
+Ref: dmend72510
+Ref: dmend172840
+Ref: dmend372977
+Ref: dmend473145
+Node: I/O73309
+Ref: read csv75412
+Ref: write csv75590
+Ref: read json75754
+Ref: write json75944
+Ref: w line76117
+Ref: r line76426
+Ref: w byte76539
+Ref: r byte76767
+Ref: r data76915
+Ref: w data77576
+Ref: conn/set78144
+Ref: http/get78204
+Ref: lib78264
+Node: Tables78728
+Ref: t79420
+Ref: xtable81025
+Ref: utable81507
+Node: kSQL81964
+Ref: select82562
+Ref: A83146
+Ref: by B84016
+Ref: where C84288
+Ref: update84870
+Ref: union85720
+Ref: leftjoin86241
+Ref: outer86759
+Ref: asof87094
+Ref: asof+88138
+Ref: insert89141
+Ref: upsert89487
+Node: System89811
+Ref: load90269
+Ref: timing90457
+Ref: variables90544
+Ref: memory90645
+Ref: cd90760
+Node: Control Flow90844
+Ref: cond91080
+Node: Temporal Functions91341
+Node: Errors93332
+Ref: class93782
+Ref: rank93871
+Ref: length93995
+Ref: _type94118
+Ref: domain94227
+Ref: limit94349
+Ref: nyi94550
+Ref: parse94883
+Ref: _value95038
+Node: Conclusion95166
 
 End Tag Table
 
