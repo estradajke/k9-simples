@@ -2641,25 +2641,83 @@ For each value in y determine the number of integer multiples of x that is less 
 @end example
 
 @section Helper Functions @result{} top freq msum mavg sums deltas prm cmb
-TBD
 
-@anchor{topX}@subsection top @result{}
-TBD
+@anchor{topX}@subsection top @result{} top x
+Return the index of the max value of list x.
 
-@anchor{freq}@subsection freq @result{}
-TBD
+@example
+ top 3 13 15 1 17 0 -3
+4
 
-@anchor{msum}@subsection msum @result{}
-TBD
+top "abzccdefeajfekjrlke"
+2
+@end example
 
-@anchor{mavg}@subsection mavg @result{}
-TBD
+@anchor{freq}@subsection freq @result{} freq x
+Compute frequency of the items in list x.
 
-@anchor{sums}@subsection sums @result{}
-TBD
+@example
+ freq "abzccdefeajfekjrlke"
+a|2
+b|1
+c|2
+d|1
+e|4
+f|2
+j|2
+k|2
+l|1
+r|1
+z|1
 
-@anchor{deltas}@subsection deltas @result{}
-TBD
+ freq 1000?10
+0| 95
+1|106
+2| 84
+3| 98
+4|109
+5|104
+6| 94
+7| 95
+8|120
+9| 95
+@end example
+
+@anchor{msum}@subsection msum @result{} x msum y
+Compute the x wide moving sum of list y.
+
+@example
+ 3 msum !10
+0 1 3 6 9 12 15 18 21 24
+@end example
+
+
+@anchor{mavg}@subsection mavg @result{} x mavg y
+Compute the x wide moving average of list y.
+
+@example
+ 3 mavg !10
+0 0.3333333 1 2 3 4 5 6 7 8
+@end example
+
+@anchor{sums}@subsection sums @result{} sums x
+Compute the sum of list x.  Sames as @code{+\}.
+
+@example
+ sums !10
+0 1 3 6 10 15 21 28 36 45
+@end example
+
+@anchor{deltas}@subsection deltas @result{} deltas x and x deltas y
+Compute the difference between each element in list x and the previous value.  If delta is called with two parameters then x will be used as the first value to delta instead of the default 0.
+
+@example
+ deltas 1 5 10
+1 4 5
+
+ 1 deltas 1 5 10
+0 4 5
+@end example
 
 @anchor{prm}@subsection prm @result{} prm x
 Determine all permutations of up x-1.

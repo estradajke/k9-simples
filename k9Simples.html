@@ -2733,26 +2733,84 @@ Next: <a href="#Knit-Functions" accesskey="n" rel="next">Knit Functions</a>, Pre
 </pre></div>
 
 <span id="Helper-Functions-_21d2-top-freq-msum-mavg-sums-deltas-prm-cmb"></span><h3 class="section">10.2 Helper Functions &rArr; top freq msum mavg sums deltas prm cmb</h3>
-<p>TBD
+
+<span id="topX"></span><span id="top-_21d2-top-x"></span><h4 class="subsection">10.2.1 top &rArr; top x</h4>
+<p>Return the index of the max value of list x.
 </p>
-<span id="topX"></span><span id="top-_21d2"></span><h4 class="subsection">10.2.1 top &rArr;</h4>
-<p>TBD
+<div class="example">
+<pre class="example"> top 3 13 15 1 17 0 -3
+4
+
+top &quot;abzccdefeajfekjrlke&quot;
+2
+</pre></div>
+
+<span id="freq"></span><span id="freq-_21d2-freq-x"></span><h4 class="subsection">10.2.2 freq &rArr; freq x</h4>
+<p>Compute frequency of the items in list x.
 </p>
-<span id="freq"></span><span id="freq-_21d2"></span><h4 class="subsection">10.2.2 freq &rArr;</h4>
-<p>TBD
+<div class="example">
+<pre class="example"> freq &quot;abzccdefeajfekjrlke&quot;
+a|2
+b|1
+c|2
+d|1
+e|4
+f|2
+j|2
+k|2
+l|1
+r|1
+z|1
+
+ freq 1000?10
+0| 95
+1|106
+2| 84
+3| 98
+4|109
+5|104
+6| 94
+7| 95
+8|120
+9| 95
+</pre></div>
+
+<span id="msum"></span><span id="msum-_21d2-x-msum-y"></span><h4 class="subsection">10.2.3 msum &rArr; x msum y</h4>
+<p>Compute the x wide moving sum of list y.
 </p>
-<span id="msum"></span><span id="msum-_21d2"></span><h4 class="subsection">10.2.3 msum &rArr;</h4>
-<p>TBD
+<div class="example">
+<pre class="example"> 3 msum !10
+0 1 3 6 9 12 15 18 21 24
+</pre></div>
+
+
+<span id="mavg"></span><span id="mavg-_21d2-x-mavg-y"></span><h4 class="subsection">10.2.4 mavg &rArr; x mavg y</h4>
+<p>Compute the x wide moving average of list y.
 </p>
-<span id="mavg"></span><span id="mavg-_21d2"></span><h4 class="subsection">10.2.4 mavg &rArr;</h4>
-<p>TBD
+<div class="example">
+<pre class="example"> 3 mavg !10
+0 0.3333333 1 2 3 4 5 6 7 8
+</pre></div>
+
+<span id="sums"></span><span id="sums-_21d2-sums-x"></span><h4 class="subsection">10.2.5 sums &rArr; sums x</h4>
+<p>Compute the sum of list x.  Sames as <code>+\</code>.
 </p>
-<span id="sums"></span><span id="sums-_21d2"></span><h4 class="subsection">10.2.5 sums &rArr;</h4>
-<p>TBD
+<div class="example">
+<pre class="example"> sums !10
+0 1 3 6 10 15 21 28 36 45
+</pre></div>
+
+<span id="deltas"></span><span id="deltas-_21d2-deltas-x-and-x-deltas-y"></span><h4 class="subsection">10.2.6 deltas &rArr; deltas x and x deltas y</h4>
+<p>Compute the difference between each element in list x and the previous value.  If delta is called with two parameters then x will be used as the first value to delta instead of the default 0.
 </p>
-<span id="deltas"></span><span id="deltas-_21d2"></span><h4 class="subsection">10.2.6 deltas &rArr;</h4>
-<p>TBD
-</p>
+<div class="example">
+<pre class="example"> deltas 1 5 10
+1 4 5
+
+ 1 deltas 1 5 10
+0 4 5
+</pre></div>
+
 <span id="prm"></span><span id="prm-_21d2-prm-x"></span><h4 class="subsection">10.2.7 prm &rArr; prm x</h4>
 <p>Determine all permutations of up x-1.
 </p>

@@ -2863,37 +2863,83 @@ is less than or equal to each x.
 10.2 Helper Functions => top freq msum mavg sums deltas prm cmb
 ===============================================================
 
-TBD
+10.2.1 top => top x
+-------------------
 
-10.2.1 top =>
--------------
+Return the index of the max value of list x.
 
-TBD
+      top 3 13 15 1 17 0 -3
+     4
 
-10.2.2 freq =>
---------------
+     top "abzccdefeajfekjrlke"
+     2
 
-TBD
+10.2.2 freq => freq x
+---------------------
 
-10.2.3 msum =>
---------------
+Compute frequency of the items in list x.
 
-TBD
+      freq "abzccdefeajfekjrlke"
+     a|2
+     b|1
+     c|2
+     d|1
+     e|4
+     f|2
+     j|2
+     k|2
+     l|1
+     r|1
+     z|1
 
-10.2.4 mavg =>
---------------
+      freq 1000?10
+     0| 95
+     1|106
+     2| 84
+     3| 98
+     4|109
+     5|104
+     6| 94
+     7| 95
+     8|120
+     9| 95
 
-TBD
+10.2.3 msum => x msum y
+-----------------------
 
-10.2.5 sums =>
---------------
+Compute the x wide moving sum of list y.
 
-TBD
+      3 msum !10
+     0 1 3 6 9 12 15 18 21 24
 
-10.2.6 deltas =>
-----------------
+10.2.4 mavg => x mavg y
+-----------------------
 
-TBD
+Compute the x wide moving average of list y.
+
+      3 mavg !10
+     0 0.3333333 1 2 3 4 5 6 7 8
+
+10.2.5 sums => sums x
+---------------------
+
+Compute the sum of list x.  Sames as '+\'.
+
+      sums !10
+     0 1 3 6 10 15 21 28 36 45
+
+10.2.6 deltas => deltas x and x deltas y
+----------------------------------------
+
+Compute the difference between each element in list x and the previous
+value.  If delta is called with two parameters then x will be used as
+the first value to delta instead of the default 0.
+
+      deltas 1 5 10
+     1 4 5
+
+      1 deltas 1 5 10
+     0 4 5
 
 10.2.7 prm => prm x
 -------------------
@@ -4332,81 +4378,81 @@ Ref: sqrt68751
 Ref: div68824
 Ref: mod68980
 Ref: bar69158
-Ref: topX69496
-Ref: freq69530
-Ref: msum69566
-Ref: mavg69602
-Ref: sums69638
-Ref: deltas69674
-Ref: prm69714
-Ref: cmb69858
-Ref: keyF70231
-Ref: unkey70364
-Ref: meta70504
-Ref: in70639
-Ref: bin70818
-Ref: within71032
-Node: Knit Functions71268
-Ref: amend71563
-Ref: amend172029
-Ref: amend272165
-Ref: amend372387
-Ref: amend472569
-Ref: dmend72740
-Ref: dmend173070
-Ref: dmend373207
-Ref: dmend473375
-Node: I/O73539
-Ref: read csv75642
-Ref: write csv75820
-Ref: read json75984
-Ref: write json76174
-Ref: w line76347
-Ref: r line76656
-Ref: w byte76769
-Ref: r byte76997
-Ref: r data77145
-Ref: w data77806
-Ref: conn/set78374
-Ref: http/get78434
-Ref: lib78494
-Node: Tables78958
-Ref: t79650
-Ref: xtable81255
-Ref: utable81737
-Node: kSQL82194
-Ref: select82792
-Ref: A83376
-Ref: by B84246
-Ref: where C84518
-Ref: update85100
-Ref: union85950
-Ref: leftjoin86471
-Ref: outer86989
-Ref: asof87324
-Ref: asof+88368
-Ref: insert89371
-Ref: upsert89717
-Node: System90041
-Ref: load90499
-Ref: timing90687
-Ref: variables90774
-Ref: memory90875
-Ref: cd90990
-Node: Control Flow91074
-Ref: cond91310
-Node: Temporal Functions91571
-Node: Errors93562
-Ref: class94012
-Ref: rank94101
-Ref: length94225
-Ref: _type94348
-Ref: domain94457
-Ref: limit94579
-Ref: nyi94780
-Ref: parse95113
-Ref: _value95268
-Node: Conclusion95396
+Ref: topX69491
+Ref: freq69653
+Ref: msum70004
+Ref: mavg70143
+Ref: sums70289
+Ref: deltas70425
+Ref: prm70767
+Ref: cmb70911
+Ref: keyF71284
+Ref: unkey71417
+Ref: meta71557
+Ref: in71692
+Ref: bin71871
+Ref: within72085
+Node: Knit Functions72321
+Ref: amend72616
+Ref: amend173082
+Ref: amend273218
+Ref: amend373440
+Ref: amend473622
+Ref: dmend73793
+Ref: dmend174123
+Ref: dmend374260
+Ref: dmend474428
+Node: I/O74592
+Ref: read csv76695
+Ref: write csv76873
+Ref: read json77037
+Ref: write json77227
+Ref: w line77400
+Ref: r line77709
+Ref: w byte77822
+Ref: r byte78050
+Ref: r data78198
+Ref: w data78859
+Ref: conn/set79427
+Ref: http/get79487
+Ref: lib79547
+Node: Tables80011
+Ref: t80703
+Ref: xtable82308
+Ref: utable82790
+Node: kSQL83247
+Ref: select83845
+Ref: A84429
+Ref: by B85299
+Ref: where C85571
+Ref: update86153
+Ref: union87003
+Ref: leftjoin87524
+Ref: outer88042
+Ref: asof88377
+Ref: asof+89421
+Ref: insert90424
+Ref: upsert90770
+Node: System91094
+Ref: load91552
+Ref: timing91740
+Ref: variables91827
+Ref: memory91928
+Ref: cd92043
+Node: Control Flow92127
+Ref: cond92363
+Node: Temporal Functions92624
+Node: Errors94615
+Ref: class95065
+Ref: rank95154
+Ref: length95278
+Ref: _type95401
+Ref: domain95510
+Ref: limit95632
+Ref: nyi95833
+Ref: parse96166
+Ref: _value96321
+Node: Conclusion96449
 
 End Tag Table
 
