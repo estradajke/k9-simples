@@ -263,6 +263,24 @@ b 2 20
 c 3 21
 </pre></div>
 
+<span id="delete"></span><span id="delete-1"></span><h4 class="subsection">14.1.7 delete</h4>
+<p>Delete rows from a table that satisfy one or more conditions.  Currently not working.
+</p>
+<div class="example">
+<pre class="example"> t:[[]x:`a`b`c;y:1 2 1];t
+x y
+- -
+a 1
+b 2
+c 1
+
+ delete from t where y&gt;1
+!value
+
+ delete from t where x=`c,y=1
+!nyi
+</pre></div>
+
 <span id="Joins"></span><h3 class="section">14.2 Joins</h3>
 <p>k9 has a number of methods to join tables together which are described below.  In this section t, t1 and t2 represent tables and k, k1 and k2 represent utables.
 </p>

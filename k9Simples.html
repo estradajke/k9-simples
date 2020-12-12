@@ -127,7 +127,7 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; <
 <tt>\\&nbsp;&nbsp;&nbsp;exit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;comment&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[if&nbsp;do&nbsp;while]</tt><br>
 <tt></tt><br>
 <tt><a href="#select">select</a>[C]{count&nbsp;first&nbsp;last&nbsp;sum&nbsp;min&nbsp;max&nbsp;*[avg&nbsp;var&nbsp;dev&nbsp;med&nbsp;..]}from&nbsp;T&nbsp;where&nbsp;B</tt><br>
-<tt><a href="#update">update</a>&nbsp;C&nbsp;from&nbsp;T&nbsp;where&nbsp;B;&nbsp;delete&nbsp;from&nbsp;T&nbsp;where&nbsp;B;&nbsp;<a href="#key">key</a>&nbsp;<a href="#unkey">unkey</a>&nbsp;<a href="#meta">meta</a>&nbsp;in&nbsp;<a href="#bin">bin</a>&nbsp; <a href="#within">within</a></tt><br>
+<tt><a href="#update">update</a>&nbsp;C&nbsp;from&nbsp;T&nbsp;where&nbsp;B;&nbsp;delete&nbsp;from&nbsp;T&nbsp;where&nbsp;B;&nbsp;<a href="#key">key</a>&nbsp;<a href="#unkey">unkey</a>&nbsp;<a href="#meta">meta</a>&nbsp;<a href="#in">in</a>&nbsp;<a href="#bin">bin</a>&nbsp; <a href="#within">within</a></tt><br>
 <tt><a href="#exp">exp</a>&nbsp;<a href="#log">log</a>&nbsp;<a href="#sin">sin</a>&nbsp;<a href="#cos">cos</a>&nbsp;<a href="#sqr">sqr</a>&nbsp;<a href="#sqr">sqr</a>t&nbsp;<a href="#div">div</a>&nbsp;<a href="#mod">mod</a>&nbsp;<a href="#bar">bar</a>;&nbsp;<a href="#topX">top</a>&nbsp;<a href="#freq">freq</a>&nbsp;<a href="#msum">msum</a>&nbsp;<a href="#mavg">mavg</a>&nbsp;<a href="#sums">sums</a>&nbsp;<a href="#deltas">deltas</a>&nbsp;<a href="#prm">prm</a>&nbsp;<a href="#cmb">cmb</a></tt><br>
 </p>
 <table class="menu" border="0" cellspacing="0">
@@ -3563,6 +3563,24 @@ x y z
 a 1 19
 b 2 20
 c 3 21
+</pre></div>
+
+<span id="delete"></span><span id="delete-1"></span><h4 class="subsection">14.1.7 delete</h4>
+<p>Delete rows from a table that satisfy one or more conditions.  Currently not working.
+</p>
+<div class="example">
+<pre class="example"> t:[[]x:`a`b`c;y:1 2 1];t
+x y
+- -
+a 1
+b 2
+c 1
+
+ delete from t where y&gt;1
+!value
+
+ delete from t where x=`c,y=1
+!nyi
 </pre></div>
 
 <span id="Joins"></span><h3 class="section">14.2 Joins</h3>
