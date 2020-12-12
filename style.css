@@ -1,0 +1,43 @@
+/* spacing */
+
+table, th, td{
+  table-layout: auto;
+  border-collapse: collapse;
+  border: 1px solid blue;
+  font-family: monospace; 
+}
+
+th, td {
+  padding: 5px;     
+  font-family: monospace; 
+}
+
+tr:nth-child(1) {
+/*    background-color:lightsteelblue; // Replace it with your desired color */
+}
+
+.menu{
+    border: none;
+}
+
+table.menu td{ 
+    /*Background: none;*/
+    padding: 1px;
+    /*border-collapse: collapse;*/
+    border: none;
+    font-family: sansserif;
+    /(all: unset;*/
+}
+
+table.menu th{ 
+    /*Background: none;*/
+    padding: 1px;
+    /*border-collapse: collapse;*/
+    border: none;
+    font-family: sansserif;
+    /(all: unset;*/
+}
+
+
+
+
