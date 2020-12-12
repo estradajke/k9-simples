@@ -1,6 +1,6 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
-December 9, 2020
+December 12, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -1422,14 +1422,8 @@ abs[x]>count[y] then repeatedly pull from y.
       (1 2 3 7 8 9)#(2 8 20) / common
      2 8
 
-      (0.5<)#10?1.           / filter
-     0.840732 0.5330717 0.7539563 0.643315 0.6993048f
-
    If x is a function, then filter out values where the funtion is
 non-zero.
-
-      (1 2 3 7 8 9)#(2 8 20) / common
-     2 8
 
       (0.5<)#10?1.           / filter
      0.840732 0.5330717 0.7539563 0.643315 0.6993048f
@@ -1444,21 +1438,35 @@ Return the integer floor of float x.
 4.29 [f]drop => x_y
 ===================
 
-Drop is used to remove a subset of list y depending if x is a atom,
-list, or function.  If x is an atom, then postive (negative) x removes
-the first (last) x elements of y.  If x is a list, then remove any
-values in x from y.  If x is a function (f), then remove values where
-the funtion is non-zero.
+[f]drop has a number of different actions depending on x.  This include
+dehead (drop from front of list), detail (drop from back of list),
+uncommon (drop common elements), and filter (drop where function is
+zero).
+
+action                     x
+*note dehead: drop1.       positive int
+*note detail: drop1.       negative int
+*note uncommon: drop2.     list
+*note filter: drop3.       function
+
+   Postive (negative) x drops the first (last) x elements of y.
+
       3_0 1 2 3 4 5          / drop first
      3 4 5
+
       -3_0 1 2 3 4 5         / drop last
      0 1 2
-      2#"hello"
-     "he"
-      (1 2 3 7 8 9)_(2 8 20) / drop common
+
+   If x is a list, then drop returns any values from y uncommon in x.
+
+      (1 2 3 7 8 9)_(2 8 20) / uncommon
      ,20
-      (0.5<)_10?1.           / drop true
-     0.4004211 0.2929524f
+
+   If x is a function, then filter out values where the funtion is
+non-zero.
+
+      (0.5<)_10?1.           / filter
+     0.02049699 0.1269226
 
 4.30 string => $x
 =================
@@ -4237,165 +4245,168 @@ exp log sin cos sqr sqrt div mod bar; top freq msum mavg sums deltas prm cmb
 
 
 Tag Table:
-Node: Top125
-Node: Introduction4545
-Node: Examples16132
-Node: Benchmark23686
-Node: Verb28643
-Ref: x30449
-Ref: set30474
-Ref: flip30686
-Ref: plus30936
-Ref: negate31321
-Ref: minus31493
-Ref: first31600
-Ref: times31940
-Ref: divide32071
-Ref: where32208
-Ref: min/and32688
-Ref: reverse32947
-Ref: max/or33117
-Ref: asc33381
-Ref: less33754
-Ref: group34055
-Ref: equal34301
-Ref: not34605
-Ref: match34722
-Ref: enum35105
-Ref: key35898
-Ref: enlist36128
-Ref: cat36268
-Ref: sort36387
-Ref: [f]cut36620
-Ref: count37365
-Ref: [f]take37555
-Ref: take137987
-Ref: take238279
-Ref: take338493
-Ref: floor38712
-Ref: [f]drop38803
-Ref: string39396
-Ref: cast39497
-Ref: unique+39687
-Ref: find+40293
-Ref: type41131
-Ref: [f]at41582
-Ref: value41898
-Ref: [f]dot42172
-Node: Adverb43272
-Ref: scan44020
-Ref: +join44550
-Ref: +split44817
-Ref: each45074
-Ref: +has45363
-Ref: eachp45629
-Ref: bin246373
-Ref: eachr46578
-Ref: eachl46775
-Ref: n scan46959
-Ref: c scan47439
-Ref: c over47951
-Ref: vs48088
-Ref: sv48208
-Node: Noun48332
-Ref: Atom Types49670
-Ref: bool50851
-Ref: int51538
-Ref: flt52198
-Ref: char52600
-Ref: name52823
-Ref: uuid53054
-Ref: time53211
-Ref: date54087
-Ref: datetime54548
-Node: List55345
-Node: Dictionary59495
-Node: User Functions64403
-Node: Named Functions67452
-Ref: exp68096
-Ref: log68164
-Ref: sin68264
-Ref: cos68403
-Ref: sqr68551
-Ref: sqrt68614
-Ref: div68687
-Ref: mod68843
-Ref: bar69021
-Ref: topX69359
-Ref: freq69393
-Ref: msum69429
-Ref: mavg69465
-Ref: sums69501
-Ref: deltas69537
-Ref: prm69577
-Ref: cmb69721
-Ref: keyF70094
-Ref: unkey70227
-Ref: meta70367
-Ref: in70502
-Ref: bin70681
-Ref: within70895
-Node: Knit Functions71131
-Ref: amend71426
-Ref: amend171892
-Ref: amend272028
-Ref: amend372250
-Ref: amend472432
-Ref: dmend72603
-Ref: dmend172933
-Ref: dmend373070
-Ref: dmend473238
-Node: I/O73402
-Ref: read csv75505
-Ref: write csv75683
-Ref: read json75847
-Ref: write json76037
-Ref: w line76210
-Ref: r line76519
-Ref: w byte76632
-Ref: r byte76860
-Ref: r data77008
-Ref: w data77669
-Ref: conn/set78237
-Ref: http/get78297
-Ref: lib78357
-Node: Tables78821
-Ref: t79513
-Ref: xtable81118
-Ref: utable81600
-Node: kSQL82057
-Ref: select82655
-Ref: A83239
-Ref: by B84109
-Ref: where C84381
-Ref: update84963
-Ref: union85813
-Ref: leftjoin86334
-Ref: outer86852
-Ref: asof87187
-Ref: asof+88231
-Ref: insert89234
-Ref: upsert89580
-Node: System89904
-Ref: load90362
-Ref: timing90550
-Ref: variables90637
-Ref: memory90738
-Ref: cd90853
-Node: Control Flow90937
-Ref: cond91173
-Node: Temporal Functions91434
-Node: Errors93425
-Ref: class93875
-Ref: rank93964
-Ref: length94088
-Ref: _type94211
-Ref: domain94320
-Ref: limit94442
-Ref: nyi94643
-Ref: parse94976
-Ref: _value95131
-Node: Conclusion95259
+Node: Top126
+Node: Introduction4546
+Node: Examples16133
+Node: Benchmark23687
+Node: Verb28644
+Ref: x30450
+Ref: set30475
+Ref: flip30687
+Ref: plus30937
+Ref: negate31322
+Ref: minus31494
+Ref: first31601
+Ref: times31941
+Ref: divide32072
+Ref: where32209
+Ref: min/and32689
+Ref: reverse32948
+Ref: max/or33118
+Ref: asc33382
+Ref: less33755
+Ref: group34056
+Ref: equal34302
+Ref: not34606
+Ref: match34723
+Ref: enum35106
+Ref: key35899
+Ref: enlist36129
+Ref: cat36269
+Ref: sort36388
+Ref: [f]cut36621
+Ref: count37366
+Ref: [f]take37556
+Ref: take137988
+Ref: take238280
+Ref: take338401
+Ref: floor38572
+Ref: [f]drop38663
+Ref: drop139097
+Ref: drop239269
+Ref: drop339390
+Ref: string39533
+Ref: cast39634
+Ref: unique+39824
+Ref: find+40430
+Ref: type41268
+Ref: [f]at41719
+Ref: value42035
+Ref: [f]dot42309
+Node: Adverb43409
+Ref: scan44157
+Ref: +join44687
+Ref: +split44954
+Ref: each45211
+Ref: +has45500
+Ref: eachp45766
+Ref: bin246510
+Ref: eachr46715
+Ref: eachl46912
+Ref: n scan47096
+Ref: c scan47576
+Ref: c over48088
+Ref: vs48225
+Ref: sv48345
+Node: Noun48469
+Ref: Atom Types49807
+Ref: bool50988
+Ref: int51675
+Ref: flt52335
+Ref: char52737
+Ref: name52960
+Ref: uuid53191
+Ref: time53348
+Ref: date54224
+Ref: datetime54685
+Node: List55482
+Node: Dictionary59632
+Node: User Functions64540
+Node: Named Functions67589
+Ref: exp68233
+Ref: log68301
+Ref: sin68401
+Ref: cos68540
+Ref: sqr68688
+Ref: sqrt68751
+Ref: div68824
+Ref: mod68980
+Ref: bar69158
+Ref: topX69496
+Ref: freq69530
+Ref: msum69566
+Ref: mavg69602
+Ref: sums69638
+Ref: deltas69674
+Ref: prm69714
+Ref: cmb69858
+Ref: keyF70231
+Ref: unkey70364
+Ref: meta70504
+Ref: in70639
+Ref: bin70818
+Ref: within71032
+Node: Knit Functions71268
+Ref: amend71563
+Ref: amend172029
+Ref: amend272165
+Ref: amend372387
+Ref: amend472569
+Ref: dmend72740
+Ref: dmend173070
+Ref: dmend373207
+Ref: dmend473375
+Node: I/O73539
+Ref: read csv75642
+Ref: write csv75820
+Ref: read json75984
+Ref: write json76174
+Ref: w line76347
+Ref: r line76656
+Ref: w byte76769
+Ref: r byte76997
+Ref: r data77145
+Ref: w data77806
+Ref: conn/set78374
+Ref: http/get78434
+Ref: lib78494
+Node: Tables78958
+Ref: t79650
+Ref: xtable81255
+Ref: utable81737
+Node: kSQL82194
+Ref: select82792
+Ref: A83376
+Ref: by B84246
+Ref: where C84518
+Ref: update85100
+Ref: union85950
+Ref: leftjoin86471
+Ref: outer86989
+Ref: asof87324
+Ref: asof+88368
+Ref: insert89371
+Ref: upsert89717
+Node: System90041
+Ref: load90499
+Ref: timing90687
+Ref: variables90774
+Ref: memory90875
+Ref: cd90990
+Node: Control Flow91074
+Ref: cond91310
+Node: Temporal Functions91571
+Node: Errors93562
+Ref: class94012
+Ref: rank94101
+Ref: length94225
+Ref: _type94348
+Ref: domain94457
+Ref: limit94579
+Ref: nyi94780
+Ref: parse95113
+Ref: _value95268
+Node: Conclusion95396
 
 End Tag Table
 

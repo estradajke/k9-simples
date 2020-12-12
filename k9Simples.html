@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 9, 2020
+<!-- December 12, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -1352,18 +1352,12 @@ z  1
 <div class="example">
 <pre class="example"> (1 2 3 7 8 9)#(2 8 20) / common
 2 8
-
- (0.5&lt;)#10?1.           / filter
-0.840732 0.5330717 0.7539563 0.643315 0.6993048f
 </pre></div>
 
 <span id="take3"></span><p>If x is a function, then filter out values where the funtion is non-zero.
 </p>
 <div class="example">
-<pre class="example"> (1 2 3 7 8 9)#(2 8 20) / common
-2 8
-
- (0.5&lt;)#10?1.           / filter
+<pre class="example"> (0.5&lt;)#10?1.           / filter
 0.840732 0.5330717 0.7539563 0.643315 0.6993048f
 </pre></div>
 
@@ -1375,18 +1369,38 @@ z  1
 </pre></div>
 
 <span id="g_t_005bf_005ddrop"></span><span id="g_t_005bf_005ddrop-_21d2-x_005fy"></span><h3 class="section">4.29 [f]drop &rArr; x_y</h3>
-<p>Drop is used to remove a subset of list y depending if x is a atom, list, or function.  If x is an atom, then postive (negative) x removes the first (last) x elements of y.  If x is a list, then remove any values in x from y. If x is a function (f), then remove values where the funtion is non-zero.
-</p><div class="example">
-<pre class="example">&nbsp;3_0 1 2 3 4 5          / drop first
+<p>[f]drop has a number of different actions depending on x.  This include dehead (drop from front of list), detail (drop from back of list), uncommon (drop common elements), and filter (drop where function is zero).
+</p>
+<table>
+<tr><td><b>action</b></td><td><b>x</b></td></tr>
+<tr><td><a href="#drop1">dehead</a></td><td>positive int</td></tr>
+<tr><td><a href="#drop1">detail</a></td><td>negative int</td></tr>
+<tr><td><a href="#drop2">uncommon</a></td><td>list</td></tr>
+<tr><td><a href="#drop3">filter</a></td><td>function</td></tr>
+</table>
+
+<span id="drop1"></span><p>Postive (negative) x drops the first (last) x elements of y.  
+</p>
+<div class="example">
+<pre class="example"> 3_0 1 2 3 4 5          / drop first
 3 4 5
-&nbsp;-3_0 1 2 3 4 5         / drop last
+
+ -3_0 1 2 3 4 5         / drop last
 0 1 2
-&nbsp;2#&quot;hello&quot;
-&quot;he&quot;
-&nbsp;(1 2 3 7 8 9)_(2 8 20) / drop common
+</pre></div>
+
+<span id="drop2"></span><p>If x is a list, then drop returns any values from y uncommon in x. 
+</p>
+<div class="example">
+<pre class="example"> (1 2 3 7 8 9)_(2 8 20) / uncommon
 ,20
-&nbsp;(0.5&lt;)_10?1.           / drop true
-0.4004211 0.2929524f
+</pre></div>
+
+<span id="drop3"></span><p>If x is a function, then filter out values where the funtion is non-zero.
+</p>
+<div class="example">
+<pre class="example"> (0.5&lt;)_10?1.           / filter
+0.02049699 0.1269226
 </pre></div>
 
 <span id="string"></span><span id="string-_21d2-_0024x"></span><h3 class="section">4.30 string &rArr; $x</h3>

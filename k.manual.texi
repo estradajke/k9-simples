@@ -1273,18 +1273,12 @@ If x is a list, then take returns any values common in both x and y.
 @example
  (1 2 3 7 8 9)#(2 8 20) / common
 2 8
-
- (0.5<)#10?1.           / filter
-0.840732 0.5330717 0.7539563 0.643315 0.6993048f
 @end example
 
 @anchor{take3}
 If x is a function, then filter out values where the funtion is non-zero.
 
 @example
- (1 2 3 7 8 9)#(2 8 20) / common
-2 8
-
  (0.5<)#10?1.           / filter
 0.840732 0.5330717 0.7539563 0.643315 0.6993048f
 @end example
@@ -1297,18 +1291,43 @@ Return the integer floor of float x.
 @end example
 
 @anchor{[f]drop}@section [f]drop @result{} x_y
-Drop is used to remove a subset of list y depending if x is a atom, list, or function.  If x is an atom, then postive (negative) x removes the first (last) x elements of y.  If x is a list, then remove any values in x from y. If x is a function (f), then remove values where the funtion is non-zero.
+[f]drop has a number of different actions depending on x.  This include dehead (drop from front of list), detail (drop from back of list), uncommon (drop common elements), and filter (drop where function is zero).
+
+@flushleft
+@multitable {@b{some text for column one}} {for column two}
+@item @b{action} @tab @b{x} 
+@item @ref{drop1,dehead} @tab positive int
+@item @ref{drop1,detail} @tab negative int
+@item @ref{drop2,uncommon} @tab list
+@item @ref{drop3,filter} @tab function
+@end multitable
+@end flushleft
+
+@anchor{drop1}
+Postive (negative) x drops the first (last) x elements of y.  
+
 @example
-@ 3_0 1 2 3 4 5          / drop first
+ 3_0 1 2 3 4 5          / drop first
 3 4 5
-@ -3_0 1 2 3 4 5         / drop last
+
+ -3_0 1 2 3 4 5         / drop last
 0 1 2
-@ 2#"hello"
-"he"
-@ (1 2 3 7 8 9)_(2 8 20) / drop common
+@end example
+
+@anchor{drop2}
+If x is a list, then drop returns any values from y uncommon in x. 
+
+@example
+ (1 2 3 7 8 9)_(2 8 20) / uncommon
 ,20
-@ (0.5<)_10?1.           / drop true
-0.4004211 0.2929524f
+@end example
+
+@anchor{drop3}
+If x is a function, then filter out values where the funtion is non-zero.
+
+@example
+ (0.5<)_10?1.           / filter
+0.02049699 0.1269226
 @end example
 
 @anchor{string}@section string @result{} $x
