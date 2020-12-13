@@ -1458,30 +1458,42 @@ If x is a function then determine the function with (at) pararmeter y.
 @example
  @{x*x@}@@3
 9
+
+ (sin;cos;1*)@@\:0.01
+0.009999833 0.99995 0.01
 @end example
 
 @anchor{value}@section value @result{} .x
-Value a string of valid k code or list of k code.
+Value a string of valid k code or list of k code.  Can also be used to covert from a string to a numeric, temporal or name type.
 
 @example
-@ ."3+2"
+ ."3+2"
 5
 
-@ ."20*1+!3"
+ ."20*1+!3"
 20 40 60
 
-@ .(*;16;3)
+ .(*;16;3)
 48
 
-@ n:3;p:+(n?(+;-;*;%);1+n?10;1+n?10);p
+ n:3;p:+(n?(+;-;*;%);1+n?10;1+n?10);p
 % 6 3
 * 2 7
 - 5 5
 
-@ .'p
+ .'p
 2 
 14
-0 
+0
+
+ ."15"
+15
+
+ ."12.7"
+12.7
+
+ ."`abc"
+`abc
 @end example
 
 @anchor{[f]dot}@section [f]dot @result{} x.y
@@ -1709,7 +1721,7 @@ Given a sorted (increasing) list x, find the greatest index, i, where y>x[i].
 Compute f[x] where x is the previous output of f until the value converges or returns to x.  The initial value of x is the input.  Only the final value is returned.  Intermeediate values can be retrieved via @ref{converge scan}.
 
 @example
-  @{x*x@}/:.99  / converge to value
+  @{x*x@}/:.99    / converge to value
 0.
 
  l:3 4 2 1 4 99 / until output is x
@@ -3775,10 +3787,10 @@ Change directory (cd) into x
 Although not heavily used in k9, control flow statements will still be required occasionally.
 
 @verbatim
-$[b;x;y] if else
+$[b;t;f] Control
 @end verbatim
 
-@anchor{cond}@section cond @result{} $[b;x;y]
+@anchor{cond}@section cond @result{} $[b;t;f]
 If b is non zero then x else y.  x and y are not required to be the same type.
 
 @example
@@ -3794,6 +3806,13 @@ If b is non zero then x else y.  x and y are not required to be the same type.
  $[1b;`a`b!(1 2;3 4);`n]
 a|1 2
 b|3 4
+
+ $[1b;a:3;b:2]
+3
+ a
+3
+ b   / is not set as the f case not evaluated
+!value
 @end example
 
 @node Temporal Functions

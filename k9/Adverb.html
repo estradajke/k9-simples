@@ -36,6 +36,11 @@ span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
+.cartouche{
+    border: none;
+    background: lightgrey;
+}
+
 table, th, td{
   table-layout: auto;
   border-collapse: collapse;
@@ -57,23 +62,16 @@ tr:nth-child(1) {
 }
 
 table.menu td{ 
-    /*Background: none;*/
     padding: 1px;
-    /*border-collapse: collapse;*/
     border: none;
     font-family: sansserif;
-    /(all: unset;*/
 }
 
 table.menu th{ 
-    /*Background: none;*/
     padding: 1px;
-    /*border-collapse: collapse;*/
     border: none;
     font-family: sansserif;
-    /(all: unset;*/
 }
-
 
 
 
@@ -243,7 +241,7 @@ y4 y3
 <p>Compute f[x] where x is the previous output of f until the value converges or returns to x.  The initial value of x is the input.  Only the final value is returned.  Intermeediate values can be retrieved via <a href="#converge-scan">converge scan</a>.
 </p>
 <div class="example">
-<pre class="example">  {x*x}/:.99  / converge to value
+<pre class="example">  {x*x}/:.99    / converge to value
 0.
 
  l:3 4 2 1 4 99 / until output is x

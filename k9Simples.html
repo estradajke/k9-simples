@@ -33,6 +33,11 @@ span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
+.cartouche{
+    border: none;
+    background: lightgrey;
+}
+
 table, th, td{
   table-layout: auto;
   border-collapse: collapse;
@@ -54,23 +59,16 @@ tr:nth-child(1) {
 }
 
 table.menu td{ 
-    /*Background: none;*/
     padding: 1px;
-    /*border-collapse: collapse;*/
     border: none;
     font-family: sansserif;
-    /(all: unset;*/
 }
 
 table.menu th{ 
-    /*Background: none;*/
     padding: 1px;
-    /*border-collapse: collapse;*/
     border: none;
     font-family: sansserif;
-    /(all: unset;*/
 }
-
 
 
 
@@ -120,7 +118,7 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; <
 <tt>^&nbsp;&nbsp;&nbsp;&nbsp;<a href="#sort">sort</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#g_t_005bf_005dcut">[f]cut</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*3:&nbsp;&nbsp;k-ipc&nbsp;set&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#User-Functions">Func</a>&nbsp;{[a;b]a+b}&nbsp;&nbsp;&nbsp;\fc&nbsp;x</tt><br>
 <tt>#&nbsp;&nbsp;&nbsp;&nbsp;count&nbsp;&nbsp;&nbsp;<a href="#g_t_005bf_005dtake">[f]take</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*4:&nbsp;&nbsp;https&nbsp;get&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expr&nbsp;:a+b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\cd&nbsp;[d]</tt><br>
 <tt>_&nbsp;&nbsp;&nbsp;&nbsp;<a href="#floor">floor</a>&nbsp;&nbsp;&nbsp;<a href="#g_t_005bf_005ddrop">[f]drop</a></tt><br>
-<tt>$&nbsp;&nbsp;&nbsp;&nbsp;<a href="#string">string</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#cast">cast</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$[b;t;f]&nbsp;Control&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Tables">Table</a></tt><br>
+<tt>$&nbsp;&nbsp;&nbsp;&nbsp;<a href="#string">string</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#cast">cast</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$[b;t;f]&nbsp;<a href="#cond">Control</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Tables">Table</a></tt><br>
 <tt>?&nbsp;&nbsp;&nbsp;&nbsp;<a href="#unique_002b">unique+</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#find_002b">find+</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t:[[]i:2&nbsp;3;f:3&nbsp;4.;s:`a`b]</tt><br>
 <tt>@&nbsp;&nbsp;&nbsp;&nbsp;<a href="#type">type</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#g_t_005bf_005dat">[f]at</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@[r;i;f[;y]]&nbsp;<a href="#amend">amend</a>&nbsp;&nbsp;&nbsp;<a href="#utable">utable</a>&nbsp;[[b:..]a:..]</tt><br>
 <tt>.&nbsp;&nbsp;&nbsp;&nbsp;<a href="#value">value</a>&nbsp;&nbsp;&nbsp;<a href="#g_t_005bf_005ddot">[f]dot</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.[r;i;f[;y]]&nbsp;<a href="#dmend">dmend</a>&nbsp;&nbsp;&nbsp;<a href="#xtable">xtable</a>&nbsp;`..![[]a:..]</tt><br>
@@ -1531,30 +1529,42 @@ z  1
 <div class="example">
 <pre class="example"> {x*x}@3
 9
+
+ (sin;cos;1*)@\:0.01
+0.009999833 0.99995 0.01
 </pre></div>
 
 <span id="value"></span><span id="value-_21d2-_002ex"></span><h3 class="section">4.36 value &rArr; .x</h3>
-<p>Value a string of valid k code or list of k code.
+<p>Value a string of valid k code or list of k code.  Can also be used to covert from a string to a numeric, temporal or name type.
 </p>
 <div class="example">
-<pre class="example">&nbsp;.&quot;3+2&quot;
+<pre class="example"> .&quot;3+2&quot;
 5
 
-&nbsp;.&quot;20*1+!3&quot;
+ .&quot;20*1+!3&quot;
 20 40 60
 
-&nbsp;.(*;16;3)
+ .(*;16;3)
 48
 
-&nbsp;n:3;p:+(n?(+;-;*;%);1+n?10;1+n?10);p
+ n:3;p:+(n?(+;-;*;%);1+n?10;1+n?10);p
 % 6 3
 * 2 7
 - 5 5
 
-&nbsp;.'p
+ .'p
 2 
 14
-0 
+0
+
+ .&quot;15&quot;
+15
+
+ .&quot;12.7&quot;
+12.7
+
+ .&quot;`abc&quot;
+`abc
 </pre></div>
 
 <span id="g_t_005bf_005ddot"></span><span id="g_t_005bf_005ddot-_21d2-x_002ey"></span><h3 class="section">4.37 [f]dot &rArr; x.y</h3>
@@ -1781,7 +1791,7 @@ y4 y3
 <p>Compute f[x] where x is the previous output of f until the value converges or returns to x.  The initial value of x is the input.  Only the final value is returned.  Intermeediate values can be retrieved via <a href="#converge-scan">converge scan</a>.
 </p>
 <div class="example">
-<pre class="example">  {x*x}/:.99  / converge to value
+<pre class="example">  {x*x}/:.99    / converge to value
 0.
 
  l:3 4 2 1 4 99 / until output is x
@@ -3872,9 +3882,9 @@ Next: <a href="#Temporal-Functions" accesskey="n" rel="next">Temporal Functions<
 <span id="Control-Flow-1"></span><h2 class="chapter">16 Control Flow</h2>
 <p>Although not heavily used in k9, control flow statements will still be required occasionally.
 </p>
-<pre class="verbatim">$[b;x;y] if else
+<pre class="verbatim">$[b;t;f] Control
 </pre>
-<span id="cond"></span><span id="cond-_21d2-_0024_005bb_003bx_003by_005d"></span><h3 class="section">16.1 cond &rArr; $[b;x;y]</h3>
+<span id="cond"></span><span id="cond-_21d2-_0024_005bb_003bt_003bf_005d"></span><h3 class="section">16.1 cond &rArr; $[b;t;f]</h3>
 <p>If b is non zero then x else y.  x and y are not required to be the same type.
 </p>
 <div class="example">
@@ -3890,6 +3900,13 @@ Next: <a href="#Temporal-Functions" accesskey="n" rel="next">Temporal Functions<
  $[1b;`a`b!(1 2;3 4);`n]
 a|1 2
 b|3 4
+
+ $[1b;a:3;b:2]
+3
+ a
+3
+ b   / is not set as the f case not evaluated
+!value
 </pre></div>
 
 <hr>
