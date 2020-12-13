@@ -2297,32 +2297,42 @@ Next: <a href="#User-Functions" accesskey="n" rel="next">User Functions</a>, Pre
 </p>
 <p>Dictionaries in k9 are often used.  As an example in the benchmark chapter the market quote and trade data are dictionaries of symbols (name keys) and market data (table values).  
 </p>
-<span id="Dictionary-Creation-_21d2-x_0021y"></span><h3 class="section">8.1 Dictionary Creation &rArr; x!y</h3>
+<span id="Dictionary-Creation-_21d2-x_0021y-or-_005bx_003by_005d"></span><h3 class="section">8.1 Dictionary Creation &rArr; x!y or [x;y]</h3>
 
-<p>Dictionaries are created by using the key symbol and listing the keys (x) and values (y).  
+<p>Dictionaries are created by using the key symbol or square bracket notation and listing the keys (x) and values (y).  
+</p>
+<p><code>x!y</code>
 </p>
 <div class="example">
 <pre class="example"> d0:`a37!12;d0                               / single entry
-`a37!12
+a37|12
 
-d1:`pi`e`c!3.14 2.72 3e8;d1                  / elements
+ d1:`pi`e`c!3.14 2.72 3e8;d1                  / elements
 pi|3.14 
 e |2.72 
 c |3e+08
 
- d2:`time`time!(12:00+!3;25.0 25.1 25.6);d2  / lists
-time|12:00 12:01 12:02
-time|25. 25.1 25.6    
+ `a`b`c!(1 2 3;10 20 30;100 200 300)
+a|1 2 3      
+b|10 20 30   
+c|100 200 300
+</pre></div>
 
- d3:0 10 1!37.4 46.3 0.1;d3                  / keys as numbers
- 0|37.4
-10|46.3
- 1|0.1 
+<p><code>[x;y]</code>
+</p>
+<div class="example">
+<pre class="example"> d0:[a37:12]
+a37|12
 
- d4:`a`b`a!1 2 3;d4                          / non-unique keys
-a|1
-b|2
-a|3
+ d1:[pi:3.14;e:2.72;c:3e8];d1
+pi|3.14
+e |2.72
+c |3e+08
+
+ [a:1 2 3;b:10 20 30;c:100 200 300]
+a|1 2 3      
+b|10 20 30   
+c|100 200 300
 </pre></div>
 
 <span id="Dictionary-Indexing-_21d2-x_0040y"></span><h3 class="section">8.2 Dictionary Indexing &rArr; x@y</h3>
