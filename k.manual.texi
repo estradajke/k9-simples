@@ -1678,10 +1678,10 @@ y4 y3
 Additionally eachp is each parallel.  This will allow a function to run using multiple threads over a list of arguments.
 
 @example
-\t @{L:x?1.;sum L%sin L*cos L*sin L+L*L@}':8#2e7 / run over multiple threads
+\t @{L:x?1.;sum L%sin L*cos L*sin L+L*L@}':8#_2e7 / run over multiple threads
 1655
 
-\t @{L:x?1.;sum L%sin L*cos L*sin L+L*L@}'8#2e7  / run in a single thread
+\t @{L:x?1.;sum L%sin L*cos L*sin L+L*L@}'8#_2e7  / run in a single thread
 4144
 @end example
 

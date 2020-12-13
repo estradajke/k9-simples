@@ -1820,10 +1820,10 @@ value, n=0, returns f[y@0;x].
    Additionally eachp is each parallel.  This will allow a function to
 run using multiple threads over a list of arguments.
 
-     \t {L:x?1.;sum L%sin L*cos L*sin L+L*L}':8#2e7 / run over multiple threads
+     \t {L:x?1.;sum L%sin L*cos L*sin L+L*L}':8#_2e7 / run over multiple threads
      1655
 
-     \t {L:x?1.;sum L%sin L*cos L*sin L+L*L}'8#2e7  / run in a single thread
+     \t {L:x?1.;sum L%sin L*cos L*sin L+L*L}'8#_2e7  / run in a single thread
      4144
 
 5.6.1 +bin => x':y
@@ -4330,113 +4330,113 @@ Ref: +split45039
 Ref: each45296
 Ref: +has45585
 Ref: eachp45851
-Ref: bin246595
-Ref: eachr46800
-Ref: converge over46966
-Ref: each right47496
-Ref: eachl47639
-Ref: converge scan47804
-Ref: each left48290
-Node: Noun48464
-Ref: Atom Types49802
-Ref: bool50983
-Ref: int51670
-Ref: flt52330
-Ref: char52732
-Ref: name52955
-Ref: uuid53186
-Ref: time53343
-Ref: date54219
-Ref: datetime54680
-Node: List55477
-Node: Dictionary59627
-Node: User Functions64340
-Node: Named Functions67389
-Ref: exp68033
-Ref: log68101
-Ref: sin68201
-Ref: cos68340
-Ref: sqr68488
-Ref: sqrt68551
-Ref: div68624
-Ref: mod68780
-Ref: bar68958
-Ref: topX69291
-Ref: freq69453
-Ref: msum69804
-Ref: mavg69943
-Ref: sums70089
-Ref: deltas70225
-Ref: prm70567
-Ref: cmb70711
-Ref: keyF71084
-Ref: unkey71217
-Ref: meta71357
-Ref: in71492
-Ref: bin71671
-Ref: within71885
-Node: Knit Functions72121
-Ref: amend72416
-Ref: amend172882
-Ref: amend273018
-Ref: amend373240
-Ref: amend473422
-Ref: dmend73593
-Ref: dmend173923
-Ref: dmend374060
-Ref: dmend474228
-Node: I/O74392
-Ref: read csv76495
-Ref: write csv76673
-Ref: read json76837
-Ref: write json77027
-Ref: w line77200
-Ref: r line77509
-Ref: w byte77622
-Ref: r byte77850
-Ref: r data77998
-Ref: w data78659
-Ref: conn/set79227
-Ref: http/get79287
-Ref: lib79347
-Node: Tables79811
-Ref: t80503
-Ref: xtable82108
-Ref: utable82590
-Node: kSQL83047
-Ref: select83645
-Ref: A84229
-Ref: by B85099
-Ref: where C85371
-Ref: update85953
-Ref: delete86513
-Ref: union87085
-Ref: leftjoin87606
-Ref: outer88124
-Ref: asof88459
-Ref: asof+89503
-Ref: insert90506
-Ref: upsert90852
-Node: System91176
-Ref: load91634
-Ref: timing91822
-Ref: variables91909
-Ref: memory92010
-Ref: cd92125
-Node: Control Flow92209
-Ref: cond92445
-Node: Temporal Functions92706
-Node: Errors94094
-Ref: class94544
-Ref: rank94633
-Ref: length94757
-Ref: _type94880
-Ref: domain94989
-Ref: limit95111
-Ref: nyi95312
-Ref: parse95645
-Ref: _value95800
-Node: Conclusion95928
+Ref: bin246597
+Ref: eachr46802
+Ref: converge over46968
+Ref: each right47498
+Ref: eachl47641
+Ref: converge scan47806
+Ref: each left48292
+Node: Noun48466
+Ref: Atom Types49804
+Ref: bool50985
+Ref: int51672
+Ref: flt52332
+Ref: char52734
+Ref: name52957
+Ref: uuid53188
+Ref: time53345
+Ref: date54221
+Ref: datetime54682
+Node: List55479
+Node: Dictionary59629
+Node: User Functions64342
+Node: Named Functions67391
+Ref: exp68035
+Ref: log68103
+Ref: sin68203
+Ref: cos68342
+Ref: sqr68490
+Ref: sqrt68553
+Ref: div68626
+Ref: mod68782
+Ref: bar68960
+Ref: topX69293
+Ref: freq69455
+Ref: msum69806
+Ref: mavg69945
+Ref: sums70091
+Ref: deltas70227
+Ref: prm70569
+Ref: cmb70713
+Ref: keyF71086
+Ref: unkey71219
+Ref: meta71359
+Ref: in71494
+Ref: bin71673
+Ref: within71887
+Node: Knit Functions72123
+Ref: amend72418
+Ref: amend172884
+Ref: amend273020
+Ref: amend373242
+Ref: amend473424
+Ref: dmend73595
+Ref: dmend173925
+Ref: dmend374062
+Ref: dmend474230
+Node: I/O74394
+Ref: read csv76497
+Ref: write csv76675
+Ref: read json76839
+Ref: write json77029
+Ref: w line77202
+Ref: r line77511
+Ref: w byte77624
+Ref: r byte77852
+Ref: r data78000
+Ref: w data78661
+Ref: conn/set79229
+Ref: http/get79289
+Ref: lib79349
+Node: Tables79813
+Ref: t80505
+Ref: xtable82110
+Ref: utable82592
+Node: kSQL83049
+Ref: select83647
+Ref: A84231
+Ref: by B85101
+Ref: where C85373
+Ref: update85955
+Ref: delete86515
+Ref: union87087
+Ref: leftjoin87608
+Ref: outer88126
+Ref: asof88461
+Ref: asof+89505
+Ref: insert90508
+Ref: upsert90854
+Node: System91178
+Ref: load91636
+Ref: timing91824
+Ref: variables91911
+Ref: memory92012
+Ref: cd92127
+Node: Control Flow92211
+Ref: cond92447
+Node: Temporal Functions92708
+Node: Errors94096
+Ref: class94546
+Ref: rank94635
+Ref: length94759
+Ref: _type94882
+Ref: domain94991
+Ref: limit95113
+Ref: nyi95314
+Ref: parse95647
+Ref: _value95802
+Node: Conclusion95930
 
 End Tag Table
 
