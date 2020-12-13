@@ -1714,16 +1714,16 @@ first element of each sub-list you'll have to modify the function
 5.1 scan (over) => f\x (f/x)
 ============================
 
-Compute f[x;y] such that f@i=f[f@i-1;x@i].  Scan and over are the same
+Compute f[x;y] such that f i=f[f i-1;x i].  Scan and over are the same
 functions except that over only returns the last value.
 
    Given a function of two inputs, output for each x according to...
-   * f@0 -> x@0
-   * f@1 -> f[f@0;x@1]
+   * f 0 -> x 0
+   * f 1 -> f[f 0;x 1]
    * ...
-   * f@i -> f[f@i-1;x@i]
+   * f i -> f[f i-1;x i]
    * ...
-   * f@n -> f[f@n-1;x@n]
+   * f n -> f[f n-1;x n]
 
    An example
 

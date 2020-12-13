@@ -1568,16 +1568,16 @@ f\: @ref{eachl} ([n;]f)\:
 @end example
 
 @anchor{scan}@section scan (over) @result{} f\x (f/x)
-Compute f[x;y] such that f@@i=f[f@@i-1;x@@i].  Scan and over are the same functions except that over only returns the last value.
+Compute f[x;y] such that f i=f[f i-1;x i].  Scan and over are the same functions except that over only returns the last value.
 
 Given a function of two inputs, output for each x according to...
 @itemize
-@item f@@0 @arrow{}          x@@0
-@item f@@1 @arrow{} f[f@@0;x@@1]
+@item f 0 @arrow{}          x 0
+@item f 1 @arrow{} f[f 0;x 1]
 @item ...
-@item f@@i @arrow{} f[f@@i-1;x@@i]
+@item f i @arrow{} f[f i-1;x i]
 @item ...
-@item f@@n @arrow{} f[f@@n-1;x@@n]
+@item f n @arrow{} f[f n-1;x n]
 @end itemize
 
 An example

@@ -104,16 +104,16 @@ f\: <a href="#eachl">eachl</a> ([n;]f)\:
 </pre></div>
 
 <span id="scan"></span><span id="scan-_0028over_0029-_21d2-f_005cx-_0028f_002fx_0029"></span><h3 class="section">5.1 scan (over) &rArr; f\x (f/x)</h3>
-<p>Compute f[x;y] such that f i=f[f i-1;x i].  Scan and over are the same functions except that over only returns the last value.
+<p>Compute f[x;y] such that f@i=f[f@i-1;x@i].  Scan and over are the same functions except that over only returns the last value.
 </p>
 <p>Given a function of two inputs, output for each x according to...
 </p><ul>
-<li> f 0 &rarr;          x 0
-</li><li> f 1 &rarr; f[f 0;x 1]
+<li> f@0 &rarr;          x@0
+</li><li> f@1 &rarr; f[f@0;x@1]
 </li><li> ...
-</li><li> f i &rarr; f[f i-1;x i]
+</li><li> f@i &rarr; f[f@i-1;x@i]
 </li><li> ...
-</li><li> f n &rarr; f[f n-1;x n]
+</li><li> f@n &rarr; f[f@n-1;x@n]
 </li></ul>
 
 <p>An example
