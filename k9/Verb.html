@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 12, 2020
+<!-- December 13, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -169,24 +169,31 @@ a b
 </pre></div>
 
 <span id="plus"></span><span id="plus-_21d2-x_002by"></span><h3 class="section">4.4 plus &rArr; x+y</h3>
-<p>Add x and y.
+<p>Add x and y.  Parameters can be elements or lists but if both x and y are lists then they must be equal length.
 </p>
 <div class="example">
-<pre class="example">&nbsp;3+7
+<pre class="example"> 3+7
 10
-&nbsp;a:3;
-&nbsp;a+8
+
+a:3;
+ a+8
 11
-&nbsp;3+4 5 6 7
+
+ 3+4 5 6 7
 7 8 9 10
-&nbsp;3 4 5+4 5 6
+
+3 4 5+4 5 6
 7 9 11
-&nbsp;3 4+1 2 3 / lengths don't match, will error :length
+
+ 3 4+1 2 3        / lengths don't match
 :length
+
 &nbsp;10:00+1         / add a minute
 10:01
+
 &nbsp;10:00:00+1      / add a second
 10:00:01
+
 &nbsp;10:00:00.000+1  / add a millisecond
 10:00:00.001
 </pre></div>

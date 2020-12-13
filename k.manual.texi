@@ -855,24 +855,31 @@ a b
 @end example
 
 @anchor{plus}@section plus @result{} x+y
-Add x and y.
+Add x and y.  Parameters can be elements or lists but if both x and y are lists then they must be equal length.
 
 @example
-@ 3+7
+ 3+7
 10
-@ a:3;
-@ a+8
+
+a:3;
+ a+8
 11
-@ 3+4 5 6 7
+
+ 3+4 5 6 7
 7 8 9 10
-@ 3 4 5+4 5 6
+
+3 4 5+4 5 6
 7 9 11
-@ 3 4+1 2 3 / lengths don't match, will error :length
+
+ 3 4+1 2 3        / lengths don't match
 :length
+
 @ 10:00+1         / add a minute
 10:01
+
 @ 10:00:00+1      / add a second
 10:00:01
+
 @ 10:00:00.000+1  / add a millisecond
 10:00:00.001
 @end example
@@ -2327,34 +2334,21 @@ e |2.72
 @end example
 
 @section Flipping a Dictionary into a Table @result{} +x
-This command flips a dictionary into a table but will be covered in detail in the table section.  Flipping a dictionary whose values are a single element has no effect.
+This command flips a dictionary into a table but will be covered in detail in the table section.
 
 @example
-@ d0
-pi|3.14 
-e |2.72 
-c |3e+08
-
-@ +d0
-pi|3.14 
-e |2.72 
-c |3e+08
-
-@ do~+d0
-1b
-
-@ d1
+ d1
 time|12:00 12:01 12:10
 temp|25 25.1 25.6     
 
-@ +d1
+ +d1
 time  temp
 ----- ----
 12:00 25  
 12:01 25.1
 12:10 25.6
 
-@ d1~+d1
+ d1~+d1
 0b
 @end example
 
