@@ -49,6 +49,7 @@ The built-in reference screen (@code{\}) containing all the k9 commands.
 * List:: Uniform and non-uniform lists
 * Dictionary:: Dictionaries and functions for dictionaries
 * User Functions:: User-defined functions
+* Expression:: Expression Evaluation
 * Named Functions:: Named functions
 * Knit Functions:: Function to modify lists and dictionaries
 * I/O:: Input and output
@@ -1419,6 +1420,8 @@ x is atom: Generate x random values from 0 to less than y (int, float, time, bit
 2020.12.31
 @end example
 
+x is a special name, eg. `json, `csv, or `nv.  This is further discussed in the @ref{I/O} section.
+
 @anchor{type}@section type @result{} @@x
 Return the data type of x.  Lower-case represents a single element while upper-case represents a list of type indicated.
 
@@ -2557,6 +2560,34 @@ In order to succeed f1 needs to have an @code{@@} in the definition of f2.  This
 2 3 4
 @end example
 
+@node Expression
+@chapter Expression Evaluation
+k9 has a compact way to evalue an expression on a data structure including dictionaries and tables.
+
+@verbatim
+Expr :a+b
+@end verbatim
+
+@example
+ d:`a`b`c!(3 2 1;1 2 3;1 2 3);d
+a|3 2 1
+b|1 2 3
+c|1 2 3
+
+ d :a+b*c
+4 6 10
+
+t:+d;t
+a b c
+- - -
+3 1 1
+2 2 2
+1 3 3
+
+ t :(a+b*c)
+4 6 10
+@end example
+
 @node Named Functions
 @chapter Named Functions
 This chapter covers the non-symbol named functions.  This includes some math (eg. sqrt but not +), wrapper (eg. count for #) and range (eg. within) functions.
@@ -3074,6 +3105,15 @@ Convert x to json format.  Works on lists and tables.
  `json [[]a:1 2;b:3. 4.]
 @{a:1,b:3.@}
 @{a:2,b:4.@}
+@end example
+
+@anchor{read nv}@section read name value @result{} `nv?x
+Convert x, a list of name:value pairs, to a dictionary.
+
+@example
+ `nv?("key1:value1";"key2:value2")
+key1|value1
+key2|value2
 @end example
 
 @anchor{w line}@section write line @result{} x 0:y

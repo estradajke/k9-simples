@@ -116,7 +116,7 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; <
 <tt>!&nbsp;&nbsp;&nbsp;&nbsp;<a href="#enum">enum</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#key">key</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1:&nbsp;&nbsp;<a href="#r-byte">r</a>/<a href="#w-byte">w</a>&nbsp;byte&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#List">List</a>&nbsp;(2;3.4;`c)&nbsp;&nbsp;&nbsp;\ft&nbsp;x</tt><br>
 <tt>,&nbsp;&nbsp;&nbsp;&nbsp;<a href="#enlist">enlist</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#cat">cat</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*2:&nbsp;&nbsp;r/w&nbsp;data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Dictionary">Dict</a>&nbsp;[a:2;b:`c]&nbsp;&nbsp;&nbsp;\fl&nbsp;x</tt><br>
 <tt>^&nbsp;&nbsp;&nbsp;&nbsp;<a href="#sort">sort</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#g_t_005bf_005dcut">[f]cut</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*3:&nbsp;&nbsp;k-ipc&nbsp;set&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#User-Functions">Func</a>&nbsp;{[a;b]a+b}&nbsp;&nbsp;&nbsp;\fc&nbsp;x</tt><br>
-<tt>#&nbsp;&nbsp;&nbsp;&nbsp;count&nbsp;&nbsp;&nbsp;<a href="#g_t_005bf_005dtake">[f]take</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*4:&nbsp;&nbsp;https&nbsp;get&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expr&nbsp;:a+b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\cd&nbsp;[d]</tt><br>
+<tt>#&nbsp;&nbsp;&nbsp;&nbsp;count&nbsp;&nbsp;&nbsp;<a href="#g_t_005bf_005dtake">[f]take</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*4:&nbsp;&nbsp;https&nbsp;get&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Expression">Expr</a>&nbsp;:a+b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\cd&nbsp;[d]</tt><br>
 <tt>_&nbsp;&nbsp;&nbsp;&nbsp;<a href="#floor">floor</a>&nbsp;&nbsp;&nbsp;<a href="#g_t_005bf_005ddrop">[f]drop</a></tt><br>
 <tt>$&nbsp;&nbsp;&nbsp;&nbsp;<a href="#string">string</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#cast">cast</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$[b;t;f]&nbsp;<a href="#cond">Control</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Tables">Table</a></tt><br>
 <tt>?&nbsp;&nbsp;&nbsp;&nbsp;<a href="#unique_002b">unique+</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#find_002b">find+</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t:[[]i:2&nbsp;3;f:3&nbsp;4.;s:`a`b]</tt><br>
@@ -146,6 +146,8 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; <
 <tr><td align="left" valign="top">&bull; <a href="#Dictionary" accesskey="8">Dictionary</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Dictionaries and functions for dictionaries
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#User-Functions" accesskey="9">User Functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">User-defined functions
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Expression">Expression</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Expression Evaluation
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Named-Functions">Named Functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Named functions
 </td></tr>
@@ -1490,6 +1492,8 @@ z  1
 2020.12.31
 </pre></div>
 
+<p>x is a special name, eg. &lsquo;json, &lsquo;csv, or &lsquo;nv.  This is further discussed in the <a href="#I_002fO">I/O</a> section.
+</p>
 <span id="type"></span><span id="type-_21d2-_0040x"></span><h3 class="section">4.34 type &rArr; @x</h3>
 <p>Return the data type of x.  Lower-case represents a single element while upper-case represents a list of type indicated.
 </p>
@@ -2506,7 +2510,7 @@ c |3e+08
 <hr>
 <span id="User-Functions"></span><div class="header">
 <p>
-Next: <a href="#Named-Functions" accesskey="n" rel="next">Named Functions</a>, Previous: <a href="#Dictionary" accesskey="p" rel="prev">Dictionary</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#Expression" accesskey="n" rel="next">Expression</a>, Previous: <a href="#Dictionary" accesskey="p" rel="prev">Dictionary</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <span id="User-Functions-1"></span><h2 class="chapter">9 User Functions</h2>
 <p>User-defined functions are used to define a set of operations to be easily called.  As these functions are built on top of the fast internal functions of k9 they should be performant also.
@@ -2640,11 +2644,41 @@ a
 </pre></div>
 
 <hr>
+<span id="Expression"></span><div class="header">
+<p>
+Next: <a href="#Named-Functions" accesskey="n" rel="next">Named Functions</a>, Previous: <a href="#User-Functions" accesskey="p" rel="prev">User Functions</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+</div>
+<span id="Expression-Evaluation"></span><h2 class="chapter">10 Expression Evaluation</h2>
+<p>k9 has a compact way to evalue an expression on a data structure including dictionaries and tables.
+</p>
+<pre class="verbatim">Expr :a+b
+</pre>
+<div class="example">
+<pre class="example"> d:`a`b`c!(3 2 1;1 2 3;1 2 3);d
+a|3 2 1
+b|1 2 3
+c|1 2 3
+
+ d :a+b*c
+4 6 10
+
+t:+d;t
+a b c
+- - -
+3 1 1
+2 2 2
+1 3 3
+
+ t :(a+b*c)
+4 6 10
+</pre></div>
+
+<hr>
 <span id="Named-Functions"></span><div class="header">
 <p>
-Next: <a href="#Knit-Functions" accesskey="n" rel="next">Knit Functions</a>, Previous: <a href="#User-Functions" accesskey="p" rel="prev">User Functions</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#Knit-Functions" accesskey="n" rel="next">Knit Functions</a>, Previous: <a href="#Expression" accesskey="p" rel="prev">Expression</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<span id="Named-Functions-1"></span><h2 class="chapter">10 Named Functions</h2>
+<span id="Named-Functions-1"></span><h2 class="chapter">11 Named Functions</h2>
 <p>This chapter covers the non-symbol named functions.  This includes some math (eg. sqrt but not +), wrapper (eg. count for #) and range (eg. within) functions.
 </p>
 <div class="format">
@@ -2653,15 +2687,15 @@ Next: <a href="#Knit-Functions" accesskey="n" rel="next">Knit Functions</a>, Pre
 </pre></div>
 </div>
 
-<span id="Math-Functions-_21d2-exp-log-sin-cos-sqr-sqrt-div-mod-bar"></span><h3 class="section">10.1 Math Functions &rArr; exp log sin cos sqr sqrt div mod bar</h3>
+<span id="Math-Functions-_21d2-exp-log-sin-cos-sqr-sqrt-div-mod-bar"></span><h3 class="section">11.1 Math Functions &rArr; exp log sin cos sqr sqrt div mod bar</h3>
 
-<span id="exp"></span><span id="exp-_21d2-exp-x"></span><h4 class="subsection">10.1.1 exp &rArr; exp x</h4>
+<span id="exp"></span><span id="exp-_21d2-exp-x"></span><h4 class="subsection">11.1.1 exp &rArr; exp x</h4>
 <div class="example">
 <pre class="example">&nbsp;exp 1
 2.718282
 </pre></div>
 
-<span id="log"></span><span id="log-_21d2-log-x"></span><h4 class="subsection">10.1.2 log &rArr; log x</h4>
+<span id="log"></span><span id="log-_21d2-log-x"></span><h4 class="subsection">11.1.2 log &rArr; log x</h4>
 <p>Log computes the natural log.
 </p>
 <div class="example">
@@ -2669,7 +2703,7 @@ Next: <a href="#Knit-Functions" accesskey="n" rel="next">Knit Functions</a>, Pre
 2.302585
 </pre></div>
 
-<span id="sin"></span><span id="sin-_21d2-sin-x"></span><h4 class="subsection">10.1.3 sin &rArr; sin x</h4>
+<span id="sin"></span><span id="sin-_21d2-sin-x"></span><h4 class="subsection">11.1.3 sin &rArr; sin x</h4>
 <p>sin computes the sine of x where x is in radians.
 </p><div class="example">
 <pre class="example">&nbsp;sin 0
@@ -2678,7 +2712,7 @@ Next: <a href="#Knit-Functions" accesskey="n" rel="next">Knit Functions</a>, Pre
 1.
 </pre></div>
 
-<span id="cos"></span><span id="cos-_21d2-cos-x"></span><h4 class="subsection">10.1.4 cos &rArr; cos x</h4>
+<span id="cos"></span><span id="cos-_21d2-cos-x"></span><h4 class="subsection">11.1.4 cos &rArr; cos x</h4>
 <p>cos computes the cosine of x where x is in radians.
 </p><div class="example">
 <pre class="example">&nbsp;cos 0
@@ -2687,19 +2721,19 @@ Next: <a href="#Knit-Functions" accesskey="n" rel="next">Knit Functions</a>, Pre
 0.7071055
 </pre></div>
 
-<span id="sqr"></span><span id="sqr-_21d2-sqr-x"></span><h4 class="subsection">10.1.5 sqr &rArr; sqr x</h4>
+<span id="sqr"></span><span id="sqr-_21d2-sqr-x"></span><h4 class="subsection">11.1.5 sqr &rArr; sqr x</h4>
 <div class="example">
 <pre class="example">&nbsp;sqr 2
 4.0
 </pre></div>
 
-<span id="sqrt"></span><span id="sqrt-_21d2-sqrt-x"></span><h4 class="subsection">10.1.6 sqrt &rArr; sqrt x</h4>
+<span id="sqrt"></span><span id="sqrt-_21d2-sqrt-x"></span><h4 class="subsection">11.1.6 sqrt &rArr; sqrt x</h4>
 <div class="example">
 <pre class="example">&nbsp;sqrt 2
 1.414214
 </pre></div>
 
-<span id="div"></span><span id="div-_21d2-x-div-y"></span><h4 class="subsection">10.1.7 div &rArr; x div y</h4>
+<span id="div"></span><span id="div-_21d2-x-div-y"></span><h4 class="subsection">11.1.7 div &rArr; x div y</h4>
 <p>y divided by x using integer division.  x and y must be integers.
 </p>
 <div class="example">
@@ -2709,7 +2743,7 @@ Next: <a href="#Knit-Functions" accesskey="n" rel="next">Knit Functions</a>, Pre
 4
 </pre></div>
 
-<span id="mod"></span><span id="mod-_21d2-x-mod-y"></span><h4 class="subsection">10.1.8 mod &rArr; x mod y</h4>
+<span id="mod"></span><span id="mod-_21d2-x-mod-y"></span><h4 class="subsection">11.1.8 mod &rArr; x mod y</h4>
 <p>The remainder after y divided by x using integer division.  x and y must be integers.
 </p>
 <div class="example">
@@ -2719,7 +2753,7 @@ Next: <a href="#Knit-Functions" accesskey="n" rel="next">Knit Functions</a>, Pre
 2
 </pre></div>
 
-<span id="bar"></span><span id="bar-_21d2-x-bar-y"></span><h4 class="subsection">10.1.9 bar &rArr; x bar y</h4>
+<span id="bar"></span><span id="bar-_21d2-x-bar-y"></span><h4 class="subsection">11.1.9 bar &rArr; x bar y</h4>
 <p>For each value in y determine the number of integer multiples of x that is less than or equal to each x.
 </p>
 <div class="example">
@@ -2727,9 +2761,9 @@ Next: <a href="#Knit-Functions" accesskey="n" rel="next">Knit Functions</a>, Pre
 0 10 10 10 20 20
 </pre></div>
 
-<span id="Helper-Functions-_21d2-top-freq-msum-mavg-sums-deltas-prm-cmb"></span><h3 class="section">10.2 Helper Functions &rArr; top freq msum mavg sums deltas prm cmb</h3>
+<span id="Helper-Functions-_21d2-top-freq-msum-mavg-sums-deltas-prm-cmb"></span><h3 class="section">11.2 Helper Functions &rArr; top freq msum mavg sums deltas prm cmb</h3>
 
-<span id="topX"></span><span id="top-_21d2-top-x"></span><h4 class="subsection">10.2.1 top &rArr; top x</h4>
+<span id="topX"></span><span id="top-_21d2-top-x"></span><h4 class="subsection">11.2.1 top &rArr; top x</h4>
 <p>Return the index of the max value of list x.
 </p>
 <div class="example">
@@ -2740,7 +2774,7 @@ top &quot;abzccdefeajfekjrlke&quot;
 2
 </pre></div>
 
-<span id="freq"></span><span id="freq-_21d2-freq-x"></span><h4 class="subsection">10.2.2 freq &rArr; freq x</h4>
+<span id="freq"></span><span id="freq-_21d2-freq-x"></span><h4 class="subsection">11.2.2 freq &rArr; freq x</h4>
 <p>Compute frequency of the items in list x.
 </p>
 <div class="example">
@@ -2770,7 +2804,7 @@ z|1
 9| 95
 </pre></div>
 
-<span id="msum"></span><span id="msum-_21d2-x-msum-y"></span><h4 class="subsection">10.2.3 msum &rArr; x msum y</h4>
+<span id="msum"></span><span id="msum-_21d2-x-msum-y"></span><h4 class="subsection">11.2.3 msum &rArr; x msum y</h4>
 <p>Compute the x wide moving sum of list y.
 </p>
 <div class="example">
@@ -2779,7 +2813,7 @@ z|1
 </pre></div>
 
 
-<span id="mavg"></span><span id="mavg-_21d2-x-mavg-y"></span><h4 class="subsection">10.2.4 mavg &rArr; x mavg y</h4>
+<span id="mavg"></span><span id="mavg-_21d2-x-mavg-y"></span><h4 class="subsection">11.2.4 mavg &rArr; x mavg y</h4>
 <p>Compute the x wide moving average of list y.
 </p>
 <div class="example">
@@ -2787,7 +2821,7 @@ z|1
 0 0.3333333 1 2 3 4 5 6 7 8
 </pre></div>
 
-<span id="sums"></span><span id="sums-_21d2-sums-x"></span><h4 class="subsection">10.2.5 sums &rArr; sums x</h4>
+<span id="sums"></span><span id="sums-_21d2-sums-x"></span><h4 class="subsection">11.2.5 sums &rArr; sums x</h4>
 <p>Compute the sum of list x.  Sames as <code>+\</code>.
 </p>
 <div class="example">
@@ -2795,7 +2829,7 @@ z|1
 0 1 3 6 10 15 21 28 36 45
 </pre></div>
 
-<span id="deltas"></span><span id="deltas-_21d2-deltas-x-and-x-deltas-y"></span><h4 class="subsection">10.2.6 deltas &rArr; deltas x and x deltas y</h4>
+<span id="deltas"></span><span id="deltas-_21d2-deltas-x-and-x-deltas-y"></span><h4 class="subsection">11.2.6 deltas &rArr; deltas x and x deltas y</h4>
 <p>Compute the difference between each element in list x and the previous value.  If delta is called with two parameters then x will be used as the first value to delta instead of the default 0.
 </p>
 <div class="example">
@@ -2806,7 +2840,7 @@ z|1
 0 4 5
 </pre></div>
 
-<span id="prm"></span><span id="prm-_21d2-prm-x"></span><h4 class="subsection">10.2.7 prm &rArr; prm x</h4>
+<span id="prm"></span><span id="prm-_21d2-prm-x"></span><h4 class="subsection">11.2.7 prm &rArr; prm x</h4>
 <p>Determine all permutations of up x-1.
 </p>
 <div class="example">
@@ -2816,7 +2850,7 @@ z|1
 2 2 0 1 1 0
 </pre></div>
 
-<span id="cmb"></span><span id="cmb-_21d2-x-cmb-y"></span><h4 class="subsection">10.2.8 cmb &rArr; x cmb y</h4>
+<span id="cmb"></span><span id="cmb-_21d2-x-cmb-y"></span><h4 class="subsection">11.2.8 cmb &rArr; x cmb y</h4>
 <p>Determine all x value combinations up to y.
 </p>
 <div class="example">
@@ -2837,9 +2871,9 @@ z|1
 `a`b
 </pre></div>
 
-<span id="Range-Functions-_21d2-key-unkey-meta-in-bin-within"></span><h3 class="section">10.3 Range Functions &rArr; key unkey meta in bin within</h3>
+<span id="Range-Functions-_21d2-key-unkey-meta-in-bin-within"></span><h3 class="section">11.3 Range Functions &rArr; key unkey meta in bin within</h3>
 
-<span id="keyF"></span><span id="key-_21d2-x-key-y"></span><h4 class="subsection">10.3.1 key &rArr; x key y</h4>
+<span id="keyF"></span><span id="key-_21d2-x-key-y"></span><h4 class="subsection">11.3.1 key &rArr; x key y</h4>
 <p>Key table y with x.
 </p>
 <div class="example">
@@ -2850,7 +2884,7 @@ x|1
 y|2
 </pre></div>
 
-<span id="unkey"></span><span id="unkey-_21d2-unkey-x"></span><h4 class="subsection">10.3.2 unkey &rArr; unkey x</h4>
+<span id="unkey"></span><span id="unkey-_21d2-unkey-x"></span><h4 class="subsection">11.3.2 unkey &rArr; unkey x</h4>
 <p>Remove key from table x.
 </p>
 <div class="example">
@@ -2861,7 +2895,7 @@ x 1
 y 2
 </pre></div>
 
-<span id="meta"></span><span id="meta-_21d2-meta"></span><h4 class="subsection">10.3.3 meta &rArr; meta</h4>
+<span id="meta"></span><span id="meta-_21d2-meta"></span><h4 class="subsection">11.3.3 meta &rArr; meta</h4>
 <p>Determine the types of the fields in a table.
 </p>
 <div class="example">
@@ -2870,7 +2904,7 @@ a|n
 b|i
 </pre></div>
 
-<span id="in"></span><span id="in-_21d2-x-in-y"></span><h4 class="subsection">10.3.4 in &rArr; x in y</h4>
+<span id="in"></span><span id="in-_21d2-x-in-y"></span><h4 class="subsection">11.3.4 in &rArr; x in y</h4>
 <p>Determine if x is in list y.  Similar to <a href="#g_t_002bhas">+has</a> but arguments reversed.
 </p>
 <div class="example">
@@ -2880,7 +2914,7 @@ b|i
 0b
 </pre></div>
 
-<span id="bin"></span><span id="bin-_21d2-x-bin-y"></span><h4 class="subsection">10.3.5 bin &rArr; x bin y</h4>
+<span id="bin"></span><span id="bin-_21d2-x-bin-y"></span><h4 class="subsection">11.3.5 bin &rArr; x bin y</h4>
 <p>Given a sorted (increasing) list x, find the greatest index, i, where y&gt;x[i].
 </p>
 <div class="example">
@@ -2890,7 +2924,7 @@ b|i
 2
 </pre></div>
 
-<span id="within"></span><span id="within-_21d2-x-within-y"></span><h4 class="subsection">10.3.6 within &rArr; x within y</h4>
+<span id="within"></span><span id="within-_21d2-x-within-y"></span><h4 class="subsection">11.3.6 within &rArr; x within y</h4>
 <p>Test if x is equal to or greater than y[0] and less than y[1].
 </p>
 <div class="example">
@@ -2912,7 +2946,7 @@ b|i
 <p>
 Next: <a href="#I_002fO" accesskey="n" rel="next">I/O</a>, Previous: <a href="#Named-Functions" accesskey="p" rel="prev">Named Functions</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<span id="Knit-Functions-1"></span><h2 class="chapter">11 Knit Functions</h2>
+<span id="Knit-Functions-1"></span><h2 class="chapter">12 Knit Functions</h2>
 <p>These functions modify lists and dictionaries given a list of indices and functions or values to replace.
 </p>
 <div class="example">
@@ -2920,7 +2954,7 @@ Next: <a href="#I_002fO" accesskey="n" rel="next">I/O</a>, Previous: <a href="#N
 .[r;i;f[;y]] <a href="#dmend">dmend</a>
 </pre></div>
 
-<span id="amend"></span><span id="amend-_21d2-_0040_005br_003bi_003bf_005b_003by_005d_005d"></span><h3 class="section">11.1 amend &rArr; @[r;i;f[;y]]</h3>
+<span id="amend"></span><span id="amend-_21d2-_0040_005br_003bi_003bf_005b_003by_005d_005d"></span><h3 class="section">12.1 amend &rArr; @[r;i;f[;y]]</h3>
 <p>Replace the values in list/dictionary r at indices i with element f or function f and parameter y.  The original list is not modified.
 </p>
 <table>
@@ -2995,7 +3029,7 @@ Next: <a href="#I_002fO" accesskey="n" rel="next">I/O</a>, Previous: <a href="#N
 6      
 </pre></div>
 
-<span id="dmend"></span><span id="dmend-_21d2-_002e_005br_003bi_003bf_005b_003by_005d_005d"></span><h3 class="section">11.2 dmend &rArr; .[r;i;f[;y]]</h3>
+<span id="dmend"></span><span id="dmend-_21d2-_002e_005br_003bi_003bf_005b_003by_005d_005d"></span><h3 class="section">12.2 dmend &rArr; .[r;i;f[;y]]</h3>
 <p>Similar to <a href="#amend">amend</a> but using <code>i</code> to fully index <code>r</code>.
 </p>
 <table>
@@ -3058,7 +3092,7 @@ Next: <a href="#I_002fO" accesskey="n" rel="next">I/O</a>, Previous: <a href="#N
 <p>
 Next: <a href="#Tables" accesskey="n" rel="next">Tables</a>, Previous: <a href="#Knit-Functions" accesskey="p" rel="prev">Knit Functions</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<span id="I_002fO-and-Interface"></span><h2 class="chapter">12 I/O and Interface</h2>
+<span id="I_002fO-and-Interface"></span><h2 class="chapter">13 I/O and Interface</h2>
 <p>Given k9 is useful for analyzing data it won&rsquo;t be a surprise that input and output (I/O) are supported.  k9 has been optimized to read in data quickly so if you have a workflow of making a tea while the huge csv file loads you might have an issue.
 </p>
 <p>k9 is also able to interface with other languages so one doesn&rsquo;t need to rewrite everything already written into k9.
@@ -3078,7 +3112,7 @@ Next: <a href="#Tables" accesskey="n" rel="next">Tables</a>, Previous: <a href="
 *c/k: &quot;./b.so&quot;5:`f!1    /K f(K x){return ki(2+xi);}  //feeds ..
 </pre></div>
 
-<span id="Example-of-Data-I_002fO"></span><h3 class="section">12.1 Example of Data I/O</h3>
+<span id="Example-of-Data-I_002fO"></span><h3 class="section">13.1 Example of Data I/O</h3>
 <p>Let&rsquo;s being with a small trivial example to show how to read data from a csv file.  We&rsquo;ll generate a small table and save it with and without headers (wHeader.csv and woHeader.csv respectively).  Then we&rsquo;ll read it back in a specifying types and with the csv reader.  Types are specifed by one letter and the full list can be found in <a href="#Atom-Types">Atom Types</a>.
 </p>
 <div class="example">
@@ -3117,7 +3151,7 @@ e f  g
 1 4. z
 </pre></div>
 
-<span id="read-csv"></span><span id="read-csv-_21d2-_0060csv_003fx"></span><h3 class="section">12.2 read csv &rArr; &lsquo;csv?x</h3>
+<span id="read-csv"></span><span id="read-csv-_21d2-_0060csv_003fx"></span><h3 class="section">13.2 read csv &rArr; &lsquo;csv?x</h3>
 <p>Convert x from csv format.  Works on lists and tables.
 </p>
 <div class="example">
@@ -3128,7 +3162,7 @@ a b
 2 4.
 </pre></div>
 
-<span id="write-csv"></span><span id="write-csv-_21d2-_0060csv-x"></span><h3 class="section">12.3 write csv &rArr; &lsquo;csv x</h3>
+<span id="write-csv"></span><span id="write-csv-_21d2-_0060csv-x"></span><h3 class="section">13.3 write csv &rArr; &lsquo;csv x</h3>
 <p>Convert x to CSV format.  Works on lists and tables.
 </p>
 <div class="example">
@@ -3138,7 +3172,7 @@ a,b
 2,4.
 </pre></div>
 
-<span id="read-json"></span><span id="read-json-_21d2-_0060json_003fx"></span><h3 class="section">12.4 read json &rArr; &lsquo;json?x</h3>
+<span id="read-json"></span><span id="read-json-_21d2-_0060json_003fx"></span><h3 class="section">13.4 read json &rArr; &lsquo;json?x</h3>
 <p>Convert x from json format.  Works on lists and tables.
 </p>
 <div class="example">
@@ -3149,7 +3183,7 @@ a b
 2 4.
 </pre></div>
 
-<span id="write-json"></span><span id="write-json-_21d2-_0060json-x"></span><h3 class="section">12.5 write json &rArr; &lsquo;json x</h3>
+<span id="write-json"></span><span id="write-json-_21d2-_0060json-x"></span><h3 class="section">13.5 write json &rArr; &lsquo;json x</h3>
 <p>Convert x to json format.  Works on lists and tables.
 </p>
 <div class="example">
@@ -3158,7 +3192,16 @@ a b
 {a:2,b:4.}
 </pre></div>
 
-<span id="w-line"></span><span id="write-line-_21d2-x-0_003ay"></span><h3 class="section">12.6 write line &rArr; x 0:y</h3>
+<span id="read-nv"></span><span id="read-name-value-_21d2-_0060nv_003fx"></span><h3 class="section">13.6 read name value &rArr; &lsquo;nv?x</h3>
+<p>Convert x, a list of name:value pairs, to a dictionary.
+</p>
+<div class="example">
+<pre class="example"> `nv?(&quot;key1:value1&quot;;&quot;key2:value2&quot;)
+key1|value1
+key2|value2
+</pre></div>
+
+<span id="w-line"></span><span id="write-line-_21d2-x-0_003ay"></span><h3 class="section">13.7 write line &rArr; x 0:y</h3>
 <p>Output to x the list of strings in y.  y must be a list of strings.  If y is a single stream then convert to list via enlist.
 </p><div class="example">
 <pre class="example"> &quot;&quot;0:(&quot;blue&quot;;&quot;red&quot;)      / &quot;&quot; represents stdout
@@ -3169,7 +3212,7 @@ red
 &quot;some.csv&quot;
 </pre></div>
 
-<span id="r-line"></span><span id="read-line-_21d2-0_003ax"></span><h3 class="section">12.7 read line &rArr; 0:x</h3>
+<span id="r-line"></span><span id="read-line-_21d2-0_003ax"></span><h3 class="section">13.8 read line &rArr; 0:x</h3>
 <p>Read from file x.
 </p>
 <div class="example">
@@ -3179,7 +3222,7 @@ a,b
 2,4.
 </pre></div>
 
-<span id="w-byte"></span><span id="write-byte-_21d2-x-1_003ay"></span><h3 class="section">12.8 write byte &rArr; x 1:y</h3>
+<span id="w-byte"></span><span id="write-byte-_21d2-x-1_003ay"></span><h3 class="section">13.9 write byte &rArr; x 1:y</h3>
 <p>Output to file x the list of chars in y as bytes.
 </p>
 <div class="example">
@@ -3193,10 +3236,10 @@ t:1:&quot;some.txt&quot;;t
 &quot;0123ABab&quot;
 </pre></div>
 
-<span id="r-byte"></span><span id="read-byte-_21d2-1_003ax"></span><h3 class="section">12.9 read byte &rArr; 1:x</h3>
+<span id="r-byte"></span><span id="read-byte-_21d2-1_003ax"></span><h3 class="section">13.10 read byte &rArr; 1:x</h3>
 <p>Read from byte data from file x.  See <a href="#w-byte">w byte</a> for an example to write and then read byte data.
 </p>
-<span id="r-data"></span><span id="read-data-_21d2-2_003a-x"></span><h3 class="section">12.10 read data &rArr; 2: x</h3>
+<span id="r-data"></span><span id="read-data-_21d2-2_003a-x"></span><h3 class="section">13.11 read data &rArr; 2: x</h3>
 
 <p>Enterprise Only
 </p>
@@ -3219,7 +3262,7 @@ a          b          c          d          e
 
 </pre></div>
 
-<span id="w-data"></span><span id="write-data-_21d2-x-2_003a-y"></span><h3 class="section">12.11 write data &rArr; x 2: y</h3>
+<span id="w-data"></span><span id="write-data-_21d2-x-2_003a-y"></span><h3 class="section">13.12 write data &rArr; x 2: y</h3>
 
 <p>Enterprise only
 </p>
@@ -3241,15 +3284,15 @@ a          b          c          d          e
 </pre></div>
 
 
-<span id="conn_002fset"></span><span id="conn_002fset-_21d2-3_003a"></span><h3 class="section">12.12 conn/set &rArr; 3:</h3>
+<span id="conn_002fset"></span><span id="conn_002fset-_21d2-3_003a"></span><h3 class="section">13.13 conn/set &rArr; 3:</h3>
 
 <p>Enterprise only
 </p>
-<span id="http_002fget"></span><span id="http_002fget-_21d2-4_003a"></span><h3 class="section">12.13 http/get &rArr; 4:</h3>
+<span id="http_002fget"></span><span id="http_002fget-_21d2-4_003a"></span><h3 class="section">13.14 http/get &rArr; 4:</h3>
 
 <p>Enterprise only
 </p>
-<span id="lib"></span><span id="lib-_21d2-5_003a"></span><h3 class="section">12.14 lib &rArr; 5:</h3>
+<span id="lib"></span><span id="lib-_21d2-5_003a"></span><h3 class="section">13.15 lib &rArr; 5:</h3>
 
 <p>Enterprise only
 </p>
@@ -3281,7 +3324,7 @@ int indx(int x[],int y){return x[y];}
 <p>
 Next: <a href="#kSQL" accesskey="n" rel="next">kSQL</a>, Previous: <a href="#I_002fO" accesskey="p" rel="prev">I/O</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<span id="Tables-1"></span><h2 class="chapter">13 Tables</h2>
+<span id="Tables-1"></span><h2 class="chapter">14 Tables</h2>
 <p>k9 has the ability to store data in a tabular format containing named columns and rows of information as tables.  If the data to be stored and queried is large then tables should be the default data type to be considered.  This chapter introduces the different types of data tables available in k9.  Table, utable and xtable are very similar and as you&rsquo;ll see in the <a href="#kSQL">kSQL</a> chapter are easy to query.  In the <a href="#Benchmark">Benchmark</a> chapter, tables were shown to be fast to save, read, and query.
 </p>
 <div class="example">
@@ -3290,10 +3333,10 @@ Next: <a href="#kSQL" accesskey="n" rel="next">kSQL</a>, Previous: <a href="#I_0
 <a href="#xtable">xtable</a> `..![[]a:..]      
 </pre></div>
 
-<span id="t"></span><span id="table"></span><h3 class="section">13.1 table</h3>
+<span id="t"></span><span id="table"></span><h3 class="section">14.1 table</h3>
 <p>The table is the most basic of the three types.  A table consists of columns and rows of information where each column has a name.  Tables can be created in three different ways (1) specification via table format, (2) flipping a dictionary, or (3) reading in from a file.
 </p>
-<span id="Table-format"></span><h4 class="subsection">13.1.1 Table format</h4>
+<span id="Table-format"></span><h4 class="subsection">14.1.1 Table format</h4>
 <p>Tables can be created with the table square bracket notation.
 </p>
 <p>As an example let&rsquo;s create a table with two columns named &ldquo;a&rdquo; and &ldquo;col2&rdquo; with three rows.  The syntax is to surround the defintion with square brackeets and then have a first element of empty square brackets.  In general this in square bracket pair will contain any keys but more on this will happen in utable.  After that it&rsquo;s first column name, colon, and the list of values, then second column, and continuing for all the columns.
@@ -3315,7 +3358,7 @@ a  col2
 [[]a:,1;col2:,3.6]
 </pre></div>
 
-<span id="Dictionary-format"></span><h4 class="subsection">13.1.2 Dictionary format</h4>
+<span id="Dictionary-format"></span><h4 class="subsection">14.1.2 Dictionary format</h4>
 <p>Tables can also be created by flipping a dictionary into a table.  
 </p>
 <div class="example">
@@ -3327,7 +3370,7 @@ a  col2
  3 0.1 
 </pre></div>
 
-<span id="File-import"></span><h4 class="subsection">13.1.3 File import</h4>
+<span id="File-import"></span><h4 class="subsection">14.1.3 File import</h4>
 <p>Tables can also be created by reading in a file.
 </p>
 <p>t.csv
@@ -3347,7 +3390,7 @@ a   col2
  3  0.1 
 </pre></div>
 
-<span id="xtable"></span><span id="xtable-1"></span><h3 class="section">13.2 xtable</h3>
+<span id="xtable"></span><span id="xtable-1"></span><h3 class="section">14.2 xtable</h3>
 <p>A cross tab (xtable) is a collection of tables stored in a dictionary where the keys are symbols and the values are tables.  Below is an example where the keys are symbols and the values are
 end-of-day prices.
 </p>
@@ -3363,7 +3406,7 @@ d          p
 2020.09.10 150
 </pre></div>
 
-<span id="utable"></span><span id="utable-1"></span><h3 class="section">13.3 utable</h3>
+<span id="utable"></span><span id="utable-1"></span><h3 class="section">14.3 utable</h3>
 <p>utable (or key table) is a table where some of the columns are keyed and thus should not have duplicate values.
 </p>
 <div class="example">
@@ -3387,7 +3430,7 @@ d         |p
 <p>
 Next: <a href="#System" accesskey="n" rel="next">System</a>, Previous: <a href="#Tables" accesskey="p" rel="prev">Tables</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<span id="kSQL-1"></span><h2 class="chapter">14 kSQL</h2>
+<span id="kSQL-1"></span><h2 class="chapter">15 kSQL</h2>
 <p>kSQL is a powerful query language for tables.  It has similarities to ANSI SQL but additional features to make it easier to work with data.
 </p>
 <div class="example">
@@ -3398,9 +3441,9 @@ x+y      / equi-and-asof outerjoin (e.g. combine markets through time)
 x#y      / take/intersect innerjoin (x_y for drop/difference)
 </pre></div>
 
-<span id="Queries"></span><h3 class="section">14.1 Queries</h3>
+<span id="Queries"></span><h3 class="section">15.1 Queries</h3>
 
-<span id="select"></span><span id="select-1"></span><h4 class="subsection">14.1.1 select</h4>
+<span id="select"></span><span id="select-1"></span><h4 class="subsection">15.1.1 select</h4>
 <p>There a number of ways to return a complete table with kSQL.  You can use the table name, a kSQL query without columns, or a fully specified query with columns.
 </p>
 <div class="example">
@@ -3433,7 +3476,7 @@ x y
 4 -0.7568025
 </pre></div>
 
-<span id="A"></span><span id="A-1"></span><h4 class="subsection">14.1.2 A</h4>
+<span id="A"></span><span id="A-1"></span><h4 class="subsection">15.1.2 A</h4>
 <p>A is the list of fields to return from the select query.  If A is missing then all fields will be returned.  A can create new column names.  A is probably called A because it&rsquo;s before B and C.
 </p>
 <div class="example">
@@ -3483,7 +3526,7 @@ x z
 4 -0.7568025
 </pre></div>
 
-<span id="by-B"></span><span id="by-B-1"></span><h4 class="subsection">14.1.3 by B</h4>
+<span id="by-B"></span><span id="by-B-1"></span><h4 class="subsection">15.1.3 by B</h4>
 <p>kSQL also has a way to group rows using <code>by</code>.  The result is a utable where the key is the now unique field in the <code>by</code>.
 </p>
 <div class="example">
@@ -3496,7 +3539,7 @@ x|y
 1|-0.6156825
 </pre></div>
 
-<span id="where-C"></span><span id="where-C-1"></span><h4 class="subsection">14.1.4 where C</h4>
+<span id="where-C"></span><span id="where-C-1"></span><h4 class="subsection">15.1.4 where C</h4>
 <p>kSQL makes it easy to build up a where clause to filter down the table.  C is the list of contraints.
 </p>
 <div class="example">
@@ -3516,7 +3559,7 @@ x y
 3 0.14112 
 </pre></div>
 
-<span id="Query-with-By-and-Where"></span><h4 class="subsection">14.1.5 Query with By and Where</h4>
+<span id="Query-with-By-and-Where"></span><h4 class="subsection">15.1.5 Query with By and Where</h4>
 
 <div class="example">
 <pre class="example"> n:5;t:[[]x:!n;y:sin !n]
@@ -3527,7 +3570,7 @@ x|y
 1|0.14112 
 </pre></div>
 
-<span id="update"></span><span id="update-1"></span><h4 class="subsection">14.1.6 update</h4>
+<span id="update"></span><span id="update-1"></span><h4 class="subsection">15.1.6 update</h4>
 <p>update allows one to modify values without specifying all the fields that pass through.  update is also used to add new columns in a table.  update does not save the table that requires an assignment.
 </p>
 <div class="example">
@@ -3560,7 +3603,7 @@ b 2 20
 c 3 21
 </pre></div>
 
-<span id="delete"></span><span id="delete-1"></span><h4 class="subsection">14.1.7 delete</h4>
+<span id="delete"></span><span id="delete-1"></span><h4 class="subsection">15.1.7 delete</h4>
 <p>Delete rows from a table that satisfy one or more conditions.  Currently not working.
 </p>
 <div class="example">
@@ -3578,7 +3621,7 @@ c 1
 !nyi
 </pre></div>
 
-<span id="Joins"></span><h3 class="section">14.2 Joins</h3>
+<span id="Joins"></span><h3 class="section">15.2 Joins</h3>
 <p>k9 has a number of methods to join tables together which are described below.  In this section t, t1 and t2 represent tables and k, k1 and k2 represent utables.
 </p>
 <table>
@@ -3590,7 +3633,7 @@ c 1
 <tr><td><a href="#asof_002b">asof+</a></td><td>k1+k2</td></tr>
 </table>
 
-<span id="union"></span><span id="union-join-_21d2-t1_002ct2"></span><h4 class="subsection">14.2.1 union join &rArr; t1,t2</h4>
+<span id="union"></span><span id="union-join-_21d2-t1_002ct2"></span><h4 class="subsection">15.2.1 union join &rArr; t1,t2</h4>
 <p>Union join table t1 with table t2.  The tables should have the same columns and the join results in a table with t2 appended to t1.  If the tables do not have the same columns then return t1.
 </p>
 <div class="example">
@@ -3617,7 +3660,7 @@ b 11 21
 c 12 22
 </pre></div>
 
-<span id="leftjoin"></span><span id="leftjoin-_21d2-t_002ck"></span><h4 class="subsection">14.2.2 leftjoin &rArr; t,k</h4>
+<span id="leftjoin"></span><span id="leftjoin-_21d2-t_002ck"></span><h4 class="subsection">15.2.2 leftjoin &rArr; t,k</h4>
 <p>leftjoin table t with utable k.  Result includes all rows from t and values from t where there is no k value.
 </p>
 <div class="example">
@@ -3647,7 +3690,7 @@ b 2 102 52
 c 3   9  0
 </pre></div>
 
-<span id="outer"></span><span id="outer-join-_21d2-k1_002ck2"></span><h4 class="subsection">14.2.3 outer join &rArr; k1,k2</h4>
+<span id="outer"></span><span id="outer-join-_21d2-k1_002ck2"></span><h4 class="subsection">15.2.3 outer join &rArr; k1,k2</h4>
 <p>Outer join utable k1 with key utable k2. 
 </p>
 <div class="example">
@@ -3673,7 +3716,7 @@ b|9 7
 c|8 6
 </pre></div>
 
-<span id="asof"></span><span id="asof-join-_21d2-t_002ck"></span><h4 class="subsection">14.2.4 asof join &rArr; t,k</h4>
+<span id="asof"></span><span id="asof-join-_21d2-t_002ck"></span><h4 class="subsection">15.2.4 asof join &rArr; t,k</h4>
 <p>Asof joins a table t to a utable k (key by time) such that the t values show the preceeding or equal time value of k.
 </p>
 <div class="example">
@@ -3728,7 +3771,7 @@ t           |p
 222
 </pre></div>
 
-<span id="asof_002b"></span><span id="asof_002b-join-_21d2-k1_002bk2"></span><h4 class="subsection">14.2.5 asof+ join &rArr; k1+k2</h4>
+<span id="asof_002b"></span><span id="asof_002b-join-_21d2-k1_002bk2"></span><h4 class="subsection">15.2.5 asof+ join &rArr; k1+k2</h4>
 <p>Asof+ joins utables adding the non-key fields to represent the sum asof the key field usually time.  This join allows one to aggregate over markets to find the total available at a given time.  The utables need to be specified with <code>`a</code>.
 </p>
 <div class="example">
@@ -3760,10 +3803,10 @@ t    |bs
 09:50|103
 </pre></div>
 
-<span id="Insert-and-Upsert"></span><h3 class="section">14.3 Insert and Upsert</h3>
+<span id="Insert-and-Upsert"></span><h3 class="section">15.3 Insert and Upsert</h3>
 <p>One can add data to tables via insert or upsert.  The difference between the two is that insert adds data to a table while upsert will add or replace data to a keyed table.  Upsert adds when the key isn&rsquo;t present and replaces when the key is.
 </p>
-<span id="insert"></span><span id="insert-_21d2-t_002cd"></span><h4 class="subsection">14.3.1 insert &rArr; t,d</h4>
+<span id="insert"></span><span id="insert-_21d2-t_002cd"></span><h4 class="subsection">15.3.1 insert &rArr; t,d</h4>
 <p>Insert dictionary d into table t.
 </p><div class="example">
 <pre class="example"> t:[[]c1:`a`b`a;c2:1 2 7];t
@@ -3790,7 +3833,7 @@ a   7
 c  12
 </pre></div>
 
-<span id="upsert"></span><span id="upsert-_21d2-k_002cd"></span><h4 class="subsection">14.3.2 upsert &rArr; k,d</h4>
+<span id="upsert"></span><span id="upsert-_21d2-k_002cd"></span><h4 class="subsection">15.3.2 upsert &rArr; k,d</h4>
 <p>Insert dictionary d into utable k.
 </p><div class="example">
 <pre class="example"> k:[[c1:`a`b`c]c2:1 2 7];k
@@ -3820,7 +3863,7 @@ c | 7
 <p>
 Next: <a href="#Control-Flow" accesskey="n" rel="next">Control Flow</a>, Previous: <a href="#kSQL" accesskey="p" rel="prev">kSQL</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<span id="System-1"></span><h2 class="chapter">15 System</h2>
+<span id="System-1"></span><h2 class="chapter">16 System</h2>
 <p>k9 comes with a few system functions and measurement commands.  The commands allow you to load a script, change the working directory, measure execution times and memory usage, and list defined variables.
 </p>
 <div class="example">
@@ -3833,7 +3876,7 @@ Next: <a href="#Control-Flow" accesskey="n" rel="next">Control Flow</a>, Previou
 \cd x  <a href="#cd">cd</a>
 </pre></div>
 
-<span id="load"></span><span id="load-_21d2-_005cl-a_002ek"></span><h3 class="section">15.1 load &rArr; \l a.k</h3>
+<span id="load"></span><span id="load-_21d2-_005cl-a_002ek"></span><h3 class="section">16.1 load &rArr; \l a.k</h3>
 <p>Load a text file of k9 commands.  The file name must end in .k.
 </p><div class="example">
 <pre class="example">&nbsp;\l func.k
@@ -3842,14 +3885,14 @@ Next: <a href="#Control-Flow" accesskey="n" rel="next">Control Flow</a>, Previou
 :nyi
 </pre></div>
 
-<span id="timing"></span><span id="timing-_21d2-_005ct"></span><h3 class="section">15.2 timing &rArr; \t</h3>
+<span id="timing"></span><span id="timing-_21d2-_005ct"></span><h3 class="section">16.2 timing &rArr; \t</h3>
 <p>List time elapsed
 </p><div class="example">
 <pre class="example">&nbsp;\t ^(_1e7)?_1e8
 227
 </pre></div>
 
-<span id="variables"></span><span id="variables-_21d2-_005cv"></span><h3 class="section">15.3 variables &rArr; \v</h3>
+<span id="variables"></span><span id="variables-_21d2-_005cv"></span><h3 class="section">16.3 variables &rArr; \v</h3>
 <p>List variables
 </p><div class="example">
 <pre class="example">a:1;b:2;c:3
@@ -3857,7 +3900,7 @@ Next: <a href="#Control-Flow" accesskey="n" rel="next">Control Flow</a>, Previou
 [v:`a`b`c]
 </pre></div>
 
-<span id="memory"></span><span id="memory-_21d2-_005cw"></span><h3 class="section">15.4 memory &rArr; \w</h3>
+<span id="memory"></span><span id="memory-_21d2-_005cw"></span><h3 class="section">16.4 memory &rArr; \w</h3>
 <p>List memory usage
 </p><div class="example">
 <pre class="example">&nbsp;\w
@@ -3867,7 +3910,7 @@ Next: <a href="#Control-Flow" accesskey="n" rel="next">Control Flow</a>, Previou
 2097158
 </pre></div>
 
-<span id="cd"></span><span id="cd-_21d2-_005ccd-x"></span><h3 class="section">15.5 cd &rArr; \cd x</h3>
+<span id="cd"></span><span id="cd-_21d2-_005ccd-x"></span><h3 class="section">16.5 cd &rArr; \cd x</h3>
 <p>Change directory (cd) into x
 </p>
 <div class="example">
@@ -3879,12 +3922,12 @@ Next: <a href="#Control-Flow" accesskey="n" rel="next">Control Flow</a>, Previou
 <p>
 Next: <a href="#Temporal-Functions" accesskey="n" rel="next">Temporal Functions</a>, Previous: <a href="#System" accesskey="p" rel="prev">System</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<span id="Control-Flow-1"></span><h2 class="chapter">16 Control Flow</h2>
+<span id="Control-Flow-1"></span><h2 class="chapter">17 Control Flow</h2>
 <p>Although not heavily used in k9, control flow statements will still be required occasionally.
 </p>
 <pre class="verbatim">$[b;t;f] Control
 </pre>
-<span id="cond"></span><span id="cond-_21d2-_0024_005bb_003bt_003bf_005d"></span><h3 class="section">16.1 cond &rArr; $[b;t;f]</h3>
+<span id="cond"></span><span id="cond-_21d2-_0024_005bb_003bt_003bf_005d"></span><h3 class="section">17.1 cond &rArr; $[b;t;f]</h3>
 <p>If b is non zero then x else y.  x and y are not required to be the same type.
 </p>
 <div class="example">
@@ -3914,13 +3957,13 @@ b|3 4
 <p>
 Next: <a href="#Errors" accesskey="n" rel="next">Errors</a>, Previous: <a href="#Control-Flow" accesskey="p" rel="prev">Control Flow</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<span id="Temporal-Functions-1"></span><h2 class="chapter">17 Temporal Functions</h2>
+<span id="Temporal-Functions-1"></span><h2 class="chapter">18 Temporal Functions</h2>
 <p>k9 has functions (within <code>.z</code>) to get the current date and time in a number of precisions.  There are also functions to retrieve partial date and time using dot notation.
 </p>
 <pre class="verbatim">date 2001.01.01   .z.d
 time 12:34:56.789 .z.t
 </pre>
-<span id="g_t_002ez_002e_005bdm_005d-date"></span><h3 class="section">17.1 .z.[dm] date</h3>
+<span id="g_t_002ez_002e_005bdm_005d-date"></span><h3 class="section">18.1 .z.[dm] date</h3>
 <p>These functions retrieve the date as day (d) or month (m) precision.
 </p>
 <div class="example">
@@ -3931,7 +3974,7 @@ time 12:34:56.789 .z.t
 2020.12.
 </pre></div>
 
-<span id="g_t_002ez_002e_005bhrstuv_005d-time"></span><h3 class="section">17.2 .z.[hrstuv] time</h3>
+<span id="g_t_002ez_002e_005bhrstuv_005d-time"></span><h3 class="section">18.2 .z.[hrstuv] time</h3>
 <p>There functions retrieve the time as hour (h), minute (r), second (s), millisecond (t), microsecond (u), or nanosecond (v) precision.
 </p>
 <div class="example">
@@ -3959,7 +4002,7 @@ time 12:34:56.789 .z.t
 610
 </pre></div>
 
-<span id="Temporal-dot-functions"></span><h3 class="section">17.3 Temporal dot functions</h3>
+<span id="Temporal-dot-functions"></span><h3 class="section">18.3 Temporal dot functions</h3>
 <p>These functions use dot notation to retrieve partial date and times.
 </p>
 <div class="example">
@@ -3984,21 +4027,21 @@ time 12:34:56.789 .z.t
 <p>
 Next: <a href="#Conclusion" accesskey="n" rel="next">Conclusion</a>, Previous: <a href="#Temporal-Functions" accesskey="p" rel="prev">Temporal Functions</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<span id="Errors-1"></span><h2 class="chapter">18 Errors</h2>
+<span id="Errors-1"></span><h2 class="chapter">19 Errors</h2>
 <p>Given the terse syntax of k9 it likely won&rsquo;t be a surprise to a new user that the error messages are rather short also.  The errors are listed on the help page and described in more detail below.
 </p>
 <div class="example">
 <pre class="example">error: <a href="#class">class</a> <a href="#rank">rank</a> <a href="#length">length</a> <a href="#g_t_005ftype">type</a> <a href="#domain">domain</a> <a href="#limit">limit</a> stack <a href="#parse">parse</a> <a href="#g_t_005fvalue">value</a>
 </pre></div>
 
-<span id="class"></span><span id="g_t_003aclass"></span><h3 class="section">18.1 :class</h3>
+<span id="class"></span><span id="g_t_003aclass"></span><h3 class="section">19.1 :class</h3>
 <p>Calling a function on mismatched types.
 </p><div class="example">
 <pre class="example">&nbsp;3+`b
 :class
 </pre></div>
 
-<span id="rank"></span><span id="g_t_003arank"></span><h3 class="section">18.2 :rank</h3>
+<span id="rank"></span><span id="g_t_003arank"></span><h3 class="section">19.2 :rank</h3>
 <p>Calling a function with too many parameters.
 </p><div class="example">
 <pre class="example">&nbsp;{x+y}[1;2;3]
@@ -4007,14 +4050,14 @@ Next: <a href="#Conclusion" accesskey="n" rel="next">Conclusion</a>, Previous: <
 :rank
 </pre></div>
 
-<span id="length"></span><span id="g_t_003alength"></span><h3 class="section">18.3 :length</h3>
+<span id="length"></span><span id="g_t_003alength"></span><h3 class="section">19.3 :length</h3>
 <p>Operations on unequal length lists that require equal length.
 </p><div class="example">
 <pre class="example">&nbsp;(1 2 3)+(4 5)
 :length
 </pre></div>
 
-<span id="g_t_005ftype"></span><span id="g_t_003atype"></span><h3 class="section">18.4 :type</h3>
+<span id="g_t_005ftype"></span><span id="g_t_003atype"></span><h3 class="section">19.4 :type</h3>
 <p>Calling a function with an unsupported variable type.
 </p><div class="example">
 <pre class="example">`a+`b
@@ -4022,14 +4065,14 @@ Next: <a href="#Conclusion" accesskey="n" rel="next">Conclusion</a>, Previous: <
 :type
 </pre></div>
 
-<span id="domain"></span><span id="g_t_003adomain"></span><h3 class="section">18.5 :domain</h3>
+<span id="domain"></span><span id="g_t_003adomain"></span><h3 class="section">19.5 :domain</h3>
 <p>Exhausted the number of input values
 </p><div class="example">
 <pre class="example">&nbsp;-12?10   / only 10 unique value exist
 :domain
 </pre></div>
 
-<span id="limit"></span><span id="g_t_003alimit"></span><h3 class="section">18.6 :limit</h3>
+<span id="limit"></span><span id="g_t_003alimit"></span><h3 class="section">19.6 :limit</h3>
 <p>Exceeded a limit above the software maximum, eg. writing a single file above 1GB.
 </p><div class="example">
 <pre class="example">&nbsp;n:_100e6;d:+`x`y!(!n;n?1.);`d 2:d
@@ -4038,7 +4081,7 @@ n:_100e6;d:+`x`y!(!n;n?1.);`d 2:d
 :limit
 </pre></div>
 
-<span id="nyi"></span><span id="g_t_003anyi"></span><h3 class="section">18.7 :nyi</h3>
+<span id="nyi"></span><span id="g_t_003anyi"></span><h3 class="section">19.7 :nyi</h3>
 <p>Running code that is not yet implemented.  This may come from running code in this document with a different version of k9.
 </p>
 <p>2020.05.31 (c) shakti
@@ -4060,14 +4103,14 @@ a b|
 :nyi
 </pre></div>
 
-<span id="parse"></span><span id="g_t_003aparse"></span><h3 class="section">18.8 :parse</h3>
+<span id="parse"></span><span id="g_t_003aparse"></span><h3 class="section">19.8 :parse</h3>
 <p>Syntax is wrong.  Possible you failed to match characters which must match, eg. (), {}, [], &quot;&quot;.
 </p><div class="example">
 <pre class="example">&nbsp;{37 . &quot;hello&quot;
 :parse
 </pre></div>
 
-<span id="g_t_005fvalue"></span><span id="g_t_003avalue"></span><h3 class="section">18.9 :value</h3>
+<span id="g_t_005fvalue"></span><span id="g_t_003avalue"></span><h3 class="section">19.9 :value</h3>
 <p>Undefined variable is used.
 </p><div class="example">
 <pre class="example">&nbsp;g    / assuming 'g' has not be defining in this session
@@ -4079,7 +4122,7 @@ a b|
 <p>
 Previous: <a href="#Errors" accesskey="p" rel="prev">Errors</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<span id="Conclusion-1"></span><h2 class="chapter">19 Conclusion</h2>
+<span id="Conclusion-1"></span><h2 class="chapter">20 Conclusion</h2>
 
 <p>I expect you are surprised by the performance possible by k9 and the fact that it all fits into a 134,152 bytes!  (For comparison the ls program weighs in 51,888 bytes and can&rsquo;t even change directory.)
 </p>
