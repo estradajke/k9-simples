@@ -1708,8 +1708,8 @@ first element of each sub-list you'll have to modify the function
      f\  *note scan::  c\  *note +split::
      f'  *note each::  v'  *note +has::
      f': *note eachp:: v': *note +bin: bin2.
-     f/: *note eachr:: ([n;]f)/: *note c over::
-     f\: *note eachl:: ([n;]f)\: *note c scan::
+     f/: *note eachr:: ([n;]f)/:
+     f\: *note eachl:: ([n;]f)\:
 
 5.1 scan (over) => f\x (f/x)
 ============================
@@ -1837,8 +1837,40 @@ y>x[i].
       n':1.025
      2
 
-5.7 eachr => f/:
-================
+5.7 eachr => f/:x, x f/:y, f/:[x;y]
+===================================
+
+name  f parametersxy
+*note converge over::1elementn/a
+*note each right::2arrayelement/array
+
+5.7.1 Converge Scan
+-------------------
+
+Compute f[x] where x is the previous output of f until the value
+converges or returns to x.  The initial value of x is the input.  Only
+the final value is returned.  Intermeediate values can be retrieved via
+*note converge scan::.
+
+       {x*x}/:.99  / converge to value
+     0.
+
+      l:3 4 2 1 4 99 / until output is x
+      l/:0
+     4
+
+      / the latter example worked out manually
+      l 0
+     3
+      l 3
+     1
+      l 1
+     4
+      l 4            / f[4]=4 so will stop
+     4
+
+5.7.2 Each Right
+----------------
 
 Apply f[x;y] to each value of y, i.e.  the right one.
 
@@ -1848,47 +1880,18 @@ Apply f[x;y] to each value of y, i.e.  the right one.
      2 3
      3 4
 
-      +/:[!2;!4]
-     0 1
-     1 2
-     2 3
-     3 4
+5.8 eachl => f\:x, x f\:y, f\:[x;y]
+===================================
 
-5.8 eachl => f\[x;y]
-====================
+name  f parametersxy
+*note converge scan::1elementn/a
+*note each left::2arrayelement/array
 
-Apply f[x;y] to each value of x, i.e.  the left one.
+5.8.1 Converge Scan
+-------------------
 
-      (!2)+\:!4
-     0 1 2 3
-     1 2 3 4
-
-      +\:[!2;!4]
-     0 1 2 3
-     1 2 3 4
-
-5.9 n scan (n over) => x f\:y (x f/:y)
-======================================
-
-Compute f with initial value x and over list y.  f[i] = f[f[i-1];y[i]]
-except for the case of f[0]=f[x;y[0]].  n over differs from n scan in
-that it only returns the last value.
-      f:{(0.1*x)+0.9*y}      / ema
-      0. f\:1+!3
-     0.9 1.89 2.889
-      f:{(`$,/$x),(`$,/$y)} / join and collapse
-      `x f\: `y0`y1`y2
-     x     y0
-     xy0   y1
-     xy0y1 y2
-      `x f/: `y0`y1`y2
-     xy0y1 y2
-
-5.10 c(onverge) scan => f\:x
-============================
-
-Compute f[x], f[f[x]] and continue to call f[previous result] until the
-output converges to a stationary value or the output produces x.
+Compute f[x] where x is the previous output of f until the value
+converges or returns to x.  The initial value of x is the input
 
        {x*x}\:.99  / converge to value
      0.99 0.9801 0.9605961 ... 1.323698e-18 1.752177e-36 0.
@@ -1907,31 +1910,18 @@ output converges to a stationary value or the output produces x.
       l 4            / f[4]=4 so will stop
      4
 
-5.11 c(onverge) over => f/:x
-============================
+5.8.2 Each Left
+---------------
 
-Same as converge scan but only return last value.
+Apply f[x;y] to each value of x, i.e.  the left one.
 
-       {x*x}\:.99
-     0.
+      (!2)+\:!4
+     0 1 2 3
+     1 2 3 4
 
-5.12 vs => x\:y
-===============
-
-Convert y (base 10) into base x.
-      2\:129
-     10000001b
-      16\:255
-     15 15
-
-5.13 sv => x/:y
-===============
-
-Convert list y (base x) into base 10.
-      2/:10101b
-     21
-      16/:15 0 15
-     3855
+      +\:[!2;!4]
+     0 1 2 3
+     1 2 3 4
 
 
 File: k9.info,  Node: Noun,  Next: List,  Prev: Adverb,  Up: Top
@@ -4334,120 +4324,119 @@ Ref: [f]at41826
 Ref: value42142
 Ref: [f]dot42416
 Node: Adverb43516
-Ref: scan44264
-Ref: +join44794
-Ref: +split45061
-Ref: each45318
-Ref: +has45607
-Ref: eachp45873
-Ref: bin246617
-Ref: eachr46822
-Ref: eachl47019
-Ref: n scan47203
-Ref: c scan47683
-Ref: c over48195
-Ref: vs48332
-Ref: sv48452
-Node: Noun48576
-Ref: Atom Types49914
-Ref: bool51095
-Ref: int51782
-Ref: flt52442
-Ref: char52844
-Ref: name53067
-Ref: uuid53298
-Ref: time53455
-Ref: date54331
-Ref: datetime54792
-Node: List55589
-Node: Dictionary59739
-Node: User Functions64452
-Node: Named Functions67501
-Ref: exp68145
-Ref: log68213
-Ref: sin68313
-Ref: cos68452
-Ref: sqr68600
-Ref: sqrt68663
-Ref: div68736
-Ref: mod68892
-Ref: bar69070
-Ref: topX69403
-Ref: freq69565
-Ref: msum69916
-Ref: mavg70055
-Ref: sums70201
-Ref: deltas70337
-Ref: prm70679
-Ref: cmb70823
-Ref: keyF71196
-Ref: unkey71329
-Ref: meta71469
-Ref: in71604
-Ref: bin71783
-Ref: within71997
-Node: Knit Functions72233
-Ref: amend72528
-Ref: amend172994
-Ref: amend273130
-Ref: amend373352
-Ref: amend473534
-Ref: dmend73705
-Ref: dmend174035
-Ref: dmend374172
-Ref: dmend474340
-Node: I/O74504
-Ref: read csv76607
-Ref: write csv76785
-Ref: read json76949
-Ref: write json77139
-Ref: w line77312
-Ref: r line77621
-Ref: w byte77734
-Ref: r byte77962
-Ref: r data78110
-Ref: w data78771
-Ref: conn/set79339
-Ref: http/get79399
-Ref: lib79459
-Node: Tables79923
-Ref: t80615
-Ref: xtable82220
-Ref: utable82702
-Node: kSQL83159
-Ref: select83757
-Ref: A84341
-Ref: by B85211
-Ref: where C85483
-Ref: update86065
-Ref: delete86625
-Ref: union87197
-Ref: leftjoin87718
-Ref: outer88236
-Ref: asof88571
-Ref: asof+89615
-Ref: insert90618
-Ref: upsert90964
-Node: System91288
-Ref: load91746
-Ref: timing91934
-Ref: variables92021
-Ref: memory92122
-Ref: cd92237
-Node: Control Flow92321
-Ref: cond92557
-Node: Temporal Functions92818
-Node: Errors94206
-Ref: class94656
-Ref: rank94745
-Ref: length94869
-Ref: _type94992
-Ref: domain95101
-Ref: limit95223
-Ref: nyi95424
-Ref: parse95757
-Ref: _value95912
-Node: Conclusion96040
+Ref: scan44234
+Ref: +join44764
+Ref: +split45031
+Ref: each45288
+Ref: +has45577
+Ref: eachp45843
+Ref: bin246587
+Ref: eachr46792
+Ref: converge over46958
+Ref: each right47488
+Ref: eachl47631
+Ref: converge scan47796
+Ref: each left48282
+Node: Noun48456
+Ref: Atom Types49794
+Ref: bool50975
+Ref: int51662
+Ref: flt52322
+Ref: char52724
+Ref: name52947
+Ref: uuid53178
+Ref: time53335
+Ref: date54211
+Ref: datetime54672
+Node: List55469
+Node: Dictionary59619
+Node: User Functions64332
+Node: Named Functions67381
+Ref: exp68025
+Ref: log68093
+Ref: sin68193
+Ref: cos68332
+Ref: sqr68480
+Ref: sqrt68543
+Ref: div68616
+Ref: mod68772
+Ref: bar68950
+Ref: topX69283
+Ref: freq69445
+Ref: msum69796
+Ref: mavg69935
+Ref: sums70081
+Ref: deltas70217
+Ref: prm70559
+Ref: cmb70703
+Ref: keyF71076
+Ref: unkey71209
+Ref: meta71349
+Ref: in71484
+Ref: bin71663
+Ref: within71877
+Node: Knit Functions72113
+Ref: amend72408
+Ref: amend172874
+Ref: amend273010
+Ref: amend373232
+Ref: amend473414
+Ref: dmend73585
+Ref: dmend173915
+Ref: dmend374052
+Ref: dmend474220
+Node: I/O74384
+Ref: read csv76487
+Ref: write csv76665
+Ref: read json76829
+Ref: write json77019
+Ref: w line77192
+Ref: r line77501
+Ref: w byte77614
+Ref: r byte77842
+Ref: r data77990
+Ref: w data78651
+Ref: conn/set79219
+Ref: http/get79279
+Ref: lib79339
+Node: Tables79803
+Ref: t80495
+Ref: xtable82100
+Ref: utable82582
+Node: kSQL83039
+Ref: select83637
+Ref: A84221
+Ref: by B85091
+Ref: where C85363
+Ref: update85945
+Ref: delete86505
+Ref: union87077
+Ref: leftjoin87598
+Ref: outer88116
+Ref: asof88451
+Ref: asof+89495
+Ref: insert90498
+Ref: upsert90844
+Node: System91168
+Ref: load91626
+Ref: timing91814
+Ref: variables91901
+Ref: memory92002
+Ref: cd92117
+Node: Control Flow92201
+Ref: cond92437
+Node: Temporal Functions92698
+Node: Errors94086
+Ref: class94536
+Ref: rank94625
+Ref: length94749
+Ref: _type94872
+Ref: domain94981
+Ref: limit95103
+Ref: nyi95304
+Ref: parse95637
+Ref: _value95792
+Node: Conclusion95920
 
 End Tag Table
 

@@ -1558,13 +1558,13 @@ c|3
 Adverbs modify verbs to operative iteratively over nouns.  This previous sentence likely will only make sense once you understand it so let's jump into an example.  Imagine you have a list of 4 lists.  Using @code{first} you will retrieve the first sub-list.  In order to retrieve the first element of each sub-list you'll have to modify the function @code{first} with a modifier @code{each}.
 
 @example
-Adverb             
-f/  @ref{scan,over}  c/  @ref{+join}
-f\  @ref{scan}  c\  @ref{+split}
-f'  @ref{each}  v'  @ref{+has}  
-f': @ref{eachp} v': @ref{bin2,+bin}.
-f/: @ref{eachr} ([n;]f)/: @ref{c over}
-f\: @ref{eachl} ([n;]f)\: @ref{c scan}
+Adverb               
+f/  @ref{scan,over}  c/  @ref{+join}  
+f\  @ref{scan}  c\  @ref{+split} 
+f'  @ref{each}  v'  @ref{+has}   
+f': @ref{eachp} v': @ref{bin2,+bin}   
+f/: @ref{eachr} ([n;]f)/:  
+f\: @ref{eachl} ([n;]f)\:  
 @end example
 
 @anchor{scan}@section scan (over) @result{} f\x (f/x)
@@ -1695,7 +1695,39 @@ Given a sorted (increasing) list x, find the greatest index, i, where y>x[i].
 2
 @end example
 
-@anchor{eachr}@section eachr @result{} f/:
+@anchor{eachr}@section eachr @result{} f/:x, x f/:y, f/:[x;y]
+
+@flushleft
+@multitable {abc} {abc} {abc} {abc}
+@item @b{name} @tab @b{f parameters} @tab @b{x} @tab @b{y}
+@item @ref{converge over} @tab 1 @tab element @tab n/a
+@item @ref{each right} @tab 2 @tab array @tab element/array
+@end multitable
+@end flushleft
+
+@anchor{converge over}@subsection Converge Scan
+Compute f[x] where x is the previous output of f until the value converges or returns to x.  The initial value of x is the input.  Only the final value is returned.  Intermeediate values can be retrieved via @ref{converge scan}.
+
+@example
+  @{x*x@}/:.99  / converge to value
+0.
+
+ l:3 4 2 1 4 99 / until output is x
+ l/:0
+4
+
+ / the latter example worked out manually
+ l 0
+3
+ l 3
+1
+ l 1
+4
+ l 4            / f[4]=4 so will stop
+4
+@end example
+
+@anchor{each right}@subsection Each Right
 Apply f[x;y] to each value of y, i.e. the right one.
 
 @example
@@ -1704,44 +1736,20 @@ Apply f[x;y] to each value of y, i.e. the right one.
 1 2
 2 3
 3 4
-
- +/:[!2;!4]
-0 1
-1 2
-2 3
-3 4
 @end example
 
-@anchor{eachl}@section eachl @result{} f\[x;y]
-Apply f[x;y] to each value of x, i.e. the left one.
+@anchor{eachl}@section eachl @result{} f\:x, x f\:y, f\:[x;y]
 
-@example
- (!2)+\:!4
-0 1 2 3
-1 2 3 4
+@flushleft
+@multitable {abc} {abc} {abc} {abc}
+@item @b{name} @tab @b{f parameters} @tab @b{x} @tab @b{y}
+@item @ref{converge scan} @tab 1 @tab element @tab n/a
+@item @ref{each left} @tab 2 @tab array @tab element/array
+@end multitable
+@end flushleft
 
- +\:[!2;!4]
-0 1 2 3
-1 2 3 4
-@end example
-
-@anchor{n scan}@section n scan (n over) @result{} x f\:y (x f/:y)
-Compute f with initial value x and over list y.  f[i] = f[f[i-1];y[i]] except for the case of f[0]=f[x;y[0]].  n over differs from n scan in that it only returns the last value.
-@example
-@ f:@{(0.1*x)+0.9*y@}      / ema
-@ 0. f\:1+!3
-0.9 1.89 2.889
-@ f:@{(`$,/$x),(`$,/$y)@} / join and collapse
-@ `x f\: `y0`y1`y2
-x     y0
-xy0   y1
-xy0y1 y2
-@ `x f/: `y0`y1`y2
-xy0y1 y2
-@end example
-
-@anchor{c scan}@section c(onverge) scan @result{} f\:x
-Compute f[x], f[f[x]] and continue to call f[previous result] until the output converges to a stationary value or the output produces x.
+@anchor{converge scan}@subsection Converge Scan
+Compute f[x] where x is the previous output of f until the value converges or returns to x.  The initial value of x is the input
 
 @example
   @{x*x@}\:.99  / converge to value
@@ -1762,30 +1770,17 @@ Compute f[x], f[f[x]] and continue to call f[previous result] until the output c
 4
 @end example
 
-@anchor{c over}@section c(onverge) over @result{} f/:x
-Same as converge scan but only return last value.
+@anchor{each left}@subsection Each Left
+Apply f[x;y] to each value of x, i.e. the left one.
 
 @example
-  @{x*x@}\:.99
-0.
-@end example
+ (!2)+\:!4
+0 1 2 3
+1 2 3 4
 
-@anchor{vs}@section vs @result{} x\:y
-Convert y (base 10) into base x.
-@example
-@ 2\:129
-10000001b
-@ 16\:255
-15 15
-@end example
-
-@anchor{sv}@section sv @result{} x/:y
-Convert list y (base x) into base 10.
-@example
-@ 2/:10101b
-21
-@ 16/:15 0 15
-3855
+ +\:[!2;!4]
+0 1 2 3
+1 2 3 4
 @end example
 
 @node Noun

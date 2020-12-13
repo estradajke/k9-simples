@@ -94,13 +94,13 @@ Next: <a href="Noun.html" accesskey="n" rel="next">Noun</a>, Previous: <a href="
 <p>Adverbs modify verbs to operative iteratively over nouns.  This previous sentence likely will only make sense once you understand it so let&rsquo;s jump into an example.  Imagine you have a list of 4 lists.  Using <code>first</code> you will retrieve the first sub-list.  In order to retrieve the first element of each sub-list you&rsquo;ll have to modify the function <code>first</code> with a modifier <code>each</code>.
 </p>
 <div class="example">
-<pre class="example">Adverb             
-f/  <a href="#scan">over</a>  c/  <a href="#g_t_002bjoin">+join</a>
-f\  <a href="#scan">scan</a>  c\  <a href="#g_t_002bsplit">+split</a>
-f'  <a href="#each">each</a>  v'  <a href="#g_t_002bhas">+has</a>  
-f': <a href="#eachp">eachp</a> v': <a href="#bin2">+bin</a>.
-f/: <a href="#eachr">eachr</a> ([n;]f)/: <a href="#c-over">c over</a>
-f\: <a href="#eachl">eachl</a> ([n;]f)\: <a href="#c-scan">c scan</a>
+<pre class="example">Adverb               
+f/  <a href="#scan">over</a>  c/  <a href="#g_t_002bjoin">+join</a>  
+f\  <a href="#scan">scan</a>  c\  <a href="#g_t_002bsplit">+split</a> 
+f'  <a href="#each">each</a>  v'  <a href="#g_t_002bhas">+has</a>   
+f': <a href="#eachp">eachp</a> v': <a href="#bin2">+bin</a>   
+f/: <a href="#eachr">eachr</a> ([n;]f)/:  
+f\: <a href="#eachl">eachl</a> ([n;]f)\:  
 </pre></div>
 
 <span id="scan"></span><span id="scan-_0028over_0029-_21d2-f_005cx-_0028f_002fx_0029"></span><h3 class="section">5.1 scan (over) &rArr; f\x (f/x)</h3>
@@ -231,7 +231,37 @@ y4 y3
 2
 </pre></div>
 
-<span id="eachr"></span><span id="eachr-_21d2-f_002f_003a"></span><h3 class="section">5.7 eachr &rArr; f/:</h3>
+<span id="eachr"></span><span id="eachr-_21d2-f_002f_003ax_002c-x-f_002f_003ay_002c-f_002f_003a_005bx_003by_005d"></span><h3 class="section">5.7 eachr &rArr; f/:x, x f/:y, f/:[x;y]</h3>
+
+<table>
+<tr><td><b>name</b></td><td><b>f parameters</b></td><td><b>x</b></td><td><b>y</b></td></tr>
+<tr><td><a href="#converge-over">converge over</a></td><td>1</td><td>element</td><td>n/a</td></tr>
+<tr><td><a href="#each-right">each right</a></td><td>2</td><td>array</td><td>element/array</td></tr>
+</table>
+
+<span id="converge-over"></span><span id="Converge-Scan"></span><h4 class="subsection">5.7.1 Converge Scan</h4>
+<p>Compute f[x] where x is the previous output of f until the value converges or returns to x.  The initial value of x is the input.  Only the final value is returned.  Intermeediate values can be retrieved via <a href="#converge-scan">converge scan</a>.
+</p>
+<div class="example">
+<pre class="example">  {x*x}/:.99  / converge to value
+0.
+
+ l:3 4 2 1 4 99 / until output is x
+ l/:0
+4
+
+ / the latter example worked out manually
+ l 0
+3
+ l 3
+1
+ l 1
+4
+ l 4            / f[4]=4 so will stop
+4
+</pre></div>
+
+<span id="each-right"></span><span id="Each-Right"></span><h4 class="subsection">5.7.2 Each Right</h4>
 <p>Apply f[x;y] to each value of y, i.e. the right one.
 </p>
 <div class="example">
@@ -240,44 +270,18 @@ y4 y3
 1 2
 2 3
 3 4
-
- +/:[!2;!4]
-0 1
-1 2
-2 3
-3 4
 </pre></div>
 
-<span id="eachl"></span><span id="eachl-_21d2-f_005c_005bx_003by_005d"></span><h3 class="section">5.8 eachl &rArr; f\[x;y]</h3>
-<p>Apply f[x;y] to each value of x, i.e. the left one.
-</p>
-<div class="example">
-<pre class="example"> (!2)+\:!4
-0 1 2 3
-1 2 3 4
+<span id="eachl"></span><span id="eachl-_21d2-f_005c_003ax_002c-x-f_005c_003ay_002c-f_005c_003a_005bx_003by_005d"></span><h3 class="section">5.8 eachl &rArr; f\:x, x f\:y, f\:[x;y]</h3>
 
- +\:[!2;!4]
-0 1 2 3
-1 2 3 4
-</pre></div>
+<table>
+<tr><td><b>name</b></td><td><b>f parameters</b></td><td><b>x</b></td><td><b>y</b></td></tr>
+<tr><td><a href="#converge-scan">converge scan</a></td><td>1</td><td>element</td><td>n/a</td></tr>
+<tr><td><a href="#each-left">each left</a></td><td>2</td><td>array</td><td>element/array</td></tr>
+</table>
 
-<span id="n-scan"></span><span id="n-scan-_0028n-over_0029-_21d2-x-f_005c_003ay-_0028x-f_002f_003ay_0029"></span><h3 class="section">5.9 n scan (n over) &rArr; x f\:y (x f/:y)</h3>
-<p>Compute f with initial value x and over list y.  f[i] = f[f[i-1];y[i]] except for the case of f[0]=f[x;y[0]].  n over differs from n scan in that it only returns the last value.
-</p><div class="example">
-<pre class="example">&nbsp;f:{(0.1*x)+0.9*y}      / ema
-&nbsp;0. f\:1+!3
-0.9 1.89 2.889
-&nbsp;f:{(`$,/$x),(`$,/$y)} / join and collapse
-&nbsp;`x f\: `y0`y1`y2
-x     y0
-xy0   y1
-xy0y1 y2
-&nbsp;`x f/: `y0`y1`y2
-xy0y1 y2
-</pre></div>
-
-<span id="c-scan"></span><span id="c_0028onverge_0029-scan-_21d2-f_005c_003ax"></span><h3 class="section">5.10 c(onverge) scan &rArr; f\:x</h3>
-<p>Compute f[x], f[f[x]] and continue to call f[previous result] until the output converges to a stationary value or the output produces x.
+<span id="converge-scan"></span><span id="Converge-Scan-1"></span><h4 class="subsection">5.8.1 Converge Scan</h4>
+<p>Compute f[x] where x is the previous output of f until the value converges or returns to x.  The initial value of x is the input
 </p>
 <div class="example">
 <pre class="example">  {x*x}\:.99  / converge to value
@@ -298,30 +302,17 @@ xy0y1 y2
 4
 </pre></div>
 
-<span id="c-over"></span><span id="c_0028onverge_0029-over-_21d2-f_002f_003ax"></span><h3 class="section">5.11 c(onverge) over &rArr; f/:x</h3>
-<p>Same as converge scan but only return last value.
+<span id="each-left"></span><span id="Each-Left"></span><h4 class="subsection">5.8.2 Each Left</h4>
+<p>Apply f[x;y] to each value of x, i.e. the left one.
 </p>
 <div class="example">
-<pre class="example">  {x*x}\:.99
-0.
-</pre></div>
+<pre class="example"> (!2)+\:!4
+0 1 2 3
+1 2 3 4
 
-<span id="vs"></span><span id="vs-_21d2-x_005c_003ay"></span><h3 class="section">5.12 vs &rArr; x\:y</h3>
-<p>Convert y (base 10) into base x.
-</p><div class="example">
-<pre class="example">&nbsp;2\:129
-10000001b
-&nbsp;16\:255
-15 15
-</pre></div>
-
-<span id="sv"></span><span id="sv-_21d2-x_002f_003ay"></span><h3 class="section">5.13 sv &rArr; x/:y</h3>
-<p>Convert list y (base x) into base 10.
-</p><div class="example">
-<pre class="example">&nbsp;2/:10101b
-21
-&nbsp;16/:15 0 15
-3855
+ +\:[!2;!4]
+0 1 2 3
+1 2 3 4
 </pre></div>
 
 <hr>
