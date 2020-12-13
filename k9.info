@@ -2820,6 +2820,11 @@ computation.
       t :(a+b*c)
      4 6 10
 
+      d:`a`b`c!(3 2 1;1 2 3;1 2 3);d
+      d :(100*a;b+c)
+     300 200 100
+     2 4 6
+
 
 File: k9.info,  Node: Named Functions,  Next: Knit Functions,  Prev: Expression,  Up: Top
 
@@ -4433,93 +4438,93 @@ Node: List55863
 Node: Dictionary60013
 Node: User Functions64726
 Node: Expression67770
-Node: Named Functions68626
-Ref: exp69266
-Ref: log69334
-Ref: sin69434
-Ref: cos69573
-Ref: sqr69721
-Ref: sqrt69784
-Ref: div69857
-Ref: mod70013
-Ref: bar70191
-Ref: topX70524
-Ref: freq70686
-Ref: msum71037
-Ref: mavg71176
-Ref: sums71322
-Ref: deltas71458
-Ref: prm71800
-Ref: cmb71944
-Ref: keyF72317
-Ref: unkey72450
-Ref: meta72590
-Ref: in72725
-Ref: bin72904
-Ref: within73118
-Node: Knit Functions73354
-Ref: amend73649
-Ref: amend174115
-Ref: amend274251
-Ref: amend374473
-Ref: amend474655
-Ref: dmend74826
-Ref: dmend175156
-Ref: dmend375293
-Ref: dmend475461
-Node: I/O75625
-Ref: read csv77728
-Ref: write csv77906
-Ref: read json78070
-Ref: write json78260
-Ref: read nv78433
-Ref: w line78626
-Ref: r line78935
-Ref: w byte79048
-Ref: r byte79276
-Ref: r data79426
-Ref: w data80087
-Ref: conn/set80655
-Ref: http/get80715
-Ref: lib80775
-Node: Tables81239
-Ref: t81931
-Ref: xtable83536
-Ref: utable84018
-Node: kSQL84475
-Ref: select85073
-Ref: A85657
-Ref: by B86527
-Ref: where C86799
-Ref: update87381
-Ref: delete87941
-Ref: union88513
-Ref: leftjoin89034
-Ref: outer89552
-Ref: asof89887
-Ref: asof+90931
-Ref: insert91934
-Ref: upsert92280
-Node: System92604
-Ref: load93062
-Ref: timing93250
-Ref: variables93337
-Ref: memory93438
-Ref: cd93553
-Node: Control Flow93637
-Ref: cond93873
-Node: Temporal Functions94240
-Node: Errors95628
-Ref: class96078
-Ref: rank96167
-Ref: length96291
-Ref: _type96414
-Ref: domain96523
-Ref: limit96645
-Ref: nyi96846
-Ref: parse97179
-Ref: _value97334
-Node: Conclusion97462
+Node: Named Functions68713
+Ref: exp69353
+Ref: log69421
+Ref: sin69521
+Ref: cos69660
+Ref: sqr69808
+Ref: sqrt69871
+Ref: div69944
+Ref: mod70100
+Ref: bar70278
+Ref: topX70611
+Ref: freq70773
+Ref: msum71124
+Ref: mavg71263
+Ref: sums71409
+Ref: deltas71545
+Ref: prm71887
+Ref: cmb72031
+Ref: keyF72404
+Ref: unkey72537
+Ref: meta72677
+Ref: in72812
+Ref: bin72991
+Ref: within73205
+Node: Knit Functions73441
+Ref: amend73736
+Ref: amend174202
+Ref: amend274338
+Ref: amend374560
+Ref: amend474742
+Ref: dmend74913
+Ref: dmend175243
+Ref: dmend375380
+Ref: dmend475548
+Node: I/O75712
+Ref: read csv77815
+Ref: write csv77993
+Ref: read json78157
+Ref: write json78347
+Ref: read nv78520
+Ref: w line78713
+Ref: r line79022
+Ref: w byte79135
+Ref: r byte79363
+Ref: r data79513
+Ref: w data80174
+Ref: conn/set80742
+Ref: http/get80802
+Ref: lib80862
+Node: Tables81326
+Ref: t82018
+Ref: xtable83623
+Ref: utable84105
+Node: kSQL84562
+Ref: select85160
+Ref: A85744
+Ref: by B86614
+Ref: where C86886
+Ref: update87468
+Ref: delete88028
+Ref: union88600
+Ref: leftjoin89121
+Ref: outer89639
+Ref: asof89974
+Ref: asof+91018
+Ref: insert92021
+Ref: upsert92367
+Node: System92691
+Ref: load93149
+Ref: timing93337
+Ref: variables93424
+Ref: memory93525
+Ref: cd93640
+Node: Control Flow93724
+Ref: cond93960
+Node: Temporal Functions94327
+Node: Errors95715
+Ref: class96165
+Ref: rank96254
+Ref: length96378
+Ref: _type96501
+Ref: domain96610
+Ref: limit96732
+Ref: nyi96933
+Ref: parse97266
+Ref: _value97421
+Node: Conclusion97549
 
 End Tag Table
 
