@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- December 13, 2020
+
+Copyright (C) 2020 John Estrada -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Temporal Functions (Shakti tutorial)</title>
+
+<meta name="description" content="Temporal Functions (Shakti tutorial)">
+<meta name="keywords" content="Temporal Functions (Shakti tutorial)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="index.html" rel="up" title="Top">
+<link href="Errors.html" rel="next" title="Errors">
+<link href="Control-Flow.html" rel="prev" title="Control Flow">
+<style type="text/css">
+<!--
+/* spacing */
+
+
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+table, th, td{
+  table-layout: auto;
+  border-collapse: collapse;
+  border: 1px solid blue;
+  font-family: monospace; 
+}
+
+th, td {
+  padding: 5px;     
+  font-family: monospace; 
+}
+
+tr:nth-child(1) {
+/*    background-color:lightsteelblue; // Replace it with your desired color */
+}
+
+.menu{
+    border: none;
+}
+
+table.menu td{ 
+    /*Background: none;*/
+    padding: 1px;
+    /*border-collapse: collapse;*/
+    border: none;
+    font-family: sansserif;
+    /(all: unset;*/
+}
+
+table.menu th{ 
+    /*Background: none;*/
+    padding: 1px;
+    /*border-collapse: collapse;*/
+    border: none;
+    font-family: sansserif;
+    /(all: unset;*/
+}
+
+
+
+
+
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Temporal-Functions"></span><div class="header">
+<p>
+Next: <a href="Errors.html" accesskey="n" rel="next">Errors</a>, Previous: <a href="Control-Flow.html" accesskey="p" rel="prev">Control Flow</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+</div>
+<hr>
+<span id="Temporal-Functions-1"></span><h2 class="chapter">17 Temporal Functions</h2>
+<p>k9 has functions (within <code>.z</code>) to get the current date, time, and date-time.  Uppercase is used to include a date and lower case for time only.  There are also functions to retrieve partial date and time (within <code>.mdhrstuv</code>).
+</p>
+<pre class="verbatim">date 2001.01.01   .z.d
+time 12:34:56.789 .z.t
+</pre>
+<span id="g_t_002ez_002e_005bdm_005d-date"></span><h3 class="section">17.1 .z.[dm] date</h3>
+<p>These functions retrieve the date as day (d) or month (m) precision.
+</p>
+<div class="example">
+<pre class="example"> .z.d
+2020.12.13
+
+ .z.m
+2020.12.
+</pre></div>
+
+<span id="g_t_002ez_002e_005bhrstuv_005d-time"></span><h3 class="section">17.2 .z.[hrstuv] time</h3>
+<p>There functions retrieve the time as hour (h), minute (r), second (s), millisecond (t), microsecond (u), or nanosecond (v) precision.
+</p>
+<div class="example">
+<pre class="example"> .z.h
+11
+ .z.r
+11:25
+ .z.s
+11:25:16
+ .z.t
+11:25:16.842
+ .z.u
+11:25:17.491362
+ .z.v
+11:25:18.186360064
+</pre></div>
+
+<p>One could use the current time commands to measure run time but typically this is done via <code>\t</code>
+</p>
+<div class="example">
+<pre class="example"> t1:.z.v;(_2e8)?1.;t2:.z.v;t2-t1
+00:00:00.609207008
+
+\t (_2e8)?1.
+610
+</pre></div>
+
+<span id="Temporal-dot-functions"></span><h3 class="section">17.3 Temporal dot functions</h3>
+<p>These functions use dot notation to retrieve partial date and times.
+</p>
+<div class="example">
+<pre class="example"> now:.z.v;now
+11:27:18.049558016
+ now.h
+11
+ now.r
+11:27
+ now.s
+11:27:18
+ now.t
+11:27:18.049
+ now.u
+11:27:18.049558
+ now.v
+11:27:18.049558016
+</pre></div>
+
+
+
+
+</body>
+</html>
