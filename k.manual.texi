@@ -2562,13 +2562,27 @@ In order to succeed f1 needs to have an @code{@@} in the definition of f2.  This
 
 @node Expression
 @chapter Expression Evaluation
-k9 has a compact way to evalue an expression on a data structure including dictionaries and tables.
+k9 has a compact way to evalue an expression on data structures including dictionaries and tables.
 
 @verbatim
 Expr :a+b
 @end verbatim
 
+@section expr @result{} x :y
+In order to evaluate an expression on a x, a table or dictionary, then there must be a space (otherwise it's set) and then y, one of many evaluations.  The evaluations list keys but return values for computation.
+
 @example
+ d:`city!`London
+ d :city
+`London
+
+ d :`Paris=city
+0b
+
+ d:`city!`London`Paris`Madrid
+ d :`Paris=city
+010b
+
  d:`a`b`c!(3 2 1;1 2 3;1 2 3);d
 a|3 2 1
 b|1 2 3

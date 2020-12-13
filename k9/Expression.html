@@ -89,12 +89,26 @@ Next: <a href="Named-Functions.html" accesskey="n" rel="next">Named Functions</a
 </div>
 <hr>
 <span id="Expression-Evaluation"></span><h2 class="chapter">10 Expression Evaluation</h2>
-<p>k9 has a compact way to evalue an expression on a data structure including dictionaries and tables.
+<p>k9 has a compact way to evalue an expression on data structures including dictionaries and tables.
 </p>
 <pre class="verbatim">Expr :a+b
 </pre>
+<span id="expr-_21d2-x-_003ay"></span><h3 class="section">10.1 expr &rArr; x :y</h3>
+<p>In order to evaluate an expression on a x, a table or dictionary, then there must be a space (otherwise it&rsquo;s set) and then y, one of many evaluations.  The evaluations list keys but return values for computation.
+</p>
 <div class="example">
-<pre class="example"> d:`a`b`c!(3 2 1;1 2 3;1 2 3);d
+<pre class="example"> d:`city!`London
+ d :city
+`London
+
+ d :`Paris=city
+0b
+
+ d:`city!`London`Paris`Madrid
+ d :`Paris=city
+010b
+
+ d:`a`b`c!(3 2 1;1 2 3;1 2 3);d
 a|3 2 1
 b|1 2 3
 c|1 2 3

@@ -2778,10 +2778,29 @@ File: k9.info,  Node: Expression,  Next: Named Functions,  Prev: User Functions,
 10 Expression Evaluation
 ************************
 
-k9 has a compact way to evalue an expression on a data structure
+k9 has a compact way to evalue an expression on data structures
 including dictionaries and tables.
 
 Expr :a+b
+
+10.1 expr => x :y
+=================
+
+In order to evaluate an expression on a x, a table or dictionary, then
+there must be a space (otherwise it's set) and then y, one of many
+evaluations.  The evaluations list keys but return values for
+computation.
+
+      d:`city!`London
+      d :city
+     `London
+
+      d :`Paris=city
+     0b
+
+      d:`city!`London`Paris`Madrid
+      d :`Paris=city
+     010b
 
       d:`a`b`c!(3 2 1;1 2 3;1 2 3);d
      a|3 2 1
@@ -4414,93 +4433,93 @@ Node: List55863
 Node: Dictionary60013
 Node: User Functions64726
 Node: Expression67770
-Node: Named Functions68229
-Ref: exp68869
-Ref: log68937
-Ref: sin69037
-Ref: cos69176
-Ref: sqr69324
-Ref: sqrt69387
-Ref: div69460
-Ref: mod69616
-Ref: bar69794
-Ref: topX70127
-Ref: freq70289
-Ref: msum70640
-Ref: mavg70779
-Ref: sums70925
-Ref: deltas71061
-Ref: prm71403
-Ref: cmb71547
-Ref: keyF71920
-Ref: unkey72053
-Ref: meta72193
-Ref: in72328
-Ref: bin72507
-Ref: within72721
-Node: Knit Functions72957
-Ref: amend73252
-Ref: amend173718
-Ref: amend273854
-Ref: amend374076
-Ref: amend474258
-Ref: dmend74429
-Ref: dmend174759
-Ref: dmend374896
-Ref: dmend475064
-Node: I/O75228
-Ref: read csv77331
-Ref: write csv77509
-Ref: read json77673
-Ref: write json77863
-Ref: read nv78036
-Ref: w line78229
-Ref: r line78538
-Ref: w byte78651
-Ref: r byte78879
-Ref: r data79029
-Ref: w data79690
-Ref: conn/set80258
-Ref: http/get80318
-Ref: lib80378
-Node: Tables80842
-Ref: t81534
-Ref: xtable83139
-Ref: utable83621
-Node: kSQL84078
-Ref: select84676
-Ref: A85260
-Ref: by B86130
-Ref: where C86402
-Ref: update86984
-Ref: delete87544
-Ref: union88116
-Ref: leftjoin88637
-Ref: outer89155
-Ref: asof89490
-Ref: asof+90534
-Ref: insert91537
-Ref: upsert91883
-Node: System92207
-Ref: load92665
-Ref: timing92853
-Ref: variables92940
-Ref: memory93041
-Ref: cd93156
-Node: Control Flow93240
-Ref: cond93476
-Node: Temporal Functions93843
-Node: Errors95231
-Ref: class95681
-Ref: rank95770
-Ref: length95894
-Ref: _type96017
-Ref: domain96126
-Ref: limit96248
-Ref: nyi96449
-Ref: parse96782
-Ref: _value96937
-Node: Conclusion97065
+Node: Named Functions68626
+Ref: exp69266
+Ref: log69334
+Ref: sin69434
+Ref: cos69573
+Ref: sqr69721
+Ref: sqrt69784
+Ref: div69857
+Ref: mod70013
+Ref: bar70191
+Ref: topX70524
+Ref: freq70686
+Ref: msum71037
+Ref: mavg71176
+Ref: sums71322
+Ref: deltas71458
+Ref: prm71800
+Ref: cmb71944
+Ref: keyF72317
+Ref: unkey72450
+Ref: meta72590
+Ref: in72725
+Ref: bin72904
+Ref: within73118
+Node: Knit Functions73354
+Ref: amend73649
+Ref: amend174115
+Ref: amend274251
+Ref: amend374473
+Ref: amend474655
+Ref: dmend74826
+Ref: dmend175156
+Ref: dmend375293
+Ref: dmend475461
+Node: I/O75625
+Ref: read csv77728
+Ref: write csv77906
+Ref: read json78070
+Ref: write json78260
+Ref: read nv78433
+Ref: w line78626
+Ref: r line78935
+Ref: w byte79048
+Ref: r byte79276
+Ref: r data79426
+Ref: w data80087
+Ref: conn/set80655
+Ref: http/get80715
+Ref: lib80775
+Node: Tables81239
+Ref: t81931
+Ref: xtable83536
+Ref: utable84018
+Node: kSQL84475
+Ref: select85073
+Ref: A85657
+Ref: by B86527
+Ref: where C86799
+Ref: update87381
+Ref: delete87941
+Ref: union88513
+Ref: leftjoin89034
+Ref: outer89552
+Ref: asof89887
+Ref: asof+90931
+Ref: insert91934
+Ref: upsert92280
+Node: System92604
+Ref: load93062
+Ref: timing93250
+Ref: variables93337
+Ref: memory93438
+Ref: cd93553
+Node: Control Flow93637
+Ref: cond93873
+Node: Temporal Functions94240
+Node: Errors95628
+Ref: class96078
+Ref: rank96167
+Ref: length96291
+Ref: _type96414
+Ref: domain96523
+Ref: limit96645
+Ref: nyi96846
+Ref: parse97179
+Ref: _value97334
+Node: Conclusion97462
 
 End Tag Table
 
