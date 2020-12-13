@@ -4080,42 +4080,38 @@ date-time.  Uppercase is used to include a date and lower case for time
 only.  There are also functions to retrieve partial date and time
 (within '.mdhrstuv').
 
-.z.[md]       date 2001.01.01
-.z.[hrstuv]   time 12:34:56.123456789
+date 2001.01.01   .z.d
+time 12:34:56.789 .z.t
 
-time(cuanto) .z.t mdhrstuv (month day hour minute second milli micro nano)
-date(cuando) .z.d mdHRSTUV (month day hour minute second milli micro nano)
+17.1 .z.[dm] date
+=================
 
-17.1 .z.DTV date
-================
+These functions retrieve the date as day (d) or month (m) precision.
 
-These function retrieve the date (D), date & time (ms) (T), and date &
-time (ns) (V).
+      .z.d
+     2020.12.13
 
-      .z.D
-     2020.10.16
+      .z.m
+     2020.12.
 
-     .z.T
-     2020.10.16T13:46:36.040
+17.2 .z.[hrstuv] time
+=====================
 
-     .z.V
-     2020.10.16T13:46:36.040654000
+There functions retrieve the time as hour (h), minute (r), second (s),
+millisecond (t), microsecond (u), or nanosecond (v) precision.
 
-17.2 .z.dtv time
-================
-
-These functions determine the amount of time (in integer days) since
-Monday 00:00 (d), time (ms) since 00:00 today (t), and time (ns) since
-00:00 today (v).
-
-      .z.d  / running at Friday 13:46
-     4d
-
-     .z.t
-     13:46:36.040
-
-     .z.v
-     13:46:36.040654000
+      .z.h
+     11
+      .z.r
+     11:25
+      .z.s
+     11:25:16
+      .z.t
+     11:25:16.842
+      .z.u
+     11:25:17.491362
+      .z.v
+     11:25:18.186360064
 
    One could use the current time commands to measure run time but
 typically this is done via '\t'
@@ -4131,34 +4127,20 @@ typically this is done via '\t'
 
 These functions use dot notation to retrieve partial date and times.
 
-      now:.z.V;now   / with datetime
-     2020.12.05T11:28:04.881110016
-      now.d
-     2020.12.05
-      now.H
-     2020.12.05T11
-      now.S
-     2020.12.05T11:28:04
-      now.U
-     2020.12.05T11:28:04.881110
-
-      now:.z.d;now  / with date
-     2020.12.05
-      now.m
-     2020.12.
-      now.d
-     2020.12.05
-      now.m.d       / convert to month and then day to get 1st of current month
-     2020.12.01
-
-     now:.z.v;now   / with time
-     11:28:08.518104064
+      now:.z.v;now
+     11:27:18.049558016
+      now.h
+     11
       now.r
-     11:28
+     11:27
       now.s
-     11:28:08
+     11:27:18
+      now.t
+     11:27:18.049
       now.u
-     11:28:08.518104
+     11:27:18.049558
+      now.v
+     11:27:18.049558016
 
 
 File: k9.info,  Node: Errors,  Next: Conclusion,  Prev: Temporal Functions,  Up: Top
@@ -4456,17 +4438,17 @@ Ref: cd92237
 Node: Control Flow92321
 Ref: cond92557
 Node: Temporal Functions92818
-Node: Errors94809
-Ref: class95259
-Ref: rank95348
-Ref: length95472
-Ref: _type95595
-Ref: domain95704
-Ref: limit95826
-Ref: nyi96027
-Ref: parse96360
-Ref: _value96515
-Node: Conclusion96643
+Node: Errors94261
+Ref: class94711
+Ref: rank94800
+Ref: length94924
+Ref: _type95047
+Ref: domain95156
+Ref: limit95278
+Ref: nyi95479
+Ref: parse95812
+Ref: _value95967
+Node: Conclusion96095
 
 End Tag Table
 

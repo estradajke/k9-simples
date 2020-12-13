@@ -93,38 +93,36 @@ Next: <a href="Errors.html" accesskey="n" rel="next">Errors</a>, Previous: <a hr
 <span id="Temporal-Functions-1"></span><h2 class="chapter">17 Temporal Functions</h2>
 <p>k9 has functions (within <code>.z</code>) to get the current date, time, and date-time.  Uppercase is used to include a date and lower case for time only.  There are also functions to retrieve partial date and time (within <code>.mdhrstuv</code>).
 </p>
-<pre class="verbatim">.z.[md]       date 2001.01.01
-.z.[hrstuv]   time 12:34:56.123456789
-
-time(cuanto) .z.t mdhrstuv (month day hour minute second milli micro nano)
-date(cuando) .z.d mdHRSTUV (month day hour minute second milli micro nano)
+<pre class="verbatim">date 2001.01.01   .z.d
+time 12:34:56.789 .z.t
 </pre>
-<span id="g_t_002ez_002eDTV-date"></span><h3 class="section">17.1 .z.DTV date</h3>
-<p>These function retrieve the date (D), date &amp; time (ms) (T), and date &amp; time (ns) (V).
+<span id="g_t_002ez_002e_005bdm_005d-date"></span><h3 class="section">17.1 .z.[dm] date</h3>
+<p>These functions retrieve the date as day (d) or month (m) precision.
 </p>
 <div class="example">
-<pre class="example"> .z.D
-2020.10.16
+<pre class="example"> .z.d
+2020.12.13
 
-.z.T
-2020.10.16T13:46:36.040
-
-.z.V
-2020.10.16T13:46:36.040654000
+ .z.m
+2020.12.
 </pre></div>
 
-<span id="g_t_002ez_002edtv-time"></span><h3 class="section">17.2 .z.dtv time</h3>
-<p>These functions determine the amount of time (in integer days) since Monday 00:00 (d), time (ms) since 00:00 today (t), and time (ns) since 00:00 today (v).
+<span id="g_t_002ez_002e_005bhrstuv_005d-time"></span><h3 class="section">17.2 .z.[hrstuv] time</h3>
+<p>There functions retrieve the time as hour (h), minute (r), second (s), millisecond (t), microsecond (u), or nanosecond (v) precision.
 </p>
 <div class="example">
-<pre class="example"> .z.d  / running at Friday 13:46
-4d
-
-.z.t
-13:46:36.040
-
-.z.v
-13:46:36.040654000
+<pre class="example"> .z.h
+11
+ .z.r
+11:25
+ .z.s
+11:25:16
+ .z.t
+11:25:16.842
+ .z.u
+11:25:17.491362
+ .z.v
+11:25:18.186360064
 </pre></div>
 
 <p>One could use the current time commands to measure run time but typically this is done via <code>\t</code>
@@ -141,34 +139,20 @@ date(cuando) .z.d mdHRSTUV (month day hour minute second milli micro nano)
 <p>These functions use dot notation to retrieve partial date and times.
 </p>
 <div class="example">
-<pre class="example"> now:.z.V;now   / with datetime
-2020.12.05T11:28:04.881110016
- now.d
-2020.12.05
- now.H
-2020.12.05T11
- now.S
-2020.12.05T11:28:04
- now.U
-2020.12.05T11:28:04.881110
-
- now:.z.d;now  / with date
-2020.12.05
- now.m
-2020.12.
- now.d
-2020.12.05
- now.m.d       / convert to month and then day to get 1st of current month
-2020.12.01
-
-now:.z.v;now   / with time
-11:28:08.518104064
+<pre class="example"> now:.z.v;now
+11:27:18.049558016
+ now.h
+11
  now.r
-11:28
+11:27
  now.s
-11:28:08
+11:27:18
+ now.t
+11:27:18.049
  now.u
-11:28:08.518104
+11:27:18.049558
+ now.v
+11:27:18.049558016
 </pre></div>
 
 
