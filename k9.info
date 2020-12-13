@@ -4075,10 +4075,9 @@ File: k9.info,  Node: Temporal Functions,  Next: Errors,  Prev: Control Flow,  U
 17 Temporal Functions
 *********************
 
-k9 has functions (within '.z') to get the current date, time, and
-date-time.  Uppercase is used to include a date and lower case for time
-only.  There are also functions to retrieve partial date and time
-(within '.mdhrstuv').
+k9 has functions (within '.z') to get the current date and time in a
+number of precisions.  There are also functions to retrieve partial date
+and time using dot notation.
 
 date 2001.01.01   .z.d
 time 12:34:56.789 .z.t
@@ -4438,17 +4437,17 @@ Ref: cd92237
 Node: Control Flow92321
 Ref: cond92557
 Node: Temporal Functions92818
-Node: Errors94261
-Ref: class94711
-Ref: rank94800
-Ref: length94924
-Ref: _type95047
-Ref: domain95156
-Ref: limit95278
-Ref: nyi95479
-Ref: parse95812
-Ref: _value95967
-Node: Conclusion96095
+Node: Errors94206
+Ref: class94656
+Ref: rank94745
+Ref: length94869
+Ref: _type94992
+Ref: domain95101
+Ref: limit95223
+Ref: nyi95424
+Ref: parse95757
+Ref: _value95912
+Node: Conclusion96040
 
 End Tag Table
 

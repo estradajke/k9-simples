@@ -3803,7 +3803,7 @@ b|3 4
 
 @node Temporal Functions
 @chapter Temporal Functions
-k9 has functions (within @code{.z}) to get the current date, time, and date-time.  Uppercase is used to include a date and lower case for time only.  There are also functions to retrieve partial date and time (within @code{.mdhrstuv}).
+k9 has functions (within @code{.z}) to get the current date and time in a number of precisions.  There are also functions to retrieve partial date and time using dot notation.
 
 @verbatim
 date 2001.01.01   .z.d
