@@ -1,6 +1,6 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
-December 13, 2020
+December 16, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -2794,10 +2794,8 @@ Expr :a+b
 10.1 expr => x :y
 =================
 
-In order to evaluate an expression on a x, a table or dictionary, then
-there must be a space (otherwise it's set) and then y, one of many
-evaluations.  The evaluations list keys but return values for
-computation.
+Evaluate expression(s) 'y' on table or dictionary 'x'.  The space
+between 'x' and ':' is required otherwise it becomes *note set::.
 
       d:`city!`London
       d :city
@@ -4446,93 +4444,93 @@ Node: List55863
 Node: Dictionary60013
 Node: User Functions64767
 Node: Expression67811
-Node: Named Functions68754
-Ref: exp69394
-Ref: log69462
-Ref: sin69562
-Ref: cos69701
-Ref: sqr69849
-Ref: sqrt69912
-Ref: div69985
-Ref: mod70141
-Ref: bar70319
-Ref: topX70652
-Ref: freq70814
-Ref: msum71165
-Ref: mavg71304
-Ref: sums71450
-Ref: deltas71586
-Ref: prm71928
-Ref: cmb72072
-Ref: keyF72445
-Ref: unkey72578
-Ref: meta72718
-Ref: in72853
-Ref: bin73032
-Ref: within73246
-Node: Knit Functions73482
-Ref: amend73777
-Ref: amend174243
-Ref: amend274379
-Ref: amend374601
-Ref: amend474783
-Ref: dmend74954
-Ref: dmend175284
-Ref: dmend375421
-Ref: dmend475589
-Node: I/O75753
-Ref: read csv77856
-Ref: write csv78034
-Ref: read json78198
-Ref: write json78388
-Ref: read nv78561
-Ref: w line78754
-Ref: r line79063
-Ref: w byte79176
-Ref: r byte79404
-Ref: r data79554
-Ref: w data80215
-Ref: conn/set80783
-Ref: http/get80843
-Ref: lib80903
-Node: Tables81367
-Ref: t82059
-Ref: xtable83664
-Ref: utable84146
-Node: kSQL84603
-Ref: select85201
-Ref: A85785
-Ref: by B86655
-Ref: where C86927
-Ref: update87509
-Ref: delete88069
-Ref: union88641
-Ref: leftjoin89162
-Ref: outer89680
-Ref: asof90015
-Ref: asof+91059
-Ref: insert92062
-Ref: upsert92408
-Node: System92732
-Ref: load93190
-Ref: timing93378
-Ref: variables93465
-Ref: memory93566
-Ref: cd93681
-Node: Control Flow93765
-Ref: cond94001
-Node: Temporal Functions94368
-Node: Errors95756
-Ref: class96206
-Ref: rank96295
-Ref: length96419
-Ref: _type96542
-Ref: domain96651
-Ref: limit96773
-Ref: nyi96974
-Ref: parse97307
-Ref: _value97462
-Node: Conclusion97590
+Node: Named Functions68673
+Ref: exp69313
+Ref: log69381
+Ref: sin69481
+Ref: cos69620
+Ref: sqr69768
+Ref: sqrt69831
+Ref: div69904
+Ref: mod70060
+Ref: bar70238
+Ref: topX70571
+Ref: freq70733
+Ref: msum71084
+Ref: mavg71223
+Ref: sums71369
+Ref: deltas71505
+Ref: prm71847
+Ref: cmb71991
+Ref: keyF72364
+Ref: unkey72497
+Ref: meta72637
+Ref: in72772
+Ref: bin72951
+Ref: within73165
+Node: Knit Functions73401
+Ref: amend73696
+Ref: amend174162
+Ref: amend274298
+Ref: amend374520
+Ref: amend474702
+Ref: dmend74873
+Ref: dmend175203
+Ref: dmend375340
+Ref: dmend475508
+Node: I/O75672
+Ref: read csv77775
+Ref: write csv77953
+Ref: read json78117
+Ref: write json78307
+Ref: read nv78480
+Ref: w line78673
+Ref: r line78982
+Ref: w byte79095
+Ref: r byte79323
+Ref: r data79473
+Ref: w data80134
+Ref: conn/set80702
+Ref: http/get80762
+Ref: lib80822
+Node: Tables81286
+Ref: t81978
+Ref: xtable83583
+Ref: utable84065
+Node: kSQL84522
+Ref: select85120
+Ref: A85704
+Ref: by B86574
+Ref: where C86846
+Ref: update87428
+Ref: delete87988
+Ref: union88560
+Ref: leftjoin89081
+Ref: outer89599
+Ref: asof89934
+Ref: asof+90978
+Ref: insert91981
+Ref: upsert92327
+Node: System92651
+Ref: load93109
+Ref: timing93297
+Ref: variables93384
+Ref: memory93485
+Ref: cd93600
+Node: Control Flow93684
+Ref: cond93920
+Node: Temporal Functions94287
+Node: Errors95675
+Ref: class96125
+Ref: rank96214
+Ref: length96338
+Ref: _type96461
+Ref: domain96570
+Ref: limit96692
+Ref: nyi96893
+Ref: parse97226
+Ref: _value97381
+Node: Conclusion97509
 
 End Tag Table
 

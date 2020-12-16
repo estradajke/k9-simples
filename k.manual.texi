@@ -2579,7 +2579,7 @@ Expr :a+b
 @end verbatim
 
 @section expr @result{} x :y
-In order to evaluate an expression on a x, a table or dictionary, then there must be a space (otherwise it's set) and then y, one of many evaluations.  The evaluations list keys but return values for computation.
+Evaluate expression(s) @code{y} on table or dictionary @code{x}.  The space between @code{x} and @code{:} is required otherwise it becomes @ref{set}.
 
 @example
  d:`city!`London
