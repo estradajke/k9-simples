@@ -1,0 +1,325 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- December 17, 2020
+
+Copyright (C) 2020 John Estrada -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Adverb (Shakti tutorial)</title>
+
+<meta name="description" content="Adverb (Shakti tutorial)">
+<meta name="keywords" content="Adverb (Shakti tutorial)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="index.html" rel="up" title="Top">
+<link href="Noun.html" rel="next" title="Noun">
+<link href="Verb.html" rel="prev" title="Verb">
+<style type="text/css">
+<!--
+/* spacing */
+
+
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+.cartouche{
+    border: none;
+    background: lightgrey;
+}
+
+table, th, td{
+  table-layout: auto;
+  border-collapse: collapse;
+  border: 1px solid blue;
+  font-family: monospace; 
+}
+
+th, td {
+  padding: 5px;     
+  font-family: monospace; 
+}
+
+tr:nth-child(1) {
+/*    background-color:lightsteelblue; // Replace it with your desired color */
+}
+
+.menu{
+    border: none;
+}
+
+table.menu td{ 
+    padding: 1px;
+    border: none;
+    font-family: sansserif;
+}
+
+table.menu th{ 
+    padding: 1px;
+    border: none;
+    font-family: sansserif;
+}
+
+
+
+
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Adverb"></span><div class="header">
+<p>
+Next: <a href="Noun.html" accesskey="n" rel="next">Noun</a>, Previous: <a href="Verb.html" accesskey="p" rel="prev">Verb</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+</div>
+<hr>
+<span id="Adverb-1"></span><h2 class="chapter">5 Adverb</h2>
+<p>Adverbs modify verbs to operative iteratively over nouns.  This previous sentence likely will only make sense once you understand it so let&rsquo;s jump into an example.  Imagine you have a list of 4 lists.  Using <code>first</code> you will retrieve the first sub-list.  In order to retrieve the first element of each sub-list you&rsquo;ll have to modify the function <code>first</code> with a modifier <code>each</code>.
+</p>
+<div class="example">
+<pre class="example">Adverb               
+f/  <a href="#scan">over</a>  c/  <a href="#g_t_002bjoin">+join</a>  
+f\  <a href="#scan">scan</a>  c\  <a href="#g_t_002bsplit">+split</a> 
+f'  <a href="#each">each</a>  v'  <a href="#g_t_002bhas">+has</a>   
+f': <a href="#eachp">eachp</a> v': <a href="#bin2">+bin</a>   
+f/: <a href="#eachr">eachr</a> ([n;]f)/:  
+f\: <a href="#eachl">eachl</a> ([n;]f)\:  
+</pre></div>
+
+<span id="scan"></span><span id="scan-_0028over_0029-_21d2-f_005cx-_0028f_002fx_0029"></span><h3 class="section">5.1 scan (over) &rArr; f\x (f/x)</h3>
+<p>Compute f[x;y] such that f i=f[f i-1;x i].  Scan and over are the same functions except that over only returns the last value.
+</p>
+<p>Given a function of two inputs, output for each x according to...
+</p><ul>
+<li> f 0 &rarr;          x 0
+</li><li> f 1 &rarr; f[f 0;x 1]
+</li><li> ...
+</li><li> f i &rarr; f[f i-1;x i]
+</li><li> ...
+</li><li> f n &rarr; f[f n-1;x n]
+</li></ul>
+
+<p>An example
+</p>
+<div class="example">
+<pre class="example">&nbsp;(,\)(&quot;a&quot;;&quot;b&quot;;&quot;c&quot;)
+a
+ab
+abc
+&nbsp;+\1 20 300
+1 21 321
+&nbsp;{y+10*x}\1 20 300
+1 30 600
+&nbsp;{y+10*x}/1 20 300
+600
+</pre></div>
+
+<span id="g_t_002bjoin"></span><span id="g_t_002bjoin-_21d2-c_002fx"></span><h3 class="section">5.2 +join &rArr; c/x</h3>
+<p>Join a list of strings x using character c between each pair.
+</p>
+<div class="example">
+<pre class="example">&nbsp;&quot;-&quot;/(&quot;Some&quot;;&quot;random text&quot;;&quot;plus&quot;;,&quot;.&quot;)
+&quot;Some-random text-plus-.&quot;
+</pre></div>
+
+<p>Convert a list of integers x via base c.
+</p>
+<div class="example">
+<pre class="example"> 8/2 0 1  / 1 + (0*8) + (2*8*8)
+129
+</pre></div>
+
+<span id="g_t_002bsplit"></span><span id="g_t_002bsplit-_21d2-c_005cx"></span><h3 class="section">5.3 +split &rArr; c\x</h3>
+<p>Split the string x using character c to determine the locations.
+</p>
+<div class="example">
+<pre class="example">&nbsp;&quot; &quot;\&quot;Here is a short sentence.&quot;
+Here     
+is       
+a        
+short    
+sentence.
+</pre></div>
+
+<p>Split a number x into base c units.
+</p>
+<div class="example">
+<pre class="example"> 8\129
+2 0 1
+</pre></div>
+
+<span id="each"></span><span id="each-_21d2-f_0027x"></span><h3 class="section">5.4 each &rArr; f&rsquo;x</h3>
+<p>Apply function f to each value in list x in a single thread.  Multithread operation is done with <a href="#eachp">eachp</a>.  
+</p>
+<div class="example">
+<pre class="example">&nbsp;*((1 2 3);4;(5 6);7)   / first element of the list
+1 2 3
+
+&nbsp;*'((1 2 3);4;(5 6);7)  / first element of each element
+1 4 5 7
+</pre></div>
+
+<span id="g_t_002bhas"></span><span id="g_t_002bhas-_21d2-v_0027x"></span><h3 class="section">5.5 +has &rArr; v&rsquo;x</h3>
+<p>Determine if vector v has element or list x.  Simliar to <a href="Named-Functions.html#in">in</a> but arguments reversed.
+</p>
+<div class="example">
+<pre class="example"> `a`b`c`a`b'`a
+1b
+
+`a`b`c`a`b'`d
+0b
+
+ `a`b`c`a`b'`a`b`x`y`z
+11000b
+
+ (1 2;4 5 6;7 9)'(1 2;8 9)
+10b
+</pre></div>
+
+<span id="eachp"></span><span id="eachp-_21d2-f_0027_003a_005bx_003by_005d"></span><h3 class="section">5.6 eachp &rArr; f&rsquo;:[x;y]</h3>
+<p>Apply f[x;y] using the prior value of y, eg. f[y@n;y@n-1].  The first value, n=0, returns f[y@0;x].
+</p>
+<div class="example">
+<pre class="example">&nbsp;,':[`x;(`$&quot;y&quot;,'$!5)]
+y0 x 
+y1 y0
+y2 y1
+y3 y2
+y4 y3
+
+&nbsp;%':[100;100 101.9 105.1 102.3 106.1] / compute returns
+1 1.019 1.031403 0.9733587 1.037146
+
+&nbsp;100%':100 101.9 105.1 102.3 106.1    / using infix notation
+1 1.019 1.031403 0.9733587 1.037146
+</pre></div>
+
+<p>Additionally eachp is each parallel.  This will allow a function to run using multiple threads over a list of arguments.
+</p>
+<div class="example">
+<pre class="example">\t {L:x?1.;sum L%sin L*cos L*sin L+L*L}':8#_2e7 / run over multiple threads
+1655
+
+\t {L:x?1.;sum L%sin L*cos L*sin L+L*L}'8#_2e7  / run in a single thread
+4144
+</pre></div>
+
+<span id="bin2"></span><span id="g_t_002bbin-_21d2-x_0027_003ay"></span><h4 class="subsection">5.6.1 +bin &rArr; x&rsquo;:y</h4>
+<p>Given a sorted (increasing) list x, find the greatest index, i, where y&gt;x[i].  
+</p>
+<div class="example">
+<pre class="example">&nbsp;n:exp 0.01*!5;n
+1 1.01005 1.020201 1.030455 1.040811
+&nbsp;n':1.025
+2
+</pre></div>
+
+<span id="eachr"></span><span id="eachr-_21d2-f_002f_003ax_002c-x-f_002f_003ay_002c-f_002f_003a_005bx_003by_005d"></span><h3 class="section">5.7 eachr &rArr; f/:x, x f/:y, f/:[x;y]</h3>
+
+<table>
+<tr><td><b>name</b></td><td><b>f parameters</b></td><td><b>x</b></td><td><b>y</b></td></tr>
+<tr><td><a href="#converge-over">converge over</a></td><td>1</td><td>element</td><td>n/a</td></tr>
+<tr><td><a href="#each-right">each right</a></td><td>2</td><td>array</td><td>element/array</td></tr>
+</table>
+
+<span id="converge-over"></span><span id="Converge-Scan"></span><h4 class="subsection">5.7.1 Converge Scan</h4>
+<p>Compute f[x] where x is the previous output of f until the value converges or returns to x.  The initial value of x is the input.  Only the final value is returned.  Intermeediate values can be retrieved via <a href="#converge-scan">converge scan</a>.
+</p>
+<div class="example">
+<pre class="example">  {x*x}/:.99    / converge to value
+0.
+
+ l:3 4 2 1 4 99 / until output is x
+ l/:0
+4
+
+ / the latter example worked out manually
+ l 0
+3
+ l 3
+1
+ l 1
+4
+ l 4            / f[4]=4 so will stop
+4
+</pre></div>
+
+<span id="each-right"></span><span id="Each-Right"></span><h4 class="subsection">5.7.2 Each Right</h4>
+<p>Apply f[x;y] to each value of y, i.e. the right one.
+</p>
+<div class="example">
+<pre class="example"> (!2)+/:!4
+0 1
+1 2
+2 3
+3 4
+</pre></div>
+
+<span id="eachl"></span><span id="eachl-_21d2-f_005c_003ax_002c-x-f_005c_003ay_002c-f_005c_003a_005bx_003by_005d"></span><h3 class="section">5.8 eachl &rArr; f\:x, x f\:y, f\:[x;y]</h3>
+
+<table>
+<tr><td><b>name</b></td><td><b>f parameters</b></td><td><b>x</b></td><td><b>y</b></td></tr>
+<tr><td><a href="#converge-scan">converge scan</a></td><td>1</td><td>element</td><td>n/a</td></tr>
+<tr><td><a href="#each-left">each left</a></td><td>2</td><td>array</td><td>element/array</td></tr>
+</table>
+
+<span id="converge-scan"></span><span id="Converge-Scan-1"></span><h4 class="subsection">5.8.1 Converge Scan</h4>
+<p>Compute f[x] where x is the previous output of f until the value converges or returns to x.  The initial value of x is the input
+</p>
+<div class="example">
+<pre class="example">  {x*x}\:.99  / converge to value
+0.99 0.9801 0.9605961 ... 1.323698e-18 1.752177e-36 0.
+
+ l:3 4 2 1 4 99 / until output is x
+ l\:0
+0 3 1 4
+
+ / the latter example worked out manually
+ l 0
+3
+ l 3
+1
+ l 1
+4
+ l 4            / f[4]=4 so will stop
+4
+</pre></div>
+
+<span id="each-left"></span><span id="Each-Left"></span><h4 class="subsection">5.8.2 Each Left</h4>
+<p>Apply f[x;y] to each value of x, i.e. the left one.
+</p>
+<div class="example">
+<pre class="example"> (!2)+\:!4
+0 1 2 3
+1 2 3 4
+
+ +\:[!2;!4]
+0 1 2 3
+1 2 3 4
+</pre></div>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Noun.html" accesskey="n" rel="next">Noun</a>, Previous: <a href="Verb.html" accesskey="p" rel="prev">Verb</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+</div>
+
+
+
+</body>
+</html>
