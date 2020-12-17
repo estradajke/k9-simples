@@ -1,6 +1,6 @@
 \input texinfo
 @setfilename k9.info
-@settitle Shakti tutorial
+@settitle Shakti (k9) tutorial
 @codequotebacktick on
 
 @copying
@@ -814,7 +814,7 @@ $ @ref{string},   @ref{cast}.
 @c In the example above the parse output is reduced.  In order to see the elements in the output one could manually return the values in the list, eg. p[2;0 1 2].
 
 @anchor{set}@section set @result{} x:y
-Set a variable, x, to a value, y.
+Set a variable, x, to a value, y.  A space, eg. @code{x :y} will turn this into an @ref{Expression}.  
 
 @example
 @ a:3
