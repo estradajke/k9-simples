@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- December 17, 2020
+
+Copyright (C) 2020 John Estrada -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Expression (Shakti (k9) tutorial)</title>
+
+<meta name="description" content="Expression (Shakti (k9) tutorial)">
+<meta name="keywords" content="Expression (Shakti (k9) tutorial)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="index.html" rel="up" title="Top">
+<link href="Named-Functions.html" rel="next" title="Named Functions">
+<link href="User-Functions.html" rel="prev" title="User Functions">
+<style type="text/css">
+<!--
+/* spacing */
+
+
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+.cartouche{
+    border: none;
+    background: lightgrey;
+}
+
+table, th, td{
+  table-layout: auto;
+  border-collapse: collapse;
+  border: 1px solid blue;
+  font-family: monospace; 
+}
+
+th, td {
+  padding: 5px;     
+  font-family: monospace; 
+}
+
+tr:nth-child(1) {
+/*    background-color:lightsteelblue; // Replace it with your desired color */
+}
+
+.menu{
+    border: none;
+}
+
+table.menu td{ 
+    padding: 1px;
+    border: none;
+    font-family: sansserif;
+}
+
+table.menu th{ 
+    padding: 1px;
+    border: none;
+    font-family: sansserif;
+}
+
+
+
+
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Expression"></span><div class="header">
+<p>
+Next: <a href="Named-Functions.html" accesskey="n" rel="next">Named Functions</a>, Previous: <a href="User-Functions.html" accesskey="p" rel="prev">User Functions</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+</div>
+<hr>
+<span id="Expression-Evaluation"></span><h2 class="chapter">10 Expression Evaluation</h2>
+<p>k9 has a compact way to evalue an expression on data structures including dictionaries and tables.
+</p>
+<pre class="verbatim">Expr :a+b
+</pre>
+<span id="expr-_21d2-x-_003ay"></span><h3 class="section">10.1 expr &rArr; x :y</h3>
+<p>Evaluate expression(s) <code>y</code> on table or dictionary <code>x</code>.  The space between <code>x</code> and <code>:</code> is required otherwise it becomes <a href="Verb.html#set">set</a>.
+</p>
+<div class="example">
+<pre class="example"> d:`city!`London
+ d :city
+`London
+
+ d :`Paris=city
+0b
+
+ d:`city!`London`Paris`Madrid
+ d :`Paris=city
+010b
+
+ d:`a`b`c!(3 2 1;1 2 3;1 2 3);d
+a|3 2 1
+b|1 2 3
+c|1 2 3
+
+ d :a+b*c
+4 6 10
+
+t:+d;t
+a b c
+- - -
+3 1 1
+2 2 2
+1 3 3
+
+ t :(a+b*c)
+4 6 10
+
+ d:`a`b`c!(3 2 1;1 2 3;1 2 3);d
+ d :(100*a;b+c)
+300 200 100
+2 4 6      
+</pre></div>
+
+
+
+
+</body>
+</html>
