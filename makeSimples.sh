@@ -8,4 +8,4 @@ texi2any --css-include=style.css --html k.manual.texi
 texi2any --css-include=style.css --html --no-split k.manual.texi -o k9Simples.html
 
 
-sed -i '' -e 's/Top (Shakti tutorial)/Shakti (k9) tutorial/g' k9/index.html
+sed -i '' -e 's/Top (Shakti (k9) tutorial)/Shakti (k9) tutorial/g' k9/index.html

@@ -1153,14 +1153,14 @@ In the case where x is a list of integers  x1 x2 ... xk, generate a matrix of k 
 1 0 1
 1 1 0
 1 1 1
-
- B:`b'+!16#2 / create a list of all 16-bit binary numbers from 0 to 65535 @c JOHN: THIS DOESN'T WORK
-
-B[12123]    / pull the element 12,123
-0010111101011011b
-
-2/B[12123] / convert to base10 to check it's actually 12123
-12123
+@c 
+@c  B:`b'+!16#2 / create a list of all 16-bit binary numbers from 0 to 65535 @c JOHN: THIS DOESN'T WORK
+@c 
+@c B[12123]    / pull the element 12,123
+@c 0010111101011011b
+@c 
+@c 2/B[12123] / convert to base10 to check it's actually 12123
+@c 12123
 @end example
 
 @anchor{key}@section key @result{} x!y
