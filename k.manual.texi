@@ -1126,7 +1126,7 @@ Enumerate the domain of x.  Given an integer, x, generate an integer list from 0
 `a`b`c
 @end example
 
-In the case where x is a list of integers  x1 x2 ... xk, generate a matrix of k rows where each row has size */x1 x2 ... xk and the elements of row i are !xi repeated as many times as necessary. Each row's repeats must fit below the same values of the row above.
+In the case where x is a list of integers  x1 x2 ... xk, generate a matrix of k rows where each row has size */x1 x2 ... xk and the elements of row i are !xi repeated as many times as necessary. Each row's repeats must fit below constant values of the row above.
 
 @example
  !2 3 2 / Each row of length 2*3*2 = */2 3 2 = 12. First row values 0,1, second row values 0,1,2, third row values 0,1
@@ -1144,7 +1144,7 @@ In the case where x is a list of integers  x1 x2 ... xk, generate a matrix of k 
 0 0 1 1 0 0 1 1
 0 1 0 1 0 1 0 1
 
- +!3#2
+ +!2 2 2
 0 0 0
 0 0 1
 0 1 0
@@ -1606,9 +1606,17 @@ c|3
 @end example
 
 @node Adverb
-@chapter Adverb
-Adverbs modify verbs to operative iteratively over nouns.  This previous sentence likely will only make sense once you understand it so let's jump into an example.  Imagine you have a list of 4 lists.  Using @code{first} you will retrieve the first sub-list.  In order to retrieve the first element of each sub-list you'll have to modify the function @code{first} with a modifier @code{each}.
+@chapter Adverbs
+Adverbs modify verbs to operative iteratively over nouns.  This previous sentence likely will  make sense only once you understand it so let's jump into an example.  Imagine you have a list of 4 lists.  Using @code{first} you will retrieve the first sub-list.  In order to retrieve the first element of each sub-list you'll have to modify the function @code{first} with a modifier @code{each}.
+@example 
+x: (1 2; 3 4; 5 6; 7 8)
+ *x
+1 2
+ *'x
+1 3 5 7
+@end example
 
+Here now is a list of the adverbs and their names.
 @example
 Adverb               
 f/  @ref{scan,over}  c/  @ref{+join}  
@@ -1655,10 +1663,10 @@ Join a list of strings x using character c between each pair.
 "Some-random text-plus-."
 @end example
 
-Convert a list of integers x via base c.
+The notaion c/x converts a list of integers x via base c into base 10. In the example below, assuming 2 0 1 are digits in base 8, they convert to  1 + (0*8) + (2*8*8) = 129
 
 @example
- 8/2 0 1  / 1 + (0*8) + (2*8*8)
+ 8/2 0 1  
 129
 @end example
 
@@ -1674,7 +1682,7 @@ short
 sentence.
 @end example
 
-Split a number x into base c units.
+c\x splits a number x into base c digits.
 
 @example
  8\129
@@ -1693,7 +1701,7 @@ Apply function f to each value in list x in a single thread.  Multithread operat
 @end example
 
 @anchor{+has}@section +has @result{} v'x
-Determine if vector v has element or list x.  Simliar to @ref{in} but arguments reversed.
+Determine whether vector v has element x if x is an atom (i.e., scalar) or each element of x if x is a list.  Simliar to @ref{in} but with the arguments reversed.
 
 @example
  `a`b`c`a`b'`a
@@ -1727,10 +1735,10 @@ y4 y3
 1 1.019 1.031403 0.9733587 1.037146
 @end example
 
-Additionally eachp is each parallel.  This will allow a function to run using multiple threads over a list of arguments.
+Additionally eachp (':) is a multithreaded (parallel) each.  This will allow a function to run using multiple threads over a list of arguments.
 
 @example
-\t @{L:x?1.;sum L%sin L*cos L*sin L+L*L@}':8#_2e7 / run over multiple threads
+\t @{L:x?1.;sum L%sin L*cos L*sin L+L*L@}':8#_2e7 / run using multiple threads
 1655
 
 \t @{L:x?1.;sum L%sin L*cos L*sin L+L*L@}'8#_2e7  / run in a single thread
@@ -1758,24 +1766,24 @@ Given a sorted (increasing) list x, find the greatest index, i, where y>x[i].
 @end flushleft
 
 @anchor{converge over}@subsection Converge Scan
-Compute f[x] where x is the previous output of f until the value converges or returns to x.  The initial value of x is the input.  Only the final value is returned.  Intermeediate values can be retrieved via @ref{converge scan}.
+Compute f[x] where x is the previous output of f until the value converges or returns to x.  The initial value of x is the input.  Only the final value is returned.  Intermediate values can be retrieved via @ref{converge scan}.
 
 @example
   @{x*x@}/:.99    / converge to value
 0.
 
- l:3 4 2 1 4 99 / until output is x
- l/:0
+ x:3 4 2 1 4 99 
+ x/:0 
 4
 
- / the latter example worked out manually
- l 0
+ / the latter example worked out manually. Recall that x 3 is the same as x[3]
+ x 0
 3
- l 3
+ x 3
 1
- l 1
+ x 1
 4
- l 4            / f[4]=4 so will stop
+ x 4            / x[4]=4 so will stop
 4
 @end example
 
@@ -1783,11 +1791,11 @@ Compute f[x] where x is the previous output of f until the value converges or re
 Apply f[x;y] to each value of y, i.e. the right one.
 
 @example
- (!2)+/:!4
-0 1
-1 2
-2 3
-3 4
+ (!2)+/:20+!4
+20 21
+21 22
+22 23
+23 24
 @end example
 
 @anchor{eachl}@section eachl @result{} f\:x, x f\:y, f\:[x;y]
@@ -1807,18 +1815,18 @@ Compute f[x] where x is the previous output of f until the value converges or re
   @{x*x@}\:.99  / converge to value
 0.99 0.9801 0.9605961 ... 1.323698e-18 1.752177e-36 0.
 
- l:3 4 2 1 4 99 / until output is x
- l\:0
+ x:3 4 2 1 4 99 / until output is x
+ x\:0
 0 3 1 4
 
  / the latter example worked out manually
- l 0
+ x 0
 3
- l 3
+ x 3
 1
- l 1
+ x 1
 4
- l 4            / f[4]=4 so will stop
+ x 4            / x[4]=4 so will stop
 4
 @end example
 
@@ -1826,9 +1834,9 @@ Compute f[x] where x is the previous output of f until the value converges or re
 Apply f[x;y] to each value of x, i.e. the left one.
 
 @example
- (!2)+\:!4
-0 1 2 3
-1 2 3 4
+ (!2)+\:30+!4
+30 31 32 33
+31 32 33 34
 
  +\:[!2;!4]
 0 1 2 3
