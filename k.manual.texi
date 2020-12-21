@@ -160,7 +160,7 @@ Sep 13 2020 16GB (c) shakti
 
 @section Simple example
 
-JOHN: I SUGGEST MOVING THIS TO LATER BECAUSE AS IT IS, IT WOULDN'T LOOK SIMPLE AT ALL TO A NEWBIE.
+@c JOHN: I SUGGEST MOVING THIS TO LATER BECAUSE AS IT IS, IT WOULDN'T LOOK SIMPLE AT ALL TO A NEWBIE.
 
 Here I will start up k9, perform some trivial calculations, and then close the session.  After this example it will be assumed the user will have a k9 session running and working in repl mode.  Comments (@code{/}) will be added to the end of lines as needed.
 
@@ -274,7 +274,7 @@ In k9 as the Help/Info card shows data are nouns, functions/lists are verbs and 
 
 @node Examples
 @chapter Examples
-[JOHN: THIS SHOULD GO AFTER YOU EXPLAIN THE LANGUAGE. AGAIN, IT'S TOO SCARY AS OF NOW.]
+@c [JOHN: THIS SHOULD GO AFTER YOU EXPLAIN THE LANGUAGE. AGAIN, IT'S TOO SCARY AS OF NOW.]
 Before jumping into syntax, let's look at some example problems to get a sense of the speed of k9 at processing data.  Given  the  author's background many of the examples will be based on financial markets.  For those not familiar with this field a short introduction may help.
 
 @section A Tiny Introduction to Financial Market Data
@@ -533,7 +533,7 @@ And then one can use the where function, @code{&}, to determine the index of the
 
 @node Benchmark
 @chapter Benchmark
-[JOHN: THIS TOO SHOULD GO AFTER EXAMPLES BUT AFTER YOU EXPLAIN THE LANGUAGE]
+@c [JOHN: THIS TOO SHOULD GO AFTER EXAMPLES BUT AFTER YOU EXPLAIN THE LANGUAGE]
 Shakti is a fast data analysis language  and clear benchmarks illustrate this.  The Shakti website has a file for such purpose, b.k.  For example, you can see below that the first query (Q1) k9 takes 1ms while postgres, spark and mongo are orders of magnitude slower.  
 
 b.k
@@ -1154,7 +1154,7 @@ In the case where x is a list of integers  x1 x2 ... xk, generate a matrix of k 
 1 1 0
 1 1 1
 
- B:`b'+!16#2 / create a list of all 16-bit binary numbers from 0 to 65535 JOHN: THIS DOESN'T WORK
+ B:`b'+!16#2 / create a list of all 16-bit binary numbers from 0 to 65535 @c JOHN: THIS DOESN'T WORK
 
 B[12123]    / pull the element 12,123
 0010111101011011b
@@ -1232,7 +1232,7 @@ Cut list y by size, indices, or function x.
 ,1.1                           
 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9
 
- @{(x*x)within .5 1.5@}^.1*!20 / JOHN I GET A SEG FAULT FOR THIS
+ @{(x*x)within .5 1.5@}^.1*!20 / @c JOHN I GET A SEG FAULT FOR THIS
 0.8                            
 0.9                            
 1.                             

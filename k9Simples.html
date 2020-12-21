@@ -294,8 +294,7 @@ Sep 13 2020 16GB (c) shakti
 
 <span id="Simple-example"></span><h3 class="section">1.6 Simple example</h3>
 
-<p>JOHN: I SUGGEST MOVING THIS TO LATER BECAUSE AS IT IS, IT WOULDN&rsquo;T LOOK SIMPLE AT ALL TO A NEWBIE.
-</p>
+
 <p>Here I will start up k9, perform some trivial calculations, and then close the session.  After this example it will be assumed the user will have a k9 session running and working in repl mode.  Comments (<code>/</code>) will be added to the end of lines as needed.
 </p>
 <div class="example">
@@ -411,8 +410,7 @@ bash-3.2$
 Next: <a href="#Benchmark" accesskey="n" rel="next">Benchmark</a>, Previous: <a href="#Introduction" accesskey="p" rel="prev">Introduction</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <span id="Examples-1"></span><h2 class="chapter">2 Examples</h2>
-<p>[JOHN: THIS SHOULD GO AFTER YOU EXPLAIN THE LANGUAGE. AGAIN, IT&rsquo;S TOO SCARY AS OF NOW.]
-Before jumping into syntax, let&rsquo;s look at some example problems to get a sense of the speed of k9 at processing data.  Given  the  author&rsquo;s background many of the examples will be based on financial markets.  For those not familiar with this field a short introduction may help.
+<p>Before jumping into syntax, let&rsquo;s look at some example problems to get a sense of the speed of k9 at processing data.  Given  the  author&rsquo;s background many of the examples will be based on financial markets.  For those not familiar with this field a short introduction may help.
 </p>
 <span id="A-Tiny-Introduction-to-Financial-Market-Data"></span><h3 class="section">2.1 A Tiny Introduction to Financial Market Data</h3>
 <p>Financial market data generally are stored as prices (often call quotes) and trades.  At a minimum, prices will include time (t), price to buy (b for bid) and price to sell (a for ask).  Trades will include at a minimum time (t) and trade price (p).  In normal markets there are many more prices than trades.  (Additionally, the data normally includes the name of the security (s) and the exchange (x) from which the data comes.)  
@@ -672,8 +670,7 @@ in
 Next: <a href="#Verb" accesskey="n" rel="next">Verb</a>, Previous: <a href="#Examples" accesskey="p" rel="prev">Examples</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <span id="Benchmark-1"></span><h2 class="chapter">3 Benchmark</h2>
-<p>[JOHN: THIS TOO SHOULD GO AFTER EXAMPLES BUT AFTER YOU EXPLAIN THE LANGUAGE]
-Shakti is a fast data analysis language  and clear benchmarks illustrate this.  The Shakti website has a file for such purpose, b.k.  For example, you can see below that the first query (Q1) k9 takes 1ms while postgres, spark and mongo are orders of magnitude slower.  
+<p>Shakti is a fast data analysis language  and clear benchmarks illustrate this.  The Shakti website has a file for such purpose, b.k.  For example, you can see below that the first query (Q1) k9 takes 1ms while postgres, spark and mongo are orders of magnitude slower.  
 </p>
 <p>b.k
 </p>
@@ -1236,8 +1233,7 @@ n|2 4
 1 1 0
 1 1 1
 
- B:`b'+!16#2 / create a list of all 16-bit binary numbers from 0 to 65535 JOHN: THIS DOESN'T WORK
-
+ B:`b'+!16#2 / create a list of all 16-bit binary numbers from 0 to 65535 
 B[12123]    / pull the element 12,123
 0010111101011011b
 
@@ -1314,8 +1310,7 @@ b|0 1 2
 ,1.1                           
 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9
 
- {(x*x)within .5 1.5}^.1*!20 / JOHN I GET A SEG FAULT FOR THIS
-0.8                            
+ {(x*x)within .5 1.5}^.1*!20 / 0.8                            
 0.9                            
 1.                             
 1.1                            

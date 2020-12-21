@@ -283,10 +283,7 @@ without rlwrap and again exit the session.
 1.6 Simple example
 ==================
 
-JOHN: I SUGGEST MOVING THIS TO LATER BECAUSE AS IT IS, IT WOULDN'T LOOK
-SIMPLE AT ALL TO A NEWBIE.
-
-   Here I will start up k9, perform some trivial calculations, and then
+Here I will start up k9, perform some trivial calculations, and then
 close the session.  After this example it will be assumed the user will
 have a k9 session running and working in repl mode.  Comments ('/') will
 be added to the end of lines as needed.
@@ -430,12 +427,10 @@ File: k9.info,  Node: Examples,  Next: Benchmark,  Prev: Introduction,  Up: Top
 2 Examples
 **********
 
-[JOHN: THIS SHOULD GO AFTER YOU EXPLAIN THE LANGUAGE. AGAIN, IT'S TOO
-SCARY AS OF NOW.] Before jumping into syntax, let's look at some example
-problems to get a sense of the speed of k9 at processing data.  Given
-the author's background many of the examples will be based on financial
-markets.  For those not familiar with this field a short introduction
-may help.
+Before jumping into syntax, let's look at some example problems to get a
+sense of the speed of k9 at processing data.  Given the author's
+background many of the examples will be based on financial markets.  For
+those not familiar with this field a short introduction may help.
 
 2.1 A Tiny Introduction to Financial Market Data
 ================================================
@@ -706,11 +701,10 @@ File: k9.info,  Node: Benchmark,  Next: Verb,  Prev: Examples,  Up: Top
 3 Benchmark
 ***********
 
-[JOHN: THIS TOO SHOULD GO AFTER EXAMPLES BUT AFTER YOU EXPLAIN THE
-LANGUAGE] Shakti is a fast data analysis language and clear benchmarks
-illustrate this.  The Shakti website has a file for such purpose, b.k.
-For example, you can see below that the first query (Q1) k9 takes 1ms
-while postgres, spark and mongo are orders of magnitude slower.
+Shakti is a fast data analysis language and clear benchmarks illustrate
+this.  The Shakti website has a file for such purpose, b.k.  For
+example, you can see below that the first query (Q1) k9 takes 1ms while
+postgres, spark and mongo are orders of magnitude slower.
 
    b.k
 
@@ -1307,8 +1301,7 @@ row's repeats must fit below constant values of the row above.
      1 1 0
      1 1 1
 
-      B:`b'+!16#2 / create a list of all 16-bit binary numbers from 0 to 65535 JOHN: THIS DOESN'T WORK
-
+      B:`b'+!16#2 / create a list of all 16-bit binary numbers from 0 to 65535
      B[12123]    / pull the element 12,123
      0010111101011011b
 
@@ -1386,8 +1379,7 @@ Cut list y by size, indices, or function x.
      ,1.1
      1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9
 
-      {(x*x)within .5 1.5}^.1*!20 / JOHN I GET A SEG FAULT FOR THIS
-     0.8
+      {(x*x)within .5 1.5}^.1*!20 / 0.8
      0.9
      1.
      1.1
@@ -4415,168 +4407,168 @@ exp log sin cos sqr sqrt div mod bar; top freq msum mavg sums deltas prm cmb
 Tag Table:
 Node: Top126
 Node: Introduction4637
-Node: Examples16202
-Node: Benchmark23760
-Node: Verb28712
-Ref: x30453
-Ref: set30478
-Ref: flip30737
-Ref: plus30987
-Ref: negate31465
-Ref: minus31637
-Ref: first31744
-Ref: times31960
-Ref: divide32091
-Ref: where32228
-Ref: min/and32712
-Ref: reverse32971
-Ref: max/or33233
-Ref: asc33497
-Ref: less33885
-Ref: group34186
-Ref: equal34439
-Ref: not34743
-Ref: match34860
-Ref: enum35243
-Ref: key36549
-Ref: enlist36722
-Ref: cat36862
-Ref: sort36981
-Ref: [f]cut37214
-Ref: count38175
-Ref: [f]take38365
-Ref: take138798
-Ref: take239219
-Ref: take339500
-Ref: floor39742
-Ref: [f]drop39833
-Ref: drop140269
-Ref: drop240455
-Ref: drop340577
-Ref: string40755
-Ref: cast40856
-Ref: unique+41046
-Ref: find+41734
-Ref: type42738
-Ref: [f]at43189
-Ref: value43562
-Ref: [f]dot43989
-Node: Adverb45089
-Ref: scan45933
-Ref: +join46463
-Ref: +split46839
-Ref: each47102
-Ref: +has47391
-Ref: eachp47730
-Ref: bin248500
-Ref: eachr48705
-Ref: converge over48871
-Ref: each right49419
-Ref: eachl49573
-Ref: converge scan49738
-Ref: each left50224
-Node: Noun50409
-Ref: Atom Types51747
-Ref: bool52928
-Ref: int53615
-Ref: flt54275
-Ref: char54677
-Ref: name54900
-Ref: uuid55131
-Ref: time55288
-Ref: date56164
-Ref: datetime56625
-Node: List57422
-Node: Dictionary61572
-Node: User Functions66326
-Node: Expression69370
-Node: Named Functions70232
-Ref: exp70872
-Ref: log70940
-Ref: sin71040
-Ref: cos71179
-Ref: sqr71327
-Ref: sqrt71390
-Ref: div71463
-Ref: mod71619
-Ref: bar71797
-Ref: topX72130
-Ref: freq72292
-Ref: msum72643
-Ref: mavg72782
-Ref: sums72928
-Ref: deltas73064
-Ref: prm73406
-Ref: cmb73550
-Ref: keyF73923
-Ref: unkey74056
-Ref: meta74196
-Ref: in74331
-Ref: bin74510
-Ref: within74724
-Node: Knit Functions74960
-Ref: amend75255
-Ref: amend175721
-Ref: amend275857
-Ref: amend376079
-Ref: amend476261
-Ref: dmend76432
-Ref: dmend176762
-Ref: dmend376899
-Ref: dmend477067
-Node: I/O77231
-Ref: read csv79334
-Ref: write csv79512
-Ref: read json79676
-Ref: write json79866
-Ref: read nv80039
-Ref: w line80232
-Ref: r line80541
-Ref: w byte80654
-Ref: r byte80882
-Ref: r data81032
-Ref: w data81693
-Ref: conn/set82261
-Ref: http/get82321
-Ref: lib82381
-Node: Tables82845
-Ref: t83537
-Ref: xtable85142
-Ref: utable85624
-Node: kSQL86081
-Ref: select86679
-Ref: A87263
-Ref: by B88133
-Ref: where C88405
-Ref: update88987
-Ref: delete89547
-Ref: union90119
-Ref: leftjoin90640
-Ref: outer91158
-Ref: asof91493
-Ref: asof+92537
-Ref: insert93540
-Ref: upsert93886
-Node: System94210
-Ref: load94668
-Ref: timing94856
-Ref: variables94943
-Ref: memory95044
-Ref: cd95159
-Node: Control Flow95243
-Ref: cond95479
-Node: Temporal Functions95846
-Node: Errors97234
-Ref: class97684
-Ref: rank97773
-Ref: length97897
-Ref: _type98020
-Ref: domain98129
-Ref: limit98251
-Ref: nyi98452
-Ref: parse98785
-Ref: _value98940
-Node: Conclusion99068
+Node: Examples16099
+Node: Benchmark23569
+Node: Verb28445
+Ref: x30186
+Ref: set30211
+Ref: flip30470
+Ref: plus30720
+Ref: negate31198
+Ref: minus31370
+Ref: first31477
+Ref: times31693
+Ref: divide31824
+Ref: where31961
+Ref: min/and32445
+Ref: reverse32704
+Ref: max/or32966
+Ref: asc33230
+Ref: less33618
+Ref: group33919
+Ref: equal34172
+Ref: not34476
+Ref: match34593
+Ref: enum34976
+Ref: key36257
+Ref: enlist36430
+Ref: cat36570
+Ref: sort36689
+Ref: [f]cut36922
+Ref: count37846
+Ref: [f]take38036
+Ref: take138469
+Ref: take238890
+Ref: take339171
+Ref: floor39413
+Ref: [f]drop39504
+Ref: drop139940
+Ref: drop240126
+Ref: drop340248
+Ref: string40426
+Ref: cast40527
+Ref: unique+40717
+Ref: find+41405
+Ref: type42409
+Ref: [f]at42860
+Ref: value43233
+Ref: [f]dot43660
+Node: Adverb44760
+Ref: scan45604
+Ref: +join46134
+Ref: +split46510
+Ref: each46773
+Ref: +has47062
+Ref: eachp47401
+Ref: bin248171
+Ref: eachr48376
+Ref: converge over48542
+Ref: each right49090
+Ref: eachl49244
+Ref: converge scan49409
+Ref: each left49895
+Node: Noun50080
+Ref: Atom Types51418
+Ref: bool52599
+Ref: int53286
+Ref: flt53946
+Ref: char54348
+Ref: name54571
+Ref: uuid54802
+Ref: time54959
+Ref: date55835
+Ref: datetime56296
+Node: List57093
+Node: Dictionary61243
+Node: User Functions65997
+Node: Expression69041
+Node: Named Functions69903
+Ref: exp70543
+Ref: log70611
+Ref: sin70711
+Ref: cos70850
+Ref: sqr70998
+Ref: sqrt71061
+Ref: div71134
+Ref: mod71290
+Ref: bar71468
+Ref: topX71801
+Ref: freq71963
+Ref: msum72314
+Ref: mavg72453
+Ref: sums72599
+Ref: deltas72735
+Ref: prm73077
+Ref: cmb73221
+Ref: keyF73594
+Ref: unkey73727
+Ref: meta73867
+Ref: in74002
+Ref: bin74181
+Ref: within74395
+Node: Knit Functions74631
+Ref: amend74926
+Ref: amend175392
+Ref: amend275528
+Ref: amend375750
+Ref: amend475932
+Ref: dmend76103
+Ref: dmend176433
+Ref: dmend376570
+Ref: dmend476738
+Node: I/O76902
+Ref: read csv79005
+Ref: write csv79183
+Ref: read json79347
+Ref: write json79537
+Ref: read nv79710
+Ref: w line79903
+Ref: r line80212
+Ref: w byte80325
+Ref: r byte80553
+Ref: r data80703
+Ref: w data81364
+Ref: conn/set81932
+Ref: http/get81992
+Ref: lib82052
+Node: Tables82516
+Ref: t83208
+Ref: xtable84813
+Ref: utable85295
+Node: kSQL85752
+Ref: select86350
+Ref: A86934
+Ref: by B87804
+Ref: where C88076
+Ref: update88658
+Ref: delete89218
+Ref: union89790
+Ref: leftjoin90311
+Ref: outer90829
+Ref: asof91164
+Ref: asof+92208
+Ref: insert93211
+Ref: upsert93557
+Node: System93881
+Ref: load94339
+Ref: timing94527
+Ref: variables94614
+Ref: memory94715
+Ref: cd94830
+Node: Control Flow94914
+Ref: cond95150
+Node: Temporal Functions95517
+Node: Errors96905
+Ref: class97355
+Ref: rank97444
+Ref: length97568
+Ref: _type97691
+Ref: domain97800
+Ref: limit97922
+Ref: nyi98123
+Ref: parse98456
+Ref: _value98611
+Node: Conclusion98739
 
 End Tag Table
 
