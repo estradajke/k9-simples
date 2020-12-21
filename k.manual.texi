@@ -2971,7 +2971,7 @@ d          p
 @end example
 
 @anchor{utable}@section utable
-utable (or key table) is a table where some of the columns are keyed and thus should not have duplicate values.
+utable (or key table) is a table where some of the columns are keyed. The combination of those columns  should not have two rows with the same values. This must be enforced by the application.
 
 @example
  [[d:2020.09.08 2020.09.09 2020.09.10]p:140 139 150]
@@ -3037,7 +3037,7 @@ x y
 @end example
 
 @anchor{A}@subsection A
-A is the list of fields to return from the select query.  If A is missing then all fields will be returned.  A can create new column names.  A is probably called A because it's before B and C.
+A is the list of fields to return from the select query.  If A is missing then all fields will be returned.  A can create new column names.  
 
 @example
  n:5;t:[[]x:!n;y:sin !n];t
@@ -3087,12 +3087,12 @@ x z
 @end example
 
 @anchor{by B}@subsection by B
-kSQL also has a way to group rows using @code{by}.  The result is a utable where the key is the now unique field in the @code{by}.
+kSQL also has a way to group rows using @code{by}.  The result is a utable where the key is determined by the grouping clause @code{by}.
 
 @example
 n:5;t:[[]x:!n;y:sin !n]
  
- select sum y by x>2 from t
+ select sum y by x>2 from t            / The key here is field is a boolean 1 when x > 2 or and 0 when x > 2 does not hold
 x|y         
 -|----------
 0|1.750768  
@@ -3100,7 +3100,7 @@ x|y
 @end example
 
 @anchor{where C}@subsection where C
-kSQL makes it easy to build up a where clause to filter down the table.  C is the list of contraints.
+kSQL makes it easy to build up a where clause to filter down the table.  C is the list of constraints.
 
 @example
  n:5;t:[[]x:!n;y:sin !n]
@@ -3112,7 +3112,7 @@ x y
 3 0.14112   
 4 -0.7568025
 
-select from t where (x>0)&y within 0 .9
+select from t where (x>0) & y within 0 .9
 x y       
 - --------
 1 0.841471
@@ -3131,7 +3131,7 @@ x|y
 @end example
 
 @anchor{update}@subsection update
-update allows one to modify values without specifying all the fields that pass through.  update is also used to add new columns in a table.  update does not save the table that requires an assignment.
+update allows one to modify values without specifying all the fields that pass through.  update is also used to add new columns in a table.  update does not, by itself, save the modifications to the table. If you want to preserve those modifications, use assignment.
 
 @example
  t:[[]x:`a`b`c;y:1 2 3];t
@@ -3155,7 +3155,7 @@ a 1 19
 b 2 20
 c 3 21
 
- t:update z:y+18 from t;t
+ t:update z:y+18 from t;t / save the updates into table t. Now t has the updated values.
 x y z 
 - - --
 a 1 19
@@ -3221,7 +3221,8 @@ c 12 22
 @end example
 
 @anchor{leftjoin}@subsection leftjoin @result{} t,k
-leftjoin table t with utable k.  Result includes all rows from t and values from t where there is no k value.
+leftjoin table t with utable k.  Result includes all rows from t and the values from table k having the same key values.
+If a row of t has key values not found in k, then the t values are shown and 0 for the columns coming from k.
 
 @example
 @ t:[[]s:`a`b`c;p:1 2 3;q:7 8 9]
@@ -3242,7 +3243,7 @@ x|103 53
 y|104 54
 z|105 55
 
-@ t,k
+@ t,k       / t.s includes the value `c. Because k.s does not include c, the last row shows a 0 under the r column (which comes from k).
 s p q   r 
 - - --- --
 a 1 101 51
@@ -3277,7 +3278,7 @@ c|8 6
 @end example
 
 @anchor{asof}@subsection asof join @result{} t,k
-Asof joins a table t to a utable k (key by time) such that the t values show the preceeding or equal time value of k.
+Asof joins each row rt of table t to a row rk in utable k (keyed by time) provided rk has the maximum time value of any row in k while obeying the constraint that the time value in rt >= the time value of rk. Intuitively, rk should be the row in k that is most up-to-date with respect to rt. 
 
 @example
  t:[[]t:09:30+5*!5;p:100+!5];t
@@ -3296,7 +3297,8 @@ t    |q
 09:41|51
 09:45|52
 
- t,k
+ t,k      / Notice below that the t row at 09:45 is linked with the k row at 09:45. The k row at 09:41 is not linked with any t row.
+          / by contrast, both the 09:35 and the 09:40 rows of t are linked to the 09:32 row of k.
 t     p   q 
 ----- --- --
 09:30 100  0
@@ -3332,7 +3334,7 @@ t           |p
 @end example
 
 @anchor{asof+}@subsection asof+ join @result{} k1+k2
-Asof+ joins utables adding the non-key fields to represent the sum asof the key field usually time.  This join allows one to aggregate over markets to find the total available at a given time.  The utables need to be specified with @code{`a}.
+Asof+ joins  allows one to aggregate over markets to find the total available at a given time.  The utables need to be specified with @code{`a}. The effect is to merge the two key fields (the field t in this case) and for each row rk1 from table k1, add the non-key field (bs in this case) from rk1 to the bs field of the most recent row in k2 whose t value is less than or equal to the t value in rk1. And symmetrically for each row of table k2.
 
 @example
  k1:`a [[t:09:30+5*!5]bs:100*1 2 3 2 1];k1
@@ -3364,7 +3366,7 @@ t    |bs
 @end example
 
 @section Insert and Upsert
-One can add data to tables via insert or upsert.  The difference between the two is that insert adds data to a table while upsert will add or replace data to a keyed table.  Upsert adds when the key isn't present and replaces when the key is.
+One can add data to tables via insert or upsert.  The difference between the two is that insert adds data to a table while upsert on some key x will replace the values if x is present in the target table or insert x with its associated value otherwise. 
 
 @anchor{insert}@subsection insert @result{} t,d
 Insert dictionary d into table t.
@@ -3416,6 +3418,14 @@ c1|c2
 a | 1
 b |12
 c | 7
+
+ k,`c1`c2!(`d;12)
+c1|c2
+--|--
+a | 1
+b | 2
+c | 7
+d |12
 @end example
 
 @node System
@@ -3475,14 +3485,14 @@ Change directory (cd) into x
 
 @node Control Flow
 @chapter Control Flow
-Although not heavily used in k9, control flow statements will still be required occasionally.
+Though looping statements are not necessary in k9, if-then-else statements are sometimes useful.
 
 @verbatim
 $[b;t;f] Control
 @end verbatim
 
 @anchor{cond}@section cond @result{} $[b;t;f]
-If b is non zero then x else y.  x and y are not required to be the same type.
+If b is non zero then x else y.  x and y are not required to be of the same type.
 
 @example
  $[3>2;`a;`b]
@@ -3508,7 +3518,7 @@ b|3 4
 
 @node Temporal Functions
 @chapter Temporal Functions
-k9 has functions (within @code{.z}) to get the current date and time in a number of precisions.  There are also functions to retrieve partial date and time using dot notation.
+k9 has functions (within @code{.z}) to get the current date and time to various degrees of precision.  There are also functions to retrieve partial date and time using dot notation.
 
 @verbatim
 date 2001.01.01   .z.d
@@ -3527,7 +3537,7 @@ These functions retrieve the date as day (d) or month (m) precision.
 @end example
 
 @section .z.[hrstuv] time
-There functions retrieve the time as hour (h), minute (r), second (s), millisecond (t), microsecond (u), or nanosecond (v) precision.
+These functions retrieve the time at hour (h), minute (r), second (s), millisecond (t), microsecond (u), or nanosecond (v) precision.
 
 @example
  .z.h
@@ -3576,7 +3586,7 @@ These functions use dot notation to retrieve partial date and times.
 
 @node Errors
 @chapter Errors
-Given the terse syntax of k9 it likely won't be a surprise to a new user that the error messages are rather short also.  The errors are listed on the help page and described in more detail below.
+Given the terse syntax of k9, it likely won't be a surprise  that  error messages are also rather short.  The errors are listed on the help page and described in more detail below.
 
 @example
 error: @ref{class} @ref{rank} @ref{length} @ref{_type,type} @ref{domain} @ref{limit} stack @ref{parse} @ref{_value,value}
@@ -3652,7 +3662,7 @@ Aug  6 2020 16GB (c) shakti
 @end example
 
 @anchor{parse}@section :parse
-Syntax is wrong.  Possible you failed to match characters which must match, eg. (), @{@}, [], "".
+Syntax is wrong.  This may be due to mismatched parentheses or  brackets, e.g., (), @{@}, [], "".
 @example
 @ @{37 . "hello"
 :parse
@@ -4114,11 +4124,11 @@ t        e p  z    b
 @node Conclusion
 @chapter Conclusion
 
-I expect you are surprised by the performance possible by k9 and the fact that it all fits into a 134,152 bytes!  (For comparison the ls program weighs in 51,888 bytes and can't even change directory.)
+I expect you are pleasantly surprised by the speed of k9 and by the fact that it all fits in 134,152 bytes!  (For comparison the ls program weighs in at 51,888 bytes and can't even change directory.)
 
-If you're frustrated by the syntax or terse errors, then you're not alone.  I'd expect most had the same problems, persevered, and finally came away a power user able to squeeze information from data faster than previously imagined.
+If you're frustrated by the syntax or terse errors, then you're not alone.  Many have had the same problems, but persevered, and finally came away a power user able to squeeze information from data faster than previously imagined.
 
-If you've come along enough to get it, then you'll probably realised this manual isn't needed and it's all here...
+Eventually, you'll realize that this manual isn't needed and it's all here...
 
 @smallformat
 @verbatiminclude k.d
