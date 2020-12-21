@@ -1401,9 +1401,9 @@ Apply f[x;y] to each value of x, i.e. the left one.
 @chapter Noun
 The basic data types of the k9 language are booleans, numbers (integer and float), text (characters and enumerated/name) and temporal (date and time).  It is common to have functions operate on multiple data types.
 
-In additional to the basic data types, data can be put into lists (uniform and non-uniform), dictionaries (key-value pairs), and tables (transposed/flipped dictionaries).  Dictionaries and tables will be covered in a seperate chapter.
+In additional to the basic data types, data can be put into lists (uniform, i.e., all elements of the same type, and non-uniform), dictionaries (key-value pairs), and tables (transposed/flipped dictionaries).  Dictionaries and tables will be covered in anohter chapter.
 
-The set of k9 data, aka nouns, are as follows.
+Here are some examples of each of these types (note that 0N is a null integer and 0n a null float).
 
 @example
 type              
@@ -1418,7 +1418,7 @@ type
 @ref{time} 12:34:56.123456789
 @end example
 
-Data types can be determined by using the @code{@@} function on values or lists of values.  In the case of non-uniform lists @code{@@} returns the type of the list @code{`L} but the function can be modified to evalue each type @code{@@'} instead and return the type of each element in the list.
+Data types can be determined by using the @code{@@} function on values or lists of values.  In the case of non-uniform lists @code{@@} returns the type of the list @code{`L} but the function can be modified to evaluate the type of each element in the list using @code{@@'}.
 
 @example
 @ @@1            / integer atom
@@ -1498,7 +1498,7 @@ Integers can be stored in four different ways which correspond 1, 2, 4, and 8 by
  @@-37   / negative so will default to j
 `j
 
- @@37g   / cast as g
+ @@37g   / cast as g, one byte unsigned
 `g
 
 b:@{-1+*/x#256@}
@@ -1536,7 +1536,7 @@ Float
 Text data come in characters, lists of characters (aka strings) and enumerated types.  Enumerated types are displayed as text but stored internally as integers.
 
 @anchor{char}@subsection char @result{} Character c
-Characters are stored as their ANSI value and can be seen by conversion to integers.  Character lists are equivalent to strings.
+Characters are stored as their ANSI value and can be seen by conversion to integers.  A string is a list of characters (including blanks).
 
 @example
 @ @@"b"
@@ -1546,7 +1546,7 @@ Characters are stored as their ANSI value and can be seen by conversion to integ
 @end example
 
 @anchor{name}@subsection name @result{} Name n
-Names are enumerate type shown as a text string but stored internally as a integer value.
+A name is an enumerated type displayed as a text string but stored internally as an integer value.
 
 @example
 @ @@`blue
@@ -1562,7 +1562,7 @@ TBD
 TBD
 
 @section Temporal Data
-Temporal data can be expressed in time, date, or a combined date and time.
+Temporal data can be expressed as time, date, or a combined date and time.
 
 @anchor{time}@subsection time @result{} Time s, t, u, v
 Time has four types depending on the level of precision.  The types are seconds (s), milliseconds (t), microseconds (u), and nanoseconds (v).  The times are all stored internally as integers.  The integers are the number of time units.  For example 00:00:00.012 and 00:00:00.000000012 are both stored as 12 internally.
@@ -1570,9 +1570,9 @@ Time has four types depending on the level of precision.  The types are seconds 
 @example
  @@12:34:56.789             / time
 `t
- .z.t                       / current time in GMT
+ .z.t                       / current time in GMT (Greenwich Mean Time)
 17:32:57.995
- (t:.z.t)-17:30:00.000
+ t: .z.t-17:30:00.000; t
 00:03:59.986
  t
 17:33:59.986
@@ -1582,7 +1582,7 @@ Time has four types depending on the level of precision.  The types are seconds 
 1000
  `i 00:01:00.000            / numeric representation of 1m
 60000
- `t 12345                   / convert milliseconds to time
+ `t 12345                   / convert number to milliseconds
 00:00:12.345
 @end example
 
@@ -1603,7 +1603,7 @@ Dates are in yyyy.mm.dd format.  Dates are stored internally as integers with 0 
 @end example
 
 @anchor{datetime}@subsection datetime @result{} Datetime d
-Dates and times can be combined into a single datetime element by combing a date, the letter T, and the time together without spaces.  The datetime use the same lettering as the time precision but in uppercase.  Datetimes are stored interally as integers.  For example 2001.01.02T00:00:00.000 is stored as 86,400,000, the number of milliseconds in a day.
+Dates and times can be combined into a single datetime element by combining a date, the letter T, and the time together without spaces.  The datetime use the same lettering as the time precision but in uppercase.  Datetimes are stored interally as integers.  For example 2001.01.02T00:00:00.000 is stored as 86,400,000, the number of milliseconds in a day.
 
 @example
  @@2020.04.20T12:34:56.789  / date and time
@@ -1632,7 +1632,7 @@ Data types can represent in-range, null, and out-of-range values.
 
 @node List
 @chapter List
-Lists and derivates of lists are core to k9 which likely is not a surprise given that the language is made to process large quantites of data.  Performance will be best when working with uniform lists of a single data type but k9 supports list of non-uniform type also.
+Lists and derivatives of lists are fundamental to k9 which makes sense given that the language is made to process large quantites of data.  Performance will be best when working with uniform lists of a single data type but k9 supports list of non-uniform type also.
 
 Lists are automatically formed when a sequence of uniform type are entered or generated by any function.
 
@@ -1650,7 +1650,7 @@ Lists are automatically formed when a sequence of uniform type are entered or ge
 `x`y`z
 @end example
 
-In order to determine if data is a atom or list one can you the @ref{type} command.  The command returns a lower case value for atoms and an upper case value for lists.
+In order to determine if data is an atom or a list, one can use the @ref{type} command.  The command returns a lower case value for atoms and an upper case value for lists.
 
 @example
  @@1          / an integer
@@ -1663,7 +1663,7 @@ I
 I
 @end example
 
-Commands that generate sequences of numbers return lists regardless if the count is 1 or many.
+Commands that generate sequences of numbers return lists regardless of whether the count (length of the list) is 1 or many.
 
 @example
  @@!0
@@ -1675,7 +1675,7 @@ Commands that generate sequences of numbers return lists regardless if the count
 @end example
 
 @section List Syntax
-In general, lists are created by data separated by semicolons and encased by parenthesis.
+In general, lists consist of elements separated by semicolons and encased by parenthesis.
 
 @example
  (1;3;12)         / list of ints
@@ -1690,7 +1690,7 @@ L
 @end example
 
 @section List Indexing
-Lists can be indexed by using a few notations.  The @@ notation is often used as it's less characters than [] and the explicit @@ instead of space is likely more clear.
+Lists can be indexed in different ways.  The @@ notation is often used as it's fewer characters than [] and the explicit @@ instead of space is likely more clear.
 
 @example
  a:2*1+!10 / 2 4 ... 20
@@ -1706,7 +1706,7 @@ Lists can be indexed by using a few notations.  The @@ notation is often used as
 0
 @end example
 @section Updating List Elements
-Lists can be updated element wise by specifiying setting the indexed element to a required value.  There is also a syntax for updating many elements and that it found at @ref{amend}.
+Lists can be updated elementwise by  setting the indexed element to a required value.  There is also a syntax for updating many elements and that is found at @ref{amend}.
 
 @example
  a:2*1+!10;a
@@ -1716,8 +1716,8 @@ Lists can be updated element wise by specifiying setting the indexed element to 
 2 4 6 80 10 12 14 16 18 20
 @end example
 
-@section Function of Two Lists
-This section will focus on functions (f) that operate on two lists (x and y).  As these are internal functions examples will be shown with infix notation (x+y) but prefix notation (+[x;y]) is also permissible.
+@section Functions Applied to Two Lists
+This section will focus on functions (f) that operate on two lists (x and y).  As these are internal functions, examples will be shown with infix notation (x+y) but prefix notation (+[x;y]) would  also be possible.
 
 
 @subsection Pairwise
@@ -1737,7 +1737,7 @@ These functions operate on list elements pairwise and thus requires that x and y
 @end itemize
 
 @example
-@ x:1+!5;y:10-2*!5
+@ x:1+!5; y:10-2*!5
 @ x
 1 2 3 4 5
 @ y
@@ -1766,17 +1766,17 @@ These functions operate on list elements pairwise and thus requires that x and y
 3| 6
 4| 4
 5| 2
-@ x$y
+@ x$y / dot product JOHN: THIS IS NOT WORKING FOR ME.
 70
 @end example
 
 @subsection Each Element of One List Compared to Entire Other List
-These functions compare x[i] to y or x to y[i] and f is not symmetric to its inputs, i.e. f[x;y] does not equal f[y;x];
+These functions compare x[i] to y or x to y[i]. They are  not symmetric to their inputs, i.e. f[x;y] does not equal f[y;x];
 
 @itemize
 @item @t{x^y : Reshape all element in y by x}
 @item @t{x#y : List all elements in x that appear in y}
-@item @t{x?y : Find all elements in y from x}
+@item @t{x?y : Find the locations of y elements in x. If a y element is not in x, then the location is the length of x.}
 @end itemize
 
 @example
@@ -1797,7 +1797,7 @@ These functions compare x[i] to y or x to y[i] and f is not symmetric to its inp
 @end example
 
 @subsection Each List Used Symmetrically
-These functions are symmetric in the inputs f[x;y]=f[y;x] and the lists are not required to be equal length.
+This is symmetric in its inputs f[x;y]=f[y;x] and the lists are not required to be equal length.
 
 @itemize
 @item @t{x_y : Values present in only one of the two lists}
@@ -1813,9 +1813,9 @@ These functions are symmetric in the inputs f[x;y]=f[y;x] and the lists are not 
 
 @node Dictionary
 @chapter Dictionary
-Dictionaries are a data type of key-value pairs typically used to retrieve the value by using the key.  In other computer languages they are also known as associative arrays and maps.  Keys should be unique to avoid lookup value confusion but uniqueness is not enforced.  The values in the dictionary can be single elements, lists, tables, or even dictionaries.
+Dictionaries are a data type of key-value pairs typically used to retrieve the value by using the key.  In other computer languages they are also known as associative arrays and maps.  Keys should be unique to avoid lookup value confusion but uniqueness is not enforced.  The values in the dictionary can be single elements, lists, tables, or even other dictionaries.
 
-Dictionaries in k9 are often used.  As an example in the benchmark chapter the market quote and trade data are dictionaries of symbols (name keys) and market data (table values).  
+Dictionaries in k9 are often used.  As an example from finance the market quote and trade data are dictionaries of symbols (name keys) and market data (table values).  
 
 @section Dictionary Creation @result{} x!y or [x;y]
 
@@ -1824,18 +1824,18 @@ Dictionaries are created by using the key symbol or square bracket notation and 
 @code{x!y}
 
 @example
- d0:`a37!12;d0                               / single entry
+ d0:`a37!12; d0                               / key is `a37 and value is 12
 a37|12
 
- d1:`pi`e`c!3.14 2.72 3e8;d1                  / elements
+ d1:`pi`e`c!3.14 2.72 3e8;d1                  / three keys `pi, `e, `c
 pi|3.14 
 e |2.72 
 c |3e+08
 
- `a`b`c!(1 2 3;10 20 30;100 200 300)
+ `a`b`c!(1 2 3;10 20 30;100 200 300 499)          / three keys `a `b `c whose respective values are lists
 a|1 2 3      
 b|10 20 30   
-c|100 200 300
+c|100 200 300 499
 @end example
 
 @code{[x:y]}
@@ -1869,7 +1869,7 @@ c|5 6
 @ x@@`a`c    
 1 2
 5 6
-@ / all these notaions for indexing work, output surpressed
+@ / all these notations for indexing work (output not shown)
 @ x@@`b;  / at
 @ x(`b); / parenthesis
 @ x `b;  / space
@@ -1889,7 +1889,7 @@ The keys from a dictionary are retreived by using the ! function.
 @end example
 
 @section Dictionary Value @result{} x[]
-The values from a dictionary are retreived by bracket notation.
+The values from a dictionary are retrieved using bracket notation.
 
 @example
  d0[]
@@ -1902,7 +1902,7 @@ The values from a dictionary are retreived by bracket notation.
 37.4 46.3 0.1
 @end example
 
-One could return a specific value by indexing into a specific location.  As an example in order to query the first value of the temp from d1, one would convert d1 into values (as value .), take the second index (take the value 1), take the second element (take the temp 1), and then query the first value (element 0).
+One could return a specific value by indexing into a specific location.  As an example, in order to query the first value of the values associated with the key temp from d1, one would convert d1 into values (a pair of lists), and index that by [1;0]. 
 
 @example
 @ d1
@@ -1953,7 +1953,7 @@ e |2.72
 @end example
 
 @section Flipping a Dictionary into a Table @result{} +x
-This command flips a dictionary into a table but will be covered in detail in the table section.
+This command flips a dictionary into a table and will be covered in detail in the table chapter.
 
 @example
  d1
@@ -1972,7 +1972,7 @@ time  temp
 @end example
 
 @section Functions that operate on each value in a dictionary
-There a number of simple functions on dictionaries that operate on the values.  If 'f' is a function then f applied to a dictionary return a dictionary with the same keys and the values are application of 'f'.
+There are a number of simple functions on dictionaries that operate on their values.  If 'f' is a function then f applied to a dictionary returns a dictionary with the same keys and the values resulting from the application of 'f'.
 
 @itemize
 @item @t{-d : Negate}
@@ -2021,8 +2021,8 @@ Examples
 @ 1|0.001
 @end example
 
-@section Functions that operate over values in a dictionary
-There are functions on dictions that operate over the values.  Given function f applied to a dictionary d then f d returns a value.
+@section Functions that return over values from a dictionary
+There are functions on dictionaries that operate over the values.  Given function f applied to a dictionary d, f d returns one or more values  without the original keys.
 
 @itemize
 @item *d : First value
@@ -2038,8 +2038,8 @@ c |3e+08
 @end example
 
 @node User Functions
-@chapter User Functions
-User-defined functions are used to define a set of operations to be easily called.  As these functions are built on top of the fast internal functions of k9 they should be performant also.
+@chapter User-defined Functions
+User-defined functions are treated as verbs in k9, so can benefit from the adverbs.
 
 Multi-line functions must be defined with an initial space on all lines except the first.  These can be loaded into memory by using the @ref{load,\l} command and then used by calling by name.
 
@@ -2048,10 +2048,10 @@ Func @{[a;b]a+b@}
 @end example
 
 @section Function arguments
-Functions default to arguments of x, y, and z for the first three parameters but this can be explicitly added or modified as needed.  Given k9's terseness it's rare to see good k9 code with long variable names.
+Functions default to arguments of x, y, and z for the first three parameters but one  can  explicitly spell out these or other argument names.  Given k9's terseness, many k9 programmers prefer short variable names. But this is a matter of taste.
 
 @example
- f1:@{x+2*y@}         / implicit arguements
+ f1:@{x+2*y@}         / implicit arguments x and y. This function adds the first argument to twice the second one.
  f1[2;10]
 22
 
@@ -2059,11 +2059,11 @@ Functions default to arguments of x, y, and z for the first three parameters but
  f2[2;10]
 22
 
- f3:@{[g;h]g+2*h@}    / explicit and renamed
+ f3:@{[g;h]g+2*h@}    / explicit arguments other than x and y
  f3[2;10]
 22
 
- f4:@{[please;dont]please+2*dont@} / ouch
+ f4:@{[please;dont]please+2*dont@} / longer argument names are possible, but some disapprove
  f4[2;10]
 22
 
@@ -2072,7 +2072,7 @@ Functions default to arguments of x, y, and z for the first three parameters but
 @end example
 
 @section Function Defitions
-Functions can have intermediate calcuations and local variables.  Function local variable do not collide with global variables.
+Functions can have intermediate calcuations and local variables.  Function local variables do not affect the values of  global variables.
 
 @example
  a:3;a
@@ -2091,9 +2091,9 @@ a
 Function return the last value in the definition unless the definition ends with a semicolon in which case the function returns nothing.
 
 @example
- f:@{x+2;@};f 10
+ f:@{x+2;@};f 10  / returns nothing because of final semi-colon
 
- f:@{x+2;27@};f 10
+ f:@{x+2;27@};f 10  / returns the last value which is 27
 27
 
  f:@{x+2@};f 10
@@ -2101,7 +2101,7 @@ Function return the last value in the definition unless the definition ends with
 @end example
 
 @section Calling functions
-Functions, like lists, can be called with a number of notations.  Typically one uses square bracket notation when the function takes multiple argruments.  If a function is called with less than the required number of arguments then it will return a function that requires the remaining arguemnts.
+Functions, like lists, can be called in a variety of ways.  Typically one uses square bracket notation when the function takes multiple argruments.  If a function is called with fewer than the required number of arguments then it will return a function that requires the remaining arguemnts.
 
 @example
  f1:@{[x] x@}
@@ -2134,7 +2134,7 @@ a
 @end example 
 
 @section Anonymous functions
-Functions not set with a function name are anonymous.
+It's possible to define a function without naming it. If the function is to be used in just one place, this can make sense.
 
 @example
  @{x+2*y@}[2;10]
@@ -2142,7 +2142,7 @@ Functions not set with a function name are anonymous.
 @end example
 
 @section Recursive functions
-k9 allows one to define a function which calls itself.  Care should be taken to avoid an infitine loop.
+k9 allows one to define a function which calls itself.  Care should be taken to avoid an infinite loop.
 
 @example
  f:@{$[x>1;x*f@@x-1;1]@};f 5
@@ -2150,35 +2150,35 @@ k9 allows one to define a function which calls itself.  Care should be taken to 
 @end example
 
 @section Chained functions
-It may be neccesary to define a function to call a function without specifying arguments.  Imagine this trivial case.
+It may be necessary to define a function to call a function without specifying arguments.  Imagine this trivial case.
 
 @example
- f1:@{!x@}
- f2:@{x+2@} f1
+ fa:@{!x@}
+ fb:@{x+2@} fa
 @{x+2@}
 ^
 :rank
 @end example
 
-In order to succeed f1 needs to have an @code{@@} in the definition of f2.  This is only required when the function calls a function that is not completely specified with input parameters.
+In order to succeed fa needs to have an @code{@@} in the definition of fb.  This is required because fb calls fa without specifying an argument for fa. So the argument for fb becomes the argument for fa so the net effect is 2 + !3.
 
 @example
- f1:@{!x@}
- f2:@{x+2@} f1@@
- f2 3
+ fa:@{!x@}
+ fb:@{x+2@} fa@@
+ fb 3
 2 3 4
 @end example
 
 @node Expression
 @chapter Expression Evaluation
-k9 has a compact way to evalue an expression on data structures including dictionaries and tables.
+k9 has a compact way to evaluate an expression on data structures including dictionaries and tables.
 
 @verbatim
 Expr :a+b
 @end verbatim
 
 @section expr @result{} x :y
-Evaluate expression(s) @code{y} on table or dictionary @code{x}.  The space between @code{x} and @code{:} is required otherwise it becomes @ref{set}.
+Evaluate expression(s) @code{y} on table or dictionary @code{x}.  The space between @code{x} and @code{:} is required otherwise it becomes @ref{set}, i.e., assignment.
 
 @example
  d:`city!`London
@@ -2218,7 +2218,7 @@ a b c
 
 @node Named Functions
 @chapter Named Functions
-This chapter covers the non-symbol named functions.  This includes some math (eg. sqrt but not +), wrapper (eg. count for #) and range (eg. within) functions.
+This chapter covers the built-in  named functions.  This includes some math (eg. sqrt but not +), wrapper (eg. count for #) and range (eg. within) functions.
 
 @smallformat
 @example
@@ -2273,7 +2273,7 @@ cos computes the cosine of x where x is in radians.
 @end example
 
 @anchor{div}@subsection div @result{} x div y
-y divided by x using integer division.  x and y must be integers.
+y divided by x using integer division, taking the floor of the result.  x and y must be integers.
 
 @example
 @ 2 div 7
@@ -2293,7 +2293,7 @@ The remainder after y divided by x using integer division.  x and y must be inte
 @end example
 
 @anchor{bar}@subsection bar @result{} x bar y
-For each value in y determine the number of integer multiples of x that is less than or equal to each x.
+For each value in y determine the maximum multiple of x that is less than or equal to each y.
 
 @example
 @ 10 bar 9 10 11 19 20 21
@@ -2306,7 +2306,7 @@ For each value in y determine the number of integer multiples of x that is less 
 Return the index of the max value of list x.
 
 @example
- top 3 13 15 1 17 0 -3
+ top 3 13 15 1 17 0 -3  / remember that indexes start at 0, so index 4 corresponds to 17
 4
 
 top "abzccdefeajfekjrlke"
@@ -2314,7 +2314,7 @@ top "abzccdefeajfekjrlke"
 @end example
 
 @anchor{freq}@subsection freq @result{} freq x
-Compute frequency of the items in list x.
+Compute the frequency of the items in list x.
 
 @example
  freq "abzccdefeajfekjrlke"
@@ -2344,7 +2344,7 @@ z|1
 @end example
 
 @anchor{msum}@subsection msum @result{} x msum y
-Compute the x wide moving sum of list y.
+Compute the length x  moving sum of list y.
 
 @example
  3 msum !10
@@ -2353,7 +2353,7 @@ Compute the x wide moving sum of list y.
 
 
 @anchor{mavg}@subsection mavg @result{} x mavg y
-Compute the x wide moving average of list y.
+Compute the length x  moving average of list y.
 
 @example
  3 mavg !10
@@ -2361,7 +2361,7 @@ Compute the x wide moving average of list y.
 @end example
 
 @anchor{sums}@subsection sums @result{} sums x
-Compute the sum of list x.  Sames as @code{+\}.
+Compute the running sum of list x.  Sames as @code{+\}.
 
 @example
  sums !10
@@ -2380,7 +2380,7 @@ Compute the difference between each element in list x and the previous value.  I
 @end example
 
 @anchor{prm}@subsection prm @result{} prm x
-Determine all permutations of up x-1.
+Write out all permutations of integers up x-1. Display them as columns.
 
 @example
  prm 3
@@ -2390,37 +2390,51 @@ Determine all permutations of up x-1.
 @end example
 
 @anchor{cmb}@subsection cmb @result{} x cmb y
-Determine all x value combinations up to y.
+Determine all x value combinations up to y. In this case these are ordered in ascending order from left to right.
 
 @example
- 2 cmb 4
-2 3
-1 3
-1 2
-0 3
-0 2
-0 1
+ 3 cmb 5
+2 3 4
+1 3 4
+1 2 4
+1 2 3
+0 3 4
+0 2 4
+0 2 3
+0 1 4
+0 1 3
+0 1 2
 
- `a`b`c`d@@2 cmb 4 / choose from `a`b`c`d
-`c`d
-`b`d
-`b`c
-`a`d
-`a`c
-`a`b
+ `a`b`c`d`e@3 cmb 5
+`c`d`e
+`b`d`e
+`b`c`e
+`b`c`d
+`a`d`e
+`a`c`e
+`a`c`d
+`a`b`e
+`a`b`d
+`a`b`c
 @end example
 
 @section Range Functions @result{} key unkey meta in bin within
 
 @anchor{keyF}@subsection key @result{} x key y
-Key table y with x.
+Key table y with x. That is, the values in the x column become the key values.
 
 @example
- `a key [[]a:`x`y;b:1 2]
-a|b
--|-
-x|1
-y|2
+ `a key [[]a:`fa`fb;b:1 2]
+a |b
+--|-
+fa|1
+fb|2
+
+ `a key [[]a:`fa`fb;b:((1 2 3); (4 5 6))]
+a |b    
+--|-----
+fa|1 2 3
+fb|4 5 6
 @end example
 
 @anchor{unkey}@subsection unkey @result{} unkey x
