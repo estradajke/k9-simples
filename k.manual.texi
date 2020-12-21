@@ -42,7 +42,6 @@ The built-in reference screen (@code{\}) containing all the k9 commands.
 @menu
 * Introduction:: An introduction to shakti/k9, a novel computer language for data analysis
 * Examples:: Examples to motivate the reader to learn the language
-* Benchmark:: Learn how fast this language is
 * Verb:: Elementary functions
 * Adverb:: Function modifiers
 * Noun:: Basic data types
@@ -59,6 +58,7 @@ The built-in reference screen (@code{\}) containing all the k9 commands.
 * Control Flow:: If/Do/While Statements 
 * Temporal Functions:: Functions for date and time
 * Errors:: Error messages
+* Benchmark:: Learn how fast this language is
 * Conclusion:: Conclusion
 @c * Index:: Complete index
 @end menu
@@ -529,194 +529,6 @@ And then one can use the where function, @code{&}, to determine the index of the
 @example
 @ @{&(x@@(!#x)+\!#y)~\y@}["Find the +++ needle in + the ++ text";"++"]
 9 10 29
-@end example
-
-@node Benchmark
-@chapter Benchmark
-@c [JOHN: THIS TOO SHOULD GO AFTER EXAMPLES BUT AFTER YOU EXPLAIN THE LANGUAGE]
-Shakti is a fast data analysis language  and clear benchmarks illustrate this.  The Shakti website has a file for such purpose, b.k.  For example, you can see below that the first query (Q1) k9 takes 1ms while postgres, spark and mongo are orders of magnitude slower.  
-
-b.k
-
-@verbatim
-T:{09:30:00+_6.5*3600*(!x)%x}
-P:{10+x?90};Z:{1000+x?9000};E:?[;"ABCD"]
-
-/m:2;n:6
-m:7000;n:5600000;
-S:(-m)?`4;N:|1+_n*{x%+/x:exp 15*(!x)%x}m
-
-t:S!{+`t`e`p`z!(T;E;P;Z)@'x}'N
-q:S!{+`t`e`b!(T;E;P)@'x}'6*N
-
-a:*A:100#S
-
-\t  {select max p by e from x}'t A
-\t  {select sum z by `o t from x}'t A
-\t:10 {select last b from x}'q A
-\t:10 select from t[a],`t^q a where p<b
-\
-
-C:M:?[;"ABCDEFGHIJ"]
-trade(sym time exchange price size cond)
-quote(sym time exchange bid bz ask az mode)
-
-                Q1      Q2      Q3      Q4  ETL   RAM   DSK
-k                1       9       9       1                                            
-postg        71000    1500    1900     INF  200   1.5   4.0
-spark       340000    7400    8400     INF  160  50.0   2.4
-mongo        89000    1700    5800     INF  900   9.0  10.0   
-
-960 billion quotes (S has 170 billion. QQQ has 6 billion.)
- 48 billion trades (S has 12 billion. QQQ has 80 million.)
-@end verbatim
-
-@section Understanding the benchmark script
-
-@subsection T
-T is a function which generates a uniform list of times from 09:30 to 16:00.
-
-@example
-@ T:@{09:30:00+_6.5*3600*(!x)%x@}
-@ T[13]           / 13 times with equal timesteps over [start;end)
-^09:30:00 10:00:00 10:30:00 11:00:00 11:30:00 .. 15:00:00 15:30:00
-@ ?1_-':T[10000]  / determine the unique timesteps
-?00:00:02 00:00:03
-@end example
-
-@subsection P, Z, E
-P is a function to generate values from 10 to 100 (price).  Z is a function to generate values from 100 to 1000 (size).  E is a function to generate values A, B, C, or D (exchange).
-
-@example
-@ P[10]
-78 37 56 85 40 68 88 50 41 78
-@ Z[10]
-4820 2926 1117 4700 9872 3274 6503 6123 9451 2234
-@ E[10]
-"AADCBCCCBC"
-@end example
-
-@subsection m, n, S, N
-m is the number of symbols.  n is the number of trades.  S is a list of symbol names.  N is a list of  numbers in decreasing order which sum approximately to n.  
-
-@example
-@ 4#S
-`EEFD`IOHJ`MEJO`DHNK
-@ 4#N
-11988 11962 11936 11911
-@ +/N
-5604390
-@end example
-
-@subsection t
-t is an xtable of trades.  The fields are time (t), exchange (e), price (p), and size (z).  The number of trades is set by n.
-
-Pulling one random table from t and showing 10 random rows.  
-
-@example
-@ 10?*t@@1?S
-t        e p  z   
--------- - -- ----
-14:37:53 D 73 4397
-11:43:25 B 20 2070
-10:21:18 A 53 6190
-13:26:03 C 33 7446
-14:07:06 B 13 2209
-15:08:41 D 12 4779
-14:27:37 A 11 6432
-11:22:53 D 92 9965
-11:12:37 A 14 5255
-12:24:28 A 48 3634
-@end example
-
-@subsection q
-q is a xtable of quotes.  The fields are time (t), exchange (e), and bid (b).  The number of quotes is set to 6*n.
-
-@example
-@ 10?*q@@1?S
-t        e b 
--------- - --
-11:31:12 A 80
-14:08:40 C 63
-14:05:07 D 12
-11:31:43 A 56
-12:44:19 A 45
-10:13:21 A 71
-15:19:08 A 74
-13:42:20 D 43
-11:31:41 D 66
-14:41:38 A 63
-@end example
-
-@subsection a, A
-a is the first symbol of S.  A consists of the first 100 symbols of S.
-
-@example
-@ a
-`PKEM
-@end example
-
-@subsection Max price by exchange
-The query takes 100 tables from the trade xtable and computes the max price by exchange.
-
-@example
-@ *@{select max p by e from x@}'t A
-e|p 
--|--
-A|99
-B|99
-C|99
-D|99
-@ \t  @{select max p by e from x@}'t A
-22
-@end example
-
-@subsection Compute sum of trade size by hour.
-This query takes 100 tables from the trade xtable and computes the sum of trade size done by hour.
-
-@example
-@ *@{select sum z by `o t from x@}'t A
-t |z       
---|--------
-09| 4885972
-10|10178053
-11|10255045
-12|10243846
-13|10071057
-14|10203428
-15|10176102
-@ \t  @{select sum z by `o t from x@}'t A
-27
-@end example
-
-@subsection Compute last bid by symbol
-This query takes the 100 tables from the quote xtable and returns the last bid.
-
-@example
-@ 3?@{select last b from x@}'q A
-b 
---
-18
-98
-85
-
-@ \t:10 @{select last b from x@}'q A
-2
-@end example
-
-@subsection Find trades below the bid
-This query operates on one symbol from the q and t xtables, i.e. a single quote and trade table.  The quote table is joined to the trade table giving the current bid on each trade.
-
-@example
-@ 4?select from t[a],`t^q a where p<b
-t        e p  z    b 
--------- - -- ---- --
-13:54:35 B 94 1345 96
-11:59:52 C 26 1917 89
-10:00:44 C 40 9046 81
-10:59:39 A 25 5591 72
-@ \t:10 select from t[a],`t^q a where p<b
-3
 @end example
 
 @node Verb
@@ -4086,6 +3898,194 @@ Undefined variable is used.
 @example
 @ g    / assuming 'g' has not be defining in this session
 :value
+@end example
+
+@node Benchmark
+@chapter Benchmark
+@c [JOHN: THIS TOO SHOULD GO AFTER EXAMPLES BUT AFTER YOU EXPLAIN THE LANGUAGE]
+Shakti is a fast data analysis language  and clear benchmarks illustrate this.  The Shakti website has a file for such purpose, b.k.  For example, you can see below that the first query (Q1) k9 takes 1ms while postgres, spark and mongo are orders of magnitude slower.  
+
+b.k
+
+@verbatim
+T:{09:30:00+_6.5*3600*(!x)%x}
+P:{10+x?90};Z:{1000+x?9000};E:?[;"ABCD"]
+
+/m:2;n:6
+m:7000;n:5600000;
+S:(-m)?`4;N:|1+_n*{x%+/x:exp 15*(!x)%x}m
+
+t:S!{+`t`e`p`z!(T;E;P;Z)@'x}'N
+q:S!{+`t`e`b!(T;E;P)@'x}'6*N
+
+a:*A:100#S
+
+\t  {select max p by e from x}'t A
+\t  {select sum z by `o t from x}'t A
+\t:10 {select last b from x}'q A
+\t:10 select from t[a],`t^q a where p<b
+\
+
+C:M:?[;"ABCDEFGHIJ"]
+trade(sym time exchange price size cond)
+quote(sym time exchange bid bz ask az mode)
+
+                Q1      Q2      Q3      Q4  ETL   RAM   DSK
+k                1       9       9       1                                            
+postg        71000    1500    1900     INF  200   1.5   4.0
+spark       340000    7400    8400     INF  160  50.0   2.4
+mongo        89000    1700    5800     INF  900   9.0  10.0   
+
+960 billion quotes (S has 170 billion. QQQ has 6 billion.)
+ 48 billion trades (S has 12 billion. QQQ has 80 million.)
+@end verbatim
+
+@section Understanding the benchmark script
+
+@subsection T
+T is a function which generates a uniform list of times from 09:30 to 16:00.
+
+@example
+@ T:@{09:30:00+_6.5*3600*(!x)%x@}
+@ T[13]           / 13 times with equal timesteps over [start;end)
+^09:30:00 10:00:00 10:30:00 11:00:00 11:30:00 .. 15:00:00 15:30:00
+@ ?1_-':T[10000]  / determine the unique timesteps
+?00:00:02 00:00:03
+@end example
+
+@subsection P, Z, E
+P is a function to generate values from 10 to 100 (price).  Z is a function to generate values from 100 to 1000 (size).  E is a function to generate values A, B, C, or D (exchange).
+
+@example
+@ P[10]
+78 37 56 85 40 68 88 50 41 78
+@ Z[10]
+4820 2926 1117 4700 9872 3274 6503 6123 9451 2234
+@ E[10]
+"AADCBCCCBC"
+@end example
+
+@subsection m, n, S, N
+m is the number of symbols.  n is the number of trades.  S is a list of symbol names.  N is a list of  numbers in decreasing order which sum approximately to n.  
+
+@example
+@ 4#S
+`EEFD`IOHJ`MEJO`DHNK
+@ 4#N
+11988 11962 11936 11911
+@ +/N
+5604390
+@end example
+
+@subsection t
+t is an xtable of trades.  The fields are time (t), exchange (e), price (p), and size (z).  The number of trades is set by n.
+
+Pulling one random table from t and showing 10 random rows.  
+
+@example
+@ 10?*t@@1?S
+t        e p  z   
+-------- - -- ----
+14:37:53 D 73 4397
+11:43:25 B 20 2070
+10:21:18 A 53 6190
+13:26:03 C 33 7446
+14:07:06 B 13 2209
+15:08:41 D 12 4779
+14:27:37 A 11 6432
+11:22:53 D 92 9965
+11:12:37 A 14 5255
+12:24:28 A 48 3634
+@end example
+
+@subsection q
+q is a xtable of quotes.  The fields are time (t), exchange (e), and bid (b).  The number of quotes is set to 6*n.
+
+@example
+@ 10?*q@@1?S
+t        e b 
+-------- - --
+11:31:12 A 80
+14:08:40 C 63
+14:05:07 D 12
+11:31:43 A 56
+12:44:19 A 45
+10:13:21 A 71
+15:19:08 A 74
+13:42:20 D 43
+11:31:41 D 66
+14:41:38 A 63
+@end example
+
+@subsection a, A
+a is the first symbol of S.  A consists of the first 100 symbols of S.
+
+@example
+@ a
+`PKEM
+@end example
+
+@subsection Max price by exchange
+The query takes 100 tables from the trade xtable and computes the max price by exchange.
+
+@example
+@ *@{select max p by e from x@}'t A
+e|p 
+-|--
+A|99
+B|99
+C|99
+D|99
+@ \t  @{select max p by e from x@}'t A
+22
+@end example
+
+@subsection Compute sum of trade size by hour.
+This query takes 100 tables from the trade xtable and computes the sum of trade size done by hour.
+
+@example
+@ *@{select sum z by `o t from x@}'t A
+t |z       
+--|--------
+09| 4885972
+10|10178053
+11|10255045
+12|10243846
+13|10071057
+14|10203428
+15|10176102
+@ \t  @{select sum z by `o t from x@}'t A
+27
+@end example
+
+@subsection Compute last bid by symbol
+This query takes the 100 tables from the quote xtable and returns the last bid.
+
+@example
+@ 3?@{select last b from x@}'q A
+b 
+--
+18
+98
+85
+
+@ \t:10 @{select last b from x@}'q A
+2
+@end example
+
+@subsection Find trades below the bid
+This query operates on one symbol from the q and t xtables, i.e. a single quote and trade table.  The quote table is joined to the trade table giving the current bid on each trade.
+
+@example
+@ 4?select from t[a],`t^q a where p<b
+t        e p  z    b 
+-------- - -- ---- --
+13:54:35 B 94 1345 96
+11:59:52 C 26 1917 89
+10:00:44 C 40 9046 81
+10:59:39 A 25 5591 72
+@ \t:10 select from t[a],`t^q a where p<b
+3
 @end example
 
 @node Conclusion

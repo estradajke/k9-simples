@@ -88,12 +88,12 @@ table.menu th{
 Next: <a href="User-Functions.html" accesskey="n" rel="next">User Functions</a>, Previous: <a href="List.html" accesskey="p" rel="prev">List</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <hr>
-<span id="Dictionary-1"></span><h2 class="chapter">8 Dictionary</h2>
+<span id="Dictionary-1"></span><h2 class="chapter">7 Dictionary</h2>
 <p>Dictionaries are a data type of key-value pairs typically used to retrieve the value by using the key.  In other computer languages they are also known as associative arrays and maps.  Keys should be unique to avoid lookup value confusion but uniqueness is not enforced.  The values in the dictionary can be single elements, lists, tables, or even dictionaries.
 </p>
 <p>Dictionaries in k9 are often used.  As an example in the benchmark chapter the market quote and trade data are dictionaries of symbols (name keys) and market data (table values).  
 </p>
-<span id="Dictionary-Creation-_21d2-x_0021y-or-_005bx_003by_005d"></span><h3 class="section">8.1 Dictionary Creation &rArr; x!y or [x;y]</h3>
+<span id="Dictionary-Creation-_21d2-x_0021y-or-_005bx_003by_005d"></span><h3 class="section">7.1 Dictionary Creation &rArr; x!y or [x;y]</h3>
 
 <p>Dictionaries are created by using the key symbol or square bracket notation and listing the keys (x) and values (y).  
 </p>
@@ -131,7 +131,7 @@ b|10 20 30
 c|100 200 300
 </pre></div>
 
-<span id="Dictionary-Indexing-_21d2-x_0040y"></span><h3 class="section">8.2 Dictionary Indexing &rArr; x@y</h3>
+<span id="Dictionary-Indexing-_21d2-x_0040y"></span><h3 class="section">7.2 Dictionary Indexing &rArr; x@y</h3>
 
 <p>Dictionaries, like lists, can be indexed in a number of ways.
 </p>
@@ -152,7 +152,7 @@ c|5 6
 &nbsp;x[`b]; / square bracket
 </pre></div>
 
-<span id="Dictionary-Key-_21d2-_0021x"></span><h3 class="section">8.3 Dictionary Key &rArr; !x</h3>
+<span id="Dictionary-Key-_21d2-_0021x"></span><h3 class="section">7.3 Dictionary Key &rArr; !x</h3>
 <p>The keys from a dictionary are retreived by using the ! function.
 </p>
 <div class="example">
@@ -164,7 +164,7 @@ c|5 6
 0 10 1
 </pre></div>
 
-<span id="Dictionary-Value-_21d2-x_005b_005d"></span><h3 class="section">8.4 Dictionary Value &rArr; x[]</h3>
+<span id="Dictionary-Value-_21d2-x_005b_005d"></span><h3 class="section">7.4 Dictionary Value &rArr; x[]</h3>
 <p>The values from a dictionary are retreived by bracket notation.
 </p>
 <div class="example">
@@ -195,7 +195,7 @@ temp|25 25.1 25.6
 25.
 </pre></div>
 
-<span id="Sorting-a-Dictionary-by-Key-_21d2-_005ex"></span><h3 class="section">8.5 Sorting a Dictionary by Key &rArr; ^x</h3>
+<span id="Sorting-a-Dictionary-by-Key-_21d2-_005ex"></span><h3 class="section">7.5 Sorting a Dictionary by Key &rArr; ^x</h3>
 
 <div class="example">
 <pre class="example">&nbsp;d0
@@ -209,7 +209,7 @@ e |2.72
 pi|3.14 
 </pre></div>
 
-<span id="Sorting-a-Dictionary-by-Value-_21d2-_003cx-_0028_003ex_0029"></span><h3 class="section">8.6 Sorting a Dictionary by Value &rArr; &lt;x (&gt;x)</h3>
+<span id="Sorting-a-Dictionary-by-Value-_21d2-_003cx-_0028_003ex_0029"></span><h3 class="section">7.6 Sorting a Dictionary by Value &rArr; &lt;x (&gt;x)</h3>
 
 <div class="example">
 <pre class="example">&nbsp;d0
@@ -228,7 +228,7 @@ pi|3.14
 e |2.72 
 </pre></div>
 
-<span id="Flipping-a-Dictionary-into-a-Table-_21d2-_002bx"></span><h3 class="section">8.7 Flipping a Dictionary into a Table &rArr; +x</h3>
+<span id="Flipping-a-Dictionary-into-a-Table-_21d2-_002bx"></span><h3 class="section">7.7 Flipping a Dictionary into a Table &rArr; +x</h3>
 <p>This command flips a dictionary into a table but will be covered in detail in the table section.
 </p>
 <div class="example">
@@ -247,7 +247,7 @@ time  temp
 0b
 </pre></div>
 
-<span id="Functions-that-operate-on-each-value-in-a-dictionary"></span><h3 class="section">8.8 Functions that operate on each value in a dictionary</h3>
+<span id="Functions-that-operate-on-each-value-in-a-dictionary"></span><h3 class="section">7.8 Functions that operate on each value in a dictionary</h3>
 <p>There a number of simple functions on dictionaries that operate on the values.  If &rsquo;f&rsquo; is a function then f applied to a dictionary return a dictionary with the same keys and the values are application of &rsquo;f&rsquo;.
 </p>
 <ul>
@@ -297,7 +297,7 @@ time  temp
 &nbsp;1|0.001
 </pre></div>
 
-<span id="Functions-that-operate-over-values-in-a-dictionary"></span><h3 class="section">8.9 Functions that operate over values in a dictionary</h3>
+<span id="Functions-that-operate-over-values-in-a-dictionary"></span><h3 class="section">7.9 Functions that operate over values in a dictionary</h3>
 <p>There are functions on dictions that operate over the values.  Given function f applied to a dictionary d then f d returns a value.
 </p>
 <ul>
