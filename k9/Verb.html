@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 17, 2020
+<!-- December 21, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -88,14 +88,14 @@ table.menu th{
 Next: <a href="Adverb.html" accesskey="n" rel="next">Adverb</a>, Previous: <a href="Benchmark.html" accesskey="p" rel="prev">Benchmark</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <hr>
-<span id="Verb-1"></span><h2 class="chapter">4 Verb</h2>
-<p>This chapter covers verbs which are the core functions of k9.  Given how different is it to call functions in k9 than many other languages this is probably a chapter that will have to be covered a few times.  Once you can &ldquo;speak&rdquo; k9 you&rsquo;ll read <code>|x</code> better than <code>reverse(x)</code>.  
+<span id="Verbs"></span><h2 class="chapter">4 Verbs</h2>
+<p>This chapter covers verbs which are the core primitives of k9.  Given how different is it to call functions in k9 than in most other languages, you may have to read this chapter  a few times.  Once you can &ldquo;speak&rdquo; k9 you&rsquo;ll read <code>|x</code> better than <code>reverse(x)</code>.  
 </p>
-<p>Most functions are overloaded and change depending on the number.  This reuse of symbols is also an item that causes confusion for new users.  Eg. <code>(1 4)++(2 3;5 6;7 8)</code> contains the plus symbol once as flip and then for addition.  (Remember evaluation is right to left!)
+<p>Most functions are overloaded and change depending on the number of arguments.  This can confuse new users.  Eg. <code>(1 4)++(2 3;5 6;7 8)</code> contains the plus symbol once as flip and then for addition.  (Remember evaluation is right to left!)
 </p>
-<p>Some functions are overloaded into materially different use and these are called out with a &rsquo;+&rsquo; ending.  This includes unique+ and find+ which become unit random and non-unit random respectively.
+<p>When functions are overloaded into materially different uses, I flag this with  a &rsquo;+&rsquo; suffix.  For example, unique+ and find+ differ depending on whether their argument is a scalar or a vector.  
 </p>
-<p>There are also functions that can take a function argument and these are identified with a &rsquo;[f]&rsquo; prefix.  These include [f]cut, [f]take, [f]drop, [f]at, and [f]dot.
+<p>There are also verbs that can take a function argument. I flag those with a &rsquo;[f]&rsquo; prefix.  These include [f]cut, [f]take, [f]drop, [f]at, and [f]dot.
 </p>
 <div class="example">
 <pre class="example">Verb
@@ -125,7 +125,7 @@ $ <a href="#string">string</a>,   <a href="#cast">cast</a>.
 <span id="x"></span><span id="x-_21d2-_003ax"></span><h3 class="section">4.1 x &rArr; :x</h3>
 
 <span id="set"></span><span id="set-_21d2-x_003ay"></span><h3 class="section">4.2 set &rArr; x:y</h3>
-<p>Set a variable, x, to a value, y.  A space, eg. <code>x :y</code> will turn this into an <a href="Expression.html">Expression</a>.  
+<p>Set a variable, x, to a value, y.  There should be no space between <code>x</code> and <code>:</code>. 
 </p>
 <div class="example">
 <pre class="example">&nbsp;a:3
@@ -167,7 +167,7 @@ a b
 </pre></div>
 
 <span id="plus"></span><span id="plus-_21d2-x_002by"></span><h3 class="section">4.4 plus &rArr; x+y</h3>
-<p>Add x and y.  Parameters can be elements or lists but if both x and y are lists then they must be equal length.
+<p>Add x and y.  Arguments can be elements or lists but if both x and y are lists then they must be of equal length.
 </p>
 <div class="example">
 <pre class="example"> 3+7
@@ -224,7 +224,7 @@ b|-4 -5 -6
 </pre></div>
 
 <span id="first"></span><span id="first-_21d2-_002ax"></span><h3 class="section">4.7 first &rArr; *x</h3>
-<p>Return the first value of x.  Last can either be determine by taking the first element of the reverse list (*|&lsquo;a&lsquo;b&lsquo;c) or using last syntax ((:/)&lsquo;a&lsquo;b&lsquo;c).
+<p>Return the first value of x.  
 </p><div class="example">
 <pre class="example"> *1 2 3
 1
@@ -259,7 +259,7 @@ b|-4 -5 -6
 </pre></div>
 
 <span id="where"></span><span id="where-_21d2-_0026x"></span><h3 class="section">4.10 where &rArr; &amp;x</h3>
-<p>Given a list of binary values return the indices where the value is non-zero.  Given a list of non-negative integer values, eg. x[0], x[1], ..., x[n-1], generate x[0] values of 0, x[1] values of 1, ..., and x[n-1] values of n-1.  
+<p>Given a list of boolean values return the indices where the value is non-zero.   
 </p>
 <div class="example">
 <pre class="example"> &amp;001001b
@@ -268,10 +268,14 @@ b|-4 -5 -6
 010101b
  &amp;&quot;banana&quot;=&quot;a&quot;
 1 3 5
- &amp; 3 1 0 2
-0 0 0 1 3 3
  x@&amp;30&lt;x:12.7 0.1 35.6 -12.1 101.101  / return values greater than 30
 35.6 101.101
+</pre></div>
+<p>Given a list of non-negative integer values, eg. x[0], x[1], ..., x[n-1], generate x[0] values of 0, x[1] values of 1, ..., and x[n-1] values of n-1. 
+</p><div class="example">
+<pre class="example"> &amp; 3 1 0 2
+0 0 0 1 3 3
+
 </pre></div>
 
 <span id="min_002fand"></span><span id="and-_21d2-x_0026y"></span><h3 class="section">4.11 and &rArr; x&amp;y</h3>
@@ -302,6 +306,8 @@ b|-4 -5 -6
 1 2 3
 </pre></div>
 
+<p>To get the last element, one can take  the first element of the reverse list (*|&lsquo;a&lsquo;b&lsquo;c).
+</p>
 <span id="max_002for"></span><span id="or-_21d2-x_007cy"></span><h3 class="section">4.13 or &rArr; x|y</h3>
 <p>The greater of x and y.  Max of a list can be determine by use of the adverb over.
 </p><div class="example">
@@ -316,21 +322,21 @@ b|-4 -5 -6
 </pre></div>
 
 <span id="asc"></span><span id="asc_0028dsc_0029-_21d2-_003c-_0028_003e_0029-x"></span><h3 class="section">4.14 asc(dsc) &rArr; &lt; (&gt;) x</h3>
-<p>Sort a list or dictionary in ascending (&lt;) or descending (&gt;) order.  Applied to a list will return the indices to be used while a dictionary is directly sorted by value
+<p>Sort a list or dictionary in ascending (&lt;) or descending (&gt;) order.  Applied to a list, these will return the indices to be used to achieve the sort.
 </p>
 <div class="example">
-<pre class="example"> &lt;2 3 0 12
+<pre class="example"> &lt;5 7 0 12
 2 0 1 3
 
- x@&lt;x:2 3 0 12
-0 2 3 12
+ x@&lt;x:5 7 0 12
+0 5 7 12
 
  d:`a`b`c!3 2 1;d
 a|3
 b|2
 c|1
 
- &lt;d
+ &lt;d / a dictionary is sorted by value
 c|1
 b|2
 a|3
@@ -354,7 +360,7 @@ a|3
 </pre></div>
 
 <span id="group"></span><span id="group-_21d2-_003dx"></span><h3 class="section">4.16 group &rArr; =x</h3>
-<p>A dictionary of the disinct values of x (key) and indices (values).
+<p>A dictionary of the distinct values of x (key) and their indices (values).
 </p><div class="example">
 <pre class="example">&nbsp;=&quot;banana&quot;
 a|1 3 5
@@ -429,15 +435,35 @@ n|2 4
 `a`b`c
 </pre></div>
 
-<p>In the case where x is a list of integers  x1 x2 ... xk, generate a matrix of k rows where each row has size */x1 x2 ... xk and the elements of row i are !xi repeated as many times as necessary.
+<p>In the case where x is a list of integers  x1 x2 ... xk, generate a matrix of k rows where each row has size */x1 x2 ... xk and the elements of row i are !xi repeated as many times as necessary. Each row&rsquo;s repeats must fit below constant values of the row above.
 </p>
 <div class="example">
-<pre class="example"> !2 3 2 / 1st index 0,1, 2nd index 0,1,2, 3rd index 0,1
+<pre class="example"> !2 3 2 / Each row of length 2*3*2 = */2 3 2 = 12. First row values 0,1, second row values 0,1,2, third row values 0,1
 0 0 0 0 0 0 1 1 1 1 1 1
 0 0 1 1 2 2 0 0 1 1 2 2
 0 1 0 1 0 1 0 1 0 1 0 1
 
- B:`b'+!16#2 / create a list of 16-bit binary numbers from 0 to 65535
+ !4 2 3
+0 0 0 0 0 0 1 1 1 1 1 1 2 2 2 2 2 2 3 3 3 3 3 3
+0 0 0 1 1 1 0 0 0 1 1 1 0 0 0 1 1 1 0 0 0 1 1 1
+0 1 2 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2
+
+ !2 2 2
+0 0 0 0 1 1 1 1
+0 0 1 1 0 0 1 1
+0 1 0 1 0 1 0 1
+
+ +!2 2 2
+0 0 0
+0 0 1
+0 1 0
+0 1 1
+1 0 0
+1 0 1
+1 1 0
+1 1 1
+
+ B:`b'+!16#2 / create a list of all 16-bit binary numbers from 0 to 65535 JOHN: THIS DOESN'T WORK
 
 B[12123]    / pull the element 12,123
 0010111101011011b
@@ -447,7 +473,7 @@ B[12123]    / pull the element 12,123
 </pre></div>
 
 <span id="key"></span><span id="key-_21d2-x_0021y"></span><h3 class="section">4.21 key &rArr; x!y</h3>
-<p>Dictionary of x (key) and y (value).  If looking to key a table then refer to <a href="#g_t_005bf_005dcut">[f]cut</a>.
+<p>Dictionary of x (key) and y (value).  
 </p>
 <div class="example">
 <pre class="example">&nbsp;3!7
@@ -495,27 +521,27 @@ b|0 1 2
 </pre></div>
 
 <span id="g_t_005bf_005dcut"></span><span id="g_t_005bf_005dcut-_21d2-x_005ey"></span><h3 class="section">4.25 [f]cut &rArr; x^y</h3>
-<p>Cut list y by size, indices, ot function x.  
+<p>Cut list y by size, indices, or function x.  
 </p>
 <div class="example">
-<pre class="example"> 3^!10
-0 1 2
-3 4 5
-6 7 8
+<pre class="example"> 3^!20 / 3 rows with 6 elements per row so result is a matrix
+0 1 2 3 4 5      
+6 7 8 9 10 11    
+12 13 14 15 16 17
 
- 0 1 5^!10
-0        
-1 2 3 4  
-5 6 7 8 9
+ 2 3 7 ^!17 / left list indicates start number of each row.
+,2                        
+3 4 5 6                   
+7 8 9 10 11 12 13 14 15 16
 
  8 9 10 11 12^.1*!20
-0.8                            
-0.9                            
-1.                             
-1.1                            
+,0.8                           
+,0.9                           
+,1.                            
+,1.1                           
 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9
 
- {(x*x)within .5 1.5}^.1*!20
+ {(x*x)within .5 1.5}^.1*!20 / JOHN I GET A SEG FAULT FOR THIS
 0.8                            
 0.9                            
 1.                             
@@ -523,7 +549,7 @@ b|0 1 2
 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9
 </pre></div>
 
-<p>Cut into domain and range, aka key a table.
+<p>Cut into domain and range, aka key a table (set an attribute to be a key)
 </p>
 <div class="example">
 <pre class="example"> t:[[]a:`x`y`z;b:1 20 1];t / an unkeyed table
@@ -560,7 +586,7 @@ z  1
 </pre></div>
 
 <span id="g_t_005bf_005dtake"></span><span id="g_t_005bf_005dtake-_21d2-x_0023y"></span><h3 class="section">4.27 [f]take &rArr; x#y</h3>
-<p>[f]take has a number of different actions depending on x.  This include head (take from front of list), tail (take from back of list), common (take common elements), and filter (take where function is non-zero).
+<p>[f]take has a number of different actions depending on x.  These include head (take from front of list), tail (take from back of list), common (take common elements), and filter (take where function is non-zero).
 </p>
 <table>
 <tr><td><b>action</b></td><td><b>x</b></td></tr>
@@ -573,14 +599,16 @@ z  1
 <span id="take1"></span><p>Postive (negative) x returns the first (last) x elements of y.  If abs[x]&gt;count[y] then repeatedly pull from y.
 </p>
 <div class="example">
-<pre class="example"> 3#0 1 2 3 4 5          / take first
+<pre class="example"> 3#0 1 2 3 4 5          / take first 3 elements of a list whose length is longer than 3
 0 1 2
 
- -3#0 1 2 3 4 5         / take last
+ 10 # 17 12 25 / take repeat: generate a list of length 10 with these three elements
+17 12 25 17 12 25 17 12 25 17
+
+ -3#0 1 2 3 4 5         / take last elements of a list
 3 4 5
 
- 10#0 1 2               / take repeat
-0 1 2 0 1 2 0 1 2 0
+
 </pre></div>
 
 <span id="take2"></span><p>If x is a list, then take returns any values common in both x and y. 
@@ -588,12 +616,18 @@ z  1
 <div class="example">
 <pre class="example"> (1 2 3 7 8 9)#(2 8 20) / common
 2 8
+
+  (2 4 6 2 6 5 4) # (4 6 7 8 2 4 4 4) / always a substring of right argument
+4 6 2 4 4 4
+ 
+ (4 6 7 8 2 4 4 4) # (2 4 6 2 6 5 4)
+2 4 6 2 6 4
 </pre></div>
 
-<span id="take3"></span><p>If x is a function, then filter out values where the funtion is non-zero.
+<span id="take3"></span><p>If x is a function, then select the  values where the function is non-zero.
 </p>
 <div class="example">
-<pre class="example"> (0.5&lt;)#10?1.           / filter
+<pre class="example"> (0.5&lt;)#10?1.           / select values greater than 0.5 among randomly chosen numbers between 0 and 1
 0.840732 0.5330717 0.7539563 0.643315 0.6993048f
 </pre></div>
 
@@ -605,7 +639,7 @@ z  1
 </pre></div>
 
 <span id="g_t_005bf_005ddrop"></span><span id="g_t_005bf_005ddrop-_21d2-x_005fy"></span><h3 class="section">4.29 [f]drop &rArr; x_y</h3>
-<p>[f]drop has a number of different actions depending on x.  This include dehead (drop from front of list), detail (drop from back of list), uncommon (drop common elements), and filter (drop where function is zero).
+<p>[f]drop has a number of different actions depending on x.  This include de-head (drop from front of list), de-tail (drop from back of list), uncommon (drop common elements), and filter (drop where function is zero).
 </p>
 <table>
 <tr><td><b>action</b></td><td><b>x</b></td></tr>
@@ -618,24 +652,24 @@ z  1
 <span id="drop1"></span><p>Postive (negative) x drops the first (last) x elements of y.  
 </p>
 <div class="example">
-<pre class="example"> 3_0 1 2 3 4 5          / drop first
+<pre class="example"> 3_0 1 2 3 4 5          / drop first three
 3 4 5
 
- -3_0 1 2 3 4 5         / drop last
-0 1 2
+ -2_0 1 2 3 4 5         / drop last three
+0 1 2 3
 </pre></div>
 
-<span id="drop2"></span><p>If x is a list, then drop returns any values from y uncommon in x. 
+<span id="drop2"></span><p>If x is a list, then drop returns any values from y not found in x. 
 </p>
 <div class="example">
 <pre class="example"> (1 2 3 7 8 9)_(2 8 20) / uncommon
 ,20
 </pre></div>
 
-<span id="drop3"></span><p>If x is a function, then filter out values where the funtion is non-zero.
+<span id="drop3"></span><p>If x is a function, then select values where the function is zero.
 </p>
 <div class="example">
-<pre class="example"> (0.5&lt;)_10?1.           / filter
+<pre class="example"> (0.5&lt;)_10?1.           / select values that are less than or equal to 0.5
 0.02049699 0.1269226
 </pre></div>
 
@@ -663,9 +697,9 @@ z  1
 </pre></div>
 
 <span id="unique_002b"></span><span id="unique_002b-_21d2-_003fx"></span><h3 class="section">4.32 unique+ &rArr; ?x</h3>
-<p>As unique+ is a &rsquo;+&rsquo; verb its use depends on whether x is a list (unique) or atom (unit random).
+<p>As unique+ is a &rsquo;+&rsquo; verb, because its use depends on whether x is a list (where ? means unique) or atom (where ? does a random number generation).
 </p>
-<p>x is list: Return the unique values of the list x.  The <code>?</code> preceeding the return value explicitly shows that list has no repeat values.
+<p>x is list: Return the unique values of the list x.  The <code>?</code> preceeding the return value explicitly shows that the list has no repeated values.
 </p>
 <div class="example">
 <pre class="example">&nbsp;?`f`a`b`c`a`b`d`e`a
@@ -674,7 +708,7 @@ z  1
 ?&quot;ban&quot;
 </pre></div>
 
-<p>x is atom: Generate x random values of uniform distribution from [0,1) or -x random values of normal distribtuion (mean=0, sd=1).
+<p>x is atom: Generate x random values using a uniform distribution from [0,1) or -x random values of a normal distribution (mean=0, standard deviation=1).
 </p>
 <div class="example">
 <pre class="example"> ?3     / 3 uniform
@@ -692,7 +726,7 @@ z  1
 <div class="example">
 <pre class="example"> `a`b`a`c`b`a`a?`b
 1
-&nbsp;`a`b`a`c`b`a`a?`d
+&nbsp;`a`b`a`c`b`a`a?`d / there is no element, so return the length of the list
 7
 &nbsp;0 1 2 3 4?10
 5
@@ -700,7 +734,7 @@ z  1
 4
 </pre></div>
 
-<p>x is atom: Generate x random values from 0 to less than y (int, float, time, bit) or from y (list of characters or names).  Random dates can be generated by using random ints and adding to the start date.
+<p>x is atom: Generate x random values from 0 to less than y (int, float, time, bit) or from y (list of characters or names).  Random dates can be generated by using random ints and adding those to a  start date.
 </p>
 <div class="example">
 <pre class="example"> 3?5
@@ -768,7 +802,8 @@ z  1
 </pre></div>
 
 <span id="value"></span><span id="value-_21d2-_002ex"></span><h3 class="section">4.36 value &rArr; .x</h3>
-<p>Value a string of valid k code or list of k code.  Can also be used to covert from a string to a numeric, temporal or name type.
+<p>Evaluate a string of valid k code or list of k code.  Can also be used to covert from a string to a numeric, 
+temporal or name type.
 </p>
 <div class="example">
 <pre class="example"> .&quot;3+2&quot;

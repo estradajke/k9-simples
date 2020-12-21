@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 17, 2020
+<!-- December 21, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -89,7 +89,8 @@ Next: <a href="Benchmark.html" accesskey="n" rel="next">Benchmark</a>, Previous:
 </div>
 <hr>
 <span id="Examples-1"></span><h2 class="chapter">2 Examples</h2>
-<p>Before jumping into synax let&rsquo;s look at some example problems to get a sense of the speed of k9 at processing data.  Given both the historic use of languages similar to k9 in finance and the author&rsquo;s background much of the examples will be based on financial markets.  For those not familiar with this field a short introduction will likely be needed.
+<p>[JOHN: THIS SHOULD GO AFTER YOU EXPLAIN THE LANGUAGE. AGAIN, IT&rsquo;S TOO SCARY AS OF NOW.]
+Before jumping into syntax, let&rsquo;s look at some example problems to get a sense of the speed of k9 at processing data.  Given  the  author&rsquo;s background many of the examples will be based on financial markets.  For those not familiar with this field a short introduction may help.
 </p>
 <span id="A-Tiny-Introduction-to-Financial-Market-Data"></span><h3 class="section">2.1 A Tiny Introduction to Financial Market Data</h3>
 <p>Financial market data generally are stored as prices (often call quotes) and trades.  At a minimum, prices will include time (t), price to buy (b for bid) and price to sell (a for ask).  Trades will include at a minimum time (t) and trade price (p).  In normal markets there are many more prices than trades.  (Additionally, the data normally includes the name of the security (s) and the exchange (x) from which the data comes.)  
@@ -126,7 +127,7 @@ t            p
 10:59:07.262  99
 </pre></div>
 
-<p>You&rsquo;ll note that the times didn&rsquo;t line up and that&rsquo;s because it apparently took you a second to decide to trade.  Because of this delay you&rsquo;ll often have to look back at the previous prices to join trade (t) and quote (q) data.
+<p>You&rsquo;ll note that the times didn&rsquo;t line up, because it apparently took you a second to decide to trade.  Because of this delay, you&rsquo;ll often have to look back at the previous prices to join trade (t) and quote (q) data.
 </p>
 <p>Now that you&rsquo;ve learned enough finance to understand the data, let&rsquo;s scale up to larger problems to see the power of k9.
 </p>
@@ -196,7 +197,7 @@ e|-2903
 </pre></div>
 
 <span id="Understanding-Code-Examples"></span><h3 class="section">2.3 Understanding Code Examples</h3>
-<p>In the shakti mailing list there is a number of code examples that can be used to learn best practice.  In order to make sense of other&rsquo;s codes one needs to be able to efficiently parse the typically dense k9 language.  Here, an example of how one goes about this process is presented.
+<p>In the shakti mailing list there are a number of code examples that can be used to learn best practices.  In order to make sense of other people&rsquo;s codes, one needs to be able to efficiently understand  k9 language expressions.  Here is an example of how one goes about this process.
 </p>
 <div class="example">
 <pre class="example">ss:{*{
@@ -231,7 +232,7 @@ e|-2903
  
 </pre></div>
 
-<p>Given k9 evaluates right to left let&rsquo;s start with the right most code fragment.
+<p>Given that k9 evaluates right to left, let&rsquo;s start with the rightmost code fragment.
 </p>
 <div class="example">
 <pre class="example">&nbsp;(();&amp;(x@(!#x)+\!#y)~\y)          / a list (null;value)
@@ -243,7 +244,7 @@ e|-2903
 <pre class="example">&nbsp;&amp;(x@(!#x)+\!#y)~\y
 </pre></div>
 
-<p>In order to easily check our understand we can wrap this in a function and call the function with the parameters shown above.  In order to step through we can start with the inner parenthesis and build up the code until it is complete.
+<p>In order to easily check our understanding, we can wrap this in a function and call the function with the parameters shown above.  In order to step through, we can start with the inner parenthesis and build up the code until it is complete.
 </p>
 <div class="example">
 <pre class="example">&nbsp;{!#x}[&quot;Find the +++ needle in + the ++ text&quot;;&quot;++&quot;]
@@ -252,7 +253,7 @@ e|-2903
 :rank
 </pre></div>
 
-<p>This won&rsquo;t work as one cannot call a function with two arguments and then only use one.  In order to get around this we will insert code for the second argument but not use it.
+<p>This won&rsquo;t work as one cannot call a function with two arguments and then use only one.  In order to get around this, we will insert code for the second argument but not use it.
 </p>
 <div class="example">
 <pre class="example"> {y;#x}[&quot;Find the +++ needle in + the ++ text&quot;;&quot;++&quot;]
@@ -289,7 +290,7 @@ e|-2903
 ..
 </pre></div>
 
-<p>Here the code takes each integer from the previous calculation and then add an integer list as long as the send argument to each value.  In order to ensure this is clear one could write something similar and ensure the output is able to be predicted.
+<p>Here the code takes each integer from the previous calculation and then adds an integer list as long as the second argument to each value.  In order to verify this,  you could write something similar and ensure the output what you predicted.
 </p>
 <div class="example">
 <pre class="example">&nbsp;{(!x)+\!y}[6;4]
@@ -301,7 +302,7 @@ e|-2903
 5 6 7 8
 </pre></div>
 
-<p>Now using the matrix above the code indices the first argument and pull substrings that match in length of the search string.
+<p>Now using the matrix above the code indices as the first argument and pull substrings that match the length of the search string.
 </p>
 <div class="example">
 <pre class="example">&nbsp;{x@(!#x)+\!#y}[&quot;Find the +++ needle in + the ++ text&quot;;&quot;++&quot;]

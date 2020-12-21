@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 17, 2020
+<!-- December 21, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -177,7 +177,7 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; <
 Next: <a href="#Examples" accesskey="n" rel="next">Examples</a>, Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <span id="Introduction-1"></span><h2 class="chapter">1 Introduction</h2>
-<p>The k9 programming language is designed primarily for the analysis of data.  It may surprise new users with two rather different paradigms, (1) fast data analysis and (2) concise syntax.  After some familiarity these changes will both seem normal and going back to slow and verbose programming will be surprisingly difficult.
+<p>The k9 programming language is designed primarily for the analysis of data.  It may surprise new users with two rather different paradigms, (1) fast data analysis and (2) concise syntax.  After you become familiar with the languages, these features will both seem normal and going back to slow and verbose programming will be surprisingly difficult.
 </p>
 <span id="Going-fast"></span><h3 class="section">1.1 Going fast</h3>
 <p>Imagine you have a small, on-disk, 100 million row database containing a time-series with two float values at each time.  Additionally this data could be split in three different tables covering different measurements.  Here&rsquo;s how fast k9 can read in the data from disk and compute a statistic, average difference over each table, which uses each and every row.
@@ -188,7 +188,7 @@ Next: <a href="#Examples" accesskey="n" rel="next">Examples</a>, Previous: <a hr
 495
 </pre></div>
 
-<p>That&rsquo;s 495 ms to read the data in from disk and compute over all the 100 million values.  The data read is the biggest bit.  If the data was already in memory then it&rsquo;s even faster.
+<p>That&rsquo;s 495 ms to read the data in from disk and compute over all the 100 million values.  The data read is the biggest bit.  If the data were already in memory then the computation would be  faster:
 </p>
 <div class="example">
 <pre class="example"> \t {select s:avg a-b from x}'q[!q]
@@ -213,15 +213,15 @@ q:`eurusd`usdjpy`usdchf!L'60e6 20e6 20e6
 
 <p>The k9 language is more closely related to mathematics syntax than most programming lanauges.  It requires the developer to learn to &ldquo;speak&rdquo; k9 but once that happens most find an ability to speak quicker and more accurately in k9 than in other languages.  At this point an example might help.
 </p>
-<p>In mathematics, &ldquo;3+2&rdquo; is read as &ldquo;3 plus 2&rdquo; as you learn at an early age that &ldquo;+&rdquo; is the &ldquo;plus&rdquo; sign.  For trival operations like arithmetic most programming languages use symbols also.  Moving on to something less math like most programming lanauges switch to words while k9 remains with symbols which turn out to have additional clarity.  As an example, to determine the distinct values of a list most programming languages might use a synatx like <code>distinct()</code> while k9 uses <code>?</code>.  This requires the developer to learn how to say a number of symbols but once that happens it results in much shorter code that is quicker to write, harder to bug, and easier to maintain.  The reason it&rsquo;s actually more clear is that as your write out <code>distinct</code> you might write <code>disinct</code> instead.  
+<p>In mathematics, &ldquo;3+2&rdquo; is read as &ldquo;3 plus 2&rdquo; as you learn at an early age that &ldquo;+&rdquo; is the &ldquo;plus&rdquo; sign.  For trival operations like arithmetic most programming languages use symbols also.  When moving beyond arithmetic, most programming lanauges switch to words while k9 remains with symbols.  As an example, to determine the distinct values of a list most programming languages might use a syntax like <code>distinct()</code> while k9 uses <code>?</code>.  This requires the developer to learn how to say a number of symbols but once that happens it results in much shorter code that is quicker to write, easier to inspect, and easier to maintain.  
 </p>
-<p>In math which do you find easier to answer?<br><br>
+<p>This should not be surprising. In arithmetic, which do you find easier to answer?<br><br>
 Math with text<br>
 Three plus two times open parenthesis six plus fourteen close parenthesis<br><br>
 Math with symbols<br>
 3+2*(6+14)<br>
 </p>
-<p>In code which do you find easier to understand?<br><br>
+<p>In code, which will you eventually find easier to understand?<br><br>
 Code with text<br>
 x = (0,12,3,4,1,17,-5,0,3,11);y=5;<br>
 distinct_x = distinct(x);<br>
@@ -230,9 +230,9 @@ Code with symbols<br>
 x:(0,12,3,4,1,17,-5,0,3,11);y:5;<br>
 z@&amp;y&lt;z:?x<br>
 </p>
-<p>If you&rsquo;re new to k9 then you likely appreciate symbols are shorter but look like line noise.  That&rsquo;s true but so did arithetic until you learned the basics.
+<p>If you&rsquo;re new to k9 then you&rsquo;ll  appreciate that symbols are shorter but look like line noise.  That&rsquo;s true but so did arithetic until you learned the basics.
 </p>
-<p>When you first learned arithmetic you likely didn&rsquo;t have a choice.  Now you have a choice about learning k9.  If you give it a try, then I expect you&rsquo;ll get it quickly and move onto the power phase fast enough that you&rsquo;ll be happy you gave it a chance.
+<p>When you first learned arithmetic you likely didn&rsquo;t have a choice.  Now you have a choice whether or not you want to learn k9.  If you give it a try, then  you&rsquo;ll get it quickly and move onto the power phase fast enough that you&rsquo;ll be happy you gave it a chance.
 </p>
 <span id="Get-k9_002e"></span><h3 class="section">1.3 Get k9.</h3>
 
@@ -247,7 +247,7 @@ z@&amp;y&lt;z:?x<br>
 <p>Again on the mac if you then attempt to run this file you likely won&rsquo;t succeed due to MacOS security.  You&rsquo;ll need to go to &ldquo;System Preferences...&rdquo; and then &ldquo;Security and Privacy&rdquo; and select to allow this binary to run.  (You&rsquo;ll have to have tried and failed to have it appear here automatically.)
 </p>
 <span id="Help_002fInfo-Card"></span><h3 class="section">1.4 Help/Info Card</h3>
-<p>Typing <code>\</code> in the terminal gives you a concise overview of the language.  This document aims to provide details to beginning user where the help screen is a bit too terse.  Some commands are not yet complete and thus marked with an asterisk, eg. *update A by B from T where C.
+<p>Typing <code>\</code> in a terminal window gives you a concise overview of the language.  This document aims to provide details to beginning user where the help screen is a bit too terse.  Some commands are not yet complete and thus marked with an asterisk, eg. *update A by B from T where C.
 </p>
 <div class="format">
 <pre class="verbatim">Verb                       Adverb               Type              System
@@ -294,6 +294,8 @@ Sep 13 2020 16GB (c) shakti
 
 <span id="Simple-example"></span><h3 class="section">1.6 Simple example</h3>
 
+<p>JOHN: I SUGGEST MOVING THIS TO LATER BECAUSE AS IT IS, IT WOULDN&rsquo;T LOOK SIMPLE AT ALL TO A NEWBIE.
+</p>
 <p>Here I will start up k9, perform some trivial calculations, and then close the session.  After this example it will be assumed the user will have a k9 session running and working in repl mode.  Comments (<code>/</code>) will be added to the end of lines as needed.
 </p>
 <div class="example">
@@ -349,17 +351,17 @@ bash-3.2$
 5    / this is output
 </pre></div>
 
-<span id="k9-nuances"></span><h3 class="section">1.8 k9 nuances</h3>
-<p>One will need to understand some basic rules of k9 in order to progress.  These will likely seem strange at first but the faster you learn a few nuances the faster you&rsquo;ll move forward.
+<span id="k9-Idiosyncracies"></span><h3 class="section">1.8 k9 Idiosyncracies</h3>
+<p>One will need to understand some basic rules of k9 in order to progress.  These may seem strange at first but the faster you learn them, the faster you&rsquo;ll move forward. Also, some of them, like overloading based on number of arguments, add a lot of expressability to the language.
 </p>
 <span id="The-language-changes-often-_0028for-now_0029_002e"></span><h4 class="subsection">1.8.1 The language changes often (for now).</h4>
-<p>There may be examples in this document which work on the version indicated but do not with the version currently available to download.  If so, then feel free to drop the author a note.  Items which currently error but are likely to come back &rsquo;soon&rsquo; will be left in the document.
+<p>There may be examples in this document which work on the version indicated but do not with the version currently available to download.  If so, then feel free to drop the author a note.  Items which currently cause an error but are likely to come back &rsquo;soon&rsquo; will be left in the document.
 </p>
 <span id="Colon-_0028_003a_0029-is-used-to-set-a-variable-to-a-value"></span><h4 class="subsection">1.8.2 Colon (<code>:</code>) is used to set a variable to a value</h4>
 <p><code>a:3</code> is used to set the variable, a, to the value, 3.  <code>a=3</code> is an equality test to determine if a is equal to 3.
 </p>
 <span id="Percent-_0028_0025_0029-is-used-to-divide-numbers"></span><h4 class="subsection">1.8.3 Percent (<code>%</code>) is used to divide numbers</h4>
-<p>Yeah, 2 divide by 5 is written as <code>2%5</code> and not <code>2/5</code>.
+<p>Yeah, 2 divided by 5 is written as <code>2%5</code>, not <code>2/5</code>.
 </p>
 <span id="Evaluation-is-done-right-to-left"></span><h4 class="subsection">1.8.4 Evaluation is done right to left</h4>
 <p>2+5*3 is 17 and 2*5+3 is 16.  2+5*3 is first evaluated on the right most portion, 5*3, and once that is computed then it proceeds with 2+15.  2*5+3 goes to 2*8 which becomes 16.
@@ -369,16 +371,14 @@ bash-3.2$
 </p>
 <span id="Operators-are-overloaded-depending-on-the-number-of-arguments_002e"></span><h4 class="subsection">1.8.6 Operators are overloaded depending on the number of arguments.</h4>
 <div class="example">
-<pre class="example">&nbsp;*(3;6;9)    / single argument: * is first
-3
-&nbsp;2*(3;6;9)   / two arguments: * is multiplication
-6 12 18
+<pre class="example">&nbsp;*(13;6;9)    / single argument: * returns the first element
+13
+&nbsp;2*(13;6;9)   / two arguments: * is multiplication
+26 12 18
 </pre></div>
 
 <span id="Lists-and-functions-are-very-similar_002e"></span><h4 class="subsection">1.8.7 Lists and functions are very similar.</h4>
-<p>k9 syntax encourages you to treat lists and functions in a similar function.  They should both be thought of a mapping from a value to another value or from a domain to a range.
-</p>
-<p>If this book wasn&rsquo;t a simples guide then lists (l) and functions (f) would be replaced by maps (m) given the interchangeability.  One way to determine if a map is either a list or function is via the type function.  Lists and functions do not have the same type.
+<p>k9 syntax encourages you to treat lists and functions in a similar function.  They should both be thought of a mapping from a value to another value or from a domain to a range. Lists and functions do not have the same type.
 </p>
 <div class="example">
 <pre class="example"> l:3 4 7 12
@@ -393,7 +393,7 @@ bash-3.2$
 `.
 </pre></div>
 
-<span id="k9-is-expressed-in-terms-of-grammar_002e"></span><h4 class="subsection">1.8.8 k9 is expressed in terms of grammar.</h4>
+<span id="k9-notions-of-Noun_002c-Verb_002c-and-Adverb"></span><h4 class="subsection">1.8.8 k9 notions of Noun, Verb, and Adverb</h4>
 <p>k9 uses an analogy with grammar to describe language syntax.  The k9 grammar consists of nouns (data), verbs (functions) and adverbs (function modifiers).
 </p><ul>
 <li> <tt>The boy ate an appple. (Noun verb noun)</tt>
@@ -411,7 +411,8 @@ bash-3.2$
 Next: <a href="#Benchmark" accesskey="n" rel="next">Benchmark</a>, Previous: <a href="#Introduction" accesskey="p" rel="prev">Introduction</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <span id="Examples-1"></span><h2 class="chapter">2 Examples</h2>
-<p>Before jumping into synax let&rsquo;s look at some example problems to get a sense of the speed of k9 at processing data.  Given both the historic use of languages similar to k9 in finance and the author&rsquo;s background much of the examples will be based on financial markets.  For those not familiar with this field a short introduction will likely be needed.
+<p>[JOHN: THIS SHOULD GO AFTER YOU EXPLAIN THE LANGUAGE. AGAIN, IT&rsquo;S TOO SCARY AS OF NOW.]
+Before jumping into syntax, let&rsquo;s look at some example problems to get a sense of the speed of k9 at processing data.  Given  the  author&rsquo;s background many of the examples will be based on financial markets.  For those not familiar with this field a short introduction may help.
 </p>
 <span id="A-Tiny-Introduction-to-Financial-Market-Data"></span><h3 class="section">2.1 A Tiny Introduction to Financial Market Data</h3>
 <p>Financial market data generally are stored as prices (often call quotes) and trades.  At a minimum, prices will include time (t), price to buy (b for bid) and price to sell (a for ask).  Trades will include at a minimum time (t) and trade price (p).  In normal markets there are many more prices than trades.  (Additionally, the data normally includes the name of the security (s) and the exchange (x) from which the data comes.)  
@@ -448,7 +449,7 @@ t            p
 10:59:07.262  99
 </pre></div>
 
-<p>You&rsquo;ll note that the times didn&rsquo;t line up and that&rsquo;s because it apparently took you a second to decide to trade.  Because of this delay you&rsquo;ll often have to look back at the previous prices to join trade (t) and quote (q) data.
+<p>You&rsquo;ll note that the times didn&rsquo;t line up, because it apparently took you a second to decide to trade.  Because of this delay, you&rsquo;ll often have to look back at the previous prices to join trade (t) and quote (q) data.
 </p>
 <p>Now that you&rsquo;ve learned enough finance to understand the data, let&rsquo;s scale up to larger problems to see the power of k9.
 </p>
@@ -518,7 +519,7 @@ e|-2903
 </pre></div>
 
 <span id="Understanding-Code-Examples"></span><h3 class="section">2.3 Understanding Code Examples</h3>
-<p>In the shakti mailing list there is a number of code examples that can be used to learn best practice.  In order to make sense of other&rsquo;s codes one needs to be able to efficiently parse the typically dense k9 language.  Here, an example of how one goes about this process is presented.
+<p>In the shakti mailing list there are a number of code examples that can be used to learn best practices.  In order to make sense of other people&rsquo;s codes, one needs to be able to efficiently understand  k9 language expressions.  Here is an example of how one goes about this process.
 </p>
 <div class="example">
 <pre class="example">ss:{*{
@@ -553,7 +554,7 @@ e|-2903
  
 </pre></div>
 
-<p>Given k9 evaluates right to left let&rsquo;s start with the right most code fragment.
+<p>Given that k9 evaluates right to left, let&rsquo;s start with the rightmost code fragment.
 </p>
 <div class="example">
 <pre class="example">&nbsp;(();&amp;(x@(!#x)+\!#y)~\y)          / a list (null;value)
@@ -565,7 +566,7 @@ e|-2903
 <pre class="example">&nbsp;&amp;(x@(!#x)+\!#y)~\y
 </pre></div>
 
-<p>In order to easily check our understand we can wrap this in a function and call the function with the parameters shown above.  In order to step through we can start with the inner parenthesis and build up the code until it is complete.
+<p>In order to easily check our understanding, we can wrap this in a function and call the function with the parameters shown above.  In order to step through, we can start with the inner parenthesis and build up the code until it is complete.
 </p>
 <div class="example">
 <pre class="example">&nbsp;{!#x}[&quot;Find the +++ needle in + the ++ text&quot;;&quot;++&quot;]
@@ -574,7 +575,7 @@ e|-2903
 :rank
 </pre></div>
 
-<p>This won&rsquo;t work as one cannot call a function with two arguments and then only use one.  In order to get around this we will insert code for the second argument but not use it.
+<p>This won&rsquo;t work as one cannot call a function with two arguments and then use only one.  In order to get around this, we will insert code for the second argument but not use it.
 </p>
 <div class="example">
 <pre class="example"> {y;#x}[&quot;Find the +++ needle in + the ++ text&quot;;&quot;++&quot;]
@@ -611,7 +612,7 @@ e|-2903
 ..
 </pre></div>
 
-<p>Here the code takes each integer from the previous calculation and then add an integer list as long as the send argument to each value.  In order to ensure this is clear one could write something similar and ensure the output is able to be predicted.
+<p>Here the code takes each integer from the previous calculation and then adds an integer list as long as the second argument to each value.  In order to verify this,  you could write something similar and ensure the output what you predicted.
 </p>
 <div class="example">
 <pre class="example">&nbsp;{(!x)+\!y}[6;4]
@@ -623,7 +624,7 @@ e|-2903
 5 6 7 8
 </pre></div>
 
-<p>Now using the matrix above the code indices the first argument and pull substrings that match in length of the search string.
+<p>Now using the matrix above the code indices as the first argument and pull substrings that match the length of the search string.
 </p>
 <div class="example">
 <pre class="example">&nbsp;{x@(!#x)+\!#y}[&quot;Find the +++ needle in + the ++ text&quot;;&quot;++&quot;]
@@ -671,7 +672,8 @@ in
 Next: <a href="#Verb" accesskey="n" rel="next">Verb</a>, Previous: <a href="#Examples" accesskey="p" rel="prev">Examples</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <span id="Benchmark-1"></span><h2 class="chapter">3 Benchmark</h2>
-<p>Shakti seems likely to be one of the faster data analysis languages out there and clear benchmarks always help to illuminate the matter.  The Shakti website has a file for such purpose, b.k.  You can see below for the first query (Q1) k9 takes 1ms while postgres, spark and mongo are orders of magntitude slower.  
+<p>[JOHN: THIS TOO SHOULD GO AFTER EXAMPLES BUT AFTER YOU EXPLAIN THE LANGUAGE]
+Shakti is a fast data analysis language  and clear benchmarks illustrate this.  The Shakti website has a file for such purpose, b.k.  For example, you can see below that the first query (Q1) k9 takes 1ms while postgres, spark and mongo are orders of magnitude slower.  
 </p>
 <p>b.k
 </p>
@@ -732,7 +734,7 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 </pre></div>
 
 <span id="m_002c-n_002c-S_002c-N"></span><h4 class="subsection">3.1.3 m, n, S, N</h4>
-<p>m is the number of symbols.  n is the number of trades.  S is the list of symbol names.  N is a list of decreasing numbers which sum approximately to n.  (Approximately as the values are ceil to integers).
+<p>m is the number of symbols.  n is the number of trades.  S is a list of symbol names.  N is a list of  numbers in decreasing order which sum approximately to n.  
 </p>
 <div class="example">
 <pre class="example">&nbsp;4#S
@@ -746,7 +748,7 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 <span id="t-1"></span><h4 class="subsection">3.1.4 t</h4>
 <p>t is an xtable of trades.  The fields are time (t), exchange (e), price (p), and size (z).  The number of trades is set by n.
 </p>
-<p>Pulling 1 random table from t and showing 10 random rows.  
+<p>Pulling one random table from t and showing 10 random rows.  
 </p>
 <div class="example">
 <pre class="example">&nbsp;10?*t@1?S
@@ -765,7 +767,7 @@ t        e p  z
 </pre></div>
 
 <span id="q"></span><h4 class="subsection">3.1.5 q</h4>
-<p>q is a xtable of quotes.  The fields are time (t), exchange (e), and bid (b).  The number of quotes is set by 6*n.
+<p>q is a xtable of quotes.  The fields are time (t), exchange (e), and bid (b).  The number of quotes is set to 6*n.
 </p>
 <div class="example">
 <pre class="example">&nbsp;10?*q@1?S
@@ -784,7 +786,7 @@ t        e b
 </pre></div>
 
 <span id="a_002c-A"></span><h4 class="subsection">3.1.6 a, A</h4>
-<p>a is the first symbol of S.  A is the first 100 symbols of S.
+<p>a is the first symbol of S.  A consists of the first 100 symbols of S.
 </p>
 <div class="example">
 <pre class="example">&nbsp;a
@@ -859,14 +861,14 @@ t        e p  z    b
 <p>
 Next: <a href="#Adverb" accesskey="n" rel="next">Adverb</a>, Previous: <a href="#Benchmark" accesskey="p" rel="prev">Benchmark</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<span id="Verb-1"></span><h2 class="chapter">4 Verb</h2>
-<p>This chapter covers verbs which are the core functions of k9.  Given how different is it to call functions in k9 than many other languages this is probably a chapter that will have to be covered a few times.  Once you can &ldquo;speak&rdquo; k9 you&rsquo;ll read <code>|x</code> better than <code>reverse(x)</code>.  
+<span id="Verbs"></span><h2 class="chapter">4 Verbs</h2>
+<p>This chapter covers verbs which are the core primitives of k9.  Given how different is it to call functions in k9 than in most other languages, you may have to read this chapter  a few times.  Once you can &ldquo;speak&rdquo; k9 you&rsquo;ll read <code>|x</code> better than <code>reverse(x)</code>.  
 </p>
-<p>Most functions are overloaded and change depending on the number.  This reuse of symbols is also an item that causes confusion for new users.  Eg. <code>(1 4)++(2 3;5 6;7 8)</code> contains the plus symbol once as flip and then for addition.  (Remember evaluation is right to left!)
+<p>Most functions are overloaded and change depending on the number of arguments.  This can confuse new users.  Eg. <code>(1 4)++(2 3;5 6;7 8)</code> contains the plus symbol once as flip and then for addition.  (Remember evaluation is right to left!)
 </p>
-<p>Some functions are overloaded into materially different use and these are called out with a &rsquo;+&rsquo; ending.  This includes unique+ and find+ which become unit random and non-unit random respectively.
+<p>When functions are overloaded into materially different uses, I flag this with  a &rsquo;+&rsquo; suffix.  For example, unique+ and find+ differ depending on whether their argument is a scalar or a vector.  
 </p>
-<p>There are also functions that can take a function argument and these are identified with a &rsquo;[f]&rsquo; prefix.  These include [f]cut, [f]take, [f]drop, [f]at, and [f]dot.
+<p>There are also verbs that can take a function argument. I flag those with a &rsquo;[f]&rsquo; prefix.  These include [f]cut, [f]take, [f]drop, [f]at, and [f]dot.
 </p>
 <div class="example">
 <pre class="example">Verb
@@ -896,7 +898,7 @@ $ <a href="#string">string</a>,   <a href="#cast">cast</a>.
 <span id="x"></span><span id="x-_21d2-_003ax"></span><h3 class="section">4.1 x &rArr; :x</h3>
 
 <span id="set"></span><span id="set-_21d2-x_003ay"></span><h3 class="section">4.2 set &rArr; x:y</h3>
-<p>Set a variable, x, to a value, y.  A space, eg. <code>x :y</code> will turn this into an <a href="#Expression">Expression</a>.  
+<p>Set a variable, x, to a value, y.  There should be no space between <code>x</code> and <code>:</code>. 
 </p>
 <div class="example">
 <pre class="example">&nbsp;a:3
@@ -938,7 +940,7 @@ a b
 </pre></div>
 
 <span id="plus"></span><span id="plus-_21d2-x_002by"></span><h3 class="section">4.4 plus &rArr; x+y</h3>
-<p>Add x and y.  Parameters can be elements or lists but if both x and y are lists then they must be equal length.
+<p>Add x and y.  Arguments can be elements or lists but if both x and y are lists then they must be of equal length.
 </p>
 <div class="example">
 <pre class="example"> 3+7
@@ -995,7 +997,7 @@ b|-4 -5 -6
 </pre></div>
 
 <span id="first"></span><span id="first-_21d2-_002ax"></span><h3 class="section">4.7 first &rArr; *x</h3>
-<p>Return the first value of x.  Last can either be determine by taking the first element of the reverse list (*|&lsquo;a&lsquo;b&lsquo;c) or using last syntax ((:/)&lsquo;a&lsquo;b&lsquo;c).
+<p>Return the first value of x.  
 </p><div class="example">
 <pre class="example"> *1 2 3
 1
@@ -1030,7 +1032,7 @@ b|-4 -5 -6
 </pre></div>
 
 <span id="where"></span><span id="where-_21d2-_0026x"></span><h3 class="section">4.10 where &rArr; &amp;x</h3>
-<p>Given a list of binary values return the indices where the value is non-zero.  Given a list of non-negative integer values, eg. x[0], x[1], ..., x[n-1], generate x[0] values of 0, x[1] values of 1, ..., and x[n-1] values of n-1.  
+<p>Given a list of boolean values return the indices where the value is non-zero.   
 </p>
 <div class="example">
 <pre class="example"> &amp;001001b
@@ -1039,10 +1041,14 @@ b|-4 -5 -6
 010101b
  &amp;&quot;banana&quot;=&quot;a&quot;
 1 3 5
- &amp; 3 1 0 2
-0 0 0 1 3 3
  x@&amp;30&lt;x:12.7 0.1 35.6 -12.1 101.101  / return values greater than 30
 35.6 101.101
+</pre></div>
+<p>Given a list of non-negative integer values, eg. x[0], x[1], ..., x[n-1], generate x[0] values of 0, x[1] values of 1, ..., and x[n-1] values of n-1. 
+</p><div class="example">
+<pre class="example"> &amp; 3 1 0 2
+0 0 0 1 3 3
+
 </pre></div>
 
 <span id="min_002fand"></span><span id="and-_21d2-x_0026y"></span><h3 class="section">4.11 and &rArr; x&amp;y</h3>
@@ -1073,6 +1079,8 @@ b|-4 -5 -6
 1 2 3
 </pre></div>
 
+<p>To get the last element, one can take  the first element of the reverse list (*|&lsquo;a&lsquo;b&lsquo;c).
+</p>
 <span id="max_002for"></span><span id="or-_21d2-x_007cy"></span><h3 class="section">4.13 or &rArr; x|y</h3>
 <p>The greater of x and y.  Max of a list can be determine by use of the adverb over.
 </p><div class="example">
@@ -1087,21 +1095,21 @@ b|-4 -5 -6
 </pre></div>
 
 <span id="asc"></span><span id="asc_0028dsc_0029-_21d2-_003c-_0028_003e_0029-x"></span><h3 class="section">4.14 asc(dsc) &rArr; &lt; (&gt;) x</h3>
-<p>Sort a list or dictionary in ascending (&lt;) or descending (&gt;) order.  Applied to a list will return the indices to be used while a dictionary is directly sorted by value
+<p>Sort a list or dictionary in ascending (&lt;) or descending (&gt;) order.  Applied to a list, these will return the indices to be used to achieve the sort.
 </p>
 <div class="example">
-<pre class="example"> &lt;2 3 0 12
+<pre class="example"> &lt;5 7 0 12
 2 0 1 3
 
- x@&lt;x:2 3 0 12
-0 2 3 12
+ x@&lt;x:5 7 0 12
+0 5 7 12
 
  d:`a`b`c!3 2 1;d
 a|3
 b|2
 c|1
 
- &lt;d
+ &lt;d / a dictionary is sorted by value
 c|1
 b|2
 a|3
@@ -1125,7 +1133,7 @@ a|3
 </pre></div>
 
 <span id="group"></span><span id="group-_21d2-_003dx"></span><h3 class="section">4.16 group &rArr; =x</h3>
-<p>A dictionary of the disinct values of x (key) and indices (values).
+<p>A dictionary of the distinct values of x (key) and their indices (values).
 </p><div class="example">
 <pre class="example">&nbsp;=&quot;banana&quot;
 a|1 3 5
@@ -1200,15 +1208,35 @@ n|2 4
 `a`b`c
 </pre></div>
 
-<p>In the case where x is a list of integers  x1 x2 ... xk, generate a matrix of k rows where each row has size */x1 x2 ... xk and the elements of row i are !xi repeated as many times as necessary.
+<p>In the case where x is a list of integers  x1 x2 ... xk, generate a matrix of k rows where each row has size */x1 x2 ... xk and the elements of row i are !xi repeated as many times as necessary. Each row&rsquo;s repeats must fit below constant values of the row above.
 </p>
 <div class="example">
-<pre class="example"> !2 3 2 / 1st index 0,1, 2nd index 0,1,2, 3rd index 0,1
+<pre class="example"> !2 3 2 / Each row of length 2*3*2 = */2 3 2 = 12. First row values 0,1, second row values 0,1,2, third row values 0,1
 0 0 0 0 0 0 1 1 1 1 1 1
 0 0 1 1 2 2 0 0 1 1 2 2
 0 1 0 1 0 1 0 1 0 1 0 1
 
- B:`b'+!16#2 / create a list of 16-bit binary numbers from 0 to 65535
+ !4 2 3
+0 0 0 0 0 0 1 1 1 1 1 1 2 2 2 2 2 2 3 3 3 3 3 3
+0 0 0 1 1 1 0 0 0 1 1 1 0 0 0 1 1 1 0 0 0 1 1 1
+0 1 2 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2
+
+ !2 2 2
+0 0 0 0 1 1 1 1
+0 0 1 1 0 0 1 1
+0 1 0 1 0 1 0 1
+
+ +!2 2 2
+0 0 0
+0 0 1
+0 1 0
+0 1 1
+1 0 0
+1 0 1
+1 1 0
+1 1 1
+
+ B:`b'+!16#2 / create a list of all 16-bit binary numbers from 0 to 65535 JOHN: THIS DOESN'T WORK
 
 B[12123]    / pull the element 12,123
 0010111101011011b
@@ -1218,7 +1246,7 @@ B[12123]    / pull the element 12,123
 </pre></div>
 
 <span id="key"></span><span id="key-_21d2-x_0021y"></span><h3 class="section">4.21 key &rArr; x!y</h3>
-<p>Dictionary of x (key) and y (value).  If looking to key a table then refer to <a href="#g_t_005bf_005dcut">[f]cut</a>.
+<p>Dictionary of x (key) and y (value).  
 </p>
 <div class="example">
 <pre class="example">&nbsp;3!7
@@ -1266,27 +1294,27 @@ b|0 1 2
 </pre></div>
 
 <span id="g_t_005bf_005dcut"></span><span id="g_t_005bf_005dcut-_21d2-x_005ey"></span><h3 class="section">4.25 [f]cut &rArr; x^y</h3>
-<p>Cut list y by size, indices, ot function x.  
+<p>Cut list y by size, indices, or function x.  
 </p>
 <div class="example">
-<pre class="example"> 3^!10
-0 1 2
-3 4 5
-6 7 8
+<pre class="example"> 3^!20 / 3 rows with 6 elements per row so result is a matrix
+0 1 2 3 4 5      
+6 7 8 9 10 11    
+12 13 14 15 16 17
 
- 0 1 5^!10
-0        
-1 2 3 4  
-5 6 7 8 9
+ 2 3 7 ^!17 / left list indicates start number of each row.
+,2                        
+3 4 5 6                   
+7 8 9 10 11 12 13 14 15 16
 
  8 9 10 11 12^.1*!20
-0.8                            
-0.9                            
-1.                             
-1.1                            
+,0.8                           
+,0.9                           
+,1.                            
+,1.1                           
 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9
 
- {(x*x)within .5 1.5}^.1*!20
+ {(x*x)within .5 1.5}^.1*!20 / JOHN I GET A SEG FAULT FOR THIS
 0.8                            
 0.9                            
 1.                             
@@ -1294,7 +1322,7 @@ b|0 1 2
 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9
 </pre></div>
 
-<p>Cut into domain and range, aka key a table.
+<p>Cut into domain and range, aka key a table (set an attribute to be a key)
 </p>
 <div class="example">
 <pre class="example"> t:[[]a:`x`y`z;b:1 20 1];t / an unkeyed table
@@ -1331,7 +1359,7 @@ z  1
 </pre></div>
 
 <span id="g_t_005bf_005dtake"></span><span id="g_t_005bf_005dtake-_21d2-x_0023y"></span><h3 class="section">4.27 [f]take &rArr; x#y</h3>
-<p>[f]take has a number of different actions depending on x.  This include head (take from front of list), tail (take from back of list), common (take common elements), and filter (take where function is non-zero).
+<p>[f]take has a number of different actions depending on x.  These include head (take from front of list), tail (take from back of list), common (take common elements), and filter (take where function is non-zero).
 </p>
 <table>
 <tr><td><b>action</b></td><td><b>x</b></td></tr>
@@ -1344,14 +1372,16 @@ z  1
 <span id="take1"></span><p>Postive (negative) x returns the first (last) x elements of y.  If abs[x]&gt;count[y] then repeatedly pull from y.
 </p>
 <div class="example">
-<pre class="example"> 3#0 1 2 3 4 5          / take first
+<pre class="example"> 3#0 1 2 3 4 5          / take first 3 elements of a list whose length is longer than 3
 0 1 2
 
- -3#0 1 2 3 4 5         / take last
+ 10 # 17 12 25 / take repeat: generate a list of length 10 with these three elements
+17 12 25 17 12 25 17 12 25 17
+
+ -3#0 1 2 3 4 5         / take last elements of a list
 3 4 5
 
- 10#0 1 2               / take repeat
-0 1 2 0 1 2 0 1 2 0
+
 </pre></div>
 
 <span id="take2"></span><p>If x is a list, then take returns any values common in both x and y. 
@@ -1359,12 +1389,18 @@ z  1
 <div class="example">
 <pre class="example"> (1 2 3 7 8 9)#(2 8 20) / common
 2 8
+
+  (2 4 6 2 6 5 4) # (4 6 7 8 2 4 4 4) / always a substring of right argument
+4 6 2 4 4 4
+ 
+ (4 6 7 8 2 4 4 4) # (2 4 6 2 6 5 4)
+2 4 6 2 6 4
 </pre></div>
 
-<span id="take3"></span><p>If x is a function, then filter out values where the funtion is non-zero.
+<span id="take3"></span><p>If x is a function, then select the  values where the function is non-zero.
 </p>
 <div class="example">
-<pre class="example"> (0.5&lt;)#10?1.           / filter
+<pre class="example"> (0.5&lt;)#10?1.           / select values greater than 0.5 among randomly chosen numbers between 0 and 1
 0.840732 0.5330717 0.7539563 0.643315 0.6993048f
 </pre></div>
 
@@ -1376,7 +1412,7 @@ z  1
 </pre></div>
 
 <span id="g_t_005bf_005ddrop"></span><span id="g_t_005bf_005ddrop-_21d2-x_005fy"></span><h3 class="section">4.29 [f]drop &rArr; x_y</h3>
-<p>[f]drop has a number of different actions depending on x.  This include dehead (drop from front of list), detail (drop from back of list), uncommon (drop common elements), and filter (drop where function is zero).
+<p>[f]drop has a number of different actions depending on x.  This include de-head (drop from front of list), de-tail (drop from back of list), uncommon (drop common elements), and filter (drop where function is zero).
 </p>
 <table>
 <tr><td><b>action</b></td><td><b>x</b></td></tr>
@@ -1389,24 +1425,24 @@ z  1
 <span id="drop1"></span><p>Postive (negative) x drops the first (last) x elements of y.  
 </p>
 <div class="example">
-<pre class="example"> 3_0 1 2 3 4 5          / drop first
+<pre class="example"> 3_0 1 2 3 4 5          / drop first three
 3 4 5
 
- -3_0 1 2 3 4 5         / drop last
-0 1 2
+ -2_0 1 2 3 4 5         / drop last three
+0 1 2 3
 </pre></div>
 
-<span id="drop2"></span><p>If x is a list, then drop returns any values from y uncommon in x. 
+<span id="drop2"></span><p>If x is a list, then drop returns any values from y not found in x. 
 </p>
 <div class="example">
 <pre class="example"> (1 2 3 7 8 9)_(2 8 20) / uncommon
 ,20
 </pre></div>
 
-<span id="drop3"></span><p>If x is a function, then filter out values where the funtion is non-zero.
+<span id="drop3"></span><p>If x is a function, then select values where the function is zero.
 </p>
 <div class="example">
-<pre class="example"> (0.5&lt;)_10?1.           / filter
+<pre class="example"> (0.5&lt;)_10?1.           / select values that are less than or equal to 0.5
 0.02049699 0.1269226
 </pre></div>
 
@@ -1434,9 +1470,9 @@ z  1
 </pre></div>
 
 <span id="unique_002b"></span><span id="unique_002b-_21d2-_003fx"></span><h3 class="section">4.32 unique+ &rArr; ?x</h3>
-<p>As unique+ is a &rsquo;+&rsquo; verb its use depends on whether x is a list (unique) or atom (unit random).
+<p>As unique+ is a &rsquo;+&rsquo; verb, because its use depends on whether x is a list (where ? means unique) or atom (where ? does a random number generation).
 </p>
-<p>x is list: Return the unique values of the list x.  The <code>?</code> preceeding the return value explicitly shows that list has no repeat values.
+<p>x is list: Return the unique values of the list x.  The <code>?</code> preceeding the return value explicitly shows that the list has no repeated values.
 </p>
 <div class="example">
 <pre class="example">&nbsp;?`f`a`b`c`a`b`d`e`a
@@ -1445,7 +1481,7 @@ z  1
 ?&quot;ban&quot;
 </pre></div>
 
-<p>x is atom: Generate x random values of uniform distribution from [0,1) or -x random values of normal distribtuion (mean=0, sd=1).
+<p>x is atom: Generate x random values using a uniform distribution from [0,1) or -x random values of a normal distribution (mean=0, standard deviation=1).
 </p>
 <div class="example">
 <pre class="example"> ?3     / 3 uniform
@@ -1463,7 +1499,7 @@ z  1
 <div class="example">
 <pre class="example"> `a`b`a`c`b`a`a?`b
 1
-&nbsp;`a`b`a`c`b`a`a?`d
+&nbsp;`a`b`a`c`b`a`a?`d / there is no element, so return the length of the list
 7
 &nbsp;0 1 2 3 4?10
 5
@@ -1471,7 +1507,7 @@ z  1
 4
 </pre></div>
 
-<p>x is atom: Generate x random values from 0 to less than y (int, float, time, bit) or from y (list of characters or names).  Random dates can be generated by using random ints and adding to the start date.
+<p>x is atom: Generate x random values from 0 to less than y (int, float, time, bit) or from y (list of characters or names).  Random dates can be generated by using random ints and adding those to a  start date.
 </p>
 <div class="example">
 <pre class="example"> 3?5
@@ -1539,7 +1575,8 @@ z  1
 </pre></div>
 
 <span id="value"></span><span id="value-_21d2-_002ex"></span><h3 class="section">4.36 value &rArr; .x</h3>
-<p>Value a string of valid k code or list of k code.  Can also be used to covert from a string to a numeric, temporal or name type.
+<p>Evaluate a string of valid k code or list of k code.  Can also be used to covert from a string to a numeric, 
+temporal or name type.
 </p>
 <div class="example">
 <pre class="example"> .&quot;3+2&quot;
@@ -1642,10 +1679,18 @@ c|3
 <p>
 Next: <a href="#Noun" accesskey="n" rel="next">Noun</a>, Previous: <a href="#Verb" accesskey="p" rel="prev">Verb</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<span id="Adverb-1"></span><h2 class="chapter">5 Adverb</h2>
-<p>Adverbs modify verbs to operative iteratively over nouns.  This previous sentence likely will only make sense once you understand it so let&rsquo;s jump into an example.  Imagine you have a list of 4 lists.  Using <code>first</code> you will retrieve the first sub-list.  In order to retrieve the first element of each sub-list you&rsquo;ll have to modify the function <code>first</code> with a modifier <code>each</code>.
-</p>
-<div class="example">
+<span id="Adverbs"></span><h2 class="chapter">5 Adverbs</h2>
+<p>Adverbs modify verbs to operative iteratively over nouns.  This previous sentence likely will  make sense only once you understand it so let&rsquo;s jump into an example.  Imagine you have a list of 4 lists.  Using <code>first</code> you will retrieve the first sub-list.  In order to retrieve the first element of each sub-list you&rsquo;ll have to modify the function <code>first</code> with a modifier <code>each</code>.
+</p><div class="example">
+<pre class="example">x: (1 2; 3 4; 5 6; 7 8)
+ *x
+1 2
+ *'x
+1 3 5 7
+</pre></div>
+
+<p>Here now is a list of the adverbs and their names.
+</p><div class="example">
 <pre class="example">Adverb               
 f/  <a href="#scan">over</a>  c/  <a href="#g_t_002bjoin">+join</a>  
 f\  <a href="#scan">scan</a>  c\  <a href="#g_t_002bsplit">+split</a> 
@@ -1691,10 +1736,10 @@ abc
 &quot;Some-random text-plus-.&quot;
 </pre></div>
 
-<p>Convert a list of integers x via base c.
+<p>The notaion c/x converts a list of integers x via base c into base 10. In the example below, assuming 2 0 1 are digits in base 8, they convert to  1 + (0*8) + (2*8*8) = 129
 </p>
 <div class="example">
-<pre class="example"> 8/2 0 1  / 1 + (0*8) + (2*8*8)
+<pre class="example"> 8/2 0 1  
 129
 </pre></div>
 
@@ -1710,7 +1755,7 @@ short
 sentence.
 </pre></div>
 
-<p>Split a number x into base c units.
+<p>c\x splits a number x into base c digits.
 </p>
 <div class="example">
 <pre class="example"> 8\129
@@ -1729,7 +1774,7 @@ sentence.
 </pre></div>
 
 <span id="g_t_002bhas"></span><span id="g_t_002bhas-_21d2-v_0027x"></span><h3 class="section">5.5 +has &rArr; v&rsquo;x</h3>
-<p>Determine if vector v has element or list x.  Simliar to <a href="#in">in</a> but arguments reversed.
+<p>Determine whether vector v has element x if x is an atom (i.e., scalar) or each element of x if x is a list.  Simliar to <a href="#in">in</a> but with the arguments reversed.
 </p>
 <div class="example">
 <pre class="example"> `a`b`c`a`b'`a
@@ -1763,10 +1808,10 @@ y4 y3
 1 1.019 1.031403 0.9733587 1.037146
 </pre></div>
 
-<p>Additionally eachp is each parallel.  This will allow a function to run using multiple threads over a list of arguments.
+<p>Additionally eachp (&rsquo;:) is a multithreaded (parallel) each.  This will allow a function to run using multiple threads over a list of arguments.
 </p>
 <div class="example">
-<pre class="example">\t {L:x?1.;sum L%sin L*cos L*sin L+L*L}':8#_2e7 / run over multiple threads
+<pre class="example">\t {L:x?1.;sum L%sin L*cos L*sin L+L*L}':8#_2e7 / run using multiple threads
 1655
 
 \t {L:x?1.;sum L%sin L*cos L*sin L+L*L}'8#_2e7  / run in a single thread
@@ -1792,24 +1837,24 @@ y4 y3
 </table>
 
 <span id="converge-over"></span><span id="Converge-Scan"></span><h4 class="subsection">5.7.1 Converge Scan</h4>
-<p>Compute f[x] where x is the previous output of f until the value converges or returns to x.  The initial value of x is the input.  Only the final value is returned.  Intermeediate values can be retrieved via <a href="#converge-scan">converge scan</a>.
+<p>Compute f[x] where x is the previous output of f until the value converges or returns to x.  The initial value of x is the input.  Only the final value is returned.  Intermediate values can be retrieved via <a href="#converge-scan">converge scan</a>.
 </p>
 <div class="example">
 <pre class="example">  {x*x}/:.99    / converge to value
 0.
 
- l:3 4 2 1 4 99 / until output is x
- l/:0
+ x:3 4 2 1 4 99 
+ x/:0 
 4
 
- / the latter example worked out manually
- l 0
+ / the latter example worked out manually. Recall that x 3 is the same as x[3]
+ x 0
 3
- l 3
+ x 3
 1
- l 1
+ x 1
 4
- l 4            / f[4]=4 so will stop
+ x 4            / x[4]=4 so will stop
 4
 </pre></div>
 
@@ -1817,11 +1862,11 @@ y4 y3
 <p>Apply f[x;y] to each value of y, i.e. the right one.
 </p>
 <div class="example">
-<pre class="example"> (!2)+/:!4
-0 1
-1 2
-2 3
-3 4
+<pre class="example"> (!2)+/:20+!4
+20 21
+21 22
+22 23
+23 24
 </pre></div>
 
 <span id="eachl"></span><span id="eachl-_21d2-f_005c_003ax_002c-x-f_005c_003ay_002c-f_005c_003a_005bx_003by_005d"></span><h3 class="section">5.8 eachl &rArr; f\:x, x f\:y, f\:[x;y]</h3>
@@ -1839,18 +1884,18 @@ y4 y3
 <pre class="example">  {x*x}\:.99  / converge to value
 0.99 0.9801 0.9605961 ... 1.323698e-18 1.752177e-36 0.
 
- l:3 4 2 1 4 99 / until output is x
- l\:0
+ x:3 4 2 1 4 99 / until output is x
+ x\:0
 0 3 1 4
 
  / the latter example worked out manually
- l 0
+ x 0
 3
- l 3
+ x 3
 1
- l 1
+ x 1
 4
- l 4            / f[4]=4 so will stop
+ x 4            / x[4]=4 so will stop
 4
 </pre></div>
 
@@ -1858,9 +1903,9 @@ y4 y3
 <p>Apply f[x;y] to each value of x, i.e. the left one.
 </p>
 <div class="example">
-<pre class="example"> (!2)+\:!4
-0 1 2 3
-1 2 3 4
+<pre class="example"> (!2)+\:30+!4
+30 31 32 33
+31 32 33 34
 
  +\:[!2;!4]
 0 1 2 3
