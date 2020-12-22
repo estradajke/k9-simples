@@ -72,7 +72,8 @@ The k9 programming language is designed primarily for the analysis of data.  It 
 Imagine you have a small, on-disk, 100 million row database containing a time-series with two float values at each time.  Additionally this data could be split in three different tables covering different measurements.  Here's how fast k9 can read in the data from disk and compute a statistic, average difference over each table, which uses each and every row.
 
 @example
- bash-3.2$ 2020.xx.xx 17GB 4core (c) shakti
+ bash-3.2$ ./k
+ 2020.xx.xx 17GB 4core (c) shakti
  \t q:2:`q;@{select s:avg a-b from x@}'q[!q]
 495
 @end example
