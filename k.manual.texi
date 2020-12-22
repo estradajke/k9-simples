@@ -517,7 +517,10 @@ Given a list of boolean values return the indices where the value is non-zero.
  x@@&30<x:12.7 0.1 35.6 -12.1 101.101  / return values greater than 30
 35.6 101.101
 @end example
-Given a list of non-negative integer values, eg. x[0], x[1], ..., x[n-1], generate x[0] values of 0, x[1] values of 1, ..., and x[n-1] values of n-1. 
+
+Given a list of non-negative integer values, eg. x[0], x[1], ..., x[n-1], generate x[0] values of 0,
+x[1] values of 1, ..., and x[n-1] values of n-1. 
+
 @example
  & 3 1 0 2
 0 0 0 1 3 3
@@ -1045,6 +1048,7 @@ Return the data type of x.  Lower-case represents a single element while upper-c
 
 @anchor{[f]at}@section [f]at @result{} x@@y
 Given a list x return the value(s) at index(indices) y.  
+
 @example
 @ (3 4 7 12)@@2
 7
