@@ -2517,7 +2517,7 @@ These functions modify lists and dictionaries given a list of indices and functi
 @end example
 
 @anchor{amend}@section amend @result{} @@[r;i;f[;y]]
-Replace the values in list/dictionary r at indices i with element f or function f and parameter y.  The original list is not modified.
+Replace the values in list/dictionary r at indices i with element f or function f and parameter y.  The original list is not modified.  Indices are rows for lists and keys for dictionaries.
 
 @flushleft
 @multitable {amend with function 2 param123} {function123} {2nd param123}
@@ -2583,7 +2583,15 @@ Amend with function f[r] at indices i.
 0 1              
 1.414214 1.732051
 2.0 2.236068     
-6                
+6
+
+ d:[x:`a`b`c;y:9 4 1];d / dictionary example
+x|`a`b`c
+y|9 4 1 
+
+ @@[d;`y;sqrt]
+x|`a`b`c
+y|3 2 1.
 @end example
 
 @anchor{amend4}
@@ -2601,6 +2609,14 @@ Amend with function f[r;y] at indices i.
 20 30  
 400 500
 6      
+
+ d:[x:`a`b`c;y:9 4 1];d / dictionary
+x|`a`b`c
+y|9 4 1 
+
+ @@[d;`y;*;10]
+x|`a`b`c  
+y|90 40 10
 @end example
 
 @anchor{dmend}@section dmend @result{} .[r;i;f[;y]]

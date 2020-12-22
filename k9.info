@@ -2711,7 +2711,8 @@ and functions or values to replace.
 ==========================
 
 Replace the values in list/dictionary r at indices i with element f or
-function f and parameter y.  The original list is not modified.
+function f and parameter y.  The original list is not modified.  Indices
+are rows for lists and keys for dictionaries.
 
 action                           f             y
 *note amend with element: amend1.element       n/a
@@ -2768,6 +2769,14 @@ must be arrays of equal length.
      2.0 2.236068
      6
 
+      d:[x:`a`b`c;y:9 4 1];d / dictionary example
+     x|`a`b`c
+     y|9 4 1
+
+      @[d;`y;sqrt]
+     x|`a`b`c
+     y|3 2 1.
+
    Amend with function f[r;y] at indices i.
 
       r:(0 1;2 3;4 5;6);r
@@ -2781,6 +2790,14 @@ must be arrays of equal length.
      20 30
      400 500
      6
+
+      d:[x:`a`b`c;y:9 4 1];d / dictionary
+     x|`a`b`c
+     y|9 4 1
+
+      @[d;`y;*;10]
+     x|`a`b`c
+     y|90 40 10
 
 10.2 dmend => .[r;i;f[;y]]
 ==========================
@@ -4566,69 +4583,69 @@ Ref: bin62954
 Ref: within63166
 Node: Knit Functions63400
 Ref: amend63695
-Ref: amend164161
-Ref: amend264413
-Ref: amend364635
-Ref: amend464817
-Ref: dmend64988
-Ref: dmend165318
-Ref: dmend365489
-Ref: dmend465657
-Node: I/O65821
-Ref: read csv67923
-Ref: write csv68101
-Ref: read json68265
-Ref: write json68455
-Ref: read nv68628
-Ref: w line68821
-Ref: r line69218
-Ref: w byte69331
-Ref: r byte69559
-Ref: r data69709
-Ref: w data70371
-Ref: conn/set70951
-Ref: http/get71011
-Ref: lib71071
-Node: Tables71535
-Ref: t72197
-Ref: xtable73849
-Ref: utable74479
-Node: kSQL75017
-Ref: select75649
-Ref: A76233
-Ref: by B77050
-Ref: where C77423
-Ref: update78008
-Ref: delete78698
-Ref: union79270
-Ref: leftjoin79791
-Ref: outer80562
-Ref: asof80897
-Ref: asof+82347
-Ref: insert83564
-Ref: upsert83910
-Node: System84324
-Ref: load84782
-Ref: timing84970
-Ref: variables85057
-Ref: memory85158
-Ref: cd85273
-Node: Control Flow85357
-Ref: cond85596
-Node: Temporal Functions85966
-Node: Errors87360
-Ref: class87791
-Ref: rank87880
-Ref: length88004
-Ref: _type88127
-Ref: domain88236
-Ref: limit88358
-Ref: nyi88559
-Ref: parse88892
-Ref: _value89045
-Node: Examples89173
-Node: Benchmark96543
-Node: Conclusion101449
+Ref: amend164216
+Ref: amend264468
+Ref: amend364690
+Ref: amend464998
+Ref: dmend65289
+Ref: dmend165619
+Ref: dmend365790
+Ref: dmend465958
+Node: I/O66122
+Ref: read csv68224
+Ref: write csv68402
+Ref: read json68566
+Ref: write json68756
+Ref: read nv68929
+Ref: w line69122
+Ref: r line69519
+Ref: w byte69632
+Ref: r byte69860
+Ref: r data70010
+Ref: w data70672
+Ref: conn/set71252
+Ref: http/get71312
+Ref: lib71372
+Node: Tables71836
+Ref: t72498
+Ref: xtable74150
+Ref: utable74780
+Node: kSQL75318
+Ref: select75950
+Ref: A76534
+Ref: by B77351
+Ref: where C77724
+Ref: update78309
+Ref: delete78999
+Ref: union79571
+Ref: leftjoin80092
+Ref: outer80863
+Ref: asof81198
+Ref: asof+82648
+Ref: insert83865
+Ref: upsert84211
+Node: System84625
+Ref: load85083
+Ref: timing85271
+Ref: variables85358
+Ref: memory85459
+Ref: cd85574
+Node: Control Flow85658
+Ref: cond85897
+Node: Temporal Functions86267
+Node: Errors87661
+Ref: class88092
+Ref: rank88181
+Ref: length88305
+Ref: _type88428
+Ref: domain88537
+Ref: limit88659
+Ref: nyi88860
+Ref: parse89193
+Ref: _value89346
+Node: Examples89474
+Node: Benchmark96844
+Node: Conclusion101750
 
 End Tag Table
 
