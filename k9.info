@@ -875,12 +875,21 @@ using the keys.
 2.25 [f]cut => x^y
 ==================
 
-Cut list y by size, indices, or function x.
+Cut list y by size, indices, or function x.  If x is positive then cut y
+into x parts.  If x is negative then cut y into parts each x long.
 
-      3^!20 / 3 rows with 6 elements per row so result is a matrix
+      3^!20   / 3 rows with 6 elements per row so result is a matrix
      0 1 2 3 4 5
      6 7 8 9 10 11
      12 13 14 15 16 17
+
+      -3^!20  / 3 element in each row
+     0 1 2
+     3 4 5
+     6 7 8
+     9 10 11
+     12 13 14
+     15 16 17
 
       2 3 7 ^!17 / left list indicates start number of each row.
      ,2
@@ -894,7 +903,8 @@ Cut list y by size, indices, or function x.
      ,1.1
      1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9
 
-      {(x*x)within .5 1.5}^.1*!20 / 0.8
+      {(x*x)within .5 1.5}^.1*!20
+     0.8
      0.9
      1.
      1.1
@@ -4480,142 +4490,142 @@ Ref: enlist23883
 Ref: cat24023
 Ref: sort24142
 Ref: [f]cut24375
-Ref: count25299
-Ref: [f]take25489
-Ref: take125922
-Ref: take226343
-Ref: take326624
-Ref: floor26866
-Ref: [f]drop26957
-Ref: drop127393
-Ref: drop227579
-Ref: drop327701
-Ref: string27879
-Ref: cast27980
-Ref: unique+28170
-Ref: find+28858
-Ref: type29862
-Ref: [f]at30313
-Ref: value30686
-Ref: [f]dot31113
-Node: Adverb32213
-Ref: scan33057
-Ref: +join33587
-Ref: +split33963
-Ref: each34226
-Ref: +has34515
-Ref: eachp34854
-Ref: bin235624
-Ref: eachr35829
-Ref: converge over35995
-Ref: each right36543
-Ref: eachl36697
-Ref: converge scan36862
-Ref: each left37348
-Node: Noun37533
-Ref: Atom Types38938
-Ref: bool40119
-Ref: int40806
-Ref: flt41485
-Ref: char41887
-Ref: name42120
-Ref: uuid42360
-Ref: time42517
-Ref: date43419
-Ref: datetime43880
-Node: List44679
-Node: Dictionary48981
-Node: User Functions53830
-Node: Expression57164
-Node: Named Functions58042
-Ref: exp58676
-Ref: log58742
-Ref: sin58840
-Ref: cos58977
-Ref: sqr59123
-Ref: sqrt59184
-Ref: div59255
-Ref: mod59440
-Ref: bar59616
-Ref: topX59934
-Ref: freq60160
-Ref: msum60513
-Ref: mavg60652
-Ref: sums60798
-Ref: deltas60940
-Ref: prm61280
-Ref: cmb61457
-Ref: keyF61992
-Ref: unkey62289
-Ref: meta62427
-Ref: in62560
-Ref: bin62737
-Ref: within62949
-Node: Knit Functions63183
-Ref: amend63478
-Ref: amend163944
-Ref: amend264196
-Ref: amend364418
-Ref: amend464600
-Ref: dmend64771
-Ref: dmend165101
-Ref: dmend365272
-Ref: dmend465440
-Node: I/O65604
-Ref: read csv67706
-Ref: write csv67884
-Ref: read json68048
-Ref: write json68238
-Ref: read nv68411
-Ref: w line68604
-Ref: r line69001
-Ref: w byte69114
-Ref: r byte69342
-Ref: r data69492
-Ref: w data70154
-Ref: conn/set70734
-Ref: http/get70794
-Ref: lib70854
-Node: Tables71318
-Ref: t71980
-Ref: xtable73632
-Ref: utable74262
-Node: kSQL74800
-Ref: select75432
-Ref: A76016
-Ref: by B76833
-Ref: where C77206
-Ref: update77791
-Ref: delete78481
-Ref: union79053
-Ref: leftjoin79574
-Ref: outer80345
-Ref: asof80680
-Ref: asof+82130
-Ref: insert83347
-Ref: upsert83693
-Node: System84107
-Ref: load84565
-Ref: timing84753
-Ref: variables84840
-Ref: memory84941
-Ref: cd85056
-Node: Control Flow85140
-Ref: cond85379
-Node: Temporal Functions85749
-Node: Errors87143
-Ref: class87574
-Ref: rank87663
-Ref: length87787
-Ref: _type87910
-Ref: domain88019
-Ref: limit88141
-Ref: nyi88342
-Ref: parse88675
-Ref: _value88828
-Node: Examples88956
-Node: Benchmark96326
-Node: Conclusion101232
+Ref: count25513
+Ref: [f]take25703
+Ref: take126136
+Ref: take226557
+Ref: take326838
+Ref: floor27080
+Ref: [f]drop27171
+Ref: drop127607
+Ref: drop227793
+Ref: drop327915
+Ref: string28093
+Ref: cast28194
+Ref: unique+28384
+Ref: find+29072
+Ref: type30076
+Ref: [f]at30527
+Ref: value30900
+Ref: [f]dot31327
+Node: Adverb32427
+Ref: scan33271
+Ref: +join33801
+Ref: +split34177
+Ref: each34440
+Ref: +has34729
+Ref: eachp35068
+Ref: bin235838
+Ref: eachr36043
+Ref: converge over36209
+Ref: each right36757
+Ref: eachl36911
+Ref: converge scan37076
+Ref: each left37562
+Node: Noun37747
+Ref: Atom Types39152
+Ref: bool40333
+Ref: int41020
+Ref: flt41699
+Ref: char42101
+Ref: name42334
+Ref: uuid42574
+Ref: time42731
+Ref: date43633
+Ref: datetime44094
+Node: List44893
+Node: Dictionary49195
+Node: User Functions54044
+Node: Expression57378
+Node: Named Functions58256
+Ref: exp58890
+Ref: log58956
+Ref: sin59054
+Ref: cos59191
+Ref: sqr59337
+Ref: sqrt59398
+Ref: div59469
+Ref: mod59654
+Ref: bar59830
+Ref: topX60148
+Ref: freq60374
+Ref: msum60727
+Ref: mavg60866
+Ref: sums61012
+Ref: deltas61154
+Ref: prm61494
+Ref: cmb61671
+Ref: keyF62206
+Ref: unkey62503
+Ref: meta62641
+Ref: in62774
+Ref: bin62951
+Ref: within63163
+Node: Knit Functions63397
+Ref: amend63692
+Ref: amend164158
+Ref: amend264410
+Ref: amend364632
+Ref: amend464814
+Ref: dmend64985
+Ref: dmend165315
+Ref: dmend365486
+Ref: dmend465654
+Node: I/O65818
+Ref: read csv67920
+Ref: write csv68098
+Ref: read json68262
+Ref: write json68452
+Ref: read nv68625
+Ref: w line68818
+Ref: r line69215
+Ref: w byte69328
+Ref: r byte69556
+Ref: r data69706
+Ref: w data70368
+Ref: conn/set70948
+Ref: http/get71008
+Ref: lib71068
+Node: Tables71532
+Ref: t72194
+Ref: xtable73846
+Ref: utable74476
+Node: kSQL75014
+Ref: select75646
+Ref: A76230
+Ref: by B77047
+Ref: where C77420
+Ref: update78005
+Ref: delete78695
+Ref: union79267
+Ref: leftjoin79788
+Ref: outer80559
+Ref: asof80894
+Ref: asof+82344
+Ref: insert83561
+Ref: upsert83907
+Node: System84321
+Ref: load84779
+Ref: timing84967
+Ref: variables85054
+Ref: memory85155
+Ref: cd85270
+Node: Control Flow85354
+Ref: cond85593
+Node: Temporal Functions85963
+Node: Errors87357
+Ref: class87788
+Ref: rank87877
+Ref: length88001
+Ref: _type88124
+Ref: domain88233
+Ref: limit88355
+Ref: nyi88556
+Ref: parse88889
+Ref: _value89042
+Node: Examples89170
+Node: Benchmark96540
+Node: Conclusion101446
 
 End Tag Table
 
