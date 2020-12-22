@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 21, 2020
+<!-- December 22, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -88,8 +88,8 @@ table.menu th{
 Next: <a href="System.html" accesskey="n" rel="next">System</a>, Previous: <a href="Tables.html" accesskey="p" rel="prev">Tables</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <hr>
-<span id="kSQL-1"></span><h2 class="chapter">14 kSQL</h2>
-<p>kSQL is a powerful query language for tables.  It has similarities to ANSI SQL but additional features to make it easier to work with data.
+<span id="kSQL-1"></span><h2 class="chapter">13 kSQL</h2>
+<p>kSQL is a powerful query language for tables.  It has similarities to ANSI SQL but additional features to make it easier to work with ordered data, such as time series data.
 </p>
 <div class="example">
 <pre class="example">Database
@@ -99,9 +99,9 @@ x+y      / equi-and-asof outerjoin (e.g. combine markets through time)
 x#y      / take/intersect innerjoin (x_y for drop/difference)
 </pre></div>
 
-<span id="Queries"></span><h3 class="section">14.1 Queries</h3>
+<span id="Queries"></span><h3 class="section">13.1 Queries</h3>
 
-<span id="select"></span><span id="select-1"></span><h4 class="subsection">14.1.1 select</h4>
+<span id="select"></span><span id="select-1"></span><h4 class="subsection">13.1.1 select</h4>
 <p>There a number of ways to return a complete table with kSQL.  You can use the table name, a kSQL query without columns, or a fully specified query with columns.
 </p>
 <div class="example">
@@ -134,8 +134,8 @@ x y
 4 -0.7568025
 </pre></div>
 
-<span id="A"></span><span id="A-1"></span><h4 class="subsection">14.1.2 A</h4>
-<p>A is the list of fields to return from the select query.  If A is missing then all fields will be returned.  A can create new column names.  A is probably called A because it&rsquo;s before B and C.
+<span id="A"></span><span id="A-1"></span><h4 class="subsection">13.1.2 A</h4>
+<p>A is the list of fields to return from the select query.  If A is missing then all fields will be returned.  A can create new column names.  
 </p>
 <div class="example">
 <pre class="example"> n:5;t:[[]x:!n;y:sin !n];t
@@ -184,21 +184,21 @@ x z
 4 -0.7568025
 </pre></div>
 
-<span id="by-B"></span><span id="by-B-1"></span><h4 class="subsection">14.1.3 by B</h4>
-<p>kSQL also has a way to group rows using <code>by</code>.  The result is a utable where the key is the now unique field in the <code>by</code>.
+<span id="by-B"></span><span id="by-B-1"></span><h4 class="subsection">13.1.3 by B</h4>
+<p>kSQL also has a way to group rows using <code>by</code>.  The result is a utable where the key is determined by the grouping clause <code>by</code>.
 </p>
 <div class="example">
 <pre class="example">n:5;t:[[]x:!n;y:sin !n]
  
- select sum y by x&gt;2 from t
+ select sum y by x&gt;2 from t            / The key here is field is a boolean 1 when x &gt; 2 or and 0 when x &gt; 2 does not hold
 x|y         
 -|----------
 0|1.750768  
 1|-0.6156825
 </pre></div>
 
-<span id="where-C"></span><span id="where-C-1"></span><h4 class="subsection">14.1.4 where C</h4>
-<p>kSQL makes it easy to build up a where clause to filter down the table.  C is the list of contraints.
+<span id="where-C"></span><span id="where-C-1"></span><h4 class="subsection">13.1.4 where C</h4>
+<p>kSQL makes it easy to build up a where clause to filter down the table.  C is the list of constraints.
 </p>
 <div class="example">
 <pre class="example"> n:5;t:[[]x:!n;y:sin !n]
@@ -210,14 +210,14 @@ x y
 3 0.14112   
 4 -0.7568025
 
-select from t where (x&gt;0)&amp;y within 0 .9
+select from t where (x&gt;0) &amp; y within 0 .9
 x y       
 - --------
 1 0.841471
 3 0.14112 
 </pre></div>
 
-<span id="Query-with-By-and-Where"></span><h4 class="subsection">14.1.5 Query with By and Where</h4>
+<span id="Query-with-By-and-Where"></span><h4 class="subsection">13.1.5 Query with By and Where</h4>
 
 <div class="example">
 <pre class="example"> n:5;t:[[]x:!n;y:sin !n]
@@ -228,8 +228,8 @@ x|y
 1|0.14112 
 </pre></div>
 
-<span id="update"></span><span id="update-1"></span><h4 class="subsection">14.1.6 update</h4>
-<p>update allows one to modify values without specifying all the fields that pass through.  update is also used to add new columns in a table.  update does not save the table that requires an assignment.
+<span id="update"></span><span id="update-1"></span><h4 class="subsection">13.1.6 update</h4>
+<p>update allows one to modify values without specifying all the fields that pass through.  update is also used to add new columns in a table.  update does not, by itself, save the modifications to the table. If you want to preserve those modifications, use assignment.
 </p>
 <div class="example">
 <pre class="example"> t:[[]x:`a`b`c;y:1 2 3];t
@@ -253,7 +253,7 @@ a 1 19
 b 2 20
 c 3 21
 
- t:update z:y+18 from t;t
+ t:update z:y+18 from t;t / save the updates into table t. Now t has the updated values.
 x y z 
 - - --
 a 1 19
@@ -261,7 +261,7 @@ b 2 20
 c 3 21
 </pre></div>
 
-<span id="delete"></span><span id="delete-1"></span><h4 class="subsection">14.1.7 delete</h4>
+<span id="delete"></span><span id="delete-1"></span><h4 class="subsection">13.1.7 delete</h4>
 <p>Delete rows from a table that satisfy one or more conditions.  Currently not working.
 </p>
 <div class="example">
@@ -279,7 +279,7 @@ c 1
 !nyi
 </pre></div>
 
-<span id="Joins"></span><h3 class="section">14.2 Joins</h3>
+<span id="Joins"></span><h3 class="section">13.2 Joins</h3>
 <p>k9 has a number of methods to join tables together which are described below.  In this section t, t1 and t2 represent tables and k, k1 and k2 represent utables.
 </p>
 <table>
@@ -291,7 +291,7 @@ c 1
 <tr><td><a href="#asof_002b">asof+</a></td><td>k1+k2</td></tr>
 </table>
 
-<span id="union"></span><span id="union-join-_21d2-t1_002ct2"></span><h4 class="subsection">14.2.1 union join &rArr; t1,t2</h4>
+<span id="union"></span><span id="union-join-_21d2-t1_002ct2"></span><h4 class="subsection">13.2.1 union join &rArr; t1,t2</h4>
 <p>Union join table t1 with table t2.  The tables should have the same columns and the join results in a table with t2 appended to t1.  If the tables do not have the same columns then return t1.
 </p>
 <div class="example">
@@ -318,8 +318,9 @@ b 11 21
 c 12 22
 </pre></div>
 
-<span id="leftjoin"></span><span id="leftjoin-_21d2-t_002ck"></span><h4 class="subsection">14.2.2 leftjoin &rArr; t,k</h4>
-<p>leftjoin table t with utable k.  Result includes all rows from t and values from t where there is no k value.
+<span id="leftjoin"></span><span id="leftjoin-_21d2-t_002ck"></span><h4 class="subsection">13.2.2 leftjoin &rArr; t,k</h4>
+<p>leftjoin table t with utable k.  Result includes all rows from t and the values from table k having the same key values.
+If a row of t has key values not found in k, then the t values are shown and 0 for the columns coming from k.
 </p>
 <div class="example">
 <pre class="example">&nbsp;t:[[]s:`a`b`c;p:1 2 3;q:7 8 9]
@@ -340,7 +341,7 @@ x|103 53
 y|104 54
 z|105 55
 
-&nbsp;t,k
+&nbsp;t,k       / t.s includes the value `c. Because k.s does not include c, the last row shows a 0 under the r column (which comes from k).
 s p q   r 
 - - --- --
 a 1 101 51
@@ -348,7 +349,7 @@ b 2 102 52
 c 3   9  0
 </pre></div>
 
-<span id="outer"></span><span id="outer-join-_21d2-k1_002ck2"></span><h4 class="subsection">14.2.3 outer join &rArr; k1,k2</h4>
+<span id="outer"></span><span id="outer-join-_21d2-k1_002ck2"></span><h4 class="subsection">13.2.3 outer join &rArr; k1,k2</h4>
 <p>Outer join utable k1 with key utable k2. 
 </p>
 <div class="example">
@@ -374,8 +375,8 @@ b|9 7
 c|8 6
 </pre></div>
 
-<span id="asof"></span><span id="asof-join-_21d2-t_002ck"></span><h4 class="subsection">14.2.4 asof join &rArr; t,k</h4>
-<p>Asof joins a table t to a utable k (key by time) such that the t values show the preceeding or equal time value of k.
+<span id="asof"></span><span id="asof-join-_21d2-t_002ck"></span><h4 class="subsection">13.2.4 asof join &rArr; t,k</h4>
+<p>Asof joins each row rt of table t to a row rk in utable k (keyed by time) provided rk has the maximum time value of any row in k while obeying the constraint that the time value in rt &gt;= the time value of rk. Intuitively, rk should be the row in k that is most up-to-date with respect to rt. 
 </p>
 <div class="example">
 <pre class="example"> t:[[]t:09:30+5*!5;p:100+!5];t
@@ -394,7 +395,8 @@ t    |q
 09:41|51
 09:45|52
 
- t,k
+ t,k      / Notice below that the t row at 09:45 is linked with the k row at 09:45. The k row at 09:41 is not linked with any t row.
+          / by contrast, both the 09:35 and the 09:40 rows of t are linked to the 09:32 row of k.
 t     p   q 
 ----- --- --
 09:30 100  0
@@ -429,8 +431,8 @@ t           |p
 222
 </pre></div>
 
-<span id="asof_002b"></span><span id="asof_002b-join-_21d2-k1_002bk2"></span><h4 class="subsection">14.2.5 asof+ join &rArr; k1+k2</h4>
-<p>Asof+ joins utables adding the non-key fields to represent the sum asof the key field usually time.  This join allows one to aggregate over markets to find the total available at a given time.  The utables need to be specified with <code>`a</code>.
+<span id="asof_002b"></span><span id="asof_002b-join-_21d2-k1_002bk2"></span><h4 class="subsection">13.2.5 asof+ join &rArr; k1+k2</h4>
+<p>Asof+ joins  allows one to aggregate over markets to find the total available at a given time.  The utables need to be specified with <code>`a</code>. The effect is to merge the two key fields (the field t in this case) and for each row rk1 from table k1, add the non-key field (bs in this case) from rk1 to the bs field of the most recent row in k2 whose t value is less than or equal to the t value in rk1. And symmetrically for each row of table k2.
 </p>
 <div class="example">
 <pre class="example"> k1:`a [[t:09:30+5*!5]bs:100*1 2 3 2 1];k1
@@ -461,10 +463,10 @@ t    |bs
 09:50|103
 </pre></div>
 
-<span id="Insert-and-Upsert"></span><h3 class="section">14.3 Insert and Upsert</h3>
-<p>One can add data to tables via insert or upsert.  The difference between the two is that insert adds data to a table while upsert will add or replace data to a keyed table.  Upsert adds when the key isn&rsquo;t present and replaces when the key is.
+<span id="Insert-and-Upsert"></span><h3 class="section">13.3 Insert and Upsert</h3>
+<p>One can add data to tables via insert or upsert.  The difference between the two is that insert adds data to a table while upsert on some key x will replace the values if x is present in the target table or insert x with its associated value otherwise. 
 </p>
-<span id="insert"></span><span id="insert-_21d2-t_002cd"></span><h4 class="subsection">14.3.1 insert &rArr; t,d</h4>
+<span id="insert"></span><span id="insert-_21d2-t_002cd"></span><h4 class="subsection">13.3.1 insert &rArr; t,d</h4>
 <p>Insert dictionary d into table t.
 </p><div class="example">
 <pre class="example"> t:[[]c1:`a`b`a;c2:1 2 7];t
@@ -491,7 +493,7 @@ a   7
 c  12
 </pre></div>
 
-<span id="upsert"></span><span id="upsert-_21d2-k_002cd"></span><h4 class="subsection">14.3.2 upsert &rArr; k,d</h4>
+<span id="upsert"></span><span id="upsert-_21d2-k_002cd"></span><h4 class="subsection">13.3.2 upsert &rArr; k,d</h4>
 <p>Insert dictionary d into utable k.
 </p><div class="example">
 <pre class="example"> k:[[c1:`a`b`c]c2:1 2 7];k
@@ -514,6 +516,14 @@ c1|c2
 a | 1
 b |12
 c | 7
+
+ k,`c1`c2!(`d;12)
+c1|c2
+--|--
+a | 1
+b | 2
+c | 7
+d |12
 </pre></div>
 
 <hr>

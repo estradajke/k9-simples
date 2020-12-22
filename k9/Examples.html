@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 21, 2020
+<!-- December 22, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -15,8 +15,8 @@ Copyright (C) 2020 John Estrada -->
 <meta name="Generator" content="texi2any">
 <link href="index.html" rel="start" title="Top">
 <link href="index.html" rel="up" title="Top">
-<link href="Verb.html" rel="next" title="Verb">
-<link href="Introduction.html" rel="prev" title="Introduction">
+<link href="Benchmark.html" rel="next" title="Benchmark">
+<link href="Errors.html" rel="prev" title="Errors">
 <style type="text/css">
 <!--
 /* spacing */
@@ -85,13 +85,13 @@ table.menu th{
 <body lang="en">
 <span id="Examples"></span><div class="header">
 <p>
-Next: <a href="Verb.html" accesskey="n" rel="next">Verb</a>, Previous: <a href="Introduction.html" accesskey="p" rel="prev">Introduction</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="Benchmark.html" accesskey="n" rel="next">Benchmark</a>, Previous: <a href="Errors.html" accesskey="p" rel="prev">Errors</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <hr>
-<span id="Examples-1"></span><h2 class="chapter">2 Examples</h2>
-<p>Before jumping into syntax, let&rsquo;s look at some example problems to get a sense of the speed of k9 at processing data.  Given  the  author&rsquo;s background many of the examples will be based on financial markets.  For those not familiar with this field a short introduction may help.
+<span id="Examples-1"></span><h2 class="chapter">18 Examples</h2>
+<p>This chapter presents an example from finance, as this is one of the primary application domains for k.  For those not familiar with this field, here is a short introduction.
 </p>
-<span id="A-Tiny-Introduction-to-Financial-Market-Data"></span><h3 class="section">2.1 A Tiny Introduction to Financial Market Data</h3>
+<span id="A-Tiny-Introduction-to-Financial-Market-Data"></span><h3 class="section">18.1 A Tiny Introduction to Financial Market Data</h3>
 <p>Financial market data generally are stored as prices (often call quotes) and trades.  At a minimum, prices will include time (t), price to buy (b for bid) and price to sell (a for ask).  Trades will include at a minimum time (t) and trade price (p).  In normal markets there are many more prices than trades.  (Additionally, the data normally includes the name of the security (s) and the exchange (x) from which the data comes.)  
 </p>
 <p>Let&rsquo;s use k9 to generate a set of random prices.
@@ -131,7 +131,7 @@ t            p
 <p>Now that you&rsquo;ve learned enough finance to understand the data, let&rsquo;s scale up to larger problems to see the power of k9.
 </p>
 
-<span id="Data-Manipulation"></span><h3 class="section">2.2 Data Manipulation</h3>
+<span id="Data-Manipulation"></span><h3 class="section">18.2 Data Manipulation</h3>
 <p>Generate a table of random data and compute basic statistics quickly.  The data here includes time (t), security (s), and price delta (d).  This table takes about 4 GB and 3.3 seconds on a relatively new consumer laptop.
 </p>
 <div class="example">
@@ -195,7 +195,7 @@ d|-2101
 e|-2903
 </pre></div>
 
-<span id="Understanding-Code-Examples"></span><h3 class="section">2.3 Understanding Code Examples</h3>
+<span id="Understanding-Code-Examples"></span><h3 class="section">18.3 Understanding Code Examples</h3>
 <p>In the shakti mailing list there are a number of code examples that can be used to learn best practices.  In order to make sense of other people&rsquo;s codes, one needs to be able to efficiently understand  k9 language expressions.  Here is an example of how one goes about this process.
 </p>
 <div class="example">
@@ -346,7 +346,7 @@ in
 <hr>
 <div class="header">
 <p>
-Next: <a href="Verb.html" accesskey="n" rel="next">Verb</a>, Previous: <a href="Introduction.html" accesskey="p" rel="prev">Introduction</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="Benchmark.html" accesskey="n" rel="next">Benchmark</a>, Previous: <a href="Errors.html" accesskey="p" rel="prev">Errors</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 
 

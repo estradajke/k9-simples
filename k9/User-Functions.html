@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 21, 2020
+<!-- December 22, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -88,8 +88,8 @@ table.menu th{
 Next: <a href="Expression.html" accesskey="n" rel="next">Expression</a>, Previous: <a href="Dictionary.html" accesskey="p" rel="prev">Dictionary</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <hr>
-<span id="User-Functions-1"></span><h2 class="chapter">8 User Functions</h2>
-<p>User-defined functions are used to define a set of operations to be easily called.  As these functions are built on top of the fast internal functions of k9 they should be performant also.
+<span id="User_002ddefined-Functions"></span><h2 class="chapter">7 User-defined Functions</h2>
+<p>User-defined functions are treated as verbs in k9, so can benefit from the adverbs.
 </p>
 <p>Multi-line functions must be defined with an initial space on all lines except the first.  These can be loaded into memory by using the <a href="System.html#load">\l</a> command and then used by calling by name.
 </p>
@@ -97,11 +97,11 @@ Next: <a href="Expression.html" accesskey="n" rel="next">Expression</a>, Previou
 <pre class="example">Func {[a;b]a+b}
 </pre></div>
 
-<span id="Function-arguments"></span><h3 class="section">8.1 Function arguments</h3>
-<p>Functions default to arguments of x, y, and z for the first three parameters but this can be explicitly added or modified as needed.  Given k9&rsquo;s terseness it&rsquo;s rare to see good k9 code with long variable names.
+<span id="Function-arguments"></span><h3 class="section">7.1 Function arguments</h3>
+<p>Functions default to arguments of x, y, and z for the first three parameters but one  can  explicitly spell out these or other argument names.  Given k9&rsquo;s terseness, many k9 programmers prefer short variable names. But this is a matter of taste.
 </p>
 <div class="example">
-<pre class="example"> f1:{x+2*y}         / implicit arguements
+<pre class="example"> f1:{x+2*y}         / implicit arguments x and y. This function adds the first argument to twice the second one.
  f1[2;10]
 22
 
@@ -109,11 +109,11 @@ Next: <a href="Expression.html" accesskey="n" rel="next">Expression</a>, Previou
  f2[2;10]
 22
 
- f3:{[g;h]g+2*h}    / explicit and renamed
+ f3:{[g;h]g+2*h}    / explicit arguments other than x and y
  f3[2;10]
 22
 
- f4:{[please;dont]please+2*dont} / ouch
+ f4:{[please;dont]please+2*dont} / longer argument names are possible, but some disapprove
  f4[2;10]
 22
 
@@ -121,8 +121,8 @@ Next: <a href="Expression.html" accesskey="n" rel="next">Expression</a>, Previou
 `.
 </pre></div>
 
-<span id="Function-Defitions"></span><h3 class="section">8.2 Function Defitions</h3>
-<p>Functions can have intermediate calcuations and local variables.  Function local variable do not collide with global variables.
+<span id="Function-Defitions"></span><h3 class="section">7.2 Function Defitions</h3>
+<p>Functions can have intermediate calcuations and local variables.  Function local variables do not affect the values of  global variables.
 </p>
 <div class="example">
 <pre class="example"> a:3;a
@@ -137,21 +137,21 @@ a
 3
 </pre></div>
 
-<span id="Function-Return"></span><h3 class="section">8.3 Function Return</h3>
+<span id="Function-Return"></span><h3 class="section">7.3 Function Return</h3>
 <p>Function return the last value in the definition unless the definition ends with a semicolon in which case the function returns nothing.
 </p>
 <div class="example">
-<pre class="example"> f:{x+2;};f 10
+<pre class="example"> f:{x+2;};f 10  / returns nothing because of final semi-colon
 
- f:{x+2;27};f 10
+ f:{x+2;27};f 10  / returns the last value which is 27
 27
 
  f:{x+2};f 10
 12
 </pre></div>
 
-<span id="Calling-functions"></span><h3 class="section">8.4 Calling functions</h3>
-<p>Functions, like lists, can be called with a number of notations.  Typically one uses square bracket notation when the function takes multiple argruments.  If a function is called with less than the required number of arguments then it will return a function that requires the remaining arguemnts.
+<span id="Calling-functions"></span><h3 class="section">7.4 Calling functions</h3>
+<p>Functions, like lists, can be called in a variety of ways.  Typically one uses square bracket notation when the function takes multiple argruments.  If a function is called with fewer than the required number of arguments then it will return a function that requires the remaining arguemnts.
 </p>
 <div class="example">
 <pre class="example"> f1:{[x] x}
@@ -183,39 +183,39 @@ a
 `a
 </pre></div>
 
-<span id="Anonymous-functions"></span><h3 class="section">8.5 Anonymous functions</h3>
-<p>Functions not set with a function name are anonymous.
+<span id="Anonymous-functions"></span><h3 class="section">7.5 Anonymous functions</h3>
+<p>It&rsquo;s possible to define a function without naming it. If the function is to be used in just one place, this can make sense.
 </p>
 <div class="example">
 <pre class="example"> {x+2*y}[2;10]
 22
 </pre></div>
 
-<span id="Recursive-functions"></span><h3 class="section">8.6 Recursive functions</h3>
-<p>k9 allows one to define a function which calls itself.  Care should be taken to avoid an infitine loop.
+<span id="Recursive-functions"></span><h3 class="section">7.6 Recursive functions</h3>
+<p>k9 allows one to define a function which calls itself.  Care should be taken to avoid an infinite loop.
 </p>
 <div class="example">
 <pre class="example"> f:{$[x&gt;1;x*f@x-1;1]};f 5
 120
 </pre></div>
 
-<span id="Chained-functions"></span><h3 class="section">8.7 Chained functions</h3>
-<p>It may be neccesary to define a function to call a function without specifying arguments.  Imagine this trivial case.
+<span id="Chained-functions"></span><h3 class="section">7.7 Chained functions</h3>
+<p>It may be necessary to define a function to call a function without specifying arguments.  Imagine this trivial case.
 </p>
 <div class="example">
-<pre class="example"> f1:{!x}
- f2:{x+2} f1
+<pre class="example"> fa:{!x}
+ fb:{x+2} fa
 {x+2}
 ^
 :rank
 </pre></div>
 
-<p>In order to succeed f1 needs to have an <code>@</code> in the definition of f2.  This is only required when the function calls a function that is not completely specified with input parameters.
+<p>In order to succeed fa needs to have an <code>@</code> in the definition of fb.  This is required because fb calls fa without specifying an argument for fa. So the argument for fb becomes the argument for fa so the net effect is 2 + !3.
 </p>
 <div class="example">
-<pre class="example"> f1:{!x}
- f2:{x+2} f1@
- f2 3
+<pre class="example"> fa:{!x}
+ fb:{x+2} fa@
+ fb 3
 2 3 4
 </pre></div>
 

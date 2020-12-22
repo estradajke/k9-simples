@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 21, 2020
+<!-- December 22, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -88,7 +88,7 @@ table.menu th{
 Next: <a href="I_002fO.html" accesskey="n" rel="next">I/O</a>, Previous: <a href="Named-Functions.html" accesskey="p" rel="prev">Named Functions</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <hr>
-<span id="Knit-Functions-1"></span><h2 class="chapter">11 Knit Functions</h2>
+<span id="Knit-Functions-1"></span><h2 class="chapter">10 Knit Functions</h2>
 <p>These functions modify lists and dictionaries given a list of indices and functions or values to replace.
 </p>
 <div class="example">
@@ -96,7 +96,7 @@ Next: <a href="I_002fO.html" accesskey="n" rel="next">I/O</a>, Previous: <a href
 .[r;i;f[;y]] <a href="#dmend">dmend</a>
 </pre></div>
 
-<span id="amend"></span><span id="amend-_21d2-_0040_005br_003bi_003bf_005b_003by_005d_005d"></span><h3 class="section">11.1 amend &rArr; @[r;i;f[;y]]</h3>
+<span id="amend"></span><span id="amend-_21d2-_0040_005br_003bi_003bf_005b_003by_005d_005d"></span><h3 class="section">10.1 amend &rArr; @[r;i;f[;y]]</h3>
 <p>Replace the values in list/dictionary r at indices i with element f or function f and parameter y.  The original list is not modified.
 </p>
 <table>
@@ -116,11 +116,17 @@ Next: <a href="I_002fO.html" accesskey="n" rel="next">I/O</a>, Previous: <a href
 4 5
 6  
 
- @[r;0 3;29]
+ @[r;0 3;29]      / change the first and fourth rows
 29 
 2 3
 4 5
 29 
+
+ r               / r doesn't change
+0 1
+2 3
+4 5
+6  
 </pre></div>
 
 <span id="amend2"></span><p>Amend with element/array.  If using an array, then the <code>i</code> and <code>y</code> must be arrays of equal length.
@@ -171,7 +177,7 @@ Next: <a href="I_002fO.html" accesskey="n" rel="next">I/O</a>, Previous: <a href
 6      
 </pre></div>
 
-<span id="dmend"></span><span id="dmend-_21d2-_002e_005br_003bi_003bf_005b_003by_005d_005d"></span><h3 class="section">11.2 dmend &rArr; .[r;i;f[;y]]</h3>
+<span id="dmend"></span><span id="dmend-_21d2-_002e_005br_003bi_003bf_005b_003by_005d_005d"></span><h3 class="section">10.2 dmend &rArr; .[r;i;f[;y]]</h3>
 <p>Similar to <a href="#amend">amend</a> but using <code>i</code> to fully index <code>r</code>.
 </p>
 <table>
@@ -190,7 +196,7 @@ Next: <a href="I_002fO.html" accesskey="n" rel="next">I/O</a>, Previous: <a href
 4 5
 6  
 
- .[r;0 1;12]
+ .[r;0 1;12]       / modify the entry at [0;1]
 0 12
 2 3 
 4 5 

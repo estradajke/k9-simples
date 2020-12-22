@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 21, 2020
+<!-- December 22, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -88,12 +88,12 @@ table.menu th{
 Next: <a href="List.html" accesskey="n" rel="next">List</a>, Previous: <a href="Adverb.html" accesskey="p" rel="prev">Adverb</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <hr>
-<span id="Noun-1"></span><h2 class="chapter">5 Noun</h2>
+<span id="Noun-1"></span><h2 class="chapter">4 Noun</h2>
 <p>The basic data types of the k9 language are booleans, numbers (integer and float), text (characters and enumerated/name) and temporal (date and time).  It is common to have functions operate on multiple data types.
 </p>
-<p>In additional to the basic data types, data can be put into lists (uniform and non-uniform), dictionaries (key-value pairs), and tables (transposed/flipped dictionaries).  Dictionaries and tables will be covered in a seperate chapter.
+<p>In additional to the basic data types, data can be put into lists (uniform, i.e., all elements of the same type, and non-uniform), dictionaries (key-value pairs), and tables (transposed/flipped dictionaries).  Dictionaries and tables will be covered in anohter chapter.
 </p>
-<p>The set of k9 data, aka nouns, are as follows.
+<p>Here are some examples of each of these types (note that 0N is a null integer and 0n a null float).
 </p>
 <div class="example">
 <pre class="example">type              
@@ -108,7 +108,7 @@ Next: <a href="List.html" accesskey="n" rel="next">List</a>, Previous: <a href="
 <a href="#time">time</a> 12:34:56.123456789
 </pre></div>
 
-<p>Data types can be determined by using the <code>@</code> function on values or lists of values.  In the case of non-uniform lists <code>@</code> returns the type of the list <code>`L</code> but the function can be modified to evalue each type <code>@'</code> instead and return the type of each element in the list.
+<p>Data types can be determined by using the <code>@</code> function on values or lists of values.  In the case of non-uniform lists <code>@</code> returns the type of the list <code>`L</code> but the function can be modified to evaluate the type of each element in the list using <code>@'</code>.
 </p>
 <div class="example">
 <pre class="example">&nbsp;@1            / integer atom
@@ -122,7 +122,7 @@ Next: <a href="List.html" accesskey="n" rel="next">List</a>, Previous: <a href="
 `i`f`c`n`t`d
 </pre></div>
 
-<span id="Atom-Types"></span><span id="Atom-Types-1"></span><h3 class="section">5.1 Atom Types</h3>
+<span id="Atom-Types"></span><span id="Atom-Types-1"></span><h3 class="section">4.1 Atom Types</h3>
 <p>This section lists all the different types available.  Generally lower case specifies atoms and upper case as lists.
 </p>
 <table>
@@ -149,7 +149,7 @@ Next: <a href="List.html" accesskey="n" rel="next">List</a>, Previous: <a href="
 </table>
 
 
-<span id="bool"></span><span id="bool-_21d2-Boolean-b"></span><h3 class="section">5.2 bool &rArr; Boolean b</h3>
+<span id="bool"></span><span id="bool-_21d2-Boolean-b"></span><h3 class="section">4.2 bool &rArr; Boolean b</h3>
 <p>Booleans have two possible values 0 and 1 and have a &rsquo;b&rsquo; to avoid confusion with integers, eg. 0b or 1b.
 </p>
 <div class="example">
@@ -161,7 +161,7 @@ Next: <a href="List.html" accesskey="n" rel="next">List</a>, Previous: <a href="
 10101010b
 </pre></div>
 
-<span id="boolean-logic"></span><h4 class="subsection">5.2.1 boolean logic</h4>
+<span id="boolean-logic"></span><h4 class="subsection">4.2.1 boolean logic</h4>
 <p>k9 implements logic operations in the usual way.
 </p>
 <div class="example">
@@ -176,10 +176,10 @@ x y|AND OR NAND NOR XOR XNOR
 1 1|  1  1    0   0   0    1
 </pre></div>
 
-<span id="Numeric-Data"></span><h3 class="section">5.3 Numeric Data</h3>
+<span id="Numeric-Data"></span><h3 class="section">4.3 Numeric Data</h3>
 <p>Numbers can be stored as integers and floats.
 </p>
-<span id="int"></span><span id="int-_21d2-Integer-g_002c-h_002c-i_002c-j"></span><h4 class="subsection">5.3.1 int &rArr; Integer g, h, i, j</h4>
+<span id="int"></span><span id="int-_21d2-Integer-g_002c-h_002c-i_002c-j"></span><h4 class="subsection">4.3.1 int &rArr; Integer g, h, i, j</h4>
 <p>Integers can be stored in four different ways which correspond 1, 2, 4, and 8 bytes.  The first three are unsigned and the last (j) is signed.  Positive numbers default to i and negative and very large numbers default to j.  One can specify a non-default type by adding one of the four letters immediately following the number.
 </p>
 <div class="example">
@@ -188,7 +188,7 @@ x y|AND OR NAND NOR XOR XNOR
  @-37   / negative so will default to j
 `j
 
- @37g   / cast as g
+ @37g   / cast as g, one byte unsigned
 `g
 
 b:{-1+*/x#256}
@@ -202,7 +202,7 @@ b:{-1+*/x#256}
 72057594037927935
 </pre></div>
 
-<span id="flt"></span><span id="flt-_21d2-Float-e_002c-f"></span><h4 class="subsection">5.3.2 flt &rArr; Float e, f</h4>
+<span id="flt"></span><span id="flt-_21d2-Float-e_002c-f"></span><h4 class="subsection">4.3.2 flt &rArr; Float e, f</h4>
 <p>Float
 </p><div class="example">
 <pre class="example"> 3.1
@@ -222,11 +222,11 @@ b:{-1+*/x#256}
 `f
 </pre></div>
 
-<span id="Text-Data"></span><h3 class="section">5.4 Text Data</h3>
+<span id="Text-Data"></span><h3 class="section">4.4 Text Data</h3>
 <p>Text data come in characters, lists of characters (aka strings) and enumerated types.  Enumerated types are displayed as text but stored internally as integers.
 </p>
-<span id="char"></span><span id="char-_21d2-Character-c"></span><h4 class="subsection">5.4.1 char &rArr; Character c</h4>
-<p>Characters are stored as their ANSI value and can be seen by conversion to integers.  Character lists are equivalent to strings.
+<span id="char"></span><span id="char-_21d2-Character-c"></span><h4 class="subsection">4.4.1 char &rArr; Character c</h4>
+<p>Characters are stored as their ANSI value and can be seen by conversion to integers.  A string is a list of characters (including blanks).
 </p>
 <div class="example">
 <pre class="example">&nbsp;@&quot;b&quot;
@@ -235,8 +235,8 @@ b:{-1+*/x#256}
 `C 
 </pre></div>
 
-<span id="name"></span><span id="name-_21d2-Name-n"></span><h4 class="subsection">5.4.2 name &rArr; Name n</h4>
-<p>Names are enumerate type shown as a text string but stored internally as a integer value.
+<span id="name"></span><span id="name-_21d2-Name-n"></span><h4 class="subsection">4.4.2 name &rArr; Name n</h4>
+<p>A name is an enumerated type displayed as a text string but stored internally as an integer value.
 </p>
 <div class="example">
 <pre class="example">&nbsp;@`blue
@@ -245,24 +245,24 @@ b:{-1+*/x#256}
 `N
 </pre></div>
 
-<span id="Unique-Identifier"></span><h3 class="section">5.5 Unique Identifier</h3>
+<span id="Unique-Identifier"></span><h3 class="section">4.5 Unique Identifier</h3>
 <p>TBD
 </p>
-<span id="uuid"></span><span id="uuid-_21d2-Uuid"></span><h4 class="subsection">5.5.1 uuid &rArr; Uuid</h4>
+<span id="uuid"></span><span id="uuid-_21d2-Uuid"></span><h4 class="subsection">4.5.1 uuid &rArr; Uuid</h4>
 <p>TBD
 </p>
-<span id="Temporal-Data"></span><h3 class="section">5.6 Temporal Data</h3>
-<p>Temporal data can be expressed in time, date, or a combined date and time.
+<span id="Temporal-Data"></span><h3 class="section">4.6 Temporal Data</h3>
+<p>Temporal data can be expressed as time, date, or a combined date and time.
 </p>
-<span id="time"></span><span id="time-_21d2-Time-s_002c-t_002c-u_002c-v"></span><h4 class="subsection">5.6.1 time &rArr; Time s, t, u, v</h4>
+<span id="time"></span><span id="time-_21d2-Time-s_002c-t_002c-u_002c-v"></span><h4 class="subsection">4.6.1 time &rArr; Time s, t, u, v</h4>
 <p>Time has four types depending on the level of precision.  The types are seconds (s), milliseconds (t), microseconds (u), and nanoseconds (v).  The times are all stored internally as integers.  The integers are the number of time units.  For example 00:00:00.012 and 00:00:00.000000012 are both stored as 12 internally.
 </p>
 <div class="example">
 <pre class="example"> @12:34:56.789             / time
 `t
- .z.t                       / current time in GMT
+ .z.t                       / current time in GMT (Greenwich Mean Time)
 17:32:57.995
- (t:.z.t)-17:30:00.000
+ t: .z.t-17:30:00.000; t
 00:03:59.986
  t
 17:33:59.986
@@ -272,11 +272,11 @@ b:{-1+*/x#256}
 1000
  `i 00:01:00.000            / numeric representation of 1m
 60000
- `t 12345                   / convert milliseconds to time
+ `t 12345                   / convert number to milliseconds
 00:00:12.345
 </pre></div>
 
-<span id="date"></span><span id="date-_21d2-Date-d"></span><h4 class="subsection">5.6.2 date &rArr; Date d</h4>
+<span id="date"></span><span id="date-_21d2-Date-d"></span><h4 class="subsection">4.6.2 date &rArr; Date d</h4>
 <p>Dates are in yyyy.mm.dd format.  Dates are stored internally as integers with 0 corresponding to 2001.01.01.
 </p>
 <div class="example">
@@ -292,8 +292,8 @@ b:{-1+*/x#256}
 2001.01.01
 </pre></div>
 
-<span id="datetime"></span><span id="datetime-_21d2-Datetime-d"></span><h4 class="subsection">5.6.3 datetime &rArr; Datetime d</h4>
-<p>Dates and times can be combined into a single datetime element by combing a date, the letter T, and the time together without spaces.  The datetime use the same lettering as the time precision but in uppercase.  Datetimes are stored interally as integers.  For example 2001.01.02T00:00:00.000 is stored as 86,400,000, the number of milliseconds in a day.
+<span id="datetime"></span><span id="datetime-_21d2-Datetime-d"></span><h4 class="subsection">4.6.3 datetime &rArr; Datetime d</h4>
+<p>Dates and times can be combined into a single datetime element by combining a date, the letter T, and the time together without spaces.  The datetime use the same lettering as the time precision but in uppercase.  Datetimes are stored interally as integers.  For example 2001.01.02T00:00:00.000 is stored as 86,400,000, the number of milliseconds in a day.
 </p>
 <div class="example">
 <pre class="example"> @2020.04.20T12:34:56.789  / date and time
@@ -302,7 +302,7 @@ b:{-1+*/x#256}
 2020.04.20T12:34:56.789
 </pre></div>
 
-<span id="Extreme-values"></span><h3 class="section">5.7 Extreme values</h3>
+<span id="Extreme-values"></span><h3 class="section">4.7 Extreme values</h3>
 <p>Data types can represent in-range, null, and out-of-range values.
 </p>
 <table>
