@@ -1431,7 +1431,7 @@ name                        f parameters       x             y
 *note converge over::       1                  element       n/a
 *note each right::          2                  array         element/array
 
-3.7.1 Converge Scan
+3.7.1 Converge Over
 -------------------
 
 Compute f[x] where x is the previous output of f until the value
@@ -2756,7 +2756,7 @@ and functions or values to replace.
 10.1 amend => @[r;i;f[;y]]
 ==========================
 
-Replace the values in list/dictionary r at indices i with element f or
+Replace the values in list / dictionary r at indices i with element f or
 function f and parameter y.  The original list is not modified.  Indices
 are rows for lists and keys for dictionaries.
 
@@ -4639,69 +4639,69 @@ Ref: bin63634
 Ref: within63846
 Node: Knit Functions64080
 Ref: amend64375
-Ref: amend164896
-Ref: amend265148
-Ref: amend365370
-Ref: amend465678
-Ref: dmend65969
-Ref: dmend166299
-Ref: dmend366470
-Ref: dmend466638
-Node: I/O66802
-Ref: read csv68868
-Ref: write csv69046
-Ref: read json69210
-Ref: write json69400
-Ref: read nv69573
-Ref: w line69766
-Ref: r line70151
-Ref: w byte70264
-Ref: r byte70492
-Ref: r data70642
-Ref: w data71304
-Ref: conn/set71884
-Ref: http/get71944
-Ref: lib72004
-Node: Tables72468
-Ref: t73130
-Ref: xtable74782
-Ref: utable75412
-Node: kSQL75950
-Ref: select76582
-Ref: A77166
-Ref: by B77983
-Ref: where C78261
-Ref: update78846
-Ref: delete79566
-Ref: union80205
-Ref: leftjoin80726
-Ref: outer81505
-Ref: asof81840
-Ref: asof+83294
-Ref: insert84511
-Ref: upsert84857
-Node: System85271
-Ref: load85729
-Ref: timing85917
-Ref: variables86004
-Ref: memory86105
-Ref: cd86220
-Node: Control Flow86304
-Ref: cond86543
-Node: Temporal Functions86913
-Node: Errors88307
-Ref: class88748
-Ref: rank88837
-Ref: length88961
-Ref: _type89084
-Ref: domain89193
-Ref: limit89315
-Ref: nyi89516
-Ref: parse89849
-Ref: _value90002
-Node: Examples90130
-Node: Benchmark97488
-Node: Conclusion102394
+Ref: amend164898
+Ref: amend265150
+Ref: amend365372
+Ref: amend465680
+Ref: dmend65971
+Ref: dmend166301
+Ref: dmend366472
+Ref: dmend466640
+Node: I/O66804
+Ref: read csv68870
+Ref: write csv69048
+Ref: read json69212
+Ref: write json69402
+Ref: read nv69575
+Ref: w line69768
+Ref: r line70153
+Ref: w byte70266
+Ref: r byte70494
+Ref: r data70644
+Ref: w data71306
+Ref: conn/set71886
+Ref: http/get71946
+Ref: lib72006
+Node: Tables72470
+Ref: t73132
+Ref: xtable74784
+Ref: utable75414
+Node: kSQL75952
+Ref: select76584
+Ref: A77168
+Ref: by B77985
+Ref: where C78263
+Ref: update78848
+Ref: delete79568
+Ref: union80207
+Ref: leftjoin80728
+Ref: outer81507
+Ref: asof81842
+Ref: asof+83296
+Ref: insert84513
+Ref: upsert84859
+Node: System85273
+Ref: load85731
+Ref: timing85919
+Ref: variables86006
+Ref: memory86107
+Ref: cd86222
+Node: Control Flow86306
+Ref: cond86545
+Node: Temporal Functions86915
+Node: Errors88309
+Ref: class88750
+Ref: rank88839
+Ref: length88963
+Ref: _type89086
+Ref: domain89195
+Ref: limit89317
+Ref: nyi89518
+Ref: parse89851
+Ref: _value90004
+Node: Examples90132
+Node: Benchmark97490
+Node: Conclusion102396
 
 End Tag Table
 

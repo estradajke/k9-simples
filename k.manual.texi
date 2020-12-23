@@ -1338,7 +1338,7 @@ Given a sorted (increasing) list x, find the greatest index, i, where y>x[i].
 @end multitable
 @end flushleft
 
-@anchor{converge over}@subsection Converge Scan
+@anchor{converge over}@subsection Converge Over
 Compute f[x] where x is the previous output of f until the value converges or returns to x.  The initial value of x is the input.  Only the final value is returned.  Intermediate values can be retrieved via @ref{converge scan}.
 
 @example
@@ -2565,7 +2565,7 @@ These functions modify lists and dictionaries given a list of indices and functi
 @end example
 
 @anchor{amend}@section amend @result{} @@[r;i;f[;y]]
-Replace the values in list/dictionary r at indices i with element f or function f and parameter y.  The original list is not modified.  Indices are rows for lists and keys for dictionaries.
+Replace the values in list / dictionary r at indices i with element f or function f and parameter y.  The original list is not modified.  Indices are rows for lists and keys for dictionaries.
 
 @flushleft
 @multitable {amend with function 2 param123} {function123} {2nd param123}
