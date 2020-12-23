@@ -141,7 +141,36 @@ cosX|1 0.9950042 0.9800666 0.9553365 0.921061 0.8..
 
 </pre></div>
 
-<span id="Dictionary-Indexing-_21d2-x_0040y"></span><h3 class="section">6.2 Dictionary Indexing &rArr; x@y</h3>
+<span id="Dictionary-Join-_21d2-x_002cy"></span><h3 class="section">6.2 Dictionary Join &rArr; x,y</h3>
+<p>This joins dictionaries together and the right or y dictionary will overwrite the left or x dictionary if common keys are present.
+</p>
+<div class="example">
+<pre class="example"> d1:`a`b`c!3 2 1;d1
+a|3
+b|2
+c|1
+
+ d2:`c`d`e!90 80 70;d2
+c|90
+d|80
+e|70
+
+ ^d1,d2 / ^ sort by key
+a| 3
+b| 2
+c|90
+d|80
+e|70
+
+ ^d2,d1 / ^ sort by key
+a| 3
+b| 2
+c| 1
+d|80
+e|70
+</pre></div>
+
+<span id="Dictionary-Indexing-_21d2-x_0040y"></span><h3 class="section">6.3 Dictionary Indexing &rArr; x@y</h3>
 
 <p>Dictionaries, like lists, can be key indexed in a number of ways.
 </p>
@@ -165,7 +194,7 @@ x@`a`c / multiple index
  x[`b]; / square bracket
 </pre></div>
 
-<span id="Dictionary-Key-_21d2-_0021x"></span><h3 class="section">6.3 Dictionary Key &rArr; !x</h3>
+<span id="Dictionary-Key-_21d2-_0021x"></span><h3 class="section">6.4 Dictionary Key &rArr; !x</h3>
 <p>The keys from a dictionary are retreived by using the ! function.
 </p>
 <div class="example">
@@ -177,7 +206,7 @@ x@`a`c / multiple index
 0 10 1
 </pre></div>
 
-<span id="Dictionary-Value-_21d2-x_005b_005d"></span><h3 class="section">6.4 Dictionary Value &rArr; x[]</h3>
+<span id="Dictionary-Value-_21d2-x_005b_005d"></span><h3 class="section">6.5 Dictionary Value &rArr; x[]</h3>
 <p>The values from a dictionary are retrieved using bracket notation.
 </p>
 <div class="example">
@@ -208,7 +237,7 @@ temp|25 25.1 25.6
 25.
 </pre></div>
 
-<span id="Sorting-a-Dictionary-by-Key-_21d2-_005ex"></span><h3 class="section">6.5 Sorting a Dictionary by Key &rArr; ^x</h3>
+<span id="Sorting-a-Dictionary-by-Key-_21d2-_005ex"></span><h3 class="section">6.6 Sorting a Dictionary by Key &rArr; ^x</h3>
 
 <div class="example">
 <pre class="example">&nbsp;d0
@@ -222,7 +251,7 @@ e |2.72
 pi|3.14 
 </pre></div>
 
-<span id="Sorting-a-Dictionary-by-Value-_21d2-_003cx-_0028_003ex_0029"></span><h3 class="section">6.6 Sorting a Dictionary by Value &rArr; &lt;x (&gt;x)</h3>
+<span id="Sorting-a-Dictionary-by-Value-_21d2-_003cx-_0028_003ex_0029"></span><h3 class="section">6.7 Sorting a Dictionary by Value &rArr; &lt;x (&gt;x)</h3>
 
 <div class="example">
 <pre class="example">&nbsp;d0
@@ -241,7 +270,7 @@ pi|3.14
 e |2.72 
 </pre></div>
 
-<span id="Flipping-a-Dictionary-into-a-Table-_21d2-_002bx"></span><h3 class="section">6.7 Flipping a Dictionary into a Table &rArr; +x</h3>
+<span id="Flipping-a-Dictionary-into-a-Table-_21d2-_002bx"></span><h3 class="section">6.8 Flipping a Dictionary into a Table &rArr; +x</h3>
 <p>This command flips a dictionary into a table and will be covered in detail in the table chapter.
 </p>
 <div class="example">
@@ -260,7 +289,7 @@ time  temp
 0b
 </pre></div>
 
-<span id="Functions-that-operate-on-each-value-in-a-dictionary"></span><h3 class="section">6.8 Functions that operate on each value in a dictionary</h3>
+<span id="Functions-that-operate-on-each-value-in-a-dictionary"></span><h3 class="section">6.9 Functions that operate on each value in a dictionary</h3>
 <p>There are a number of simple functions on dictionaries that operate on their values.  If &rsquo;f&rsquo; is a function then f applied to a dictionary returns a dictionary with the same keys and the values resulting from the application of &rsquo;f&rsquo;.
 </p>
 <ul>
@@ -310,7 +339,7 @@ time  temp
 &nbsp;1|0.001
 </pre></div>
 
-<span id="Functions-that-return-over-values-from-a-dictionary"></span><h3 class="section">6.9 Functions that return over values from a dictionary</h3>
+<span id="Functions-that-return-over-values-from-a-dictionary"></span><h3 class="section">6.10 Functions that return over values from a dictionary</h3>
 <p>There are functions on dictionaries that operate over the values.  Given function f applied to a dictionary d, f d returns one or more values  without the original keys.
 </p>
 <ul>

@@ -233,23 +233,23 @@ L
 <ul>
 <li> <tt>x^y : Reshape all element in y by x</tt>
 </li><li> <tt>x#y : List all elements in x that appear in y</tt>
-</li><li> <tt>x?y : Find the locations of y elements in x. If a y element is not in x, then the location is the length of x.</tt>
+</li><li> <tt>x?y : Indices of elements of y in x else return the length of x.</tt>
 </li></ul>
 
 <div class="example">
-<pre class="example">&nbsp;x:0 2 5 10
-&nbsp;y:!20
-&nbsp;x^y
+<pre class="example"> x:0 2 5 10
+ y:!20
+ x^y
 0 1                          
 2 3 4                        
 5 6 7 8 9                    
 10 11 12 13 14 15 16 17 18 19
 
-&nbsp;x:2 8 20
-&nbsp;y:1 2 3 7 8 9
-&nbsp;x#y
+ x:2 8 20
+ y:1 2 3 7 8 9
+ x#y
 2 8
-&nbsp;x?y
+ x?y
 3 0 3 3 1 3
 </pre></div>
 

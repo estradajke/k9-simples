@@ -1940,8 +1940,7 @@ to their inputs, i.e.  f[x;y] does not equal f[y;x];
 
    * x^y : Reshape all element in y by x
    * x#y : List all elements in x that appear in y
-   * x?y : Find the locations of y elements in x. If a y element is not
-     in x, then the location is the length of x.
+   * x?y : Indices of elements of y in x else return the length of x.
 
       x:0 2 5 10
       y:!20
@@ -2033,7 +2032,37 @@ User defined functions can easily accomplish this task.
      cosX|1 0.9950042 0.9800666 0.9553365 0.921061 0.8..
 
 
-6.2 Dictionary Indexing => x@y
+6.2 Dictionary Join => x,y
+==========================
+
+This joins dictionaries together and the right or y dictionary will
+overwrite the left or x dictionary if common keys are present.
+
+      d1:`a`b`c!3 2 1;d1
+     a|3
+     b|2
+     c|1
+
+      d2:`c`d`e!90 80 70;d2
+     c|90
+     d|80
+     e|70
+
+      ^d1,d2 / ^ sort by key
+     a| 3
+     b| 2
+     c|90
+     d|80
+     e|70
+
+      ^d2,d1 / ^ sort by key
+     a| 3
+     b| 2
+     c| 1
+     d|80
+     e|70
+
+6.3 Dictionary Indexing => x@y
 ==============================
 
 Dictionaries, like lists, can be key indexed in a number of ways.
@@ -2056,7 +2085,7 @@ Dictionaries, like lists, can be key indexed in a number of ways.
       x `b;  / space
       x[`b]; / square bracket
 
-6.3 Dictionary Key => !x
+6.4 Dictionary Key => !x
 ========================
 
 The keys from a dictionary are retreived by using the !  function.
@@ -2068,7 +2097,7 @@ The keys from a dictionary are retreived by using the !  function.
       !d2
      0 10 1
 
-6.4 Dictionary Value => x[]
+6.5 Dictionary Value => x[]
 ===========================
 
 The values from a dictionary are retrieved using bracket notation.
@@ -2100,7 +2129,7 @@ values (a pair of lists), and index that by [1;0].
       d1[][1;0]
      25.
 
-6.5 Sorting a Dictionary by Key => ^x
+6.6 Sorting a Dictionary by Key => ^x
 =====================================
 
       d0
@@ -2113,7 +2142,7 @@ values (a pair of lists), and index that by [1;0].
      e |2.72
      pi|3.14
 
-6.6 Sorting a Dictionary by Value => <x (>x)
+6.7 Sorting a Dictionary by Value => <x (>x)
 ============================================
 
       d0
@@ -2131,7 +2160,7 @@ values (a pair of lists), and index that by [1;0].
      pi|3.14
      e |2.72
 
-6.7 Flipping a Dictionary into a Table => +x
+6.8 Flipping a Dictionary into a Table => +x
 ============================================
 
 This command flips a dictionary into a table and will be covered in
@@ -2151,7 +2180,7 @@ detail in the table chapter.
       d1~+d1
      0b
 
-6.8 Functions that operate on each value in a dictionary
+6.9 Functions that operate on each value in a dictionary
 ========================================================
 
 There are a number of simple functions on dictionaries that operate on
@@ -2202,8 +2231,8 @@ the application of 'f'.
      10|0.463
       1|0.001
 
-6.9 Functions that return over values from a dictionary
-=======================================================
+6.10 Functions that return over values from a dictionary
+========================================================
 
 There are functions on dictionaries that operate over the values.  Given
 function f applied to a dictionary d, f d returns one or more values
@@ -4581,98 +4610,98 @@ Ref: time42814
 Ref: date43716
 Ref: datetime44177
 Node: List44976
-Node: Dictionary49278
-Node: User Functions54462
-Node: Expression57711
-Node: Named Functions58589
-Ref: exp59229
-Ref: log59295
-Ref: sin59393
-Ref: cos59530
-Ref: sqr59676
-Ref: sqrt59737
-Ref: div59808
-Ref: mod59993
-Ref: bar60169
-Ref: topX60487
-Ref: freq60647
-Ref: msum61000
-Ref: mavg61139
-Ref: sums61285
-Ref: deltas61427
-Ref: prm61767
-Ref: cmb61944
-Ref: keyF62479
-Ref: unkey62776
-Ref: meta62914
-Ref: in63047
-Ref: bin63224
-Ref: within63436
-Node: Knit Functions63670
-Ref: amend63965
-Ref: amend164486
-Ref: amend264738
-Ref: amend364960
-Ref: amend465268
-Ref: dmend65559
-Ref: dmend165889
-Ref: dmend366060
-Ref: dmend466228
-Node: I/O66392
-Ref: read csv68458
-Ref: write csv68636
-Ref: read json68800
-Ref: write json68990
-Ref: read nv69163
-Ref: w line69356
-Ref: r line69741
-Ref: w byte69854
-Ref: r byte70082
-Ref: r data70232
-Ref: w data70894
-Ref: conn/set71474
-Ref: http/get71534
-Ref: lib71594
-Node: Tables72058
-Ref: t72720
-Ref: xtable74372
-Ref: utable75002
-Node: kSQL75540
-Ref: select76172
-Ref: A76756
-Ref: by B77573
-Ref: where C77851
-Ref: update78436
-Ref: delete79156
-Ref: union79795
-Ref: leftjoin80316
-Ref: outer81095
-Ref: asof81430
-Ref: asof+82884
-Ref: insert84101
-Ref: upsert84447
-Node: System84861
-Ref: load85319
-Ref: timing85507
-Ref: variables85594
-Ref: memory85695
-Ref: cd85810
-Node: Control Flow85894
-Ref: cond86133
-Node: Temporal Functions86503
-Node: Errors87897
-Ref: class88338
-Ref: rank88427
-Ref: length88551
-Ref: _type88674
-Ref: domain88783
-Ref: limit88905
-Ref: nyi89106
-Ref: parse89439
-Ref: _value89592
-Node: Examples89720
-Node: Benchmark97078
-Node: Conclusion101984
+Node: Dictionary49227
+Node: User Functions54872
+Node: Expression58121
+Node: Named Functions58999
+Ref: exp59639
+Ref: log59705
+Ref: sin59803
+Ref: cos59940
+Ref: sqr60086
+Ref: sqrt60147
+Ref: div60218
+Ref: mod60403
+Ref: bar60579
+Ref: topX60897
+Ref: freq61057
+Ref: msum61410
+Ref: mavg61549
+Ref: sums61695
+Ref: deltas61837
+Ref: prm62177
+Ref: cmb62354
+Ref: keyF62889
+Ref: unkey63186
+Ref: meta63324
+Ref: in63457
+Ref: bin63634
+Ref: within63846
+Node: Knit Functions64080
+Ref: amend64375
+Ref: amend164896
+Ref: amend265148
+Ref: amend365370
+Ref: amend465678
+Ref: dmend65969
+Ref: dmend166299
+Ref: dmend366470
+Ref: dmend466638
+Node: I/O66802
+Ref: read csv68868
+Ref: write csv69046
+Ref: read json69210
+Ref: write json69400
+Ref: read nv69573
+Ref: w line69766
+Ref: r line70151
+Ref: w byte70264
+Ref: r byte70492
+Ref: r data70642
+Ref: w data71304
+Ref: conn/set71884
+Ref: http/get71944
+Ref: lib72004
+Node: Tables72468
+Ref: t73130
+Ref: xtable74782
+Ref: utable75412
+Node: kSQL75950
+Ref: select76582
+Ref: A77166
+Ref: by B77983
+Ref: where C78261
+Ref: update78846
+Ref: delete79566
+Ref: union80205
+Ref: leftjoin80726
+Ref: outer81505
+Ref: asof81840
+Ref: asof+83294
+Ref: insert84511
+Ref: upsert84857
+Node: System85271
+Ref: load85729
+Ref: timing85917
+Ref: variables86004
+Ref: memory86105
+Ref: cd86220
+Node: Control Flow86304
+Ref: cond86543
+Node: Temporal Functions86913
+Node: Errors88307
+Ref: class88748
+Ref: rank88837
+Ref: length88961
+Ref: _type89084
+Ref: domain89193
+Ref: limit89315
+Ref: nyi89516
+Ref: parse89849
+Ref: _value90002
+Node: Examples90130
+Node: Benchmark97488
+Node: Conclusion102394
 
 End Tag Table
 
