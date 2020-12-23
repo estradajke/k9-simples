@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 22, 2020
+<!-- December 23, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -189,8 +189,8 @@ x z
 </p>
 <div class="example">
 <pre class="example">n:5;t:[[]x:!n;y:sin !n]
- 
- select sum y by x&gt;2 from t            / The key here is field is a boolean 1 when x &gt; 2 or and 0 when x &gt; 2 does not hold
+
+ select sum y by x&gt;2 from t
 x|y         
 -|----------
 0|1.750768  
@@ -253,7 +253,8 @@ a 1 19
 b 2 20
 c 3 21
 
- t:update z:y+18 from t;t / save the updates into table t. Now t has the updated values.
+ t:update z:y+18 from t; / save the updates into table t
+ t                       / Now t has the updated values.
 x y z 
 - - --
 a 1 19
@@ -323,16 +324,16 @@ c 12 22
 If a row of t has key values not found in k, then the t values are shown and 0 for the columns coming from k.
 </p>
 <div class="example">
-<pre class="example">&nbsp;t:[[]s:`a`b`c;p:1 2 3;q:7 8 9]
-&nbsp;k:[[s:`a`b`x`y`z]q:101 102 103 104 105;r:51 52 53 54 55]
-&nbsp;t
+<pre class="example"> t:[[]s:`a`b`c;p:1 2 3;q:7 8 9]
+ k:[[s:`a`b`x`y`z]q:101 102 103 104 105;r:51 52 53 54 55]
+ t
 s p q
 - - -
 a 1 7
 b 2 8
 c 3 9
 
-&nbsp;k
+ k
 s|q   r 
 -|--- --
 a|101 51
@@ -341,7 +342,9 @@ x|103 53
 y|104 54
 z|105 55
 
-&nbsp;t,k       / t.s includes the value `c. Because k.s does not include c, the last row shows a 0 under the r column (which comes from k).
+ / t.s includes the value `c. Because k.s does not include c,
+ / the last row shows a 0 under the r column (which comes from k).
+ t,k       
 s p q   r 
 - - --- --
 a 1 101 51
@@ -395,8 +398,12 @@ t    |q
 09:41|51
 09:45|52
 
- t,k      / Notice below that the t row at 09:45 is linked with the k row at 09:45. The k row at 09:41 is not linked with any t row.
-          / by contrast, both the 09:35 and the 09:40 rows of t are linked to the 09:32 row of k.
+ / Notice below the t row at 09:45 is linked with the k row at 09:45.
+ / The k row at 09:41 is not linked with any t row.
+ / By contrast, both the 09:35 and the 09:40 rows of t
+ / are linked to the 09:32 row of k.
+ t,k      
+          
 t     p   q 
 ----- --- --
 09:30 100  0

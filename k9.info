@@ -1,6 +1,6 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
-December 22, 2020
+December 23, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -219,8 +219,8 @@ Preferences..."  and then "Security and Privacy" and select to allow
 this binary to run.  (You'll have to have tried and failed to have it
 appear here automatically.)
 
-1.4 Help/Info Card
-==================
+1.4 Help / Info Card
+====================
 
 Typing '\' in a terminal window gives you a concise overview of the
 language.  This document aims to provide details to beginning user where
@@ -800,7 +800,11 @@ matrix of k rows where each row has size */x1 x2 ...  xk and the
 elements of row i are !xi repeated as many times as necessary.  Each
 row's repeats must fit below constant values of the row above.
 
-      !2 3 2 / Each row of length 2*3*2 = */2 3 2 = 12. First row values 0,1, second row values 0,1,2, third row values 0,1
+      / Each row of length 2*3*2 = */2 3 2 = 12.
+      / First row values 0,1
+      / Second row values 0,1,2
+      / Third row values 0,1
+      !2 3 2
      0 0 0 0 0 0 1 1 1 1 1 1
      0 0 1 1 2 2 0 0 1 1 2 2
      0 1 0 1 0 1 0 1 0 1 0 1
@@ -963,10 +967,10 @@ action                     x
    Postive (negative) x returns the first (last) x elements of y.  If
 abs[x]>count[y] then repeatedly pull from y.
 
-      3#0 1 2 3 4 5          / take first 3 elements of a list whose length is longer than 3
+      3#0 1 2 3 4 5          / take first 3 elements of a list
      0 1 2
 
-      10 # 17 12 25 / take repeat: generate a list of length 10 with these three elements
+      10 # 17 12 25 / take repeat: take from list and repeat as needed
      17 12 25 17 12 25 17 12 25 17
 
       -3#0 1 2 3 4 5         / take last elements of a list
@@ -979,7 +983,7 @@ abs[x]>count[y] then repeatedly pull from y.
       (1 2 3 7 8 9)#(2 8 20) / common
      2 8
 
-       (2 4 6 2 6 5 4) # (4 6 7 8 2 4 4 4) / always a substring of right argument
+       (2 4 6 2 6 5 4) # (4 6 7 8 2 4 4 4) / substring of right argument
      4 6 2 4 4 4
 
       (4 6 7 8 2 4 4 4) # (2 4 6 2 6 5 4)
@@ -988,7 +992,7 @@ abs[x]>count[y] then repeatedly pull from y.
    If x is a function, then select the values where the function is
 non-zero.
 
-      (0.5<)#10?1.           / select values greater than 0.5 among randomly chosen numbers between 0 and 1
+      (0.5<)#10?1.           / select values greater than 0.5
      0.840732 0.5330717 0.7539563 0.643315 0.6993048f
 
 2.28 floor => _x
@@ -1027,7 +1031,7 @@ action                     x
 
    If x is a function, then select values where the function is zero.
 
-      (0.5<)_10?1.           / select values that are less than or equal to 0.5
+      (0.5<)_10?1.           / values less than or equal to 0.5
      0.02049699 0.1269226
 
 2.30 string => $x
@@ -1090,7 +1094,7 @@ return the end of vector.
 
       `a`b`a`c`b`a`a?`b
      1
-      `a`b`a`c`b`a`a?`d / there is no element, so return the length of the list
+      `a`b`a`c`b`a`a?`d / missing thus return the list length
      7
       0 1 2 3 4?10
      5
@@ -1211,11 +1215,11 @@ the shape of y.
    * Recursive index over returns x[y[0;0];y[1]], x[y[0;1];y[1]], ...,
      x[y[0;n-1];y[1]].
 
-action@y    #y    example
-simple index'I1   ,2
-simple indices'I1 ,1 3
-recursive index'L10 2
-recursive index over'L2(0 2;1 3)
+action                     @y    #y    example
+simple index               'I    1     ,2
+simple indices             'I    1     ,1 3
+recursive index            'L    1     0 2
+recursive index over       'L    2     (0 2;1 3)
 
       (3 4 7 12).,2
      7
@@ -1403,10 +1407,10 @@ value, n=0, returns f[y@0;x].
 will allow a function to run using multiple threads over a list of
 arguments.
 
-     \t {L:x?1.;sum L%sin L*cos L*sin L+L*L}':8#_2e7 / run using multiple threads
+     \t {L:x?1.;sum L%sin L*cos L*sin L+L*L}':8#_2e7 / multiple threads
      1655
 
-     \t {L:x?1.;sum L%sin L*cos L*sin L+L*L}'8#_2e7  / run in a single thread
+     \t {L:x?1.;sum L%sin L*cos L*sin L+L*L}'8#_2e7  / single thread
      4144
 
 3.6.1 +bin => x':y
@@ -1423,9 +1427,9 @@ y>x[i].
 3.7 eachr => f/:x, x f/:y, f/:[x;y]
 ===================================
 
-name  f parametersxy
-*note converge over::1elementn/a
-*note each right::2arrayelement/array
+name                        f parameters       x             y
+*note converge over::       1                  element       n/a
+*note each right::          2                  array         element/array
 
 3.7.1 Converge Scan
 -------------------
@@ -1442,7 +1446,7 @@ the final value is returned.  Intermediate values can be retrieved via
       x/:0
      4
 
-      / the latter example worked out manually. Recall that x 3 is the same as x[3]
+      / manually step through converge
       x 0
      3
       x 3
@@ -1466,9 +1470,9 @@ Apply f[x;y] to each value of y, i.e.  the right one.
 3.8 eachl => f\:x, x f\:y, f\:[x;y]
 ===================================
 
-name  f parametersxy
-*note converge scan::1elementn/a
-*note each left::2arrayelement/array
+name                    f parametersxy
+*note converge scan::   1     elementn/a
+*note each left::       2     array element/array
 
 3.8.1 Converge Scan
 -------------------
@@ -1980,8 +1984,8 @@ avoid lookup value confusion but uniqueness is not enforced.  The values
 in the dictionary can be single elements, lists, tables, or even other
 dictionaries.
 
-   Dictionaries in k9 are often used.  As an example from finance the
-market quote and trade data are dictionaries of symbols (name keys) and
+   Dictionaries in k9 are often used.  As an example from finance,
+market quotes and trade data are dictionaries of symbols (name keys) and
 market data (table values).
 
 6.1 Dictionary Creation => x!y or [x;y]
@@ -1992,15 +1996,15 @@ notation and listing the keys (x) and values (y).
 
    'x!y'
 
-      d0:`a37!12; d0                               / key is `a37 and value is 12
+      d0:`a37!12; d0                          / key is `a37 and value is 12
      a37|12
 
-      d1:`pi`e`c!3.14 2.72 3e8;d1                  / three keys `pi, `e, `c
+      d1:`pi`e`c!3.14 2.72 3e8;d1             / three keys `pi, `e, `c
      pi|3.14
      e |2.72
      c |3e+08
 
-      `a`b`c!(1 2 3;10 20 30;100 200 300 499)          / three keys `a `b `c whose respective values are lists
+      `a`b`c!(1 2 3;10 20 30;100 200 300 499) / values are lists
      a|1 2 3
      b|10 20 30
      c|100 200 300 499
@@ -2020,21 +2024,33 @@ notation and listing the keys (x) and values (y).
      b|10 20 30
      c|100 200 300
 
+   Often one will need to modify the data while building the dictionary.
+User defined functions can easily accomplish this task.
+
+      `x`sinX`cosX!{(x;sin y;cos z)} . 3#,0.1*(!62)
+     x   |0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 1.1 ..
+     sinX|0 0.09983342 0.1986693 0.2955202 0.3894183 0..
+     cosX|1 0.9950042 0.9800666 0.9553365 0.921061 0.8..
+
+
 6.2 Dictionary Indexing => x@y
 ==============================
 
-Dictionaries, like lists, can be indexed in a number of ways.
+Dictionaries, like lists, can be key indexed in a number of ways.
 
       x:`a`b`c!(1 2;3 4;5 6);x
      a|1 2
      b|3 4
      c|5 6
-      x@`a
+
+     x@`a   / single index
      1 2
-      x@`a`c
+
+     x@`a`c / multiple index
      1 2
      5 6
-      / all these notations for indexing work (output not shown)
+
+     / all these notations for indexing work (output not shown)
       x@`b;  / at
       x(`b); / parenthesis
       x `b;  / space
@@ -2225,7 +2241,7 @@ parameters but one can explicitly spell out these or other argument
 names.  Given k9's terseness, many k9 programmers prefer short variable
 names.  But this is a matter of taste.
 
-      f1:{x+2*y}         / implicit arguments x and y. This function adds the first argument to twice the second one.
+      f1:{x+2*y}         / implicit arguments x and y
       f1[2;10]
      22
 
@@ -2237,7 +2253,7 @@ names.  But this is a matter of taste.
       f3[2;10]
      22
 
-      f4:{[please;dont]please+2*dont} / longer argument names are possible, but some disapprove
+      f4:{[please;dont]please+2*dont} / longer argument names are possible
       f4[2;10]
      22
 
@@ -2414,7 +2430,8 @@ This chapter covers the built-in named functions.  This includes some
 math (eg.  sqrt but not +), wrapper (eg.  count for #) and range (eg.
 within) functions.
 
-     *note exp:: *note log:: *note sin:: *note cos:: *note sqr:: *note sqrt:: *note div:: *note mod:: *note bar::;  *note top: topX. *note freq:: *note msum:: *note mavg:: *note sums:: *note deltas:: *note prm:: *note cmb::
+     *note exp:: *note log:: *note sin:: *note cos:: *note sqr:: *note sqrt:: *note div:: *note mod:: *note bar::;
+       *note top: topX. *note freq:: *note msum:: *note mavg:: *note sums:: *note deltas:: *note prm:: *note cmb::
 
 9.1 Math Functions => exp log sin cos sqr sqrt div mod bar
 ==========================================================
@@ -2502,7 +2519,7 @@ than or equal to each y.
 
 Return the index of the max value of list x.
 
-      top 3 13 15 1 17 0 -3  / remember that indexes start at 0, so index 4 corresponds to 17
+      top 3 13 15 1 17 0 -3
      4
 
      top "abzccdefeajfekjrlke"
@@ -2888,34 +2905,34 @@ file.  We'll generate a small table and save it with and without headers
 in, both specifying types and with the csv reader.  Types are specifed
 by one letter and the full list can be found in *note Atom Types::.
 
-      t:[[]a:3 2 1;b:1. 2. 4.;c:`x`y`z];t   / generate a table of data
+      t:[[]a:3 2 1;b:1. 2. 4.;c:`x`y`z];t / generate table
      a b  c
      - -- -
      3 1. x
      2 2. y
      1 4. z
 
-      "wHeader.csv"0:`csv t                 / save with column headers
+      "wHeader.csv"0:`csv t               / save with column headers
      wHeader.csv
 
-     "woHeader.csv"0:1_`csv t              / save without col headers
+     "woHeader.csv"0:1_`csv t             / save without col headers
      woHeader.csv
 
-     `csv?0:"wHeader.csv"                  / default reader
+     `csv?0:"wHeader.csv"                 / default reader
      a b  c
      - -- -
      3 1. x
      2 2. y
      1 4. z
 
-      (",";"ifn")0:"wHeader.csv"            / specify separator and types
+      (",";"ifn")0:"wHeader.csv"          / separator and types
      a b  c
      - -- -
      3 1. x
      2 2. y
      1 4. z
 
-      (`e`f`g;",";"ifn")0:"woHeader.csv"    / specify names, separator and types
+      (`e`f`g;",";"ifn")0:"woHeader.csv"  / names, separator and types
      e f  g
      - -- -
      3 1. x
@@ -2977,11 +2994,12 @@ Convert x, a list of name:value pairs, to a dictionary.
 
 Output to x the list of strings in y.  y must be a list of strings.  If
 y is a single stream then convert to list via enlist.
+
       ""0:("blue";"red")      / "" represents stdout
      blue
      red
 
-      "foo" 0: ("blue"; "red") / puts the result in file foo one line for each element
+      "file.txt" 0: ("blue"; "red") / write to file, one line per element
 
       "some.csv" 0:`csv [[]a:1 2;b:3. 4.]
      "some.csv"
@@ -3333,7 +3351,7 @@ where the key is determined by the grouping clause 'by'.
 
      n:5;t:[[]x:!n;y:sin !n]
 
-      select sum y by x>2 from t            / The key here is field is a boolean 1 when x > 2 or and 0 when x > 2 does not hold
+      select sum y by x>2 from t
      x|y
      -|----------
      0|1.750768
@@ -3399,7 +3417,8 @@ want to preserve those modifications, use assignment.
      b 2 20
      c 3 21
 
-      t:update z:y+18 from t;t / save the updates into table t. Now t has the updated values.
+      t:update z:y+18 from t; / save the updates into table t
+      t                       / Now t has the updated values.
      x y z
      - - --
      a 1 19
@@ -3432,12 +3451,12 @@ k9 has a number of methods to join tables together which are described
 below.  In this section t, t1 and t2 represent tables and k, k1 and k2
 represent utables.
 
-joinsyntax
-*note union::t1,t2
-*note leftjoin::t,k
-*note outer::k1,k2
-*note asof::t,k
-*note asof+::k1+k2
+join                   syntax
+*note union::          t1,t2
+*note leftjoin::       t,k
+*note outer::          k1,k2
+*note asof::           t,k
+*note asof+::          k1+k2
 
 13.2.1 union join => t1,t2
 --------------------------
@@ -3494,7 +3513,9 @@ coming from k.
      y|104 54
      z|105 55
 
-      t,k       / t.s includes the value `c. Because k.s does not include c, the last row shows a 0 under the r column (which comes from k).
+      / t.s includes the value `c. Because k.s does not include c,
+      / the last row shows a 0 under the r column (which comes from k).
+      t,k
      s p q   r
      - - --- --
      a 1 101 51
@@ -3552,8 +3573,12 @@ respect to rt.
      09:41|51
      09:45|52
 
-      t,k      / Notice below that the t row at 09:45 is linked with the k row at 09:45. The k row at 09:41 is not linked with any t row.
-               / by contrast, both the 09:35 and the 09:40 rows of t are linked to the 09:32 row of k.
+      / Notice below the t row at 09:45 is linked with the k row at 09:45.
+      / The k row at 09:41 is not linked with any t row.
+      / By contrast, both the 09:35 and the 09:40 rows of t
+      / are linked to the 09:32 row of k.
+      t,k
+
      t     p   q
      ----- --- --
      09:30 100  0
@@ -3870,7 +3895,9 @@ Given the terse syntax of k9, it likely won't be a surprise that error
 messages are also rather short.  The errors are listed on the help page
 and described in more detail below.
 
-     error: *note class:: *note rank:: *note length:: *note type: _type. *note domain:: *note limit:: stack *note parse:: *note value: _value.
+     error: *note class:: *note rank:: *note length::
+     *note type: _type. *note domain:: *note limit::
+     stack *note parse:: *note value: _value.
 
 17.1 :class
 ===========
@@ -4050,7 +4077,7 @@ of the price deltas.
      d|20000640
      e|19999652
 
-      select c:#d by d from q          / check the normal distribution (2s to run)
+      select c:#d by d from q          / check normal dist (2s to run)
      d |c
      --|--------
      -6|1
@@ -4484,168 +4511,168 @@ exp log sin cos sqr sqrt div mod bar; top freq msum mavg sums deltas prm cmb
 Tag Table:
 Node: Top126
 Node: Introduction4650
-Node: Verb16118
-Ref: x17862
-Ref: set17887
-Ref: flip18146
-Ref: plus18396
-Ref: negate18874
-Ref: minus19046
-Ref: first19153
-Ref: times19369
-Ref: divide19500
-Ref: where19637
-Ref: min/and20123
-Ref: reverse20382
-Ref: max/or20644
-Ref: asc20908
-Ref: less21296
-Ref: group21597
-Ref: equal21850
-Ref: not22154
-Ref: match22271
-Ref: enum22654
-Ref: key23712
-Ref: enlist23885
-Ref: cat24025
-Ref: sort24144
-Ref: [f]cut24377
-Ref: count25515
-Ref: [f]take25705
-Ref: take126138
-Ref: take226559
-Ref: take326840
-Ref: floor27082
-Ref: [f]drop27173
-Ref: drop127609
-Ref: drop227795
-Ref: drop327917
-Ref: string28095
-Ref: cast28196
-Ref: unique+28386
-Ref: find+29074
-Ref: type30078
-Ref: [f]at30529
-Ref: value30903
-Ref: [f]dot31330
-Node: Adverb32430
-Ref: scan33274
-Ref: +join33804
-Ref: +split34180
-Ref: each34443
-Ref: +has34732
-Ref: eachp35071
-Ref: bin235841
-Ref: eachr36046
-Ref: converge over36212
-Ref: each right36760
-Ref: eachl36914
-Ref: converge scan37079
-Ref: each left37565
-Node: Noun37750
-Ref: Atom Types39155
-Ref: bool40336
-Ref: int41023
-Ref: flt41702
-Ref: char42104
-Ref: name42337
-Ref: uuid42577
-Ref: time42734
-Ref: date43636
-Ref: datetime44097
-Node: List44896
-Node: Dictionary49198
-Node: User Functions54047
-Node: Expression57381
-Node: Named Functions58259
-Ref: exp58893
-Ref: log58959
-Ref: sin59057
-Ref: cos59194
-Ref: sqr59340
-Ref: sqrt59401
-Ref: div59472
-Ref: mod59657
-Ref: bar59833
-Ref: topX60151
-Ref: freq60377
-Ref: msum60730
-Ref: mavg60869
-Ref: sums61015
-Ref: deltas61157
-Ref: prm61497
-Ref: cmb61674
-Ref: keyF62209
-Ref: unkey62506
-Ref: meta62644
-Ref: in62777
-Ref: bin62954
-Ref: within63166
-Node: Knit Functions63400
-Ref: amend63695
-Ref: amend164216
-Ref: amend264468
-Ref: amend364690
-Ref: amend464998
-Ref: dmend65289
-Ref: dmend165619
-Ref: dmend365790
-Ref: dmend465958
-Node: I/O66122
-Ref: read csv68224
-Ref: write csv68402
-Ref: read json68566
-Ref: write json68756
-Ref: read nv68929
-Ref: w line69122
-Ref: r line69519
-Ref: w byte69632
-Ref: r byte69860
-Ref: r data70010
-Ref: w data70672
-Ref: conn/set71252
-Ref: http/get71312
-Ref: lib71372
-Node: Tables71836
-Ref: t72498
-Ref: xtable74150
-Ref: utable74780
-Node: kSQL75318
-Ref: select75950
-Ref: A76534
-Ref: by B77351
-Ref: where C77724
-Ref: update78309
-Ref: delete78999
-Ref: union79571
-Ref: leftjoin80092
-Ref: outer80863
-Ref: asof81198
-Ref: asof+82648
-Ref: insert83865
-Ref: upsert84211
-Node: System84625
-Ref: load85083
-Ref: timing85271
-Ref: variables85358
-Ref: memory85459
-Ref: cd85574
-Node: Control Flow85658
-Ref: cond85897
-Node: Temporal Functions86267
-Node: Errors87661
-Ref: class88092
-Ref: rank88181
-Ref: length88305
-Ref: _type88428
-Ref: domain88537
-Ref: limit88659
-Ref: nyi88860
-Ref: parse89193
-Ref: _value89346
-Node: Examples89474
-Node: Benchmark96844
-Node: Conclusion101750
+Node: Verb16122
+Ref: x17866
+Ref: set17891
+Ref: flip18150
+Ref: plus18400
+Ref: negate18878
+Ref: minus19050
+Ref: first19157
+Ref: times19373
+Ref: divide19504
+Ref: where19641
+Ref: min/and20127
+Ref: reverse20386
+Ref: max/or20648
+Ref: asc20912
+Ref: less21300
+Ref: group21601
+Ref: equal21854
+Ref: not22158
+Ref: match22275
+Ref: enum22658
+Ref: key23744
+Ref: enlist23917
+Ref: cat24057
+Ref: sort24176
+Ref: [f]cut24409
+Ref: count25547
+Ref: [f]take25737
+Ref: take126170
+Ref: take226542
+Ref: take326814
+Ref: floor27010
+Ref: [f]drop27101
+Ref: drop127537
+Ref: drop227723
+Ref: drop327845
+Ref: string28007
+Ref: cast28108
+Ref: unique+28298
+Ref: find+28986
+Ref: type29972
+Ref: [f]at30423
+Ref: value30797
+Ref: [f]dot31224
+Node: Adverb32424
+Ref: scan33268
+Ref: +join33798
+Ref: +split34174
+Ref: each34437
+Ref: +has34726
+Ref: eachp35065
+Ref: bin235816
+Ref: eachr36021
+Ref: converge over36298
+Ref: each right36801
+Ref: eachl36955
+Ref: converge scan37159
+Ref: each left37645
+Node: Noun37830
+Ref: Atom Types39235
+Ref: bool40416
+Ref: int41103
+Ref: flt41782
+Ref: char42184
+Ref: name42417
+Ref: uuid42657
+Ref: time42814
+Ref: date43716
+Ref: datetime44177
+Node: List44976
+Node: Dictionary49278
+Node: User Functions54462
+Node: Expression57711
+Node: Named Functions58589
+Ref: exp59229
+Ref: log59295
+Ref: sin59393
+Ref: cos59530
+Ref: sqr59676
+Ref: sqrt59737
+Ref: div59808
+Ref: mod59993
+Ref: bar60169
+Ref: topX60487
+Ref: freq60647
+Ref: msum61000
+Ref: mavg61139
+Ref: sums61285
+Ref: deltas61427
+Ref: prm61767
+Ref: cmb61944
+Ref: keyF62479
+Ref: unkey62776
+Ref: meta62914
+Ref: in63047
+Ref: bin63224
+Ref: within63436
+Node: Knit Functions63670
+Ref: amend63965
+Ref: amend164486
+Ref: amend264738
+Ref: amend364960
+Ref: amend465268
+Ref: dmend65559
+Ref: dmend165889
+Ref: dmend366060
+Ref: dmend466228
+Node: I/O66392
+Ref: read csv68458
+Ref: write csv68636
+Ref: read json68800
+Ref: write json68990
+Ref: read nv69163
+Ref: w line69356
+Ref: r line69741
+Ref: w byte69854
+Ref: r byte70082
+Ref: r data70232
+Ref: w data70894
+Ref: conn/set71474
+Ref: http/get71534
+Ref: lib71594
+Node: Tables72058
+Ref: t72720
+Ref: xtable74372
+Ref: utable75002
+Node: kSQL75540
+Ref: select76172
+Ref: A76756
+Ref: by B77573
+Ref: where C77851
+Ref: update78436
+Ref: delete79156
+Ref: union79795
+Ref: leftjoin80316
+Ref: outer81095
+Ref: asof81430
+Ref: asof+82884
+Ref: insert84101
+Ref: upsert84447
+Node: System84861
+Ref: load85319
+Ref: timing85507
+Ref: variables85594
+Ref: memory85695
+Ref: cd85810
+Node: Control Flow85894
+Ref: cond86133
+Node: Temporal Functions86503
+Node: Errors87897
+Ref: class88338
+Ref: rank88427
+Ref: length88551
+Ref: _type88674
+Ref: domain88783
+Ref: limit88905
+Ref: nyi89106
+Ref: parse89439
+Ref: _value89592
+Node: Examples89720
+Node: Benchmark97078
+Node: Conclusion101984
 
 End Tag Table
 

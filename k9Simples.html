@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 22, 2020
+<!-- December 23, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -247,7 +247,7 @@ z@&amp;y&lt;z:?x<br>
 
 <p>Again on the mac if you then attempt to run this file you likely won&rsquo;t succeed due to MacOS security.  You&rsquo;ll need to go to &ldquo;System Preferences...&rdquo; and then &ldquo;Security and Privacy&rdquo; and select to allow this binary to run.  (You&rsquo;ll have to have tried and failed to have it appear here automatically.)
 </p>
-<span id="Help_002fInfo-Card"></span><h3 class="section">1.4 Help/Info Card</h3>
+<span id="Help-_002f-Info-Card"></span><h3 class="section">1.4 Help / Info Card</h3>
 <p>Typing <code>\</code> in a terminal window gives you a concise overview of the language.  This document aims to provide details to beginning user where the help screen is a bit too terse.  Some commands are not yet complete and thus marked with an asterisk, eg. *update A by B from T where C.
 </p>
 <div class="format">
@@ -764,7 +764,11 @@ n|2 4
 <p>In the case where x is a list of integers  x1 x2 ... xk, generate a matrix of k rows where each row has size */x1 x2 ... xk and the elements of row i are !xi repeated as many times as necessary. Each row&rsquo;s repeats must fit below constant values of the row above.
 </p>
 <div class="example">
-<pre class="example"> !2 3 2 / Each row of length 2*3*2 = */2 3 2 = 12. First row values 0,1, second row values 0,1,2, third row values 0,1
+<pre class="example"> / Each row of length 2*3*2 = */2 3 2 = 12.
+ / First row values 0,1
+ / Second row values 0,1,2
+ / Third row values 0,1
+ !2 3 2 
 0 0 0 0 0 0 1 1 1 1 1 1
 0 0 1 1 2 2 0 0 1 1 2 2
 0 1 0 1 0 1 0 1 0 1 0 1
@@ -925,10 +929,10 @@ z  1
 <span id="take1"></span><p>Postive (negative) x returns the first (last) x elements of y.  If abs[x]&gt;count[y] then repeatedly pull from y.
 </p>
 <div class="example">
-<pre class="example"> 3#0 1 2 3 4 5          / take first 3 elements of a list whose length is longer than 3
+<pre class="example"> 3#0 1 2 3 4 5          / take first 3 elements of a list
 0 1 2
 
- 10 # 17 12 25 / take repeat: generate a list of length 10 with these three elements
+ 10 # 17 12 25 / take repeat: take from list and repeat as needed
 17 12 25 17 12 25 17 12 25 17
 
  -3#0 1 2 3 4 5         / take last elements of a list
@@ -943,7 +947,7 @@ z  1
 <pre class="example"> (1 2 3 7 8 9)#(2 8 20) / common
 2 8
 
-  (2 4 6 2 6 5 4) # (4 6 7 8 2 4 4 4) / always a substring of right argument
+  (2 4 6 2 6 5 4) # (4 6 7 8 2 4 4 4) / substring of right argument
 4 6 2 4 4 4
  
  (4 6 7 8 2 4 4 4) # (2 4 6 2 6 5 4)
@@ -953,7 +957,7 @@ z  1
 <span id="take3"></span><p>If x is a function, then select the  values where the function is non-zero.
 </p>
 <div class="example">
-<pre class="example"> (0.5&lt;)#10?1.           / select values greater than 0.5 among randomly chosen numbers between 0 and 1
+<pre class="example"> (0.5&lt;)#10?1.           / select values greater than 0.5
 0.840732 0.5330717 0.7539563 0.643315 0.6993048f
 </pre></div>
 
@@ -995,7 +999,7 @@ z  1
 <span id="drop3"></span><p>If x is a function, then select values where the function is zero.
 </p>
 <div class="example">
-<pre class="example"> (0.5&lt;)_10?1.           / select values that are less than or equal to 0.5
+<pre class="example"> (0.5&lt;)_10?1.           / values less than or equal to 0.5
 0.02049699 0.1269226
 </pre></div>
 
@@ -1052,7 +1056,7 @@ z  1
 <div class="example">
 <pre class="example"> `a`b`a`c`b`a`a?`b
 1
-&nbsp;`a`b`a`c`b`a`a?`d / there is no element, so return the length of the list
+&nbsp;`a`b`a`c`b`a`a?`d / missing thus return the list length
 7
 &nbsp;0 1 2 3 4?10
 5
@@ -1365,10 +1369,10 @@ y4 y3
 <p>Additionally eachp (&rsquo;:) is a multithreaded (parallel) each.  This will allow a function to run using multiple threads over a list of arguments.
 </p>
 <div class="example">
-<pre class="example">\t {L:x?1.;sum L%sin L*cos L*sin L+L*L}':8#_2e7 / run using multiple threads
+<pre class="example">\t {L:x?1.;sum L%sin L*cos L*sin L+L*L}':8#_2e7 / multiple threads
 1655
 
-\t {L:x?1.;sum L%sin L*cos L*sin L+L*L}'8#_2e7  / run in a single thread
+\t {L:x?1.;sum L%sin L*cos L*sin L+L*L}'8#_2e7  / single thread
 4144
 </pre></div>
 
@@ -1401,7 +1405,7 @@ y4 y3
  x/:0 
 4
 
- / the latter example worked out manually. Recall that x 3 is the same as x[3]
+ / manually step through converge
  x 0
 3
  x 3
@@ -1894,7 +1898,7 @@ Next: <a href="#User-Functions" accesskey="n" rel="next">User Functions</a>, Pre
 <span id="Dictionary-1"></span><h2 class="chapter">6 Dictionary</h2>
 <p>Dictionaries are a data type of key-value pairs typically used to retrieve the value by using the key.  In other computer languages they are also known as associative arrays and maps.  Keys should be unique to avoid lookup value confusion but uniqueness is not enforced.  The values in the dictionary can be single elements, lists, tables, or even other dictionaries.
 </p>
-<p>Dictionaries in k9 are often used.  As an example from finance the market quote and trade data are dictionaries of symbols (name keys) and market data (table values).  
+<p>Dictionaries in k9 are often used.  As an example from finance, market quotes and trade data are dictionaries of symbols (name keys) and market data (table values).  
 </p>
 <span id="Dictionary-Creation-_21d2-x_0021y-or-_005bx_003by_005d"></span><h3 class="section">6.1 Dictionary Creation &rArr; x!y or [x;y]</h3>
 
@@ -1903,15 +1907,15 @@ Next: <a href="#User-Functions" accesskey="n" rel="next">User Functions</a>, Pre
 <p><code>x!y</code>
 </p>
 <div class="example">
-<pre class="example"> d0:`a37!12; d0                               / key is `a37 and value is 12
+<pre class="example"> d0:`a37!12; d0                          / key is `a37 and value is 12
 a37|12
 
- d1:`pi`e`c!3.14 2.72 3e8;d1                  / three keys `pi, `e, `c
+ d1:`pi`e`c!3.14 2.72 3e8;d1             / three keys `pi, `e, `c
 pi|3.14 
 e |2.72 
 c |3e+08
 
- `a`b`c!(1 2 3;10 20 30;100 200 300 499)          / three keys `a `b `c whose respective values are lists
+ `a`b`c!(1 2 3;10 20 30;100 200 300 499) / values are lists
 a|1 2 3      
 b|10 20 30   
 c|100 200 300 499
@@ -1934,25 +1938,38 @@ b|10 20 30
 c|100 200 300
 </pre></div>
 
-<span id="Dictionary-Indexing-_21d2-x_0040y"></span><h3 class="section">6.2 Dictionary Indexing &rArr; x@y</h3>
-
-<p>Dictionaries, like lists, can be indexed in a number of ways.
+<p>Often one will need to modify the data while building the dictionary.  User defined functions can easily accomplish this task.
 </p>
 <div class="example">
-<pre class="example">&nbsp;x:`a`b`c!(1 2;3 4;5 6);x
+<pre class="example"> `x`sinX`cosX!{(x;sin y;cos z)} . 3#,0.1*(!62)
+x   |0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 1.1 ..
+sinX|0 0.09983342 0.1986693 0.2955202 0.3894183 0..
+cosX|1 0.9950042 0.9800666 0.9553365 0.921061 0.8..
+
+</pre></div>
+
+<span id="Dictionary-Indexing-_21d2-x_0040y"></span><h3 class="section">6.2 Dictionary Indexing &rArr; x@y</h3>
+
+<p>Dictionaries, like lists, can be key indexed in a number of ways.
+</p>
+<div class="example">
+<pre class="example"> x:`a`b`c!(1 2;3 4;5 6);x
 a|1 2
 b|3 4
 c|5 6
-&nbsp;x@`a      
+
+x@`a   / single index     
 1 2
-&nbsp;x@`a`c    
+
+x@`a`c / multiple index   
 1 2
 5 6
-&nbsp;/ all these notations for indexing work (output not shown)
-&nbsp;x@`b;  / at
-&nbsp;x(`b); / parenthesis
-&nbsp;x `b;  / space
-&nbsp;x[`b]; / square bracket
+
+/ all these notations for indexing work (output not shown)
+ x@`b;  / at
+ x(`b); / parenthesis
+ x `b;  / space
+ x[`b]; / square bracket
 </pre></div>
 
 <span id="Dictionary-Key-_21d2-_0021x"></span><h3 class="section">6.3 Dictionary Key &rArr; !x</h3>
@@ -2134,7 +2151,7 @@ Next: <a href="#Expression" accesskey="n" rel="next">Expression</a>, Previous: <
 <p>Functions default to arguments of x, y, and z for the first three parameters but one  can  explicitly spell out these or other argument names.  Given k9&rsquo;s terseness, many k9 programmers prefer short variable names. But this is a matter of taste.
 </p>
 <div class="example">
-<pre class="example"> f1:{x+2*y}         / implicit arguments x and y. This function adds the first argument to twice the second one.
+<pre class="example"> f1:{x+2*y}         / implicit arguments x and y
  f1[2;10]
 22
 
@@ -2146,7 +2163,7 @@ Next: <a href="#Expression" accesskey="n" rel="next">Expression</a>, Previous: <
  f3[2;10]
 22
 
- f4:{[please;dont]please+2*dont} / longer argument names are possible, but some disapprove
+ f4:{[please;dont]please+2*dont} / longer argument names are possible
  f4[2;10]
 22
 
@@ -2311,7 +2328,8 @@ Next: <a href="#Knit-Functions" accesskey="n" rel="next">Knit Functions</a>, Pre
 </p>
 <div class="format">
 <div class="example">
-<pre class="example"><a href="#exp">exp</a> <a href="#log">log</a> <a href="#sin">sin</a> <a href="#cos">cos</a> <a href="#sqr">sqr</a> <a href="#sqrt">sqrt</a> <a href="#div">div</a> <a href="#mod">mod</a> <a href="#bar">bar</a>;  <a href="#topX">top</a> <a href="#freq">freq</a> <a href="#msum">msum</a> <a href="#mavg">mavg</a> <a href="#sums">sums</a> <a href="#deltas">deltas</a> <a href="#prm">prm</a> <a href="#cmb">cmb</a>
+<pre class="example"><a href="#exp">exp</a> <a href="#log">log</a> <a href="#sin">sin</a> <a href="#cos">cos</a> <a href="#sqr">sqr</a> <a href="#sqrt">sqrt</a> <a href="#div">div</a> <a href="#mod">mod</a> <a href="#bar">bar</a>;
+  <a href="#topX">top</a> <a href="#freq">freq</a> <a href="#msum">msum</a> <a href="#mavg">mavg</a> <a href="#sums">sums</a> <a href="#deltas">deltas</a> <a href="#prm">prm</a> <a href="#cmb">cmb</a>
 </pre></div>
 </div>
 
@@ -2395,7 +2413,7 @@ Next: <a href="#Knit-Functions" accesskey="n" rel="next">Knit Functions</a>, Pre
 <p>Return the index of the max value of list x.
 </p>
 <div class="example">
-<pre class="example"> top 3 13 15 1 17 0 -3  / remember that indexes start at 0, so index 4 corresponds to 17
+<pre class="example"> top 3 13 15 1 17 0 -3
 4
 
 top &quot;abzccdefeajfekjrlke&quot;
@@ -2781,34 +2799,34 @@ other languages to k9.
 <p>Let&rsquo;s begin with a simple example to show how to read data from a csv file.  We&rsquo;ll generate a small table and save it with and without headers (wHeader.csv and woHeader.csv respectively).  Then we&rsquo;ll read it back in, both specifying types and with the csv reader.  Types are specifed by one letter and the full list can be found in <a href="#Atom-Types">Atom Types</a>.
 </p>
 <div class="example">
-<pre class="example"> t:[[]a:3 2 1;b:1. 2. 4.;c:`x`y`z];t   / generate a table of data
+<pre class="example"> t:[[]a:3 2 1;b:1. 2. 4.;c:`x`y`z];t / generate table
 a b  c
 - -- -
 3 1. x
 2 2. y
 1 4. z
 
- &quot;wHeader.csv&quot;0:`csv t                 / save with column headers
+ &quot;wHeader.csv&quot;0:`csv t               / save with column headers
 wHeader.csv
 
-&quot;woHeader.csv&quot;0:1_`csv t              / save without col headers
+&quot;woHeader.csv&quot;0:1_`csv t             / save without col headers
 woHeader.csv
 
-`csv?0:&quot;wHeader.csv&quot;                  / default reader
+`csv?0:&quot;wHeader.csv&quot;                 / default reader
 a b  c
 - -- -
 3 1. x
 2 2. y
 1 4. z
 
- (&quot;,&quot;;&quot;ifn&quot;)0:&quot;wHeader.csv&quot;            / specify separator and types
+ (&quot;,&quot;;&quot;ifn&quot;)0:&quot;wHeader.csv&quot;          / separator and types
 a b  c
 - -- -
 3 1. x
 2 2. y
 1 4. z
 
- (`e`f`g;&quot;,&quot;;&quot;ifn&quot;)0:&quot;woHeader.csv&quot;    / specify names, separator and types
+ (`e`f`g;&quot;,&quot;;&quot;ifn&quot;)0:&quot;woHeader.csv&quot;  / names, separator and types
 e f  g
 - -- -
 3 1. x
@@ -2868,12 +2886,13 @@ key2|value2
 
 <span id="w-line"></span><span id="write-line-_21d2-x-0_003ay"></span><h3 class="section">11.7 write line &rArr; x 0:y</h3>
 <p>Output to x the list of strings in y.  y must be a list of strings.  If y is a single stream then convert to list via enlist.
-</p><div class="example">
+</p>
+<div class="example">
 <pre class="example"> &quot;&quot;0:(&quot;blue&quot;;&quot;red&quot;)      / &quot;&quot; represents stdout
 blue
 red
 
- &quot;foo&quot; 0: (&quot;blue&quot;; &quot;red&quot;) / puts the result in file foo one line for each element
+ &quot;file.txt&quot; 0: (&quot;blue&quot;; &quot;red&quot;) / write to file, one line per element
 
  &quot;some.csv&quot; 0:`csv [[]a:1 2;b:3. 4.]
 &quot;some.csv&quot;
@@ -3198,8 +3217,8 @@ x z
 </p>
 <div class="example">
 <pre class="example">n:5;t:[[]x:!n;y:sin !n]
- 
- select sum y by x&gt;2 from t            / The key here is field is a boolean 1 when x &gt; 2 or and 0 when x &gt; 2 does not hold
+
+ select sum y by x&gt;2 from t
 x|y         
 -|----------
 0|1.750768  
@@ -3262,7 +3281,8 @@ a 1 19
 b 2 20
 c 3 21
 
- t:update z:y+18 from t;t / save the updates into table t. Now t has the updated values.
+ t:update z:y+18 from t; / save the updates into table t
+ t                       / Now t has the updated values.
 x y z 
 - - --
 a 1 19
@@ -3332,16 +3352,16 @@ c 12 22
 If a row of t has key values not found in k, then the t values are shown and 0 for the columns coming from k.
 </p>
 <div class="example">
-<pre class="example">&nbsp;t:[[]s:`a`b`c;p:1 2 3;q:7 8 9]
-&nbsp;k:[[s:`a`b`x`y`z]q:101 102 103 104 105;r:51 52 53 54 55]
-&nbsp;t
+<pre class="example"> t:[[]s:`a`b`c;p:1 2 3;q:7 8 9]
+ k:[[s:`a`b`x`y`z]q:101 102 103 104 105;r:51 52 53 54 55]
+ t
 s p q
 - - -
 a 1 7
 b 2 8
 c 3 9
 
-&nbsp;k
+ k
 s|q   r 
 -|--- --
 a|101 51
@@ -3350,7 +3370,9 @@ x|103 53
 y|104 54
 z|105 55
 
-&nbsp;t,k       / t.s includes the value `c. Because k.s does not include c, the last row shows a 0 under the r column (which comes from k).
+ / t.s includes the value `c. Because k.s does not include c,
+ / the last row shows a 0 under the r column (which comes from k).
+ t,k       
 s p q   r 
 - - --- --
 a 1 101 51
@@ -3404,8 +3426,12 @@ t    |q
 09:41|51
 09:45|52
 
- t,k      / Notice below that the t row at 09:45 is linked with the k row at 09:45. The k row at 09:41 is not linked with any t row.
-          / by contrast, both the 09:35 and the 09:40 rows of t are linked to the 09:32 row of k.
+ / Notice below the t row at 09:45 is linked with the k row at 09:45.
+ / The k row at 09:41 is not linked with any t row.
+ / By contrast, both the 09:35 and the 09:40 rows of t
+ / are linked to the 09:32 row of k.
+ t,k      
+          
 t     p   q 
 ----- --- --
 09:30 100  0
@@ -3708,7 +3734,9 @@ Next: <a href="#Examples" accesskey="n" rel="next">Examples</a>, Previous: <a hr
 <p>Given the terse syntax of k9, it likely won&rsquo;t be a surprise  that  error messages are also rather short.  The errors are listed on the help page and described in more detail below.
 </p>
 <div class="example">
-<pre class="example">error: <a href="#class">class</a> <a href="#rank">rank</a> <a href="#length">length</a> <a href="#g_t_005ftype">type</a> <a href="#domain">domain</a> <a href="#limit">limit</a> stack <a href="#parse">parse</a> <a href="#g_t_005fvalue">value</a>
+<pre class="example">error: <a href="#class">class</a> <a href="#rank">rank</a> <a href="#length">length</a>
+<a href="#g_t_005ftype">type</a> <a href="#domain">domain</a> <a href="#limit">limit</a>
+stack <a href="#parse">parse</a> <a href="#g_t_005fvalue">value</a>
 </pre></div>
 
 <span id="class"></span><span id="g_t_003aclass"></span><h3 class="section">17.1 :class</h3>
@@ -3870,7 +3898,7 @@ c|19998874
 d|20000640
 e|19999652
 
- select c:#d by d from q          / check the normal distribution (2s to run)
+ select c:#d by d from q          / check normal dist (2s to run)
 d |c       
 --|--------
 -6|1       

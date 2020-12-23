@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 22, 2020
+<!-- December 23, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -91,7 +91,7 @@ Next: <a href="User-Functions.html" accesskey="n" rel="next">User Functions</a>,
 <span id="Dictionary-1"></span><h2 class="chapter">6 Dictionary</h2>
 <p>Dictionaries are a data type of key-value pairs typically used to retrieve the value by using the key.  In other computer languages they are also known as associative arrays and maps.  Keys should be unique to avoid lookup value confusion but uniqueness is not enforced.  The values in the dictionary can be single elements, lists, tables, or even other dictionaries.
 </p>
-<p>Dictionaries in k9 are often used.  As an example from finance the market quote and trade data are dictionaries of symbols (name keys) and market data (table values).  
+<p>Dictionaries in k9 are often used.  As an example from finance, market quotes and trade data are dictionaries of symbols (name keys) and market data (table values).  
 </p>
 <span id="Dictionary-Creation-_21d2-x_0021y-or-_005bx_003by_005d"></span><h3 class="section">6.1 Dictionary Creation &rArr; x!y or [x;y]</h3>
 
@@ -100,15 +100,15 @@ Next: <a href="User-Functions.html" accesskey="n" rel="next">User Functions</a>,
 <p><code>x!y</code>
 </p>
 <div class="example">
-<pre class="example"> d0:`a37!12; d0                               / key is `a37 and value is 12
+<pre class="example"> d0:`a37!12; d0                          / key is `a37 and value is 12
 a37|12
 
- d1:`pi`e`c!3.14 2.72 3e8;d1                  / three keys `pi, `e, `c
+ d1:`pi`e`c!3.14 2.72 3e8;d1             / three keys `pi, `e, `c
 pi|3.14 
 e |2.72 
 c |3e+08
 
- `a`b`c!(1 2 3;10 20 30;100 200 300 499)          / three keys `a `b `c whose respective values are lists
+ `a`b`c!(1 2 3;10 20 30;100 200 300 499) / values are lists
 a|1 2 3      
 b|10 20 30   
 c|100 200 300 499
@@ -131,25 +131,38 @@ b|10 20 30
 c|100 200 300
 </pre></div>
 
-<span id="Dictionary-Indexing-_21d2-x_0040y"></span><h3 class="section">6.2 Dictionary Indexing &rArr; x@y</h3>
-
-<p>Dictionaries, like lists, can be indexed in a number of ways.
+<p>Often one will need to modify the data while building the dictionary.  User defined functions can easily accomplish this task.
 </p>
 <div class="example">
-<pre class="example">&nbsp;x:`a`b`c!(1 2;3 4;5 6);x
+<pre class="example"> `x`sinX`cosX!{(x;sin y;cos z)} . 3#,0.1*(!62)
+x   |0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 1.1 ..
+sinX|0 0.09983342 0.1986693 0.2955202 0.3894183 0..
+cosX|1 0.9950042 0.9800666 0.9553365 0.921061 0.8..
+
+</pre></div>
+
+<span id="Dictionary-Indexing-_21d2-x_0040y"></span><h3 class="section">6.2 Dictionary Indexing &rArr; x@y</h3>
+
+<p>Dictionaries, like lists, can be key indexed in a number of ways.
+</p>
+<div class="example">
+<pre class="example"> x:`a`b`c!(1 2;3 4;5 6);x
 a|1 2
 b|3 4
 c|5 6
-&nbsp;x@`a      
+
+x@`a   / single index     
 1 2
-&nbsp;x@`a`c    
+
+x@`a`c / multiple index   
 1 2
 5 6
-&nbsp;/ all these notations for indexing work (output not shown)
-&nbsp;x@`b;  / at
-&nbsp;x(`b); / parenthesis
-&nbsp;x `b;  / space
-&nbsp;x[`b]; / square bracket
+
+/ all these notations for indexing work (output not shown)
+ x@`b;  / at
+ x(`b); / parenthesis
+ x `b;  / space
+ x[`b]; / square bracket
 </pre></div>
 
 <span id="Dictionary-Key-_21d2-_0021x"></span><h3 class="section">6.3 Dictionary Key &rArr; !x</h3>

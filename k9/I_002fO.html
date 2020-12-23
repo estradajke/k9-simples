@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 22, 2020
+<!-- December 23, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -113,34 +113,34 @@ other languages to k9.
 <p>Let&rsquo;s begin with a simple example to show how to read data from a csv file.  We&rsquo;ll generate a small table and save it with and without headers (wHeader.csv and woHeader.csv respectively).  Then we&rsquo;ll read it back in, both specifying types and with the csv reader.  Types are specifed by one letter and the full list can be found in <a href="Noun.html#Atom-Types">Atom Types</a>.
 </p>
 <div class="example">
-<pre class="example"> t:[[]a:3 2 1;b:1. 2. 4.;c:`x`y`z];t   / generate a table of data
+<pre class="example"> t:[[]a:3 2 1;b:1. 2. 4.;c:`x`y`z];t / generate table
 a b  c
 - -- -
 3 1. x
 2 2. y
 1 4. z
 
- &quot;wHeader.csv&quot;0:`csv t                 / save with column headers
+ &quot;wHeader.csv&quot;0:`csv t               / save with column headers
 wHeader.csv
 
-&quot;woHeader.csv&quot;0:1_`csv t              / save without col headers
+&quot;woHeader.csv&quot;0:1_`csv t             / save without col headers
 woHeader.csv
 
-`csv?0:&quot;wHeader.csv&quot;                  / default reader
+`csv?0:&quot;wHeader.csv&quot;                 / default reader
 a b  c
 - -- -
 3 1. x
 2 2. y
 1 4. z
 
- (&quot;,&quot;;&quot;ifn&quot;)0:&quot;wHeader.csv&quot;            / specify separator and types
+ (&quot;,&quot;;&quot;ifn&quot;)0:&quot;wHeader.csv&quot;          / separator and types
 a b  c
 - -- -
 3 1. x
 2 2. y
 1 4. z
 
- (`e`f`g;&quot;,&quot;;&quot;ifn&quot;)0:&quot;woHeader.csv&quot;    / specify names, separator and types
+ (`e`f`g;&quot;,&quot;;&quot;ifn&quot;)0:&quot;woHeader.csv&quot;  / names, separator and types
 e f  g
 - -- -
 3 1. x
@@ -200,12 +200,13 @@ key2|value2
 
 <span id="w-line"></span><span id="write-line-_21d2-x-0_003ay"></span><h3 class="section">11.7 write line &rArr; x 0:y</h3>
 <p>Output to x the list of strings in y.  y must be a list of strings.  If y is a single stream then convert to list via enlist.
-</p><div class="example">
+</p>
+<div class="example">
 <pre class="example"> &quot;&quot;0:(&quot;blue&quot;;&quot;red&quot;)      / &quot;&quot; represents stdout
 blue
 red
 
- &quot;foo&quot; 0: (&quot;blue&quot;; &quot;red&quot;) / puts the result in file foo one line for each element
+ &quot;file.txt&quot; 0: (&quot;blue&quot;; &quot;red&quot;) / write to file, one line per element
 
  &quot;some.csv&quot; 0:`csv [[]a:1 2;b:3. 4.]
 &quot;some.csv&quot;

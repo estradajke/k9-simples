@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 22, 2020
+<!-- December 23, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -441,7 +441,11 @@ n|2 4
 <p>In the case where x is a list of integers  x1 x2 ... xk, generate a matrix of k rows where each row has size */x1 x2 ... xk and the elements of row i are !xi repeated as many times as necessary. Each row&rsquo;s repeats must fit below constant values of the row above.
 </p>
 <div class="example">
-<pre class="example"> !2 3 2 / Each row of length 2*3*2 = */2 3 2 = 12. First row values 0,1, second row values 0,1,2, third row values 0,1
+<pre class="example"> / Each row of length 2*3*2 = */2 3 2 = 12.
+ / First row values 0,1
+ / Second row values 0,1,2
+ / Third row values 0,1
+ !2 3 2 
 0 0 0 0 0 0 1 1 1 1 1 1
 0 0 1 1 2 2 0 0 1 1 2 2
 0 1 0 1 0 1 0 1 0 1 0 1
@@ -602,10 +606,10 @@ z  1
 <span id="take1"></span><p>Postive (negative) x returns the first (last) x elements of y.  If abs[x]&gt;count[y] then repeatedly pull from y.
 </p>
 <div class="example">
-<pre class="example"> 3#0 1 2 3 4 5          / take first 3 elements of a list whose length is longer than 3
+<pre class="example"> 3#0 1 2 3 4 5          / take first 3 elements of a list
 0 1 2
 
- 10 # 17 12 25 / take repeat: generate a list of length 10 with these three elements
+ 10 # 17 12 25 / take repeat: take from list and repeat as needed
 17 12 25 17 12 25 17 12 25 17
 
  -3#0 1 2 3 4 5         / take last elements of a list
@@ -620,7 +624,7 @@ z  1
 <pre class="example"> (1 2 3 7 8 9)#(2 8 20) / common
 2 8
 
-  (2 4 6 2 6 5 4) # (4 6 7 8 2 4 4 4) / always a substring of right argument
+  (2 4 6 2 6 5 4) # (4 6 7 8 2 4 4 4) / substring of right argument
 4 6 2 4 4 4
  
  (4 6 7 8 2 4 4 4) # (2 4 6 2 6 5 4)
@@ -630,7 +634,7 @@ z  1
 <span id="take3"></span><p>If x is a function, then select the  values where the function is non-zero.
 </p>
 <div class="example">
-<pre class="example"> (0.5&lt;)#10?1.           / select values greater than 0.5 among randomly chosen numbers between 0 and 1
+<pre class="example"> (0.5&lt;)#10?1.           / select values greater than 0.5
 0.840732 0.5330717 0.7539563 0.643315 0.6993048f
 </pre></div>
 
@@ -672,7 +676,7 @@ z  1
 <span id="drop3"></span><p>If x is a function, then select values where the function is zero.
 </p>
 <div class="example">
-<pre class="example"> (0.5&lt;)_10?1.           / select values that are less than or equal to 0.5
+<pre class="example"> (0.5&lt;)_10?1.           / values less than or equal to 0.5
 0.02049699 0.1269226
 </pre></div>
 
@@ -729,7 +733,7 @@ z  1
 <div class="example">
 <pre class="example"> `a`b`a`c`b`a`a?`b
 1
-&nbsp;`a`b`a`c`b`a`a?`d / there is no element, so return the length of the list
+&nbsp;`a`b`a`c`b`a`a?`d / missing thus return the list length
 7
 &nbsp;0 1 2 3 4?10
 5

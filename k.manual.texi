@@ -136,13 +136,15 @@ You will find the Linux version in the linux directory and the MacOS version und
 
 Again on the mac if you then attempt to run this file you likely won't succeed due to MacOS security.  You'll need to go to ``System Preferences...'' and then ``Security and Privacy'' and select to allow this binary to run.  (You'll have to have tried and failed to have it appear here automatically.)
 
-@section Help/Info Card
+@section Help / Info Card
 Typing @code{\} in a terminal window gives you a concise overview of the language.  This document aims to provide details to beginning user where the help screen is a bit too terse.  Some commands are not yet complete and thus marked with an asterisk, eg. *update A by B from T where C.
 
 @smallformat
+@group
 @verbatiminclude k.d
+@end group
 @end smallformat
-@page
+@c @page
 
 @section rlwrap
 Although you only need the @file{k} binary to run k9 most will also install rlwrap, if not already installed, in order to get command history in a terminal window.  rlwrap is ``Readline wrapper: adds readline support to tools that lack it'' and allows one to arrow up to go through the command buffer history.
@@ -687,7 +689,11 @@ Enumerate the domain of x.  Given an integer, x, generate an integer list from 0
 In the case where x is a list of integers  x1 x2 ... xk, generate a matrix of k rows where each row has size */x1 x2 ... xk and the elements of row i are !xi repeated as many times as necessary. Each row's repeats must fit below constant values of the row above.
 
 @example
- !2 3 2 / Each row of length 2*3*2 = */2 3 2 = 12. First row values 0,1, second row values 0,1,2, third row values 0,1
+ / Each row of length 2*3*2 = */2 3 2 = 12.
+ / First row values 0,1
+ / Second row values 0,1,2
+ / Third row values 0,1
+ !2 3 2 
 0 0 0 0 0 0 1 1 1 1 1 1
 0 0 1 1 2 2 0 0 1 1 2 2
 0 1 0 1 0 1 0 1 0 1 0 1
@@ -859,10 +865,10 @@ Count the number of elements in x.
 Postive (negative) x returns the first (last) x elements of y.  If abs[x]>count[y] then repeatedly pull from y.
 
 @example
- 3#0 1 2 3 4 5          / take first 3 elements of a list whose length is longer than 3
+ 3#0 1 2 3 4 5          / take first 3 elements of a list
 0 1 2
 
- 10 # 17 12 25 / take repeat: generate a list of length 10 with these three elements
+ 10 # 17 12 25 / take repeat: take from list and repeat as needed
 17 12 25 17 12 25 17 12 25 17
 
  -3#0 1 2 3 4 5         / take last elements of a list
@@ -878,7 +884,7 @@ If x is a list, then take returns any values common in both x and y.
  (1 2 3 7 8 9)#(2 8 20) / common
 2 8
 
-  (2 4 6 2 6 5 4) # (4 6 7 8 2 4 4 4) / always a substring of right argument
+  (2 4 6 2 6 5 4) # (4 6 7 8 2 4 4 4) / substring of right argument
 4 6 2 4 4 4
  
  (4 6 7 8 2 4 4 4) # (2 4 6 2 6 5 4)
@@ -889,7 +895,7 @@ If x is a list, then take returns any values common in both x and y.
 If x is a function, then select the  values where the function is non-zero.
 
 @example
- (0.5<)#10?1.           / select values greater than 0.5 among randomly chosen numbers between 0 and 1
+ (0.5<)#10?1.           / select values greater than 0.5
 0.840732 0.5330717 0.7539563 0.643315 0.6993048f
 @end example
 
@@ -936,7 +942,7 @@ If x is a list, then drop returns any values from y not found in x.
 If x is a function, then select values where the function is zero.
 
 @example
- (0.5<)_10?1.           / select values that are less than or equal to 0.5
+ (0.5<)_10?1.           / values less than or equal to 0.5
 0.02049699 0.1269226
 @end example
 
@@ -993,7 +999,7 @@ x is list: Find the first element of x that matches y otherwise return the end o
 @example
  `a`b`a`c`b`a`a?`b
 1
-@ `a`b`a`c`b`a`a?`d / there is no element, so return the length of the list
+@ `a`b`a`c`b`a`a?`d / missing thus return the list length
 7
 @ 0 1 2 3 4?10
 5
@@ -1112,7 +1118,7 @@ Given list x return the value at list y.  The action of dot depends on the shape
 @end itemize
 
 @flushleft
-@multitable {abc} {def} {ghi} {123}
+@multitable {recursive index over 123} {def} {ghi} {123 123}
 @c @headitem action @tab @@y @tab #y @tab example
 @item @b{action} @tab @b{@@y} @tab @b{#y} @tab @b{example}
 @item simple index @tab `I @tab 1 @tab ,2
@@ -1305,10 +1311,10 @@ y4 y3
 Additionally eachp (':) is a multithreaded (parallel) each.  This will allow a function to run using multiple threads over a list of arguments.
 
 @example
-\t @{L:x?1.;sum L%sin L*cos L*sin L+L*L@}':8#_2e7 / run using multiple threads
+\t @{L:x?1.;sum L%sin L*cos L*sin L+L*L@}':8#_2e7 / multiple threads
 1655
 
-\t @{L:x?1.;sum L%sin L*cos L*sin L+L*L@}'8#_2e7  / run in a single thread
+\t @{L:x?1.;sum L%sin L*cos L*sin L+L*L@}'8#_2e7  / single thread
 4144
 @end example
 
@@ -1325,7 +1331,7 @@ Given a sorted (increasing) list x, find the greatest index, i, where y>x[i].
 @anchor{eachr}@section eachr @result{} f/:x, x f/:y, f/:[x;y]
 
 @flushleft
-@multitable {abc} {abc} {abc} {abc}
+@multitable {converge over 123 123 123} {f parameters 123} {element 123} {element/array 123}
 @item @b{name} @tab @b{f parameters} @tab @b{x} @tab @b{y}
 @item @ref{converge over} @tab 1 @tab element @tab n/a
 @item @ref{each right} @tab 2 @tab array @tab element/array
@@ -1343,7 +1349,7 @@ Compute f[x] where x is the previous output of f until the value converges or re
  x/:0 
 4
 
- / the latter example worked out manually. Recall that x 3 is the same as x[3]
+ / manually step through converge
  x 0
 3
  x 3
@@ -1368,7 +1374,7 @@ Apply f[x;y] to each value of y, i.e. the right one.
 @anchor{eachl}@section eachl @result{} f\:x, x f\:y, f\:[x;y]
 
 @flushleft
-@multitable {abc} {abc} {abc} {abc}
+@multitable {converge scan 123 123} {abc} {abc} {element/array 123}
 @item @b{name} @tab @b{f parameters} @tab @b{x} @tab @b{y}
 @item @ref{converge scan} @tab 1 @tab element @tab n/a
 @item @ref{each left} @tab 2 @tab array @tab element/array
@@ -1828,7 +1834,7 @@ This is symmetric in its inputs f[x;y]=f[y;x] and the lists are not required to 
 @chapter Dictionary
 Dictionaries are a data type of key-value pairs typically used to retrieve the value by using the key.  In other computer languages they are also known as associative arrays and maps.  Keys should be unique to avoid lookup value confusion but uniqueness is not enforced.  The values in the dictionary can be single elements, lists, tables, or even other dictionaries.
 
-Dictionaries in k9 are often used.  As an example from finance the market quote and trade data are dictionaries of symbols (name keys) and market data (table values).  
+Dictionaries in k9 are often used.  As an example from finance, market quotes and trade data are dictionaries of symbols (name keys) and market data (table values).  
 
 @section Dictionary Creation @result{} x!y or [x;y]
 
@@ -1837,15 +1843,15 @@ Dictionaries are created by using the key symbol or square bracket notation and 
 @code{x!y}
 
 @example
- d0:`a37!12; d0                               / key is `a37 and value is 12
+ d0:`a37!12; d0                          / key is `a37 and value is 12
 a37|12
 
- d1:`pi`e`c!3.14 2.72 3e8;d1                  / three keys `pi, `e, `c
+ d1:`pi`e`c!3.14 2.72 3e8;d1             / three keys `pi, `e, `c
 pi|3.14 
 e |2.72 
 c |3e+08
 
- `a`b`c!(1 2 3;10 20 30;100 200 300 499)          / three keys `a `b `c whose respective values are lists
+ `a`b`c!(1 2 3;10 20 30;100 200 300 499) / values are lists
 a|1 2 3      
 b|10 20 30   
 c|100 200 300 499
@@ -1868,25 +1874,38 @@ b|10 20 30
 c|100 200 300
 @end example
 
-@section Dictionary Indexing @result{} x@@y
-
-Dictionaries, like lists, can be indexed in a number of ways.
+Often one will need to modify the data while building the dictionary.  User defined functions can easily accomplish this task.
 
 @example
-@ x:`a`b`c!(1 2;3 4;5 6);x
+ `x`sinX`cosX!@{(x;sin y;cos z)@} . 3#,0.1*(!62)
+x   |0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 1.1 ..
+sinX|0 0.09983342 0.1986693 0.2955202 0.3894183 0..
+cosX|1 0.9950042 0.9800666 0.9553365 0.921061 0.8..
+
+@end example
+
+@section Dictionary Indexing @result{} x@@y
+
+Dictionaries, like lists, can be key indexed in a number of ways.
+
+@example
+ x:`a`b`c!(1 2;3 4;5 6);x
 a|1 2
 b|3 4
 c|5 6
-@ x@@`a      
+
+x@@`a   / single index     
 1 2
-@ x@@`a`c    
+
+x@@`a`c / multiple index   
 1 2
 5 6
-@ / all these notations for indexing work (output not shown)
-@ x@@`b;  / at
-@ x(`b); / parenthesis
-@ x `b;  / space
-@ x[`b]; / square bracket
+
+/ all these notations for indexing work (output not shown)
+ x@@`b;  / at
+ x(`b); / parenthesis
+ x `b;  / space
+ x[`b]; / square bracket
 @end example
 
 @section Dictionary Key @result{} !x
@@ -2064,7 +2083,7 @@ Func @{[a;b]a+b@}
 Functions default to arguments of x, y, and z for the first three parameters but one  can  explicitly spell out these or other argument names.  Given k9's terseness, many k9 programmers prefer short variable names. But this is a matter of taste.
 
 @example
- f1:@{x+2*y@}         / implicit arguments x and y. This function adds the first argument to twice the second one.
+ f1:@{x+2*y@}         / implicit arguments x and y
  f1[2;10]
 22
 
@@ -2076,7 +2095,7 @@ Functions default to arguments of x, y, and z for the first three parameters but
  f3[2;10]
 22
 
- f4:@{[please;dont]please+2*dont@} / longer argument names are possible, but some disapprove
+ f4:@{[please;dont]please+2*dont@} / longer argument names are possible
  f4[2;10]
 22
 
@@ -2235,7 +2254,7 @@ This chapter covers the built-in  named functions.  This includes some math (eg.
 
 @smallformat
 @example
-@ref{exp} @ref{log} @ref{sin} @ref{cos} @ref{sqr} @ref{sqrt} @ref{div} @ref{mod} @ref{bar};  @ref{topX,top} @ref{freq} @ref{msum} @ref{mavg} @ref{sums} @ref{deltas} @ref{prm} @ref{cmb}
+@ref{exp} @ref{log} @ref{sin} @ref{cos} @ref{sqr} @ref{sqrt} @ref{div} @ref{mod} @ref{bar};@*  @ref{topX,top} @ref{freq} @ref{msum} @ref{mavg} @ref{sums} @ref{deltas} @ref{prm} @ref{cmb}
 @end example
 @end smallformat
 
@@ -2319,7 +2338,7 @@ For each value in y determine the maximum multiple of x that is less than or equ
 Return the index of the max value of list x.
 
 @example
- top 3 13 15 1 17 0 -3  / remember that indexes start at 0, so index 4 corresponds to 17
+ top 3 13 15 1 17 0 -3
 4
 
 top "abzccdefeajfekjrlke"
@@ -2709,34 +2728,34 @@ other languages to k9.
 Let's begin with a simple example to show how to read data from a csv file.  We'll generate a small table and save it with and without headers (wHeader.csv and woHeader.csv respectively).  Then we'll read it back in, both specifying types and with the csv reader.  Types are specifed by one letter and the full list can be found in @ref{Atom Types}.
 
 @example
- t:[[]a:3 2 1;b:1. 2. 4.;c:`x`y`z];t   / generate a table of data
+ t:[[]a:3 2 1;b:1. 2. 4.;c:`x`y`z];t / generate table
 a b  c
 - -- -
 3 1. x
 2 2. y
 1 4. z
 
- "wHeader.csv"0:`csv t                 / save with column headers
+ "wHeader.csv"0:`csv t               / save with column headers
 wHeader.csv
 
-"woHeader.csv"0:1_`csv t              / save without col headers
+"woHeader.csv"0:1_`csv t             / save without col headers
 woHeader.csv
 
-`csv?0:"wHeader.csv"                  / default reader
+`csv?0:"wHeader.csv"                 / default reader
 a b  c
 - -- -
 3 1. x
 2 2. y
 1 4. z
 
- (",";"ifn")0:"wHeader.csv"            / specify separator and types
+ (",";"ifn")0:"wHeader.csv"          / separator and types
 a b  c
 - -- -
 3 1. x
 2 2. y
 1 4. z
 
- (`e`f`g;",";"ifn")0:"woHeader.csv"    / specify names, separator and types
+ (`e`f`g;",";"ifn")0:"woHeader.csv"  / names, separator and types
 e f  g
 - -- -
 3 1. x
@@ -2796,12 +2815,13 @@ key2|value2
 
 @anchor{w line}@section write line @result{} x 0:y
 Output to x the list of strings in y.  y must be a list of strings.  If y is a single stream then convert to list via enlist.
+
 @example
  ""0:("blue";"red")      / "" represents stdout
 blue
 red
 
- "foo" 0: ("blue"; "red") / puts the result in file foo one line for each element
+ "file.txt" 0: ("blue"; "red") / write to file, one line per element
 
  "some.csv" 0:`csv [[]a:1 2;b:3. 4.]
 "some.csv"
@@ -3120,8 +3140,9 @@ kSQL also has a way to group rows using @code{by}.  The result is a utable where
 
 @example
 n:5;t:[[]x:!n;y:sin !n]
- 
- select sum y by x>2 from t            / The key here is field is a boolean 1 when x > 2 or and 0 when x > 2 does not hold
+@c The key here is field is a boolean 1 when x > 2 or and 0 when x > 2 does not hold
+
+ select sum y by x>2 from t
 x|y         
 -|----------
 0|1.750768  
@@ -3184,7 +3205,8 @@ a 1 19
 b 2 20
 c 3 21
 
- t:update z:y+18 from t;t / save the updates into table t. Now t has the updated values.
+ t:update z:y+18 from t; / save the updates into table t
+ t                       / Now t has the updated values.
 x y z 
 - - --
 a 1 19
@@ -3213,7 +3235,7 @@ c 1
 @section Joins
 k9 has a number of methods to join tables together which are described below.  In this section t, t1 and t2 represent tables and k, k1 and k2 represent utables.
 
-@multitable {a} {b}
+@multitable {leftjoin123 leftjoin} {leftjoin}
 @item @b{join} @tab @b{syntax}
 @item @ref{union} @tab t1,t2
 @item @ref{leftjoin} @tab t,k
@@ -3254,16 +3276,16 @@ leftjoin table t with utable k.  Result includes all rows from t and the values 
 If a row of t has key values not found in k, then the t values are shown and 0 for the columns coming from k.
 
 @example
-@ t:[[]s:`a`b`c;p:1 2 3;q:7 8 9]
-@ k:[[s:`a`b`x`y`z]q:101 102 103 104 105;r:51 52 53 54 55]
-@ t
+ t:[[]s:`a`b`c;p:1 2 3;q:7 8 9]
+ k:[[s:`a`b`x`y`z]q:101 102 103 104 105;r:51 52 53 54 55]
+ t
 s p q
 - - -
 a 1 7
 b 2 8
 c 3 9
 
-@ k
+ k
 s|q   r 
 -|--- --
 a|101 51
@@ -3272,7 +3294,9 @@ x|103 53
 y|104 54
 z|105 55
 
-@ t,k       / t.s includes the value `c. Because k.s does not include c, the last row shows a 0 under the r column (which comes from k).
+ / t.s includes the value `c. Because k.s does not include c,
+ / the last row shows a 0 under the r column (which comes from k).
+ t,k       
 s p q   r 
 - - --- --
 a 1 101 51
@@ -3326,8 +3350,12 @@ t    |q
 09:41|51
 09:45|52
 
- t,k      / Notice below that the t row at 09:45 is linked with the k row at 09:45. The k row at 09:41 is not linked with any t row.
-          / by contrast, both the 09:35 and the 09:40 rows of t are linked to the 09:32 row of k.
+ / Notice below the t row at 09:45 is linked with the k row at 09:45.
+ / The k row at 09:41 is not linked with any t row.
+ / By contrast, both the 09:35 and the 09:40 rows of t
+ / are linked to the 09:32 row of k.
+ t,k      
+          
 t     p   q 
 ----- --- --
 09:30 100  0
@@ -3618,7 +3646,9 @@ These functions use dot notation to retrieve partial date and times.
 Given the terse syntax of k9, it likely won't be a surprise  that  error messages are also rather short.  The errors are listed on the help page and described in more detail below.
 
 @example
-error: @ref{class} @ref{rank} @ref{length} @ref{_type,type} @ref{domain} @ref{limit} stack @ref{parse} @ref{_value,value}
+error: @ref{class} @ref{rank} @ref{length}
+@ref{_type,type} @ref{domain} @ref{limit}
+stack @ref{parse} @ref{_value,value}
 @end example
 
 @anchor{class}@section :class
@@ -3777,7 +3807,7 @@ c|19998874
 d|20000640
 e|19999652
 
- select c:#d by d from q          / check the normal distribution (2s to run)
+ select c:#d by d from q          / check normal dist (2s to run)
 d |c       
 --|--------
 -6|1       
