@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 23, 2020
+<!-- December 24, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -89,8 +89,21 @@ Next: <a href="Noun.html" accesskey="n" rel="next">Noun</a>, Previous: <a href="
 </div>
 <hr>
 <span id="Adverbs"></span><h2 class="chapter">3 Adverbs</h2>
+<p>This chapter may be one of the most difficult for users new to array langauges but one must master adverbs to exploit the full power of k9.  Nouns and verbs naturally come but adverbs need to be learned so that one can reach for them when needed.
+</p>
+<div class="example">
+<pre class="example">Adverb
+f/  <a href="#scan">over</a>  V/ <a href="#join">join</a>
+f\  <a href="#scan">scan</a>  V\ <a href="#split">split</a>
+f'  <a href="#each">each</a>
+f': <a href="#eachp">eachp</a>
+f/: <a href="#eachr">eachr</a> (n;f)/:<a href="#cover">over</a> 
+f\: <a href="#eachl">eachl</a> (n;f)\:<a href="#cscan">scan</a> 
+</pre></div>
+
 <p>Adverbs modify verbs to operative iteratively over nouns.  This previous sentence likely will  make sense only once you understand it so let&rsquo;s jump into an example.  Imagine you have a list of 4 lists.  Using <code>first</code> you will retrieve the first sub-list.  In order to retrieve the first element of each sub-list you&rsquo;ll have to modify the function <code>first</code> with a modifier <code>each</code>.
-</p><div class="example">
+</p>
+<div class="example">
 <pre class="example">x: (1 2; 3 4; 5 6; 7 8)
  *x
 1 2
@@ -98,65 +111,61 @@ Next: <a href="Noun.html" accesskey="n" rel="next">Noun</a>, Previous: <a href="
 1 3 5 7
 </pre></div>
 
-<p>Here now is a list of the adverbs and their names.
-</p><div class="example">
-<pre class="example">Adverb               
-f/  <a href="#scan">over</a>  c/  <a href="#g_t_002bjoin">+join</a>  
-f\  <a href="#scan">scan</a>  c\  <a href="#g_t_002bsplit">+split</a> 
-f'  <a href="#each">each</a>  v'  <a href="#g_t_002bhas">+has</a>   
-f': <a href="#eachp">eachp</a> v': <a href="#bin2">+bin</a>   
-f/: <a href="#eachr">eachr</a> ([n;]f)/:  
-f\: <a href="#eachl">eachl</a> ([n;]f)\:  
-</pre></div>
-
-<span id="scan"></span><span id="scan-_0028over_0029-_21d2-f_005cx-_0028f_002fx_0029"></span><h3 class="section">3.1 scan (over) &rArr; f\x (f/x)</h3>
-<p>Compute f[x;y] such that f i=f[f i-1;x i].  Scan and over are the same functions except that over only returns the last value.
+<span id="over"></span><span id="over-_21d2-f_002fx"></span><h3 class="section">3.1 over &rArr; f/x</h3>
+<p>Over has the same function as <a href="#scan">scan</a> but returns only the last value.
 </p>
-<p>Given a function of two inputs, output for each x according to...
-</p><ul>
-<li> f 0 &rarr;          x 0
-</li><li> f 1 &rarr; f[f 0;x 1]
-</li><li> ...
-</li><li> f i &rarr; f[f i-1;x i]
-</li><li> ...
-</li><li> f n &rarr; f[f n-1;x n]
-</li></ul>
+<span id="scan"></span><span id="scan-_21d2-f_005cx"></span><h3 class="section">3.2 scan &rArr; f\x</h3>
+<p>Compute f[x;y] such that f<sub>i</sub>=f[f<sub>i-1</sub>;x<sub>i</sub>].
+</p>
+<table>
+<tr><td><b>i</b></td><td><b>x</b></td><td><b>f[x]</b></td><td><b>a f[x]</b></td><td><b>x:0 1 4 9 16 25</b></td><td><b>+\x</b></td><td><b>3+\x</b></td><td><b>+/x</b></td><td><b>3+/x</b></td></tr>
+<tr><td>0</td><td>x<sub>0</sub></td><td>x<sub>0</sub></td><td>f<sub>0</sub>[a;x<sub>0</sub>]</td><td>0</td><td>0</td><td>3</td><td></td><td></td></tr>
+<tr><td>1</td><td>x<sub>1</sub></td><td>f<sub>1</sub>[f<sub>0</sub>;x<sub>1</sub>]</td><td>f<sub>1</sub>[f<sub>0</sub>;x<sub>1</sub>]</td><td>1</td><td>1</td><td>4</td><td></td><td></td></tr>
+<tr><td>..</td><td>..</td><td>..</td><td>..</td><td>..</td><td>..</td><td>..</td><td></td><td></td></tr>
+<tr><td>j</td><td>x<sub>j</sub></td><td>f<sub>j</sub>[f<sub>j-1</sub>;x<sub>j</sub>]</td><td>f<sub>j</sub>[f<sub>j-1</sub>;x<sub>j</sub>]</td><td>..</td><td>..</td><td>..</td><td></td><td></td></tr>
+<tr><td>..</td><td>..</td><td>..</td><td>..</td><td>..</td><td>..</td><td>..</td><td></td><td></td></tr>
+<tr><td>n-2</td><td>x<sub>n-2</sub></td><td>f<sub>n-2</sub>[f<sub>n-3</sub>;x<sub>n-2</sub>]</td><td>f<sub>n-2</sub>[f<sub>n-3</sub>;x<sub>n-2</sub>]</td><td>16</td><td>30</td><td>33</td><td></td><td></td></tr>
+<tr><td>n-1</td><td>x<sub>n-1</sub></td><td>f<sub>n-1</sub>[f<sub>n-2</sub>;x<sub>n-1</sub>]</td><td>f<sub>n-1</sub>[f<sub>n-2</sub>;x<sub>n-1</sub>]</td><td>25</td><td>55</td><td>58</td><td>55</td><td>58</td></tr>
+</table>
+
 
 <p>An example
 </p>
 <div class="example">
-<pre class="example">&nbsp;(,\)(&quot;a&quot;;&quot;b&quot;;&quot;c&quot;)
+<pre class="example"> (,\)(&quot;a&quot;;&quot;b&quot;;&quot;c&quot;)   / scan and cat to build up a list
 a
 ab
 abc
-&nbsp;+\1 20 300
+ +\1 20 300          / scan and plus to sum over a list
 1 21 321
-&nbsp;{y+10*x}\1 20 300
+
+ {y+10*x}\1 20 300   / scan and user func
 1 30 600
-&nbsp;{y+10*x}/1 20 300
+
+ {y+10*x}/1 20 300   / over and user func
 600
 </pre></div>
 
-<span id="g_t_002bjoin"></span><span id="g_t_002bjoin-_21d2-c_002fx"></span><h3 class="section">3.2 +join &rArr; c/x</h3>
-<p>Join a list of strings x using character c between each pair.
+<span id="join"></span><span id="join-_21d2-V_002fx"></span><h3 class="section">3.3 join &rArr; V/x</h3>
+<p>Join a list of strings x using character V between each pair.
 </p>
 <div class="example">
-<pre class="example">&nbsp;&quot;-&quot;/(&quot;Some&quot;;&quot;random text&quot;;&quot;plus&quot;;,&quot;.&quot;)
+<pre class="example"> &quot;-&quot;/(&quot;Some&quot;;&quot;random text&quot;;&quot;plus&quot;;,&quot;.&quot;)
 &quot;Some-random text-plus-.&quot;
 </pre></div>
 
-<p>The notaion c/x converts a list of integers x via base c into base 10. In the example below, assuming 2 0 1 are digits in base 8, they convert to  1 + (0*8) + (2*8*8) = 129
+<p>The notaion V/x converts a list of integers x via base V into base 10. In the example below, assuming 2 0 1 are digits in base 8, they convert to  1 + (0*8) + (2*8*8) = 129
 </p>
 <div class="example">
 <pre class="example"> 8/2 0 1  
 129
 </pre></div>
 
-<span id="g_t_002bsplit"></span><span id="g_t_002bsplit-_21d2-c_005cx"></span><h3 class="section">3.3 +split &rArr; c\x</h3>
-<p>Split the string x using character c to determine the locations.
+<span id="split"></span><span id="split-_21d2-V_005cx"></span><h3 class="section">3.4 split &rArr; V\x</h3>
+<p>Split the string x using character V to determine the locations.
 </p>
 <div class="example">
-<pre class="example">&nbsp;&quot; &quot;\&quot;Here is a short sentence.&quot;
+<pre class="example"> &quot; &quot;\&quot;Here is a short sentence.&quot;
 Here     
 is       
 a        
@@ -164,14 +173,14 @@ short
 sentence.
 </pre></div>
 
-<p>c\x splits a number x into base c digits.
+<p>V\x splits a number x into base V digits.
 </p>
 <div class="example">
 <pre class="example"> 8\129
 2 0 1
 </pre></div>
 
-<span id="each"></span><span id="each-_21d2-f_0027x"></span><h3 class="section">3.4 each &rArr; f&rsquo;x</h3>
+<span id="each"></span><span id="each-_21d2-f_0027x"></span><h3 class="section">3.5 each &rArr; f&rsquo;x</h3>
 <p>Apply function f to each value in list x in a single thread.  Multithread operation is done with <a href="#eachp">eachp</a>.  
 </p>
 <div class="example">
@@ -180,23 +189,6 @@ sentence.
 
 &nbsp;*'((1 2 3);4;(5 6);7)  / first element of each element
 1 4 5 7
-</pre></div>
-
-<span id="g_t_002bhas"></span><span id="g_t_002bhas-_21d2-v_0027x"></span><h3 class="section">3.5 +has &rArr; v&rsquo;x</h3>
-<p>Determine whether vector v has element x if x is an atom (i.e., scalar) or each element of x if x is a list.  Simliar to <a href="Named-Functions.html#in">in</a> but with the arguments reversed.
-</p>
-<div class="example">
-<pre class="example"> `a`b`c`a`b'`a
-1b
-
-`a`b`c`a`b'`d
-0b
-
- `a`b`c`a`b'`a`b`x`y`z
-11000b
-
- (1 2;4 5 6;7 9)'(1 2;8 9)
-10b
 </pre></div>
 
 <span id="eachp"></span><span id="eachp-_21d2-f_0027_003a_005bx_003by_005d"></span><h3 class="section">3.6 eachp &rArr; f&rsquo;:[x;y]</h3>
@@ -220,80 +212,60 @@ y4 y3
 <p>Additionally eachp (&rsquo;:) is a multithreaded (parallel) each.  This will allow a function to run using multiple threads over a list of arguments.
 </p>
 <div class="example">
-<pre class="example">\t {L:x?1.;sum L%sin L*cos L*sin L+L*L}':8#_2e7 / multiple threads
-1655
+<pre class="example">\t {L:x?1.;sum L%sin L*cos L*sin L+L*L}':8#_50e6 / multiple threads
+831
 
-\t {L:x?1.;sum L%sin L*cos L*sin L+L*L}'8#_2e7  / single thread
-4144
+\t {L:x?1.;sum L%sin L*cos L*sin L+L*L}'8#_50e6  / single thread
+1202
 </pre></div>
 
-<span id="bin2"></span><span id="g_t_002bbin-_21d2-x_0027_003ay"></span><h4 class="subsection">3.6.1 +bin &rArr; x&rsquo;:y</h4>
-<p>Given a sorted (increasing) list x, find the greatest index, i, where y&gt;x[i].  
-</p>
-<div class="example">
-<pre class="example">&nbsp;n:exp 0.01*!5;n
-1 1.01005 1.020201 1.030455 1.040811
-&nbsp;n':1.025
-2
-</pre></div>
-
-<span id="eachr"></span><span id="eachr-_21d2-f_002f_003ax_002c-x-f_002f_003ay_002c-f_002f_003a_005bx_003by_005d"></span><h3 class="section">3.7 eachr &rArr; f/:x, x f/:y, f/:[x;y]</h3>
-
-<table>
-<tr><td><b>name</b></td><td><b>f parameters</b></td><td><b>x</b></td><td><b>y</b></td></tr>
-<tr><td><a href="#converge-over">converge over</a></td><td>1</td><td>element</td><td>n/a</td></tr>
-<tr><td><a href="#each-right">each right</a></td><td>2</td><td>array</td><td>element/array</td></tr>
-</table>
-
-<span id="converge-over"></span><span id="Converge-Over"></span><h4 class="subsection">3.7.1 Converge Over</h4>
-<p>Compute f[x] where x is the previous output of f until the value converges or returns to x.  The initial value of x is the input.  Only the final value is returned.  Intermediate values can be retrieved via <a href="#converge-scan">converge scan</a>.
-</p>
-<div class="example">
-<pre class="example">  {x*x}/:.99    / converge to value
-0.
-
- x:3 4 2 1 4 99 
- x/:0 
-4
-
- / manually step through converge
- x 0
-3
- x 3
-1
- x 1
-4
- x 4            / x[4]=4 so will stop
-4
-</pre></div>
-
-<span id="each-right"></span><span id="Each-Right"></span><h4 class="subsection">3.7.2 Each Right</h4>
+<span id="eachr"></span><span id="eachr-_21d2-f_002f_003ax"></span><h3 class="section">3.7 eachr &rArr; f/:x</h3>
 <p>Apply f[x;y] to each value of y, i.e. the right one.
 </p>
 <div class="example">
-<pre class="example"> (!2)+/:20+!4
+<pre class="example"> (!2)+/:!3
+0 1
+1 2
+2 3
+
+ {x+10*y}/:[!2;!3]
+0 1  
+10 11
 20 21
-21 22
-22 23
-23 24
 </pre></div>
 
-<span id="eachl"></span><span id="eachl-_21d2-f_005c_003ax_002c-x-f_005c_003ay_002c-f_005c_003a_005bx_003by_005d"></span><h3 class="section">3.8 eachl &rArr; f\:x, x f\:y, f\:[x;y]</h3>
-
-<table>
-<tr><td><b>name</b></td><td><b>f parameters</b></td><td><b>x</b></td><td><b>y</b></td></tr>
-<tr><td><a href="#converge-scan">converge scan</a></td><td>1</td><td>element</td><td>n/a</td></tr>
-<tr><td><a href="#each-left">each left</a></td><td>2</td><td>array</td><td>element/array</td></tr>
-</table>
-
-<span id="converge-scan"></span><span id="Converge-Scan"></span><h4 class="subsection">3.8.1 Converge Scan</h4>
-<p>Compute f[x] where x is the previous output of f until the value converges or returns to x.  The initial value of x is the input
+<span id="eachl"></span><span id="eachl-_21d2-f_005c_003ax"></span><h3 class="section">3.8 eachl &rArr; f\:x</h3>
+<p>Apply f[x;y] to each value of x, i.e. the left one.
 </p>
 <div class="example">
-<pre class="example">  {x*x}\:.99  / converge to value
+<pre class="example"> (!2)+\:!3
+0 1 2
+1 2 3
+
+ {x+10*y}\:[!2;!3]
+0 10 20
+1 11 21
+</pre></div>
+
+<span id="cover"></span><span id="Converge-Over-_21d2-f_002f_003ax-or-_0028n_003bf_0029_002f_003ax"></span><h4 class="subsection">3.8.1 Converge Over &rArr; f/:x or (n;f)/:x</h4>
+<p>Converge Over is the same function as <a href="#cscan">Converge Scan</a> but only returns the final value(s).
+</p>
+<span id="cscan"></span><span id="Converge-Scan-_21d2-f_005c_003ax-or-_0028n_003bf_0029_005c_003ax"></span><h4 class="subsection">3.8.2 Converge Scan &rArr; f\:x or (n;f)\:x</h4>
+<p>Compute f[x] where x is the previous output of f until the value converges or returns to x.  The initial value of x is the input.
+</p>
+<p>If n is specified then it is either the number of iterations or a function returning a boolean.  
+</p>
+<div class="example">
+<pre class="example">  {x*x}\:.99       / converge to value
 0.99 0.9801 0.9605961 ... 1.323698e-18 1.752177e-36 0.
 
- x:3 4 2 1 4 99 / until output is x
+ (3;{x*x})\:.99   / do 3 times, return 4 values (first is initial)
+0.99 0.9801 0.960596 0.9227448
+
+ (.5&lt;;{x*x})\:.99 / while .5 &lt; r, i.e. r is greater than 0.5
+0.99 0.9801 0.960596 0.9227448 0.8514579 0.7249806 0.5255968 0.276252
+
+ x:3 4 2 1 4 99   / until output is x
  x\:0
 0 3 1 4
 
@@ -304,22 +276,11 @@ y4 y3
 1
  x 1
 4
- x 4            / x[4]=4 so will stop
+ x 4              / x[4]=4 so will stop
 4
 </pre></div>
 
-<span id="each-left"></span><span id="Each-Left"></span><h4 class="subsection">3.8.2 Each Left</h4>
-<p>Apply f[x;y] to each value of x, i.e. the left one.
-</p>
-<div class="example">
-<pre class="example"> (!2)+\:30+!4
-30 31 32 33
-31 32 33 34
 
- +\:[!2;!4]
-0 1 2 3
-1 2 3 4
-</pre></div>
 
 <hr>
 <div class="header">

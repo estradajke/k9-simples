@@ -1,6 +1,6 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
-December 23, 2020
+December 24, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -36,14 +36,14 @@ language.
 
    *note Verb::                       *note Adverb::               *note
 Type: Noun.              *note System::
-:    x          y          f/  *note over: scan.  c/  *note
-+join::  *note char:: " ab"        \l a.k
-+    *note flip::       *note plus::       f\  *note scan::  c\  *note
-+split:: *note name:: ``ab         \t:n x
--    *note negate::     *note minus::      f'  *note each::  v'  *note
-+has::   *note int::  0 2 3        \u:n x
-*    *note first::      *note times::      f': *note eachp:: v': *note
-+bin: bin2.   *note flt::  0 2 3.       \v
+:    x          y          f/  *note over: scan.  c/  +*note
+join::  *note char:: " ab"        \l a.k
++    *note flip::       *note plus::       f\  *note scan::  c\  +*note
+split:: *note name:: ``ab         \t:n x
+-    *note negate::     *note minus::      f'  *note
+each::  v'  +has   *note int::  0 2 3        \u:n x
+*    *note first::      *note times::      f': *note
+eachp:: v': +bin   *note flt::  0 2 3.       \v
 %               *note divide::     f/: *note eachr:: ([n;]f)/:  *note
 date:: 2001.01.01   .z.d
 &    *note where::      *note min/and::    f\: *note
@@ -1273,73 +1273,86 @@ File: k9.info,  Node: Adverb,  Next: Noun,  Prev: Verb,  Up: Top
 3 Adverbs
 *********
 
-Adverbs modify verbs to operative iteratively over nouns.  This previous
-sentence likely will make sense only once you understand it so let's
-jump into an example.  Imagine you have a list of 4 lists.  Using
+This chapter may be one of the most difficult for users new to array
+langauges but one must master adverbs to exploit the full power of k9.
+Nouns and verbs naturally come but adverbs need to be learned so that
+one can reach for them when needed.
+
+     Adverb
+     f/  *note over: scan.  V/ *note join::
+     f\  *note scan::  V\ *note split::
+     f'  *note each::
+     f': *note eachp::
+     f/: *note eachr:: (n;f)/:*note over: cover.
+     f\: *note eachl:: (n;f)\:*note scan: cscan.
+
+   Adverbs modify verbs to operative iteratively over nouns.  This
+previous sentence likely will make sense only once you understand it so
+let's jump into an example.  Imagine you have a list of 4 lists.  Using
 'first' you will retrieve the first sub-list.  In order to retrieve the
 first element of each sub-list you'll have to modify the function
 'first' with a modifier 'each'.
+
      x: (1 2; 3 4; 5 6; 7 8)
       *x
      1 2
       *'x
      1 3 5 7
 
-   Here now is a list of the adverbs and their names.
-     Adverb
-     f/  *note over: scan.  c/  *note +join::
-     f\  *note scan::  c\  *note +split::
-     f'  *note each::  v'  *note +has::
-     f': *note eachp:: v': *note +bin: bin2.
-     f/: *note eachr:: ([n;]f)/:
-     f\: *note eachl:: ([n;]f)\:
+3.1 over => f/x
+===============
 
-3.1 scan (over) => f\x (f/x)
-============================
+Over has the same function as *note scan:: but returns only the last
+value.
 
-Compute f[x;y] such that f i=f[f i-1;x i].  Scan and over are the same
-functions except that over only returns the last value.
+3.2 scan => f\x
+===============
 
-   Given a function of two inputs, output for each x according to...
-   * f 0 -> x 0
-   * f 1 -> f[f 0;x 1]
-   * ...
-   * f i -> f[f i-1;x i]
-   * ...
-   * f n -> f[f n-1;x n]
+Compute f[x;y] such that f_{i}=f[f_{i-1};x_{i}].
+
+i   x   f[x]a f[x]x:0 1 4 9 16 25+\x3+\x+/x3+/x
+0   x_{0}x_{0}f_{0}[a;x_{0}]003
+1   x_{1}f_{1}[f_{0};x_{1}]f_{1}[f_{0};x_{1}]114
+..  ..  ..  ..  ..  ..  ..
+j   x_{j}f_{j}[f_{j-1};x_{j}]f_{j}[f_{j-1};x_{j}]......
+..  ..  ..  ..  ..  ..  ..
+n-2 x_{n-2}f_{n-2}[f_{n-3};x_{n-2}]f_{n-2}[f_{n-3};x_{n-2}]163033
+n-1 x_{n-1}f_{n-1}[f_{n-2};x_{n-1}]f_{n-1}[f_{n-2};x_{n-1}]2555585558
 
    An example
 
-      (,\)("a";"b";"c")
+      (,\)("a";"b";"c")   / scan and cat to build up a list
      a
      ab
      abc
-      +\1 20 300
+      +\1 20 300          / scan and plus to sum over a list
      1 21 321
-      {y+10*x}\1 20 300
+
+      {y+10*x}\1 20 300   / scan and user func
      1 30 600
-      {y+10*x}/1 20 300
+
+      {y+10*x}/1 20 300   / over and user func
      600
 
-3.2 +join => c/x
-================
+3.3 join => V/x
+===============
 
-Join a list of strings x using character c between each pair.
+Join a list of strings x using character V between each pair.
 
       "-"/("Some";"random text";"plus";,".")
      "Some-random text-plus-."
 
-   The notaion c/x converts a list of integers x via base c into base
+   The notaion V/x converts a list of integers x via base V into base
 10.  In the example below, assuming 2 0 1 are digits in base 8, they
 convert to 1 + (0*8) + (2*8*8) = 129
 
       8/2 0 1
      129
 
-3.3 +split => c\x
-=================
+3.4 split => V\x
+================
 
-Split the string x using character c to determine the locations.
+Split the string x using character V to determine the locations.
 
       " "\"Here is a short sentence."
      Here
@@ -1348,12 +1361,12 @@ Split the string x using character c to determine the locations.
      short
      sentence.
 
-   c\x splits a number x into base c digits.
+   V\x splits a number x into base V digits.
 
       8\129
      2 0 1
 
-3.4 each => f'x
+3.5 each => f'x
 ===============
 
 Apply function f to each value in list x in a single thread.
@@ -1364,25 +1377,6 @@ Multithread operation is done with *note eachp::.
 
       *'((1 2 3);4;(5 6);7)  / first element of each element
      1 4 5 7
-
-3.5 +has => v'x
-===============
-
-Determine whether vector v has element x if x is an atom (i.e., scalar)
-or each element of x if x is a list.  Simliar to *note in:: but with the
-arguments reversed.
-
-      `a`b`c`a`b'`a
-     1b
-
-     `a`b`c`a`b'`d
-     0b
-
-      `a`b`c`a`b'`a`b`x`y`z
-     11000b
-
-      (1 2;4 5 6;7 9)'(1 2;8 9)
-     10b
 
 3.6 eachp => f':[x;y]
 =====================
@@ -1407,83 +1401,65 @@ value, n=0, returns f[y@0;x].
 will allow a function to run using multiple threads over a list of
 arguments.
 
-     \t {L:x?1.;sum L%sin L*cos L*sin L+L*L}':8#_2e7 / multiple threads
-     1655
+     \t {L:x?1.;sum L%sin L*cos L*sin L+L*L}':8#_50e6 / multiple threads
+     831
 
-     \t {L:x?1.;sum L%sin L*cos L*sin L+L*L}'8#_2e7  / single thread
-     4144
+     \t {L:x?1.;sum L%sin L*cos L*sin L+L*L}'8#_50e6  / single thread
+     1202
 
-3.6.1 +bin => x':y
-------------------
-
-Given a sorted (increasing) list x, find the greatest index, i, where
-y>x[i].
-
-      n:exp 0.01*!5;n
-     1 1.01005 1.020201 1.030455 1.040811
-      n':1.025
-     2
-
-3.7 eachr => f/:x, x f/:y, f/:[x;y]
-===================================
-
-name                        f parameters       x             y
-*note converge over::       1                  element       n/a
-*note each right::          2                  array         element/array
-
-3.7.1 Converge Over
--------------------
-
-Compute f[x] where x is the previous output of f until the value
-converges or returns to x.  The initial value of x is the input.  Only
-the final value is returned.  Intermediate values can be retrieved via
-*note converge scan::.
-
-       {x*x}/:.99    / converge to value
-     0.
-
-      x:3 4 2 1 4 99
-      x/:0
-     4
-
-      / manually step through converge
-      x 0
-     3
-      x 3
-     1
-      x 1
-     4
-      x 4            / x[4]=4 so will stop
-     4
-
-3.7.2 Each Right
-----------------
+3.7 eachr => f/:x
+=================
 
 Apply f[x;y] to each value of y, i.e.  the right one.
 
-      (!2)+/:20+!4
+      (!2)+/:!3
+     0 1
+     1 2
+     2 3
+
+      {x+10*y}/:[!2;!3]
+     0 1
+     10 11
      20 21
-     21 22
-     22 23
-     23 24
 
-3.8 eachl => f\:x, x f\:y, f\:[x;y]
-===================================
+3.8 eachl => f\:x
+=================
 
-name                    f parametersxy
-*note converge scan::   1     elementn/a
-*note each left::       2     array element/array
+Apply f[x;y] to each value of x, i.e.  the left one.
 
-3.8.1 Converge Scan
--------------------
+      (!2)+\:!3
+     0 1 2
+     1 2 3
+
+      {x+10*y}\:[!2;!3]
+     0 10 20
+     1 11 21
+
+3.8.1 Converge Over => f/:x or (n;f)/:x
+---------------------------------------
+
+Converge Over is the same function as *note Converge Scan: cscan. but
+only returns the final value(s).
+
+3.8.2 Converge Scan => f\:x or (n;f)\:x
+---------------------------------------
 
 Compute f[x] where x is the previous output of f until the value
-converges or returns to x.  The initial value of x is the input
+converges or returns to x.  The initial value of x is the input.
 
-       {x*x}\:.99  / converge to value
+   If n is specified then it is either the number of iterations or a
+function returning a boolean.
+
+       {x*x}\:.99       / converge to value
      0.99 0.9801 0.9605961 ... 1.323698e-18 1.752177e-36 0.
 
-      x:3 4 2 1 4 99 / until output is x
+      (3;{x*x})\:.99   / do 3 times, return 4 values (first is initial)
+     0.99 0.9801 0.960596 0.9227448
+
+      (.5<;{x*x})\:.99 / while .5 < r, i.e. r is greater than 0.5
+     0.99 0.9801 0.960596 0.9227448 0.8514579 0.7249806 0.5255968 0.276252
+
+      x:3 4 2 1 4 99   / until output is x
       x\:0
      0 3 1 4
 
@@ -1494,21 +1470,8 @@ converges or returns to x.  The initial value of x is the input
      1
       x 1
      4
-      x 4            / x[4]=4 so will stop
+      x 4              / x[4]=4 so will stop
      4
-
-3.8.2 Each Left
----------------
-
-Apply f[x;y] to each value of x, i.e.  the left one.
-
-      (!2)+\:30+!4
-     30 31 32 33
-     31 32 33 34
-
-      +\:[!2;!4]
-     0 1 2 3
-     1 2 3 4
 
 
 File: k9.info,  Node: Noun,  Next: List,  Prev: Adverb,  Up: Top
@@ -2705,8 +2668,7 @@ Determine the types of the fields in a table.
 9.3.4 in => x in y
 ------------------
 
-Determine if x is in list y.  Similar to *note +has:: but arguments
-reversed.
+Determine if x is in list y.
 
       `b in `a`b`d`e
      1b
@@ -4539,169 +4501,166 @@ exp log sin cos sqr sqrt div mod bar; top freq msum mavg sums deltas prm cmb
 
 Tag Table:
 Node: Top126
-Node: Introduction4650
-Node: Verb16122
-Ref: x17866
-Ref: set17891
-Ref: flip18150
-Ref: plus18400
-Ref: negate18878
-Ref: minus19050
-Ref: first19157
-Ref: times19373
-Ref: divide19504
-Ref: where19641
-Ref: min/and20127
-Ref: reverse20386
-Ref: max/or20648
-Ref: asc20912
-Ref: less21300
-Ref: group21601
-Ref: equal21854
-Ref: not22158
-Ref: match22275
-Ref: enum22658
-Ref: key23744
-Ref: enlist23917
-Ref: cat24057
-Ref: sort24176
-Ref: [f]cut24409
-Ref: count25547
-Ref: [f]take25737
-Ref: take126170
-Ref: take226542
-Ref: take326814
-Ref: floor27010
-Ref: [f]drop27101
-Ref: drop127537
-Ref: drop227723
-Ref: drop327845
-Ref: string28007
-Ref: cast28108
-Ref: unique+28298
-Ref: find+28986
-Ref: type29972
-Ref: [f]at30423
-Ref: value30797
-Ref: [f]dot31224
-Node: Adverb32424
-Ref: scan33268
-Ref: +join33798
-Ref: +split34174
-Ref: each34437
-Ref: +has34726
-Ref: eachp35065
-Ref: bin235816
-Ref: eachr36021
-Ref: converge over36298
-Ref: each right36801
-Ref: eachl36955
-Ref: converge scan37159
-Ref: each left37645
-Node: Noun37830
-Ref: Atom Types39235
-Ref: bool40416
-Ref: int41103
-Ref: flt41782
-Ref: char42184
-Ref: name42417
-Ref: uuid42657
-Ref: time42814
-Ref: date43716
-Ref: datetime44177
-Node: List44976
-Node: Dictionary49227
-Node: User Functions54872
-Node: Expression58121
-Node: Named Functions58999
-Ref: exp59639
-Ref: log59705
-Ref: sin59803
-Ref: cos59940
-Ref: sqr60086
-Ref: sqrt60147
-Ref: div60218
-Ref: mod60403
-Ref: bar60579
-Ref: topX60897
-Ref: freq61057
-Ref: msum61410
-Ref: mavg61549
-Ref: sums61695
-Ref: deltas61837
-Ref: prm62177
-Ref: cmb62354
-Ref: keyF62889
-Ref: unkey63186
-Ref: meta63324
-Ref: in63457
-Ref: bin63634
-Ref: within63846
-Node: Knit Functions64080
-Ref: amend64375
-Ref: amend164898
-Ref: amend265150
-Ref: amend365372
-Ref: amend465680
-Ref: dmend65971
-Ref: dmend166301
-Ref: dmend366472
-Ref: dmend466640
-Node: I/O66804
-Ref: read csv68870
-Ref: write csv69048
-Ref: read json69212
-Ref: write json69402
-Ref: read nv69575
-Ref: w line69768
-Ref: r line70153
-Ref: w byte70266
-Ref: r byte70494
-Ref: r data70644
-Ref: w data71306
-Ref: conn/set71886
-Ref: http/get71946
-Ref: lib72006
-Node: Tables72470
-Ref: t73132
-Ref: xtable74784
-Ref: utable75414
-Node: kSQL75952
-Ref: select76584
-Ref: A77168
-Ref: by B77985
-Ref: where C78263
-Ref: update78848
-Ref: delete79568
-Ref: union80207
-Ref: leftjoin80728
-Ref: outer81507
-Ref: asof81842
-Ref: asof+83296
-Ref: insert84513
-Ref: upsert84859
-Node: System85273
-Ref: load85731
-Ref: timing85919
-Ref: variables86006
-Ref: memory86107
-Ref: cd86222
-Node: Control Flow86306
-Ref: cond86545
-Node: Temporal Functions86915
-Node: Errors88309
-Ref: class88750
-Ref: rank88839
-Ref: length88963
-Ref: _type89086
-Ref: domain89195
-Ref: limit89317
-Ref: nyi89518
-Ref: parse89851
-Ref: _value90004
-Node: Examples90132
-Node: Benchmark97490
-Node: Conclusion102396
+Node: Introduction4629
+Node: Verb16101
+Ref: x17845
+Ref: set17870
+Ref: flip18129
+Ref: plus18379
+Ref: negate18857
+Ref: minus19029
+Ref: first19136
+Ref: times19352
+Ref: divide19483
+Ref: where19620
+Ref: min/and20106
+Ref: reverse20365
+Ref: max/or20627
+Ref: asc20891
+Ref: less21279
+Ref: group21580
+Ref: equal21833
+Ref: not22137
+Ref: match22254
+Ref: enum22637
+Ref: key23723
+Ref: enlist23896
+Ref: cat24036
+Ref: sort24155
+Ref: [f]cut24388
+Ref: count25526
+Ref: [f]take25716
+Ref: take126149
+Ref: take226521
+Ref: take326793
+Ref: floor26989
+Ref: [f]drop27080
+Ref: drop127516
+Ref: drop227702
+Ref: drop327824
+Ref: string27986
+Ref: cast28087
+Ref: unique+28277
+Ref: find+28965
+Ref: type29951
+Ref: [f]at30402
+Ref: value30776
+Ref: [f]dot31203
+Node: Adverb32403
+Ref: over33432
+Ref: scan33542
+Ref: join34295
+Ref: split34669
+Ref: each34930
+Ref: eachp35219
+Ref: eachr35971
+Ref: eachl36163
+Ref: cover36344
+Ref: cscan36529
+Node: Noun37416
+Ref: Atom Types38821
+Ref: bool40002
+Ref: int40689
+Ref: flt41368
+Ref: char41770
+Ref: name42003
+Ref: uuid42243
+Ref: time42400
+Ref: date43302
+Ref: datetime43763
+Node: List44562
+Node: Dictionary48813
+Node: User Functions54458
+Node: Expression57707
+Node: Named Functions58585
+Ref: exp59225
+Ref: log59291
+Ref: sin59389
+Ref: cos59526
+Ref: sqr59672
+Ref: sqrt59733
+Ref: div59804
+Ref: mod59989
+Ref: bar60165
+Ref: topX60483
+Ref: freq60643
+Ref: msum60996
+Ref: mavg61135
+Ref: sums61281
+Ref: deltas61423
+Ref: prm61763
+Ref: cmb61940
+Ref: keyF62475
+Ref: unkey62772
+Ref: meta62910
+Ref: in63043
+Ref: bin63171
+Ref: within63383
+Node: Knit Functions63617
+Ref: amend63912
+Ref: amend164435
+Ref: amend264687
+Ref: amend364909
+Ref: amend465217
+Ref: dmend65508
+Ref: dmend165838
+Ref: dmend366009
+Ref: dmend466177
+Node: I/O66341
+Ref: read csv68407
+Ref: write csv68585
+Ref: read json68749
+Ref: write json68939
+Ref: read nv69112
+Ref: w line69305
+Ref: r line69690
+Ref: w byte69803
+Ref: r byte70031
+Ref: r data70181
+Ref: w data70843
+Ref: conn/set71423
+Ref: http/get71483
+Ref: lib71543
+Node: Tables72007
+Ref: t72669
+Ref: xtable74321
+Ref: utable74951
+Node: kSQL75489
+Ref: select76121
+Ref: A76705
+Ref: by B77522
+Ref: where C77800
+Ref: update78385
+Ref: delete79105
+Ref: union79744
+Ref: leftjoin80265
+Ref: outer81044
+Ref: asof81379
+Ref: asof+82833
+Ref: insert84050
+Ref: upsert84396
+Node: System84810
+Ref: load85268
+Ref: timing85456
+Ref: variables85543
+Ref: memory85644
+Ref: cd85759
+Node: Control Flow85843
+Ref: cond86082
+Node: Temporal Functions86452
+Node: Errors87846
+Ref: class88287
+Ref: rank88376
+Ref: length88500
+Ref: _type88623
+Ref: domain88732
+Ref: limit88854
+Ref: nyi89055
+Ref: parse89388
+Ref: _value89541
+Node: Examples89669
+Node: Benchmark97027
+Node: Conclusion101933
 
 End Tag Table
 
