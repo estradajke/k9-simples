@@ -300,45 +300,22 @@ Sep 13 2020 16GB (c) shakti
 <span id="Simple-example"></span><h3 class="section">1.6 Simple example</h3>
 
 
-<p>Here I will start up k9, perform some trivial calculations, and then close the session.  After this example it will be assumed the user will have a k9 session running and working in repl mode.  Comments (<code>/</code>) will be added to the end of lines as needed.
+<p>Here I will start up k9, perform some trivial calculations, and then close the session.  After this example it will be assumed the user will have a k9 session running and working in repl mode.  Comments (<code>/</code>) will be added to the end of lines as needed.  One can review <a href="#plus">plus</a>, <a href="#enum">enum</a>, <a href="#floor">floor</a> and <a href="#timing">timing</a> as needed. 
 </p>
 <div class="example">
-<pre class="example"> rlwrap ./k
-Sep 13 2020 16GB (c) shakti
-&nbsp;n:10000                     / n data points
-&nbsp;s:`a`b`c                    / data for symbols a, b, and c
-&nbsp;q:+s!(-1+n?3;-1+n?3;-1+n?3) / table of returns (-1,0,1) for each symbol
-&nbsp;q                           / print out the table
-a  b  c 
--- -- --
- 0  1  1
--1 -1  0
--1  1  1
- 0  1 -1
--1 -1 -1
-..
-</pre></div>
+<pre class="example"> 1+2  / add 1 and 2
+3
 
-<p>At this point you might want to check which symbol has the highest return, most variance, or any other analysis on the data.
-</p>
-<div class="example">
-<pre class="example">&nbsp;#'=+(+q)[]                  / count each unique a/b/c combination
-a  b  c |   
--- -- --|---
- 0  1  1|407
--1 -1 -1|379
--1  0  0|367
- 0 -1 -1|391
- 1  1  1|349
-..
-&nbsp;+-1#+\q                     / calculate the return of each symbol
-a|-68
-b|117
-c|73
- {(+/m*m:x-avg x)%#x}'+q  / calculate the variance of each symbol
-a|0.6601538
-b|0.6629631
-c|0.6708467
+ !5   / generate a list of 5 integers from 0 to 4
+0 1 2 3 4
+
+ 1+!5 / add one to each element of the list
+1 2 3 4 5
+
+ !_100e6;     / generate a list of 100 million integers (suppress output with ;)
+ 1+!_100e6;   / do 100 million sums
+ \t 1+!_100e6 / time the operations in milliseconds
+82
 </pre></div>
 
 <p>Now let&rsquo;s exit the session.
@@ -347,6 +324,7 @@ c|0.6708467
 <pre class="example"> \\
 bash-3.2$ 
 </pre></div>
+
 
 <span id="Document-formatting-for-code-examples"></span><h3 class="section">1.7 Document formatting for code examples</h3>
 <p>This document uses a number of examples to familiarize the reader with k9.  The sytax is to have input with a leading space and output without a leading space.  This follows the terminal syntax where the REPL input has space but prints output without.
@@ -3581,11 +3559,15 @@ Next: <a href="#Control-Flow" accesskey="n" rel="next">Control Flow</a>, Previou
 :nyi
 </pre></div>
 
-<span id="timing"></span><span id="timing-_21d2-_005ct"></span><h3 class="section">14.2 timing &rArr; \t</h3>
-<p>List time elapsed
-</p><div class="example">
-<pre class="example">&nbsp;\t ^(_1e7)?_1e8
+<span id="timing"></span><span id="timing-_21d2-_005ct-x-or-_005ct_003an-x"></span><h3 class="section">14.2 timing &rArr; \t x or \t:n x</h3>
+<p>List time elapsed in milliseconds in evaluting x.  If n is supply then repeat x, n times.
+</p>
+<div class="example">
+<pre class="example"> \t ^(_10e6)?_1e8     / sort 10 million numbers
 227
+
+ \t:10 ^(_10e6)?_1e8  / perform 10 times the sort
+2027
 </pre></div>
 
 <span id="variables"></span><span id="variables-_21d2-_005cv"></span><h3 class="section">14.3 variables &rArr; \v</h3>

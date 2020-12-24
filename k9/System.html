@@ -110,11 +110,15 @@ Next: <a href="Control-Flow.html" accesskey="n" rel="next">Control Flow</a>, Pre
 :nyi
 </pre></div>
 
-<span id="timing"></span><span id="timing-_21d2-_005ct"></span><h3 class="section">14.2 timing &rArr; \t</h3>
-<p>List time elapsed
-</p><div class="example">
-<pre class="example">&nbsp;\t ^(_1e7)?_1e8
+<span id="timing"></span><span id="timing-_21d2-_005ct-x-or-_005ct_003an-x"></span><h3 class="section">14.2 timing &rArr; \t x or \t:n x</h3>
+<p>List time elapsed in milliseconds in evaluting x.  If n is supply then repeat x, n times.
+</p>
+<div class="example">
+<pre class="example"> \t ^(_10e6)?_1e8     / sort 10 million numbers
 227
+
+ \t:10 ^(_10e6)?_1e8  / perform 10 times the sort
+2027
 </pre></div>
 
 <span id="variables"></span><span id="variables-_21d2-_005cv"></span><h3 class="section">14.3 variables &rArr; \v</h3>

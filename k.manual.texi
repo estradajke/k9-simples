@@ -165,45 +165,22 @@ Sep 13 2020 16GB (c) shakti
 
 @c JOHN: I SUGGEST MOVING THIS TO LATER BECAUSE AS IT IS, IT WOULDN'T LOOK SIMPLE AT ALL TO A NEWBIE.
 
-Here I will start up k9, perform some trivial calculations, and then close the session.  After this example it will be assumed the user will have a k9 session running and working in repl mode.  Comments (@code{/}) will be added to the end of lines as needed.
+Here I will start up k9, perform some trivial calculations, and then close the session.  After this example it will be assumed the user will have a k9 session running and working in repl mode.  Comments (@code{/}) will be added to the end of lines as needed.  One can review @ref{plus}, @ref{enum}, @ref{floor} and @ref{timing} as needed. 
 
 @example
- rlwrap ./k
-Sep 13 2020 16GB (c) shakti
-@ n:10000                     / n data points
-@ s:`a`b`c                    / data for symbols a, b, and c
-@ q:+s!(-1+n?3;-1+n?3;-1+n?3) / table of returns (-1,0,1) for each symbol
-@ q                           / print out the table
-a  b  c 
--- -- --
- 0  1  1
--1 -1  0
--1  1  1
- 0  1 -1
--1 -1 -1
-..
-@end example
+ 1+2  / add 1 and 2
+3
 
-At this point you might want to check which symbol has the highest return, most variance, or any other analysis on the data.
+ !5   / generate a list of 5 integers from 0 to 4
+0 1 2 3 4
 
-@example
-@ #'=+(+q)[]                  / count each unique a/b/c combination
-a  b  c |   
--- -- --|---
- 0  1  1|407
--1 -1 -1|379
--1  0  0|367
- 0 -1 -1|391
- 1  1  1|349
-..
-@ +-1#+\q                     / calculate the return of each symbol
-a|-68
-b|117
-c|73
- @{(+/m*m:x-avg x)%#x@}'+q  / calculate the variance of each symbol
-a|0.6601538
-b|0.6629631
-c|0.6708467
+ 1+!5 / add one to each element of the list
+1 2 3 4 5
+
+ !_100e6;     / generate a list of 100 million integers (suppress output with ;)
+ 1+!_100e6;   / do 100 million sums
+ \t 1+!_100e6 / time the operations in milliseconds
+82
 @end example
 
 Now let's exit the session.
@@ -212,6 +189,46 @@ Now let's exit the session.
  \\
 bash-3.2$ 
 @end example
+
+@c @example
+@c  rlwrap ./k
+@c Sep 13 2020 16GB (c) shakti
+@c @ n:10000                     / n data points
+@c @ s:`a`b`c                    / data for symbols a, b, and c
+@c @ q:+s!(-1+n?3;-1+n?3;-1+n?3) / table of returns (-1,0,1) for each symbol
+@c @ q                           / print out the table
+@c a  b  c 
+@c -- -- --
+@c  0  1  1
+@c -1 -1  0
+@c -1  1  1
+@c  0  1 -1
+@c -1 -1 -1
+@c ..
+@c @end example
+@c 
+@c At this point you might want to check which symbol has the highest return, most variance, or any other analysis on the data.
+@c 
+@c @example
+@c @ #'=+(+q)[]                  / count each unique a/b/c combination
+@c a  b  c |   
+@c -- -- --|---
+@c  0  1  1|407
+@c -1 -1 -1|379
+@c -1  0  0|367
+@c  0 -1 -1|391
+@c  1  1  1|349
+@c ..
+@c @ +-1#+\q                     / calculate the return of each symbol
+@c a|-68
+@c b|117
+@c c|73
+@c  @{(+/m*m:x-avg x)%#x@}'+q  / calculate the variance of each symbol
+@c a|0.6601538
+@c b|0.6629631
+@c c|0.6708467
+@c @end example
+@c 
 
 @section Document formatting for code examples
 This document uses a number of examples to familiarize the reader with k9.  The sytax is to have input with a leading space and output without a leading space.  This follows the terminal syntax where the REPL input has space but prints output without.
@@ -3539,11 +3556,15 @@ Load a text file of k9 commands.  The file name must end in .k.
 :nyi
 @end example
 
-@anchor{timing}@section timing @result{} \t
-List time elapsed
+@anchor{timing}@section timing @result{} \t x or \t:n x
+List time elapsed in milliseconds in evaluting x.  If n is supply then repeat x, n times.
+
 @example
-@ \t ^(_1e7)?_1e8
+ \t ^(_10e6)?_1e8     / sort 10 million numbers
 227
+
+ \t:10 ^(_10e6)?_1e8  / perform 10 times the sort
+2027
 @end example
 
 @anchor{variables}@section variables @result{} \v
