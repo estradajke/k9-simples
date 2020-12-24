@@ -299,9 +299,7 @@ This chapter covers verbs which are the core primitives of k9.  Given how differ
 
 Most functions are overloaded and change depending on the number of arguments.  This can confuse new users.  Eg. @code{(1 4)++(2 3;5 6;7 8)} contains the plus symbol once as flip and then for addition.  (Remember evaluation is right to left!)
 
-When functions are overloaded into materially different uses, I flag this with  a '+' suffix.  For example, unique+ and find+ differ depending on whether their argument is a scalar or a vector.  
-
-There are also verbs that can take a function argument. I flag those with a '[f]' prefix.  These include [f]cut, [f]take, [f]drop, [f]at, and [f]apply.
+There are verbs that can take a function argument. Those are listed with a '[f]' prefix.  These include [nf]cut, [f]take, [f]drop, [sf]find, [sf]at, and [f]apply.
 
 @example
 Verb
@@ -323,7 +321,7 @@ Verb
 _ @ref{floor},  [f]@ref{drop}.    
 $ @ref{string},    @ref{parse}.    
 ? @ref{unique},[sf]@ref{find}.    
-@@ @ref{type},   [f]@ref{at}.    
+@@ @ref{type},  [sf]@ref{at}.    
 . @ref{value},  [f]@ref{apply}.
 
 @end example

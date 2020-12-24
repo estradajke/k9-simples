@@ -398,9 +398,7 @@ Next: <a href="#Adverb" accesskey="n" rel="next">Adverb</a>, Previous: <a href="
 </p>
 <p>Most functions are overloaded and change depending on the number of arguments.  This can confuse new users.  Eg. <code>(1 4)++(2 3;5 6;7 8)</code> contains the plus symbol once as flip and then for addition.  (Remember evaluation is right to left!)
 </p>
-<p>When functions are overloaded into materially different uses, I flag this with  a &rsquo;+&rsquo; suffix.  For example, unique+ and find+ differ depending on whether their argument is a scalar or a vector.  
-</p>
-<p>There are also verbs that can take a function argument. I flag those with a &rsquo;[f]&rsquo; prefix.  These include [f]cut, [f]take, [f]drop, [f]at, and [f]apply.
+<p>There are verbs that can take a function argument. Those are listed with a &rsquo;[f]&rsquo; prefix.  These include [nf]cut, [f]take, [f]drop, [sf]find, [sf]at, and [f]apply.
 </p>
 <div class="example">
 <pre class="example">Verb
@@ -422,7 +420,7 @@ Next: <a href="#Adverb" accesskey="n" rel="next">Adverb</a>, Previous: <a href="
 _ <a href="#floor">floor</a>,  [f]<a href="#drop">drop</a>.    
 $ <a href="#string">string</a>,    <a href="#parse">parse</a>.    
 ? <a href="#unique">unique</a>,[sf]<a href="#find">find</a>.    
-@ <a href="#type">type</a>,   [f]<a href="#at">at</a>.    
+@ <a href="#type">type</a>,  [sf]<a href="#at">at</a>.    
 . <a href="#value">value</a>,  [f]<a href="#apply">apply</a>.
 
 </pre></div>
