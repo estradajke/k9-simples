@@ -1,28 +1,28 @@
 @t{@ref{Verb}@ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ref{Adverb}@ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ref{Noun,Type}@ @ @ @ @ @ @ @ @ @ @ @ @ @ @ref{System}}@*
-@t{:@ @ @ x@ @ @ @ @ @ @ @ @ @ y@ @ @ @ @ @ @ @ @ @ f/@ @ @ref{scan,over}@ @ V/@ @ref{join}@ @ @ @ @ @ @ref{char}@ "@ ab"@ @ @ @ @ @ @ @ \l@ a.k}@*
+@t{:@ @ @ x@ @ @ @ @ @ @ @ @ @ y@ @ @ @ @ @ @ @ @ @ f/@ @ @ref{over}@ @ V/@ @ref{join}@ @ @ @ @ @ @ref{char}@ "@ ab"@ @ @ @ @ @ @ @ \l@ a.k}@*
 @t{+@ @ @ @ref{flip}@ @ @ @ @ @ @ @ref{plus}@ @ @ @ @ @ @ f\@ @ @ref{scan}@ @ V\@ @ref{split}@ @ @ @ @ @ref{name}@ ``ab@ @ @ @ @ @ @ @ @ \t:n@ x}@*
 @t{-@ @ @ @ref{minus}@ @ @ @ @ @ @ref{minus}@ @ @ @ @ @ f'@ @ @ref{each}@ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ref{int}@ @ 0@ 2@ 3@ @ @ @ @ @ @ @ \u:n@ x}@*
 @t{*@ @ @ @ref{first}@ @ @ @ @ @ @ref{times}@ @ @ @ @ @ f':@ @ref{eachp}@ @ @ @ @ @ @ @ @ @ @ @ @ @ @ref{flt}@ @ 0@ 2@ 3.@ @ @ @ @ @ @ \v}@*
-@t{%@ @ @ @ @ @ @ @ @ @ @ @ @ @ @ref{divide}@ @ @ @ @ f/:@ @ref{eachr}@ (n;f)/:@ref{scan,over}@ @ @ref{date}@ 2021.01.23@ @ @ .z.d}@*
-@t{&@ @ @ @ref{where}@ @ @ @ @ @ @ref{min/and}@ @ @ @ f\:@ @ref{eachl}@ (n;f)\:@ref{scan}@ @ @ref{time}@ 12:34:56.789@ .z.t}@*
+@t{%@ @ @ @ @ @ @ @ @ @ @ @ @ @ @ref{divide}@ @ @ @ @ f/:@ @ref{eachr}@ (n;f)/:@ref{cover,over}@ @ @ref{date}@ 2021.01.23@ @ @ .z.d}@*
+@t{&@ @ @ @ref{where}@ @ @ @ @ @ @ref{min/and}@ @ @ @ f\:@ @ref{eachl}@ (n;f)\:@ref{cscan,scan}@ @ @ref{time}@ 12:34:56.789@ .z.t}@*
 @t{|@ @ @ @ref{reverse}@ @ @ @ @ref{max/or}@ @ @ @ @ }@*
 @t{<@ @ @ @ref{asc}@ @ @ @ @ @ @ @ @ref{less}@ @ @ @ @ @ @ @ref{I/O}(*enterprise)@ @ @ @ @ @ @ Class}@*
-@t{>@ @ @ desc@ @ @ @ @ @ @ @ref{less,more}@ @ @ @ @ @ @ 0:@ @ref{r line,r}/@ref{w line,w}@ line@ @ @ @ @ @ @ @ @ @ @ @ atom@ @ @ @ @ @ @ @ @ @ @ @ @ @ \f}@*
+@t{>@ @ @ @ref{asc,desc}@ @ @ @ @ @ @ @ref{less,more}@ @ @ @ @ @ @ 0:@ @ref{r line,r}/@ref{w line,w}@ line@ @ @ @ @ @ @ @ @ @ @ @ atom@ @ @ @ @ @ @ @ @ @ @ @ @ @ \f}@*
 @t{=@ @ @ @ref{group}@ @ @ @ @ @ @ref{equal}@ @ @ @ @ @ 1:@ @ref{r byte,r}/@ref{w byte,w}@ byte@ @ @ @ @ @ @ @ @ @ @ @ @ref{List}@ (2;3.4;`c)@ @ @ \ft@ x@ @ @ @ @ }@*
 @t{~@ @ @ @ref{not}@ @ @ @ @ @ @ @ @ref{match}@ @ @ @ @ *2:@ r/w@ data@ @ @ @ @ @ @ @ @ @ @ @ @ref{Dictionary,Dict}@ [a:2;b:`c]@ @ @ \fl@ x}@*
 @t{!@ @ @ @ref{key}@ @ @ @ @ @ @ @ @ref{key}@ @ @ @ @ @ @ *3:@ k-ipc@ set@ @ @ @ @ @ @ @ @ @ @ @ref{User Functions,Func}@ @{[a;b]a+b@}@ @ @ \fc@ x}@*
-@t{,@ @ @ list@ @ @ @ @ @ @ @ref{cat}@ @ @ @ @ @ @ *4:@ https@ get@ @ @ @ @ @ @ @ @ @ @ @ref{Expression,Expr}@ :a+b@ @ @ @ @ @ @ @ @ \cd@ [d]}@*
-@t{^@ @ @ @ref{sort}@ @ @ [@ref{[f]cut}@ @ @ @ @ @ @ *5:@ ffi/py/js/..@ @ @ @ @ @ @ @ table@ t:[[]i:2@ 3;f:2.3@ 4]}@*
-@t{#@ @ @ count@ @ [@ref{[f]take}@ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ Utable@ u:[[x:..]y:..]}@*
-@t{_@ @ @ @ref{floor}@ @ [@ref{[f]drop}@ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ Ntable@ n:`..![[]y:..]}@*
-@t{$@ @ @ @ref{string}@ @ @ @ @ parse@ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ }@*
-@t{?@ @ @ unique@ [sf]find@ @ @ @ @ @ @ $[b;t;f]@ cond@ @ @ @ @ @ @ @ @ @ }@*
-@t{@@@ @ @ @ref{type}@ @ @ [@ref{[f]at}@ @ @ @ @ @ @ @ @ @@[r;i;f[;y]]@ @ref{amend}@ @ @ @ @ `js?`js@ d}@*
-@t{.@ @ @ @ref{value}@ @ @ [f]apply@ @ @ @ @ @ .[r;i;f[;y]]@ @ref{dmend}@ @ @ @ @ `csv?`csv@ t}@*
+@t{,@ @ @ @ref{list}@ @ @ @ @ @ @ @ref{cat}@ @ @ @ @ @ @ *4:@ https@ get@ @ @ @ @ @ @ @ @ @ @ @ref{Expression,Expr}@ :a+b@ @ @ @ @ @ @ @ @ \cd@ [d]}@*
+@t{^@ @ @ @ref{sort}@ @ @ [nf]@ref{cut}@ @ @ @ @ @ @ *5:@ ffi/py/js/..@ @ @ @ @ @ @ @ table@ t:[[]i:2@ 3;f:2.3@ 4]}@*
+@t{#@ @ @ @ref{count}@ @ [nf]@ref{take}@ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ Utable@ u:[[x:..]y:..]}@*
+@t{_@ @ @ @ref{floor}@ @ [nf]@ref{drop}@ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ Ntable@ n:`..![[]y:..]}@*
+@t{$@ @ @ @ref{string}@ @ @ @ @ @ref{parse}@ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ }@*
+@t{?@ @ @ @ref{unique}@ [sf]@ref{find}@ @ @ @ @ @ @ $[b;t;f]@ cond@ @ @ @ @ @ @ @ @ @ }@*
+@t{@@@ @ @ @ref{type}@ @ @ [sf]@ref{at}@ @ @ @ @ @ @ @ @ @@[r;i;f[;y]]@ @ref{amend}@ @ @ @ @ `js?`js@ d}@*
+@t{.@ @ @ @ref{value}@ @ @ [f]@ref{apply}@ @ @ @ @ @ .[r;i;f[;y]]@ @ref{dmend}@ @ @ @ @ `csv?`csv@ t}@*
 @t{}@*
 @t{@ref{exp}@ @ref{log}@ @ref{sin}@ @ref{cos}@ @ref{sqr}@ @ref{sqr}t@ @ref{prm}@ @ref{freq}@ @ref{sums}@ @ref{deltas}}@*
 @t{rand@ has@ @ref{bin}@ @ref{in}@  @ref{within}@ @ref{div}@ @ref{mod}@ @ref{bar}@ rand@ @ref{cmb}@ @ref{msum}@ @ref{mavg}}@*
-@t{count@ first@ last@ sum@ min@ max@ *[avg@ var@ dev@ med@ ..];@ @ref{key}@ @ref{meta}}@*
+@t{@ref{count}@ first@ last@ sum@ min@ max@ *[avg@ var@ dev@ med@ ..];@ @ref{key}@ @ref{meta}}@*
 @t{@ref{select}[C]@ref{A}@ from@ T@ where@ B;@ @ref{update}@ C@ from@ T@ where@ B;@ @ref{delete}@ from@ T@ where@ B}@*
 @t{}@*
 @t{\\@ exit@ @ /comment@ \trace}@*

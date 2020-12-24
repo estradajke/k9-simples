@@ -284,30 +284,30 @@ Most functions are overloaded and change depending on the number of arguments.  
 
 When functions are overloaded into materially different uses, I flag this with  a '+' suffix.  For example, unique+ and find+ differ depending on whether their argument is a scalar or a vector.  
 
-There are also verbs that can take a function argument. I flag those with a '[f]' prefix.  These include [f]cut, [f]take, [f]drop, [f]at, and [f]dot.
+There are also verbs that can take a function argument. I flag those with a '[f]' prefix.  These include [f]cut, [f]take, [f]drop, [f]at, and [f]apply.
 
 @example
 Verb
-: @ref{x},        @ref{set}.
-+ @ref{flip},     @ref{plus}.
-- @ref{negate},   @ref{minus}.
-* @ref{first},    @ref{times}.
-%           @ref{divide}.
-& @ref{where},    @ref{min/and}.
-| @ref{reverse},  @ref{max/or}.
-< @ref{asc},      @ref{less}.
-> @ref{asc,dsc},      @ref{less,more}.
-= @ref{group},    @ref{equal}.
-~ @ref{not},      @ref{match}.
-! @ref{enum},     @ref{key}.
-, @ref{enlist},   @ref{cat}.
-^ @ref{sort},  @ref{[f]cut}. 
-# @ref{count}, @ref{[f]take}.  
-_ @ref{floor}, @ref{[f]drop}.    
-$ @ref{string},   @ref{cast}.    
-? @ref{unique+},  @ref{find+}.    
-@@ @ref{type},  @ref{[f]at}.    
-. @ref{value}, @ref{[f]dot}.
+: @ref{x},         @ref{set}.
++ @ref{flip},      @ref{plus}.
+- @ref{negate},    @ref{minus}.
+* @ref{first},     @ref{times}.
+%            @ref{divide}.
+& @ref{where},     @ref{min/and}.
+| @ref{reverse},   @ref{max/or}.
+< @ref{asc},       @ref{less}.
+> @ref{asc,desc},      @ref{less,more}.
+= @ref{group},     @ref{equal}.
+~ @ref{not},       @ref{match}.
+! @ref{enum},      @ref{key}.
+, @ref{list},      @ref{cat}.
+^ @ref{sort},  [nf]@ref{cut}. 
+# @ref{count},  [f]@ref{take}.  
+_ @ref{floor},  [f]@ref{drop}.    
+$ @ref{string},    @ref{parse}.    
+? @ref{unique},[sf]@ref{find}.    
+@@ @ref{type},   [f]@ref{at}.    
+. @ref{value},  [f]@ref{apply}.
 
 @end example
 
@@ -572,7 +572,7 @@ The greater of x and y.  Max of a list can be determine by use of the adverb ove
 12
 @end example
 
-@anchor{asc}@section asc(dsc) @result{} < (>) x
+@anchor{asc}@section asc(desc) @result{} < (>) x
 Sort a list or dictionary in ascending (<) or descending (>) order.  Applied to a list, these will return the indices to be used to achieve the sort.
 
 @example
@@ -741,7 +741,7 @@ a|1 2
 b|3 4
 @end example
 
-@anchor{enlist}@section enlist @result{} ,x
+@anchor{list}@section list @result{} ,x
 Create a list from x
 
 @example
@@ -775,7 +775,7 @@ a|7 6 5
 b|0 1 2
 @end example
 
-@anchor{[f]cut}@section [f]cut @result{} x^y
+@anchor{cut}@section [f]cut @result{} x^y
 Cut list y by size, indices, or function x.  If x is positive then cut y into x parts.  If x is negative then cut y into parts each x long.
 
 @example
@@ -848,7 +848,7 @@ Count the number of elements in x.
 2
 @end example
 
-@anchor{[f]take}@section [f]take @result{} x#y
+@anchor{take}@section [f]take @result{} x#y
 [f]take has a number of different actions depending on x.  These include head (take from front of list), tail (take from back of list), common (take common elements), and filter (take where function is non-zero).
 
 @flushleft
@@ -906,7 +906,7 @@ Return the integer floor of float x.
 3
 @end example
 
-@anchor{[f]drop}@section [f]drop @result{} x_y
+@anchor{drop}@section [f]drop @result{} x_y
 [f]drop has a number of different actions depending on x.  This include de-head (drop from front of list), de-tail (drop from back of list), uncommon (drop common elements), and filter (drop where function is zero).
 
 @flushleft
@@ -955,8 +955,8 @@ Cast x to string.
 "4.7"
 @end example
 
-@anchor{cast}@section cast @result{} x$y
-Cast string y into type x.
+@anchor{parse}@section parse @result{} x$y
+Parse string y into type x.
 
 @example
  `i$"23"
@@ -969,7 +969,7 @@ Cast string y into type x.
 2020.04.20
 @end example
 
-@anchor{unique+}@section unique+ @result{} ?x
+@anchor{unique}@section unique @result{} ?x
 As unique+ is a '+' verb, because its use depends on whether x is a list (where ? means unique) or atom (where ? does a random number generation).
 
 x is list: Return the unique values of the list x.  The @code{?} preceeding the return value explicitly shows that the list has no repeated values.
@@ -991,7 +991,7 @@ x is atom: Generate x random values using a uniform distribution from [0,1) or -
 0.05384196 1.228946 -0.7144561
 @end example
 
-@anchor{find+}@section find+ @result{} x?y
+@anchor{find}@section [sf]find @result{} x?y
 As find+ is a '+' verb its use depends on whether x is a list (find) or atom (range random).
 
 x is list: Find the first element of x that matches y otherwise return the end of vector.
@@ -1052,7 +1052,7 @@ Return the data type of x.  Lower-case represents a single element while upper-c
 `i`f`s`c`d`t
 @end example
 
-@anchor{[f]at}@section [f]at @result{} x@@y
+@anchor{at}@section [f]at @result{} x@@y
 Given a list x return the value(s) at index(indices) y.  
 
 @example
@@ -1109,8 +1109,8 @@ temporal or name type.
 `abc
 @end example
 
-@anchor{[f]dot}@section [f]dot @result{} x.y
-Given list x return the value at list y.  The action of dot depends on the shape of y.
+@anchor{apply}@section [f]apply @result{} x.y
+Given list x return the value at list y.  The action of apply depends on the shape of y.
 @itemize
 @item Index returns the value(s) at x at each index y, i.e. x@@y@@0, x@@y@@1, ..., x@@y@@(n-1).
 @item Recursive index returns the value(s) at x[y@@0;y@@1].
@@ -1680,7 +1680,7 @@ i
 @@1 3 12     / list of ints
 I
 
-@@,1         / list of single int via @ref{enlist}
+@@,1         / list of single int via @ref{list}
 I
 @end example
 
@@ -2845,7 +2845,7 @@ key2|value2
 @end example
 
 @anchor{w line}@section write line @result{} x 0:y
-Output to x the list of strings in y.  y must be a list of strings.  If y is a single stream then convert to list via enlist.
+Output to x the list of strings in y.  y must be a list of strings.  If y is a single stream then convert to list via @ref{list}.
 
 @example
  ""0:("blue";"red")      / "" represents stdout
@@ -2996,7 +2996,7 @@ a  col2
 
 :class
 
- [[] a:,1; col2:,3.6] / using enlist will succeed
+ [[] a:,1; col2:,3.6] / using list will succeed
 [[]a:,1;col2:,3.6]
 @end example
 
@@ -3679,7 +3679,7 @@ Given the terse syntax of k9, it likely won't be a surprise  that  error message
 @example
 error: @ref{class} @ref{rank} @ref{length}
 @ref{_type,type} @ref{domain} @ref{limit}
-stack @ref{parse} @ref{_value,value}
+stack @ref{eparse,parse} @ref{_value,value}
 @end example
 
 @anchor{class}@section :class
@@ -3751,7 +3751,7 @@ Aug  6 2020 16GB (c) shakti
 :nyi
 @end example
 
-@anchor{parse}@section :parse
+@anchor{eparse}@section :parse
 Syntax is wrong.  This may be due to mismatched parentheses or  brackets, e.g., (), @{@}, [], "".
 @example
 @ @{37 . "hello"

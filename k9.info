@@ -36,8 +36,8 @@ language.
 
    *note Verb::                      *note
 Adverb::                 *note Type: Noun.              *note System::
-:   x          y          f/  *note over: scan.  V/ *note
-join::      *note char:: " ab"        \l a.k
+:   x          y          f/  *note over::  V/ *note join::      *note
+char:: " ab"        \l a.k
 +   *note flip::       *note plus::       f\  *note scan::  V\ *note
 split::     *note name:: ``ab         \t:n x
 -   *note minus::      *note minus::      f'  *note
@@ -45,41 +45,41 @@ each::               *note int::  0 2 3        \u:n x
 *   *note first::      *note times::      f': *note
 eachp::              *note flt::  0 2 3.       \v
 %              *note divide::     f/: *note eachr:: (n;f)/:*note over:
-scan.  *note date:: 2021.01.23   .z.d
+cover.  *note date:: 2021.01.23   .z.d
 &   *note where::      *note min/and::    f\: *note eachl:: (n;f)\:*note
-scan::  *note time:: 12:34:56.789 .z.t
+scan: cscan.  *note time:: 12:34:56.789 .z.t
 |   *note reverse::    *note max/or::     
 <   *note asc::        *note less::       *note
 I/O::(*enterprise)       Class
->   desc       *note more: less.       0: *note r: r line./*note w: w
-line. line            atom              \f
+>   *note desc: asc.       *note more: less.       0: *note r: r
+line./*note w: w line. line            atom              \f
 =   *note group::      *note equal::      1: *note r: r byte./*note w: w
 byte. byte            *note List:: (2;3.4;`c)   \ft x     
 ~   *note not::        *note match::     *2: r/w data            *note
 Dict: Dictionary. [a:2;b:`c]   \fl x
 !   *note key::        *note key::       *3: k-ipc set           *note
 Func: User Functions. {[a;b]a+b}   \fc x
-,   list       *note cat::       *4: https get           *note Expr:
-Expression. :a+b         \cd [d]
-^   *note sort::   [*note
-[f]cut::       *5: ffi/py/js/..        table t:[[]i:2 3;f:2.3 4]
-#   count  [*note
-[f]take::                             Utable u:[[x:..]y:..]
-_   *note floor::  [*note
-[f]drop::                             Ntable n:`..![[]y:..]
-$   *note string::     parse                
-?   unique [sf]find       $[b;t;f] cond          
-@   *note type::   [*note [f]at::         @[r;i;f[;y]] *note
+,   *note list::       *note cat::       *4: https get           *note
+Expr: Expression. :a+b         \cd [d]
+^   *note sort::   [nf]*note
+cut::       *5: ffi/py/js/..        table t:[[]i:2 3;f:2.3 4]
+#   *note count::  [nf]*note
+take::                             Utable u:[[x:..]y:..]
+_   *note floor::  [nf]*note
+drop::                             Ntable n:`..![[]y:..]
+$   *note string::     *note parse::                
+?   *note unique:: [sf]*note find::       $[b;t;f] cond          
+@   *note type::   [sf]*note at::         @[r;i;f[;y]] *note
 amend::     `js?`js d
-.   *note value::   [f]apply      .[r;i;f[;y]] *note
+.   *note value::   [f]*note apply::      .[r;i;f[;y]] *note
 dmend::     `csv?`csv t
 
 *note exp:: *note log:: *note sin:: *note cos:: *note sqr:: *note
 sqr::t *note prm:: *note freq:: *note sums:: *note deltas::
 rand has *note bin:: *note in::  *note within:: *note div:: *note
 mod:: *note bar:: rand *note cmb:: *note msum:: *note mavg::
-count first last sum min max *[avg var dev med ..]; *note key:: *note
-meta::
+*note count:: first last sum min max *[avg var dev med ..]; *note
+key:: *note meta::
 *note select::[C]*note A:: from T where B; *note
 update:: C from T where B; *note delete:: from T where B
 
@@ -449,29 +449,29 @@ on whether their argument is a scalar or a vector.
 
    There are also verbs that can take a function argument.  I flag those
 with a '[f]' prefix.  These include [f]cut, [f]take, [f]drop, [f]at, and
-[f]dot.
+[f]apply.
 
      Verb
-     : *note x::,        *note set::.
-     + *note flip::,     *note plus::.
-     - *note negate::,   *note minus::.
-     * *note first::,    *note times::.
-     %           *note divide::.
-     & *note where::,    *note min/and::.
-     | *note reverse::,  *note max/or::.
-     < *note asc::,      *note less::.
-     > *note dsc: asc,      *note more: less.
-     = *note group::,    *note equal::.
-     ~ *note not::,      *note match::.
-     ! *note enum::,     *note key::.
-     , *note enlist::,   *note cat::.
-     ^ *note sort::,  *note [f]cut::.
-     # *note count::, *note [f]take::.
-     _ *note floor::, *note [f]drop::.
-     $ *note string::,   *note cast::.
-     ? *note unique+::,  *note find+::.
-     @ *note type::,  *note [f]at::.
-     . *note value::, *note [f]dot::.
+     : *note x::,         *note set::.
+     + *note flip::,      *note plus::.
+     - *note negate::,    *note minus::.
+     * *note first::,     *note times::.
+     %            *note divide::.
+     & *note where::,     *note min/and::.
+     | *note reverse::,   *note max/or::.
+     < *note asc::,       *note less::.
+     > *note desc: asc,      *note more: less.
+     = *note group::,     *note equal::.
+     ~ *note not::,       *note match::.
+     ! *note enum::,      *note key::.
+     , *note list::,      *note cat::.
+     ^ *note sort::,  [nf]*note cut::.
+     # *note count::,  [f]*note take::.
+     _ *note floor::,  [f]*note drop::.
+     $ *note string::,    *note parse::.
+     ? *note unique::,[sf]*note find::.
+     @ *note type::,   [f]*note at::.
+     . *note value::,  [f]*note apply::.
 
 
 2.1 x => :x
@@ -681,8 +681,8 @@ adverb over.
       |/12 2 3 10 / use over to determine the max of a list
      12
 
-2.14 asc(dsc) => < (>) x
-========================
+2.14 asc(desc) => < (>) x
+=========================
 
 Sort a list or dictionary in ascending (<) or descending (>) order.
 Applied to a list, these will return the indices to be used to achieve
@@ -848,8 +848,8 @@ Dictionary of x (key) and y (value).
      a|1 2
      b|3 4
 
-2.22 enlist => ,x
-=================
+2.22 list => ,x
+===============
 
 Create a list from x
 
@@ -1048,10 +1048,10 @@ Cast x to string.
       $4.7
      "4.7"
 
-2.31 cast => x$y
-================
+2.31 parse => x$y
+=================
 
-Cast string y into type x.
+Parse string y into type x.
 
       `i$"23"
      23
@@ -1062,8 +1062,8 @@ Cast string y into type x.
       `d$"2020.04.20"
      2020.04.20
 
-2.32 unique+ => ?x
-==================
+2.32 unique => ?x
+=================
 
 As unique+ is a '+' verb, because its use depends on whether x is a list
 (where ?  means unique) or atom (where ?  does a random number
@@ -1088,8 +1088,8 @@ deviation=1).
      ?-3     / 3 normal
      0.05384196 1.228946 -0.7144561
 
-2.33 find+ => x?y
-=================
+2.33 [sf]find => x?y
+====================
 
 As find+ is a '+' verb its use depends on whether x is a list (find) or
 atom (range random).
@@ -1209,10 +1209,10 @@ to covert from a string to a numeric, temporal or name type.
       ."`abc"
      `abc
 
-2.37 [f]dot => x.y
-==================
+2.37 [f]apply => x.y
+====================
 
-Given list x return the value at list y.  The action of dot depends on
+Given list x return the value at list y.  The action of apply depends on
 the shape of y.
    * Index returns the value(s) at x at each index y, i.e.  x@y@0,
      x@y@1, ..., x@y@(n-1).
@@ -1782,7 +1782,7 @@ and an upper case value for lists.
      @1 3 12     / list of ints
      I
 
-     @,1         / list of single int via *note enlist::
+     @,1         / list of single int via *note list::
      I
 
    Commands that generate sequences of numbers return lists regardless
@@ -2989,7 +2989,7 @@ Convert x, a list of name:value pairs, to a dictionary.
 ========================
 
 Output to x the list of strings in y.  y must be a list of strings.  If
-y is a single stream then convert to list via enlist.
+y is a single stream then convert to list via *note list::.
 
       ""0:("blue";"red")      / "" represents stdout
      blue
@@ -3158,7 +3158,7 @@ as we will discuss later.
 
      :class
 
-      [[] a:,1; col2:,3.6] / using enlist will succeed
+      [[] a:,1; col2:,3.6] / using list will succeed
      [[]a:,1;col2:,3.6]
 
 12.1.2 Dictionary format
@@ -3893,7 +3893,7 @@ and described in more detail below.
 
      error: *note class:: *note rank:: *note length::
      *note type: _type. *note domain:: *note limit::
-     stack *note parse:: *note value: _value.
+     stack *note parse: eparse. *note value: _value.
 
 17.1 :class
 ===========
@@ -4508,166 +4508,166 @@ select[C]A from T where B; update C from T where B; delete from T where B
 
 Tag Table:
 Node: Top126
-Node: Introduction4651
-Node: Verb16233
-Ref: x17977
-Ref: set18002
-Ref: flip18261
-Ref: plus18511
-Ref: negate18989
-Ref: minus19161
-Ref: first19268
-Ref: times19484
-Ref: divide19615
-Ref: where19752
-Ref: min/and20238
-Ref: reverse20497
-Ref: max/or20759
-Ref: asc21023
-Ref: less21411
-Ref: group21712
-Ref: equal21965
-Ref: not22269
-Ref: match22386
-Ref: enum22769
-Ref: key23855
-Ref: enlist24028
-Ref: cat24168
-Ref: sort24287
-Ref: [f]cut24520
-Ref: count25658
-Ref: [f]take25848
-Ref: take126281
-Ref: take226653
-Ref: take326925
-Ref: floor27121
-Ref: [f]drop27212
-Ref: drop127648
-Ref: drop227834
-Ref: drop327956
-Ref: string28118
-Ref: cast28219
-Ref: unique+28409
-Ref: find+29097
-Ref: type30083
-Ref: [f]at30534
-Ref: value30908
-Ref: [f]dot31335
-Node: Adverb32535
-Ref: over33564
-Ref: scan33674
-Ref: join34427
-Ref: split34801
-Ref: each35062
-Ref: eachp35351
-Ref: eachr36103
-Ref: eachl36295
-Ref: cover36476
-Ref: cscan36661
-Node: Noun37548
-Ref: Atom Types38953
-Ref: bool40134
-Ref: int40821
-Ref: flt41500
-Ref: char41902
-Ref: name42135
-Ref: uuid42375
-Ref: time42532
-Ref: date43434
-Ref: datetime43895
-Node: List44694
-Node: Dictionary48945
-Node: User Functions54590
-Node: Expression57839
-Node: Named Functions58717
-Ref: exp59357
-Ref: log59423
-Ref: sin59521
-Ref: cos59658
-Ref: sqr59804
-Ref: sqrt59865
-Ref: div59936
-Ref: mod60121
-Ref: bar60297
-Ref: topX60615
-Ref: freq60775
-Ref: msum61128
-Ref: mavg61267
-Ref: sums61413
-Ref: deltas61555
-Ref: prm61895
-Ref: cmb62072
-Ref: keyF62607
-Ref: unkey62904
-Ref: meta63042
-Ref: in63175
-Ref: bin63303
-Ref: within63515
-Node: Knit Functions63749
-Ref: amend64044
-Ref: amend164567
-Ref: amend264819
-Ref: amend365041
-Ref: amend465349
-Ref: dmend65640
-Ref: dmend165970
-Ref: dmend366141
-Ref: dmend466309
-Node: I/O66473
-Ref: read csv68539
-Ref: write csv68717
-Ref: read json68881
-Ref: write json69071
-Ref: read nv69244
-Ref: w line69437
-Ref: r line69822
-Ref: w byte69935
-Ref: r byte70163
-Ref: r data70313
-Ref: w data70975
-Ref: conn/set71555
-Ref: http/get71615
-Ref: lib71675
-Node: Tables72139
-Ref: t72801
-Ref: xtable74453
-Ref: utable75083
-Node: kSQL75621
-Ref: select76253
-Ref: A76837
-Ref: by B77654
-Ref: where C77932
-Ref: update78517
-Ref: delete79237
-Ref: union79876
-Ref: leftjoin80397
-Ref: outer81176
-Ref: asof81511
-Ref: asof+82965
-Ref: insert84182
-Ref: upsert84528
-Node: System84942
-Ref: load85400
-Ref: timing85588
-Ref: variables85675
-Ref: memory85776
-Ref: cd85891
-Node: Control Flow85975
-Ref: cond86214
-Node: Temporal Functions86584
-Node: Errors87978
-Ref: class88419
-Ref: rank88508
-Ref: length88632
-Ref: _type88755
-Ref: domain88864
-Ref: limit88986
-Ref: nyi89187
-Ref: parse89520
-Ref: _value89673
-Node: Examples89801
-Node: Benchmark97159
-Node: Conclusion102065
+Node: Introduction4721
+Node: Verb16303
+Ref: x18071
+Ref: set18096
+Ref: flip18355
+Ref: plus18605
+Ref: negate19083
+Ref: minus19255
+Ref: first19362
+Ref: times19578
+Ref: divide19709
+Ref: where19846
+Ref: min/and20332
+Ref: reverse20591
+Ref: max/or20853
+Ref: asc21117
+Ref: less21507
+Ref: group21808
+Ref: equal22061
+Ref: not22365
+Ref: match22482
+Ref: enum22865
+Ref: key23951
+Ref: list24124
+Ref: cat24260
+Ref: sort24379
+Ref: cut24612
+Ref: count25750
+Ref: take25940
+Ref: take126373
+Ref: take226745
+Ref: take327017
+Ref: floor27213
+Ref: drop27304
+Ref: drop127740
+Ref: drop227926
+Ref: drop328048
+Ref: string28210
+Ref: parse28311
+Ref: unique28504
+Ref: find29190
+Ref: type30182
+Ref: at30633
+Ref: value31007
+Ref: apply31434
+Node: Adverb32640
+Ref: over33669
+Ref: scan33779
+Ref: join34532
+Ref: split34906
+Ref: each35167
+Ref: eachp35456
+Ref: eachr36208
+Ref: eachl36400
+Ref: cover36581
+Ref: cscan36766
+Node: Noun37653
+Ref: Atom Types39058
+Ref: bool40239
+Ref: int40926
+Ref: flt41605
+Ref: char42007
+Ref: name42240
+Ref: uuid42480
+Ref: time42637
+Ref: date43539
+Ref: datetime44000
+Node: List44799
+Node: Dictionary49048
+Node: User Functions54693
+Node: Expression57942
+Node: Named Functions58820
+Ref: exp59460
+Ref: log59526
+Ref: sin59624
+Ref: cos59761
+Ref: sqr59907
+Ref: sqrt59968
+Ref: div60039
+Ref: mod60224
+Ref: bar60400
+Ref: topX60718
+Ref: freq60878
+Ref: msum61231
+Ref: mavg61370
+Ref: sums61516
+Ref: deltas61658
+Ref: prm61998
+Ref: cmb62175
+Ref: keyF62710
+Ref: unkey63007
+Ref: meta63145
+Ref: in63278
+Ref: bin63406
+Ref: within63618
+Node: Knit Functions63852
+Ref: amend64147
+Ref: amend164670
+Ref: amend264922
+Ref: amend365144
+Ref: amend465452
+Ref: dmend65743
+Ref: dmend166073
+Ref: dmend366244
+Ref: dmend466412
+Node: I/O66576
+Ref: read csv68642
+Ref: write csv68820
+Ref: read json68984
+Ref: write json69174
+Ref: read nv69347
+Ref: w line69540
+Ref: r line69931
+Ref: w byte70044
+Ref: r byte70272
+Ref: r data70422
+Ref: w data71084
+Ref: conn/set71664
+Ref: http/get71724
+Ref: lib71784
+Node: Tables72248
+Ref: t72910
+Ref: xtable74560
+Ref: utable75190
+Node: kSQL75728
+Ref: select76360
+Ref: A76944
+Ref: by B77761
+Ref: where C78039
+Ref: update78624
+Ref: delete79344
+Ref: union79983
+Ref: leftjoin80504
+Ref: outer81283
+Ref: asof81618
+Ref: asof+83072
+Ref: insert84289
+Ref: upsert84635
+Node: System85049
+Ref: load85507
+Ref: timing85695
+Ref: variables85782
+Ref: memory85883
+Ref: cd85998
+Node: Control Flow86082
+Ref: cond86321
+Node: Temporal Functions86691
+Node: Errors88085
+Ref: class88533
+Ref: rank88622
+Ref: length88746
+Ref: _type88869
+Ref: domain88978
+Ref: limit89100
+Ref: nyi89301
+Ref: eparse89634
+Ref: _value89787
+Node: Examples89915
+Node: Benchmark97273
+Node: Conclusion102179
 
 End Tag Table
 

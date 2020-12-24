@@ -102,30 +102,30 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; <
 </p>
 
 <p><tt><a href="#Verb">Verb</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Adverb">Adverb</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Noun">Type</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#System">System</a></tt><br>
-<tt>:&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f/&nbsp;&nbsp;<a href="#scan">over</a>&nbsp;&nbsp;V/&nbsp;<a href="#join">join</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#char">char</a>&nbsp;&quot;&nbsp;ab&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\l&nbsp;a.k</tt><br>
+<tt>:&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f/&nbsp;&nbsp;<a href="#over">over</a>&nbsp;&nbsp;V/&nbsp;<a href="#join">join</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#char">char</a>&nbsp;&quot;&nbsp;ab&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\l&nbsp;a.k</tt><br>
 <tt>+&nbsp;&nbsp;&nbsp;<a href="#flip">flip</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#plus">plus</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f\&nbsp;&nbsp;<a href="#scan">scan</a>&nbsp;&nbsp;V\&nbsp;<a href="#split">split</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#name">name</a>&nbsp;``ab&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\t:n&nbsp;x</tt><br>
 <tt>-&nbsp;&nbsp;&nbsp;<a href="#minus">minus</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#minus">minus</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f'&nbsp;&nbsp;<a href="#each">each</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#int">int</a>&nbsp;&nbsp;0&nbsp;2&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u:n&nbsp;x</tt><br>
 <tt>*&nbsp;&nbsp;&nbsp;<a href="#first">first</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#times">times</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f':&nbsp;<a href="#eachp">eachp</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#flt">flt</a>&nbsp;&nbsp;0&nbsp;2&nbsp;3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\v</tt><br>
-<tt>%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#divide">divide</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f/:&nbsp;<a href="#eachr">eachr</a>&nbsp;(n;f)/:<a href="#scan">over</a>&nbsp;&nbsp;<a href="#date">date</a>&nbsp;2021.01.23&nbsp;&nbsp;&nbsp;.z.d</tt><br>
-<tt>&amp;&nbsp;&nbsp;&nbsp;<a href="#where">where</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#min_002fand">min/and</a>&nbsp;&nbsp;&nbsp;&nbsp;f\:&nbsp;<a href="#eachl">eachl</a>&nbsp;(n;f)\:<a href="#scan">scan</a>&nbsp;&nbsp;<a href="#time">time</a>&nbsp;12:34:56.789&nbsp;.z.t</tt><br>
+<tt>%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#divide">divide</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f/:&nbsp;<a href="#eachr">eachr</a>&nbsp;(n;f)/:<a href="#cover">over</a>&nbsp;&nbsp;<a href="#date">date</a>&nbsp;2021.01.23&nbsp;&nbsp;&nbsp;.z.d</tt><br>
+<tt>&amp;&nbsp;&nbsp;&nbsp;<a href="#where">where</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#min_002fand">min/and</a>&nbsp;&nbsp;&nbsp;&nbsp;f\:&nbsp;<a href="#eachl">eachl</a>&nbsp;(n;f)\:<a href="#cscan">scan</a>&nbsp;&nbsp;<a href="#time">time</a>&nbsp;12:34:56.789&nbsp;.z.t</tt><br>
 <tt>|&nbsp;&nbsp;&nbsp;<a href="#reverse">reverse</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#max_002for">max/or</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
 <tt>&lt;&nbsp;&nbsp;&nbsp;<a href="#asc">asc</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#less">less</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#I_002fO">I/O</a>(*enterprise)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class</tt><br>
-<tt>&gt;&nbsp;&nbsp;&nbsp;desc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#less">more</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0:&nbsp;<a href="#r-line">r</a>/<a href="#w-line">w</a>&nbsp;line&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;atom&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\f</tt><br>
+<tt>&gt;&nbsp;&nbsp;&nbsp;<a href="#asc">desc</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#less">more</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0:&nbsp;<a href="#r-line">r</a>/<a href="#w-line">w</a>&nbsp;line&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;atom&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\f</tt><br>
 <tt>=&nbsp;&nbsp;&nbsp;<a href="#group">group</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#equal">equal</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1:&nbsp;<a href="#r-byte">r</a>/<a href="#w-byte">w</a>&nbsp;byte&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#List">List</a>&nbsp;(2;3.4;`c)&nbsp;&nbsp;&nbsp;\ft&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
 <tt>~&nbsp;&nbsp;&nbsp;<a href="#not">not</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#match">match</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*2:&nbsp;r/w&nbsp;data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Dictionary">Dict</a>&nbsp;[a:2;b:`c]&nbsp;&nbsp;&nbsp;\fl&nbsp;x</tt><br>
 <tt>!&nbsp;&nbsp;&nbsp;<a href="#key">key</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#key">key</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*3:&nbsp;k-ipc&nbsp;set&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#User-Functions">Func</a>&nbsp;{[a;b]a+b}&nbsp;&nbsp;&nbsp;\fc&nbsp;x</tt><br>
-<tt>,&nbsp;&nbsp;&nbsp;list&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#cat">cat</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*4:&nbsp;https&nbsp;get&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Expression">Expr</a>&nbsp;:a+b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\cd&nbsp;[d]</tt><br>
-<tt>^&nbsp;&nbsp;&nbsp;<a href="#sort">sort</a>&nbsp;&nbsp;&nbsp;[<a href="#g_t_005bf_005dcut">[f]cut</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*5:&nbsp;ffi/py/js/..&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;table&nbsp;t:[[]i:2&nbsp;3;f:2.3&nbsp;4]</tt><br>
-<tt>#&nbsp;&nbsp;&nbsp;count&nbsp;&nbsp;[<a href="#g_t_005bf_005dtake">[f]take</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Utable&nbsp;u:[[x:..]y:..]</tt><br>
-<tt>_&nbsp;&nbsp;&nbsp;<a href="#floor">floor</a>&nbsp;&nbsp;[<a href="#g_t_005bf_005ddrop">[f]drop</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ntable&nbsp;n:`..![[]y:..]</tt><br>
-<tt>$&nbsp;&nbsp;&nbsp;<a href="#string">string</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parse&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
-<tt>?&nbsp;&nbsp;&nbsp;unique&nbsp;[sf]find&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$[b;t;f]&nbsp;cond&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
-<tt>@&nbsp;&nbsp;&nbsp;<a href="#type">type</a>&nbsp;&nbsp;&nbsp;[<a href="#g_t_005bf_005dat">[f]at</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@[r;i;f[;y]]&nbsp;<a href="#amend">amend</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`js?`js&nbsp;d</tt><br>
-<tt>.&nbsp;&nbsp;&nbsp;<a href="#value">value</a>&nbsp;&nbsp;&nbsp;[f]apply&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.[r;i;f[;y]]&nbsp;<a href="#dmend">dmend</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`csv?`csv&nbsp;t</tt><br>
+<tt>,&nbsp;&nbsp;&nbsp;<a href="#list">list</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#cat">cat</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*4:&nbsp;https&nbsp;get&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Expression">Expr</a>&nbsp;:a+b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\cd&nbsp;[d]</tt><br>
+<tt>^&nbsp;&nbsp;&nbsp;<a href="#sort">sort</a>&nbsp;&nbsp;&nbsp;[nf]<a href="#cut">cut</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*5:&nbsp;ffi/py/js/..&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;table&nbsp;t:[[]i:2&nbsp;3;f:2.3&nbsp;4]</tt><br>
+<tt>#&nbsp;&nbsp;&nbsp;<a href="#count">count</a>&nbsp;&nbsp;[nf]<a href="#take">take</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Utable&nbsp;u:[[x:..]y:..]</tt><br>
+<tt>_&nbsp;&nbsp;&nbsp;<a href="#floor">floor</a>&nbsp;&nbsp;[nf]<a href="#drop">drop</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ntable&nbsp;n:`..![[]y:..]</tt><br>
+<tt>$&nbsp;&nbsp;&nbsp;<a href="#string">string</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#parse">parse</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
+<tt>?&nbsp;&nbsp;&nbsp;<a href="#unique">unique</a>&nbsp;[sf]<a href="#find">find</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$[b;t;f]&nbsp;cond&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
+<tt>@&nbsp;&nbsp;&nbsp;<a href="#type">type</a>&nbsp;&nbsp;&nbsp;[sf]<a href="#at">at</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@[r;i;f[;y]]&nbsp;<a href="#amend">amend</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`js?`js&nbsp;d</tt><br>
+<tt>.&nbsp;&nbsp;&nbsp;<a href="#value">value</a>&nbsp;&nbsp;&nbsp;[f]<a href="#apply">apply</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.[r;i;f[;y]]&nbsp;<a href="#dmend">dmend</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`csv?`csv&nbsp;t</tt><br>
 <tt></tt><br>
 <tt><a href="#exp">exp</a>&nbsp;<a href="#log">log</a>&nbsp;<a href="#sin">sin</a>&nbsp;<a href="#cos">cos</a>&nbsp;<a href="#sqr">sqr</a>&nbsp;<a href="#sqr">sqr</a>t&nbsp;<a href="#prm">prm</a>&nbsp;<a href="#freq">freq</a>&nbsp;<a href="#sums">sums</a>&nbsp;<a href="#deltas">deltas</a></tt><br>
 <tt>rand&nbsp;has&nbsp;<a href="#bin">bin</a>&nbsp;<a href="#in">in</a>&nbsp; <a href="#within">within</a>&nbsp;<a href="#div">div</a>&nbsp;<a href="#mod">mod</a>&nbsp;<a href="#bar">bar</a>&nbsp;rand&nbsp;<a href="#cmb">cmb</a>&nbsp;<a href="#msum">msum</a>&nbsp;<a href="#mavg">mavg</a></tt><br>
-<tt>count&nbsp;first&nbsp;last&nbsp;sum&nbsp;min&nbsp;max&nbsp;*[avg&nbsp;var&nbsp;dev&nbsp;med&nbsp;..];&nbsp;<a href="#key">key</a>&nbsp;<a href="#meta">meta</a></tt><br>
+<tt><a href="#count">count</a>&nbsp;first&nbsp;last&nbsp;sum&nbsp;min&nbsp;max&nbsp;*[avg&nbsp;var&nbsp;dev&nbsp;med&nbsp;..];&nbsp;<a href="#key">key</a>&nbsp;<a href="#meta">meta</a></tt><br>
 <tt><a href="#select">select</a>[C]<a href="#A">A</a>&nbsp;from&nbsp;T&nbsp;where&nbsp;B;&nbsp;<a href="#update">update</a>&nbsp;C&nbsp;from&nbsp;T&nbsp;where&nbsp;B;&nbsp;<a href="#delete">delete</a>&nbsp;from&nbsp;T&nbsp;where&nbsp;B</tt><br>
 <tt></tt><br>
 <tt>\\&nbsp;exit&nbsp;&nbsp;/comment&nbsp;\trace</tt><br>
@@ -422,30 +422,30 @@ Next: <a href="#Adverb" accesskey="n" rel="next">Adverb</a>, Previous: <a href="
 </p>
 <p>When functions are overloaded into materially different uses, I flag this with  a &rsquo;+&rsquo; suffix.  For example, unique+ and find+ differ depending on whether their argument is a scalar or a vector.  
 </p>
-<p>There are also verbs that can take a function argument. I flag those with a &rsquo;[f]&rsquo; prefix.  These include [f]cut, [f]take, [f]drop, [f]at, and [f]dot.
+<p>There are also verbs that can take a function argument. I flag those with a &rsquo;[f]&rsquo; prefix.  These include [f]cut, [f]take, [f]drop, [f]at, and [f]apply.
 </p>
 <div class="example">
 <pre class="example">Verb
-: <a href="#x">x</a>,        <a href="#set">set</a>.
-+ <a href="#flip">flip</a>,     <a href="#plus">plus</a>.
-- <a href="#negate">negate</a>,   <a href="#minus">minus</a>.
-* <a href="#first">first</a>,    <a href="#times">times</a>.
-%           <a href="#divide">divide</a>.
-&amp; <a href="#where">where</a>,    <a href="#min_002fand">min/and</a>.
-| <a href="#reverse">reverse</a>,  <a href="#max_002for">max/or</a>.
-&lt; <a href="#asc">asc</a>,      <a href="#less">less</a>.
-&gt; <a href="#asc">dsc</a>,      <a href="#less">more</a>.
-= <a href="#group">group</a>,    <a href="#equal">equal</a>.
-~ <a href="#not">not</a>,      <a href="#match">match</a>.
-! <a href="#enum">enum</a>,     <a href="#key">key</a>.
-, <a href="#enlist">enlist</a>,   <a href="#cat">cat</a>.
-^ <a href="#sort">sort</a>,  <a href="#g_t_005bf_005dcut">[f]cut</a>. 
-# <a href="#count">count</a>, <a href="#g_t_005bf_005dtake">[f]take</a>.  
-_ <a href="#floor">floor</a>, <a href="#g_t_005bf_005ddrop">[f]drop</a>.    
-$ <a href="#string">string</a>,   <a href="#cast">cast</a>.    
-? <a href="#unique_002b">unique+</a>,  <a href="#find_002b">find+</a>.    
-@ <a href="#type">type</a>,  <a href="#g_t_005bf_005dat">[f]at</a>.    
-. <a href="#value">value</a>, <a href="#g_t_005bf_005ddot">[f]dot</a>.
+: <a href="#x">x</a>,         <a href="#set">set</a>.
++ <a href="#flip">flip</a>,      <a href="#plus">plus</a>.
+- <a href="#negate">negate</a>,    <a href="#minus">minus</a>.
+* <a href="#first">first</a>,     <a href="#times">times</a>.
+%            <a href="#divide">divide</a>.
+&amp; <a href="#where">where</a>,     <a href="#min_002fand">min/and</a>.
+| <a href="#reverse">reverse</a>,   <a href="#max_002for">max/or</a>.
+&lt; <a href="#asc">asc</a>,       <a href="#less">less</a>.
+&gt; <a href="#asc">desc</a>,      <a href="#less">more</a>.
+= <a href="#group">group</a>,     <a href="#equal">equal</a>.
+~ <a href="#not">not</a>,       <a href="#match">match</a>.
+! <a href="#enum">enum</a>,      <a href="#key">key</a>.
+, <a href="#list">list</a>,      <a href="#cat">cat</a>.
+^ <a href="#sort">sort</a>,  [nf]<a href="#cut">cut</a>. 
+# <a href="#count">count</a>,  [f]<a href="#take">take</a>.  
+_ <a href="#floor">floor</a>,  [f]<a href="#drop">drop</a>.    
+$ <a href="#string">string</a>,    <a href="#parse">parse</a>.    
+? <a href="#unique">unique</a>,[sf]<a href="#find">find</a>.    
+@ <a href="#type">type</a>,   [f]<a href="#at">at</a>.    
+. <a href="#value">value</a>,  [f]<a href="#apply">apply</a>.
 
 </pre></div>
 
@@ -651,7 +651,7 @@ x[1] values of 1, ..., and x[n-1] values of n-1.
 12
 </pre></div>
 
-<span id="asc"></span><span id="asc_0028dsc_0029-_21d2-_003c-_0028_003e_0029-x"></span><h3 class="section">2.14 asc(dsc) &rArr; &lt; (&gt;) x</h3>
+<span id="asc"></span><span id="asc_0028desc_0029-_21d2-_003c-_0028_003e_0029-x"></span><h3 class="section">2.14 asc(desc) &rArr; &lt; (&gt;) x</h3>
 <p>Sort a list or dictionary in ascending (&lt;) or descending (&gt;) order.  Applied to a list, these will return the indices to be used to achieve the sort.
 </p>
 <div class="example">
@@ -812,7 +812,7 @@ a|1 2
 b|3 4
 </pre></div>
 
-<span id="enlist"></span><span id="enlist-_21d2-_002cx"></span><h3 class="section">2.22 enlist &rArr; ,x</h3>
+<span id="list"></span><span id="list-_21d2-_002cx"></span><h3 class="section">2.22 list &rArr; ,x</h3>
 <p>Create a list from x
 </p>
 <div class="example">
@@ -846,7 +846,7 @@ a|7 6 5
 b|0 1 2
 </pre></div>
 
-<span id="g_t_005bf_005dcut"></span><span id="g_t_005bf_005dcut-_21d2-x_005ey"></span><h3 class="section">2.25 [f]cut &rArr; x^y</h3>
+<span id="cut"></span><span id="g_t_005bf_005dcut-_21d2-x_005ey"></span><h3 class="section">2.25 [f]cut &rArr; x^y</h3>
 <p>Cut list y by size, indices, or function x.  If x is positive then cut y into x parts.  If x is negative then cut y into parts each x long.
 </p>
 <div class="example">
@@ -919,7 +919,7 @@ z  1
 2
 </pre></div>
 
-<span id="g_t_005bf_005dtake"></span><span id="g_t_005bf_005dtake-_21d2-x_0023y"></span><h3 class="section">2.27 [f]take &rArr; x#y</h3>
+<span id="take"></span><span id="g_t_005bf_005dtake-_21d2-x_0023y"></span><h3 class="section">2.27 [f]take &rArr; x#y</h3>
 <p>[f]take has a number of different actions depending on x.  These include head (take from front of list), tail (take from back of list), common (take common elements), and filter (take where function is non-zero).
 </p>
 <table>
@@ -972,7 +972,7 @@ z  1
 3
 </pre></div>
 
-<span id="g_t_005bf_005ddrop"></span><span id="g_t_005bf_005ddrop-_21d2-x_005fy"></span><h3 class="section">2.29 [f]drop &rArr; x_y</h3>
+<span id="drop"></span><span id="g_t_005bf_005ddrop-_21d2-x_005fy"></span><h3 class="section">2.29 [f]drop &rArr; x_y</h3>
 <p>[f]drop has a number of different actions depending on x.  This include de-head (drop from front of list), de-tail (drop from back of list), uncommon (drop common elements), and filter (drop where function is zero).
 </p>
 <table>
@@ -1016,8 +1016,8 @@ z  1
 &quot;4.7&quot;
 </pre></div>
 
-<span id="cast"></span><span id="cast-_21d2-x_0024y"></span><h3 class="section">2.31 cast &rArr; x$y</h3>
-<p>Cast string y into type x.
+<span id="parse"></span><span id="parse-_21d2-x_0024y"></span><h3 class="section">2.31 parse &rArr; x$y</h3>
+<p>Parse string y into type x.
 </p>
 <div class="example">
 <pre class="example"> `i$&quot;23&quot;
@@ -1030,7 +1030,7 @@ z  1
 2020.04.20
 </pre></div>
 
-<span id="unique_002b"></span><span id="unique_002b-_21d2-_003fx"></span><h3 class="section">2.32 unique+ &rArr; ?x</h3>
+<span id="unique"></span><span id="unique-_21d2-_003fx"></span><h3 class="section">2.32 unique &rArr; ?x</h3>
 <p>As unique+ is a &rsquo;+&rsquo; verb, because its use depends on whether x is a list (where ? means unique) or atom (where ? does a random number generation).
 </p>
 <p>x is list: Return the unique values of the list x.  The <code>?</code> preceeding the return value explicitly shows that the list has no repeated values.
@@ -1052,7 +1052,7 @@ z  1
 0.05384196 1.228946 -0.7144561
 </pre></div>
 
-<span id="find_002b"></span><span id="find_002b-_21d2-x_003fy"></span><h3 class="section">2.33 find+ &rArr; x?y</h3>
+<span id="find"></span><span id="g_t_005bsf_005dfind-_21d2-x_003fy"></span><h3 class="section">2.33 [sf]find &rArr; x?y</h3>
 <p>As find+ is a &rsquo;+&rsquo; verb its use depends on whether x is a list (find) or atom (range random).
 </p>
 <p>x is list: Find the first element of x that matches y otherwise return the end of vector.
@@ -1113,7 +1113,7 @@ z  1
 `i`f`s`c`d`t
 </pre></div>
 
-<span id="g_t_005bf_005dat"></span><span id="g_t_005bf_005dat-_21d2-x_0040y"></span><h3 class="section">2.35 [f]at &rArr; x@y</h3>
+<span id="at"></span><span id="g_t_005bf_005dat-_21d2-x_0040y"></span><h3 class="section">2.35 [f]at &rArr; x@y</h3>
 <p>Given a list x return the value(s) at index(indices) y.  
 </p>
 <div class="example">
@@ -1170,8 +1170,8 @@ temporal or name type.
 `abc
 </pre></div>
 
-<span id="g_t_005bf_005ddot"></span><span id="g_t_005bf_005ddot-_21d2-x_002ey"></span><h3 class="section">2.37 [f]dot &rArr; x.y</h3>
-<p>Given list x return the value at list y.  The action of dot depends on the shape of y.
+<span id="apply"></span><span id="g_t_005bf_005dapply-_21d2-x_002ey"></span><h3 class="section">2.37 [f]apply &rArr; x.y</h3>
+<p>Given list x return the value at list y.  The action of apply depends on the shape of y.
 </p><ul>
 <li> Index returns the value(s) at x at each index y, i.e. x@y@0, x@y@1, ..., x@y@(n-1).
 </li><li> Recursive index returns the value(s) at x[y@0;y@1].
@@ -1703,7 +1703,7 @@ i
 @1 3 12     / list of ints
 I
 
-@,1         / list of single int via <a href="#enlist">enlist</a>
+@,1         / list of single int via <a href="#list">list</a>
 I
 </pre></div>
 
@@ -2878,7 +2878,7 @@ key2|value2
 </pre></div>
 
 <span id="w-line"></span><span id="write-line-_21d2-x-0_003ay"></span><h3 class="section">11.7 write line &rArr; x 0:y</h3>
-<p>Output to x the list of strings in y.  y must be a list of strings.  If y is a single stream then convert to list via enlist.
+<p>Output to x the list of strings in y.  y must be a list of strings.  If y is a single stream then convert to list via <a href="#list">list</a>.
 </p>
 <div class="example">
 <pre class="example"> &quot;&quot;0:(&quot;blue&quot;;&quot;red&quot;)      / &quot;&quot; represents stdout
@@ -3033,7 +3033,7 @@ a  col2
 
 :class
 
- [[] a:,1; col2:,3.6] / using enlist will succeed
+ [[] a:,1; col2:,3.6] / using list will succeed
 [[]a:,1;col2:,3.6]
 </pre></div>
 
@@ -3729,7 +3729,7 @@ Next: <a href="#Examples" accesskey="n" rel="next">Examples</a>, Previous: <a hr
 <div class="example">
 <pre class="example">error: <a href="#class">class</a> <a href="#rank">rank</a> <a href="#length">length</a>
 <a href="#g_t_005ftype">type</a> <a href="#domain">domain</a> <a href="#limit">limit</a>
-stack <a href="#parse">parse</a> <a href="#g_t_005fvalue">value</a>
+stack <a href="#eparse">parse</a> <a href="#g_t_005fvalue">value</a>
 </pre></div>
 
 <span id="class"></span><span id="g_t_003aclass"></span><h3 class="section">17.1 :class</h3>
@@ -3801,7 +3801,7 @@ a b|
 :nyi
 </pre></div>
 
-<span id="parse"></span><span id="g_t_003aparse"></span><h3 class="section">17.8 :parse</h3>
+<span id="eparse"></span><span id="g_t_003aparse"></span><h3 class="section">17.8 :parse</h3>
 <p>Syntax is wrong.  This may be due to mismatched parentheses or  brackets, e.g., (), {}, [], &quot;&quot;.
 </p><div class="example">
 <pre class="example">&nbsp;{37 . &quot;hello&quot;
