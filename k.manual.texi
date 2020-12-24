@@ -1033,7 +1033,7 @@ x is atom: Generate x random values from 0 to less than y (int, float, time, bit
 2020.12.31
 @end example
 
-x is a special name, eg. `json, `csv, or `nv.  This is further discussed in the @ref{I/O} section.
+x is a special name, eg. `js, `csv, or `nv.  This is further discussed in the @ref{I/O} section.
 
 @anchor{type}@section type @result{} @@x
 Return the data type of x.  Lower-case represents a single element while upper-case represents a list of type indicated.
@@ -2881,18 +2881,18 @@ a,b
 Convert x from json format.  Works on lists and tables.
 
 @example
- `json?("@{a:1,b:3.@}";"@{a:2,b:4.@}")
+ `js?("@{a:1,b:3.@}";"@{a:2,b:4.@}")
 a b 
 - --
 1 3.
 2 4.
 @end example
 
-@anchor{write json}@section write json @result{} @math{`}json x
+@anchor{write json}@section write json @result{} @math{`}js x
 Convert x to json format.  Works on lists and tables.
 
 @example
- `json [[]a:1 2;b:3. 4.]
+ `js [[]a:1 2;b:3. 4.]
 @{a:1,b:3.@}
 @{a:2,b:4.@}
 @end example
@@ -2907,7 +2907,7 @@ key2|value2
 @end example
 
 @anchor{w line}@section write line @result{} x 0:y
-Output to x the list of strings in y.  y must be a list of strings.  If y is a single stream then convert to list via @ref{list}.
+Output to x the list of strings in y.  y must be a list of strings.  If y is a single string then convert to list via @ref{list}.
 
 @example
  ""0:("blue";"red")      / "" represents stdout

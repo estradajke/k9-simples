@@ -1055,7 +1055,7 @@ z  1
 2020.12.31
 </pre></div>
 
-<p>x is a special name, eg. &lsquo;json, &lsquo;csv, or &lsquo;nv.  This is further discussed in the <a href="#I_002fO">I/O</a> section.
+<p>x is a special name, eg. &lsquo;js, &lsquo;csv, or &lsquo;nv.  This is further discussed in the <a href="#I_002fO">I/O</a> section.
 </p>
 <span id="type"></span><span id="type-_21d2-_0040x"></span><h3 class="section">2.34 type &rArr; @x</h3>
 <p>Return the data type of x.  Lower-case represents a single element while upper-case represents a list of type indicated.
@@ -2892,18 +2892,18 @@ a,b
 <p>Convert x from json format.  Works on lists and tables.
 </p>
 <div class="example">
-<pre class="example"> `json?(&quot;{a:1,b:3.}&quot;;&quot;{a:2,b:4.}&quot;)
+<pre class="example"> `js?(&quot;{a:1,b:3.}&quot;;&quot;{a:2,b:4.}&quot;)
 a b 
 - --
 1 3.
 2 4.
 </pre></div>
 
-<span id="write-json"></span><span id="write-json-_21d2-_0060json-x"></span><h3 class="section">11.5 write json &rArr; <em>`</em>json x</h3>
+<span id="write-json"></span><span id="write-json-_21d2-_0060js-x"></span><h3 class="section">11.5 write json &rArr; <em>`</em>js x</h3>
 <p>Convert x to json format.  Works on lists and tables.
 </p>
 <div class="example">
-<pre class="example"> `json [[]a:1 2;b:3. 4.]
+<pre class="example"> `js [[]a:1 2;b:3. 4.]
 {a:1,b:3.}
 {a:2,b:4.}
 </pre></div>
@@ -2918,7 +2918,7 @@ key2|value2
 </pre></div>
 
 <span id="w-line"></span><span id="write-line-_21d2-x-0_003ay"></span><h3 class="section">11.7 write line &rArr; x 0:y</h3>
-<p>Output to x the list of strings in y.  y must be a list of strings.  If y is a single stream then convert to list via <a href="#list">list</a>.
+<p>Output to x the list of strings in y.  y must be a list of strings.  If y is a single string then convert to list via <a href="#list">list</a>.
 </p>
 <div class="example">
 <pre class="example"> &quot;&quot;0:(&quot;blue&quot;;&quot;red&quot;)      / &quot;&quot; represents stdout
