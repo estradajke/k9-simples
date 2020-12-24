@@ -95,18 +95,16 @@ Next: <a href="Tables.html" accesskey="n" rel="next">Tables</a>, Previous: <a hr
 other languages to k9.
 </p>
 <div class="example">
-<pre class="example"> I/O         
+<pre class="example"> I/O(*enterprise)
  0:  <a href="#r-line">r</a>/<a href="#w-line">w</a> line
- 1:  <a href="#r-byte">r</a>/<a href="#w-byte">w</a> char
+ 1:  <a href="#r-byte">r</a>/<a href="#w-byte">w</a> byte
 *2:  <a href="#r-data">r</a>/<a href="#w-data">w</a> data
-*3:  kipc set
-*4:  http get
+*3: k-ipc set    
+*4: https get    
+*5: ffi/py/js/.. 
 
- Interface
-`csv?`csv t    / <a href="#read-csv">read</a>/<a href="#write-csv">write</a> csv
-`json?`json t  / <a href="#read-json">read</a>/<a href="#write-json">write</a> json
-*ffi: &quot;./a.so&quot;5:`f!&quot;ii&quot; /I f(I i){return 2+i;}       //cblas ..
-*c/k: &quot;./b.so&quot;5:`f!1    /K f(K x){return ki(2+xi);}  //feeds ..
+`js?`js d
+<a href="#read-csv">`csv?</a><a href="#write-csv">`csv</a> t
 </pre></div>
 
 <span id="Example-of-Data-I_002fO"></span><h3 class="section">11.1 Example of Data I/O</h3>
@@ -148,7 +146,7 @@ e f  g
 1 4. z
 </pre></div>
 
-<span id="read-csv"></span><span id="read-csv-_21d2-_0060csv_003fx"></span><h3 class="section">11.2 read csv &rArr; &lsquo;csv?x</h3>
+<span id="read-csv"></span><span id="read-csv-_21d2-_0060csv_003fx"></span><h3 class="section">11.2 read csv &rArr; <em>`</em>csv?x</h3>
 <p>Convert x from csv format.  Works on lists and tables.
 </p>
 <div class="example">
@@ -159,7 +157,7 @@ a b
 2 4.
 </pre></div>
 
-<span id="write-csv"></span><span id="write-csv-_21d2-_0060csv-x"></span><h3 class="section">11.3 write csv &rArr; &lsquo;csv x</h3>
+<span id="write-csv"></span><span id="write-csv-_21d2-_0060csv-x"></span><h3 class="section">11.3 write csv &rArr; <em>`</em>csv x</h3>
 <p>Convert x to csv format.  Works on lists and tables.
 </p>
 <div class="example">
@@ -169,7 +167,7 @@ a,b
 2,4.
 </pre></div>
 
-<span id="read-json"></span><span id="read-json-_21d2-_0060json_003fx"></span><h3 class="section">11.4 read json &rArr; &lsquo;json?x</h3>
+<span id="read-json"></span><span id="read-json-_21d2-_0060js_003fx"></span><h3 class="section">11.4 read json &rArr; <em>`</em>js?x</h3>
 <p>Convert x from json format.  Works on lists and tables.
 </p>
 <div class="example">
@@ -180,7 +178,7 @@ a b
 2 4.
 </pre></div>
 
-<span id="write-json"></span><span id="write-json-_21d2-_0060json-x"></span><h3 class="section">11.5 write json &rArr; &lsquo;json x</h3>
+<span id="write-json"></span><span id="write-json-_21d2-_0060json-x"></span><h3 class="section">11.5 write json &rArr; <em>`</em>json x</h3>
 <p>Convert x to json format.  Works on lists and tables.
 </p>
 <div class="example">
@@ -189,7 +187,7 @@ a b
 {a:2,b:4.}
 </pre></div>
 
-<span id="read-nv"></span><span id="read-name-value-_21d2-_0060nv_003fx"></span><h3 class="section">11.6 read name value &rArr; &lsquo;nv?x</h3>
+<span id="read-nv"></span><span id="read-name-value-_21d2-_0060nv_003fx"></span><h3 class="section">11.6 read name value &rArr; <em>`</em>nv?x</h3>
 <p>Convert x, a list of name:value pairs, to a dictionary.
 </p>
 <div class="example">

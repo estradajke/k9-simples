@@ -161,8 +161,8 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 5604390
 </pre></div>
 
-<span id="t-1"></span><h4 class="subsection">19.1.4 t</h4>
-<p>t is an xtable of trades.  The fields are time (t), exchange (e), price (p), and size (z).  The number of trades is set by n.
+<span id="t"></span><h4 class="subsection">19.1.4 t</h4>
+<p>t is an Ntable of trades.  The fields are time (t), exchange (e), price (p), and size (z).  The number of trades is set by n.
 </p>
 <p>Pulling one random table from t and showing 10 random rows.  
 </p>
@@ -183,7 +183,7 @@ t        e p  z
 </pre></div>
 
 <span id="q"></span><h4 class="subsection">19.1.5 q</h4>
-<p>q is a xtable of quotes.  The fields are time (t), exchange (e), and bid (b).  The number of quotes is set to 6*n.
+<p>q is a Ntable of quotes.  The fields are time (t), exchange (e), and bid (b).  The number of quotes is set to 6*n.
 </p>
 <div class="example">
 <pre class="example">&nbsp;10?*q@1?S
@@ -210,7 +210,7 @@ t        e b
 </pre></div>
 
 <span id="Max-price-by-exchange"></span><h4 class="subsection">19.1.7 Max price by exchange</h4>
-<p>The query takes 100 tables from the trade xtable and computes the max price by exchange.
+<p>The query takes 100 tables from the trade Ntable and computes the max price by exchange.
 </p>
 <div class="example">
 <pre class="example">&nbsp;*{select max p by e from x}'t A
@@ -225,7 +225,7 @@ D|99
 </pre></div>
 
 <span id="Compute-sum-of-trade-size-by-hour_002e"></span><h4 class="subsection">19.1.8 Compute sum of trade size by hour.</h4>
-<p>This query takes 100 tables from the trade xtable and computes the sum of trade size done by hour.
+<p>This query takes 100 tables from the trade Ntable and computes the sum of trade size done by hour.
 </p>
 <div class="example">
 <pre class="example">&nbsp;*{select sum z by `o t from x}'t A
@@ -243,7 +243,7 @@ t |z
 </pre></div>
 
 <span id="Compute-last-bid-by-symbol"></span><h4 class="subsection">19.1.9 Compute last bid by symbol</h4>
-<p>This query takes the 100 tables from the quote xtable and returns the last bid.
+<p>This query takes the 100 tables from the quote Ntable and returns the last bid.
 </p>
 <div class="example">
 <pre class="example">&nbsp;3?{select last b from x}'q A
@@ -258,7 +258,7 @@ b
 </pre></div>
 
 <span id="Find-trades-below-the-bid"></span><h4 class="subsection">19.1.10 Find trades below the bid</h4>
-<p>This query operates on one symbol from the q and t xtables, i.e. a single quote and trade table.  The quote table is joined to the trade table giving the current bid on each trade.
+<p>This query operates on one symbol from the q and t Ntables, i.e. a single quote and trade table.  The quote table is joined to the trade table giving the current bid on each trade.
 </p>
 <div class="example">
 <pre class="example">&nbsp;4?select from t[a],`t^q a where p&lt;b

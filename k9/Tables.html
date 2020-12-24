@@ -89,15 +89,15 @@ Next: <a href="kSQL.html" accesskey="n" rel="next">kSQL</a>, Previous: <a href="
 </div>
 <hr>
 <span id="Tables-1"></span><h2 class="chapter">12 Tables</h2>
-<p>k9 has the ability to store data in a tabular format containing named columns and rows of information as tables.  If the data to be stored and queried is large, then you should use tables.  This chapter introduces the different types of data tables available in k9.  Table, utable and xtable are very similar and as you&rsquo;ll see in the <a href="kSQL.html">kSQL</a> chapter are easy to query.  In the <a href="Benchmark.html">Benchmark</a> chapter, you&rsquo;ll see that tables are fast to save, read, and query.
+<p>k9 has the ability to store data in a tabular format containing named columns and rows of information as tables.  If the data to be stored and queried is large, then you should use tables.  This chapter introduces the different types of data tables available in k9.  Table, Utable and Ntable are very similar and as you&rsquo;ll see in the <a href="kSQL.html">kSQL</a> chapter are easy to query.  In the <a href="Benchmark.html">Benchmark</a> chapter, you&rsquo;ll see that tables are fast to save, read, and query.
 </p>
 <div class="example">
-<pre class="example"><a href="#t">t</a>:[[]i:2 3;f:3 4.;s:`a`b]
-<a href="#utable">utable</a> [[b:..]a:..]      
-<a href="#xtable">xtable</a> `..![[]a:..]      
+<pre class="example"> <a href="#table">table</a> t:[[]i:2 3;f:2.3 4]
+<a href="#Utable">Utable</a> u:[[x:..]y:..]
+<a href="#Ntable">Ntable</a> n:`..![[]y:..]
 </pre></div>
 
-<span id="t"></span><span id="table"></span><h3 class="section">12.1 table</h3>
+<span id="table"></span><span id="table-1"></span><h3 class="section">12.1 table</h3>
 <p>The table is the most basic of the three types.  A table consists of columns and rows of information where each column has a name.  Tables can be created in three different ways (1) specification via table format, (2) flipping a dictionary, or (3) reading in from a file.
 </p>
 <span id="Table-format"></span><h4 class="subsection">12.1.1 Table format</h4>
@@ -154,24 +154,8 @@ a   col2
  3  0.1 
 </pre></div>
 
-<span id="xtable"></span><span id="xtable-1"></span><h3 class="section">12.2 xtable</h3>
-<p>A cross tab (xtable) is a collection of tables stored in a dictionary where the keys are symbols and the values are tables. Thus, it has both the data and schema of a set of tables, much like a data dictionary in a conventional relational database. Below is an example where the keys are symbols and the values are
-end-of-day prices.
-</p>
-<div class="example">
-<pre class="example">&nbsp;x1:+`d`p!(2020.09.08 2020.09.09 2020.09.10;140 139 150)
-&nbsp;x2:+`d`p!(2020.09.08 2020.09.10;202 208)
-&nbsp;eod:`AB`ZY!(x1;x2)  / This is an xtable. 
-&nbsp;eod`AB
-d          p  
----------- ---
-2020.09.08 140
-2020.09.09 139
-2020.09.10 150
-</pre></div>
-
-<span id="utable"></span><span id="utable-1"></span><h3 class="section">12.3 utable</h3>
-<p>utable (or key table) is a table where some of the columns are keyed. The combination of those columns  should not have two rows with the same values. This must be enforced by the application.
+<span id="Utable"></span><span id="Utable-1"></span><h3 class="section">12.2 Utable</h3>
+<p>Utable (or key table) is a table where some of the columns are keyed. The combination of those columns  should not have two rows with the same values. This must be enforced by the application.
 </p>
 <div class="example">
 <pre class="example"> [[d:2020.09.08 2020.09.09 2020.09.10]p:140 139 150]
@@ -187,6 +171,22 @@ d         |p
 2020.09.08|140
 2020.09.09|139
 2020.09.10|150
+</pre></div>
+
+<span id="Ntable"></span><span id="Ntable-1"></span><h3 class="section">12.3 Ntable</h3>
+<p>A Ntable is a collection of tables stored in a dictionary where the keys are symbols and the values are tables. Thus, it has both the data and schema of a set of tables, much like a data dictionary in a conventional relational database. Below is an example where the keys are symbols and the values are
+end-of-day prices.
+</p>
+<div class="example">
+<pre class="example">&nbsp;x1:+`d`p!(2020.09.08 2020.09.09 2020.09.10;140 139 150)
+&nbsp;x2:+`d`p!(2020.09.08 2020.09.10;202 208)
+&nbsp;eod:`AB`ZY!(x1;x2)  / This is an Ntable. 
+&nbsp;eod`AB
+d          p  
+---------- ---
+2020.09.08 140
+2020.09.09 139
+2020.09.10 150
 </pre></div>
 
 <hr>

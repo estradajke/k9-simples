@@ -115,17 +115,17 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; <
 <tt>~&nbsp;&nbsp;&nbsp;<a href="#not">not</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#match">match</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*2:&nbsp;r/w&nbsp;data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Dictionary">Dict</a>&nbsp;[a:2;b:`c]&nbsp;&nbsp;&nbsp;\fl&nbsp;x</tt><br>
 <tt>!&nbsp;&nbsp;&nbsp;<a href="#key">key</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#key">key</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*3:&nbsp;k-ipc&nbsp;set&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#User-Functions">Func</a>&nbsp;{[a;b]a+b}&nbsp;&nbsp;&nbsp;\fc&nbsp;x</tt><br>
 <tt>,&nbsp;&nbsp;&nbsp;<a href="#list">list</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#cat">cat</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*4:&nbsp;https&nbsp;get&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Expression">Expr</a>&nbsp;:a+b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\cd&nbsp;[d]</tt><br>
-<tt>^&nbsp;&nbsp;&nbsp;<a href="#sort">sort</a>&nbsp;&nbsp;&nbsp;[nf]<a href="#cut">cut</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*5:&nbsp;ffi/py/js/..&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;table&nbsp;t:[[]i:2&nbsp;3;f:2.3&nbsp;4]</tt><br>
-<tt>#&nbsp;&nbsp;&nbsp;<a href="#count">count</a>&nbsp;&nbsp;[nf]<a href="#take">take</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Utable&nbsp;u:[[x:..]y:..]</tt><br>
-<tt>_&nbsp;&nbsp;&nbsp;<a href="#floor">floor</a>&nbsp;&nbsp;[nf]<a href="#drop">drop</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ntable&nbsp;n:`..![[]y:..]</tt><br>
+<tt>^&nbsp;&nbsp;&nbsp;<a href="#sort">sort</a>&nbsp;&nbsp;&nbsp;[nf]<a href="#cut">cut</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*5:&nbsp;ffi/py/js/..&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Tables">table</a>&nbsp;t:[[]i:2&nbsp;3;f:2.3&nbsp;4]</tt><br>
+<tt>#&nbsp;&nbsp;&nbsp;<a href="#count">count</a>&nbsp;&nbsp;[nf]<a href="#take">take</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Utable">Utable</a>&nbsp;u:[[x:..]y:..]</tt><br>
+<tt>_&nbsp;&nbsp;&nbsp;<a href="#floor">floor</a>&nbsp;&nbsp;[nf]<a href="#drop">drop</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Ntable">Ntable</a>&nbsp;n:`..![[]y:..]</tt><br>
 <tt>$&nbsp;&nbsp;&nbsp;<a href="#string">string</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#parse">parse</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
 <tt>?&nbsp;&nbsp;&nbsp;<a href="#unique">unique</a>&nbsp;[sf]<a href="#find">find</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$[b;t;f]&nbsp;cond&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
 <tt>@&nbsp;&nbsp;&nbsp;<a href="#type">type</a>&nbsp;&nbsp;&nbsp;[sf]<a href="#at">at</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@[r;i;f[;y]]&nbsp;<a href="#amend">amend</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`js?`js&nbsp;d</tt><br>
-<tt>.&nbsp;&nbsp;&nbsp;<a href="#value">value</a>&nbsp;&nbsp;&nbsp;[f]<a href="#apply">apply</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.[r;i;f[;y]]&nbsp;<a href="#dmend">dmend</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`csv?`csv&nbsp;t</tt><br>
+<tt>.&nbsp;&nbsp;&nbsp;<a href="#value">value</a>&nbsp;&nbsp;&nbsp;[f]<a href="#apply">apply</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.[r;i;f[;y]]&nbsp;<a href="#dmend">dmend</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#read-csv">`csv?</a><a href="#write-csv">`csv&nbsp;</a>t</tt><br>
 <tt></tt><br>
-<tt><a href="#exp">exp</a>&nbsp;<a href="#log">log</a>&nbsp;<a href="#sin">sin</a>&nbsp;<a href="#cos">cos</a>&nbsp;<a href="#sqr">sqr</a>&nbsp;<a href="#sqr">sqr</a>t&nbsp;<a href="#prm">prm</a>&nbsp;<a href="#freq">freq</a>&nbsp;<a href="#sums">sums</a>&nbsp;<a href="#deltas">deltas</a></tt><br>
-<tt>rand&nbsp;has&nbsp;<a href="#bin">bin</a>&nbsp;<a href="#in">in</a>&nbsp; <a href="#within">within</a>&nbsp;<a href="#div">div</a>&nbsp;<a href="#mod">mod</a>&nbsp;<a href="#bar">bar</a>&nbsp;rand&nbsp;<a href="#cmb">cmb</a>&nbsp;<a href="#msum">msum</a>&nbsp;<a href="#mavg">mavg</a></tt><br>
-<tt><a href="#count">count</a>&nbsp;first&nbsp;last&nbsp;sum&nbsp;min&nbsp;max&nbsp;*[avg&nbsp;var&nbsp;dev&nbsp;med&nbsp;..];&nbsp;<a href="#key">key</a>&nbsp;<a href="#meta">meta</a></tt><br>
+<tt><a href="#exp">exp</a>&nbsp;<a href="#log">log</a>&nbsp;<a href="#sin">sin</a>&nbsp;<a href="#cos">cos</a>&nbsp;<a href="#sqr">sqr</a>&nbsp;<a href="#sqrt">sqrt</a>&nbsp;<a href="#prm">prm</a>&nbsp;<a href="#freq">freq</a>&nbsp;<a href="#sums">sums</a>&nbsp;<a href="#deltas">deltas</a></tt><br>
+<tt><a href="#rand">rand</a>&nbsp;<a href="#has">has</a>&nbsp;<a href="#bin">bin</a>&nbsp;<a href="#in">in</a>&nbsp; <a href="#within">within</a>&nbsp;<a href="#div">div</a>&nbsp;<a href="#mod">mod</a>&nbsp;<a href="#bar">bar</a>&nbsp;<a href="#rand">rand</a>&nbsp;<a href="#cmb">cmb</a>&nbsp;<a href="#msum">msum</a>&nbsp;<a href="#mavg">mavg</a></tt><br>
+<tt><a href="#count">count</a>&nbsp;<a href="#first">first</a>&nbsp;<a href="#Hlast">last</a>&nbsp;<a href="#Hsum">sum</a>&nbsp;<a href="#Hmin">min</a>&nbsp;<a href="#Hmax">max</a>&nbsp;*[avg&nbsp;var&nbsp;dev&nbsp;med&nbsp;..];&nbsp;<a href="#key">key</a>&nbsp;<a href="#meta">meta</a></tt><br>
 <tt><a href="#select">select</a>[C]<a href="#A">A</a>&nbsp;from&nbsp;T&nbsp;where&nbsp;B;&nbsp;<a href="#update">update</a>&nbsp;C&nbsp;from&nbsp;T&nbsp;where&nbsp;B;&nbsp;<a href="#delete">delete</a>&nbsp;from&nbsp;T&nbsp;where&nbsp;B</tt><br>
 <tt></tt><br>
 <tt>\\&nbsp;exit&nbsp;&nbsp;/comment&nbsp;\trace</tt><br>
@@ -2293,7 +2293,7 @@ count first last sum min max *[avg var dev med ..]; key meta
 
 <div class="format">
 <div class="example">
-<pre class="example"><a href="#exp">exp</a> <a href="#log">log</a> <a href="#sin">sin</a> <a href="#cos">cos</a> <a href="#sqr">sqr</a> <a href="#sqrt">sqrt</a> <a href="#prm">prm</a> <a href="#freq">freq</a> <a href="#div">div</a><a href="#sums">sums</a> <a href="#deltas">deltas</a>
+<pre class="example"><a href="#exp">exp</a> <a href="#log">log</a> <a href="#sin">sin</a> <a href="#cos">cos</a> <a href="#sqr">sqr</a> <a href="#sqrt">sqrt</a> <a href="#prm">prm</a> <a href="#freq">freq</a> <a href="#sums">sums</a> <a href="#deltas">deltas</a>
 <a href="#rand">rand</a> <a href="#has">has</a> <a href="#bin">bin</a> <a href="#in">in</a> <a href="#within">within</a> <a href="#div">div</a> <a href="#mod">mod</a> <a href="#bar">bar</a> <a href="#cmb">cmb</a> <a href="#msum">msum</a> <a href="#mavg">mavg</a>
 <a href="#Hcount">count</a> <a href="#Hfirst">first</a> <a href="#Hlast">last</a> <a href="#Hsum">sum</a> <a href="#Hmin">min</a> <a href="#Hmax">max</a>
 </pre></div>
@@ -2816,18 +2816,16 @@ Next: <a href="#Tables" accesskey="n" rel="next">Tables</a>, Previous: <a href="
 other languages to k9.
 </p>
 <div class="example">
-<pre class="example"> I/O         
+<pre class="example"> I/O(*enterprise)
  0:  <a href="#r-line">r</a>/<a href="#w-line">w</a> line
- 1:  <a href="#r-byte">r</a>/<a href="#w-byte">w</a> char
+ 1:  <a href="#r-byte">r</a>/<a href="#w-byte">w</a> byte
 *2:  <a href="#r-data">r</a>/<a href="#w-data">w</a> data
-*3:  kipc set
-*4:  http get
+*3: k-ipc set    
+*4: https get    
+*5: ffi/py/js/.. 
 
- Interface
-`csv?`csv t    / <a href="#read-csv">read</a>/<a href="#write-csv">write</a> csv
-`json?`json t  / <a href="#read-json">read</a>/<a href="#write-json">write</a> json
-*ffi: &quot;./a.so&quot;5:`f!&quot;ii&quot; /I f(I i){return 2+i;}       //cblas ..
-*c/k: &quot;./b.so&quot;5:`f!1    /K f(K x){return ki(2+xi);}  //feeds ..
+`js?`js d
+<a href="#read-csv">`csv?</a><a href="#write-csv">`csv</a> t
 </pre></div>
 
 <span id="Example-of-Data-I_002fO"></span><h3 class="section">11.1 Example of Data I/O</h3>
@@ -2869,7 +2867,7 @@ e f  g
 1 4. z
 </pre></div>
 
-<span id="read-csv"></span><span id="read-csv-_21d2-_0060csv_003fx"></span><h3 class="section">11.2 read csv &rArr; &lsquo;csv?x</h3>
+<span id="read-csv"></span><span id="read-csv-_21d2-_0060csv_003fx"></span><h3 class="section">11.2 read csv &rArr; <em>`</em>csv?x</h3>
 <p>Convert x from csv format.  Works on lists and tables.
 </p>
 <div class="example">
@@ -2880,7 +2878,7 @@ a b
 2 4.
 </pre></div>
 
-<span id="write-csv"></span><span id="write-csv-_21d2-_0060csv-x"></span><h3 class="section">11.3 write csv &rArr; &lsquo;csv x</h3>
+<span id="write-csv"></span><span id="write-csv-_21d2-_0060csv-x"></span><h3 class="section">11.3 write csv &rArr; <em>`</em>csv x</h3>
 <p>Convert x to csv format.  Works on lists and tables.
 </p>
 <div class="example">
@@ -2890,7 +2888,7 @@ a,b
 2,4.
 </pre></div>
 
-<span id="read-json"></span><span id="read-json-_21d2-_0060json_003fx"></span><h3 class="section">11.4 read json &rArr; &lsquo;json?x</h3>
+<span id="read-json"></span><span id="read-json-_21d2-_0060js_003fx"></span><h3 class="section">11.4 read json &rArr; <em>`</em>js?x</h3>
 <p>Convert x from json format.  Works on lists and tables.
 </p>
 <div class="example">
@@ -2901,7 +2899,7 @@ a b
 2 4.
 </pre></div>
 
-<span id="write-json"></span><span id="write-json-_21d2-_0060json-x"></span><h3 class="section">11.5 write json &rArr; &lsquo;json x</h3>
+<span id="write-json"></span><span id="write-json-_21d2-_0060json-x"></span><h3 class="section">11.5 write json &rArr; <em>`</em>json x</h3>
 <p>Convert x to json format.  Works on lists and tables.
 </p>
 <div class="example">
@@ -2910,7 +2908,7 @@ a b
 {a:2,b:4.}
 </pre></div>
 
-<span id="read-nv"></span><span id="read-name-value-_21d2-_0060nv_003fx"></span><h3 class="section">11.6 read name value &rArr; &lsquo;nv?x</h3>
+<span id="read-nv"></span><span id="read-name-value-_21d2-_0060nv_003fx"></span><h3 class="section">11.6 read name value &rArr; <em>`</em>nv?x</h3>
 <p>Convert x, a list of name:value pairs, to a dictionary.
 </p>
 <div class="example">
@@ -3046,15 +3044,15 @@ int indx(int x[],int y){return x[y];}
 Next: <a href="#kSQL" accesskey="n" rel="next">kSQL</a>, Previous: <a href="#I_002fO" accesskey="p" rel="prev">I/O</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <span id="Tables-1"></span><h2 class="chapter">12 Tables</h2>
-<p>k9 has the ability to store data in a tabular format containing named columns and rows of information as tables.  If the data to be stored and queried is large, then you should use tables.  This chapter introduces the different types of data tables available in k9.  Table, utable and xtable are very similar and as you&rsquo;ll see in the <a href="#kSQL">kSQL</a> chapter are easy to query.  In the <a href="#Benchmark">Benchmark</a> chapter, you&rsquo;ll see that tables are fast to save, read, and query.
+<p>k9 has the ability to store data in a tabular format containing named columns and rows of information as tables.  If the data to be stored and queried is large, then you should use tables.  This chapter introduces the different types of data tables available in k9.  Table, Utable and Ntable are very similar and as you&rsquo;ll see in the <a href="#kSQL">kSQL</a> chapter are easy to query.  In the <a href="#Benchmark">Benchmark</a> chapter, you&rsquo;ll see that tables are fast to save, read, and query.
 </p>
 <div class="example">
-<pre class="example"><a href="#t">t</a>:[[]i:2 3;f:3 4.;s:`a`b]
-<a href="#utable">utable</a> [[b:..]a:..]      
-<a href="#xtable">xtable</a> `..![[]a:..]      
+<pre class="example"> <a href="#table">table</a> t:[[]i:2 3;f:2.3 4]
+<a href="#Utable">Utable</a> u:[[x:..]y:..]
+<a href="#Ntable">Ntable</a> n:`..![[]y:..]
 </pre></div>
 
-<span id="t"></span><span id="table"></span><h3 class="section">12.1 table</h3>
+<span id="table"></span><span id="table-1"></span><h3 class="section">12.1 table</h3>
 <p>The table is the most basic of the three types.  A table consists of columns and rows of information where each column has a name.  Tables can be created in three different ways (1) specification via table format, (2) flipping a dictionary, or (3) reading in from a file.
 </p>
 <span id="Table-format"></span><h4 class="subsection">12.1.1 Table format</h4>
@@ -3111,24 +3109,8 @@ a   col2
  3  0.1 
 </pre></div>
 
-<span id="xtable"></span><span id="xtable-1"></span><h3 class="section">12.2 xtable</h3>
-<p>A cross tab (xtable) is a collection of tables stored in a dictionary where the keys are symbols and the values are tables. Thus, it has both the data and schema of a set of tables, much like a data dictionary in a conventional relational database. Below is an example where the keys are symbols and the values are
-end-of-day prices.
-</p>
-<div class="example">
-<pre class="example">&nbsp;x1:+`d`p!(2020.09.08 2020.09.09 2020.09.10;140 139 150)
-&nbsp;x2:+`d`p!(2020.09.08 2020.09.10;202 208)
-&nbsp;eod:`AB`ZY!(x1;x2)  / This is an xtable. 
-&nbsp;eod`AB
-d          p  
----------- ---
-2020.09.08 140
-2020.09.09 139
-2020.09.10 150
-</pre></div>
-
-<span id="utable"></span><span id="utable-1"></span><h3 class="section">12.3 utable</h3>
-<p>utable (or key table) is a table where some of the columns are keyed. The combination of those columns  should not have two rows with the same values. This must be enforced by the application.
+<span id="Utable"></span><span id="Utable-1"></span><h3 class="section">12.2 Utable</h3>
+<p>Utable (or key table) is a table where some of the columns are keyed. The combination of those columns  should not have two rows with the same values. This must be enforced by the application.
 </p>
 <div class="example">
 <pre class="example"> [[d:2020.09.08 2020.09.09 2020.09.10]p:140 139 150]
@@ -3144,6 +3126,22 @@ d         |p
 2020.09.08|140
 2020.09.09|139
 2020.09.10|150
+</pre></div>
+
+<span id="Ntable"></span><span id="Ntable-1"></span><h3 class="section">12.3 Ntable</h3>
+<p>A Ntable is a collection of tables stored in a dictionary where the keys are symbols and the values are tables. Thus, it has both the data and schema of a set of tables, much like a data dictionary in a conventional relational database. Below is an example where the keys are symbols and the values are
+end-of-day prices.
+</p>
+<div class="example">
+<pre class="example">&nbsp;x1:+`d`p!(2020.09.08 2020.09.09 2020.09.10;140 139 150)
+&nbsp;x2:+`d`p!(2020.09.08 2020.09.10;202 208)
+&nbsp;eod:`AB`ZY!(x1;x2)  / This is an Ntable. 
+&nbsp;eod`AB
+d          p  
+---------- ---
+2020.09.08 140
+2020.09.09 139
+2020.09.10 150
 </pre></div>
 
 <hr>
@@ -3248,7 +3246,7 @@ x z
 </pre></div>
 
 <span id="by-B"></span><span id="by-B-1"></span><h4 class="subsection">13.1.3 by B</h4>
-<p>kSQL also has a way to group rows using <code>by</code>.  The result is a utable where the key is determined by the grouping clause <code>by</code>.
+<p>kSQL also has a way to group rows using <code>by</code>.  The result is a Utable where the key is determined by the grouping clause <code>by</code>.
 </p>
 <div class="example">
 <pre class="example">n:5;t:[[]x:!n;y:sin !n]
@@ -3344,7 +3342,7 @@ c 1
 </pre></div>
 
 <span id="Joins"></span><h3 class="section">13.2 Joins</h3>
-<p>k9 has a number of methods to join tables together which are described below.  In this section t, t1 and t2 represent tables and k, k1 and k2 represent utables.
+<p>k9 has a number of methods to join tables together which are described below.  In this section t, t1 and t2 represent tables and k, k1 and k2 represent Utables.
 </p>
 <table>
 <tr><td><b>join</b></td><td><b>syntax</b></td></tr>
@@ -3383,7 +3381,7 @@ c 12 22
 </pre></div>
 
 <span id="leftjoin"></span><span id="leftjoin-_21d2-t_002ck"></span><h4 class="subsection">13.2.2 leftjoin &rArr; t,k</h4>
-<p>leftjoin table t with utable k.  Result includes all rows from t and the values from table k having the same key values.
+<p>leftjoin table t with Utable k.  Result includes all rows from t and the values from table k having the same key values.
 If a row of t has key values not found in k, then the t values are shown and 0 for the columns coming from k.
 </p>
 <div class="example">
@@ -3416,7 +3414,7 @@ c 3   9  0
 </pre></div>
 
 <span id="outer"></span><span id="outer-join-_21d2-k1_002ck2"></span><h4 class="subsection">13.2.3 outer join &rArr; k1,k2</h4>
-<p>Outer join utable k1 with key utable k2. 
+<p>Outer join Utable k1 with key Utable k2. 
 </p>
 <div class="example">
 <pre class="example">&nbsp;k1:[[s:`a`b]p:1 2;q:3 4]
@@ -3442,7 +3440,7 @@ c|8 6
 </pre></div>
 
 <span id="asof"></span><span id="asof-join-_21d2-t_002ck"></span><h4 class="subsection">13.2.4 asof join &rArr; t,k</h4>
-<p>Asof joins each row rt of table t to a row rk in utable k (keyed by time) provided rk has the maximum time value of any row in k while obeying the constraint that the time value in rt &gt;= the time value of rk. Intuitively, rk should be the row in k that is most up-to-date with respect to rt. 
+<p>Asof joins each row rt of table t to a row rk in Utable k (keyed by time) provided rk has the maximum time value of any row in k while obeying the constraint that the time value in rt &gt;= the time value of rk. Intuitively, rk should be the row in k that is most up-to-date with respect to rt. 
 </p>
 <div class="example">
 <pre class="example"> t:[[]t:09:30+5*!5;p:100+!5];t
@@ -3502,7 +3500,7 @@ t           |p
 </pre></div>
 
 <span id="asof_002b"></span><span id="asof_002b-join-_21d2-k1_002bk2"></span><h4 class="subsection">13.2.5 asof+ join &rArr; k1+k2</h4>
-<p>Asof+ joins  allows one to aggregate over markets to find the total available at a given time.  The utables need to be specified with <code>`a</code>. The effect is to merge the two key fields (the field t in this case) and for each row rk1 from table k1, add the non-key field (bs in this case) from rk1 to the bs field of the most recent row in k2 whose t value is less than or equal to the t value in rk1. And symmetrically for each row of table k2.
+<p>Asof+ joins  allows one to aggregate over markets to find the total available at a given time.  The Utables need to be specified with <code>`a</code>. The effect is to merge the two key fields (the field t in this case) and for each row rk1 from table k1, add the non-key field (bs in this case) from rk1 to the bs field of the most recent row in k2 whose t value is less than or equal to the t value in rk1. And symmetrically for each row of table k2.
 </p>
 <div class="example">
 <pre class="example"> k1:`a [[t:09:30+5*!5]bs:100*1 2 3 2 1];k1
@@ -3564,7 +3562,7 @@ c  12
 </pre></div>
 
 <span id="upsert"></span><span id="upsert-_21d2-k_002cd"></span><h4 class="subsection">13.3.2 upsert &rArr; k,d</h4>
-<p>Insert dictionary d into utable k.
+<p>Insert dictionary d into Utable k.
 </p><div class="example">
 <pre class="example"> k:[[c1:`a`b`c]c2:1 2 7];k
 c1|c2
@@ -4198,8 +4196,8 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 5604390
 </pre></div>
 
-<span id="t-1"></span><h4 class="subsection">19.1.4 t</h4>
-<p>t is an xtable of trades.  The fields are time (t), exchange (e), price (p), and size (z).  The number of trades is set by n.
+<span id="t"></span><h4 class="subsection">19.1.4 t</h4>
+<p>t is an Ntable of trades.  The fields are time (t), exchange (e), price (p), and size (z).  The number of trades is set by n.
 </p>
 <p>Pulling one random table from t and showing 10 random rows.  
 </p>
@@ -4220,7 +4218,7 @@ t        e p  z
 </pre></div>
 
 <span id="q"></span><h4 class="subsection">19.1.5 q</h4>
-<p>q is a xtable of quotes.  The fields are time (t), exchange (e), and bid (b).  The number of quotes is set to 6*n.
+<p>q is a Ntable of quotes.  The fields are time (t), exchange (e), and bid (b).  The number of quotes is set to 6*n.
 </p>
 <div class="example">
 <pre class="example">&nbsp;10?*q@1?S
@@ -4247,7 +4245,7 @@ t        e b
 </pre></div>
 
 <span id="Max-price-by-exchange"></span><h4 class="subsection">19.1.7 Max price by exchange</h4>
-<p>The query takes 100 tables from the trade xtable and computes the max price by exchange.
+<p>The query takes 100 tables from the trade Ntable and computes the max price by exchange.
 </p>
 <div class="example">
 <pre class="example">&nbsp;*{select max p by e from x}'t A
@@ -4262,7 +4260,7 @@ D|99
 </pre></div>
 
 <span id="Compute-sum-of-trade-size-by-hour_002e"></span><h4 class="subsection">19.1.8 Compute sum of trade size by hour.</h4>
-<p>This query takes 100 tables from the trade xtable and computes the sum of trade size done by hour.
+<p>This query takes 100 tables from the trade Ntable and computes the sum of trade size done by hour.
 </p>
 <div class="example">
 <pre class="example">&nbsp;*{select sum z by `o t from x}'t A
@@ -4280,7 +4278,7 @@ t |z
 </pre></div>
 
 <span id="Compute-last-bid-by-symbol"></span><h4 class="subsection">19.1.9 Compute last bid by symbol</h4>
-<p>This query takes the 100 tables from the quote xtable and returns the last bid.
+<p>This query takes the 100 tables from the quote Ntable and returns the last bid.
 </p>
 <div class="example">
 <pre class="example">&nbsp;3?{select last b from x}'q A
@@ -4295,7 +4293,7 @@ b
 </pre></div>
 
 <span id="Find-trades-below-the-bid"></span><h4 class="subsection">19.1.10 Find trades below the bid</h4>
-<p>This query operates on one symbol from the q and t xtables, i.e. a single quote and trade table.  The quote table is joined to the trade table giving the current bid on each trade.
+<p>This query operates on one symbol from the q and t Ntables, i.e. a single quote and trade table.  The quote table is joined to the trade table giving the current bid on each trade.
 </p>
 <div class="example">
 <pre class="example">&nbsp;4?select from t[a],`t^q a where p&lt;b

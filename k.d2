@@ -12,17 +12,17 @@
 @t{~@ @ @ @ref{not}@ @ @ @ @ @ @ @ @ref{match}@ @ @ @ @ *2:@ r/w@ data@ @ @ @ @ @ @ @ @ @ @ @ @ref{Dictionary,Dict}@ [a:2;b:`c]@ @ @ \fl@ x}@*
 @t{!@ @ @ @ref{key}@ @ @ @ @ @ @ @ @ref{key}@ @ @ @ @ @ @ *3:@ k-ipc@ set@ @ @ @ @ @ @ @ @ @ @ @ref{User Functions,Func}@ @{[a;b]a+b@}@ @ @ \fc@ x}@*
 @t{,@ @ @ @ref{list}@ @ @ @ @ @ @ @ref{cat}@ @ @ @ @ @ @ *4:@ https@ get@ @ @ @ @ @ @ @ @ @ @ @ref{Expression,Expr}@ :a+b@ @ @ @ @ @ @ @ @ \cd@ [d]}@*
-@t{^@ @ @ @ref{sort}@ @ @ [nf]@ref{cut}@ @ @ @ @ @ @ *5:@ ffi/py/js/..@ @ @ @ @ @ @ @ table@ t:[[]i:2@ 3;f:2.3@ 4]}@*
-@t{#@ @ @ @ref{count}@ @ [nf]@ref{take}@ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ Utable@ u:[[x:..]y:..]}@*
-@t{_@ @ @ @ref{floor}@ @ [nf]@ref{drop}@ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ Ntable@ n:`..![[]y:..]}@*
+@t{^@ @ @ @ref{sort}@ @ @ [nf]@ref{cut}@ @ @ @ @ @ @ *5:@ ffi/py/js/..@ @ @ @ @ @ @ @ @ref{Tables,table}@ t:[[]i:2@ 3;f:2.3@ 4]}@*
+@t{#@ @ @ @ref{count}@ @ [nf]@ref{take}@ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ref{Utable}@ u:[[x:..]y:..]}@*
+@t{_@ @ @ @ref{floor}@ @ [nf]@ref{drop}@ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ref{Ntable}@ n:`..![[]y:..]}@*
 @t{$@ @ @ @ref{string}@ @ @ @ @ @ref{parse}@ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ }@*
 @t{?@ @ @ @ref{unique}@ [sf]@ref{find}@ @ @ @ @ @ @ $[b;t;f]@ cond@ @ @ @ @ @ @ @ @ @ }@*
 @t{@@@ @ @ @ref{type}@ @ @ [sf]@ref{at}@ @ @ @ @ @ @ @ @ @@[r;i;f[;y]]@ @ref{amend}@ @ @ @ @ `js?`js@ d}@*
-@t{.@ @ @ @ref{value}@ @ @ [f]@ref{apply}@ @ @ @ @ @ .[r;i;f[;y]]@ @ref{dmend}@ @ @ @ @ `csv?`csv@ t}@*
+@t{.@ @ @ @ref{value}@ @ @ [f]@ref{apply}@ @ @ @ @ @ .[r;i;f[;y]]@ @ref{dmend}@ @ @ @ @ @ref{read csv,`csv?}@ref{write csv,`csv@ }t}@*
 @t{}@*
-@t{@ref{exp}@ @ref{log}@ @ref{sin}@ @ref{cos}@ @ref{sqr}@ @ref{sqr}t@ @ref{prm}@ @ref{freq}@ @ref{sums}@ @ref{deltas}}@*
-@t{rand@ has@ @ref{bin}@ @ref{in}@  @ref{within}@ @ref{div}@ @ref{mod}@ @ref{bar}@ rand@ @ref{cmb}@ @ref{msum}@ @ref{mavg}}@*
-@t{@ref{count}@ first@ last@ sum@ min@ max@ *[avg@ var@ dev@ med@ ..];@ @ref{key}@ @ref{meta}}@*
+@t{@ref{exp}@ @ref{log}@ @ref{sin}@ @ref{cos}@ @ref{sqr}@ @ref{sqrt}@ @ref{prm}@ @ref{freq}@ @ref{sums}@ @ref{deltas}}@*
+@t{@ref{rand}@ @ref{has}@ @ref{bin}@ @ref{in}@  @ref{within}@ @ref{div}@ @ref{mod}@ @ref{bar}@ @ref{rand}@ @ref{cmb}@ @ref{msum}@ @ref{mavg}}@*
+@t{@ref{count}@ @ref{first}@ @ref{Hlast,last}@ @ref{Hsum,sum}@ @ref{Hmin,min}@ @ref{Hmax,max}@ *[avg@ var@ dev@ med@ ..];@ @ref{key}@ @ref{meta}}@*
 @t{@ref{select}[C]@ref{A}@ from@ T@ where@ B;@ @ref{update}@ C@ from@ T@ where@ B;@ @ref{delete}@ from@ T@ where@ B}@*
 @t{}@*
 @t{\\@ exit@ @ /comment@ \trace}@*

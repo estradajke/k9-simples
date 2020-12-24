@@ -2278,7 +2278,7 @@ count first last sum min max *[avg var dev med ..]; key meta
 
 @smallformat
 @example
-@ref{exp} @ref{log} @ref{sin} @ref{cos} @ref{sqr} @ref{sqrt} @ref{prm} @ref{freq} @ref{div}@ref{sums} @ref{deltas}
+@ref{exp} @ref{log} @ref{sin} @ref{cos} @ref{sqr} @ref{sqrt} @ref{prm} @ref{freq} @ref{sums} @ref{deltas}
 @ref{rand} @ref{has} @ref{bin} @ref{in} @ref{within} @ref{div} @ref{mod} @ref{bar} @ref{cmb} @ref{msum} @ref{mavg}
 @ref{Hcount,count} @ref{Hfirst,first} @ref{Hlast,last} @ref{Hsum,sum} @ref{Hmin,min} @ref{Hmax,max}
 @end example
@@ -2805,18 +2805,16 @@ k9 is also able to interface with other languages so one doesn't need to transla
 other languages to k9.
 
 @example
- I/O         
+ I/O(*enterprise)
  0:  @ref{r line,r}/@ref{w line,w} line
- 1:  @ref{r byte,r}/@ref{w byte,w} char
+ 1:  @ref{r byte,r}/@ref{w byte,w} byte
 *2:  @ref{r data,r}/@ref{w data,w} data
-*3:  kipc set
-*4:  http get
+*3: k-ipc set    
+*4: https get    
+*5: ffi/py/js/.. 
 
- Interface
-`csv?`csv t    / @ref{read csv,read}/@ref{write csv,write} csv
-`json?`json t  / @ref{read json,read}/@ref{write json,write} json
-*ffi: "./a.so"5:`f!"ii" /I f(I i)@{return 2+i;@}       //cblas ..
-*c/k: "./b.so"5:`f!1    /K f(K x)@{return ki(2+xi);@}  //feeds ..
+`js?`js d
+@ref{read csv,`csv?}@ref{write csv,`csv} t
 @end example
 
 @section Example of Data I/O
@@ -2858,7 +2856,7 @@ e f  g
 1 4. z
 @end example
 
-@anchor{read csv}@section read csv @result{} `csv?x
+@anchor{read csv}@section read csv @result{} @math{`}csv?x
 Convert x from csv format.  Works on lists and tables.
 
 @example
@@ -2869,7 +2867,7 @@ a b
 2 4.
 @end example
 
-@anchor{write csv}@section write csv @result{} `csv x
+@anchor{write csv}@section write csv @result{} @math{`}csv x
 Convert x to csv format.  Works on lists and tables.
 
 @example
@@ -2879,7 +2877,7 @@ a,b
 2,4.
 @end example
 
-@anchor{read json}@section read json @result{} `json?x
+@anchor{read json}@section read json @result{} @math{`}js?x
 Convert x from json format.  Works on lists and tables.
 
 @example
@@ -2890,7 +2888,7 @@ a b
 2 4.
 @end example
 
-@anchor{write json}@section write json @result{} `json x
+@anchor{write json}@section write json @result{} @math{`}json x
 Convert x to json format.  Works on lists and tables.
 
 @example
@@ -2899,7 +2897,7 @@ Convert x to json format.  Works on lists and tables.
 @{a:2,b:4.@}
 @end example
 
-@anchor{read nv}@section read name value @result{} `nv?x
+@anchor{read nv}@section read name value @result{} @math{`}nv?x
 Convert x, a list of name:value pairs, to a dictionary.
 
 @example
@@ -3031,15 +3029,15 @@ Load the shared library into the session.
 
 @node Tables
 @chapter Tables
-k9 has the ability to store data in a tabular format containing named columns and rows of information as tables.  If the data to be stored and queried is large, then you should use tables.  This chapter introduces the different types of data tables available in k9.  Table, utable and xtable are very similar and as you'll see in the @ref{kSQL} chapter are easy to query.  In the @ref{Benchmark} chapter, you'll see that tables are fast to save, read, and query.
+k9 has the ability to store data in a tabular format containing named columns and rows of information as tables.  If the data to be stored and queried is large, then you should use tables.  This chapter introduces the different types of data tables available in k9.  Table, Utable and Ntable are very similar and as you'll see in the @ref{kSQL} chapter are easy to query.  In the @ref{Benchmark} chapter, you'll see that tables are fast to save, read, and query.
 
 @example
-@ref{t}:[[]i:2 3;f:3 4.;s:`a`b]
-@ref{utable} [[b:..]a:..]      
-@ref{xtable} `..![[]a:..]      
+ @ref{table} t:[[]i:2 3;f:2.3 4]
+@ref{Utable} u:[[x:..]y:..]
+@ref{Ntable} n:`..![[]y:..]
 @end example
 
-@anchor{t}@section table
+@anchor{table}@section table
 The table is the most basic of the three types.  A table consists of columns and rows of information where each column has a name.  Tables can be created in three different ways (1) specification via table format, (2) flipping a dictionary, or (3) reading in from a file.
 
 @subsection Table format
@@ -3098,24 +3096,8 @@ a   col2
  3  0.1 
 @end example
 
-@anchor{xtable}@section xtable
-A cross tab (xtable) is a collection of tables stored in a dictionary where the keys are symbols and the values are tables. Thus, it has both the data and schema of a set of tables, much like a data dictionary in a conventional relational database. Below is an example where the keys are symbols and the values are
-end-of-day prices.
-
-@example
-@ x1:+`d`p!(2020.09.08 2020.09.09 2020.09.10;140 139 150)
-@ x2:+`d`p!(2020.09.08 2020.09.10;202 208)
-@ eod:`AB`ZY!(x1;x2)  / This is an xtable. 
-@ eod`AB
-d          p  
----------- ---
-2020.09.08 140
-2020.09.09 139
-2020.09.10 150
-@end example
-
-@anchor{utable}@section utable
-utable (or key table) is a table where some of the columns are keyed. The combination of those columns  should not have two rows with the same values. This must be enforced by the application.
+@anchor{Utable}@section Utable
+Utable (or key table) is a table where some of the columns are keyed. The combination of those columns  should not have two rows with the same values. This must be enforced by the application.
 
 @example
  [[d:2020.09.08 2020.09.09 2020.09.10]p:140 139 150]
@@ -3131,6 +3113,22 @@ d         |p
 2020.09.08|140
 2020.09.09|139
 2020.09.10|150
+@end example
+
+@anchor{Ntable}@section Ntable
+A Ntable is a collection of tables stored in a dictionary where the keys are symbols and the values are tables. Thus, it has both the data and schema of a set of tables, much like a data dictionary in a conventional relational database. Below is an example where the keys are symbols and the values are
+end-of-day prices.
+
+@example
+@ x1:+`d`p!(2020.09.08 2020.09.09 2020.09.10;140 139 150)
+@ x2:+`d`p!(2020.09.08 2020.09.10;202 208)
+@ eod:`AB`ZY!(x1;x2)  / This is an Ntable. 
+@ eod`AB
+d          p  
+---------- ---
+2020.09.08 140
+2020.09.09 139
+2020.09.10 150
 @end example
 
 @node kSQL
@@ -3231,7 +3229,7 @@ x z
 @end example
 
 @anchor{by B}@subsection by B
-kSQL also has a way to group rows using @code{by}.  The result is a utable where the key is determined by the grouping clause @code{by}.
+kSQL also has a way to group rows using @code{by}.  The result is a Utable where the key is determined by the grouping clause @code{by}.
 
 @example
 n:5;t:[[]x:!n;y:sin !n]
@@ -3328,7 +3326,7 @@ c 1
 @end example 
 
 @section Joins
-k9 has a number of methods to join tables together which are described below.  In this section t, t1 and t2 represent tables and k, k1 and k2 represent utables.
+k9 has a number of methods to join tables together which are described below.  In this section t, t1 and t2 represent tables and k, k1 and k2 represent Utables.
 
 @multitable {leftjoin123 leftjoin} {leftjoin 123}
 @item @b{join} @tab @b{syntax}
@@ -3367,7 +3365,7 @@ c 12 22
 @end example
 
 @anchor{leftjoin}@subsection leftjoin @result{} t,k
-leftjoin table t with utable k.  Result includes all rows from t and the values from table k having the same key values.
+leftjoin table t with Utable k.  Result includes all rows from t and the values from table k having the same key values.
 If a row of t has key values not found in k, then the t values are shown and 0 for the columns coming from k.
 
 @example
@@ -3400,7 +3398,7 @@ c 3   9  0
 @end example
 
 @anchor{outer}@subsection outer join @result{} k1,k2
-Outer join utable k1 with key utable k2. 
+Outer join Utable k1 with key Utable k2. 
 
 @example
 @ k1:[[s:`a`b]p:1 2;q:3 4]
@@ -3426,7 +3424,7 @@ c|8 6
 @end example
 
 @anchor{asof}@subsection asof join @result{} t,k
-Asof joins each row rt of table t to a row rk in utable k (keyed by time) provided rk has the maximum time value of any row in k while obeying the constraint that the time value in rt >= the time value of rk. Intuitively, rk should be the row in k that is most up-to-date with respect to rt. 
+Asof joins each row rt of table t to a row rk in Utable k (keyed by time) provided rk has the maximum time value of any row in k while obeying the constraint that the time value in rt >= the time value of rk. Intuitively, rk should be the row in k that is most up-to-date with respect to rt. 
 
 @example
  t:[[]t:09:30+5*!5;p:100+!5];t
@@ -3486,7 +3484,7 @@ t           |p
 @end example
 
 @anchor{asof+}@subsection asof+ join @result{} k1+k2
-Asof+ joins  allows one to aggregate over markets to find the total available at a given time.  The utables need to be specified with @code{`a}. The effect is to merge the two key fields (the field t in this case) and for each row rk1 from table k1, add the non-key field (bs in this case) from rk1 to the bs field of the most recent row in k2 whose t value is less than or equal to the t value in rk1. And symmetrically for each row of table k2.
+Asof+ joins  allows one to aggregate over markets to find the total available at a given time.  The Utables need to be specified with @code{`a}. The effect is to merge the two key fields (the field t in this case) and for each row rk1 from table k1, add the non-key field (bs in this case) from rk1 to the bs field of the most recent row in k2 whose t value is less than or equal to the t value in rk1. And symmetrically for each row of table k2.
 
 @example
  k1:`a [[t:09:30+5*!5]bs:100*1 2 3 2 1];k1
@@ -3548,7 +3546,7 @@ c  12
 @end example
 
 @anchor{upsert}@subsection upsert @result{} k,d
-Insert dictionary d into utable k.
+Insert dictionary d into Utable k.
 @example
  k:[[c1:`a`b`c]c2:1 2 7];k
 c1|c2
@@ -4169,7 +4167,7 @@ m is the number of symbols.  n is the number of trades.  S is a list of symbol n
 @end example
 
 @subsection t
-t is an xtable of trades.  The fields are time (t), exchange (e), price (p), and size (z).  The number of trades is set by n.
+t is an Ntable of trades.  The fields are time (t), exchange (e), price (p), and size (z).  The number of trades is set by n.
 
 Pulling one random table from t and showing 10 random rows.  
 
@@ -4190,7 +4188,7 @@ t        e p  z
 @end example
 
 @subsection q
-q is a xtable of quotes.  The fields are time (t), exchange (e), and bid (b).  The number of quotes is set to 6*n.
+q is a Ntable of quotes.  The fields are time (t), exchange (e), and bid (b).  The number of quotes is set to 6*n.
 
 @example
 @ 10?*q@@1?S
@@ -4217,7 +4215,7 @@ a is the first symbol of S.  A consists of the first 100 symbols of S.
 @end example
 
 @subsection Max price by exchange
-The query takes 100 tables from the trade xtable and computes the max price by exchange.
+The query takes 100 tables from the trade Ntable and computes the max price by exchange.
 
 @example
 @ *@{select max p by e from x@}'t A
@@ -4232,7 +4230,7 @@ D|99
 @end example
 
 @subsection Compute sum of trade size by hour.
-This query takes 100 tables from the trade xtable and computes the sum of trade size done by hour.
+This query takes 100 tables from the trade Ntable and computes the sum of trade size done by hour.
 
 @example
 @ *@{select sum z by `o t from x@}'t A
@@ -4250,7 +4248,7 @@ t |z
 @end example
 
 @subsection Compute last bid by symbol
-This query takes the 100 tables from the quote xtable and returns the last bid.
+This query takes the 100 tables from the quote Ntable and returns the last bid.
 
 @example
 @ 3?@{select last b from x@}'q A
@@ -4265,7 +4263,7 @@ b
 @end example
 
 @subsection Find trades below the bid
-This query operates on one symbol from the q and t xtables, i.e. a single quote and trade table.  The quote table is joined to the trade table giving the current bid on each trade.
+This query operates on one symbol from the q and t Ntables, i.e. a single quote and trade table.  The quote table is joined to the trade table giving the current bid on each trade.
 
 @example
 @ 4?select from t[a],`t^q a where p<b

@@ -61,25 +61,27 @@ Dict: Dictionary. [a:2;b:`c]   \fl x
 Func: User Functions. {[a;b]a+b}   \fc x
 ,   *note list::       *note cat::       *4: https get           *note
 Expr: Expression. :a+b         \cd [d]
-^   *note sort::   [nf]*note
-cut::       *5: ffi/py/js/..        table t:[[]i:2 3;f:2.3 4]
-#   *note count::  [nf]*note
-take::                             Utable u:[[x:..]y:..]
-_   *note floor::  [nf]*note
-drop::                             Ntable n:`..![[]y:..]
+^   *note sort::   [nf]*note cut::       *5: ffi/py/js/..        *note
+table: Tables. t:[[]i:2 3;f:2.3 4]
+#   *note count::  [nf]*note take::                             *note
+Utable:: u:[[x:..]y:..]
+_   *note floor::  [nf]*note drop::                             *note
+Ntable:: n:`..![[]y:..]
 $   *note string::     *note parse::                
 ?   *note unique:: [sf]*note find::       $[b;t;f] cond          
 @   *note type::   [sf]*note at::         @[r;i;f[;y]] *note
 amend::     `js?`js d
 .   *note value::   [f]*note apply::      .[r;i;f[;y]] *note
-dmend::     `csv?`csv t
+dmend::     *note `csv?: read csv.*note `csv : write csv.t
 
 *note exp:: *note log:: *note sin:: *note cos:: *note sqr:: *note
-sqr::t *note prm:: *note freq:: *note sums:: *note deltas::
-rand has *note bin:: *note in::  *note within:: *note div:: *note
-mod:: *note bar:: rand *note cmb:: *note msum:: *note mavg::
-*note count:: first last sum min max *[avg var dev med ..]; *note
-key:: *note meta::
+sqrt:: *note prm:: *note freq:: *note sums:: *note deltas::
+*note rand:: *note has:: *note bin:: *note in::  *note within:: *note
+div:: *note mod:: *note bar:: *note rand:: *note cmb:: *note
+msum:: *note mavg::
+*note count:: *note first:: *note last: Hlast. *note sum: Hsum. *note
+min: Hmin. *note max: Hmax. *[avg var dev med ..]; *note key:: *note
+meta::
 *note select::[C]*note A:: from T where B; *note
 update:: C from T where B; *note delete:: from T where B
 
@@ -2394,7 +2396,7 @@ within) functions.
    rand has bin in within div mod bar rand cmb msum mavg count first
 last sum min max *[avg var dev med ..]; key meta
 
-     *note exp:: *note log:: *note sin:: *note cos:: *note sqr:: *note sqrt:: *note prm:: *note freq:: *note div::*note sums:: *note deltas::
+     *note exp:: *note log:: *note sin:: *note cos:: *note sqr:: *note sqrt:: *note prm:: *note freq:: *note sums:: *note deltas::
      *note rand:: *note has:: *note bin:: *note in:: *note within:: *note div:: *note mod:: *note bar:: *note cmb:: *note msum:: *note mavg::
      *note count: Hcount. *note first: Hfirst. *note last: Hlast. *note sum: Hsum. *note min: Hmin. *note max: Hmax.
 
@@ -2917,18 +2919,16 @@ instead.
 to translate everything you've already written in those other languages
 to k9.
 
-      I/O
+      I/O(*enterprise)
       0:  *note r: r line./*note w: w line. line
-      1:  *note r: r byte./*note w: w byte. char
+      1:  *note r: r byte./*note w: w byte. byte
      *2:  *note r: r data./*note w: w data. data
-     *3:  kipc set
-     *4:  http get
+     *3: k-ipc set
+     *4: https get
+     *5: ffi/py/js/..
 
-      Interface
-     `csv?`csv t    / *note read: read csv./*note write: write csv. csv
-     `json?`json t  / *note read: read json./*note write: write json. json
-     *ffi: "./a.so"5:`f!"ii" /I f(I i){return 2+i;}       //cblas ..
-     *c/k: "./b.so"5:`f!1    /K f(K x){return ki(2+xi);}  //feeds ..
+     `js?`js d
+     *note `csv?: read csv.*note `csv: write csv. t
 
 11.1 Example of Data I/O
 ========================
@@ -2973,7 +2973,7 @@ by one letter and the full list can be found in *note Atom Types::.
      2 2. y
      1 4. z
 
-11.2 read csv => 'csv?x
+11.2 read csv => `csv?x
 =======================
 
 Convert x from csv format.  Works on lists and tables.
@@ -2984,7 +2984,7 @@ Convert x from csv format.  Works on lists and tables.
      1 3.
      2 4.
 
-11.3 write csv => 'csv x
+11.3 write csv => `csv x
 ========================
 
 Convert x to csv format.  Works on lists and tables.
@@ -2994,8 +2994,8 @@ Convert x to csv format.  Works on lists and tables.
      1,3.
      2,4.
 
-11.4 read json => 'json?x
-=========================
+11.4 read json => `js?x
+=======================
 
 Convert x from json format.  Works on lists and tables.
 
@@ -3005,7 +3005,7 @@ Convert x from json format.  Works on lists and tables.
      1 3.
      2 4.
 
-11.5 write json => 'json x
+11.5 write json => `json x
 ==========================
 
 Convert x to json format.  Works on lists and tables.
@@ -3014,7 +3014,7 @@ Convert x to json format.  Works on lists and tables.
      {a:1,b:3.}
      {a:2,b:4.}
 
-11.6 read name value => 'nv?x
+11.6 read name value => `nv?x
 =============================
 
 Convert x, a list of name:value pairs, to a dictionary.
@@ -3154,14 +3154,14 @@ File: k9.info,  Node: Tables,  Next: kSQL,  Prev: I/O,  Up: Top
 k9 has the ability to store data in a tabular format containing named
 columns and rows of information as tables.  If the data to be stored and
 queried is large, then you should use tables.  This chapter introduces
-the different types of data tables available in k9.  Table, utable and
-xtable are very similar and as you'll see in the *note kSQL:: chapter
+the different types of data tables available in k9.  Table, Utable and
+Ntable are very similar and as you'll see in the *note kSQL:: chapter
 are easy to query.  In the *note Benchmark:: chapter, you'll see that
 tables are fast to save, read, and query.
 
-     *note t:::[[]i:2 3;f:3 4.;s:`a`b]
-     *note utable:: [[b:..]a:..]
-     *note xtable:: `..![[]a:..]
+      *note table:: t:[[]i:2 3;f:2.3 4]
+     *note Utable:: u:[[x:..]y:..]
+     *note Ntable:: n:`..![[]y:..]
 
 12.1 table
 ==========
@@ -3231,29 +3231,10 @@ a, col2
      20  4.8
       3  0.1
 
-12.2 xtable
+12.2 Utable
 ===========
 
-A cross tab (xtable) is a collection of tables stored in a dictionary
-where the keys are symbols and the values are tables.  Thus, it has both
-the data and schema of a set of tables, much like a data dictionary in a
-conventional relational database.  Below is an example where the keys
-are symbols and the values are end-of-day prices.
-
-      x1:+`d`p!(2020.09.08 2020.09.09 2020.09.10;140 139 150)
-      x2:+`d`p!(2020.09.08 2020.09.10;202 208)
-      eod:`AB`ZY!(x1;x2)  / This is an xtable.
-      eod`AB
-     d          p
-     ---------- ---
-     2020.09.08 140
-     2020.09.09 139
-     2020.09.10 150
-
-12.3 utable
-===========
-
-utable (or key table) is a table where some of the columns are keyed.
+Utable (or key table) is a table where some of the columns are keyed.
 The combination of those columns should not have two rows with the same
 values.  This must be enforced by the application.
 
@@ -3270,6 +3251,25 @@ values.  This must be enforced by the application.
      2020.09.08|140
      2020.09.09|139
      2020.09.10|150
+
+12.3 Ntable
+===========
+
+A Ntable is a collection of tables stored in a dictionary where the keys
+are symbols and the values are tables.  Thus, it has both the data and
+schema of a set of tables, much like a data dictionary in a conventional
+relational database.  Below is an example where the keys are symbols and
+the values are end-of-day prices.
+
+      x1:+`d`p!(2020.09.08 2020.09.09 2020.09.10;140 139 150)
+      x2:+`d`p!(2020.09.08 2020.09.10;202 208)
+      eod:`AB`ZY!(x1;x2)  / This is an Ntable.
+      eod`AB
+     d          p
+     ---------- ---
+     2020.09.08 140
+     2020.09.09 139
+     2020.09.10 150
 
 
 File: k9.info,  Node: kSQL,  Next: System,  Prev: Tables,  Up: Top
@@ -3380,7 +3380,7 @@ names.
 13.1.3 by B
 -----------
 
-kSQL also has a way to group rows using 'by'.  The result is a utable
+kSQL also has a way to group rows using 'by'.  The result is a Utable
 where the key is determined by the grouping clause 'by'.
 
      n:5;t:[[]x:!n;y:sin !n]
@@ -3483,7 +3483,7 @@ not working.
 
 k9 has a number of methods to join tables together which are described
 below.  In this section t, t1 and t2 represent tables and k, k1 and k2
-represent utables.
+represent Utables.
 
 join                   syntax
 *note union::          t1,t2
@@ -3524,7 +3524,7 @@ tables do not have the same columns then return t1.
 13.2.2 leftjoin => t,k
 ----------------------
 
-leftjoin table t with utable k.  Result includes all rows from t and the
+leftjoin table t with Utable k.  Result includes all rows from t and the
 values from table k having the same key values.  If a row of t has key
 values not found in k, then the t values are shown and 0 for the columns
 coming from k.
@@ -3559,7 +3559,7 @@ coming from k.
 13.2.3 outer join => k1,k2
 --------------------------
 
-Outer join utable k1 with key utable k2.
+Outer join Utable k1 with key Utable k2.
 
       k1:[[s:`a`b]p:1 2;q:3 4]
       k2:[[s:`b`c]p:9 8;q:7 6]
@@ -3585,7 +3585,7 @@ Outer join utable k1 with key utable k2.
 13.2.4 asof join => t,k
 -----------------------
 
-Asof joins each row rt of table t to a row rk in utable k (keyed by
+Asof joins each row rt of table t to a row rk in Utable k (keyed by
 time) provided rk has the maximum time value of any row in k while
 obeying the constraint that the time value in rt >= the time value of
 rk.  Intuitively, rk should be the row in k that is most up-to-date with
@@ -3649,7 +3649,7 @@ of k9 on joins.
 --------------------------
 
 Asof+ joins allows one to aggregate over markets to find the total
-available at a given time.  The utables need to be specified with '`a'.
+available at a given time.  The Utables need to be specified with '`a'.
 The effect is to merge the two key fields (the field t in this case) and
 for each row rk1 from table k1, add the non-key field (bs in this case)
 from rk1 to the bs field of the most recent row in k2 whose t value is
@@ -3721,7 +3721,7 @@ Insert dictionary d into table t.
 13.3.2 upsert => k,d
 --------------------
 
-Insert dictionary d into utable k.
+Insert dictionary d into Utable k.
       k:[[c1:`a`b`c]c2:1 2 7];k
      c1|c2
      --|--
@@ -4385,7 +4385,7 @@ approximately to n.
 19.1.4 t
 --------
 
-t is an xtable of trades.  The fields are time (t), exchange (e), price
+t is an Ntable of trades.  The fields are time (t), exchange (e), price
 (p), and size (z).  The number of trades is set by n.
 
    Pulling one random table from t and showing 10 random rows.
@@ -4407,7 +4407,7 @@ t is an xtable of trades.  The fields are time (t), exchange (e), price
 19.1.5 q
 --------
 
-q is a xtable of quotes.  The fields are time (t), exchange (e), and bid
+q is a Ntable of quotes.  The fields are time (t), exchange (e), and bid
 (b).  The number of quotes is set to 6*n.
 
       10?*q@1?S
@@ -4435,7 +4435,7 @@ a is the first symbol of S. A consists of the first 100 symbols of S.
 19.1.7 Max price by exchange
 ----------------------------
 
-The query takes 100 tables from the trade xtable and computes the max
+The query takes 100 tables from the trade Ntable and computes the max
 price by exchange.
 
       *{select max p by e from x}'t A
@@ -4451,7 +4451,7 @@ price by exchange.
 19.1.8 Compute sum of trade size by hour.
 -----------------------------------------
 
-This query takes 100 tables from the trade xtable and computes the sum
+This query takes 100 tables from the trade Ntable and computes the sum
 of trade size done by hour.
 
       *{select sum z by `o t from x}'t A
@@ -4470,7 +4470,7 @@ of trade size done by hour.
 19.1.9 Compute last bid by symbol
 ---------------------------------
 
-This query takes the 100 tables from the quote xtable and returns the
+This query takes the 100 tables from the quote Ntable and returns the
 last bid.
 
       3?{select last b from x}'q A
@@ -4486,7 +4486,7 @@ last bid.
 19.1.10 Find trades below the bid
 ---------------------------------
 
-This query operates on one symbol from the q and t xtables, i.e.  a
+This query operates on one symbol from the q and t Ntables, i.e.  a
 single quote and trade table.  The quote table is joined to the trade
 table giving the current bid on each trade.
 
@@ -4551,174 +4551,174 @@ select[C]A from T where B; update C from T where B; delete from T where B
 
 Tag Table:
 Node: Top126
-Node: Introduction4721
-Node: Verb15789
-Ref: x17557
-Ref: set17582
-Ref: flip17841
-Ref: plus18091
-Ref: negate18569
-Ref: minus18741
-Ref: first18848
-Ref: times19064
-Ref: divide19195
-Ref: where19332
-Ref: min/and19818
-Ref: reverse20077
-Ref: max/or20339
-Ref: asc20603
-Ref: less20993
-Ref: group21294
-Ref: equal21547
-Ref: not21851
-Ref: match21968
-Ref: enum22351
-Ref: key23437
-Ref: list23610
-Ref: cat23746
-Ref: sort23865
-Ref: cut24098
-Ref: count25236
-Ref: take25426
-Ref: take125859
-Ref: take226231
-Ref: take326503
-Ref: floor26699
-Ref: drop26790
-Ref: drop127226
-Ref: drop227412
-Ref: drop327534
-Ref: string27696
-Ref: parse27797
-Ref: unique27990
-Ref: find28234
-Ref: type29226
-Ref: at29677
-Ref: value30051
-Ref: apply30478
-Node: Adverb31684
-Ref: over32713
-Ref: scan32823
-Ref: join33576
-Ref: split33950
-Ref: each34211
-Ref: eachp34500
-Ref: eachr35252
-Ref: eachl35444
-Ref: cover35625
-Ref: cscan35810
-Node: Noun36697
-Ref: Atom Types38102
-Ref: bool39283
-Ref: int39970
-Ref: flt40649
-Ref: char41051
-Ref: name41284
-Ref: uuid41524
-Ref: time41681
-Ref: date42583
-Ref: datetime43044
-Node: List43843
-Node: Dictionary48092
-Node: User Functions53737
-Node: Expression56986
-Node: Named Functions57864
-Ref: exp58675
-Ref: log58737
-Ref: sin58831
-Ref: cos58964
-Ref: sqr59106
-Ref: sqrt59163
-Ref: prm59230
-Ref: freq59403
-Ref: sums59752
-Ref: deltas59890
-Ref: rand60228
-Ref: has60525
-Ref: bin60819
-Ref: in61029
-Ref: within61203
-Ref: div61435
-Ref: mod61618
-Ref: bar61792
-Ref: cmb61981
-Ref: msum62409
-Ref: mavg62546
-Ref: Hcount62690
-Ref: Hfirst62785
-Ref: Hlast62880
-Ref: Hsum62984
-Ref: Hmin63087
-Ref: Hmax63205
-Ref: topX63322
-Ref: keyF63480
-Ref: unkey63775
-Ref: meta63911
-Node: Knit Functions64042
-Ref: amend64337
-Ref: amend164860
-Ref: amend265112
-Ref: amend365334
-Ref: amend465642
-Ref: dmend65933
-Ref: dmend166263
-Ref: dmend366434
-Ref: dmend466602
-Node: I/O66766
-Ref: read csv68832
-Ref: write csv69010
-Ref: read json69174
-Ref: write json69364
-Ref: read nv69537
-Ref: w line69730
-Ref: r line70121
-Ref: w byte70234
-Ref: r byte70462
-Ref: r data70612
-Ref: w data71274
-Ref: conn/set71854
-Ref: http/get71914
-Ref: lib71974
-Node: Tables72438
-Ref: t73100
-Ref: xtable74750
-Ref: utable75380
-Node: kSQL75918
-Ref: select76550
-Ref: A77134
-Ref: by B77951
-Ref: where C78229
-Ref: update78814
-Ref: delete79534
-Ref: union80173
-Ref: leftjoin80694
-Ref: outer81473
-Ref: asof81808
-Ref: asof+83262
-Ref: insert84479
-Ref: upsert84825
-Node: System85239
-Ref: load85697
-Ref: timing85885
-Ref: variables86166
-Ref: memory86267
-Ref: cd86382
-Node: Control Flow86466
-Ref: cond86705
-Node: Temporal Functions87075
-Node: Errors88469
-Ref: class88917
-Ref: rank89006
-Ref: length89130
-Ref: _type89253
-Ref: domain89362
-Ref: limit89484
-Ref: nyi89685
-Ref: eparse90018
-Ref: _value90171
-Node: Examples90299
-Node: Benchmark97657
-Node: Conclusion102563
+Node: Introduction4872
+Node: Verb15940
+Ref: x17708
+Ref: set17733
+Ref: flip17992
+Ref: plus18242
+Ref: negate18720
+Ref: minus18892
+Ref: first18999
+Ref: times19215
+Ref: divide19346
+Ref: where19483
+Ref: min/and19969
+Ref: reverse20228
+Ref: max/or20490
+Ref: asc20754
+Ref: less21144
+Ref: group21445
+Ref: equal21698
+Ref: not22002
+Ref: match22119
+Ref: enum22502
+Ref: key23588
+Ref: list23761
+Ref: cat23897
+Ref: sort24016
+Ref: cut24249
+Ref: count25387
+Ref: take25577
+Ref: take126010
+Ref: take226382
+Ref: take326654
+Ref: floor26850
+Ref: drop26941
+Ref: drop127377
+Ref: drop227563
+Ref: drop327685
+Ref: string27847
+Ref: parse27948
+Ref: unique28141
+Ref: find28385
+Ref: type29377
+Ref: at29828
+Ref: value30202
+Ref: apply30629
+Node: Adverb31835
+Ref: over32864
+Ref: scan32974
+Ref: join33727
+Ref: split34101
+Ref: each34362
+Ref: eachp34651
+Ref: eachr35403
+Ref: eachl35595
+Ref: cover35776
+Ref: cscan35961
+Node: Noun36848
+Ref: Atom Types38253
+Ref: bool39434
+Ref: int40121
+Ref: flt40800
+Ref: char41202
+Ref: name41435
+Ref: uuid41675
+Ref: time41832
+Ref: date42734
+Ref: datetime43195
+Node: List43994
+Node: Dictionary48243
+Node: User Functions53888
+Node: Expression57137
+Node: Named Functions58015
+Ref: exp58815
+Ref: log58877
+Ref: sin58971
+Ref: cos59104
+Ref: sqr59246
+Ref: sqrt59303
+Ref: prm59370
+Ref: freq59543
+Ref: sums59892
+Ref: deltas60030
+Ref: rand60368
+Ref: has60665
+Ref: bin60959
+Ref: in61169
+Ref: within61343
+Ref: div61575
+Ref: mod61758
+Ref: bar61932
+Ref: cmb62121
+Ref: msum62549
+Ref: mavg62686
+Ref: Hcount62830
+Ref: Hfirst62925
+Ref: Hlast63020
+Ref: Hsum63124
+Ref: Hmin63227
+Ref: Hmax63345
+Ref: topX63462
+Ref: keyF63620
+Ref: unkey63915
+Ref: meta64051
+Node: Knit Functions64182
+Ref: amend64477
+Ref: amend165000
+Ref: amend265252
+Ref: amend365474
+Ref: amend465782
+Ref: dmend66073
+Ref: dmend166403
+Ref: dmend366574
+Ref: dmend466742
+Node: I/O66906
+Ref: read csv68773
+Ref: write csv68951
+Ref: read json69115
+Ref: write json69301
+Ref: read nv69474
+Ref: w line69667
+Ref: r line70058
+Ref: w byte70171
+Ref: r byte70399
+Ref: r data70549
+Ref: w data71211
+Ref: conn/set71791
+Ref: http/get71851
+Ref: lib71911
+Node: Tables72375
+Ref: table73042
+Ref: Utable74692
+Ref: Ntable75230
+Node: kSQL75848
+Ref: select76480
+Ref: A77064
+Ref: by B77881
+Ref: where C78159
+Ref: update78744
+Ref: delete79464
+Ref: union80103
+Ref: leftjoin80624
+Ref: outer81403
+Ref: asof81738
+Ref: asof+83192
+Ref: insert84409
+Ref: upsert84755
+Node: System85169
+Ref: load85627
+Ref: timing85815
+Ref: variables86096
+Ref: memory86197
+Ref: cd86312
+Node: Control Flow86396
+Ref: cond86635
+Node: Temporal Functions87005
+Node: Errors88399
+Ref: class88847
+Ref: rank88936
+Ref: length89060
+Ref: _type89183
+Ref: domain89292
+Ref: limit89414
+Ref: nyi89615
+Ref: eparse89948
+Ref: _value90101
+Node: Examples90229
+Node: Benchmark97587
+Node: Conclusion102493
 
 End Tag Table
 
