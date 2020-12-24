@@ -91,22 +91,26 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 <span id="Named-Functions-1"></span><h2 class="chapter">9 Named Functions</h2>
 <p>This chapter covers the built-in  named functions.  This includes some math (eg. sqrt but not +), wrapper (eg. count for #) and range (eg. within) functions.
 </p>
+
+<p>rand has bin in within div mod bar rand cmb msum mavg
+count first last sum min max *[avg var dev med ..]; key meta
+</p>
+
 <div class="format">
 <div class="example">
-<pre class="example"><a href="#exp">exp</a> <a href="#log">log</a> <a href="#sin">sin</a> <a href="#cos">cos</a> <a href="#sqr">sqr</a> <a href="#sqrt">sqrt</a> <a href="#div">div</a> <a href="#mod">mod</a> <a href="#bar">bar</a>;
-  <a href="#topX">top</a> <a href="#freq">freq</a> <a href="#msum">msum</a> <a href="#mavg">mavg</a> <a href="#sums">sums</a> <a href="#deltas">deltas</a> <a href="#prm">prm</a> <a href="#cmb">cmb</a>
+<pre class="example"><a href="#exp">exp</a> <a href="#log">log</a> <a href="#sin">sin</a> <a href="#cos">cos</a> <a href="#sqr">sqr</a> <a href="#sqrt">sqrt</a> <a href="#prm">prm</a> <a href="#freq">freq</a> <a href="#div">div</a><a href="#sums">sums</a> <a href="#deltas">deltas</a>
+<a href="#rand">rand</a> <a href="#has">has</a> <a href="#bin">bin</a> <a href="#in">in</a> <a href="#within">within</a> <a href="#div">div</a> <a href="#mod">mod</a> <a href="#bar">bar</a> <a href="#cmb">cmb</a> <a href="#msum">msum</a> <a href="#mavg">mavg</a>
+<a href="#Hcount">count</a> <a href="#Hfirst">first</a> <a href="#Hlast">last</a> <a href="#Hsum">sum</a> <a href="#Hmin">min</a> <a href="#Hmax">max</a>
 </pre></div>
 </div>
 
-<span id="Math-Functions-_21d2-exp-log-sin-cos-sqr-sqrt-div-mod-bar"></span><h3 class="section">9.1 Math Functions &rArr; exp log sin cos sqr sqrt div mod bar</h3>
-
-<span id="exp"></span><span id="exp-_21d2-exp-x"></span><h4 class="subsection">9.1.1 exp &rArr; exp x</h4>
+<span id="exp"></span><span id="exp-_21d2-exp-x"></span><h3 class="section">9.1 exp &rArr; exp x</h3>
 <div class="example">
 <pre class="example">&nbsp;exp 1
 2.718282
 </pre></div>
 
-<span id="log"></span><span id="log-_21d2-log-x"></span><h4 class="subsection">9.1.2 log &rArr; log x</h4>
+<span id="log"></span><span id="log-_21d2-log-x"></span><h3 class="section">9.2 log &rArr; log x</h3>
 <p>Log computes the natural log.
 </p>
 <div class="example">
@@ -114,7 +118,7 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 2.302585
 </pre></div>
 
-<span id="sin"></span><span id="sin-_21d2-sin-x"></span><h4 class="subsection">9.1.3 sin &rArr; sin x</h4>
+<span id="sin"></span><span id="sin-_21d2-sin-x"></span><h3 class="section">9.3 sin &rArr; sin x</h3>
 <p>sin computes the sine of x where x is in radians.
 </p><div class="example">
 <pre class="example">&nbsp;sin 0
@@ -123,7 +127,7 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 1.
 </pre></div>
 
-<span id="cos"></span><span id="cos-_21d2-cos-x"></span><h4 class="subsection">9.1.4 cos &rArr; cos x</h4>
+<span id="cos"></span><span id="cos-_21d2-cos-x"></span><h3 class="section">9.4 cos &rArr; cos x</h3>
 <p>cos computes the cosine of x where x is in radians.
 </p><div class="example">
 <pre class="example">&nbsp;cos 0
@@ -132,60 +136,29 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 0.7071055
 </pre></div>
 
-<span id="sqr"></span><span id="sqr-_21d2-sqr-x"></span><h4 class="subsection">9.1.5 sqr &rArr; sqr x</h4>
+<span id="sqr"></span><span id="sqr-_21d2-sqr-x"></span><h3 class="section">9.5 sqr &rArr; sqr x</h3>
 <div class="example">
 <pre class="example">&nbsp;sqr 2
 4.0
 </pre></div>
 
-<span id="sqrt"></span><span id="sqrt-_21d2-sqrt-x"></span><h4 class="subsection">9.1.6 sqrt &rArr; sqrt x</h4>
+<span id="sqrt"></span><span id="sqrt-_21d2-sqrt-x"></span><h3 class="section">9.6 sqrt &rArr; sqrt x</h3>
 <div class="example">
 <pre class="example">&nbsp;sqrt 2
 1.414214
 </pre></div>
 
-<span id="div"></span><span id="div-_21d2-x-div-y"></span><h4 class="subsection">9.1.7 div &rArr; x div y</h4>
-<p>y divided by x using integer division, taking the floor of the result.  x and y must be integers.
+<span id="prm"></span><span id="prm-_21d2-prm-x"></span><h3 class="section">9.7 prm &rArr; prm x</h3>
+<p>Write out all permutations of integers up x-1. Display them as columns.
 </p>
 <div class="example">
-<pre class="example">&nbsp;2 div 7
-3
-&nbsp;5 div 22
-4
+<pre class="example"> prm 3
+0 1 1 0 2 2
+1 0 2 2 0 1
+2 2 0 1 1 0
 </pre></div>
 
-<span id="mod"></span><span id="mod-_21d2-x-mod-y"></span><h4 class="subsection">9.1.8 mod &rArr; x mod y</h4>
-<p>The remainder after y divided by x using integer division.  x and y must be integers.
-</p>
-<div class="example">
-<pre class="example">&nbsp;12 mod 27
-3
-&nbsp;5 mod 22
-2
-</pre></div>
-
-<span id="bar"></span><span id="bar-_21d2-x-bar-y"></span><h4 class="subsection">9.1.9 bar &rArr; x bar y</h4>
-<p>For each value in y determine the maximum multiple of x that is less than or equal to each y.
-</p>
-<div class="example">
-<pre class="example">&nbsp;10 bar 9 10 11 19 20 21
-0 10 10 10 20 20
-</pre></div>
-
-<span id="Helper-Functions-_21d2-top-freq-msum-mavg-sums-deltas-prm-cmb"></span><h3 class="section">9.2 Helper Functions &rArr; top freq msum mavg sums deltas prm cmb</h3>
-
-<span id="topX"></span><span id="top-_21d2-top-x"></span><h4 class="subsection">9.2.1 top &rArr; top x</h4>
-<p>Return the index of the max value of list x.
-</p>
-<div class="example">
-<pre class="example"> top 3 13 15 1 17 0 -3
-4
-
-top &quot;abzccdefeajfekjrlke&quot;
-2
-</pre></div>
-
-<span id="freq"></span><span id="freq-_21d2-freq-x"></span><h4 class="subsection">9.2.2 freq &rArr; freq x</h4>
+<span id="freq"></span><span id="freq-_21d2-freq-x"></span><h3 class="section">9.8 freq &rArr; freq x</h3>
 <p>Compute the frequency of the items in list x.
 </p>
 <div class="example">
@@ -215,24 +188,7 @@ z|1
 9| 95
 </pre></div>
 
-<span id="msum"></span><span id="msum-_21d2-x-msum-y"></span><h4 class="subsection">9.2.3 msum &rArr; x msum y</h4>
-<p>Compute the length x  moving sum of list y.
-</p>
-<div class="example">
-<pre class="example"> 3 msum !10
-0 1 3 6 9 12 15 18 21 24
-</pre></div>
-
-
-<span id="mavg"></span><span id="mavg-_21d2-x-mavg-y"></span><h4 class="subsection">9.2.4 mavg &rArr; x mavg y</h4>
-<p>Compute the length x  moving average of list y.
-</p>
-<div class="example">
-<pre class="example"> 3 mavg !10
-0 0.3333333 1 2 3 4 5 6 7 8
-</pre></div>
-
-<span id="sums"></span><span id="sums-_21d2-sums-x"></span><h4 class="subsection">9.2.5 sums &rArr; sums x</h4>
+<span id="sums"></span><span id="sums-_21d2-sums-x"></span><h3 class="section">9.9 sums &rArr; sums x</h3>
 <p>Compute the running sum of list x.  Sames as <code>+\</code>.
 </p>
 <div class="example">
@@ -240,7 +196,7 @@ z|1
 0 1 3 6 10 15 21 28 36 45
 </pre></div>
 
-<span id="deltas"></span><span id="deltas-_21d2-deltas-x-and-x-deltas-y"></span><h4 class="subsection">9.2.6 deltas &rArr; deltas x and x deltas y</h4>
+<span id="deltas"></span><span id="deltas-_21d2-deltas-x-and-x-deltas-y"></span><h3 class="section">9.10 deltas &rArr; deltas x and x deltas y</h3>
 <p>Compute the difference between each element in list x and the previous value.  If delta is called with two parameters then x will be used as the first value to delta instead of the default 0.
 </p>
 <div class="example">
@@ -251,17 +207,100 @@ z|1
 0 4 5
 </pre></div>
 
-<span id="prm"></span><span id="prm-_21d2-prm-x"></span><h4 class="subsection">9.2.7 prm &rArr; prm x</h4>
-<p>Write out all permutations of integers up x-1. Display them as columns.
+<span id="rand"></span><span id="rand-_21d2-_003fx"></span><h3 class="section">9.11 rand &rArr; ?x</h3>
+<p>Generate x random values using a uniform distribution from [0,1) or -x random values of a normal distribution (mean=0, standard deviation=1).
 </p>
 <div class="example">
-<pre class="example"> prm 3
-0 1 1 0 2 2
-1 0 2 2 0 1
-2 2 0 1 1 0
+<pre class="example"> ?3     / 3 uniform
+0.1654719 0.172977 0.4808443
+
+?-3     / 3 normal
+0.05384196 1.228946 -0.7144561
 </pre></div>
 
-<span id="cmb"></span><span id="cmb-_21d2-x-cmb-y"></span><h4 class="subsection">9.2.8 cmb &rArr; x cmb y</h4>
+<span id="has"></span><span id="has-_21d2-x-has-y"></span><h3 class="section">9.12 has &rArr; x has y</h3>
+<p>Determine whether vector x has element y. Simliar to <a href="#in">in</a> but with the arguments reversed.
+</p>
+<div class="example">
+<pre class="example"> `a`b`c`a`b has `a
+1b
+
+`a`b`c`a`b has `d
+0b
+
+ `a`b`c`a`b has `a`b`x`y`z
+11000b
+
+ (1 2;4 5 6;7 9)has(1 2;8 9)
+10b
+</pre></div>
+
+<span id="bin"></span><span id="bin-_21d2-x-bin-y"></span><h3 class="section">9.13 bin &rArr; x bin y</h3>
+<p>Given a sorted (increasing) list x, find the greatest index, i, where y&gt;x[i].
+</p>
+<div class="example">
+<pre class="example">&nbsp;n:exp 0.01*!5;n
+1 1.01005 1.020201 1.030455 1.040811
+&nbsp;1.025 bin n
+2
+</pre></div>
+
+<span id="in"></span><span id="in-_21d2-x-in-y"></span><h3 class="section">9.14 in &rArr; x in y</h3>
+<p>Determine if x is in list y.  Similar to <a href="#has">has</a> but arguments reversed.
+</p>
+<div class="example">
+<pre class="example">&nbsp;`b in `a`b`d`e
+1b
+&nbsp;`c in `a`b`d`e
+0b
+</pre></div>
+
+<span id="within"></span><span id="within-_21d2-x-within-y"></span><h3 class="section">9.15 within &rArr; x within y</h3>
+<p>Test if x is equal to or greater than y[0] and less than y[1].
+</p>
+<div class="example">
+<pre class="example"> 3 within 0 12
+1b
+
+0 within 0 12
+1b
+
+12 within 0 12
+0b
+
+23 within 0 12
+0b
+</pre></div>
+
+<span id="div"></span><span id="div-_21d2-x-div-y"></span><h3 class="section">9.16 div &rArr; x div y</h3>
+<p>y divided by x using integer division, taking the floor of the result.  x and y must be integers.
+</p>
+<div class="example">
+<pre class="example">&nbsp;2 div 7
+3
+&nbsp;5 div 22
+4
+</pre></div>
+
+<span id="mod"></span><span id="mod-_21d2-x-mod-y"></span><h3 class="section">9.17 mod &rArr; x mod y</h3>
+<p>The remainder after y divided by x using integer division.  x and y must be integers.
+</p>
+<div class="example">
+<pre class="example">&nbsp;12 mod 27
+3
+&nbsp;5 mod 22
+2
+</pre></div>
+
+<span id="bar"></span><span id="bar-_21d2-x-bar-y"></span><h3 class="section">9.18 bar &rArr; x bar y</h3>
+<p>For each value in y determine the maximum multiple of x that is less than or equal to each y.
+</p>
+<div class="example">
+<pre class="example">&nbsp;10 bar 9 10 11 19 20 21
+0 10 10 10 20 20
+</pre></div>
+
+<span id="cmb"></span><span id="cmb-_21d2-x-cmb-y"></span><h3 class="section">9.19 cmb &rArr; x cmb y</h3>
 <p>Determine all x value combinations up to y. In this case these are ordered in ascending order from left to right.
 </p>
 <div class="example">
@@ -290,9 +329,82 @@ z|1
 `a`b`c
 </pre></div>
 
-<span id="Range-Functions-_21d2-key-unkey-meta-in-bin-within"></span><h3 class="section">9.3 Range Functions &rArr; key unkey meta in bin within</h3>
+<span id="msum"></span><span id="msum-_21d2-x-msum-y"></span><h3 class="section">9.20 msum &rArr; x msum y</h3>
+<p>Compute the length x  moving sum of list y.
+</p>
+<div class="example">
+<pre class="example"> 3 msum !10
+0 1 3 6 9 12 15 18 21 24
+</pre></div>
 
-<span id="keyF"></span><span id="key-_21d2-x-key-y"></span><h4 class="subsection">9.3.1 key &rArr; x key y</h4>
+
+<span id="mavg"></span><span id="mavg-_21d2-x-mavg-y"></span><h3 class="section">9.21 mavg &rArr; x mavg y</h3>
+<p>Compute the length x  moving average of list y.
+</p>
+<div class="example">
+<pre class="example"> 3 mavg !10
+0 0.3333333 1 2 3 4 5 6 7 8
+</pre></div>
+
+<span id="Hcount"></span><span id="count-_21d2-count-x"></span><h3 class="section">9.22 count &rArr; count x</h3>
+<p>Same as <a href="Verb.html#count">count</a>.
+</p>
+<div class="example">
+<pre class="example"> count 5 1 2
+3
+</pre></div>
+
+<span id="Hfirst"></span><span id="first-_21d2-first-x"></span><h3 class="section">9.23 first &rArr; first x</h3>
+<p>Same as <a href="Verb.html#first">first</a>.
+</p>
+<div class="example">
+<pre class="example"> first 5 1 2
+5
+</pre></div>
+
+<span id="Hlast"></span><span id="last-_21d2-last-x"></span><h3 class="section">9.24 last &rArr; last x</h3>
+<p>Retrieve the last element of list x.
+</p>
+<div class="example">
+<pre class="example"> last 5 1 2
+2
+</pre></div>
+
+<span id="Hsum"></span><span id="sum-_21d2-sum-x"></span><h3 class="section">9.25 sum &rArr; sum x</h3>
+<p>Compute the sum of list x.  Same as <code>+/</code>.
+</p>
+<div class="example">
+<pre class="example"> sum 5 1 2
+8
+</pre></div>
+<span id="Hmin"></span><span id="min-_21d2-min-x"></span><h3 class="section">9.26 min &rArr; min x</h3>
+<p>Retrieve the minimum element of list x.  Same as <code>|/</code>.
+</p>
+<div class="example">
+<pre class="example"> min 5 1 2
+1
+</pre></div>
+
+<span id="Hmax"></span><span id="max-_21d2-max-x"></span><h3 class="section">9.27 max &rArr; max x</h3>
+<p>Retrieve the maximum element of list x.  Same as <code>&amp;/</code>.
+</p>
+<div class="example">
+<pre class="example"> max 5 1 2
+5
+</pre></div>
+
+<span id="topX"></span><span id="top-_21d2-top-x"></span><h3 class="section">9.28 top &rArr; top x</h3>
+<p>Return the index of the max value of list x.
+</p>
+<div class="example">
+<pre class="example"> top 3 13 15 1 17 0 -3
+4
+
+top &quot;abzccdefeajfekjrlke&quot;
+2
+</pre></div>
+
+<span id="keyF"></span><span id="key-_21d2-x-key-y"></span><h3 class="section">9.29 key &rArr; x key y</h3>
 <p>Key table y with x. That is, the values in the x column become the key values.
 </p>
 <div class="example">
@@ -309,7 +421,7 @@ fa|1 2 3
 fb|4 5 6
 </pre></div>
 
-<span id="unkey"></span><span id="unkey-_21d2-unkey-x"></span><h4 class="subsection">9.3.2 unkey &rArr; unkey x</h4>
+<span id="unkey"></span><span id="unkey-_21d2-unkey-x"></span><h3 class="section">9.30 unkey &rArr; unkey x</h3>
 <p>Remove key from table x.
 </p>
 <div class="example">
@@ -320,49 +432,13 @@ x 1
 y 2
 </pre></div>
 
-<span id="meta"></span><span id="meta-_21d2-meta"></span><h4 class="subsection">9.3.3 meta &rArr; meta</h4>
+<span id="meta"></span><span id="meta-_21d2-meta"></span><h3 class="section">9.31 meta &rArr; meta</h3>
 <p>Determine the types of the fields in a table.
 </p>
 <div class="example">
 <pre class="example"> meta [[]a:`x`y;b:1 2]
 a|n
 b|i
-</pre></div>
-
-<span id="in"></span><span id="in-_21d2-x-in-y"></span><h4 class="subsection">9.3.4 in &rArr; x in y</h4>
-<p>Determine if x is in list y.  </p>
-<div class="example">
-<pre class="example">&nbsp;`b in `a`b`d`e
-1b
-&nbsp;`c in `a`b`d`e
-0b
-</pre></div>
-
-<span id="bin"></span><span id="bin-_21d2-x-bin-y"></span><h4 class="subsection">9.3.5 bin &rArr; x bin y</h4>
-<p>Given a sorted (increasing) list x, find the greatest index, i, where y&gt;x[i].
-</p>
-<div class="example">
-<pre class="example">&nbsp;n:exp 0.01*!5;n
-1 1.01005 1.020201 1.030455 1.040811
-&nbsp;1.025 bin n
-2
-</pre></div>
-
-<span id="within"></span><span id="within-_21d2-x-within-y"></span><h4 class="subsection">9.3.6 within &rArr; x within y</h4>
-<p>Test if x is equal to or greater than y[0] and less than y[1].
-</p>
-<div class="example">
-<pre class="example"> 3 within 0 12
-1b
-
-0 within 0 12
-1b
-
-12 within 0 12
-0b
-
-23 within 0 12
-0b
 </pre></div>
 
 <hr>

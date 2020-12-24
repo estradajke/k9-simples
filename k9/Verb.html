@@ -704,25 +704,13 @@ z  1
 </pre></div>
 
 <span id="unique"></span><span id="unique-_21d2-_003fx"></span><h3 class="section">2.32 unique &rArr; ?x</h3>
-<p>As unique+ is a &rsquo;+&rsquo; verb, because its use depends on whether x is a list (where ? means unique) or atom (where ? does a random number generation).
-</p>
-<p>x is list: Return the unique values of the list x.  The <code>?</code> preceeding the return value explicitly shows that the list has no repeated values.
+<p>Return the unique values of the list x.  The <code>?</code> preceeding the return value explicitly shows that the list has no repeated values.
 </p>
 <div class="example">
 <pre class="example">&nbsp;?`f`a`b`c`a`b`d`e`a
 ?`f`a`b`c`d`e
 &nbsp;?&quot;banana&quot;
 ?&quot;ban&quot;
-</pre></div>
-
-<p>x is atom: Generate x random values using a uniform distribution from [0,1) or -x random values of a normal distribution (mean=0, standard deviation=1).
-</p>
-<div class="example">
-<pre class="example"> ?3     / 3 uniform
-0.1654719 0.172977 0.4808443
-
-?-3     / 3 normal
-0.05384196 1.228946 -0.7144561
 </pre></div>
 
 <span id="find"></span><span id="g_t_005bsf_005dfind-_21d2-x_003fy"></span><h3 class="section">2.33 [sf]find &rArr; x?y</h3>

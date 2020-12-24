@@ -987,25 +987,13 @@ Parse string y into type x.
 @end example
 
 @anchor{unique}@section unique @result{} ?x
-As unique+ is a '+' verb, because its use depends on whether x is a list (where ? means unique) or atom (where ? does a random number generation).
-
-x is list: Return the unique values of the list x.  The @code{?} preceeding the return value explicitly shows that the list has no repeated values.
+Return the unique values of the list x.  The @code{?} preceeding the return value explicitly shows that the list has no repeated values.
 
 @example
 @ ?`f`a`b`c`a`b`d`e`a
 ?`f`a`b`c`d`e
 @ ?"banana"
 ?"ban"
-@end example
-
-x is atom: Generate x random values using a uniform distribution from [0,1) or -x random values of a normal distribution (mean=0, standard deviation=1).
-
-@example
- ?3     / 3 uniform
-0.1654719 0.172977 0.4808443
-
-?-3     / 3 normal
-0.05384196 1.228946 -0.7144561
 @end example
 
 @anchor{find}@section [sf]find @result{} x?y
@@ -1301,23 +1289,6 @@ Apply function f to each value in list x in a single thread.  Multithread operat
 1 4 5 7
 @end example
 
-@c @anchor{+has}@section +has @result{} v'x
-@c Determine whether vector v has element x if x is an atom (i.e., scalar) or each element of x if x is a list.  Simliar to @ref{in} but with the arguments reversed.
-@c
-@c @example
-@c  `a`b`c`a`b'`a
-@c 1b
-@c 
-@c `a`b`c`a`b'`d
-@c 0b
-@c 
-@c  `a`b`c`a`b'`a`b`x`y`z
-@c 11000b
-@c 
-@c  (1 2;4 5 6;7 9)'(1 2;8 9)
-@c 10b
-@c @end example
-@c 
 @anchor{eachp}@section eachp @result{} f':[x;y]
 Apply f[x;y] using the prior value of y, eg. f[y@@n;y@@n-1].  The first value, n=0, returns f[y@@0;x].
 
@@ -2300,21 +2271,26 @@ a b c
 @chapter Named Functions
 This chapter covers the built-in  named functions.  This includes some math (eg. sqrt but not +), wrapper (eg. count for #) and range (eg. within) functions.
 
+
+rand has bin in within div mod bar rand cmb msum mavg
+count first last sum min max *[avg var dev med ..]; key meta
+
+
 @smallformat
 @example
-@ref{exp} @ref{log} @ref{sin} @ref{cos} @ref{sqr} @ref{sqrt} @ref{div} @ref{mod} @ref{bar};@*  @ref{topX,top} @ref{freq} @ref{msum} @ref{mavg} @ref{sums} @ref{deltas} @ref{prm} @ref{cmb}
+@ref{exp} @ref{log} @ref{sin} @ref{cos} @ref{sqr} @ref{sqrt} @ref{prm} @ref{freq} @ref{div}@ref{sums} @ref{deltas}
+@ref{rand} @ref{has} @ref{bin} @ref{in} @ref{within} @ref{div} @ref{mod} @ref{bar} @ref{cmb} @ref{msum} @ref{mavg}
+@ref{Hcount,count} @ref{Hfirst,first} @ref{Hlast,last} @ref{Hsum,sum} @ref{Hmin,min} @ref{Hmax,max}
 @end example
 @end smallformat
 
-@section Math Functions @result{} exp log sin cos sqr sqrt div mod bar
-
-@anchor{exp}@subsection exp @result{} exp x
+@anchor{exp}@section exp @result{} exp x
 @example
 @ exp 1
 2.718282
 @end example
 
-@anchor{log}@subsection log @result{} log x
+@anchor{log}@section log @result{} log x
 Log computes the natural log.
 
 @example
@@ -2322,7 +2298,7 @@ Log computes the natural log.
 2.302585
 @end example
 
-@anchor{sin}@subsection sin @result{} sin x
+@anchor{sin}@section sin @result{} sin x
 sin computes the sine of x where x is in radians.
 @example
 @ sin 0
@@ -2331,7 +2307,7 @@ sin computes the sine of x where x is in radians.
 1.
 @end example
 
-@anchor{cos}@subsection cos @result{} cos x
+@anchor{cos}@section cos @result{} cos x
 cos computes the cosine of x where x is in radians.
 @example
 @ cos 0
@@ -2340,60 +2316,29 @@ cos computes the cosine of x where x is in radians.
 0.7071055
 @end example
 
-@anchor{sqr}@subsection sqr @result{} sqr x
+@anchor{sqr}@section sqr @result{} sqr x
 @example
 @ sqr 2
 4.0
 @end example
 
-@anchor{sqrt}@subsection sqrt @result{} sqrt x
+@anchor{sqrt}@section sqrt @result{} sqrt x
 @example
 @ sqrt 2
 1.414214
 @end example
 
-@anchor{div}@subsection div @result{} x div y
-y divided by x using integer division, taking the floor of the result.  x and y must be integers.
+@anchor{prm}@section prm @result{} prm x
+Write out all permutations of integers up x-1. Display them as columns.
 
 @example
-@ 2 div 7
-3
-@ 5 div 22
-4
+ prm 3
+0 1 1 0 2 2
+1 0 2 2 0 1
+2 2 0 1 1 0
 @end example
 
-@anchor{mod}@subsection mod @result{} x mod y
-The remainder after y divided by x using integer division.  x and y must be integers.
-
-@example
-@ 12 mod 27
-3
-@ 5 mod 22
-2
-@end example
-
-@anchor{bar}@subsection bar @result{} x bar y
-For each value in y determine the maximum multiple of x that is less than or equal to each y.
-
-@example
-@ 10 bar 9 10 11 19 20 21
-0 10 10 10 20 20
-@end example
-
-@section Helper Functions @result{} top freq msum mavg sums deltas prm cmb
-
-@anchor{topX}@subsection top @result{} top x
-Return the index of the max value of list x.
-
-@example
- top 3 13 15 1 17 0 -3
-4
-
-top "abzccdefeajfekjrlke"
-2
-@end example
-
-@anchor{freq}@subsection freq @result{} freq x
+@anchor{freq}@section freq @result{} freq x
 Compute the frequency of the items in list x.
 
 @example
@@ -2423,24 +2368,7 @@ z|1
 9| 95
 @end example
 
-@anchor{msum}@subsection msum @result{} x msum y
-Compute the length x  moving sum of list y.
-
-@example
- 3 msum !10
-0 1 3 6 9 12 15 18 21 24
-@end example
-
-
-@anchor{mavg}@subsection mavg @result{} x mavg y
-Compute the length x  moving average of list y.
-
-@example
- 3 mavg !10
-0 0.3333333 1 2 3 4 5 6 7 8
-@end example
-
-@anchor{sums}@subsection sums @result{} sums x
+@anchor{sums}@section sums @result{} sums x
 Compute the running sum of list x.  Sames as @code{+\}.
 
 @example
@@ -2448,7 +2376,7 @@ Compute the running sum of list x.  Sames as @code{+\}.
 0 1 3 6 10 15 21 28 36 45
 @end example
 
-@anchor{deltas}@subsection deltas @result{} deltas x and x deltas y
+@anchor{deltas}@section deltas @result{} deltas x and x deltas y
 Compute the difference between each element in list x and the previous value.  If delta is called with two parameters then x will be used as the first value to delta instead of the default 0.
 
 @example
@@ -2459,17 +2387,100 @@ Compute the difference between each element in list x and the previous value.  I
 0 4 5
 @end example
 
-@anchor{prm}@subsection prm @result{} prm x
-Write out all permutations of integers up x-1. Display them as columns.
+@anchor{rand}@section rand @result{} ?x
+Generate x random values using a uniform distribution from [0,1) or -x random values of a normal distribution (mean=0, standard deviation=1).
 
 @example
- prm 3
-0 1 1 0 2 2
-1 0 2 2 0 1
-2 2 0 1 1 0
+ ?3     / 3 uniform
+0.1654719 0.172977 0.4808443
+
+?-3     / 3 normal
+0.05384196 1.228946 -0.7144561
 @end example
 
-@anchor{cmb}@subsection cmb @result{} x cmb y
+@anchor{has}@section has @result{} x has y
+Determine whether vector x has element y. Simliar to @ref{in} but with the arguments reversed.
+
+@example
+ `a`b`c`a`b has `a
+1b
+
+`a`b`c`a`b has `d
+0b
+
+ `a`b`c`a`b has `a`b`x`y`z
+11000b
+
+ (1 2;4 5 6;7 9)has(1 2;8 9)
+10b
+@end example
+
+@anchor{bin}@section bin @result{} x bin y
+Given a sorted (increasing) list x, find the greatest index, i, where y>x[i].
+
+@example
+@ n:exp 0.01*!5;n
+1 1.01005 1.020201 1.030455 1.040811
+@ 1.025 bin n
+2
+@end example
+
+@anchor{in}@section in @result{} x in y
+Determine if x is in list y.  Similar to @ref{has} but arguments reversed.
+
+@example
+@ `b in `a`b`d`e
+1b
+@ `c in `a`b`d`e
+0b
+@end example
+
+@anchor{within}@section within @result{} x within y
+Test if x is equal to or greater than y[0] and less than y[1].
+
+@example
+ 3 within 0 12
+1b
+
+0 within 0 12
+1b
+
+12 within 0 12
+0b
+
+23 within 0 12
+0b
+@end example
+
+@anchor{div}@section div @result{} x div y
+y divided by x using integer division, taking the floor of the result.  x and y must be integers.
+
+@example
+@ 2 div 7
+3
+@ 5 div 22
+4
+@end example
+
+@anchor{mod}@section mod @result{} x mod y
+The remainder after y divided by x using integer division.  x and y must be integers.
+
+@example
+@ 12 mod 27
+3
+@ 5 mod 22
+2
+@end example
+
+@anchor{bar}@section bar @result{} x bar y
+For each value in y determine the maximum multiple of x that is less than or equal to each y.
+
+@example
+@ 10 bar 9 10 11 19 20 21
+0 10 10 10 20 20
+@end example
+
+@anchor{cmb}@section cmb @result{} x cmb y
 Determine all x value combinations up to y. In this case these are ordered in ascending order from left to right.
 
 @example
@@ -2498,9 +2509,82 @@ Determine all x value combinations up to y. In this case these are ordered in as
 `a`b`c
 @end example
 
-@section Range Functions @result{} key unkey meta in bin within
+@anchor{msum}@section msum @result{} x msum y
+Compute the length x  moving sum of list y.
 
-@anchor{keyF}@subsection key @result{} x key y
+@example
+ 3 msum !10
+0 1 3 6 9 12 15 18 21 24
+@end example
+
+
+@anchor{mavg}@section mavg @result{} x mavg y
+Compute the length x  moving average of list y.
+
+@example
+ 3 mavg !10
+0 0.3333333 1 2 3 4 5 6 7 8
+@end example
+
+@anchor{Hcount}@section count @result{} count x
+Same as @ref{count}.
+
+@example
+ count 5 1 2
+3
+@end example
+
+@anchor{Hfirst}@section first @result{} first x
+Same as @ref{first}.
+
+@example
+ first 5 1 2
+5
+@end example
+
+@anchor{Hlast}@section last @result{} last x
+Retrieve the last element of list x.
+
+@example
+ last 5 1 2
+2
+@end example
+
+@anchor{Hsum}@section sum @result{} sum x
+Compute the sum of list x.  Same as @code{+/}.
+
+@example
+ sum 5 1 2
+8
+@end example
+@anchor{Hmin}@section min @result{} min x
+Retrieve the minimum element of list x.  Same as @code{|/}.
+
+@example
+ min 5 1 2
+1
+@end example
+
+@anchor{Hmax}@section max @result{} max x
+Retrieve the maximum element of list x.  Same as @code{&/}.
+
+@example
+ max 5 1 2
+5
+@end example
+
+@anchor{topX}@section top @result{} top x
+Return the index of the max value of list x.
+
+@example
+ top 3 13 15 1 17 0 -3
+4
+
+top "abzccdefeajfekjrlke"
+2
+@end example
+
+@anchor{keyF}@section key @result{} x key y
 Key table y with x. That is, the values in the x column become the key values.
 
 @example
@@ -2517,7 +2601,7 @@ fa|1 2 3
 fb|4 5 6
 @end example
 
-@anchor{unkey}@subsection unkey @result{} unkey x
+@anchor{unkey}@section unkey @result{} unkey x
 Remove key from table x.
 
 @example
@@ -2528,50 +2612,13 @@ x 1
 y 2
 @end example
 
-@anchor{meta}@subsection meta @result{} meta
+@anchor{meta}@section meta @result{} meta
 Determine the types of the fields in a table.
 
 @example
  meta [[]a:`x`y;b:1 2]
 a|n
 b|i
-@end example
-
-@anchor{in}@subsection in @result{} x in y
-Determine if x is in list y.  @c Similar to @ref{+has} but arguments reversed.
-
-@example
-@ `b in `a`b`d`e
-1b
-@ `c in `a`b`d`e
-0b
-@end example
-
-@anchor{bin}@subsection bin @result{} x bin y
-Given a sorted (increasing) list x, find the greatest index, i, where y>x[i].
-
-@example
-@ n:exp 0.01*!5;n
-1 1.01005 1.020201 1.030455 1.040811
-@ 1.025 bin n
-2
-@end example
-
-@anchor{within}@subsection within @result{} x within y
-Test if x is equal to or greater than y[0] and less than y[1].
-
-@example
- 3 within 0 12
-1b
-
-0 within 0 12
-1b
-
-12 within 0 12
-0b
-
-23 within 0 12
-0b
 @end example
 
 @node Knit Functions
