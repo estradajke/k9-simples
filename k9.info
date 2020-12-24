@@ -70,7 +70,7 @@ Ntable:: n:`..![[]y:..]
 $   *note string::     *note parse::                
 ?   *note unique:: [sf]*note find::       $[b;t;f] cond          
 @   *note type::   [sf]*note at::         @[r;i;f[;y]] *note
-amend::     `js?`js d
+amend::     *note `js?: read json.*note `js : write json.d
 .   *note value::   [f]*note apply::      .[r;i;f[;y]] *note
 dmend::     *note `csv?: read csv.*note `csv : write csv.t
 
@@ -4547,174 +4547,174 @@ select[C]A from T where B; update C from T where B; delete from T where B
 
 Tag Table:
 Node: Top126
-Node: Introduction4872
-Node: Verb15940
-Ref: x17522
-Ref: set17547
-Ref: flip17806
-Ref: plus18056
-Ref: negate18534
-Ref: minus18706
-Ref: first18813
-Ref: times19029
-Ref: divide19160
-Ref: where19297
-Ref: min/and19783
-Ref: reverse20042
-Ref: max/or20304
-Ref: asc20568
-Ref: less20958
-Ref: group21259
-Ref: equal21512
-Ref: not21816
-Ref: match21933
-Ref: enum22316
-Ref: key23402
-Ref: list23575
-Ref: cat23711
-Ref: sort23830
-Ref: cut24063
-Ref: count25201
-Ref: take25391
-Ref: take125824
-Ref: take226196
-Ref: take326468
-Ref: floor26664
-Ref: drop26755
-Ref: drop127191
-Ref: drop227377
-Ref: drop327499
-Ref: string27661
-Ref: parse27762
-Ref: unique27955
-Ref: find28199
-Ref: type29189
-Ref: at29640
-Ref: value30014
-Ref: apply30441
-Node: Adverb31647
-Ref: over32676
-Ref: scan32786
-Ref: join33539
-Ref: split33913
-Ref: each34174
-Ref: eachp34463
-Ref: eachr35215
-Ref: eachl35407
-Ref: cover35588
-Ref: cscan35773
-Node: Noun36660
-Ref: Atom Types38065
-Ref: bool39246
-Ref: int39933
-Ref: flt40612
-Ref: char41014
-Ref: name41247
-Ref: uuid41487
-Ref: time41644
-Ref: date42546
-Ref: datetime43007
-Node: List43806
-Node: Dictionary48055
-Node: User Functions53700
-Node: Expression56949
-Node: Named Functions57827
-Ref: exp58627
-Ref: log58689
-Ref: sin58783
-Ref: cos58916
-Ref: sqr59058
-Ref: sqrt59115
-Ref: prm59182
-Ref: freq59355
-Ref: sums59704
-Ref: deltas59842
-Ref: rand60180
-Ref: has60477
-Ref: bin60771
-Ref: in60981
-Ref: within61155
-Ref: div61387
-Ref: mod61570
-Ref: bar61744
-Ref: cmb61933
-Ref: msum62361
-Ref: mavg62498
-Ref: Hcount62642
-Ref: Hfirst62737
-Ref: Hlast62832
-Ref: Hsum62936
-Ref: Hmin63039
-Ref: Hmax63157
-Ref: topX63274
-Ref: keyF63432
-Ref: unkey63727
-Ref: meta63863
-Node: Knit Functions63994
-Ref: amend64289
-Ref: amend164812
-Ref: amend265064
-Ref: amend365286
-Ref: amend465594
-Ref: dmend65885
-Ref: dmend166215
-Ref: dmend366386
-Ref: dmend466554
-Node: I/O66718
-Ref: read csv68622
-Ref: write csv68800
-Ref: read json68964
-Ref: write json69148
-Ref: read nv69315
-Ref: w line69508
-Ref: r line69899
-Ref: w byte70012
-Ref: r byte70240
-Ref: r data70390
-Ref: w data71052
-Ref: conn/set71632
-Ref: http/get71692
-Ref: lib71752
-Node: Tables72216
-Ref: table72883
-Ref: Utable74533
-Ref: Ntable75071
-Node: kSQL75689
-Ref: select76321
-Ref: A76905
-Ref: by B77722
-Ref: where C78000
-Ref: update78585
-Ref: delete79305
-Ref: union79944
-Ref: leftjoin80465
-Ref: outer81244
-Ref: asof81579
-Ref: asof+83033
-Ref: insert84250
-Ref: upsert84596
-Node: System85010
-Ref: load85468
-Ref: timing85656
-Ref: variables85937
-Ref: memory86038
-Ref: cd86153
-Node: Control Flow86237
-Ref: cond86476
-Node: Temporal Functions86846
-Node: Errors88240
-Ref: class88688
-Ref: rank88777
-Ref: length88901
-Ref: _type89024
-Ref: domain89133
-Ref: limit89255
-Ref: nyi89456
-Ref: eparse89789
-Ref: _value89942
-Node: Examples90070
-Node: Benchmark97428
-Node: Conclusion102334
+Node: Introduction4909
+Node: Verb15977
+Ref: x17559
+Ref: set17584
+Ref: flip17843
+Ref: plus18093
+Ref: negate18571
+Ref: minus18743
+Ref: first18850
+Ref: times19066
+Ref: divide19197
+Ref: where19334
+Ref: min/and19820
+Ref: reverse20079
+Ref: max/or20341
+Ref: asc20605
+Ref: less20995
+Ref: group21296
+Ref: equal21549
+Ref: not21853
+Ref: match21970
+Ref: enum22353
+Ref: key23439
+Ref: list23612
+Ref: cat23748
+Ref: sort23867
+Ref: cut24100
+Ref: count25238
+Ref: take25428
+Ref: take125861
+Ref: take226233
+Ref: take326505
+Ref: floor26701
+Ref: drop26792
+Ref: drop127228
+Ref: drop227414
+Ref: drop327536
+Ref: string27698
+Ref: parse27799
+Ref: unique27992
+Ref: find28236
+Ref: type29226
+Ref: at29677
+Ref: value30051
+Ref: apply30478
+Node: Adverb31684
+Ref: over32713
+Ref: scan32823
+Ref: join33576
+Ref: split33950
+Ref: each34211
+Ref: eachp34500
+Ref: eachr35252
+Ref: eachl35444
+Ref: cover35625
+Ref: cscan35810
+Node: Noun36697
+Ref: Atom Types38102
+Ref: bool39283
+Ref: int39970
+Ref: flt40649
+Ref: char41051
+Ref: name41284
+Ref: uuid41524
+Ref: time41681
+Ref: date42583
+Ref: datetime43044
+Node: List43843
+Node: Dictionary48092
+Node: User Functions53737
+Node: Expression56986
+Node: Named Functions57864
+Ref: exp58664
+Ref: log58726
+Ref: sin58820
+Ref: cos58953
+Ref: sqr59095
+Ref: sqrt59152
+Ref: prm59219
+Ref: freq59392
+Ref: sums59741
+Ref: deltas59879
+Ref: rand60217
+Ref: has60514
+Ref: bin60808
+Ref: in61018
+Ref: within61192
+Ref: div61424
+Ref: mod61607
+Ref: bar61781
+Ref: cmb61970
+Ref: msum62398
+Ref: mavg62535
+Ref: Hcount62679
+Ref: Hfirst62774
+Ref: Hlast62869
+Ref: Hsum62973
+Ref: Hmin63076
+Ref: Hmax63194
+Ref: topX63311
+Ref: keyF63469
+Ref: unkey63764
+Ref: meta63900
+Node: Knit Functions64031
+Ref: amend64326
+Ref: amend164849
+Ref: amend265101
+Ref: amend365323
+Ref: amend465631
+Ref: dmend65922
+Ref: dmend166252
+Ref: dmend366423
+Ref: dmend466591
+Node: I/O66755
+Ref: read csv68659
+Ref: write csv68837
+Ref: read json69001
+Ref: write json69185
+Ref: read nv69352
+Ref: w line69545
+Ref: r line69936
+Ref: w byte70049
+Ref: r byte70277
+Ref: r data70427
+Ref: w data71089
+Ref: conn/set71669
+Ref: http/get71729
+Ref: lib71789
+Node: Tables72253
+Ref: table72920
+Ref: Utable74570
+Ref: Ntable75108
+Node: kSQL75726
+Ref: select76358
+Ref: A76942
+Ref: by B77759
+Ref: where C78037
+Ref: update78622
+Ref: delete79342
+Ref: union79981
+Ref: leftjoin80502
+Ref: outer81281
+Ref: asof81616
+Ref: asof+83070
+Ref: insert84287
+Ref: upsert84633
+Node: System85047
+Ref: load85505
+Ref: timing85693
+Ref: variables85974
+Ref: memory86075
+Ref: cd86190
+Node: Control Flow86274
+Ref: cond86513
+Node: Temporal Functions86883
+Node: Errors88277
+Ref: class88725
+Ref: rank88814
+Ref: length88938
+Ref: _type89061
+Ref: domain89170
+Ref: limit89292
+Ref: nyi89493
+Ref: eparse89826
+Ref: _value89979
+Node: Examples90107
+Node: Benchmark97465
+Node: Conclusion102371
 
 End Tag Table
 

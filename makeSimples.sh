@@ -91,7 +91,8 @@ sed -e 's/@/@@/g' \
     -e 's/System/@ref{System}/g' \
     -e 's/`csv?/@ref{read csv,`csv?}/g' \
     -e 's/`csv@ /@ref{write csv,`csv@ }/g' \
-    -e 's/read\/write@ json/@ref{read json,read}\/@ref{write json,write}@ json/g' \
+    -e 's/`js?/@ref{read json,`js?}/g' \
+    -e 's/`js@ /@ref{write json,`js@ }/g' \
     -e 's/r\/w@ line/@ref{r line,r}\/@ref{w line,w}@ line/g' \
     -e 's/r\/w@ byte/@ref{r byte,r}\/@ref{w byte,w}@ byte/g' \
     -e '20,30 s/ key/ @ref{key}/g' \
