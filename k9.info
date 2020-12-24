@@ -2923,7 +2923,7 @@ to k9.
      *4: https get
      *5: ffi/py/js/..
 
-     `js?`js d
+     *note `js?: read json.*note `js: write json. d
      *note `csv?: read csv.*note `csv: write csv. t
 
 11.1 Example of Data I/O
@@ -4661,60 +4661,60 @@ Ref: dmend166215
 Ref: dmend366386
 Ref: dmend466554
 Node: I/O66718
-Ref: read csv68585
-Ref: write csv68763
-Ref: read json68927
-Ref: write json69111
-Ref: read nv69278
-Ref: w line69471
-Ref: r line69862
-Ref: w byte69975
-Ref: r byte70203
-Ref: r data70353
-Ref: w data71015
-Ref: conn/set71595
-Ref: http/get71655
-Ref: lib71715
-Node: Tables72179
-Ref: table72846
-Ref: Utable74496
-Ref: Ntable75034
-Node: kSQL75652
-Ref: select76284
-Ref: A76868
-Ref: by B77685
-Ref: where C77963
-Ref: update78548
-Ref: delete79268
-Ref: union79907
-Ref: leftjoin80428
-Ref: outer81207
-Ref: asof81542
-Ref: asof+82996
-Ref: insert84213
-Ref: upsert84559
-Node: System84973
-Ref: load85431
-Ref: timing85619
-Ref: variables85900
-Ref: memory86001
-Ref: cd86116
-Node: Control Flow86200
-Ref: cond86439
-Node: Temporal Functions86809
-Node: Errors88203
-Ref: class88651
-Ref: rank88740
-Ref: length88864
-Ref: _type88987
-Ref: domain89096
-Ref: limit89218
-Ref: nyi89419
-Ref: eparse89752
-Ref: _value89905
-Node: Examples90033
-Node: Benchmark97391
-Node: Conclusion102297
+Ref: read csv68622
+Ref: write csv68800
+Ref: read json68964
+Ref: write json69148
+Ref: read nv69315
+Ref: w line69508
+Ref: r line69899
+Ref: w byte70012
+Ref: r byte70240
+Ref: r data70390
+Ref: w data71052
+Ref: conn/set71632
+Ref: http/get71692
+Ref: lib71752
+Node: Tables72216
+Ref: table72883
+Ref: Utable74533
+Ref: Ntable75071
+Node: kSQL75689
+Ref: select76321
+Ref: A76905
+Ref: by B77722
+Ref: where C78000
+Ref: update78585
+Ref: delete79305
+Ref: union79944
+Ref: leftjoin80465
+Ref: outer81244
+Ref: asof81579
+Ref: asof+83033
+Ref: insert84250
+Ref: upsert84596
+Node: System85010
+Ref: load85468
+Ref: timing85656
+Ref: variables85937
+Ref: memory86038
+Ref: cd86153
+Node: Control Flow86237
+Ref: cond86476
+Node: Temporal Functions86846
+Node: Errors88240
+Ref: class88688
+Ref: rank88777
+Ref: length88901
+Ref: _type89024
+Ref: domain89133
+Ref: limit89255
+Ref: nyi89456
+Ref: eparse89789
+Ref: _value89942
+Node: Examples90070
+Node: Benchmark97428
+Node: Conclusion102334
 
 End Tag Table
 
