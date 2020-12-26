@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 24, 2020
+<!-- December 26, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -126,10 +126,10 @@ time 12:34:56.789 .z.t
 <p>One could use the current time commands to measure run time but typically this is done via <code>\t</code>
 </p>
 <div class="example">
-<pre class="example"> t1:.z.v;(_2e8)?1.;t2:.z.v;t2-t1
+<pre class="example"> t1:.z.v;(_2e8)rand 1.;t2:.z.v;t2-t1
 00:00:00.609207008
 
-\t (_2e8)?1.
+\t (_2e8)rand 1.
 610
 </pre></div>
 

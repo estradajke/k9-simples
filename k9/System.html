@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 24, 2020
+<!-- December 26, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -114,10 +114,10 @@ Next: <a href="Control-Flow.html" accesskey="n" rel="next">Control Flow</a>, Pre
 <p>List time elapsed in milliseconds in evaluting x.  If n is supply then repeat x, n times.
 </p>
 <div class="example">
-<pre class="example"> \t ^(_10e6)?_1e8     / sort 10 million numbers
+<pre class="example"> \t ^(_10e6)rand _1e8     / sort 10 million numbers
 227
 
- \t:10 ^(_10e6)?_1e8  / perform 10 times the sort
+ \t:10 ^(_10e6)rand _1e8  / perform 10 times the sort
 2027
 </pre></div>
 
@@ -134,7 +134,7 @@ Next: <a href="Control-Flow.html" accesskey="n" rel="next">Control Flow</a>, Pre
 </p><div class="example">
 <pre class="example">&nbsp;\w
 0
-&nbsp;r:(`i$10e6)?10
+&nbsp;r:(`i$10e6)rand 10
 &nbsp;\w
 2097158
 </pre></div>

@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 24, 2020
+<!-- December 26, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -416,7 +416,7 @@ t     p   q
 <p>Scaling this up to a bigger set of tables one can see the performance of k9 on joins.
 </p>
 <div class="example">
-<pre class="example"> N:_1e8;T:[[]t:N?`t 0;q:N?100];5#T
+<pre class="example"> N:_1e8;T:[[]t:N rand `t 0;q:N rand 100];5#T
 t            q 
 ------------ --
 00:00:00.001 44
@@ -425,7 +425,7 @@ t            q
 00:00:00.003 35
 00:00:00.003 43
 
- n:_1e5;K:[[t:n?`t 0]p:n?100];5#K
+ n:_1e5;K:[[t:n rand `t 0]p:n rand 100];5#K
 t           |p 
 ------------|--
 00:00:00.481|54

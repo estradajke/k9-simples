@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 24, 2020
+<!-- December 26, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -204,9 +204,9 @@ Next: <a href="#Verb" accesskey="n" rel="next">Verb</a>, Previous: <a href="#Top
 </p>
 <div class="example">
 <pre class="example">nf:d+*|d:(|-d),d:683 954 997 1000;
-T:^`t ?[;_8.64e7]@
-B:100++\1e-2*-3+nf bin/:?[;*|nf]@
-S:?[;1e-2*2,2,8#1]@
+T:^`t rand[;_8.64e7]@
+B:100++\1e-2*-3+nf bin/:rand[;*|nf]@
+S:rand[;1e-2*2,2,8#1]@
 L:{select t,b,a:b+s from +`t`b`s!(T;B;S)@'x}
 q:`eurusd`usdjpy`usdchf!L'60e6 20e6 20e6
 `q 2:q
@@ -822,24 +822,39 @@ a|7 6 5
 b|0 1 2
 </pre></div>
 
-<span id="cut"></span><span id="g_t_005bf_005dcut-_21d2-x_005ey"></span><h3 class="section">2.25 [f]cut &rArr; x^y</h3>
-<p>Cut list y by size, indices, or function x.  If x is positive then cut y into x parts.  If x is negative then cut y into parts each x long.
+<span id="cut"></span><span id="g_t_005bnf_005dcut-_21d2-x_005ey"></span><h3 class="section">2.25 [nf]cut &rArr; x^y</h3>
+<p>Cut list y by size, indices, or function x.  
 </p>
-<div class="example">
-<pre class="example"> 3^!20   / 3 rows with 6 elements per row so result is a matrix
-0 1 2 3 4 5      
-6 7 8 9 10 11    
-12 13 14 15 16 17
+<table>
+<tr><td><b>action</b></td><td><b>x</b></td></tr>
+<tr><td><a href="#cut1">rows</a></td><td>positive int</td></tr>
+<tr><td><a href="#cut2">columns</a></td><td>negative int</td></tr>
+<tr><td><a href="#cut3">indices</a></td><td>list</td></tr>
+<tr><td><a href="#cut4">function</a></td><td>function</td></tr>
+</table>
 
- -3^!20  / 3 element in each row
-0 1 2   
-3 4 5   
-6 7 8   
-9 10 11 
-12 13 14
-15 16 17
+<span id="cut1"></span><p>Positve integer x, cut y into x rows
+</p><div class="example">
+<pre class="example"> 3^101+!20   / 3 rows
+101 102 103 104 105 106
+107 108 109 110 111 112
+113 114 115 116 117 118
+</pre></div>
 
- 2 3 7 ^!17 / left list indicates start number of each row.
+<span id="cut2"></span><p>Negative integer, cut y into x elements per row
+</p><div class="example">
+<pre class="example"> -3^101+!20  / 3 elements in each row
+101 102 103
+104 105 106
+107 108 109
+110 111 112
+113 114 115
+116 117 118
+</pre></div>
+
+<span id="cut3"></span><p>Positive integer array x, cut at each element in x
+</p><div class="example">
+<pre class="example"> 2 3 7 ^!17  / left list indicates start number of each row.
 ,2                        
 3 4 5 6                   
 7 8 9 10 11 12 13 14 15 16
@@ -850,38 +865,16 @@ b|0 1 2
 ,1.                            
 ,1.1                           
 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9
+</pre></div>
 
- {(x*x)within .5 1.5}^.1*!20
+<span id="cut4"></span><p>Function returning boolean array, cut at each index where f is non-zero.
+</p><div class="example">
+<pre class="example"> {(x*x)within .5 1.5}^.1*!20
 0.8                            
 0.9                            
 1.                             
 1.1                            
 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9
-</pre></div>
-
-<p>Cut into domain and range, aka key a table (set an attribute to be a key)
-</p>
-<div class="example">
-<pre class="example"> t:[[]a:`x`y`z;b:1 20 1];t / an unkeyed table
-a b 
-- --
-x  1
-y 20
-z  1
-
- kt:`a^t;kt                / set `a as the key
-a|b 
--|--
-x| 1
-y|20
-z| 1
-
- (0#`)^kt                  / unkey the keyed table
-a b 
-- --
-x  1
-y 20
-z  1
 </pre></div>
 
 <span id="count"></span><span id="count-_21d2-_0023x"></span><h3 class="section">2.26 count &rArr; #x</h3>
@@ -937,7 +930,7 @@ z  1
 <span id="take3"></span><p>If x is a function, then select the  values where the function is non-zero.
 </p>
 <div class="example">
-<pre class="example"> (0.5&lt;)#10?1.           / select values greater than 0.5
+<pre class="example"> (0.5&lt;)#10 rand 1.           / select values greater than 0.5
 0.840732 0.5330717 0.7539563 0.643315 0.6993048f
 </pre></div>
 
@@ -979,7 +972,7 @@ z  1
 <span id="drop3"></span><p>If x is a function, then select values where the function is zero.
 </p>
 <div class="example">
-<pre class="example"> (0.5&lt;)_10?1.           / values less than or equal to 0.5
+<pre class="example"> (0.5&lt;)_10 rand 1.           / values less than or equal to 0.5
 0.02049699 0.1269226
 </pre></div>
 
@@ -1017,9 +1010,7 @@ z  1
 </pre></div>
 
 <span id="find"></span><span id="g_t_005bsf_005dfind-_21d2-x_003fy"></span><h3 class="section">2.33 [sf]find &rArr; x?y</h3>
-<p>As find+ is a &rsquo;+&rsquo; verb its use depends on whether x is a list (find) or atom (range random).
-</p>
-<p>x is list: Find the first element of x that matches y otherwise return the end of vector.
+<p>Find the first element of x that matches y otherwise return the end of vector.
 </p>
 <div class="example">
 <pre class="example"> `a`b`a`c`b`a`a?`b
@@ -1030,27 +1021,6 @@ z  1
 5
 &nbsp;(1;`a;&quot;blue&quot;;7.4)?3
 4
-</pre></div>
-
-<p>x is atom: Generate x random values from 0 to less than y (int, float, time, bit) or from y (list of characters or names).  Random dates can be generated by using random ints and adding those to a  start date.
-</p>
-<div class="example">
-<pre class="example"> 3?5
-0 0 2
- 3?5.
-2.238258 3.038515 0.7879856
- 3?12:00:00
-^05:55:27 09:46:18 10:49:18
- 3?2b
-001b
- 3?&quot;AB&quot;
-&quot;BBA&quot;
- 3?`a`b`c`d
-`d`c`a
- min 2020.01.01+1000?366
-2020.01.01
- max 2020.01.01+1000?366
-2020.12.31
 </pre></div>
 
 <p>x is a special name, eg. &lsquo;js, &lsquo;csv, or &lsquo;nv.  This is further discussed in the <a href="#I_002fO">I/O</a> section.
@@ -1077,7 +1047,7 @@ z  1
 `i`f`s`c`d`t
 </pre></div>
 
-<span id="at"></span><span id="g_t_005bf_005dat-_21d2-x_0040y"></span><h3 class="section">2.35 [f]at &rArr; x@y</h3>
+<span id="at"></span><span id="g_t_005bsf_005dat-_21d2-x_0040y"></span><h3 class="section">2.35 [sf]at &rArr; x@y</h3>
 <p>Given a list x return the value(s) at index(indices) y.  
 </p>
 <div class="example">
@@ -1114,7 +1084,7 @@ temporal or name type.
  .(*;16;3)
 48
 
- n:3;p:+(n?(+;-;*;%);1+n?10;1+n?10);p
+ n:3;p:+(n rand(+;-;*;%);1+n rand 10;1+n rand 10);p
 % 6 3
 * 2 7
 - 5 5
@@ -1329,10 +1299,10 @@ y4 y3
 <p>Additionally eachp (&rsquo;:) is a multithreaded (parallel) each.  This will allow a function to run using multiple threads over a list of arguments.
 </p>
 <div class="example">
-<pre class="example">\t {L:x?1.;sum L%sin L*cos L*sin L+L*L}':8#_50e6 / multiple threads
+<pre class="example">\t {L:xrand 1.;sum L%sin L*cos L*sin L+L*L}':8#_50e6 / multiple threads
 831
 
-\t {L:x?1.;sum L%sin L*cos L*sin L+L*L}'8#_50e6  / single thread
+\t {L:xrand 1.;sum L%sin L*cos L*sin L+L*L}'8#_50e6  / single thread
 1202
 </pre></div>
 
@@ -2368,7 +2338,7 @@ l|1
 r|1
 z|1
 
- freq 1000?10
+ freq 1000 rand 10
 0| 95
 1|106
 2| 84
@@ -2400,15 +2370,11 @@ z|1
 0 4 5
 </pre></div>
 
-<span id="rand"></span><span id="rand-_21d2-_003fx"></span><h3 class="section">9.11 rand &rArr; ?x</h3>
-<p>Generate x random values using a uniform distribution from [0,1) or -x random values of a normal distribution (mean=0, standard deviation=1).
-</p>
+<span id="rand"></span><span id="rand-_21d2-randx"></span><h3 class="section">9.11 rand &rArr; randx</h3>
+<p>Generate x random values using a uniform distribution from [0,1). </p>
 <div class="example">
-<pre class="example"> ?3     / 3 uniform
+<pre class="example"> 3 rand 1     / 3 uniform
 0.1654719 0.172977 0.4808443
-
-?-3     / 3 normal
-0.05384196 1.228946 -0.7144561
 </pre></div>
 
 <span id="has"></span><span id="has-_21d2-x-has-y"></span><h3 class="section">9.12 has &rArr; x has y</h3>
@@ -2989,7 +2955,7 @@ a          b          c          d          e
 </p>
 <div class="example">
 <pre class="example"> n:_1e8
- r:+`a`b`c`d`e!5^n?1.;r
+ r:+`a`b`c`d`e!5^n rand 1.;r
  `r 2:r              / write to file 
 </pre></div>
 
@@ -3475,7 +3441,7 @@ t     p   q
 <p>Scaling this up to a bigger set of tables one can see the performance of k9 on joins.
 </p>
 <div class="example">
-<pre class="example"> N:_1e8;T:[[]t:N?`t 0;q:N?100];5#T
+<pre class="example"> N:_1e8;T:[[]t:N rand `t 0;q:N rand 100];5#T
 t            q 
 ------------ --
 00:00:00.001 44
@@ -3484,7 +3450,7 @@ t            q
 00:00:00.003 35
 00:00:00.003 43
 
- n:_1e5;K:[[t:n?`t 0]p:n?100];5#K
+ n:_1e5;K:[[t:n rand `t 0]p:n rand 100];5#K
 t           |p 
 ------------|--
 00:00:00.481|54
@@ -3623,10 +3589,10 @@ Next: <a href="#Control-Flow" accesskey="n" rel="next">Control Flow</a>, Previou
 <p>List time elapsed in milliseconds in evaluting x.  If n is supply then repeat x, n times.
 </p>
 <div class="example">
-<pre class="example"> \t ^(_10e6)?_1e8     / sort 10 million numbers
+<pre class="example"> \t ^(_10e6)rand _1e8     / sort 10 million numbers
 227
 
- \t:10 ^(_10e6)?_1e8  / perform 10 times the sort
+ \t:10 ^(_10e6)rand _1e8  / perform 10 times the sort
 2027
 </pre></div>
 
@@ -3643,7 +3609,7 @@ Next: <a href="#Control-Flow" accesskey="n" rel="next">Control Flow</a>, Previou
 </p><div class="example">
 <pre class="example">&nbsp;\w
 0
-&nbsp;r:(`i$10e6)?10
+&nbsp;r:(`i$10e6)rand 10
 &nbsp;\w
 2097158
 </pre></div>
@@ -3733,10 +3699,10 @@ time 12:34:56.789 .z.t
 <p>One could use the current time commands to measure run time but typically this is done via <code>\t</code>
 </p>
 <div class="example">
-<pre class="example"> t1:.z.v;(_2e8)?1.;t2:.z.v;t2-t1
+<pre class="example"> t1:.z.v;(_2e8)rand 1.;t2:.z.v;t2-t1
 00:00:00.609207008
 
-\t (_2e8)?1.
+\t (_2e8)rand 1.
 610
 </pre></div>
 
@@ -3815,8 +3781,8 @@ stack <a href="#eparse">parse</a> <a href="#g_t_005fvalue">value</a>
 <span id="limit"></span><span id="g_t_003alimit"></span><h3 class="section">17.6 :limit</h3>
 <p>Exceeded a limit above the software maximum, eg. writing a single file above 1GB.
 </p><div class="example">
-<pre class="example">&nbsp;n:_100e6;d:+`x`y!(!n;n?1.);`d 2:d
-n:_100e6;d:+`x`y!(!n;n?1.);`d 2:d
+<pre class="example">&nbsp;n:_100e6;d:+`x`y!(!n;n rand 1.);`d 2:d
+n:_100e6;d:+`x`y!(!n;n rand 1.);`d 2:d
 
 :limit
 </pre></div>
@@ -3871,9 +3837,9 @@ Next: <a href="#Benchmark" accesskey="n" rel="next">Benchmark</a>, Previous: <a 
 </p>
 <div class="example">
 <pre class="example"> n:10
- T:^10:00+`t n?36e5
- B:100++\-1+n?3
- A:B+1+n?2
+ T:^10:00+`t n rand 36e5
+ B:100++\-1+n rand 3
+ A:B+1+n rand 2
  q:+`t`b`a!(T;B;A);q
 t            b   a  
 ------------ --- ---
@@ -3909,10 +3875,10 @@ t            p
 </p>
 <div class="example">
 <pre class="example">&nbsp;n:_100e6                         / 100 million rows
-&nbsp;t:{09:00:00.000+x?10:00:00.000}  /  random times
-&nbsp;s:{x?`a`b`c`d`e}                 / random symbols
+&nbsp;t:{09:00:00.000+x rand 10:00:00.000}  /  random times
+&nbsp;s:{x rand `a`b`c`d`e}                 / random symbols
 &nbsp;m:0,(|m),365378984,m:271810244 42800467 2636454 62769 572 2;
-&nbsp;d:{(-6+!13)@(+\m)bin x?_1e9}
+&nbsp;d:{(-6+!13)@(+\m)bin x rand _1e9}
 &nbsp;\t q:+`t`s`d!(t[n];s[n];d[n])    / time data generation in ms
 3391
 </pre></div>
@@ -4127,11 +4093,11 @@ Next: <a href="#Conclusion" accesskey="n" rel="next">Conclusion</a>, Previous: <
 <p>b.k
 </p>
 <pre class="verbatim">T:{09:30:00+_6.5*3600*(!x)%x}
-P:{10+x?90};Z:{1000+x?9000};E:?[;&quot;ABCD&quot;]
+P:{10+x rand 90};Z:{1000+x rand 9000};E:rand[;&quot;ABCD&quot;]
 
 /m:2;n:6
 m:7000;n:5600000;
-S:(-m)?`4;N:|1+_n*{x%+/x:exp 15*(!x)%x}m
+S:(-m)rand `4;N:|1+_n*{x%+/x:exp 15*(!x)%x}m
 
 t:S!{+`t`e`p`z!(T;E;P;Z)@'x}'N
 q:S!{+`t`e`b!(T;E;P)@'x}'6*N
@@ -4144,7 +4110,7 @@ a:*A:100#S
 \t:10 select from t[a],`t^q a where p&lt;b
 \
 
-C:M:?[;&quot;ABCDEFGHIJ&quot;]
+C:M:rand[;&quot;ABCDEFGHIJ&quot;]
 trade(sym time exchange price size cond)
 quote(sym time exchange bid bz ask az mode)
 
@@ -4166,7 +4132,7 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 <pre class="example">&nbsp;T:{09:30:00+_6.5*3600*(!x)%x}
 &nbsp;T[13]           / 13 times with equal timesteps over [start;end)
 ^09:30:00 10:00:00 10:30:00 11:00:00 11:30:00 .. 15:00:00 15:30:00
-&nbsp;?1_-':T[10000]  / determine the unique timesteps
+&nbsp;rand1_-':T[10000]  / determine the unique timesteps
 ?00:00:02 00:00:03
 </pre></div>
 
@@ -4200,7 +4166,7 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 <p>Pulling one random table from t and showing 10 random rows.  
 </p>
 <div class="example">
-<pre class="example">&nbsp;10?*t@1?S
+<pre class="example">&nbsp;10 rand*t@1 rand S
 t        e p  z   
 -------- - -- ----
 14:37:53 D 73 4397
@@ -4219,7 +4185,7 @@ t        e p  z
 <p>q is a Ntable of quotes.  The fields are time (t), exchange (e), and bid (b).  The number of quotes is set to 6*n.
 </p>
 <div class="example">
-<pre class="example">&nbsp;10?*q@1?S
+<pre class="example">&nbsp;10 rand*q@1 rand S
 t        e b 
 -------- - --
 11:31:12 A 80
@@ -4279,7 +4245,7 @@ t |z
 <p>This query takes the 100 tables from the quote Ntable and returns the last bid.
 </p>
 <div class="example">
-<pre class="example">&nbsp;3?{select last b from x}'q A
+<pre class="example">&nbsp;3 rand{select last b from x}'q A
 b 
 --
 18
@@ -4294,7 +4260,7 @@ b
 <p>This query operates on one symbol from the q and t Ntables, i.e. a single quote and trade table.  The quote table is joined to the trade table giving the current bid on each trade.
 </p>
 <div class="example">
-<pre class="example">&nbsp;4?select from t[a],`t^q a where p&lt;b
+<pre class="example">&nbsp;4 rand select from t[a],`t^q a where p&lt;b
 t        e p  z    b 
 -------- - -- ---- --
 13:54:35 B 94 1345 96

@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 24, 2020
+<!-- December 26, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -212,10 +212,10 @@ y4 y3
 <p>Additionally eachp (&rsquo;:) is a multithreaded (parallel) each.  This will allow a function to run using multiple threads over a list of arguments.
 </p>
 <div class="example">
-<pre class="example">\t {L:x?1.;sum L%sin L*cos L*sin L+L*L}':8#_50e6 / multiple threads
+<pre class="example">\t {L:xrand 1.;sum L%sin L*cos L*sin L+L*L}':8#_50e6 / multiple threads
 831
 
-\t {L:x?1.;sum L%sin L*cos L*sin L+L*L}'8#_50e6  / single thread
+\t {L:xrand 1.;sum L%sin L*cos L*sin L+L*L}'8#_50e6  / single thread
 1202
 </pre></div>
 

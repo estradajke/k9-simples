@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 24, 2020
+<!-- December 26, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -98,9 +98,9 @@ Next: <a href="Benchmark.html" accesskey="n" rel="next">Benchmark</a>, Previous:
 </p>
 <div class="example">
 <pre class="example"> n:10
- T:^10:00+`t n?36e5
- B:100++\-1+n?3
- A:B+1+n?2
+ T:^10:00+`t n rand 36e5
+ B:100++\-1+n rand 3
+ A:B+1+n rand 2
  q:+`t`b`a!(T;B;A);q
 t            b   a  
 ------------ --- ---
@@ -136,10 +136,10 @@ t            p
 </p>
 <div class="example">
 <pre class="example">&nbsp;n:_100e6                         / 100 million rows
-&nbsp;t:{09:00:00.000+x?10:00:00.000}  /  random times
-&nbsp;s:{x?`a`b`c`d`e}                 / random symbols
+&nbsp;t:{09:00:00.000+x rand 10:00:00.000}  /  random times
+&nbsp;s:{x rand `a`b`c`d`e}                 / random symbols
 &nbsp;m:0,(|m),365378984,m:271810244 42800467 2636454 62769 572 2;
-&nbsp;d:{(-6+!13)@(+\m)bin x?_1e9}
+&nbsp;d:{(-6+!13)@(+\m)bin x rand _1e9}
 &nbsp;\t q:+`t`s`d!(t[n];s[n];d[n])    / time data generation in ms
 3391
 </pre></div>
