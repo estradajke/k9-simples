@@ -1027,7 +1027,7 @@ Find the first element of x that matches y otherwise return the end of vector.
 4
 @end example
 
-x is a special name, eg. `js, `csv, or `nv.  This is further discussed in the @ref{I/O} section.
+There is also another use of @code{?} where x is a special name, eg. `js, `csv, or `nv.  This is further discussed in the @ref{I/O} section.
 
 @anchor{type}@section type @result{} @@x
 Return the data type of x.  Lower-case represents a single element while upper-case represents a list of type indicated.
