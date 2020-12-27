@@ -1,6 +1,6 @@
 This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
 
-December 26, 2020
+December 27, 2020
 
    Copyright (C) 2020 John Estrada
 
@@ -4000,10 +4000,10 @@ comes.)
    Let's use k9 to generate a set of random prices.
 
       n:10
-      T:^10:00+`t n rand 36e5
-      B:100++\-1+n rand 3
-      A:B+1+n rand 2
-      q:+`t`b`a!(T;B;A);q
+      T:^10:00+`t n rand 36e5 / sort randomly generated times
+      B:100++\-1+n rand 3     / generate bids near 100, equivalent to: 100 + (+\((-1)+n rand 3))
+      A:B+1+n rand 2          / generates asks 1 or 2 higher
+      q:+`t`b`a!(T;B;A);q     / build table t and then display
      t            b   a
      ------------ --- ---
      10:01:48.464 100 102
@@ -4045,12 +4045,14 @@ The data here includes time (t), security (s), and price delta (d).
 This table takes about 4 GB and 3.3 seconds on a relatively new consumer
 laptop.
 
-      n:_100e6                         / 100 million rows
-      t:{09:00:00.000+x rand 10:00:00.000}  /  random times
-      s:{x rand `a`b`c`d`e}                 / random symbols
-      m:0,(|m),365378984,m:271810244 42800467 2636454 62769 572 2;
-      d:{(-6+!13)@(+\m)bin x rand _1e9}
-      \t q:+`t`s`d!(t[n];s[n];d[n])    / time data generation in ms
+      n:_100e6                         / set n to 100 million
+      t:{09:00:00.000+x rand 10:00:00.000}  /  x random times between 9:00 and 19:00 (7 pm)
+      s:{x rand `a`b`c`d`e}                 / x random symbols from `a`b`c`d`e
+      m:0,(|m),365378984,m:271810244 42800467 2636454 62769 572 2;  / start m with 6 numbers, then regenerate m with 0, |m, 365378984, m
+      d:{(-6+!13)@(+\m)bin x rand _1e9}  / (i) Take the running sum of m.
+                     / (ii) find the binary search index values of the x random numbers drawn up to 1e9 using bin
+                     / (iii) use those indexes on the array of integers from -6 to +6 inclusive
+      \t q:+`t`s`d!(t[n];s[n];d[n])    / build table and measure time in ms
      3391
 
    As this point one might want to check start and stop times, see if
@@ -4061,7 +4063,7 @@ of the price deltas.
      ti|09:00:00.000
      tf|18:59:59.999
 
-      select c:#s by s from q          / count each symbol
+      select c: count s by s from q          / count each symbol
      s|c
      -|--------
      a|20003490
@@ -4070,7 +4072,7 @@ of the price deltas.
      d|20000640
      e|19999652
 
-      select c:#d by d from q          / check normal dist (2s to run)
+      select c: count d by d from q          / check normal dist (2s to run)
      d |c
      --|--------
      -6|1
@@ -4675,8 +4677,8 @@ Ref: nyi88845
 Ref: eparse89178
 Ref: _value89331
 Node: Examples89459
-Node: Benchmark96847
-Node: Conclusion101803
+Node: Benchmark97415
+Node: Conclusion102371
 
 End Tag Table
 

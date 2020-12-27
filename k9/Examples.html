@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 26, 2020
+<!-- December 27, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -98,10 +98,10 @@ Next: <a href="Benchmark.html" accesskey="n" rel="next">Benchmark</a>, Previous:
 </p>
 <div class="example">
 <pre class="example"> n:10
- T:^10:00+`t n rand 36e5
- B:100++\-1+n rand 3
- A:B+1+n rand 2
- q:+`t`b`a!(T;B;A);q
+ T:^10:00+`t n rand 36e5 / sort randomly generated times
+ B:100++\-1+n rand 3     / generate bids near 100, equivalent to: 100 + (+\((-1)+n rand 3))
+ A:B+1+n rand 2          / generates asks 1 or 2 higher
+ q:+`t`b`a!(T;B;A);q     / build table t and then display
 t            b   a  
 ------------ --- ---
 10:01:48.464 100 102
@@ -135,12 +135,14 @@ t            p
 <p>Generate a table of random data and compute basic statistics quickly.  The data here includes time (t), security (s), and price delta (d).  This table takes about 4 GB and 3.3 seconds on a relatively new consumer laptop.
 </p>
 <div class="example">
-<pre class="example">&nbsp;n:_100e6                         / 100 million rows
-&nbsp;t:{09:00:00.000+x rand 10:00:00.000}  /  random times
-&nbsp;s:{x rand `a`b`c`d`e}                 / random symbols
-&nbsp;m:0,(|m),365378984,m:271810244 42800467 2636454 62769 572 2;
-&nbsp;d:{(-6+!13)@(+\m)bin x rand _1e9}
-&nbsp;\t q:+`t`s`d!(t[n];s[n];d[n])    / time data generation in ms
+<pre class="example">&nbsp;n:_100e6                         / set n to 100 million 
+&nbsp;t:{09:00:00.000+x rand 10:00:00.000}  /  x random times between 9:00 and 19:00 (7 pm)
+&nbsp;s:{x rand `a`b`c`d`e}                 / x random symbols from `a`b`c`d`e
+&nbsp;m:0,(|m),365378984,m:271810244 42800467 2636454 62769 572 2;  / start m with 6 numbers, then regenerate m with 0, |m, 365378984, m
+&nbsp;d:{(-6+!13)@(+\m)bin x rand _1e9}  / (i) Take the running sum of m. 
+&nbsp;               / (ii) find the binary search index values of the x random numbers drawn up to 1e9 using bin
+&nbsp;               / (iii) use those indexes on the array of integers from -6 to +6 inclusive
+&nbsp;\t q:+`t`s`d!(t[n];s[n];d[n])    / build table and measure time in ms
 3391
 </pre></div>
 
@@ -151,7 +153,7 @@ t            p
 ti|09:00:00.000
 tf|18:59:59.999
 
- select c:#s by s from q          / count each symbol
+ select c: count s by s from q          / count each symbol
 s|c       
 -|--------
 a|20003490
@@ -160,7 +162,7 @@ c|19998874
 d|20000640
 e|19999652
 
- select c:#d by d from q          / check normal dist (2s to run)
+ select c: count d by d from q          / check normal dist (2s to run)
 d |c       
 --|--------
 -6|1       
@@ -264,7 +266,7 @@ e|-2903
 <p>As might have been guessed <code>#x</code> counts the number of charcters in the first argument and then <code>!#x</code> generates a list of integers from 0 to n-1.
 </p>
 <div class="example">
-<pre class="example">&nbsp;{(!#x)+\!#y}[&quot;Find the +++ needle in + the ++ text&quot;;&quot;++&quot;]
+<pre class="example">&nbsp;{(!#x)+\!#y}[&quot;Find the +++ needle in + the ++ text&quot;;&quot;++&quot;]  
  0  1
  1  2
  2  3
