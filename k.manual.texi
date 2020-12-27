@@ -780,14 +780,28 @@ Concatenate x and y.
 @end example
 
 @anchor{sort}@section sort @result{} ^x
-Sort list or dictionary x into ascending order.  Dictionaries are sorted using the keys.
+Sort list, dictionary, or table x into ascending order.  Dictionaries are sorted using the keys and tables by the first column field.  One can sort tables by arbitrary columns by first reordering the columns in the table using @ref{take} or by extracting the sort column by index or expression.
 
 @example
-@ ^0 3 2 1
+ ^0 3 2 1
 0 1 2 3
-@ ^`b`a!((0 1 2);(7 6 5)) / sort dictionary by key
-a|7 6 5
-b|0 1 2
+
+^`b`a!((0 1 2);(7 6 5))     / sort dictionary by key
+[a:7 6 5;b:0 1 2]
+
+ ^[[]z:`c`a`b;y:3 2 1]      / sort table by 1st col
+z y
+- -
+a 2
+b 1
+c 3
+
+ ^`y`z#[[]z:`c`a`b;y:3 2 1] / sort table by new 1st col
+y z
+- -
+1 b
+2 a
+3 c
 @end example
 
 @anchor{cut}@section [nf]cut @result{} x^y
@@ -883,7 +897,7 @@ Count the number of elements in x.
 @end example
 
 @anchor{take}@section [f]take @result{} x#y
-[f]take has a number of different actions depending on x.  These include head (take from front of list), tail (take from back of list), common (take common elements), and filter (take where function is non-zero).
+[f]take has a number of different actions depending on x.  These include head (take from front of list), tail (take from back of list), common (take common elements), filter (take where function is non-zero), and select (take columns from table).
 
 @flushleft
 @multitable {@b{some text for column one}} {for column two}
@@ -892,6 +906,7 @@ Count the number of elements in x.
 @item @ref{take1,tail} @tab negative int
 @item @ref{take2,common} @tab list
 @item @ref{take3,filter} @tab function
+@item @ref{take4,select} @tab name(s)
 @end multitable
 @end flushleft
 
@@ -926,11 +941,44 @@ If x is a list, then take returns any values common in both x and y.
 @end example
 
 @anchor{take3}
-If x is a function, then select the  values where the function is non-zero.
+If x is a function, then select the values where the function is non-zero.
 
 @example
  (0.5<)#10 rand 1.           / select values greater than 0.5
 0.840732 0.5330717 0.7539563 0.643315 0.6993048f
+@end example
+
+@anchor{take4}
+If x is a name or list of names, then take the name column or columns from the table.
+
+@example
+ t:[[]x:`a`b`c;y:3 1 2;z:"tab"];t
+x y z
+- - -
+a 3 t
+b 1 a
+c 2 b
+
+ `y#t
+y
+-
+3
+1
+2
+
+ `z`y#t
+z y
+- -
+t 3
+a 1
+b 2
+
+ `x`z`y#t
+x z y
+- - -
+a t 3
+b a 1
+c b 2
 @end example
 
 @anchor{floor}@section floor @result{} _x
@@ -2259,6 +2307,31 @@ a b c
  d :(100*a;b+c)
 300 200 100
 2 4 6      
+@end example
+
+Reorder a table using column index and expresssions.
+
+@example
+ t:[[]x:`b`a`c;y:1 3 2];t
+x y
+- -
+b 1
+a 3
+c 2
+
+ t@<t :y
+x y
+- -
+b 1
+c 2
+a 3
+
+ t@<t`y
+x y
+- -
+b 1
+c 2
+a 3
 @end example
 
 @node Named Functions

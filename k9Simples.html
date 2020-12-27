@@ -812,14 +812,28 @@ b|3 4
 </pre></div>
 
 <span id="sort"></span><span id="sort-_21d2-_005ex"></span><h3 class="section">2.24 sort &rArr; ^x</h3>
-<p>Sort list or dictionary x into ascending order.  Dictionaries are sorted using the keys.
+<p>Sort list, dictionary, or table x into ascending order.  Dictionaries are sorted using the keys and tables by the first column field.  One can sort tables by arbitrary columns by first reordering the columns in the table using <a href="#take">take</a>.
 </p>
 <div class="example">
-<pre class="example">&nbsp;^0 3 2 1
+<pre class="example"> ^0 3 2 1
 0 1 2 3
-&nbsp;^`b`a!((0 1 2);(7 6 5)) / sort dictionary by key
-a|7 6 5
-b|0 1 2
+
+^`b`a!((0 1 2);(7 6 5))     / sort dictionary by key
+[a:7 6 5;b:0 1 2]
+
+ ^[[]z:`c`a`b;y:3 2 1]      / sort table by 1st col
+z y
+- -
+a 2
+b 1
+c 3
+
+ ^`y`z#[[]z:`c`a`b;y:3 2 1] / sort table by new 1st col
+y z
+- -
+1 b
+2 a
+3 c
 </pre></div>
 
 <span id="cut"></span><span id="g_t_005bnf_005dcut-_21d2-x_005ey"></span><h3 class="section">2.25 [nf]cut &rArr; x^y</h3>
@@ -889,7 +903,7 @@ b|0 1 2
 </pre></div>
 
 <span id="take"></span><span id="g_t_005bf_005dtake-_21d2-x_0023y"></span><h3 class="section">2.27 [f]take &rArr; x#y</h3>
-<p>[f]take has a number of different actions depending on x.  These include head (take from front of list), tail (take from back of list), common (take common elements), and filter (take where function is non-zero).
+<p>[f]take has a number of different actions depending on x.  These include head (take from front of list), tail (take from back of list), common (take common elements), filter (take where function is non-zero), and select (take columns from table).
 </p>
 <table>
 <tr><td><b>action</b></td><td><b>x</b></td></tr>
@@ -897,6 +911,7 @@ b|0 1 2
 <tr><td><a href="#take1">tail</a></td><td>negative int</td></tr>
 <tr><td><a href="#take2">common</a></td><td>list</td></tr>
 <tr><td><a href="#take3">filter</a></td><td>function</td></tr>
+<tr><td><a href="#take4">select</a></td><td>name(s)</td></tr>
 </table>
 
 <span id="take1"></span><p>Postive (negative) x returns the first (last) x elements of y.  If abs[x]&gt;count[y] then repeatedly pull from y.
@@ -927,11 +942,43 @@ b|0 1 2
 2 4 6 2 6 4
 </pre></div>
 
-<span id="take3"></span><p>If x is a function, then select the  values where the function is non-zero.
+<span id="take3"></span><p>If x is a function, then select the values where the function is non-zero.
 </p>
 <div class="example">
 <pre class="example"> (0.5&lt;)#10 rand 1.           / select values greater than 0.5
 0.840732 0.5330717 0.7539563 0.643315 0.6993048f
+</pre></div>
+
+<span id="take4"></span><p>If x is a name or list of names, then take the name column or columns from the table.
+</p>
+<div class="example">
+<pre class="example"> t:[[]x:`a`b`c;y:3 1 2;z:&quot;tab&quot;];t
+x y z
+- - -
+a 3 t
+b 1 a
+c 2 b
+
+ `y#t
+y
+-
+3
+1
+2
+
+ `z`y#t
+z y
+- -
+t 3
+a 1
+b 2
+
+ `x`z`y#t
+x z y
+- - -
+a t 3
+b a 1
+c b 2
 </pre></div>
 
 <span id="floor"></span><span id="floor-_21d2-_005fx"></span><h3 class="section">2.28 floor &rArr; _x</h3>
