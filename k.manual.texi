@@ -3706,7 +3706,7 @@ Change directory (cd) into x
 Though looping statements are not necessary in k9, if-then-else statements are sometimes useful.
 
 @verbatim
-$[b;t;f] Control
+$[b;t;f] cond
 @end verbatim
 
 @anchor{cond}@section cond @result{} $[b;t;f]

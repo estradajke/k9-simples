@@ -76,6 +76,7 @@ sed -e 's/@/@@/g' \
     -e 's/Expr/@ref{Expression,Expr}/g' \
     -e 's/Dict/@ref{Dictionary,Dict}/g' \
     -e '20,100 s/t:/@ref{t}:/g' \
+    -e 's/cond/@ref{cond}/g' \
     -e 's/amend/@ref{amend}/g' \
     -e 's/dmend/@ref{dmend}/g' \
     -e 's/Control/@ref{cond,Control}/g' \
