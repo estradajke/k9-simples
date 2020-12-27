@@ -642,7 +642,7 @@ Reverse the list x.
      1 2 3
 
    To get the last element, one can take the first element of the
-reverse list (*|'a'b'c).
+reverse list (*|`a`b`c).
 
 2.13 or => x|y
 ==============
@@ -854,7 +854,8 @@ Concatenate x and y.
 Sort list, dictionary, or table x into ascending order.  Dictionaries
 are sorted using the keys and tables by the first column field.  One can
 sort tables by arbitrary columns by first reordering the columns in the
-table using *note take::.
+table using *note take:: or by extracting the sort column by index or
+expression.
 
       ^0 3 2 1
      0 1 2 3
@@ -1100,8 +1101,8 @@ vector.
       (1;`a;"blue";7.4)?3
      4
 
-   There is also another use of '?' where x is a special name, eg.  'js,
-'csv, or 'nv.  This is further discussed in the *note I/O:: section.
+   There is also another use of '?' where x is a special name, eg.  `js,
+`csv, or `nv.  This is further discussed in the *note I/O:: section.
 
 2.34 type => @x
 ===============
@@ -1194,10 +1195,10 @@ the shape of y.
      x[y[0;n-1];y[1]].
 
 action                     @y    #y    example
-simple index               'I    1     ,2
-simple indices             'I    1     ,1 3
-recursive index            'L    1     0 2
-recursive index over       'L    2     (0 2;1 3)
+simple index               `I    1     ,2
+simple indices             `I    1     ,1 3
+recursive index            `L    1     0 2
+recursive index over       `L    2     (0 2;1 3)
 
       (3 4 7 12).,2
      7
@@ -1512,7 +1513,7 @@ g       int         2g                               1 byte unsigned
 h       int         2h                               2 byte unsigned
 i       int         2                                4 byte unsigned
 j       int         2j                               8 byte signed
-n       name        'abc                             8 char max
+n       name        `abc                             8 char max
 s       time        12:34:56                         second
 S       datetime    2020.06.15T12:34:56              second
 t       time        12:34:56.123                     millisecond
@@ -2389,6 +2390,29 @@ assignment.
       d :(100*a;b+c)
      300 200 100
      2 4 6
+
+   Reorder a table using column index and expresssions.
+
+      t:[[]x:`b`a`c;y:1 3 2];t
+     x y
+     - -
+     b 1
+     a 3
+     c 2
+
+      t@<t :y
+     x y
+     - -
+     b 1
+     c 2
+     a 3
+
+      t@<t`y
+     x y
+     - -
+     b 1
+     c 2
+     a 3
 
 
 File: k9.info,  Node: Named Functions,  Next: Knit Functions,  Prev: Expression,  Up: Top
@@ -4582,153 +4606,153 @@ Ref: key23448
 Ref: list23621
 Ref: cat23757
 Ref: sort23876
-Ref: cut24472
-Ref: cut124736
-Ref: cut224891
-Ref: cut325088
-Ref: cut425365
-Ref: count25548
-Ref: take25738
-Ref: take126240
-Ref: take226612
-Ref: take326884
-Ref: take427085
-Ref: floor27447
-Ref: drop27538
-Ref: drop127974
-Ref: drop228160
-Ref: drop328282
-Ref: string28449
-Ref: parse28550
-Ref: unique28743
-Ref: find28987
-Ref: type29413
-Ref: at29864
-Ref: value30240
-Ref: apply30681
-Node: Adverb31887
-Ref: over32916
-Ref: scan33026
-Ref: join33779
-Ref: split34153
-Ref: each34414
-Ref: eachp34703
-Ref: eachr35463
-Ref: eachl35655
-Ref: cover35836
-Ref: cscan36021
-Node: Noun36908
-Ref: Atom Types38313
-Ref: bool39494
-Ref: int40181
-Ref: flt40860
-Ref: char41262
-Ref: name41495
-Ref: uuid41735
-Ref: time41892
-Ref: date42794
-Ref: datetime43255
-Node: List44054
-Node: Dictionary48303
-Node: User Functions53948
-Node: Expression57197
-Node: Named Functions58075
-Ref: exp58875
-Ref: log58937
-Ref: sin59031
-Ref: cos59164
-Ref: sqr59306
-Ref: sqrt59363
-Ref: prm59430
-Ref: freq59603
-Ref: sums59957
-Ref: deltas60095
-Ref: rand60433
-Ref: has60605
-Ref: bin60899
-Ref: in61109
-Ref: within61283
-Ref: div61515
-Ref: mod61698
-Ref: bar61872
-Ref: cmb62061
-Ref: msum62489
-Ref: mavg62626
-Ref: Hcount62770
-Ref: Hfirst62865
-Ref: Hlast62960
-Ref: Hsum63064
-Ref: Hmin63167
-Ref: Hmax63285
-Ref: topX63402
-Ref: keyF63560
-Ref: unkey63855
-Ref: meta63991
-Node: Knit Functions64122
-Ref: amend64417
-Ref: amend164940
-Ref: amend265192
-Ref: amend365414
-Ref: amend465722
-Ref: dmend66013
-Ref: dmend166343
-Ref: dmend366514
-Ref: dmend466682
-Node: I/O66846
-Ref: read csv68750
-Ref: write csv68928
-Ref: read json69092
-Ref: write json69276
-Ref: read nv69443
-Ref: w line69636
-Ref: r line70027
-Ref: w byte70140
-Ref: r byte70368
-Ref: r data70518
-Ref: w data71180
-Ref: conn/set71765
-Ref: http/get71825
-Ref: lib71885
-Node: Tables72349
-Ref: table73016
-Ref: Utable74666
-Ref: Ntable75204
-Node: kSQL75822
-Ref: select76454
-Ref: A77038
-Ref: by B77855
-Ref: where C78133
-Ref: update78718
-Ref: delete79438
-Ref: union80077
-Ref: leftjoin80598
-Ref: outer81377
-Ref: asof81712
-Ref: asof+83186
-Ref: insert84403
-Ref: upsert84749
-Node: System85163
-Ref: load85621
-Ref: timing85809
-Ref: variables86098
-Ref: memory86199
-Ref: cd86318
-Node: Control Flow86402
-Ref: cond86641
-Node: Temporal Functions87011
-Node: Errors88413
-Ref: class88861
-Ref: rank88950
-Ref: length89074
-Ref: _type89197
-Ref: domain89306
-Ref: limit89428
-Ref: nyi89639
-Ref: eparse89972
-Ref: _value90125
-Node: Examples90253
-Node: Benchmark98209
-Node: Conclusion103165
+Ref: cut24528
+Ref: cut124792
+Ref: cut224947
+Ref: cut325144
+Ref: cut425421
+Ref: count25604
+Ref: take25794
+Ref: take126296
+Ref: take226668
+Ref: take326940
+Ref: take427141
+Ref: floor27503
+Ref: drop27594
+Ref: drop128030
+Ref: drop228216
+Ref: drop328338
+Ref: string28505
+Ref: parse28606
+Ref: unique28799
+Ref: find29043
+Ref: type29469
+Ref: at29920
+Ref: value30296
+Ref: apply30737
+Node: Adverb31943
+Ref: over32972
+Ref: scan33082
+Ref: join33835
+Ref: split34209
+Ref: each34470
+Ref: eachp34759
+Ref: eachr35519
+Ref: eachl35711
+Ref: cover35892
+Ref: cscan36077
+Node: Noun36964
+Ref: Atom Types38369
+Ref: bool39550
+Ref: int40237
+Ref: flt40916
+Ref: char41318
+Ref: name41551
+Ref: uuid41791
+Ref: time41948
+Ref: date42850
+Ref: datetime43311
+Node: List44110
+Node: Dictionary48359
+Node: User Functions54004
+Node: Expression57253
+Node: Named Functions58384
+Ref: exp59184
+Ref: log59246
+Ref: sin59340
+Ref: cos59473
+Ref: sqr59615
+Ref: sqrt59672
+Ref: prm59739
+Ref: freq59912
+Ref: sums60266
+Ref: deltas60404
+Ref: rand60742
+Ref: has60914
+Ref: bin61208
+Ref: in61418
+Ref: within61592
+Ref: div61824
+Ref: mod62007
+Ref: bar62181
+Ref: cmb62370
+Ref: msum62798
+Ref: mavg62935
+Ref: Hcount63079
+Ref: Hfirst63174
+Ref: Hlast63269
+Ref: Hsum63373
+Ref: Hmin63476
+Ref: Hmax63594
+Ref: topX63711
+Ref: keyF63869
+Ref: unkey64164
+Ref: meta64300
+Node: Knit Functions64431
+Ref: amend64726
+Ref: amend165249
+Ref: amend265501
+Ref: amend365723
+Ref: amend466031
+Ref: dmend66322
+Ref: dmend166652
+Ref: dmend366823
+Ref: dmend466991
+Node: I/O67155
+Ref: read csv69059
+Ref: write csv69237
+Ref: read json69401
+Ref: write json69585
+Ref: read nv69752
+Ref: w line69945
+Ref: r line70336
+Ref: w byte70449
+Ref: r byte70677
+Ref: r data70827
+Ref: w data71489
+Ref: conn/set72074
+Ref: http/get72134
+Ref: lib72194
+Node: Tables72658
+Ref: table73325
+Ref: Utable74975
+Ref: Ntable75513
+Node: kSQL76131
+Ref: select76763
+Ref: A77347
+Ref: by B78164
+Ref: where C78442
+Ref: update79027
+Ref: delete79747
+Ref: union80386
+Ref: leftjoin80907
+Ref: outer81686
+Ref: asof82021
+Ref: asof+83495
+Ref: insert84712
+Ref: upsert85058
+Node: System85472
+Ref: load85930
+Ref: timing86118
+Ref: variables86407
+Ref: memory86508
+Ref: cd86627
+Node: Control Flow86711
+Ref: cond86950
+Node: Temporal Functions87320
+Node: Errors88722
+Ref: class89170
+Ref: rank89259
+Ref: length89383
+Ref: _type89506
+Ref: domain89615
+Ref: limit89737
+Ref: nyi89948
+Ref: eparse90281
+Ref: _value90434
+Node: Examples90562
+Node: Benchmark98518
+Node: Conclusion103474
 
 End Tag Table
 

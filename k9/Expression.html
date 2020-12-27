@@ -132,6 +132,31 @@ a b c
 2 4 6      
 </pre></div>
 
+<p>Reorder a table using column index and expresssions.
+</p>
+<div class="example">
+<pre class="example"> t:[[]x:`b`a`c;y:1 3 2];t
+x y
+- -
+b 1
+a 3
+c 2
+
+ t@&lt;t :y
+x y
+- -
+b 1
+c 2
+a 3
+
+ t@&lt;t`y
+x y
+- -
+b 1
+c 2
+a 3
+</pre></div>
+
 
 
 

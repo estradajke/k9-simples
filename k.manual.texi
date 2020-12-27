@@ -572,7 +572,7 @@ Reverse the list x.
 1 2 3
 @end example
 
-To get the last element, one can take  the first element of the reverse list (*|`a`b`c).
+To get the last element, one can take  the first element of the reverse list (*|@math{`}a@math{`}b@math{`}c).
 
 @anchor{max/or}@section or @result{} x|y
 The greater of x and y.  Max of a list can be determine by use of the adverb over.
@@ -1075,7 +1075,7 @@ Find the first element of x that matches y otherwise return the end of vector.
 4
 @end example
 
-There is also another use of @code{?} where x is a special name, eg. `js, `csv, or `nv.  This is further discussed in the @ref{I/O} section.
+There is also another use of @code{?} where x is a special name, eg. @math{`}js, @math{`}csv, or @math{`}nv.  This is further discussed in the @ref{I/O} section.
 
 @anchor{type}@section type @result{} @@x
 Return the data type of x.  Lower-case represents a single element while upper-case represents a list of type indicated.
@@ -1168,10 +1168,10 @@ Given list x return the value at list y.  The action of apply depends on the sha
 @multitable {recursive index over 123} {def} {ghi} {123 123}
 @c @headitem action @tab @@y @tab #y @tab example
 @item @b{action} @tab @b{@@y} @tab @b{#y} @tab @b{example}
-@item simple index @tab `I @tab 1 @tab ,2
-@item simple indices @tab `I @tab 1 @tab ,1 3
-@item recursive index @tab `L @tab 1 @tab 0 2
-@item recursive index over @tab `L @tab 2 @tab (0 2;1 3)
+@item simple index @tab @math{`}I @tab 1 @tab ,2
+@item simple indices @tab @math{`}I @tab 1 @tab ,1 3
+@item recursive index @tab @math{`}L @tab 1 @tab 0 2
+@item recursive index over @tab @math{`}L @tab 2 @tab (0 2;1 3)
 @end multitable
 @end flushleft
 
@@ -1498,7 +1498,7 @@ This section lists all the different types available.  Generally lower case spec
 @item h @tab int @tab 2h @tab 2 byte unsigned
 @item i @tab int @tab 2 @tab 4 byte unsigned
 @item j @tab int @tab 2j @tab 8 byte signed
-@item n @tab name @tab `abc @tab 8 char max
+@item n @tab name @tab @math{`}abc @tab 8 char max
 @item s @tab time @tab 12:34:56 @tab second
 @item S @tab datetime @tab 2020.06.15T12:34:56 @tab second
 @item t @tab time @tab 12:34:56.123 @tab millisecond
@@ -2319,14 +2319,14 @@ b 1
 a 3
 c 2
 
- t@<t :y
+ t@@<t :y
 x y
 - -
 b 1
 c 2
 a 3
 
- t@<t`y
+ t@@<t`y
 x y
 - -
 b 1
