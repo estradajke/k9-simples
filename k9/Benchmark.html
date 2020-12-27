@@ -91,8 +91,8 @@ Next: <a href="Conclusion.html" accesskey="n" rel="next">Conclusion</a>, Previou
 <span id="Benchmark-1"></span><h2 class="chapter">19 Benchmark</h2>
 <p>Shakti is a fast data analysis language  and clear benchmarks illustrate this.  The Shakti website has a file for such purpose, b.k.  For example, you can see below that the first query (Q1) k9 takes 1ms while postgres, spark and mongo are orders of magnitude slower.  
 </p>
-<p>b.k
-</p>
+<span id="b_002ek"></span><h3 class="section">19.1 b.k</h3>
+
 <pre class="verbatim">T:{09:30:00+_6.5*3600*(!x)%x}
 P:{10+x rand 90};Z:{1000+x rand 9000};E:rand[;&quot;ABCD&quot;]
 
@@ -124,8 +124,6 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 960 billion quotes (S has 170 billion. QQQ has 6 billion.)
  48 billion trades (S has 12 billion. QQQ has 80 million.)
 </pre>
-<span id="Understanding-the-benchmark-script"></span><h3 class="section">19.1 Understanding the benchmark script</h3>
-
 <span id="T"></span><h4 class="subsection">19.1.1 T</h4>
 <p>T is a function which generates a uniform list of times from 09:30 to 16:00.
 </p>
@@ -270,6 +268,142 @@ t        e p  z    b
 10:59:39 A 25 5591 72
 &nbsp;\t:10 select from t[a],`t^q a where p&lt;b
 3
+</pre></div>
+
+<span id="taxi"></span><h3 class="section">19.2 taxi</h3>
+<p>The taxi data analysis problem has become well known given the ease of acquiring the data and the size of it.  It&rsquo;s well written up  <a href="https://toddwschneider.com/posts/analyzing-1-1-billion-nyc-taxi-and-uber-trips-with-a-vengeance/here">https://toddwschneider.com/posts/analyzing-1-1-billion-nyc-taxi-and-uber-trips-with-a-vengeance/here</a> with a benchmark summary <a href="https://tech.marksblogg.com/benchmarks.html">here</a>.  Shakti has a benchmark script to generate simulated taxi data in order to check performance.
+</p>
+<div class="format">
+<pre class="verbatim">/taxi 1.1billion https://tech.marksblogg.com/benchmarks.html
+/type/pcount/distance/amount
+
+g:{[[]t:x rand`y`g;p:x rand 9;d:x rand 100;a:x rand 100.]}
+x:d!g':44000+&amp;#d:2009.01.01+!2500  /110 million example
+
+ys:{`y[!x]sum/x} / year sum
+\t sum{select[t]count from x}':x
+\t ys@{select[p]count from x}':x
+\t sum{select[p]sum a from x}':x
+\t ys@{select[p,d]count from x}':x
+
+\
+x:g 10
+select[t]count from x
+select[p]count from x
+select[p]sum a from x
+select[p,d]count from x
+
+
+Q1 select[t]count from x
+Q2 select[p]avg a from x
+Q3 select[d.y,p]count from x
+Q4 select[d.y,p,d]count from x
+
+          cpu  cost core/ram  elapsed         machines
+k           4 .0004    4/16    1            1*i3.2xlarge(8v/32/$.62+$.93)
+redshift  864 .0900  108/1464  8(1 2 2 3)   6*ds2.8xlarge(36v/244/$6.80)
+db/spark 1260 .0900   42/336  30(2 4 4 20) 21*m5.xlarge(4v/16/$.20+$.30)
+bigquery 1600 .3200  200/3200  8(2 2 1 3)
+
+cost: k/redshift/databricks(1.5*EC2) bigquery(redshift) $5.00*TB  k($.05/TB)
+
+csv
+/vendor,pickup,dropoff,pcount,dist1,plong,plat,rate,flag,dlong,dlat,ptype,fare1,sur1,mta1,tip1,toll1,amount1
+t:&quot;b  12            e&quot;  / type(2) passenger(8)
+\t t:(`t`p`d`a;&quot;,&quot;;t)0:&quot;taxi.csv&quot;</pre></div>
+
+<span id="g"></span><h4 class="subsection">19.2.1 g</h4>
+<p>Function to generate a table of random data to represent taxi company (<b>t</b> either yellow &lsquo;y or green &lsquo;g),  paid fare (<b>p</b> 0-9), distance travelled (<b>d</b> 0-99) and address (<b>a</b> 0-100.).
+</p>
+<div class="example">
+<pre class="example"> g:{[[]t:x rand`y`g;p:x rand 9;d:x rand 100;a:x rand 100.]}
+ g 10
+t p d  a       
+- - -- --------
+y 7 38 50.67771
+g 5 34 38.51022
+y 6 40 9.654263
+y 6  5 98.91451
+g 7 47 44.40432
+g 0 64 66.07784
+y 0 99 25.84292
+y 5 46 46.87825
+y 5 66 81.61647
+g 0 10 7.946983
+</pre></div>
+
+<span id="x-1"></span><h4 class="subsection">19.2.2 x</h4>
+<p>x is an Ntable containing 2500 tables, keyed on day.  Each individual table contains 44,000 rows so the this has 110 million rows in total.
+</p>
+<div class="example">
+<pre class="example"> x:d!g':44000+&amp;#d:2009.01.01+!2500  /110 million example
+ x
+2009.01.01|[[]t:`y`y`g`y`g`g`y`y`g`g`g`g`g`y`y`y`y`g`g`g..
+2009.01.02|[[]t:`y`g`g`g`y`g`y`g`y`g`g`g`g`y`g`y`g`y`g`y..
+2009.01.03|[[]t:`y`g`g`g`y`g`y`g`y`g`g`g`g`y`g`y`g`y`g`y..
+2009.01.04|[[]t:`y`g`g`g`y`g`y`g`y`g`g`g`g`y`g`y`g`y`g`y..
+..
+</pre></div>
+
+<span id="g_t2009_002e01_002e04"></span><h4 class="subsection">19.2.3 2009.01.04</h4>
+<p>Let&rsquo;s work with a single table to understand the queries and limit it to 5 rows.
+</p>
+<div class="example">
+<pre class="example"> q:5#x 2009.01.04;q
+t p d  a       
+- - -- --------
+y 3 41 54.5307 
+g 6 70 70.4241 
+g 1 63 81.46645
+g 7 36 43.12615
+y 1 43 23.50114
+</pre></div>
+
+<p>Now let&rsquo;s count the number of rows by field t.  Looking at the data above you should expect 2 yellow (y) taxi trips and 3 green (g) taxi trips.
+</p>
+<div class="example">
+<pre class="example"> select[t]count from q
+t|n
+-|-
+g|3
+y|2
+</pre></div>
+
+<p>We can also sum the paid fare (p) by taxi company (t).
+</p>
+<div class="example">
+<pre class="example"> select[t]sum p from q
+t|p 
+-|--
+g|14
+y| 4
+</pre></div>
+
+<p>Now if we want to compute the same over all the data we need to run the kSQL query over each table.  We&rsquo;ll do this on parallel threads (<a href="Adverb.html#eachp">eachp</a>) to speed it up.
+</p>
+<div class="example">
+<pre class="example"> {select[t]count from x}':x
+2009.01.01|[[t:`g`y]n:21968 22032]
+2009.01.02|[[t:`g`y]n:21962 22038]
+2009.01.03|[[t:`g`y]n:21962 22038]
+2009.01.04|[[t:`g`y]n:21962 22038]
+</pre></div>
+
+<p>and then sum over all days.
+</p>
+<div class="example">
+<pre class="example"> sum{select[t]count from x}':x
+t|n       
+-|--------
+g|55010927
+y|54989073
+</pre></div>
+
+<p>Running the command with the timer will allow us to measure how long it takes to sum over the 110 million examples.
+</p>
+<div class="example">
+<pre class="example"> \t sum{select[t]count from x}':x
+1077
 </pre></div>
 
 <hr>

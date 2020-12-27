@@ -4342,7 +4342,8 @@ this.  The Shakti website has a file for such purpose, b.k.  For
 example, you can see below that the first query (Q1) k9 takes 1ms while
 postgres, spark and mongo are orders of magnitude slower.
 
-   b.k
+19.1 b.k
+========
 
 T:{09:30:00+_6.5*3600*(!x)%x}
 P:{10+x rand 90};Z:{1000+x rand 9000};E:rand[;"ABCD"]
@@ -4374,9 +4375,6 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 
 960 billion quotes (S has 170 billion. QQQ has 6 billion.)
  48 billion trades (S has 12 billion. QQQ has 80 million.)
-
-19.1 Understanding the benchmark script
-=======================================
 
 19.1.1 T
 --------
@@ -4535,6 +4533,147 @@ table giving the current bid on each trade.
      10:59:39 A 25 5591 72
       \t:10 select from t[a],`t^q a where p<b
      3
+
+19.2 taxi
+=========
+
+The taxi data analysis problem has become well known given the ease of
+acquiring the data and the size of it.  It's well written up
+<https://toddwschneider.com/posts/analyzing-1-1-billion-nyc-taxi-and-uber-trips-with-a-vengeance/here>
+with a benchmark summary here
+(https://tech.marksblogg.com/benchmarks.html).  Shakti has a benchmark
+script to generate simulated taxi data in order to check performance.
+
+/taxi 1.1billion https://tech.marksblogg.com/benchmarks.html
+/type/pcount/distance/amount
+
+g:{[[]t:x rand`y`g;p:x rand 9;d:x rand 100;a:x rand 100.]}
+x:d!g':44000+&#d:2009.01.01+!2500  /110 million example
+
+ys:{`y[!x]sum/x} / year sum
+\t sum{select[t]count from x}':x
+\t ys@{select[p]count from x}':x
+\t sum{select[p]sum a from x}':x
+\t ys@{select[p,d]count from x}':x
+
+\
+x:g 10
+select[t]count from x
+select[p]count from x
+select[p]sum a from x
+select[p,d]count from x
+
+
+Q1 select[t]count from x
+Q2 select[p]avg a from x
+Q3 select[d.y,p]count from x
+Q4 select[d.y,p,d]count from x
+
+          cpu  cost core/ram  elapsed         machines
+k           4 .0004    4/16    1            1*i3.2xlarge(8v/32/$.62+$.93)
+redshift  864 .0900  108/1464  8(1 2 2 3)   6*ds2.8xlarge(36v/244/$6.80)
+db/spark 1260 .0900   42/336  30(2 4 4 20) 21*m5.xlarge(4v/16/$.20+$.30)
+bigquery 1600 .3200  200/3200  8(2 2 1 3)
+
+cost: k/redshift/databricks(1.5*EC2) bigquery(redshift) $5.00*TB  k($.05/TB)
+
+csv
+/vendor,pickup,dropoff,pcount,dist1,plong,plat,rate,flag,dlong,dlat,ptype,fare1,sur1,mta1,tip1,toll1,amount1
+t:"b  12            e"  / type(2) passenger(8)
+\t t:(`t`p`d`a;",";t)0:"taxi.csv"
+
+19.2.1 g
+--------
+
+Function to generate a table of random data to represent taxi company (t
+either yellow 'y or green 'g), paid fare (p 0-9), distance travelled (d
+0-99) and address (a 0-100.).
+
+      g:{[[]t:x rand`y`g;p:x rand 9;d:x rand 100;a:x rand 100.]}
+      g 10
+     t p d  a
+     - - -- --------
+     y 7 38 50.67771
+     g 5 34 38.51022
+     y 6 40 9.654263
+     y 6  5 98.91451
+     g 7 47 44.40432
+     g 0 64 66.07784
+     y 0 99 25.84292
+     y 5 46 46.87825
+     y 5 66 81.61647
+     g 0 10 7.946983
+
+19.2.2 x
+--------
+
+x is an Ntable containing 2500 tables, keyed on day.  Each individual
+table contains 44,000 rows so the this has 110 million rows in total.
+
+      x:d!g':44000+&#d:2009.01.01+!2500  /110 million example
+      x
+     2009.01.01|[[]t:`y`y`g`y`g`g`y`y`g`g`g`g`g`y`y`y`y`g`g`g..
+     2009.01.02|[[]t:`y`g`g`g`y`g`y`g`y`g`g`g`g`y`g`y`g`y`g`y..
+     2009.01.03|[[]t:`y`g`g`g`y`g`y`g`y`g`g`g`g`y`g`y`g`y`g`y..
+     2009.01.04|[[]t:`y`g`g`g`y`g`y`g`y`g`g`g`g`y`g`y`g`y`g`y..
+     ..
+
+19.2.3 2009.01.04
+-----------------
+
+Let's work with a single table to understand the queries and limit it to
+5 rows.
+
+      q:5#x 2009.01.04;q
+     t p d  a
+     - - -- --------
+     y 3 41 54.5307
+     g 6 70 70.4241
+     g 1 63 81.46645
+     g 7 36 43.12615
+     y 1 43 23.50114
+
+   Now let's count the number of rows by field t.  Looking at the data
+above you should expect 2 yellow (y) taxi trips and 3 green (g) taxi
+trips.
+
+      select[t]count from q
+     t|n
+     -|-
+     g|3
+     y|2
+
+   We can also sum the paid fare (p) by taxi company (t).
+
+      select[t]sum p from q
+     t|p
+     -|--
+     g|14
+     y| 4
+
+   Now if we want to compute the same over all the data we need to run
+the kSQL query over each table.  We'll do this on parallel threads
+(*note eachp::) to speed it up.
+
+      {select[t]count from x}':x
+     2009.01.01|[[t:`g`y]n:21968 22032]
+     2009.01.02|[[t:`g`y]n:21962 22038]
+     2009.01.03|[[t:`g`y]n:21962 22038]
+     2009.01.04|[[t:`g`y]n:21962 22038]
+
+   and then sum over all days.
+
+      sum{select[t]count from x}':x
+     t|n
+     -|--------
+     g|55010927
+     y|54989073
+
+   Running the command with the timer will allow us to measure how long
+it takes to sum over the 110 million examples.
+
+      \t sum{select[t]count from x}':x
+     1077
 
 
 File: k9.info,  Node: Conclusion,  Prev: Benchmark,  Up: Top
@@ -4759,7 +4898,7 @@ Ref: eparse90485
 Ref: _value90638
 Node: Examples90766
 Node: Benchmark98722
-Node: Conclusion103678
+Node: Conclusion107505
 
 End Tag Table
 

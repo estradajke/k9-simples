@@ -4166,7 +4166,7 @@ And then one can use the where function, @code{&}, to determine the index of the
 @c [JOHN: THIS TOO SHOULD GO AFTER EXAMPLES BUT AFTER YOU EXPLAIN THE LANGUAGE]
 Shakti is a fast data analysis language  and clear benchmarks illustrate this.  The Shakti website has a file for such purpose, b.k.  For example, you can see below that the first query (Q1) k9 takes 1ms while postgres, spark and mongo are orders of magnitude slower.  
 
-b.k
+@section b.k
 
 @verbatim
 T:{09:30:00+_6.5*3600*(!x)%x}
@@ -4200,8 +4200,6 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 960 billion quotes (S has 170 billion. QQQ has 6 billion.)
  48 billion trades (S has 12 billion. QQQ has 80 million.)
 @end verbatim
-
-@section Understanding the benchmark script
 
 @subsection T
 T is a function which generates a uniform list of times from 09:30 to 16:00.
@@ -4347,6 +4345,107 @@ t        e p  z    b
 10:59:39 A 25 5591 72
 @ \t:10 select from t[a],`t^q a where p<b
 3
+@end example
+
+@section taxi
+The taxi data analysis problem has become well known given the ease of acquiring the data and the size of it.  It's well written up  @uref{https://toddwschneider.com/posts/analyzing-1-1-billion-nyc-taxi-and-uber-trips-with-a-vengeance/here} with a benchmark summary @uref{https://tech.marksblogg.com/benchmarks.html,here}.  Shakti has a benchmark script to generate simulated taxi data in order to check performance.
+
+@smallformat
+@verbatiminclude taxi.k
+@end smallformat
+
+@subsection g
+Function to generate a table of random data to represent taxi company (@b{t} either yellow `y or green `g),  paid fare (@b{p} 0-9), distance travelled (@b{d} 0-99) and address (@b{a} 0-100.).
+
+@example
+ g:@{[[]t:x rand`y`g;p:x rand 9;d:x rand 100;a:x rand 100.]@}
+ g 10
+t p d  a       
+- - -- --------
+y 7 38 50.67771
+g 5 34 38.51022
+y 6 40 9.654263
+y 6  5 98.91451
+g 7 47 44.40432
+g 0 64 66.07784
+y 0 99 25.84292
+y 5 46 46.87825
+y 5 66 81.61647
+g 0 10 7.946983
+@end example
+
+@subsection x
+x is an Ntable containing 2500 tables, keyed on day.  Each individual table contains 44,000 rows so the this has 110 million rows in total.
+
+@example
+ x:d!g':44000+&#d:2009.01.01+!2500  /110 million example
+ x
+2009.01.01|[[]t:`y`y`g`y`g`g`y`y`g`g`g`g`g`y`y`y`y`g`g`g..
+2009.01.02|[[]t:`y`g`g`g`y`g`y`g`y`g`g`g`g`y`g`y`g`y`g`y..
+2009.01.03|[[]t:`y`g`g`g`y`g`y`g`y`g`g`g`g`y`g`y`g`y`g`y..
+2009.01.04|[[]t:`y`g`g`g`y`g`y`g`y`g`g`g`g`y`g`y`g`y`g`y..
+..
+@end example
+
+@subsection 2009.01.04
+Let's work with a single table to understand the queries and limit it to 5 rows.
+
+@example
+ q:5#x 2009.01.04;q
+t p d  a       
+- - -- --------
+y 3 41 54.5307 
+g 6 70 70.4241 
+g 1 63 81.46645
+g 7 36 43.12615
+y 1 43 23.50114
+@end example
+
+Now let's count the number of rows by field t.  Looking at the data above you should expect 2 yellow (y) taxi trips and 3 green (g) taxi trips.
+
+@example
+ select[t]count from q
+t|n
+-|-
+g|3
+y|2
+@end example
+
+We can also sum the paid fare (p) by taxi company (t).
+
+@example
+ select[t]sum p from q
+t|p 
+-|--
+g|14
+y| 4
+@end example
+
+Now if we want to compute the same over all the data we need to run the kSQL query over each table.  We'll do this on parallel threads (@ref{eachp}) to speed it up.
+
+@example
+ @{select[t]count from x@}':x
+2009.01.01|[[t:`g`y]n:21968 22032]
+2009.01.02|[[t:`g`y]n:21962 22038]
+2009.01.03|[[t:`g`y]n:21962 22038]
+2009.01.04|[[t:`g`y]n:21962 22038]
+@end example
+
+and then sum over all days.
+
+@example
+ sum@{select[t]count from x@}':x
+t|n       
+-|--------
+g|55010927
+y|54989073
+@end example
+
+Running the command with the timer will allow us to measure how long it takes to sum over the 110 million examples.
+
+@example
+ \t sum@{select[t]count from x@}':x
+1077
 @end example
 
 @node Conclusion
