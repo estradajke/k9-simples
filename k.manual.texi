@@ -1396,7 +1396,7 @@ Converge Over is the same function as @ref{cscan,Converge Scan} but only returns
 @anchor{cscan}@subsection Converge Scan @result{} f\:x or (n;f)\:x
 Compute f[x] where x is the previous output of f until the value converges or returns to x.  The initial value of x is the input.
 
-If n is specified then it is either the number of iterations or a function returning a boolean.  
+If n is specified then it is either do the number of iterations or a while a function returning a non-zero result.  
 
 @example
   @{x*x@}\:.99       / converge to value
