@@ -18,8 +18,8 @@ sed -e 's/@/@@/g' \
     -e 's/max\/or/@ref{max\/or}/g' \
     -e 's/asc/@ref{asc}/g' \
     -e 's/less/@ref{less}/g' \
-    -e 's/desc/@ref{asc,desc}/g' \
-    -e 's/more/@ref{less,more}/g' \
+    -e 's/desc/@ref{desc}/g' \
+    -e 's/more/@ref{more}/g' \
     -e 's/group/@ref{group}/g' \
     -e 's/equal/@ref{equal}/g' \
     -e 's/not/@ref{not}/g' \
@@ -131,7 +131,7 @@ sed -e 's/@/@@/g' \
     -e '20,30 s/prm/@ref{prm}/g' \
     -e '20,30 s/cmb/@ref{cmb}/g' k.d > k.d2
 
-makeinfo k.manual.texi
+texi2any --fill-column=202 --paragraph-indent=none k.manual.texi
 texi2any --pdf k.manual.texi
 texi2any --css-include=style.css --html k.manual.texi
 texi2any --css-include=style.css --html --no-split k.manual.texi -o k9Simples.html

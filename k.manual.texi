@@ -28,14 +28,7 @@ Learning k9 means code like @code{@{x@@(!#x)+\!#y@}} is clear and actually prefe
 
 Alas this manual is not as elegant as the k9 language in that the text version of this document is almost as big as the binary of the language.  
 
-@c This manual is for Shakti (k9) build 2020.10.14.@*
-@c @end ifnottex
-
 The built-in reference screen (@code{\}) containing all the k9 commands.
-
-@c@smallformat
-@c@verbatiminclude k.d
-@c@end smallformat
 
 @include k.d2
 
@@ -587,7 +580,7 @@ The greater of x and y.  Max of a list can be determine by use of the adverb ove
 12
 @end example
 
-@anchor{asc}@section asc(desc) @result{} < (>) x
+@anchor{asc}@anchor{desc}@section asc(desc) @result{} < (>) x
 Sort a list or dictionary in ascending (<) or descending (>) order.  Applied to a list, these will return the indices to be used to achieve the sort.
 
 @example
@@ -608,7 +601,7 @@ b|2
 a|3
 @end example
 
-@anchor{less}@section less (more) @result{} x < (>) y
+@anchor{less}@anchor{more}@section less (more) @result{} x < (>) y
 Return true (1b) if x is less (more) than y else false (0b).
 @example
 @ 3<2
@@ -4374,7 +4367,7 @@ g 0 10 7.946983
 @end example
 
 @subsection x
-x is an Ntable containing 2500 tables, keyed on day.  Each individual table contains 44,000 rows so the this has 110 million rows in total.
+x is an Ntable containing 2500 tables, keyed on day.  Each individual table contains 44,000 rows therefore x has 110 million rows in total.
 
 @example
  x:d!g':44000+&#d:2009.01.01+!2500  /110 million example

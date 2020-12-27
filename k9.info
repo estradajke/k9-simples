@@ -1,8 +1,8 @@
-This is k9.info, produced by makeinfo version 6.7 from k.manual.texi.
+This is k9.info, produced by texi2any version 6.7 from k.manual.texi.
 
 December 27, 2020
 
-   Copyright (C) 2020 John Estrada
+Copyright (C) 2020 John Estrada
 
 
 File: k9.info,  Node: Top,  Next: Introduction,  Up: (dir)
@@ -12,79 +12,43 @@ k9: Manual
 
 This manual is for Shakti (k9) build 2020.12.04.
 
-   The Shakti programming language is the work of Arthur Whitney and the
-team at Shakti.  The language comes from a lineage of similar languages
-going back to APL. It's also known as k9 given the similarities to k,
-k2, ..., k6, k7 and the fact that Arthur also wrote those.  k9 is still
-under development so expect a bit of syntax change and likely even more
-improvements.
+The Shakti programming language is the work of Arthur Whitney and the team at Shakti.  The language comes from a lineage of similar languages going back to APL. It's also known as k9 given the
+similarities to k, k2, ..., k6, k7 and the fact that Arthur also wrote those.  k9 is still under development so expect a bit of syntax change and likely even more improvements.
 
-   Learning k9 means code like '{x@(!#x)+\!#y}' is clear and actually
-prefered to something much longer and verbose.  You'll have to go a bit
-down the rabbit hole before it starts to come together but once it does
-you'll probably be happy you gave it a chance and end up learning a few
-things.  You'll understand how fast k9 can be in processing and
-analyzing data and how terse code is less likely to contain errors.
-Unfortunately you will be less likely to be content using more bloated
-and slow frameworks.
+Learning k9 means code like '{x@(!#x)+\!#y}' is clear and actually prefered to something much longer and verbose.  You'll have to go a bit down the rabbit hole before it starts to come together but once
+it does you'll probably be happy you gave it a chance and end up learning a few things.  You'll understand how fast k9 can be in processing and analyzing data and how terse code is less likely to
+contain errors.  Unfortunately you will be less likely to be content using more bloated and slow frameworks.
 
-   Alas this manual is not as elegant as the k9 language in that the
-text version of this document is almost as big as the binary of the
-language.
+Alas this manual is not as elegant as the k9 language in that the text version of this document is almost as big as the binary of the language.
 
-   The built-in reference screen ('\') containing all the k9 commands.
+The built-in reference screen ('\') containing all the k9 commands.
 
-   *note Verb::                      *note
-Adverb::                 *note Type: Noun.              *note System::
-:   x          y          f/  *note over::  V/ *note join::      *note
-char:: " ab"        \l a.k
-+   *note flip::       *note plus::       f\  *note scan::  V\ *note
-split::     *note name:: ``ab         \t:n x
--   *note minus::      *note minus::      f'  *note
-each::               *note int::  0 2 3        \u:n x
-*   *note first::      *note times::      f': *note
-eachp::              *note flt::  0 2 3.       \v
-%              *note divide::     f/: *note eachr:: (n;f)/:*note over:
-cover.  *note date:: 2021.01.23   .z.d
-&   *note where::      *note min/and::    f\: *note eachl:: (n;f)\:*note
-scan: cscan.  *note time:: 12:34:56.789 .z.t
+*note Verb::                      *note Adverb::                 *note Type: Noun.              *note System::
+:   x          y          f/  *note over::  V/ *note join::      *note char:: " ab"        \l a.k
++   *note flip::       *note plus::       f\  *note scan::  V\ *note split::     *note name:: ``ab         \t:n x
+-   *note minus::      *note minus::      f'  *note each::               *note int::  0 2 3        \u:n x
+*   *note first::      *note times::      f': *note eachp::              *note flt::  0 2 3.       \v
+%              *note divide::     f/: *note eachr:: (n;f)/:*note over: cover.  *note date:: 2021.01.23   .z.d
+&   *note where::      *note min/and::    f\: *note eachl:: (n;f)\:*note scan: cscan.  *note time:: 12:34:56.789 .z.t
 |   *note reverse::    *note max/or::     
-<   *note asc::        *note less::       *note
-I/O::(*enterprise)       Class
->   *note desc: asc.       *note more: less.       0: *note r: r
-line./*note w: w line. line            atom              \f
-=   *note group::      *note equal::      1: *note r: r byte./*note w: w
-byte. byte            *note List:: (2;3.4;`c)   \ft x     
-~   *note not::        *note match::     *2: *note r: r data./*note w: w
-data. data            *note Dict: Dictionary. [a:2;b:`c]   \fl x
-!   *note key::        *note key::       *3: *note k-ipc
-set::           *note Func: User Functions. {[a;b]a+b}   \fc x
-,   *note list::       *note cat::       *4: *note https
-get::           *note Expr: Expression. :a+b         \cd [d]
-^   *note sort::   [nf]*note cut::       *5: *note
-ffi/py/js/..::        *note table: Tables. t:[[]i:2 3;f:2.3 4]
-#   *note count::  [nf]*note take::                             *note
-Utable:: u:[[x:..]y:..]
-_   *note floor::  [nf]*note drop::                             *note
-Ntable:: n:`..![[]y:..]
+<   *note asc::        *note less::       *note I/O::(*enterprise)       Class
+>   *note desc::       *note more::       0: *note r: r line./*note w: w line. line            atom              \f
+=   *note group::      *note equal::      1: *note r: r byte./*note w: w byte. byte            *note List:: (2;3.4;`c)   \ft x     
+~   *note not::        *note match::     *2: *note r: r data./*note w: w data. data            *note Dict: Dictionary. [a:2;b:`c]   \fl x
+!   *note key::        *note key::       *3: *note k-ipc set::           *note Func: User Functions. {[a;b]a+b}   \fc x
+,   *note list::       *note cat::       *4: *note https get::           *note Expr: Expression. :a+b         \cd [d]
+^   *note sort::   [nf]*note cut::       *5: *note ffi/py/js/..::        *note table: Tables. t:[[]i:2 3;f:2.3 4]
+#   *note count::  [nf]*note take::                             *note Utable:: u:[[x:..]y:..]
+_   *note floor::  [nf]*note drop::                             *note Ntable:: n:`..![[]y:..]
 $   *note string::     *note parse::                
-?   *note unique:: [sf]*note find::       $[b;t;f] *note
-cond::          
-@   *note type::   [sf]*note at::         @[r;i;f[;y]] *note
-amend::     *note `js?: read json.*note `js : write json.d
-.   *note value::   [f]*note apply::      .[r;i;f[;y]] *note
-dmend::     *note `csv?: read csv.*note `csv : write csv.t
+?   *note unique:: [sf]*note find::       $[b;t;f] *note cond::          
+@   *note type::   [sf]*note at::         @[r;i;f[;y]] *note amend::     *note `js?: read json.*note `js : write json.d
+.   *note value::   [f]*note apply::      .[r;i;f[;y]] *note dmend::     *note `csv?: read csv.*note `csv : write csv.t
 
-*note exp:: *note log:: *note sin:: *note cos:: *note sqr:: *note
-sqrt:: *note prm:: *note freq:: *note sums:: *note deltas::
-*note rand:: *note has:: *note bin:: *note in::  *note within:: *note
-div:: *note mod:: *note bar:: *note rand:: *note cmb:: *note
-msum:: *note mavg::
-*note count:: *note first:: *note last: Hlast. *note sum: Hsum. *note
-min: Hmin. *note max: Hmax. *[avg var dev med ..]; *note key:: *note
-meta::
-*note select::[C]*note A:: from T where B; *note
-update:: C from T where B; *note delete:: from T where B
+*note exp:: *note log:: *note sin:: *note cos:: *note sqr:: *note sqrt:: *note prm:: *note freq:: *note sums:: *note deltas::
+*note rand:: *note has:: *note bin:: *note in::  *note within:: *note div:: *note mod:: *note bar:: *note rand:: *note cmb:: *note msum:: *note mavg::
+*note count:: *note first:: *note last: Hlast. *note sum: Hsum. *note min: Hmin. *note max: Hmax. *[avg var dev med ..]; *note key:: *note meta::
+*note select::[C]*note A:: from T where B; *note update:: C from T where B; *note delete:: from T where B
 
 \\ exit  /comment \trace
 
@@ -117,39 +81,28 @@ File: k9.info,  Node: Introduction,  Next: Verb,  Prev: Top,  Up: Top
 1 Introduction
 **************
 
-The k9 programming language is designed primarily for the analysis of
-data.  It may surprise new users with two rather different paradigms,
-(1) fast data analysis and (2) concise syntax.  After you become
-familiar with the languages, these features will both seem normal and
-going back to slow and verbose programming will be surprisingly
-difficult.
+The k9 programming language is designed primarily for the analysis of data.  It may surprise new users with two rather different paradigms, (1) fast data analysis and (2) concise syntax.  After you
+become familiar with the languages, these features will both seem normal and going back to slow and verbose programming will be surprisingly difficult.
 
 1.1 Going fast
 ==============
 
-Imagine you have a small, on-disk, 100 million row database containing a
-time-series with two float values at each time.  Additionally this data
-could be split in three different tables covering different
-measurements.  Here's how fast k9 can read in the data from disk and
-compute a statistic, average difference over each table, which uses each
-and every row.
+Imagine you have a small, on-disk, 100 million row database containing a time-series with two float values at each time.  Additionally this data could be split in three different tables covering
+different measurements.  Here's how fast k9 can read in the data from disk and compute a statistic, average difference over each table, which uses each and every row.
 
       bash-3.2$ ./k
       2020.xx.xx 17GB 4core (c) shakti
       \t q:2:`q;{select s:avg a-b from x}'q[!q]
      495
 
-   That's 495 ms to read the data in from disk and compute over all the
-100 million values.  The data read is the biggest bit.  If the data were
-already in memory then the computation would be faster:
+That's 495 ms to read the data in from disk and compute over all the 100 million values.  The data read is the biggest bit.  If the data were already in memory then the computation would be faster:
 
       \t {select s:avg a-b from x}'q[!q]
      230
 
-   230 ms, not bad for 100 million calculations.
+230 ms, not bad for 100 million calculations.
 
-   The code to generate the on-disk database is presented below.  Speed
-of course will depend on your hardware so times will vary.
+The code to generate the on-disk database is presented below.  Speed of course will depend on your hardware so times will vary.
 
      nf:d+*|d:(|-d),d:683 954 997 1000;
      T:^`t rand[;_8.64e7]@
@@ -162,33 +115,23 @@ of course will depend on your hardware so times will vary.
 1.2 Going concise
 =================
 
-The k9 language is more closely related to mathematics syntax than most
-programming lanauges.  It requires the developer to learn to "speak" k9
-but once that happens most find an ability to speak quicker and more
-accurately in k9 than in other languages.  At this point an example
-might help.
+The k9 language is more closely related to mathematics syntax than most programming lanauges.  It requires the developer to learn to "speak" k9 but once that happens most find an ability to speak
+quicker and more accurately in k9 than in other languages.  At this point an example might help.
 
-   In mathematics, "3+2" is read as "3 plus 2" as you learn at an early
-age that "+" is the "plus" sign.  For trival operations like arithmetic
-most programming languages use symbols also.  When moving beyond
-arithmetic, most programming lanauges switch to words while k9 remains
-with symbols.  As an example, to determine the distinct values of a list
-most programming languages might use a syntax like 'distinct()' while k9
-uses '?'.  This requires the developer to learn how to say a number of
-symbols but once that happens it results in much shorter code that is
-quicker to write, easier to inspect, and easier to maintain.
+In mathematics, "3+2" is read as "3 plus 2" as you learn at an early age that "+" is the "plus" sign.  For trival operations like arithmetic most programming languages use symbols also.  When moving
+beyond arithmetic, most programming lanauges switch to words while k9 remains with symbols.  As an example, to determine the distinct values of a list most programming languages might use a syntax like
+'distinct()' while k9 uses '?'.  This requires the developer to learn how to say a number of symbols but once that happens it results in much shorter code that is quicker to write, easier to inspect,
+and easier to maintain.
 
-   This should not be surprising.  In arithmetic, which do you find
-easier to answer?
+This should not be surprising.  In arithmetic, which do you find easier to answer?
 
 Math with text
-Three plus two times open parenthesis six plus fourteen close
-parenthesis
+Three plus two times open parenthesis six plus fourteen close parenthesis
 
 Math with symbols
 3+2*(6+14)
 
-   In code, which will you eventually find easier to understand?
+In code, which will you eventually find easier to understand?
 
 Code with text
 x = (0,12,3,4,1,17,-5,0,3,11);y=5;
@@ -199,39 +142,28 @@ Code with symbols
 x:(0,12,3,4,1,17,-5,0,3,11);y:5;
 z@&y<z:?x
 
-   If you're new to k9 then you'll appreciate that symbols are shorter
-but look like line noise.  That's true but so did arithetic until you
-learned the basics.
+If you're new to k9 then you'll appreciate that symbols are shorter but look like line noise.  That's true but so did arithetic until you learned the basics.
 
-   When you first learned arithmetic you likely didn't have a choice.
-Now you have a choice whether or not you want to learn k9.  If you give
-it a try, then you'll get it quickly and move onto the power phase fast
-enough that you'll be happy you gave it a chance.
+When you first learned arithmetic you likely didn't have a choice.  Now you have a choice whether or not you want to learn k9.  If you give it a try, then you'll get it quickly and move onto the power
+phase fast enough that you'll be happy you gave it a chance.
 
 1.3 Get k9.
 ===========
 
 <https://shakti.sh>
 
-   You will find the Linux version in the linux directory and the MacOS
-version under macos.  Once you download the MacOS version you'll have to
-change its file permissions to allow it to execute.
+You will find the Linux version in the linux directory and the MacOS version under macos.  Once you download the MacOS version you'll have to change its file permissions to allow it to execute.
 
       chomd u+x k
 
-   Again on the mac if you then attempt to run this file you likely
-won't succeed due to MacOS security.  You'll need to go to "System
-Preferences..."  and then "Security and Privacy" and select to allow
-this binary to run.  (You'll have to have tried and failed to have it
-appear here automatically.)
+Again on the mac if you then attempt to run this file you likely won't succeed due to MacOS security.  You'll need to go to "System Preferences..."  and then "Security and Privacy" and select to allow
+this binary to run.  (You'll have to have tried and failed to have it appear here automatically.)
 
 1.4 Help / Info Card
 ====================
 
-Typing '\' in a terminal window gives you a concise overview of the
-language.  This document aims to provide details to beginning user where
-the help screen is a bit too terse.  Some commands are not yet complete
-and thus marked with an asterisk, eg.  *update A by B from T where C.
+Typing '\' in a terminal window gives you a concise overview of the language.  This document aims to provide details to beginning user where the help screen is a bit too terse.  Some commands are not
+yet complete and thus marked with an asterisk, eg.  *update A by B from T where C.
 
 Verb                      Adverb                 Type              System
 :   x          y          f/  over  V/ join      char " ab"        \l a.k
@@ -265,21 +197,12 @@ select[C]A from T where B; update C from T where B; delete from T where B
 1.5 rlwrap
 ==========
 
-Although you only need the 'k' binary to run k9 most will also install
-rlwrap, if not already installed, in order to get command history in a
-terminal window.  rlwrap is "Readline wrapper: adds readline support to
-tools that lack it" and allows one to arrow up to go through the command
-buffer history.
+Although you only need the 'k' binary to run k9 most will also install rlwrap, if not already installed, in order to get command history in a terminal window.  rlwrap is "Readline wrapper: adds readline
+support to tools that lack it" and allows one to arrow up to go through the command buffer history.
 
-   In order to start k9 you should either run 'k' or 'rlwrap k' to get
-started.  Here I will show both options but one should run as desired.
-In this document lines with input are shown with a leading space and
-output will be without.  In the examples below the user starts a
-terminal window in the directory with the 'k' binary file.  Then the
-users enters 'rlwrap ./k <RET>'.  k9 starts and displays the date of the
-build, (c), and shakti and then listens to user input.  In this example
-I have entered the command to exit k9, '\\'.  Then I start k9 again
-without rlwrap and again exit the session.
+In order to start k9 you should either run 'k' or 'rlwrap k' to get started.  Here I will show both options but one should run as desired.  In this document lines with input are shown with a leading
+space and output will be without.  In the examples below the user starts a terminal window in the directory with the 'k' binary file.  Then the users enters 'rlwrap ./k <RET>'.  k9 starts and displays
+the date of the build, (c), and shakti and then listens to user input.  In this example I have entered the command to exit k9, '\\'.  Then I start k9 again without rlwrap and again exit the session.
 
       rlwrap ./k
      Sep 13 2020 16GB (c) shakti
@@ -292,11 +215,8 @@ without rlwrap and again exit the session.
 1.6 Simple example
 ==================
 
-Here I will start up k9, perform some trivial calculations, and then
-close the session.  After this example it will be assumed the user will
-have a k9 session running and working in repl mode.  Comments ('/') will
-be added to the end of lines as needed.  One can review *note plus::,
-*note enum::, *note floor:: and *note timing:: as needed.
+Here I will start up k9, perform some trivial calculations, and then close the session.  After this example it will be assumed the user will have a k9 session running and working in repl mode.  Comments
+('/') will be added to the end of lines as needed.  One can review *note plus::, *note enum::, *note floor:: and *note timing:: as needed.
 
       1+2  / add 1 and 2
      3
@@ -312,7 +232,7 @@ be added to the end of lines as needed.  One can review *note plus::,
       \t 1+!_100e6 / time the operations in milliseconds
      82
 
-   Now let's exit the session.
+Now let's exit the session.
 
       \\
      bash-3.2$
@@ -320,35 +240,27 @@ be added to the end of lines as needed.  One can review *note plus::,
 1.7 Document formatting for code examples
 =========================================
 
-This document uses a number of examples to familiarize the reader with
-k9.  The sytax is to have input with a leading space and output without
-a leading space.  This follows the terminal syntax where the REPL input
-has space but prints output without.
+This document uses a number of examples to familiarize the reader with k9.  The sytax is to have input with a leading space and output without a leading space.  This follows the terminal syntax where
+the REPL input has space but prints output without.
       3+2 / this is input
      5    / this is output
 
 1.8 k9 Idiosyncracies
 =====================
 
-One will need to understand some basic rules of k9 in order to progress.
-These may seem strange at first but the faster you learn them, the
-faster you'll move forward.  Also, some of them, like overloading based
-on number of arguments, add a lot of expressability to the language.
+One will need to understand some basic rules of k9 in order to progress.  These may seem strange at first but the faster you learn them, the faster you'll move forward.  Also, some of them, like
+overloading based on number of arguments, add a lot of expressability to the language.
 
 1.8.1 The language changes often (for now).
 -------------------------------------------
 
-There may be examples in this document which work on the version
-indicated but do not with the version currently available to download.
-If so, then feel free to drop the author a note.  Items which currently
-cause an error but are likely to come back 'soon' will be left in the
-document.
+There may be examples in this document which work on the version indicated but do not with the version currently available to download.  If so, then feel free to drop the author a note.  Items which
+currently cause an error but are likely to come back 'soon' will be left in the document.
 
 1.8.2 Colon (':') is used to set a variable to a value
 ------------------------------------------------------
 
-'a:3' is used to set the variable, a, to the value, 3.  'a=3' is an
-equality test to determine if a is equal to 3.
+'a:3' is used to set the variable, a, to the value, 3.  'a=3' is an equality test to determine if a is equal to 3.
 
 1.8.3 Percent ('%') is used to divide numbers
 ---------------------------------------------
@@ -358,16 +270,12 @@ Yeah, 2 divided by 5 is written as '2%5', not '2/5'.
 1.8.4 Evaluation is done right to left
 --------------------------------------
 
-2+5*3 is 17 and 2*5+3 is 16.  2+5*3 is first evaluated on the right most
-portion, 5*3, and once that is computed then it proceeds with 2+15.
-2*5+3 goes to 2*8 which becomes 16.
+2+5*3 is 17 and 2*5+3 is 16.  2+5*3 is first evaluated on the right most portion, 5*3, and once that is computed then it proceeds with 2+15.  2*5+3 goes to 2*8 which becomes 16.
 
 1.8.5 There is no arithmetic order
 ----------------------------------
 
-+ has equal precedence as *.  The order of evaluation is done right to
-left unless parenthesis are used.  (2+5)*3 = 21 as the 2+5 in
-parenthesis is done before being multiplied by 3.
++ has equal precedence as *.  The order of evaluation is done right to left unless parenthesis are used.  (2+5)*3 = 21 as the 2+5 in parenthesis is done before being multiplied by 3.
 
 1.8.6 Operators are overloaded depending on the number of arguments.
 --------------------------------------------------------------------
@@ -380,10 +288,8 @@ parenthesis is done before being multiplied by 3.
 1.8.7 Lists and functions are very similar.
 -------------------------------------------
 
-k9 syntax encourages you to treat lists and functions in a similar
-function.  They should both be thought of a mapping from a value to
-another value or from a domain to a range.  Lists and functions do not
-have the same type.
+k9 syntax encourages you to treat lists and functions in a similar function.  They should both be thought of a mapping from a value to another value or from a domain to a range.  Lists and functions do
+not have the same type.
 
       l:3 4 7 12
       f:{3+x*x}
@@ -399,13 +305,10 @@ have the same type.
 1.8.8 k9 notions of Noun, Verb, and Adverb
 ------------------------------------------
 
-k9 uses an analogy with grammar to describe language syntax.  The k9
-grammar consists of nouns (data), verbs (functions) and adverbs
-(function modifiers).
+k9 uses an analogy with grammar to describe language syntax.  The k9 grammar consists of nouns (data), verbs (functions) and adverbs (function modifiers).
    * The boy ate an appple. (Noun verb noun)
    * The girl ate each olive. (Noun verb adverb noun)
-   In k9 as the Help/Info card shows data are nouns, functions/lists are
-verbs and modifiers are adverbs.
+In k9 as the Help/Info card shows data are nouns, functions/lists are verbs and modifiers are adverbs.
    * 3 > 2 (Noun verb noun)
    * 3 >' (1 12;1 4 5) (Noun verb adverb noun)
 
@@ -415,19 +318,13 @@ File: k9.info,  Node: Verb,  Next: Adverb,  Prev: Introduction,  Up: Top
 2 Verbs
 *******
 
-This chapter covers verbs which are the core primitives of k9.  Given
-how different is it to call functions in k9 than in most other
-languages, you may have to read this chapter a few times.  Once you can
-"speak" k9 you'll read '|x' better than 'reverse(x)'.
+This chapter covers verbs which are the core primitives of k9.  Given how different is it to call functions in k9 than in most other languages, you may have to read this chapter a few times.  Once you
+can "speak" k9 you'll read '|x' better than 'reverse(x)'.
 
-   Most functions are overloaded and change depending on the number of
-arguments.  This can confuse new users.  Eg.  '(1 4)++(2 3;5 6;7 8)'
-contains the plus symbol once as flip and then for addition.  (Remember
-evaluation is right to left!)
+Most functions are overloaded and change depending on the number of arguments.  This can confuse new users.  Eg.  '(1 4)++(2 3;5 6;7 8)' contains the plus symbol once as flip and then for addition.
+(Remember evaluation is right to left!)
 
-   There are verbs that can take a function argument.  Those are listed
-with a '[f]' prefix.  These include [nf]cut, [f]take, [f]drop, [sf]find,
-[sf]at, and [f]apply.
+There are verbs that can take a function argument.  Those are listed with a '[f]' prefix.  These include [nf]cut, [f]take, [f]drop, [sf]find, [sf]at, and [f]apply.
 
      Verb
      : *note x::,         *note set::.
@@ -458,8 +355,7 @@ with a '[f]' prefix.  These include [nf]cut, [f]take, [f]drop, [sf]find,
 2.2 set => x:y
 ==============
 
-Set a variable, x, to a value, y.  There should be no space between 'x'
-and ':'.
+Set a variable, x, to a value, y.  There should be no space between 'x' and ':'.
 
       a:3
       a
@@ -501,8 +397,7 @@ Flip, or transpose, x.
 2.4 plus => x+y
 ===============
 
-Add x and y.  Arguments can be elements or lists but if both x and y are
-lists then they must be of equal length.
+Add x and y.  Arguments can be elements or lists but if both x and y are lists then they must be of equal length.
 
       3+7
      10
@@ -593,8 +488,7 @@ Divide x by y.
 2.10 where => &x
 ================
 
-Given a list of boolean values return the indices where the value is
-non-zero.
+Given a list of boolean values return the indices where the value is non-zero.
 
       &001001b
      2 5
@@ -605,9 +499,7 @@ non-zero.
       x@&30<x:12.7 0.1 35.6 -12.1 101.101  / return values greater than 30
      35.6 101.101
 
-   Given a list of non-negative integer values, eg.  x[0], x[1], ...,
-x[n-1], generate x[0] values of 0, x[1] values of 1, ..., and x[n-1]
-values of n-1.
+Given a list of non-negative integer values, eg.  x[0], x[1], ..., x[n-1], generate x[0] values of 0, x[1] values of 1, ..., and x[n-1] values of n-1.
 
       & 3 1 0 2
      0 0 0 1 3 3
@@ -616,8 +508,7 @@ values of n-1.
 2.11 and => x&y
 ===============
 
-The smaller of x and y.  One can use the over adverb to determine the
-min value in a list.
+The smaller of x and y.  One can use the over adverb to determine the min value in a list.
       3&2
      2
       1 2 3&4 5 6
@@ -642,14 +533,12 @@ Reverse the list x.
      4
      1 2 3
 
-   To get the last element, one can take the first element of the
-reverse list (*|`a`b`c).
+To get the last element, one can take the first element of the reverse list (*|`a`b`c).
 
 2.13 or => x|y
 ==============
 
-The greater of x and y.  Max of a list can be determine by use of the
-adverb over.
+The greater of x and y.  Max of a list can be determine by use of the adverb over.
       3|2
      3
       1 2 3|4 5 6
@@ -662,9 +551,7 @@ adverb over.
 2.14 asc(desc) => < (>) x
 =========================
 
-Sort a list or dictionary in ascending (<) or descending (>) order.
-Applied to a list, these will return the indices to be used to achieve
-the sort.
+Sort a list or dictionary in ascending (<) or descending (>) order.  Applied to a list, these will return the indices to be used to achieve the sort.
 
       <5 7 0 12
      2 0 1 3
@@ -702,8 +589,7 @@ Return true (1b) if x is less (more) than y else false (0b).
 2.16 group => =x
 ================
 
-A dictionary of the distinct values of x (key) and their indices
-(values).
+A dictionary of the distinct values of x (key) and their indices (values).
       ="banana"
      a|1 3 5
      b|0
@@ -747,8 +633,7 @@ Boolean invert of x
 2.19 match => x~y
 =================
 
-Return true (1b) if x matches y else false (0b).  A match happens if the
-two arguments evaluate to the same expression.
+Return true (1b) if x matches y else false (0b).  A match happens if the two arguments evaluate to the same expression.
 
       2~2
      1b
@@ -769,8 +654,7 @@ two arguments evaluate to the same expression.
 2.20 enum => !x
 ===============
 
-Enumerate the domain of x.  Given an integer, x, generate an integer
-list from 0 to x-1.  Given a dictionary, x, return all key values.
+Enumerate the domain of x.  Given an integer, x, generate an integer list from 0 to x-1.  Given a dictionary, x, return all key values.
 
       !3
      0 1 2
@@ -778,9 +662,7 @@ list from 0 to x-1.  Given a dictionary, x, return all key values.
       !`a`b`c!3 2 1
      `a`b`c
 
-   In the case where x is a list of integers x1 x2 ...  xk, generate a
-matrix of k rows where each row has size */x1 x2 ...  xk and the
-elements of row i are !xi repeated as many times as necessary.  Each
+In the case where x is a list of integers x1 x2 ...  xk, generate a matrix of k rows where each row has size */x1 x2 ...  xk and the elements of row i are !xi repeated as many times as necessary.  Each
 row's repeats must fit below constant values of the row above.
 
       / Each row of length 2*3*2 = */2 3 2 = 12.
@@ -852,11 +734,8 @@ Concatenate x and y.
 2.24 sort => ^x
 ===============
 
-Sort list, dictionary, or table x into ascending order.  Dictionaries
-are sorted using the keys and tables by the first column field.  One can
-sort tables by arbitrary columns by first reordering the columns in the
-table using *note take:: or by extracting the sort column by index or
-expression.
+Sort list, dictionary, or table x into ascending order.  Dictionaries are sorted using the keys and tables by the first column field.  One can sort tables by arbitrary columns by first reordering the
+columns in the table using *note take:: or by extracting the sort column by index or expression.
 
       ^0 3 2 1
      0 1 2 3
@@ -889,13 +768,13 @@ action                     x
 *note indices: cut3.       list
 *note function: cut4.      function
 
-   Positve integer x, cut y into x rows
+Positve integer x, cut y into x rows
       3^101+!20   / 3 rows
      101 102 103 104 105 106
      107 108 109 110 111 112
      113 114 115 116 117 118
 
-   Negative integer, cut y into x elements per row
+Negative integer, cut y into x elements per row
       -3^101+!20  / 3 elements in each row
      101 102 103
      104 105 106
@@ -904,7 +783,7 @@ action                     x
      113 114 115
      116 117 118
 
-   Positive integer array x, cut at each element in x
+Positive integer array x, cut at each element in x
       2 3 7 ^!17  / left list indicates start number of each row.
      ,2
      3 4 5 6
@@ -917,8 +796,7 @@ action                     x
      ,1.1
      1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9
 
-   Function returning boolean array, cut at each index where f is
-non-zero.
+Function returning boolean array, cut at each index where f is non-zero.
       {(x*x)within .5 1.5}^.1*!20
      0.8
      0.9
@@ -940,10 +818,8 @@ Count the number of elements in x.
 2.27 [f]take => x#y
 ===================
 
-[f]take has a number of different actions depending on x.  These include
-head (take from front of list), tail (take from back of list), common
-(take common elements), filter (take where function is non-zero), and
-select (take columns from table).
+[f]take has a number of different actions depending on x.  These include head (take from front of list), tail (take from back of list), common (take common elements), filter (take where function is
+non-zero), and select (take columns from table).
 
 action                     x
 *note head: take1.         positive int
@@ -952,8 +828,7 @@ action                     x
 *note filter: take3.       function
 *note select: take4.       name(s)
 
-   Postive (negative) x returns the first (last) x elements of y.  If
-abs[x]>count[y] then repeatedly pull from y.
+Postive (negative) x returns the first (last) x elements of y.  If abs[x]>count[y] then repeatedly pull from y.
 
       3#0 1 2 3 4 5          / take first 3 elements of a list
      0 1 2
@@ -966,7 +841,7 @@ abs[x]>count[y] then repeatedly pull from y.
 
 
 
-   If x is a list, then take returns any values common in both x and y.
+If x is a list, then take returns any values common in both x and y.
 
       (1 2 3 7 8 9)#(2 8 20) / common
      2 8
@@ -977,14 +852,12 @@ abs[x]>count[y] then repeatedly pull from y.
       (4 6 7 8 2 4 4 4) # (2 4 6 2 6 5 4)
      2 4 6 2 6 4
 
-   If x is a function, then select the values where the function is
-non-zero.
+If x is a function, then select the values where the function is non-zero.
 
       (0.5<)#10 rand 1.           / select values greater than 0.5
      0.840732 0.5330717 0.7539563 0.643315 0.6993048f
 
-   If x is a name or list of names, then take the name column or columns
-from the table.
+If x is a name or list of names, then take the name column or columns from the table.
 
       t:[[]x:`a`b`c;y:3 1 2;z:"tab"];t
      x y z
@@ -1024,10 +897,8 @@ Return the integer floor of float x.
 2.29 [f]drop => x_y
 ===================
 
-[f]drop has a number of different actions depending on x.  This include
-de-head (drop from front of list), de-tail (drop from back of list),
-uncommon (drop common elements), and filter (drop where function is
-zero).
+[f]drop has a number of different actions depending on x.  This include de-head (drop from front of list), de-tail (drop from back of list), uncommon (drop common elements), and filter (drop where
+function is zero).
 
 action                     x
 *note dehead: drop1.       positive int
@@ -1035,7 +906,7 @@ action                     x
 *note uncommon: drop2.     list
 *note filter: drop3.       function
 
-   Postive (negative) x drops the first (last) x elements of y.
+Postive (negative) x drops the first (last) x elements of y.
 
       3_0 1 2 3 4 5          / drop first three
      3 4 5
@@ -1043,12 +914,12 @@ action                     x
       -2_0 1 2 3 4 5         / drop last three
      0 1 2 3
 
-   If x is a list, then drop returns any values from y not found in x.
+If x is a list, then drop returns any values from y not found in x.
 
       (1 2 3 7 8 9)_(2 8 20) / uncommon
      ,20
 
-   If x is a function, then select values where the function is zero.
+If x is a function, then select values where the function is zero.
 
       (0.5<)_10 rand 1.           / values less than or equal to 0.5
      0.02049699 0.1269226
@@ -1079,8 +950,7 @@ Parse string y into type x.
 2.32 unique => ?x
 =================
 
-Return the unique values of the list x.  The '?' preceeding the return
-value explicitly shows that the list has no repeated values.
+Return the unique values of the list x.  The '?' preceeding the return value explicitly shows that the list has no repeated values.
 
       ?`f`a`b`c`a`b`d`e`a
      ?`f`a`b`c`d`e
@@ -1090,8 +960,7 @@ value explicitly shows that the list has no repeated values.
 2.33 [sf]find => x?y
 ====================
 
-Find the first element of x that matches y otherwise return the end of
-vector.
+Find the first element of x that matches y otherwise return the end of vector.
 
       `a`b`a`c`b`a`a?`b
      1
@@ -1102,14 +971,12 @@ vector.
       (1;`a;"blue";7.4)?3
      4
 
-   There is also another use of '?' where x is a special name, eg.  `js,
-`csv, or `nv.  This is further discussed in the *note I/O:: section.
+There is also another use of '?' where x is a special name, eg.  `js, `csv, or `nv.  This is further discussed in the *note I/O:: section.
 
 2.34 type => @x
 ===============
 
-Return the data type of x.  Lower-case represents a single element while
-upper-case represents a list of type indicated.
+Return the data type of x.  Lower-case represents a single element while upper-case represents a list of type indicated.
 
       @1
      `i
@@ -1141,8 +1008,7 @@ Given a list x return the value(s) at index(indices) y.
      1 2
      3
 
-   If x is a function then determine the function with (at) pararmeter
-y.
+If x is a function then determine the function with (at) pararmeter y.
 
       {x*x}@3
      9
@@ -1153,8 +1019,7 @@ y.
 2.36 value => .x
 ================
 
-Evaluate a string of valid k code or list of k code.  Can also be used
-to covert from a string to a numeric, temporal or name type.
+Evaluate a string of valid k code or list of k code.  Can also be used to covert from a string to a numeric, temporal or name type.
 
       ."3+2"
      5
@@ -1187,13 +1052,10 @@ to covert from a string to a numeric, temporal or name type.
 2.37 [f]apply => x.y
 ====================
 
-Given list x return the value at list y.  The action of apply depends on
-the shape of y.
-   * Index returns the value(s) at x at each index y, i.e.  x@y@0,
-     x@y@1, ..., x@y@(n-1).
+Given list x return the value at list y.  The action of apply depends on the shape of y.
+   * Index returns the value(s) at x at each index y, i.e.  x@y@0, x@y@1, ..., x@y@(n-1).
    * Recursive index returns the value(s) at x[y@0;y@1].
-   * Recursive index over returns x[y[0;0];y[1]], x[y[0;1];y[1]], ...,
-     x[y[0;n-1];y[1]].
+   * Recursive index over returns x[y[0;0];y[1]], x[y[0;1];y[1]], ..., x[y[0;n-1];y[1]].
 
 action                     @y    #y    example
 simple index               `I    1     ,2
@@ -1224,7 +1086,7 @@ recursive index over       `L    2     (0 2;1 3)
      x10 x11
      x30 x31
 
-   If x is a function then apply the function to y.
+If x is a function then apply the function to y.
 
       (+). 3 2
      5
@@ -1253,10 +1115,8 @@ File: k9.info,  Node: Adverb,  Next: Noun,  Prev: Verb,  Up: Top
 3 Adverbs
 *********
 
-This chapter may be one of the most difficult for users new to array
-langauges but one must master adverbs to exploit the full power of k9.
-Nouns and verbs naturally come but adverbs need to be learned so that
-one can reach for them when needed.
+This chapter may be one of the most difficult for users new to array langauges but one must master adverbs to exploit the full power of k9.  Nouns and verbs naturally come but adverbs need to be learned
+so that one can reach for them when needed.
 
      Adverb
      f/  *note over: scan.  V/ *note join::
@@ -1266,12 +1126,8 @@ one can reach for them when needed.
      f/: *note eachr:: (n;f)/:*note over: cover.
      f\: *note eachl:: (n;f)\:*note scan: cscan.
 
-   Adverbs modify verbs to operative iteratively over nouns.  This
-previous sentence likely will make sense only once you understand it so
-let's jump into an example.  Imagine you have a list of 4 lists.  Using
-'first' you will retrieve the first sub-list.  In order to retrieve the
-first element of each sub-list you'll have to modify the function
-'first' with a modifier 'each'.
+Adverbs modify verbs to operative iteratively over nouns.  This previous sentence likely will make sense only once you understand it so let's jump into an example.  Imagine you have a list of 4 lists.
+Using 'first' you will retrieve the first sub-list.  In order to retrieve the first element of each sub-list you'll have to modify the function 'first' with a modifier 'each'.
 
      x: (1 2; 3 4; 5 6; 7 8)
       *x
@@ -1282,8 +1138,7 @@ first element of each sub-list you'll have to modify the function
 3.1 over => f/x
 ===============
 
-Over has the same function as *note scan:: but returns only the last
-value.
+Over has the same function as *note scan:: but returns only the last value.
 
 3.2 scan => f\x
 ===============
@@ -1299,7 +1154,7 @@ j   x_{j}f_{j}[f_{j-1};x_{j}]f_{j}[f_{j-1};x_{j}]......
 n-2 x_{n-2}f_{n-2}[f_{n-3};x_{n-2}]f_{n-2}[f_{n-3};x_{n-2}]163033
 n-1 x_{n-1}f_{n-1}[f_{n-2};x_{n-1}]f_{n-1}[f_{n-2};x_{n-1}]2555585558
 
-   An example
+An example
 
       (,\)("a";"b";"c")   / scan and cat to build up a list
      a
@@ -1322,9 +1177,7 @@ Join a list of strings x using character V between each pair.
       "-"/("Some";"random text";"plus";,".")
      "Some-random text-plus-."
 
-   The notaion V/x converts a list of integers x via base V into base
-10.  In the example below, assuming 2 0 1 are digits in base 8, they
-convert to 1 + (0*8) + (2*8*8) = 129
+The notaion V/x converts a list of integers x via base V into base 10.  In the example below, assuming 2 0 1 are digits in base 8, they convert to 1 + (0*8) + (2*8*8) = 129
 
       8/2 0 1
      129
@@ -1341,7 +1194,7 @@ Split the string x using character V to determine the locations.
      short
      sentence.
 
-   V\x splits a number x into base V digits.
+V\x splits a number x into base V digits.
 
       8\129
      2 0 1
@@ -1349,8 +1202,7 @@ Split the string x using character V to determine the locations.
 3.5 each => f'x
 ===============
 
-Apply function f to each value in list x in a single thread.
-Multithread operation is done with *note eachp::.
+Apply function f to each value in list x in a single thread.  Multithread operation is done with *note eachp::.
 
       *((1 2 3);4;(5 6);7)   / first element of the list
      1 2 3
@@ -1361,8 +1213,7 @@ Multithread operation is done with *note eachp::.
 3.6 eachp => f':[x;y]
 =====================
 
-Apply f[x;y] using the prior value of y, eg.  f[y@n;y@n-1].  The first
-value, n=0, returns f[y@0;x].
+Apply f[x;y] using the prior value of y, eg.  f[y@n;y@n-1].  The first value, n=0, returns f[y@0;x].
 
       ,':[`x;(`$"y",'$!5)]
      y0 x
@@ -1377,9 +1228,7 @@ value, n=0, returns f[y@0;x].
       100%':100 101.9 105.1 102.3 106.1    / using infix notation
      1 1.019 1.031403 0.9733587 1.037146
 
-   Additionally eachp (':) is a multithreaded (parallel) each.  This
-will allow a function to run using multiple threads over a list of
-arguments.
+Additionally eachp (':) is a multithreaded (parallel) each.  This will allow a function to run using multiple threads over a list of arguments.
 
      \t {L:xrand 1.;sum L%sin L*cos L*sin L+L*L}':8#_50e6 / multiple threads
      831
@@ -1418,17 +1267,14 @@ Apply f[x;y] to each value of x, i.e.  the left one.
 3.8.1 Converge Over => f/:x or (n;f)/:x
 ---------------------------------------
 
-Converge Over is the same function as *note Converge Scan: cscan. but
-only returns the final value(s).
+Converge Over is the same function as *note Converge Scan: cscan. but only returns the final value(s).
 
 3.8.2 Converge Scan => f\:x or (n;f)\:x
 ---------------------------------------
 
-Compute f[x] where x is the previous output of f until the value
-converges or returns to x.  The initial value of x is the input.
+Compute f[x] where x is the previous output of f until the value converges or returns to x.  The initial value of x is the input.
 
-   If n is specified then it is either the number of iterations or a
-function returning a boolean.
+If n is specified then it is either the number of iterations or a function returning a boolean.
 
        {x*x}\:.99       / converge to value
      0.99 0.9801 0.9605961 ... 1.323698e-18 1.752177e-36 0.
@@ -1459,18 +1305,13 @@ File: k9.info,  Node: Noun,  Next: List,  Prev: Adverb,  Up: Top
 4 Noun
 ******
 
-The basic data types of the k9 language are booleans, numbers (integer
-and float), text (characters and enumerated/name) and temporal (date and
-time).  It is common to have functions operate on multiple data types.
+The basic data types of the k9 language are booleans, numbers (integer and float), text (characters and enumerated/name) and temporal (date and time).  It is common to have functions operate on multiple
+data types.
 
-   In additional to the basic data types, data can be put into lists
-(uniform, i.e., all elements of the same type, and non-uniform),
-dictionaries (key-value pairs), and tables (transposed/flipped
-dictionaries).  Dictionaries and tables will be covered in anohter
-chapter.
+In additional to the basic data types, data can be put into lists (uniform, i.e., all elements of the same type, and non-uniform), dictionaries (key-value pairs), and tables (transposed/flipped
+dictionaries).  Dictionaries and tables will be covered in anohter chapter.
 
-   Here are some examples of each of these types (note that 0N is a null
-integer and 0n a null float).
+Here are some examples of each of these types (note that 0N is a null integer and 0n a null float).
 
      type
      *note bool:: 011b
@@ -1483,10 +1324,8 @@ integer and 0n a null float).
      *note date:: 2024.01.01
      *note time:: 12:34:56.123456789
 
-   Data types can be determined by using the '@' function on values or
-lists of values.  In the case of non-uniform lists '@' returns the type
-of the list '`L' but the function can be modified to evaluate the type
-of each element in the list using '@''.
+Data types can be determined by using the '@' function on values or lists of values.  In the case of non-uniform lists '@' returns the type of the list '`L' but the function can be modified to evaluate
+the type of each element in the list using '@''.
 
       @1            / integer atom
      `i
@@ -1501,34 +1340,32 @@ of each element in the list using '@''.
 4.1 Atom Types
 ==============
 
-This section lists all the different types available.  Generally lower
-case specifies atoms and upper case as lists.
+This section lists all the different types available.  Generally lower case specifies atoms and upper case as lists.
 
-name    type        example                          note
-b       boolean     1b
-c       character   "a"
-d       date        2020.06.14
-e       float       3.1
-f       float       3.1f
-g       int         2g                               1 byte unsigned
-h       int         2h                               2 byte unsigned
-i       int         2                                4 byte unsigned
-j       int         2j                               8 byte signed
-n       name        `abc                             8 char max
-s       time        12:34:56                         second
-S       datetime    2020.06.15T12:34:56              second
-t       time        12:34:56.123                     millisecond
-T       datetime    2020.06.15T12:34:56.123          millisecond
-u       time        12:34:56.123456                  microsecond
-U       datetime    2020.06.15T12:34:56.123456       microsecond
-v       time        12:34:56.123456789               nanosecond
-V       datetime    2020.06.15T12:34:56.123456789    nanosecond
+name                 type                           example                                                                                     note
+b                    boolean                        1b
+c                    character                      "a"
+d                    date                           2020.06.14
+e                    float                          3.1
+f                    float                          3.1f
+g                    int                            2g                                                                                          1 byte unsigned
+h                    int                            2h                                                                                          2 byte unsigned
+i                    int                            2                                                                                           4 byte unsigned
+j                    int                            2j                                                                                          8 byte signed
+n                    name                           `abc                                                                                        8 char max
+s                    time                           12:34:56                                                                                    second
+S                    datetime                       2020.06.15T12:34:56                                                                         second
+t                    time                           12:34:56.123                                                                                millisecond
+T                    datetime                       2020.06.15T12:34:56.123                                                                     millisecond
+u                    time                           12:34:56.123456                                                                             microsecond
+U                    datetime                       2020.06.15T12:34:56.123456                                                                  microsecond
+v                    time                           12:34:56.123456789                                                                          nanosecond
+V                    datetime                       2020.06.15T12:34:56.123456789                                                               nanosecond
 
 4.2 bool => Boolean b
 =====================
 
-Booleans have two possible values 0 and 1 and have a 'b' to avoid
-confusion with integers, eg.  0b or 1b.
+Booleans have two possible values 0 and 1 and have a 'b' to avoid confusion with integers, eg.  0b or 1b.
 
       0b
      0b
@@ -1560,11 +1397,8 @@ Numbers can be stored as integers and floats.
 4.3.1 int => Integer g, h, i, j
 -------------------------------
 
-Integers can be stored in four different ways which correspond 1, 2, 4,
-and 8 bytes.  The first three are unsigned and the last (j) is signed.
-Positive numbers default to i and negative and very large numbers
-default to j.  One can specify a non-default type by adding one of the
-four letters immediately following the number.
+Integers can be stored in four different ways which correspond 1, 2, 4, and 8 bytes.  The first three are unsigned and the last (j) is signed.  Positive numbers default to i and negative and very large
+numbers default to j.  One can specify a non-default type by adding one of the four letters immediately following the number.
 
       @37    / will default to i
      `i
@@ -1607,15 +1441,12 @@ Float
 4.4 Text Data
 =============
 
-Text data come in characters, lists of characters (aka strings) and
-enumerated types.  Enumerated types are displayed as text but stored
-internally as integers.
+Text data come in characters, lists of characters (aka strings) and enumerated types.  Enumerated types are displayed as text but stored internally as integers.
 
 4.4.1 char => Character c
 -------------------------
 
-Characters are stored as their ANSI value and can be seen by conversion
-to integers.  A string is a list of characters (including blanks).
+Characters are stored as their ANSI value and can be seen by conversion to integers.  A string is a list of characters (including blanks).
 
       @"b"
      `c
@@ -1625,8 +1456,7 @@ to integers.  A string is a list of characters (including blanks).
 4.4.2 name => Name n
 --------------------
 
-A name is an enumerated type displayed as a text string but stored
-internally as an integer value.
+A name is an enumerated type displayed as a text string but stored internally as an integer value.
 
       @`blue
      `n
@@ -1646,17 +1476,13 @@ TBD
 4.6 Temporal Data
 =================
 
-Temporal data can be expressed as time, date, or a combined date and
-time.
+Temporal data can be expressed as time, date, or a combined date and time.
 
 4.6.1 time => Time s, t, u, v
 -----------------------------
 
-Time has four types depending on the level of precision.  The types are
-seconds (s), milliseconds (t), microseconds (u), and nanoseconds (v).
-The times are all stored internally as integers.  The integers are the
-number of time units.  For example 00:00:00.012 and 00:00:00.000000012
-are both stored as 12 internally.
+Time has four types depending on the level of precision.  The types are seconds (s), milliseconds (t), microseconds (u), and nanoseconds (v).  The times are all stored internally as integers.  The
+integers are the number of time units.  For example 00:00:00.012 and 00:00:00.000000012 are both stored as 12 internally.
 
       @12:34:56.789             / time
      `t
@@ -1678,8 +1504,7 @@ are both stored as 12 internally.
 4.6.2 date => Date d
 --------------------
 
-Dates are in yyyy.mm.dd format.  Dates are stored internally as integers
-with 0 corresponding to 2001.01.01.
+Dates are in yyyy.mm.dd format.  Dates are stored internally as integers with 0 corresponding to 2001.01.01.
 
       @2020.04.20               / date
      `d
@@ -1695,12 +1520,8 @@ with 0 corresponding to 2001.01.01.
 4.6.3 datetime => Datetime d
 ----------------------------
 
-Dates and times can be combined into a single datetime element by
-combining a date, the letter T, and the time together without spaces.
-The datetime use the same lettering as the time precision but in
-uppercase.  Datetimes are stored interally as integers.  For example
-2001.01.02T00:00:00.000 is stored as 86,400,000, the number of
-milliseconds in a day.
+Dates and times can be combined into a single datetime element by combining a date, the letter T, and the time together without spaces.  The datetime use the same lettering as the time precision but in
+uppercase.  Datetimes are stored interally as integers.  For example 2001.01.02T00:00:00.000 is stored as 86,400,000, the number of milliseconds in a day.
 
       @2020.04.20T12:34:56.789  / date and time
      `d
@@ -1712,9 +1533,9 @@ milliseconds in a day.
 
 Data types can represent in-range, null, and out-of-range values.
 
-type        null        out of range
-i           0N          0W
-f           0n          0w
+type                           null                           out of range
+i                              0N                             0W
+f                              0n                             0w
 
       0%0
      0n
@@ -1727,13 +1548,10 @@ File: k9.info,  Node: List,  Next: Dictionary,  Prev: Noun,  Up: Top
 5 List
 ******
 
-Lists and derivatives of lists are fundamental to k9 which makes sense
-given that the language is made to process large quantites of data.
-Performance will be best when working with uniform lists of a single
-data type but k9 supports list of non-uniform type also.
+Lists and derivatives of lists are fundamental to k9 which makes sense given that the language is made to process large quantites of data.  Performance will be best when working with uniform lists of a
+single data type but k9 supports list of non-uniform type also.
 
-   Lists are automatically formed when a sequence of uniform type are
-entered or generated by any function.
+Lists are automatically formed when a sequence of uniform type are entered or generated by any function.
 
       1 3 12      / list of ints
      1 3 12
@@ -1747,9 +1565,7 @@ entered or generated by any function.
       `x`y`z      / list of names
      `x`y`z
 
-   In order to determine if data is an atom or a list, one can use the
-*note type:: command.  The command returns a lower case value for atoms
-and an upper case value for lists.
+In order to determine if data is an atom or a list, one can use the *note type:: command.  The command returns a lower case value for atoms and an upper case value for lists.
 
       @1          / an integer
      i
@@ -1760,8 +1576,7 @@ and an upper case value for lists.
      @,1         / list of single int via *note list::
      I
 
-   Commands that generate sequences of numbers return lists regardless
-of whether the count (length of the list) is 1 or many.
+Commands that generate sequences of numbers return lists regardless of whether the count (length of the list) is 1 or many.
 
       @!0
      `I
@@ -1773,8 +1588,7 @@ of whether the count (length of the list) is 1 or many.
 5.1 List Syntax
 ===============
 
-In general, lists consist of elements separated by semicolons and
-encased by parenthesis.
+In general, lists consist of elements separated by semicolons and encased by parenthesis.
 
       (1;3;12)         / list of ints
       @(1;3.;`a;"b")   / non-uniform list
@@ -1789,9 +1603,7 @@ encased by parenthesis.
 5.2 List Indexing
 =================
 
-Lists can be indexed in different ways.  The @ notation is often used as
-it's fewer characters than [] and the explicit @ instead of space is
-likely more clear.
+Lists can be indexed in different ways.  The @ notation is often used as it's fewer characters than [] and the explicit @ instead of space is likely more clear.
 
       a:2*1+!10 / 2 4 ... 20
       a[9]      / square bracket
@@ -1808,9 +1620,7 @@ likely more clear.
 5.3 Updating List Elements
 ==========================
 
-Lists can be updated elementwise by setting the indexed element to a
-required value.  There is also a syntax for updating many elements and
-that is found at *note amend::.
+Lists can be updated elementwise by setting the indexed element to a required value.  There is also a syntax for updating many elements and that is found at *note amend::.
 
       a:2*1+!10;a
      2 4 6 8 10 12 14 16 18 20
@@ -1821,16 +1631,13 @@ that is found at *note amend::.
 5.4 Functions Applied to Two Lists
 ==================================
 
-This section will focus on functions (f) that operate on two lists (x
-and y).  As these are internal functions, examples will be shown with
-infix notation (x+y) but prefix notation (+[x;y]) would also be
-possible.
+This section will focus on functions (f) that operate on two lists (x and y).  As these are internal functions, examples will be shown with infix notation (x+y) but prefix notation (+[x;y]) would also
+be possible.
 
 5.4.1 Pairwise
 --------------
 
-These functions operate on list elements pairwise and thus requires that
-x and y are equal length.
+These functions operate on list elements pairwise and thus requires that x and y are equal length.
    * x+y : Add
    * x-y : Subtract
    * x*y : Multiply
@@ -1878,8 +1685,7 @@ x and y are equal length.
 5.4.2 Each Element of One List Compared to Entire Other List
 ------------------------------------------------------------
 
-These functions compare x[i] to y or x to y[i].  They are not symmetric
-to their inputs, i.e.  f[x;y] does not equal f[y;x];
+These functions compare x[i] to y or x to y[i].  They are not symmetric to their inputs, i.e.  f[x;y] does not equal f[y;x];
 
    * x^y : Reshape all element in y by x
    * x#y : List all elements in x that appear in y
@@ -1903,8 +1709,7 @@ to their inputs, i.e.  f[x;y] does not equal f[y;x];
 5.4.3 Each List Used Symmetrically
 ----------------------------------
 
-This is symmetric in its inputs f[x;y]=f[y;x] and the lists are not
-required to be equal length.
+This is symmetric in its inputs f[x;y]=f[y;x] and the lists are not required to be equal length.
 
    * x_y : Values present in only one of the two lists
 
@@ -1919,24 +1724,17 @@ File: k9.info,  Node: Dictionary,  Next: User Functions,  Prev: List,  Up: Top
 6 Dictionary
 ************
 
-Dictionaries are a data type of key-value pairs typically used to
-retrieve the value by using the key.  In other computer languages they
-are also known as associative arrays and maps.  Keys should be unique to
-avoid lookup value confusion but uniqueness is not enforced.  The values
-in the dictionary can be single elements, lists, tables, or even other
-dictionaries.
+Dictionaries are a data type of key-value pairs typically used to retrieve the value by using the key.  In other computer languages they are also known as associative arrays and maps.  Keys should be
+unique to avoid lookup value confusion but uniqueness is not enforced.  The values in the dictionary can be single elements, lists, tables, or even other dictionaries.
 
-   Dictionaries in k9 are often used.  As an example from finance,
-market quotes and trade data are dictionaries of symbols (name keys) and
-market data (table values).
+Dictionaries in k9 are often used.  As an example from finance, market quotes and trade data are dictionaries of symbols (name keys) and market data (table values).
 
 6.1 Dictionary Creation => x!y or [x;y]
 =======================================
 
-Dictionaries are created by using the key symbol or square bracket
-notation and listing the keys (x) and values (y).
+Dictionaries are created by using the key symbol or square bracket notation and listing the keys (x) and values (y).
 
-   'x!y'
+'x!y'
 
       d0:`a37!12; d0                          / key is `a37 and value is 12
      a37|12
@@ -1951,7 +1749,7 @@ notation and listing the keys (x) and values (y).
      b|10 20 30
      c|100 200 300 499
 
-   '[x:y]'
+'[x:y]'
 
       d0:[a37:12]
      a37|12
@@ -1966,8 +1764,7 @@ notation and listing the keys (x) and values (y).
      b|10 20 30
      c|100 200 300
 
-   Often one will need to modify the data while building the dictionary.
-User defined functions can easily accomplish this task.
+Often one will need to modify the data while building the dictionary.  User defined functions can easily accomplish this task.
 
       `x`sinX`cosX!{(x;sin y;cos z)} . 3#,0.1*(!62)
      x   |0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 1.1 ..
@@ -1978,8 +1775,7 @@ User defined functions can easily accomplish this task.
 6.2 Dictionary Join => x,y
 ==========================
 
-This joins dictionaries together and the right or y dictionary will
-overwrite the left or x dictionary if common keys are present.
+This joins dictionaries together and the right or y dictionary will overwrite the left or x dictionary if common keys are present.
 
       d1:`a`b`c!3 2 1;d1
      a|3
@@ -2054,9 +1850,7 @@ The values from a dictionary are retrieved using bracket notation.
       d2[]
      37.4 46.3 0.1
 
-   One could return a specific value by indexing into a specific
-location.  As an example, in order to query the first value of the
-values associated with the key temp from d1, one would convert d1 into
+One could return a specific value by indexing into a specific location.  As an example, in order to query the first value of the values associated with the key temp from d1, one would convert d1 into
 values (a pair of lists), and index that by [1;0].
 
       d1
@@ -2106,8 +1900,7 @@ values (a pair of lists), and index that by [1;0].
 6.8 Flipping a Dictionary into a Table => +x
 ============================================
 
-This command flips a dictionary into a table and will be covered in
-detail in the table chapter.
+This command flips a dictionary into a table and will be covered in detail in the table chapter.
 
       d1
      time|12:00 12:01 12:10
@@ -2126,10 +1919,8 @@ detail in the table chapter.
 6.9 Functions that operate on each value in a dictionary
 ========================================================
 
-There are a number of simple functions on dictionaries that operate on
-their values.  If 'f' is a function then f applied to a dictionary
-returns a dictionary with the same keys and the values resulting from
-the application of 'f'.
+There are a number of simple functions on dictionaries that operate on their values.  If 'f' is a function then f applied to a dictionary returns a dictionary with the same keys and the values resulting
+from the application of 'f'.
 
    * -d : Negate
    * d + N : Add N to d
@@ -2143,7 +1934,7 @@ the application of 'f'.
    * &d : Given d:x!y output each x, y times, where y must be an integer
    * =d : Given d:x!y y!x
 
-   Examples
+Examples
       d2
       0|37.4
      10|46.3
@@ -2177,9 +1968,7 @@ the application of 'f'.
 6.10 Functions that return over values from a dictionary
 ========================================================
 
-There are functions on dictionaries that operate over the values.  Given
-function f applied to a dictionary d, f d returns one or more values
-without the original keys.
+There are functions on dictionaries that operate over the values.  Given function f applied to a dictionary d, f d returns one or more values without the original keys.
 
    * *d : First value
       d0
@@ -2196,22 +1985,17 @@ File: k9.info,  Node: User Functions,  Next: Expression,  Prev: Dictionary,  Up:
 7 User-defined Functions
 ************************
 
-User-defined functions are treated as verbs in k9, so can benefit from
-the adverbs.
+User-defined functions are treated as verbs in k9, so can benefit from the adverbs.
 
-   Multi-line functions must be defined with an initial space on all
-lines except the first.  These can be loaded into memory by using the
-*note \l: load. command and then used by calling by name.
+Multi-line functions must be defined with an initial space on all lines except the first.  These can be loaded into memory by using the *note \l: load. command and then used by calling by name.
 
      Func {[a;b]a+b}
 
 7.1 Function arguments
 ======================
 
-Functions default to arguments of x, y, and z for the first three
-parameters but one can explicitly spell out these or other argument
-names.  Given k9's terseness, many k9 programmers prefer short variable
-names.  But this is a matter of taste.
+Functions default to arguments of x, y, and z for the first three parameters but one can explicitly spell out these or other argument names.  Given k9's terseness, many k9 programmers prefer short
+variable names.  But this is a matter of taste.
 
       f1:{x+2*y}         / implicit arguments x and y
       f1[2;10]
@@ -2235,8 +2019,7 @@ names.  But this is a matter of taste.
 7.2 Function Defitions
 ======================
 
-Functions can have intermediate calcuations and local variables.
-Function local variables do not affect the values of global variables.
+Functions can have intermediate calcuations and local variables.  Function local variables do not affect the values of global variables.
 
       a:3;a
      3
@@ -2252,8 +2035,7 @@ Function local variables do not affect the values of global variables.
 7.3 Function Return
 ===================
 
-Function return the last value in the definition unless the definition
-ends with a semicolon in which case the function returns nothing.
+Function return the last value in the definition unless the definition ends with a semicolon in which case the function returns nothing.
 
       f:{x+2;};f 10  / returns nothing because of final semi-colon
 
@@ -2266,11 +2048,8 @@ ends with a semicolon in which case the function returns nothing.
 7.4 Calling functions
 =====================
 
-Functions, like lists, can be called in a variety of ways.  Typically
-one uses square bracket notation when the function takes multiple
-argruments.  If a function is called with fewer than the required number
-of arguments then it will return a function that requires the remaining
-arguemnts.
+Functions, like lists, can be called in a variety of ways.  Typically one uses square bracket notation when the function takes multiple argruments.  If a function is called with fewer than the required
+number of arguments then it will return a function that requires the remaining arguemnts.
 
       f1:{[x] x}
       f2:{[x;y](x;y)}
@@ -2303,8 +2082,7 @@ arguemnts.
 7.5 Anonymous functions
 =======================
 
-It's possible to define a function without naming it.  If the function
-is to be used in just one place, this can make sense.
+It's possible to define a function without naming it.  If the function is to be used in just one place, this can make sense.
 
       {x+2*y}[2;10]
      22
@@ -2312,8 +2090,7 @@ is to be used in just one place, this can make sense.
 7.6 Recursive functions
 =======================
 
-k9 allows one to define a function which calls itself.  Care should be
-taken to avoid an infinite loop.
+k9 allows one to define a function which calls itself.  Care should be taken to avoid an infinite loop.
 
       f:{$[x>1;x*f@x-1;1]};f 5
      120
@@ -2321,8 +2098,7 @@ taken to avoid an infinite loop.
 7.7 Chained functions
 =====================
 
-It may be necessary to define a function to call a function without
-specifying arguments.  Imagine this trivial case.
+It may be necessary to define a function to call a function without specifying arguments.  Imagine this trivial case.
 
       fa:{!x}
       fb:{x+2} fa
@@ -2330,10 +2106,8 @@ specifying arguments.  Imagine this trivial case.
      ^
      :rank
 
-   In order to succeed fa needs to have an '@' in the definition of fb.
-This is required because fb calls fa without specifying an argument for
-fa.  So the argument for fb becomes the argument for fa so the net
-effect is 2 + !3.
+In order to succeed fa needs to have an '@' in the definition of fb.  This is required because fb calls fa without specifying an argument for fa.  So the argument for fb becomes the argument for fa so
+the net effect is 2 + !3.
 
       fa:{!x}
       fb:{x+2} fa@
@@ -2346,17 +2120,14 @@ File: k9.info,  Node: Expression,  Next: Named Functions,  Prev: User Functions,
 8 Expression Evaluation
 ***********************
 
-k9 has a compact way to evaluate an expression on data structures
-including dictionaries and tables.
+k9 has a compact way to evaluate an expression on data structures including dictionaries and tables.
 
 Expr :a+b
 
 8.1 expr => x :y
 ================
 
-Evaluate expression(s) 'y' on table or dictionary 'x'.  The space
-between 'x' and ':' is required otherwise it becomes *note set::, i.e.,
-assignment.
+Evaluate expression(s) 'y' on table or dictionary 'x'.  The space between 'x' and ':' is required otherwise it becomes *note set::, i.e., assignment.
 
       d:`city!`London
       d :city
@@ -2392,7 +2163,7 @@ assignment.
      300 200 100
      2 4 6
 
-   Reorder a table using column index and expresssions.
+Reorder a table using column index and expresssions.
 
       t:[[]x:`b`a`c;y:1 3 2];t
      x y
@@ -2421,12 +2192,9 @@ File: k9.info,  Node: Named Functions,  Next: Knit Functions,  Prev: Expression,
 9 Named Functions
 *****************
 
-This chapter covers the built-in named functions.  This includes some
-math (eg.  sqrt but not +), wrapper (eg.  count for #) and range (eg.
-within) functions.
+This chapter covers the built-in named functions.  This includes some math (eg.  sqrt but not +), wrapper (eg.  count for #) and range (eg.  within) functions.
 
-   rand has bin in within div mod bar rand cmb msum mavg count first
-last sum min max *[avg var dev med ..]; key meta
+rand has bin in within div mod bar rand cmb msum mavg count first last sum min max *[avg var dev med ..]; key meta
 
      *note exp:: *note log:: *note sin:: *note cos:: *note sqr:: *note sqrt:: *note prm:: *note freq:: *note sums:: *note deltas::
      *note rand:: *note has:: *note bin:: *note in:: *note within:: *note div:: *note mod:: *note bar:: *note cmb:: *note msum:: *note mavg::
@@ -2533,9 +2301,7 @@ Compute the running sum of list x.  Sames as '+\'.
 9.10 deltas => deltas x and x deltas y
 ======================================
 
-Compute the difference between each element in list x and the previous
-value.  If delta is called with two parameters then x will be used as
-the first value to delta instead of the default 0.
+Compute the difference between each element in list x and the previous value.  If delta is called with two parameters then x will be used as the first value to delta instead of the default 0.
 
       deltas 1 5 10
      1 4 5
@@ -2554,8 +2320,7 @@ Generate x random values using a uniform distribution from [0,1).
 9.12 has => x has y
 ===================
 
-Determine whether vector x has element y.  Simliar to *note in:: but
-with the arguments reversed.
+Determine whether vector x has element y.  Simliar to *note in:: but with the arguments reversed.
 
       `a`b`c`a`b has `a
      1b
@@ -2572,8 +2337,7 @@ with the arguments reversed.
 9.13 bin => x bin y
 ===================
 
-Given a sorted (increasing) list x, find the greatest index, i, where
-y>x[i].
+Given a sorted (increasing) list x, find the greatest index, i, where y>x[i].
 
       n:exp 0.01*!5;n
      1 1.01005 1.020201 1.030455 1.040811
@@ -2583,8 +2347,7 @@ y>x[i].
 9.14 in => x in y
 =================
 
-Determine if x is in list y.  Similar to *note has:: but arguments
-reversed.
+Determine if x is in list y.  Similar to *note has:: but arguments reversed.
 
       `b in `a`b`d`e
      1b
@@ -2611,8 +2374,7 @@ Test if x is equal to or greater than y[0] and less than y[1].
 9.16 div => x div y
 ===================
 
-y divided by x using integer division, taking the floor of the result.
-x and y must be integers.
+y divided by x using integer division, taking the floor of the result.  x and y must be integers.
 
       2 div 7
      3
@@ -2622,8 +2384,7 @@ x and y must be integers.
 9.17 mod => x mod y
 ===================
 
-The remainder after y divided by x using integer division.  x and y must
-be integers.
+The remainder after y divided by x using integer division.  x and y must be integers.
 
       12 mod 27
      3
@@ -2633,8 +2394,7 @@ be integers.
 9.18 bar => x bar y
 ===================
 
-For each value in y determine the maximum multiple of x that is less
-than or equal to each y.
+For each value in y determine the maximum multiple of x that is less than or equal to each y.
 
       10 bar 9 10 11 19 20 21
      0 10 10 10 20 20
@@ -2642,8 +2402,7 @@ than or equal to each y.
 9.19 cmb => x cmb y
 ===================
 
-Determine all x value combinations up to y.  In this case these are
-ordered in ascending order from left to right.
+Determine all x value combinations up to y.  In this case these are ordered in ascending order from left to right.
 
       3 cmb 5
      2 3 4
@@ -2747,8 +2506,7 @@ Return the index of the max value of list x.
 9.29 key => x key y
 ===================
 
-Key table y with x.  That is, the values in the x column become the key
-values.
+Key table y with x.  That is, the values in the x column become the key values.
 
       `a key [[]a:`fa`fb;b:1 2]
      a |b
@@ -2788,8 +2546,7 @@ File: k9.info,  Node: Knit Functions,  Next: I/O,  Prev: Named Functions,  Up: T
 10 Knit Functions
 *****************
 
-These functions modify lists and dictionaries given a list of indices
-and functions or values to replace.
+These functions modify lists and dictionaries given a list of indices and functions or values to replace.
 
      @[r;i;f[;y]] *note amend::
      .[r;i;f[;y]] *note dmend::
@@ -2797,9 +2554,7 @@ and functions or values to replace.
 10.1 amend => @[r;i;f[;y]]
 ==========================
 
-Replace the values in list / dictionary r at indices i with element f or
-function f and parameter y.  The original list is not modified.  Indices
-are rows for lists and keys for dictionaries.
+Replace the values in list / dictionary r at indices i with element f or function f and parameter y.  The original list is not modified.  Indices are rows for lists and keys for dictionaries.
 
 action                           f             y
 *note amend with element: amend1.element       n/a
@@ -2807,7 +2562,7 @@ action                           f             y
 *note amend with function 1 param: amend3.functionn/a
 *note amend with function 2 param: amend4.function2nd param
 
-   Amend to element.
+Amend to element.
 
       r:(0 1;2 3;4 5;6);r
      0 1
@@ -2827,8 +2582,7 @@ action                           f             y
      4 5
      6
 
-   Amend with element/array.  If using an array, then the 'i' and 'y'
-must be arrays of equal length.
+Amend with element/array.  If using an array, then the 'i' and 'y' must be arrays of equal length.
 
       r:(0 1;2 3;4 5;6);r
      0 1
@@ -2842,7 +2596,7 @@ must be arrays of equal length.
      3 5
      6
 
-   Amend with function f[r] at indices i.
+Amend with function f[r] at indices i.
 
       r:(0 1;2 3;4 5;6);r
      0 1
@@ -2864,7 +2618,7 @@ must be arrays of equal length.
      x|`a`b`c
      y|3 2 1.
 
-   Amend with function f[r;y] at indices i.
+Amend with function f[r;y] at indices i.
 
       r:(0 1;2 3;4 5;6);r
      0 1
@@ -2896,7 +2650,7 @@ action                           f             y
 *note dmend with function 1 param: dmend3.functionn/a
 *note dmend with function 2 param: dmend4.function2nd param
 
-   Dmend to element.
+Dmend to element.
 
       r:(0 1;2 3;4 5;6);r
      0 1
@@ -2910,7 +2664,7 @@ action                           f             y
      4 5
      6
 
-   Dmend with function f[r] at indices i.
+Dmend with function f[r] at indices i.
 
       r:(0 1;2 3;4 5;6);r
      0 1
@@ -2924,7 +2678,7 @@ action                           f             y
      4 5
      6
 
-   Dmend with function f[r;y] at indices i.
+Dmend with function f[r;y] at indices i.
 
       r:(0 1;2 3;4 5;6);r
      0 1
@@ -2944,14 +2698,10 @@ File: k9.info,  Node: I/O,  Next: Tables,  Prev: Knit Functions,  Up: Top
 11 I/O and Interface
 ********************
 
-In order to support fast data analysis, k9 supports fast input and
-output (I/O). If you have the habit of making tea while a huge csv file
-loads, you might have to opt to take a few sips from a glass of water
-instead.
+In order to support fast data analysis, k9 supports fast input and output (I/O). If you have the habit of making tea while a huge csv file loads, you might have to opt to take a few sips from a glass of
+water instead.
 
-   k9 is also able to interface with other languages so one doesn't need
-to translate everything you've already written in those other languages
-to k9.
+k9 is also able to interface with other languages so one doesn't need to translate everything you've already written in those other languages to k9.
 
       I/O(*enterprise)
       0: *note r: r line./*note w: w line. line
@@ -2967,11 +2717,8 @@ to k9.
 11.1 Example of Data I/O
 ========================
 
-Let's begin with a simple example to show how to read data from a csv
-file.  We'll generate a small table and save it with and without headers
-(wHeader.csv and woHeader.csv respectively).  Then we'll read it back
-in, both specifying types and with the csv reader.  Types are specifed
-by one letter and the full list can be found in *note Atom Types::.
+Let's begin with a simple example to show how to read data from a csv file.  We'll generate a small table and save it with and without headers (wHeader.csv and woHeader.csv respectively).  Then we'll
+read it back in, both specifying types and with the csv reader.  Types are specifed by one letter and the full list can be found in *note Atom Types::.
 
       t:[[]a:3 2 1;b:1. 2. 4.;c:`x`y`z];t / generate table
      a b  c
@@ -3060,8 +2807,7 @@ Convert x, a list of name:value pairs, to a dictionary.
 11.7 write line => x 0:y
 ========================
 
-Output to x the list of strings in y.  y must be a list of strings.  If
-y is a single string then convert to list via *note list::.
+Output to x the list of strings in y.  y must be a list of strings.  If y is a single string then convert to list via *note list::.
 
       ""0:("blue";"red")      / "" represents stdout
      blue
@@ -3099,16 +2845,14 @@ Output to file x the list of chars in y as bytes.
 11.10 read byte => 1:x
 ======================
 
-Read from byte data from file x.  See *note w byte:: for an example to
-write and then read byte data.
+Read from byte data from file x.  See *note w byte:: for an example to write and then read byte data.
 
 11.11 read data => 2: x
 =======================
 
 Enterprise Only
 
-   Load file, eg. csv or from a (x 2: y) save.  For the latter, one can
-find a "save then load" example in the next section.
+Load file, eg. csv or from a (x 2: y) save.  For the latter, one can find a "save then load" example in the next section.
 
       2:`t.csv
      s    t        e p  z
@@ -3130,19 +2874,16 @@ find a "save then load" example in the next section.
 
 Enterprise only
 
-   Save to file x non-atomic data y (e.g., lists, dictionaries, or
-tables).
+Save to file x non-atomic data y (e.g., lists, dictionaries, or tables).
 
-   This example saves 100 million 8-byte doubles to file.  The session
-is then closed and a fresh session reads in the file.  Both the write
-(420 ms) and compute statistics from the file have impressive speeds
-(146 ms) given the file size (800 MB).
+This example saves 100 million 8-byte doubles to file.  The session is then closed and a fresh session reads in the file.  Both the write (420 ms) and compute statistics from the file have impressive
+speeds (146 ms) given the file size (800 MB).
 
       n:_1e8
       r:+`a`b`c`d`e!5^n rand 1.;r
       `r 2:r              / write to file
 
-   Start new session.
+Start new session.
 
       \t r:2:`r;select avg a,sum b, max c, min d, sum e from r
      148
@@ -3162,17 +2903,17 @@ Enterprise only
 
 Enterprise only
 
-   Load shared library.
+Load shared library.
 
-   Contents of file 'a.c'
+Contents of file 'a.c'
      int add1(int x){return 1+x;}
      int add2(int x){return 2+x;}
      int indx(int x[],int y){return x[y];}
 
-   Compile into a shared library (done on macos here)
+Compile into a shared library (done on macos here)
      % clang -dynamiclib -o a.so a.c
 
-   Load the shared library into the session.
+Load the shared library into the session.
       f:"./dev/a.so"5:{add1:"i";add2:"i";indx:"Ii"}
       f[`add1] 12
      13
@@ -3185,13 +2926,9 @@ File: k9.info,  Node: Tables,  Next: kSQL,  Prev: I/O,  Up: Top
 12 Tables
 *********
 
-k9 has the ability to store data in a tabular format containing named
-columns and rows of information as tables.  If the data to be stored and
-queried is large, then you should use tables.  This chapter introduces
-the different types of data tables available in k9.  Table, Utable and
-Ntable are very similar and as you'll see in the *note kSQL:: chapter
-are easy to query.  In the *note Benchmark:: chapter, you'll see that
-tables are fast to save, read, and query.
+k9 has the ability to store data in a tabular format containing named columns and rows of information as tables.  If the data to be stored and queried is large, then you should use tables.  This chapter
+introduces the different types of data tables available in k9.  Table, Utable and Ntable are very similar and as you'll see in the *note kSQL:: chapter are easy to query.  In the *note Benchmark::
+chapter, you'll see that tables are fast to save, read, and query.
 
       *note table:: t:[[]i:2 3;f:2.3 4]
      *note Utable:: u:[[x:..]y:..]
@@ -3200,23 +2937,17 @@ tables are fast to save, read, and query.
 12.1 table
 ==========
 
-The table is the most basic of the three types.  A table consists of
-columns and rows of information where each column has a name.  Tables
-can be created in three different ways (1) specification via table
-format, (2) flipping a dictionary, or (3) reading in from a file.
+The table is the most basic of the three types.  A table consists of columns and rows of information where each column has a name.  Tables can be created in three different ways (1) specification via
+table format, (2) flipping a dictionary, or (3) reading in from a file.
 
 12.1.1 Table format
 -------------------
 
 Tables can be created with the table square bracket notation.
 
-   As an example, let's create a table with two columns named "a" and
-"col2" having three rows.  The syntax is to surround the definition with
-square brackets and then have a first element of empty square brackets.
-Following those brackets comes first column name, colon, and the list of
-values, then the second column, and continuing for all the columns.  For
-keyed tables, the initial square brackets will contain key column names
-as we will discuss later.
+As an example, let's create a table with two columns named "a" and "col2" having three rows.  The syntax is to surround the definition with square brackets and then have a first element of empty square
+brackets.  Following those brackets comes first column name, colon, and the list of values, then the second column, and continuing for all the columns.  For keyed tables, the initial square brackets
+will contain key column names as we will discuss later.
 
       [[] a:1 20 3; col2: 3.6 4.8 0.1]
      a  col2
@@ -3250,13 +2981,13 @@ Tables can also be created by flipping a dictionary into a table.
 
 Tables can also be created by reading in a file.
 
-   t.csv
+t.csv
 a, col2
 1, 3.6
 20, 4.8
 3, 0.1
 
-   Use load file '2:x' which returns a table.
+Use load file '2:x' which returns a table.
 
       2:`t.csv
      a   col2
@@ -3268,9 +2999,7 @@ a, col2
 12.2 Utable
 ===========
 
-Utable (or key table) is a table where some of the columns are keyed.
-The combination of those columns should not have two rows with the same
-values.  This must be enforced by the application.
+Utable (or key table) is a table where some of the columns are keyed.  The combination of those columns should not have two rows with the same values.  This must be enforced by the application.
 
       [[d:2020.09.08 2020.09.09 2020.09.10]p:140 139 150]
      d         |p
@@ -3289,11 +3018,8 @@ values.  This must be enforced by the application.
 12.3 Ntable
 ===========
 
-A Ntable is a collection of tables stored in a dictionary where the keys
-are symbols and the values are tables.  Thus, it has both the data and
-schema of a set of tables, much like a data dictionary in a conventional
-relational database.  Below is an example where the keys are symbols and
-the values are end-of-day prices.
+A Ntable is a collection of tables stored in a dictionary where the keys are symbols and the values are tables.  Thus, it has both the data and schema of a set of tables, much like a data dictionary in
+a conventional relational database.  Below is an example where the keys are symbols and the values are end-of-day prices.
 
       x1:+`d`p!(2020.09.08 2020.09.09 2020.09.10;140 139 150)
       x2:+`d`p!(2020.09.08 2020.09.10;202 208)
@@ -3311,9 +3037,7 @@ File: k9.info,  Node: kSQL,  Next: System,  Prev: Tables,  Up: Top
 13 kSQL
 *******
 
-kSQL is a powerful query language for tables.  It has similarities to
-ANSI SQL but additional features to make it easier to work with ordered
-data, such as time series data.
+kSQL is a powerful query language for tables.  It has similarities to ANSI SQL but additional features to make it easier to work with ordered data, such as time series data.
 
      Database
      *note select:: *note A:: *note by B:: from T *note where C::; *note update:: A from T
@@ -3327,9 +3051,7 @@ data, such as time series data.
 13.1.1 select
 -------------
 
-There a number of ways to return a complete table with kSQL. You can use
-the table name, a kSQL query without columns, or a fully specified query
-with columns.
+There a number of ways to return a complete table with kSQL. You can use the table name, a kSQL query without columns, or a fully specified query with columns.
 
       n:5;t:[[]x:!n;y:sin !n]
       t
@@ -3362,9 +3084,7 @@ with columns.
 13.1.2 A
 --------
 
-A is the list of fields to return from the select query.  If A is
-missing then all fields will be returned.  A can create new column
-names.
+A is the list of fields to return from the select query.  If A is missing then all fields will be returned.  A can create new column names.
 
       n:5;t:[[]x:!n;y:sin !n];t
      x y
@@ -3414,8 +3134,7 @@ names.
 13.1.3 by B
 -----------
 
-kSQL also has a way to group rows using 'by'.  The result is a Utable
-where the key is determined by the grouping clause 'by'.
+kSQL also has a way to group rows using 'by'.  The result is a Utable where the key is determined by the grouping clause 'by'.
 
      n:5;t:[[]x:!n;y:sin !n]
 
@@ -3428,8 +3147,7 @@ where the key is determined by the grouping clause 'by'.
 13.1.4 where C
 --------------
 
-kSQL makes it easy to build up a where clause to filter down the table.
-C is the list of constraints.
+kSQL makes it easy to build up a where clause to filter down the table.  C is the list of constraints.
 
       n:5;t:[[]x:!n;y:sin !n]
       select from t where x>0
@@ -3459,10 +3177,8 @@ C is the list of constraints.
 13.1.6 update
 -------------
 
-update allows one to modify values without specifying all the fields
-that pass through.  update is also used to add new columns in a table.
-update does not, by itself, save the modifications to the table.  If you
-want to preserve those modifications, use assignment.
+update allows one to modify values without specifying all the fields that pass through.  update is also used to add new columns in a table.  update does not, by itself, save the modifications to the
+table.  If you want to preserve those modifications, use assignment.
 
       t:[[]x:`a`b`c;y:1 2 3];t
      x y
@@ -3496,8 +3212,7 @@ want to preserve those modifications, use assignment.
 13.1.7 delete
 -------------
 
-Delete rows from a table that satisfy one or more conditions.  Currently
-not working.
+Delete rows from a table that satisfy one or more conditions.  Currently not working.
 
       t:[[]x:`a`b`c;y:1 2 1];t
      x y
@@ -3515,9 +3230,7 @@ not working.
 13.2 Joins
 ==========
 
-k9 has a number of methods to join tables together which are described
-below.  In this section t, t1 and t2 represent tables and k, k1 and k2
-represent Utables.
+k9 has a number of methods to join tables together which are described below.  In this section t, t1 and t2 represent tables and k, k1 and k2 represent Utables.
 
 join                   syntax
 *note union::          t1,t2
@@ -3529,9 +3242,7 @@ join                   syntax
 13.2.1 union join => t1,t2
 --------------------------
 
-Union join table t1 with table t2.  The tables should have the same
-columns and the join results in a table with t2 appended to t1.  If the
-tables do not have the same columns then return t1.
+Union join table t1 with table t2.  The tables should have the same columns and the join results in a table with t2 appended to t1.  If the tables do not have the same columns then return t1.
 
       t1:[[]s:`a`b;p:1 2;q:3 4]
       t2:[[]s:`b`c;p:11 12;q:21 22]
@@ -3558,10 +3269,8 @@ tables do not have the same columns then return t1.
 13.2.2 leftjoin => t,k
 ----------------------
 
-leftjoin table t with Utable k.  Result includes all rows from t and the
-values from table k having the same key values.  If a row of t has key
-values not found in k, then the t values are shown and 0 for the columns
-coming from k.
+leftjoin table t with Utable k.  Result includes all rows from t and the values from table k having the same key values.  If a row of t has key values not found in k, then the t values are shown and 0
+for the columns coming from k.
 
       t:[[]s:`a`b`c;p:1 2 3;q:7 8 9]
       k:[[s:`a`b`x`y`z]q:101 102 103 104 105;r:51 52 53 54 55]
@@ -3619,11 +3328,8 @@ Outer join Utable k1 with key Utable k2.
 13.2.4 asof join => t,k
 -----------------------
 
-Asof joins each row rt of table t to a row rk in Utable k (keyed by
-time) provided rk has the maximum time value of any row in k while
-obeying the constraint that the time value in rt >= the time value of
-rk.  Intuitively, rk should be the row in k that is most up-to-date with
-respect to rt.
+Asof joins each row rt of table t to a row rk in Utable k (keyed by time) provided rk has the maximum time value of any row in k while obeying the constraint that the time value in rt >= the time value
+of rk.  Intuitively, rk should be the row in k that is most up-to-date with respect to rt.
 
       t:[[]t:09:30+5*!5;p:100+!5];t
      t     p
@@ -3655,8 +3361,7 @@ respect to rt.
      09:45 103 52
      09:50 104 52
 
-   Scaling this up to a bigger set of tables one can see the performance
-of k9 on joins.
+Scaling this up to a bigger set of tables one can see the performance of k9 on joins.
 
       N:_1e8;T:[[]t:N rand `t 0;q:N rand 100];5#T
      t            q
@@ -3682,13 +3387,9 @@ of k9 on joins.
 13.2.5 asof+ join => k1+k2
 --------------------------
 
-Asof+ joins allows one to aggregate over markets to find the total
-available at a given time.  The Utables need to be specified with '`a'.
-The effect is to merge the two key fields (the field t in this case) and
-for each row rk1 from table k1, add the non-key field (bs in this case)
-from rk1 to the bs field of the most recent row in k2 whose t value is
-less than or equal to the t value in rk1.  And symmetrically for each
-row of table k2.
+Asof+ joins allows one to aggregate over markets to find the total available at a given time.  The Utables need to be specified with '`a'.  The effect is to merge the two key fields (the field t in this
+case) and for each row rk1 from table k1, add the non-key field (bs in this case) from rk1 to the bs field of the most recent row in k2 whose t value is less than or equal to the t value in rk1.  And
+symmetrically for each row of table k2.
 
       k1:`a [[t:09:30+5*!5]bs:100*1 2 3 2 1];k1
      t    |bs
@@ -3720,10 +3421,8 @@ row of table k2.
 13.3 Insert and Upsert
 ======================
 
-One can add data to tables via insert or upsert.  The difference between
-the two is that insert adds data to a table while upsert on some key x
-will replace the values if x is present in the target table or insert x
-with its associated value otherwise.
+One can add data to tables via insert or upsert.  The difference between the two is that insert adds data to a table while upsert on some key x will replace the values if x is present in the target
+table or insert x with its associated value otherwise.
 
 13.3.1 insert => t,d
 --------------------
@@ -3791,9 +3490,8 @@ File: k9.info,  Node: System,  Next: Control Flow,  Prev: kSQL,  Up: Top
 14 System
 *********
 
-k9 comes with a few system functions and measurement commands.  The
-commands allow you to load a script, change the working directory,
-measure execution times and memory usage, and list defined variables.
+k9 comes with a few system functions and measurement commands.  The commands allow you to load a script, change the working directory, measure execution times and memory usage, and list defined
+variables.
 
      System
      \l a.k *note load::
@@ -3815,8 +3513,7 @@ Load a text file of k9 commands.  The file name must end in .k.
 14.2 timing => \t x or \t:n x
 =============================
 
-List time elapsed in milliseconds in evaluting x.  If n is supply then
-repeat x, n times.
+List time elapsed in milliseconds in evaluting x.  If n is supply then repeat x, n times.
 
       \t ^(_10e6)rand _1e8     / sort 10 million numbers
      227
@@ -3855,16 +3552,14 @@ File: k9.info,  Node: Control Flow,  Next: Temporal Functions,  Prev: System,  U
 15 Control Flow
 ***************
 
-Though looping statements are not necessary in k9, if-then-else
-statements are sometimes useful.
+Though looping statements are not necessary in k9, if-then-else statements are sometimes useful.
 
 $[b;t;f] cond
 
 15.1 cond => $[b;t;f]
 =====================
 
-If b is non zero then x else y.  x and y are not required to be of the
-same type.
+If b is non zero then x else y.  x and y are not required to be of the same type.
 
       $[3>2;`a;`b]
      `a
@@ -3892,9 +3587,7 @@ File: k9.info,  Node: Temporal Functions,  Next: Errors,  Prev: Control Flow,  U
 16 Temporal Functions
 *********************
 
-k9 has functions (within '.z') to get the current date and time to
-various degrees of precision.  There are also functions to retrieve
-partial date and time using dot notation.
+k9 has functions (within '.z') to get the current date and time to various degrees of precision.  There are also functions to retrieve partial date and time using dot notation.
 
 date 2001.01.01   .z.d
 time 12:34:56.789 .z.t
@@ -3913,8 +3606,7 @@ These functions retrieve the date as day (d) or month (m) precision.
 16.2 .z.[hrstuv] time
 =====================
 
-These functions retrieve the time at hour (h), minute (r), second (s),
-millisecond (t), microsecond (u), or nanosecond (v) precision.
+These functions retrieve the time at hour (h), minute (r), second (s), millisecond (t), microsecond (u), or nanosecond (v) precision.
 
       .z.h
      11
@@ -3929,8 +3621,7 @@ millisecond (t), microsecond (u), or nanosecond (v) precision.
       .z.v
      11:25:18.186360064
 
-   One could use the current time commands to measure run time but
-typically this is done via '\t'
+One could use the current time commands to measure run time but typically this is done via '\t'
 
       t1:.z.v;(_2e8)rand 1.;t2:.z.v;t2-t1
      00:00:00.609207008
@@ -3964,9 +3655,7 @@ File: k9.info,  Node: Errors,  Next: Examples,  Prev: Temporal Functions,  Up: T
 17 Errors
 *********
 
-Given the terse syntax of k9, it likely won't be a surprise that error
-messages are also rather short.  The errors are listed on the help page
-and described in more detail below.
+Given the terse syntax of k9, it likely won't be a surprise that error messages are also rather short.  The errors are listed on the help page and described in more detail below.
 
      error: *note class:: *note rank:: *note length::
      *note type: _type. *note domain:: *note limit::
@@ -4013,8 +3702,7 @@ Exhausted the number of input values
 17.6 :limit
 ===========
 
-Exceeded a limit above the software maximum, eg.  writing a single file
-above 1GB.
+Exceeded a limit above the software maximum, eg.  writing a single file above 1GB.
       n:_100e6;d:+`x`y!(!n;n rand 1.);`d 2:d
      n:_100e6;d:+`x`y!(!n;n rand 1.);`d 2:d
 
@@ -4023,10 +3711,9 @@ above 1GB.
 17.7 :nyi
 =========
 
-Running code that is not yet implemented.  This may come from running
-code in this document with a different version of k9.
+Running code that is not yet implemented.  This may come from running code in this document with a different version of k9.
 
-   2020.05.31 (c) shakti
+2020.05.31 (c) shakti
 
       =+`a`b!(1 2;1 3)
      a b|
@@ -4034,7 +3721,7 @@ code in this document with a different version of k9.
      1 1|0
      2 3|1
 
-   Aug 6 2020 16GB (c) shakti
+Aug 6 2020 16GB (c) shakti
 
       =+`a`b!(1 2;1 3)
      =+`a`b!(1 2;1 3)
@@ -4044,8 +3731,7 @@ code in this document with a different version of k9.
 17.8 :parse
 ===========
 
-Syntax is wrong.  This may be due to mismatched parentheses or brackets,
-e.g., (), {}, [], "".
+Syntax is wrong.  This may be due to mismatched parentheses or brackets, e.g., (), {}, [], "".
       {37 . "hello"
      :parse
 
@@ -4062,22 +3748,16 @@ File: k9.info,  Node: Examples,  Next: Benchmark,  Prev: Errors,  Up: Top
 18 Examples
 ***********
 
-This chapter presents an example from finance, as this is one of the
-primary application domains for k.  For those not familiar with this
-field, here is a short introduction.
+This chapter presents an example from finance, as this is one of the primary application domains for k.  For those not familiar with this field, here is a short introduction.
 
 18.1 A Tiny Introduction to Financial Market Data
 =================================================
 
-Financial market data generally are stored as prices (often call quotes)
-and trades.  At a minimum, prices will include time (t), price to buy (b
-for bid) and price to sell (a for ask).  Trades will include at a
-minimum time (t) and trade price (p).  In normal markets there are many
-more prices than trades.  (Additionally, the data normally includes the
-name of the security (s) and the exchange (x) from which the data
-comes.)
+Financial market data generally are stored as prices (often call quotes) and trades.  At a minimum, prices will include time (t), price to buy (b for bid) and price to sell (a for ask).  Trades will
+include at a minimum time (t) and trade price (p).  In normal markets there are many more prices than trades.  (Additionally, the data normally includes the name of the security (s) and the exchange (x)
+from which the data comes.)
 
-   Let's use k9 to generate a set of random prices.
+Let's use k9 to generate a set of random prices.
 
       n:10
       T:^10:00+`t n rand 36e5 / sort randomly generated times
@@ -4097,11 +3777,8 @@ comes.)
      10:55:52.208  99 101
      10:59:06.262  98  99
 
-   Here you see that at 10:42:59.230 the prices update to 100 and 102.
-The price one could sell is 100 and the price to buy is 102.  You might
-think that 100 seems a bit high so sell there.  Later at 10:59:06.262
-you might have thought the prices look low and then buy at 99.  Here's
-the trade table for those two transactions.
+Here you see that at 10:42:59.230 the prices update to 100 and 102.  The price one could sell is 100 and the price to buy is 102.  You might think that 100 seems a bit high so sell there.  Later at
+10:59:06.262 you might have thought the prices look low and then buy at 99.  Here's the trade table for those two transactions.
 
       t:+`t`p!(10:43:00.230 10:59:07.262:;100 99);t
      t            p
@@ -4109,21 +3786,16 @@ the trade table for those two transactions.
      10:43:00.230 100
      10:59:07.262  99
 
-   You'll note that the times didn't line up, because it apparently took
-you a second to decide to trade.  Because of this delay, you'll often
-have to look back at the previous prices to join trade (t) and quote (q)
-data.
+You'll note that the times didn't line up, because it apparently took you a second to decide to trade.  Because of this delay, you'll often have to look back at the previous prices to join trade (t) and
+quote (q) data.
 
-   Now that you've learned enough finance to understand the data, let's
-scale up to larger problems to see the power of k9.
+Now that you've learned enough finance to understand the data, let's scale up to larger problems to see the power of k9.
 
 18.2 Data Manipulation
 ======================
 
-Generate a table of random data and compute basic statistics quickly.
-The data here includes time (t), security (s), and price delta (d).
-This table takes about 4 GB and 3.3 seconds on a relatively new consumer
-laptop.
+Generate a table of random data and compute basic statistics quickly.  The data here includes time (t), security (s), and price delta (d).  This table takes about 4 GB and 3.3 seconds on a relatively
+new consumer laptop.
 
       n:_100e6                         / set n to 100 million
       t:{09:00:00.000+x rand 10:00:00.000}  /  x random times between 9:00 and 19:00 (7 pm)
@@ -4135,9 +3807,7 @@ laptop.
       \t q:+`t`s`d!(t[n];s[n];d[n])    / build table and measure time in ms
      3391
 
-   As this point one might want to check start and stop times, see if
-the symbol distribution is actually random and look at the distribution
-of the price deltas.
+As this point one might want to check start and stop times, see if the symbol distribution is actually random and look at the distribution of the price deltas.
 
       select ti:min t, tf:max t from q / min and max time values
      ti|09:00:00.000
@@ -4189,30 +3859,26 @@ of the price deltas.
 18.3 Understanding Code Examples
 ================================
 
-In the shakti mailing list there are a number of code examples that can
-be used to learn best practices.  In order to make sense of other
-people's codes, one needs to be able to efficiently understand k9
-language expressions.  Here is an example of how one goes about this
-process.
+In the shakti mailing list there are a number of code examples that can be used to learn best practices.  In order to make sense of other people's codes, one needs to be able to efficiently understand
+k9 language expressions.  Here is an example of how one goes about this process.
 
      ss:{*{
            o:o@&(-1+(#y)+*x@1)<o:1_x@1;
            $[0<#x@1;((x@0),*x@1;o);x]}[;y]/:(();&(x@(!#x)+\!#y)~\y)
            }
 
-   This function finds a substring in a string.
+This function finds a substring in a string.
 
  000000000011111111112222222222333333
  012345678901234567890123456789012345
 "Find the +++ needle in + the ++ text"
 
-   Here one would expect to find "++" at 9 and 29.
+Here one would expect to find "++" at 9 and 29.
 
       ss["Find the +++ needle in + the ++ text";"++"]
      9 29
 
-   In order to determine how this function works let's strip out the
-details...
+In order to determine how this function works let's strip out the details...
 
      ss:{
          *{
@@ -4223,37 +3889,30 @@ details...
        }
 
 
-   Given that k9 evaluates right to left, let's start with the rightmost
-code fragment.
+Given that k9 evaluates right to left, let's start with the rightmost code fragment.
 
       (();&(x@(!#x)+\!#y)~\y)          / a list (null;value)
 
-   And now let's focus on the value in the list.
+And now let's focus on the value in the list.
 
       &(x@(!#x)+\!#y)~\y
 
-   In order to easily check our understanding, we can wrap this in a
-function and call the function with the parameters shown above.  In
-order to step through, we can start with the inner parenthesis and build
-up the code until it is complete.
+In order to easily check our understanding, we can wrap this in a function and call the function with the parameters shown above.  In order to step through, we can start with the inner parenthesis and
+build up the code until it is complete.
 
       {!#x}["Find the +++ needle in + the ++ text";"++"]
      {!#x}["Find the +++ needle in + the ++ text";"++"]
      ^
      :rank
 
-   This won't work as one cannot call a function with two arguments and
-then use only one.  In order to get around this, we will insert code for
-the second argument but not use it.
+This won't work as one cannot call a function with two arguments and then use only one.  In order to get around this, we will insert code for the second argument but not use it.
 
       {y;#x}["Find the +++ needle in + the ++ text";"++"]
      36
       {y;!#x}["Find the +++ needle in + the ++ text";"++"]
      0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 ..
 
-   As might have been guessed '#x' counts the number of charcters in the
-first argument and then '!#x' generates a list of integers from 0 to
-n-1.
+As might have been guessed '#x' counts the number of charcters in the first argument and then '!#x' generates a list of integers from 0 to n-1.
 
       {(!#x)+\!#y}["Find the +++ needle in + the ++ text";"++"]
       0  1
@@ -4279,10 +3938,8 @@ n-1.
      20 21
      ..
 
-   Here the code takes each integer from the previous calculation and
-then adds an integer list as long as the second argument to each value.
-In order to verify this, you could write something similar and ensure
-the output what you predicted.
+Here the code takes each integer from the previous calculation and then adds an integer list as long as the second argument to each value.  In order to verify this, you could write something similar and
+ensure the output what you predicted.
 
       {(!x)+\!y}[6;4]
      0 1 2 3
@@ -4292,8 +3949,7 @@ the output what you predicted.
      4 5 6 7
      5 6 7 8
 
-   Now using the matrix above the code indices as the first argument and
-pull substrings that match the length of the search string.
+Now using the matrix above the code indices as the first argument and pull substrings that match the length of the search string.
 
       {x@(!#x)+\!#y}["Find the +++ needle in + the ++ text";"++"]
      Fi
@@ -4319,14 +3975,12 @@ pull substrings that match the length of the search string.
      in
      ..
 
-   At this point one can compare the search substring in this list of
-substrings to find a match.
+At this point one can compare the search substring in this list of substrings to find a match.
 
       {(x@(!#x)+\!#y)~\y}["Find the +++ needle in + the ++ text";"++"]
      000000000110000000000000000001000000b
 
-   And then one can use the where function, '&', to determine the index
-of the matches.
+And then one can use the where function, '&', to determine the index of the matches.
 
       {&(x@(!#x)+\!#y)~\y}["Find the +++ needle in + the ++ text";"++"]
      9 10 29
@@ -4337,9 +3991,7 @@ File: k9.info,  Node: Benchmark,  Next: Conclusion,  Prev: Examples,  Up: Top
 19 Benchmark
 ************
 
-Shakti is a fast data analysis language and clear benchmarks illustrate
-this.  The Shakti website has a number of files for such purpose, b.k
-and taxi.k amongst others.
+Shakti is a fast data analysis language and clear benchmarks illustrate this.  The Shakti website has a number of files for such purpose, b.k and taxi.k amongst others.
 
 19.1 b.k
 ========
@@ -4378,8 +4030,7 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 19.1.1 T
 --------
 
-T is a function which generates a uniform list of times from 09:30 to
-16:00.
+T is a function which generates a uniform list of times from 09:30 to 16:00.
 
       T:{09:30:00+_6.5*3600*(!x)%x}
       T[13]           / 13 times with equal timesteps over [start;end)
@@ -4390,9 +4041,7 @@ T is a function which generates a uniform list of times from 09:30 to
 19.1.2 P, Z, E
 --------------
 
-P is a function to generate values from 10 to 100 (price).  Z is a
-function to generate values from 100 to 1000 (size).  E is a function to
-generate values A, B, C, or D (exchange).
+P is a function to generate values from 10 to 100 (price).  Z is a function to generate values from 100 to 1000 (size).  E is a function to generate values A, B, C, or D (exchange).
 
       P[10]
      78 37 56 85 40 68 88 50 41 78
@@ -4404,9 +4053,7 @@ generate values A, B, C, or D (exchange).
 19.1.3 m, n, S, N
 -----------------
 
-m is the number of symbols.  n is the number of trades.  S is a list of
-symbol names.  N is a list of numbers in decreasing order which sum
-approximately to n.
+m is the number of symbols.  n is the number of trades.  S is a list of symbol names.  N is a list of numbers in decreasing order which sum approximately to n.
 
       4#S
      `EEFD`IOHJ`MEJO`DHNK
@@ -4418,10 +4065,9 @@ approximately to n.
 19.1.4 t
 --------
 
-t is an Ntable of trades.  The fields are time (t), exchange (e), price
-(p), and size (z).  The number of trades is set by n.
+t is an Ntable of trades.  The fields are time (t), exchange (e), price (p), and size (z).  The number of trades is set by n.
 
-   Pulling one random table from t and showing 10 random rows.
+Pulling one random table from t and showing 10 random rows.
 
       10 rand*t@1 rand S
      t        e p  z
@@ -4440,8 +4086,7 @@ t is an Ntable of trades.  The fields are time (t), exchange (e), price
 19.1.5 q
 --------
 
-q is a Ntable of quotes.  The fields are time (t), exchange (e), and bid
-(b).  The number of quotes is set to 6*n.
+q is a Ntable of quotes.  The fields are time (t), exchange (e), and bid (b).  The number of quotes is set to 6*n.
 
       10 rand*q@1 rand S
      t        e b
@@ -4468,8 +4113,7 @@ a is the first symbol of S. A consists of the first 100 symbols of S.
 19.1.7 Max price by exchange
 ----------------------------
 
-The query takes 100 tables from the trade Ntable and computes the max
-price by exchange.
+The query takes 100 tables from the trade Ntable and computes the max price by exchange.
 
       *{select max p by e from x}'t A
      e|p
@@ -4484,8 +4128,7 @@ price by exchange.
 19.1.8 Compute sum of trade size by hour.
 -----------------------------------------
 
-This query takes 100 tables from the trade Ntable and computes the sum
-of trade size done by hour.
+This query takes 100 tables from the trade Ntable and computes the sum of trade size done by hour.
 
       *{select sum z by `o t from x}'t A
      t |z
@@ -4503,8 +4146,7 @@ of trade size done by hour.
 19.1.9 Compute last bid by symbol
 ---------------------------------
 
-This query takes the 100 tables from the quote Ntable and returns the
-last bid.
+This query takes the 100 tables from the quote Ntable and returns the last bid.
 
       3 rand{select last b from x}'q A
      b
@@ -4519,9 +4161,7 @@ last bid.
 19.1.10 Find trades below the bid
 ---------------------------------
 
-This query operates on one symbol from the q and t Ntables, i.e.  a
-single quote and trade table.  The quote table is joined to the trade
-table giving the current bid on each trade.
+This query operates on one symbol from the q and t Ntables, i.e.  a single quote and trade table.  The quote table is joined to the trade table giving the current bid on each trade.
 
       4 rand select from t[a],`t^q a where p<b
      t        e p  z    b
@@ -4536,11 +4176,8 @@ table giving the current bid on each trade.
 19.2 taxi
 =========
 
-The taxi data analysis problem has become well known given the ease of
-acquiring the data and the size of it.  It's well written up here
-(https://toddwschneider.com/posts/analyzing-1-1-billion-nyc-taxi-and-uber-trips-with-a-vengeance/)
-with a benchmark summary here
-(https://tech.marksblogg.com/benchmarks.html).  Shakti has a benchmark
+The taxi data analysis problem has become well known given the ease of acquiring the data and the size of it.  It's well written up here
+(https://toddwschneider.com/posts/analyzing-1-1-billion-nyc-taxi-and-uber-trips-with-a-vengeance/) with a benchmark summary here (https://tech.marksblogg.com/benchmarks.html).  Shakti has a benchmark
 script to generate simulated taxi data in order to check performance.
 
 /taxi 1.1billion https://tech.marksblogg.com/benchmarks.html
@@ -4584,9 +4221,7 @@ t:"b  12            e"  / type(2) passenger(8)
 19.2.1 g
 --------
 
-Function to generate a table of random data to represent taxi company (t
-either yellow 'y or green 'g), paid fare (p 0-9), distance travelled (d
-0-99) and address (a 0-100.).
+Function to generate a table of random data to represent taxi company (t either yellow 'y or green 'g), paid fare (p 0-9), distance travelled (d 0-99) and address (a 0-100.).
 
       g:{[[]t:x rand`y`g;p:x rand 9;d:x rand 100;a:x rand 100.]}
       g 10
@@ -4606,8 +4241,7 @@ either yellow 'y or green 'g), paid fare (p 0-9), distance travelled (d
 19.2.2 x
 --------
 
-x is an Ntable containing 2500 tables, keyed on day.  Each individual
-table contains 44,000 rows so the this has 110 million rows in total.
+x is an Ntable containing 2500 tables, keyed on day.  Each individual table contains 44,000 rows therefore x has 110 million rows in total.
 
       x:d!g':44000+&#d:2009.01.01+!2500  /110 million example
       x
@@ -4620,8 +4254,7 @@ table contains 44,000 rows so the this has 110 million rows in total.
 19.2.3 2009.01.04
 -----------------
 
-Let's work with a single table to understand the queries and limit it to
-5 rows.
+Let's work with a single table to understand the queries and limit it to 5 rows.
 
       q:5#x 2009.01.04;q
      t p d  a
@@ -4632,9 +4265,7 @@ Let's work with a single table to understand the queries and limit it to
      g 7 36 43.12615
      y 1 43 23.50114
 
-   Now let's count the number of rows by field t.  Looking at the data
-above you should expect 2 yellow (y) taxi trips and 3 green (g) taxi
-trips.
+Now let's count the number of rows by field t.  Looking at the data above you should expect 2 yellow (y) taxi trips and 3 green (g) taxi trips.
 
       select[t]count from q
      t|n
@@ -4642,7 +4273,7 @@ trips.
      g|3
      y|2
 
-   We can also sum the paid fare (p) by taxi company (t).
+We can also sum the paid fare (p) by taxi company (t).
 
       select[t]sum p from q
      t|p
@@ -4650,9 +4281,7 @@ trips.
      g|14
      y| 4
 
-   Now if we want to compute the same over all the data we need to run
-the kSQL query over each table.  We'll do this on parallel threads
-(*note eachp::) to speed it up.
+Now if we want to compute the same over all the data we need to run the kSQL query over each table.  We'll do this on parallel threads (*note eachp::) to speed it up.
 
       {select[t]count from x}':x
      2009.01.01|[[t:`g`y]n:21968 22032]
@@ -4660,7 +4289,7 @@ the kSQL query over each table.  We'll do this on parallel threads
      2009.01.03|[[t:`g`y]n:21962 22038]
      2009.01.04|[[t:`g`y]n:21962 22038]
 
-   and then sum over all days.
+and then sum over all days.
 
       sum{select[t]count from x}':x
      t|n
@@ -4668,8 +4297,7 @@ the kSQL query over each table.  We'll do this on parallel threads
      g|55010927
      y|54989073
 
-   Running the command with the timer will allow us to measure how long
-it takes to sum over the 110 million examples.
+Running the command with the timer will allow us to measure how long it takes to sum over the 110 million examples.
 
       \t sum{select[t]count from x}':x
      1077
@@ -4680,17 +4308,12 @@ File: k9.info,  Node: Conclusion,  Prev: Benchmark,  Up: Top
 20 Conclusion
 *************
 
-I expect you are pleasantly surprised by the speed of k9 and by the fact
-that it all fits in 134,152 bytes!  (For comparison the ls program
-weighs in at 51,888 bytes and can't even change directory.)
+I expect you are pleasantly surprised by the speed of k9 and by the fact that it all fits in 134,152 bytes!  (For comparison the ls program weighs in at 51,888 bytes and can't even change directory.)
 
-   If you're frustrated by the syntax or terse errors, then you're not
-alone.  Many have had the same problems, but persevered, and finally
-came away a power user able to squeeze information from data faster than
-previously imagined.
+If you're frustrated by the syntax or terse errors, then you're not alone.  Many have had the same problems, but persevered, and finally came away a power user able to squeeze information from data
+faster than previously imagined.
 
-   Eventually, you'll realize that this manual isn't needed and it's all
-here...
+Eventually, you'll realize that this manual isn't needed and it's all here...
 
 Verb                      Adverb                 Type              System
 :   x          y          f/  over  V/ join      char " ab"        \l a.k
@@ -4724,180 +4347,182 @@ select[C]A from T where B; update C from T where B; delete from T where B
 
 
 Tag Table:
-Node: Top126
-Node: Introduction4971
-Node: Verb16048
-Ref: x17630
-Ref: set17655
-Ref: flip17914
-Ref: plus18164
-Ref: negate18642
-Ref: minus18814
-Ref: first18921
-Ref: times19137
-Ref: divide19268
-Ref: where19405
-Ref: min/and19891
-Ref: reverse20150
-Ref: max/or20412
-Ref: asc20676
-Ref: less21066
-Ref: group21367
-Ref: equal21620
-Ref: not21924
-Ref: match22041
-Ref: enum22424
-Ref: key23510
-Ref: list23683
-Ref: cat23819
-Ref: sort23938
-Ref: cut24590
-Ref: cut124854
-Ref: cut225009
-Ref: cut325206
-Ref: cut425483
-Ref: count25666
-Ref: take25856
-Ref: take126358
-Ref: take226730
-Ref: take327002
-Ref: take427203
-Ref: floor27565
-Ref: drop27656
-Ref: drop128092
-Ref: drop228278
-Ref: drop328400
-Ref: string28567
-Ref: parse28668
-Ref: unique28861
-Ref: find29105
-Ref: type29531
-Ref: at29982
-Ref: value30358
-Ref: apply30799
-Node: Adverb32005
-Ref: over33034
-Ref: scan33144
-Ref: join33897
-Ref: split34271
-Ref: each34532
-Ref: eachp34821
-Ref: eachr35581
-Ref: eachl35773
-Ref: cover35954
-Ref: cscan36139
-Node: Noun37026
-Ref: Atom Types38431
-Ref: bool39612
-Ref: int40299
-Ref: flt40978
-Ref: char41380
-Ref: name41613
-Ref: uuid41853
-Ref: time42010
-Ref: date42912
-Ref: datetime43373
-Node: List44172
-Node: Dictionary48421
-Node: User Functions54066
-Node: Expression57315
-Node: Named Functions58446
-Ref: exp59246
-Ref: log59353
-Ref: sin59447
-Ref: cos59580
-Ref: sqr59722
-Ref: sqrt59805
-Ref: prm59903
-Ref: freq60076
-Ref: sums60430
-Ref: deltas60568
-Ref: rand60906
-Ref: has61078
-Ref: bin61372
-Ref: in61582
-Ref: within61756
-Ref: div61988
-Ref: mod62171
-Ref: bar62345
-Ref: cmb62534
-Ref: msum62962
-Ref: mavg63099
-Ref: Hcount63243
-Ref: Hfirst63338
-Ref: Hlast63433
-Ref: Hsum63537
-Ref: Hmin63640
-Ref: Hmax63758
-Ref: topX63875
-Ref: keyF64033
-Ref: unkey64328
-Ref: meta64464
-Node: Knit Functions64595
-Ref: amend64890
-Ref: amend165413
-Ref: amend265665
-Ref: amend365887
-Ref: amend466195
-Ref: dmend66486
-Ref: dmend166816
-Ref: dmend366987
-Ref: dmend467155
-Node: I/O67319
-Ref: read csv69244
-Ref: write csv69422
-Ref: read json69586
-Ref: write json69770
-Ref: read nv69937
-Ref: w line70130
-Ref: r line70521
-Ref: w byte70634
-Ref: r byte70862
-Ref: r data71012
-Ref: w data71674
-Ref: k-ipc set72259
-Ref: https get72321
-Ref: ffi/py/js/..72383
-Node: Tables72865
-Ref: table73532
-Ref: Utable75182
-Ref: Ntable75720
-Node: kSQL76338
-Ref: select76970
-Ref: A77554
-Ref: by B78371
-Ref: where C78649
-Ref: update79234
-Ref: delete79954
-Ref: union80593
-Ref: leftjoin81114
-Ref: outer81893
-Ref: asof82228
-Ref: asof+83702
-Ref: insert84919
-Ref: upsert85265
-Node: System85679
-Ref: load86137
-Ref: timing86325
-Ref: variables86614
-Ref: memory86715
-Ref: cd86834
-Node: Control Flow86918
-Ref: cond87154
-Node: Temporal Functions87524
-Node: Errors88926
-Ref: class89374
-Ref: rank89463
-Ref: length89587
-Ref: _type89710
-Ref: domain89819
-Ref: limit89941
-Ref: nyi90152
-Ref: eparse90485
-Ref: _value90638
-Node: Examples90766
-Node: Benchmark98722
-Node: Conclusion107408
+Node: Top123
+Node: Introduction4945
+Node: Verb15988
+Ref: x17563
+Ref: set17588
+Ref: flip17847
+Ref: plus18097
+Ref: negate18575
+Ref: minus18747
+Ref: first18854
+Ref: times19070
+Ref: divide19201
+Ref: where19338
+Ref: min/and19821
+Ref: reverse20080
+Ref: max/or20339
+Ref: asc20603
+Ref: desc20603
+Ref: less20994
+Ref: more20994
+Ref: group21295
+Ref: equal21548
+Ref: not21852
+Ref: match21969
+Ref: enum22352
+Ref: key23435
+Ref: list23608
+Ref: cat23744
+Ref: sort23863
+Ref: cut24515
+Ref: cut124779
+Ref: cut224931
+Ref: cut325125
+Ref: cut425399
+Ref: count25579
+Ref: take25769
+Ref: take126271
+Ref: take226640
+Ref: take326909
+Ref: take427107
+Ref: floor27466
+Ref: drop27557
+Ref: drop127993
+Ref: drop228176
+Ref: drop328295
+Ref: string28459
+Ref: parse28560
+Ref: unique28753
+Ref: find28997
+Ref: type29420
+Ref: at29871
+Ref: value30244
+Ref: apply30685
+Node: Adverb31878
+Ref: over32904
+Ref: scan33014
+Ref: join33764
+Ref: split34135
+Ref: each34393
+Ref: eachp34683
+Ref: eachr35440
+Ref: eachl35632
+Ref: cover35813
+Ref: cscan35998
+Node: Noun36882
+Ref: Atom Types38278
+Ref: bool40893
+Ref: int41580
+Ref: flt42260
+Ref: char42662
+Ref: name42895
+Ref: uuid43135
+Ref: time43292
+Ref: date44195
+Ref: datetime44656
+Node: List45570
+Node: Dictionary49811
+Node: User Functions55439
+Node: Expression58684
+Node: Named Functions59812
+Ref: exp60610
+Ref: log60717
+Ref: sin60811
+Ref: cos60944
+Ref: sqr61086
+Ref: sqrt61169
+Ref: prm61267
+Ref: freq61440
+Ref: sums61794
+Ref: deltas61932
+Ref: rand62270
+Ref: has62442
+Ref: bin62736
+Ref: in62946
+Ref: within63120
+Ref: div63352
+Ref: mod63536
+Ref: bar63710
+Ref: cmb63899
+Ref: msum64327
+Ref: mavg64464
+Ref: Hcount64608
+Ref: Hfirst64703
+Ref: Hlast64798
+Ref: Hsum64902
+Ref: Hmin65005
+Ref: Hmax65123
+Ref: topX65240
+Ref: keyF65398
+Ref: unkey65693
+Ref: meta65829
+Node: Knit Functions65960
+Ref: amend66255
+Ref: amend166778
+Ref: amend267027
+Ref: amend367246
+Ref: amend467551
+Ref: dmend67839
+Ref: dmend168169
+Ref: dmend368337
+Ref: dmend468502
+Node: I/O68663
+Ref: read csv70585
+Ref: write csv70763
+Ref: read json70927
+Ref: write json71111
+Ref: read nv71278
+Ref: w line71471
+Ref: r line71862
+Ref: w byte71975
+Ref: r byte72203
+Ref: r data72353
+Ref: w data73012
+Ref: k-ipc set73588
+Ref: https get73650
+Ref: ffi/py/js/..73712
+Node: Tables74182
+Ref: table74849
+Ref: Utable76491
+Ref: Ntable77030
+Node: kSQL77648
+Ref: select78280
+Ref: A78864
+Ref: by B79681
+Ref: where C79959
+Ref: update80545
+Ref: delete81266
+Ref: union81905
+Ref: leftjoin82426
+Ref: outer83205
+Ref: asof83540
+Ref: asof+85011
+Ref: insert86229
+Ref: upsert86575
+Node: System86989
+Ref: load87447
+Ref: timing87635
+Ref: variables87924
+Ref: memory88025
+Ref: cd88144
+Node: Control Flow88228
+Ref: cond88464
+Node: Temporal Functions88834
+Node: Errors90233
+Ref: class90681
+Ref: rank90770
+Ref: length90894
+Ref: _type91017
+Ref: domain91126
+Ref: limit91248
+Ref: nyi91459
+Ref: eparse91786
+Ref: _value91939
+Node: Examples92067
+Node: Benchmark99976
+Node: Conclusion108644
 
 End Tag Table
 

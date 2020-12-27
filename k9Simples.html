@@ -97,10 +97,8 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; <
 </p>
 <p>Alas this manual is not as elegant as the k9 language in that the text version of this document is almost as big as the binary of the language.  
 </p>
-
 <p>The built-in reference screen (<code>\</code>) containing all the k9 commands.
 </p>
-
 <p><tt><a href="#Verb">Verb</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Adverb">Adverb</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Noun">Type</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#System">System</a></tt><br>
 <tt>:&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f/&nbsp;&nbsp;<a href="#over">over</a>&nbsp;&nbsp;V/&nbsp;<a href="#join">join</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#char">char</a>&nbsp;&quot;&nbsp;ab&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\l&nbsp;a.k</tt><br>
 <tt>+&nbsp;&nbsp;&nbsp;<a href="#flip">flip</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#plus">plus</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f\&nbsp;&nbsp;<a href="#scan">scan</a>&nbsp;&nbsp;V\&nbsp;<a href="#split">split</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#name">name</a>&nbsp;``ab&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\t:n&nbsp;x</tt><br>
@@ -110,7 +108,7 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; <
 <tt>&amp;&nbsp;&nbsp;&nbsp;<a href="#where">where</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#min_002fand">min/and</a>&nbsp;&nbsp;&nbsp;&nbsp;f\:&nbsp;<a href="#eachl">eachl</a>&nbsp;(n;f)\:<a href="#cscan">scan</a>&nbsp;&nbsp;<a href="#time">time</a>&nbsp;12:34:56.789&nbsp;.z.t</tt><br>
 <tt>|&nbsp;&nbsp;&nbsp;<a href="#reverse">reverse</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#max_002for">max/or</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
 <tt>&lt;&nbsp;&nbsp;&nbsp;<a href="#asc">asc</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#less">less</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#I_002fO">I/O</a>(*enterprise)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class</tt><br>
-<tt>&gt;&nbsp;&nbsp;&nbsp;<a href="#asc">desc</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#less">more</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0:&nbsp;<a href="#r-line">r</a>/<a href="#w-line">w</a>&nbsp;line&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;atom&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\f</tt><br>
+<tt>&gt;&nbsp;&nbsp;&nbsp;<a href="#desc">desc</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#more">more</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0:&nbsp;<a href="#r-line">r</a>/<a href="#w-line">w</a>&nbsp;line&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;atom&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\f</tt><br>
 <tt>=&nbsp;&nbsp;&nbsp;<a href="#group">group</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#equal">equal</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1:&nbsp;<a href="#r-byte">r</a>/<a href="#w-byte">w</a>&nbsp;byte&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#List">List</a>&nbsp;(2;3.4;`c)&nbsp;&nbsp;&nbsp;\ft&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
 <tt>~&nbsp;&nbsp;&nbsp;<a href="#not">not</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#match">match</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*2:&nbsp;<a href="#r-data">r</a>/<a href="#w-data">w</a>&nbsp;data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Dictionary">Dict</a>&nbsp;[a:2;b:`c]&nbsp;&nbsp;&nbsp;\fl&nbsp;x</tt><br>
 <tt>!&nbsp;&nbsp;&nbsp;<a href="#key">key</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#key">key</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*3:&nbsp;<a href="#k_002dipc-set">k-ipc set</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#User-Functions">Func</a>&nbsp;{[a;b]a+b}&nbsp;&nbsp;&nbsp;\fc&nbsp;x</tt><br>
@@ -627,7 +625,7 @@ x[1] values of 1, ..., and x[n-1] values of n-1.
 12
 </pre></div>
 
-<span id="asc"></span><span id="asc_0028desc_0029-_21d2-_003c-_0028_003e_0029-x"></span><h3 class="section">2.14 asc(desc) &rArr; &lt; (&gt;) x</h3>
+<span id="asc"></span><span id="desc"></span><span id="asc_0028desc_0029-_21d2-_003c-_0028_003e_0029-x"></span><h3 class="section">2.14 asc(desc) &rArr; &lt; (&gt;) x</h3>
 <p>Sort a list or dictionary in ascending (&lt;) or descending (&gt;) order.  Applied to a list, these will return the indices to be used to achieve the sort.
 </p>
 <div class="example">
@@ -648,7 +646,7 @@ b|2
 a|3
 </pre></div>
 
-<span id="less"></span><span id="less-_0028more_0029-_21d2-x-_003c-_0028_003e_0029-y"></span><h3 class="section">2.15 less (more) &rArr; x &lt; (&gt;) y</h3>
+<span id="less"></span><span id="more"></span><span id="less-_0028more_0029-_21d2-x-_003c-_0028_003e_0029-y"></span><h3 class="section">2.15 less (more) &rArr; x &lt; (&gt;) y</h3>
 <p>Return true (1b) if x is less (more) than y else false (0b).
 </p><div class="example">
 <pre class="example">&nbsp;3&lt;2
@@ -4412,7 +4410,7 @@ g 0 10 7.946983
 </pre></div>
 
 <span id="x-1"></span><h4 class="subsection">19.2.2 x</h4>
-<p>x is an Ntable containing 2500 tables, keyed on day.  Each individual table contains 44,000 rows so the this has 110 million rows in total.
+<p>x is an Ntable containing 2500 tables, keyed on day.  Each individual table contains 44,000 rows therefore x has 110 million rows in total.
 </p>
 <div class="example">
 <pre class="example"> x:d!g':44000+&amp;#d:2009.01.01+!2500  /110 million example
