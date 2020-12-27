@@ -2352,6 +2352,8 @@ count first last sum min max *[avg var dev med ..]; key meta
 @end smallformat
 
 @anchor{exp}@section exp @result{} exp x
+exp compute the exponent of x, i.e. e@sup{x}.
+
 @example
 @ exp 1
 2.718282
@@ -2384,12 +2386,16 @@ cos computes the cosine of x where x is in radians.
 @end example
 
 @anchor{sqr}@section sqr @result{} sqr x
+Compute the square of x.
+
 @example
 @ sqr 2
 4.0
 @end example
 
 @anchor{sqrt}@section sqrt @result{} sqrt x
+Compute the square root of x.
+
 @example
 @ sqrt 2
 1.414214

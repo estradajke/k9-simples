@@ -2435,6 +2435,8 @@ last sum min max *[avg var dev med ..]; key meta
 9.1 exp => exp x
 ================
 
+exp compute the exponent of x, i.e.  e^{x}.
+
       exp 1
      2.718282
 
@@ -2467,11 +2469,15 @@ cos computes the cosine of x where x is in radians.
 9.5 sqr => sqr x
 ================
 
+Compute the square of x.
+
       sqr 2
      4.0
 
 9.6 sqrt => sqrt x
 ==================
+
+Compute the square root of x.
 
       sqrt 2
      1.414214
@@ -4659,101 +4665,101 @@ Node: User Functions54066
 Node: Expression57315
 Node: Named Functions58446
 Ref: exp59246
-Ref: log59308
-Ref: sin59402
-Ref: cos59535
-Ref: sqr59677
-Ref: sqrt59734
-Ref: prm59801
-Ref: freq59974
-Ref: sums60328
-Ref: deltas60466
-Ref: rand60804
-Ref: has60976
-Ref: bin61270
-Ref: in61480
-Ref: within61654
-Ref: div61886
-Ref: mod62069
-Ref: bar62243
-Ref: cmb62432
-Ref: msum62860
-Ref: mavg62997
-Ref: Hcount63141
-Ref: Hfirst63236
-Ref: Hlast63331
-Ref: Hsum63435
-Ref: Hmin63538
-Ref: Hmax63656
-Ref: topX63773
-Ref: keyF63931
-Ref: unkey64226
-Ref: meta64362
-Node: Knit Functions64493
-Ref: amend64788
-Ref: amend165311
-Ref: amend265563
-Ref: amend365785
-Ref: amend466093
-Ref: dmend66384
-Ref: dmend166714
-Ref: dmend366885
-Ref: dmend467053
-Node: I/O67217
-Ref: read csv69142
-Ref: write csv69320
-Ref: read json69484
-Ref: write json69668
-Ref: read nv69835
-Ref: w line70028
-Ref: r line70419
-Ref: w byte70532
-Ref: r byte70760
-Ref: r data70910
-Ref: w data71572
-Ref: k-ipc set72157
-Ref: https get72219
-Ref: ffi/py/js/..72281
-Node: Tables72763
-Ref: table73430
-Ref: Utable75080
-Ref: Ntable75618
-Node: kSQL76236
-Ref: select76868
-Ref: A77452
-Ref: by B78269
-Ref: where C78547
-Ref: update79132
-Ref: delete79852
-Ref: union80491
-Ref: leftjoin81012
-Ref: outer81791
-Ref: asof82126
-Ref: asof+83600
-Ref: insert84817
-Ref: upsert85163
-Node: System85577
-Ref: load86035
-Ref: timing86223
-Ref: variables86512
-Ref: memory86613
-Ref: cd86732
-Node: Control Flow86816
-Ref: cond87052
-Node: Temporal Functions87422
-Node: Errors88824
-Ref: class89272
-Ref: rank89361
-Ref: length89485
-Ref: _type89608
-Ref: domain89717
-Ref: limit89839
-Ref: nyi90050
-Ref: eparse90383
-Ref: _value90536
-Node: Examples90664
-Node: Benchmark98620
-Node: Conclusion103576
+Ref: log59353
+Ref: sin59447
+Ref: cos59580
+Ref: sqr59722
+Ref: sqrt59805
+Ref: prm59903
+Ref: freq60076
+Ref: sums60430
+Ref: deltas60568
+Ref: rand60906
+Ref: has61078
+Ref: bin61372
+Ref: in61582
+Ref: within61756
+Ref: div61988
+Ref: mod62171
+Ref: bar62345
+Ref: cmb62534
+Ref: msum62962
+Ref: mavg63099
+Ref: Hcount63243
+Ref: Hfirst63338
+Ref: Hlast63433
+Ref: Hsum63537
+Ref: Hmin63640
+Ref: Hmax63758
+Ref: topX63875
+Ref: keyF64033
+Ref: unkey64328
+Ref: meta64464
+Node: Knit Functions64595
+Ref: amend64890
+Ref: amend165413
+Ref: amend265665
+Ref: amend365887
+Ref: amend466195
+Ref: dmend66486
+Ref: dmend166816
+Ref: dmend366987
+Ref: dmend467155
+Node: I/O67319
+Ref: read csv69244
+Ref: write csv69422
+Ref: read json69586
+Ref: write json69770
+Ref: read nv69937
+Ref: w line70130
+Ref: r line70521
+Ref: w byte70634
+Ref: r byte70862
+Ref: r data71012
+Ref: w data71674
+Ref: k-ipc set72259
+Ref: https get72321
+Ref: ffi/py/js/..72383
+Node: Tables72865
+Ref: table73532
+Ref: Utable75182
+Ref: Ntable75720
+Node: kSQL76338
+Ref: select76970
+Ref: A77554
+Ref: by B78371
+Ref: where C78649
+Ref: update79234
+Ref: delete79954
+Ref: union80593
+Ref: leftjoin81114
+Ref: outer81893
+Ref: asof82228
+Ref: asof+83702
+Ref: insert84919
+Ref: upsert85265
+Node: System85679
+Ref: load86137
+Ref: timing86325
+Ref: variables86614
+Ref: memory86715
+Ref: cd86834
+Node: Control Flow86918
+Ref: cond87154
+Node: Temporal Functions87524
+Node: Errors88926
+Ref: class89374
+Ref: rank89463
+Ref: length89587
+Ref: _type89710
+Ref: domain89819
+Ref: limit89941
+Ref: nyi90152
+Ref: eparse90485
+Ref: _value90638
+Node: Examples90766
+Node: Benchmark98722
+Node: Conclusion103678
 
 End Tag Table
 
