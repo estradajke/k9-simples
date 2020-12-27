@@ -3200,7 +3200,7 @@ kSQL is a powerful query language for tables.  It has similarities to ANSI SQL b
 
 @example
 Database
-@ref{select} @ref{A} @ref{by B} from T @ref{where C}; @ref{update} A from T
+@ref{select}[@ref{C}]@ref{A} from T @ref{where B}; @ref{update} C from T where B; @ref{delete} from T where B
 x,y      / @ref{insert}, @ref{upsert}, @ref{union}, equi-and-asof @ref{leftjoin}
 x+y      / equi-and-asof outerjoin (e.g. combine markets through time)
 x#y      / take/intersect innerjoin (x_y for drop/difference)
@@ -3291,22 +3291,20 @@ x z
 4 -0.7568025
 @end example
 
-@anchor{by B}@subsection by B
-kSQL also has a way to group rows using @code{by}.  The result is a Utable where the key is determined by the grouping clause @code{by}.
+@anchor{C}@subsection C
+kSQL also has a way to group rows using @code{C}.  The result is a Utable where the key is determined by the grouping clause.
 
 @example
-n:5;t:[[]x:!n;y:sin !n]
-@c The key here is field is a boolean 1 when x > 2 or and 0 when x > 2 does not hold
-
- select sum y by x>2 from t
+ n:5;t:[[]x:!n;y:sin !n]
+ select[x>2]sum y from t / select sum y by x>2 from t
 x|y         
 -|----------
 0|1.750768  
 1|-0.6156825
 @end example
 
-@anchor{where C}@subsection where C
-kSQL makes it easy to build up a where clause to filter down the table.  C is the list of constraints.
+@anchor{where B}@subsection where B
+kSQL makes it easy to build up a where clause to filter down the table.  B is the list of constraints.
 
 @example
  n:5;t:[[]x:!n;y:sin !n]
@@ -3329,7 +3327,7 @@ x y
 
 @example
  n:5;t:[[]x:!n;y:sin !n]
- select sum y by x>2 from t where y>0
+ select[x>2]sum y from t@&t :y>0 / select sum y by x>2 from t where y>0
 x|y       
 -|--------
 0|1.750768
@@ -4407,7 +4405,7 @@ We can also sum the paid fare (p) by taxi company (t).
 
 @example
  select[t]sum p from q
-t|p 
+t|p
 -|--
 g|14
 y| 4
