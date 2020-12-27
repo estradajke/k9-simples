@@ -1269,6 +1269,14 @@ Apply f[x;y] to each value of x, i.e.  the left one.
 
 Converge Over is the same function as *note Converge Scan: cscan. but only returns the final value(s).
 
+      r:((1;2);3;(,4));r
+     1 2
+     3
+     ,4
+
+      ,//:r  / raze over the list until it converges to a flat list
+     1 2 3 4
+
 3.8.2 Converge Scan => f\:x or (n;f)\:x
 ---------------------------------------
 
@@ -4409,119 +4417,119 @@ Ref: eachp34727
 Ref: eachr35484
 Ref: eachl35676
 Ref: cover35857
-Ref: cscan36042
-Node: Noun36945
-Ref: Atom Types38341
-Ref: bool40956
-Ref: int41643
-Ref: flt42323
-Ref: char42725
-Ref: name42958
-Ref: uuid43198
-Ref: time43355
-Ref: date44258
-Ref: datetime44719
-Node: List45633
-Node: Dictionary49874
-Node: User Functions55502
-Node: Expression58747
-Node: Named Functions59875
-Ref: exp60673
-Ref: log60780
-Ref: sin60874
-Ref: cos61007
-Ref: sqr61149
-Ref: sqrt61232
-Ref: prm61330
-Ref: freq61503
-Ref: sums61857
-Ref: deltas61995
-Ref: rand62333
-Ref: has62505
-Ref: bin62799
-Ref: in63009
-Ref: within63183
-Ref: div63415
-Ref: mod63599
-Ref: bar63773
-Ref: cmb63962
-Ref: msum64390
-Ref: mavg64527
-Ref: Hcount64671
-Ref: Hfirst64766
-Ref: Hlast64861
-Ref: Hsum64965
-Ref: Hmin65068
-Ref: Hmax65186
-Ref: topX65303
-Ref: keyF65461
-Ref: unkey65756
-Ref: meta65892
-Node: Knit Functions66023
-Ref: amend66318
-Ref: amend166841
-Ref: amend267090
-Ref: amend367309
-Ref: amend467614
-Ref: dmend67902
-Ref: dmend168232
-Ref: dmend368400
-Ref: dmend468565
-Node: I/O68726
-Ref: read csv70648
-Ref: write csv70826
-Ref: read json70990
-Ref: write json71174
-Ref: read nv71341
-Ref: w line71534
-Ref: r line71925
-Ref: w byte72038
-Ref: r byte72266
-Ref: r data72416
-Ref: w data73075
-Ref: k-ipc set73651
-Ref: https get73713
-Ref: ffi/py/js/..73775
-Node: Tables74245
-Ref: table74912
-Ref: Utable76554
-Ref: Ntable77093
-Node: kSQL77711
-Ref: select78379
-Ref: A78963
-Ref: C79780
-Ref: where B80072
-Ref: update80691
-Ref: delete81412
-Ref: union82051
-Ref: leftjoin82572
-Ref: outer83351
-Ref: asof83686
-Ref: asof+85157
-Ref: insert86375
-Ref: upsert86721
-Node: System87135
-Ref: load87593
-Ref: timing87781
-Ref: variables88070
-Ref: memory88171
-Ref: cd88290
-Node: Control Flow88374
-Ref: cond88610
-Node: Temporal Functions88980
-Node: Errors90379
-Ref: class90827
-Ref: rank90916
-Ref: length91040
-Ref: _type91163
-Ref: domain91272
-Ref: limit91394
-Ref: nyi91605
-Ref: eparse91932
-Ref: _value92085
-Node: Examples92213
-Node: Benchmark100122
-Node: Conclusion108790
+Ref: cscan36174
+Node: Noun37077
+Ref: Atom Types38473
+Ref: bool41088
+Ref: int41775
+Ref: flt42455
+Ref: char42857
+Ref: name43090
+Ref: uuid43330
+Ref: time43487
+Ref: date44390
+Ref: datetime44851
+Node: List45765
+Node: Dictionary50006
+Node: User Functions55634
+Node: Expression58879
+Node: Named Functions60007
+Ref: exp60805
+Ref: log60912
+Ref: sin61006
+Ref: cos61139
+Ref: sqr61281
+Ref: sqrt61364
+Ref: prm61462
+Ref: freq61635
+Ref: sums61989
+Ref: deltas62127
+Ref: rand62465
+Ref: has62637
+Ref: bin62931
+Ref: in63141
+Ref: within63315
+Ref: div63547
+Ref: mod63731
+Ref: bar63905
+Ref: cmb64094
+Ref: msum64522
+Ref: mavg64659
+Ref: Hcount64803
+Ref: Hfirst64898
+Ref: Hlast64993
+Ref: Hsum65097
+Ref: Hmin65200
+Ref: Hmax65318
+Ref: topX65435
+Ref: keyF65593
+Ref: unkey65888
+Ref: meta66024
+Node: Knit Functions66155
+Ref: amend66450
+Ref: amend166973
+Ref: amend267222
+Ref: amend367441
+Ref: amend467746
+Ref: dmend68034
+Ref: dmend168364
+Ref: dmend368532
+Ref: dmend468697
+Node: I/O68858
+Ref: read csv70780
+Ref: write csv70958
+Ref: read json71122
+Ref: write json71306
+Ref: read nv71473
+Ref: w line71666
+Ref: r line72057
+Ref: w byte72170
+Ref: r byte72398
+Ref: r data72548
+Ref: w data73207
+Ref: k-ipc set73783
+Ref: https get73845
+Ref: ffi/py/js/..73907
+Node: Tables74377
+Ref: table75044
+Ref: Utable76686
+Ref: Ntable77225
+Node: kSQL77843
+Ref: select78511
+Ref: A79095
+Ref: C79912
+Ref: where B80204
+Ref: update80823
+Ref: delete81544
+Ref: union82183
+Ref: leftjoin82704
+Ref: outer83483
+Ref: asof83818
+Ref: asof+85289
+Ref: insert86507
+Ref: upsert86853
+Node: System87267
+Ref: load87725
+Ref: timing87913
+Ref: variables88202
+Ref: memory88303
+Ref: cd88422
+Node: Control Flow88506
+Ref: cond88742
+Node: Temporal Functions89112
+Node: Errors90511
+Ref: class90959
+Ref: rank91048
+Ref: length91172
+Ref: _type91295
+Ref: domain91404
+Ref: limit91526
+Ref: nyi91737
+Ref: eparse92064
+Ref: _value92217
+Node: Examples92345
+Node: Benchmark100254
+Node: Conclusion108922
 
 End Tag Table
 

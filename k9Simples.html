@@ -1382,6 +1382,16 @@ y4 y3
 <span id="cover"></span><span id="Converge-Over-_21d2-f_002f_003ax-or-_0028n_003bf_0029_002f_003ax"></span><h4 class="subsection">3.8.1 Converge Over &rArr; f/:x or (n;f)/:x</h4>
 <p>Converge Over is the same function as <a href="#cscan">Converge Scan</a> but only returns the final value(s).
 </p>
+<div class="example">
+<pre class="example"> r:((1;2);3;(,4));r
+1 2
+3  
+,4 
+
+ ,//:r  / raze over the list until it converges to a flat list
+1 2 3 4
+</pre></div>
+
 <span id="cscan"></span><span id="Converge-Scan-_21d2-f_005c_003ax-or-_0028n_003bf_0029_005c_003ax"></span><h4 class="subsection">3.8.2 Converge Scan &rArr; f\:x or (n;f)\:x</h4>
 <p>Compute f[x] where x is the previous output of f until the value converges or returns to x.  The initial value of x is the input.
 </p>
