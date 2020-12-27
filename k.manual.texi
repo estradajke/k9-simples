@@ -2870,12 +2870,12 @@ other languages to k9.
 
 @example
  I/O(*enterprise)
- 0:  @ref{r line,r}/@ref{w line,w} line
- 1:  @ref{r byte,r}/@ref{w byte,w} byte
-*2:  @ref{r data,r}/@ref{w data,w} data
-*3: k-ipc set    
-*4: https get    
-*5: ffi/py/js/.. 
+ 0: @ref{r line,r}/@ref{w line,w} line
+ 1: @ref{r byte,r}/@ref{w byte,w} byte
+*2: @ref{r data,r}/@ref{w data,w} data
+*3: @ref{k-ipc set}    
+*4: @ref{https get}
+*5: @ref{ffi/py/js/..}
 
 @ref{read json,`js?}@ref{write json,`js} d
 @ref{read csv,`csv?}@ref{write csv,`csv} t
@@ -3056,15 +3056,15 @@ Start new session.
 @end example
 
 
-@anchor{conn/set}@section conn/set @result{} 3:
+@anchor{k-ipc set}@section k-ipc set @result{} 3:
 
 Enterprise only
 
-@anchor{http/get}@section http/get @result{} 4:
+@anchor{https get}@section https get @result{} 4:
 
 Enterprise only
 
-@anchor{lib}@section lib @result{} 5:
+@anchor{ffi/py/js/..}@section ffi/py/js/.. @result{} 5:
 
 Enterprise only
 

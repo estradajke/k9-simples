@@ -95,6 +95,9 @@ sed -e 's/@/@@/g' \
     -e 's/`js@ /@ref{write json,`js@ }/g' \
     -e 's/r\/w@ line/@ref{r line,r}\/@ref{w line,w}@ line/g' \
     -e 's/r\/w@ byte/@ref{r byte,r}\/@ref{w byte,w}@ byte/g' \
+    -e 's/k-ipc@ set/@ref{k-ipc set}/g' \
+    -e 's/https@ get/@ref{https get}/g' \
+    -e 's/ffi\/py\/js\/../@ref{ffi\/py\/js\/..}/g' \
     -e '20,30 s/ key/ @ref{key}/g' \
     -e '20,30 s/unkey/@ref{unkey}/g' \
     -e '20,30 s/meta/@ref{meta}/g' \
