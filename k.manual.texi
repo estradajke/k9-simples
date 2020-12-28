@@ -1325,7 +1325,7 @@ Apply function f to each value in list x in a single thread.  Multithread operat
 @end example
 
 @anchor{eachp}@section eachp @result{} f':[x;y]
-Apply f[x;y] using the prior value of y, eg. f[y@@n;y@@n-1].  The first value, n=0, returns f[y@@0;x].
+Apply f[x;y] using the prior value of y, eg. f[y@sub{i};y@sub{i-1}].  f@sub{0} returns f[y@sub{0};x].
 
 @example
 @ ,':[`x;(`$"y",'$!5)]
@@ -1404,7 +1404,7 @@ Converge Over is the same function as @ref{cscan,Converge Scan} but only returns
 @end example
 
 @anchor{cscan}@subsection Converge Scan @result{} f\:x or (n;f)\:x
-Compute function f where f@sub{n}=f@@f@sub{n-1} and f@sub{0}=x.  If n is specified then it is either (DO) the number of iterations or (WHILE) a function returning a non-zero result.  
+Compute function f where f@sub{i}=f[f@sub{i-1}] and f@sub{0}=x.  If n is specified then it is either (DO) the number of iterations or (WHILE) a function returning a non-zero result.  
 
 @example
   @{x*x@}\:.99           / converge to value

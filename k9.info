@@ -1213,7 +1213,7 @@ Apply function f to each value in list x in a single thread.  Multithread operat
 3.6 eachp => f':[x;y]
 =====================
 
-Apply f[x;y] using the prior value of y, eg.  f[y@n;y@n-1].  The first value, n=0, returns f[y@0;x].
+Apply f[x;y] using the prior value of y, eg.  f[y_{i};y_{i-1}].  f_{0} returns f[y_{0};x].
 
       ,':[`x;(`$"y",'$!5)]
      y0 x
@@ -1280,7 +1280,7 @@ Converge Over is the same function as *note Converge Scan: cscan. but only retur
 3.8.2 Converge Scan => f\:x or (n;f)\:x
 ---------------------------------------
 
-Compute function f where f_{n}=f@f_{n-1} and f_{0}=x.  If n is specified then it is either (DO) the number of iterations or (WHILE) a function returning a non-zero result.
+Compute function f where f_{i}=f[f_{i-1}] and f_{0}=x.  If n is specified then it is either (DO) the number of iterations or (WHILE) a function returning a non-zero result.
 
        {x*x}\:.99           / converge to value
      0.99 0.9801 0.9605961 ... 1.323698e-18 1.752177e-36 0.
@@ -4426,122 +4426,122 @@ Ref: join33808
 Ref: split34179
 Ref: each34437
 Ref: eachp34727
-Ref: eachr35484
-Ref: eachl35676
-Ref: cover35857
-Ref: cscan36174
-Node: Noun37351
-Ref: Atom Types38747
-Ref: bool41362
-Ref: int42049
-Ref: flt42729
-Ref: char43131
-Ref: name43364
-Ref: uuid43604
-Ref: time43761
-Ref: date44664
-Ref: datetime45125
-Node: List46039
-Node: Dictionary50280
-Node: User Functions55908
-Node: Expression59153
-Node: Named Functions60281
-Ref: exp61079
-Ref: log61186
-Ref: sin61280
-Ref: cos61413
-Ref: sqr61555
-Ref: sqrt61638
-Ref: prm61736
-Ref: freq61909
-Ref: sums62263
-Ref: deltas62401
-Ref: rand62739
-Ref: has62911
-Ref: bin63205
-Ref: in63415
-Ref: within63589
-Ref: div63821
-Ref: mod64005
-Ref: bar64179
-Ref: cmb64368
-Ref: msum64796
-Ref: mavg64933
-Ref: Hcount65077
-Ref: Hfirst65172
-Ref: Hlast65267
-Ref: Hsum65371
-Ref: Hmin65474
-Ref: Hmax65592
-Ref: topX65709
-Ref: keyF65867
-Ref: unkey66162
-Ref: meta66298
-Node: Knit Functions66429
-Ref: amend66724
-Ref: amend167247
-Ref: amend267496
-Ref: amend367715
-Ref: amend468020
-Ref: dmend68308
-Ref: dmend168638
-Ref: dmend368806
-Ref: dmend468971
-Node: I/O69132
-Ref: read csv71054
-Ref: write csv71232
-Ref: read json71396
-Ref: write json71580
-Ref: read nv71747
-Ref: w line71940
-Ref: r line72331
-Ref: w byte72444
-Ref: r byte72672
-Ref: r data72822
-Ref: w data73481
-Ref: k-ipc set74057
-Ref: https get74119
-Ref: ffi/py/js/..74181
-Node: Tables74651
-Ref: table75318
-Ref: Utable76960
-Ref: Ntable77499
-Node: kSQL78117
-Ref: select78785
-Ref: A79369
-Ref: C80186
-Ref: where B80478
-Ref: update81097
-Ref: delete81818
-Ref: union82457
-Ref: leftjoin82978
-Ref: outer83757
-Ref: asof84092
-Ref: asof+85563
-Ref: insert86781
-Ref: upsert87127
-Node: System87541
-Ref: load87999
-Ref: timing88187
-Ref: variables88476
-Ref: memory88577
-Ref: cd88696
-Node: Control Flow88780
-Ref: cond89016
-Node: Temporal Functions89386
-Node: Errors90785
-Ref: class91233
-Ref: rank91322
-Ref: length91446
-Ref: _type91569
-Ref: domain91678
-Ref: limit91800
-Ref: nyi92011
-Ref: eparse92338
-Ref: _value92491
-Node: Examples92619
-Node: Benchmark100543
-Node: Conclusion109211
+Ref: eachr35474
+Ref: eachl35666
+Ref: cover35847
+Ref: cscan36164
+Node: Noun37342
+Ref: Atom Types38738
+Ref: bool41353
+Ref: int42040
+Ref: flt42720
+Ref: char43122
+Ref: name43355
+Ref: uuid43595
+Ref: time43752
+Ref: date44655
+Ref: datetime45116
+Node: List46030
+Node: Dictionary50271
+Node: User Functions55899
+Node: Expression59144
+Node: Named Functions60272
+Ref: exp61070
+Ref: log61177
+Ref: sin61271
+Ref: cos61404
+Ref: sqr61546
+Ref: sqrt61629
+Ref: prm61727
+Ref: freq61900
+Ref: sums62254
+Ref: deltas62392
+Ref: rand62730
+Ref: has62902
+Ref: bin63196
+Ref: in63406
+Ref: within63580
+Ref: div63812
+Ref: mod63996
+Ref: bar64170
+Ref: cmb64359
+Ref: msum64787
+Ref: mavg64924
+Ref: Hcount65068
+Ref: Hfirst65163
+Ref: Hlast65258
+Ref: Hsum65362
+Ref: Hmin65465
+Ref: Hmax65583
+Ref: topX65700
+Ref: keyF65858
+Ref: unkey66153
+Ref: meta66289
+Node: Knit Functions66420
+Ref: amend66715
+Ref: amend167238
+Ref: amend267487
+Ref: amend367706
+Ref: amend468011
+Ref: dmend68299
+Ref: dmend168629
+Ref: dmend368797
+Ref: dmend468962
+Node: I/O69123
+Ref: read csv71045
+Ref: write csv71223
+Ref: read json71387
+Ref: write json71571
+Ref: read nv71738
+Ref: w line71931
+Ref: r line72322
+Ref: w byte72435
+Ref: r byte72663
+Ref: r data72813
+Ref: w data73472
+Ref: k-ipc set74048
+Ref: https get74110
+Ref: ffi/py/js/..74172
+Node: Tables74642
+Ref: table75309
+Ref: Utable76951
+Ref: Ntable77490
+Node: kSQL78108
+Ref: select78776
+Ref: A79360
+Ref: C80177
+Ref: where B80469
+Ref: update81088
+Ref: delete81809
+Ref: union82448
+Ref: leftjoin82969
+Ref: outer83748
+Ref: asof84083
+Ref: asof+85554
+Ref: insert86772
+Ref: upsert87118
+Node: System87532
+Ref: load87990
+Ref: timing88178
+Ref: variables88467
+Ref: memory88568
+Ref: cd88687
+Node: Control Flow88771
+Ref: cond89007
+Node: Temporal Functions89377
+Node: Errors90776
+Ref: class91224
+Ref: rank91313
+Ref: length91437
+Ref: _type91560
+Ref: domain91669
+Ref: limit91791
+Ref: nyi92002
+Ref: eparse92329
+Ref: _value92482
+Node: Examples92610
+Node: Benchmark100534
+Node: Conclusion109202
 
 End Tag Table
 
