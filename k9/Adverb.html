@@ -261,21 +261,33 @@ y4 y3
 </pre></div>
 
 <span id="cscan"></span><span id="Converge-Scan-_21d2-f_005c_003ax-or-_0028n_003bf_0029_005c_003ax"></span><h4 class="subsection">3.8.2 Converge Scan &rArr; f\:x or (n;f)\:x</h4>
-<p>Compute f[x] where x is the previous output of f until the value converges or returns to x.  The initial value of x is the input.
-</p>
-<p>If n is specified then it is either do the number of iterations or a while a function returning a non-zero result.  
+<p>Compute function f where f<sub>n</sub>=f@f<sub>n-1</sub> and f<sub>0</sub>=x.  If n is specified then it is either (DO) the number of iterations or (WHILE) a function returning a non-zero result.  
 </p>
 <div class="example">
-<pre class="example">  {x*x}\:.99       / converge to value
+<pre class="example">  {x*x}\:.99           / converge to value
 0.99 0.9801 0.9605961 ... 1.323698e-18 1.752177e-36 0.
 
- (3;{x*x})\:.99   / do 3 times, return 4 values (first is initial)
+ (3;{x*x})\:.99        / do 3 times, return 4 values (first is initial)
 0.99 0.9801 0.960596 0.9227448
 
- (.5&lt;;{x*x})\:.99 / while .5 &lt; r, i.e. r is greater than 0.5
+ (.5&lt;;{x*x})\:.99      / while .5 &lt; r, i.e. r is greater than 0.5
 0.99 0.9801 0.960596 0.9227448 0.8514579 0.7249806 0.5255968 0.276252
 
- x:3 4 2 1 4 99   / until output is x
+ (4;{x,x+/x+1})\:,0    / do function 4 times
+,0                                         
+0 1                                        
+0 1 3 4                                    
+0 1 3 4 12 13 15 16                        
+0 1 3 4 12 13 15 16 72 73 75 76 84 85 87 88
+
+ (10&gt;#;{x,x+/x+1})\:,0 / while output is less than 10 long
+,0                                         
+0 1                                        
+0 1 3 4                                    
+0 1 3 4 12 13 15 16                        
+0 1 3 4 12 13 15 16 72 73 75 76 84 85 87 88
+
+ x:3 4 2 1 4 99        / until output is x
  x\:0
 0 3 1 4
 
@@ -286,7 +298,7 @@ y4 y3
 1
  x 1
 4
- x 4              / x[4]=4 so will stop
+ x 4                   / x[4]=4 so will stop
 4
 </pre></div>
 
