@@ -308,7 +308,7 @@ Verb
 = @ref{group},     @ref{equal}.
 ~ @ref{not},       @ref{match}.
 ! @ref{enum},      @ref{key}.
-, @ref{list},      @ref{cat}.
+, @ref{enlist,list},      @ref{cat}.
 ^ @ref{sort},  [nf]@ref{cut}. 
 # @ref{count},  [f]@ref{take}.  
 _ @ref{floor},  [f]@ref{drop}.    
@@ -749,7 +749,7 @@ a|1 2
 b|3 4
 @end example
 
-@anchor{list}@section list @result{} ,x
+@anchor{enlist}@section list @result{} ,x
 Create a list from x
 
 @example
@@ -1725,7 +1725,7 @@ i
 @@1 3 12     / list of ints
 I
 
-@@,1         / list of single int via @ref{list}
+@@,1         / list of single int via @ref{enlist,list}
 I
 @end example
 
@@ -2992,7 +2992,7 @@ key2|value2
 @end example
 
 @anchor{w line}@section write line @result{} x 0:y
-Output to x the list of strings in y.  y must be a list of strings.  If y is a single string then convert to list via @ref{list}.
+Output to x the list of strings in y.  y must be a list of strings.  If y is a single string then convert to list via @ref{enlist,list}.
 
 @example
  ""0:("blue";"red")      / "" represents stdout

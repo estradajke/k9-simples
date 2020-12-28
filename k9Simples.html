@@ -112,7 +112,7 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; <
 <tt>=&nbsp;&nbsp;&nbsp;<a href="#group">group</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#equal">equal</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1:&nbsp;<a href="#r-byte">r</a>/<a href="#w-byte">w</a>&nbsp;byte&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#List">List</a>&nbsp;(2;3.4;`c)&nbsp;&nbsp;&nbsp;\ft&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
 <tt>~&nbsp;&nbsp;&nbsp;<a href="#not">not</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#match">match</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*2:&nbsp;<a href="#r-data">r</a>/<a href="#w-data">w</a>&nbsp;data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Dictionary">Dict</a>&nbsp;[a:2;b:`c]&nbsp;&nbsp;&nbsp;\fl&nbsp;x</tt><br>
 <tt>!&nbsp;&nbsp;&nbsp;<a href="#key">key</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#key">key</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*3:&nbsp;<a href="#k_002dipc-set">k-ipc set</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#User-Functions">Func</a>&nbsp;{[a;b]a+b}&nbsp;&nbsp;&nbsp;\fc&nbsp;x</tt><br>
-<tt>,&nbsp;&nbsp;&nbsp;<a href="#list">list</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#cat">cat</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*4:&nbsp;<a href="#https-get">https get</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Expression">Expr</a>&nbsp;:a+b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\cd&nbsp;[d]</tt><br>
+<tt>,&nbsp;&nbsp;&nbsp;<a href="#enlist">list</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#cat">cat</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*4:&nbsp;<a href="#https-get">https get</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Expression">Expr</a>&nbsp;:a+b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\cd&nbsp;[d]</tt><br>
 <tt>^&nbsp;&nbsp;&nbsp;<a href="#sort">sort</a>&nbsp;&nbsp;&nbsp;[nf]<a href="#cut">cut</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*5:&nbsp;<a href="#ffi_002fpy_002fjs_002f_002e_002e">ffi/py/js/..</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Tables">table</a>&nbsp;t:[[]i:2&nbsp;3;f:2.3&nbsp;4]</tt><br>
 <tt>#&nbsp;&nbsp;&nbsp;<a href="#count">count</a>&nbsp;&nbsp;[nf]<a href="#take">take</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Utable">Utable</a>&nbsp;u:[[x:..]y:..]</tt><br>
 <tt>_&nbsp;&nbsp;&nbsp;<a href="#floor">floor</a>&nbsp;&nbsp;[nf]<a href="#drop">drop</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Ntable">Ntable</a>&nbsp;n:`..![[]y:..]</tt><br>
@@ -412,7 +412,7 @@ Next: <a href="#Adverb" accesskey="n" rel="next">Adverb</a>, Previous: <a href="
 = <a href="#group">group</a>,     <a href="#equal">equal</a>.
 ~ <a href="#not">not</a>,       <a href="#match">match</a>.
 ! <a href="#enum">enum</a>,      <a href="#key">key</a>.
-, <a href="#list">list</a>,      <a href="#cat">cat</a>.
+, <a href="#enlist">list</a>,      <a href="#cat">cat</a>.
 ^ <a href="#sort">sort</a>,  [nf]<a href="#cut">cut</a>. 
 # <a href="#count">count</a>,  [f]<a href="#take">take</a>.  
 _ <a href="#floor">floor</a>,  [f]<a href="#drop">drop</a>.    
@@ -786,7 +786,7 @@ a|1 2
 b|3 4
 </pre></div>
 
-<span id="list"></span><span id="list-_21d2-_002cx"></span><h3 class="section">2.22 list &rArr; ,x</h3>
+<span id="enlist"></span><span id="list-_21d2-_002cx"></span><h3 class="section">2.22 list &rArr; ,x</h3>
 <p>Create a list from x
 </p>
 <div class="example">
@@ -1704,7 +1704,7 @@ i
 @1 3 12     / list of ints
 I
 
-@,1         / list of single int via <a href="#list">list</a>
+@,1         / list of single int via <a href="#enlist">list</a>
 I
 </pre></div>
 
@@ -2980,7 +2980,7 @@ key2|value2
 </pre></div>
 
 <span id="w-line"></span><span id="write-line-_21d2-x-0_003ay"></span><h3 class="section">11.7 write line &rArr; x 0:y</h3>
-<p>Output to x the list of strings in y.  y must be a list of strings.  If y is a single string then convert to list via <a href="#list">list</a>.
+<p>Output to x the list of strings in y.  y must be a list of strings.  If y is a single string then convert to list via <a href="#enlist">list</a>.
 </p>
 <div class="example">
 <pre class="example"> &quot;&quot;0:(&quot;blue&quot;;&quot;red&quot;)      / &quot;&quot; represents stdout

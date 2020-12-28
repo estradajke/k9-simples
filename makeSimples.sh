@@ -26,7 +26,7 @@ sed -e 's/@/@@/g' \
     -e 's/match/@ref{match}/g' \
     -e 's/enum/@ref{enum}/g' \
     -e '1,20 s/key/@ref{key}/g' \
-    -e 's/list/@ref{list}/g' \
+    -e 's/list/@ref{enlist,list}/g' \
     -e 's/cat/@ref{cat}/g' \
     -e 's/sort/@ref{sort}/g' \
     -e 's/cut/@ref{cut}/g' \

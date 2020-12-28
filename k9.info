@@ -36,7 +36,7 @@ The built-in reference screen ('\') containing all the k9 commands.
 =   *note group::      *note equal::      1: *note r: r byte./*note w: w byte. byte            *note List:: (2;3.4;`c)   \ft x     
 ~   *note not::        *note match::     *2: *note r: r data./*note w: w data. data            *note Dict: Dictionary. [a:2;b:`c]   \fl x
 !   *note key::        *note key::       *3: *note k-ipc set::           *note Func: User Functions. {[a;b]a+b}   \fc x
-,   *note list::       *note cat::       *4: *note https get::           *note Expr: Expression. :a+b         \cd [d]
+,   *note list: enlist.       *note cat::       *4: *note https get::           *note Expr: Expression. :a+b         \cd [d]
 ^   *note sort::   [nf]*note cut::       *5: *note ffi/py/js/..::        *note table: Tables. t:[[]i:2 3;f:2.3 4]
 #   *note count::  [nf]*note take::                             *note Utable:: u:[[x:..]y:..]
 _   *note floor::  [nf]*note drop::                             *note Ntable:: n:`..![[]y:..]
@@ -339,7 +339,7 @@ There are verbs that can take a function argument.  Those are listed with a '[f]
      = *note group::,     *note equal::.
      ~ *note not::,       *note match::.
      ! *note enum::,      *note key::.
-     , *note list::,      *note cat::.
+     , *note list: enlist,      *note cat::.
      ^ *note sort::,  [nf]*note cut::.
      # *note count::,  [f]*note take::.
      _ *note floor::,  [f]*note drop::.
@@ -1593,7 +1593,7 @@ In order to determine if data is an atom or a list, one can use the *note type::
      @1 3 12     / list of ints
      I
 
-     @,1         / list of single int via *note list::
+     @,1         / list of single int via *note list: enlist.
      I
 
 Commands that generate sequences of numbers return lists regardless of whether the count (length of the list) is 1 or many.
@@ -2827,7 +2827,7 @@ Convert x, a list of name:value pairs, to a dictionary.
 11.7 write line => x 0:y
 ========================
 
-Output to x the list of strings in y.  y must be a list of strings.  If y is a single string then convert to list via *note list::.
+Output to x the list of strings in y.  y must be a list of strings.  If y is a single string then convert to list via *note list: enlist.
 
       ""0:("blue";"red")      / "" represents stdout
      blue
@@ -4367,181 +4367,181 @@ select[C]A from T where B; update C from T where B; delete from T where B
 
 Tag Table:
 Node: Top123
-Node: Introduction4989
-Node: Verb16032
-Ref: x17607
-Ref: set17632
-Ref: flip17891
-Ref: plus18141
-Ref: negate18619
-Ref: minus18791
-Ref: first18898
-Ref: times19114
-Ref: divide19245
-Ref: where19382
-Ref: min/and19865
-Ref: reverse20124
-Ref: max/or20383
-Ref: asc20647
-Ref: desc20647
-Ref: less21038
-Ref: more21038
-Ref: group21339
-Ref: equal21592
-Ref: not21896
-Ref: match22013
-Ref: enum22396
-Ref: key23479
-Ref: list23652
-Ref: cat23788
-Ref: sort23907
-Ref: cut24559
-Ref: cut124823
-Ref: cut224975
-Ref: cut325169
-Ref: cut425443
-Ref: count25623
-Ref: take25813
-Ref: take126315
-Ref: take226684
-Ref: take326953
-Ref: take427151
-Ref: floor27510
-Ref: drop27601
-Ref: drop128037
-Ref: drop228220
-Ref: drop328339
-Ref: string28503
-Ref: parse28604
-Ref: unique28797
-Ref: find29041
-Ref: type29464
-Ref: at29915
-Ref: value30288
-Ref: apply30729
-Node: Adverb31922
-Ref: over32948
-Ref: scan33058
-Ref: join33808
-Ref: split34179
-Ref: each34437
-Ref: eachp34727
-Ref: eachr35474
-Ref: eachl35666
-Ref: cover35847
-Ref: cscan36164
-Node: Noun37342
-Ref: Atom Types38738
-Ref: bool41353
-Ref: int42040
-Ref: flt42720
-Ref: char43122
-Ref: name43355
-Ref: uuid43595
-Ref: time43752
-Ref: date44655
-Ref: datetime45116
-Node: List46030
-Node: Dictionary50271
-Node: User Functions55899
-Node: Expression59144
-Node: Named Functions60272
-Ref: exp61070
-Ref: log61177
-Ref: sin61271
-Ref: cos61404
-Ref: sqr61546
-Ref: sqrt61629
-Ref: prm61727
-Ref: freq61900
-Ref: sums62254
-Ref: deltas62392
-Ref: rand62730
-Ref: has62902
-Ref: bin63196
-Ref: in63406
-Ref: within63580
-Ref: div63812
-Ref: mod63996
-Ref: bar64170
-Ref: cmb64359
-Ref: msum64787
-Ref: mavg64924
-Ref: Hcount65068
-Ref: Hfirst65163
-Ref: Hlast65258
-Ref: Hsum65362
-Ref: Hmin65465
-Ref: Hmax65583
-Ref: topX65700
-Ref: keyF65858
-Ref: unkey66153
-Ref: meta66289
-Node: Knit Functions66420
-Ref: amend66715
-Ref: amend167238
-Ref: amend267487
-Ref: amend367706
-Ref: amend468011
-Ref: dmend68299
-Ref: dmend168629
-Ref: dmend368797
-Ref: dmend468962
-Node: I/O69123
-Ref: read csv71045
-Ref: write csv71223
-Ref: read json71387
-Ref: write json71571
-Ref: read nv71738
-Ref: w line71931
-Ref: r line72322
-Ref: w byte72435
-Ref: r byte72663
-Ref: r data72813
-Ref: w data73472
-Ref: k-ipc set74048
-Ref: https get74110
-Ref: ffi/py/js/..74172
-Node: Tables74642
-Ref: table75309
-Ref: Utable76951
-Ref: Ntable77490
-Node: kSQL78108
-Ref: select78776
-Ref: A79360
-Ref: C80177
-Ref: where B80469
-Ref: update81088
-Ref: delete81809
-Ref: union82448
-Ref: leftjoin82969
-Ref: outer83748
-Ref: asof84083
-Ref: asof+85554
-Ref: insert86772
-Ref: upsert87118
-Node: System87532
-Ref: load87990
-Ref: timing88178
-Ref: variables88467
-Ref: memory88568
-Ref: cd88687
-Node: Control Flow88771
-Ref: cond89007
-Node: Temporal Functions89377
-Node: Errors90776
-Ref: class91224
-Ref: rank91313
-Ref: length91437
-Ref: _type91560
-Ref: domain91669
-Ref: limit91791
-Ref: nyi92002
-Ref: eparse92329
-Ref: _value92482
-Node: Examples92610
-Node: Benchmark100534
-Node: Conclusion109202
+Node: Introduction4996
+Node: Verb16039
+Ref: x17620
+Ref: set17645
+Ref: flip17904
+Ref: plus18154
+Ref: negate18632
+Ref: minus18804
+Ref: first18911
+Ref: times19127
+Ref: divide19258
+Ref: where19395
+Ref: min/and19878
+Ref: reverse20137
+Ref: max/or20396
+Ref: asc20660
+Ref: desc20660
+Ref: less21051
+Ref: more21051
+Ref: group21352
+Ref: equal21605
+Ref: not21909
+Ref: match22026
+Ref: enum22409
+Ref: key23492
+Ref: enlist23665
+Ref: cat23801
+Ref: sort23920
+Ref: cut24572
+Ref: cut124836
+Ref: cut224988
+Ref: cut325182
+Ref: cut425456
+Ref: count25636
+Ref: take25826
+Ref: take126328
+Ref: take226697
+Ref: take326966
+Ref: take427164
+Ref: floor27523
+Ref: drop27614
+Ref: drop128050
+Ref: drop228233
+Ref: drop328352
+Ref: string28516
+Ref: parse28617
+Ref: unique28810
+Ref: find29054
+Ref: type29477
+Ref: at29928
+Ref: value30301
+Ref: apply30742
+Node: Adverb31935
+Ref: over32961
+Ref: scan33071
+Ref: join33821
+Ref: split34192
+Ref: each34450
+Ref: eachp34740
+Ref: eachr35487
+Ref: eachl35679
+Ref: cover35860
+Ref: cscan36177
+Node: Noun37355
+Ref: Atom Types38751
+Ref: bool41366
+Ref: int42053
+Ref: flt42733
+Ref: char43135
+Ref: name43368
+Ref: uuid43608
+Ref: time43765
+Ref: date44668
+Ref: datetime45129
+Node: List46043
+Node: Dictionary50291
+Node: User Functions55919
+Node: Expression59164
+Node: Named Functions60292
+Ref: exp61090
+Ref: log61197
+Ref: sin61291
+Ref: cos61424
+Ref: sqr61566
+Ref: sqrt61649
+Ref: prm61747
+Ref: freq61920
+Ref: sums62274
+Ref: deltas62412
+Ref: rand62750
+Ref: has62922
+Ref: bin63216
+Ref: in63426
+Ref: within63600
+Ref: div63832
+Ref: mod64016
+Ref: bar64190
+Ref: cmb64379
+Ref: msum64807
+Ref: mavg64944
+Ref: Hcount65088
+Ref: Hfirst65183
+Ref: Hlast65278
+Ref: Hsum65382
+Ref: Hmin65485
+Ref: Hmax65603
+Ref: topX65720
+Ref: keyF65878
+Ref: unkey66173
+Ref: meta66309
+Node: Knit Functions66440
+Ref: amend66735
+Ref: amend167258
+Ref: amend267507
+Ref: amend367726
+Ref: amend468031
+Ref: dmend68319
+Ref: dmend168649
+Ref: dmend368817
+Ref: dmend468982
+Node: I/O69143
+Ref: read csv71065
+Ref: write csv71243
+Ref: read json71407
+Ref: write json71591
+Ref: read nv71758
+Ref: w line71951
+Ref: r line72348
+Ref: w byte72461
+Ref: r byte72689
+Ref: r data72839
+Ref: w data73498
+Ref: k-ipc set74074
+Ref: https get74136
+Ref: ffi/py/js/..74198
+Node: Tables74668
+Ref: table75335
+Ref: Utable76977
+Ref: Ntable77516
+Node: kSQL78134
+Ref: select78802
+Ref: A79386
+Ref: C80203
+Ref: where B80495
+Ref: update81114
+Ref: delete81835
+Ref: union82474
+Ref: leftjoin82995
+Ref: outer83774
+Ref: asof84109
+Ref: asof+85580
+Ref: insert86798
+Ref: upsert87144
+Node: System87558
+Ref: load88016
+Ref: timing88204
+Ref: variables88493
+Ref: memory88594
+Ref: cd88713
+Node: Control Flow88797
+Ref: cond89033
+Node: Temporal Functions89403
+Node: Errors90802
+Ref: class91250
+Ref: rank91339
+Ref: length91463
+Ref: _type91586
+Ref: domain91695
+Ref: limit91817
+Ref: nyi92028
+Ref: eparse92355
+Ref: _value92508
+Node: Examples92636
+Node: Benchmark100560
+Node: Conclusion109228
 
 End Tag Table
 
