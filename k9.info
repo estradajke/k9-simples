@@ -1,6 +1,6 @@
 This is k9.info, produced by texi2any version 6.7 from k.manual.texi.
 
-December 27, 2020
+December 28, 2020
 
 Copyright (C) 2020 John Estrada
 
@@ -3871,7 +3871,7 @@ k9 language expressions.  Here is an example of how one goes about this process.
 
      ss:{*{
            o:o@&(-1+(#y)+*x@1)<o:1_x@1;
-           $[0<#x@1;((x@0),*x@1;o);x]}[;y]/:(();&(x@(!#x)+\!#y)~\y)
+           $[0<#x@1;((x@0),*x@1;o);x]}[;y]/:(();&(x@(!#x)+\:!#y)~\:y)
            }
 
 This function finds a substring in a string.
@@ -3892,17 +3892,17 @@ In order to determine how this function works let's strip out the details...
            o:o@&(-1+(#y)+*x@1)<o:1_x@1; / set o
            $[0<#x@1;((x@0),*x@1;o);x]   / if x then y else z
            }
-       [;y]/:(();&(x@(!#x)+\!#y)~\y)    / use value for inner function
+       [;y]/:(();&(x@(!#x)+\:!#y)~\:y)    / use value for inner function
        }
 
 
 Given that k9 evaluates right to left, let's start with the rightmost code fragment.
 
-      (();&(x@(!#x)+\!#y)~\y)          / a list (null;value)
+      (();&(x@(!#x)+\:!#y)~\:y)          / a list (null;value)
 
 And now let's focus on the value in the list.
 
-      &(x@(!#x)+\!#y)~\y
+      &(x@(!#x)+\:!#y)~\:y
 
 In order to easily check our understanding, we can wrap this in a function and call the function with the parameters shown above.  In order to step through, we can start with the inner parenthesis and
 build up the code until it is complete.
@@ -3921,7 +3921,7 @@ This won't work as one cannot call a function with two arguments and then use on
 
 As might have been guessed '#x' counts the number of charcters in the first argument and then '!#x' generates a list of integers from 0 to n-1.
 
-      {(!#x)+\!#y}["Find the +++ needle in + the ++ text";"++"]
+      {(!#x)+\:!#y}["Find the +++ needle in + the ++ text";"++"]
       0  1
       1  2
       2  3
@@ -3948,7 +3948,7 @@ As might have been guessed '#x' counts the number of charcters in the first argu
 Here the code takes each integer from the previous calculation and then adds an integer list as long as the second argument to each value.  In order to verify this, you could write something similar and
 ensure the output what you predicted.
 
-      {(!x)+\!y}[6;4]
+      {(!x)+\:!y}[6;4]
      0 1 2 3
      1 2 3 4
      2 3 4 5
@@ -3958,7 +3958,7 @@ ensure the output what you predicted.
 
 Now using the matrix above the code indices as the first argument and pull substrings that match the length of the search string.
 
-      {x@(!#x)+\!#y}["Find the +++ needle in + the ++ text";"++"]
+      {x@(!#x)+\:!#y}["Find the +++ needle in + the ++ text";"++"]
      Fi
      in
      nd
@@ -3984,12 +3984,12 @@ Now using the matrix above the code indices as the first argument and pull subst
 
 At this point one can compare the search substring in this list of substrings to find a match.
 
-      {(x@(!#x)+\!#y)~\y}["Find the +++ needle in + the ++ text";"++"]
+      {(x@(!#x)+\:!#y)~\:y}["Find the +++ needle in + the ++ text";"++"]
      000000000110000000000000000001000000b
 
 And then one can use the where function, '&', to determine the index of the matches.
 
-      {&(x@(!#x)+\!#y)~\y}["Find the +++ needle in + the ++ text";"++"]
+      {&(x@(!#x)+\:!#y)~\:y}["Find the +++ needle in + the ++ text";"++"]
      9 10 29
 
 
@@ -4528,8 +4528,8 @@ Ref: nyi91737
 Ref: eparse92064
 Ref: _value92217
 Node: Examples92345
-Node: Benchmark100254
-Node: Conclusion108922
+Node: Benchmark100269
+Node: Conclusion108937
 
 End Tag Table
 

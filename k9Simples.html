@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 27, 2020
+<!-- December 28, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -4027,7 +4027,7 @@ e|-2903
 <div class="example">
 <pre class="example">ss:{*{
       o:o@&amp;(-1+(#y)+*x@1)&lt;o:1_x@1;
-      $[0&lt;#x@1;((x@0),*x@1;o);x]}[;y]/:(();&amp;(x@(!#x)+\!#y)~\y)
+      $[0&lt;#x@1;((x@0),*x@1;o);x]}[;y]/:(();&amp;(x@(!#x)+\:!#y)~\:y)
       }
 </pre></div>
 
@@ -4052,7 +4052,7 @@ e|-2903
       o:o@&amp;(-1+(#y)+*x@1)&lt;o:1_x@1; / set o 
       $[0&lt;#x@1;((x@0),*x@1;o);x]   / if x then y else z
       }
-  [;y]/:(();&amp;(x@(!#x)+\!#y)~\y)    / use value for inner function
+  [;y]/:(();&amp;(x@(!#x)+\:!#y)~\:y)    / use value for inner function
   }
  
 </pre></div>
@@ -4060,13 +4060,13 @@ e|-2903
 <p>Given that k9 evaluates right to left, let&rsquo;s start with the rightmost code fragment.
 </p>
 <div class="example">
-<pre class="example">&nbsp;(();&amp;(x@(!#x)+\!#y)~\y)          / a list (null;value)
+<pre class="example">&nbsp;(();&amp;(x@(!#x)+\:!#y)~\:y)          / a list (null;value)
 </pre></div>
 
 <p>And now let&rsquo;s focus on the value in the list.
 </p>
 <div class="example">
-<pre class="example">&nbsp;&amp;(x@(!#x)+\!#y)~\y
+<pre class="example">&nbsp;&amp;(x@(!#x)+\:!#y)~\:y
 </pre></div>
 
 <p>In order to easily check our understanding, we can wrap this in a function and call the function with the parameters shown above.  In order to step through, we can start with the inner parenthesis and build up the code until it is complete.
@@ -4090,7 +4090,7 @@ e|-2903
 <p>As might have been guessed <code>#x</code> counts the number of charcters in the first argument and then <code>!#x</code> generates a list of integers from 0 to n-1.
 </p>
 <div class="example">
-<pre class="example">&nbsp;{(!#x)+\!#y}[&quot;Find the +++ needle in + the ++ text&quot;;&quot;++&quot;]  
+<pre class="example">&nbsp;{(!#x)+\:!#y}[&quot;Find the +++ needle in + the ++ text&quot;;&quot;++&quot;]  
  0  1
  1  2
  2  3
@@ -4118,7 +4118,7 @@ e|-2903
 <p>Here the code takes each integer from the previous calculation and then adds an integer list as long as the second argument to each value.  In order to verify this,  you could write something similar and ensure the output what you predicted.
 </p>
 <div class="example">
-<pre class="example">&nbsp;{(!x)+\!y}[6;4]
+<pre class="example">&nbsp;{(!x)+\:!y}[6;4]
 0 1 2 3
 1 2 3 4
 2 3 4 5
@@ -4130,7 +4130,7 @@ e|-2903
 <p>Now using the matrix above the code indices as the first argument and pull substrings that match the length of the search string.
 </p>
 <div class="example">
-<pre class="example">&nbsp;{x@(!#x)+\!#y}[&quot;Find the +++ needle in + the ++ text&quot;;&quot;++&quot;]
+<pre class="example">&nbsp;{x@(!#x)+\:!#y}[&quot;Find the +++ needle in + the ++ text&quot;;&quot;++&quot;]
 Fi
 in
 nd
@@ -4158,14 +4158,14 @@ in
 <p>At this point one can compare the search substring in this list of substrings to find a match.
 </p>
 <div class="example">
-<pre class="example">&nbsp;{(x@(!#x)+\!#y)~\y}[&quot;Find the +++ needle in + the ++ text&quot;;&quot;++&quot;]
+<pre class="example">&nbsp;{(x@(!#x)+\:!#y)~\:y}[&quot;Find the +++ needle in + the ++ text&quot;;&quot;++&quot;]
 000000000110000000000000000001000000b
 </pre></div>
 
 <p>And then one can use the where function, <code>&amp;</code>, to determine the index of the matches.
 </p>
 <div class="example">
-<pre class="example">&nbsp;{&amp;(x@(!#x)+\!#y)~\y}[&quot;Find the +++ needle in + the ++ text&quot;;&quot;++&quot;]
+<pre class="example">&nbsp;{&amp;(x@(!#x)+\:!#y)~\:y}[&quot;Find the +++ needle in + the ++ text&quot;;&quot;++&quot;]
 9 10 29
 </pre></div>
 
