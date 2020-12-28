@@ -807,13 +807,20 @@ Function returning boolean array, cut at each index where f is non-zero.
 2.26 count => #x
 ================
 
-Count the number of elements in x.
+Count the number of elements in list, dictionary, or table x.
+
       #0 1 2 12
      4
+
       #((0 1 2);3;(4 5))
      3
       #`a`b!((1 2 3);(4 5 6)) / count the number of keys
      2
+
+      #5                      / will error as an element
+     #5
+     ^
+     !class
 
 2.27 [f]take => x#y
 ===================
@@ -4401,147 +4408,147 @@ Ref: cut224988
 Ref: cut325182
 Ref: cut425456
 Ref: count25636
-Ref: take25826
-Ref: take126328
-Ref: take226697
-Ref: take326966
-Ref: take427164
-Ref: floor27523
-Ref: drop27614
-Ref: drop128050
-Ref: drop228233
-Ref: drop328352
-Ref: string28516
-Ref: parse28617
-Ref: unique28810
-Ref: find29054
-Ref: type29477
-Ref: at29928
-Ref: value30301
-Ref: apply30742
-Node: Adverb31935
-Ref: over32961
-Ref: scan33071
-Ref: join33821
-Ref: split34192
-Ref: each34450
-Ref: eachp34740
-Ref: eachr35487
-Ref: eachl35679
-Ref: cover35860
-Ref: cscan36177
-Node: Noun37355
-Ref: Atom Types38751
-Ref: bool41366
-Ref: int42053
-Ref: flt42733
-Ref: char43135
-Ref: name43368
-Ref: uuid43608
-Ref: time43765
-Ref: date44668
-Ref: datetime45129
-Node: List46043
-Node: Dictionary50302
-Node: User Functions55930
-Node: Expression59175
-Node: Named Functions60303
-Ref: exp61101
-Ref: log61208
-Ref: sin61302
-Ref: cos61435
-Ref: sqr61577
-Ref: sqrt61660
-Ref: prm61758
-Ref: freq61931
-Ref: sums62285
-Ref: deltas62423
-Ref: rand62761
-Ref: has62933
-Ref: bin63227
-Ref: in63437
-Ref: within63611
-Ref: div63843
-Ref: mod64027
-Ref: bar64201
-Ref: cmb64390
-Ref: msum64818
-Ref: mavg64955
-Ref: Hcount65099
-Ref: Hfirst65194
-Ref: Hlast65289
-Ref: Hsum65393
-Ref: Hmin65496
-Ref: Hmax65614
-Ref: topX65731
-Ref: keyF65889
-Ref: unkey66184
-Ref: meta66320
-Node: Knit Functions66451
-Ref: amend66746
-Ref: amend167269
-Ref: amend267518
-Ref: amend367737
-Ref: amend468042
-Ref: dmend68330
-Ref: dmend168660
-Ref: dmend368828
-Ref: dmend468993
-Node: I/O69154
-Ref: read csv71076
-Ref: write csv71254
-Ref: read json71418
-Ref: write json71602
-Ref: read nv71769
-Ref: w line71962
-Ref: r line72359
-Ref: w byte72472
-Ref: r byte72700
-Ref: r data72850
-Ref: w data73509
-Ref: k-ipc set74085
-Ref: https get74147
-Ref: ffi/py/js/..74209
-Node: Tables74679
-Ref: table75346
-Ref: Utable76988
-Ref: Ntable77527
-Node: kSQL78145
-Ref: select78813
-Ref: A79397
-Ref: C80214
-Ref: where B80506
-Ref: update81125
-Ref: delete81846
-Ref: union82485
-Ref: leftjoin83006
-Ref: outer83785
-Ref: asof84120
-Ref: asof+85591
-Ref: insert86809
-Ref: upsert87155
-Node: System87569
-Ref: load88027
-Ref: timing88215
-Ref: variables88504
-Ref: memory88605
-Ref: cd88724
-Node: Control Flow88808
-Ref: cond89044
-Node: Temporal Functions89414
-Node: Errors90813
-Ref: class91261
-Ref: rank91350
-Ref: length91474
-Ref: _type91597
-Ref: domain91706
-Ref: limit91828
-Ref: nyi92039
-Ref: eparse92366
-Ref: _value92519
-Node: Examples92647
-Node: Benchmark100571
-Node: Conclusion109239
+Ref: take25940
+Ref: take126442
+Ref: take226811
+Ref: take327080
+Ref: take427278
+Ref: floor27637
+Ref: drop27728
+Ref: drop128164
+Ref: drop228347
+Ref: drop328466
+Ref: string28630
+Ref: parse28731
+Ref: unique28924
+Ref: find29168
+Ref: type29591
+Ref: at30042
+Ref: value30415
+Ref: apply30856
+Node: Adverb32049
+Ref: over33075
+Ref: scan33185
+Ref: join33935
+Ref: split34306
+Ref: each34564
+Ref: eachp34854
+Ref: eachr35601
+Ref: eachl35793
+Ref: cover35974
+Ref: cscan36291
+Node: Noun37469
+Ref: Atom Types38865
+Ref: bool41480
+Ref: int42167
+Ref: flt42847
+Ref: char43249
+Ref: name43482
+Ref: uuid43722
+Ref: time43879
+Ref: date44782
+Ref: datetime45243
+Node: List46157
+Node: Dictionary50416
+Node: User Functions56044
+Node: Expression59289
+Node: Named Functions60417
+Ref: exp61215
+Ref: log61322
+Ref: sin61416
+Ref: cos61549
+Ref: sqr61691
+Ref: sqrt61774
+Ref: prm61872
+Ref: freq62045
+Ref: sums62399
+Ref: deltas62537
+Ref: rand62875
+Ref: has63047
+Ref: bin63341
+Ref: in63551
+Ref: within63725
+Ref: div63957
+Ref: mod64141
+Ref: bar64315
+Ref: cmb64504
+Ref: msum64932
+Ref: mavg65069
+Ref: Hcount65213
+Ref: Hfirst65308
+Ref: Hlast65403
+Ref: Hsum65507
+Ref: Hmin65610
+Ref: Hmax65728
+Ref: topX65845
+Ref: keyF66003
+Ref: unkey66298
+Ref: meta66434
+Node: Knit Functions66565
+Ref: amend66860
+Ref: amend167383
+Ref: amend267632
+Ref: amend367851
+Ref: amend468156
+Ref: dmend68444
+Ref: dmend168774
+Ref: dmend368942
+Ref: dmend469107
+Node: I/O69268
+Ref: read csv71190
+Ref: write csv71368
+Ref: read json71532
+Ref: write json71716
+Ref: read nv71883
+Ref: w line72076
+Ref: r line72473
+Ref: w byte72586
+Ref: r byte72814
+Ref: r data72964
+Ref: w data73623
+Ref: k-ipc set74199
+Ref: https get74261
+Ref: ffi/py/js/..74323
+Node: Tables74793
+Ref: table75460
+Ref: Utable77102
+Ref: Ntable77641
+Node: kSQL78259
+Ref: select78927
+Ref: A79511
+Ref: C80328
+Ref: where B80620
+Ref: update81239
+Ref: delete81960
+Ref: union82599
+Ref: leftjoin83120
+Ref: outer83899
+Ref: asof84234
+Ref: asof+85705
+Ref: insert86923
+Ref: upsert87269
+Node: System87683
+Ref: load88141
+Ref: timing88329
+Ref: variables88618
+Ref: memory88719
+Ref: cd88838
+Node: Control Flow88922
+Ref: cond89158
+Node: Temporal Functions89528
+Node: Errors90927
+Ref: class91375
+Ref: rank91464
+Ref: length91588
+Ref: _type91711
+Ref: domain91820
+Ref: limit91942
+Ref: nyi92153
+Ref: eparse92480
+Ref: _value92633
+Node: Examples92761
+Node: Benchmark100685
+Node: Conclusion109353
 
 End Tag Table
 

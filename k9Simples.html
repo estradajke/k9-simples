@@ -890,14 +890,21 @@ y z
 </pre></div>
 
 <span id="count"></span><span id="count-_21d2-_0023x"></span><h3 class="section">2.26 count &rArr; #x</h3>
-<p>Count the number of elements in x.
-</p><div class="example">
-<pre class="example">&nbsp;#0 1 2 12
+<p>Count the number of elements in list, dictionary, or table x.
+</p>
+<div class="example">
+<pre class="example"> #0 1 2 12
 4
-&nbsp;#((0 1 2);3;(4 5))
+
+ #((0 1 2);3;(4 5))
 3
-&nbsp;#`a`b!((1 2 3);(4 5 6)) / count the number of keys
+ #`a`b!((1 2 3);(4 5 6)) / count the number of keys
 2
+
+ #5                      / will error as an element
+#5
+^
+!class
 </pre></div>
 
 <span id="take"></span><span id="g_t_005bf_005dtake-_21d2-x_0023y"></span><h3 class="section">2.27 [f]take &rArr; x#y</h3>

@@ -879,14 +879,21 @@ Cut list y by size, indices, or function x.
 @c @end example 
 @c 
 @anchor{count}@section count @result{} #x
-Count the number of elements in x.
+Count the number of elements in list, dictionary, or table x.
+
 @example
-@ #0 1 2 12
+ #0 1 2 12
 4
-@ #((0 1 2);3;(4 5))
+
+ #((0 1 2);3;(4 5))
 3
-@ #`a`b!((1 2 3);(4 5 6)) / count the number of keys
+ #`a`b!((1 2 3);(4 5 6)) / count the number of keys
 2
+
+ #5                      / will error as an element
+#5
+^
+!class
 @end example
 
 @anchor{take}@section [f]take @result{} x#y
