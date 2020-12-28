@@ -1699,13 +1699,13 @@ Next: <a href="#Dictionary" accesskey="n" rel="next">Dictionary</a>, Previous: <
 </p>
 <div class="example">
 <pre class="example"> @1          / an integer
-i
+`i
 
 @1 3 12     / list of ints
-I
+`I
 
 @,1         / list of single int via <a href="#enlist">list</a>
-I
+`I
 </pre></div>
 
 <p>Commands that generate sequences of numbers return lists regardless of whether the count (length of the list) is 1 or many.
@@ -1725,12 +1725,12 @@ I
 <div class="example">
 <pre class="example"> (1;3;12)         / list of ints
  @(1;3.;`a;&quot;b&quot;)   / non-uniform list
-L
- @((1;3);(12;0))  / list of lists
-L
+`L
+ @((1;3);(12;0))  / list of integer lists
+LI
  @'((1;3);(12;0)) / each list is type I
 `I`I
-  ,,,,,(3;1)      / a list of a list of a list ...
+  ,,,,,(3;1)      / a list of a list of a list..
 ,,,,,3 1
 </pre></div>
 

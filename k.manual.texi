@@ -1720,13 +1720,13 @@ In order to determine if data is an atom or a list, one can use the @ref{type} c
 
 @example
  @@1          / an integer
-i
+`i
 
 @@1 3 12     / list of ints
-I
+`I
 
 @@,1         / list of single int via @ref{enlist,list}
-I
+`I
 @end example
 
 Commands that generate sequences of numbers return lists regardless of whether the count (length of the list) is 1 or many.
@@ -1746,12 +1746,12 @@ In general, lists consist of elements separated by semicolons and encased by par
 @example
  (1;3;12)         / list of ints
  @@(1;3.;`a;"b")   / non-uniform list
-L
- @@((1;3);(12;0))  / list of lists
-L
+`L
+ @@((1;3);(12;0))  / list of integer lists
+LI
  @@'((1;3);(12;0)) / each list is type I
 `I`I
-  ,,,,,(3;1)      / a list of a list of a list ...
+  ,,,,,(3;1)      / a list of a list of a list..
 ,,,,,3 1
 @end example
 

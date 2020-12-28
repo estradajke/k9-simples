@@ -1588,13 +1588,13 @@ Lists are automatically formed when a sequence of uniform type are entered or ge
 In order to determine if data is an atom or a list, one can use the *note type:: command.  The command returns a lower case value for atoms and an upper case value for lists.
 
       @1          / an integer
-     i
+     `i
 
      @1 3 12     / list of ints
-     I
+     `I
 
      @,1         / list of single int via *note list: enlist.
-     I
+     `I
 
 Commands that generate sequences of numbers return lists regardless of whether the count (length of the list) is 1 or many.
 
@@ -1612,12 +1612,12 @@ In general, lists consist of elements separated by semicolons and encased by par
 
       (1;3;12)         / list of ints
       @(1;3.;`a;"b")   / non-uniform list
-     L
-      @((1;3);(12;0))  / list of lists
-     L
+     `L
+      @((1;3);(12;0))  / list of integer lists
+     LI
       @'((1;3);(12;0)) / each list is type I
      `I`I
-       ,,,,,(3;1)      / a list of a list of a list ...
+       ,,,,,(3;1)      / a list of a list of a list..
      ,,,,,3 1
 
 5.2 List Indexing
@@ -4442,106 +4442,106 @@ Ref: time43765
 Ref: date44668
 Ref: datetime45129
 Node: List46043
-Node: Dictionary50291
-Node: User Functions55919
-Node: Expression59164
-Node: Named Functions60292
-Ref: exp61090
-Ref: log61197
-Ref: sin61291
-Ref: cos61424
-Ref: sqr61566
-Ref: sqrt61649
-Ref: prm61747
-Ref: freq61920
-Ref: sums62274
-Ref: deltas62412
-Ref: rand62750
-Ref: has62922
-Ref: bin63216
-Ref: in63426
-Ref: within63600
-Ref: div63832
-Ref: mod64016
-Ref: bar64190
-Ref: cmb64379
-Ref: msum64807
-Ref: mavg64944
-Ref: Hcount65088
-Ref: Hfirst65183
-Ref: Hlast65278
-Ref: Hsum65382
-Ref: Hmin65485
-Ref: Hmax65603
-Ref: topX65720
-Ref: keyF65878
-Ref: unkey66173
-Ref: meta66309
-Node: Knit Functions66440
-Ref: amend66735
-Ref: amend167258
-Ref: amend267507
-Ref: amend367726
-Ref: amend468031
-Ref: dmend68319
-Ref: dmend168649
-Ref: dmend368817
-Ref: dmend468982
-Node: I/O69143
-Ref: read csv71065
-Ref: write csv71243
-Ref: read json71407
-Ref: write json71591
-Ref: read nv71758
-Ref: w line71951
-Ref: r line72348
-Ref: w byte72461
-Ref: r byte72689
-Ref: r data72839
-Ref: w data73498
-Ref: k-ipc set74074
-Ref: https get74136
-Ref: ffi/py/js/..74198
-Node: Tables74668
-Ref: table75335
-Ref: Utable76977
-Ref: Ntable77516
-Node: kSQL78134
-Ref: select78802
-Ref: A79386
-Ref: C80203
-Ref: where B80495
-Ref: update81114
-Ref: delete81835
-Ref: union82474
-Ref: leftjoin82995
-Ref: outer83774
-Ref: asof84109
-Ref: asof+85580
-Ref: insert86798
-Ref: upsert87144
-Node: System87558
-Ref: load88016
-Ref: timing88204
-Ref: variables88493
-Ref: memory88594
-Ref: cd88713
-Node: Control Flow88797
-Ref: cond89033
-Node: Temporal Functions89403
-Node: Errors90802
-Ref: class91250
-Ref: rank91339
-Ref: length91463
-Ref: _type91586
-Ref: domain91695
-Ref: limit91817
-Ref: nyi92028
-Ref: eparse92355
-Ref: _value92508
-Node: Examples92636
-Node: Benchmark100560
-Node: Conclusion109228
+Node: Dictionary50302
+Node: User Functions55930
+Node: Expression59175
+Node: Named Functions60303
+Ref: exp61101
+Ref: log61208
+Ref: sin61302
+Ref: cos61435
+Ref: sqr61577
+Ref: sqrt61660
+Ref: prm61758
+Ref: freq61931
+Ref: sums62285
+Ref: deltas62423
+Ref: rand62761
+Ref: has62933
+Ref: bin63227
+Ref: in63437
+Ref: within63611
+Ref: div63843
+Ref: mod64027
+Ref: bar64201
+Ref: cmb64390
+Ref: msum64818
+Ref: mavg64955
+Ref: Hcount65099
+Ref: Hfirst65194
+Ref: Hlast65289
+Ref: Hsum65393
+Ref: Hmin65496
+Ref: Hmax65614
+Ref: topX65731
+Ref: keyF65889
+Ref: unkey66184
+Ref: meta66320
+Node: Knit Functions66451
+Ref: amend66746
+Ref: amend167269
+Ref: amend267518
+Ref: amend367737
+Ref: amend468042
+Ref: dmend68330
+Ref: dmend168660
+Ref: dmend368828
+Ref: dmend468993
+Node: I/O69154
+Ref: read csv71076
+Ref: write csv71254
+Ref: read json71418
+Ref: write json71602
+Ref: read nv71769
+Ref: w line71962
+Ref: r line72359
+Ref: w byte72472
+Ref: r byte72700
+Ref: r data72850
+Ref: w data73509
+Ref: k-ipc set74085
+Ref: https get74147
+Ref: ffi/py/js/..74209
+Node: Tables74679
+Ref: table75346
+Ref: Utable76988
+Ref: Ntable77527
+Node: kSQL78145
+Ref: select78813
+Ref: A79397
+Ref: C80214
+Ref: where B80506
+Ref: update81125
+Ref: delete81846
+Ref: union82485
+Ref: leftjoin83006
+Ref: outer83785
+Ref: asof84120
+Ref: asof+85591
+Ref: insert86809
+Ref: upsert87155
+Node: System87569
+Ref: load88027
+Ref: timing88215
+Ref: variables88504
+Ref: memory88605
+Ref: cd88724
+Node: Control Flow88808
+Ref: cond89044
+Node: Temporal Functions89414
+Node: Errors90813
+Ref: class91261
+Ref: rank91350
+Ref: length91474
+Ref: _type91597
+Ref: domain91706
+Ref: limit91828
+Ref: nyi92039
+Ref: eparse92366
+Ref: _value92519
+Node: Examples92647
+Node: Benchmark100571
+Node: Conclusion109239
 
 End Tag Table
 
