@@ -116,7 +116,7 @@ _ <a href="#floor">floor</a>,  [f]<a href="#drop">drop</a>.
 $ <a href="#string">string</a>,    <a href="#parse">parse</a>.    
 ? <a href="#unique">unique</a>, [n]<a href="#find">find</a>.    
 @ <a href="#type">type</a>,   [n]<a href="#at">at</a>.    
-. <a href="#value">value</a>,     <a href="#apply">apply</a>.
+. <a href="#value">value</a>,     <a href="#dot">dot</a>.
 
 </pre></div>
 
@@ -853,8 +853,8 @@ temporal or name type.
 `abc
 </pre></div>
 
-<span id="apply"></span><span id="g_t_005bf_005dapply-_21d2-x_002ey"></span><h3 class="section">2.37 [f]apply &rArr; x.y</h3>
-<p>Given list x return the value at list y.  The action of apply depends on the shape of y.
+<span id="dot"></span><span id="dot-_21d2-x_002ey"></span><h3 class="section">2.37 dot &rArr; x.y</h3>
+<p>Given list x return the value at list y.  The action of dot depends on the shape of y.
 </p><ul>
 <li> Index returns the value(s) at x at each index y, i.e. x@y@0, x@y@1, ..., x@y@(n-1).
 </li><li> Recursive index returns the value(s) at x[y@0;y@1].

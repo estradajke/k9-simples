@@ -119,7 +119,7 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; <
 <tt>$&nbsp;&nbsp;&nbsp;<a href="#string">string</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#parse">parse</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$[b;t;f]&nbsp;<a href="#cond">cond</a>&nbsp;&nbsp;&nbsp;ntable&nbsp;n:`..![[]y:..]</tt><br>
 <tt>?&nbsp;&nbsp;&nbsp;<a href="#unique">unique</a>&nbsp;&nbsp;[n]<a href="#find">find</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
 <tt>@&nbsp;&nbsp;&nbsp;<a href="#type">type</a>&nbsp;&nbsp;&nbsp;&nbsp;[n]<a href="#at">at</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@[r;i;f[;y]]&nbsp;<a href="#amend">amend</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#read-json">`js?</a><a href="#write-json">`js&nbsp;</a>d</tt><br>
-<tt>.&nbsp;&nbsp;&nbsp;<a href="#value">value</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dot&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.[r;i;f[;y]]&nbsp;<a href="#dmend">dmend</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#read-csv">`csv?</a><a href="#write-csv">`csv&nbsp;</a>t</tt><br>
+<tt>.&nbsp;&nbsp;&nbsp;<a href="#value">value</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#dot">dot</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.[r;i;f[;y]]&nbsp;<a href="#dmend">dmend</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#read-csv">`csv?</a><a href="#write-csv">`csv&nbsp;</a>t</tt><br>
 <tt></tt><br>
 <tt><a href="#select">select</a>[G]<a href="#A">A</a>&nbsp;from&nbsp;T&nbsp;where&nbsp;C;&nbsp;<a href="#update">update</a>&nbsp;<a href="#A">A</a>&nbsp;from&nbsp;T&nbsp;where&nbsp;C;&nbsp;<a href="#delete">delete</a>&nbsp;from&nbsp;T&nbsp;where&nbsp;C</tt><br>
 <tt><a href="#count">count</a>&nbsp;<a href="#first">first</a>&nbsp;<a href="#Hlast">last</a>&nbsp;<a href="#Hsum">sum</a>&nbsp;<a href="#Hmin">min</a>&nbsp;<a href="#Hmax">max</a>&nbsp;*[avg&nbsp;var&nbsp;dev&nbsp;med&nbsp;..];&nbsp;<a href="#in">in</a>&nbsp; <a href="#within">within</a>&nbsp;<a href="#bin">bin</a>&nbsp;<a href="#freq">freq</a>&nbsp;<a href="#rand">rand</a>&nbsp;</tt><br>
@@ -417,7 +417,7 @@ _ <a href="#floor">floor</a>,  [f]<a href="#drop">drop</a>.
 $ <a href="#string">string</a>,    <a href="#parse">parse</a>.    
 ? <a href="#unique">unique</a>, [n]<a href="#find">find</a>.    
 @ <a href="#type">type</a>,   [n]<a href="#at">at</a>.    
-. <a href="#value">value</a>,     <a href="#apply">apply</a>.
+. <a href="#value">value</a>,     <a href="#dot">dot</a>.
 
 </pre></div>
 
@@ -1154,8 +1154,8 @@ temporal or name type.
 `abc
 </pre></div>
 
-<span id="apply"></span><span id="g_t_005bf_005dapply-_21d2-x_002ey"></span><h3 class="section">2.37 [f]apply &rArr; x.y</h3>
-<p>Given list x return the value at list y.  The action of apply depends on the shape of y.
+<span id="dot"></span><span id="dot-_21d2-x_002ey"></span><h3 class="section">2.37 dot &rArr; x.y</h3>
+<p>Given list x return the value at list y.  The action of dot depends on the shape of y.
 </p><ul>
 <li> Index returns the value(s) at x at each index y, i.e. x@y@0, x@y@1, ..., x@y@(n-1).
 </li><li> Recursive index returns the value(s) at x[y@0;y@1].

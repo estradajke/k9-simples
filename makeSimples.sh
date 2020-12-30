@@ -41,7 +41,7 @@ sed -e 's/@/@@/g' \
     -e '20,100 s/type/@ref{type}/g' \
     -e 's/]at/]@ref{at}/g' \
     -e 's/value/@ref{value}/g' \
-    -e 's/apply/@ref{apply}/g' \
+    -e 's/dot/@ref{dot}/g' \
     -e '1,10 s/join/@ref{join}/g' \
     -e '1,5 s/scan/@ref{scan}/g' \
     -e '1,5 s/over/@ref{over}/g' \
