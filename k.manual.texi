@@ -292,7 +292,7 @@ This chapter covers verbs which are the core primitives of k9.  Given how differ
 
 Most functions are overloaded and change depending on the number of arguments.  This can confuse new users.  Eg. @code{(1 4)++(2 3;5 6;7 8)} contains the plus symbol once as flip and then for addition.  (Remember evaluation is right to left!)
 
-There are verbs that can take a function argument. Those are listed with a '[f]' prefix.  These include [nf]cut, [f]take, [f]drop, [sf]find, [sf]at, and [f]apply.
+There are verbs that can take a function argument. Those are listed with a '[f]' prefix.  These include [f]cut, [f]take, and [f]drop.  A few can take a special name prefix and those are listed with a 'n' prefix and include [n]find, and [n]at.
 
 @example
 Verb
@@ -797,7 +797,7 @@ y z
 3 c
 @end example
 
-@anchor{cut}@section [nf]cut @result{} x^y
+@anchor{cut}@section [f]cut @result{} x^y
 Cut list y by size, indices, or function x.  
 
 @flushleft
@@ -1061,7 +1061,7 @@ Return the unique values of the list x.  The @code{?} preceeding the return valu
 ?"ban"
 @end example
 
-@anchor{find}@section [sf]find @result{} x?y
+@anchor{find}@section [n]find @result{} x?y
 Find the first element of x that matches y otherwise return the end of vector.
 
 @example
@@ -1099,7 +1099,7 @@ Return the data type of x.  Lower-case represents a single element while upper-c
 `i`f`s`c`d`t
 @end example
 
-@anchor{at}@section [sf]at @result{} x@@y
+@anchor{at}@section [n]at @result{} x@@y
 Given a list x return the value(s) at index(indices) y.  
 
 @example

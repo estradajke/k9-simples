@@ -93,7 +93,7 @@ Next: <a href="Adverb.html" accesskey="n" rel="next">Adverb</a>, Previous: <a hr
 </p>
 <p>Most functions are overloaded and change depending on the number of arguments.  This can confuse new users.  Eg. <code>(1 4)++(2 3;5 6;7 8)</code> contains the plus symbol once as flip and then for addition.  (Remember evaluation is right to left!)
 </p>
-<p>There are verbs that can take a function argument. Those are listed with a &rsquo;[f]&rsquo; prefix.  These include [nf]cut, [f]take, [f]drop, [sf]find, [sf]at, and [f]apply.
+<p>There are verbs that can take a function argument. Those are listed with a &rsquo;[f]&rsquo; prefix.  These include [f]cut, [f]take, and [f]drop.  A few can take a special name prefix and those are listed with a &rsquo;n&rsquo; prefix and include [n]find, and [n]at.
 </p>
 <div class="example">
 <pre class="example">Verb
@@ -531,7 +531,7 @@ y z
 3 c
 </pre></div>
 
-<span id="cut"></span><span id="g_t_005bnf_005dcut-_21d2-x_005ey"></span><h3 class="section">2.25 [nf]cut &rArr; x^y</h3>
+<span id="cut"></span><span id="g_t_005bf_005dcut-_21d2-x_005ey"></span><h3 class="section">2.25 [f]cut &rArr; x^y</h3>
 <p>Cut list y by size, indices, or function x.  
 </p>
 <table>
@@ -758,7 +758,7 @@ c b 2
 ?&quot;ban&quot;
 </pre></div>
 
-<span id="find"></span><span id="g_t_005bsf_005dfind-_21d2-x_003fy"></span><h3 class="section">2.33 [sf]find &rArr; x?y</h3>
+<span id="find"></span><span id="g_t_005bn_005dfind-_21d2-x_003fy"></span><h3 class="section">2.33 [n]find &rArr; x?y</h3>
 <p>Find the first element of x that matches y otherwise return the end of vector.
 </p>
 <div class="example">
@@ -796,7 +796,7 @@ c b 2
 `i`f`s`c`d`t
 </pre></div>
 
-<span id="at"></span><span id="g_t_005bsf_005dat-_21d2-x_0040y"></span><h3 class="section">2.35 [sf]at &rArr; x@y</h3>
+<span id="at"></span><span id="g_t_005bn_005dat-_21d2-x_0040y"></span><h3 class="section">2.35 [n]at &rArr; x@y</h3>
 <p>Given a list x return the value(s) at index(indices) y.  
 </p>
 <div class="example">
