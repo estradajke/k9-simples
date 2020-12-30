@@ -125,7 +125,7 @@ sed -e 's/@/@@/g' \
     -e '20,30 s/has/@ref{has}/g' \
     -e '20,30 s/first/@ref{first}/g' \
     -e '20,30 s/last/@ref{Hlast,last}/g' \
-    -e '25,30 s/sum/@ref{Hsum,sum}/g' \
+    -e '23,24 s/sum/@ref{Hsum,sum}/g' \
     -e '20,30 s/min/@ref{Hmin,min}/g' \
     -e '20,30 s/max/@ref{Hmax,max}/g' \
     -e '20,30 s/prm/@ref{prm}/g' \

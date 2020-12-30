@@ -309,13 +309,13 @@ Verb
 ~ @ref{not},       @ref{match}.
 ! @ref{enum},      @ref{key}.
 , @ref{enlist,list},      @ref{cat}.
-^ @ref{sort},  [nf]@ref{cut}. 
+^ @ref{sort},   [f]@ref{cut}. 
 # @ref{count},  [f]@ref{take}.  
 _ @ref{floor},  [f]@ref{drop}.    
 $ @ref{string},    @ref{parse}.    
-? @ref{unique},[sf]@ref{find}.    
-@@ @ref{type},  [sf]@ref{at}.    
-. @ref{value},  [f]@ref{apply}.
+? @ref{unique}, [n]@ref{find}.    
+@@ @ref{type},   [n]@ref{at}.    
+. @ref{value},     @ref{apply}.
 
 @end example
 
@@ -2297,7 +2297,7 @@ In order to succeed fa needs to have an @code{@@} in the definition of fb.  This
 
 @node Expression
 @chapter Expression Evaluation
-k9 has a compact way to evaluate expressions on dictionaries with tables supported for a few cases.
+k9 has a compact way to evaluate expressions on dictionaries.  This allows one to use the dictionary keys as local variables to get to results with less code.
 
 @verbatim
 Expr :a+b
@@ -2315,9 +2315,14 @@ city   |`Chongqin`Shanhai`Beijing`Delhi`Chengdu
 country|`cn`cn`cn`in`cn                        
 size   |30 24 22 17 16                         
 
- d :&country=`in
+ d :&country=`in       / using country like a local variable
 ,3
+
  d :country sum/size   / sum size by country
+cn|92
+in|17
+
+ d :sum'size@=country  / same as above
 cn|92
 in|17
 

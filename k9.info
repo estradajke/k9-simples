@@ -1,6 +1,6 @@
 This is k9.info, produced by texi2any version 6.7 from k.manual.texi.
 
-December 29, 2020
+December 30, 2020
 
 Copyright (C) 2020 John Estrada
 
@@ -23,34 +23,33 @@ Alas this manual is not as elegant as the k9 language in that the text version o
 
 The built-in reference screen ('\') containing all the k9 commands.
 
-*note Verb::                      *note Adverb::                 *note Type: Noun.              *note System::
-:   x          y          f/  *note over::  V/ *note join::      *note char:: " ab"        \l a.k
-+   *note flip::       *note plus::       f\  *note scan::  V\ *note split::     *note name:: ``ab         \t:n x
--   *note minus::      *note minus::      f'  *note each::               *note int::  0 2 3        \u:n x
-*   *note first::      *note times::      f': *note eachp::              *note flt::  0 2 3.       \v
-%              *note divide::     f/: *note eachr:: (n;f)/:*note over: cover.  *note date:: 2021.01.23   .z.d
-&   *note where::      *note min/and::    f\: *note eachl:: (n;f)\:*note scan: cscan.  *note time:: 12:34:56.789 .z.t
+verb                      adverb                 noun
+:   x          y          f' *note each::                *note char:: " ab"              \l a.k
++   *note flip::       *note plus::    [x]f/ *note over:: (c/*note join::)       *note name:: ``ab               \t:n x
+-   *note minus::      *note minus::   [x]f\ *note scan:: (c\*note split::)      *note int::  0 2 3              \u:n x
+*   *note first::      *note times::   [x]f':*note eachp::               *note flt::  0 2 3.             \v
+%              *note divide::     f/:*note eachr:: g/:*note over: cover.       *note date:: 2021.01.23   .z.d
+&   *note where::      *note min/and::    f\:*note eachl:: g\:*note scan: cscan.       *note time:: 12:34:56.789 .z.t
 |   *note reverse::    *note max/or::     
-<   *note asc::        *note less::       *note I/O::(*enterprise)       Class
->   *note desc::       *note more::       0: *note r: r line./*note w: w line. line            atom              \f
-=   *note group::      *note equal::      1: *note r: r byte./*note w: w byte. byte            *note List:: (2;3.4;`c)   \ft x     
-~   *note not::        *note match::     *2: *note r: r data./*note w: w data. data            *note Dict: Dictionary. [a:2;b:`c]   \fl x
-!   *note key::        *note key::       *3: *note k-ipc set::           *note Func: User Functions. {[a;b]a+b}   \fc x
-,   *note list: enlist.       *note cat::       *4: *note https get::           *note Expr: Expression. :a+b         \cd [d]
-^   *note sort::   [nf]*note cut::       *5: *note ffi/py/js/..::        *note table: Tables. t:[[]i:2 3;f:2.3 4]
-#   *note count::  [nf]*note take::                             *note Utable:: u:[[x:..]y:..]
-_   *note floor::  [nf]*note drop::                             *note Ntable:: n:`..![[]y:..]
-$   *note string::     *note parse::                
-?   *note unique:: [sf]*note find::       $[b;t;f] *note cond::          
-@   *note type::   [sf]*note at::         @[r;i;f[;y]] *note amend::     *note `js?: read json.*note `js : write json.d
-.   *note value::   [f]*note apply::      .[r;i;f[;y]] *note dmend::     *note `csv?: read csv.*note `csv : write csv.t
+<   *note asc::        *note less::       i/o  *enterprise       class                   \f
+>   *note desc::       *note more::       0: *note r: r line./*note w: w line. line            *note list: enlist. (2;3.4;`c)         \fl x
+=   *note group::      *note equal::      1: r/w *note char::            dict [a:2;b:`c]         \fc x     
+~   *note not::        *note match::     *2: *note r: r data./*note w: w data. data            func {[a;b]a+b}         \fs x
+!   *note key::        *note key::       *3: *note k-ipc set::           expr :a+b               \cd [d]   
+,   en*note list: enlist.     *note cat::       *4: *note https get::           
+^   *note sort::    [f]*note cut::       *5: *note ffi/py/js/..::        
+#   *note count::   [f]*note take::                        *note table: Tables. t:[[]i:2 3;f:2.3 4]
+_   *note floor::   [f]*note drop::                       utable u:[[x:..]y:..]
+$   *note string::     *note parse::      $[b;t;f] *note cond::   ntable n:`..![[]y:..]
+?   *note unique::  [n]*note find::                             
+@   *note type::    [n]*note at::         @[r;i;f[;y]] *note amend::    *note `js?: read json.*note `js : write json.d
+.   *note value::      dot        .[r;i;f[;y]] *note dmend::    *note `csv?: read csv.*note `csv : write csv.t
 
-*note exp:: *note log:: *note sin:: *note cos:: *note sqr:: *note sqrt:: *note prm:: *note freq:: *note sums:: *note deltas::
-*note rand:: *note has:: *note bin:: *note in::  *note within:: *note div:: *note mod:: *note bar:: *note rand:: *note cmb:: *note msum:: *note mavg::
-*note count:: *note first:: *note last: Hlast. *note sum: Hsum. *note min: Hmin. *note max: Hmax. *[avg var dev med ..]; *note key:: *note meta::
-*note select::[[*note C::]]*note A:: from T *note where B::; *note update:: [*note C::] from T *note where B::; *note delete:: from T *note where B::
+*note select::[G]*note A:: from T where C; *note update:: *note A:: from T where C; *note delete:: from T where C
+*note count:: *note first:: *note last: Hlast. *note sum: Hsum. *note min: Hmin. *note max: Hmax. *[avg var dev med ..]; *note in::  *note within:: *note bin:: *note freq:: *note rand:: 
+*note exp:: *note log:: *note sin:: *note cos:: *note sqr:: *note sqrt:: *note div:: *note mod:: *note bar:: *note prm:: *note cmb::; *note msum:: *note mavg:: *note sums:: *note deltas:: differ
 
-\\ exit  /comment \trace
+\\ exit  /comment \trace [:return 'signal if do while]
 
 * Menu:
 
@@ -165,34 +164,33 @@ this binary to run.  (You'll have to have tried and failed to have it appear her
 Typing '\' in a terminal window gives you a concise overview of the language.  This document aims to provide details to beginning user where the help screen is a bit too terse.  Some commands are not
 yet complete and thus marked with an asterisk, eg.  *update A by B from T where C.
 
-Verb                      Adverb                 Type              System
-:   x          y          f/  over  V/ join      char " ab"        \l a.k
-+   flip       plus       f\  scan  V\ split     name ``ab         \t:n x
--   minus      minus      f'  each               int  0 2 3        \u:n x
-*   first      times      f': eachp              flt  0 2 3.       \v
-%              divide     f/: eachr (n;f)/:over  date 2021.01.23   .z.d
-&   where      min/and    f\: eachl (n;f)\:scan  time 12:34:56.789 .z.t
+verb                      adverb                 noun
+:   x          y          f' each                char " ab"              \l a.k
++   flip       plus    [x]f/ over (c/join)       name ``ab               \t:n x
+-   minus      minus   [x]f\ scan (c\split)      int  0 2 3              \u:n x
+*   first      times   [x]f':eachp               flt  0 2 3.             \v
+%              divide     f/:eachr g/:over       date 2021.01.23   .z.d
+&   where      min/and    f\:eachl g\:scan       time 12:34:56.789 .z.t
 |   reverse    max/or     
-<   asc        less       I/O(*enterprise)       Class
->   desc       more       0: r/w line            atom              \f
-=   group      equal      1: r/w byte            List (2;3.4;`c)   \ft x     
-~   not        match     *2: r/w data            Dict [a:2;b:`c]   \fl x
-!   key        key       *3: k-ipc set           Func {[a;b]a+b}   \fc x
-,   list       cat       *4: https get           Expr :a+b         \cd [d]
-^   sort   [nf]cut       *5: ffi/py/js/..        table t:[[]i:2 3;f:2.3 4]
-#   count  [nf]take                             Utable u:[[x:..]y:..]
-_   floor  [nf]drop                             Ntable n:`..![[]y:..]
-$   string     parse                
-?   unique [sf]find       $[b;t;f] cond          
-@   type   [sf]at         @[r;i;f[;y]] amend     `js?`js d
-.   value   [f]apply      .[r;i;f[;y]] dmend     `csv?`csv t
+<   asc        less       i/o  *enterprise       class                   \f
+>   desc       more       0: r/w line            list (2;3.4;`c)         \fl x
+=   group      equal      1: r/w char            dict [a:2;b:`c]         \fc x     
+~   not        match     *2: r/w data            func {[a;b]a+b}         \fs x
+!   key        key       *3: k-ipc set           expr :a+b               \cd [d]   
+,   enlist     cat       *4: https get           
+^   sort    [f]cut       *5: ffi/py/js/..        
+#   count   [f]take                        table t:[[]i:2 3;f:2.3 4]
+_   floor   [f]drop                       utable u:[[x:..]y:..]
+$   string     parse      $[b;t;f] cond   ntable n:`..![[]y:..]
+?   unique  [n]find                             
+@   type    [n]at         @[r;i;f[;y]] amend    `js?`js d
+.   value      dot        .[r;i;f[;y]] dmend    `csv?`csv t
 
-exp log sin cos sqr sqrt prm freq sums deltas
-rand has bin in within div mod bar rand cmb msum mavg
-count first last sum min max *[avg var dev med ..]; key meta
-select[C]A from T where B; update C from T where B; delete from T where B
+select[G]A from T where C; update A from T where C; delete from T where C
+count first last sum min max *[avg var dev med ..]; in within bin freq rand 
+exp log sin cos sqr sqrt div mod bar prm cmb; msum mavg sums deltas differ
 
-\\ exit  /comment \trace
+\\ exit  /comment \trace [:return 'signal if do while]
 
 1.5 rlwrap
 ==========
@@ -340,13 +338,13 @@ There are verbs that can take a function argument.  Those are listed with a '[f]
      ~ *note not::,       *note match::.
      ! *note enum::,      *note key::.
      , *note list: enlist,      *note cat::.
-     ^ *note sort::,  [nf]*note cut::.
+     ^ *note sort::,   [f]*note cut::.
      # *note count::,  [f]*note take::.
      _ *note floor::,  [f]*note drop::.
      $ *note string::,    *note parse::.
-     ? *note unique::,[sf]*note find::.
-     @ *note type::,  [sf]*note at::.
-     . *note value::,  [f]*note apply::.
+     ? *note unique::, [n]*note find::.
+     @ *note type::,   [n]*note at::.
+     . *note value::,     *note apply::.
 
 
 2.1 x => :x
@@ -2158,7 +2156,7 @@ File: k9.info,  Node: Expression,  Next: Named Functions,  Prev: User Functions,
 8 Expression Evaluation
 ***********************
 
-k9 has a compact way to evaluate expressions on dictionaries with tables supported for a few cases.
+k9 has a compact way to evaluate expressions on dictionaries.  This allows one to use the dictionary keys as local variables to get to results with less code.
 
 Expr :a+b
 
@@ -2175,9 +2173,14 @@ Evaluate expression(s) 'y' on table or dictionary 'x'.  The space between 'x' an
      country|`cn`cn`cn`in`cn
      size   |30 24 22 17 16
 
-      d :&country=`in
+      d :&country=`in       / using country like a local variable
      ,3
+
       d :country sum/size   / sum size by country
+     cn|92
+     in|17
+
+      d :sum'sizec̄ountry  / same as above
      cn|92
      in|17
 
@@ -4317,214 +4320,213 @@ faster than previously imagined.
 
 Eventually, you'll realize that this manual isn't needed and it's all here...
 
-Verb                      Adverb                 Type              System
-:   x          y          f/  over  V/ join      char " ab"        \l a.k
-+   flip       plus       f\  scan  V\ split     name ``ab         \t:n x
--   minus      minus      f'  each               int  0 2 3        \u:n x
-*   first      times      f': eachp              flt  0 2 3.       \v
-%              divide     f/: eachr (n;f)/:over  date 2021.01.23   .z.d
-&   where      min/and    f\: eachl (n;f)\:scan  time 12:34:56.789 .z.t
+verb                      adverb                 noun
+:   x          y          f' each                char " ab"              \l a.k
++   flip       plus    [x]f/ over (c/join)       name ``ab               \t:n x
+-   minus      minus   [x]f\ scan (c\split)      int  0 2 3              \u:n x
+*   first      times   [x]f':eachp               flt  0 2 3.             \v
+%              divide     f/:eachr g/:over       date 2021.01.23   .z.d
+&   where      min/and    f\:eachl g\:scan       time 12:34:56.789 .z.t
 |   reverse    max/or     
-<   asc        less       I/O(*enterprise)       Class
->   desc       more       0: r/w line            atom              \f
-=   group      equal      1: r/w byte            List (2;3.4;`c)   \ft x     
-~   not        match     *2: r/w data            Dict [a:2;b:`c]   \fl x
-!   key        key       *3: k-ipc set           Func {[a;b]a+b}   \fc x
-,   list       cat       *4: https get           Expr :a+b         \cd [d]
-^   sort   [nf]cut       *5: ffi/py/js/..        table t:[[]i:2 3;f:2.3 4]
-#   count  [nf]take                             Utable u:[[x:..]y:..]
-_   floor  [nf]drop                             Ntable n:`..![[]y:..]
-$   string     parse                
-?   unique [sf]find       $[b;t;f] cond          
-@   type   [sf]at         @[r;i;f[;y]] amend     `js?`js d
-.   value   [f]apply      .[r;i;f[;y]] dmend     `csv?`csv t
+<   asc        less       i/o  *enterprise       class                   \f
+>   desc       more       0: r/w line            list (2;3.4;`c)         \fl x
+=   group      equal      1: r/w char            dict [a:2;b:`c]         \fc x     
+~   not        match     *2: r/w data            func {[a;b]a+b}         \fs x
+!   key        key       *3: k-ipc set           expr :a+b               \cd [d]   
+,   enlist     cat       *4: https get           
+^   sort    [f]cut       *5: ffi/py/js/..        
+#   count   [f]take                        table t:[[]i:2 3;f:2.3 4]
+_   floor   [f]drop                       utable u:[[x:..]y:..]
+$   string     parse      $[b;t;f] cond   ntable n:`..![[]y:..]
+?   unique  [n]find                             
+@   type    [n]at         @[r;i;f[;y]] amend    `js?`js d
+.   value      dot        .[r;i;f[;y]] dmend    `csv?`csv t
 
-exp log sin cos sqr sqrt prm freq sums deltas
-rand has bin in within div mod bar rand cmb msum mavg
-count first last sum min max *[avg var dev med ..]; key meta
-select[C]A from T where B; update C from T where B; delete from T where B
+select[G]A from T where C; update A from T where C; delete from T where C
+count first last sum min max *[avg var dev med ..]; in within bin freq rand 
+exp log sin cos sqr sqrt div mod bar prm cmb; msum mavg sums deltas differ
 
-\\ exit  /comment \trace
+\\ exit  /comment \trace [:return 'signal if do while]
 
 
 
 Tag Table:
 Node: Top123
-Node: Introduction4996
-Node: Verb16039
-Ref: x17620
-Ref: set17645
-Ref: flip17904
-Ref: plus18154
-Ref: negate18632
-Ref: minus18804
-Ref: first18911
-Ref: times19127
-Ref: divide19258
-Ref: where19395
-Ref: min/and19878
-Ref: reverse20137
-Ref: max/or20396
-Ref: asc20660
-Ref: desc20660
-Ref: less21051
-Ref: more21051
-Ref: group21352
-Ref: equal21605
-Ref: not21909
-Ref: match22026
-Ref: enum22409
-Ref: key23492
-Ref: enlist23665
-Ref: cat23801
-Ref: sort23920
-Ref: cut24572
-Ref: cut124836
-Ref: cut224988
-Ref: cut325182
-Ref: cut425456
-Ref: count25636
-Ref: take25940
-Ref: take126442
-Ref: take226811
-Ref: take327080
-Ref: take427278
-Ref: floor27637
-Ref: drop27728
-Ref: drop128164
-Ref: drop228347
-Ref: drop328466
-Ref: string28630
-Ref: parse28731
-Ref: unique28924
-Ref: find29168
-Ref: type29591
-Ref: at30042
-Ref: value30415
-Ref: apply30856
-Node: Adverb32049
-Ref: over33075
-Ref: scan33185
-Ref: join34123
-Ref: split34494
-Ref: each34752
-Ref: eachp35042
-Ref: eachr35789
-Ref: eachl35981
-Ref: cover36162
-Ref: cscan36479
-Node: Noun37657
-Ref: Atom Types39053
-Ref: bool41668
-Ref: int42355
-Ref: flt43035
-Ref: char43437
-Ref: name43670
-Ref: uuid43910
-Ref: time44067
-Ref: date44970
-Ref: datetime45431
-Node: List46345
-Node: Dictionary50604
-Node: User Functions56232
-Node: Expression59477
-Node: Named Functions60587
-Ref: exp61385
-Ref: log61492
-Ref: sin61586
-Ref: cos61719
-Ref: sqr61861
-Ref: sqrt61944
-Ref: prm62042
-Ref: freq62215
-Ref: sums62569
-Ref: deltas62707
-Ref: rand63045
-Ref: has63217
-Ref: bin63511
-Ref: in63721
-Ref: within63895
-Ref: div64127
-Ref: mod64311
-Ref: bar64485
-Ref: cmb64674
-Ref: msum65102
-Ref: mavg65239
-Ref: Hcount65383
-Ref: Hfirst65478
-Ref: Hlast65573
-Ref: Hsum65677
-Ref: Hmin65780
-Ref: Hmax65898
-Ref: topX66015
-Ref: keyF66173
-Ref: unkey66468
-Ref: meta66604
-Node: Knit Functions66735
-Ref: amend67030
-Ref: amend167553
-Ref: amend267802
-Ref: amend368021
-Ref: amend468326
-Ref: dmend68614
-Ref: dmend168944
-Ref: dmend369112
-Ref: dmend469277
-Node: I/O69438
-Ref: read csv71360
-Ref: write csv71538
-Ref: read json71702
-Ref: write json71886
-Ref: read nv72053
-Ref: w line72246
-Ref: r line72643
-Ref: w byte72756
-Ref: r byte72984
-Ref: r data73134
-Ref: w data73793
-Ref: k-ipc set74369
-Ref: https get74431
-Ref: ffi/py/js/..74493
-Node: Tables74963
-Ref: table75630
-Ref: Utable77272
-Ref: Ntable77811
-Node: kSQL78429
-Ref: select79097
-Ref: A79557
-Ref: C80250
-Ref: where B80542
-Ref: update81161
-Ref: delete81882
-Ref: union82521
-Ref: leftjoin83042
-Ref: outer83821
-Ref: asof84156
-Ref: asof+85627
-Ref: insert86845
-Ref: upsert87191
-Node: System87605
-Ref: load88063
-Ref: timing88251
-Ref: variables88540
-Ref: memory88641
-Ref: cd88760
-Node: Control Flow88844
-Ref: cond89080
-Node: Temporal Functions89450
-Node: Errors90849
-Ref: class91297
-Ref: rank91386
-Ref: length91510
-Ref: _type91633
-Ref: domain91742
-Ref: limit91864
-Ref: nyi92075
-Ref: eparse92402
-Ref: _value92555
-Node: Examples92683
-Node: Benchmark100607
-Node: Conclusion109275
+Node: Introduction4828
+Node: Verb15916
+Ref: x17497
+Ref: set17522
+Ref: flip17781
+Ref: plus18031
+Ref: negate18509
+Ref: minus18681
+Ref: first18788
+Ref: times19004
+Ref: divide19135
+Ref: where19272
+Ref: min/and19755
+Ref: reverse20014
+Ref: max/or20273
+Ref: asc20537
+Ref: desc20537
+Ref: less20928
+Ref: more20928
+Ref: group21229
+Ref: equal21482
+Ref: not21786
+Ref: match21903
+Ref: enum22286
+Ref: key23369
+Ref: enlist23542
+Ref: cat23678
+Ref: sort23797
+Ref: cut24449
+Ref: cut124713
+Ref: cut224865
+Ref: cut325059
+Ref: cut425333
+Ref: count25513
+Ref: take25817
+Ref: take126319
+Ref: take226688
+Ref: take326957
+Ref: take427155
+Ref: floor27514
+Ref: drop27605
+Ref: drop128041
+Ref: drop228224
+Ref: drop328343
+Ref: string28507
+Ref: parse28608
+Ref: unique28801
+Ref: find29045
+Ref: type29468
+Ref: at29919
+Ref: value30292
+Ref: apply30733
+Node: Adverb31926
+Ref: over32952
+Ref: scan33062
+Ref: join34000
+Ref: split34371
+Ref: each34629
+Ref: eachp34919
+Ref: eachr35666
+Ref: eachl35858
+Ref: cover36039
+Ref: cscan36356
+Node: Noun37534
+Ref: Atom Types38930
+Ref: bool41545
+Ref: int42232
+Ref: flt42912
+Ref: char43314
+Ref: name43547
+Ref: uuid43787
+Ref: time43944
+Ref: date44847
+Ref: datetime45308
+Node: List46222
+Node: Dictionary50481
+Node: User Functions56109
+Node: Expression59354
+Node: Named Functions60635
+Ref: exp61433
+Ref: log61540
+Ref: sin61634
+Ref: cos61767
+Ref: sqr61909
+Ref: sqrt61992
+Ref: prm62090
+Ref: freq62263
+Ref: sums62617
+Ref: deltas62755
+Ref: rand63093
+Ref: has63265
+Ref: bin63559
+Ref: in63769
+Ref: within63943
+Ref: div64175
+Ref: mod64359
+Ref: bar64533
+Ref: cmb64722
+Ref: msum65150
+Ref: mavg65287
+Ref: Hcount65431
+Ref: Hfirst65526
+Ref: Hlast65621
+Ref: Hsum65725
+Ref: Hmin65828
+Ref: Hmax65946
+Ref: topX66063
+Ref: keyF66221
+Ref: unkey66516
+Ref: meta66652
+Node: Knit Functions66783
+Ref: amend67078
+Ref: amend167601
+Ref: amend267850
+Ref: amend368069
+Ref: amend468374
+Ref: dmend68662
+Ref: dmend168992
+Ref: dmend369160
+Ref: dmend469325
+Node: I/O69486
+Ref: read csv71408
+Ref: write csv71586
+Ref: read json71750
+Ref: write json71934
+Ref: read nv72101
+Ref: w line72294
+Ref: r line72691
+Ref: w byte72804
+Ref: r byte73032
+Ref: r data73182
+Ref: w data73841
+Ref: k-ipc set74417
+Ref: https get74479
+Ref: ffi/py/js/..74541
+Node: Tables75011
+Ref: table75678
+Ref: Utable77320
+Ref: Ntable77859
+Node: kSQL78477
+Ref: select79145
+Ref: A79605
+Ref: C80298
+Ref: where B80590
+Ref: update81209
+Ref: delete81930
+Ref: union82569
+Ref: leftjoin83090
+Ref: outer83869
+Ref: asof84204
+Ref: asof+85675
+Ref: insert86893
+Ref: upsert87239
+Node: System87653
+Ref: load88111
+Ref: timing88299
+Ref: variables88588
+Ref: memory88689
+Ref: cd88808
+Node: Control Flow88892
+Ref: cond89128
+Node: Temporal Functions89498
+Node: Errors90897
+Ref: class91345
+Ref: rank91434
+Ref: length91558
+Ref: _type91681
+Ref: domain91790
+Ref: limit91912
+Ref: nyi92123
+Ref: eparse92450
+Ref: _value92603
+Node: Examples92731
+Node: Benchmark100655
+Node: Conclusion109323
 
 End Tag Table
 

@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 29, 2020
+<!-- December 30, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -163,34 +163,33 @@ z@&amp;y&lt;z:?x<br>
 <p>Typing <code>\</code> in a terminal window gives you a concise overview of the language.  This document aims to provide details to beginning user where the help screen is a bit too terse.  Some commands are not yet complete and thus marked with an asterisk, eg. *update A by B from T where C.
 </p>
 <div class="format">
-<pre class="verbatim">Verb                      Adverb                 Type              System
-:   x          y          f/  over  V/ join      char &quot; ab&quot;        \l a.k
-+   flip       plus       f\  scan  V\ split     name ``ab         \t:n x
--   minus      minus      f'  each               int  0 2 3        \u:n x
-*   first      times      f': eachp              flt  0 2 3.       \v
-%              divide     f/: eachr (n;f)/:over  date 2021.01.23   .z.d
-&amp;   where      min/and    f\: eachl (n;f)\:scan  time 12:34:56.789 .z.t
+<pre class="verbatim">verb                      adverb                 noun
+:   x          y          f' each                char &quot; ab&quot;              \l a.k
++   flip       plus    [x]f/ over (c/join)       name ``ab               \t:n x
+-   minus      minus   [x]f\ scan (c\split)      int  0 2 3              \u:n x
+*   first      times   [x]f':eachp               flt  0 2 3.             \v
+%              divide     f/:eachr g/:over       date 2021.01.23   .z.d
+&amp;   where      min/and    f\:eachl g\:scan       time 12:34:56.789 .z.t
 |   reverse    max/or     
-&lt;   asc        less       I/O(*enterprise)       Class
-&gt;   desc       more       0: r/w line            atom              \f
-=   group      equal      1: r/w byte            List (2;3.4;`c)   \ft x     
-~   not        match     *2: r/w data            Dict [a:2;b:`c]   \fl x
-!   key        key       *3: k-ipc set           Func {[a;b]a+b}   \fc x
-,   list       cat       *4: https get           Expr :a+b         \cd [d]
-^   sort   [nf]cut       *5: ffi/py/js/..        table t:[[]i:2 3;f:2.3 4]
-#   count  [nf]take                             Utable u:[[x:..]y:..]
-_   floor  [nf]drop                             Ntable n:`..![[]y:..]
-$   string     parse                
-?   unique [sf]find       $[b;t;f] cond          
-@   type   [sf]at         @[r;i;f[;y]] amend     `js?`js d
-.   value   [f]apply      .[r;i;f[;y]] dmend     `csv?`csv t
+&lt;   asc        less       i/o  *enterprise       class                   \f
+&gt;   desc       more       0: r/w line            list (2;3.4;`c)         \fl x
+=   group      equal      1: r/w char            dict [a:2;b:`c]         \fc x     
+~   not        match     *2: r/w data            func {[a;b]a+b}         \fs x
+!   key        key       *3: k-ipc set           expr :a+b               \cd [d]   
+,   enlist     cat       *4: https get           
+^   sort    [f]cut       *5: ffi/py/js/..        
+#   count   [f]take                        table t:[[]i:2 3;f:2.3 4]
+_   floor   [f]drop                       utable u:[[x:..]y:..]
+$   string     parse      $[b;t;f] cond   ntable n:`..![[]y:..]
+?   unique  [n]find                             
+@   type    [n]at         @[r;i;f[;y]] amend    `js?`js d
+.   value      dot        .[r;i;f[;y]] dmend    `csv?`csv t
 
-exp log sin cos sqr sqrt prm freq sums deltas
-rand has bin in within div mod bar rand cmb msum mavg
-count first last sum min max *[avg var dev med ..]; key meta
-select[C]A from T where B; update C from T where B; delete from T where B
+select[G]A from T where C; update A from T where C; delete from T where C
+count first last sum min max *[avg var dev med ..]; in within bin freq rand 
+exp log sin cos sqr sqrt div mod bar prm cmb; msum mavg sums deltas differ
 
-\\ exit  /comment \trace</pre></div>
+\\ exit  /comment \trace [:return 'signal if do while]</pre></div>
 
 <span id="rlwrap"></span><h3 class="section">1.5 rlwrap</h3>
 <p>Although you only need the <samp>k</samp> binary to run k9 most will also install rlwrap, if not already installed, in order to get command history in a terminal window.  rlwrap is &ldquo;Readline wrapper: adds readline support to tools that lack it&rdquo; and allows one to arrow up to go through the command buffer history.
