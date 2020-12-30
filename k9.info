@@ -3308,7 +3308,7 @@ for the columns coming from k.
 13.2.3 outer join => k1,k2
 --------------------------
 
-Outer join Utable k1 with key Utable k2.
+Outer join Utable k1 and k2.
 
       k1:[[s:`a`b]p:1 2;q:3 4]
       k2:[[s:`b`c]p:9 8;q:7 6]
@@ -3330,6 +3330,26 @@ Outer join Utable k1 with key Utable k2.
      a|1 3
      b|9 7
      c|8 6
+
+      k1:[[s:`a`b]p:1 1;q:10 10]
+      k2:[[s:`b`c]p:2 2;q:20 20]
+      k3:[[s:`c`d]p:3 3;q:30 30]
+
+     k1,k2,k3       / joining a 3rd
+     s|p q
+     -|- --
+     a|1 10
+     b|2 20
+     c|3 30
+     d|3 30
+
+      ,/(k1;k2;k3)  / join over
+     s|p q
+     -|- --
+     a|1 10
+     b|2 20
+     c|3 30
+     d|3 30
 
 13.2.4 asof join => t,k
 -----------------------
@@ -4502,32 +4522,32 @@ Ref: delete81998
 Ref: union82637
 Ref: leftjoin83158
 Ref: outer83937
-Ref: asof84272
-Ref: asof+85743
-Ref: insert86961
-Ref: upsert87307
-Node: System87721
-Ref: load88179
-Ref: timing88367
-Ref: variables88656
-Ref: memory88757
-Ref: cd88876
-Node: Control Flow88960
-Ref: cond89196
-Node: Temporal Functions89566
-Node: Errors90965
-Ref: class91413
-Ref: rank91502
-Ref: length91626
-Ref: _type91749
-Ref: domain91858
-Ref: limit91980
-Ref: nyi92191
-Ref: eparse92518
-Ref: _value92671
-Node: Examples92799
-Node: Benchmark100723
-Node: Conclusion109391
+Ref: asof84572
+Ref: asof+86043
+Ref: insert87261
+Ref: upsert87607
+Node: System88021
+Ref: load88479
+Ref: timing88667
+Ref: variables88956
+Ref: memory89057
+Ref: cd89176
+Node: Control Flow89260
+Ref: cond89496
+Node: Temporal Functions89866
+Node: Errors91265
+Ref: class91713
+Ref: rank91802
+Ref: length91926
+Ref: _type92049
+Ref: domain92158
+Ref: limit92280
+Ref: nyi92491
+Ref: eparse92818
+Ref: _value92971
+Node: Examples93099
+Node: Benchmark101023
+Node: Conclusion109691
 
 End Tag Table
 
