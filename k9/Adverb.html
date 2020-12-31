@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 30, 2020
+<!-- December 31, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -93,12 +93,12 @@ Next: <a href="Noun.html" accesskey="n" rel="next">Noun</a>, Previous: <a href="
 </p>
 <div class="example">
 <pre class="example">Adverb
-f/  <a href="#scan">over</a>  V/ <a href="#join">join</a>
-f\  <a href="#scan">scan</a>  V\ <a href="#split">split</a>
-f'  <a href="#each">each</a>
-f': <a href="#eachp">eachp</a>
-f/: <a href="#eachr">eachr</a> (n;f)/:<a href="#cover">over</a> 
-f\: <a href="#eachl">eachl</a> (n;f)\:<a href="#cscan">scan</a> 
+   f'  <a href="#each">each</a>
+[x]f/  <a href="#scan">over</a> (c/<a href="#join">join</a>)
+[x]f\  <a href="#scan">scan</a> (c\<a href="#split">split</a>)
+[x]f': <a href="#eachp">eachp</a>
+   f/: <a href="#eachr">eachr</a> g/:<a href="#cover">over</a> 
+   f\: <a href="#eachl">eachl</a> g\:<a href="#cscan">scan</a> 
 </pre></div>
 
 <p>Adverbs modify verbs to operative iteratively over nouns.  This previous sentence likely will  make sense only once you understand it so let&rsquo;s jump into an example.  Imagine you have a list of 4 lists.  Using <code>first</code> you will retrieve the first sub-list.  In order to retrieve the first element of each sub-list you&rsquo;ll have to modify the function <code>first</code> with a modifier <code>each</code>.
@@ -111,10 +111,21 @@ f\: <a href="#eachl">eachl</a> (n;f)\:<a href="#cscan">scan</a>
 1 3 5 7
 </pre></div>
 
-<span id="over"></span><span id="over-_21d2-f_002fx"></span><h3 class="section">3.1 over &rArr; f/x</h3>
+<span id="each"></span><span id="each-_21d2-f_0027x"></span><h3 class="section">3.1 each &rArr; f&rsquo;x</h3>
+<p>Apply function f to each value in list x in a single thread.  Multithread operation is done with <a href="#eachp">eachp</a>.  
+</p>
+<div class="example">
+<pre class="example">&nbsp;*((1 2 3);4;(5 6);7)   / first element of the list
+1 2 3
+
+&nbsp;*'((1 2 3);4;(5 6);7)  / first element of each element
+1 4 5 7
+</pre></div>
+
+<span id="over"></span><span id="over-_21d2-f_002f_005bx_003by_005d-or-x-f_002fy"></span><h3 class="section">3.2 over &rArr; f/[x;y] or x f/y</h3>
 <p>Over has the same function as <a href="#scan">scan</a> but returns only the last value.
 </p>
-<span id="scan"></span><span id="scan-_21d2-f_005cx"></span><h3 class="section">3.2 scan &rArr; f\x</h3>
+<span id="scan"></span><span id="scan-_21d2-f_005c_005bx_003by_005d-or-x-f_005cy"></span><h3 class="section">3.3 scan &rArr; f\[x;y] or x f\y</h3>
 <p>Compute f[x;y] such that f<sub>i</sub>=f[f<sub>i-1</sub>;x<sub>i</sub>].
 </p>
 <table>
@@ -151,29 +162,34 @@ abc
 21 22 23
 31 32 33
 
- {x+.5*y}\[1 2 3;20 20 20]
+ {x+.5*y}\[1 2 3;20 20 20]  / f\x syntax
+11 12 13
+21 22 23
+31 32 33
+
+ 1 2 3{x+.5*y}\20 20 20    / x f\ syntax
 11 12 13
 21 22 23
 31 32 33
 </pre></div>
 
-<span id="join"></span><span id="join-_21d2-V_002fx"></span><h3 class="section">3.3 join &rArr; V/x</h3>
-<p>Join a list of strings x using character V between each pair.
+<span id="join"></span><span id="join-_21d2-c_002fx"></span><h3 class="section">3.4 join &rArr; c/x</h3>
+<p>Join a list of strings x using character c between each pair.
 </p>
 <div class="example">
 <pre class="example"> &quot;-&quot;/(&quot;Some&quot;;&quot;random text&quot;;&quot;plus&quot;;,&quot;.&quot;)
 &quot;Some-random text-plus-.&quot;
 </pre></div>
 
-<p>The notaion V/x converts a list of integers x via base V into base 10. In the example below, assuming 2 0 1 are digits in base 8, they convert to  1 + (0*8) + (2*8*8) = 129
+<p>The notaion c/x converts a list of integers x via base c into base 10. In the example below, assuming 2 0 1 are digits in base 8, they convert to  1 + (0*8) + (2*8*8) = 129
 </p>
 <div class="example">
 <pre class="example"> 8/2 0 1  
 129
 </pre></div>
 
-<span id="split"></span><span id="split-_21d2-V_005cx"></span><h3 class="section">3.4 split &rArr; V\x</h3>
-<p>Split the string x using character V to determine the locations.
+<span id="split"></span><span id="split-_21d2-c_005cx"></span><h3 class="section">3.5 split &rArr; c\x</h3>
+<p>Split the string x using character c to determine the locations.
 </p>
 <div class="example">
 <pre class="example"> &quot; &quot;\&quot;Here is a short sentence.&quot;
@@ -184,25 +200,14 @@ short
 sentence.
 </pre></div>
 
-<p>V\x splits a number x into base V digits.
+<p>c\x splits a number x into base c digits.
 </p>
 <div class="example">
 <pre class="example"> 8\129
 2 0 1
 </pre></div>
 
-<span id="each"></span><span id="each-_21d2-f_0027x"></span><h3 class="section">3.5 each &rArr; f&rsquo;x</h3>
-<p>Apply function f to each value in list x in a single thread.  Multithread operation is done with <a href="#eachp">eachp</a>.  
-</p>
-<div class="example">
-<pre class="example">&nbsp;*((1 2 3);4;(5 6);7)   / first element of the list
-1 2 3
-
-&nbsp;*'((1 2 3);4;(5 6);7)  / first element of each element
-1 4 5 7
-</pre></div>
-
-<span id="eachp"></span><span id="eachp-_21d2-f_0027_003a_005bx_003by_005d"></span><h3 class="section">3.6 eachp &rArr; f&rsquo;:[x;y]</h3>
+<span id="eachp"></span><span id="eachp-_21d2-f_0027_003a_005bx_003by_005d-or-x-f_0027_003ay"></span><h3 class="section">3.6 eachp &rArr; f&rsquo;:[x;y] or x f&rsquo;:y</h3>
 <p>Apply f[x;y] using the prior value of y, eg. f[y<sub>i</sub>;y<sub>i-1</sub>].  f<sub>0</sub> returns f[y<sub>0</sub>;x].
 </p>
 <div class="example">
@@ -230,7 +235,7 @@ y4 y3
 1202
 </pre></div>
 
-<span id="eachr"></span><span id="eachr-_21d2-f_002f_003ax"></span><h3 class="section">3.7 eachr &rArr; f/:x</h3>
+<span id="eachr"></span><span id="eachr-_21d2-f_002f_003a_005bx_003by_005d"></span><h3 class="section">3.7 eachr &rArr; f/:[x;y]</h3>
 <p>Apply f[x;y] to each value of y, i.e. the right one.
 </p>
 <div class="example">
@@ -245,7 +250,7 @@ y4 y3
 20 21
 </pre></div>
 
-<span id="eachl"></span><span id="eachl-_21d2-f_005c_003ax"></span><h3 class="section">3.8 eachl &rArr; f\:x</h3>
+<span id="eachl"></span><span id="eachl-_21d2-f_005c_003a_005bx_003by_005d"></span><h3 class="section">3.8 eachl &rArr; f\:[x;y]</h3>
 <p>Apply f[x;y] to each value of x, i.e. the left one.
 </p>
 <div class="example">

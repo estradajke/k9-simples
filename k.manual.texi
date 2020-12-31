@@ -1231,12 +1231,12 @@ This chapter may be one of the most difficult for users new to array langauges b
 
 @example
 Adverb
-f/  @ref{scan,over}  V/ @ref{join}
-f\  @ref{scan}  V\ @ref{split}
-f'  @ref{each}
-f': @ref{eachp}
-f/: @ref{eachr} (n;f)/:@ref{cover,over} 
-f\: @ref{eachl} (n;f)\:@ref{cscan,scan} 
+   f'  @ref{each}
+[x]f/  @ref{scan,over} (c/@ref{join})
+[x]f\  @ref{scan} (c\@ref{split})
+[x]f': @ref{eachp}
+   f/: @ref{eachr} g/:@ref{cover,over} 
+   f\: @ref{eachl} g\:@ref{cscan,scan} 
 @end example
 
 Adverbs modify verbs to operative iteratively over nouns.  This previous sentence likely will  make sense only once you understand it so let's jump into an example.  Imagine you have a list of 4 lists.  Using @code{first} you will retrieve the first sub-list.  In order to retrieve the first element of each sub-list you'll have to modify the function @code{first} with a modifier @code{each}.
@@ -1249,10 +1249,21 @@ x: (1 2; 3 4; 5 6; 7 8)
 1 3 5 7
 @end example
 
-@anchor{over}@section over @result{} f/x
+@anchor{each}@section each @result{} f'x
+Apply function f to each value in list x in a single thread.  Multithread operation is done with @ref{eachp}.  
+
+@example
+@ *((1 2 3);4;(5 6);7)   / first element of the list
+1 2 3
+
+@ *'((1 2 3);4;(5 6);7)  / first element of each element
+1 4 5 7
+@end example
+
+@anchor{over}@section over @result{} f/[x;y] or x f/y
 Over has the same function as @ref{scan} but returns only the last value.
 
-@anchor{scan}@section scan @result{} f\x
+@anchor{scan}@section scan @result{} f\[x;y] or x f\y
 Compute f[x;y] such that f@sub{i}=f[f@sub{i-1};x@sub{i}].
 
 @flushleft
@@ -1291,29 +1302,34 @@ abc
 21 22 23
 31 32 33
 
- @{x+.5*y@}\[1 2 3;20 20 20]
+ @{x+.5*y@}\[1 2 3;20 20 20]  / f\x syntax
+11 12 13
+21 22 23
+31 32 33
+
+ 1 2 3@{x+.5*y@}\20 20 20    / x f\ syntax
 11 12 13
 21 22 23
 31 32 33
 @end example
 
-@anchor{join}@section join @result{} V/x
-Join a list of strings x using character V between each pair.
+@anchor{join}@section join @result{} c/x
+Join a list of strings x using character c between each pair.
 
 @example
  "-"/("Some";"random text";"plus";,".")
 "Some-random text-plus-."
 @end example
 
-The notaion V/x converts a list of integers x via base V into base 10. In the example below, assuming 2 0 1 are digits in base 8, they convert to  1 + (0*8) + (2*8*8) = 129
+The notaion c/x converts a list of integers x via base c into base 10. In the example below, assuming 2 0 1 are digits in base 8, they convert to  1 + (0*8) + (2*8*8) = 129
 
 @example
  8/2 0 1  
 129
 @end example
 
-@anchor{split}@section split @result{} V\x
-Split the string x using character V to determine the locations.
+@anchor{split}@section split @result{} c\x
+Split the string x using character c to determine the locations.
 
 @example
  " "\"Here is a short sentence."
@@ -1324,25 +1340,14 @@ short
 sentence.
 @end example
 
-V\x splits a number x into base V digits.
+c\x splits a number x into base c digits.
 
 @example
  8\129
 2 0 1
 @end example
 
-@anchor{each}@section each @result{} f'x
-Apply function f to each value in list x in a single thread.  Multithread operation is done with @ref{eachp}.  
-
-@example
-@ *((1 2 3);4;(5 6);7)   / first element of the list
-1 2 3
-
-@ *'((1 2 3);4;(5 6);7)  / first element of each element
-1 4 5 7
-@end example
-
-@anchor{eachp}@section eachp @result{} f':[x;y]
+@anchor{eachp}@section eachp @result{} f':[x;y] or x f':y
 Apply f[x;y] using the prior value of y, eg. f[y@sub{i};y@sub{i-1}].  f@sub{0} returns f[y@sub{0};x].
 
 @example
@@ -1380,7 +1385,7 @@ Additionally eachp (':) is a multithreaded (parallel) each.  This will allow a f
 @c 2
 @c @end example
 @c 
-@anchor{eachr}@section eachr @result{} f/:x
+@anchor{eachr}@section eachr @result{} f/:[x;y]
 Apply f[x;y] to each value of y, i.e. the right one.
 
 @example
@@ -1395,7 +1400,7 @@ Apply f[x;y] to each value of y, i.e. the right one.
 20 21
 @end example
 
-@anchor{eachl}@section eachl @result{} f\:x
+@anchor{eachl}@section eachl @result{} f\:[x;y]
 Apply f[x;y] to each value of x, i.e. the left one.
 
 @example
@@ -3120,12 +3125,12 @@ Load the shared library into the session.
 
 @node Tables
 @chapter Tables
-k9 has the ability to store data in a tabular format containing named columns and rows of information as tables.  If the data to be stored and queried is large, then you should use tables.  This chapter introduces the different types of data tables available in k9.  Table, Utable and Ntable are very similar and as you'll see in the @ref{kSQL} chapter are easy to query.  In the @ref{Benchmark} chapter, you'll see that tables are fast to save, read, and query.
+k9 has the ability to store data in a tabular format containing named columns and rows of information as tables.  If the data to be stored and queried is large, then you should use tables.  This chapter introduces the different types of data tables available in k9.  Table, utable and ntable are very similar and as you'll see in the @ref{kSQL} chapter are easy to query.  In the @ref{Benchmark} chapter, you'll see that tables are fast to save, read, and query.
 
 @example
  @ref{table} t:[[]i:2 3;f:2.3 4]
-@ref{Utable} u:[[x:..]y:..]
-@ref{Ntable} n:`..![[]y:..]
+@ref{utable} u:[[x:..]y:..]
+@ref{ntable} n:`..![[]y:..]
 @end example
 
 @anchor{table}@section table
@@ -3187,8 +3192,8 @@ a   col2
  3  0.1 
 @end example
 
-@anchor{Utable}@section Utable
-Utable (or key table) is a table where some of the columns are keyed. The combination of those columns  should not have two rows with the same values. This must be enforced by the application.
+@anchor{utable}@section utable
+utable (or key table) is a table where some of the columns are keyed. The combination of those columns  should not have two rows with the same values. This must be enforced by the application.
 
 @example
  [[d:2020.09.08 2020.09.09 2020.09.10]p:140 139 150]
@@ -3206,20 +3211,24 @@ d         |p
 2020.09.10|150
 @end example
 
-@anchor{Ntable}@section Ntable
-A Ntable is a collection of tables stored in a dictionary where the keys are symbols and the values are tables. Thus, it has both the data and schema of a set of tables, much like a data dictionary in a conventional relational database. Below is an example where the keys are symbols and the values are
+@anchor{ntable}@section ntable
+A ntable is a collection of tables stored in a dictionary where the keys are symbols and the values are tables. Thus, it has both the data and schema of a set of tables, much like a data dictionary in a conventional relational database. Below is an example where the keys are symbols and the values are
 end-of-day prices.
 
 @example
-@ x1:+`d`p!(2020.09.08 2020.09.09 2020.09.10;140 139 150)
-@ x2:+`d`p!(2020.09.08 2020.09.10;202 208)
-@ eod:`AB`ZY!(x1;x2)  / This is an Ntable. 
-@ eod`AB
+ x1:+`d`p!(2020.09.08 2020.09.09 2020.09.10;140 139 150)
+ x2:+`d`p!(2020.09.08 2020.09.10;202 208)
+
+eod:`AB`ZY!(x1;x2);eod  / ntable
+AB|[[]d:2018.06.27 2018.06.27 2018.06.27;p:140 139 150]
+ZY|[[]d:2018.06.27 2018.06.27;p:202 208]               
+
+ eod`AB                  / table
 d          p  
 ---------- ---
-2020.09.08 140
-2020.09.09 139
-2020.09.10 150
+2018.06.27 140
+2018.06.27 139
+2018.06.27 150
 @end example
 
 @node kSQL
@@ -3302,7 +3311,7 @@ x z
 @end example
 
 @anchor{C}@subsection C
-kSQL also has a way to group rows using @code{C}.  The result is a Utable where the key is determined by the grouping clause.
+kSQL also has a way to group rows using @code{C}.  The result is a utable where the key is determined by the grouping clause.
 
 @example
  n:5;t:[[]x:!n;y:sin !n]
@@ -3397,7 +3406,7 @@ c 1
 @end example 
 
 @section Joins
-k9 has a number of methods to join tables together which are described below.  In this section t, t1 and t2 represent tables and k, k1 and k2 represent Utables.
+k9 has a number of methods to join tables together which are described below.  In this section t, t1 and t2 represent tables and k, k1 and k2 represent utables.
 
 @multitable {leftjoin123 leftjoin} {leftjoin 123}
 @item @b{join} @tab @b{syntax}
@@ -3436,7 +3445,7 @@ c 12 22
 @end example
 
 @anchor{leftjoin}@subsection leftjoin @result{} t,k
-leftjoin table t with Utable k.  Result includes all rows from t and the values from table k having the same key values.
+leftjoin table t with utable k.  Result includes all rows from t and the values from table k having the same key values.
 If a row of t has key values not found in k, then the t values are shown and 0 for the columns coming from k.
 
 @example
@@ -3469,7 +3478,7 @@ c 3   9  0
 @end example
 
 @anchor{outer}@subsection outer join @result{} k1,k2
-Outer join Utable k1 and k2. 
+Outer join utable k1 and k2. 
 
 @example
  k1:[[s:`a`b]p:1 2;q:3 4]
@@ -3515,7 +3524,7 @@ d|3 30
 @end example
 
 @anchor{asof}@subsection asof join @result{} t,k
-Asof joins each row rt of table t to a row rk in Utable k (keyed by time) provided rk has the maximum time value of any row in k while obeying the constraint that the time value in rt >= the time value of rk. Intuitively, rk should be the row in k that is most up-to-date with respect to rt. 
+Asof joins each row rt of table t to a row rk in utable k (keyed by time) provided rk has the maximum time value of any row in k while obeying the constraint that the time value in rt >= the time value of rk. Intuitively, rk should be the row in k that is most up-to-date with respect to rt. 
 
 @example
  t:[[]t:09:30+5*!5;p:100+!5];t
@@ -3575,7 +3584,7 @@ t           |p
 @end example
 
 @anchor{asof+}@subsection asof+ join @result{} k1+k2
-Asof+ joins  allows one to aggregate over markets to find the total available at a given time.  The Utables need to be specified with @code{`a}. The effect is to merge the two key fields (the field t in this case) and for each row rk1 from table k1, add the non-key field (bs in this case) from rk1 to the bs field of the most recent row in k2 whose t value is less than or equal to the t value in rk1. And symmetrically for each row of table k2.
+Asof+ joins  allows one to aggregate over markets to find the total available at a given time.  The utables need to be specified with @code{`a}. The effect is to merge the two key fields (the field t in this case) and for each row rk1 from table k1, add the non-key field (bs in this case) from rk1 to the bs field of the most recent row in k2 whose t value is less than or equal to the t value in rk1. And symmetrically for each row of table k2.
 
 @example
  k1:`a [[t:09:30+5*!5]bs:100*1 2 3 2 1];k1
@@ -3637,7 +3646,7 @@ c  12
 @end example
 
 @anchor{upsert}@subsection upsert @result{} k,d
-Insert dictionary d into Utable k.
+Insert dictionary d into utable k.
 @example
  k:[[c1:`a`b`c]c2:1 2 7];k
 c1|c2
@@ -4257,7 +4266,7 @@ m is the number of symbols.  n is the number of trades.  S is a list of symbol n
 @end example
 
 @subsection t
-t is an Ntable of trades.  The fields are time (t), exchange (e), price (p), and size (z).  The number of trades is set by n.
+t is an ntable of trades.  The fields are time (t), exchange (e), price (p), and size (z).  The number of trades is set by n.
 
 Pulling one random table from t and showing 10 random rows.  
 
@@ -4278,7 +4287,7 @@ t        e p  z
 @end example
 
 @subsection q
-q is a Ntable of quotes.  The fields are time (t), exchange (e), and bid (b).  The number of quotes is set to 6*n.
+q is a ntable of quotes.  The fields are time (t), exchange (e), and bid (b).  The number of quotes is set to 6*n.
 
 @example
 @ 10 rand*q@@1 rand S
@@ -4305,7 +4314,7 @@ a is the first symbol of S.  A consists of the first 100 symbols of S.
 @end example
 
 @subsection Max price by exchange
-The query takes 100 tables from the trade Ntable and computes the max price by exchange.
+The query takes 100 tables from the trade ntable and computes the max price by exchange.
 
 @example
 @ *@{select max p by e from x@}'t A
@@ -4320,7 +4329,7 @@ D|99
 @end example
 
 @subsection Compute sum of trade size by hour.
-This query takes 100 tables from the trade Ntable and computes the sum of trade size done by hour.
+This query takes 100 tables from the trade ntable and computes the sum of trade size done by hour.
 
 @example
 @ *@{select sum z by `o t from x@}'t A
@@ -4338,7 +4347,7 @@ t |z
 @end example
 
 @subsection Compute last bid by symbol
-This query takes the 100 tables from the quote Ntable and returns the last bid.
+This query takes the 100 tables from the quote ntable and returns the last bid.
 
 @example
 @ 3 rand@{select last b from x@}'q A
@@ -4353,7 +4362,7 @@ b
 @end example
 
 @subsection Find trades below the bid
-This query operates on one symbol from the q and t Ntables, i.e. a single quote and trade table.  The quote table is joined to the trade table giving the current bid on each trade.
+This query operates on one symbol from the q and t ntables, i.e. a single quote and trade table.  The quote table is joined to the trade table giving the current bid on each trade.
 
 @example
 @ 4 rand select from t[a],`t^q a where p<b
@@ -4395,7 +4404,7 @@ g 0 10 7.946983
 @end example
 
 @subsection x
-x is an Ntable containing 2500 tables, keyed on day.  Each individual table contains 44,000 rows therefore x has 110 million rows in total.
+x is an ntable containing 2500 tables, keyed on day.  Each individual table contains 44,000 rows therefore x has 110 million rows in total.
 
 @example
  x:d!g':44000+&#d:2009.01.01+!2500  /110 million example

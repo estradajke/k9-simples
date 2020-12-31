@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- December 30, 2020
+<!-- December 31, 2020
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -89,12 +89,12 @@ Next: <a href="kSQL.html" accesskey="n" rel="next">kSQL</a>, Previous: <a href="
 </div>
 <hr>
 <span id="Tables-1"></span><h2 class="chapter">12 Tables</h2>
-<p>k9 has the ability to store data in a tabular format containing named columns and rows of information as tables.  If the data to be stored and queried is large, then you should use tables.  This chapter introduces the different types of data tables available in k9.  Table, Utable and Ntable are very similar and as you&rsquo;ll see in the <a href="kSQL.html">kSQL</a> chapter are easy to query.  In the <a href="Benchmark.html">Benchmark</a> chapter, you&rsquo;ll see that tables are fast to save, read, and query.
+<p>k9 has the ability to store data in a tabular format containing named columns and rows of information as tables.  If the data to be stored and queried is large, then you should use tables.  This chapter introduces the different types of data tables available in k9.  Table, utable and ntable are very similar and as you&rsquo;ll see in the <a href="kSQL.html">kSQL</a> chapter are easy to query.  In the <a href="Benchmark.html">Benchmark</a> chapter, you&rsquo;ll see that tables are fast to save, read, and query.
 </p>
 <div class="example">
 <pre class="example"> <a href="#table">table</a> t:[[]i:2 3;f:2.3 4]
-<a href="#Utable">Utable</a> u:[[x:..]y:..]
-<a href="#Ntable">Ntable</a> n:`..![[]y:..]
+<a href="#utable">utable</a> u:[[x:..]y:..]
+<a href="#ntable">ntable</a> n:`..![[]y:..]
 </pre></div>
 
 <span id="table"></span><span id="table-1"></span><h3 class="section">12.1 table</h3>
@@ -154,8 +154,8 @@ a   col2
  3  0.1 
 </pre></div>
 
-<span id="Utable"></span><span id="Utable-1"></span><h3 class="section">12.2 Utable</h3>
-<p>Utable (or key table) is a table where some of the columns are keyed. The combination of those columns  should not have two rows with the same values. This must be enforced by the application.
+<span id="utable"></span><span id="utable-1"></span><h3 class="section">12.2 utable</h3>
+<p>utable (or key table) is a table where some of the columns are keyed. The combination of those columns  should not have two rows with the same values. This must be enforced by the application.
 </p>
 <div class="example">
 <pre class="example"> [[d:2020.09.08 2020.09.09 2020.09.10]p:140 139 150]
@@ -173,20 +173,24 @@ d         |p
 2020.09.10|150
 </pre></div>
 
-<span id="Ntable"></span><span id="Ntable-1"></span><h3 class="section">12.3 Ntable</h3>
-<p>A Ntable is a collection of tables stored in a dictionary where the keys are symbols and the values are tables. Thus, it has both the data and schema of a set of tables, much like a data dictionary in a conventional relational database. Below is an example where the keys are symbols and the values are
+<span id="ntable"></span><span id="ntable-1"></span><h3 class="section">12.3 ntable</h3>
+<p>A ntable is a collection of tables stored in a dictionary where the keys are symbols and the values are tables. Thus, it has both the data and schema of a set of tables, much like a data dictionary in a conventional relational database. Below is an example where the keys are symbols and the values are
 end-of-day prices.
 </p>
 <div class="example">
-<pre class="example">&nbsp;x1:+`d`p!(2020.09.08 2020.09.09 2020.09.10;140 139 150)
-&nbsp;x2:+`d`p!(2020.09.08 2020.09.10;202 208)
-&nbsp;eod:`AB`ZY!(x1;x2)  / This is an Ntable. 
-&nbsp;eod`AB
+<pre class="example"> x1:+`d`p!(2020.09.08 2020.09.09 2020.09.10;140 139 150)
+ x2:+`d`p!(2020.09.08 2020.09.10;202 208)
+
+eod:`AB`ZY!(x1;x2);eod  / ntable
+AB|[[]d:2018.06.27 2018.06.27 2018.06.27;p:140 139 150]
+ZY|[[]d:2018.06.27 2018.06.27;p:202 208]               
+
+ eod`AB                  / table
 d          p  
 ---------- ---
-2020.09.08 140
-2020.09.09 139
-2020.09.10 150
+2018.06.27 140
+2018.06.27 139
+2018.06.27 150
 </pre></div>
 
 <hr>

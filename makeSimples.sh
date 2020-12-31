@@ -63,18 +63,18 @@ sed -e 's/@/@@/g' \
     -e 's/upsert/@ref{upsert}/g' \
     -e 's/union/@ref{union}/g' \
     -e 's/leftjoin/@ref{leftjoin}/g' \
-    -e 's/Verb/@ref{Verb}/' \
-    -e 's/Adverb/@ref{Adverb}/g' \
-    -e '1,20 s/Type/@ref{Noun,Type}/g' \
+    -e 's/verb/@ref{Verb,verb}/' \
+    -e 's/adverb/@ref{Adverb,adverb}/g' \
+    -e '1,20 s/noun/@ref{Noun,noun}/g' \
     -e 's/I\/O/@ref{I\/O}/g' \
-    -e 's/Utable/@ref{Utable}/g' \
-    -e 's/Ntable/@ref{Ntable}/g' \
+    -e 's/utable/@ref{utable}/g' \
+    -e 's/ntable/@ref{ntable}/g' \
     -e 's/@ table/@ @ref{Tables,table}/g' \
     -e 's/DNU/@ref{Temporal Functions,.z.d}/' \
-    -e 's/List/@ref{List}/g' \
-    -e 's/Func/@ref{User Functions,Func}/g' \
-    -e 's/Expr/@ref{Expression,Expr}/g' \
-    -e 's/Dict/@ref{Dictionary,Dict}/g' \
+    -e 's/@ list/@ @ref{list}/g' \
+    -e 's/func/@ref{User Functions,func}/g' \
+    -e 's/expr/@ref{Expression,expr}/g' \
+    -e 's/dict/@ref{Dictionary,dict}/g' \
     -e '20,100 s/t:/@ref{t}:/g' \
     -e 's/cond/@ref{cond}/g' \
     -e 's/amend/@ref{amend}/g' \
@@ -86,7 +86,7 @@ sed -e 's/@/@@/g' \
     -e 's/bool/@ref{bool}/g' \
     -e '1,10 s/int/@ref{int}/g' \
     -e 's/flt/@ref{flt}/g' \
-    -e 's/char/@ref{char}/g' \
+    -e '1,10 s/char/@ref{char}/g' \
     -e 's/name/@ref{name}/g' \
     -e 's/uuid/@ref{uuid}/g' \
     -e 's/System/@ref{System}/g' \
@@ -95,7 +95,7 @@ sed -e 's/@/@@/g' \
     -e 's/`js?/@ref{read json,`js?}/g' \
     -e 's/`js@ /@ref{write json,`js@ }/g' \
     -e 's/r\/w@ line/@ref{r line,r}\/@ref{w line,w}@ line/g' \
-    -e 's/r\/w@ byte/@ref{r byte,r}\/@ref{w byte,w}@ byte/g' \
+    -e 's/r\/w@ char/@ref{r byte,r}\/@ref{w byte,w}@ char/g' \
     -e 's/r\/w@ data/@ref{r data,r}\/@ref{w data,w}@ data/g' \
     -e 's/k-ipc@ set/@ref{k-ipc set}/g' \
     -e 's/https@ get/@ref{https get}/g' \
