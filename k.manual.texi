@@ -3238,13 +3238,17 @@ kSQL is a powerful query language for tables.  It has similarities to ANSI SQL b
 
 @example
 Database
-@ref{select}[@ref{C}]@ref{A} from T @ref{where B}; @ref{update} C from T where B; @ref{delete} from T where B
+@ref{select}[@ref{G}]@ref{A} from T @ref{where C}; @ref{update} @ref{A} from T @ref{where C}; @ref{delete} from T @ref{where C}
+
+@ref{Joins}
 x,y      / @ref{insert}, @ref{upsert}, @ref{union}, equi-and-asof @ref{leftjoin}
 x+y      / equi-and-asof outerjoin (e.g. combine markets through time)
-x#y      / take/intersect innerjoin (x_y for drop/difference)
+x#y      / take/intersect innerjoin
+x_y      / drop/difference
 @end example
 
 @section Queries
+Queries can be done either via the kSQL or functional forms.  The kSQL form is general simplier to write while the functional form allows one to more easily run multithreaded or build queries programmatically.  
 
 @anchor{select}@subsection select
 There a number of ways to return a complete table with kSQL.  You can use the table name, a kSQL query without columns, or a fully specified query with columns.
@@ -3268,10 +3272,18 @@ x y
 2 0.9092974 
 3 0.14112   
 4 -0.7568025
+
+ `x`y#t
+x y         
+- ----------
+1 0.841471  
+2 0.9092974 
+3 0.14112   
+4 -0.7568025
 @end example
 
 @anchor{A}@subsection A
-A is the list of fields to return from the select query.  If A is missing then all fields will be returned.  A can create new column names.  
+A is the list of fields to return from the select or update query.  A can create new column names.  
 
 @example
  n:5;t:[[]x:!n;y:sin !n];t
@@ -3292,10 +3304,29 @@ x
 3
 4
 
+`x#t
+x
+-
+0
+1
+2
+3
+4
+
+
  select y,x from t    / reorder columns
 y          x
 ---------- -
 0.         0
+0.841471   1
+0.9092974  2
+0.14112    3
+-0.7568025 4
+
+ `y`x#t
+y          x
+---------- -
+0          0
 0.841471   1
 0.9092974  2
 0.14112    3
@@ -3311,8 +3342,8 @@ x z
 4 -0.7568025
 @end example
 
-@anchor{C}@subsection C
-kSQL also has a way to group rows using @code{C}.  The result is a utable where the key is determined by the grouping clause.
+@anchor{G}@subsection G
+kSQL also has a way to group rows using @code{[G]}.  The result is a utable where the key is determined by the grouping clause.
 
 @example
  n:5;t:[[]x:!n;y:sin !n]
@@ -3321,10 +3352,14 @@ x|y
 -|----------
 0|1.750768  
 1|-0.6156825
+
+ t :+/'y@=x>2
+0|1.750768  
+1|-0.6156825
 @end example
 
-@anchor{where B}@subsection where B
-kSQL makes it easy to build up a where clause to filter down the table.  B is the list of constraints.
+@anchor{where C}@subsection where C
+kSQL makes it easy to build up a where clause to filter down the table.  C is the list of constraints.
 
 @example
  n:5;t:[[]x:!n;y:sin !n]
@@ -3336,7 +3371,21 @@ x y
 3 0.14112   
 4 -0.7568025
 
-select from t where (x>0) & y within 0 .9
+ (:x>0)#t
+x y         
+- ----------
+1 0.841471  
+2 0.9092974 
+3 0.14112   
+4 -0.7568025
+
+select from t where (x>0), y within 0 .9
+x y       
+- --------
+1 0.841471
+3 0.14112
+
+ (:x>0;:y within .0 .9)#t
 x y       
 - --------
 1 0.841471
@@ -3350,6 +3399,10 @@ x y
  select[x>2]sum y from t@&t :y>0 / select sum y by x>2 from t where y>0
 x|y       
 -|--------
+0|1.750768
+1|0.14112
+
+ ((:y>0)#t) :+/'y@@=x>2
 0|1.750768
 1|0.14112 
 @end example
@@ -3406,7 +3459,7 @@ c 1
 !nyi
 @end example 
 
-@section Joins
+@anchor{Joins}@section Joins
 k9 has a number of methods to join tables together which are described below.  In this section t, t1 and t2 represent tables and k, k1 and k2 represent utables.
 
 @multitable {leftjoin123 leftjoin} {leftjoin 123}

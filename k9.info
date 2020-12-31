@@ -3077,13 +3077,19 @@ File: k9.info,  Node: kSQL,  Next: System,  Prev: Tables,  Up: Top
 kSQL is a powerful query language for tables.  It has similarities to ANSI SQL but additional features to make it easier to work with ordered data, such as time series data.
 
      Database
-     *note select::[*note C::]*note A:: from T *note where B::; *note update:: C from T where B; *note delete:: from T where B
+     *note select::[*note G::]*note A:: from T *note where C::; *note update:: *note A:: from T *note where C::; *note delete:: from T *note where C::
+
+     *note Joins::
      x,y      / *note insert::, *note upsert::, *note union::, equi-and-asof *note leftjoin::
      x+y      / equi-and-asof outerjoin (e.g. combine markets through time)
-     x#y      / take/intersect innerjoin (x_y for drop/difference)
+     x#y      / take/intersect innerjoin
+     x_y      / drop/difference
 
 13.1 Queries
 ============
+
+Queries can be done either via the kSQL or functional forms.  The kSQL form is general simplier to write while the functional form allows one to more easily run multithreaded or build queries
+programmatically.
 
 13.1.1 select
 -------------
@@ -3109,10 +3115,18 @@ There a number of ways to return a complete table with kSQL. You can use the tab
      3 0.14112
      4 -0.7568025
 
+      `x`y#t
+     x y
+     - ----------
+     1 0.841471
+     2 0.9092974
+     3 0.14112
+     4 -0.7568025
+
 13.1.2 A
 --------
 
-A is the list of fields to return from the select query.  If A is missing then all fields will be returned.  A can create new column names.
+A is the list of fields to return from the select or update query.  A can create new column names.
 
       n:5;t:[[]x:!n;y:sin !n];t
      x y
@@ -3132,10 +3146,29 @@ A is the list of fields to return from the select query.  If A is missing then a
      3
      4
 
+     `x#t
+     x
+     -
+     0
+     1
+     2
+     3
+     4
+
+
       select y,x from t    / reorder columns
      y          x
      ---------- -
      0.         0
+     0.841471   1
+     0.9092974  2
+     0.14112    3
+     -0.7568025 4
+
+      `y`x#t
+     y          x
+     ---------- -
+     0          0
      0.841471   1
      0.9092974  2
      0.14112    3
@@ -3150,10 +3183,10 @@ A is the list of fields to return from the select query.  If A is missing then a
      3 0.14112
      4 -0.7568025
 
-13.1.3 C
+13.1.3 G
 --------
 
-kSQL also has a way to group rows using 'C'.  The result is a utable where the key is determined by the grouping clause.
+kSQL also has a way to group rows using '[G]'.  The result is a utable where the key is determined by the grouping clause.
 
       n:5;t:[[]x:!n;y:sin !n]
       select[x>2]sum y from t / select sum y by x>2 from t
@@ -3162,10 +3195,14 @@ kSQL also has a way to group rows using 'C'.  The result is a utable where the k
      0|1.750768
      1|-0.6156825
 
-13.1.4 where B
+      t :+/'yx̄>2
+     0|1.750768
+     1|-0.6156825
+
+13.1.4 where C
 --------------
 
-kSQL makes it easy to build up a where clause to filter down the table.  B is the list of constraints.
+kSQL makes it easy to build up a where clause to filter down the table.  C is the list of constraints.
 
       n:5;t:[[]x:!n;y:sin !n]
       select from t where x>0
@@ -3176,7 +3213,21 @@ kSQL makes it easy to build up a where clause to filter down the table.  B is th
      3 0.14112
      4 -0.7568025
 
-     select from t where (x>0) & y within 0 .9
+      (:x>0)#t
+     x y
+     - ----------
+     1 0.841471
+     2 0.9092974
+     3 0.14112
+     4 -0.7568025
+
+     select from t where (x>0), y within 0 .9
+     x y
+     - --------
+     1 0.841471
+     3 0.14112
+
+      (:x>0;:y within .0 .9)#t
      x y
      - --------
      1 0.841471
@@ -3189,6 +3240,10 @@ kSQL makes it easy to build up a where clause to filter down the table.  B is th
       select[x>2]sum y from t&t :y>0 / select sum y by x>2 from t where y>0
      x|y
      -|--------
+     0|1.750768
+     1|0.14112
+
+      ((:y>0)#t) :+/'y@=x>2
      0|1.750768
      1|0.14112
 
@@ -4525,41 +4580,42 @@ Ref: table76219
 Ref: utable77861
 Ref: ntable78400
 Node: kSQL79143
-Ref: select79811
-Ref: A80271
-Ref: C80964
-Ref: where B81256
-Ref: update81875
-Ref: delete82596
-Ref: union83235
-Ref: leftjoin83756
-Ref: outer84535
-Ref: asof85170
-Ref: asof+86641
-Ref: insert87859
-Ref: upsert88205
-Node: System88619
-Ref: load89077
-Ref: timing89265
-Ref: variables89554
-Ref: memory89655
-Ref: cd89774
-Node: Control Flow89858
-Ref: cond90094
-Node: Temporal Functions90464
-Node: Errors91863
-Ref: class92311
-Ref: rank92400
-Ref: length92524
-Ref: _type92647
-Ref: domain92756
-Ref: limit92878
-Ref: nyi93089
-Ref: eparse93416
-Ref: _value93569
-Node: Examples93697
-Node: Benchmark101621
-Node: Conclusion110289
+Ref: select80072
+Ref: A80639
+Ref: G81492
+Ref: where C81840
+Ref: update82715
+Ref: delete83436
+Ref: Joins83718
+Ref: union84075
+Ref: leftjoin84596
+Ref: outer85375
+Ref: asof86010
+Ref: asof+87481
+Ref: insert88699
+Ref: upsert89045
+Node: System89459
+Ref: load89917
+Ref: timing90105
+Ref: variables90394
+Ref: memory90495
+Ref: cd90614
+Node: Control Flow90698
+Ref: cond90934
+Node: Temporal Functions91304
+Node: Errors92703
+Ref: class93151
+Ref: rank93240
+Ref: length93364
+Ref: _type93487
+Ref: domain93596
+Ref: limit93718
+Ref: nyi93929
+Ref: eparse94256
+Ref: _value94409
+Node: Examples94537
+Node: Benchmark102461
+Node: Conclusion111129
 
 End Tag Table
 

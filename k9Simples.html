@@ -3230,14 +3230,18 @@ Next: <a href="#System" accesskey="n" rel="next">System</a>, Previous: <a href="
 </p>
 <div class="example">
 <pre class="example">Database
-<a href="#select">select</a>[<a href="#C">C</a>]<a href="#A">A</a> from T <a href="#where-B">where B</a>; <a href="#update">update</a> C from T where B; <a href="#delete">delete</a> from T where B
+<a href="#select">select</a>[<a href="#G">G</a>]<a href="#A">A</a> from T <a href="#where-C">where C</a>; <a href="#update">update</a> <a href="#A">A</a> from T <a href="#where-C">where C</a>; <a href="#delete">delete</a> from T <a href="#where-C">where C</a>
+
+<a href="#Joins">Joins</a>
 x,y      / <a href="#insert">insert</a>, <a href="#upsert">upsert</a>, <a href="#union">union</a>, equi-and-asof <a href="#leftjoin">leftjoin</a>
 x+y      / equi-and-asof outerjoin (e.g. combine markets through time)
-x#y      / take/intersect innerjoin (x_y for drop/difference)
+x#y      / take/intersect innerjoin
+x_y      / drop/difference
 </pre></div>
 
 <span id="Queries"></span><h3 class="section">13.1 Queries</h3>
-
+<p>Queries can be done either via the kSQL or functional forms.  The kSQL form is general simplier to write while the functional form allows one to more easily run multithreaded or build queries programmatically.  
+</p>
 <span id="select"></span><span id="select-1"></span><h4 class="subsection">13.1.1 select</h4>
 <p>There a number of ways to return a complete table with kSQL.  You can use the table name, a kSQL query without columns, or a fully specified query with columns.
 </p>
@@ -3260,10 +3264,18 @@ x y
 2 0.9092974 
 3 0.14112   
 4 -0.7568025
+
+ `x`y#t
+x y         
+- ----------
+1 0.841471  
+2 0.9092974 
+3 0.14112   
+4 -0.7568025
 </pre></div>
 
 <span id="A"></span><span id="A-1"></span><h4 class="subsection">13.1.2 A</h4>
-<p>A is the list of fields to return from the select query.  If A is missing then all fields will be returned.  A can create new column names.  
+<p>A is the list of fields to return from the select or update query.  A can create new column names.  
 </p>
 <div class="example">
 <pre class="example"> n:5;t:[[]x:!n;y:sin !n];t
@@ -3284,10 +3296,29 @@ x
 3
 4
 
+`x#t
+x
+-
+0
+1
+2
+3
+4
+
+
  select y,x from t    / reorder columns
 y          x
 ---------- -
 0.         0
+0.841471   1
+0.9092974  2
+0.14112    3
+-0.7568025 4
+
+ `y`x#t
+y          x
+---------- -
+0          0
 0.841471   1
 0.9092974  2
 0.14112    3
@@ -3303,8 +3334,8 @@ x z
 4 -0.7568025
 </pre></div>
 
-<span id="C"></span><span id="C-1"></span><h4 class="subsection">13.1.3 C</h4>
-<p>kSQL also has a way to group rows using <code>C</code>.  The result is a utable where the key is determined by the grouping clause.
+<span id="G"></span><span id="G-1"></span><h4 class="subsection">13.1.3 G</h4>
+<p>kSQL also has a way to group rows using <code>[G]</code>.  The result is a utable where the key is determined by the grouping clause.
 </p>
 <div class="example">
 <pre class="example"> n:5;t:[[]x:!n;y:sin !n]
@@ -3313,10 +3344,14 @@ x|y
 -|----------
 0|1.750768  
 1|-0.6156825
+
+ t :+/'yx=&gt;2
+0|1.750768  
+1|-0.6156825
 </pre></div>
 
-<span id="where-B"></span><span id="where-B-1"></span><h4 class="subsection">13.1.4 where B</h4>
-<p>kSQL makes it easy to build up a where clause to filter down the table.  B is the list of constraints.
+<span id="where-C"></span><span id="where-C-1"></span><h4 class="subsection">13.1.4 where C</h4>
+<p>kSQL makes it easy to build up a where clause to filter down the table.  C is the list of constraints.
 </p>
 <div class="example">
 <pre class="example"> n:5;t:[[]x:!n;y:sin !n]
@@ -3328,7 +3363,21 @@ x y
 3 0.14112   
 4 -0.7568025
 
-select from t where (x&gt;0) &amp; y within 0 .9
+ (:x&gt;0)#t
+x y         
+- ----------
+1 0.841471  
+2 0.9092974 
+3 0.14112   
+4 -0.7568025
+
+select from t where (x&gt;0), y within 0 .9
+x y       
+- --------
+1 0.841471
+3 0.14112
+
+ (:x&gt;0;:y within .0 .9)#t
 x y       
 - --------
 1 0.841471
@@ -3342,6 +3391,10 @@ x y
  select[x&gt;2]sum y from t&amp;t :y&gt;0 / select sum y by x&gt;2 from t where y&gt;0
 x|y       
 -|--------
+0|1.750768
+1|0.14112
+
+ ((:y&gt;0)#t) :+/'y@=x&gt;2
 0|1.750768
 1|0.14112 
 </pre></div>
@@ -3398,7 +3451,7 @@ c 1
 !nyi
 </pre></div>
 
-<span id="Joins"></span><h3 class="section">13.2 Joins</h3>
+<span id="Joins"></span><span id="Joins-1"></span><h3 class="section">13.2 Joins</h3>
 <p>k9 has a number of methods to join tables together which are described below.  In this section t, t1 and t2 represent tables and k, k1 and k2 represent utables.
 </p>
 <table>
