@@ -1098,28 +1098,29 @@ c b 2
 </pre></div>
 
 <span id="at"></span><span id="g_t_005bn_005dat-_21d2-x_0040y"></span><h3 class="section">2.35 [n]at &rArr; x@y</h3>
-<p>Given a list x return the value(s) at index(indices) y.  
+<p>Given a list or function x return the value(s) at index(indices) y.  
 </p>
 <div class="example">
-<pre class="example">&nbsp;(3 4 7 12)@2
+<pre class="example"> (3 4 7 12)@2              / list
 7
-&nbsp;`a`b`c@2
+
+ `a`b`c@2
 `c
-&nbsp;((1 2);3;(4 5 6))@(0 1)   / values at indices 0 and 1
+
+ ((1 2);3;(4 5 6))@(0 1)   / values at indices 0 and 1
 1 2
 3
-</pre></div>
 
-<p>If x is a function then determine the function with (at) pararmeter y.
-</p>
-<div class="example">
-<pre class="example"> {x*x}@3
+ {x*x}@3                   / function
 9
 
  (sin;cos;1*)@\:0.01
 0.009999833 0.99995 0.01
+
 </pre></div>
 
+<p>There is also another use of <code>@</code> where x is a special name, eg. <em>`</em>js, <em>`</em>csv, or <em>`</em>nv.  This is further discussed in the <a href="#I_002fO">I/O</a> section.
+</p>
 <span id="value"></span><span id="value-_21d2-_002ex"></span><h3 class="section">2.36 value &rArr; .x</h3>
 <p>Evaluate a string of valid k code or list of k code.  Can also be used to covert from a string to a numeric, 
 temporal or name type.

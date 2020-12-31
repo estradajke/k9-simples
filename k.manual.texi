@@ -1100,27 +1100,28 @@ Return the data type of x.  Lower-case represents a single element while upper-c
 @end example
 
 @anchor{at}@section [n]at @result{} x@@y
-Given a list x return the value(s) at index(indices) y.  
+Given a list or function x return the value(s) at index(indices) y.  
 
 @example
-@ (3 4 7 12)@@2
+ (3 4 7 12)@@2              / list
 7
-@ `a`b`c@@2
+
+ `a`b`c@@2
 `c
-@ ((1 2);3;(4 5 6))@@(0 1)   / values at indices 0 and 1
+
+ ((1 2);3;(4 5 6))@@(0 1)   / values at indices 0 and 1
 1 2
 3
-@end example
 
-If x is a function then determine the function with (at) pararmeter y.
-
-@example
- @{x*x@}@@3
+ @{x*x@}@@3                   / function
 9
 
  (sin;cos;1*)@@\:0.01
 0.009999833 0.99995 0.01
+
 @end example
+
+There is also another use of @code{@@} where x is a special name, eg. @math{`}js, @math{`}csv, or @math{`}nv.  This is further discussed in the @ref{I/O} section.
 
 @anchor{value}@section value @result{} .x
 Evaluate a string of valid k code or list of k code.  Can also be used to covert from a string to a numeric, 
