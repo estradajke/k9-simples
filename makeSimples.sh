@@ -66,7 +66,7 @@ sed -e 's/@/@@/g' \
     -e 's/verb/@ref{Verb,verb}/' \
     -e 's/adverb/@ref{Adverb,adverb}/g' \
     -e '1,20 s/noun/@ref{Noun,noun}/g' \
-    -e 's/I\/O/@ref{I\/O}/g' \
+    -e 's/i\/o/@ref{I\/O,i\/o}/g' \
     -e 's/utable/@ref{utable}/g' \
     -e 's/ntable/@ref{ntable}/g' \
     -e 's/@ table/@ @ref{Tables,table}/g' \
