@@ -1718,7 +1718,6 @@ These functions operate on list elements pairwise and thus requires that x and y
    * x<y : Less Than
    * x=y : Equals
    * x!y : Dictionary
-   * x$y : Sumproduct
 
       x:1+!5; y:10-2*!5
       x
@@ -1749,8 +1748,6 @@ These functions operate on list elements pairwise and thus requires that x and y
      3| 6
      4| 4
      5| 2
-      x$y / dot product JOHN: THIS IS NOT WORKING FOR ME.
-     70
 
 5.5.2 Each Element of One List Compared to Entire Other List
 ------------------------------------------------------------
@@ -4540,107 +4537,107 @@ Ref: time44503
 Ref: date45406
 Ref: datetime45867
 Node: List46781
-Node: Dictionary51340
-Node: User Functions56968
-Node: Expression60213
-Node: Named Functions61494
-Ref: exp62292
-Ref: log62399
-Ref: sin62493
-Ref: cos62626
-Ref: sqr62768
-Ref: sqrt62851
-Ref: prm62949
-Ref: freq63122
-Ref: sums63476
-Ref: deltas63614
-Ref: rand63952
-Ref: has64124
-Ref: bin64418
-Ref: in64628
-Ref: within64802
-Ref: div65034
-Ref: mod65218
-Ref: bar65392
-Ref: cmb65581
-Ref: msum66009
-Ref: mavg66146
-Ref: Hcount66290
-Ref: Hfirst66385
-Ref: Hlast66480
-Ref: Hsum66584
-Ref: Hmin66687
-Ref: Hmax66805
-Ref: topX66922
-Ref: keyF67080
-Ref: unkey67375
-Ref: meta67511
-Node: Knit Functions67642
-Ref: amend67937
-Ref: amend168460
-Ref: amend268709
-Ref: amend368928
-Ref: amend469233
-Ref: dmend69521
-Ref: dmend169851
-Ref: dmend370019
-Ref: dmend470184
-Node: I/O70345
-Ref: read csv72267
-Ref: write csv72445
-Ref: read json72609
-Ref: write json72793
-Ref: read nv72960
-Ref: w line73153
-Ref: r line73550
-Ref: w byte73663
-Ref: r byte73891
-Ref: r data74041
-Ref: w data74700
-Ref: k-ipc set75276
-Ref: https get75338
-Ref: ffi/py/js/..75400
-Node: Tables75870
-Ref: table76537
-Ref: utable78179
-Ref: ntable78718
-Node: kSQL79461
-Ref: select80390
-Ref: A80957
-Ref: G81810
-Ref: where C82158
-Ref: update83033
-Ref: delete83754
-Ref: Joins84036
-Ref: union84393
-Ref: leftjoin84914
-Ref: outer85693
-Ref: asof86328
-Ref: asof+87799
-Ref: insert89017
-Ref: upsert89363
-Node: System89777
-Ref: load90235
-Ref: timing90423
-Ref: variables90712
-Ref: memory90813
-Ref: cd90932
-Node: Control Flow91016
-Ref: cond91252
-Node: Temporal Functions91622
-Node: Errors93021
-Ref: class93469
-Ref: rank93558
-Ref: length93682
-Ref: _type93805
-Ref: domain93914
-Ref: limit94036
-Ref: nyi94247
-Ref: eparse94574
-Ref: _value94727
-Node: Examples94855
-Node: Benchmark102779
-Node: Conclusion111447
+Node: Dictionary51252
+Node: User Functions56880
+Node: Expression60125
+Node: Named Functions61406
+Ref: exp62204
+Ref: log62311
+Ref: sin62405
+Ref: cos62538
+Ref: sqr62680
+Ref: sqrt62763
+Ref: prm62861
+Ref: freq63034
+Ref: sums63388
+Ref: deltas63526
+Ref: rand63864
+Ref: has64036
+Ref: bin64330
+Ref: in64540
+Ref: within64714
+Ref: div64946
+Ref: mod65130
+Ref: bar65304
+Ref: cmb65493
+Ref: msum65921
+Ref: mavg66058
+Ref: Hcount66202
+Ref: Hfirst66297
+Ref: Hlast66392
+Ref: Hsum66496
+Ref: Hmin66599
+Ref: Hmax66717
+Ref: topX66834
+Ref: keyF66992
+Ref: unkey67287
+Ref: meta67423
+Node: Knit Functions67554
+Ref: amend67849
+Ref: amend168372
+Ref: amend268621
+Ref: amend368840
+Ref: amend469145
+Ref: dmend69433
+Ref: dmend169763
+Ref: dmend369931
+Ref: dmend470096
+Node: I/O70257
+Ref: read csv72179
+Ref: write csv72357
+Ref: read json72521
+Ref: write json72705
+Ref: read nv72872
+Ref: w line73065
+Ref: r line73462
+Ref: w byte73575
+Ref: r byte73803
+Ref: r data73953
+Ref: w data74612
+Ref: k-ipc set75188
+Ref: https get75250
+Ref: ffi/py/js/..75312
+Node: Tables75782
+Ref: table76449
+Ref: utable78091
+Ref: ntable78630
+Node: kSQL79373
+Ref: select80302
+Ref: A80869
+Ref: G81722
+Ref: where C82070
+Ref: update82945
+Ref: delete83666
+Ref: Joins83948
+Ref: union84305
+Ref: leftjoin84826
+Ref: outer85605
+Ref: asof86240
+Ref: asof+87711
+Ref: insert88929
+Ref: upsert89275
+Node: System89689
+Ref: load90147
+Ref: timing90335
+Ref: variables90624
+Ref: memory90725
+Ref: cd90844
+Node: Control Flow90928
+Ref: cond91164
+Node: Temporal Functions91534
+Node: Errors92933
+Ref: class93381
+Ref: rank93470
+Ref: length93594
+Ref: _type93717
+Ref: domain93826
+Ref: limit93948
+Ref: nyi94159
+Ref: eparse94486
+Ref: _value94639
+Node: Examples94767
+Node: Benchmark102691
+Node: Conclusion111359
 
 End Tag Table
 

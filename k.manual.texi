@@ -1848,7 +1848,7 @@ These functions operate on list elements pairwise and thus requires that x and y
 @item @t{x<y : Less Than}
 @item @t{x=y : Equals}
 @item @t{x!y : Dictionary}
-@item @t{x$y : Sumproduct}
+@c @item @t{x$y : Sumproduct}
 @end itemize
 
 @example
@@ -1881,8 +1881,8 @@ These functions operate on list elements pairwise and thus requires that x and y
 3| 6
 4| 4
 5| 2
-@ x$y / dot product JOHN: THIS IS NOT WORKING FOR ME.
-70
+@c @ x$y / dot product JOHN: THIS IS NOT WORKING FOR ME.
+@c 70
 @end example
 
 @subsection Each Element of One List Compared to Entire Other List
