@@ -1636,6 +1636,7 @@ Commands that generate sequences of numbers return lists regardless of whether t
 In general, lists consist of elements separated by semicolons and encased by parenthesis.
 
       (1;3;12)         / list of ints
+     1 3 12
 
      @(1;3.;`a;"b")   / non-uniform list
      `L
@@ -4539,107 +4540,107 @@ Ref: time44503
 Ref: date45406
 Ref: datetime45867
 Node: List46781
-Node: Dictionary51328
-Node: User Functions56956
-Node: Expression60201
-Node: Named Functions61482
-Ref: exp62280
-Ref: log62387
-Ref: sin62481
-Ref: cos62614
-Ref: sqr62756
-Ref: sqrt62839
-Ref: prm62937
-Ref: freq63110
-Ref: sums63464
-Ref: deltas63602
-Ref: rand63940
-Ref: has64112
-Ref: bin64406
-Ref: in64616
-Ref: within64790
-Ref: div65022
-Ref: mod65206
-Ref: bar65380
-Ref: cmb65569
-Ref: msum65997
-Ref: mavg66134
-Ref: Hcount66278
-Ref: Hfirst66373
-Ref: Hlast66468
-Ref: Hsum66572
-Ref: Hmin66675
-Ref: Hmax66793
-Ref: topX66910
-Ref: keyF67068
-Ref: unkey67363
-Ref: meta67499
-Node: Knit Functions67630
-Ref: amend67925
-Ref: amend168448
-Ref: amend268697
-Ref: amend368916
-Ref: amend469221
-Ref: dmend69509
-Ref: dmend169839
-Ref: dmend370007
-Ref: dmend470172
-Node: I/O70333
-Ref: read csv72255
-Ref: write csv72433
-Ref: read json72597
-Ref: write json72781
-Ref: read nv72948
-Ref: w line73141
-Ref: r line73538
-Ref: w byte73651
-Ref: r byte73879
-Ref: r data74029
-Ref: w data74688
-Ref: k-ipc set75264
-Ref: https get75326
-Ref: ffi/py/js/..75388
-Node: Tables75858
-Ref: table76525
-Ref: utable78167
-Ref: ntable78706
-Node: kSQL79449
-Ref: select80378
-Ref: A80945
-Ref: G81798
-Ref: where C82146
-Ref: update83021
-Ref: delete83742
-Ref: Joins84024
-Ref: union84381
-Ref: leftjoin84902
-Ref: outer85681
-Ref: asof86316
-Ref: asof+87787
-Ref: insert89005
-Ref: upsert89351
-Node: System89765
-Ref: load90223
-Ref: timing90411
-Ref: variables90700
-Ref: memory90801
-Ref: cd90920
-Node: Control Flow91004
-Ref: cond91240
-Node: Temporal Functions91610
-Node: Errors93009
-Ref: class93457
-Ref: rank93546
-Ref: length93670
-Ref: _type93793
-Ref: domain93902
-Ref: limit94024
-Ref: nyi94235
-Ref: eparse94562
-Ref: _value94715
-Node: Examples94843
-Node: Benchmark102767
-Node: Conclusion111435
+Node: Dictionary51340
+Node: User Functions56968
+Node: Expression60213
+Node: Named Functions61494
+Ref: exp62292
+Ref: log62399
+Ref: sin62493
+Ref: cos62626
+Ref: sqr62768
+Ref: sqrt62851
+Ref: prm62949
+Ref: freq63122
+Ref: sums63476
+Ref: deltas63614
+Ref: rand63952
+Ref: has64124
+Ref: bin64418
+Ref: in64628
+Ref: within64802
+Ref: div65034
+Ref: mod65218
+Ref: bar65392
+Ref: cmb65581
+Ref: msum66009
+Ref: mavg66146
+Ref: Hcount66290
+Ref: Hfirst66385
+Ref: Hlast66480
+Ref: Hsum66584
+Ref: Hmin66687
+Ref: Hmax66805
+Ref: topX66922
+Ref: keyF67080
+Ref: unkey67375
+Ref: meta67511
+Node: Knit Functions67642
+Ref: amend67937
+Ref: amend168460
+Ref: amend268709
+Ref: amend368928
+Ref: amend469233
+Ref: dmend69521
+Ref: dmend169851
+Ref: dmend370019
+Ref: dmend470184
+Node: I/O70345
+Ref: read csv72267
+Ref: write csv72445
+Ref: read json72609
+Ref: write json72793
+Ref: read nv72960
+Ref: w line73153
+Ref: r line73550
+Ref: w byte73663
+Ref: r byte73891
+Ref: r data74041
+Ref: w data74700
+Ref: k-ipc set75276
+Ref: https get75338
+Ref: ffi/py/js/..75400
+Node: Tables75870
+Ref: table76537
+Ref: utable78179
+Ref: ntable78718
+Node: kSQL79461
+Ref: select80390
+Ref: A80957
+Ref: G81810
+Ref: where C82158
+Ref: update83033
+Ref: delete83754
+Ref: Joins84036
+Ref: union84393
+Ref: leftjoin84914
+Ref: outer85693
+Ref: asof86328
+Ref: asof+87799
+Ref: insert89017
+Ref: upsert89363
+Node: System89777
+Ref: load90235
+Ref: timing90423
+Ref: variables90712
+Ref: memory90813
+Ref: cd90932
+Node: Control Flow91016
+Ref: cond91252
+Node: Temporal Functions91622
+Node: Errors93021
+Ref: class93469
+Ref: rank93558
+Ref: length93682
+Ref: _type93805
+Ref: domain93914
+Ref: limit94036
+Ref: nyi94247
+Ref: eparse94574
+Ref: _value94727
+Node: Examples94855
+Node: Benchmark102779
+Node: Conclusion111447
 
 End Tag Table
 
