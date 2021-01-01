@@ -83,13 +83,13 @@ That's 495 ms to read the data in from disk and compute over all the 100 million
 The code to generate the on-disk database is presented below.  Speed of course will depend on your hardware so times will vary.
 
 @example
-nf:d+*|d:(|-d),d:683 954 997 1000;
-T:^`t rand[;_8.64e7]@@
-B:100++\1e-2*-3+nf bin/:rand[;*|nf]@@
-S:rand[;1e-2*2,2,8#1]@@
-L:@{select t,b,a:b+s from +`t`b`s!(T;B;S)@@'x@}
-q:`eurusd`usdjpy`usdchf!L'60e6 20e6 20e6
-`q 2:q
+ nf:d+*|d:(|-d),d:683 954 997 1000;
+ T:^`t rand[;_8.64e7]@@
+ B:100++\1e-2*-3+nf bin/:rand[;*|nf]@@
+ S:rand[;1e-2*2,2,8#1]@@
+ L:@{select t,b,a:b+s from +`t`b`s!(T;B;S)@@'x@}
+ q:`eurusd`usdjpy`usdchf!L'_60e6 20e6 20e6
+ `q 2:q
 @end example
 
 @section Going concise
