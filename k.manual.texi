@@ -1769,13 +1769,17 @@ In general, lists consist of elements separated by semicolons and encased by par
 
 @example
  (1;3;12)         / list of ints
- @@(1;3.;`a;"b")   / non-uniform list
+
+@@(1;3.;`a;"b")   / non-uniform list
 `L
- @@((1;3);(12;0))  / list of integer lists
+
+@@((1;3);(12;0))  / list of integer lists
 LI
- @@'((1;3);(12;0)) / each list is type I
+
+@@'((1;3);(12;0)) / each list is type I
 `I`I
-  ,,,,,(3;1)      / a list of a list of a list..
+
+,,,,,(3;1)      / a list of a list of a list..
 ,,,,,3 1
 @end example
 
@@ -1795,6 +1799,7 @@ Lists can be indexed in different ways.  The @@ notation is often used as it's f
  a[10]     / out of range return zero
 0
 @end example
+
 @section Updating List Elements
 Lists can be updated elementwise by  setting the indexed element to a required value.  There is also a syntax for updating many elements and that is found at @ref{amend}.
 
@@ -1806,9 +1811,28 @@ Lists can be updated elementwise by  setting the indexed element to a required v
 2 4 6 80 10 12 14 16 18 20
 @end example
 
+@section Function Applied to Lists
+Most functions can be applied to lists without special syntax as if it was an element.
+
+@example
+ x:!3;x
+0 1 2
+
+ x+10
+10 11 12
+
+ +\x
+0 1 3
+
+ +/x
+3
+
+ @{x*x:sin x@}[x]
+0 0.7080734 0.8268218
+@end example
+
 @section Functions Applied to Two Lists
 This section will focus on functions (f) that operate on two lists (x and y).  As these are internal functions, examples will be shown with infix notation (x+y) but prefix notation (+[x;y]) would  also be possible.
-
 
 @subsection Pairwise
 These functions operate on list elements pairwise and thus requires that x and y are equal length.
@@ -3353,7 +3377,7 @@ x|y
 0|1.750768  
 1|-0.6156825
 
- t :+/'y@=x>2
+ t :+/'y@@=x>2
 0|1.750768  
 1|-0.6156825
 @end example

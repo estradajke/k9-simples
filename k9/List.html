@@ -136,13 +136,17 @@ Next: <a href="Dictionary.html" accesskey="n" rel="next">Dictionary</a>, Previou
 </p>
 <div class="example">
 <pre class="example"> (1;3;12)         / list of ints
- @(1;3.;`a;&quot;b&quot;)   / non-uniform list
+
+@(1;3.;`a;&quot;b&quot;)   / non-uniform list
 `L
- @((1;3);(12;0))  / list of integer lists
+
+@((1;3);(12;0))  / list of integer lists
 LI
- @'((1;3);(12;0)) / each list is type I
+
+@'((1;3);(12;0)) / each list is type I
 `I`I
-  ,,,,,(3;1)      / a list of a list of a list..
+
+,,,,,(3;1)      / a list of a list of a list..
 ,,,,,3 1
 </pre></div>
 
@@ -162,6 +166,7 @@ LI
  a[10]     / out of range return zero
 0
 </pre></div>
+
 <span id="Updating-List-Elements"></span><h3 class="section">5.3 Updating List Elements</h3>
 <p>Lists can be updated elementwise by  setting the indexed element to a required value.  There is also a syntax for updating many elements and that is found at <a href="Knit-Functions.html#amend">amend</a>.
 </p>
@@ -173,11 +178,30 @@ LI
 2 4 6 80 10 12 14 16 18 20
 </pre></div>
 
-<span id="Functions-Applied-to-Two-Lists"></span><h3 class="section">5.4 Functions Applied to Two Lists</h3>
+<span id="Function-Applied-to-Lists"></span><h3 class="section">5.4 Function Applied to Lists</h3>
+<p>Most functions can be applied to lists without special syntax as if it was an element.
+</p>
+<div class="example">
+<pre class="example"> x:!3;x
+0 1 2
+
+ x+10
+10 11 12
+
+ +\x
+0 1 3
+
+ +/x
+3
+
+ {x*x:sin x}[x]
+0 0.7080734 0.8268218
+</pre></div>
+
+<span id="Functions-Applied-to-Two-Lists"></span><h3 class="section">5.5 Functions Applied to Two Lists</h3>
 <p>This section will focus on functions (f) that operate on two lists (x and y).  As these are internal functions, examples will be shown with infix notation (x+y) but prefix notation (+[x;y]) would  also be possible.
 </p>
-
-<span id="Pairwise"></span><h4 class="subsection">5.4.1 Pairwise</h4>
+<span id="Pairwise"></span><h4 class="subsection">5.5.1 Pairwise</h4>
 <p>These functions operate on list elements pairwise and thus requires that x and y are equal length.
 </p><ul>
 <li> <tt>x+y : Add</tt>
@@ -227,7 +251,7 @@ LI
 70
 </pre></div>
 
-<span id="Each-Element-of-One-List-Compared-to-Entire-Other-List"></span><h4 class="subsection">5.4.2 Each Element of One List Compared to Entire Other List</h4>
+<span id="Each-Element-of-One-List-Compared-to-Entire-Other-List"></span><h4 class="subsection">5.5.2 Each Element of One List Compared to Entire Other List</h4>
 <p>These functions compare x[i] to y or x to y[i]. They are  not symmetric to their inputs, i.e. f[x;y] does not equal f[y;x];
 </p>
 <ul>
@@ -253,7 +277,7 @@ LI
 3 0 3 3 1 3
 </pre></div>
 
-<span id="Each-List-Used-Symmetrically"></span><h4 class="subsection">5.4.3 Each List Used Symmetrically</h4>
+<span id="Each-List-Used-Symmetrically"></span><h4 class="subsection">5.5.3 Each List Used Symmetrically</h4>
 <p>This is symmetric in its inputs f[x;y]=f[y;x] and the lists are not required to be equal length.
 </p>
 <ul>
