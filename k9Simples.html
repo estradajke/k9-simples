@@ -1269,11 +1269,24 @@ Next: <a href="#Noun" accesskey="n" rel="next">Noun</a>, Previous: <a href="#Ver
 <p>Apply function f to each value in list x in a single thread.  Multithread operation is done with <a href="#eachp">eachp</a>.  
 </p>
 <div class="example">
-<pre class="example">&nbsp;*((1 2 3);4;(5 6);7)   / first element of the list
+<pre class="example"> *((1 2 3);4;(5 6);7)   / first element of the list
 1 2 3
 
-&nbsp;*'((1 2 3);4;(5 6);7)  / first element of each element
+ *'((1 2 3);4;(5 6);7)  / first element of each element
 1 4 5 7
+
+ !3                     / simple list
+0 1 2
+ +/!3                   / sum of the list
+3
+ 2#'!3                  / take 5 copies of the list
+0 0
+1 1
+2 2
+ +/2#'!3                / sum
+3 3
+ +/'2#'!3               / sum each, eg. (0 1 2)+(0 1 2)
+0 2 4
 </pre></div>
 
 <span id="over"></span><span id="over-_21d2-f_002f_005bx_003by_005d-or-x-f_002fy"></span><h3 class="section">3.2 over &rArr; f/[x;y] or x f/y</h3>

@@ -1270,11 +1270,24 @@ x: (1 2; 3 4; 5 6; 7 8)
 Apply function f to each value in list x in a single thread.  Multithread operation is done with @ref{eachp}.  
 
 @example
-@ *((1 2 3);4;(5 6);7)   / first element of the list
+ *((1 2 3);4;(5 6);7)   / first element of the list
 1 2 3
 
-@ *'((1 2 3);4;(5 6);7)  / first element of each element
+ *'((1 2 3);4;(5 6);7)  / first element of each element
 1 4 5 7
+
+ !3                     / simple list
+0 1 2
+ +/!3                   / sum of the list
+3
+ 2#'!3                  / take 5 copies of the list
+0 0
+1 1
+2 2
+ +/2#'!3                / sum
+3 3
+ +/'2#'!3               / sum each, eg. (0 1 2)+(0 1 2)
+0 2 4
 @end example
 
 @anchor{over}@section over @result{} f/[x;y] or x f/y
