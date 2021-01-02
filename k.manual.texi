@@ -285,7 +285,6 @@ In k9 as the Help/Info card shows data are nouns, functions/lists are verbs and 
 @end itemize
 @page
 
-
 @node Verb
 @chapter Verbs
 This chapter covers verbs which are the core primitives of k9.  Given how different is it to call functions in k9 than in most other languages, you may have to read this chapter  a few times.  Once you can ``speak'' k9 you'll read @code{|x} better than @code{reverse(x)}.  
@@ -749,7 +748,7 @@ a|1 2
 b|3 4
 @end example
 
-@anchor{enlist}@section list @result{} ,x
+@anchor{enlist}@section enlist @result{} ,x
 Create a list from x
 
 @example
@@ -765,11 +764,28 @@ Create a list from x
 
 @anchor{cat}@section cat @result{} x,y
 Concatenate x and y.
+
 @example
-@ 3,7
+ 3,7
 3 7
-@ "hello"," ","there"
+
+ "hello"," ","there"
 "hello there"
+
+ C:("ab";"c";("def";"ghi"));C
+ab           
+c            
+("def";"ghi")
+
+ ,/C     / join the list once
+a  
+b  
+c  
+def
+ghi
+
+ ,//:C   / converge over join until single list
+"abcdefghi"
 @end example
 
 @anchor{sort}@section sort @result{} ^x

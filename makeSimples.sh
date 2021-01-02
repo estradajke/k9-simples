@@ -26,7 +26,7 @@ sed -e 's/@/@@/g' \
     -e 's/match/@ref{match}/g' \
     -e 's/enum/@ref{enum}/g' \
     -e '1,20 s/key/@ref{key}/g' \
-    -e 's/list/@ref{enlist,list}/g' \
+    -e 's/enlist/@ref{enlist}/g' \
     -e 's/cat/@ref{cat}/g' \
     -e 's/sort/@ref{sort}/g' \
     -e 's/cut/@ref{cut}/g' \
@@ -71,7 +71,7 @@ sed -e 's/@/@@/g' \
     -e 's/ntable/@ref{ntable}/g' \
     -e 's/@ table/@ @ref{Tables,table}/g' \
     -e 's/DNU/@ref{Temporal Functions,.z.d}/' \
-    -e 's/@ list/@ @ref{list}/g' \
+    -e 's/@ list/@ @ref{List,list}/g' \
     -e 's/func/@ref{User Functions,func}/g' \
     -e 's/expr/@ref{Expression,expr}/g' \
     -e 's/dict/@ref{Dictionary,dict}/g' \
