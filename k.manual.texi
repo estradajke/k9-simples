@@ -1464,7 +1464,7 @@ Apply f[x;y] to each value of x, i.e. the left one.
 1 11 21
 @end example
 
-@anchor{cover}@subsection Converge Over @result{} f/:x or (n;f)/:x
+@anchor{cover}@section Converge Over @result{} f/:x or (n;f)/:x
 Converge Over is the same function as @ref{cscan,Converge Scan} but only returns the final value(s).
 
 @example
@@ -1477,7 +1477,7 @@ Converge Over is the same function as @ref{cscan,Converge Scan} but only returns
 1 2 3 4
 @end example
 
-@anchor{cscan}@subsection Converge Scan @result{} f\:x or (n;f)\:x
+@anchor{cscan}@section Converge Scan @result{} f\:x or (n;f)\:x
 Compute function f where f@sub{i}=f[f@sub{i-1}] and f@sub{0}=x.  If n is specified then it is either (DO) the number of iterations or (WHILE) a function returning a non-zero result.  
 
 @example
