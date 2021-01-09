@@ -1258,12 +1258,33 @@ Adverb
 
 Adverbs modify verbs to operative iteratively over nouns.  This previous sentence likely will  make sense only once you understand it so let's jump into an example.  Imagine you have a list of 4 lists.  Using @code{first} you will retrieve the first sub-list.  In order to retrieve the first element of each sub-list you'll have to modify the function @code{first} with a modifier @code{each}.
 
-@example 
-x: (1 2; 3 4; 5 6; 7 8)
- *x
+@example
+ x:(1 2; 3 4; 5 6; 7 8);x
 1 2
- *'x
+3 4
+5 6
+7 8
+
+*x   / first
+1 2
+
+*'x  / each first
 1 3 5 7
+@end example
+
+Adverbs area also used where one might use a @code{for}, @code{do}, or @code{while} loop to calculate over a list of value or recursively until a condition is met.
+
+@example
+ f:@{x*y@}   
+ f\1 .1 .1 .1 / f\ scan over list
+1    
+0.1  
+0.01 
+0.001
+
+ g:@{x*x@}
+ g\:.99       / g\: scan until convergence
+0.99 0.9801 0.960596 .. 8.87948e-287 0
 @end example
 
 @anchor{each}@section each @result{} f'x

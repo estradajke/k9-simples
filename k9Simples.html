@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- January 2, 2021
+<!-- January 9, 2021
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -1258,11 +1258,32 @@ Next: <a href="#Noun" accesskey="n" rel="next">Noun</a>, Previous: <a href="#Ver
 <p>Adverbs modify verbs to operative iteratively over nouns.  This previous sentence likely will  make sense only once you understand it so let&rsquo;s jump into an example.  Imagine you have a list of 4 lists.  Using <code>first</code> you will retrieve the first sub-list.  In order to retrieve the first element of each sub-list you&rsquo;ll have to modify the function <code>first</code> with a modifier <code>each</code>.
 </p>
 <div class="example">
-<pre class="example">x: (1 2; 3 4; 5 6; 7 8)
- *x
+<pre class="example"> x:(1 2; 3 4; 5 6; 7 8);x
 1 2
- *'x
+3 4
+5 6
+7 8
+
+*x   / first
+1 2
+
+*'x  / each first
 1 3 5 7
+</pre></div>
+
+<p>Adverbs area also used where one might use a <code>for</code>, <code>do</code>, or <code>while</code> loop to calculate over a list of value or recursively until a condition is met.
+</p>
+<div class="example">
+<pre class="example"> f:{x*y}   
+ f\1 .1 .1 .1 / f\ scan over list
+1    
+0.1  
+0.01 
+0.001
+
+ g:{x*x}
+ g\:.99       / g\: scan until convergence
+0.99 0.9801 0.960596 .. 8.87948e-287 0
 </pre></div>
 
 <span id="each"></span><span id="each-_21d2-f_0027x"></span><h3 class="section">3.1 each &rArr; f&rsquo;x</h3>

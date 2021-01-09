@@ -1,6 +1,6 @@
 This is k9.info, produced by texi2any version 6.7 from k.manual.texi.
 
-January 2, 2021
+January 9, 2021
 
 Copyright (C) 2020 John Estrada
 
@@ -1155,11 +1155,30 @@ so that one can reach for them when needed.
 Adverbs modify verbs to operative iteratively over nouns.  This previous sentence likely will make sense only once you understand it so let's jump into an example.  Imagine you have a list of 4 lists.
 Using 'first' you will retrieve the first sub-list.  In order to retrieve the first element of each sub-list you'll have to modify the function 'first' with a modifier 'each'.
 
-     x: (1 2; 3 4; 5 6; 7 8)
-      *x
+      x:(1 2; 3 4; 5 6; 7 8);x
      1 2
-      *'x
+     3 4
+     5 6
+     7 8
+
+     *x   / first
+     1 2
+
+     *'x  / each first
      1 3 5 7
+
+Adverbs area also used where one might use a 'for', 'do', or 'while' loop to calculate over a list of value or recursively until a condition is met.
+
+      f:{x*y}
+      f\1 .1 .1 .1 / f\ scan over list
+     1
+     0.1
+     0.01
+     0.001
+
+      g:{x*x}
+      g\:.99       / g\: scan until convergence
+     0.99 0.9801 0.960596 .. 8.87948e-287 0
 
 3.1 each => f'x
 ===============
@@ -4545,129 +4564,129 @@ Ref: at30372
 Ref: value30875
 Ref: dot31316
 Node: Adverb32497
-Ref: each33533
-Ref: over34132
-Ref: scan34268
-Ref: join35335
-Ref: split35706
-Ref: eachp35964
-Ref: eachr36731
-Ref: eachl36931
-Ref: cover37120
-Ref: cscan37437
-Node: Noun38615
-Ref: Atom Types40011
-Ref: bool42626
-Ref: int43313
-Ref: flt43993
-Ref: char44395
-Ref: name44628
-Ref: uuid44868
-Ref: time45025
-Ref: date45928
-Ref: datetime46389
-Node: List47303
-Node: Dictionary51774
-Node: User Functions57402
-Node: Expression60647
-Node: Named Functions61928
-Ref: exp62726
-Ref: log62833
-Ref: sin62927
-Ref: cos63060
-Ref: sqr63202
-Ref: sqrt63285
-Ref: prm63383
-Ref: freq63556
-Ref: sums63910
-Ref: deltas64048
-Ref: rand64386
-Ref: has64558
-Ref: bin64852
-Ref: in65062
-Ref: within65236
-Ref: div65468
-Ref: mod65652
-Ref: bar65826
-Ref: cmb66015
-Ref: msum66443
-Ref: mavg66580
-Ref: Hcount66724
-Ref: Hfirst66819
-Ref: Hlast66914
-Ref: Hsum67018
-Ref: Hmin67121
-Ref: Hmax67239
-Ref: topX67356
-Ref: keyF67514
-Ref: unkey67809
-Ref: meta67945
-Node: Knit Functions68076
-Ref: amend68371
-Ref: amend168894
-Ref: amend269143
-Ref: amend369362
-Ref: amend469667
-Ref: dmend69955
-Ref: dmend170285
-Ref: dmend370453
-Ref: dmend470618
-Node: I/O70779
-Ref: read csv72701
-Ref: write csv72879
-Ref: read json73043
-Ref: write json73227
-Ref: read nv73394
-Ref: w line73587
-Ref: r line73984
-Ref: w byte74097
-Ref: r byte74325
-Ref: r data74475
-Ref: w data75134
-Ref: k-ipc set75710
-Ref: https get75772
-Ref: ffi/py/js/..75834
-Node: Tables76304
-Ref: table76971
-Ref: utable78613
-Ref: ntable79152
-Node: kSQL79895
-Ref: select80824
-Ref: A81391
-Ref: G82244
-Ref: where C82592
-Ref: update83467
-Ref: delete84188
-Ref: Joins84470
-Ref: union84827
-Ref: leftjoin85348
-Ref: outer86127
-Ref: asof86762
-Ref: asof+88233
-Ref: insert89451
-Ref: upsert89797
-Node: System90211
-Ref: load90669
-Ref: timing90857
-Ref: variables91146
-Ref: memory91247
-Ref: cd91366
-Node: Control Flow91450
-Ref: cond91686
-Node: Temporal Functions92056
-Node: Errors93455
-Ref: class93903
-Ref: rank93992
-Ref: length94116
-Ref: _type94239
-Ref: domain94348
-Ref: limit94470
-Ref: nyi94681
-Ref: eparse95008
-Ref: _value95161
-Node: Examples95289
-Node: Benchmark103213
-Node: Conclusion111881
+Ref: each33943
+Ref: over34542
+Ref: scan34678
+Ref: join35745
+Ref: split36116
+Ref: eachp36374
+Ref: eachr37141
+Ref: eachl37341
+Ref: cover37530
+Ref: cscan37847
+Node: Noun39025
+Ref: Atom Types40421
+Ref: bool43036
+Ref: int43723
+Ref: flt44403
+Ref: char44805
+Ref: name45038
+Ref: uuid45278
+Ref: time45435
+Ref: date46338
+Ref: datetime46799
+Node: List47713
+Node: Dictionary52184
+Node: User Functions57812
+Node: Expression61057
+Node: Named Functions62338
+Ref: exp63136
+Ref: log63243
+Ref: sin63337
+Ref: cos63470
+Ref: sqr63612
+Ref: sqrt63695
+Ref: prm63793
+Ref: freq63966
+Ref: sums64320
+Ref: deltas64458
+Ref: rand64796
+Ref: has64968
+Ref: bin65262
+Ref: in65472
+Ref: within65646
+Ref: div65878
+Ref: mod66062
+Ref: bar66236
+Ref: cmb66425
+Ref: msum66853
+Ref: mavg66990
+Ref: Hcount67134
+Ref: Hfirst67229
+Ref: Hlast67324
+Ref: Hsum67428
+Ref: Hmin67531
+Ref: Hmax67649
+Ref: topX67766
+Ref: keyF67924
+Ref: unkey68219
+Ref: meta68355
+Node: Knit Functions68486
+Ref: amend68781
+Ref: amend169304
+Ref: amend269553
+Ref: amend369772
+Ref: amend470077
+Ref: dmend70365
+Ref: dmend170695
+Ref: dmend370863
+Ref: dmend471028
+Node: I/O71189
+Ref: read csv73111
+Ref: write csv73289
+Ref: read json73453
+Ref: write json73637
+Ref: read nv73804
+Ref: w line73997
+Ref: r line74394
+Ref: w byte74507
+Ref: r byte74735
+Ref: r data74885
+Ref: w data75544
+Ref: k-ipc set76120
+Ref: https get76182
+Ref: ffi/py/js/..76244
+Node: Tables76714
+Ref: table77381
+Ref: utable79023
+Ref: ntable79562
+Node: kSQL80305
+Ref: select81234
+Ref: A81801
+Ref: G82654
+Ref: where C83002
+Ref: update83877
+Ref: delete84598
+Ref: Joins84880
+Ref: union85237
+Ref: leftjoin85758
+Ref: outer86537
+Ref: asof87172
+Ref: asof+88643
+Ref: insert89861
+Ref: upsert90207
+Node: System90621
+Ref: load91079
+Ref: timing91267
+Ref: variables91556
+Ref: memory91657
+Ref: cd91776
+Node: Control Flow91860
+Ref: cond92096
+Node: Temporal Functions92466
+Node: Errors93865
+Ref: class94313
+Ref: rank94402
+Ref: length94526
+Ref: _type94649
+Ref: domain94758
+Ref: limit94880
+Ref: nyi95091
+Ref: eparse95418
+Ref: _value95571
+Node: Examples95699
+Node: Benchmark103623
+Node: Conclusion112291
 
 End Tag Table
 
