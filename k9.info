@@ -2413,8 +2413,8 @@ Compute the difference between each element in list x and the previous value.  I
       1 deltas 1 5 10
      0 4 5
 
-9.11 rand => rand x
-===================
+9.11 rand => rand x or x rand y
+===============================
 
 Generate x random values using a uniform distribution from [0,1) or -x random values of a normal distribution (mean=0, standard deviation=1).
 
@@ -2422,6 +2422,14 @@ Generate x random values using a uniform distribution from [0,1) or -x random va
      0.9722755 0.8904738 0.4088624 0.1399796 0.1334422
       rand -5 / normal
      1.008461 0.6204548 -1.206095 -0.7168573 -0.5728272
+
+Generate x random values from list y.
+
+      5 rand 1 2
+     1 2 2 1 1
+
+     5 rand "xy"
+     "yxxxy"
 
 9.12 has => x has y
 ===================
@@ -4603,92 +4611,92 @@ Ref: freq63961
 Ref: sums64315
 Ref: deltas64453
 Ref: rand64791
-Ref: has65134
-Ref: bin65428
-Ref: in65638
-Ref: within65812
-Ref: div66044
-Ref: mod66228
-Ref: bar66402
-Ref: cmb66591
-Ref: msum67019
-Ref: mavg67156
-Ref: Hcount67300
-Ref: Hfirst67395
-Ref: Hlast67490
-Ref: Hsum67594
-Ref: Hmin67697
-Ref: Hmax67815
-Ref: topX67932
-Ref: keyF68090
-Ref: unkey68385
-Ref: meta68521
-Node: Knit Functions68652
-Ref: amend68947
-Ref: amend169470
-Ref: amend269719
-Ref: amend369938
-Ref: amend470243
-Ref: dmend70531
-Ref: dmend170861
-Ref: dmend371029
-Ref: dmend471194
-Node: I/O71355
-Ref: read csv73277
-Ref: write csv73455
-Ref: read json73619
-Ref: write json73803
-Ref: read nv73970
-Ref: w line74163
-Ref: r line74560
-Ref: w byte74673
-Ref: r byte74901
-Ref: r data75051
-Ref: w data75710
-Ref: k-ipc set76286
-Ref: https get76348
-Ref: ffi/py/js/..76410
-Node: Tables76880
-Ref: table77547
-Ref: utable79189
-Ref: ntable79728
-Node: kSQL80471
-Ref: select81400
-Ref: A81967
-Ref: G82820
-Ref: where C83168
-Ref: update84043
-Ref: delete84764
-Ref: Joins85046
-Ref: union85403
-Ref: leftjoin85924
-Ref: outer86703
-Ref: asof87338
-Ref: asof+88809
-Ref: insert90027
-Ref: upsert90373
-Node: System90787
-Ref: load91245
-Ref: timing91433
-Ref: variables91722
-Ref: memory91823
-Ref: cd91942
-Node: Control Flow92026
-Ref: cond92262
-Node: Temporal Functions92632
-Node: Errors94031
-Ref: class94479
-Ref: rank94568
-Ref: length94692
-Ref: _type94815
-Ref: domain94924
-Ref: limit95046
-Ref: nyi95257
-Ref: eparse95584
-Ref: _value95737
-Node: Examples95865
-Node: Benchmark103789
-Node: Conclusion112457
+Ref: has65261
+Ref: bin65555
+Ref: in65765
+Ref: within65939
+Ref: div66171
+Ref: mod66355
+Ref: bar66529
+Ref: cmb66718
+Ref: msum67146
+Ref: mavg67283
+Ref: Hcount67427
+Ref: Hfirst67522
+Ref: Hlast67617
+Ref: Hsum67721
+Ref: Hmin67824
+Ref: Hmax67942
+Ref: topX68059
+Ref: keyF68217
+Ref: unkey68512
+Ref: meta68648
+Node: Knit Functions68779
+Ref: amend69074
+Ref: amend169597
+Ref: amend269846
+Ref: amend370065
+Ref: amend470370
+Ref: dmend70658
+Ref: dmend170988
+Ref: dmend371156
+Ref: dmend471321
+Node: I/O71482
+Ref: read csv73404
+Ref: write csv73582
+Ref: read json73746
+Ref: write json73930
+Ref: read nv74097
+Ref: w line74290
+Ref: r line74687
+Ref: w byte74800
+Ref: r byte75028
+Ref: r data75178
+Ref: w data75837
+Ref: k-ipc set76413
+Ref: https get76475
+Ref: ffi/py/js/..76537
+Node: Tables77007
+Ref: table77674
+Ref: utable79316
+Ref: ntable79855
+Node: kSQL80598
+Ref: select81527
+Ref: A82094
+Ref: G82947
+Ref: where C83295
+Ref: update84170
+Ref: delete84891
+Ref: Joins85173
+Ref: union85530
+Ref: leftjoin86051
+Ref: outer86830
+Ref: asof87465
+Ref: asof+88936
+Ref: insert90154
+Ref: upsert90500
+Node: System90914
+Ref: load91372
+Ref: timing91560
+Ref: variables91849
+Ref: memory91950
+Ref: cd92069
+Node: Control Flow92153
+Ref: cond92389
+Node: Temporal Functions92759
+Node: Errors94158
+Ref: class94606
+Ref: rank94695
+Ref: length94819
+Ref: _type94942
+Ref: domain95051
+Ref: limit95173
+Ref: nyi95384
+Ref: eparse95711
+Ref: _value95864
+Node: Examples95992
+Node: Benchmark103916
+Node: Conclusion112584
 
 End Tag Table
 

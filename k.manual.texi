@@ -2562,7 +2562,7 @@ Compute the difference between each element in list x and the previous value.  I
 0 4 5
 @end example
 
-@anchor{rand}@section rand @result{} rand x
+@anchor{rand}@section rand @result{} rand x or x rand y
 Generate x random values using a uniform distribution from [0,1) or -x random values of a normal distribution (mean=0, standard deviation=1).
 
 @example
@@ -2570,6 +2570,16 @@ Generate x random values using a uniform distribution from [0,1) or -x random va
 0.9722755 0.8904738 0.4088624 0.1399796 0.1334422
  rand -5 / normal
 1.008461 0.6204548 -1.206095 -0.7168573 -0.5728272
+@end example
+
+Generate x random values from list y.
+
+@example
+ 5 rand 1 2
+1 2 2 1 1
+
+5 rand "xy"
+"yxxxy"
 @end example
 
 @anchor{has}@section has @result{} x has y

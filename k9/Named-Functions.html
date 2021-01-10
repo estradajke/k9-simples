@@ -213,7 +213,7 @@ z|1
 0 4 5
 </pre></div>
 
-<span id="rand"></span><span id="rand-_21d2-rand-x"></span><h3 class="section">9.11 rand &rArr; rand x</h3>
+<span id="rand"></span><span id="rand-_21d2-rand-x-or-x-rand-y"></span><h3 class="section">9.11 rand &rArr; rand x or x rand y</h3>
 <p>Generate x random values using a uniform distribution from [0,1) or -x random values of a normal distribution (mean=0, standard deviation=1).
 </p>
 <div class="example">
@@ -221,6 +221,16 @@ z|1
 0.9722755 0.8904738 0.4088624 0.1399796 0.1334422
  rand -5 / normal
 1.008461 0.6204548 -1.206095 -0.7168573 -0.5728272
+</pre></div>
+
+<p>Generate x random values from list y.
+</p>
+<div class="example">
+<pre class="example"> 5 rand 1 2
+1 2 2 1 1
+
+5 rand &quot;xy&quot;
+&quot;yxxxy&quot;
 </pre></div>
 
 <span id="has"></span><span id="has-_21d2-x-has-y"></span><h3 class="section">9.12 has &rArr; x has y</h3>
