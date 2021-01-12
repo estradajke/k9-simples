@@ -2399,16 +2399,26 @@ size   |30 24 22 17 16
  d :&country=`in       / using country like a local variable
 ,3
 
- d :country sum/size   / sum size by country
-cn|92
-in|17
-
- d :sum'size@=country  / same as above
+ d :sum'size@@=country  / sum size by country
 cn|92
 in|17
 
  d :+/size*country=`cn
 92
+@end example
+
+As keys come in scope as variables, variables fall out of scope.  One can evaluate the variable name as string to get around this.
+
+@example
+ d :sum size@@&size>20
+76
+
+ x:20;
+ d :sum size@@&size>20 / out of scope
+!value
+
+ d :sum size@@&size>."x"
+76
 @end example
 
 Reorder a table using column index and expresssions.
@@ -2568,6 +2578,7 @@ Generate x random values using a uniform distribution from [0,1) or -x random va
 @example
  rand 5  / uniform
 0.9722755 0.8904738 0.4088624 0.1399796 0.1334422
+
  rand -5 / normal
 1.008461 0.6204548 -1.206095 -0.7168573 -0.5728272
 @end example
