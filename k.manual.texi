@@ -818,7 +818,7 @@ Cut list y by size, indices, or function x.
 
 @flushleft
 @multitable {@b{some text for column one}} {for column two}
-@item @b{action} @tab @b{x} 
+@item @b{action} @tab @b{x}
 @item @ref{cut1,rows} @tab positive int
 @item @ref{cut2,columns} @tab negative int
 @item @ref{cut3,indices} @tab list
@@ -916,13 +916,13 @@ Count the number of elements in list, dictionary, or table x.
 [f]take has a number of different actions depending on x.  These include head (take from front of list), tail (take from back of list), common (take common elements), filter (take where function is non-zero), and select (take columns from table).
 
 @flushleft
-@multitable {@b{some text for column one}} {for column two}
-@item @b{action} @tab @b{x} 
-@item @ref{take1,head} @tab positive int
-@item @ref{take1,tail} @tab negative int
-@item @ref{take2,common} @tab list
-@item @ref{take3,filter} @tab function
-@item @ref{take4,select} @tab name(s)
+@multitable {@b{some text for column one}} {for column two} {for column three}
+@item @b{action} @tab @b{x} @tab @b{y}
+@item @ref{take1,head} @tab positive int @tab list
+@item @ref{take1,tail} @tab negative int @tab list
+@item @ref{take2,common} @tab list @tab list / dictionary
+@item @ref{take3,filter} @tab function @tab list
+@item @ref{take4,select} @tab name(s) @tab table
 @end multitable
 @end flushleft
 
@@ -943,7 +943,7 @@ Postive (negative) x returns the first (last) x elements of y.  If abs[x]>count[
 @end example
 
 @anchor{take2}
-If x is a list, then take returns any values common in both x and y. 
+If x and y are lists, then take returns any values common in both x and y.  If x is a list and y is a dictionary, then take returns those values in y where the keys are in x.
 
 @example
  (1 2 3 7 8 9)#(2 8 20) / common
@@ -954,6 +954,10 @@ If x is a list, then take returns any values common in both x and y.
  
  (4 6 7 8 2 4 4 4) # (2 4 6 2 6 5 4)
 2 4 6 2 6 4
+
+ `b`d#`a`b`c`d!1 4 2 3
+b|4
+d|3
 @end example
 
 @anchor{take3}
@@ -1008,12 +1012,12 @@ Return the integer floor of float x.
 [f]drop has a number of different actions depending on x.  This include de-head (drop from front of list), de-tail (drop from back of list), uncommon (drop common elements), and filter (drop where function is zero).
 
 @flushleft
-@multitable {@b{some text for column one}} {for column two}
-@item @b{action} @tab @b{x} 
-@item @ref{drop1,dehead} @tab positive int
-@item @ref{drop1,detail} @tab negative int
-@item @ref{drop2,uncommon} @tab list
-@item @ref{drop3,filter} @tab function
+@multitable {@b{some text for column one}} {for column two} {for column three}
+@item @b{action} @tab @b{x} @tab @b{y}
+@item @ref{drop1,dehead} @tab positive int @tab list
+@item @ref{drop1,detail} @tab negative int @tab list
+@item @ref{drop2,uncommon} @tab list @tab list / dictionary
+@item @ref{drop3,filter} @tab function @tab list
 @end multitable
 @end flushleft
 
@@ -1029,11 +1033,15 @@ Postive (negative) x drops the first (last) x elements of y.
 @end example
 
 @anchor{drop2}
-If x is a list, then drop returns any values from y not found in x. 
+If x and y are lists, then drop returns any values from y not found in x.  If x is a list and y is a dictionary, then drop returns those values in y where the keys are not in x.
 
 @example
  (1 2 3 7 8 9)_(2 8 20) / uncommon
 ,20
+
+ `b`d_`a`b`c`d!1 4 2 3
+a|1
+c|2
 @end example
 
 @anchor{drop3}

@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- January 12, 2021
+<!-- January 17, 2021
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -625,12 +625,12 @@ y z
 <p>[f]take has a number of different actions depending on x.  These include head (take from front of list), tail (take from back of list), common (take common elements), filter (take where function is non-zero), and select (take columns from table).
 </p>
 <table>
-<tr><td><b>action</b></td><td><b>x</b></td></tr>
-<tr><td><a href="#take1">head</a></td><td>positive int</td></tr>
-<tr><td><a href="#take1">tail</a></td><td>negative int</td></tr>
-<tr><td><a href="#take2">common</a></td><td>list</td></tr>
-<tr><td><a href="#take3">filter</a></td><td>function</td></tr>
-<tr><td><a href="#take4">select</a></td><td>name(s)</td></tr>
+<tr><td><b>action</b></td><td><b>x</b></td><td><b>y</b></td></tr>
+<tr><td><a href="#take1">head</a></td><td>positive int</td><td>list</td></tr>
+<tr><td><a href="#take1">tail</a></td><td>negative int</td><td>list</td></tr>
+<tr><td><a href="#take2">common</a></td><td>list</td><td>list / dictionary</td></tr>
+<tr><td><a href="#take3">filter</a></td><td>function</td><td>list</td></tr>
+<tr><td><a href="#take4">select</a></td><td>name(s)</td><td>table</td></tr>
 </table>
 
 <span id="take1"></span><p>Postive (negative) x returns the first (last) x elements of y.  If abs[x]&gt;count[y] then repeatedly pull from y.
@@ -648,7 +648,7 @@ y z
 
 </pre></div>
 
-<span id="take2"></span><p>If x is a list, then take returns any values common in both x and y. 
+<span id="take2"></span><p>If x and y are lists, then take returns any values common in both x and y.  If x is a list and y is a dictionary, then take returns those values in y where the keys are in x.
 </p>
 <div class="example">
 <pre class="example"> (1 2 3 7 8 9)#(2 8 20) / common
@@ -659,6 +659,10 @@ y z
  
  (4 6 7 8 2 4 4 4) # (2 4 6 2 6 5 4)
 2 4 6 2 6 4
+
+ `b`d#`a`b`c`d!1 4 2 3
+b|4
+d|3
 </pre></div>
 
 <span id="take3"></span><p>If x is a function, then select the values where the function is non-zero.
@@ -711,11 +715,11 @@ c b 2
 <p>[f]drop has a number of different actions depending on x.  This include de-head (drop from front of list), de-tail (drop from back of list), uncommon (drop common elements), and filter (drop where function is zero).
 </p>
 <table>
-<tr><td><b>action</b></td><td><b>x</b></td></tr>
-<tr><td><a href="#drop1">dehead</a></td><td>positive int</td></tr>
-<tr><td><a href="#drop1">detail</a></td><td>negative int</td></tr>
-<tr><td><a href="#drop2">uncommon</a></td><td>list</td></tr>
-<tr><td><a href="#drop3">filter</a></td><td>function</td></tr>
+<tr><td><b>action</b></td><td><b>x</b></td><td><b>y</b></td></tr>
+<tr><td><a href="#drop1">dehead</a></td><td>positive int</td><td>list</td></tr>
+<tr><td><a href="#drop1">detail</a></td><td>negative int</td><td>list</td></tr>
+<tr><td><a href="#drop2">uncommon</a></td><td>list</td><td>list / dictionary</td></tr>
+<tr><td><a href="#drop3">filter</a></td><td>function</td><td>list</td></tr>
 </table>
 
 <span id="drop1"></span><p>Postive (negative) x drops the first (last) x elements of y.  
@@ -728,11 +732,15 @@ c b 2
 0 1 2 3
 </pre></div>
 
-<span id="drop2"></span><p>If x is a list, then drop returns any values from y not found in x. 
+<span id="drop2"></span><p>If x and y are lists, then drop returns any values from y not found in x.  If x is a list and y is a dictionary, then drop returns those values in y where the keys are not in x.
 </p>
 <div class="example">
 <pre class="example"> (1 2 3 7 8 9)_(2 8 20) / uncommon
 ,20
+
+ `b`d_`a`b`c`d!1 4 2 3
+a|1
+c|2
 </pre></div>
 
 <span id="drop3"></span><p>If x is a function, then select values where the function is zero.

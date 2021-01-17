@@ -1,6 +1,6 @@
 This is k9.info, produced by texi2any version 6.7 from k.manual.texi.
 
-January 12, 2021
+January 17, 2021
 
 Copyright (C) 2020 John Estrada
 
@@ -844,12 +844,12 @@ Count the number of elements in list, dictionary, or table x.
 [f]take has a number of different actions depending on x.  These include head (take from front of list), tail (take from back of list), common (take common elements), filter (take where function is
 non-zero), and select (take columns from table).
 
-action                     x
-*note head: take1.         positive int
-*note tail: take1.         negative int
-*note common: take2.       list
-*note filter: take3.       function
-*note select: take4.       name(s)
+action                     x                y
+*note head: take1.         positive int     list
+*note tail: take1.         negative int     list
+*note common: take2.       list             list / dictionary
+*note filter: take3.       function         list
+*note select: take4.       name(s)          table
 
 Postive (negative) x returns the first (last) x elements of y.  If abs[x]>count[y] then repeatedly pull from y.
 
@@ -864,7 +864,7 @@ Postive (negative) x returns the first (last) x elements of y.  If abs[x]>count[
 
 
 
-If x is a list, then take returns any values common in both x and y.
+If x and y are lists, then take returns any values common in both x and y.  If x is a list and y is a dictionary, then take returns those values in y where the keys are in x.
 
       (1 2 3 7 8 9)#(2 8 20) / common
      2 8
@@ -874,6 +874,10 @@ If x is a list, then take returns any values common in both x and y.
 
       (4 6 7 8 2 4 4 4) # (2 4 6 2 6 5 4)
      2 4 6 2 6 4
+
+      `b`d#`a`b`c`d!1 4 2 3
+     b|4
+     d|3
 
 If x is a function, then select the values where the function is non-zero.
 
@@ -923,11 +927,11 @@ Return the integer floor of float x.
 [f]drop has a number of different actions depending on x.  This include de-head (drop from front of list), de-tail (drop from back of list), uncommon (drop common elements), and filter (drop where
 function is zero).
 
-action                     x
-*note dehead: drop1.       positive int
-*note detail: drop1.       negative int
-*note uncommon: drop2.     list
-*note filter: drop3.       function
+action                     x                y
+*note dehead: drop1.       positive int     list
+*note detail: drop1.       negative int     list
+*note uncommon: drop2.     list             list / dictionary
+*note filter: drop3.       function         list
 
 Postive (negative) x drops the first (last) x elements of y.
 
@@ -937,10 +941,14 @@ Postive (negative) x drops the first (last) x elements of y.
       -2_0 1 2 3 4 5         / drop last three
      0 1 2 3
 
-If x is a list, then drop returns any values from y not found in x.
+If x and y are lists, then drop returns any values from y not found in x.  If x is a list and y is a dictionary, then drop returns those values in y where the keys are not in x.
 
       (1 2 3 7 8 9)_(2 8 20) / uncommon
      ,20
+
+      `b`d_`a`b`c`d!1 4 2 3
+     a|1
+     c|2
 
 If x is a function, then select values where the function is zero.
 
@@ -4565,147 +4573,147 @@ Ref: cut325515
 Ref: cut425789
 Ref: count25969
 Ref: take26273
-Ref: take126775
-Ref: take227144
-Ref: take327413
-Ref: take427611
-Ref: floor27970
-Ref: drop28061
-Ref: drop128497
-Ref: drop228680
-Ref: drop328799
-Ref: string28963
-Ref: parse29064
-Ref: unique29257
-Ref: find29501
-Ref: type29922
-Ref: at30373
-Ref: value30876
-Ref: dot31317
-Node: Adverb32498
-Ref: each33944
-Ref: over34543
-Ref: scan34679
-Ref: join35746
-Ref: split36117
-Ref: eachp36375
-Ref: eachr37142
-Ref: eachl37342
-Ref: cover37531
-Ref: cscan37844
-Node: Noun39020
-Ref: Atom Types40416
-Ref: bool43031
-Ref: int43718
-Ref: flt44398
-Ref: char44800
-Ref: name45033
-Ref: uuid45273
-Ref: time45430
-Ref: date46333
-Ref: datetime46794
-Node: List47708
-Node: Dictionary52179
-Node: User Functions57807
-Node: Expression61052
-Node: Named Functions62539
-Ref: exp63337
-Ref: log63444
-Ref: sin63538
-Ref: cos63671
-Ref: sqr63813
-Ref: sqrt63896
-Ref: prm63994
-Ref: freq64167
-Ref: sums64521
-Ref: deltas64659
-Ref: rand64997
-Ref: has65468
-Ref: bin65762
-Ref: in65972
-Ref: within66146
-Ref: div66378
-Ref: mod66562
-Ref: bar66736
-Ref: cmb66925
-Ref: msum67353
-Ref: mavg67490
-Ref: Hcount67634
-Ref: Hfirst67729
-Ref: Hlast67824
-Ref: Hsum67928
-Ref: Hmin68031
-Ref: Hmax68149
-Ref: topX68266
-Ref: keyF68424
-Ref: unkey68719
-Ref: meta68855
-Node: Knit Functions68986
-Ref: amend69281
-Ref: amend169804
-Ref: amend270053
-Ref: amend370272
-Ref: amend470577
-Ref: dmend70865
-Ref: dmend171195
-Ref: dmend371363
-Ref: dmend471528
-Node: I/O71689
-Ref: read csv73611
-Ref: write csv73789
-Ref: read json73953
-Ref: write json74137
-Ref: read nv74304
-Ref: w line74497
-Ref: r line74894
-Ref: w byte75007
-Ref: r byte75235
-Ref: r data75385
-Ref: w data76044
-Ref: k-ipc set76620
-Ref: https get76682
-Ref: ffi/py/js/..76744
-Node: Tables77214
-Ref: table77881
-Ref: utable79523
-Ref: ntable80062
-Node: kSQL80805
-Ref: select81734
-Ref: A82301
-Ref: G83154
-Ref: where C83502
-Ref: update84377
-Ref: delete85098
-Ref: Joins85380
-Ref: union85737
-Ref: leftjoin86258
-Ref: outer87037
-Ref: asof87672
-Ref: asof+89143
-Ref: insert90361
-Ref: upsert90707
-Node: System91121
-Ref: load91579
-Ref: timing91767
-Ref: variables92056
-Ref: memory92157
-Ref: cd92276
-Node: Control Flow92360
-Ref: cond92596
-Node: Temporal Functions92966
-Node: Errors94365
-Ref: class94813
-Ref: rank94902
-Ref: length95026
-Ref: _type95149
-Ref: domain95258
-Ref: limit95380
-Ref: nyi95591
-Ref: eparse95918
-Ref: _value96071
-Node: Examples96199
-Node: Benchmark104123
-Node: Conclusion112791
+Ref: take126868
+Ref: take227237
+Ref: take327659
+Ref: take427857
+Ref: floor28216
+Ref: drop28307
+Ref: drop128821
+Ref: drop229004
+Ref: drop329280
+Ref: string29444
+Ref: parse29545
+Ref: unique29738
+Ref: find29982
+Ref: type30403
+Ref: at30854
+Ref: value31357
+Ref: dot31798
+Node: Adverb32979
+Ref: each34425
+Ref: over35024
+Ref: scan35160
+Ref: join36227
+Ref: split36598
+Ref: eachp36856
+Ref: eachr37623
+Ref: eachl37823
+Ref: cover38012
+Ref: cscan38325
+Node: Noun39501
+Ref: Atom Types40897
+Ref: bool43512
+Ref: int44199
+Ref: flt44879
+Ref: char45281
+Ref: name45514
+Ref: uuid45754
+Ref: time45911
+Ref: date46814
+Ref: datetime47275
+Node: List48189
+Node: Dictionary52660
+Node: User Functions58288
+Node: Expression61533
+Node: Named Functions63020
+Ref: exp63818
+Ref: log63925
+Ref: sin64019
+Ref: cos64152
+Ref: sqr64294
+Ref: sqrt64377
+Ref: prm64475
+Ref: freq64648
+Ref: sums65002
+Ref: deltas65140
+Ref: rand65478
+Ref: has65949
+Ref: bin66243
+Ref: in66453
+Ref: within66627
+Ref: div66859
+Ref: mod67043
+Ref: bar67217
+Ref: cmb67406
+Ref: msum67834
+Ref: mavg67971
+Ref: Hcount68115
+Ref: Hfirst68210
+Ref: Hlast68305
+Ref: Hsum68409
+Ref: Hmin68512
+Ref: Hmax68630
+Ref: topX68747
+Ref: keyF68905
+Ref: unkey69200
+Ref: meta69336
+Node: Knit Functions69467
+Ref: amend69762
+Ref: amend170285
+Ref: amend270534
+Ref: amend370753
+Ref: amend471058
+Ref: dmend71346
+Ref: dmend171676
+Ref: dmend371844
+Ref: dmend472009
+Node: I/O72170
+Ref: read csv74092
+Ref: write csv74270
+Ref: read json74434
+Ref: write json74618
+Ref: read nv74785
+Ref: w line74978
+Ref: r line75375
+Ref: w byte75488
+Ref: r byte75716
+Ref: r data75866
+Ref: w data76525
+Ref: k-ipc set77101
+Ref: https get77163
+Ref: ffi/py/js/..77225
+Node: Tables77695
+Ref: table78362
+Ref: utable80004
+Ref: ntable80543
+Node: kSQL81286
+Ref: select82215
+Ref: A82782
+Ref: G83635
+Ref: where C83983
+Ref: update84858
+Ref: delete85579
+Ref: Joins85861
+Ref: union86218
+Ref: leftjoin86739
+Ref: outer87518
+Ref: asof88153
+Ref: asof+89624
+Ref: insert90842
+Ref: upsert91188
+Node: System91602
+Ref: load92060
+Ref: timing92248
+Ref: variables92537
+Ref: memory92638
+Ref: cd92757
+Node: Control Flow92841
+Ref: cond93077
+Node: Temporal Functions93447
+Node: Errors94846
+Ref: class95294
+Ref: rank95383
+Ref: length95507
+Ref: _type95630
+Ref: domain95739
+Ref: limit95861
+Ref: nyi96072
+Ref: eparse96399
+Ref: _value96552
+Node: Examples96680
+Node: Benchmark104604
+Node: Conclusion113272
 
 End Tag Table
 
