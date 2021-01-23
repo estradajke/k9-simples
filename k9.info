@@ -1,6 +1,6 @@
 This is k9.info, produced by texi2any version 6.7 from k.manual.texi.
 
-January 17, 2021
+January 23, 2021
 
 Copyright (C) 2020 John Estrada
 
@@ -2440,7 +2440,17 @@ Generate x random values using a uniform distribution from [0,1) or -x random va
       rand -5 / normal
      1.008461 0.6204548 -1.206095 -0.7168573 -0.5728272
 
-Generate x random values from list y.
+Generate x random values from element or list y.  For element y, y is the exclusive upper bound (int, float, date, or time), the type (character), or the length of each element (name).  For list y, rand
+choose between elements of the list.
+
+      5 rand 10 / values between 0 and 9
+     3 0 0 7 8
+
+      4 rand "a" / values between "A" and "P"
+     "OGFN"
+
+      4 rand `3 / name of length 3 using letters between "A" and "P"
+     `BFH`HKH`LOO`DAC
 
       5 rand 1 2
      1 2 2 1 1
@@ -4628,92 +4638,92 @@ Ref: freq64648
 Ref: sums65002
 Ref: deltas65140
 Ref: rand65478
-Ref: has65949
-Ref: bin66243
-Ref: in66453
-Ref: within66627
-Ref: div66859
-Ref: mod67043
-Ref: bar67217
-Ref: cmb67406
-Ref: msum67834
-Ref: mavg67971
-Ref: Hcount68115
-Ref: Hfirst68210
-Ref: Hlast68305
-Ref: Hsum68409
-Ref: Hmin68512
-Ref: Hmax68630
-Ref: topX68747
-Ref: keyF68905
-Ref: unkey69200
-Ref: meta69336
-Node: Knit Functions69467
-Ref: amend69762
-Ref: amend170285
-Ref: amend270534
-Ref: amend370753
-Ref: amend471058
-Ref: dmend71346
-Ref: dmend171676
-Ref: dmend371844
-Ref: dmend472009
-Node: I/O72170
-Ref: read csv74092
-Ref: write csv74270
-Ref: read json74434
-Ref: write json74618
-Ref: read nv74785
-Ref: w line74978
-Ref: r line75375
-Ref: w byte75488
-Ref: r byte75716
-Ref: r data75866
-Ref: w data76525
-Ref: k-ipc set77101
-Ref: https get77163
-Ref: ffi/py/js/..77225
-Node: Tables77695
-Ref: table78362
-Ref: utable80004
-Ref: ntable80543
-Node: kSQL81286
-Ref: select82215
-Ref: A82782
-Ref: G83635
-Ref: where C83983
-Ref: update84858
-Ref: delete85579
-Ref: Joins85861
-Ref: union86218
-Ref: leftjoin86739
-Ref: outer87518
-Ref: asof88153
-Ref: asof+89624
-Ref: insert90842
-Ref: upsert91188
-Node: System91602
-Ref: load92060
-Ref: timing92248
-Ref: variables92537
-Ref: memory92638
-Ref: cd92757
-Node: Control Flow92841
-Ref: cond93077
-Node: Temporal Functions93447
-Node: Errors94846
-Ref: class95294
-Ref: rank95383
-Ref: length95507
-Ref: _type95630
-Ref: domain95739
-Ref: limit95861
-Ref: nyi96072
-Ref: eparse96399
-Ref: _value96552
-Node: Examples96680
-Node: Benchmark104604
-Node: Conclusion113272
+Ref: has66359
+Ref: bin66653
+Ref: in66863
+Ref: within67037
+Ref: div67269
+Ref: mod67453
+Ref: bar67627
+Ref: cmb67816
+Ref: msum68244
+Ref: mavg68381
+Ref: Hcount68525
+Ref: Hfirst68620
+Ref: Hlast68715
+Ref: Hsum68819
+Ref: Hmin68922
+Ref: Hmax69040
+Ref: topX69157
+Ref: keyF69315
+Ref: unkey69610
+Ref: meta69746
+Node: Knit Functions69877
+Ref: amend70172
+Ref: amend170695
+Ref: amend270944
+Ref: amend371163
+Ref: amend471468
+Ref: dmend71756
+Ref: dmend172086
+Ref: dmend372254
+Ref: dmend472419
+Node: I/O72580
+Ref: read csv74502
+Ref: write csv74680
+Ref: read json74844
+Ref: write json75028
+Ref: read nv75195
+Ref: w line75388
+Ref: r line75785
+Ref: w byte75898
+Ref: r byte76126
+Ref: r data76276
+Ref: w data76935
+Ref: k-ipc set77511
+Ref: https get77573
+Ref: ffi/py/js/..77635
+Node: Tables78105
+Ref: table78772
+Ref: utable80414
+Ref: ntable80953
+Node: kSQL81696
+Ref: select82625
+Ref: A83192
+Ref: G84045
+Ref: where C84393
+Ref: update85268
+Ref: delete85989
+Ref: Joins86271
+Ref: union86628
+Ref: leftjoin87149
+Ref: outer87928
+Ref: asof88563
+Ref: asof+90034
+Ref: insert91252
+Ref: upsert91598
+Node: System92012
+Ref: load92470
+Ref: timing92658
+Ref: variables92947
+Ref: memory93048
+Ref: cd93167
+Node: Control Flow93251
+Ref: cond93487
+Node: Temporal Functions93857
+Node: Errors95256
+Ref: class95704
+Ref: rank95793
+Ref: length95917
+Ref: _type96040
+Ref: domain96149
+Ref: limit96271
+Ref: nyi96482
+Ref: eparse96809
+Ref: _value96962
+Node: Examples97090
+Node: Benchmark105014
+Node: Conclusion113682
 
 End Tag Table
 

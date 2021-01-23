@@ -2591,9 +2591,18 @@ Generate x random values using a uniform distribution from [0,1) or -x random va
 1.008461 0.6204548 -1.206095 -0.7168573 -0.5728272
 @end example
 
-Generate x random values from list y.
+Generate x random values from element or list y.  For element y, y is the exclusive upper bound (int, float, date, or time), the type (character), or the length of each element (name).  For list y, rand choose between elements of the list.
 
 @example
+ 5 rand 10 / values between 0 and 9
+3 0 0 7 8
+
+ 4 rand "a" / values between "A" and "P"
+"OGFN"
+
+ 4 rand `3 / name of length 3 using letters between "A" and "P"
+`BFH`HKH`LOO`DAC
+
  5 rand 1 2
 1 2 2 1 1
 
