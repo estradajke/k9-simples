@@ -118,20 +118,20 @@ a b  c
 2 2. y
 1 4. z
 
- &quot;wHeader.csv&quot;0:`csv t               / save with column headers
+ &quot;wHeader.csv&quot;1:`csv t               / save with column headers
 wHeader.csv
 
-&quot;woHeader.csv&quot;0:1_`csv t             / save without col headers
+ &quot;woHeader.csv&quot;1:1_`csv t             / save without col headers
 woHeader.csv
 
-`csv?0:&quot;wHeader.csv&quot;                 / default reader
+ `csv?1:&quot;wHeader.csv&quot;                 / default reader
 a b  c
 - -- -
 3 1. x
 2 2. y
 1 4. z
 
- (&quot;,&quot;;&quot;ifn&quot;)0:&quot;wHeader.csv&quot;          / separator and types
+ (&quot;,&quot;;&quot;ifn&quot;)1:&quot;wHeader.csv&quot;          / separator and types
 a b  c
 - -- -
 3 1. x
@@ -147,7 +147,7 @@ e f  g
 </pre></div>
 
 <span id="read-csv"></span><span id="read-csv-_21d2-_0060csv_003fx"></span><h3 class="section">11.2 read csv &rArr; <em>`</em>csv?x</h3>
-<p>Convert x from csv format.  Works on lists and tables.
+<p>Convert x from csv format.  Works on lists and tables.  You can also use <em>`</em>cs.
 </p>
 <div class="example">
 <pre class="example"> `csv?(&quot;a,b&quot;;&quot;1,3.&quot;;&quot;2,4.&quot;)
@@ -158,7 +158,7 @@ a b
 </pre></div>
 
 <span id="write-csv"></span><span id="write-csv-_21d2-_0060csv-x"></span><h3 class="section">11.3 write csv &rArr; <em>`</em>csv x</h3>
-<p>Convert x to csv format.  Works on lists and tables.
+<p>Convert x to csv format.  Works on lists and tables.  You can also use <em>`</em>cs.
 </p>
 <div class="example">
 <pre class="example"> `csv [[]a:1 2;b:3. 4.]
@@ -205,9 +205,6 @@ blue
 red
 
  &quot;file.txt&quot; 0: (&quot;blue&quot;; &quot;red&quot;) / write to file, one line per element
-
- &quot;some.csv&quot; 0:`csv [[]a:1 2;b:3. 4.]
-&quot;some.csv&quot;
 </pre></div>
 
 <span id="r-line"></span><span id="read-line-_21d2-0_003ax"></span><h3 class="section">11.8 read line &rArr; 0:x</h3>
@@ -227,11 +224,20 @@ a,b
 <pre class="example"> &quot;some.txt&quot;1:&quot;0123ABab&quot;
 &quot;some.txt&quot;
 
-t:1:&quot;some.txt&quot;;t
-48 49 50 51 65 66 97 98g
-
-`c t
+ 1:&quot;some.txt&quot;
 &quot;0123ABab&quot;
+
+ &quot;some.csv&quot; 1:`csv [[]a:1 2;b:3. 4.]
+&quot;some.csv&quot;
+
+ 1: &quot;some.csv&quot;
+&quot;a,b\n1,3.00\n2,4.00\n&quot;
+
+ `csv?1:&quot;some.csv&quot;
+a b
+- -
+1 3
+2 4
 </pre></div>
 
 <span id="r-byte"></span><span id="read-byte-_21d2-1_003ax"></span><h3 class="section">11.10 read byte &rArr; 1:x</h3>

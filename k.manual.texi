@@ -1099,7 +1099,14 @@ Find the first element of x that matches y otherwise return the end of vector.
 4
 @end example
 
-There is also another use of @code{?} where x is a special name, eg. @math{`}js, @math{`}csv, or @math{`}nv.  This is further discussed in the @ref{I/O} section.
+Return random numbers.  Documented at @ref{rand}.
+
+@example
+ 3?1.
+0.01640292 0.8029538 0.9569196
+@end example
+
+There is also another use of @code{?} where x is a special name, eg. @math{`}js, @math{`}csv (or @math{`}cs), or @math{`}nv.  This is further discussed in the @ref{I/O} section.
 
 @anchor{type}@section type @result{} @@x
 Return the data type of x.  Lower-case represents a single element while upper-case represents a list of type indicated.
@@ -1145,7 +1152,7 @@ Given a list or function x return the value(s) at index(indices) y.
 
 @end example
 
-There is also another use of @code{@@} where x is a special name, eg. @math{`}js, @math{`}csv, or @math{`}nv.  This is further discussed in the @ref{I/O} section.
+There is also another use of @code{@@} where x is a special name, eg. @math{`}js, @math{`}csv (or @math{`}cs), or @math{`}nv.  This is further discussed in the @ref{I/O} section.
 
 @anchor{value}@section value @result{} .x
 Evaluate a string of valid k code or list of k code.  Can also be used to covert from a string to a numeric, 
@@ -3040,20 +3047,20 @@ a b  c
 2 2. y
 1 4. z
 
- "wHeader.csv"0:`csv t               / save with column headers
+ "wHeader.csv"1:`csv t               / save with column headers
 wHeader.csv
 
-"woHeader.csv"0:1_`csv t             / save without col headers
+ "woHeader.csv"1:1_`csv t             / save without col headers
 woHeader.csv
 
-`csv?0:"wHeader.csv"                 / default reader
+ `csv?1:"wHeader.csv"                 / default reader
 a b  c
 - -- -
 3 1. x
 2 2. y
 1 4. z
 
- (",";"ifn")0:"wHeader.csv"          / separator and types
+ (",";"ifn")1:"wHeader.csv"          / separator and types
 a b  c
 - -- -
 3 1. x
@@ -3069,7 +3076,7 @@ e f  g
 @end example
 
 @anchor{read csv}@section read csv @result{} @math{`}csv?x
-Convert x from csv format.  Works on lists and tables.
+Convert x from csv format.  Works on lists and tables.  You can also use @math{`}cs.
 
 @example
  `csv?("a,b";"1,3.";"2,4.")
@@ -3080,7 +3087,7 @@ a b
 @end example
 
 @anchor{write csv}@section write csv @result{} @math{`}csv x
-Convert x to csv format.  Works on lists and tables.
+Convert x to csv format.  Works on lists and tables.  You can also use @math{`}cs.
 
 @example
  `csv [[]a:1 2;b:3. 4.]
@@ -3127,9 +3134,6 @@ blue
 red
 
  "file.txt" 0: ("blue"; "red") / write to file, one line per element
-
- "some.csv" 0:`csv [[]a:1 2;b:3. 4.]
-"some.csv"
 @end example
 
 @anchor{r line}@section read line @result{} 0:x
@@ -3149,11 +3153,20 @@ Output to file x the list of chars in y as bytes.
  "some.txt"1:"0123ABab"
 "some.txt"
 
-t:1:"some.txt";t
-48 49 50 51 65 66 97 98g
-
-`c t
+ 1:"some.txt"
 "0123ABab"
+
+ "some.csv" 1:`csv [[]a:1 2;b:3. 4.]
+"some.csv"
+
+ 1: "some.csv"
+"a,b\n1,3.00\n2,4.00\n"
+
+ `csv?1:"some.csv"
+a b
+- -
+1 3
+2 4
 @end example
 
 @anchor{r byte}@section read byte @result{} 1:x

@@ -1002,7 +1002,12 @@ Find the first element of x that matches y otherwise return the end of vector.
       (1;`a;"blue";7.4)?3
      4
 
-There is also another use of '?' where x is a special name, eg.  `js, `csv, or `nv.  This is further discussed in the *note I/O:: section.
+Return random numbers.  Documented at *note rand::.
+
+      3?1.
+     0.01640292 0.8029538 0.9569196
+
+There is also another use of '?' where x is a special name, eg.  `js, `csv (or `cs), or `nv.  This is further discussed in the *note I/O:: section.
 
 2.34 type => @x
 ===============
@@ -1048,7 +1053,7 @@ Given a list or function x return the value(s) at index(indices) y.
      0.009999833 0.99995 0.01
 
 
-There is also another use of '@' where x is a special name, eg.  `js, `csv, or `nv.  This is further discussed in the *note I/O:: section.
+There is also another use of '@' where x is a special name, eg.  `js, `csv (or `cs), or `nv.  This is further discussed in the *note I/O:: section.
 
 2.36 value => .x
 ================
@@ -2868,20 +2873,20 @@ read it back in, both specifying types and with the csv reader.  Types are speci
      2 2. y
      1 4. z
 
-      "wHeader.csv"0:`csv t               / save with column headers
+      "wHeader.csv"1:`csv t               / save with column headers
      wHeader.csv
 
-     "woHeader.csv"0:1_`csv t             / save without col headers
+      "woHeader.csv"1:1_`csv t             / save without col headers
      woHeader.csv
 
-     `csv?0:"wHeader.csv"                 / default reader
+      `csv?1:"wHeader.csv"                 / default reader
      a b  c
      - -- -
      3 1. x
      2 2. y
      1 4. z
 
-      (",";"ifn")0:"wHeader.csv"          / separator and types
+      (",";"ifn")1:"wHeader.csv"          / separator and types
      a b  c
      - -- -
      3 1. x
@@ -2898,7 +2903,7 @@ read it back in, both specifying types and with the csv reader.  Types are speci
 11.2 read csv => `csv?x
 =======================
 
-Convert x from csv format.  Works on lists and tables.
+Convert x from csv format.  Works on lists and tables.  You can also use `cs.
 
       `csv?("a,b";"1,3.";"2,4.")
      a b
@@ -2909,7 +2914,7 @@ Convert x from csv format.  Works on lists and tables.
 11.3 write csv => `csv x
 ========================
 
-Convert x to csv format.  Works on lists and tables.
+Convert x to csv format.  Works on lists and tables.  You can also use `cs.
 
       `csv [[]a:1 2;b:3. 4.]
      a,b
@@ -2956,9 +2961,6 @@ Output to x the list of strings in y.  y must be a list of strings.  If y is a s
 
       "file.txt" 0: ("blue"; "red") / write to file, one line per element
 
-      "some.csv" 0:`csv [[]a:1 2;b:3. 4.]
-     "some.csv"
-
 11.8 read line => 0:x
 =====================
 
@@ -2977,11 +2979,20 @@ Output to file x the list of chars in y as bytes.
       "some.txt"1:"0123ABab"
      "some.txt"
 
-     t:1:"some.txt";t
-     48 49 50 51 65 66 97 98g
-
-     `c t
+      1:"some.txt"
      "0123ABab"
+
+      "some.csv" 1:`csv [[]a:1 2;b:3. 4.]
+     "some.csv"
+
+      1: "some.csv"
+     "a,b\n1,3.00\n2,4.00\n"
+
+      `csv?1:"some.csv"
+     a b
+     - -
+     1 3
+     2 4
 
 11.10 read byte => 1:x
 ======================
@@ -4596,134 +4607,134 @@ Ref: string29444
 Ref: parse29545
 Ref: unique29738
 Ref: find29982
-Ref: type30403
-Ref: at30854
-Ref: value31357
-Ref: dot31798
-Node: Adverb32979
-Ref: each34425
-Ref: over35024
-Ref: scan35160
-Ref: join36227
-Ref: split36598
-Ref: eachp36856
-Ref: eachr37623
-Ref: eachl37823
-Ref: cover38012
-Ref: cscan38325
-Node: Noun39501
-Ref: Atom Types40897
-Ref: bool43512
-Ref: int44199
-Ref: flt44879
-Ref: char45281
-Ref: name45514
-Ref: uuid45754
-Ref: time45911
-Ref: date46814
-Ref: datetime47275
-Node: List48189
-Node: Dictionary52660
-Node: User Functions58288
-Node: Expression61533
-Node: Named Functions63020
-Ref: exp63818
-Ref: log63925
-Ref: sin64019
-Ref: cos64152
-Ref: sqr64294
-Ref: sqrt64377
-Ref: prm64475
-Ref: freq64648
-Ref: sums65002
-Ref: deltas65140
-Ref: rand65478
-Ref: has66359
-Ref: bin66653
-Ref: in66863
-Ref: within67037
-Ref: div67269
-Ref: mod67453
-Ref: bar67627
-Ref: cmb67816
-Ref: msum68244
-Ref: mavg68381
-Ref: Hcount68525
-Ref: Hfirst68620
-Ref: Hlast68715
-Ref: Hsum68819
-Ref: Hmin68922
-Ref: Hmax69040
-Ref: topX69157
-Ref: keyF69315
-Ref: unkey69610
-Ref: meta69746
-Node: Knit Functions69877
-Ref: amend70172
-Ref: amend170695
-Ref: amend270944
-Ref: amend371163
-Ref: amend471468
-Ref: dmend71756
-Ref: dmend172086
-Ref: dmend372254
-Ref: dmend472419
-Node: I/O72580
-Ref: read csv74502
-Ref: write csv74680
-Ref: read json74844
-Ref: write json75028
-Ref: read nv75195
-Ref: w line75388
-Ref: r line75785
-Ref: w byte75898
-Ref: r byte76126
-Ref: r data76276
-Ref: w data76935
-Ref: k-ipc set77511
-Ref: https get77573
-Ref: ffi/py/js/..77635
-Node: Tables78105
-Ref: table78772
-Ref: utable80414
-Ref: ntable80953
-Node: kSQL81696
-Ref: select82625
-Ref: A83192
-Ref: G84045
-Ref: where C84393
-Ref: update85268
-Ref: delete85989
-Ref: Joins86271
-Ref: union86628
-Ref: leftjoin87149
-Ref: outer87928
-Ref: asof88563
-Ref: asof+90034
-Ref: insert91252
-Ref: upsert91598
-Node: System92012
-Ref: load92470
-Ref: timing92658
-Ref: variables92947
-Ref: memory93048
-Ref: cd93167
-Node: Control Flow93251
-Ref: cond93487
-Node: Temporal Functions93857
-Node: Errors95256
-Ref: class95704
-Ref: rank95793
-Ref: length95917
-Ref: _type96040
-Ref: domain96149
-Ref: limit96271
-Ref: nyi96482
-Ref: eparse96809
-Ref: _value96962
-Node: Examples97090
-Node: Benchmark105014
-Node: Conclusion113682
+Ref: type30513
+Ref: at30964
+Ref: value31476
+Ref: dot31917
+Node: Adverb33098
+Ref: each34544
+Ref: over35143
+Ref: scan35279
+Ref: join36346
+Ref: split36717
+Ref: eachp36975
+Ref: eachr37742
+Ref: eachl37942
+Ref: cover38131
+Ref: cscan38444
+Node: Noun39620
+Ref: Atom Types41016
+Ref: bool43631
+Ref: int44318
+Ref: flt44998
+Ref: char45400
+Ref: name45633
+Ref: uuid45873
+Ref: time46030
+Ref: date46933
+Ref: datetime47394
+Node: List48308
+Node: Dictionary52779
+Node: User Functions58407
+Node: Expression61652
+Node: Named Functions63139
+Ref: exp63937
+Ref: log64044
+Ref: sin64138
+Ref: cos64271
+Ref: sqr64413
+Ref: sqrt64496
+Ref: prm64594
+Ref: freq64767
+Ref: sums65121
+Ref: deltas65259
+Ref: rand65597
+Ref: has66478
+Ref: bin66772
+Ref: in66982
+Ref: within67156
+Ref: div67388
+Ref: mod67572
+Ref: bar67746
+Ref: cmb67935
+Ref: msum68363
+Ref: mavg68500
+Ref: Hcount68644
+Ref: Hfirst68739
+Ref: Hlast68834
+Ref: Hsum68938
+Ref: Hmin69041
+Ref: Hmax69159
+Ref: topX69276
+Ref: keyF69434
+Ref: unkey69729
+Ref: meta69865
+Node: Knit Functions69996
+Ref: amend70291
+Ref: amend170814
+Ref: amend271063
+Ref: amend371282
+Ref: amend471587
+Ref: dmend71875
+Ref: dmend172205
+Ref: dmend372373
+Ref: dmend472538
+Node: I/O72699
+Ref: read csv74623
+Ref: write csv74824
+Ref: read json75011
+Ref: write json75195
+Ref: read nv75362
+Ref: w line75555
+Ref: r line75893
+Ref: w byte76006
+Ref: r byte76360
+Ref: r data76510
+Ref: w data77169
+Ref: k-ipc set77745
+Ref: https get77807
+Ref: ffi/py/js/..77869
+Node: Tables78339
+Ref: table79006
+Ref: utable80648
+Ref: ntable81187
+Node: kSQL81930
+Ref: select82859
+Ref: A83426
+Ref: G84279
+Ref: where C84627
+Ref: update85502
+Ref: delete86223
+Ref: Joins86505
+Ref: union86862
+Ref: leftjoin87383
+Ref: outer88162
+Ref: asof88797
+Ref: asof+90268
+Ref: insert91486
+Ref: upsert91832
+Node: System92246
+Ref: load92704
+Ref: timing92892
+Ref: variables93181
+Ref: memory93282
+Ref: cd93401
+Node: Control Flow93485
+Ref: cond93721
+Node: Temporal Functions94091
+Node: Errors95490
+Ref: class95938
+Ref: rank96027
+Ref: length96151
+Ref: _type96274
+Ref: domain96383
+Ref: limit96505
+Ref: nyi96716
+Ref: eparse97043
+Ref: _value97196
+Node: Examples97324
+Node: Benchmark105248
+Node: Conclusion113916
 
 End Tag Table
 
