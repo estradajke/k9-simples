@@ -1150,6 +1150,11 @@ Given a list or function x return the value(s) at index(indices) y.
  (sin;cos;1*)@@\:0.01
 0.009999833 0.99995 0.01
 
+ (sqr;sqrt;|;#)@@'(3;10;"word";`a`b`c) / list of fuctions applied to list of inputs
+9       
+3.162278
+drow    
+3       
 @end example
 
 There is also another use of @code{@@} where x is a special name, eg. @math{`}js, @math{`}csv (or @math{`}cs), or @math{`}nv.  This is further discussed in the @ref{I/O} section.
