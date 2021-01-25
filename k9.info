@@ -1,6 +1,6 @@
 This is k9.info, produced by texi2any version 6.7 from k.manual.texi.
 
-January 23, 2021
+January 25, 2021
 
 Copyright (C) 2020 John Estrada
 
@@ -2282,7 +2282,7 @@ As keys come in scope as variables, variables fall out of scope.  One can evalua
      76
 
       x:20;
-      d :sum size@&size>20 / out of scope
+      d :sum size@&size>x  / out of scope
      !value
 
       d :sum size@&size>."x"
