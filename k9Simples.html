@@ -1110,22 +1110,38 @@ c|2
 <p>Return the data type of x.  Lower-case represents a single element while upper-case represents a list of type indicated.
 </p>
 <div class="example">
-<pre class="example"> @1
+<pre class="example">@1 / 0 ro 1 will show up as binary
+`b
+
+@2
 `i
- @1.2
+
+@1.2
 `f
- @`a
-`s
- @&quot;a&quot;
+
+@`a
+`n
+
+@&quot;a&quot;
 `c
- @2020.04.20
+
+@2020.04.20
 `d
- @12:34:56.789
+
+@12:34:56.789
 `t
- @(1;1.2;`a;&quot;a&quot;;2020.04.20;12:34:56.789)  / type of a list
-`L
- @'(1;1.2;`a;&quot;a&quot;;2020.04.20;12:34:56.789) / type of elements of the list
+
+@(1;1.2;`a;&quot;a&quot;;2020.04.20;12:34:56.789)  / type of a list
+`:
+
+@'(1;1.2;`a;&quot;a&quot;;2020.04.20;12:34:56.789) / type of elements of the list
 `i`f`s`c`d`t
+
+@{x*x}
+`.
+
+@`a`b!1 2
+`a
 </pre></div>
 
 <span id="at"></span><span id="g_t_005bn_005dat-_21d2-x_0040y"></span><h3 class="section">2.35 [n]at &rArr; x@y</h3>

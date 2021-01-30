@@ -1014,22 +1014,38 @@ There is also another use of '?' where x is a special name, eg.  `js, `csv (or `
 
 Return the data type of x.  Lower-case represents a single element while upper-case represents a list of type indicated.
 
-      @1
+     @1 / 0 ro 1 will show up as binary
+     `b
+
+     @2
      `i
-      @1.2
+
+     @1.2
      `f
-      @`a
-     `s
-      @"a"
+
+     @`a
+     `n
+
+     @"a"
      `c
-      @2020.04.20
+
+     @2020.04.20
      `d
-      @12:34:56.789
+
+     @12:34:56.789
      `t
-      @(1;1.2;`a;"a";2020.04.20;12:34:56.789)  / type of a list
-     `L
-      @'(1;1.2;`a;"a";2020.04.20;12:34:56.789) / type of elements of the list
+
+     @(1;1.2;`a;"a";2020.04.20;12:34:56.789)  / type of a list
+     `:
+
+     @'(1;1.2;`a;"a";2020.04.20;12:34:56.789) / type of elements of the list
      `i`f`s`c`d`t
+
+     @{x*x}
+     `.
+
+     @`a`b!1 2
+     `a
 
 2.35 [n]at => x@y
 =================
@@ -4613,133 +4629,133 @@ Ref: parse29545
 Ref: unique29738
 Ref: find29982
 Ref: type30513
-Ref: at30964
-Ref: value31602
-Ref: dot32043
-Node: Adverb33224
-Ref: each34670
-Ref: over35269
-Ref: scan35405
-Ref: join36472
-Ref: split36843
-Ref: eachp37101
-Ref: eachr37868
-Ref: eachl38068
-Ref: cover38257
-Ref: cscan38570
-Node: Noun39746
-Ref: Atom Types41142
-Ref: bool43757
-Ref: int44444
-Ref: flt45124
-Ref: char45526
-Ref: name45759
-Ref: uuid45999
-Ref: time46156
-Ref: date47059
-Ref: datetime47520
-Node: List48434
-Node: Dictionary52905
-Node: User Functions58533
-Node: Expression61778
-Node: Named Functions63265
-Ref: exp64063
-Ref: log64170
-Ref: sin64264
-Ref: cos64397
-Ref: sqr64539
-Ref: sqrt64622
-Ref: prm64720
-Ref: freq64893
-Ref: sums65247
-Ref: deltas65385
-Ref: rand65723
-Ref: has66604
-Ref: bin66898
-Ref: in67108
-Ref: within67282
-Ref: div67514
-Ref: mod67698
-Ref: bar67872
-Ref: cmb68061
-Ref: msum68489
-Ref: mavg68626
-Ref: Hcount68770
-Ref: Hfirst68865
-Ref: Hlast68960
-Ref: Hsum69064
-Ref: Hmin69167
-Ref: Hmax69285
-Ref: topX69402
-Ref: keyF69560
-Ref: unkey69855
-Ref: meta69991
-Node: Knit Functions70122
-Ref: amend70417
-Ref: amend170940
-Ref: amend271189
-Ref: amend371408
-Ref: amend471713
-Ref: dmend72001
-Ref: dmend172331
-Ref: dmend372499
-Ref: dmend472664
-Node: I/O72825
-Ref: read csv74749
-Ref: write csv74950
-Ref: read json75137
-Ref: write json75321
-Ref: read nv75488
-Ref: w line75681
-Ref: r line76019
-Ref: w byte76132
-Ref: r byte76486
-Ref: r data76636
-Ref: w data77295
-Ref: k-ipc set77871
-Ref: https get77933
-Ref: ffi/py/js/..77995
-Node: Tables78465
-Ref: table79132
-Ref: utable80774
-Ref: ntable81313
-Node: kSQL82056
-Ref: select82985
-Ref: A83552
-Ref: G84405
-Ref: where C84753
-Ref: update85628
-Ref: delete86349
-Ref: Joins86631
-Ref: union86988
-Ref: leftjoin87509
-Ref: outer88288
-Ref: asof88923
-Ref: asof+90394
-Ref: insert91612
-Ref: upsert91958
-Node: System92372
-Ref: load92830
-Ref: timing93018
-Ref: variables93307
-Ref: memory93408
-Ref: cd93527
-Node: Control Flow93611
-Ref: cond93847
-Node: Temporal Functions94217
-Node: Errors95616
-Ref: class96064
-Ref: rank96153
-Ref: length96277
-Ref: _type96400
-Ref: domain96509
-Ref: limit96631
-Ref: nyi96842
-Ref: eparse97169
-Ref: _value97322
-Node: Examples97450
-Node: Benchmark105374
-Node: Conclusion114042
+Ref: at31057
+Ref: value31695
+Ref: dot32136
+Node: Adverb33317
+Ref: each34763
+Ref: over35362
+Ref: scan35498
+Ref: join36565
+Ref: split36936
+Ref: eachp37194
+Ref: eachr37961
+Ref: eachl38161
+Ref: cover38350
+Ref: cscan38663
+Node: Noun39839
+Ref: Atom Types41235
+Ref: bool43850
+Ref: int44537
+Ref: flt45217
+Ref: char45619
+Ref: name45852
+Ref: uuid46092
+Ref: time46249
+Ref: date47152
+Ref: datetime47613
+Node: List48527
+Node: Dictionary52998
+Node: User Functions58626
+Node: Expression61871
+Node: Named Functions63358
+Ref: exp64156
+Ref: log64263
+Ref: sin64357
+Ref: cos64490
+Ref: sqr64632
+Ref: sqrt64715
+Ref: prm64813
+Ref: freq64986
+Ref: sums65340
+Ref: deltas65478
+Ref: rand65816
+Ref: has66697
+Ref: bin66991
+Ref: in67201
+Ref: within67375
+Ref: div67607
+Ref: mod67791
+Ref: bar67965
+Ref: cmb68154
+Ref: msum68582
+Ref: mavg68719
+Ref: Hcount68863
+Ref: Hfirst68958
+Ref: Hlast69053
+Ref: Hsum69157
+Ref: Hmin69260
+Ref: Hmax69378
+Ref: topX69495
+Ref: keyF69653
+Ref: unkey69948
+Ref: meta70084
+Node: Knit Functions70215
+Ref: amend70510
+Ref: amend171033
+Ref: amend271282
+Ref: amend371501
+Ref: amend471806
+Ref: dmend72094
+Ref: dmend172424
+Ref: dmend372592
+Ref: dmend472757
+Node: I/O72918
+Ref: read csv74842
+Ref: write csv75043
+Ref: read json75230
+Ref: write json75414
+Ref: read nv75581
+Ref: w line75774
+Ref: r line76112
+Ref: w byte76225
+Ref: r byte76579
+Ref: r data76729
+Ref: w data77388
+Ref: k-ipc set77964
+Ref: https get78026
+Ref: ffi/py/js/..78088
+Node: Tables78558
+Ref: table79225
+Ref: utable80867
+Ref: ntable81406
+Node: kSQL82149
+Ref: select83078
+Ref: A83645
+Ref: G84498
+Ref: where C84846
+Ref: update85721
+Ref: delete86442
+Ref: Joins86724
+Ref: union87081
+Ref: leftjoin87602
+Ref: outer88381
+Ref: asof89016
+Ref: asof+90487
+Ref: insert91705
+Ref: upsert92051
+Node: System92465
+Ref: load92923
+Ref: timing93111
+Ref: variables93400
+Ref: memory93501
+Ref: cd93620
+Node: Control Flow93704
+Ref: cond93940
+Node: Temporal Functions94310
+Node: Errors95709
+Ref: class96157
+Ref: rank96246
+Ref: length96370
+Ref: _type96493
+Ref: domain96602
+Ref: limit96724
+Ref: nyi96935
+Ref: eparse97262
+Ref: _value97415
+Node: Examples97543
+Node: Benchmark105467
+Node: Conclusion114135
 
 End Tag Table
 

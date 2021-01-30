@@ -1112,22 +1112,38 @@ There is also another use of @code{?} where x is a special name, eg. @math{`}js,
 Return the data type of x.  Lower-case represents a single element while upper-case represents a list of type indicated.
 
 @example
- @@1
+@@1 / 0 ro 1 will show up as binary
+`b
+
+@@2
 `i
- @@1.2
+
+@@1.2
 `f
- @@`a
-`s
- @@"a"
+
+@@`a
+`n
+
+@@"a"
 `c
- @@2020.04.20
+
+@@2020.04.20
 `d
- @@12:34:56.789
+
+@@12:34:56.789
 `t
- @@(1;1.2;`a;"a";2020.04.20;12:34:56.789)  / type of a list
-`L
- @@'(1;1.2;`a;"a";2020.04.20;12:34:56.789) / type of elements of the list
+
+@@(1;1.2;`a;"a";2020.04.20;12:34:56.789)  / type of a list
+`:
+
+@@'(1;1.2;`a;"a";2020.04.20;12:34:56.789) / type of elements of the list
 `i`f`s`c`d`t
+
+@@@{x*x@}
+`.
+
+@@`a`b!1 2
+`a
 @end example
 
 @anchor{at}@section [n]at @result{} x@@y
