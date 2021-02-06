@@ -160,7 +160,7 @@ Next: <a href="Noun.html" accesskey="n" rel="next">Noun</a>, Previous: <a href="
 <p>Over has the same function as <a href="#scan">scan</a> but returns only the last value.
 </p>
 <span id="scan"></span><span id="scan-_21d2-f_005cx-or-i-f_005cx"></span><h3 class="section">3.3 scan &rArr; f\x or i f\x</h3>
-<p>Compute f, a function of two arguments, over list x with optional initial value i.  On the first iteration return x[0].  On each subsequent iteration function will be called with previous output and the next element of x as arguments, i.e. f<sub>i</sub>=f[f<sub>i-1</sub>;x<sub>i</sub>].  Use with f, a function of one argument, is cover in See <a href="#each">each</a>.
+<p>Compute f, a function of two arguments, over list x with optional initial value i.  On the first iteration return x[0].  On each subsequent iteration function will be called with previous output and the next element of x as arguments, i.e. f<sub>i</sub>=f[f<sub>i-1</sub>;x<sub>i</sub>].  Calling with f, a function of one argument, is covered in <a href="#each">each</a>.
 </p>
 <table>
 <tr><td><b>i</b></td><td><b>x</b></td><td><b>f[x]</b></td><td><b>a f[x]</b></td><td><b>x:0 1 4 9 16 25</b></td><td><b>+\x</b></td><td><b>3+\x</b></td><td><b>+/x</b></td><td><b>3+/x</b></td></tr>

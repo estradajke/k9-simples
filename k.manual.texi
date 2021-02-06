@@ -1354,7 +1354,7 @@ Apply function f to each value in list x in a single thread.  Multithread operat
 Over has the same function as @ref{scan} but returns only the last value.
 
 @anchor{scan}@section scan @result{} f\x or i f\x
-Compute f, a function of two arguments, over list x with optional initial value i.  On the first iteration return x[0].  On each subsequent iteration function will be called with previous output and the next element of x as arguments, i.e. f@sub{i}=f[f@sub{i-1};x@sub{i}].  Use with f, a function of one argument, is cover in @xref{each}.
+Compute f, a function of two arguments, over list x with optional initial value i.  On the first iteration return x[0].  On each subsequent iteration function will be called with previous output and the next element of x as arguments, i.e. f@sub{i}=f[f@sub{i-1};x@sub{i}].  Calling with f, a function of one argument, is covered in @ref{each}.
 
 @flushleft
 @multitable {i} {i} {i} {i} {i} {i} {i} {i} {i}
