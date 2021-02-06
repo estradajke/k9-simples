@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- January 31, 2021
+<!-- February 6, 2021
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -159,8 +159,8 @@ Next: <a href="Noun.html" accesskey="n" rel="next">Noun</a>, Previous: <a href="
 <span id="over"></span><span id="over-_21d2-f_002f_005bx_003by_005d-or-x-f_002fy"></span><h3 class="section">3.2 over &rArr; f/[x;y] or x f/y</h3>
 <p>Over has the same function as <a href="#scan">scan</a> but returns only the last value.
 </p>
-<span id="scan"></span><span id="scan-_21d2-f_005c_005bx_003by_005d-or-x-f_005cy"></span><h3 class="section">3.3 scan &rArr; f\[x;y] or x f\y</h3>
-<p>Compute f[x;y] such that f<sub>i</sub>=f[f<sub>i-1</sub>;x<sub>i</sub>].
+<span id="scan"></span><span id="scan-_21d2-f_005cx-or-i-f_005cx"></span><h3 class="section">3.3 scan &rArr; f\x or i f\x</h3>
+<p>Compute f, a function of two arguments, over list x with optional initial value i.  On the first iteration return x[0].  On each additional call function will be called with previous output and the next element of x, i.e. f<sub>i</sub>=f[f<sub>i-1</sub>;x<sub>i</sub>].
 </p>
 <table>
 <tr><td><b>i</b></td><td><b>x</b></td><td><b>f[x]</b></td><td><b>a f[x]</b></td><td><b>x:0 1 4 9 16 25</b></td><td><b>+\x</b></td><td><b>3+\x</b></td><td><b>+/x</b></td><td><b>3+/x</b></td></tr>

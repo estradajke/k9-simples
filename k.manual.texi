@@ -1353,8 +1353,8 @@ Apply function f to each value in list x in a single thread.  Multithread operat
 @anchor{over}@section over @result{} f/[x;y] or x f/y
 Over has the same function as @ref{scan} but returns only the last value.
 
-@anchor{scan}@section scan @result{} f\[x;y] or x f\y
-Compute f[x;y] such that f@sub{i}=f[f@sub{i-1};x@sub{i}].
+@anchor{scan}@section scan @result{} f\x or i f\x
+Compute f, a function of two arguments, over list x with optional initial value i.  On the first iteration return x[0].  On each additional call function will be called with previous output and the next element of x, i.e. f@sub{i}=f[f@sub{i-1};x@sub{i}].
 
 @flushleft
 @multitable {i} {i} {i} {i} {i} {i} {i} {i} {i}
