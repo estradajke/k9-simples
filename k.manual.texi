@@ -1350,11 +1350,11 @@ Apply function f to each value in list x in a single thread.  Multithread operat
 0 2 4
 @end example
 
-@anchor{over}@section over @result{} f/[x;y] or x f/y
+@anchor{over}@section over @result{} f/x or i f/x
 Over has the same function as @ref{scan} but returns only the last value.
 
 @anchor{scan}@section scan @result{} f\x or i f\x
-Compute f, a function of two arguments, over list x with optional initial value i.  On the first iteration return x[0].  On each additional call function will be called with previous output and the next element of x, i.e. f@sub{i}=f[f@sub{i-1};x@sub{i}].
+Compute f, a function of two arguments, over list x with optional initial value i.  On the first iteration return x[0].  On each subsequent iteration function will be called with previous output and the next element of x as arguments, i.e. f@sub{i}=f[f@sub{i-1};x@sub{i}].  Use with f, a function of one argument, is cover in @xref{each}.
 
 @flushleft
 @multitable {i} {i} {i} {i} {i} {i} {i} {i} {i}
@@ -1376,6 +1376,7 @@ Examples
 a
 ab
 abc
+
  +\1 20 300          / scan and plus to sum over a list
 1 21 321
 
@@ -1385,9 +1386,9 @@ abc
  @{y+10*x@}/1 20 300   / over and user func
 600
 
- x:1 2 3               / x+y0, +y1, +y2
- y:10 10 10
- x+\y
+ i:1 2 3               / i+x0, +x1, +x2
+ x:10 10 10
+ i+\x
 11 12 13
 21 22 23
 31 32 33
@@ -1397,7 +1398,7 @@ abc
 21 22 23
 31 32 33
 
- 1 2 3@{x+.5*y@}\20 20 20    / x f\ syntax
+ 1 2 3@{x+.5*y@}\20 20 20    / i f\x syntax
 11 12 13
 21 22 23
 31 32 33
