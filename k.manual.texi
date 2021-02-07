@@ -1438,22 +1438,29 @@ c\x splits a number x into base c digits.
 2 0 1
 @end example
 
-@anchor{eachp}@section eachp @result{} f':[x;y] or x f':y
-Apply f[x;y] using the prior value of y, eg. f[y@sub{i};y@sub{i-1}].  f@sub{0} returns f[y@sub{0};x].
+@anchor{eachp}@section eachp @result{} f':[i;x] or i f':x
+Compute f, a function of two arguments, over list x with optional initial value i.   Concretely f[x@sub{i};x@sub{i-1}] where f@sub{0} returns f[x@sub{0};i].
 
 @example
-@ ,':[`x;(`$"y",'$!5)]
-y0 x 
-y1 y0
-y2 y1
-y3 y2
-y4 y3
+ ,':[`i;(`$"x",'$!5)]
+x0 i 
+x1 x0
+x2 x1
+x3 x2
+x4 x3
 
-@ %':[100;100 101.9 105.1 102.3 106.1] / compute returns
+ %':[100;100 101.9 105.1 102.3 106.1] / compute returns
 1 1.019 1.031403 0.9733587 1.037146
 
-@ 100%':100 101.9 105.1 102.3 106.1    / using infix notation
+ 100%':100 101.9 105.1 102.3 106.1    / using infix notation
 1 1.019 1.031403 0.9733587 1.037146
+
+ @{($x)," % ",($y)," = ",$x%y@}':[100.1;100.1 101.9 105.1 102.3 106.1]
+100.1 % 100.1 = 1        
+101.9 % 100.1 = 1.017982 
+105.1 % 101.9 = 1.031403 
+102.3 % 105.1 = 0.9733587
+106.1 % 102.3 = 1.037146 
 @end example
 
 Additionally eachp (':) is a multithreaded (parallel) each.  This will allow a function to run using multiple threads over a list of arguments.

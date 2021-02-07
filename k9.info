@@ -1,6 +1,6 @@
 This is k9.info, produced by texi2any version 6.7 from k.manual.texi.
 
-February 6, 2021
+February 7, 2021
 
 Copyright (C) 2020 John Estrada
 
@@ -1323,23 +1323,30 @@ c\x splits a number x into base c digits.
       8\129
      2 0 1
 
-3.6 eachp => f':[x;y] or x f':y
+3.6 eachp => f':[i;x] or i f':x
 ===============================
 
-Apply f[x;y] using the prior value of y, eg.  f[y_{i};y_{i-1}].  f_{0} returns f[y_{0};x].
+Compute f, a function of two arguments, over list x with optional initial value i.  Concretely f[x_{i};x_{i-1}] where f_{0} returns f[x_{0};i].
 
-      ,':[`x;(`$"y",'$!5)]
-     y0 x
-     y1 y0
-     y2 y1
-     y3 y2
-     y4 y3
+      ,':[`i;(`$"x",'$!5)]
+     x0 i
+     x1 x0
+     x2 x1
+     x3 x2
+     x4 x3
 
       %':[100;100 101.9 105.1 102.3 106.1] / compute returns
      1 1.019 1.031403 0.9733587 1.037146
 
       100%':100 101.9 105.1 102.3 106.1    / using infix notation
      1 1.019 1.031403 0.9733587 1.037146
+
+      {($x)," % ",($y)," = ",$x%y}':[100.1;100.1 101.9 105.1 102.3 106.1]
+     100.1 % 100.1 = 1
+     101.9 % 100.1 = 1.017982
+     105.1 % 101.9 = 1.031403
+     102.3 % 105.1 = 0.9733587
+     106.1 % 102.3 = 1.037146
 
 Additionally eachp (':) is a multithreaded (parallel) each.  This will allow a function to run using multiple threads over a list of arguments.
 
@@ -4644,123 +4651,123 @@ Ref: scan35525
 Ref: join36875
 Ref: split37246
 Ref: eachp37504
-Ref: eachr38271
-Ref: eachl38471
-Ref: cover38660
-Ref: cscan38973
-Node: Noun40149
-Ref: Atom Types41545
-Ref: bool44160
-Ref: int44847
-Ref: flt45527
-Ref: char45929
-Ref: name46162
-Ref: uuid46402
-Ref: time46559
-Ref: date47462
-Ref: datetime47923
-Node: List48837
-Node: Dictionary53308
-Node: User Functions58936
-Node: Expression62181
-Node: Named Functions63668
-Ref: exp64466
-Ref: log64573
-Ref: sin64667
-Ref: cos64800
-Ref: sqr64942
-Ref: sqrt65025
-Ref: prm65123
-Ref: freq65296
-Ref: sums65650
-Ref: deltas65788
-Ref: rand66126
-Ref: has67007
-Ref: bin67301
-Ref: in67511
-Ref: within67685
-Ref: div67917
-Ref: mod68101
-Ref: bar68275
-Ref: cmb68464
-Ref: msum68892
-Ref: mavg69029
-Ref: Hcount69173
-Ref: Hfirst69268
-Ref: Hlast69363
-Ref: Hsum69467
-Ref: Hmin69570
-Ref: Hmax69688
-Ref: topX69805
-Ref: keyF69963
-Ref: unkey70258
-Ref: meta70394
-Node: Knit Functions70525
-Ref: amend70820
-Ref: amend171343
-Ref: amend271592
-Ref: amend371811
-Ref: amend472116
-Ref: dmend72404
-Ref: dmend172734
-Ref: dmend372902
-Ref: dmend473067
-Node: I/O73228
-Ref: read csv75152
-Ref: write csv75353
-Ref: read json75540
-Ref: write json75724
-Ref: read nv75891
-Ref: w line76084
-Ref: r line76422
-Ref: w byte76535
-Ref: r byte76889
-Ref: r data77039
-Ref: w data77698
-Ref: k-ipc set78274
-Ref: https get78336
-Ref: ffi/py/js/..78398
-Node: Tables78868
-Ref: table79535
-Ref: utable81177
-Ref: ntable81716
-Node: kSQL82459
-Ref: select83388
-Ref: A83955
-Ref: G84808
-Ref: where C85156
-Ref: update86031
-Ref: delete86752
-Ref: Joins87034
-Ref: union87391
-Ref: leftjoin87912
-Ref: outer88691
-Ref: asof89326
-Ref: asof+90797
-Ref: insert92015
-Ref: upsert92361
-Node: System92775
-Ref: load93233
-Ref: timing93421
-Ref: variables93710
-Ref: memory93811
-Ref: cd93930
-Node: Control Flow94014
-Ref: cond94250
-Node: Temporal Functions94620
-Node: Errors96019
-Ref: class96467
-Ref: rank96556
-Ref: length96680
-Ref: _type96803
-Ref: domain96912
-Ref: limit97034
-Ref: nyi97245
-Ref: eparse97572
-Ref: _value97725
-Node: Examples97853
-Node: Benchmark105777
-Node: Conclusion114445
+Ref: eachr38543
+Ref: eachl38743
+Ref: cover38932
+Ref: cscan39245
+Node: Noun40421
+Ref: Atom Types41817
+Ref: bool44432
+Ref: int45119
+Ref: flt45799
+Ref: char46201
+Ref: name46434
+Ref: uuid46674
+Ref: time46831
+Ref: date47734
+Ref: datetime48195
+Node: List49109
+Node: Dictionary53580
+Node: User Functions59208
+Node: Expression62453
+Node: Named Functions63940
+Ref: exp64738
+Ref: log64845
+Ref: sin64939
+Ref: cos65072
+Ref: sqr65214
+Ref: sqrt65297
+Ref: prm65395
+Ref: freq65568
+Ref: sums65922
+Ref: deltas66060
+Ref: rand66398
+Ref: has67279
+Ref: bin67573
+Ref: in67783
+Ref: within67957
+Ref: div68189
+Ref: mod68373
+Ref: bar68547
+Ref: cmb68736
+Ref: msum69164
+Ref: mavg69301
+Ref: Hcount69445
+Ref: Hfirst69540
+Ref: Hlast69635
+Ref: Hsum69739
+Ref: Hmin69842
+Ref: Hmax69960
+Ref: topX70077
+Ref: keyF70235
+Ref: unkey70530
+Ref: meta70666
+Node: Knit Functions70797
+Ref: amend71092
+Ref: amend171615
+Ref: amend271864
+Ref: amend372083
+Ref: amend472388
+Ref: dmend72676
+Ref: dmend173006
+Ref: dmend373174
+Ref: dmend473339
+Node: I/O73500
+Ref: read csv75424
+Ref: write csv75625
+Ref: read json75812
+Ref: write json75996
+Ref: read nv76163
+Ref: w line76356
+Ref: r line76694
+Ref: w byte76807
+Ref: r byte77161
+Ref: r data77311
+Ref: w data77970
+Ref: k-ipc set78546
+Ref: https get78608
+Ref: ffi/py/js/..78670
+Node: Tables79140
+Ref: table79807
+Ref: utable81449
+Ref: ntable81988
+Node: kSQL82731
+Ref: select83660
+Ref: A84227
+Ref: G85080
+Ref: where C85428
+Ref: update86303
+Ref: delete87024
+Ref: Joins87306
+Ref: union87663
+Ref: leftjoin88184
+Ref: outer88963
+Ref: asof89598
+Ref: asof+91069
+Ref: insert92287
+Ref: upsert92633
+Node: System93047
+Ref: load93505
+Ref: timing93693
+Ref: variables93982
+Ref: memory94083
+Ref: cd94202
+Node: Control Flow94286
+Ref: cond94522
+Node: Temporal Functions94892
+Node: Errors96291
+Ref: class96739
+Ref: rank96828
+Ref: length96952
+Ref: _type97075
+Ref: domain97184
+Ref: limit97306
+Ref: nyi97517
+Ref: eparse97844
+Ref: _value97997
+Node: Examples98125
+Node: Benchmark106049
+Node: Conclusion114717
 
 End Tag Table
 
