@@ -1436,7 +1436,7 @@ sentence.
 </pre></div>
 
 <span id="eachp"></span><span id="eachp-_21d2-f_0027_003a_005bx_003by_005d-or-y-f_0027_003ax"></span><h3 class="section">3.6 eachp &rArr; f&rsquo;:[x;y] or y f&rsquo;:x</h3>
-<p>Compute f, a function of two arguments, over list x with optional initial value y.   Concretely f[x<sub>i</sub>;x<sub>i-1</sub>] where f<sub>0</sub> returns f[x<sub>0</sub>;i].
+<p>Compute f, a function of two arguments, over list x with optional initial value y.   Concretely f<sub>i</sub>=f[x<sub>i</sub>;x<sub>i-1</sub>] where f<sub>0</sub> returns f[x<sub>0</sub>;i].
 </p>
 <div class="example">
 <pre class="example"> ,':[`i;(`$&quot;x&quot;,'$!5)]
@@ -1452,8 +1452,8 @@ x4 x3
  100%':100 101.9 105.1 102.3 106.1    / using infix notation
 1 1.019 1.031403 0.9733587 1.037146
 
- 99.8{($x),&quot; % &quot;,($y),&quot; = &quot;,$x%y}':100.1 101.9 105.1 102.3 106.1
-100.1 % 99.8 = 1.003006  
+ 101.9{($x),&quot; % &quot;,($y),&quot; = &quot;,$x%y}':100.1 101.9 105.1 102.3 106.1
+100.1 % 101.9 = 0.9823356
 101.9 % 100.1 = 1.017982 
 105.1 % 101.9 = 1.031403 
 102.3 % 105.1 = 0.9733587

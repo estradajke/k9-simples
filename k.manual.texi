@@ -1439,7 +1439,7 @@ c\x splits a number x into base c digits.
 @end example
 
 @anchor{eachp}@section eachp @result{} f':[x;y] or y f':x
-Compute f, a function of two arguments, over list x with optional initial value y.   Concretely f[x@sub{i};x@sub{i-1}] where f@sub{0} returns f[x@sub{0};i].
+Compute f, a function of two arguments, over list x with optional initial value y.   Concretely f@sub{i}=f[x@sub{i};x@sub{i-1}] where f@sub{0} returns f[x@sub{0};i].
 
 @example
  ,':[`i;(`$"x",'$!5)]
@@ -1455,8 +1455,8 @@ x4 x3
  100%':100 101.9 105.1 102.3 106.1    / using infix notation
 1 1.019 1.031403 0.9733587 1.037146
 
- 99.8@{($x)," % ",($y)," = ",$x%y@}':100.1 101.9 105.1 102.3 106.1
-100.1 % 99.8 = 1.003006  
+ 101.9@{($x)," % ",($y)," = ",$x%y@}':100.1 101.9 105.1 102.3 106.1
+100.1 % 101.9 = 0.9823356
 101.9 % 100.1 = 1.017982 
 105.1 % 101.9 = 1.031403 
 102.3 % 105.1 = 0.9733587
