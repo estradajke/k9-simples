@@ -1289,7 +1289,7 @@ Next: <a href="#Noun" accesskey="n" rel="next">Noun</a>, Previous: <a href="#Ver
    f'  <a href="#each">each</a>
 [x]f/  <a href="#scan">over</a> (c/<a href="#join">join</a>)
 [x]f\  <a href="#scan">scan</a> (c\<a href="#split">split</a>)
-[x]f': <a href="#eachp">eachp</a>
+[y]f': <a href="#eachp">eachp</a>
    f/: <a href="#eachr">eachr</a> g/:<a href="#cover">over</a> 
    f\: <a href="#eachl">eachl</a> g\:<a href="#cscan">scan</a> 
 </pre></div>
@@ -1349,11 +1349,11 @@ Next: <a href="#Noun" accesskey="n" rel="next">Noun</a>, Previous: <a href="#Ver
 0 2 4
 </pre></div>
 
-<span id="over"></span><span id="over-_21d2-f_002fx-or-i-f_002fx"></span><h3 class="section">3.2 over &rArr; f/x or i f/x</h3>
+<span id="over"></span><span id="over-_21d2-f_002fy-or-x-f_002fy"></span><h3 class="section">3.2 over &rArr; f/y or x f/y</h3>
 <p>Over has the same function as <a href="#scan">scan</a> but returns only the last value.
 </p>
-<span id="scan"></span><span id="scan-_21d2-f_005cx-or-i-f_005cx"></span><h3 class="section">3.3 scan &rArr; f\x or i f\x</h3>
-<p>Compute f, a function of two arguments, over list x with optional initial value i.  On the first iteration return x[0].  On each subsequent iteration function will be called with previous output and the next element of x as arguments, i.e. f<sub>i</sub>=f[f<sub>i-1</sub>;x<sub>i</sub>].  Calling with f, a function of one argument, is covered in <a href="#each">each</a>.
+<span id="scan"></span><span id="scan-_21d2-f_005cy-or-x-f_005cy"></span><h3 class="section">3.3 scan &rArr; f\y or x f\y</h3>
+<p>Compute f, a function of two arguments, over list y with optional initial value x.  On the first iteration return y<sub>0</sub>.  On each subsequent iteration function will be called with previous output and the next element of y as arguments, i.e. f<sub>i</sub>=f[f<sub>i-1</sub>;y<sub>i</sub>].  Calling with f, a function of one argument, is covered in <a href="#each">each</a>.
 </p>
 <table>
 <tr><td><b>i</b></td><td><b>x</b></td><td><b>f[x]</b></td><td><b>a f[x]</b></td><td><b>x:0 1 4 9 16 25</b></td><td><b>+\x</b></td><td><b>3+\x</b></td><td><b>+/x</b></td><td><b>3+/x</b></td></tr>
@@ -1383,14 +1383,14 @@ abc
  {y+10*x}/1 20 300   / over and user func
 600
 
- i:1 2 3               / i+x0, +x1, +x2
- x:10 10 10
- i+\x
+ x:1 2 3               / x+y0, +y1, +y2
+ y:10 10 10
+ x+\y
 11 12 13
 21 22 23
 31 32 33
 
- {x+.5*y}\[1 2 3;20 20 20]  / f\x syntax
+ {x+.5*y}\[1 2 3;20 20 20]  / f\y syntax
 11 12 13
 21 22 23
 31 32 33
@@ -1435,8 +1435,8 @@ sentence.
 2 0 1
 </pre></div>
 
-<span id="eachp"></span><span id="eachp-_21d2-f_0027_003a_005bi_003bx_005d-or-i-f_0027_003ax"></span><h3 class="section">3.6 eachp &rArr; f&rsquo;:[i;x] or i f&rsquo;:x</h3>
-<p>Compute f, a function of two arguments, over list x with optional initial value i.   Concretely f[x<sub>i</sub>;x<sub>i-1</sub>] where f<sub>0</sub> returns f[x<sub>0</sub>;i].
+<span id="eachp"></span><span id="eachp-_21d2-f_0027_003a_005bx_003by_005d-or-y-f_0027_003ax"></span><h3 class="section">3.6 eachp &rArr; f&rsquo;:[x;y] or y f&rsquo;:x</h3>
+<p>Compute f, a function of two arguments, over list x with optional initial value y.   Concretely f[x<sub>i</sub>;x<sub>i-1</sub>] where f<sub>0</sub> returns f[x<sub>0</sub>;i].
 </p>
 <div class="example">
 <pre class="example"> ,':[`i;(`$&quot;x&quot;,'$!5)]
@@ -1452,8 +1452,8 @@ x4 x3
  100%':100 101.9 105.1 102.3 106.1    / using infix notation
 1 1.019 1.031403 0.9733587 1.037146
 
- {($x),&quot; % &quot;,($y),&quot; = &quot;,$x%y}':[100.1;100.1 101.9 105.1 102.3 106.1]
-100.1 % 100.1 = 1        
+ 99.8{($x),&quot; % &quot;,($y),&quot; = &quot;,$x%y}':100.1 101.9 105.1 102.3 106.1
+100.1 % 99.8 = 1.003006  
 101.9 % 100.1 = 1.017982 
 105.1 % 101.9 = 1.031403 
 102.3 % 105.1 = 0.9733587

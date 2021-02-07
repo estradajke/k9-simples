@@ -1290,7 +1290,7 @@ Adverb
    f'  @ref{each}
 [x]f/  @ref{scan,over} (c/@ref{join})
 [x]f\  @ref{scan} (c\@ref{split})
-[x]f': @ref{eachp}
+[y]f': @ref{eachp}
    f/: @ref{eachr} g/:@ref{cover,over} 
    f\: @ref{eachl} g\:@ref{cscan,scan} 
 @end example
@@ -1350,11 +1350,11 @@ Apply function f to each value in list x in a single thread.  Multithread operat
 0 2 4
 @end example
 
-@anchor{over}@section over @result{} f/x or i f/x
+@anchor{over}@section over @result{} f/y or x f/y
 Over has the same function as @ref{scan} but returns only the last value.
 
-@anchor{scan}@section scan @result{} f\x or i f\x
-Compute f, a function of two arguments, over list x with optional initial value i.  On the first iteration return x[0].  On each subsequent iteration function will be called with previous output and the next element of x as arguments, i.e. f@sub{i}=f[f@sub{i-1};x@sub{i}].  Calling with f, a function of one argument, is covered in @ref{each}.
+@anchor{scan}@section scan @result{} f\y or x f\y
+Compute f, a function of two arguments, over list y with optional initial value x.  On the first iteration return y@sub{0}.  On each subsequent iteration function will be called with previous output and the next element of y as arguments, i.e. f@sub{i}=f[f@sub{i-1};y@sub{i}].  Calling with f, a function of one argument, is covered in @ref{each}.
 
 @flushleft
 @multitable {i} {i} {i} {i} {i} {i} {i} {i} {i}
@@ -1386,14 +1386,14 @@ abc
  @{y+10*x@}/1 20 300   / over and user func
 600
 
- i:1 2 3               / i+x0, +x1, +x2
- x:10 10 10
- i+\x
+ x:1 2 3               / x+y0, +y1, +y2
+ y:10 10 10
+ x+\y
 11 12 13
 21 22 23
 31 32 33
 
- @{x+.5*y@}\[1 2 3;20 20 20]  / f\x syntax
+ @{x+.5*y@}\[1 2 3;20 20 20]  / f\y syntax
 11 12 13
 21 22 23
 31 32 33
@@ -1438,8 +1438,8 @@ c\x splits a number x into base c digits.
 2 0 1
 @end example
 
-@anchor{eachp}@section eachp @result{} f':[i;x] or i f':x
-Compute f, a function of two arguments, over list x with optional initial value i.   Concretely f[x@sub{i};x@sub{i-1}] where f@sub{0} returns f[x@sub{0};i].
+@anchor{eachp}@section eachp @result{} f':[x;y] or y f':x
+Compute f, a function of two arguments, over list x with optional initial value y.   Concretely f[x@sub{i};x@sub{i-1}] where f@sub{0} returns f[x@sub{0};i].
 
 @example
  ,':[`i;(`$"x",'$!5)]
@@ -1455,8 +1455,8 @@ x4 x3
  100%':100 101.9 105.1 102.3 106.1    / using infix notation
 1 1.019 1.031403 0.9733587 1.037146
 
- @{($x)," % ",($y)," = ",$x%y@}':[100.1;100.1 101.9 105.1 102.3 106.1]
-100.1 % 100.1 = 1        
+ 99.8@{($x)," % ",($y)," = ",$x%y@}':100.1 101.9 105.1 102.3 106.1
+100.1 % 99.8 = 1.003006  
 101.9 % 100.1 = 1.017982 
 105.1 % 101.9 = 1.031403 
 102.3 % 105.1 = 0.9733587
