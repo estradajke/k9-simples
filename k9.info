@@ -1,6 +1,6 @@
 This is k9.info, produced by texi2any version 6.7 from k.manual.texi.
 
-February 7, 2021
+February 15, 2021
 
 Copyright (C) 2020 John Estrada
 
@@ -23,32 +23,38 @@ Alas this manual is not as elegant as the k9 language in that the text version o
 
 The built-in reference screen ('\') containing all the k9 commands.
 
-*note verb: Verb.                      *note adverb: Adverb.                 *note noun: Noun.
-:   x          y          f' *note each::                *note char:: " ab"              \l a.k
-+   *note flip::       *note plus::    [x]f/ *note over:: (c/*note join::)       *note name:: ``ab               \t:n x
--   *note minus::      *note minus::   [x]f\ *note scan:: (c\*note split::)      *note int::  0 2 3              \u:n x
-*   *note first::      *note times::   [x]f':*note eachp::               *note flt::  0 2 3.             \v
-%              *note divide::     f/:*note eachr:: g/:*note over: cover.       *note date:: 2021.01.23   .z.d
-&   *note where::      *note min/and::    f\:*note eachl:: g\:*note scan: cscan.       *note time:: 12:34:56.789 .z.t
-|   *note reverse::    *note max/or::     
-<   *note asc::        *note less::       *note i/o: I/O.  *enterprise       class                   \f
->   *note desc::       *note more::       0: *note r: r line./*note w: w line. line            *note list: List. (2;3.4;`c)         \fl x
-=   *note group::      *note equal::      1: *note r: r byte./*note w: w byte. char            *note dict: Dictionary. [a:2;b:`c]         \fc x     
-~   *note not::        *note match::     *2: *note r: r data./*note w: w data. data            *note func: User Functions. {[a;b]a+b}         \fs x
-!   *note key::        *note key::       *3: *note k-ipc set::           *note expr: Expression. :a+b               \cd [d]   
-,   *note enlist::     *note cat::       *4: *note https get::           
-^   *note sort::    [f]*note cut::       *5: *note ffi/py/js/..::        
-#   *note count::   [f]*note take::                        *note table: Tables. t:[[]i:2 3;f:2.3 4]
-_   *note floor::   [f]*note drop::                       *note utable:: u:[[x:..]y:..]
-$   *note string::     *note parse::      $[b;t;f] *note cond::   *note ntable:: n:`..![[]y:..]
-?   *note unique::  [n]*note find::                             
-@   *note type::    [n]*note at::         @[r;i;f[;y]] *note amend::    *note `js?: read json.*note `js : write json.d
-.   *note value::      *note dot::        .[r;i;f[;y]] *note dmend::    *note `csv?: read csv.*note `csv : write csv.t
+*ffi: a:"./a.so"5:`f!"ii";a.f[2;3] / int f(int i,int j){return i+j;}
+*k/c: b:"./b.so"5:`f!2   ;b.f[2;3] / K f(K x,K y){return ki(xi+yi);}
+[python:   import k;k.k('+',2,3)]
+[nodejs: require('k').k('+',2,3)]
+limit: #(4billion) name8 code(param8 local8 global32 const128)
 
-*note select::[G]*note A:: from T where C; *note update:: *note A:: from T where C; *note delete:: from T where C
-*note count:: *note first:: *note last: Hlast. *note sum: Hsum. *note min: Hmin. *note max: Hmax. *[avg var dev med ..]; *note in::  *note within:: *note bin:: *note freq:: *note rand:: 
-*note exp:: *note log:: *note sin:: *note cos:: *note sqr:: *note sqrt:: *note div:: *note mod:: *note bar:: *note prm:: *note cmb::; *note msum:: *note mavg:: *note sums:: *note deltas:: differ
+*note verb: Verb.                   *note adverb: Adverb.                  *note noun: Noun.
+: x         y          f' *note each::      g' *note each::    *note char:: " ab"              \l a.k
++ *note flip::      *note plus::    [x]f/ *note over: cover.      c/ *note join::    *note name:: ``ab               \t:n x
+- *note minus::     *note minus::   [x]f\ *note scan: cscan.      c\ splt    *note int::  0N 2 3 0W          \u:n x
+* *note first::     *note times::   [y]f':*note eachp::rior            *note flt::  0n 2 3.4 0w        \v
+%           *note divide::     f/:*note eachr::ight g/:*note over: cover.    *note date:: 2021.01.23   .z.d
+& *note where::     *note min/and::    f\:*note eachl::eft  g\:*note scan: cscan.    *note time:: 12:34:56.789 .z.t
+| *note reverse::   *note max/or::     
+< *note asc::       *note less::       *note i/o: I/O. (*enterprise)       class                   \f
+> *note desc::      *note more::       0: *note r: r line./*note w: w line. line             *note list: List. l:(2;3.4;`c)       \fl x
+= *note group::     *note equal::      1: *note r: r byte./*note w: w byte. char             *note dict: Dictionary. d:[n:`b;i:2]       \fc x   
+~ *note not::       *note match::     *2: *note r: r data./*note w: w data. data             *note func: User Functions. f:{[a;b]a+b}       \fs x
+! *note key::       *note key::       *3: *note k-ipc set::            *note expr: Expression. e::a+b             \cd [d]
+, *note enlist::    *note cat::       *4: *note https get::
+^ *note sort::   [f]*note cut::       *5: *note ffi/py/js/..::         *note table: Tables. t:[[]n:`b`c;i:2 3]
+# *note count::  [f]*note take::                              *note utable:: u: [[n:`b`c]i:2 3]
+_ *note floor::  [f]*note drop::                       
+$ *note string::    *note parse::      $[b;t;f] *note cond::
+? *note unique:: [n]*note find::                             
+@ *note type::   [n]*note at::         @[x;i;f[;y]] *note amend::
+. *note value::     *note dot::        .[x;i;f[;y]] *note dmend::
 
+*note `js?: read json.*note `js : write json.d:[d:.z.d;t:.z.t;n:`ab;i:23;f:4.5];*note `csv?: read csv.*note `csv : write csv.t:2#,d
+{*note select::|*note update::} *note A:: by B from T where C; *note delete:: from T where C
+*note count:: *note first: Hfirst. *note last: Hlast. *note min: Hmin. *note max: Hmax. sum *note dot:: avg var [dev med *note mod::e *note count::d ..]
+*note sqrt:: *note sqr:: *note exp:: *note log:: *note sin:: *note cos:: *note div:: *note mod:: *note bar:: *note in:: *note bin::
 \\ exit  /comment \trace [:return 'signal if do while]
 
 * Menu:
@@ -164,32 +170,38 @@ this binary to run.  (You'll have to have tried and failed to have it appear her
 Typing '\' in a terminal window gives you a concise overview of the language.  This document aims to provide details to beginning user where the help screen is a bit too terse.  Some commands are not
 yet complete and thus marked with an asterisk, eg.  *update A by B from T where C.
 
-verb                      adverb                 noun
-:   x          y          f' each                char " ab"              \l a.k
-+   flip       plus    [x]f/ over (c/join)       name ``ab               \t:n x
--   minus      minus   [x]f\ scan (c\split)      int  0 2 3              \u:n x
-*   first      times   [x]f':eachp               flt  0 2 3.             \v
-%              divide     f/:eachr g/:over       date 2021.01.23   .z.d
-&   where      min/and    f\:eachl g\:scan       time 12:34:56.789 .z.t
-|   reverse    max/or     
-<   asc        less       i/o  *enterprise       class                   \f
->   desc       more       0: r/w line            list (2;3.4;`c)         \fl x
-=   group      equal      1: r/w char            dict [a:2;b:`c]         \fc x     
-~   not        match     *2: r/w data            func {[a;b]a+b}         \fs x
-!   key        key       *3: k-ipc set           expr :a+b               \cd [d]   
-,   enlist     cat       *4: https get           
-^   sort    [f]cut       *5: ffi/py/js/..        
-#   count   [f]take                        table t:[[]i:2 3;f:2.3 4]
-_   floor   [f]drop                       utable u:[[x:..]y:..]
-$   string     parse      $[b;t;f] cond   ntable n:`..![[]y:..]
-?   unique  [n]find                             
-@   type    [n]at         @[r;i;f[;y]] amend    `js?`js d
-.   value      dot        .[r;i;f[;y]] dmend    `csv?`csv t
+*ffi: a:"./a.so"5:`f!"ii";a.f[2;3] / int f(int i,int j){return i+j;}
+*k/c: b:"./b.so"5:`f!2   ;b.f[2;3] / K f(K x,K y){return ki(xi+yi);}
+[python:   import k;k.k('+',2,3)]
+[nodejs: require('k').k('+',2,3)]
+limit: #(4billion) name8 code(param8 local8 global32 const128)
 
-select[G]A from T where C; update A from T where C; delete from T where C
-count first last sum min max *[avg var dev med ..]; in within bin freq rand 
-exp log sin cos sqr sqrt div mod bar prm cmb; msum mavg sums deltas differ
+verb                   adverb                  noun
+: x         y          f' each      g' each    char " ab"              \l a.k
++ flip      plus    [x]f/ over      c/ join    name ``ab               \t:n x
+- minus     minus   [x]f\ scan      c\ splt    int  0N 2 3 0W          \u:n x
+* first     times   [y]f':eachprior            flt  0n 2 3.4 0w        \v
+%           divide     f/:eachright g/:over    date 2021.01.23   .z.d
+& where     min/and    f\:eachleft  g\:scan    time 12:34:56.789 .z.t
+| reverse   max/or     
+< asc       less       i/o (*enterprise)       class                   \f
+> desc      more       0: r/w line             list l:(2;3.4;`c)       \fl x
+= group     equal      1: r/w char             dict d:[n:`b;i:2]       \fc x   
+~ not       match     *2: r/w data             func f:{[a;b]a+b}       \fs x
+! key       key       *3: k-ipc set            expr e::a+b             \cd [d]
+, enlist    cat       *4: https get
+^ sort   [f]cut       *5: ffi/py/js/..         table t:[[]n:`b`c;i:2 3]
+# count  [f]take                              utable u: [[n:`b`c]i:2 3]
+_ floor  [f]drop                       
+$ string    parse      $[b;t;f] cond
+? unique [n]find                             
+@ type   [n]at         @[x;i;f[;y]] amend
+. value     dot        .[x;i;f[;y]] dmend
 
+`js?`js d:[d:.z.d;t:.z.t;n:`ab;i:23;f:4.5];`csv?`csv t:2#,d
+{select|update} A by B from T where C; delete from T where C
+count first last min max sum dot avg var [dev med mode countd ..]
+sqrt sqr exp log sin cos div mod bar in bin
 \\ exit  /comment \trace [:return 'signal if do while]
 
 1.5 rlwrap
@@ -3112,12 +3124,11 @@ File: k9.info,  Node: Tables,  Next: kSQL,  Prev: I/O,  Up: Top
 *********
 
 k9 has the ability to store data in a tabular format containing named columns and rows of information as tables.  If the data to be stored and queried is large, then you should use tables.  This chapter
-introduces the different types of data tables available in k9.  Table, utable and ntable are very similar and as you'll see in the *note kSQL:: chapter are easy to query.  In the *note Benchmark::
-chapter, you'll see that tables are fast to save, read, and query.
+introduces the different types of data tables available in k9.  Table and utable are very similar and as you'll see in the *note kSQL:: chapter are easy to query.  In the *note Benchmark:: chapter,
+you'll see that tables are fast to save, read, and query.
 
-      *note table:: t:[[]i:2 3;f:2.3 4]
-     *note utable:: u:[[x:..]y:..]
-     *note ntable:: n:`..![[]y:..]
+      *note table:: t:[[]n:`b`c;i:2 3]
+     *note utable:: u: [[n:`b`c]i:2 3]
 
 12.1 table
 ==========
@@ -3199,26 +3210,6 @@ utable (or key table) is a table where some of the columns are keyed.  The combi
      2020.09.08|140
      2020.09.09|139
      2020.09.10|150
-
-12.3 ntable
-===========
-
-A ntable is a collection of tables stored in a dictionary where the keys are symbols and the values are tables.  Thus, it has both the data and schema of a set of tables, much like a data dictionary in
-a conventional relational database.  Below is an example where the keys are symbols and the values are end-of-day prices.
-
-      x1:+`d`p!(2020.09.08 2020.09.09 2020.09.10;140 139 150)
-      x2:+`d`p!(2020.09.08 2020.09.10;202 208)
-
-     eod:`AB`ZY!(x1;x2);eod  / ntable
-     AB|[[]d:2018.06.27 2018.06.27 2018.06.27;p:140 139 150]
-     ZY|[[]d:2018.06.27 2018.06.27;p:202 208]
-
-      eod`AB                  / table
-     d          p
-     ---------- ---
-     2018.06.27 140
-     2018.06.27 139
-     2018.06.27 150
 
 
 File: k9.info,  Node: kSQL,  Next: System,  Prev: Tables,  Up: Top
@@ -4560,214 +4551,219 @@ faster than previously imagined.
 
 Eventually, you'll realize that this manual isn't needed and it's all here...
 
-verb                      adverb                 noun
-:   x          y          f' each                char " ab"              \l a.k
-+   flip       plus    [x]f/ over (c/join)       name ``ab               \t:n x
--   minus      minus   [x]f\ scan (c\split)      int  0 2 3              \u:n x
-*   first      times   [x]f':eachp               flt  0 2 3.             \v
-%              divide     f/:eachr g/:over       date 2021.01.23   .z.d
-&   where      min/and    f\:eachl g\:scan       time 12:34:56.789 .z.t
-|   reverse    max/or     
-<   asc        less       i/o  *enterprise       class                   \f
->   desc       more       0: r/w line            list (2;3.4;`c)         \fl x
-=   group      equal      1: r/w char            dict [a:2;b:`c]         \fc x     
-~   not        match     *2: r/w data            func {[a;b]a+b}         \fs x
-!   key        key       *3: k-ipc set           expr :a+b               \cd [d]   
-,   enlist     cat       *4: https get           
-^   sort    [f]cut       *5: ffi/py/js/..        
-#   count   [f]take                        table t:[[]i:2 3;f:2.3 4]
-_   floor   [f]drop                       utable u:[[x:..]y:..]
-$   string     parse      $[b;t;f] cond   ntable n:`..![[]y:..]
-?   unique  [n]find                             
-@   type    [n]at         @[r;i;f[;y]] amend    `js?`js d
-.   value      dot        .[r;i;f[;y]] dmend    `csv?`csv t
+*ffi: a:"./a.so"5:`f!"ii";a.f[2;3] / int f(int i,int j){return i+j;}
+*k/c: b:"./b.so"5:`f!2   ;b.f[2;3] / K f(K x,K y){return ki(xi+yi);}
+[python:   import k;k.k('+',2,3)]
+[nodejs: require('k').k('+',2,3)]
+limit: #(4billion) name8 code(param8 local8 global32 const128)
 
-select[G]A from T where C; update A from T where C; delete from T where C
-count first last sum min max *[avg var dev med ..]; in within bin freq rand 
-exp log sin cos sqr sqrt div mod bar prm cmb; msum mavg sums deltas differ
+verb                   adverb                  noun
+: x         y          f' each      g' each    char " ab"              \l a.k
++ flip      plus    [x]f/ over      c/ join    name ``ab               \t:n x
+- minus     minus   [x]f\ scan      c\ splt    int  0N 2 3 0W          \u:n x
+* first     times   [y]f':eachprior            flt  0n 2 3.4 0w        \v
+%           divide     f/:eachright g/:over    date 2021.01.23   .z.d
+& where     min/and    f\:eachleft  g\:scan    time 12:34:56.789 .z.t
+| reverse   max/or     
+< asc       less       i/o (*enterprise)       class                   \f
+> desc      more       0: r/w line             list l:(2;3.4;`c)       \fl x
+= group     equal      1: r/w char             dict d:[n:`b;i:2]       \fc x   
+~ not       match     *2: r/w data             func f:{[a;b]a+b}       \fs x
+! key       key       *3: k-ipc set            expr e::a+b             \cd [d]
+, enlist    cat       *4: https get
+^ sort   [f]cut       *5: ffi/py/js/..         table t:[[]n:`b`c;i:2 3]
+# count  [f]take                              utable u: [[n:`b`c]i:2 3]
+_ floor  [f]drop                       
+$ string    parse      $[b;t;f] cond
+? unique [n]find                             
+@ type   [n]at         @[x;i;f[;y]] amend
+. value     dot        .[x;i;f[;y]] dmend
 
+`js?`js d:[d:.z.d;t:.z.t;n:`ab;i:23;f:4.5];`csv?`csv t:2#,d
+{select|update} A by B from T where C; delete from T where C
+count first last min max sum dot avg var [dev med mode countd ..]
+sqrt sqr exp log sin cos div mod bar in bin
 \\ exit  /comment \trace [:return 'signal if do while]
 
 
 
 Tag Table:
-Node: Top122
-Node: Introduction4978
-Node: Verb16074
-Ref: x17733
-Ref: set17758
-Ref: flip18017
-Ref: plus18302
-Ref: negate18780
-Ref: minus18952
-Ref: first19059
-Ref: times19275
-Ref: divide19406
-Ref: where19543
-Ref: min/and20026
-Ref: reverse20285
-Ref: max/or20544
-Ref: asc20808
-Ref: desc20808
-Ref: less21199
-Ref: more21199
-Ref: group21500
-Ref: equal21753
-Ref: not22057
-Ref: match22174
-Ref: enum22557
-Ref: key23640
-Ref: enlist23813
-Ref: cat23953
-Ref: sort24290
-Ref: cut24942
-Ref: cut125204
-Ref: cut225356
-Ref: cut325550
-Ref: cut425824
-Ref: count26004
-Ref: take26308
-Ref: take126903
-Ref: take227272
-Ref: take327694
-Ref: take427892
-Ref: floor28251
-Ref: drop28342
-Ref: drop128856
-Ref: drop229039
-Ref: drop329315
-Ref: string29479
-Ref: parse29580
-Ref: unique29773
-Ref: find30017
-Ref: type30548
-Ref: at31092
-Ref: value31730
-Ref: dot32171
-Node: Adverb33352
-Ref: each34798
-Ref: over35397
-Ref: scan35525
-Ref: join36876
-Ref: split37247
-Ref: eachp37505
-Ref: eachr38555
-Ref: eachl38755
-Ref: cover38944
-Ref: cscan39257
-Node: Noun40433
-Ref: Atom Types41829
-Ref: bool44444
-Ref: int45131
-Ref: flt45811
-Ref: char46213
-Ref: name46446
-Ref: uuid46686
-Ref: time46843
-Ref: date47746
-Ref: datetime48207
-Node: List49121
-Node: Dictionary53592
-Node: User Functions59220
-Node: Expression62465
-Node: Named Functions63952
-Ref: exp64750
-Ref: log64857
-Ref: sin64951
-Ref: cos65084
-Ref: sqr65226
-Ref: sqrt65309
-Ref: prm65407
-Ref: freq65580
-Ref: sums65934
-Ref: deltas66072
-Ref: rand66410
-Ref: has67291
-Ref: bin67585
-Ref: in67795
-Ref: within67969
-Ref: div68201
-Ref: mod68385
-Ref: bar68559
-Ref: cmb68748
-Ref: msum69176
-Ref: mavg69313
-Ref: Hcount69457
-Ref: Hfirst69552
-Ref: Hlast69647
-Ref: Hsum69751
-Ref: Hmin69854
-Ref: Hmax69972
-Ref: topX70089
-Ref: keyF70247
-Ref: unkey70542
-Ref: meta70678
-Node: Knit Functions70809
-Ref: amend71104
-Ref: amend171627
-Ref: amend271876
-Ref: amend372095
-Ref: amend472400
-Ref: dmend72688
-Ref: dmend173018
-Ref: dmend373186
-Ref: dmend473351
-Node: I/O73512
-Ref: read csv75436
-Ref: write csv75637
-Ref: read json75824
-Ref: write json76008
-Ref: read nv76175
-Ref: w line76368
-Ref: r line76706
-Ref: w byte76819
-Ref: r byte77173
-Ref: r data77323
-Ref: w data77982
-Ref: k-ipc set78558
-Ref: https get78620
-Ref: ffi/py/js/..78682
-Node: Tables79152
-Ref: table79819
-Ref: utable81461
-Ref: ntable82000
-Node: kSQL82743
-Ref: select83672
-Ref: A84239
-Ref: G85092
-Ref: where C85440
-Ref: update86315
-Ref: delete87036
-Ref: Joins87318
-Ref: union87675
-Ref: leftjoin88196
-Ref: outer88975
-Ref: asof89610
-Ref: asof+91081
-Ref: insert92299
-Ref: upsert92645
-Node: System93059
-Ref: load93517
-Ref: timing93705
-Ref: variables93994
-Ref: memory94095
-Ref: cd94214
-Node: Control Flow94298
-Ref: cond94534
-Node: Temporal Functions94904
-Node: Errors96303
-Ref: class96751
-Ref: rank96840
-Ref: length96964
-Ref: _type97087
-Ref: domain97196
-Ref: limit97318
-Ref: nyi97529
-Ref: eparse97856
-Ref: _value98009
-Node: Examples98137
-Node: Benchmark106061
-Node: Conclusion114729
+Node: Top123
+Node: Introduction5085
+Node: Verb16346
+Ref: x18005
+Ref: set18030
+Ref: flip18289
+Ref: plus18574
+Ref: negate19052
+Ref: minus19224
+Ref: first19331
+Ref: times19547
+Ref: divide19678
+Ref: where19815
+Ref: min/and20298
+Ref: reverse20557
+Ref: max/or20816
+Ref: asc21080
+Ref: desc21080
+Ref: less21471
+Ref: more21471
+Ref: group21772
+Ref: equal22025
+Ref: not22329
+Ref: match22446
+Ref: enum22829
+Ref: key23912
+Ref: enlist24085
+Ref: cat24225
+Ref: sort24562
+Ref: cut25214
+Ref: cut125476
+Ref: cut225628
+Ref: cut325822
+Ref: cut426096
+Ref: count26276
+Ref: take26580
+Ref: take127175
+Ref: take227544
+Ref: take327966
+Ref: take428164
+Ref: floor28523
+Ref: drop28614
+Ref: drop129128
+Ref: drop229311
+Ref: drop329587
+Ref: string29751
+Ref: parse29852
+Ref: unique30045
+Ref: find30289
+Ref: type30820
+Ref: at31364
+Ref: value32002
+Ref: dot32443
+Node: Adverb33624
+Ref: each35070
+Ref: over35669
+Ref: scan35797
+Ref: join37148
+Ref: split37519
+Ref: eachp37777
+Ref: eachr38827
+Ref: eachl39027
+Ref: cover39216
+Ref: cscan39529
+Node: Noun40705
+Ref: Atom Types42101
+Ref: bool44716
+Ref: int45403
+Ref: flt46083
+Ref: char46485
+Ref: name46718
+Ref: uuid46958
+Ref: time47115
+Ref: date48018
+Ref: datetime48479
+Node: List49393
+Node: Dictionary53864
+Node: User Functions59492
+Node: Expression62737
+Node: Named Functions64224
+Ref: exp65022
+Ref: log65129
+Ref: sin65223
+Ref: cos65356
+Ref: sqr65498
+Ref: sqrt65581
+Ref: prm65679
+Ref: freq65852
+Ref: sums66206
+Ref: deltas66344
+Ref: rand66682
+Ref: has67563
+Ref: bin67857
+Ref: in68067
+Ref: within68241
+Ref: div68473
+Ref: mod68657
+Ref: bar68831
+Ref: cmb69020
+Ref: msum69448
+Ref: mavg69585
+Ref: Hcount69729
+Ref: Hfirst69824
+Ref: Hlast69919
+Ref: Hsum70023
+Ref: Hmin70126
+Ref: Hmax70244
+Ref: topX70361
+Ref: keyF70519
+Ref: unkey70814
+Ref: meta70950
+Node: Knit Functions71081
+Ref: amend71376
+Ref: amend171899
+Ref: amend272148
+Ref: amend372367
+Ref: amend472672
+Ref: dmend72960
+Ref: dmend173290
+Ref: dmend373458
+Ref: dmend473623
+Node: I/O73784
+Ref: read csv75708
+Ref: write csv75909
+Ref: read json76096
+Ref: write json76280
+Ref: read nv76447
+Ref: w line76640
+Ref: r line76978
+Ref: w byte77091
+Ref: r byte77445
+Ref: r data77595
+Ref: w data78254
+Ref: k-ipc set78830
+Ref: https get78892
+Ref: ffi/py/js/..78954
+Node: Tables79424
+Ref: table80051
+Ref: utable81693
+Node: kSQL82232
+Ref: select83161
+Ref: A83728
+Ref: G84581
+Ref: where C84929
+Ref: update85804
+Ref: delete86525
+Ref: Joins86807
+Ref: union87164
+Ref: leftjoin87685
+Ref: outer88464
+Ref: asof89099
+Ref: asof+90570
+Ref: insert91788
+Ref: upsert92134
+Node: System92548
+Ref: load93006
+Ref: timing93194
+Ref: variables93483
+Ref: memory93584
+Ref: cd93703
+Node: Control Flow93787
+Ref: cond94023
+Node: Temporal Functions94393
+Node: Errors95792
+Ref: class96240
+Ref: rank96329
+Ref: length96453
+Ref: _type96576
+Ref: domain96685
+Ref: limit96807
+Ref: nyi97018
+Ref: eparse97345
+Ref: _value97498
+Node: Examples97626
+Node: Benchmark105550
+Node: Conclusion114218
 
 End Tag Table
 

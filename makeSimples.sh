@@ -9,7 +9,7 @@ sed -e 's/@/@@/g' \
     -e 's/plus/@ref{plus}/g' \
     -e 's/negate/@ref{negate}/g' \
     -e 's/minus/@ref{minus}/g' \
-    -e '1,10 s/first/@ref{first}/g' \
+    -e '1,20 s/first/@ref{first}/g' \
     -e 's/times/@ref{times}/g' \
     -e 's/divide/@ref{divide}/g' \
     -e '1,20 s/where/@ref{where}/' \
@@ -75,19 +75,18 @@ sed -e 's/@/@@/g' \
     -e 's/func/@ref{User Functions,func}/g' \
     -e 's/expr/@ref{Expression,expr}/g' \
     -e 's/dict/@ref{Dictionary,dict}/g' \
-    -e '20,100 s/t:/@ref{t}:/g' \
     -e 's/cond/@ref{cond}/g' \
     -e 's/amend/@ref{amend}/g' \
     -e 's/dmend/@ref{dmend}/g' \
     -e 's/Control/@ref{cond,Control}/g' \
     -e 's/if@ else/@ref{cond,if else}/g' \
     -e '1,20 s/date/@ref{date}/g' \
-    -e '6,20 s/time/@ref{time}/g' \
+    -e '12,20 s/time/@ref{time}/g' \
     -e 's/bool/@ref{bool}/g' \
-    -e '1,10 s/int/@ref{int}/g' \
+    -e '7,20 s/int/@ref{int}/g' \
     -e 's/flt/@ref{flt}/g' \
     -e '1,10 s/char/@ref{char}/g' \
-    -e 's/name/@ref{name}/g' \
+    -e '7,100 s/name/@ref{name}/g' \
     -e 's/uuid/@ref{uuid}/g' \
     -e 's/System/@ref{System}/g' \
     -e 's/`csv?/@ref{read csv,`csv?}/g' \
@@ -100,34 +99,34 @@ sed -e 's/@/@@/g' \
     -e 's/k-ipc@ set/@ref{k-ipc set}/g' \
     -e 's/https@ get/@ref{https get}/g' \
     -e 's/ffi\/py\/js\/../@ref{ffi\/py\/js\/..}/g' \
-    -e '20,30 s/ key/ @ref{key}/g' \
-    -e '20,30 s/unkey/@ref{unkey}/g' \
-    -e '20,30 s/meta/@ref{meta}/g' \
-    -e '20,30 s/@ in@ /@ @ref{in}@ /' \
-    -e '20,30 s/bin/@ref{bin}/g' \
-    -e '20,30 s/within/ @ref{within}/g' \
-    -e '20,30 s/exp/@ref{exp}/g' \
-    -e '20,30 s/log/@ref{log}/g' \
-    -e '20,30 s/sin/@ref{sin}/g' \
-    -e '20,30 s/cos/@ref{cos}/g' \
-    -e '20,30 s/sqr@ /@ref{sqr}@ /g' \
-    -e '20,30 s/sqrt/@ref{sqrt}/g' \
-    -e '20,30 s/div/@ref{div}/g' \
-    -e '20,30 s/mod/@ref{mod}/g' \
-    -e '20,30 s/bar/@ref{bar}/g' \
-    -e '20,30 s/top/@ref{topX,top}/g' \
-    -e '20,30 s/freq/@ref{freq}/g' \
-    -e '20,30 s/msum/@ref{msum}/g' \
-    -e '20,30 s/mavg/@ref{mavg}/g' \
-    -e '20,30 s/sums/@ref{sums}/g' \
-    -e '20,30 s/deltas/@ref{deltas}/g' \
-    -e '20,30 s/rand/@ref{rand}/g' \
-    -e '20,30 s/has/@ref{has}/g' \
-    -e '20,30 s/first/@ref{first}/g' \
-    -e '20,30 s/last/@ref{Hlast,last}/g' \
+    -e '20,40 s/ key/ @ref{key}/g' \
+    -e '20,40 s/unkey/@ref{unkey}/g' \
+    -e '20,40 s/meta/@ref{meta}/g' \
+    -e '20,40 s/@ in@ /@ @ref{in}@ /' \
+    -e '20,40 s/bin/@ref{bin}/g' \
+    -e '20,40 s/within/ @ref{within}/g' \
+    -e '20,40 s/exp/@ref{exp}/g' \
+    -e '20,40 s/log/@ref{log}/g' \
+    -e '20,40 s/sin/@ref{sin}/g' \
+    -e '20,40 s/cos/@ref{cos}/g' \
+    -e '20,40 s/sqr@ /@ref{sqr}@ /g' \
+    -e '20,40 s/sqrt/@ref{sqrt}/g' \
+    -e '20,40 s/div/@ref{div}/g' \
+    -e '20,40 s/mod/@ref{mod}/g' \
+    -e '20,40 s/bar/@ref{bar}/g' \
+    -e '20,40 s/top/@ref{topX,top}/g' \
+    -e '20,40 s/freq/@ref{freq}/g' \
+    -e '20,40 s/msum/@ref{msum}/g' \
+    -e '20,40 s/mavg/@ref{mavg}/g' \
+    -e '20,40 s/sums/@ref{sums}/g' \
+    -e '20,40 s/deltas/@ref{deltas}/g' \
+    -e '20,40 s/rand/@ref{rand}/g' \
+    -e '20,40 s/has/@ref{has}/g' \
+    -e '20,40 s/first/@ref{Hfirst,first}/g' \
+    -e '20,40 s/last/@ref{Hlast,last}/g' \
     -e '23,24 s/sum/@ref{Hsum,sum}/g' \
-    -e '20,30 s/min/@ref{Hmin,min}/g' \
-    -e '20,30 s/max/@ref{Hmax,max}/g' \
+    -e '20,40 s/min/@ref{Hmin,min}/g' \
+    -e '20,40 s/max/@ref{Hmax,max}/g' \
     -e '20,30 s/prm/@ref{prm}/g' \
     -e '20,30 s/cmb/@ref{cmb}/g' k.d > k.d2
 

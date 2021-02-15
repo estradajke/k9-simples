@@ -3286,12 +3286,11 @@ Load the shared library into the session.
 
 @node Tables
 @chapter Tables
-k9 has the ability to store data in a tabular format containing named columns and rows of information as tables.  If the data to be stored and queried is large, then you should use tables.  This chapter introduces the different types of data tables available in k9.  Table, utable and ntable are very similar and as you'll see in the @ref{kSQL} chapter are easy to query.  In the @ref{Benchmark} chapter, you'll see that tables are fast to save, read, and query.
+k9 has the ability to store data in a tabular format containing named columns and rows of information as tables.  If the data to be stored and queried is large, then you should use tables.  This chapter introduces the different types of data tables available in k9.  Table and utable are very similar and as you'll see in the @ref{kSQL} chapter are easy to query.  In the @ref{Benchmark} chapter, you'll see that tables are fast to save, read, and query.
 
 @example
- @ref{table} t:[[]i:2 3;f:2.3 4]
-@ref{utable} u:[[x:..]y:..]
-@ref{ntable} n:`..![[]y:..]
+ @ref{table} t:[[]n:`b`c;i:2 3]
+@ref{utable} u: [[n:`b`c]i:2 3]
 @end example
 
 @anchor{table}@section table
@@ -3372,25 +3371,25 @@ d         |p
 2020.09.10|150
 @end example
 
-@anchor{ntable}@section ntable
-A ntable is a collection of tables stored in a dictionary where the keys are symbols and the values are tables. Thus, it has both the data and schema of a set of tables, much like a data dictionary in a conventional relational database. Below is an example where the keys are symbols and the values are
-end-of-day prices.
-
-@example
- x1:+`d`p!(2020.09.08 2020.09.09 2020.09.10;140 139 150)
- x2:+`d`p!(2020.09.08 2020.09.10;202 208)
-
-eod:`AB`ZY!(x1;x2);eod  / ntable
-AB|[[]d:2018.06.27 2018.06.27 2018.06.27;p:140 139 150]
-ZY|[[]d:2018.06.27 2018.06.27;p:202 208]               
-
- eod`AB                  / table
-d          p  
----------- ---
-2018.06.27 140
-2018.06.27 139
-2018.06.27 150
-@end example
+@c @anchor{ntable}@section ntable
+@c A ntable is a collection of tables stored in a dictionary where the keys are symbols and the values are tables. Thus, it has both the data and schema of a set of tables, much like a data dictionary in a conventional relational database. Below is an example where the keys are symbols and the values are
+@c end-of-day prices.
+@c 
+@c @example
+@c  x1:+`d`p!(2020.09.08 2020.09.09 2020.09.10;140 139 150)
+@c  x2:+`d`p!(2020.09.08 2020.09.10;202 208)
+@c 
+@c eod:`AB`ZY!(x1;x2);eod  / ntable
+@c AB|[[]d:2018.06.27 2018.06.27 2018.06.27;p:140 139 150]
+@c ZY|[[]d:2018.06.27 2018.06.27;p:202 208]               
+@c 
+@c  eod`AB                  / table
+@c d          p  
+@c ---------- ---
+@c 2018.06.27 140
+@c 2018.06.27 139
+@c 2018.06.27 150
+@c @end example
 
 @node kSQL
 @chapter kSQL
