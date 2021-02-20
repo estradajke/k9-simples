@@ -1,6 +1,6 @@
 This is k9.info, produced by texi2any version 6.7 from k.manual.texi.
 
-February 15, 2021
+February 20, 2021
 
 Copyright (C) 2020 John Estrada
 
@@ -1396,7 +1396,7 @@ Apply f[x;y] to each value of x, i.e.  the left one.
      0 10 20
      1 11 21
 
-3.9 Converge Over => f/:x or (n;f)/:x
+3.9 Converge Over => g/:x or (n;g)/:x
 =====================================
 
 Converge Over is the same function as *note Converge Scan: cscan. but only returns the final value(s).
@@ -1409,10 +1409,10 @@ Converge Over is the same function as *note Converge Scan: cscan. but only retur
       ,//:r  / raze over the list until it converges to a flat list
      1 2 3 4
 
-3.10 Converge Scan => f\:x or (n;f)\:x
+3.10 Converge Scan => g\:x or (n;g)\:x
 ======================================
 
-Compute function f where f_{i}=f[f_{i-1}] and f_{0}=x.  If n is specified then it is either (DO) the number of iterations or (WHILE) a function returning a non-zero result.
+Compute function g where g_{i}=g[g_{i-1}] and g_{0}=x.  If n is specified then it is either (DO) the number of iterations or (WHILE) a function returning a non-zero result.
 
        {x*x}\:.99           / converge to value
      0.99 0.9801 0.9605961 ... 1.323698e-18 1.752177e-36 0.
