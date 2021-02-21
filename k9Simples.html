@@ -127,7 +127,7 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; <
 <tt>@&nbsp;<a href="#type">type</a>&nbsp;&nbsp;&nbsp;[n]<a href="#at">at</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@[x;i;f[;y]]&nbsp;<a href="#amend">amend</a></tt><br>
 <tt>.&nbsp;<a href="#value">value</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#dot">dot</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.[x;i;f[;y]]&nbsp;<a href="#dmend">dmend</a></tt><br>
 <tt></tt><br>
-<tt><a href="#read-json">`js?</a><a href="#write-json">`js&nbsp;</a>d:[d:.z.d;t:.z.t;n:`ab;i:23;f:4.5];<a href="#read-csv">`csv?</a><a href="#write-csv">`csv&nbsp;</a>t:2#,d</tt><br>
+<tt><a href="#read-json">`js?</a><a href="#write-json">`js&nbsp;</a>d:[d:<a href="#g_t_002ez_002ed">.z.d</a>;t:<a href="#g_t_002ez_002et">.z.t</a>;n:`ab;i:23;f:4.5];<a href="#read-csv">`csv?</a><a href="#write-csv">`csv&nbsp;</a>t:2#,d</tt><br>
 <tt>{<a href="#select">select</a>|<a href="#update">update</a>}&nbsp;<a href="#A">A</a>&nbsp;by&nbsp;B&nbsp;from&nbsp;T&nbsp;where&nbsp;C;&nbsp;<a href="#delete">delete</a>&nbsp;from&nbsp;T&nbsp;where&nbsp;C</tt><br>
 <tt>count&nbsp;<a href="#Hfirst">first</a>&nbsp;<a href="#Hlast">last</a>&nbsp;<a href="#Hmin">min</a>&nbsp;<a href="#Hmax">max</a>&nbsp;<a href="#Hsum">sum</a>&nbsp;<a href="#Hdot">dot</a>&nbsp;<a href="#avg">avg</a>&nbsp;<a href="#var">var</a>&nbsp;[<a href="#dev">dev</a>&nbsp;<a href="#med">med</a>&nbsp;<a href="#mode">mode</a>&nbsp;<a href="#countd">countd</a>&nbsp;..]</tt><br>
 <tt><a href="#sqrt">sqrt</a>&nbsp;<a href="#sqr">sqr</a>&nbsp;<a href="#exp">exp</a>&nbsp;<a href="#log">log</a>&nbsp;<a href="#sin">sin</a>&nbsp;<a href="#cos">cos</a>&nbsp;<a href="#div">div</a>&nbsp;<a href="#mod">mod</a>&nbsp;<a href="#bar">bar</a>&nbsp;<a href="#in">in</a>&nbsp;<a href="#bin">bin</a></tt><br>
@@ -4023,7 +4023,7 @@ Next: <a href="#Errors" accesskey="n" rel="next">Errors</a>, Previous: <a href="
 <pre class="verbatim">date 2001.01.01   .z.d
 time 12:34:56.789 .z.t
 </pre>
-<span id="g_t_002ez_002e_005bdm_005d-date"></span><h3 class="section">16.1 .z.[dm] date</h3>
+<span id="g_t_002ez_002ed"></span><span id="g_t_002ez_002e_005bdm_005d-date"></span><h3 class="section">16.1 .z.[dm] date</h3>
 <p>These functions retrieve the date as day (d) or month (m) precision.
 </p>
 <div class="example">
@@ -4034,7 +4034,7 @@ time 12:34:56.789 .z.t
 2020.12.
 </pre></div>
 
-<span id="g_t_002ez_002e_005bhrstuv_005d-time"></span><h3 class="section">16.2 .z.[hrstuv] time</h3>
+<span id="g_t_002ez_002et"></span><span id="g_t_002ez_002e_005bhrstuv_005d-time"></span><h3 class="section">16.2 .z.[hrstuv] time</h3>
 <p>These functions retrieve the time at hour (h), minute (r), second (s), millisecond (t), microsecond (u), or nanosecond (v) precision.
 </p>
 <div class="example">

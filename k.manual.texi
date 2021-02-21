@@ -4032,7 +4032,7 @@ date 2001.01.01   .z.d
 time 12:34:56.789 .z.t
 @end verbatim
 
-@section .z.[dm] date
+@anchor{.z.d}@section .z.[dm] date
 These functions retrieve the date as day (d) or month (m) precision.
 
 @example
@@ -4043,7 +4043,7 @@ These functions retrieve the date as day (d) or month (m) precision.
 2020.12.
 @end example
 
-@section .z.[hrstuv] time
+@anchor{.z.t}@section .z.[hrstuv] time
 These functions retrieve the time at hour (h), minute (r), second (s), millisecond (t), microsecond (u), or nanosecond (v) precision.
 
 @example
