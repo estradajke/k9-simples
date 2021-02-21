@@ -202,7 +202,7 @@ x z
 </p>
 <div class="example">
 <pre class="example"> n:5;t:[[]x:!n;y:sin !n]
- select[x&gt;2]sum y from t / select sum y by x&gt;2 from t
+ select sum y by x&gt;2 from t
 x|y         
 -|----------
 0|1.750768  
@@ -251,7 +251,7 @@ x y
 
 <div class="example">
 <pre class="example"> n:5;t:[[]x:!n;y:sin !n]
- select[x&gt;2]sum y from t&amp;t :y&gt;0 / select sum y by x&gt;2 from t where y&gt;0
+ select sum y by x&gt;2 from t where y&gt;0
 x|y       
 -|--------
 0|1.750768

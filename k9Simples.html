@@ -101,37 +101,35 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; <
 </p>
 <p><tt>*ffi:&nbsp;a:&quot;./a.so&quot;5:`f!&quot;ii&quot;;a.f[2;3]&nbsp;/&nbsp;int&nbsp;f(int&nbsp;i,int&nbsp;j){return&nbsp;i+j;}</tt><br>
 <tt>*k/c:&nbsp;b:&quot;./b.so&quot;5:`f!2&nbsp;&nbsp;&nbsp;;b.f[2;3]&nbsp;/&nbsp;K&nbsp;f(K&nbsp;x,K&nbsp;y){return&nbsp;ki(xi+yi);}</tt><br>
-<tt>[python:&nbsp;&nbsp;&nbsp;import&nbsp;k;k.k('+',2,3)]</tt><br>
-<tt>[nodejs:&nbsp;require('k').k('+',2,3)]</tt><br>
-<tt>limit:&nbsp;#(4billion)&nbsp;name8&nbsp;code(param8&nbsp;local8&nbsp;global32&nbsp;const128)</tt><br>
+<tt><a href="#read-csv">`csv?</a><a href="#write-csv">`csv&nbsp;</a>t:,<a href="#read-json">`js?</a><a href="#write-json">`js&nbsp;</a>d:[d:.z.d;t:.z.t;n:`ab;i:23;f:4.5]</tt><br>
+<tt>python:&nbsp;import&nbsp;k;k.k('+',2,3);&nbsp;nodejs:&nbsp;require('k').k('+',2,3)</tt><br>
 <tt></tt><br>
 <tt><a href="#Verb">verb</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Adverb">adverb</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Noun">noun</a></tt><br>
-<tt>:&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f'&nbsp;<a href="#each">each</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g'&nbsp;<a href="#each">each</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#char">char</a>&nbsp;&quot;&nbsp;ab&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\l&nbsp;a.k</tt><br>
-<tt>+&nbsp;<a href="#flip">flip</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#plus">plus</a>&nbsp;&nbsp;&nbsp;&nbsp;[x]f/&nbsp;<a href="#cover">over</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c/&nbsp;<a href="#join">join</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#name">name</a>&nbsp;``ab&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\t:n&nbsp;x</tt><br>
-<tt>-&nbsp;<a href="#minus">minus</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#minus">minus</a>&nbsp;&nbsp;&nbsp;[x]f\&nbsp;<a href="#cscan">scan</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c\&nbsp;splt&nbsp;&nbsp;&nbsp;&nbsp;<a href="#int">int</a>&nbsp;&nbsp;0N&nbsp;2&nbsp;3&nbsp;0W&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u:n&nbsp;x</tt><br>
-<tt>*&nbsp;<a href="#first">first</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#times">times</a>&nbsp;&nbsp;&nbsp;[y]f':<a href="#eachp">eachp</a>rior&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#flt">flt</a>&nbsp;&nbsp;0n&nbsp;2&nbsp;3.4&nbsp;0w&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\v</tt><br>
-<tt>%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#divide">divide</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f/:<a href="#eachr">eachr</a>ight&nbsp;g/:<a href="#cover">over</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#date">date</a>&nbsp;2021.01.23&nbsp;&nbsp;&nbsp;.z.d</tt><br>
-<tt>&amp;&nbsp;<a href="#where">where</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#min_002fand">min/and</a>&nbsp;&nbsp;&nbsp;&nbsp;f\:<a href="#eachl">eachl</a>eft&nbsp;&nbsp;g\:<a href="#cscan">scan</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#time">time</a>&nbsp;12:34:56.789&nbsp;.z.t</tt><br>
+<tt>:&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f'&nbsp;<a href="#each">each</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g'&nbsp;<a href="#each">each</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#char">char</a>&nbsp;&quot;&nbsp;ab&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#load">\l</a>&nbsp;a.k</tt><br>
+<tt>+&nbsp;<a href="#flip">flip</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#plus">plus</a>&nbsp;&nbsp;&nbsp;&nbsp;[x]f/&nbsp;<a href="#cover">over</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c/&nbsp;<a href="#join">join</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#name">name</a>&nbsp;``ab&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#timing">\t</a>:n&nbsp;x</tt><br>
+<tt>-&nbsp;<a href="#minus">minus</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#minus">minus</a>&nbsp;&nbsp;&nbsp;[x]f\&nbsp;<a href="#cscan">scan</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c\&nbsp;splt&nbsp;&nbsp;&nbsp;&nbsp;<a href="#int">int</a>&nbsp;&nbsp;2&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u:n&nbsp;x</tt><br>
+<tt>*&nbsp;<a href="#first">first</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#times">times</a>&nbsp;&nbsp;&nbsp;[y]f':<a href="#eachprior">eachprior</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#flt">flt</a>&nbsp;&nbsp;2&nbsp;3.4&nbsp;0w&nbsp;0n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#variables">\v</a></tt><br>
+<tt>%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#divide">divide</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f/:<a href="#eachright">eachright</a>&nbsp;g/:<a href="#cover">over</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#date">date</a>&nbsp;2021.06.28&nbsp;&nbsp;&nbsp;.z.d</tt><br>
+<tt>&amp;&nbsp;<a href="#where">where</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#min_002fand">min/and</a>&nbsp;&nbsp;&nbsp;&nbsp;f\:<a href="#eachleft">eachleft</a>&nbsp;&nbsp;g\:<a href="#cscan">scan</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#time">time</a>&nbsp;12:34:56.789&nbsp;.z.t</tt><br>
 <tt>|&nbsp;<a href="#reverse">reverse</a>&nbsp;&nbsp;&nbsp;<a href="#max_002for">max/or</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
-<tt>&lt;&nbsp;<a href="#asc">asc</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#less">less</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#I_002fO">i/o</a>&nbsp;(*enterprise)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\f</tt><br>
-<tt>&gt;&nbsp;<a href="#desc">desc</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#more">more</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0:&nbsp;<a href="#r-line">r</a>/<a href="#w-line">w</a>&nbsp;line&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#List">list</a>&nbsp;l:(2;3.4;`c)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\fl&nbsp;x</tt><br>
-<tt>=&nbsp;<a href="#group">group</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#equal">equal</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1:&nbsp;<a href="#r-byte">r</a>/<a href="#w-byte">w</a>&nbsp;char&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Dictionary">dict</a>&nbsp;d:[n:`b;i:2]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\fc&nbsp;x&nbsp;&nbsp;&nbsp;</tt><br>
-<tt>~&nbsp;<a href="#not">not</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#match">match</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*2:&nbsp;<a href="#r-data">r</a>/<a href="#w-data">w</a>&nbsp;data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#User-Functions">func</a>&nbsp;f:{[a;b]a+b}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\fs&nbsp;x</tt><br>
-<tt>!&nbsp;<a href="#key">key</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#key">key</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*3:&nbsp;<a href="#k_002dipc-set">k-ipc set</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Expression">expr</a>&nbsp;e::a+b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\cd&nbsp;[d]</tt><br>
+<tt>&lt;&nbsp;<a href="#asc">asc</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#less">less</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#I_002fO">i/o</a>&nbsp;(*enterprise)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#files">\f</a></tt><br>
+<tt>&gt;&nbsp;<a href="#desc">desc</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#more">more</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0:&nbsp;<a href="#r-line">r</a>/<a href="#w-line">w</a>&nbsp;line&nbsp;(N;C)0:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#List">list</a>&nbsp;(2;3.4;`c)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\fl&nbsp;x</tt><br>
+<tt>=&nbsp;<a href="#group">group</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#equal">equal</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1:&nbsp;<a href="#r-byte">r</a>/<a href="#w-byte">w</a>&nbsp;char&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Dictionary">dict</a>&nbsp;[n:`b;i:2]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\fc&nbsp;x&nbsp;&nbsp;&nbsp;</tt><br>
+<tt>~&nbsp;<a href="#not">not</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#match">match</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*2:&nbsp;<a href="#r-data">r</a>/<a href="#w-data">w</a>&nbsp;data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#User-Functions">func</a>&nbsp;{[a;b]a+b}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\fs&nbsp;x</tt><br>
+<tt>!&nbsp;<a href="#key">key</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#key">key</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*3:&nbsp;<a href="#k_002dipc-set">k-ipc set</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Expression">expr</a>&nbsp;:a+b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#cd">\cd</a>&nbsp;[d]</tt><br>
 <tt>,&nbsp;<a href="#enlist">enlist</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#cat">cat</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*4:&nbsp;<a href="#https-get">https get</a></tt><br>
-<tt>^&nbsp;<a href="#sort">sort</a>&nbsp;&nbsp;&nbsp;[f]<a href="#cut">cut</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*5:&nbsp;<a href="#ffi_002fpy_002fjs_002f_002e_002e">ffi/py/js/..</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Tables">table</a>&nbsp;t:[[]n:`b`c;i:2&nbsp;3]</tt><br>
-<tt>#&nbsp;<a href="#count">count</a>&nbsp;&nbsp;[f]<a href="#take">take</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#utable">utable</a>&nbsp;u:&nbsp;[[n:`b`c]i:2&nbsp;3]</tt><br>
-<tt>_&nbsp;<a href="#floor">floor</a>&nbsp;&nbsp;[f]<a href="#drop">drop</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
+<tt>^&nbsp;<a href="#sort">sort</a>&nbsp;&nbsp;&nbsp;[f]<a href="#cut">cut</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*5:&nbsp;ffi/iff[py/js/..]&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Tables">table</a>&nbsp;[[]n:`b`c;i:2&nbsp;3]</tt><br>
+<tt>#&nbsp;<a href="#count">count</a>&nbsp;&nbsp;[f]<a href="#take">take</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#utable">utable</a>&nbsp;&nbsp;[[n:`b`c]i:2&nbsp;3]</tt><br>
+<tt>_&nbsp;<a href="#floor">floor</a>&nbsp;&nbsp;[f]<a href="#drop">drop</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
 <tt>$&nbsp;<a href="#string">string</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#parse">parse</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$[b;t;f]&nbsp;<a href="#cond">cond</a></tt><br>
-<tt>?&nbsp;<a href="#unique">unique</a>&nbsp;[n]<a href="#find">find</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
-<tt>@&nbsp;<a href="#type">type</a>&nbsp;&nbsp;&nbsp;[n]<a href="#at">at</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@[x;i;f[;y]]&nbsp;<a href="#amend">amend</a></tt><br>
-<tt>.&nbsp;<a href="#value">value</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#dot">dot</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.[x;i;f[;y]]&nbsp;<a href="#dmend">dmend</a></tt><br>
+<tt>?&nbsp;<a href="#unique">unique</a>&nbsp;[n]<a href="#find">find</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;limit</tt><br>
+<tt>@&nbsp;<a href="#type">type</a>&nbsp;&nbsp;&nbsp;[n]<a href="#at">at</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@[x;i;f[;y]]&nbsp;<a href="#amend">amend</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#name">name</a>8(*256)</tt><br>
+<tt>.&nbsp;<a href="#value">value</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#dot">dot</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.[x;i;f[;y]]&nbsp;<a href="#dmend">dmend</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;code&nbsp;p8&nbsp;l8&nbsp;g32&nbsp;c128</tt><br>
 <tt></tt><br>
-<tt><a href="#read-json">`js?</a><a href="#write-json">`js&nbsp;</a>d:[d:<a href="#g_t_002ez_002ed">.z.d</a>;t:<a href="#g_t_002ez_002et">.z.t</a>;n:`ab;i:23;f:4.5];<a href="#read-csv">`csv?</a><a href="#write-csv">`csv&nbsp;</a>t:2#,d</tt><br>
-<tt>{<a href="#select">select</a>|<a href="#update">update</a>}&nbsp;<a href="#A">A</a>&nbsp;<a href="#by-B">by B</a>&nbsp;from&nbsp;T&nbsp;<a href="#where-C">where C</a>;&nbsp;<a href="#delete">delete</a>&nbsp;from&nbsp;T&nbsp;<a href="#where-C">where C</a></tt><br>
-<tt>count&nbsp;<a href="#Hfirst">first</a>&nbsp;<a href="#Hlast">last</a>&nbsp;<a href="#Hmin">min</a>&nbsp;<a href="#Hmax">max</a>&nbsp;<a href="#Hsum">sum</a>&nbsp;<a href="#Hdot">dot</a>&nbsp;<a href="#avg">avg</a>&nbsp;<a href="#var">var</a>&nbsp;[<a href="#dev">dev</a>&nbsp;<a href="#med">med</a>&nbsp;<a href="#mode">mode</a>&nbsp;<a href="#countd">countd</a>&nbsp;..]</tt><br>
-<tt><a href="#sqrt">sqrt</a>&nbsp;<a href="#sqr">sqr</a>&nbsp;<a href="#exp">exp</a>&nbsp;<a href="#log">log</a>&nbsp;<a href="#sin">sin</a>&nbsp;<a href="#cos">cos</a>&nbsp;<a href="#div">div</a>&nbsp;<a href="#mod">mod</a>&nbsp;<a href="#bar">bar</a>&nbsp;<a href="#in">in</a>&nbsp;<a href="#bin">bin</a></tt><br>
-<tt>\\&nbsp;exit&nbsp;&nbsp;/comment&nbsp;\trace&nbsp;[:return&nbsp;'signal&nbsp;if&nbsp;do&nbsp;while]</tt><br>
+<tt><a href="#select">select</a>&nbsp;<a href="#A">A</a>&nbsp;<a href="#by-B">by B</a>&nbsp;from&nbsp;T&nbsp;<a href="#where-C">where C</a>;&nbsp;<a href="#update">update</a>&nbsp;<a href="#A">A</a>&nbsp;from&nbsp;T;&nbsp;<a href="#delete">delete</a>&nbsp;from&nbsp;T&nbsp;<a href="#where-C">where C</a></tt><br>
+<tt><a href="#count">count</a>&nbsp;<a href="#Hfirst">first</a>&nbsp;<a href="#Hlast">last</a>&nbsp;<a href="#Hmin">min</a>&nbsp;<a href="#Hmax">max</a>&nbsp;<a href="#Hsum">sum</a>&nbsp;<a href="#Hdot">dot</a>&nbsp;<a href="#avg">avg</a>&nbsp;<a href="#var">var</a>&nbsp;[dev&nbsp;med&nbsp;mode&nbsp;..]</tt><br>
+<tt><a href="#sqrt">sqrt</a>&nbsp;<a href="#sqr">sqr</a>&nbsp;<a href="#exp">exp</a>&nbsp;<a href="#log">log</a>&nbsp;<a href="#sin">sin</a>&nbsp;<a href="#cos">cos</a>&nbsp;<a href="#div">div</a>&nbsp;mod&nbsp;<a href="#bar">bar</a>&nbsp;<a href="#in">in</a>&nbsp;<a href="#bin">bin</a></tt><br>
+<tt>/comment&nbsp;\trace&nbsp;[:return&nbsp;'signal&nbsp;if&nbsp;do&nbsp;while]&nbsp;\\exit</tt><br>
 </p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Introduction" accesskey="1">Introduction</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">An introduction to shakti/k9, a novel computer language for data analysis
@@ -258,37 +256,35 @@ z@&amp;y&lt;z:?x<br>
 <div class="format">
 <pre class="verbatim">*ffi: a:&quot;./a.so&quot;5:`f!&quot;ii&quot;;a.f[2;3] / int f(int i,int j){return i+j;}
 *k/c: b:&quot;./b.so&quot;5:`f!2   ;b.f[2;3] / K f(K x,K y){return ki(xi+yi);}
-[python:   import k;k.k('+',2,3)]
-[nodejs: require('k').k('+',2,3)]
-limit: #(4billion) name8 code(param8 local8 global32 const128)
+`csv?`csv t:,`js?`js d:[d:.z.d;t:.z.t;n:`ab;i:23;f:4.5]
+python: import k;k.k('+',2,3); nodejs: require('k').k('+',2,3)
 
 verb                   adverb                  noun
 : x         y          f' each      g' each    char &quot; ab&quot;              \l a.k
 + flip      plus    [x]f/ over      c/ join    name ``ab               \t:n x
-- minus     minus   [x]f\ scan      c\ splt    int  0N 2 3 0W          \u:n x
-* first     times   [y]f':eachprior            flt  0n 2 3.4 0w        \v
-%           divide     f/:eachright g/:over    date 2021.01.23   .z.d
+- minus     minus   [x]f\ scan      c\ splt    int  2 3                \u:n x
+* first     times   [y]f':eachprior            flt  2 3.4 0w 0n        \v
+%           divide     f/:eachright g/:over    date 2021.06.28   .z.d
 &amp; where     min/and    f\:eachleft  g\:scan    time 12:34:56.789 .z.t
 | reverse   max/or     
 &lt; asc       less       i/o (*enterprise)       class                   \f
-&gt; desc      more       0: r/w line             list l:(2;3.4;`c)       \fl x
-= group     equal      1: r/w char             dict d:[n:`b;i:2]       \fc x   
-~ not       match     *2: r/w data             func f:{[a;b]a+b}       \fs x
-! key       key       *3: k-ipc set            expr e::a+b             \cd [d]
+&gt; desc      more       0: r/w line (N;C)0:     list (2;3.4;`c)         \fl x
+= group     equal      1: r/w char             dict [n:`b;i:2]         \fc x   
+~ not       match     *2: r/w data             func {[a;b]a+b}         \fs x
+! key       key       *3: k-ipc set            expr :a+b               \cd [d]
 , enlist    cat       *4: https get
-^ sort   [f]cut       *5: ffi/py/js/..         table t:[[]n:`b`c;i:2 3]
-# count  [f]take                              utable u: [[n:`b`c]i:2 3]
-_ floor  [f]drop                       
+^ sort   [f]cut       *5: ffi/iff[py/js/..]    table [[]n:`b`c;i:2 3]
+# count  [f]take                              utable  [[n:`b`c]i:2 3]
+_ floor  [f]drop                      
 $ string    parse      $[b;t;f] cond
-? unique [n]find                             
-@ type   [n]at         @[x;i;f[;y]] amend
-. value     dot        .[x;i;f[;y]] dmend
+? unique [n]find                               limit
+@ type   [n]at         @[x;i;f[;y]] amend      name8(*256)
+. value     dot        .[x;i;f[;y]] dmend      code p8 l8 g32 c128
 
-`js?`js d:[d:.z.d;t:.z.t;n:`ab;i:23;f:4.5];`csv?`csv t:2#,d
-{select|update} A by B from T where C; delete from T where C
-count first last min max sum dot avg var [dev med mode countd ..]
+select A by B from T where C; update A from T; delete from T where C
+count first last min max sum dot avg var [dev med mode ..]
 sqrt sqr exp log sin cos div mod bar in bin
-\\ exit  /comment \trace [:return 'signal if do while]</pre></div>
+/comment \trace [:return 'signal if do while] \\exit</pre></div>
 
 <span id="rlwrap"></span><h3 class="section">1.5 rlwrap</h3>
 <p>Although you only need the <samp>k</samp> binary to run k9 most will also install rlwrap, if not already installed, in order to get command history in a terminal window.  rlwrap is &ldquo;Readline wrapper: adds readline support to tools that lack it&rdquo; and allows one to arrow up to go through the command buffer history.
@@ -1300,10 +1296,10 @@ Next: <a href="#Noun" accesskey="n" rel="next">Noun</a>, Previous: <a href="#Ver
 <pre class="example">Adverb
    f'  <a href="#each">each</a>
 [x]f/  <a href="#scan">over</a> (c/<a href="#join">join</a>)
-[x]f\  <a href="#scan">scan</a> (c\<a href="#split">split</a>)
-[y]f': <a href="#eachp">eachp</a>
-   f/: <a href="#eachr">eachr</a> g/:<a href="#cover">over</a> 
-   f\: <a href="#eachl">eachl</a> g\:<a href="#cscan">scan</a> 
+[x]f\  <a href="#scan">scan</a>     (c\<a href="#split">split</a>)
+[y]f': <a href="#eachprior">eachprior</a>
+   f/: <a href="#eachright">eachright</a> g/:<a href="#cover">over</a> 
+   f\: <a href="#eachleft">eachleft</a>  g\:<a href="#cscan">scan</a> 
 </pre></div>
 
 <p>Adverbs modify verbs to operative iteratively over nouns.  This previous sentence likely will  make sense only once you understand it so let&rsquo;s jump into an example.  Imagine you have a list of 4 lists.  Using <code>first</code> you will retrieve the first sub-list.  In order to retrieve the first element of each sub-list you&rsquo;ll have to modify the function <code>first</code> with a modifier <code>each</code>.
@@ -1338,7 +1334,7 @@ Next: <a href="#Noun" accesskey="n" rel="next">Noun</a>, Previous: <a href="#Ver
 </pre></div>
 
 <span id="each"></span><span id="each-_21d2-f_0027x"></span><h3 class="section">3.1 each &rArr; f&rsquo;x</h3>
-<p>Apply function f to each value in list x in a single thread.  Multithread operation is done with <a href="#eachp">eachp</a>.  
+<p>Apply function f to each value in list x in a single thread.  Multithread operation is done with <a href="#eachprior">eachprior</a>.  
 </p>
 <div class="example">
 <pre class="example"> *((1 2 3);4;(5 6);7)   / first element of the list
@@ -1447,7 +1443,7 @@ sentence.
 2 0 1
 </pre></div>
 
-<span id="eachp"></span><span id="eachp-_21d2-f_0027_003a_005bx_003by_005d-or-y-f_0027_003ax"></span><h3 class="section">3.6 eachp &rArr; f&rsquo;:[x;y] or y f&rsquo;:x</h3>
+<span id="eachprior"></span><span id="eachprior-_21d2-f_0027_003a_005bx_003by_005d-or-y-f_0027_003ax"></span><h3 class="section">3.6 eachprior &rArr; f&rsquo;:[x;y] or y f&rsquo;:x</h3>
 <p>Compute f, a function of two arguments, over list x with optional initial value y.   Concretely f<sub>i</sub>=f[x<sub>i</sub>;x<sub>i-1</sub>] where f<sub>0</sub> returns f[x<sub>0</sub>;i].
 </p>
 <div class="example">
@@ -1482,7 +1478,7 @@ x4 x3
 1202
 </pre></div>
 
-<span id="eachr"></span><span id="eachr-_21d2-f_002f_003a_005bx_003by_005d"></span><h3 class="section">3.7 eachr &rArr; f/:[x;y]</h3>
+<span id="eachright"></span><span id="eachright-_21d2-f_002f_003a_005bx_003by_005d"></span><h3 class="section">3.7 eachright &rArr; f/:[x;y]</h3>
 <p>Apply f[x;y] to each value of y, i.e. the right one.
 </p>
 <div class="example">
@@ -1497,7 +1493,7 @@ x4 x3
 20 21
 </pre></div>
 
-<span id="eachl"></span><span id="eachl-_21d2-f_005c_003a_005bx_003by_005d"></span><h3 class="section">3.8 eachl &rArr; f\:[x;y]</h3>
+<span id="eachleft"></span><span id="eachleft-_21d2-f_005c_003a_005bx_003by_005d"></span><h3 class="section">3.8 eachleft &rArr; f\:[x;y]</h3>
 <p>Apply f[x;y] to each value of x, i.e. the left one.
 </p>
 <div class="example">
@@ -3529,7 +3525,7 @@ x z
 </p>
 <div class="example">
 <pre class="example"> n:5;t:[[]x:!n;y:sin !n]
- select[x&gt;2]sum y from t / select sum y by x&gt;2 from t
+ select sum y by x&gt;2 from t
 x|y         
 -|----------
 0|1.750768  
@@ -3578,7 +3574,7 @@ x y
 
 <div class="example">
 <pre class="example"> n:5;t:[[]x:!n;y:sin !n]
- select[x&gt;2]sum y from t&amp;t :y&gt;0 / select sum y by x&gt;2 from t where y&gt;0
+ select sum y by x&gt;2 from t where y&gt;0
 x|y       
 -|--------
 0|1.750768
@@ -3924,31 +3920,37 @@ Next: <a href="#Control-Flow" accesskey="n" rel="next">Control Flow</a>, Previou
 </p>
 <div class="example">
 <pre class="example">System
-\l a.k <a href="#load">load</a>
-\t:n x <a href="#timing">timing</a>
+\l a.k  <a href="#load">load</a>
+\t:n x  <a href="#timing">timing</a>
 \u:n
-\v     <a href="#variables">variables</a>
-\w     <a href="#memory">memory</a>
-\cd x  <a href="#cd">cd</a>
+\v      <a href="#variables">variables</a>
+
+\f      <a href="#files">files</a>
+\fl
+\fc
+\fs
+\cd [d] <a href="#cd">cd</a>
 </pre></div>
 
 <span id="load"></span><span id="load-_21d2-_005cl-a_002ek"></span><h3 class="section">14.1 load &rArr; \l a.k</h3>
 <p>Load a text file of k9 commands.  The file name must end in .k.
-</p><div class="example">
-<pre class="example">&nbsp;\l func.k
+</p>
+<div class="example">
+<pre class="example"> \l func.k
 \l func.k
-&nbsp;\l func.k7  / will error as not .k
+
+\l func.k9  / will error as not .k
 :nyi
 </pre></div>
 
 <span id="timing"></span><span id="timing-_21d2-_005ct-x-or-_005ct_003an-x"></span><h3 class="section">14.2 timing &rArr; \t x or \t:n x</h3>
-<p>List time elapsed in milliseconds in evaluting x.  If n is supply then repeat x, n times.
+<p>List time elapsed in milliseconds in evaluting x.  If n is supplied then repeat x, n times.
 </p>
 <div class="example">
-<pre class="example"> \t ^(_10e6)rand _1e8     / sort 10 million numbers
+<pre class="example"> \t ^(_10e6)? _1e8     / sort 10 million numbers
 227
 
- \t:10 ^(_10e6)rand _1e8  / perform 10 times the sort
+ \t:10 ^(_10e6)? _1e8  / perform 10 times the sort
 2027
 </pre></div>
 
@@ -3956,25 +3958,25 @@ Next: <a href="#Control-Flow" accesskey="n" rel="next">Control Flow</a>, Previou
 <p>List variables
 </p><div class="example">
 <pre class="example">a:1;b:2;c:3
-&nbsp;\v
-[v:`a`b`c]
+
+ \v
+,3
+i|`a`b`c
 </pre></div>
 
-<span id="memory"></span><span id="memory-_21d2-_005cw"></span><h3 class="section">14.4 memory &rArr; \w</h3>
-<p>List memory usage
-</p><div class="example">
-<pre class="example">&nbsp;\w
-0
-&nbsp;r:(`i$10e6)rand 10
-&nbsp;\w
-2097158
-</pre></div>
-
-<span id="cd"></span><span id="cd-_21d2-_005ccd-x"></span><h3 class="section">14.5 cd &rArr; \cd x</h3>
-<p>Change directory (cd) into x
+<span id="files"></span><span id="files-_21d2-_005cf"></span><h3 class="section">14.4 files &rArr; \f</h3>
+<p>List files in current directory.
 </p>
 <div class="example">
-<pre class="example">&nbsp;\cd scripts
+<pre class="example"> \f
+simples.k
+</pre></div>
+
+<span id="cd"></span><span id="cd-_21d2-_005ccd-_005bd_005d"></span><h3 class="section">14.5 cd &rArr; \cd [d]</h3>
+<p>Change directory (cd) into d or print current directory.
+</p>
+<div class="example">
+<pre class="example"> \cd &quot;/Users/user123/&quot;
 </pre></div>
 
 <hr>
@@ -4736,7 +4738,7 @@ g|14
 y| 4
 </pre></div>
 
-<p>Now if we want to compute the same over all the data we need to run the kSQL query over each table.  We&rsquo;ll do this on parallel threads (<a href="#eachp">eachp</a>) to speed it up.
+<p>Now if we want to compute the same over all the data we need to run the kSQL query over each table.  We&rsquo;ll do this on parallel threads (<a href="#eachprior">eachprior</a>) to speed it up.
 </p>
 <div class="example">
 <pre class="example"> {select[t]count from x}':x
@@ -4779,37 +4781,35 @@ Previous: <a href="#Benchmark" accesskey="p" rel="prev">Benchmark</a>, Up: <a hr
 <div class="format">
 <pre class="verbatim">*ffi: a:&quot;./a.so&quot;5:`f!&quot;ii&quot;;a.f[2;3] / int f(int i,int j){return i+j;}
 *k/c: b:&quot;./b.so&quot;5:`f!2   ;b.f[2;3] / K f(K x,K y){return ki(xi+yi);}
-[python:   import k;k.k('+',2,3)]
-[nodejs: require('k').k('+',2,3)]
-limit: #(4billion) name8 code(param8 local8 global32 const128)
+`csv?`csv t:,`js?`js d:[d:.z.d;t:.z.t;n:`ab;i:23;f:4.5]
+python: import k;k.k('+',2,3); nodejs: require('k').k('+',2,3)
 
 verb                   adverb                  noun
 : x         y          f' each      g' each    char &quot; ab&quot;              \l a.k
 + flip      plus    [x]f/ over      c/ join    name ``ab               \t:n x
-- minus     minus   [x]f\ scan      c\ splt    int  0N 2 3 0W          \u:n x
-* first     times   [y]f':eachprior            flt  0n 2 3.4 0w        \v
-%           divide     f/:eachright g/:over    date 2021.01.23   .z.d
+- minus     minus   [x]f\ scan      c\ splt    int  2 3                \u:n x
+* first     times   [y]f':eachprior            flt  2 3.4 0w 0n        \v
+%           divide     f/:eachright g/:over    date 2021.06.28   .z.d
 &amp; where     min/and    f\:eachleft  g\:scan    time 12:34:56.789 .z.t
 | reverse   max/or     
 &lt; asc       less       i/o (*enterprise)       class                   \f
-&gt; desc      more       0: r/w line             list l:(2;3.4;`c)       \fl x
-= group     equal      1: r/w char             dict d:[n:`b;i:2]       \fc x   
-~ not       match     *2: r/w data             func f:{[a;b]a+b}       \fs x
-! key       key       *3: k-ipc set            expr e::a+b             \cd [d]
+&gt; desc      more       0: r/w line (N;C)0:     list (2;3.4;`c)         \fl x
+= group     equal      1: r/w char             dict [n:`b;i:2]         \fc x   
+~ not       match     *2: r/w data             func {[a;b]a+b}         \fs x
+! key       key       *3: k-ipc set            expr :a+b               \cd [d]
 , enlist    cat       *4: https get
-^ sort   [f]cut       *5: ffi/py/js/..         table t:[[]n:`b`c;i:2 3]
-# count  [f]take                              utable u: [[n:`b`c]i:2 3]
-_ floor  [f]drop                       
+^ sort   [f]cut       *5: ffi/iff[py/js/..]    table [[]n:`b`c;i:2 3]
+# count  [f]take                              utable  [[n:`b`c]i:2 3]
+_ floor  [f]drop                      
 $ string    parse      $[b;t;f] cond
-? unique [n]find                             
-@ type   [n]at         @[x;i;f[;y]] amend
-. value     dot        .[x;i;f[;y]] dmend
+? unique [n]find                               limit
+@ type   [n]at         @[x;i;f[;y]] amend      name8(*256)
+. value     dot        .[x;i;f[;y]] dmend      code p8 l8 g32 c128
 
-`js?`js d:[d:.z.d;t:.z.t;n:`ab;i:23;f:4.5];`csv?`csv t:2#,d
-{select|update} A by B from T where C; delete from T where C
-count first last min max sum dot avg var [dev med mode countd ..]
+select A by B from T where C; update A from T; delete from T where C
+count first last min max sum dot avg var [dev med mode ..]
 sqrt sqr exp log sin cos div mod bar in bin
-\\ exit  /comment \trace [:return 'signal if do while]</pre></div>
+/comment \trace [:return 'signal if do while] \\exit</pre></div>
 
 
 

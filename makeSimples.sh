@@ -9,6 +9,11 @@ sed -e 's/@/@@/g' \
     -e '30,40 s/med/@ref{med}/g' \
     -e '30,40 s/mode/@ref{mode}/g' \
     -e '30,40 s/countd/@ref{countd}/g' \
+    -e '1,20 s/\\l/@ref{load,\\l}/g' \
+    -e '1,20 s/\\t/@ref{timing,\\t}/g' \
+    -e '1,20 s/\\v/@ref{variables,\\v}/g' \
+    -e '1,20 s/\\f}/@ref{files,\\f}}/g' \
+    -e '1,20 s/\\cd/@ref{cd,\\cd}/g' \
     -e 's/flip/@ref{flip}/g' \
     -e 's/plus/@ref{plus}/g' \
     -e 's/negate/@ref{negate}/g' \
@@ -45,7 +50,7 @@ sed -e 's/@/@@/g' \
     -e '20,100 s/type/@ref{type}/g' \
     -e 's/]at/]@ref{at}/g' \
     -e 's/value/@ref{value}/g' \
-    -e '1,30 s/dot/@ref{dot}/g' \
+    -e '1,26 s/dot/@ref{dot}/g' \
     -e '1,10 s/join/@ref{join}/g' \
     -e '1,5 s/scan/@ref{scan}/g' \
     -e '1,5 s/over/@ref{over}/g' \
@@ -53,10 +58,10 @@ sed -e 's/@/@@/g' \
     -e '6,15 s/over/@ref{cover,over}/g' \
     -e 's/split/@ref{split}/g' \
     -e 's/each@/@ref{each}@/g' \
-    -e 's/eachp/@ref{eachp}/g' \
+    -e 's/eachprior/@ref{eachprior}/g' \
     -e 's/+binXX/@ref{bin2,+bin}/g' \
-    -e 's/eachr/@ref{eachr}/g' \
-    -e 's/eachl/@ref{eachl}/g' \
+    -e 's/eachright/@ref{eachright}/g' \
+    -e 's/eachleft/@ref{eachleft}/g' \
     -e '20,30 s/select/@ref{select}/g' \
     -e '20,30 s/delete/@ref{delete}/g' \
     -e '20,30 s/A/@ref{A}/g' \
@@ -126,13 +131,13 @@ sed -e 's/@/@@/g' \
     -e '20,40 s/deltas/@ref{deltas}/g' \
     -e '20,40 s/rand/@ref{rand}/g' \
     -e '20,40 s/has/@ref{has}/g' \
-    -e '30,35 s/count /@ref{Hcount,count} /g' \
-    -e '30,35 s/first/@ref{Hfirst,first}/g' \
-    -e '30,35 s/last/@ref{Hlast,last}/g' \
-    -e '30,35 s/min/@ref{Hmin,min}/g' \
-    -e '30,35 s/max/@ref{Hmax,max}/g' \
-    -e '30,35 s/sum/@ref{Hsum,sum}/g' \
-    -e '30,35 s/dot/@ref{Hdot,dot}/g' \
+    -e '28,35 s/count /@ref{Hcount,count} /g' \
+    -e '28,35 s/first/@ref{Hfirst,first}/g' \
+    -e '28,35 s/last/@ref{Hlast,last}/g' \
+    -e '28,35 s/min/@ref{Hmin,min}/g' \
+    -e '28,35 s/max/@ref{Hmax,max}/g' \
+    -e '28,35 s/sum/@ref{Hsum,sum}/g' \
+    -e '28,35 s/dot/@ref{Hdot,dot}/g' \
     -e '28,35 s/.z.d/@ref{.z.d}/g' \
     -e '28,35 s/.z.t/@ref{.z.t}/g' \
     -e '20,40 s/avg/@ref{avg}/g' \

@@ -95,10 +95,10 @@ Next: <a href="Noun.html" accesskey="n" rel="next">Noun</a>, Previous: <a href="
 <pre class="example">Adverb
    f'  <a href="#each">each</a>
 [x]f/  <a href="#scan">over</a> (c/<a href="#join">join</a>)
-[x]f\  <a href="#scan">scan</a> (c\<a href="#split">split</a>)
-[y]f': <a href="#eachp">eachp</a>
-   f/: <a href="#eachr">eachr</a> g/:<a href="#cover">over</a> 
-   f\: <a href="#eachl">eachl</a> g\:<a href="#cscan">scan</a> 
+[x]f\  <a href="#scan">scan</a>     (c\<a href="#split">split</a>)
+[y]f': <a href="#eachprior">eachprior</a>
+   f/: <a href="#eachright">eachright</a> g/:<a href="#cover">over</a> 
+   f\: <a href="#eachleft">eachleft</a>  g\:<a href="#cscan">scan</a> 
 </pre></div>
 
 <p>Adverbs modify verbs to operative iteratively over nouns.  This previous sentence likely will  make sense only once you understand it so let&rsquo;s jump into an example.  Imagine you have a list of 4 lists.  Using <code>first</code> you will retrieve the first sub-list.  In order to retrieve the first element of each sub-list you&rsquo;ll have to modify the function <code>first</code> with a modifier <code>each</code>.
@@ -133,7 +133,7 @@ Next: <a href="Noun.html" accesskey="n" rel="next">Noun</a>, Previous: <a href="
 </pre></div>
 
 <span id="each"></span><span id="each-_21d2-f_0027x"></span><h3 class="section">3.1 each &rArr; f&rsquo;x</h3>
-<p>Apply function f to each value in list x in a single thread.  Multithread operation is done with <a href="#eachp">eachp</a>.  
+<p>Apply function f to each value in list x in a single thread.  Multithread operation is done with <a href="#eachprior">eachprior</a>.  
 </p>
 <div class="example">
 <pre class="example"> *((1 2 3);4;(5 6);7)   / first element of the list
@@ -242,7 +242,7 @@ sentence.
 2 0 1
 </pre></div>
 
-<span id="eachp"></span><span id="eachp-_21d2-f_0027_003a_005bx_003by_005d-or-y-f_0027_003ax"></span><h3 class="section">3.6 eachp &rArr; f&rsquo;:[x;y] or y f&rsquo;:x</h3>
+<span id="eachprior"></span><span id="eachprior-_21d2-f_0027_003a_005bx_003by_005d-or-y-f_0027_003ax"></span><h3 class="section">3.6 eachprior &rArr; f&rsquo;:[x;y] or y f&rsquo;:x</h3>
 <p>Compute f, a function of two arguments, over list x with optional initial value y.   Concretely f<sub>i</sub>=f[x<sub>i</sub>;x<sub>i-1</sub>] where f<sub>0</sub> returns f[x<sub>0</sub>;i].
 </p>
 <div class="example">
@@ -277,7 +277,7 @@ x4 x3
 1202
 </pre></div>
 
-<span id="eachr"></span><span id="eachr-_21d2-f_002f_003a_005bx_003by_005d"></span><h3 class="section">3.7 eachr &rArr; f/:[x;y]</h3>
+<span id="eachright"></span><span id="eachright-_21d2-f_002f_003a_005bx_003by_005d"></span><h3 class="section">3.7 eachright &rArr; f/:[x;y]</h3>
 <p>Apply f[x;y] to each value of y, i.e. the right one.
 </p>
 <div class="example">
@@ -292,7 +292,7 @@ x4 x3
 20 21
 </pre></div>
 
-<span id="eachl"></span><span id="eachl-_21d2-f_005c_003a_005bx_003by_005d"></span><h3 class="section">3.8 eachl &rArr; f\:[x;y]</h3>
+<span id="eachleft"></span><span id="eachleft-_21d2-f_005c_003a_005bx_003by_005d"></span><h3 class="section">3.8 eachleft &rArr; f\:[x;y]</h3>
 <p>Apply f[x;y] to each value of x, i.e. the left one.
 </p>
 <div class="example">

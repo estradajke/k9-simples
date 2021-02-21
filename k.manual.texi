@@ -1289,10 +1289,10 @@ This chapter may be one of the most difficult for users new to array langauges b
 Adverb
    f'  @ref{each}
 [x]f/  @ref{scan,over} (c/@ref{join})
-[x]f\  @ref{scan} (c\@ref{split})
-[y]f': @ref{eachp}
-   f/: @ref{eachr} g/:@ref{cover,over} 
-   f\: @ref{eachl} g\:@ref{cscan,scan} 
+[x]f\  @ref{scan}     (c\@ref{split})
+[y]f': @ref{eachprior}
+   f/: @ref{eachright} g/:@ref{cover,over} 
+   f\: @ref{eachleft}  g\:@ref{cscan,scan} 
 @end example
 
 Adverbs modify verbs to operative iteratively over nouns.  This previous sentence likely will  make sense only once you understand it so let's jump into an example.  Imagine you have a list of 4 lists.  Using @code{first} you will retrieve the first sub-list.  In order to retrieve the first element of each sub-list you'll have to modify the function @code{first} with a modifier @code{each}.
@@ -1327,7 +1327,7 @@ Adverbs area also used where one might use a @code{for}, @code{do}, or @code{whi
 @end example
 
 @anchor{each}@section each @result{} f'x
-Apply function f to each value in list x in a single thread.  Multithread operation is done with @ref{eachp}.  
+Apply function f to each value in list x in a single thread.  Multithread operation is done with @ref{eachprior}.  
 
 @example
  *((1 2 3);4;(5 6);7)   / first element of the list
@@ -1438,7 +1438,7 @@ c\x splits a number x into base c digits.
 2 0 1
 @end example
 
-@anchor{eachp}@section eachp @result{} f':[x;y] or y f':x
+@anchor{eachprior}@section eachprior @result{} f':[x;y] or y f':x
 Compute f, a function of two arguments, over list x with optional initial value y.   Concretely f@sub{i}=f[x@sub{i};x@sub{i-1}] where f@sub{0} returns f[x@sub{0};i].
 
 @example
@@ -1483,7 +1483,7 @@ Additionally eachp (':) is a multithreaded (parallel) each.  This will allow a f
 @c 2
 @c @end example
 @c 
-@anchor{eachr}@section eachr @result{} f/:[x;y]
+@anchor{eachright}@section eachright @result{} f/:[x;y]
 Apply f[x;y] to each value of y, i.e. the right one.
 
 @example
@@ -1498,7 +1498,7 @@ Apply f[x;y] to each value of y, i.e. the right one.
 20 21
 @end example
 
-@anchor{eachl}@section eachl @result{} f\:[x;y]
+@anchor{eachleft}@section eachleft @result{} f\:[x;y]
 Apply f[x;y] to each value of x, i.e. the left one.
 
 @example
@@ -3937,31 +3937,38 @@ k9 comes with a few system functions and measurement commands.  The commands all
 
 @example
 System
-\l a.k @ref{load}
-\t:n x @ref{timing}
+\l a.k  @ref{load}
+\t:n x  @ref{timing}
 \u:n
-\v     @ref{variables}
-\w     @ref{memory}
-\cd x  @ref{cd}
+\v      @ref{variables}
+@c \w     @ref{memory}
+
+\f      @ref{files}
+\fl
+\fc
+\fs
+\cd [d] @ref{cd}
 @end example
 
 @anchor{load}@section load @result{} \l a.k
 Load a text file of k9 commands.  The file name must end in .k.
+
 @example
-@ \l func.k
+ \l func.k
 \l func.k
-@ \l func.k7  / will error as not .k
+
+\l func.k9  / will error as not .k
 :nyi
 @end example
 
 @anchor{timing}@section timing @result{} \t x or \t:n x
-List time elapsed in milliseconds in evaluting x.  If n is supply then repeat x, n times.
+List time elapsed in milliseconds in evaluting x.  If n is supplied then repeat x, n times.
 
 @example
- \t ^(_10e6)rand _1e8     / sort 10 million numbers
+ \t ^(_10e6)? _1e8     / sort 10 million numbers
 227
 
- \t:10 ^(_10e6)rand _1e8  / perform 10 times the sort
+ \t:10 ^(_10e6)? _1e8  / perform 10 times the sort
 2027
 @end example
 
@@ -3969,25 +3976,37 @@ List time elapsed in milliseconds in evaluting x.  If n is supply then repeat x,
 List variables
 @example
 a:1;b:2;c:3
-@ \v
-[v:`a`b`c]
+
+ \v
+,3
+i|`a`b`c
 @end example
 
-@anchor{memory}@section memory @result{} \w
-List memory usage
+@anchor{files}@section files @result{} \f
+List files in current directory.
+
 @example
-@ \w
-0
-@ r:(`i$10e6)rand 10
-@ \w
-2097158
+ \f
+simples.k
 @end example
 
-@anchor{cd}@section cd @result{} \cd x
-Change directory (cd) into x
+@c @anchor{memory}@section memory @result{} \w
+@c List memory usage
+@c @example
+@c  \w
+@c 1558
+@c 
+@c  r:(_10e6)?10
+@c 
+@c \w
+@c 2098769
+@c @end example
+@c 
+@anchor{cd}@section cd @result{} \cd [d]
+Change directory (cd) into d or print current directory.
 
 @example
-@ \cd scripts
+ \cd "/Users/user123/"
 @end example
 
 @node Control Flow
@@ -4703,7 +4722,7 @@ g|14
 y| 4
 @end example
 
-Now if we want to compute the same over all the data we need to run the kSQL query over each table.  We'll do this on parallel threads (@ref{eachp}) to speed it up.
+Now if we want to compute the same over all the data we need to run the kSQL query over each table.  We'll do this on parallel threads (@ref{eachprior}) to speed it up.
 
 @example
  @{select[t]count from x@}':x
