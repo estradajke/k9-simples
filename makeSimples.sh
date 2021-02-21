@@ -60,8 +60,8 @@ sed -e 's/@/@@/g' \
     -e '20,30 s/select/@ref{select}/g' \
     -e '20,30 s/delete/@ref{delete}/g' \
     -e '20,30 s/A/@ref{A}/g' \
-    -e '25,26 s/[C]/[@ref{C}]/g' \
-    -e '20,30 s/where@ B/@ref{where B}/g' \
+    -e '20,30 s/by@ B/@ref{by B}/g' \
+    -e '20,30 s/where@ C/@ref{where C}/g' \
     -e '20,30 s/update/@ref{update}/g' \
     -e 's/insert/@ref{insert}/g' \
     -e 's/upsert/@ref{upsert}/g' \

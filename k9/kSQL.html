@@ -93,7 +93,7 @@ Next: <a href="System.html" accesskey="n" rel="next">System</a>, Previous: <a hr
 </p>
 <div class="example">
 <pre class="example">Database
-<a href="#select">select</a>[<a href="#G">G</a>]<a href="#A">A</a> from T <a href="#where-C">where C</a>; <a href="#update">update</a> <a href="#A">A</a> from T <a href="#where-C">where C</a>; <a href="#delete">delete</a> from T <a href="#where-C">where C</a>
+{<a href="#select">select</a>|<a href="#update">update</a>} <a href="#A">A</a> <a href="#by-B">by B</a> from T <a href="#where-C">where C</a>; <a href="#delete">delete</a> from T <a href="#where-C">where C</a>
 
 <a href="#Joins">Joins</a>
 x,y      / <a href="#insert">insert</a>, <a href="#upsert">upsert</a>, <a href="#union">union</a>, equi-and-asof <a href="#leftjoin">leftjoin</a>
@@ -197,8 +197,8 @@ x z
 4 -0.7568025
 </pre></div>
 
-<span id="G"></span><span id="G-1"></span><h4 class="subsection">13.1.3 G</h4>
-<p>kSQL also has a way to group rows using <code>[G]</code>.  The result is a utable where the key is determined by the grouping clause.
+<span id="by-B"></span><span id="by-B-1"></span><h4 class="subsection">13.1.3 by B</h4>
+<p>kSQL also has a way to group rows using <code>by B</code>.  The result is a utable where the key is determined by the grouping clause.
 </p>
 <div class="example">
 <pre class="example"> n:5;t:[[]x:!n;y:sin !n]

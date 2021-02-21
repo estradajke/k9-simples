@@ -3437,7 +3437,7 @@ kSQL is a powerful query language for tables.  It has similarities to ANSI SQL b
 
 @example
 Database
-@ref{select}[@ref{G}]@ref{A} from T @ref{where C}; @ref{update} @ref{A} from T @ref{where C}; @ref{delete} from T @ref{where C}
+@{@ref{select}|@ref{update}@} @ref{A} @ref{by B} from T @ref{where C}; @ref{delete} from T @ref{where C}
 
 @ref{Joins}
 x,y      / @ref{insert}, @ref{upsert}, @ref{union}, equi-and-asof @ref{leftjoin}
@@ -3541,12 +3541,12 @@ x z
 4 -0.7568025
 @end example
 
-@anchor{G}@subsection G
-kSQL also has a way to group rows using @code{[G]}.  The result is a utable where the key is determined by the grouping clause.
+@anchor{by B}@subsection by B
+kSQL also has a way to group rows using @code{by B}.  The result is a utable where the key is determined by the grouping clause.
 
 @example
  n:5;t:[[]x:!n;y:sin !n]
- select[x>2]sum y from t / select sum y by x>2 from t
+ select sum y by x>2 from t
 x|y         
 -|----------
 0|1.750768  
@@ -3595,7 +3595,7 @@ x y
 
 @example
  n:5;t:[[]x:!n;y:sin !n]
- select[x>2]sum y from t@&t :y>0 / select sum y by x>2 from t where y>0
+ select sum y by x>2 from t where y>0
 x|y       
 -|--------
 0|1.750768

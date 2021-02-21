@@ -128,7 +128,7 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; <
 <tt>.&nbsp;<a href="#value">value</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#dot">dot</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.[x;i;f[;y]]&nbsp;<a href="#dmend">dmend</a></tt><br>
 <tt></tt><br>
 <tt><a href="#read-json">`js?</a><a href="#write-json">`js&nbsp;</a>d:[d:<a href="#g_t_002ez_002ed">.z.d</a>;t:<a href="#g_t_002ez_002et">.z.t</a>;n:`ab;i:23;f:4.5];<a href="#read-csv">`csv?</a><a href="#write-csv">`csv&nbsp;</a>t:2#,d</tt><br>
-<tt>{<a href="#select">select</a>|<a href="#update">update</a>}&nbsp;<a href="#A">A</a>&nbsp;by&nbsp;B&nbsp;from&nbsp;T&nbsp;where&nbsp;C;&nbsp;<a href="#delete">delete</a>&nbsp;from&nbsp;T&nbsp;where&nbsp;C</tt><br>
+<tt>{<a href="#select">select</a>|<a href="#update">update</a>}&nbsp;<a href="#A">A</a>&nbsp;<a href="#by-B">by B</a>&nbsp;from&nbsp;T&nbsp;<a href="#where-C">where C</a>;&nbsp;<a href="#delete">delete</a>&nbsp;from&nbsp;T&nbsp;<a href="#where-C">where C</a></tt><br>
 <tt>count&nbsp;<a href="#Hfirst">first</a>&nbsp;<a href="#Hlast">last</a>&nbsp;<a href="#Hmin">min</a>&nbsp;<a href="#Hmax">max</a>&nbsp;<a href="#Hsum">sum</a>&nbsp;<a href="#Hdot">dot</a>&nbsp;<a href="#avg">avg</a>&nbsp;<a href="#var">var</a>&nbsp;[<a href="#dev">dev</a>&nbsp;<a href="#med">med</a>&nbsp;<a href="#mode">mode</a>&nbsp;<a href="#countd">countd</a>&nbsp;..]</tt><br>
 <tt><a href="#sqrt">sqrt</a>&nbsp;<a href="#sqr">sqr</a>&nbsp;<a href="#exp">exp</a>&nbsp;<a href="#log">log</a>&nbsp;<a href="#sin">sin</a>&nbsp;<a href="#cos">cos</a>&nbsp;<a href="#div">div</a>&nbsp;<a href="#mod">mod</a>&nbsp;<a href="#bar">bar</a>&nbsp;<a href="#in">in</a>&nbsp;<a href="#bin">bin</a></tt><br>
 <tt>\\&nbsp;exit&nbsp;&nbsp;/comment&nbsp;\trace&nbsp;[:return&nbsp;'signal&nbsp;if&nbsp;do&nbsp;while]</tt><br>
@@ -3420,7 +3420,7 @@ Next: <a href="#System" accesskey="n" rel="next">System</a>, Previous: <a href="
 </p>
 <div class="example">
 <pre class="example">Database
-<a href="#select">select</a>[<a href="#G">G</a>]<a href="#A">A</a> from T <a href="#where-C">where C</a>; <a href="#update">update</a> <a href="#A">A</a> from T <a href="#where-C">where C</a>; <a href="#delete">delete</a> from T <a href="#where-C">where C</a>
+{<a href="#select">select</a>|<a href="#update">update</a>} <a href="#A">A</a> <a href="#by-B">by B</a> from T <a href="#where-C">where C</a>; <a href="#delete">delete</a> from T <a href="#where-C">where C</a>
 
 <a href="#Joins">Joins</a>
 x,y      / <a href="#insert">insert</a>, <a href="#upsert">upsert</a>, <a href="#union">union</a>, equi-and-asof <a href="#leftjoin">leftjoin</a>
@@ -3524,8 +3524,8 @@ x z
 4 -0.7568025
 </pre></div>
 
-<span id="G"></span><span id="G-1"></span><h4 class="subsection">13.1.3 G</h4>
-<p>kSQL also has a way to group rows using <code>[G]</code>.  The result is a utable where the key is determined by the grouping clause.
+<span id="by-B"></span><span id="by-B-1"></span><h4 class="subsection">13.1.3 by B</h4>
+<p>kSQL also has a way to group rows using <code>by B</code>.  The result is a utable where the key is determined by the grouping clause.
 </p>
 <div class="example">
 <pre class="example"> n:5;t:[[]x:!n;y:sin !n]
