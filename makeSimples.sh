@@ -5,6 +5,10 @@ sed -e 's/@/@@/g' \
     -e 's/{/@{/g' \
     -e 's/ /@ /g' \
     -e 's/^/@t{/; s/$/}@*/' \
+    -e '30,40 s/dev/@ref{dev}/g' \
+    -e '30,40 s/med/@ref{med}/g' \
+    -e '30,40 s/mode/@ref{mode}/g' \
+    -e '30,40 s/countd/@ref{countd}/g' \
     -e 's/flip/@ref{flip}/g' \
     -e 's/plus/@ref{plus}/g' \
     -e 's/negate/@ref{negate}/g' \
@@ -30,7 +34,7 @@ sed -e 's/@/@@/g' \
     -e 's/cat/@ref{cat}/g' \
     -e 's/sort/@ref{sort}/g' \
     -e 's/cut/@ref{cut}/g' \
-    -e 's/count/@ref{count}/g' \
+    -e '1,30 s/count/@ref{count}/g' \
     -e 's/take/@ref{take}/g' \
     -e 's/floor/@ref{floor}/g' \
     -e 's/drop/@ref{drop}/g' \
@@ -41,7 +45,7 @@ sed -e 's/@/@@/g' \
     -e '20,100 s/type/@ref{type}/g' \
     -e 's/]at/]@ref{at}/g' \
     -e 's/value/@ref{value}/g' \
-    -e 's/dot/@ref{dot}/g' \
+    -e '1,30 s/dot/@ref{dot}/g' \
     -e '1,10 s/join/@ref{join}/g' \
     -e '1,5 s/scan/@ref{scan}/g' \
     -e '1,5 s/over/@ref{over}/g' \
@@ -112,7 +116,7 @@ sed -e 's/@/@@/g' \
     -e '20,40 s/sqr@ /@ref{sqr}@ /g' \
     -e '20,40 s/sqrt/@ref{sqrt}/g' \
     -e '20,40 s/div/@ref{div}/g' \
-    -e '20,40 s/mod/@ref{mod}/g' \
+    -e '32,40 s/mod/@ref{mod}/g' \
     -e '20,40 s/bar/@ref{bar}/g' \
     -e '20,40 s/top/@ref{topX,top}/g' \
     -e '20,40 s/freq/@ref{freq}/g' \
@@ -122,11 +126,15 @@ sed -e 's/@/@@/g' \
     -e '20,40 s/deltas/@ref{deltas}/g' \
     -e '20,40 s/rand/@ref{rand}/g' \
     -e '20,40 s/has/@ref{has}/g' \
-    -e '20,40 s/first/@ref{Hfirst,first}/g' \
-    -e '20,40 s/last/@ref{Hlast,last}/g' \
-    -e '23,24 s/sum/@ref{Hsum,sum}/g' \
-    -e '20,40 s/min/@ref{Hmin,min}/g' \
-    -e '20,40 s/max/@ref{Hmax,max}/g' \
+    -e '30,35 s/count /@ref{Hcount,count} /g' \
+    -e '30,35 s/first/@ref{Hfirst,first}/g' \
+    -e '30,35 s/last/@ref{Hlast,last}/g' \
+    -e '30,35 s/min/@ref{Hmin,min}/g' \
+    -e '30,35 s/max/@ref{Hmax,max}/g' \
+    -e '30,35 s/sum/@ref{Hsum,sum}/g' \
+    -e '30,35 s/dot/@ref{Hdot,dot}/g' \
+    -e '20,40 s/avg/@ref{avg}/g' \
+    -e '20,40 s/var/@ref{var}/g' \
     -e '20,30 s/prm/@ref{prm}/g' \
     -e '20,30 s/cmb/@ref{cmb}/g' k.d > k.d2
 

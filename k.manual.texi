@@ -2497,21 +2497,108 @@ a 3
 @chapter Named Functions
 This chapter covers the built-in  named functions.  This includes some math (eg. sqrt but not +), wrapper (eg. count for #) and range (eg. within) functions.
 
-
-rand has bin in within div mod bar rand cmb msum mavg
-count first last sum min max *[avg var dev med ..]; key meta
-
-
 @smallformat
 @example
-@ref{exp} @ref{log} @ref{sin} @ref{cos} @ref{sqr} @ref{sqrt} @ref{prm} @ref{freq} @ref{sums} @ref{deltas}
-@ref{rand} @ref{has} @ref{bin} @ref{in} @ref{within} @ref{div} @ref{mod} @ref{bar} @ref{cmb} @ref{msum} @ref{mavg}
-@ref{Hcount,count} @ref{Hfirst,first} @ref{Hlast,last} @ref{Hsum,sum} @ref{Hmin,min} @ref{Hmax,max}
+@ref{Hcount,count} @ref{Hfirst,first} @ref{Hlast,last} @ref{Hmin,min} @ref{Hmax,max} @ref{Hsum,sum} @ref{Hdot,dot} @ref{avg} @ref{var} [dev med mode countd ..]
+@ref{sqrt} @ref{sqr} @ref{exp} @ref{log} @ref{sin} @ref{cos} @ref{div} @ref{mod} @ref{bar} @ref{in} 
 @end example
 @end smallformat
 
+@anchor{Hcount}@section count @result{} count x
+Same as @ref{count}.
+
+@example
+ count 5 1 2
+3
+@end example
+
+@anchor{Hfirst}@section first @result{} first x
+Same as @ref{first}.
+
+@example
+ first 5 1 2
+5
+@end example
+
+@anchor{Hlast}@section last @result{} last x
+Retrieve the last element of list x.
+
+@example
+ last 5 1 2
+2
+@end example
+
+@anchor{Hmin}@section min @result{} min x
+Retrieve the minimum element of list x.  Same as @code{|/}.
+
+@example
+ min 5 1 2
+1
+@end example
+
+@anchor{Hmax}@section max @result{} max x
+Retrieve the maximum element of list x.  Same as @code{&/}.
+
+@example
+ max 5 1 2
+5
+@end example
+
+@anchor{Hsum}@section sum @result{} sum x
+Compute the sum of list x.  Same as @code{+/}.
+
+@example
+ sum 5 1 2
+8
+@end example
+
+@anchor{Hdot}@section dot @result{} dot x
+Compute the dot product of list x.  Same as @code{+/x*x}.
+
+@example
+ dot 1.2 1.3 1.4
+5.09
+
+ @{+/x*x@} 1.2 1.3 1.4
+5.09
+@end example
+
+@anchor{avg}@section avg @result{} avg x
+Compute the average of list x.  Same as @code{+/x%#x}.
+
+@example
+ avg 2 4 7 10
+5.75
+
+ @{+/x%#x@} 2 4 7 10
+5.75
+@end example
+
+@anchor{var}@section var @result{} var x
+Compute the variance of list x.
+
+@example
+ var !10
+8.25
+
+ @{(+/x*x:x-avg x)%#x@}@@!10
+8.25
+@end example
+
+@anchor{dev}@section dev @result{} dev x
+TBD
+
+@anchor{med}@section med @result{} med x
+TBD
+
+@anchor{mode}@section mode @result{} mode x
+TBD
+
+@anchor{countd}@section countd @result{} countd x
+TBD
+
 @anchor{exp}@section exp @result{} exp x
-exp compute the exponent of x, i.e. e@sup{x}.
+Compute the exponent of x, i.e. e@sup{x}.
 
 @example
 @ exp 1
@@ -2775,53 +2862,6 @@ Compute the length x  moving average of list y.
 @example
  3 mavg !10
 0 0.3333333 1 2 3 4 5 6 7 8
-@end example
-
-@anchor{Hcount}@section count @result{} count x
-Same as @ref{count}.
-
-@example
- count 5 1 2
-3
-@end example
-
-@anchor{Hfirst}@section first @result{} first x
-Same as @ref{first}.
-
-@example
- first 5 1 2
-5
-@end example
-
-@anchor{Hlast}@section last @result{} last x
-Retrieve the last element of list x.
-
-@example
- last 5 1 2
-2
-@end example
-
-@anchor{Hsum}@section sum @result{} sum x
-Compute the sum of list x.  Same as @code{+/}.
-
-@example
- sum 5 1 2
-8
-@end example
-@anchor{Hmin}@section min @result{} min x
-Retrieve the minimum element of list x.  Same as @code{|/}.
-
-@example
- min 5 1 2
-1
-@end example
-
-@anchor{Hmax}@section max @result{} max x
-Retrieve the maximum element of list x.  Same as @code{&/}.
-
-@example
- max 5 1 2
-5
 @end example
 
 @anchor{topX}@section top @result{} top x

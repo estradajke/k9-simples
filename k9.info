@@ -1,6 +1,6 @@
 This is k9.info, produced by texi2any version 6.7 from k.manual.texi.
 
-February 20, 2021
+February 21, 2021
 
 Copyright (C) 2020 John Estrada
 
@@ -53,7 +53,7 @@ $ *note string::    *note parse::      $[b;t;f] *note cond::
 
 *note `js?: read json.*note `js : write json.d:[d:.z.d;t:.z.t;n:`ab;i:23;f:4.5];*note `csv?: read csv.*note `csv : write csv.t:2#,d
 {*note select::|*note update::} *note A:: by B from T where C; *note delete:: from T where C
-*note count:: *note first: Hfirst. *note last: Hlast. *note min: Hmin. *note max: Hmax. sum *note dot:: avg var [dev med *note mod::e *note count::d ..]
+count *note first: Hfirst. *note last: Hlast. *note min: Hmin. *note max: Hmax. *note sum: Hsum. *note dot: Hdot. *note avg:: *note var:: [*note dev:: *note med:: *note mode:: *note countd:: ..]
 *note sqrt:: *note sqr:: *note exp:: *note log:: *note sin:: *note cos:: *note div:: *note mod:: *note bar:: *note in:: *note bin::
 \\ exit  /comment \trace [:return 'signal if do while]
 
@@ -2364,30 +2364,128 @@ File: k9.info,  Node: Named Functions,  Next: Knit Functions,  Prev: Expression,
 
 This chapter covers the built-in named functions.  This includes some math (eg.  sqrt but not +), wrapper (eg.  count for #) and range (eg.  within) functions.
 
-rand has bin in within div mod bar rand cmb msum mavg count first last sum min max *[avg var dev med ..]; key meta
+     *note count: Hcount. *note first: Hfirst. *note last: Hlast. *note min: Hmin. *note max: Hmax. *note sum: Hsum. *note dot: Hdot. *note avg:: *note var:: [dev med mode countd ..]
+     *note sqrt:: *note sqr:: *note exp:: *note log:: *note sin:: *note cos:: *note div:: *note mod:: *note bar:: *note in::
 
-     *note exp:: *note log:: *note sin:: *note cos:: *note sqr:: *note sqrt:: *note prm:: *note freq:: *note sums:: *note deltas::
-     *note rand:: *note has:: *note bin:: *note in:: *note within:: *note div:: *note mod:: *note bar:: *note cmb:: *note msum:: *note mavg::
-     *note count: Hcount. *note first: Hfirst. *note last: Hlast. *note sum: Hsum. *note min: Hmin. *note max: Hmax.
+9.1 count => count x
+====================
 
-9.1 exp => exp x
+Same as *note count::.
+
+      count 5 1 2
+     3
+
+9.2 first => first x
+====================
+
+Same as *note first::.
+
+      first 5 1 2
+     5
+
+9.3 last => last x
+==================
+
+Retrieve the last element of list x.
+
+      last 5 1 2
+     2
+
+9.4 min => min x
 ================
 
-exp compute the exponent of x, i.e.  e^{x}.
+Retrieve the minimum element of list x.  Same as '|/'.
+
+      min 5 1 2
+     1
+
+9.5 max => max x
+================
+
+Retrieve the maximum element of list x.  Same as '&/'.
+
+      max 5 1 2
+     5
+
+9.6 sum => sum x
+================
+
+Compute the sum of list x.  Same as '+/'.
+
+      sum 5 1 2
+     8
+
+9.7 dot => dot x
+================
+
+Compute the dot product of list x.  Same as '+/x*x'.
+
+      dot 1.2 1.3 1.4
+     5.09
+
+      {+/x*x} 1.2 1.3 1.4
+     5.09
+
+9.8 avg => avg x
+================
+
+Compute the average of list x.  Same as '+/x%#x'.
+
+      avg 2 4 7 10
+     5.75
+
+      {+/x%#x} 2 4 7 10
+     5.75
+
+9.9 var => var x
+================
+
+Compute the variance of list x.
+
+      var !10
+     8.25
+
+      {(+/x*x:x-avg x)%#x}@!10
+     8.25
+
+9.10 dev => dev x
+=================
+
+TBD
+
+9.11 med => med x
+=================
+
+TBD
+
+9.12 mode => mode x
+===================
+
+TBD
+
+9.13 countd => countd x
+=======================
+
+TBD
+
+9.14 exp => exp x
+=================
+
+Compute the exponent of x, i.e.  e^{x}.
 
       exp 1
      2.718282
 
-9.2 log => log x
-================
+9.15 log => log x
+=================
 
 Log computes the natural log.
 
       log 10
      2.302585
 
-9.3 sin => sin x
-================
+9.16 sin => sin x
+=================
 
 sin computes the sine of x where x is in radians.
       sin 0
@@ -2395,8 +2493,8 @@ sin computes the sine of x where x is in radians.
       sin 3.1416%2
      1.
 
-9.4 cos => cos x
-================
+9.17 cos => cos x
+=================
 
 cos computes the cosine of x where x is in radians.
       cos 0
@@ -2404,24 +2502,24 @@ cos computes the cosine of x where x is in radians.
       cos 3.1416%4
      0.7071055
 
-9.5 sqr => sqr x
-================
+9.18 sqr => sqr x
+=================
 
 Compute the square of x.
 
       sqr 2
      4.0
 
-9.6 sqrt => sqrt x
-==================
+9.19 sqrt => sqrt x
+===================
 
 Compute the square root of x.
 
       sqrt 2
      1.414214
 
-9.7 prm => prm x
-================
+9.20 prm => prm x
+=================
 
 Write out all permutations of integers up x-1.  Display them as columns.
 
@@ -2430,8 +2528,8 @@ Write out all permutations of integers up x-1.  Display them as columns.
      1 0 2 2 0 1
      2 2 0 1 1 0
 
-9.8 freq => freq x
-==================
+9.21 freq => freq x
+===================
 
 Compute the frequency of the items in list x.
 
@@ -2460,15 +2558,15 @@ Compute the frequency of the items in list x.
      8|120
      9| 95
 
-9.9 sums => sums x
-==================
+9.22 sums => sums x
+===================
 
 Compute the running sum of list x.  Sames as '+\'.
 
       sums !10
      0 1 3 6 10 15 21 28 36 45
 
-9.10 deltas => deltas x and x deltas y
+9.23 deltas => deltas x and x deltas y
 ======================================
 
 Compute the difference between each element in list x and the previous value.  If delta is called with two parameters then x will be used as the first value to delta instead of the default 0.
@@ -2479,7 +2577,7 @@ Compute the difference between each element in list x and the previous value.  I
       1 deltas 1 5 10
      0 4 5
 
-9.11 rand => rand x or x rand y
+9.24 rand => rand x or x rand y
 ===============================
 
 Generate x random values using a uniform distribution from [0,1) or -x random values of a normal distribution (mean=0, standard deviation=1).
@@ -2508,7 +2606,7 @@ choose between elements of the list.
      5 rand "xy"
      "yxxxy"
 
-9.12 has => x has y
+9.25 has => x has y
 ===================
 
 Determine whether vector x has element y.  Simliar to *note in:: but with the arguments reversed.
@@ -2525,7 +2623,7 @@ Determine whether vector x has element y.  Simliar to *note in:: but with the ar
       (1 2;4 5 6;7 9)has(1 2;8 9)
      10b
 
-9.13 bin => x bin y
+9.26 bin => x bin y
 ===================
 
 Given a sorted (increasing) list x, find the greatest index, i, where y>x[i].
@@ -2535,7 +2633,7 @@ Given a sorted (increasing) list x, find the greatest index, i, where y>x[i].
       1.025 bin n
      2
 
-9.14 in => x in y
+9.27 in => x in y
 =================
 
 Determine if x is in list y.  Similar to *note has:: but arguments reversed.
@@ -2545,7 +2643,7 @@ Determine if x is in list y.  Similar to *note has:: but arguments reversed.
       `c in `a`b`d`e
      0b
 
-9.15 within => x within y
+9.28 within => x within y
 =========================
 
 Test if x is equal to or greater than y[0] and less than y[1].
@@ -2562,7 +2660,7 @@ Test if x is equal to or greater than y[0] and less than y[1].
      23 within 0 12
      0b
 
-9.16 div => x div y
+9.29 div => x div y
 ===================
 
 y divided by x using integer division, taking the floor of the result.  x and y must be integers.
@@ -2572,7 +2670,7 @@ y divided by x using integer division, taking the floor of the result.  x and y 
       5 div 22
      4
 
-9.17 mod => x mod y
+9.30 mod => x mod y
 ===================
 
 The remainder after y divided by x using integer division.  x and y must be integers.
@@ -2582,7 +2680,7 @@ The remainder after y divided by x using integer division.  x and y must be inte
       5 mod 22
      2
 
-9.18 bar => x bar y
+9.31 bar => x bar y
 ===================
 
 For each value in y determine the maximum multiple of x that is less than or equal to each y.
@@ -2590,7 +2688,7 @@ For each value in y determine the maximum multiple of x that is less than or equ
       10 bar 9 10 11 19 20 21
      0 10 10 10 20 20
 
-9.19 cmb => x cmb y
+9.32 cmb => x cmb y
 ===================
 
 Determine all x value combinations up to y.  In this case these are ordered in ascending order from left to right.
@@ -2619,7 +2717,7 @@ Determine all x value combinations up to y.  In this case these are ordered in a
      `a`b`d
      `a`b`c
 
-9.20 msum => x msum y
+9.33 msum => x msum y
 =====================
 
 Compute the length x moving sum of list y.
@@ -2627,7 +2725,7 @@ Compute the length x moving sum of list y.
       3 msum !10
      0 1 3 6 9 12 15 18 21 24
 
-9.21 mavg => x mavg y
+9.34 mavg => x mavg y
 =====================
 
 Compute the length x moving average of list y.
@@ -2635,55 +2733,7 @@ Compute the length x moving average of list y.
       3 mavg !10
      0 0.3333333 1 2 3 4 5 6 7 8
 
-9.22 count => count x
-=====================
-
-Same as *note count::.
-
-      count 5 1 2
-     3
-
-9.23 first => first x
-=====================
-
-Same as *note first::.
-
-      first 5 1 2
-     5
-
-9.24 last => last x
-===================
-
-Retrieve the last element of list x.
-
-      last 5 1 2
-     2
-
-9.25 sum => sum x
-=================
-
-Compute the sum of list x.  Same as '+/'.
-
-      sum 5 1 2
-     8
-
-9.26 min => min x
-=================
-
-Retrieve the minimum element of list x.  Same as '|/'.
-
-      min 5 1 2
-     1
-
-9.27 max => max x
-=================
-
-Retrieve the maximum element of list x.  Same as '&/'.
-
-      max 5 1 2
-     5
-
-9.28 top => top x
+9.35 top => top x
 =================
 
 Return the index of the max value of list x.
@@ -2694,7 +2744,7 @@ Return the index of the max value of list x.
      top "abzccdefeajfekjrlke"
      2
 
-9.29 key => x key y
+9.36 key => x key y
 ===================
 
 Key table y with x.  That is, the values in the x column become the key values.
@@ -2711,7 +2761,7 @@ Key table y with x.  That is, the values in the x column become the key values.
      fa|1 2 3
      fb|4 5 6
 
-9.30 unkey => unkey x
+9.37 unkey => unkey x
 =====================
 
 Remove key from table x.
@@ -2722,7 +2772,7 @@ Remove key from table x.
      x 1
      y 2
 
-9.31 meta => meta
+9.38 meta => meta
 =================
 
 Determine the types of the fields in a table.
@@ -4589,181 +4639,188 @@ sqrt sqr exp log sin cos div mod bar in bin
 
 Tag Table:
 Node: Top123
-Node: Introduction5085
-Node: Verb16346
-Ref: x18005
-Ref: set18030
-Ref: flip18289
-Ref: plus18574
-Ref: negate19052
-Ref: minus19224
-Ref: first19331
-Ref: times19547
-Ref: divide19678
-Ref: where19815
-Ref: min/and20298
-Ref: reverse20557
-Ref: max/or20816
-Ref: asc21080
-Ref: desc21080
-Ref: less21471
-Ref: more21471
-Ref: group21772
-Ref: equal22025
-Ref: not22329
-Ref: match22446
-Ref: enum22829
-Ref: key23912
-Ref: enlist24085
-Ref: cat24225
-Ref: sort24562
-Ref: cut25214
-Ref: cut125476
-Ref: cut225628
-Ref: cut325822
-Ref: cut426096
-Ref: count26276
-Ref: take26580
-Ref: take127175
-Ref: take227544
-Ref: take327966
-Ref: take428164
-Ref: floor28523
-Ref: drop28614
-Ref: drop129128
-Ref: drop229311
-Ref: drop329587
-Ref: string29751
-Ref: parse29852
-Ref: unique30045
-Ref: find30289
-Ref: type30820
-Ref: at31364
-Ref: value32002
-Ref: dot32443
-Node: Adverb33624
-Ref: each35070
-Ref: over35669
-Ref: scan35797
-Ref: join37148
-Ref: split37519
-Ref: eachp37777
-Ref: eachr38827
-Ref: eachl39027
-Ref: cover39216
-Ref: cscan39529
-Node: Noun40705
-Ref: Atom Types42101
-Ref: bool44716
-Ref: int45403
-Ref: flt46083
-Ref: char46485
-Ref: name46718
-Ref: uuid46958
-Ref: time47115
-Ref: date48018
-Ref: datetime48479
-Node: List49393
-Node: Dictionary53864
-Node: User Functions59492
-Node: Expression62737
-Node: Named Functions64224
-Ref: exp65022
-Ref: log65129
-Ref: sin65223
-Ref: cos65356
-Ref: sqr65498
-Ref: sqrt65581
-Ref: prm65679
-Ref: freq65852
-Ref: sums66206
-Ref: deltas66344
-Ref: rand66682
-Ref: has67563
-Ref: bin67857
-Ref: in68067
-Ref: within68241
-Ref: div68473
-Ref: mod68657
-Ref: bar68831
-Ref: cmb69020
-Ref: msum69448
-Ref: mavg69585
-Ref: Hcount69729
-Ref: Hfirst69824
-Ref: Hlast69919
-Ref: Hsum70023
-Ref: Hmin70126
-Ref: Hmax70244
-Ref: topX70361
-Ref: keyF70519
-Ref: unkey70814
-Ref: meta70950
-Node: Knit Functions71081
-Ref: amend71376
-Ref: amend171899
-Ref: amend272148
-Ref: amend372367
-Ref: amend472672
-Ref: dmend72960
-Ref: dmend173290
-Ref: dmend373458
-Ref: dmend473623
-Node: I/O73784
-Ref: read csv75708
-Ref: write csv75909
-Ref: read json76096
-Ref: write json76280
-Ref: read nv76447
-Ref: w line76640
-Ref: r line76978
-Ref: w byte77091
-Ref: r byte77445
-Ref: r data77595
-Ref: w data78254
-Ref: k-ipc set78830
-Ref: https get78892
-Ref: ffi/py/js/..78954
-Node: Tables79424
-Ref: table80051
-Ref: utable81693
-Node: kSQL82232
-Ref: select83161
-Ref: A83728
-Ref: G84581
-Ref: where C84929
-Ref: update85804
-Ref: delete86525
-Ref: Joins86807
-Ref: union87164
-Ref: leftjoin87685
-Ref: outer88464
-Ref: asof89099
-Ref: asof+90570
-Ref: insert91788
-Ref: upsert92134
-Node: System92548
-Ref: load93006
-Ref: timing93194
-Ref: variables93483
-Ref: memory93584
-Ref: cd93703
-Node: Control Flow93787
-Ref: cond94023
-Node: Temporal Functions94393
-Node: Errors95792
-Ref: class96240
-Ref: rank96329
-Ref: length96453
-Ref: _type96576
-Ref: domain96685
-Ref: limit96807
-Ref: nyi97018
-Ref: eparse97345
-Ref: _value97498
-Node: Examples97626
-Node: Benchmark105550
-Node: Conclusion114218
+Node: Introduction5127
+Node: Verb16388
+Ref: x18047
+Ref: set18072
+Ref: flip18331
+Ref: plus18616
+Ref: negate19094
+Ref: minus19266
+Ref: first19373
+Ref: times19589
+Ref: divide19720
+Ref: where19857
+Ref: min/and20340
+Ref: reverse20599
+Ref: max/or20858
+Ref: asc21122
+Ref: desc21122
+Ref: less21513
+Ref: more21513
+Ref: group21814
+Ref: equal22067
+Ref: not22371
+Ref: match22488
+Ref: enum22871
+Ref: key23954
+Ref: enlist24127
+Ref: cat24267
+Ref: sort24604
+Ref: cut25256
+Ref: cut125518
+Ref: cut225670
+Ref: cut325864
+Ref: cut426138
+Ref: count26318
+Ref: take26622
+Ref: take127217
+Ref: take227586
+Ref: take328008
+Ref: take428206
+Ref: floor28565
+Ref: drop28656
+Ref: drop129170
+Ref: drop229353
+Ref: drop329629
+Ref: string29793
+Ref: parse29894
+Ref: unique30087
+Ref: find30331
+Ref: type30862
+Ref: at31406
+Ref: value32044
+Ref: dot32485
+Node: Adverb33666
+Ref: each35112
+Ref: over35711
+Ref: scan35839
+Ref: join37190
+Ref: split37561
+Ref: eachp37819
+Ref: eachr38869
+Ref: eachl39069
+Ref: cover39258
+Ref: cscan39571
+Node: Noun40747
+Ref: Atom Types42143
+Ref: bool44758
+Ref: int45445
+Ref: flt46125
+Ref: char46527
+Ref: name46760
+Ref: uuid47000
+Ref: time47157
+Ref: date48060
+Ref: datetime48521
+Node: List49435
+Node: Dictionary53906
+Node: User Functions59534
+Node: Expression62779
+Node: Named Functions64266
+Ref: Hcount64866
+Ref: Hfirst64959
+Ref: Hlast65052
+Ref: Hmin65154
+Ref: Hmax65269
+Ref: Hsum65384
+Ref: Hdot65486
+Ref: avg65645
+Ref: var65796
+Ref: dev65931
+Ref: med65973
+Ref: mode66015
+Ref: countd66061
+Ref: exp66115
+Ref: log66220
+Ref: sin66316
+Ref: cos66451
+Ref: sqr66595
+Ref: sqrt66680
+Ref: prm66780
+Ref: freq66955
+Ref: sums67311
+Ref: deltas67451
+Ref: rand67789
+Ref: has68670
+Ref: bin68964
+Ref: in69174
+Ref: within69348
+Ref: div69580
+Ref: mod69764
+Ref: bar69938
+Ref: cmb70127
+Ref: msum70555
+Ref: mavg70692
+Ref: topX70836
+Ref: keyF70994
+Ref: unkey71289
+Ref: meta71425
+Node: Knit Functions71556
+Ref: amend71851
+Ref: amend172374
+Ref: amend272623
+Ref: amend372842
+Ref: amend473147
+Ref: dmend73435
+Ref: dmend173765
+Ref: dmend373933
+Ref: dmend474098
+Node: I/O74259
+Ref: read csv76183
+Ref: write csv76384
+Ref: read json76571
+Ref: write json76755
+Ref: read nv76922
+Ref: w line77115
+Ref: r line77453
+Ref: w byte77566
+Ref: r byte77920
+Ref: r data78070
+Ref: w data78729
+Ref: k-ipc set79305
+Ref: https get79367
+Ref: ffi/py/js/..79429
+Node: Tables79899
+Ref: table80526
+Ref: utable82168
+Node: kSQL82707
+Ref: select83636
+Ref: A84203
+Ref: G85056
+Ref: where C85404
+Ref: update86279
+Ref: delete87000
+Ref: Joins87282
+Ref: union87639
+Ref: leftjoin88160
+Ref: outer88939
+Ref: asof89574
+Ref: asof+91045
+Ref: insert92263
+Ref: upsert92609
+Node: System93023
+Ref: load93481
+Ref: timing93669
+Ref: variables93958
+Ref: memory94059
+Ref: cd94178
+Node: Control Flow94262
+Ref: cond94498
+Node: Temporal Functions94868
+Node: Errors96267
+Ref: class96715
+Ref: rank96804
+Ref: length96928
+Ref: _type97051
+Ref: domain97160
+Ref: limit97282
+Ref: nyi97493
+Ref: eparse97820
+Ref: _value97973
+Node: Examples98101
+Node: Benchmark106025
+Node: Conclusion114693
 
 End Tag Table
 
