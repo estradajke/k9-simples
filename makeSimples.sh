@@ -138,8 +138,8 @@ sed -e 's/@/@@/g' \
     -e '28,35 s/max/@ref{Hmax,max}/g' \
     -e '28,35 s/sum/@ref{Hsum,sum}/g' \
     -e '28,35 s/dot/@ref{Hdot,dot}/g' \
-    -e '28,35 s/.z.d/@ref{.z.d}/g' \
-    -e '28,35 s/.z.t/@ref{.z.t}/g' \
+    -e 's/.z.d/@ref{.z.d}/g' \
+    -e 's/.z.t/@ref{.z.t}/g' \
     -e '20,40 s/avg/@ref{avg}/g' \
     -e '20,40 s/var/@ref{var}/g' \
     -e '20,30 s/prm/@ref{prm}/g' \
