@@ -95,7 +95,7 @@ sed -e 's/@/@@/g' \
     -e '7,20 s/int/@ref{int}/g' \
     -e 's/flt/@ref{flt}/g' \
     -e '1,10 s/char/@ref{char}/g' \
-    -e '7,100 s/name/@ref{name}/g' \
+    -e '7,20 s/name/@ref{name}/g' \
     -e 's/uuid/@ref{uuid}/g' \
     -e 's/System/@ref{System}/g' \
     -e 's/`csv?/@ref{read csv,`csv?}/g' \
@@ -121,7 +121,7 @@ sed -e 's/@/@@/g' \
     -e '20,40 s/sqr@ /@ref{sqr}@ /g' \
     -e '20,40 s/sqrt/@ref{sqrt}/g' \
     -e '20,40 s/div/@ref{div}/g' \
-    -e '32,40 s/mod/@ref{mod}/g' \
+    -e '29,40 s/mod/@ref{mod}/g' \
     -e '20,40 s/bar/@ref{bar}/g' \
     -e '20,40 s/top/@ref{topX,top}/g' \
     -e '20,40 s/freq/@ref{freq}/g' \
