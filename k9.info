@@ -1,6 +1,6 @@
 This is k9.info, produced by texi2any version 6.7 from k.manual.texi.
 
-February 21, 2021
+March 14, 2021
 
 Copyright (C) 2020 John Estrada
 
@@ -10,7 +10,7 @@ File: k9.info,  Node: Top,  Next: Introduction,  Up: (dir)
 k9: Manual
 **********
 
-This manual is for Shakti (k9) build 2020.12.04.
+This manual is for Shakti (k9) build 2021.03.12.
 
 The Shakti programming language is the work of Arthur Whitney and the team at Shakti.  The language comes from a lineage of similar languages going back to APL. It's also known as k9 given the
 similarities to k, k2, ..., k6, k7 and the fact that Arthur also wrote those.  k9 is still under development so expect a bit of syntax change and likely even more improvements.
@@ -23,36 +23,36 @@ Alas this manual is not as elegant as the k9 language in that the text version o
 
 The built-in reference screen ('\') containing all the k9 commands.
 
-*ffi: a:"./a.so"5:`f!"ii";a.f[2;3] / int f(int i,int j){return i+j;}
-*k/c: b:"./b.so"5:`f!2   ;b.f[2;3] / K f(K x,K y){return ki(xi+yi);}
-*note `csv?: read csv.*note `csv : write csv.t:,*note `js?: read json.*note `js : write json.d:[d:*note .z.d::;t:*note .z.t::;n:`ab;i:23;f:4.5]
-python: import k;k.k('+',2,3); nodejs: require('k').k('+',2,3)
+python:from k import k;k('+',2,3);nodejs:k=require('k').k;k('+',2,3)
+**note ffi:::"./a.so"5:`a!"fi" //double a(int x){return 2.3+x;}
 
+$k [-p 1024] a.k
 *note verb: Verb.                   *note adverb: Adverb.                  *note noun: Noun.
-: x         y          f' *note each::      g' *note each::    *note char:: " ab"              *note \l: load. a.k
+: x         y          f' *note each::                 *note char:: " ab"              *note \l: load. a.k
 + *note flip::      *note plus::    [x]f/ *note over: cover.      c/ *note join::    *note name:: ``ab               *note \t: timing.:n x
 - *note minus::     *note minus::   [x]f\ *note scan: cscan.      c\ splt    *note int::  2 3                \u:n x
 * *note first::     *note times::   [y]f':*note eachprior::            *note flt::  2 3.4 0w 0n        *note \v: variables.
 %           *note divide::     f/:*note eachright:: g/:*note over: cover.    *note date:: 2021.06.28   *note .z.d::
-& *note where::     *note min/and::    f\:*note eachleft::  g\:*note scan: cscan.    *note time:: 12:34:56.789 *note .z.t::
+& *note where::     *note min/and::    f\:*note eachleft::  g\:*note scan: cscan.    time 12:34:56.789 *note .z.t::
 | *note reverse::   *note max/or::     
 < *note asc::       *note less::       *note i/o: I/O. (*enterprise)       class                   *note \f: files.
 > *note desc::      *note more::       0: *note r: r line./*note w: w line. line (N;C)0:     *note list: List. (2;3.4;`c)         \fl x
 = *note group::     *note equal::      1: *note r: r byte./*note w: w byte. char             *note dict: Dictionary. [n:`b;i:2]         \fc x   
 ~ *note not::       *note match::     *2: *note r: r data./*note w: w data. data             *note func: User Functions. {[a;b]a+b}         \fs x
 ! *note key::       *note key::       *3: *note k-ipc set::            *note expr: Expression. :a+b               *note \cd: cd. [d]
-, *note enlist::    *note cat::       *4: *note https get::
-^ *note sort::   [f]*note cut::       *5: ffi/iff[py/js/..]    *note table: Tables. [[]n:`b`c;i:2 3]
-# *note count::  [f]*note take::                              *note utable::  [[n:`b`c]i:2 3]
+, *note enlist::    *note cat::       *4: *note https get::            
+^ *note sort::   [f]*note cut::       *5: *note ffi:::`f!"ifsIF"
+# *note count::  [f]*note take::                              
 _ *note floor::  [f]*note drop::                      
 $ *note string::    *note parse::      $[b;t;f] *note cond::
-? *note unique:: [n]*note find::                               limit
-@ *note type::   [n]*note at::         @[x;i;f[;y]] *note amend::      name8(*256)
-. *note value::     *note dot::        .[x;i;f[;y]] *note dmend::      code p8 l8 g32 c128
+? *note unique::    *note find::                               limit {[p8]l8;g32;c128}
+@ *note type::   [f]*note at::         @[x;i;f[;y]] *note amend::      *note table: Tables. [[]n:`b`c;i:2 3]
+. *note value::  [f]*note dot::        .[x;i;f[;y]] *note dmend::     *note utable::  [[n:`b`c]i:2 3]
 
-*note select:: *note A:: *note by B:: from T *note where C::; *note update:: *note A:: from T; *note delete:: from T *note where C::
-*note count:: *note first: Hfirst. *note last: Hlast. *note min: Hmin. *note max: Hmax. *note sum: Hsum. *note dot: Hdot. *note avg:: *note var:: [dev med *note mod::e ..]
-*note sqrt:: *note sqr:: *note exp:: *note log:: *note sin:: *note cos:: *note div:: *note mod:: *note bar:: *note in:: *note bin::
+math: *note sqrt:: *note sqr:: *note exp:: *note log:: *note sin:: *note cos:: *note div:: mod *note bar:: *note in:: *note bin::
+aggr: *note count:: *note first: Hfirst. *note last: Hlast. *note min: Hmin. *note max: Hmax. *note sum: Hsum. *note dot: Hdot. *note avg:: *note var:: [dev med mode ..]
+sql: *note select:: *note A:: *note by B:: from T *note where C::; *note update:: *note A:: from T; *note delete:: from T *note where C::
+
 /comment \trace [:return 'signal if do while] \\exit
 
 * Menu:
@@ -85,13 +85,15 @@ File: k9.info,  Node: Introduction,  Next: Verb,  Prev: Top,  Up: Top
 **************
 
 The k9 programming language is designed primarily for the analysis of data.  It may surprise new users with two rather different paradigms, (1) fast data analysis and (2) concise syntax.  After you
-become familiar with the languages, these features will both seem normal and going back to slow and verbose programming will be surprisingly difficult.
+become familiar with the language, these features will both seem normal and intuitive.  Also, going back to slow and verbose programming will be surprisingly difficult.
 
 1.1 Going fast
 ==============
 
 Imagine you have a small, on-disk, 100 million row database containing a time-series with two float values at each time.  Additionally this data could be split in three different tables covering
 different measurements.  Here's how fast k9 can read in the data from disk and compute a statistic, average difference over each table, which uses each and every row.
+
+This section requires 2: a feature only in the professional version of Shakti.
 
       bash-3.2$ ./k
       2020.xx.xx 17GB 4core (c) shakti
@@ -126,36 +128,34 @@ beyond arithmetic, most programming lanauges switch to words while k9 remains wi
 'distinct()' while k9 uses '?'.  This requires the developer to learn how to say a number of symbols but once that happens it results in much shorter code that is quicker to write, easier to inspect,
 and easier to maintain.
 
-This should not be surprising.  In arithmetic, which do you find easier to answer?
+This should not be surprising.  In arithmetic, which do you find easier to understand?
 
-Math with text
-Three plus two times open parenthesis six plus fourteen close parenthesis
+     / math with text
+     Three plus two times open parenthesis six plus fourteen close parenthesis
 
-Math with symbols
-3+2*(6+14)
+     / math with symbols
+     3+2*(6+14)
 
-In code, which will you eventually find easier to understand?
+In code, if you're new to k9 then it's unlikley you can understand the second example.
 
-Code with text
-x = (0,12,3,4,1,17,-5,0,3,11);y=5;
-distinct_x = distinct(x);
-gt_distinct_x = [i for i in j if i >= y];
+     / code with text
+     x = (0,12,3,11,3);y=5;
+     distinct_x = list(set(x));
+     sorted(i for i in distinct_x if i >= y)
 
-Code with symbols
-x:(0,12,3,4,1,17,-5,0,3,11);y:5;
-z@&y<z:?x
+     / code with symbols
+     x:0 12 3 11 3;y:5;
+     z@&y<z:?x
 
-If you're new to k9 then you'll appreciate that symbols are shorter but look like line noise.  That's true but so did arithetic until you learned the basics.
-
-When you first learned arithmetic you likely didn't have a choice.  Now you have a choice whether or not you want to learn k9.  If you give it a try, then you'll get it quickly and move onto the power
-phase fast enough that you'll be happy you gave it a chance.
+When you first learned arithmetic you likely didn't have a choice.  Now you have a choice whether or not you want to learn k9.  If you give it a try, then you'll likely get it quickly and move onto the
+power phase fast enough that you'll be happy you gave it a chance.
 
 1.3 Get k9.
 ===========
 
 <https://shakti.sh>
 
-You will find the Linux version in the linux directory and the MacOS version under macos.  Once you download the MacOS version you'll have to change its file permissions to allow it to execute.
+You will find the Linux version in the linux directory and the Mac version under macos.  Once you download the MacOS version you'll have to change its file permissions to allow it to execute.
 
       chomd u+x k
 
@@ -166,15 +166,14 @@ this binary to run.  (You'll have to have tried and failed to have it appear her
 ====================
 
 Typing '\' in a terminal window gives you a concise overview of the language.  This document aims to provide details to beginning user where the help screen is a bit too terse.  Some commands are not
-yet complete and thus marked with an asterisk, eg.  *update A by B from T where C.
+available in the basic version and thus marked with an asterisk, eg.  *4: https get.
 
-*ffi: a:"./a.so"5:`f!"ii";a.f[2;3] / int f(int i,int j){return i+j;}
-*k/c: b:"./b.so"5:`f!2   ;b.f[2;3] / K f(K x,K y){return ki(xi+yi);}
-`csv?`csv t:,`js?`js d:[d:.z.d;t:.z.t;n:`ab;i:23;f:4.5]
-python: import k;k.k('+',2,3); nodejs: require('k').k('+',2,3)
+python:from k import k;k('+',2,3);nodejs:k=require('k').k;k('+',2,3)
+*ffi:"./a.so"5:`a!"fi" //double a(int x){return 2.3+x;}
 
+$k [-p 1024] a.k
 verb                   adverb                  noun
-: x         y          f' each      g' each    char " ab"              \l a.k
+: x         y          f' each                 char " ab"              \l a.k
 + flip      plus    [x]f/ over      c/ join    name ``ab               \t:n x
 - minus     minus   [x]f\ scan      c\ splt    int  2 3                \u:n x
 * first     times   [y]f':eachprior            flt  2 3.4 0w 0n        \v
@@ -186,18 +185,19 @@ verb                   adverb                  noun
 = group     equal      1: r/w char             dict [n:`b;i:2]         \fc x   
 ~ not       match     *2: r/w data             func {[a;b]a+b}         \fs x
 ! key       key       *3: k-ipc set            expr :a+b               \cd [d]
-, enlist    cat       *4: https get
-^ sort   [f]cut       *5: ffi/iff[py/js/..]    table [[]n:`b`c;i:2 3]
-# count  [f]take                              utable  [[n:`b`c]i:2 3]
+, enlist    cat       *4: https get            
+^ sort   [f]cut       *5: ffi:`f!"ifsIF"
+# count  [f]take                              
 _ floor  [f]drop                      
 $ string    parse      $[b;t;f] cond
-? unique [n]find                               limit
-@ type   [n]at         @[x;i;f[;y]] amend      name8(*256)
-. value     dot        .[x;i;f[;y]] dmend      code p8 l8 g32 c128
+? unique    find                               limit {[p8]l8;g32;c128}
+@ type   [f]at         @[x;i;f[;y]] amend      table [[]n:`b`c;i:2 3]
+. value  [f]dot        .[x;i;f[;y]] dmend     utable  [[n:`b`c]i:2 3]
 
-select A by B from T where C; update A from T; delete from T where C
-count first last min max sum dot avg var [dev med mode ..]
-sqrt sqr exp log sin cos div mod bar in bin
+math: sqrt sqr exp log sin cos div mod bar in bin
+aggr: count first last min max sum dot avg var [dev med mode ..]
+sql: select A by B from T where C; update A from T; delete from T where C
+
 /comment \trace [:return 'signal if do while] \\exit
 
 1.5 rlwrap
@@ -251,39 +251,33 @@ the REPL input has space but prints output without.
       3+2 / this is input
      5    / this is output
 
-1.8 k9 Idiosyncracies
+1.8 k9 idiosyncracies
 =====================
 
 One will need to understand some basic rules of k9 in order to progress.  These may seem strange at first but the faster you learn them, the faster you'll move forward.  Also, some of them, like
 overloading based on number of arguments, add a lot of expressability to the language.
 
-1.8.1 The language changes often (for now).
--------------------------------------------
-
-There may be examples in this document which work on the version indicated but do not with the version currently available to download.  If so, then feel free to drop the author a note.  Items which
-currently cause an error but are likely to come back 'soon' will be left in the document.
-
-1.8.2 Colon (':') is used to set a variable to a value
+1.8.1 Colon (':') is used to set a variable to a value
 ------------------------------------------------------
 
 'a:3' is used to set the variable, a, to the value, 3.  'a=3' is an equality test to determine if a is equal to 3.
 
-1.8.3 Percent ('%') is used to divide numbers
+1.8.2 Percent ('%') is used to divide numbers
 ---------------------------------------------
 
-Yeah, 2 divided by 5 is written as '2%5', not '2/5'.
+Yeah, 2 divided by 5 is written as '2%5', not '2/5'.  This choice is because '%' is similar to ÷, and the \ and / symbols are used elsewhere.
 
-1.8.4 Evaluation is done right to left
+1.8.3 Evaluation is done right to left
 --------------------------------------
 
 2+5*3 is 17 and 2*5+3 is 16.  2+5*3 is first evaluated on the right most portion, 5*3, and once that is computed then it proceeds with 2+15.  2*5+3 goes to 2*8 which becomes 16.
 
-1.8.5 There is no arithmetic order
+1.8.4 There is no arithmetic order
 ----------------------------------
 
 + has equal precedence as *.  The order of evaluation is done right to left unless parenthesis are used.  (2+5)*3 = 21 as the 2+5 in parenthesis is done before being multiplied by 3.
 
-1.8.6 Operators are overloaded depending on the number of arguments.
+1.8.5 Operators are overloaded depending on the number of arguments.
 --------------------------------------------------------------------
 
       *(13;6;9)    / single argument: * returns the first element
@@ -291,7 +285,7 @@ Yeah, 2 divided by 5 is written as '2%5', not '2/5'.
       2*(13;6;9)   / two arguments: * is multiplication
      26 12 18
 
-1.8.7 Lists and functions are very similar.
+1.8.6 Lists and functions are very similar.
 -------------------------------------------
 
 k9 syntax encourages you to treat lists and functions in a similar function.  They should both be thought of a mapping from a value to another value or from a domain to a range.  Lists and functions do
@@ -308,7 +302,7 @@ not have the same type.
       @f
      `.
 
-1.8.8 k9 notions of Noun, Verb, and Adverb
+1.8.7 k9 notions of Noun, Verb, and Adverb
 ------------------------------------------
 
 k9 uses an analogy with grammar to describe language syntax.  The k9 grammar consists of nouns (data), verbs (functions) and adverbs (function modifiers).
@@ -486,8 +480,8 @@ Mutliply x and y.
       1 2 3*4 5 6
      4 10 18
 
-2.9 divide => x%y
-=================
+2.9 divide => x'%'y
+===================
 
 Divide x by y.
       12%5
@@ -1191,8 +1185,8 @@ so that one can reach for them when needed.
 
      Adverb
         f'  *note each::
-     [x]f/  *note over: scan. (c/*note join::)
-     [x]f\  *note scan::     (c\*note split::)
+     [x]f/  *note over: scan.      c/ *note join::
+     [x]f\  *note scan::      c\ *note split::
      [y]f': *note eachprior::
         f/: *note eachright:: g/:*note over: cover.
         f\: *note eachleft::  g\:*note scan: cscan.
@@ -2946,7 +2940,7 @@ k9 is also able to interface with other languages so one doesn't need to transla
      *2: *note r: r data./*note w: w data. data
      *3: *note k-ipc set::
      *4: *note https get::
-     *5: *note ffi/py/js/..::
+     *5: *note ffi:::`f!"ifsIF"
 
      *note `js?: read json.*note `js: write json. d
      *note `csv?: read csv.*note `csv: write csv. t
@@ -2967,15 +2961,15 @@ read it back in, both specifying types and with the csv reader.  Types are speci
       "wHeader.csv"1:`csv t               / save with column headers
      wHeader.csv
 
-      "woHeader.csv"1:1_`csv t             / save without col headers
-     woHeader.csv
-
-      `csv?1:"wHeader.csv"                 / default reader
+      `csv?1:"wHeader.csv"                / default reader
      a b  c
      - -- -
      3 1. x
      2 2. y
      1 4. z
+
+      "woHeader.csv"1:1_`csv t            / save without col headers
+     woHeader.csv
 
       (",";"ifn")1:"wHeader.csv"          / separator and types
      a b  c
@@ -3141,8 +3135,8 @@ Enterprise only
 
 Enterprise only
 
-11.15 ffi/py/js/.. => 5:
-========================
+11.15 ffi => 5:
+===============
 
 Enterprise only
 
@@ -4603,13 +4597,12 @@ faster than previously imagined.
 
 Eventually, you'll realize that this manual isn't needed and it's all here...
 
-*ffi: a:"./a.so"5:`f!"ii";a.f[2;3] / int f(int i,int j){return i+j;}
-*k/c: b:"./b.so"5:`f!2   ;b.f[2;3] / K f(K x,K y){return ki(xi+yi);}
-`csv?`csv t:,`js?`js d:[d:.z.d;t:.z.t;n:`ab;i:23;f:4.5]
-python: import k;k.k('+',2,3); nodejs: require('k').k('+',2,3)
+python:from k import k;k('+',2,3);nodejs:k=require('k').k;k('+',2,3)
+*ffi:"./a.so"5:`a!"fi" //double a(int x){return 2.3+x;}
 
+$k [-p 1024] a.k
 verb                   adverb                  noun
-: x         y          f' each      g' each    char " ab"              \l a.k
+: x         y          f' each                 char " ab"              \l a.k
 + flip      plus    [x]f/ over      c/ join    name ``ab               \t:n x
 - minus     minus   [x]f\ scan      c\ splt    int  2 3                \u:n x
 * first     times   [y]f':eachprior            flt  2 3.4 0w 0n        \v
@@ -4621,208 +4614,209 @@ verb                   adverb                  noun
 = group     equal      1: r/w char             dict [n:`b;i:2]         \fc x   
 ~ not       match     *2: r/w data             func {[a;b]a+b}         \fs x
 ! key       key       *3: k-ipc set            expr :a+b               \cd [d]
-, enlist    cat       *4: https get
-^ sort   [f]cut       *5: ffi/iff[py/js/..]    table [[]n:`b`c;i:2 3]
-# count  [f]take                              utable  [[n:`b`c]i:2 3]
+, enlist    cat       *4: https get            
+^ sort   [f]cut       *5: ffi:`f!"ifsIF"
+# count  [f]take                              
 _ floor  [f]drop                      
 $ string    parse      $[b;t;f] cond
-? unique [n]find                               limit
-@ type   [n]at         @[x;i;f[;y]] amend      name8(*256)
-. value     dot        .[x;i;f[;y]] dmend      code p8 l8 g32 c128
+? unique    find                               limit {[p8]l8;g32;c128}
+@ type   [f]at         @[x;i;f[;y]] amend      table [[]n:`b`c;i:2 3]
+. value  [f]dot        .[x;i;f[;y]] dmend     utable  [[n:`b`c]i:2 3]
 
-select A by B from T where C; update A from T; delete from T where C
-count first last min max sum dot avg var [dev med mode ..]
-sqrt sqr exp log sin cos div mod bar in bin
+math: sqrt sqr exp log sin cos div mod bar in bin
+aggr: count first last min max sum dot avg var [dev med mode ..]
+sql: select A by B from T where C; update A from T; delete from T where C
+
 /comment \trace [:return 'signal if do while] \\exit
 
 
 
 Tag Table:
-Node: Top123
-Node: Introduction5209
-Node: Verb16441
-Ref: x18100
-Ref: set18125
-Ref: flip18384
-Ref: plus18669
-Ref: negate19147
-Ref: minus19319
-Ref: first19426
-Ref: times19642
-Ref: divide19773
-Ref: where19910
-Ref: min/and20393
-Ref: reverse20652
-Ref: max/or20911
-Ref: asc21175
-Ref: desc21175
-Ref: less21566
-Ref: more21566
-Ref: group21867
-Ref: equal22120
-Ref: not22424
-Ref: match22541
-Ref: enum22924
-Ref: key24007
-Ref: enlist24180
-Ref: cat24320
-Ref: sort24657
-Ref: cut25309
-Ref: cut125571
-Ref: cut225723
-Ref: cut325917
-Ref: cut426191
-Ref: count26371
-Ref: take26675
-Ref: take127270
-Ref: take227639
-Ref: take328061
-Ref: take428259
-Ref: floor28618
-Ref: drop28709
-Ref: drop129223
-Ref: drop229406
-Ref: drop329682
-Ref: string29846
-Ref: parse29947
-Ref: unique30140
-Ref: find30384
-Ref: type30915
-Ref: at31459
-Ref: value32097
-Ref: dot32538
-Node: Adverb33719
-Ref: each35181
-Ref: over35784
-Ref: scan35912
-Ref: join37263
-Ref: split37634
-Ref: eachprior37892
-Ref: eachright38950
-Ref: eachleft39158
-Ref: cover39353
-Ref: cscan39666
-Node: Noun40842
-Ref: Atom Types42238
-Ref: bool44853
-Ref: int45540
-Ref: flt46220
-Ref: char46622
-Ref: name46855
-Ref: uuid47095
-Ref: time47252
-Ref: date48155
-Ref: datetime48616
-Node: List49530
-Node: Dictionary54001
-Node: User Functions59629
-Node: Expression62874
-Node: Named Functions64361
-Ref: Hcount64961
-Ref: Hfirst65054
-Ref: Hlast65147
-Ref: Hmin65249
-Ref: Hmax65364
-Ref: Hsum65479
-Ref: Hdot65581
-Ref: avg65740
-Ref: var65891
-Ref: dev66026
-Ref: med66068
-Ref: mode66110
-Ref: countd66156
-Ref: exp66210
-Ref: log66315
-Ref: sin66411
-Ref: cos66546
-Ref: sqr66690
-Ref: sqrt66775
-Ref: prm66875
-Ref: freq67050
-Ref: sums67406
-Ref: deltas67546
-Ref: rand67884
-Ref: has68765
-Ref: bin69059
-Ref: in69269
-Ref: within69443
-Ref: div69675
-Ref: mod69859
-Ref: bar70033
-Ref: cmb70222
-Ref: msum70650
-Ref: mavg70787
-Ref: topX70931
-Ref: keyF71089
-Ref: unkey71384
-Ref: meta71520
-Node: Knit Functions71651
-Ref: amend71946
-Ref: amend172469
-Ref: amend272718
-Ref: amend372937
-Ref: amend473242
-Ref: dmend73530
-Ref: dmend173860
-Ref: dmend374028
-Ref: dmend474193
-Node: I/O74354
-Ref: read csv76278
-Ref: write csv76479
-Ref: read json76666
-Ref: write json76850
-Ref: read nv77017
-Ref: w line77210
-Ref: r line77548
-Ref: w byte77661
-Ref: r byte78015
-Ref: r data78165
-Ref: w data78824
-Ref: k-ipc set79400
-Ref: https get79462
-Ref: ffi/py/js/..79524
-Node: Tables79994
-Ref: table80621
-Ref: utable82263
-Node: kSQL82802
-Ref: select83702
-Ref: A84269
-Ref: by B85122
-Ref: where C85451
-Ref: update86293
-Ref: delete87014
-Ref: Joins87296
-Ref: union87653
-Ref: leftjoin88174
-Ref: outer88953
-Ref: asof89588
-Ref: asof+91059
-Ref: insert92277
-Ref: upsert92623
-Node: System93037
-Ref: load93527
-Ref: timing93716
-Ref: variables94001
-Ref: files94109
-Ref: cd94203
-Node: Control Flow94329
-Ref: cond94565
-Node: Temporal Functions94935
-Ref: .z.d95295
-Ref: .z.t95456
-Node: Errors96334
-Ref: class96782
-Ref: rank96871
-Ref: length96995
-Ref: _type97118
-Ref: domain97227
-Ref: limit97349
-Ref: nyi97560
-Ref: eparse97887
-Ref: _value98040
-Node: Examples98168
-Node: Benchmark106092
-Node: Conclusion114764
+Node: Top120
+Node: Introduction4997
+Node: Verb15845
+Ref: x17504
+Ref: set17529
+Ref: flip17788
+Ref: plus18073
+Ref: negate18551
+Ref: minus18723
+Ref: first18830
+Ref: times19046
+Ref: divide19177
+Ref: where19318
+Ref: min/and19801
+Ref: reverse20060
+Ref: max/or20319
+Ref: asc20583
+Ref: desc20583
+Ref: less20974
+Ref: more20974
+Ref: group21275
+Ref: equal21528
+Ref: not21832
+Ref: match21949
+Ref: enum22332
+Ref: key23415
+Ref: enlist23588
+Ref: cat23728
+Ref: sort24065
+Ref: cut24717
+Ref: cut124979
+Ref: cut225131
+Ref: cut325325
+Ref: cut425599
+Ref: count25779
+Ref: take26083
+Ref: take126678
+Ref: take227047
+Ref: take327469
+Ref: take427667
+Ref: floor28026
+Ref: drop28117
+Ref: drop128631
+Ref: drop228814
+Ref: drop329090
+Ref: string29254
+Ref: parse29355
+Ref: unique29548
+Ref: find29792
+Ref: type30323
+Ref: at30867
+Ref: value31505
+Ref: dot31946
+Node: Adverb33127
+Ref: each34593
+Ref: over35196
+Ref: scan35324
+Ref: join36675
+Ref: split37046
+Ref: eachprior37304
+Ref: eachright38362
+Ref: eachleft38570
+Ref: cover38765
+Ref: cscan39078
+Node: Noun40254
+Ref: Atom Types41650
+Ref: bool44265
+Ref: int44952
+Ref: flt45632
+Ref: char46034
+Ref: name46267
+Ref: uuid46507
+Ref: time46664
+Ref: date47567
+Ref: datetime48028
+Node: List48942
+Node: Dictionary53413
+Node: User Functions59041
+Node: Expression62286
+Node: Named Functions63773
+Ref: Hcount64373
+Ref: Hfirst64466
+Ref: Hlast64559
+Ref: Hmin64661
+Ref: Hmax64776
+Ref: Hsum64891
+Ref: Hdot64993
+Ref: avg65152
+Ref: var65303
+Ref: dev65438
+Ref: med65480
+Ref: mode65522
+Ref: countd65568
+Ref: exp65622
+Ref: log65727
+Ref: sin65823
+Ref: cos65958
+Ref: sqr66102
+Ref: sqrt66187
+Ref: prm66287
+Ref: freq66462
+Ref: sums66818
+Ref: deltas66958
+Ref: rand67296
+Ref: has68177
+Ref: bin68471
+Ref: in68681
+Ref: within68855
+Ref: div69087
+Ref: mod69271
+Ref: bar69445
+Ref: cmb69634
+Ref: msum70062
+Ref: mavg70199
+Ref: topX70343
+Ref: keyF70501
+Ref: unkey70796
+Ref: meta70932
+Node: Knit Functions71063
+Ref: amend71358
+Ref: amend171881
+Ref: amend272130
+Ref: amend372349
+Ref: amend472654
+Ref: dmend72942
+Ref: dmend173272
+Ref: dmend373440
+Ref: dmend473605
+Node: I/O73766
+Ref: read csv75690
+Ref: write csv75891
+Ref: read json76078
+Ref: write json76262
+Ref: read nv76429
+Ref: w line76622
+Ref: r line76960
+Ref: w byte77073
+Ref: r byte77427
+Ref: r data77577
+Ref: w data78236
+Ref: k-ipc set78812
+Ref: https get78874
+Ref: ffi78936
+Node: Tables79388
+Ref: table80015
+Ref: utable81657
+Node: kSQL82196
+Ref: select83096
+Ref: A83663
+Ref: by B84516
+Ref: where C84845
+Ref: update85687
+Ref: delete86408
+Ref: Joins86690
+Ref: union87047
+Ref: leftjoin87568
+Ref: outer88347
+Ref: asof88982
+Ref: asof+90453
+Ref: insert91671
+Ref: upsert92017
+Node: System92431
+Ref: load92921
+Ref: timing93110
+Ref: variables93395
+Ref: files93503
+Ref: cd93597
+Node: Control Flow93723
+Ref: cond93959
+Node: Temporal Functions94329
+Ref: .z.d94689
+Ref: .z.t94850
+Node: Errors95728
+Ref: class96176
+Ref: rank96265
+Ref: length96389
+Ref: _type96512
+Ref: domain96621
+Ref: limit96743
+Ref: nyi96954
+Ref: eparse97281
+Ref: _value97434
+Node: Examples97562
+Node: Benchmark105486
+Node: Conclusion114158
 
 End Tag Table
 

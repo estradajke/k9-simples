@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- February 21, 2021
+<!-- March 14, 2021
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -101,7 +101,7 @@ other languages to k9.
 *2: <a href="#r-data">r</a>/<a href="#w-data">w</a> data
 *3: <a href="#k_002dipc-set">k-ipc set</a>    
 *4: <a href="#https-get">https get</a>
-*5: <a href="#ffi_002fpy_002fjs_002f_002e_002e">ffi/py/js/..</a>
+*5: <a href="#ffi">ffi</a>:`f!&quot;ifsIF&quot;
 
 <a href="#read-json">`js?</a><a href="#write-json">`js</a> d
 <a href="#read-csv">`csv?</a><a href="#write-csv">`csv</a> t
@@ -121,15 +121,15 @@ a b  c
  &quot;wHeader.csv&quot;1:`csv t               / save with column headers
 wHeader.csv
 
- &quot;woHeader.csv&quot;1:1_`csv t             / save without col headers
-woHeader.csv
-
- `csv?1:&quot;wHeader.csv&quot;                 / default reader
+ `csv?1:&quot;wHeader.csv&quot;                / default reader
 a b  c
 - -- -
 3 1. x
 2 2. y
 1 4. z
+
+ &quot;woHeader.csv&quot;1:1_`csv t            / save without col headers
+woHeader.csv
 
  (&quot;,&quot;;&quot;ifn&quot;)1:&quot;wHeader.csv&quot;          / separator and types
 a b  c
@@ -296,7 +296,7 @@ a          b          c          d          e
 
 <p>Enterprise only
 </p>
-<span id="ffi_002fpy_002fjs_002f_002e_002e"></span><span id="ffi_002fpy_002fjs_002f_002e_002e-_21d2-5_003a"></span><h3 class="section">11.15 ffi/py/js/.. &rArr; 5:</h3>
+<span id="ffi"></span><span id="ffi-_21d2-5_003a"></span><h3 class="section">11.15 ffi &rArr; 5:</h3>
 
 <p>Enterprise only
 </p>

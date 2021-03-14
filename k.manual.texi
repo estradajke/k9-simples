@@ -20,7 +20,7 @@ Copyright @copyright{} 2020 John Estrada
 @c @ifnottex
 @node Top
 @top k9: Manual
-This manual is for Shakti (k9) build 2020.12.04.@*
+This manual is for Shakti (k9) build 2021.03.12.@*
 
 The Shakti programming language is the work of Arthur Whitney and the team at Shakti.  The language comes from a lineage of similar languages going back to APL.  It's also known as k9 given the similarities to k, k2, ..., k6, k7 and the fact that Arthur also wrote those.  k9 is still under development so expect a bit of syntax change and likely even more improvements.
 
@@ -59,10 +59,12 @@ The built-in reference screen (@code{\}) containing all the k9 commands.
 @node Introduction
 @chapter Introduction
 @c @cindex chapter, first
-The k9 programming language is designed primarily for the analysis of data.  It may surprise new users with two rather different paradigms, (1) fast data analysis and (2) concise syntax.  After you become familiar with the languages, these features will both seem normal and going back to slow and verbose programming will be surprisingly difficult.
+The k9 programming language is designed primarily for the analysis of data.  It may surprise new users with two rather different paradigms, (1) fast data analysis and (2) concise syntax.  After you become familiar with the language, these features will both seem normal and intuitive.  Also, going back to slow and verbose programming will be surprisingly difficult.
 
 @section Going fast
 Imagine you have a small, on-disk, 100 million row database containing a time-series with two float values at each time.  Additionally this data could be split in three different tables covering different measurements.  Here's how fast k9 can read in the data from disk and compute a statistic, average difference over each table, which uses each and every row.
+
+@b{This section requires 2: a feature only in the professional version of Shakti.}
 
 @example
  bash-3.2$ ./k
@@ -98,30 +100,36 @@ The k9 language is more closely related to mathematics syntax than most programm
 
 In mathematics, ``3+2'' is read as ``3 plus 2'' as you learn at an early age that ``+'' is the ``plus'' sign.  For trival operations like arithmetic most programming languages use symbols also.  When moving beyond arithmetic, most programming lanauges switch to words while k9 remains with symbols.  As an example, to determine the distinct values of a list most programming languages might use a syntax like @code{distinct()} while k9 uses @code{?}.  This requires the developer to learn how to say a number of symbols but once that happens it results in much shorter code that is quicker to write, easier to inspect, and easier to maintain.  
 
-This should not be surprising. In arithmetic, which do you find easier to answer?@*@*
-Math with text@*
-Three plus two times open parenthesis six plus fourteen close parenthesis@*@*
-Math with symbols@*
-3+2*(6+14)@*
+This should not be surprising. In arithmetic, which do you find easier to understand?
 
-In code, which will you eventually find easier to understand?@*@*
-Code with text@*
-x = (0,12,3,4,1,17,-5,0,3,11);y=5;@*
-distinct_x = distinct(x);@*
-gt_distinct_x = [i for i in j if i >= y];@*@*
-Code with symbols@*
-x:(0,12,3,4,1,17,-5,0,3,11);y:5;@*
-z@@&y<z:?x@*
+@example
+/ math with text
+Three plus two times open parenthesis six plus fourteen close parenthesis
 
-If you're new to k9 then you'll  appreciate that symbols are shorter but look like line noise.  That's true but so did arithetic until you learned the basics.
+/ math with symbols
+3+2*(6+14)
+@end example
 
-When you first learned arithmetic you likely didn't have a choice.  Now you have a choice whether or not you want to learn k9.  If you give it a try, then  you'll get it quickly and move onto the power phase fast enough that you'll be happy you gave it a chance.
+In code, if you're new to k9 then it's unlikley you can understand the second example.
+
+@example
+/ code with text
+x = (0,12,3,11,3);y=5;
+distinct_x = list(set(x));
+sorted(i for i in distinct_x if i >= y)
+
+/ code with symbols
+x:0 12 3 11 3;y:5;
+z@@&y<z:?x
+@end example
+
+When you first learned arithmetic you likely didn't have a choice.  Now you have a choice whether or not you want to learn k9.  If you give it a try, then you'll likely get it quickly and move onto the power phase fast enough that you'll be happy you gave it a chance.
 
 @section Get k9.
 
 @url{https://shakti.sh}
 
-You will find the Linux version in the linux directory and the MacOS version under macos.  Once you download the MacOS version you'll have to change its file permissions to allow it to execute.
+You will find the Linux version in the linux directory and the Mac version under macos.  Once you download the MacOS version you'll have to change its file permissions to allow it to execute.
 
 @example
 @ chomd u+x k
@@ -130,7 +138,7 @@ You will find the Linux version in the linux directory and the MacOS version und
 Again on the mac if you then attempt to run this file you likely won't succeed due to MacOS security.  You'll need to go to ``System Preferences...'' and then ``Security and Privacy'' and select to allow this binary to run.  (You'll have to have tried and failed to have it appear here automatically.)
 
 @section Help / Info Card
-Typing @code{\} in a terminal window gives you a concise overview of the language.  This document aims to provide details to beginning user where the help screen is a bit too terse.  Some commands are not yet complete and thus marked with an asterisk, eg. *update A by B from T where C.
+Typing @code{\} in a terminal window gives you a concise overview of the language.  This document aims to provide details to beginning user where the help screen is a bit too terse.  Some commands are not available in the basic version and thus marked with an asterisk, eg. *4: https get.
 
 @smallformat
 @group
@@ -230,17 +238,17 @@ This document uses a number of examples to familiarize the reader with k9.  The 
 5    / this is output
 @end example
 
-@section k9 Idiosyncracies
+@section k9 idiosyncracies
 One will need to understand some basic rules of k9 in order to progress.  These may seem strange at first but the faster you learn them, the faster you'll move forward. Also, some of them, like overloading based on number of arguments, add a lot of expressability to the language.
 
-@subsection The language changes often (for now).
-There may be examples in this document which work on the version indicated but do not with the version currently available to download.  If so, then feel free to drop the author a note.  Items which currently cause an error but are likely to come back 'soon' will be left in the document.
-
+@c @subsection The language changes often (for now).
+@c There may be examples in this document which work on the version indicated but do not with the version currently available to download.  If so, then feel free to drop the author a note.  Items which currently cause an error but are likely to come back 'soon' will be left in the document.
+@c 
 @subsection Colon (@code{:}) is used to set a variable to a value
 @code{a:3} is used to set the variable, a, to the value, 3.  @code{a=3} is an equality test to determine if a is equal to 3.
 
 @subsection Percent (@code{%}) is used to divide numbers
-Yeah, 2 divided by 5 is written as @code{2%5}, not @code{2/5}.
+Yeah, 2 divided by 5 is written as @code{2%5}, not @code{2/5}.  This choice is because @code{%} is similar to @U{00F7}, and the \ and / symbols are used elsewhere.
 
 @subsection Evaluation is done right to left
 2+5*3 is 17 and 2*5+3 is 16.  2+5*3 is first evaluated on the right most portion, 5*3, and once that is computed then it proceeds with 2+15.  2*5+3 goes to 2*8 which becomes 16.
@@ -507,7 +515,7 @@ Mutliply x and y.
 4 10 18
 @end example
 
-@anchor{divide}@section divide @result{} x%y
+@anchor{divide}@section divide @result{} x@code{%}y
 Divide x by y.
 @example
 @ 12%5
@@ -1288,8 +1296,8 @@ This chapter may be one of the most difficult for users new to array langauges b
 @example
 Adverb
    f'  @ref{each}
-[x]f/  @ref{scan,over} (c/@ref{join})
-[x]f\  @ref{scan}     (c\@ref{split})
+[x]f/  @ref{scan,over}      c/ @ref{join}
+[x]f\  @ref{scan}      c\ @ref{split}
 [y]f': @ref{eachprior}
    f/: @ref{eachright} g/:@ref{cover,over} 
    f\: @ref{eachleft}  g\:@ref{cscan,scan} 
@@ -3102,7 +3110,7 @@ other languages to k9.
 *2: @ref{r data,r}/@ref{w data,w} data
 *3: @ref{k-ipc set}    
 *4: @ref{https get}
-*5: @ref{ffi/py/js/..}
+*5: @ref{ffi}:`f!"ifsIF"
 
 @ref{read json,`js?}@ref{write json,`js} d
 @ref{read csv,`csv?}@ref{write csv,`csv} t
@@ -3122,15 +3130,15 @@ a b  c
  "wHeader.csv"1:`csv t               / save with column headers
 wHeader.csv
 
- "woHeader.csv"1:1_`csv t             / save without col headers
-woHeader.csv
-
- `csv?1:"wHeader.csv"                 / default reader
+ `csv?1:"wHeader.csv"                / default reader
 a b  c
 - -- -
 3 1. x
 2 2. y
 1 4. z
+
+ "woHeader.csv"1:1_`csv t            / save without col headers
+woHeader.csv
 
  (",";"ifn")1:"wHeader.csv"          / separator and types
 a b  c
@@ -3297,7 +3305,7 @@ Enterprise only
 
 Enterprise only
 
-@anchor{ffi/py/js/..}@section ffi/py/js/.. @result{} 5:
+@anchor{ffi}@section ffi @result{} 5:
 
 Enterprise only
 

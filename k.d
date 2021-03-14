@@ -1,10 +1,9 @@
-*ffi: a:"./a.so"5:`f!"ii";a.f[2;3] / int f(int i,int j){return i+j;}
-*k/c: b:"./b.so"5:`f!2   ;b.f[2;3] / K f(K x,K y){return ki(xi+yi);}
-`csv?`csv t:,`js?`js d:[d:.z.d;t:.z.t;n:`ab;i:23;f:4.5]
-python: import k;k.k('+',2,3); nodejs: require('k').k('+',2,3)
+python:from k import k;k('+',2,3);nodejs:k=require('k').k;k('+',2,3)
+*ffi:"./a.so"5:`a!"fi" //double a(int x){return 2.3+x;}
 
+$k [-p 1024] a.k
 verb                   adverb                  noun
-: x         y          f' each      g' each    char " ab"              \l a.k
+: x         y          f' each                 char " ab"              \l a.k
 + flip      plus    [x]f/ over      c/ join    name ``ab               \t:n x
 - minus     minus   [x]f\ scan      c\ splt    int  2 3                \u:n x
 * first     times   [y]f':eachprior            flt  2 3.4 0w 0n        \v
@@ -16,16 +15,17 @@ verb                   adverb                  noun
 = group     equal      1: r/w char             dict [n:`b;i:2]         \fc x   
 ~ not       match     *2: r/w data             func {[a;b]a+b}         \fs x
 ! key       key       *3: k-ipc set            expr :a+b               \cd [d]
-, enlist    cat       *4: https get
-^ sort   [f]cut       *5: ffi/iff[py/js/..]    table [[]n:`b`c;i:2 3]
-# count  [f]take                              utable  [[n:`b`c]i:2 3]
+, enlist    cat       *4: https get            
+^ sort   [f]cut       *5: ffi:`f!"ifsIF"
+# count  [f]take                              
 _ floor  [f]drop                      
 $ string    parse      $[b;t;f] cond
-? unique [n]find                               limit
-@ type   [n]at         @[x;i;f[;y]] amend      name8(*256)
-. value     dot        .[x;i;f[;y]] dmend      code p8 l8 g32 c128
+? unique    find                               limit {[p8]l8;g32;c128}
+@ type   [f]at         @[x;i;f[;y]] amend      table [[]n:`b`c;i:2 3]
+. value  [f]dot        .[x;i;f[;y]] dmend     utable  [[n:`b`c]i:2 3]
 
-select A by B from T where C; update A from T; delete from T where C
-count first last min max sum dot avg var [dev med mode ..]
-sqrt sqr exp log sin cos div mod bar in bin
+math: sqrt sqr exp log sin cos div mod bar in bin
+aggr: count first last min max sum dot avg var [dev med mode ..]
+sql: select A by B from T where C; update A from T; delete from T where C
+
 /comment \trace [:return 'signal if do while] \\exit

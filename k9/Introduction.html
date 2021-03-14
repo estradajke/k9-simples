@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- February 21, 2021
+<!-- March 14, 2021
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -89,10 +89,12 @@ Next: <a href="Verb.html" accesskey="n" rel="next">Verb</a>, Previous: <a href="
 </div>
 <hr>
 <span id="Introduction-1"></span><h2 class="chapter">1 Introduction</h2>
-<p>The k9 programming language is designed primarily for the analysis of data.  It may surprise new users with two rather different paradigms, (1) fast data analysis and (2) concise syntax.  After you become familiar with the languages, these features will both seem normal and going back to slow and verbose programming will be surprisingly difficult.
+<p>The k9 programming language is designed primarily for the analysis of data.  It may surprise new users with two rather different paradigms, (1) fast data analysis and (2) concise syntax.  After you become familiar with the language, these features will both seem normal and intuitive.  Also, going back to slow and verbose programming will be surprisingly difficult.
 </p>
 <span id="Going-fast"></span><h3 class="section">1.1 Going fast</h3>
 <p>Imagine you have a small, on-disk, 100 million row database containing a time-series with two float values at each time.  Additionally this data could be split in three different tables covering different measurements.  Here&rsquo;s how fast k9 can read in the data from disk and compute a statistic, average difference over each table, which uses each and every row.
+</p>
+<p><b>This section requires 2: a feature only in the professional version of Shakti.</b>
 </p>
 <div class="example">
 <pre class="example"> bash-3.2$ ./k
@@ -128,30 +130,36 @@ Next: <a href="Verb.html" accesskey="n" rel="next">Verb</a>, Previous: <a href="
 </p>
 <p>In mathematics, &ldquo;3+2&rdquo; is read as &ldquo;3 plus 2&rdquo; as you learn at an early age that &ldquo;+&rdquo; is the &ldquo;plus&rdquo; sign.  For trival operations like arithmetic most programming languages use symbols also.  When moving beyond arithmetic, most programming lanauges switch to words while k9 remains with symbols.  As an example, to determine the distinct values of a list most programming languages might use a syntax like <code>distinct()</code> while k9 uses <code>?</code>.  This requires the developer to learn how to say a number of symbols but once that happens it results in much shorter code that is quicker to write, easier to inspect, and easier to maintain.  
 </p>
-<p>This should not be surprising. In arithmetic, which do you find easier to answer?<br><br>
-Math with text<br>
-Three plus two times open parenthesis six plus fourteen close parenthesis<br><br>
-Math with symbols<br>
-3+2*(6+14)<br>
+<p>This should not be surprising. In arithmetic, which do you find easier to understand?
 </p>
-<p>In code, which will you eventually find easier to understand?<br><br>
-Code with text<br>
-x = (0,12,3,4,1,17,-5,0,3,11);y=5;<br>
-distinct_x = distinct(x);<br>
-gt_distinct_x = [i for i in j if i &gt;= y];<br><br>
-Code with symbols<br>
-x:(0,12,3,4,1,17,-5,0,3,11);y:5;<br>
-z@&amp;y&lt;z:?x<br>
+<div class="example">
+<pre class="example">/ math with text
+Three plus two times open parenthesis six plus fourteen close parenthesis
+
+/ math with symbols
+3+2*(6+14)
+</pre></div>
+
+<p>In code, if you&rsquo;re new to k9 then it&rsquo;s unlikley you can understand the second example.
 </p>
-<p>If you&rsquo;re new to k9 then you&rsquo;ll  appreciate that symbols are shorter but look like line noise.  That&rsquo;s true but so did arithetic until you learned the basics.
-</p>
-<p>When you first learned arithmetic you likely didn&rsquo;t have a choice.  Now you have a choice whether or not you want to learn k9.  If you give it a try, then  you&rsquo;ll get it quickly and move onto the power phase fast enough that you&rsquo;ll be happy you gave it a chance.
+<div class="example">
+<pre class="example">/ code with text
+x = (0,12,3,11,3);y=5;
+distinct_x = list(set(x));
+sorted(i for i in distinct_x if i &gt;= y)
+
+/ code with symbols
+x:0 12 3 11 3;y:5;
+z@&amp;y&lt;z:?x
+</pre></div>
+
+<p>When you first learned arithmetic you likely didn&rsquo;t have a choice.  Now you have a choice whether or not you want to learn k9.  If you give it a try, then you&rsquo;ll likely get it quickly and move onto the power phase fast enough that you&rsquo;ll be happy you gave it a chance.
 </p>
 <span id="Get-k9_002e"></span><h3 class="section">1.3 Get k9.</h3>
 
 <p><a href="https://shakti.sh">https://shakti.sh</a>
 </p>
-<p>You will find the Linux version in the linux directory and the MacOS version under macos.  Once you download the MacOS version you&rsquo;ll have to change its file permissions to allow it to execute.
+<p>You will find the Linux version in the linux directory and the Mac version under macos.  Once you download the MacOS version you&rsquo;ll have to change its file permissions to allow it to execute.
 </p>
 <div class="example">
 <pre class="example">&nbsp;chomd u+x k
@@ -160,16 +168,15 @@ z@&amp;y&lt;z:?x<br>
 <p>Again on the mac if you then attempt to run this file you likely won&rsquo;t succeed due to MacOS security.  You&rsquo;ll need to go to &ldquo;System Preferences...&rdquo; and then &ldquo;Security and Privacy&rdquo; and select to allow this binary to run.  (You&rsquo;ll have to have tried and failed to have it appear here automatically.)
 </p>
 <span id="Help-_002f-Info-Card"></span><h3 class="section">1.4 Help / Info Card</h3>
-<p>Typing <code>\</code> in a terminal window gives you a concise overview of the language.  This document aims to provide details to beginning user where the help screen is a bit too terse.  Some commands are not yet complete and thus marked with an asterisk, eg. *update A by B from T where C.
+<p>Typing <code>\</code> in a terminal window gives you a concise overview of the language.  This document aims to provide details to beginning user where the help screen is a bit too terse.  Some commands are not available in the basic version and thus marked with an asterisk, eg. *4: https get.
 </p>
 <div class="format">
-<pre class="verbatim">*ffi: a:&quot;./a.so&quot;5:`f!&quot;ii&quot;;a.f[2;3] / int f(int i,int j){return i+j;}
-*k/c: b:&quot;./b.so&quot;5:`f!2   ;b.f[2;3] / K f(K x,K y){return ki(xi+yi);}
-`csv?`csv t:,`js?`js d:[d:.z.d;t:.z.t;n:`ab;i:23;f:4.5]
-python: import k;k.k('+',2,3); nodejs: require('k').k('+',2,3)
+<pre class="verbatim">python:from k import k;k('+',2,3);nodejs:k=require('k').k;k('+',2,3)
+*ffi:&quot;./a.so&quot;5:`a!&quot;fi&quot; //double a(int x){return 2.3+x;}
 
+$k [-p 1024] a.k
 verb                   adverb                  noun
-: x         y          f' each      g' each    char &quot; ab&quot;              \l a.k
+: x         y          f' each                 char &quot; ab&quot;              \l a.k
 + flip      plus    [x]f/ over      c/ join    name ``ab               \t:n x
 - minus     minus   [x]f\ scan      c\ splt    int  2 3                \u:n x
 * first     times   [y]f':eachprior            flt  2 3.4 0w 0n        \v
@@ -181,18 +188,19 @@ verb                   adverb                  noun
 = group     equal      1: r/w char             dict [n:`b;i:2]         \fc x   
 ~ not       match     *2: r/w data             func {[a;b]a+b}         \fs x
 ! key       key       *3: k-ipc set            expr :a+b               \cd [d]
-, enlist    cat       *4: https get
-^ sort   [f]cut       *5: ffi/iff[py/js/..]    table [[]n:`b`c;i:2 3]
-# count  [f]take                              utable  [[n:`b`c]i:2 3]
+, enlist    cat       *4: https get            
+^ sort   [f]cut       *5: ffi:`f!&quot;ifsIF&quot;
+# count  [f]take                              
 _ floor  [f]drop                      
 $ string    parse      $[b;t;f] cond
-? unique [n]find                               limit
-@ type   [n]at         @[x;i;f[;y]] amend      name8(*256)
-. value     dot        .[x;i;f[;y]] dmend      code p8 l8 g32 c128
+? unique    find                               limit {[p8]l8;g32;c128}
+@ type   [f]at         @[x;i;f[;y]] amend      table [[]n:`b`c;i:2 3]
+. value  [f]dot        .[x;i;f[;y]] dmend     utable  [[n:`b`c]i:2 3]
 
-select A by B from T where C; update A from T; delete from T where C
-count first last min max sum dot avg var [dev med mode ..]
-sqrt sqr exp log sin cos div mod bar in bin
+math: sqrt sqr exp log sin cos div mod bar in bin
+aggr: count first last min max sum dot avg var [dev med mode ..]
+sql: select A by B from T where C; update A from T; delete from T where C
+
 /comment \trace [:return 'signal if do while] \\exit</pre></div>
 
 <span id="rlwrap"></span><h3 class="section">1.5 rlwrap</h3>
@@ -246,25 +254,22 @@ bash-3.2$
 5    / this is output
 </pre></div>
 
-<span id="k9-Idiosyncracies"></span><h3 class="section">1.8 k9 Idiosyncracies</h3>
+<span id="k9-idiosyncracies"></span><h3 class="section">1.8 k9 idiosyncracies</h3>
 <p>One will need to understand some basic rules of k9 in order to progress.  These may seem strange at first but the faster you learn them, the faster you&rsquo;ll move forward. Also, some of them, like overloading based on number of arguments, add a lot of expressability to the language.
 </p>
-<span id="The-language-changes-often-_0028for-now_0029_002e"></span><h4 class="subsection">1.8.1 The language changes often (for now).</h4>
-<p>There may be examples in this document which work on the version indicated but do not with the version currently available to download.  If so, then feel free to drop the author a note.  Items which currently cause an error but are likely to come back &rsquo;soon&rsquo; will be left in the document.
-</p>
-<span id="Colon-_0028_003a_0029-is-used-to-set-a-variable-to-a-value"></span><h4 class="subsection">1.8.2 Colon (<code>:</code>) is used to set a variable to a value</h4>
+<span id="Colon-_0028_003a_0029-is-used-to-set-a-variable-to-a-value"></span><h4 class="subsection">1.8.1 Colon (<code>:</code>) is used to set a variable to a value</h4>
 <p><code>a:3</code> is used to set the variable, a, to the value, 3.  <code>a=3</code> is an equality test to determine if a is equal to 3.
 </p>
-<span id="Percent-_0028_0025_0029-is-used-to-divide-numbers"></span><h4 class="subsection">1.8.3 Percent (<code>%</code>) is used to divide numbers</h4>
-<p>Yeah, 2 divided by 5 is written as <code>2%5</code>, not <code>2/5</code>.
+<span id="Percent-_0028_0025_0029-is-used-to-divide-numbers"></span><h4 class="subsection">1.8.2 Percent (<code>%</code>) is used to divide numbers</h4>
+<p>Yeah, 2 divided by 5 is written as <code>2%5</code>, not <code>2/5</code>.  This choice is because <code>%</code> is similar to &#x00F7;, and the \ and / symbols are used elsewhere.
 </p>
-<span id="Evaluation-is-done-right-to-left"></span><h4 class="subsection">1.8.4 Evaluation is done right to left</h4>
+<span id="Evaluation-is-done-right-to-left"></span><h4 class="subsection">1.8.3 Evaluation is done right to left</h4>
 <p>2+5*3 is 17 and 2*5+3 is 16.  2+5*3 is first evaluated on the right most portion, 5*3, and once that is computed then it proceeds with 2+15.  2*5+3 goes to 2*8 which becomes 16.
 </p>
-<span id="There-is-no-arithmetic-order"></span><h4 class="subsection">1.8.5 There is no arithmetic order</h4>
+<span id="There-is-no-arithmetic-order"></span><h4 class="subsection">1.8.4 There is no arithmetic order</h4>
 <p>+ has equal precedence as *.  The order of evaluation is done right to left unless parenthesis are used.  (2+5)*3 = 21 as the 2+5 in parenthesis is done before being multiplied by 3.
 </p>
-<span id="Operators-are-overloaded-depending-on-the-number-of-arguments_002e"></span><h4 class="subsection">1.8.6 Operators are overloaded depending on the number of arguments.</h4>
+<span id="Operators-are-overloaded-depending-on-the-number-of-arguments_002e"></span><h4 class="subsection">1.8.5 Operators are overloaded depending on the number of arguments.</h4>
 <div class="example">
 <pre class="example">&nbsp;*(13;6;9)    / single argument: * returns the first element
 13
@@ -272,7 +277,7 @@ bash-3.2$
 26 12 18
 </pre></div>
 
-<span id="Lists-and-functions-are-very-similar_002e"></span><h4 class="subsection">1.8.7 Lists and functions are very similar.</h4>
+<span id="Lists-and-functions-are-very-similar_002e"></span><h4 class="subsection">1.8.6 Lists and functions are very similar.</h4>
 <p>k9 syntax encourages you to treat lists and functions in a similar function.  They should both be thought of a mapping from a value to another value or from a domain to a range. Lists and functions do not have the same type.
 </p>
 <div class="example">
@@ -288,7 +293,7 @@ bash-3.2$
 `.
 </pre></div>
 
-<span id="k9-notions-of-Noun_002c-Verb_002c-and-Adverb"></span><h4 class="subsection">1.8.8 k9 notions of Noun, Verb, and Adverb</h4>
+<span id="k9-notions-of-Noun_002c-Verb_002c-and-Adverb"></span><h4 class="subsection">1.8.7 k9 notions of Noun, Verb, and Adverb</h4>
 <p>k9 uses an analogy with grammar to describe language syntax.  The k9 grammar consists of nouns (data), verbs (functions) and adverbs (function modifiers).
 </p><ul>
 <li> <tt>The boy ate an appple. (Noun verb noun)</tt>

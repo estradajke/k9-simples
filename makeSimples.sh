@@ -107,7 +107,7 @@ sed -e 's/@/@@/g' \
     -e 's/r\/w@ data/@ref{r data,r}\/@ref{w data,w}@ data/g' \
     -e 's/k-ipc@ set/@ref{k-ipc set}/g' \
     -e 's/https@ get/@ref{https get}/g' \
-    -e 's/ffi\/py\/js\/../@ref{ffi\/py\/js\/..}/g' \
+    -e 's/ffi/@ref{ffi}/g' \
     -e '20,40 s/ key/ @ref{key}/g' \
     -e '20,40 s/unkey/@ref{unkey}/g' \
     -e '20,40 s/meta/@ref{meta}/g' \
