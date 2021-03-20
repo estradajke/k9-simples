@@ -159,14 +159,22 @@ z@&amp;y&lt;z:?x
 
 <p><a href="https://shakti.sh">https://shakti.sh</a>
 </p>
-<p>You will find the Linux version in the linux directory and the Mac version under macos.  Once you download the MacOS version you&rsquo;ll have to change its file permissions to allow it to execute.
+<p>k9 is available in two versions, standard and enterprise.  The enterprise version, linux only, has additional features indicated on the k9 help page and also indicated in this tutorial.
+</p>
+<p>Once downloaded you will need to change the file mode with the following commmand
 </p>
 <div class="example">
-<pre class="example">&nbsp;chmod +x k
+<pre class="example"> chmod +x k
 </pre></div>
 
-<p>Again on the mac if you then attempt to run this file you likely won&rsquo;t succeed due to MacOS security.  You&rsquo;ll need to go to &ldquo;System Preferences...&rdquo; and then &ldquo;Security and Privacy&rdquo; and select to allow this binary to run.  (You&rsquo;ll have to have tried and failed to have it appear here automatically.)
+<p>On the mac if you then attempt to run this file you likely won&rsquo;t succeed due to MacOS security.  You&rsquo;ll need to go to &ldquo;System Preferences...&rdquo; and then &ldquo;Security and Privacy&rdquo; and select to allow this binary to run.  (You&rsquo;ll have to have tried and failed to have it appear here automatically.)
 </p>
+<p>On linux (and macos if you have installed npm) one can download k from the command line via
+</p>
+<div class="example">
+<pre class="example"> npm i @kparc/k -g
+</pre></div>
+
 <span id="Help-_002f-Info-Card"></span><h3 class="section">1.4 Help / Info Card</h3>
 <p>Typing <code>\</code> in a terminal window gives you a concise overview of the language.  This document aims to provide details to beginning user where the help screen is a bit too terse.  Some commands are not available in the basic version and thus marked with an asterisk, eg. *4: https get.
 </p>

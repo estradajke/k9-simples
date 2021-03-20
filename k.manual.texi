@@ -129,13 +129,21 @@ When you first learned arithmetic you likely didn't have a choice.  Now you have
 
 @url{https://shakti.sh}
 
-You will find the Linux version in the linux directory and the Mac version under macos.  Once you download the MacOS version you'll have to change its file permissions to allow it to execute.
+k9 is available in two versions, standard and enterprise.  The enterprise version, linux only, has additional features indicated on the k9 help page and also indicated in this tutorial.
+
+Once downloaded you will need to change the file mode with the following commmand
 
 @example
-@ chmod +x k
+ chmod +x k
 @end example
 
-Again on the mac if you then attempt to run this file you likely won't succeed due to MacOS security.  You'll need to go to ``System Preferences...'' and then ``Security and Privacy'' and select to allow this binary to run.  (You'll have to have tried and failed to have it appear here automatically.)
+On the mac if you then attempt to run this file you likely won't succeed due to MacOS security.  You'll need to go to ``System Preferences...'' and then ``Security and Privacy'' and select to allow this binary to run.  (You'll have to have tried and failed to have it appear here automatically.)
+
+On linux (and macos if you have installed npm) one can download k from the command line via
+
+@example
+ npm i @@kparc/k -g
+@end example
 
 @section Help / Info Card
 Typing @code{\} in a terminal window gives you a concise overview of the language.  This document aims to provide details to beginning user where the help screen is a bit too terse.  Some commands are not available in the basic version and thus marked with an asterisk, eg. *4: https get.
