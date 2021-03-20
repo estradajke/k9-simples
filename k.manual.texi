@@ -132,7 +132,7 @@ When you first learned arithmetic you likely didn't have a choice.  Now you have
 You will find the Linux version in the linux directory and the Mac version under macos.  Once you download the MacOS version you'll have to change its file permissions to allow it to execute.
 
 @example
-@ chomd u+x k
+@ chmod +x k
 @end example
 
 Again on the mac if you then attempt to run this file you likely won't succeed due to MacOS security.  You'll need to go to ``System Preferences...'' and then ``Security and Privacy'' and select to allow this binary to run.  (You'll have to have tried and failed to have it appear here automatically.)
