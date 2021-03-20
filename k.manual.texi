@@ -64,7 +64,7 @@ The k9 programming language is designed primarily for the analysis of data.  It 
 @section Going fast
 Imagine you have a small, on-disk, 100 million row database containing a time-series with two float values at each time.  Additionally this data could be split in three different tables covering different measurements.  Here's how fast k9 can read in the data from disk and compute a statistic, average difference over each table, which uses each and every row.
 
-@b{This section requires 2: a feature only in the professional version of Shakti.}
+@b{This section requires 2: a feature only in the enterprise version of Shakti.}
 
 @example
  bash-3.2$ ./k
