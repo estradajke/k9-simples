@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- March 20, 2021
+<!-- March 21, 2021
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -4202,12 +4202,14 @@ Next: <a href="#Benchmark" accesskey="n" rel="next">Benchmark</a>, Previous: <a 
 <p>This chapter presents an example from finance, as this is one of the primary application domains for k.  For those not familiar with this field, here is a short introduction.
 </p>
 <span id="A-Tiny-Introduction-to-Financial-Market-Data"></span><h3 class="section">18.1 A Tiny Introduction to Financial Market Data</h3>
-<p>Financial market data generally are stored as prices (often call quotes) and trades.  At a minimum, prices will include time (t), price to buy (b for bid) and price to sell (a for ask).  Trades will include at a minimum time (t) and trade price (p).  In normal markets there are many more prices than trades.  (Additionally, the data normally includes the name of the security (s) and the exchange (x) from which the data comes.)  
+<p>Finance has a large amount of data associated with it.  In this section finance data will be limited to price and transaction information which typically includes prices to buy and sell (called quotes) and transactions (called trades).  This data includes the date, financial instrument symbol, time, and exchange / venue.  Additionally quotes will have a bid and ask price (where the deal is willing to buy and sell) and trades will have a price and size of the reported transaction.
 </p>
-<p>Let&rsquo;s use k9 to generate a set of random prices.
+<p>Although real prices are often shown as fractions of a whole amount, eg. eurusd might be at 1.1904, the actual trades are dealt in whole cents or currencies so can be represented as integers.
+</p>
+<p>Let&rsquo;s start with a simple example of only times (t), bid (b), and ask (a).
 </p>
 <div class="example">
-<pre class="example"> n:10
+<pre class="example">n:10
  T:^10:00+`t n rand 36e5 / sort randomly generated times
  B:100++\-1+n rand 3     / generate bids near 100, equivalent to: 100 + (+\((-1)+n rand 3))
  A:B+1+n rand 2          / generates asks 1 or 2 higher
@@ -4238,73 +4240,57 @@ t            p
 
 <p>You&rsquo;ll note that the times didn&rsquo;t line up, because it apparently took you a second to decide to trade.  Because of this delay, you&rsquo;ll often have to look back at the previous prices to join trade (t) and quote (q) data.
 </p>
-<p>Now that you&rsquo;ve learned enough finance to understand the data, let&rsquo;s scale up to larger problems to see the power of k9.
+<p>Now that you&rsquo;ve learned enough finance to understand the data, let&rsquo;s scale up to larger problems to see the power of k9.  
 </p>
-
 <span id="Data-Manipulation"></span><h3 class="section">18.2 Data Manipulation</h3>
-<p>Generate a table of random data and compute basic statistics quickly.  The data here includes time (t), security (s), and price delta (d).  This table takes about 4 GB and 3.3 seconds on a relatively new consumer laptop.
+
+<p>Let&rsquo;s use k9 to generate a set of random quotes for a particular day and symbol.
 </p>
 <div class="example">
-<pre class="example">&nbsp;n:_100e6                         / set n to 100 million 
-&nbsp;t:{09:00:00.000+x rand 10:00:00.000}  /  x random times between 9:00 and 19:00 (7 pm)
-&nbsp;s:{x rand `a`b`c`d`e}                 / x random symbols from `a`b`c`d`e
-&nbsp;m:0,(|m),365378984,m:271810244 42800467 2636454 62769 572 2;  / start m with 6 numbers, then regenerate m with 0, |m, 365378984, m
-&nbsp;d:{(-6+!13)@(+\m)bin x rand _1e9}  / (i) Take the running sum of m. 
-&nbsp;               / (ii) find the binary search index values of the x random numbers drawn up to 1e9 using bin
-&nbsp;               / (iii) use those indexes on the array of integers from -6 to +6 inclusive
-&nbsp;\t q:+`t`s`d!(t[n];s[n];d[n])    / build table and measure time in ms
-3391
+<pre class="example"> qs:`date`sym`time`exch`bid`ask            / quote table schema
+ nf:d+*|d:(|-d),d:683 954 997 1000;        / normal func
+ D:#[;2021.03.17]                          / date
+ S:#[;`eurusd]                             / symbol
+ T:^?[;_8.64e7]@                           / time in number of milliseconds
+ E:?[;&quot;ce&quot;]                                / exchange
+ B:11904++\-3+nf bin/:?[;*|nf]@            / bid price, start at 12415
+ P:?[;2,2,8#1]@                            / bid/ask spread
+ Q:{+qs!((D;S;T;E)@'x),(*;+/)@\:(B;P)@'x}  / generator quote table
+ q:Q@_1e8;10#q
+date       sym    time exch bid   ask  
+---------- ------ ---- ---- ----- -----
+2021.03.17 eurusd    0 c    11904 11905
+2021.03.17 eurusd    0 e    11904 11906
+2021.03.17 eurusd    2 e    11902 11903
+2021.03.17 eurusd    3 c    11902 11903
+2021.03.17 eurusd    9 c    11904 11906
+2021.03.17 eurusd    9 c    11904 11905
+2021.03.17 eurusd   10 c    11904 11905
+2021.03.17 eurusd   12 c    11904 11905
+2021.03.17 eurusd   12 c    11904 11905
+2021.03.17 eurusd   12 e    11904 11906
 </pre></div>
 
-<p>As this point one might want to check start and stop times, see if the symbol distribution is actually random and look at the distribution of the price deltas.
+<p>At this point let&rsquo;s run some basic statistics to see how quickly one can work with 100 million rows of data.  On a reletaviley recent consumer laptop the spread calculation (the longest calculation of the bunch) is done in 350ms.
 </p>
 <div class="example">
-<pre class="example"> select ti:min t, tf:max t from q / min and max time values
-ti|09:00:00.000
-tf|18:59:59.999
+<pre class="example"> select max bid,min ask from q
+bid|18449
+ask|5972 
 
- select c: count s by s from q          / count each symbol
-s|c       
--|--------
-a|20003490
-b|19997344
-c|19998874
-d|20000640
-e|19999652
+select mid:avg 0.5*bid+ask from q
+[mid:14198.32]
 
- select c: count d by d from q          / check normal dist (2s to run)
-d |c       
---|--------
--6|1       
--5|55      
--4|6226    
--3|263801  
--2|4280721 
--1|27179734
- 0|36531595
- 1|27188092
- 2|4279872 
- 3|263610  
- 4|6245    
- 5|48
+select spread:avg ask-bid from q
+[spread:1.200035]
 
- select gain:sum d by s from q    / profit (or loss) over each symbol
-s|gain 
--|-----
-a|  872
-b| 2765
-c| 2668
-d| 2171
-e|-2354
+select first bid, first ask from q
+bid|11904
+ask|11905
 
- select loss:min +\d by s from q  / worst loss over the period
-s|loss 
--|-----
-a|-1803
-b| -846
-c|-2732
-d|-2101
-e|-2903
+select last bid, last ask from q
+bid|14906
+ask|14907
 </pre></div>
 
 <span id="Understanding-Code-Examples"></span><h3 class="section">18.3 Understanding Code Examples</h3>
