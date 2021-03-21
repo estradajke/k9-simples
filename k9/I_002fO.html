@@ -15,7 +15,7 @@ Copyright (C) 2020 John Estrada -->
 <meta name="Generator" content="texi2any">
 <link href="index.html" rel="start" title="Top">
 <link href="index.html" rel="up" title="Top">
-<link href="Tables.html" rel="next" title="Tables">
+<link href="FF.html" rel="next" title="FF">
 <link href="Knit-Functions.html" rel="prev" title="Knit Functions">
 <style type="text/css">
 <!--
@@ -85,7 +85,7 @@ table.menu th{
 <body lang="en">
 <span id="I_002fO"></span><div class="header">
 <p>
-Next: <a href="Tables.html" accesskey="n" rel="next">Tables</a>, Previous: <a href="Knit-Functions.html" accesskey="p" rel="prev">Knit Functions</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="FF.html" accesskey="n" rel="next">FF</a>, Previous: <a href="Knit-Functions.html" accesskey="p" rel="prev">Knit Functions</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <hr>
 <span id="I_002fO-and-Interface"></span><h2 class="chapter">11 I/O and Interface</h2>
@@ -101,7 +101,7 @@ other languages to k9.
 *2: <a href="#r-data">r</a>/<a href="#w-data">w</a> data
 *3: <a href="#k_002dipc-set">k-ipc set</a>    
 *4: <a href="#https-get">https get</a>
-*5: <a href="#ffi">ffi</a>:`f!&quot;ifsIF&quot;
+*5: <a href="FF.html#ffi">ffi</a>:`f!&quot;ifsIF&quot;
 
 <a href="#read-json">`js?</a><a href="#write-json">`js</a> d
 <a href="#read-csv">`csv?</a><a href="#write-csv">`csv</a> t
@@ -296,37 +296,10 @@ a          b          c          d          e
 
 <p>Enterprise only
 </p>
-<span id="ffi"></span><span id="ffi-_21d2-5_003a"></span><h3 class="section">11.15 ffi &rArr; 5:</h3>
-
-<p>Enterprise only
-</p>
-<p>Load shared library.
-</p>
-<p>Contents of file &rsquo;a.c&rsquo;
-</p><div class="example">
-<pre class="example">int add1(int x){return 1+x;}
-int add2(int x){return 2+x;}
-int indx(int x[],int y){return x[y];}
-</pre></div>
-
-<p>Compile into a shared library (done on macos here)
-</p><div class="example">
-<pre class="example">% clang -dynamiclib -o a.so a.c
-</pre></div>
-
-<p>Load the shared library into the session.
-</p><div class="example">
-<pre class="example">&nbsp;f:&quot;./dev/a.so&quot;5:{add1:&quot;i&quot;;add2:&quot;i&quot;;indx:&quot;Ii&quot;}
-&nbsp;f[`add1] 12
-13
-&nbsp;f[`indx][12 13 14;2]
-14
-</pre></div>
-
 <hr>
 <div class="header">
 <p>
-Next: <a href="Tables.html" accesskey="n" rel="next">Tables</a>, Previous: <a href="Knit-Functions.html" accesskey="p" rel="prev">Knit Functions</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="FF.html" accesskey="n" rel="next">FF</a>, Previous: <a href="Knit-Functions.html" accesskey="p" rel="prev">Knit Functions</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 
 

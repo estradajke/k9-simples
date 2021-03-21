@@ -154,6 +154,8 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; <
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#I_002fO">I/O</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Input and output
 </td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#FF">FF</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Foreign functions
+</td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Tables">Tables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Tables to store data
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#kSQL">kSQL</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">kSQL to query tables
@@ -3092,7 +3094,7 @@ y|90 40 10
 <hr>
 <span id="I_002fO"></span><div class="header">
 <p>
-Next: <a href="#Tables" accesskey="n" rel="next">Tables</a>, Previous: <a href="#Knit-Functions" accesskey="p" rel="prev">Knit Functions</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#FF" accesskey="n" rel="next">FF</a>, Previous: <a href="#Knit-Functions" accesskey="p" rel="prev">Knit Functions</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <span id="I_002fO-and-Interface"></span><h2 class="chapter">11 I/O and Interface</h2>
 <p>In order to support fast data analysis, k9 supports fast input and output (I/O).  If you have the habit of making tea while a huge csv file loads, you might have to opt to take a few sips from a glass of water instead.
@@ -3302,10 +3304,22 @@ a          b          c          d          e
 
 <p>Enterprise only
 </p>
-<span id="ffi"></span><span id="ffi-_21d2-5_003a"></span><h3 class="section">11.15 ffi &rArr; 5:</h3>
+<hr>
+<span id="FF"></span><div class="header">
+<p>
+Next: <a href="#Tables" accesskey="n" rel="next">Tables</a>, Previous: <a href="#I_002fO" accesskey="p" rel="prev">I/O</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+</div>
+<span id="Foreign-Functions"></span><h2 class="chapter">12 Foreign Functions</h2>
 
+<p>k9 is able to interface with other programing laguages via it&rsquo;s foreign function interface (ffi).
+</p>
+<pre class="verbatim">python:from k import k;k('+',2,3);nodejs:k=require('k').k;k('+',2,3)
+*ffi:&quot;./a.so&quot;5:`a!&quot;fi&quot; //double a(int x){return 2.3+x;}
+</pre>
 <p>Enterprise only
 </p>
+<span id="ffi"></span><span id="ffi-_21d2-5_003a"></span><h3 class="section">12.1 ffi &rArr; 5:</h3>
+
 <p>Load shared library.
 </p>
 <p>Contents of file &rsquo;a.c&rsquo;
@@ -3332,9 +3346,9 @@ int indx(int x[],int y){return x[y];}
 <hr>
 <span id="Tables"></span><div class="header">
 <p>
-Next: <a href="#kSQL" accesskey="n" rel="next">kSQL</a>, Previous: <a href="#I_002fO" accesskey="p" rel="prev">I/O</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#kSQL" accesskey="n" rel="next">kSQL</a>, Previous: <a href="#FF" accesskey="p" rel="prev">FF</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<span id="Tables-1"></span><h2 class="chapter">12 Tables</h2>
+<span id="Tables-1"></span><h2 class="chapter">13 Tables</h2>
 <p>k9 has the ability to store data in a tabular format containing named columns and rows of information as tables.  If the data to be stored and queried is large, then you should use tables.  This chapter introduces the different types of data tables available in k9.  Table and utable are very similar and as you&rsquo;ll see in the <a href="#kSQL">kSQL</a> chapter are easy to query.  In the <a href="#Benchmark">Benchmark</a> chapter, you&rsquo;ll see that tables are fast to save, read, and query.
 </p>
 <div class="example">
@@ -3342,10 +3356,10 @@ Next: <a href="#kSQL" accesskey="n" rel="next">kSQL</a>, Previous: <a href="#I_0
 <a href="#utable">utable</a> u: [[n:`b`c]i:2 3]
 </pre></div>
 
-<span id="table"></span><span id="table-1"></span><h3 class="section">12.1 table</h3>
+<span id="table"></span><span id="table-1"></span><h3 class="section">13.1 table</h3>
 <p>The table is the most basic of the three types.  A table consists of columns and rows of information where each column has a name.  Tables can be created in three different ways (1) specification via table format, (2) flipping a dictionary, or (3) reading in from a file.
 </p>
-<span id="Table-format"></span><h4 class="subsection">12.1.1 Table format</h4>
+<span id="Table-format"></span><h4 class="subsection">13.1.1 Table format</h4>
 <p>Tables can be created with the table square bracket notation.
 </p>
 <p>As an example, let&rsquo;s create a table with two columns named &ldquo;a&rdquo; and &ldquo;col2&rdquo; having three rows.  The syntax is to surround the definition with square brackets and then have a first element of empty square brackets. Following those brackets comes first column name, colon, and the list of values, then the second column, and continuing for all the columns. For keyed tables, the initial square brackets will contain key column names as we will discuss later.  
@@ -3367,7 +3381,7 @@ a  col2
 [[]a:,1;col2:,3.6]
 </pre></div>
 
-<span id="Dictionary-format"></span><h4 class="subsection">12.1.2 Dictionary format</h4>
+<span id="Dictionary-format"></span><h4 class="subsection">13.1.2 Dictionary format</h4>
 <p>Tables can also be created by flipping a dictionary into a table.  
 </p>
 <div class="example">
@@ -3379,7 +3393,7 @@ a  col2
  3 0.1 
 </pre></div>
 
-<span id="File-import"></span><h4 class="subsection">12.1.3 File import</h4>
+<span id="File-import"></span><h4 class="subsection">13.1.3 File import</h4>
 <p>Tables can also be created by reading in a file.
 </p>
 <p>t.csv
@@ -3399,7 +3413,7 @@ a   col2
  3  0.1 
 </pre></div>
 
-<span id="utable"></span><span id="utable-1"></span><h3 class="section">12.2 utable</h3>
+<span id="utable"></span><span id="utable-1"></span><h3 class="section">13.2 utable</h3>
 <p>utable (or key table) is a table where some of the columns are keyed. The combination of those columns  should not have two rows with the same values. This must be enforced by the application.
 </p>
 <div class="example">
@@ -3424,7 +3438,7 @@ d         |p
 <p>
 Next: <a href="#System" accesskey="n" rel="next">System</a>, Previous: <a href="#Tables" accesskey="p" rel="prev">Tables</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<span id="kSQL-1"></span><h2 class="chapter">13 kSQL</h2>
+<span id="kSQL-1"></span><h2 class="chapter">14 kSQL</h2>
 <p>kSQL is a powerful query language for tables.  It has similarities to ANSI SQL but additional features to make it easier to work with ordered data, such as time series data.
 </p>
 <div class="example">
@@ -3438,10 +3452,10 @@ x#y      / take/intersect innerjoin
 x_y      / drop/difference
 </pre></div>
 
-<span id="Queries"></span><h3 class="section">13.1 Queries</h3>
+<span id="Queries"></span><h3 class="section">14.1 Queries</h3>
 <p>Queries can be done either via the kSQL or functional forms.  The kSQL form is general simplier to write while the functional form allows one to more easily run multithreaded or build queries programmatically.  
 </p>
-<span id="select"></span><span id="select-1"></span><h4 class="subsection">13.1.1 select</h4>
+<span id="select"></span><span id="select-1"></span><h4 class="subsection">14.1.1 select</h4>
 <p>There a number of ways to return a complete table with kSQL.  You can use the table name, a kSQL query without columns, or a fully specified query with columns.
 </p>
 <div class="example">
@@ -3473,7 +3487,7 @@ x y
 4 -0.7568025
 </pre></div>
 
-<span id="A"></span><span id="A-1"></span><h4 class="subsection">13.1.2 A</h4>
+<span id="A"></span><span id="A-1"></span><h4 class="subsection">14.1.2 A</h4>
 <p>A is the list of fields to return from the select or update query.  A can create new column names.  
 </p>
 <div class="example">
@@ -3533,7 +3547,7 @@ x z
 4 -0.7568025
 </pre></div>
 
-<span id="by-B"></span><span id="by-B-1"></span><h4 class="subsection">13.1.3 by B</h4>
+<span id="by-B"></span><span id="by-B-1"></span><h4 class="subsection">14.1.3 by B</h4>
 <p>kSQL also has a way to group rows using <code>by B</code>.  The result is a utable where the key is determined by the grouping clause.
 </p>
 <div class="example">
@@ -3549,7 +3563,7 @@ x|y
 1|-0.6156825
 </pre></div>
 
-<span id="where-C"></span><span id="where-C-1"></span><h4 class="subsection">13.1.4 where C</h4>
+<span id="where-C"></span><span id="where-C-1"></span><h4 class="subsection">14.1.4 where C</h4>
 <p>kSQL makes it easy to build up a where clause to filter down the table.  C is the list of constraints.
 </p>
 <div class="example">
@@ -3583,7 +3597,7 @@ x y
 3 0.14112 
 </pre></div>
 
-<span id="Query-with-By-and-Where"></span><h4 class="subsection">13.1.5 Query with By and Where</h4>
+<span id="Query-with-By-and-Where"></span><h4 class="subsection">14.1.5 Query with By and Where</h4>
 
 <div class="example">
 <pre class="example"> n:5;t:[[]x:!n;y:sin !n]
@@ -3598,7 +3612,7 @@ x|y
 1|0.14112 
 </pre></div>
 
-<span id="update"></span><span id="update-1"></span><h4 class="subsection">13.1.6 update</h4>
+<span id="update"></span><span id="update-1"></span><h4 class="subsection">14.1.6 update</h4>
 <p>update allows one to modify values without specifying all the fields that pass through.  update is also used to add new columns in a table.  update does not, by itself, save the modifications to the table. If you want to preserve those modifications, use assignment.
 </p>
 <div class="example">
@@ -3632,7 +3646,7 @@ b 2 20
 c 3 21
 </pre></div>
 
-<span id="delete"></span><span id="delete-1"></span><h4 class="subsection">13.1.7 delete</h4>
+<span id="delete"></span><span id="delete-1"></span><h4 class="subsection">14.1.7 delete</h4>
 <p>Delete rows from a table that satisfy one or more conditions.  Currently not working.
 </p>
 <div class="example">
@@ -3650,7 +3664,7 @@ c 1
 !nyi
 </pre></div>
 
-<span id="Joins"></span><span id="Joins-1"></span><h3 class="section">13.2 Joins</h3>
+<span id="Joins"></span><span id="Joins-1"></span><h3 class="section">14.2 Joins</h3>
 <p>k9 has a number of methods to join tables together which are described below.  In this section t, t1 and t2 represent tables and k, k1 and k2 represent utables.
 </p>
 <table>
@@ -3662,7 +3676,7 @@ c 1
 <tr><td><a href="#asof_002b">asof+</a></td><td>k1+k2</td></tr>
 </table>
 
-<span id="union"></span><span id="union-join-_21d2-t1_002ct2"></span><h4 class="subsection">13.2.1 union join &rArr; t1,t2</h4>
+<span id="union"></span><span id="union-join-_21d2-t1_002ct2"></span><h4 class="subsection">14.2.1 union join &rArr; t1,t2</h4>
 <p>Union join table t1 with table t2.  The tables should have the same columns and the join results in a table with t2 appended to t1.  If the tables do not have the same columns then return t1.
 </p>
 <div class="example">
@@ -3689,7 +3703,7 @@ b 11 21
 c 12 22
 </pre></div>
 
-<span id="leftjoin"></span><span id="leftjoin-_21d2-t_002ck"></span><h4 class="subsection">13.2.2 leftjoin &rArr; t,k</h4>
+<span id="leftjoin"></span><span id="leftjoin-_21d2-t_002ck"></span><h4 class="subsection">14.2.2 leftjoin &rArr; t,k</h4>
 <p>leftjoin table t with utable k.  Result includes all rows from t and the values from table k having the same key values.
 If a row of t has key values not found in k, then the t values are shown and 0 for the columns coming from k.
 </p>
@@ -3722,7 +3736,7 @@ b 2 102 52
 c 3   9  0
 </pre></div>
 
-<span id="outer"></span><span id="outer-join-_21d2-k1_002ck2"></span><h4 class="subsection">13.2.3 outer join &rArr; k1,k2</h4>
+<span id="outer"></span><span id="outer-join-_21d2-k1_002ck2"></span><h4 class="subsection">14.2.3 outer join &rArr; k1,k2</h4>
 <p>Outer join utable k1 and k2. 
 </p>
 <div class="example">
@@ -3768,7 +3782,7 @@ c|3 30
 d|3 30
 </pre></div>
 
-<span id="asof"></span><span id="asof-join-_21d2-t_002ck"></span><h4 class="subsection">13.2.4 asof join &rArr; t,k</h4>
+<span id="asof"></span><span id="asof-join-_21d2-t_002ck"></span><h4 class="subsection">14.2.4 asof join &rArr; t,k</h4>
 <p>Asof joins each row rt of table t to a row rk in utable k (keyed by time) provided rk has the maximum time value of any row in k while obeying the constraint that the time value in rt &gt;= the time value of rk. Intuitively, rk should be the row in k that is most up-to-date with respect to rt. 
 </p>
 <div class="example">
@@ -3828,7 +3842,7 @@ t           |p
 222
 </pre></div>
 
-<span id="asof_002b"></span><span id="asof_002b-join-_21d2-k1_002bk2"></span><h4 class="subsection">13.2.5 asof+ join &rArr; k1+k2</h4>
+<span id="asof_002b"></span><span id="asof_002b-join-_21d2-k1_002bk2"></span><h4 class="subsection">14.2.5 asof+ join &rArr; k1+k2</h4>
 <p>Asof+ joins  allows one to aggregate over markets to find the total available at a given time.  The utables need to be specified with <code>`a</code>. The effect is to merge the two key fields (the field t in this case) and for each row rk1 from table k1, add the non-key field (bs in this case) from rk1 to the bs field of the most recent row in k2 whose t value is less than or equal to the t value in rk1. And symmetrically for each row of table k2.
 </p>
 <div class="example">
@@ -3860,10 +3874,10 @@ t    |bs
 09:50|103
 </pre></div>
 
-<span id="Insert-and-Upsert"></span><h3 class="section">13.3 Insert and Upsert</h3>
+<span id="Insert-and-Upsert"></span><h3 class="section">14.3 Insert and Upsert</h3>
 <p>One can add data to tables via insert or upsert.  The difference between the two is that insert adds data to a table while upsert on some key x will replace the values if x is present in the target table or insert x with its associated value otherwise. 
 </p>
-<span id="insert"></span><span id="insert-_21d2-t_002cd"></span><h4 class="subsection">13.3.1 insert &rArr; t,d</h4>
+<span id="insert"></span><span id="insert-_21d2-t_002cd"></span><h4 class="subsection">14.3.1 insert &rArr; t,d</h4>
 <p>Insert dictionary d into table t.
 </p><div class="example">
 <pre class="example"> t:[[]c1:`a`b`a;c2:1 2 7];t
@@ -3890,7 +3904,7 @@ a   7
 c  12
 </pre></div>
 
-<span id="upsert"></span><span id="upsert-_21d2-k_002cd"></span><h4 class="subsection">13.3.2 upsert &rArr; k,d</h4>
+<span id="upsert"></span><span id="upsert-_21d2-k_002cd"></span><h4 class="subsection">14.3.2 upsert &rArr; k,d</h4>
 <p>Insert dictionary d into utable k.
 </p><div class="example">
 <pre class="example"> k:[[c1:`a`b`c]c2:1 2 7];k
@@ -3928,7 +3942,7 @@ d |12
 <p>
 Next: <a href="#Control-Flow" accesskey="n" rel="next">Control Flow</a>, Previous: <a href="#kSQL" accesskey="p" rel="prev">kSQL</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<span id="System-1"></span><h2 class="chapter">14 System</h2>
+<span id="System-1"></span><h2 class="chapter">15 System</h2>
 <p>k9 comes with a few system functions and measurement commands.  The commands allow you to load a script, change the working directory, measure execution times and memory usage, and list defined variables.
 </p>
 <div class="example">
@@ -3945,7 +3959,7 @@ Next: <a href="#Control-Flow" accesskey="n" rel="next">Control Flow</a>, Previou
 \cd [d] <a href="#cd">cd</a>
 </pre></div>
 
-<span id="load"></span><span id="load-_21d2-_005cl-a_002ek"></span><h3 class="section">14.1 load &rArr; \l a.k</h3>
+<span id="load"></span><span id="load-_21d2-_005cl-a_002ek"></span><h3 class="section">15.1 load &rArr; \l a.k</h3>
 <p>Load a text file of k9 commands.  The file name must end in .k.
 </p>
 <div class="example">
@@ -3956,7 +3970,7 @@ Next: <a href="#Control-Flow" accesskey="n" rel="next">Control Flow</a>, Previou
 :nyi
 </pre></div>
 
-<span id="timing"></span><span id="timing-_21d2-_005ct-x-or-_005ct_003an-x"></span><h3 class="section">14.2 timing &rArr; \t x or \t:n x</h3>
+<span id="timing"></span><span id="timing-_21d2-_005ct-x-or-_005ct_003an-x"></span><h3 class="section">15.2 timing &rArr; \t x or \t:n x</h3>
 <p>List time elapsed in milliseconds in evaluting x.  If n is supplied then repeat x, n times.
 </p>
 <div class="example">
@@ -3967,7 +3981,7 @@ Next: <a href="#Control-Flow" accesskey="n" rel="next">Control Flow</a>, Previou
 2027
 </pre></div>
 
-<span id="variables"></span><span id="variables-_21d2-_005cv"></span><h3 class="section">14.3 variables &rArr; \v</h3>
+<span id="variables"></span><span id="variables-_21d2-_005cv"></span><h3 class="section">15.3 variables &rArr; \v</h3>
 <p>List variables
 </p><div class="example">
 <pre class="example">a:1;b:2;c:3
@@ -3977,7 +3991,7 @@ Next: <a href="#Control-Flow" accesskey="n" rel="next">Control Flow</a>, Previou
 i|`a`b`c
 </pre></div>
 
-<span id="files"></span><span id="files-_21d2-_005cf"></span><h3 class="section">14.4 files &rArr; \f</h3>
+<span id="files"></span><span id="files-_21d2-_005cf"></span><h3 class="section">15.4 files &rArr; \f</h3>
 <p>List files in current directory.
 </p>
 <div class="example">
@@ -3985,7 +3999,7 @@ i|`a`b`c
 simples.k
 </pre></div>
 
-<span id="cd"></span><span id="cd-_21d2-_005ccd-_005bd_005d"></span><h3 class="section">14.5 cd &rArr; \cd [d]</h3>
+<span id="cd"></span><span id="cd-_21d2-_005ccd-_005bd_005d"></span><h3 class="section">15.5 cd &rArr; \cd [d]</h3>
 <p>Change directory (cd) into d or print current directory.
 </p>
 <div class="example">
@@ -3997,12 +4011,12 @@ simples.k
 <p>
 Next: <a href="#Temporal-Functions" accesskey="n" rel="next">Temporal Functions</a>, Previous: <a href="#System" accesskey="p" rel="prev">System</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<span id="Control-Flow-1"></span><h2 class="chapter">15 Control Flow</h2>
+<span id="Control-Flow-1"></span><h2 class="chapter">16 Control Flow</h2>
 <p>Though looping statements are not necessary in k9, if-then-else statements are sometimes useful.
 </p>
 <pre class="verbatim">$[b;t;f] cond
 </pre>
-<span id="cond"></span><span id="cond-_21d2-_0024_005bb_003bt_003bf_005d"></span><h3 class="section">15.1 cond &rArr; $[b;t;f]</h3>
+<span id="cond"></span><span id="cond-_21d2-_0024_005bb_003bt_003bf_005d"></span><h3 class="section">16.1 cond &rArr; $[b;t;f]</h3>
 <p>If b is non zero then x else y.  x and y are not required to be of the same type.
 </p>
 <div class="example">
@@ -4032,13 +4046,13 @@ b|3 4
 <p>
 Next: <a href="#Errors" accesskey="n" rel="next">Errors</a>, Previous: <a href="#Control-Flow" accesskey="p" rel="prev">Control Flow</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<span id="Temporal-Functions-1"></span><h2 class="chapter">16 Temporal Functions</h2>
+<span id="Temporal-Functions-1"></span><h2 class="chapter">17 Temporal Functions</h2>
 <p>k9 has functions (within <code>.z</code>) to get the current date and time to various degrees of precision.  There are also functions to retrieve partial date and time using dot notation.
 </p>
 <pre class="verbatim">date 2001.01.01   .z.d
 time 12:34:56.789 .z.t
 </pre>
-<span id="g_t_002ez_002ed"></span><span id="g_t_002ez_002e_005bdm_005d-date"></span><h3 class="section">16.1 .z.[dm] date</h3>
+<span id="g_t_002ez_002ed"></span><span id="g_t_002ez_002e_005bdm_005d-date"></span><h3 class="section">17.1 .z.[dm] date</h3>
 <p>These functions retrieve the date as day (d) or month (m) precision.
 </p>
 <div class="example">
@@ -4049,7 +4063,7 @@ time 12:34:56.789 .z.t
 2020.12.
 </pre></div>
 
-<span id="g_t_002ez_002et"></span><span id="g_t_002ez_002e_005bhrstuv_005d-time"></span><h3 class="section">16.2 .z.[hrstuv] time</h3>
+<span id="g_t_002ez_002et"></span><span id="g_t_002ez_002e_005bhrstuv_005d-time"></span><h3 class="section">17.2 .z.[hrstuv] time</h3>
 <p>These functions retrieve the time at hour (h), minute (r), second (s), millisecond (t), microsecond (u), or nanosecond (v) precision.
 </p>
 <div class="example">
@@ -4077,7 +4091,7 @@ time 12:34:56.789 .z.t
 610
 </pre></div>
 
-<span id="Temporal-dot-functions"></span><h3 class="section">16.3 Temporal dot functions</h3>
+<span id="Temporal-dot-functions"></span><h3 class="section">17.3 Temporal dot functions</h3>
 <p>These functions use dot notation to retrieve partial date and times.
 </p>
 <div class="example">
@@ -4102,7 +4116,7 @@ time 12:34:56.789 .z.t
 <p>
 Next: <a href="#Examples" accesskey="n" rel="next">Examples</a>, Previous: <a href="#Temporal-Functions" accesskey="p" rel="prev">Temporal Functions</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<span id="Errors-1"></span><h2 class="chapter">17 Errors</h2>
+<span id="Errors-1"></span><h2 class="chapter">18 Errors</h2>
 <p>Given the terse syntax of k9, it likely won&rsquo;t be a surprise  that  error messages are also rather short.  The errors are listed on the help page and described in more detail below.
 </p>
 <div class="example">
@@ -4111,14 +4125,14 @@ Next: <a href="#Examples" accesskey="n" rel="next">Examples</a>, Previous: <a hr
 stack <a href="#eparse">parse</a> <a href="#g_t_005fvalue">value</a>
 </pre></div>
 
-<span id="class"></span><span id="g_t_003aclass"></span><h3 class="section">17.1 :class</h3>
+<span id="class"></span><span id="g_t_003aclass"></span><h3 class="section">18.1 :class</h3>
 <p>Calling a function on mismatched types.
 </p><div class="example">
 <pre class="example">&nbsp;3+`b
 :class
 </pre></div>
 
-<span id="rank"></span><span id="g_t_003arank"></span><h3 class="section">17.2 :rank</h3>
+<span id="rank"></span><span id="g_t_003arank"></span><h3 class="section">18.2 :rank</h3>
 <p>Calling a function with too many parameters.
 </p><div class="example">
 <pre class="example">&nbsp;{x+y}[1;2;3]
@@ -4127,14 +4141,14 @@ stack <a href="#eparse">parse</a> <a href="#g_t_005fvalue">value</a>
 :rank
 </pre></div>
 
-<span id="length"></span><span id="g_t_003alength"></span><h3 class="section">17.3 :length</h3>
+<span id="length"></span><span id="g_t_003alength"></span><h3 class="section">18.3 :length</h3>
 <p>Operations on unequal length lists that require equal length.
 </p><div class="example">
 <pre class="example">&nbsp;(1 2 3)+(4 5)
 :length
 </pre></div>
 
-<span id="g_t_005ftype"></span><span id="g_t_003atype"></span><h3 class="section">17.4 :type</h3>
+<span id="g_t_005ftype"></span><span id="g_t_003atype"></span><h3 class="section">18.4 :type</h3>
 <p>Calling a function with an unsupported variable type.
 </p><div class="example">
 <pre class="example">`a+`b
@@ -4142,14 +4156,14 @@ stack <a href="#eparse">parse</a> <a href="#g_t_005fvalue">value</a>
 :type
 </pre></div>
 
-<span id="domain"></span><span id="g_t_003adomain"></span><h3 class="section">17.5 :domain</h3>
+<span id="domain"></span><span id="g_t_003adomain"></span><h3 class="section">18.5 :domain</h3>
 <p>Exhausted the number of input values
 </p><div class="example">
 <pre class="example">&nbsp;-12?10   / only 10 unique value exist
 :domain
 </pre></div>
 
-<span id="limit"></span><span id="g_t_003alimit"></span><h3 class="section">17.6 :limit</h3>
+<span id="limit"></span><span id="g_t_003alimit"></span><h3 class="section">18.6 :limit</h3>
 <p>Exceeded a limit above the software maximum, eg. writing a single file above 1GB.
 </p><div class="example">
 <pre class="example">&nbsp;n:_100e6;d:+`x`y!(!n;n rand 1.);`d 2:d
@@ -4158,7 +4172,7 @@ n:_100e6;d:+`x`y!(!n;n rand 1.);`d 2:d
 :limit
 </pre></div>
 
-<span id="nyi"></span><span id="g_t_003anyi"></span><h3 class="section">17.7 :nyi</h3>
+<span id="nyi"></span><span id="g_t_003anyi"></span><h3 class="section">18.7 :nyi</h3>
 <p>Running code that is not yet implemented.  This may come from running code in this document with a different version of k9.
 </p>
 <p>2020.05.31 (c) shakti
@@ -4180,14 +4194,14 @@ a b|
 :nyi
 </pre></div>
 
-<span id="eparse"></span><span id="g_t_003aparse"></span><h3 class="section">17.8 :parse</h3>
+<span id="eparse"></span><span id="g_t_003aparse"></span><h3 class="section">18.8 :parse</h3>
 <p>Syntax is wrong.  This may be due to mismatched parentheses or  brackets, e.g., (), {}, [], &quot;&quot;.
 </p><div class="example">
 <pre class="example">&nbsp;{37 . &quot;hello&quot;
 :parse
 </pre></div>
 
-<span id="g_t_005fvalue"></span><span id="g_t_003avalue"></span><h3 class="section">17.9 :value</h3>
+<span id="g_t_005fvalue"></span><span id="g_t_003avalue"></span><h3 class="section">18.9 :value</h3>
 <p>Undefined variable is used.
 </p><div class="example">
 <pre class="example">&nbsp;g    / assuming 'g' has not be defining in this session
@@ -4198,10 +4212,10 @@ a b|
 <p>
 Next: <a href="#Benchmark" accesskey="n" rel="next">Benchmark</a>, Previous: <a href="#Errors" accesskey="p" rel="prev">Errors</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<span id="Examples-1"></span><h2 class="chapter">18 Examples</h2>
+<span id="Examples-1"></span><h2 class="chapter">19 Examples</h2>
 <p>This chapter presents an example from finance, as this is one of the primary application domains for k.  For those not familiar with this field, here is a short introduction.
 </p>
-<span id="A-Tiny-Introduction-to-Financial-Market-Data"></span><h3 class="section">18.1 A Tiny Introduction to Financial Market Data</h3>
+<span id="A-Tiny-Introduction-to-Financial-Market-Data"></span><h3 class="section">19.1 A Tiny Introduction to Financial Market Data</h3>
 <p>Finance has a large amount of data associated with it.  In this section finance data will be limited to price and transaction information which typically includes prices to buy and sell (called quotes) and transactions (called trades).  This data includes the date, financial instrument symbol, time, and exchange / venue.  Additionally quotes will have a bid and ask price (where the deal is willing to buy and sell) and trades will have a price and size of the reported transaction.
 </p>
 <p>Although real prices are often shown as fractions of a whole amount, eg. eurusd might be at 1.1904, the actual trades are dealt in whole cents or currencies so can be represented as integers.
@@ -4242,7 +4256,7 @@ t            p
 </p>
 <p>Now that you&rsquo;ve learned enough finance to understand the data, let&rsquo;s scale up to larger problems to see the power of k9.  
 </p>
-<span id="Data-Manipulation"></span><h3 class="section">18.2 Data Manipulation</h3>
+<span id="Data-Manipulation"></span><h3 class="section">19.2 Data Manipulation</h3>
 
 <p>Let&rsquo;s use k9 to generate a set of random quotes for a particular day and symbol.
 </p>
@@ -4293,7 +4307,7 @@ bid|14906
 ask|14907
 </pre></div>
 
-<span id="Understanding-Code-Examples"></span><h3 class="section">18.3 Understanding Code Examples</h3>
+<span id="Understanding-Code-Examples"></span><h3 class="section">19.3 Understanding Code Examples</h3>
 <p>In the shakti mailing list there are a number of code examples that can be used to learn best practices.  In order to make sense of other people&rsquo;s codes, one needs to be able to efficiently understand  k9 language expressions.  Here is an example of how one goes about this process.
 </p>
 <div class="example">
@@ -4446,10 +4460,10 @@ in
 <p>
 Next: <a href="#Conclusion" accesskey="n" rel="next">Conclusion</a>, Previous: <a href="#Examples" accesskey="p" rel="prev">Examples</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<span id="Benchmark-1"></span><h2 class="chapter">19 Benchmark</h2>
+<span id="Benchmark-1"></span><h2 class="chapter">20 Benchmark</h2>
 <p>Shakti is a fast data analysis language  and clear benchmarks illustrate this.  The Shakti website has a number of files for such purpose, b.k and taxi.k amongst others.  
 </p>
-<span id="b_002ek"></span><h3 class="section">19.1 b.k</h3>
+<span id="b_002ek"></span><h3 class="section">20.1 b.k</h3>
 
 <pre class="verbatim">T:{09:30:00+_6.5*3600*(!x)%x}
 P:{10+x rand 90};Z:{1000+x rand 9000};E:rand[;&quot;ABCD&quot;]
@@ -4482,7 +4496,7 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 960 billion quotes (S has 170 billion. QQQ has 6 billion.)
  48 billion trades (S has 12 billion. QQQ has 80 million.)
 </pre>
-<span id="T"></span><h4 class="subsection">19.1.1 T</h4>
+<span id="T"></span><h4 class="subsection">20.1.1 T</h4>
 <p>T is a function which generates a uniform list of times from 09:30 to 16:00.
 </p>
 <div class="example">
@@ -4493,7 +4507,7 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 ?00:00:02 00:00:03
 </pre></div>
 
-<span id="P_002c-Z_002c-E"></span><h4 class="subsection">19.1.2 P, Z, E</h4>
+<span id="P_002c-Z_002c-E"></span><h4 class="subsection">20.1.2 P, Z, E</h4>
 <p>P is a function to generate values from 10 to 100 (price).  Z is a function to generate values from 100 to 1000 (size).  E is a function to generate values A, B, C, or D (exchange).
 </p>
 <div class="example">
@@ -4505,7 +4519,7 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 &quot;AADCBCCCBC&quot;
 </pre></div>
 
-<span id="m_002c-n_002c-S_002c-N"></span><h4 class="subsection">19.1.3 m, n, S, N</h4>
+<span id="m_002c-n_002c-S_002c-N"></span><h4 class="subsection">20.1.3 m, n, S, N</h4>
 <p>m is the number of symbols.  n is the number of trades.  S is a list of symbol names.  N is a list of  numbers in decreasing order which sum approximately to n.  
 </p>
 <div class="example">
@@ -4517,7 +4531,7 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 5604390
 </pre></div>
 
-<span id="t"></span><h4 class="subsection">19.1.4 t</h4>
+<span id="t"></span><h4 class="subsection">20.1.4 t</h4>
 <p>t is an ntable of trades.  The fields are time (t), exchange (e), price (p), and size (z).  The number of trades is set by n.
 </p>
 <p>Pulling one random table from t and showing 10 random rows.  
@@ -4538,7 +4552,7 @@ t        e p  z
 12:24:28 A 48 3634
 </pre></div>
 
-<span id="q"></span><h4 class="subsection">19.1.5 q</h4>
+<span id="q"></span><h4 class="subsection">20.1.5 q</h4>
 <p>q is a ntable of quotes.  The fields are time (t), exchange (e), and bid (b).  The number of quotes is set to 6*n.
 </p>
 <div class="example">
@@ -4557,7 +4571,7 @@ t        e b
 14:41:38 A 63
 </pre></div>
 
-<span id="a_002c-A"></span><h4 class="subsection">19.1.6 a, A</h4>
+<span id="a_002c-A"></span><h4 class="subsection">20.1.6 a, A</h4>
 <p>a is the first symbol of S.  A consists of the first 100 symbols of S.
 </p>
 <div class="example">
@@ -4565,7 +4579,7 @@ t        e b
 `PKEM
 </pre></div>
 
-<span id="Max-price-by-exchange"></span><h4 class="subsection">19.1.7 Max price by exchange</h4>
+<span id="Max-price-by-exchange"></span><h4 class="subsection">20.1.7 Max price by exchange</h4>
 <p>The query takes 100 tables from the trade ntable and computes the max price by exchange.
 </p>
 <div class="example">
@@ -4580,7 +4594,7 @@ D|99
 22
 </pre></div>
 
-<span id="Compute-sum-of-trade-size-by-hour_002e"></span><h4 class="subsection">19.1.8 Compute sum of trade size by hour.</h4>
+<span id="Compute-sum-of-trade-size-by-hour_002e"></span><h4 class="subsection">20.1.8 Compute sum of trade size by hour.</h4>
 <p>This query takes 100 tables from the trade ntable and computes the sum of trade size done by hour.
 </p>
 <div class="example">
@@ -4598,7 +4612,7 @@ t |z
 27
 </pre></div>
 
-<span id="Compute-last-bid-by-symbol"></span><h4 class="subsection">19.1.9 Compute last bid by symbol</h4>
+<span id="Compute-last-bid-by-symbol"></span><h4 class="subsection">20.1.9 Compute last bid by symbol</h4>
 <p>This query takes the 100 tables from the quote ntable and returns the last bid.
 </p>
 <div class="example">
@@ -4613,7 +4627,7 @@ b
 2
 </pre></div>
 
-<span id="Find-trades-below-the-bid"></span><h4 class="subsection">19.1.10 Find trades below the bid</h4>
+<span id="Find-trades-below-the-bid"></span><h4 class="subsection">20.1.10 Find trades below the bid</h4>
 <p>This query operates on one symbol from the q and t ntables, i.e. a single quote and trade table.  The quote table is joined to the trade table giving the current bid on each trade.
 </p>
 <div class="example">
@@ -4628,7 +4642,7 @@ t        e p  z    b
 3
 </pre></div>
 
-<span id="taxi"></span><h3 class="section">19.2 taxi</h3>
+<span id="taxi"></span><h3 class="section">20.2 taxi</h3>
 <p>The taxi data analysis problem has become well known given the ease of acquiring the data and the size of it.  It&rsquo;s well written up  <a href="https://toddwschneider.com/posts/analyzing-1-1-billion-nyc-taxi-and-uber-trips-with-a-vengeance/">here</a> with a benchmark summary <a href="https://tech.marksblogg.com/benchmarks.html">here</a>.  Shakti has a benchmark script to generate simulated taxi data in order to check performance.
 </p>
 <div class="format">
@@ -4670,7 +4684,7 @@ csv
 t:&quot;b  12            e&quot;  / type(2) passenger(8)
 \t t:(`t`p`d`a;&quot;,&quot;;t)0:&quot;taxi.csv&quot;</pre></div>
 
-<span id="g"></span><h4 class="subsection">19.2.1 g</h4>
+<span id="g"></span><h4 class="subsection">20.2.1 g</h4>
 <p>Function to generate a table of random data to represent taxi company (<b>t</b> either yellow &lsquo;y or green &lsquo;g),  paid fare (<b>p</b> 0-9), distance travelled (<b>d</b> 0-99) and address (<b>a</b> 0-100.).
 </p>
 <div class="example">
@@ -4690,7 +4704,7 @@ y 5 66 81.61647
 g 0 10 7.946983
 </pre></div>
 
-<span id="x-1"></span><h4 class="subsection">19.2.2 x</h4>
+<span id="x-1"></span><h4 class="subsection">20.2.2 x</h4>
 <p>x is an ntable containing 2500 tables, keyed on day.  Each individual table contains 44,000 rows therefore x has 110 million rows in total.
 </p>
 <div class="example">
@@ -4703,7 +4717,7 @@ g 0 10 7.946983
 ..
 </pre></div>
 
-<span id="g_t2009_002e01_002e04"></span><h4 class="subsection">19.2.3 2009.01.04</h4>
+<span id="g_t2009_002e01_002e04"></span><h4 class="subsection">20.2.3 2009.01.04</h4>
 <p>Let&rsquo;s work with a single table to understand the queries and limit it to 5 rows.
 </p>
 <div class="example">
@@ -4769,7 +4783,7 @@ y|54989073
 <p>
 Previous: <a href="#Benchmark" accesskey="p" rel="prev">Benchmark</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<span id="Conclusion-1"></span><h2 class="chapter">20 Conclusion</h2>
+<span id="Conclusion-1"></span><h2 class="chapter">21 Conclusion</h2>
 
 <p>I expect you are pleasantly surprised by the speed of k9 and by the fact that it all fits in 134,152 bytes!  (For comparison the ls program weighs in at 51,888 bytes and can&rsquo;t even change directory.)
 </p>

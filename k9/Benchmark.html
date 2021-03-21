@@ -88,10 +88,10 @@ table.menu th{
 Next: <a href="Conclusion.html" accesskey="n" rel="next">Conclusion</a>, Previous: <a href="Examples.html" accesskey="p" rel="prev">Examples</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <hr>
-<span id="Benchmark-1"></span><h2 class="chapter">19 Benchmark</h2>
+<span id="Benchmark-1"></span><h2 class="chapter">20 Benchmark</h2>
 <p>Shakti is a fast data analysis language  and clear benchmarks illustrate this.  The Shakti website has a number of files for such purpose, b.k and taxi.k amongst others.  
 </p>
-<span id="b_002ek"></span><h3 class="section">19.1 b.k</h3>
+<span id="b_002ek"></span><h3 class="section">20.1 b.k</h3>
 
 <pre class="verbatim">T:{09:30:00+_6.5*3600*(!x)%x}
 P:{10+x rand 90};Z:{1000+x rand 9000};E:rand[;&quot;ABCD&quot;]
@@ -124,7 +124,7 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 960 billion quotes (S has 170 billion. QQQ has 6 billion.)
  48 billion trades (S has 12 billion. QQQ has 80 million.)
 </pre>
-<span id="T"></span><h4 class="subsection">19.1.1 T</h4>
+<span id="T"></span><h4 class="subsection">20.1.1 T</h4>
 <p>T is a function which generates a uniform list of times from 09:30 to 16:00.
 </p>
 <div class="example">
@@ -135,7 +135,7 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 ?00:00:02 00:00:03
 </pre></div>
 
-<span id="P_002c-Z_002c-E"></span><h4 class="subsection">19.1.2 P, Z, E</h4>
+<span id="P_002c-Z_002c-E"></span><h4 class="subsection">20.1.2 P, Z, E</h4>
 <p>P is a function to generate values from 10 to 100 (price).  Z is a function to generate values from 100 to 1000 (size).  E is a function to generate values A, B, C, or D (exchange).
 </p>
 <div class="example">
@@ -147,7 +147,7 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 &quot;AADCBCCCBC&quot;
 </pre></div>
 
-<span id="m_002c-n_002c-S_002c-N"></span><h4 class="subsection">19.1.3 m, n, S, N</h4>
+<span id="m_002c-n_002c-S_002c-N"></span><h4 class="subsection">20.1.3 m, n, S, N</h4>
 <p>m is the number of symbols.  n is the number of trades.  S is a list of symbol names.  N is a list of  numbers in decreasing order which sum approximately to n.  
 </p>
 <div class="example">
@@ -159,7 +159,7 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 5604390
 </pre></div>
 
-<span id="t"></span><h4 class="subsection">19.1.4 t</h4>
+<span id="t"></span><h4 class="subsection">20.1.4 t</h4>
 <p>t is an ntable of trades.  The fields are time (t), exchange (e), price (p), and size (z).  The number of trades is set by n.
 </p>
 <p>Pulling one random table from t and showing 10 random rows.  
@@ -180,7 +180,7 @@ t        e p  z
 12:24:28 A 48 3634
 </pre></div>
 
-<span id="q"></span><h4 class="subsection">19.1.5 q</h4>
+<span id="q"></span><h4 class="subsection">20.1.5 q</h4>
 <p>q is a ntable of quotes.  The fields are time (t), exchange (e), and bid (b).  The number of quotes is set to 6*n.
 </p>
 <div class="example">
@@ -199,7 +199,7 @@ t        e b
 14:41:38 A 63
 </pre></div>
 
-<span id="a_002c-A"></span><h4 class="subsection">19.1.6 a, A</h4>
+<span id="a_002c-A"></span><h4 class="subsection">20.1.6 a, A</h4>
 <p>a is the first symbol of S.  A consists of the first 100 symbols of S.
 </p>
 <div class="example">
@@ -207,7 +207,7 @@ t        e b
 `PKEM
 </pre></div>
 
-<span id="Max-price-by-exchange"></span><h4 class="subsection">19.1.7 Max price by exchange</h4>
+<span id="Max-price-by-exchange"></span><h4 class="subsection">20.1.7 Max price by exchange</h4>
 <p>The query takes 100 tables from the trade ntable and computes the max price by exchange.
 </p>
 <div class="example">
@@ -222,7 +222,7 @@ D|99
 22
 </pre></div>
 
-<span id="Compute-sum-of-trade-size-by-hour_002e"></span><h4 class="subsection">19.1.8 Compute sum of trade size by hour.</h4>
+<span id="Compute-sum-of-trade-size-by-hour_002e"></span><h4 class="subsection">20.1.8 Compute sum of trade size by hour.</h4>
 <p>This query takes 100 tables from the trade ntable and computes the sum of trade size done by hour.
 </p>
 <div class="example">
@@ -240,7 +240,7 @@ t |z
 27
 </pre></div>
 
-<span id="Compute-last-bid-by-symbol"></span><h4 class="subsection">19.1.9 Compute last bid by symbol</h4>
+<span id="Compute-last-bid-by-symbol"></span><h4 class="subsection">20.1.9 Compute last bid by symbol</h4>
 <p>This query takes the 100 tables from the quote ntable and returns the last bid.
 </p>
 <div class="example">
@@ -255,7 +255,7 @@ b
 2
 </pre></div>
 
-<span id="Find-trades-below-the-bid"></span><h4 class="subsection">19.1.10 Find trades below the bid</h4>
+<span id="Find-trades-below-the-bid"></span><h4 class="subsection">20.1.10 Find trades below the bid</h4>
 <p>This query operates on one symbol from the q and t ntables, i.e. a single quote and trade table.  The quote table is joined to the trade table giving the current bid on each trade.
 </p>
 <div class="example">
@@ -270,7 +270,7 @@ t        e p  z    b
 3
 </pre></div>
 
-<span id="taxi"></span><h3 class="section">19.2 taxi</h3>
+<span id="taxi"></span><h3 class="section">20.2 taxi</h3>
 <p>The taxi data analysis problem has become well known given the ease of acquiring the data and the size of it.  It&rsquo;s well written up  <a href="https://toddwschneider.com/posts/analyzing-1-1-billion-nyc-taxi-and-uber-trips-with-a-vengeance/">here</a> with a benchmark summary <a href="https://tech.marksblogg.com/benchmarks.html">here</a>.  Shakti has a benchmark script to generate simulated taxi data in order to check performance.
 </p>
 <div class="format">
@@ -312,7 +312,7 @@ csv
 t:&quot;b  12            e&quot;  / type(2) passenger(8)
 \t t:(`t`p`d`a;&quot;,&quot;;t)0:&quot;taxi.csv&quot;</pre></div>
 
-<span id="g"></span><h4 class="subsection">19.2.1 g</h4>
+<span id="g"></span><h4 class="subsection">20.2.1 g</h4>
 <p>Function to generate a table of random data to represent taxi company (<b>t</b> either yellow &lsquo;y or green &lsquo;g),  paid fare (<b>p</b> 0-9), distance travelled (<b>d</b> 0-99) and address (<b>a</b> 0-100.).
 </p>
 <div class="example">
@@ -332,7 +332,7 @@ y 5 66 81.61647
 g 0 10 7.946983
 </pre></div>
 
-<span id="x-1"></span><h4 class="subsection">19.2.2 x</h4>
+<span id="x-1"></span><h4 class="subsection">20.2.2 x</h4>
 <p>x is an ntable containing 2500 tables, keyed on day.  Each individual table contains 44,000 rows therefore x has 110 million rows in total.
 </p>
 <div class="example">
@@ -345,7 +345,7 @@ g 0 10 7.946983
 ..
 </pre></div>
 
-<span id="g_t2009_002e01_002e04"></span><h4 class="subsection">19.2.3 2009.01.04</h4>
+<span id="g_t2009_002e01_002e04"></span><h4 class="subsection">20.2.3 2009.01.04</h4>
 <p>Let&rsquo;s work with a single table to understand the queries and limit it to 5 rows.
 </p>
 <div class="example">

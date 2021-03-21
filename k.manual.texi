@@ -44,6 +44,7 @@ The built-in reference screen (@code{\}) containing all the k9 commands.
 * Named Functions:: Named functions
 * Knit Functions:: Function to modify lists and dictionaries
 * I/O:: Input and output
+* FF:: Foreign functions
 * Tables:: Tables to store data
 * kSQL:: kSQL to query tables
 * System:: System functions and measurements
@@ -3313,9 +3314,19 @@ Enterprise only
 
 Enterprise only
 
-@anchor{ffi}@section ffi @result{} 5:
+@node FF
+@chapter Foreign Functions
+
+k9 is able to interface with other programing laguages via it's foreign function interface (ffi).
+
+@verbatim
+python:from k import k;k('+',2,3);nodejs:k=require('k').k;k('+',2,3)
+*ffi:"./a.so"5:`a!"fi" //double a(int x){return 2.3+x;}
+@end verbatim
 
 Enterprise only
+
+@anchor{ffi}@section ffi @result{} 5:
 
 Load shared library.
 

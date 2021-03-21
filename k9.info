@@ -68,6 +68,7 @@ sql: *note select:: *note A:: *note by B:: from T *note where C::; *note update:
 * Named Functions:: Named functions
 * Knit Functions:: Function to modify lists and dictionaries
 * I/O:: Input and output
+* FF:: Foreign functions
 * Tables:: Tables to store data
 * kSQL:: kSQL to query tables
 * System:: System functions and measurements
@@ -2930,7 +2931,7 @@ Dmend with function f[r;y] at indices i.
      6
 
 
-File: k9.info,  Node: I/O,  Next: Tables,  Prev: Knit Functions,  Up: Top
+File: k9.info,  Node: I/O,  Next: FF,  Prev: Knit Functions,  Up: Top
 
 11 I/O and Interface
 ********************
@@ -3141,10 +3142,21 @@ Enterprise only
 
 Enterprise only
 
-11.15 ffi => 5:
-===============
+
+File: k9.info,  Node: FF,  Next: Tables,  Prev: I/O,  Up: Top
+
+12 Foreign Functions
+********************
+
+k9 is able to interface with other programing laguages via it's foreign function interface (ffi).
+
+python:from k import k;k('+',2,3);nodejs:k=require('k').k;k('+',2,3)
+*ffi:"./a.so"5:`a!"fi" //double a(int x){return 2.3+x;}
 
 Enterprise only
+
+12.1 ffi => 5:
+==============
 
 Load shared library.
 
@@ -3164,9 +3176,9 @@ Load the shared library into the session.
      14
 
 
-File: k9.info,  Node: Tables,  Next: kSQL,  Prev: I/O,  Up: Top
+File: k9.info,  Node: Tables,  Next: kSQL,  Prev: FF,  Up: Top
 
-12 Tables
+13 Tables
 *********
 
 k9 has the ability to store data in a tabular format containing named columns and rows of information as tables.  If the data to be stored and queried is large, then you should use tables.  This chapter
@@ -3176,13 +3188,13 @@ you'll see that tables are fast to save, read, and query.
       *note table:: t:[[]n:`b`c;i:2 3]
      *note utable:: u: [[n:`b`c]i:2 3]
 
-12.1 table
+13.1 table
 ==========
 
 The table is the most basic of the three types.  A table consists of columns and rows of information where each column has a name.  Tables can be created in three different ways (1) specification via
 table format, (2) flipping a dictionary, or (3) reading in from a file.
 
-12.1.1 Table format
+13.1.1 Table format
 -------------------
 
 Tables can be created with the table square bracket notation.
@@ -3206,7 +3218,7 @@ will contain key column names as we will discuss later.
       [[] a:,1; col2:,3.6] / using list will succeed
      [[]a:,1;col2:,3.6]
 
-12.1.2 Dictionary format
+13.1.2 Dictionary format
 ------------------------
 
 Tables can also be created by flipping a dictionary into a table.
@@ -3218,7 +3230,7 @@ Tables can also be created by flipping a dictionary into a table.
      20 4.8
       3 0.1
 
-12.1.3 File import
+13.1.3 File import
 ------------------
 
 Tables can also be created by reading in a file.
@@ -3238,7 +3250,7 @@ Use load file '2:x' which returns a table.
      20  4.8
       3  0.1
 
-12.2 utable
+13.2 utable
 ===========
 
 utable (or key table) is a table where some of the columns are keyed.  The combination of those columns should not have two rows with the same values.  This must be enforced by the application.
@@ -3260,7 +3272,7 @@ utable (or key table) is a table where some of the columns are keyed.  The combi
 
 File: k9.info,  Node: kSQL,  Next: System,  Prev: Tables,  Up: Top
 
-13 kSQL
+14 kSQL
 *******
 
 kSQL is a powerful query language for tables.  It has similarities to ANSI SQL but additional features to make it easier to work with ordered data, such as time series data.
@@ -3274,13 +3286,13 @@ kSQL is a powerful query language for tables.  It has similarities to ANSI SQL b
      x#y      / take/intersect innerjoin
      x_y      / drop/difference
 
-13.1 Queries
+14.1 Queries
 ============
 
 Queries can be done either via the kSQL or functional forms.  The kSQL form is general simplier to write while the functional form allows one to more easily run multithreaded or build queries
 programmatically.
 
-13.1.1 select
+14.1.1 select
 -------------
 
 There a number of ways to return a complete table with kSQL. You can use the table name, a kSQL query without columns, or a fully specified query with columns.
@@ -3312,7 +3324,7 @@ There a number of ways to return a complete table with kSQL. You can use the tab
      3 0.14112
      4 -0.7568025
 
-13.1.2 A
+14.1.2 A
 --------
 
 A is the list of fields to return from the select or update query.  A can create new column names.
@@ -3372,7 +3384,7 @@ A is the list of fields to return from the select or update query.  A can create
      3 0.14112
      4 -0.7568025
 
-13.1.3 by B
+14.1.3 by B
 -----------
 
 kSQL also has a way to group rows using 'by B'.  The result is a utable where the key is determined by the grouping clause.
@@ -3388,7 +3400,7 @@ kSQL also has a way to group rows using 'by B'.  The result is a utable where th
      0|1.750768
      1|-0.6156825
 
-13.1.4 where C
+14.1.4 where C
 --------------
 
 kSQL makes it easy to build up a where clause to filter down the table.  C is the list of constraints.
@@ -3422,7 +3434,7 @@ kSQL makes it easy to build up a where clause to filter down the table.  C is th
      1 0.841471
      3 0.14112
 
-13.1.5 Query with By and Where
+14.1.5 Query with By and Where
 ------------------------------
 
       n:5;t:[[]x:!n;y:sin !n]
@@ -3436,7 +3448,7 @@ kSQL makes it easy to build up a where clause to filter down the table.  C is th
      0|1.750768
      1|0.14112
 
-13.1.6 update
+14.1.6 update
 -------------
 
 update allows one to modify values without specifying all the fields that pass through.  update is also used to add new columns in a table.  update does not, by itself, save the modifications to the
@@ -3471,7 +3483,7 @@ table.  If you want to preserve those modifications, use assignment.
      b 2 20
      c 3 21
 
-13.1.7 delete
+14.1.7 delete
 -------------
 
 Delete rows from a table that satisfy one or more conditions.  Currently not working.
@@ -3489,7 +3501,7 @@ Delete rows from a table that satisfy one or more conditions.  Currently not wor
       delete from t where x=`c,y=1
      !nyi
 
-13.2 Joins
+14.2 Joins
 ==========
 
 k9 has a number of methods to join tables together which are described below.  In this section t, t1 and t2 represent tables and k, k1 and k2 represent utables.
@@ -3501,7 +3513,7 @@ join                   syntax
 *note asof::           t,k
 *note asof+::          k1+k2
 
-13.2.1 union join => t1,t2
+14.2.1 union join => t1,t2
 --------------------------
 
 Union join table t1 with table t2.  The tables should have the same columns and the join results in a table with t2 appended to t1.  If the tables do not have the same columns then return t1.
@@ -3528,7 +3540,7 @@ Union join table t1 with table t2.  The tables should have the same columns and 
      b 11 21
      c 12 22
 
-13.2.2 leftjoin => t,k
+14.2.2 leftjoin => t,k
 ----------------------
 
 leftjoin table t with utable k.  Result includes all rows from t and the values from table k having the same key values.  If a row of t has key values not found in k, then the t values are shown and 0
@@ -3561,7 +3573,7 @@ for the columns coming from k.
      b 2 102 52
      c 3   9  0
 
-13.2.3 outer join => k1,k2
+14.2.3 outer join => k1,k2
 --------------------------
 
 Outer join utable k1 and k2.
@@ -3607,7 +3619,7 @@ Outer join utable k1 and k2.
      c|3 30
      d|3 30
 
-13.2.4 asof join => t,k
+14.2.4 asof join => t,k
 -----------------------
 
 Asof joins each row rt of table t to a row rk in utable k (keyed by time) provided rk has the maximum time value of any row in k while obeying the constraint that the time value in rt >= the time value
@@ -3666,7 +3678,7 @@ Scaling this up to a bigger set of tables one can see the performance of k9 on j
       \t T,K
      222
 
-13.2.5 asof+ join => k1+k2
+14.2.5 asof+ join => k1+k2
 --------------------------
 
 Asof+ joins allows one to aggregate over markets to find the total available at a given time.  The utables need to be specified with '`a'.  The effect is to merge the two key fields (the field t in this
@@ -3700,13 +3712,13 @@ symmetrically for each row of table k2.
      09:45|203
      09:50|103
 
-13.3 Insert and Upsert
+14.3 Insert and Upsert
 ======================
 
 One can add data to tables via insert or upsert.  The difference between the two is that insert adds data to a table while upsert on some key x will replace the values if x is present in the target
 table or insert x with its associated value otherwise.
 
-13.3.1 insert => t,d
+14.3.1 insert => t,d
 --------------------
 
 Insert dictionary d into table t.
@@ -3733,7 +3745,7 @@ Insert dictionary d into table t.
      a   7
      c  12
 
-13.3.2 upsert => k,d
+14.3.2 upsert => k,d
 --------------------
 
 Insert dictionary d into utable k.
@@ -3769,7 +3781,7 @@ Insert dictionary d into utable k.
 
 File: k9.info,  Node: System,  Next: Control Flow,  Prev: kSQL,  Up: Top
 
-14 System
+15 System
 *********
 
 k9 comes with a few system functions and measurement commands.  The commands allow you to load a script, change the working directory, measure execution times and memory usage, and list defined
@@ -3787,7 +3799,7 @@ variables.
      \fs
      \cd [d] *note cd::
 
-14.1 load => \l a.k
+15.1 load => \l a.k
 ===================
 
 Load a text file of k9 commands.  The file name must end in .k.
@@ -3798,7 +3810,7 @@ Load a text file of k9 commands.  The file name must end in .k.
      \l func.k9  / will error as not .k
      :nyi
 
-14.2 timing => \t x or \t:n x
+15.2 timing => \t x or \t:n x
 =============================
 
 List time elapsed in milliseconds in evaluting x.  If n is supplied then repeat x, n times.
@@ -3809,7 +3821,7 @@ List time elapsed in milliseconds in evaluting x.  If n is supplied then repeat 
       \t:10 ^(_10e6)? _1e8  / perform 10 times the sort
      2027
 
-14.3 variables => \v
+15.3 variables => \v
 ====================
 
 List variables
@@ -3819,7 +3831,7 @@ List variables
      ,3
      i|`a`b`c
 
-14.4 files => \f
+15.4 files => \f
 ================
 
 List files in current directory.
@@ -3827,7 +3839,7 @@ List files in current directory.
       \f
      simples.k
 
-14.5 cd => \cd [d]
+15.5 cd => \cd [d]
 ==================
 
 Change directory (cd) into d or print current directory.
@@ -3837,14 +3849,14 @@ Change directory (cd) into d or print current directory.
 
 File: k9.info,  Node: Control Flow,  Next: Temporal Functions,  Prev: System,  Up: Top
 
-15 Control Flow
+16 Control Flow
 ***************
 
 Though looping statements are not necessary in k9, if-then-else statements are sometimes useful.
 
 $[b;t;f] cond
 
-15.1 cond => $[b;t;f]
+16.1 cond => $[b;t;f]
 =====================
 
 If b is non zero then x else y.  x and y are not required to be of the same type.
@@ -3872,7 +3884,7 @@ If b is non zero then x else y.  x and y are not required to be of the same type
 
 File: k9.info,  Node: Temporal Functions,  Next: Errors,  Prev: Control Flow,  Up: Top
 
-16 Temporal Functions
+17 Temporal Functions
 *********************
 
 k9 has functions (within '.z') to get the current date and time to various degrees of precision.  There are also functions to retrieve partial date and time using dot notation.
@@ -3880,7 +3892,7 @@ k9 has functions (within '.z') to get the current date and time to various degre
 date 2001.01.01   .z.d
 time 12:34:56.789 .z.t
 
-16.1 .z.[dm] date
+17.1 .z.[dm] date
 =================
 
 These functions retrieve the date as day (d) or month (m) precision.
@@ -3891,7 +3903,7 @@ These functions retrieve the date as day (d) or month (m) precision.
       .z.m
      2020.12.
 
-16.2 .z.[hrstuv] time
+17.2 .z.[hrstuv] time
 =====================
 
 These functions retrieve the time at hour (h), minute (r), second (s), millisecond (t), microsecond (u), or nanosecond (v) precision.
@@ -3917,7 +3929,7 @@ One could use the current time commands to measure run time but typically this i
      \t (_2e8)rand 1.
      610
 
-16.3 Temporal dot functions
+17.3 Temporal dot functions
 ===========================
 
 These functions use dot notation to retrieve partial date and times.
@@ -3940,7 +3952,7 @@ These functions use dot notation to retrieve partial date and times.
 
 File: k9.info,  Node: Errors,  Next: Examples,  Prev: Temporal Functions,  Up: Top
 
-17 Errors
+18 Errors
 *********
 
 Given the terse syntax of k9, it likely won't be a surprise that error messages are also rather short.  The errors are listed on the help page and described in more detail below.
@@ -3949,14 +3961,14 @@ Given the terse syntax of k9, it likely won't be a surprise that error messages 
      *note type: _type. *note domain:: *note limit::
      stack *note parse: eparse. *note value: _value.
 
-17.1 :class
+18.1 :class
 ===========
 
 Calling a function on mismatched types.
       3+`b
      :class
 
-17.2 :rank
+18.2 :rank
 ==========
 
 Calling a function with too many parameters.
@@ -3965,14 +3977,14 @@ Calling a function with too many parameters.
      ^
      :rank
 
-17.3 :length
+18.3 :length
 ============
 
 Operations on unequal length lists that require equal length.
       (1 2 3)+(4 5)
      :length
 
-17.4 :type
+18.4 :type
 ==========
 
 Calling a function with an unsupported variable type.
@@ -3980,14 +3992,14 @@ Calling a function with an unsupported variable type.
        ^
      :type
 
-17.5 :domain
+18.5 :domain
 ============
 
 Exhausted the number of input values
       -12?10   / only 10 unique value exist
      :domain
 
-17.6 :limit
+18.6 :limit
 ===========
 
 Exceeded a limit above the software maximum, eg.  writing a single file above 1GB.
@@ -3996,7 +4008,7 @@ Exceeded a limit above the software maximum, eg.  writing a single file above 1G
 
      :limit
 
-17.7 :nyi
+18.7 :nyi
 =========
 
 Running code that is not yet implemented.  This may come from running code in this document with a different version of k9.
@@ -4016,14 +4028,14 @@ Aug 6 2020 16GB (c) shakti
      ^
      :nyi
 
-17.8 :parse
+18.8 :parse
 ===========
 
 Syntax is wrong.  This may be due to mismatched parentheses or brackets, e.g., (), {}, [], "".
       {37 . "hello"
      :parse
 
-17.9 :value
+18.9 :value
 ===========
 
 Undefined variable is used.
@@ -4033,12 +4045,12 @@ Undefined variable is used.
 
 File: k9.info,  Node: Examples,  Next: Benchmark,  Prev: Errors,  Up: Top
 
-18 Examples
+19 Examples
 ***********
 
 This chapter presents an example from finance, as this is one of the primary application domains for k.  For those not familiar with this field, here is a short introduction.
 
-18.1 A Tiny Introduction to Financial Market Data
+19.1 A Tiny Introduction to Financial Market Data
 =================================================
 
 Finance has a large amount of data associated with it.  In this section finance data will be limited to price and transaction information which typically includes prices to buy and sell (called quotes)
@@ -4081,7 +4093,7 @@ quote (q) data.
 
 Now that you've learned enough finance to understand the data, let's scale up to larger problems to see the power of k9.
 
-18.2 Data Manipulation
+19.2 Data Manipulation
 ======================
 
 Let's use k9 to generate a set of random quotes for a particular day and symbol.
@@ -4130,7 +4142,7 @@ the bunch) is done in 350ms.
      bid|14906
      ask|14907
 
-18.3 Understanding Code Examples
+19.3 Understanding Code Examples
 ================================
 
 In the shakti mailing list there are a number of code examples that can be used to learn best practices.  In order to make sense of other people's codes, one needs to be able to efficiently understand
@@ -4262,12 +4274,12 @@ And then one can use the where function, '&', to determine the index of the matc
 
 File: k9.info,  Node: Benchmark,  Next: Conclusion,  Prev: Examples,  Up: Top
 
-19 Benchmark
+20 Benchmark
 ************
 
 Shakti is a fast data analysis language and clear benchmarks illustrate this.  The Shakti website has a number of files for such purpose, b.k and taxi.k amongst others.
 
-19.1 b.k
+20.1 b.k
 ========
 
 T:{09:30:00+_6.5*3600*(!x)%x}
@@ -4301,7 +4313,7 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 960 billion quotes (S has 170 billion. QQQ has 6 billion.)
  48 billion trades (S has 12 billion. QQQ has 80 million.)
 
-19.1.1 T
+20.1.1 T
 --------
 
 T is a function which generates a uniform list of times from 09:30 to 16:00.
@@ -4312,7 +4324,7 @@ T is a function which generates a uniform list of times from 09:30 to 16:00.
       rand1_-':T[10000]  / determine the unique timesteps
      ?00:00:02 00:00:03
 
-19.1.2 P, Z, E
+20.1.2 P, Z, E
 --------------
 
 P is a function to generate values from 10 to 100 (price).  Z is a function to generate values from 100 to 1000 (size).  E is a function to generate values A, B, C, or D (exchange).
@@ -4324,7 +4336,7 @@ P is a function to generate values from 10 to 100 (price).  Z is a function to g
       E[10]
      "AADCBCCCBC"
 
-19.1.3 m, n, S, N
+20.1.3 m, n, S, N
 -----------------
 
 m is the number of symbols.  n is the number of trades.  S is a list of symbol names.  N is a list of numbers in decreasing order which sum approximately to n.
@@ -4336,7 +4348,7 @@ m is the number of symbols.  n is the number of trades.  S is a list of symbol n
       +/N
      5604390
 
-19.1.4 t
+20.1.4 t
 --------
 
 t is an ntable of trades.  The fields are time (t), exchange (e), price (p), and size (z).  The number of trades is set by n.
@@ -4357,7 +4369,7 @@ Pulling one random table from t and showing 10 random rows.
      11:12:37 A 14 5255
      12:24:28 A 48 3634
 
-19.1.5 q
+20.1.5 q
 --------
 
 q is a ntable of quotes.  The fields are time (t), exchange (e), and bid (b).  The number of quotes is set to 6*n.
@@ -4376,7 +4388,7 @@ q is a ntable of quotes.  The fields are time (t), exchange (e), and bid (b).  T
      11:31:41 D 66
      14:41:38 A 63
 
-19.1.6 a, A
+20.1.6 a, A
 -----------
 
 a is the first symbol of S. A consists of the first 100 symbols of S.
@@ -4384,7 +4396,7 @@ a is the first symbol of S. A consists of the first 100 symbols of S.
       a
      `PKEM
 
-19.1.7 Max price by exchange
+20.1.7 Max price by exchange
 ----------------------------
 
 The query takes 100 tables from the trade ntable and computes the max price by exchange.
@@ -4399,7 +4411,7 @@ The query takes 100 tables from the trade ntable and computes the max price by e
       \t  {select max p by e from x}'t A
      22
 
-19.1.8 Compute sum of trade size by hour.
+20.1.8 Compute sum of trade size by hour.
 -----------------------------------------
 
 This query takes 100 tables from the trade ntable and computes the sum of trade size done by hour.
@@ -4417,7 +4429,7 @@ This query takes 100 tables from the trade ntable and computes the sum of trade 
       \t  {select sum z by `o t from x}'t A
      27
 
-19.1.9 Compute last bid by symbol
+20.1.9 Compute last bid by symbol
 ---------------------------------
 
 This query takes the 100 tables from the quote ntable and returns the last bid.
@@ -4432,7 +4444,7 @@ This query takes the 100 tables from the quote ntable and returns the last bid.
       \t:10 {select last b from x}'q A
      2
 
-19.1.10 Find trades below the bid
+20.1.10 Find trades below the bid
 ---------------------------------
 
 This query operates on one symbol from the q and t ntables, i.e.  a single quote and trade table.  The quote table is joined to the trade table giving the current bid on each trade.
@@ -4447,7 +4459,7 @@ This query operates on one symbol from the q and t ntables, i.e.  a single quote
       \t:10 select from t[a],`t^q a where p<b
      3
 
-19.2 taxi
+20.2 taxi
 =========
 
 The taxi data analysis problem has become well known given the ease of acquiring the data and the size of it.  It's well written up here
@@ -4492,7 +4504,7 @@ csv
 t:"b  12            e"  / type(2) passenger(8)
 \t t:(`t`p`d`a;",";t)0:"taxi.csv"
 
-19.2.1 g
+20.2.1 g
 --------
 
 Function to generate a table of random data to represent taxi company (t either yellow 'y or green 'g), paid fare (p 0-9), distance travelled (d 0-99) and address (a 0-100.).
@@ -4512,7 +4524,7 @@ Function to generate a table of random data to represent taxi company (t either 
      y 5 66 81.61647
      g 0 10 7.946983
 
-19.2.2 x
+20.2.2 x
 --------
 
 x is an ntable containing 2500 tables, keyed on day.  Each individual table contains 44,000 rows therefore x has 110 million rows in total.
@@ -4525,7 +4537,7 @@ x is an ntable containing 2500 tables, keyed on day.  Each individual table cont
      2009.01.04|[[]t:`y`g`g`g`y`g`y`g`y`g`g`g`g`y`g`y`g`y`g`y..
      ..
 
-19.2.3 2009.01.04
+20.2.3 2009.01.04
 -----------------
 
 Let's work with a single table to understand the queries and limit it to 5 rows.
@@ -4579,7 +4591,7 @@ Running the command with the timer will allow us to measure how long it takes to
 
 File: k9.info,  Node: Conclusion,  Prev: Benchmark,  Up: Top
 
-20 Conclusion
+21 Conclusion
 *************
 
 I expect you are pleasantly surprised by the speed of k9 and by the fact that it all fits in 134,152 bytes!  (For comparison the ls program weighs in at 51,888 bytes and can't even change directory.)
@@ -4625,190 +4637,191 @@ sql: select A by B from T where C; update A from T; delete from T where C
 
 Tag Table:
 Node: Top120
-Node: Introduction4997
-Node: Verb16031
-Ref: x17690
-Ref: set17715
-Ref: flip17974
-Ref: plus18259
-Ref: negate18737
-Ref: minus18909
-Ref: first19016
-Ref: times19232
-Ref: divide19363
-Ref: where19504
-Ref: min/and19987
-Ref: reverse20246
-Ref: max/or20505
-Ref: asc20769
-Ref: desc20769
-Ref: less21160
-Ref: more21160
-Ref: group21461
-Ref: equal21714
-Ref: not22018
-Ref: match22135
-Ref: enum22518
-Ref: key23601
-Ref: enlist23774
-Ref: cat23914
-Ref: sort24251
-Ref: cut24903
-Ref: cut125165
-Ref: cut225317
-Ref: cut325511
-Ref: cut425785
-Ref: count25965
-Ref: take26269
-Ref: take126864
-Ref: take227233
-Ref: take327655
-Ref: take427853
-Ref: floor28212
-Ref: drop28303
-Ref: drop128817
-Ref: drop229000
-Ref: drop329276
-Ref: string29440
-Ref: parse29541
-Ref: unique29734
-Ref: find29978
-Ref: type30509
-Ref: at31053
-Ref: value31691
-Ref: dot32132
-Node: Adverb33313
-Ref: each34779
-Ref: over35382
-Ref: scan35510
-Ref: join36861
-Ref: split37232
-Ref: eachprior37490
-Ref: eachright38548
-Ref: eachleft38756
-Ref: cover38951
-Ref: cscan39264
-Node: Noun40440
-Ref: Atom Types41836
-Ref: bool44451
-Ref: int45138
-Ref: flt45818
-Ref: char46220
-Ref: name46453
-Ref: uuid46693
-Ref: time46850
-Ref: date47753
-Ref: datetime48214
-Node: List49128
-Node: Dictionary53599
-Node: User Functions59227
-Node: Expression62472
-Node: Named Functions63959
-Ref: Hcount64559
-Ref: Hfirst64652
-Ref: Hlast64745
-Ref: Hmin64847
-Ref: Hmax64962
-Ref: Hsum65077
-Ref: Hdot65179
-Ref: avg65338
-Ref: var65489
-Ref: dev65624
-Ref: med65666
-Ref: mode65708
-Ref: countd65754
-Ref: exp65808
-Ref: log65913
-Ref: sin66009
-Ref: cos66144
-Ref: sqr66288
-Ref: sqrt66373
-Ref: prm66473
-Ref: freq66648
-Ref: sums67004
-Ref: deltas67144
-Ref: rand67482
-Ref: has68363
-Ref: bin68657
-Ref: in68867
-Ref: within69041
-Ref: div69273
-Ref: mod69457
-Ref: bar69631
-Ref: cmb69820
-Ref: msum70248
-Ref: mavg70385
-Ref: topX70529
-Ref: keyF70687
-Ref: unkey70982
-Ref: meta71118
-Node: Knit Functions71249
-Ref: amend71544
-Ref: amend172067
-Ref: amend272316
-Ref: amend372535
-Ref: amend472840
-Ref: dmend73128
-Ref: dmend173458
-Ref: dmend373626
-Ref: dmend473791
-Node: I/O73952
-Ref: read csv75876
-Ref: write csv76077
-Ref: read json76264
-Ref: write json76448
-Ref: read nv76615
-Ref: w line76808
-Ref: r line77146
-Ref: w byte77259
-Ref: r byte77613
-Ref: r data77763
-Ref: w data78422
-Ref: k-ipc set78998
-Ref: https get79060
-Ref: ffi79122
-Node: Tables79574
-Ref: table80201
-Ref: utable81843
-Node: kSQL82382
-Ref: select83282
-Ref: A83849
-Ref: by B84702
-Ref: where C85031
-Ref: update85873
-Ref: delete86594
-Ref: Joins86876
-Ref: union87233
-Ref: leftjoin87754
-Ref: outer88533
-Ref: asof89168
-Ref: asof+90639
-Ref: insert91857
-Ref: upsert92203
-Node: System92617
-Ref: load93107
-Ref: timing93296
-Ref: variables93581
-Ref: files93689
-Ref: cd93783
-Node: Control Flow93909
-Ref: cond94145
-Node: Temporal Functions94515
-Ref: .z.d94875
-Ref: .z.t95036
-Node: Errors95914
-Ref: class96362
-Ref: rank96451
-Ref: length96575
-Ref: _type96698
-Ref: domain96807
-Ref: limit96929
-Ref: nyi97140
-Ref: eparse97467
-Ref: _value97620
-Node: Examples97748
-Node: Benchmark105738
-Node: Conclusion114410
+Node: Introduction5022
+Node: Verb16056
+Ref: x17715
+Ref: set17740
+Ref: flip17999
+Ref: plus18284
+Ref: negate18762
+Ref: minus18934
+Ref: first19041
+Ref: times19257
+Ref: divide19388
+Ref: where19529
+Ref: min/and20012
+Ref: reverse20271
+Ref: max/or20530
+Ref: asc20794
+Ref: desc20794
+Ref: less21185
+Ref: more21185
+Ref: group21486
+Ref: equal21739
+Ref: not22043
+Ref: match22160
+Ref: enum22543
+Ref: key23626
+Ref: enlist23799
+Ref: cat23939
+Ref: sort24276
+Ref: cut24928
+Ref: cut125190
+Ref: cut225342
+Ref: cut325536
+Ref: cut425810
+Ref: count25990
+Ref: take26294
+Ref: take126889
+Ref: take227258
+Ref: take327680
+Ref: take427878
+Ref: floor28237
+Ref: drop28328
+Ref: drop128842
+Ref: drop229025
+Ref: drop329301
+Ref: string29465
+Ref: parse29566
+Ref: unique29759
+Ref: find30003
+Ref: type30534
+Ref: at31078
+Ref: value31716
+Ref: dot32157
+Node: Adverb33338
+Ref: each34804
+Ref: over35407
+Ref: scan35535
+Ref: join36886
+Ref: split37257
+Ref: eachprior37515
+Ref: eachright38573
+Ref: eachleft38781
+Ref: cover38976
+Ref: cscan39289
+Node: Noun40465
+Ref: Atom Types41861
+Ref: bool44476
+Ref: int45163
+Ref: flt45843
+Ref: char46245
+Ref: name46478
+Ref: uuid46718
+Ref: time46875
+Ref: date47778
+Ref: datetime48239
+Node: List49153
+Node: Dictionary53624
+Node: User Functions59252
+Node: Expression62497
+Node: Named Functions63984
+Ref: Hcount64584
+Ref: Hfirst64677
+Ref: Hlast64770
+Ref: Hmin64872
+Ref: Hmax64987
+Ref: Hsum65102
+Ref: Hdot65204
+Ref: avg65363
+Ref: var65514
+Ref: dev65649
+Ref: med65691
+Ref: mode65733
+Ref: countd65779
+Ref: exp65833
+Ref: log65938
+Ref: sin66034
+Ref: cos66169
+Ref: sqr66313
+Ref: sqrt66398
+Ref: prm66498
+Ref: freq66673
+Ref: sums67029
+Ref: deltas67169
+Ref: rand67507
+Ref: has68388
+Ref: bin68682
+Ref: in68892
+Ref: within69066
+Ref: div69298
+Ref: mod69482
+Ref: bar69656
+Ref: cmb69845
+Ref: msum70273
+Ref: mavg70410
+Ref: topX70554
+Ref: keyF70712
+Ref: unkey71007
+Ref: meta71143
+Node: Knit Functions71274
+Ref: amend71569
+Ref: amend172092
+Ref: amend272341
+Ref: amend372560
+Ref: amend472865
+Ref: dmend73153
+Ref: dmend173483
+Ref: dmend373651
+Ref: dmend473816
+Node: I/O73977
+Ref: read csv75897
+Ref: write csv76098
+Ref: read json76285
+Ref: write json76469
+Ref: read nv76636
+Ref: w line76829
+Ref: r line77167
+Ref: w byte77280
+Ref: r byte77634
+Ref: r data77784
+Ref: w data78443
+Ref: k-ipc set79019
+Ref: https get79081
+Node: FF79143
+Ref: ffi79493
+Node: Tables79926
+Ref: table80552
+Ref: utable82194
+Node: kSQL82733
+Ref: select83633
+Ref: A84200
+Ref: by B85053
+Ref: where C85382
+Ref: update86224
+Ref: delete86945
+Ref: Joins87227
+Ref: union87584
+Ref: leftjoin88105
+Ref: outer88884
+Ref: asof89519
+Ref: asof+90990
+Ref: insert92208
+Ref: upsert92554
+Node: System92968
+Ref: load93458
+Ref: timing93647
+Ref: variables93932
+Ref: files94040
+Ref: cd94134
+Node: Control Flow94260
+Ref: cond94496
+Node: Temporal Functions94866
+Ref: .z.d95226
+Ref: .z.t95387
+Node: Errors96265
+Ref: class96713
+Ref: rank96802
+Ref: length96926
+Ref: _type97049
+Ref: domain97158
+Ref: limit97280
+Ref: nyi97491
+Ref: eparse97818
+Ref: _value97971
+Node: Examples98099
+Node: Benchmark106089
+Node: Conclusion114761
 
 End Tag Table
 
