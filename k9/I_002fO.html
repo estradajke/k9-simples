@@ -287,12 +287,10 @@ a          b          c          d          e
 148
 </pre></div>
 
-<p>Enterprise only
-</p>
+<span id="IPC"></span><h3 class="section">11.13 IPC</h3>
 <p>k9 has the ability to comunicate between separate k9 instances via inter-process communication (IPC).  These processes can be on the same or separate machines.  A user will start multiple instances specifying the port that the k9 session will use, opening a handle to that port, and then running remote commands via the handle and <code>3:</code> or <code>4:</code>.
 </p>
-
-<span id="k_002dipc"></span><span id="k_002dipc-_21d2-3_003ax"></span><h3 class="section">11.13 k-ipc &rArr; 3:x</h3>
+<span id="k_002dipc"></span><span id="k_002dipc-_21d2-3_003ax"></span><h3 class="section">11.14 k-ipc &rArr; 3:x</h3>
 <p>Open a connection to remote port <code>x</code> and return a handle.
 </p>
 <div class="example">
@@ -304,7 +302,7 @@ a          b          c          d          e
 4
 </pre></div>
 
-<span id="g_t3set"></span><span id="set-_21d2-x-3_003ay"></span><h3 class="section">11.14 set &rArr; x 3:y</h3>
+<span id="g_t3set"></span><span id="set-_21d2-x-3_003ay"></span><h3 class="section">11.15 set &rArr; x 3:y</h3>
 <p>Run string y using handle x.  Handle x should have already been created using k-ipc.  <code>set</code> is run asynchronous, thus once the command is sent the session immediately returns to the user.
 </p>
 <div class="example">
@@ -313,7 +311,7 @@ a          b          c          d          e
  h 3:&quot;n:_1e8;b:1?n?1.&quot;  / set b to a random number on remote
 </pre></div>
 
-<span id="g_t4get"></span><span id="get-_21d2-x-4_003ay"></span><h3 class="section">11.15 get &rArr; x 4:y</h3>
+<span id="g_t4get"></span><span id="get-_21d2-x-4_003ay"></span><h3 class="section">11.16 get &rArr; x 4:y</h3>
 <p>run string y using handle x.  Handle x should have already been created using k-ipc.  <code>get</code> is run synchronous, thus on the command is sent the session waits until there result is ready.
 </p>
 <div class="example">

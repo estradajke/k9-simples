@@ -3132,12 +3132,13 @@ Start new session.
       \t r:2:`r;select avg a,sum b, max c, min d, sum e from r
      148
 
-Enterprise only
+11.13 IPC
+=========
 
 k9 has the ability to comunicate between separate k9 instances via inter-process communication (IPC). These processes can be on the same or separate machines.  A user will start multiple instances
 specifying the port that the k9 session will use, opening a handle to that port, and then running remote commands via the handle and '3:' or '4:'.
 
-11.13 k-ipc => 3:x
+11.14 k-ipc => 3:x
 ==================
 
 Open a connection to remote port 'x' and return a handle.
@@ -3149,7 +3150,7 @@ Open a connection to remote port 'x' and return a handle.
       h        / h is an integer
      4
 
-11.14 set => x 3:y
+11.15 set => x 3:y
 ==================
 
 Run string y using handle x.  Handle x should have already been created using k-ipc.  'set' is run asynchronous, thus once the command is sent the session immediately returns to the user.
@@ -3158,7 +3159,7 @@ Run string y using handle x.  Handle x should have already been created using k-
       h 3:"a:12"             / set a to 12 on remote session
       h 3:"n:_1e8;b:1?n?1."  / set b to a random number on remote
 
-11.15 get => x 4:y
+11.16 get => x 4:y
 ==================
 
 run string y using handle x.  Handle x should have already been created using k-ipc.  'get' is run synchronous, thus on the command is sent the session waits until there result is ready.
@@ -4813,53 +4814,53 @@ Ref: w byte77316
 Ref: r byte77670
 Ref: r data77820
 Ref: w data78479
-Ref: k-ipc79417
-Ref: 3set79768
-Ref: 4get80182
-Node: FF80754
-Ref: ffi81104
-Node: Tables81537
-Ref: table82163
-Ref: utable83805
-Node: kSQL84344
-Ref: select85244
-Ref: A85811
-Ref: by B86664
-Ref: where C86993
-Ref: update87835
-Ref: delete88556
-Ref: Joins88838
-Ref: union89195
-Ref: leftjoin89716
-Ref: outer90495
-Ref: asof91130
-Ref: asof+92601
-Ref: insert93819
-Ref: upsert94165
-Node: System94579
-Ref: load95069
-Ref: timing95258
-Ref: variables95543
-Ref: files95651
-Ref: cd95745
-Node: Control Flow95871
-Ref: cond96107
-Node: Temporal Functions96477
-Ref: .z.d96837
-Ref: .z.t96998
-Node: Errors97876
-Ref: class98324
-Ref: rank98413
-Ref: length98537
-Ref: _type98660
-Ref: domain98769
-Ref: limit98891
-Ref: nyi99102
-Ref: eparse99429
-Ref: _value99582
-Node: Examples99710
-Node: Benchmark107700
-Node: Conclusion116372
+Ref: k-ipc79421
+Ref: 3set79772
+Ref: 4get80186
+Node: FF80758
+Ref: ffi81108
+Node: Tables81541
+Ref: table82167
+Ref: utable83809
+Node: kSQL84348
+Ref: select85248
+Ref: A85815
+Ref: by B86668
+Ref: where C86997
+Ref: update87839
+Ref: delete88560
+Ref: Joins88842
+Ref: union89199
+Ref: leftjoin89720
+Ref: outer90499
+Ref: asof91134
+Ref: asof+92605
+Ref: insert93823
+Ref: upsert94169
+Node: System94583
+Ref: load95073
+Ref: timing95262
+Ref: variables95547
+Ref: files95655
+Ref: cd95749
+Node: Control Flow95875
+Ref: cond96111
+Node: Temporal Functions96481
+Ref: .z.d96841
+Ref: .z.t97002
+Node: Errors97880
+Ref: class98328
+Ref: rank98417
+Ref: length98541
+Ref: _type98664
+Ref: domain98773
+Ref: limit98895
+Ref: nyi99106
+Ref: eparse99433
+Ref: _value99586
+Node: Examples99714
+Node: Benchmark107704
+Node: Conclusion116376
 
 End Tag Table
 
