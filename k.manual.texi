@@ -3321,7 +3321,7 @@ Open a connection to remote port @code{x} and return a handle.
 @end example
 
 @anchor{3set}@section set @result{} x 3:y
-Run string y using handle x.  Handle x should have already been created using k-ipc.  @code{set} is run asynchronous, thus once the command is sent the session immediately returns to the user.
+Exectute string y using handle x.  Handle x should have already been created using k-ipc.  @code{set} is asynchronous, thus once the command is sent the session immediately returns to the user.
 
 @example
  h:3:1251               / create handle to port 1251
@@ -3330,7 +3330,7 @@ Run string y using handle x.  Handle x should have already been created using k-
 @end example
 
 @anchor{4get}@section get @result{} x 4:y
-run string y using handle x.  Handle x should have already been created using k-ipc.  @code{get} is run synchronous, thus on the command is sent the session waits until there result is ready.
+Execute string y using handle x.  Handle x should have already been created using k-ipc.  @code{get} is synchronous, thus on the command is sent the session waits until there result is ready.
 
 @example
  h:3:1251               / create handle to port 1251
