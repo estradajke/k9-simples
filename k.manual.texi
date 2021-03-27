@@ -3117,8 +3117,8 @@ other languages to k9.
  0: @ref{r line,r}/@ref{w line,w} line
  1: @ref{r byte,r}/@ref{w byte,w} byte
 *2: @ref{r data,r}/@ref{w data,w} data
-*3: @ref{k-ipc set}    
-*4: @ref{https get}
+*3: @ref{k-ipc} @ref{3set,set}    
+*4: https @ref{4get,get}
 *5: @ref{ffi}:`f!"ifsIF"
 
 @ref{read json,`js?}@ref{write json,`js} d
@@ -3304,10 +3304,6 @@ Start new session.
  \t r:2:`r;select avg a,sum b, max c, min d, sum e from r
 148
 @end example
-
-
-@anchor{k-ipc set}@section k-ipc set @result{} 3:
-@anchor{https get}@section https get @result{} 4:
 
 Enterprise only
 

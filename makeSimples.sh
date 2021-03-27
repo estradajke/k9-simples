@@ -105,8 +105,8 @@ sed -e 's/@/@@/g' \
     -e 's/r\/w@ line/@ref{r line,r}\/@ref{w line,w}@ line/g' \
     -e 's/r\/w@ char/@ref{r byte,r}\/@ref{w byte,w}@ char/g' \
     -e 's/r\/w@ data/@ref{r data,r}\/@ref{w data,w}@ data/g' \
-    -e 's/k-ipc@ set/@ref{k-ipc set}/g' \
-    -e 's/https@ get/@ref{https get}/g' \
+    -e 's/k-ipc@ set/@ref{k-ipc} @ref{3set,set}/g' \
+    -e 's/https@ get/https@ @ref{4get,get}/g' \
     -e 's/ffi/@ref{ffi}/g' \
     -e '20,40 s/ key/ @ref{key}/g' \
     -e '20,40 s/unkey/@ref{unkey}/g' \

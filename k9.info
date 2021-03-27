@@ -39,8 +39,8 @@ $k [-p 1024] a.k
 > *note desc::      *note more::       0: *note r: r line./*note w: w line. line (N;C)0:     *note list: List. (2;3.4;`c)         \fl x
 = *note group::     *note equal::      1: *note r: r byte./*note w: w byte. char             *note dict: Dictionary. [n:`b;i:2]         \fc x   
 ~ *note not::       *note match::     *2: *note r: r data./*note w: w data. data             *note func: User Functions. {[a;b]a+b}         \fs x
-! *note key::       *note key::       *3: *note k-ipc set::            *note expr: Expression. :a+b               *note \cd: cd. [d]
-, *note enlist::    *note cat::       *4: *note https get::            
+! *note key::       *note key::       *3: *note k-ipc:: *note set: 3set.            *note expr: Expression. :a+b               *note \cd: cd. [d]
+, *note enlist::    *note cat::       *4: https *note get: 4get.            
 ^ *note sort::   [f]*note cut::       *5: *note ffi:::`f!"ifsIF"
 # *note count::  [f]*note take::                              
 _ *note floor::  [f]*note drop::                      
@@ -2945,8 +2945,8 @@ k9 is also able to interface with other languages so one doesn't need to transla
       0: *note r: r line./*note w: w line. line
       1: *note r: r byte./*note w: w byte. byte
      *2: *note r: r data./*note w: w data. data
-     *3: *note k-ipc set::
-     *4: *note https get::
+     *3: *note k-ipc:: *note set: 3set.
+     *4: https *note get: 4get.
      *5: *note ffi:::`f!"ifsIF"
 
      *note `js?: read json.*note `js: write json. d
@@ -3132,18 +3132,12 @@ Start new session.
       \t r:2:`r;select avg a,sum b, max c, min d, sum e from r
      148
 
-11.13 k-ipc set => 3:
-=====================
-
-11.14 https get => 4:
-=====================
-
 Enterprise only
 
 k9 has the ability to comunicate between separate k9 instances via inter-process communication (IPC). These processes can be on the same or separate machines.  A user will start multiple instances
 specifying the port that the k9 session will use, opening a handle to that port, and then running remote commands via the handle and '3:' or '4:'.
 
-11.15 k-ipc => 3:x
+11.13 k-ipc => 3:x
 ==================
 
 Open a connection to remote port 'x' and return a handle.
@@ -3155,7 +3149,7 @@ Open a connection to remote port 'x' and return a handle.
       h        / h is an integer
      4
 
-11.16 set => x 3:y
+11.14 set => x 3:y
 ==================
 
 Run string y using handle x.  Handle x should have already been created using k-ipc.  'set' is run asynchronous, thus once the command is sent the session immediately returns to the user.
@@ -3164,7 +3158,7 @@ Run string y using handle x.  Handle x should have already been created using k-
       h 3:"a:12"             / set a to 12 on remote session
       h 3:"n:_1e8;b:1?n?1."  / set b to a random number on remote
 
-11.17 get => x 4:y
+11.15 get => x 4:y
 ==================
 
 run string y using handle x.  Handle x should have already been created using k-ipc.  'get' is run synchronous, thus on the command is sent the session waits until there result is ready.
@@ -4680,194 +4674,192 @@ sql: select A by B from T where C; update A from T; delete from T where C
 
 Tag Table:
 Node: Top120
-Node: Introduction5022
-Node: Verb16056
-Ref: x17715
-Ref: set17740
-Ref: flip17999
-Ref: plus18284
-Ref: negate18762
-Ref: minus18934
-Ref: first19041
-Ref: times19257
-Ref: divide19388
-Ref: where19529
-Ref: min/and20012
-Ref: reverse20271
-Ref: max/or20530
-Ref: asc20794
-Ref: desc20794
-Ref: less21185
-Ref: more21185
-Ref: group21486
-Ref: equal21739
-Ref: not22043
-Ref: match22160
-Ref: enum22543
-Ref: key23626
-Ref: enlist23799
-Ref: cat23939
-Ref: sort24276
-Ref: cut24928
-Ref: cut125190
-Ref: cut225342
-Ref: cut325536
-Ref: cut425810
-Ref: count25990
-Ref: take26294
-Ref: take126889
-Ref: take227258
-Ref: take327680
-Ref: take427878
-Ref: floor28237
-Ref: drop28328
-Ref: drop128842
-Ref: drop229025
-Ref: drop329301
-Ref: string29465
-Ref: parse29566
-Ref: unique29759
-Ref: find30003
-Ref: type30534
-Ref: at31078
-Ref: value31716
-Ref: dot32157
-Node: Adverb33338
-Ref: each34804
-Ref: over35407
-Ref: scan35535
-Ref: join36886
-Ref: split37257
-Ref: eachprior37515
-Ref: eachright38573
-Ref: eachleft38781
-Ref: cover38976
-Ref: cscan39289
-Node: Noun40465
-Ref: Atom Types41861
-Ref: bool44476
-Ref: int45163
-Ref: flt45843
-Ref: char46245
-Ref: name46478
-Ref: uuid46718
-Ref: time46875
-Ref: date47778
-Ref: datetime48239
-Node: List49153
-Node: Dictionary53624
-Node: User Functions59252
-Node: Expression62497
-Node: Named Functions63984
-Ref: Hcount64584
-Ref: Hfirst64677
-Ref: Hlast64770
-Ref: Hmin64872
-Ref: Hmax64987
-Ref: Hsum65102
-Ref: Hdot65204
-Ref: avg65363
-Ref: var65514
-Ref: dev65649
-Ref: med65691
-Ref: mode65733
-Ref: countd65779
-Ref: exp65833
-Ref: log65938
-Ref: sin66034
-Ref: cos66169
-Ref: sqr66313
-Ref: sqrt66398
-Ref: prm66498
-Ref: freq66673
-Ref: sums67029
-Ref: deltas67169
-Ref: rand67507
-Ref: has68388
-Ref: bin68682
-Ref: in68892
-Ref: within69066
-Ref: div69298
-Ref: mod69482
-Ref: bar69656
-Ref: cmb69845
-Ref: msum70273
-Ref: mavg70410
-Ref: topX70554
-Ref: keyF70712
-Ref: unkey71007
-Ref: meta71143
-Node: Knit Functions71274
-Ref: amend71569
-Ref: amend172092
-Ref: amend272341
-Ref: amend372560
-Ref: amend472865
-Ref: dmend73153
-Ref: dmend173483
-Ref: dmend373651
-Ref: dmend473816
-Node: I/O73977
-Ref: read csv75897
-Ref: write csv76098
-Ref: read json76285
-Ref: write json76469
-Ref: read nv76636
-Ref: w line76829
-Ref: r line77167
-Ref: w byte77280
-Ref: r byte77634
-Ref: r data77784
-Ref: w data78443
-Ref: k-ipc set79019
-Ref: https get79064
-Ref: k-ipc79471
-Ref: 3set79822
-Ref: 4get80236
-Node: FF80808
-Ref: ffi81158
-Node: Tables81591
-Ref: table82217
-Ref: utable83859
-Node: kSQL84398
-Ref: select85298
-Ref: A85865
-Ref: by B86718
-Ref: where C87047
-Ref: update87889
-Ref: delete88610
-Ref: Joins88892
-Ref: union89249
-Ref: leftjoin89770
-Ref: outer90549
-Ref: asof91184
-Ref: asof+92655
-Ref: insert93873
-Ref: upsert94219
-Node: System94633
-Ref: load95123
-Ref: timing95312
-Ref: variables95597
-Ref: files95705
-Ref: cd95799
-Node: Control Flow95925
-Ref: cond96161
-Node: Temporal Functions96531
-Ref: .z.d96891
-Ref: .z.t97052
-Node: Errors97930
-Ref: class98378
-Ref: rank98467
-Ref: length98591
-Ref: _type98714
-Ref: domain98823
-Ref: limit98945
-Ref: nyi99156
-Ref: eparse99483
-Ref: _value99636
-Node: Examples99764
-Node: Benchmark107754
-Node: Conclusion116426
+Node: Introduction5040
+Node: Verb16074
+Ref: x17733
+Ref: set17758
+Ref: flip18017
+Ref: plus18302
+Ref: negate18780
+Ref: minus18952
+Ref: first19059
+Ref: times19275
+Ref: divide19406
+Ref: where19547
+Ref: min/and20030
+Ref: reverse20289
+Ref: max/or20548
+Ref: asc20812
+Ref: desc20812
+Ref: less21203
+Ref: more21203
+Ref: group21504
+Ref: equal21757
+Ref: not22061
+Ref: match22178
+Ref: enum22561
+Ref: key23644
+Ref: enlist23817
+Ref: cat23957
+Ref: sort24294
+Ref: cut24946
+Ref: cut125208
+Ref: cut225360
+Ref: cut325554
+Ref: cut425828
+Ref: count26008
+Ref: take26312
+Ref: take126907
+Ref: take227276
+Ref: take327698
+Ref: take427896
+Ref: floor28255
+Ref: drop28346
+Ref: drop128860
+Ref: drop229043
+Ref: drop329319
+Ref: string29483
+Ref: parse29584
+Ref: unique29777
+Ref: find30021
+Ref: type30552
+Ref: at31096
+Ref: value31734
+Ref: dot32175
+Node: Adverb33356
+Ref: each34822
+Ref: over35425
+Ref: scan35553
+Ref: join36904
+Ref: split37275
+Ref: eachprior37533
+Ref: eachright38591
+Ref: eachleft38799
+Ref: cover38994
+Ref: cscan39307
+Node: Noun40483
+Ref: Atom Types41879
+Ref: bool44494
+Ref: int45181
+Ref: flt45861
+Ref: char46263
+Ref: name46496
+Ref: uuid46736
+Ref: time46893
+Ref: date47796
+Ref: datetime48257
+Node: List49171
+Node: Dictionary53642
+Node: User Functions59270
+Node: Expression62515
+Node: Named Functions64002
+Ref: Hcount64602
+Ref: Hfirst64695
+Ref: Hlast64788
+Ref: Hmin64890
+Ref: Hmax65005
+Ref: Hsum65120
+Ref: Hdot65222
+Ref: avg65381
+Ref: var65532
+Ref: dev65667
+Ref: med65709
+Ref: mode65751
+Ref: countd65797
+Ref: exp65851
+Ref: log65956
+Ref: sin66052
+Ref: cos66187
+Ref: sqr66331
+Ref: sqrt66416
+Ref: prm66516
+Ref: freq66691
+Ref: sums67047
+Ref: deltas67187
+Ref: rand67525
+Ref: has68406
+Ref: bin68700
+Ref: in68910
+Ref: within69084
+Ref: div69316
+Ref: mod69500
+Ref: bar69674
+Ref: cmb69863
+Ref: msum70291
+Ref: mavg70428
+Ref: topX70572
+Ref: keyF70730
+Ref: unkey71025
+Ref: meta71161
+Node: Knit Functions71292
+Ref: amend71587
+Ref: amend172110
+Ref: amend272359
+Ref: amend372578
+Ref: amend472883
+Ref: dmend73171
+Ref: dmend173501
+Ref: dmend373669
+Ref: dmend473834
+Node: I/O73995
+Ref: read csv75933
+Ref: write csv76134
+Ref: read json76321
+Ref: write json76505
+Ref: read nv76672
+Ref: w line76865
+Ref: r line77203
+Ref: w byte77316
+Ref: r byte77670
+Ref: r data77820
+Ref: w data78479
+Ref: k-ipc79417
+Ref: 3set79768
+Ref: 4get80182
+Node: FF80754
+Ref: ffi81104
+Node: Tables81537
+Ref: table82163
+Ref: utable83805
+Node: kSQL84344
+Ref: select85244
+Ref: A85811
+Ref: by B86664
+Ref: where C86993
+Ref: update87835
+Ref: delete88556
+Ref: Joins88838
+Ref: union89195
+Ref: leftjoin89716
+Ref: outer90495
+Ref: asof91130
+Ref: asof+92601
+Ref: insert93819
+Ref: upsert94165
+Node: System94579
+Ref: load95069
+Ref: timing95258
+Ref: variables95543
+Ref: files95651
+Ref: cd95745
+Node: Control Flow95871
+Ref: cond96107
+Node: Temporal Functions96477
+Ref: .z.d96837
+Ref: .z.t96998
+Node: Errors97876
+Ref: class98324
+Ref: rank98413
+Ref: length98537
+Ref: _type98660
+Ref: domain98769
+Ref: limit98891
+Ref: nyi99102
+Ref: eparse99429
+Ref: _value99582
+Node: Examples99710
+Node: Benchmark107700
+Node: Conclusion116372
 
 End Tag Table
 

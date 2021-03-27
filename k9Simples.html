@@ -115,8 +115,8 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; <
 <tt>&gt;&nbsp;<a href="#desc">desc</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#more">more</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0:&nbsp;<a href="#r-line">r</a>/<a href="#w-line">w</a>&nbsp;line&nbsp;(N;C)0:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#List">list</a>&nbsp;(2;3.4;`c)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\fl&nbsp;x</tt><br>
 <tt>=&nbsp;<a href="#group">group</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#equal">equal</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1:&nbsp;<a href="#r-byte">r</a>/<a href="#w-byte">w</a>&nbsp;char&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Dictionary">dict</a>&nbsp;[n:`b;i:2]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\fc&nbsp;x&nbsp;&nbsp;&nbsp;</tt><br>
 <tt>~&nbsp;<a href="#not">not</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#match">match</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*2:&nbsp;<a href="#r-data">r</a>/<a href="#w-data">w</a>&nbsp;data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#User-Functions">func</a>&nbsp;{[a;b]a+b}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\fs&nbsp;x</tt><br>
-<tt>!&nbsp;<a href="#key">key</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#key">key</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*3:&nbsp;<a href="#k_002dipc-set">k-ipc set</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Expression">expr</a>&nbsp;:a+b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#cd">\cd</a>&nbsp;[d]</tt><br>
-<tt>,&nbsp;<a href="#enlist">enlist</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#cat">cat</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*4:&nbsp;<a href="#https-get">https get</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
+<tt>!&nbsp;<a href="#key">key</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#key">key</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*3:&nbsp;<a href="#k_002dipc">k-ipc</a> <a href="#g_t3set">set</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Expression">expr</a>&nbsp;:a+b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#cd">\cd</a>&nbsp;[d]</tt><br>
+<tt>,&nbsp;<a href="#enlist">enlist</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#cat">cat</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*4:&nbsp;https&nbsp;<a href="#g_t4get">get</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
 <tt>^&nbsp;<a href="#sort">sort</a>&nbsp;&nbsp;&nbsp;[f]<a href="#cut">cut</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*5:&nbsp;<a href="#ffi">ffi</a>:`f!&quot;ifsIF&quot;</tt><br>
 <tt>#&nbsp;<a href="#count">count</a>&nbsp;&nbsp;[f]<a href="#take">take</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
 <tt>_&nbsp;<a href="#floor">floor</a>&nbsp;&nbsp;[f]<a href="#drop">drop</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
@@ -3107,8 +3107,8 @@ other languages to k9.
  0: <a href="#r-line">r</a>/<a href="#w-line">w</a> line
  1: <a href="#r-byte">r</a>/<a href="#w-byte">w</a> byte
 *2: <a href="#r-data">r</a>/<a href="#w-data">w</a> data
-*3: <a href="#k_002dipc-set">k-ipc set</a>    
-*4: <a href="#https-get">https get</a>
+*3: <a href="#k_002dipc">k-ipc</a> <a href="#g_t3set">set</a>    
+*4: https <a href="#g_t4get">get</a>
 *5: <a href="#ffi">ffi</a>:`f!&quot;ifsIF&quot;
 
 <a href="#read-json">`js?</a><a href="#write-json">`js</a> d
@@ -3295,16 +3295,12 @@ a          b          c          d          e
 148
 </pre></div>
 
-
-<span id="k_002dipc-set"></span><span id="k_002dipc-set-_21d2-3_003a"></span><h3 class="section">11.13 k-ipc set &rArr; 3:</h3>
-<span id="https-get"></span><span id="https-get-_21d2-4_003a"></span><h3 class="section">11.14 https get &rArr; 4:</h3>
-
 <p>Enterprise only
 </p>
 <p>k9 has the ability to comunicate between separate k9 instances via inter-process communication (IPC).  These processes can be on the same or separate machines.  A user will start multiple instances specifying the port that the k9 session will use, opening a handle to that port, and then running remote commands via the handle and <code>3:</code> or <code>4:</code>.
 </p>
 
-<span id="k_002dipc"></span><span id="k_002dipc-_21d2-3_003ax"></span><h3 class="section">11.15 k-ipc &rArr; 3:x</h3>
+<span id="k_002dipc"></span><span id="k_002dipc-_21d2-3_003ax"></span><h3 class="section">11.13 k-ipc &rArr; 3:x</h3>
 <p>Open a connection to remote port <code>x</code> and return a handle.
 </p>
 <div class="example">
@@ -3316,7 +3312,7 @@ a          b          c          d          e
 4
 </pre></div>
 
-<span id="g_t3set"></span><span id="set-_21d2-x-3_003ay"></span><h3 class="section">11.16 set &rArr; x 3:y</h3>
+<span id="g_t3set"></span><span id="set-_21d2-x-3_003ay"></span><h3 class="section">11.14 set &rArr; x 3:y</h3>
 <p>Run string y using handle x.  Handle x should have already been created using k-ipc.  <code>set</code> is run asynchronous, thus once the command is sent the session immediately returns to the user.
 </p>
 <div class="example">
@@ -3325,7 +3321,7 @@ a          b          c          d          e
  h 3:&quot;n:_1e8;b:1?n?1.&quot;  / set b to a random number on remote
 </pre></div>
 
-<span id="g_t4get"></span><span id="get-_21d2-x-4_003ay"></span><h3 class="section">11.17 get &rArr; x 4:y</h3>
+<span id="g_t4get"></span><span id="get-_21d2-x-4_003ay"></span><h3 class="section">11.15 get &rArr; x 4:y</h3>
 <p>run string y using handle x.  Handle x should have already been created using k-ipc.  <code>get</code> is run synchronous, thus on the command is sent the session waits until there result is ready.
 </p>
 <div class="example">
