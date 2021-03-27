@@ -3141,7 +3141,7 @@ specifying the port that the k9 session will use, opening a handle to that port,
 11.14 k-ipc => 3:x
 ==================
 
-Open a connection to remote port 'x' and return a handle.
+Open a connection to port 'x' and return a handle.  If the port has been forwarded from another machine (eg.  ssh -L 1280:server.com:1280 laptop.com) then this handle allows remote execution.
 
       / before running this session start another k session in another
       / terminal window specifying that port 1251 should be used
@@ -4815,52 +4815,52 @@ Ref: r byte77670
 Ref: r data77820
 Ref: w data78479
 Ref: k-ipc79421
-Ref: 3set79772
-Ref: 4get80187
-Node: FF80759
-Ref: ffi81109
-Node: Tables81542
-Ref: table82168
-Ref: utable83810
-Node: kSQL84349
-Ref: select85249
-Ref: A85816
-Ref: by B86669
-Ref: where C86998
-Ref: update87840
-Ref: delete88561
-Ref: Joins88843
-Ref: union89200
-Ref: leftjoin89721
-Ref: outer90500
-Ref: asof91135
-Ref: asof+92606
-Ref: insert93824
-Ref: upsert94170
-Node: System94584
-Ref: load95074
-Ref: timing95263
-Ref: variables95548
-Ref: files95656
-Ref: cd95750
-Node: Control Flow95876
-Ref: cond96112
-Node: Temporal Functions96482
-Ref: .z.d96842
-Ref: .z.t97003
-Node: Errors97881
-Ref: class98329
-Ref: rank98418
-Ref: length98542
-Ref: _type98665
-Ref: domain98774
-Ref: limit98896
-Ref: nyi99107
-Ref: eparse99434
-Ref: _value99587
-Node: Examples99715
-Node: Benchmark107705
-Node: Conclusion116377
+Ref: 3set79906
+Ref: 4get80321
+Node: FF80893
+Ref: ffi81243
+Node: Tables81676
+Ref: table82302
+Ref: utable83944
+Node: kSQL84483
+Ref: select85383
+Ref: A85950
+Ref: by B86803
+Ref: where C87132
+Ref: update87974
+Ref: delete88695
+Ref: Joins88977
+Ref: union89334
+Ref: leftjoin89855
+Ref: outer90634
+Ref: asof91269
+Ref: asof+92740
+Ref: insert93958
+Ref: upsert94304
+Node: System94718
+Ref: load95208
+Ref: timing95397
+Ref: variables95682
+Ref: files95790
+Ref: cd95884
+Node: Control Flow96010
+Ref: cond96246
+Node: Temporal Functions96616
+Ref: .z.d96976
+Ref: .z.t97137
+Node: Errors98015
+Ref: class98463
+Ref: rank98552
+Ref: length98676
+Ref: _type98799
+Ref: domain98908
+Ref: limit99030
+Ref: nyi99241
+Ref: eparse99568
+Ref: _value99721
+Node: Examples99849
+Node: Benchmark107839
+Node: Conclusion116511
 
 End Tag Table
 

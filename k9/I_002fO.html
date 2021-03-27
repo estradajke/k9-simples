@@ -291,7 +291,7 @@ a          b          c          d          e
 <p>k9 has the ability to comunicate between separate k9 instances via inter-process communication (IPC).  These processes can be on the same or separate machines.  A user will start multiple instances specifying the port that the k9 session will use, opening a handle to that port, and then running remote commands via the handle and <code>3:</code> or <code>4:</code>.
 </p>
 <span id="k_002dipc"></span><span id="k_002dipc-_21d2-3_003ax"></span><h3 class="section">11.14 k-ipc &rArr; 3:x</h3>
-<p>Open a connection to remote port <code>x</code> and return a handle.
+<p>Open a connection to port <code>x</code> and return a handle.  If the port has been forwarded from another machine (eg. ssh -L 1280:server.com:1280 laptop.com) then this handle allows remote execution.
 </p>
 <div class="example">
 <pre class="example"> / before running this session start another k session in another
