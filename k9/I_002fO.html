@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- March 21, 2021
+<!-- March 27, 2021
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -289,13 +289,55 @@ a          b          c          d          e
 
 
 <span id="k_002dipc-set"></span><span id="k_002dipc-set-_21d2-3_003a"></span><h3 class="section">11.13 k-ipc set &rArr; 3:</h3>
-
-<p>Enterprise only
-</p>
 <span id="https-get"></span><span id="https-get-_21d2-4_003a"></span><h3 class="section">11.14 https get &rArr; 4:</h3>
 
 <p>Enterprise only
 </p>
+<p>k9 has the ability to comunicate between separate k9 instances via inter-process communication (IPC).  These processes can be on the same or separate machines.  A user will start multiple instances specifying the port that the k9 session will use, opening a handle to that port, and then running remote commands via the handle and <code>3:</code> or <code>4:</code>.
+</p>
+
+<span id="k_002dipc"></span><span id="k_002dipc-_21d2-3_003ax"></span><h3 class="section">11.15 k-ipc &rArr; 3:x</h3>
+<p>Open a connection to remote port <code>x</code> and return a handle.
+</p>
+<div class="example">
+<pre class="example"> / before running this session start another k session in another
+ / terminal window specifying that port 1251 should be used
+ / k -p 1251
+ h:3:1251 / create handle to port 1251 and save to h
+ h        / h is an integer
+4
+</pre></div>
+
+<span id="g_t3set"></span><span id="set-_21d2-x-3_003ay"></span><h3 class="section">11.16 set &rArr; x 3:y</h3>
+<p>Run string y using handle x.  Handle x should have already been created using k-ipc.  <code>set</code> is run asynchronous, thus once the command is sent the session immediately returns to the user.
+</p>
+<div class="example">
+<pre class="example"> h:3:1251               / create handle to port 1251
+ h 3:&quot;a:12&quot;             / set a to 12 on remote session
+ h 3:&quot;n:_1e8;b:1?n?1.&quot;  / set b to a random number on remote
+</pre></div>
+
+<span id="g_t4get"></span><span id="get-_21d2-x-4_003ay"></span><h3 class="section">11.17 get &rArr; x 4:y</h3>
+<p>run string y using handle x.  Handle x should have already been created using k-ipc.  <code>get</code> is run synchronous, thus on the command is sent the session waits until there result is ready.
+</p>
+<div class="example">
+<pre class="example"> h:3:1251               / create handle to port 1251
+ h 3:&quot;a:12&quot;             / set a to 12 on remote session
+ h 3:&quot;n:_1e8;b:1?n?1.&quot;  / set b to a random number on remote
+ h 4:&quot;a&quot;
+12
+
+ h 4:&quot;b&quot;
+,0.07820029
+
+ a:&quot;local&quot;              / set a locally to a string value
+ a
+&quot;local&quot;
+
+4:&quot;a&quot;
+12
+</pre></div>
+
 <hr>
 <div class="header">
 <p>

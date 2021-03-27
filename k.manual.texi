@@ -3307,12 +3307,54 @@ Start new session.
 
 
 @anchor{k-ipc set}@section k-ipc set @result{} 3:
-
-Enterprise only
-
 @anchor{https get}@section https get @result{} 4:
 
 Enterprise only
+
+k9 has the ability to comunicate between separate k9 instances via inter-process communication (IPC).  These processes can be on the same or separate machines.  A user will start multiple instances specifying the port that the k9 session will use, opening a handle to that port, and then running remote commands via the handle and @code{3:} or @code{4:}.
+
+
+@anchor{k-ipc}@section k-ipc @result{} 3:x
+Open a connection to remote port @code{x} and return a handle.
+
+@example
+ / before running this session start another k session in another
+ / terminal window specifying that port 1251 should be used
+ / k -p 1251
+ h:3:1251 / create handle to port 1251 and save to h
+ h        / h is an integer
+4
+@end example
+
+@anchor{3set}@section set @result{} x 3:y
+Run string y using handle x.  Handle x should have already been created using k-ipc.  @code{set} is run asynchronous, thus once the command is sent the session immediately returns to the user.
+
+@example
+ h:3:1251               / create handle to port 1251
+ h 3:"a:12"             / set a to 12 on remote session
+ h 3:"n:_1e8;b:1?n?1."  / set b to a random number on remote
+@end example
+
+@anchor{4get}@section get @result{} x 4:y
+run string y using handle x.  Handle x should have already been created using k-ipc.  @code{get} is run synchronous, thus on the command is sent the session waits until there result is ready.
+
+@example
+ h:3:1251               / create handle to port 1251
+ h 3:"a:12"             / set a to 12 on remote session
+ h 3:"n:_1e8;b:1?n?1."  / set b to a random number on remote
+ h 4:"a"
+12
+
+ h 4:"b"
+,0.07820029
+
+ a:"local"              / set a locally to a string value
+ a
+"local"
+
+4:"a"
+12
+@end example
 
 @node FF
 @chapter Foreign Functions

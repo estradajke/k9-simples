@@ -1,6 +1,6 @@
 This is k9.info, produced by texi2any version 6.7 from k.manual.texi.
 
-March 21, 2021
+March 27, 2021
 
 Copyright (C) 2020 John Estrada
 
@@ -3135,12 +3135,55 @@ Start new session.
 11.13 k-ipc set => 3:
 =====================
 
-Enterprise only
-
 11.14 https get => 4:
 =====================
 
 Enterprise only
+
+k9 has the ability to comunicate between separate k9 instances via inter-process communication (IPC). These processes can be on the same or separate machines.  A user will start multiple instances
+specifying the port that the k9 session will use, opening a handle to that port, and then running remote commands via the handle and '3:' or '4:'.
+
+11.15 k-ipc => 3:x
+==================
+
+Open a connection to remote port 'x' and return a handle.
+
+      / before running this session start another k session in another
+      / terminal window specifying that port 1251 should be used
+      / k -p 1251
+      h:3:1251 / create handle to port 1251 and save to h
+      h        / h is an integer
+     4
+
+11.16 set => x 3:y
+==================
+
+Run string y using handle x.  Handle x should have already been created using k-ipc.  'set' is run asynchronous, thus once the command is sent the session immediately returns to the user.
+
+      h:3:1251               / create handle to port 1251
+      h 3:"a:12"             / set a to 12 on remote session
+      h 3:"n:_1e8;b:1?n?1."  / set b to a random number on remote
+
+11.17 get => x 4:y
+==================
+
+run string y using handle x.  Handle x should have already been created using k-ipc.  'get' is run synchronous, thus on the command is sent the session waits until there result is ready.
+
+      h:3:1251               / create handle to port 1251
+      h 3:"a:12"             / set a to 12 on remote session
+      h 3:"n:_1e8;b:1?n?1."  / set b to a random number on remote
+      h 4:"a"
+     12
+
+      h 4:"b"
+     ,0.07820029
+
+      a:"local"              / set a locally to a string value
+      a
+     "local"
+
+     4:"a"
+     12
 
 
 File: k9.info,  Node: FF,  Next: Tables,  Prev: I/O,  Up: Top
@@ -4777,51 +4820,54 @@ Ref: r byte77634
 Ref: r data77784
 Ref: w data78443
 Ref: k-ipc set79019
-Ref: https get79081
-Node: FF79143
-Ref: ffi79493
-Node: Tables79926
-Ref: table80552
-Ref: utable82194
-Node: kSQL82733
-Ref: select83633
-Ref: A84200
-Ref: by B85053
-Ref: where C85382
-Ref: update86224
-Ref: delete86945
-Ref: Joins87227
-Ref: union87584
-Ref: leftjoin88105
-Ref: outer88884
-Ref: asof89519
-Ref: asof+90990
-Ref: insert92208
-Ref: upsert92554
-Node: System92968
-Ref: load93458
-Ref: timing93647
-Ref: variables93932
-Ref: files94040
-Ref: cd94134
-Node: Control Flow94260
-Ref: cond94496
-Node: Temporal Functions94866
-Ref: .z.d95226
-Ref: .z.t95387
-Node: Errors96265
-Ref: class96713
-Ref: rank96802
-Ref: length96926
-Ref: _type97049
-Ref: domain97158
-Ref: limit97280
-Ref: nyi97491
-Ref: eparse97818
-Ref: _value97971
-Node: Examples98099
-Node: Benchmark106089
-Node: Conclusion114761
+Ref: https get79064
+Ref: k-ipc79471
+Ref: 3set79822
+Ref: 4get80236
+Node: FF80808
+Ref: ffi81158
+Node: Tables81591
+Ref: table82217
+Ref: utable83859
+Node: kSQL84398
+Ref: select85298
+Ref: A85865
+Ref: by B86718
+Ref: where C87047
+Ref: update87889
+Ref: delete88610
+Ref: Joins88892
+Ref: union89249
+Ref: leftjoin89770
+Ref: outer90549
+Ref: asof91184
+Ref: asof+92655
+Ref: insert93873
+Ref: upsert94219
+Node: System94633
+Ref: load95123
+Ref: timing95312
+Ref: variables95597
+Ref: files95705
+Ref: cd95799
+Node: Control Flow95925
+Ref: cond96161
+Node: Temporal Functions96531
+Ref: .z.d96891
+Ref: .z.t97052
+Node: Errors97930
+Ref: class98378
+Ref: rank98467
+Ref: length98591
+Ref: _type98714
+Ref: domain98823
+Ref: limit98945
+Ref: nyi99156
+Ref: eparse99483
+Ref: _value99636
+Node: Examples99764
+Node: Benchmark107754
+Node: Conclusion116426
 
 End Tag Table
 
