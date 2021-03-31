@@ -3121,10 +3121,13 @@ other languages to k9.
 *4: https @ref{4get,get}
 *5: @ref{ffi}:`f!"ifsIF"
 
-@ref{read json,jk} @c @ref{write json,`jk@} d
-@ref{read csv,csv} @c @ref{write csv,`csv@} t
+@ref{read json,jk}
+@ref{read csv,csv}
 @end example
 
+ @c @ref{write json,`jk@} d
+ @c @ref{write csv,`csv@} t
+ 
 @section Example of Data I/O
 Let's begin with a simple example to show how to read data from a csv file.  We'll generate a small table and save it with and without headers (wHeader.csv and woHeader.csv respectively).  Then we'll read it back in, both specifying types and with the csv reader.  Types are specifed by one letter and the full list can be found in @ref{Atom Types}.
 
