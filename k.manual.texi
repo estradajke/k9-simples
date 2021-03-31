@@ -3121,8 +3121,8 @@ other languages to k9.
 *4: https @ref{4get,get}
 *5: @ref{ffi}:`f!"ifsIF"
 
-@ref{read json,jk}@c @ref{write json,`jk@} d
-@ref{read csv,csv}@c @ref{write csv,`csv@} t
+@ref{read json,jk} @c @ref{write json,`jk@} d
+@ref{read csv,csv} @c @ref{write csv,`csv@} t
 @end example
 
 @section Example of Data I/O
@@ -3195,7 +3195,7 @@ x y    z
 @c 2,4.
 @c @end example
 @c 
-@anchor{read json}@section read json @result{} js x
+@anchor{read json}@section read json @result{} jk x
 Enterprise only
 
 Convert x from json format.  Before using @code{jk} one must load the json.so (linux) or json.dylib (mac) shared library 
