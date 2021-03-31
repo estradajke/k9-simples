@@ -1,6 +1,6 @@
 This is k9.info, produced by texi2any version 6.7 from k.manual.texi.
 
-March 27, 2021
+March 31, 2021
 
 Copyright (C) 2020 John Estrada
 
@@ -154,9 +154,9 @@ power phase fast enough that you'll be happy you gave it a chance.
 1.3 Get k9.
 ===========
 
-<https://shakti.sh>
+<https://shakti.com>
 
-k9 is available in two versions, standard and enterprise.  The enterprise version, linux only, has additional features indicated on the k9 help page and also indicated in this tutorial.
+k9 is available in two versions, standard (under download) and enterprise.  The enterprise version has additional features indicated on the k9 help page and also indicated in this tutorial.
 
 Once downloaded you will need to change the file mode with the following commmand
 
@@ -1019,8 +1019,6 @@ Return random numbers.  Documented at *note rand::.
       3?1.
      0.01640292 0.8029538 0.9569196
 
-There is also another use of '?' where x is a special name, eg.  `js, `csv (or `cs), or `nv.  This is further discussed in the *note I/O:: section.
-
 2.34 type => @x
 ===============
 
@@ -1085,8 +1083,6 @@ Given a list or function x return the value(s) at index(indices) y.
      3.162278
      drow
      3
-
-There is also another use of '@' where x is a special name, eg.  `js, `csv (or `cs), or `nv.  This is further discussed in the *note I/O:: section.
 
 2.36 value => .x
 ================
@@ -2941,16 +2937,15 @@ water instead.
 
 k9 is also able to interface with other languages so one doesn't need to translate everything you've already written in those other languages to k9.
 
-      I/O(*enterprise)
+      i/o(*enterprise)
       0: *note r: r line./*note w: w line. line
-      1: *note r: r byte./*note w: w byte. byte
+      1: *note r: r byte./*note w: w byte. char
      *2: *note r: r data./*note w: w data. data
      *3: *note k-ipc:: *note set: 3set.
      *4: https *note get: 4get.
      *5: *note ffi:::`f!"ifsIF"
 
-     *note `js?: read json.*note `js: write json. d
-     *note `csv?: read csv.*note `csv: write csv. t
+     *note jk: read json.*note csv: read csv.
 
 11.1 Example of Data I/O
 ========================
@@ -2992,57 +2987,44 @@ read it back in, both specifying types and with the csv reader.  Types are speci
      2 2. y
      1 4. z
 
-11.2 read csv => `csv?x
-=======================
+11.2 read csv => csv[x;y]
+=========================
 
-Convert x from csv format.  Works on lists and tables.  You can also use `cs.
+Enterprise only
 
-      `csv?("a,b";"1,3.";"2,4.")
-     a b
-     - --
-     1 3.
-     2 4.
+Convert y from csv format using type(s) x.  Before using 'csv' one must load the csv.so (linux) or csv.dylib (mac) shared library.  Types are integer (I), float (F), string (S), date (D), and time (T).
 
-11.3 write csv => `csv x
-========================
+      cjF:*"./csv.dylib"5:(,"_Z2ckPcS_")!," ss"; csv:{cjF[x;y]}
+      0:"some.csv"
+     x,y,z
+     1,1.,blue
+     2,0.1,red
+     3,0.01,green
 
-Convert x to csv format.  Works on lists and tables.  You can also use `cs.
+      csv["IFS";1:"some.csv"]  / y is not the file name but the file contents
+     x y    z
+     - ---- -----
+     1 1    blue
+     2 0.1  red
+     3 0.01 green
 
-      `csv [[]a:1 2;b:3. 4.]
-     a,b
-     1,3.
-     2,4.
+11.3 read json => js x
+======================
 
-11.4 read json => `js?x
-=======================
+Enterprise only
 
-Convert x from json format.  Works on lists and tables.
+Convert x from json format.  Before using 'jk' one must load the json.so (linux) or json.dylib (mac) shared library
 
-      `js?("{a:1,b:3.}";"{a:2,b:4.}")
-     a b
-     - --
-     1 3.
-     2 4.
+      jk:*"./json.dylib"5:(`$"_Z2jkPc")!" s" / load shared library
+      jk"{\"a\":[0.0,1.0,2.0], \"b\":true}"  / convert from json string
+     a|0 1 2.
+     b|1
 
-11.5 write json => `js x
-========================
+      jk@1:"ab.json"                         / convert from file input
+     a|0 1 2.
+     b|1
 
-Convert x to json format.  Works on lists and tables.
-
-      `js [[]a:1 2;b:3. 4.]
-     {a:1,b:3.}
-     {a:2,b:4.}
-
-11.6 read name value => `nv?x
-=============================
-
-Convert x, a list of name:value pairs, to a dictionary.
-
-      `nv?("key1:value1";"key2:value2")
-     key1|value1
-     key2|value2
-
-11.7 write line => x 0:y
+11.4 write line => x 0:y
 ========================
 
 Output to x the list of strings in y.  y must be a list of strings.  If y is a single string then convert to list via *note list: enlist.
@@ -3053,7 +3035,7 @@ Output to x the list of strings in y.  y must be a list of strings.  If y is a s
 
       "file.txt" 0: ("blue"; "red") / write to file, one line per element
 
-11.8 read line => 0:x
+11.5 read line => 0:x
 =====================
 
 Read from file x.
@@ -3063,7 +3045,7 @@ Read from file x.
      1,3.
      2,4.
 
-11.9 write byte => x 1:y
+11.6 write byte => x 1:y
 ========================
 
 Output to file x the list of chars in y as bytes.
@@ -3086,13 +3068,13 @@ Output to file x the list of chars in y as bytes.
      1 3
      2 4
 
-11.10 read byte => 1:x
-======================
+11.7 read byte => 1:x
+=====================
 
 Read from byte data from file x.  See *note w byte:: for an example to write and then read byte data.
 
-11.11 read data => 2: x
-=======================
+11.8 read data => 2: x
+======================
 
 Enterprise Only
 
@@ -3113,8 +3095,8 @@ Load file, eg. csv or from a (x 2: y) save.  For the latter, one can find a "sav
      ..
 
 
-11.12 write data => x 2: y
-==========================
+11.9 write data => x 2: y
+=========================
 
 Enterprise only
 
@@ -3132,13 +3114,13 @@ Start new session.
       \t r:2:`r;select avg a,sum b, max c, min d, sum e from r
      148
 
-11.13 IPC
+11.10 IPC
 =========
 
 k9 has the ability to comunicate between separate k9 instances via inter-process communication (IPC). These processes can be on the same or separate machines.  A user will start multiple instances
 specifying the port that the k9 session will use, opening a handle to that port, and then running remote commands via the handle and '3:' or '4:'.
 
-11.14 k-ipc => 3:x
+11.11 k-ipc => 3:x
 ==================
 
 Open a connection to port 'x' and return a handle.  If the port has been forwarded from another machine (eg.  ssh -L 1280:server.com:1280 laptop.com) then this handle allows remote execution.
@@ -3150,7 +3132,7 @@ Open a connection to port 'x' and return a handle.  If the port has been forward
       h        / h is an integer
      4
 
-11.15 set => x 3:y
+11.12 set => x 3:y
 ==================
 
 Exectute string y using handle x.  Handle x should have already been created using k-ipc.  'set' is asynchronous, thus once the command is sent the session immediately returns to the user.
@@ -3159,7 +3141,7 @@ Exectute string y using handle x.  Handle x should have already been created usi
       h 3:"a:12"             / set a to 12 on remote session
       h 3:"n:_1e8;b:1?n?1."  / set b to a random number on remote
 
-11.16 get => x 4:y
+11.13 get => x 4:y
 ==================
 
 Execute string y using handle x.  Handle x should have already been created using k-ipc.  'get' is synchronous, thus on the command is sent the session waits until there result is ready.
@@ -4676,191 +4658,188 @@ sql: select A by B from T where C; update A from T; delete from T where C
 Tag Table:
 Node: Top120
 Node: Introduction5040
-Node: Verb16074
-Ref: x17733
-Ref: set17758
-Ref: flip18017
-Ref: plus18302
-Ref: negate18780
-Ref: minus18952
-Ref: first19059
-Ref: times19275
-Ref: divide19406
-Ref: where19547
-Ref: min/and20030
-Ref: reverse20289
-Ref: max/or20548
-Ref: asc20812
-Ref: desc20812
-Ref: less21203
-Ref: more21203
-Ref: group21504
-Ref: equal21757
-Ref: not22061
-Ref: match22178
-Ref: enum22561
-Ref: key23644
-Ref: enlist23817
-Ref: cat23957
-Ref: sort24294
-Ref: cut24946
-Ref: cut125208
-Ref: cut225360
-Ref: cut325554
-Ref: cut425828
-Ref: count26008
-Ref: take26312
-Ref: take126907
-Ref: take227276
-Ref: take327698
-Ref: take427896
-Ref: floor28255
-Ref: drop28346
-Ref: drop128860
-Ref: drop229043
-Ref: drop329319
-Ref: string29483
-Ref: parse29584
-Ref: unique29777
-Ref: find30021
-Ref: type30552
-Ref: at31096
-Ref: value31734
-Ref: dot32175
-Node: Adverb33356
-Ref: each34822
-Ref: over35425
-Ref: scan35553
-Ref: join36904
-Ref: split37275
-Ref: eachprior37533
-Ref: eachright38591
-Ref: eachleft38799
-Ref: cover38994
-Ref: cscan39307
-Node: Noun40483
-Ref: Atom Types41879
-Ref: bool44494
-Ref: int45181
-Ref: flt45861
-Ref: char46263
-Ref: name46496
-Ref: uuid46736
-Ref: time46893
-Ref: date47796
-Ref: datetime48257
-Node: List49171
-Node: Dictionary53642
-Node: User Functions59270
-Node: Expression62515
-Node: Named Functions64002
-Ref: Hcount64602
-Ref: Hfirst64695
-Ref: Hlast64788
-Ref: Hmin64890
-Ref: Hmax65005
-Ref: Hsum65120
-Ref: Hdot65222
-Ref: avg65381
-Ref: var65532
-Ref: dev65667
-Ref: med65709
-Ref: mode65751
-Ref: countd65797
-Ref: exp65851
-Ref: log65956
-Ref: sin66052
-Ref: cos66187
-Ref: sqr66331
-Ref: sqrt66416
-Ref: prm66516
-Ref: freq66691
-Ref: sums67047
-Ref: deltas67187
-Ref: rand67525
-Ref: has68406
-Ref: bin68700
-Ref: in68910
-Ref: within69084
-Ref: div69316
-Ref: mod69500
-Ref: bar69674
-Ref: cmb69863
-Ref: msum70291
-Ref: mavg70428
-Ref: topX70572
-Ref: keyF70730
-Ref: unkey71025
-Ref: meta71161
-Node: Knit Functions71292
-Ref: amend71587
-Ref: amend172110
-Ref: amend272359
-Ref: amend372578
-Ref: amend472883
-Ref: dmend73171
-Ref: dmend173501
-Ref: dmend373669
-Ref: dmend473834
-Node: I/O73995
-Ref: read csv75933
-Ref: write csv76134
-Ref: read json76321
-Ref: write json76505
-Ref: read nv76672
-Ref: w line76865
-Ref: r line77203
-Ref: w byte77316
-Ref: r byte77670
-Ref: r data77820
-Ref: w data78479
-Ref: k-ipc79421
-Ref: 3set79906
-Ref: 4get80321
-Node: FF80893
-Ref: ffi81243
-Node: Tables81676
-Ref: table82302
-Ref: utable83944
-Node: kSQL84483
-Ref: select85383
-Ref: A85950
-Ref: by B86803
-Ref: where C87132
-Ref: update87974
-Ref: delete88695
-Ref: Joins88977
-Ref: union89334
-Ref: leftjoin89855
-Ref: outer90634
-Ref: asof91269
-Ref: asof+92740
-Ref: insert93958
-Ref: upsert94304
-Node: System94718
-Ref: load95208
-Ref: timing95397
-Ref: variables95682
-Ref: files95790
-Ref: cd95884
-Node: Control Flow96010
-Ref: cond96246
-Node: Temporal Functions96616
-Ref: .z.d96976
-Ref: .z.t97137
-Node: Errors98015
-Ref: class98463
-Ref: rank98552
-Ref: length98676
-Ref: _type98799
-Ref: domain98908
-Ref: limit99030
-Ref: nyi99241
-Ref: eparse99568
-Ref: _value99721
-Node: Examples99849
-Node: Benchmark107839
-Node: Conclusion116511
+Node: Verb16079
+Ref: x17738
+Ref: set17763
+Ref: flip18022
+Ref: plus18307
+Ref: negate18785
+Ref: minus18957
+Ref: first19064
+Ref: times19280
+Ref: divide19411
+Ref: where19552
+Ref: min/and20035
+Ref: reverse20294
+Ref: max/or20553
+Ref: asc20817
+Ref: desc20817
+Ref: less21208
+Ref: more21208
+Ref: group21509
+Ref: equal21762
+Ref: not22066
+Ref: match22183
+Ref: enum22566
+Ref: key23649
+Ref: enlist23822
+Ref: cat23962
+Ref: sort24299
+Ref: cut24951
+Ref: cut125213
+Ref: cut225365
+Ref: cut325559
+Ref: cut425833
+Ref: count26013
+Ref: take26317
+Ref: take126912
+Ref: take227281
+Ref: take327703
+Ref: take427901
+Ref: floor28260
+Ref: drop28351
+Ref: drop128865
+Ref: drop229048
+Ref: drop329324
+Ref: string29488
+Ref: parse29589
+Ref: unique29782
+Ref: find30026
+Ref: type30408
+Ref: at30952
+Ref: value31441
+Ref: dot31882
+Node: Adverb33063
+Ref: each34529
+Ref: over35132
+Ref: scan35260
+Ref: join36611
+Ref: split36982
+Ref: eachprior37240
+Ref: eachright38298
+Ref: eachleft38506
+Ref: cover38701
+Ref: cscan39014
+Node: Noun40190
+Ref: Atom Types41586
+Ref: bool44201
+Ref: int44888
+Ref: flt45568
+Ref: char45970
+Ref: name46203
+Ref: uuid46443
+Ref: time46600
+Ref: date47503
+Ref: datetime47964
+Node: List48878
+Node: Dictionary53349
+Node: User Functions58977
+Node: Expression62222
+Node: Named Functions63709
+Ref: Hcount64309
+Ref: Hfirst64402
+Ref: Hlast64495
+Ref: Hmin64597
+Ref: Hmax64712
+Ref: Hsum64827
+Ref: Hdot64929
+Ref: avg65088
+Ref: var65239
+Ref: dev65374
+Ref: med65416
+Ref: mode65458
+Ref: countd65504
+Ref: exp65558
+Ref: log65663
+Ref: sin65759
+Ref: cos65894
+Ref: sqr66038
+Ref: sqrt66123
+Ref: prm66223
+Ref: freq66398
+Ref: sums66754
+Ref: deltas66894
+Ref: rand67232
+Ref: has68113
+Ref: bin68407
+Ref: in68617
+Ref: within68791
+Ref: div69023
+Ref: mod69207
+Ref: bar69381
+Ref: cmb69570
+Ref: msum69998
+Ref: mavg70135
+Ref: topX70279
+Ref: keyF70437
+Ref: unkey70732
+Ref: meta70868
+Node: Knit Functions70999
+Ref: amend71294
+Ref: amend171817
+Ref: amend272066
+Ref: amend372285
+Ref: amend472590
+Ref: dmend72878
+Ref: dmend173208
+Ref: dmend373376
+Ref: dmend473541
+Node: I/O73702
+Ref: read csv75582
+Ref: read json76160
+Ref: w line76599
+Ref: r line76937
+Ref: w byte77050
+Ref: r byte77404
+Ref: r data77552
+Ref: w data78209
+Ref: k-ipc79149
+Ref: 3set79634
+Ref: 4get80049
+Node: FF80621
+Ref: ffi80971
+Node: Tables81404
+Ref: table82030
+Ref: utable83672
+Node: kSQL84211
+Ref: select85111
+Ref: A85678
+Ref: by B86531
+Ref: where C86860
+Ref: update87702
+Ref: delete88423
+Ref: Joins88705
+Ref: union89062
+Ref: leftjoin89583
+Ref: outer90362
+Ref: asof90997
+Ref: asof+92468
+Ref: insert93686
+Ref: upsert94032
+Node: System94446
+Ref: load94936
+Ref: timing95125
+Ref: variables95410
+Ref: files95518
+Ref: cd95612
+Node: Control Flow95738
+Ref: cond95974
+Node: Temporal Functions96344
+Ref: .z.d96704
+Ref: .z.t96865
+Node: Errors97743
+Ref: class98191
+Ref: rank98280
+Ref: length98404
+Ref: _type98527
+Ref: domain98636
+Ref: limit98758
+Ref: nyi98969
+Ref: eparse99296
+Ref: _value99449
+Node: Examples99577
+Node: Benchmark107567
+Node: Conclusion116239
 
 End Tag Table
 

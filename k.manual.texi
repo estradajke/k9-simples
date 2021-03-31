@@ -128,9 +128,9 @@ When you first learned arithmetic you likely didn't have a choice.  Now you have
 
 @section Get k9.
 
-@url{https://shakti.sh}
+@url{https://shakti.com}
 
-k9 is available in two versions, standard and enterprise.  The enterprise version, linux only, has additional features indicated on the k9 help page and also indicated in this tutorial.
+k9 is available in two versions, standard (under download) and enterprise.  The enterprise version has additional features indicated on the k9 help page and also indicated in this tutorial.
 
 Once downloaded you will need to change the file mode with the following commmand
 
@@ -1126,8 +1126,8 @@ Return random numbers.  Documented at @ref{rand}.
 0.01640292 0.8029538 0.9569196
 @end example
 
-There is also another use of @code{?} where x is a special name, eg. @math{`}js, @math{`}csv (or @math{`}cs), or @math{`}nv.  This is further discussed in the @ref{I/O} section.
-
+@c There is also another use of @code{?} where x is a special name, eg. @math{`}js, @math{`}csv (or @math{`}cs), or @math{`}nv.  This is further discussed in the @ref{I/O} section.
+@c 
 @anchor{type}@section type @result{} @@x
 Return the data type of x.  Lower-case represents a single element while upper-case represents a list of type indicated.
 
@@ -1193,8 +1193,8 @@ drow
 3       
 @end example
 
-There is also another use of @code{@@} where x is a special name, eg. @math{`}js, @math{`}csv (or @math{`}cs), or @math{`}nv.  This is further discussed in the @ref{I/O} section.
-
+@c There is also another use of @code{@@} where x is a special name, eg. @math{`}js, @math{`}csv (or @math{`}cs), or @math{`}nv.  This is further discussed in the @ref{I/O} section.
+@c 
 @anchor{value}@section value @result{} .x
 Evaluate a string of valid k code or list of k code.  Can also be used to covert from a string to a numeric, 
 temporal or name type.
@@ -3113,16 +3113,16 @@ k9 is also able to interface with other languages so one doesn't need to transla
 other languages to k9.
 
 @example
- I/O(*enterprise)
+ i/o(*enterprise)
  0: @ref{r line,r}/@ref{w line,w} line
- 1: @ref{r byte,r}/@ref{w byte,w} byte
+ 1: @ref{r byte,r}/@ref{w byte,w} char
 *2: @ref{r data,r}/@ref{w data,w} data
 *3: @ref{k-ipc} @ref{3set,set}    
 *4: https @ref{4get,get}
 *5: @ref{ffi}:`f!"ifsIF"
 
-@ref{read json,`js?}@ref{write json,`js} d
-@ref{read csv,`csv?}@ref{write csv,`csv} t
+@ref{read json,jk}@c @ref{write json,`jk@} d
+@ref{read csv,csv}@c @ref{write csv,`csv@} t
 @end example
 
 @section Example of Data I/O
@@ -3164,56 +3164,71 @@ e f  g
 1 4. z
 @end example
 
-@anchor{read csv}@section read csv @result{} @math{`}csv?x
-Convert x from csv format.  Works on lists and tables.  You can also use @math{`}cs.
+@anchor{read csv}@section read csv @result{} csv[x;y]
+Enterprise only
+
+Convert y from csv format using type(s) x.  Before using @code{csv} one must load the csv.so (linux) or csv.dylib (mac) shared library.  Types are integer (I), float (F), string (S), date (D), and time (T).
 
 @example
- `csv?("a,b";"1,3.";"2,4.")
-a b 
-- --
-1 3.
-2 4.
+ cjF:*"./csv.dylib"5:(,"_Z2ckPcS_")!," ss"; csv:@{cjF[x;y]@}
+ 0:"some.csv"
+x,y,z       
+1,1.,blue   
+2,0.1,red   
+3,0.01,green
+
+ csv["IFS";1:"some.csv"]  / y is not the file name but the file contents
+x y    z    
+- ---- -----
+1 1    blue 
+2 0.1  red  
+3 0.01 green
 @end example
 
-@anchor{write csv}@section write csv @result{} @math{`}csv x
-Convert x to csv format.  Works on lists and tables.  You can also use @math{`}cs.
+@c @anchor{write csv}@section write csv @result{} @math{`}csv x
+@c Convert x to csv format.  Works on lists and tables.  You can also use @math{`}cs.
+@c 
+@c @example
+@c  `csv [[]a:1 2;b:3. 4.]
+@c a,b 
+@c 1,3.
+@c 2,4.
+@c @end example
+@c 
+@anchor{read json}@section read json @result{} js x
+Enterprise only
+
+Convert x from json format.  Before using @code{jk} one must load the json.so (linux) or json.dylib (mac) shared library 
 
 @example
- `csv [[]a:1 2;b:3. 4.]
-a,b 
-1,3.
-2,4.
+ jk:*"./json.dylib"5:(`$"_Z2jkPc")!" s" / load shared library
+ jk"@{\"a\":[0.0,1.0,2.0], \"b\":true@}"  / convert from json string
+a|0 1 2.
+b|1     
+
+ jk@@1:"ab.json"                         / convert from file input
+a|0 1 2.
+b|1     
 @end example
 
-@anchor{read json}@section read json @result{} @math{`}js?x
-Convert x from json format.  Works on lists and tables.
-
-@example
- `js?("@{a:1,b:3.@}";"@{a:2,b:4.@}")
-a b 
-- --
-1 3.
-2 4.
-@end example
-
-@anchor{write json}@section write json @result{} @math{`}js x
-Convert x to json format.  Works on lists and tables.
-
-@example
- `js [[]a:1 2;b:3. 4.]
-@{a:1,b:3.@}
-@{a:2,b:4.@}
-@end example
-
-@anchor{read nv}@section read name value @result{} @math{`}nv?x
-Convert x, a list of name:value pairs, to a dictionary.
-
-@example
- `nv?("key1:value1";"key2:value2")
-key1|value1
-key2|value2
-@end example
-
+@c @anchor{write json}@section write json @result{} @math{`}js x
+@c Convert x to json format.  Works on lists and tables.
+@c 
+@c @example
+@c  `js [[]a:1 2;b:3. 4.]
+@c @{a:1,b:3.@}
+@c @{a:2,b:4.@}
+@c @end example
+@c 
+@c @anchor{read nv}@section read name value @result{} @math{`}nv?x
+@c Convert x, a list of name:value pairs, to a dictionary.
+@c 
+@c @example
+@c  `nv?("key1:value1";"key2:value2")
+@c key1|value1
+@c key2|value2
+@c @end example
+@c 
 @anchor{w line}@section write line @result{} x 0:y
 Output to x the list of strings in y.  y must be a list of strings.  If y is a single string then convert to list via @ref{enlist,list}.
 
