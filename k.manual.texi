@@ -758,14 +758,21 @@ In the case where x is a list of integers  x1 x2 ... xk, generate a matrix of k 
 Dictionary of x (key) and y (value).  
 
 @example
-@ 3!7
-,3!,7
-@ `a`b!3 7
+ 3!7
+3!7
+
+`a`b!3 7
 a|3
 b|7
-@ `a`b!((1 2);(3 4))
+
+ `a`b!((1 2);(3 4))
 a|1 2
 b|3 4
+
+ (!).(`a`b`c;1 2 3)
+a|1
+b|2
+c|3
 @end example
 
 @anchor{enlist}@section enlist @result{} ,x
