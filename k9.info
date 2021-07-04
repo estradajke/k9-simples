@@ -103,21 +103,21 @@ This section requires 2: a feature only in the enterprise version of Shakti.
       bash-3.2$ ./k
       2020.xx.xx 17GB 4core (c) shakti
       \t q:2:`q;{select s:avg a-b from x}'q[!q]
-     495
+     884
 
-That's 495 ms to read the data in from disk and compute over all the 100 million values.  The data read is the biggest bit.  If the data were already in memory then the computation would be faster:
+That's 884 ms to read the data in from disk and compute over all the 100 million values.  The data read is the biggest bit.  If the data were already in memory then the computation would be faster:
 
       \t {select s:avg a-b from x}'q[!q]
-     230
+     217
 
-230 ms, not bad for 100 million calculations.
+217 ms, not bad for 100 million calculations.
 
 The code to generate the on-disk database is presented below.  Speed of course will depend on your hardware so times will vary.
 
       nf:d+*|d:(|-d),d:683 954 997 1000;
-      T:^`t rand[;_8.64e7]@
-      B:100++\1e-2*-3+nf bin/:rand[;*|nf]@
-      S:rand[;1e-2*2,2,8#1]@
+      T:^`t ?[;_8.64e7]@
+      B:100++\1e-2*-3+nf bin/:?[;*|nf]@
+      S:?[;1e-2*2,2,8#1]@
       L:{select t,b,a:b+s from +`t`b`s!(T;B;S)@'x}
       q:`eurusd`usdjpy`usdchf!L'_60e6 20e6 20e6
       `q 2:q
@@ -4120,11 +4120,11 @@ Although real prices are often shown as fractions of a whole amount, eg.  eurusd
 
 Let's start with a simple example of only times (t), bid (b), and ask (a).
 
-     n:10
-      T:^10:00+`t n rand 36e5 / sort randomly generated times
-      B:100++\-1+n rand 3     / generate bids near 100, equivalent to: 100 + (+\((-1)+n rand 3))
-      A:B+1+n rand 2          / generates asks 1 or 2 higher
-      q:+`t`b`a!(T;B;A);q     / build table t and then display
+      n:10
+      T:^10:00+`t n?36e5  / sort randomly generated times
+      B:100++\-1+n?3      / generate bids near 100, equivalent to: 100 + (+\((-1)+n rand 3))
+      A:B+1+n?2           / generates asks 1 or 2 higher
+      q:+`t`b`a!(T;B;A);q / build table t and then display
      t            b   a
      ------------ --- ---
      10:01:48.464 100 102
@@ -4701,189 +4701,189 @@ sqrt sqr exp log sin cos div mod bar in bin
 Tag Table:
 Node: Top118
 Node: Introduction6114
-Node: Verb18130
-Ref: x19789
-Ref: set19814
-Ref: flip20073
-Ref: plus20358
-Ref: negate20836
-Ref: minus21008
-Ref: first21115
-Ref: times21331
-Ref: divide21462
-Ref: where21603
-Ref: min/and22086
-Ref: reverse22345
-Ref: max/or22604
-Ref: asc22868
-Ref: desc22868
-Ref: less23259
-Ref: more23259
-Ref: group23560
-Ref: equal23813
-Ref: not24117
-Ref: match24234
-Ref: enum24617
-Ref: key25700
-Ref: enlist25925
-Ref: cat26065
-Ref: sort26402
-Ref: cut27054
-Ref: cut127316
-Ref: cut227468
-Ref: cut327662
-Ref: cut427936
-Ref: count28116
-Ref: take28420
-Ref: take129015
-Ref: take229384
-Ref: take329806
-Ref: take430004
-Ref: floor30363
-Ref: drop30454
-Ref: drop130968
-Ref: drop231151
-Ref: drop331427
-Ref: string31591
-Ref: parse31692
-Ref: unique31885
-Ref: find32129
-Ref: type32511
-Ref: at33055
-Ref: value33544
-Ref: dot33985
-Node: Adverb35166
-Ref: each36632
-Ref: over37235
-Ref: scan37363
-Ref: join38714
-Ref: split39085
-Ref: eachprior39343
-Ref: eachright40401
-Ref: eachleft40609
-Ref: cover40804
-Ref: cscan41117
-Node: Noun42293
-Ref: Atom Types43689
-Ref: bool46304
-Ref: int46991
-Ref: flt47671
-Ref: char48073
-Ref: name48306
-Ref: uuid48546
-Ref: time48703
-Ref: date49606
-Ref: datetime50067
-Node: List50981
-Node: Dictionary55452
-Node: User Functions61080
-Node: Expression64325
-Node: Named Functions65812
-Ref: Hcount66412
-Ref: Hfirst66505
-Ref: Hlast66598
-Ref: Hmin66700
-Ref: Hmax66815
-Ref: Hsum66930
-Ref: Hdot67032
-Ref: avg67191
-Ref: var67342
-Ref: dev67477
-Ref: med67519
-Ref: mode67561
-Ref: countd67607
-Ref: exp67661
-Ref: log67766
-Ref: sin67862
-Ref: cos67997
-Ref: sqr68141
-Ref: sqrt68226
-Ref: prm68326
-Ref: freq68501
-Ref: sums68857
-Ref: deltas68997
-Ref: rand69335
-Ref: has70216
-Ref: bin70510
-Ref: in70720
-Ref: within70894
-Ref: div71126
-Ref: mod71310
-Ref: bar71484
-Ref: cmb71673
-Ref: msum72101
-Ref: mavg72238
-Ref: topX72382
-Ref: keyF72540
-Ref: unkey72835
-Ref: meta72971
-Node: Knit Functions73102
-Ref: amend73397
-Ref: amend173920
-Ref: amend274169
-Ref: amend374388
-Ref: amend474693
-Ref: dmend74981
-Ref: dmend175311
-Ref: dmend375479
-Ref: dmend475644
-Node: I/O75805
-Ref: csv78066
-Ref: json78478
-Ref: compress78947
-Ref: w line79869
-Ref: r line80207
-Ref: w byte80320
-Ref: r byte80674
-Ref: r data80822
-Ref: w data81479
-Ref: k-ipc82421
-Ref: 3set82906
-Ref: 4get83321
-Node: FF83893
-Ref: ffi84243
-Node: Tables84676
-Ref: table85302
-Ref: utable86944
-Node: kSQL87483
-Ref: select88383
-Ref: A88950
-Ref: by B89803
-Ref: where C90132
-Ref: update90974
-Ref: delete91695
-Ref: Joins91977
-Ref: union92334
-Ref: leftjoin92855
-Ref: outer93634
-Ref: asof94269
-Ref: asof+95740
-Ref: insert96958
-Ref: upsert97304
-Node: System97718
-Ref: load98208
-Ref: timing98397
-Ref: variables98682
-Ref: files98790
-Ref: cd98884
-Node: Control Flow99010
-Ref: cond99246
-Node: Temporal Functions99616
-Ref: .z.d99976
-Ref: .z.t100137
-Node: Errors101015
-Ref: class101463
-Ref: rank101552
-Ref: length101676
-Ref: _type101799
-Ref: domain101908
-Ref: limit102030
-Ref: nyi102241
-Ref: eparse102568
-Ref: _value102721
-Node: Examples102849
-Node: Benchmark110839
-Node: Conclusion119511
+Node: Verb18121
+Ref: x19780
+Ref: set19805
+Ref: flip20064
+Ref: plus20349
+Ref: negate20827
+Ref: minus20999
+Ref: first21106
+Ref: times21322
+Ref: divide21453
+Ref: where21594
+Ref: min/and22077
+Ref: reverse22336
+Ref: max/or22595
+Ref: asc22859
+Ref: desc22859
+Ref: less23250
+Ref: more23250
+Ref: group23551
+Ref: equal23804
+Ref: not24108
+Ref: match24225
+Ref: enum24608
+Ref: key25691
+Ref: enlist25916
+Ref: cat26056
+Ref: sort26393
+Ref: cut27045
+Ref: cut127307
+Ref: cut227459
+Ref: cut327653
+Ref: cut427927
+Ref: count28107
+Ref: take28411
+Ref: take129006
+Ref: take229375
+Ref: take329797
+Ref: take429995
+Ref: floor30354
+Ref: drop30445
+Ref: drop130959
+Ref: drop231142
+Ref: drop331418
+Ref: string31582
+Ref: parse31683
+Ref: unique31876
+Ref: find32120
+Ref: type32502
+Ref: at33046
+Ref: value33535
+Ref: dot33976
+Node: Adverb35157
+Ref: each36623
+Ref: over37226
+Ref: scan37354
+Ref: join38705
+Ref: split39076
+Ref: eachprior39334
+Ref: eachright40392
+Ref: eachleft40600
+Ref: cover40795
+Ref: cscan41108
+Node: Noun42284
+Ref: Atom Types43680
+Ref: bool46295
+Ref: int46982
+Ref: flt47662
+Ref: char48064
+Ref: name48297
+Ref: uuid48537
+Ref: time48694
+Ref: date49597
+Ref: datetime50058
+Node: List50972
+Node: Dictionary55443
+Node: User Functions61071
+Node: Expression64316
+Node: Named Functions65803
+Ref: Hcount66403
+Ref: Hfirst66496
+Ref: Hlast66589
+Ref: Hmin66691
+Ref: Hmax66806
+Ref: Hsum66921
+Ref: Hdot67023
+Ref: avg67182
+Ref: var67333
+Ref: dev67468
+Ref: med67510
+Ref: mode67552
+Ref: countd67598
+Ref: exp67652
+Ref: log67757
+Ref: sin67853
+Ref: cos67988
+Ref: sqr68132
+Ref: sqrt68217
+Ref: prm68317
+Ref: freq68492
+Ref: sums68848
+Ref: deltas68988
+Ref: rand69326
+Ref: has70207
+Ref: bin70501
+Ref: in70711
+Ref: within70885
+Ref: div71117
+Ref: mod71301
+Ref: bar71475
+Ref: cmb71664
+Ref: msum72092
+Ref: mavg72229
+Ref: topX72373
+Ref: keyF72531
+Ref: unkey72826
+Ref: meta72962
+Node: Knit Functions73093
+Ref: amend73388
+Ref: amend173911
+Ref: amend274160
+Ref: amend374379
+Ref: amend474684
+Ref: dmend74972
+Ref: dmend175302
+Ref: dmend375470
+Ref: dmend475635
+Node: I/O75796
+Ref: csv78057
+Ref: json78469
+Ref: compress78938
+Ref: w line79860
+Ref: r line80198
+Ref: w byte80311
+Ref: r byte80665
+Ref: r data80813
+Ref: w data81470
+Ref: k-ipc82412
+Ref: 3set82897
+Ref: 4get83312
+Node: FF83884
+Ref: ffi84234
+Node: Tables84667
+Ref: table85293
+Ref: utable86935
+Node: kSQL87474
+Ref: select88374
+Ref: A88941
+Ref: by B89794
+Ref: where C90123
+Ref: update90965
+Ref: delete91686
+Ref: Joins91968
+Ref: union92325
+Ref: leftjoin92846
+Ref: outer93625
+Ref: asof94260
+Ref: asof+95731
+Ref: insert96949
+Ref: upsert97295
+Node: System97709
+Ref: load98199
+Ref: timing98388
+Ref: variables98673
+Ref: files98781
+Ref: cd98875
+Node: Control Flow99001
+Ref: cond99237
+Node: Temporal Functions99607
+Ref: .z.d99967
+Ref: .z.t100128
+Node: Errors101006
+Ref: class101454
+Ref: rank101543
+Ref: length101667
+Ref: _type101790
+Ref: domain101899
+Ref: limit102021
+Ref: nyi102232
+Ref: eparse102559
+Ref: _value102712
+Node: Examples102840
+Node: Benchmark110815
+Node: Conclusion119487
 
 End Tag Table
 

@@ -197,25 +197,25 @@ Next: <a href="#Verb" accesskey="n" rel="next">Verb</a>, Previous: <a href="#Top
 <pre class="example"> bash-3.2$ ./k
  2020.xx.xx 17GB 4core (c) shakti
  \t q:2:`q;{select s:avg a-b from x}'q[!q]
-495
+884
 </pre></div>
 
-<p>That&rsquo;s 495 ms to read the data in from disk and compute over all the 100 million values.  The data read is the biggest bit.  If the data were already in memory then the computation would be  faster:
+<p>That&rsquo;s 884 ms to read the data in from disk and compute over all the 100 million values.  The data read is the biggest bit.  If the data were already in memory then the computation would be  faster:
 </p>
 <div class="example">
 <pre class="example"> \t {select s:avg a-b from x}'q[!q]
-230
+217
 </pre></div>
 
-<p>230 ms, not bad for 100 million calculations.
+<p>217 ms, not bad for 100 million calculations.
 </p>
 <p>The code to generate the on-disk database is presented below.  Speed of course will depend on your hardware so times will vary.
 </p>
 <div class="example">
 <pre class="example"> nf:d+*|d:(|-d),d:683 954 997 1000;
- T:^`t rand[;_8.64e7]@
- B:100++\1e-2*-3+nf bin/:rand[;*|nf]@
- S:rand[;1e-2*2,2,8#1]@
+ T:^`t ?[;_8.64e7]@
+ B:100++\1e-2*-3+nf bin/:?[;*|nf]@
+ S:?[;1e-2*2,2,8#1]@
  L:{select t,b,a:b+s from +`t`b`s!(T;B;S)@'x}
  q:`eurusd`usdjpy`usdchf!L'_60e6 20e6 20e6
  `q 2:q
@@ -4283,11 +4283,11 @@ Next: <a href="#Benchmark" accesskey="n" rel="next">Benchmark</a>, Previous: <a 
 <p>Let&rsquo;s start with a simple example of only times (t), bid (b), and ask (a).
 </p>
 <div class="example">
-<pre class="example">n:10
- T:^10:00+`t n rand 36e5 / sort randomly generated times
- B:100++\-1+n rand 3     / generate bids near 100, equivalent to: 100 + (+\((-1)+n rand 3))
- A:B+1+n rand 2          / generates asks 1 or 2 higher
- q:+`t`b`a!(T;B;A);q     / build table t and then display
+<pre class="example"> n:10
+ T:^10:00+`t n?36e5  / sort randomly generated times
+ B:100++\-1+n?3      / generate bids near 100, equivalent to: 100 + (+\((-1)+n rand 3))
+ A:B+1+n?2           / generates asks 1 or 2 higher
+ q:+`t`b`a!(T;B;A);q / build table t and then display
 t            b   a  
 ------------ --- ---
 10:01:48.464 100 102
