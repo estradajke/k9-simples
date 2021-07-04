@@ -8,7 +8,6 @@ sed -e 's/@/@@/g' \
     -e '30,40 s/dev/@ref{dev}/g' \
     -e '30,40 s/med/@ref{med}/g' \
     -e '30,40 s/mode/@ref{mode}/g' \
-    -e '30,40 s/countd/@ref{countd}/g' \
     -e '1,20 s/\\l/@ref{load,\\l}/g' \
     -e '1,20 s/\\t/@ref{timing,\\t}/g' \
     -e '1,20 s/\\v/@ref{variables,\\v}/g' \
@@ -39,7 +38,7 @@ sed -e 's/@/@@/g' \
     -e 's/cat/@ref{cat}/g' \
     -e 's/sort/@ref{sort}/g' \
     -e 's/cut/@ref{cut}/g' \
-    -e '1,30 s/count/@ref{count}/g' \
+    -e '1,25 s/count/@ref{count}/g' \
     -e 's/take/@ref{take}/g' \
     -e 's/floor/@ref{floor}/g' \
     -e 's/drop/@ref{drop}/g' \
@@ -62,12 +61,12 @@ sed -e 's/@/@@/g' \
     -e 's/+binXX/@ref{bin2,+bin}/g' \
     -e 's/eachright/@ref{eachright}/g' \
     -e 's/eachleft/@ref{eachleft}/g' \
-    -e '20,30 s/select/@ref{select}/g' \
-    -e '20,30 s/delete/@ref{delete}/g' \
-    -e '20,30 s/A/@ref{A}/g' \
-    -e '20,30 s/by@ B/@ref{by B}/g' \
-    -e '20,30 s/where@ C/@ref{where C}/g' \
-    -e '20,30 s/update/@ref{update}/g' \
+    -e '30,40 s/select/@ref{select}/g' \
+    -e '30,40 s/delete/@ref{delete}/g' \
+    -e '30,40 s/A/@ref{A}/g' \
+    -e '30,40 s/by@ B/@ref{by B}/g' \
+    -e '30,40 s/where@ C/@ref{where C}/g' \
+    -e '30,40 s/update/@ref{update}/g' \
     -e 's/insert/@ref{insert}/g' \
     -e 's/upsert/@ref{upsert}/g' \
     -e 's/union/@ref{union}/g' \
@@ -90,7 +89,7 @@ sed -e 's/@/@@/g' \
     -e 's/Control/@ref{cond,Control}/g' \
     -e 's/if@ else/@ref{cond,if else}/g' \
     -e '1,20 s/date/@ref{date}/g' \
-    -e '12,20 s/time/@ref{time}/g' \
+    -e '14,16 s/time/@ref{time}/g' \
     -e 's/bool/@ref{bool}/g' \
     -e '7,20 s/int/@ref{int}/g' \
     -e 's/flt/@ref{flt}/g' \
@@ -98,10 +97,10 @@ sed -e 's/@/@@/g' \
     -e '7,20 s/name/@ref{name}/g' \
     -e 's/uuid/@ref{uuid}/g' \
     -e 's/System/@ref{System}/g' \
-    -e 's/`csv?/@ref{read csv,`csv?}/g' \
-    -e 's/`csv@ /@ref{write csv,`csv@ }/g' \
-    -e 's/`js?/@ref{read json,`js?}/g' \
-    -e 's/`js@ /@ref{write json,`js@ }/g' \
+    -e 's/csv/@ref{csv}/g' \
+    -e 's/lz4/@ref{compress,lz4}/g' \
+    -e 's/zstd/@ref{compress,zstd}/g' \
+    -e 's/json/@ref{json}/g' \
     -e 's/r\/w@ line/@ref{r line,r}\/@ref{w line,w}@ line/g' \
     -e 's/r\/w@ char/@ref{r byte,r}\/@ref{w byte,w}@ char/g' \
     -e 's/r\/w@ data/@ref{r data,r}\/@ref{w data,w}@ data/g' \
@@ -114,7 +113,7 @@ sed -e 's/@/@@/g' \
     -e '20,40 s/@ in@ /@ @ref{in}@ /' \
     -e '20,40 s/bin/@ref{bin}/g' \
     -e '20,40 s/within/ @ref{within}/g' \
-    -e '20,40 s/exp/@ref{exp}/g' \
+    -e '30,40 s/exp/@ref{exp}/g' \
     -e '20,40 s/log/@ref{log}/g' \
     -e '20,40 s/sin/@ref{sin}/g' \
     -e '20,40 s/cos/@ref{cos}/g' \
@@ -131,15 +130,15 @@ sed -e 's/@/@@/g' \
     -e '20,40 s/deltas/@ref{deltas}/g' \
     -e '20,40 s/rand/@ref{rand}/g' \
     -e '20,40 s/has/@ref{has}/g' \
-    -e '28,35 s/count /@ref{Hcount,count} /g' \
+    -e '28,35 s/count/@ref{Hcount,count} /g' \
     -e '28,35 s/first/@ref{Hfirst,first}/g' \
     -e '28,35 s/last/@ref{Hlast,last}/g' \
     -e '28,35 s/min/@ref{Hmin,min}/g' \
     -e '28,35 s/max/@ref{Hmax,max}/g' \
     -e '28,35 s/sum/@ref{Hsum,sum}/g' \
     -e '28,35 s/dot/@ref{Hdot,dot}/g' \
-    -e 's/.z.d/@ref{.z.d}/g' \
-    -e 's/.z.t/@ref{.z.t}/g' \
+    -e '12,15 s/.z.d/@ref{.z.d}/g' \
+    -e '12,15 s/.z.t/@ref{.z.t}/g' \
     -e '20,40 s/avg/@ref{avg}/g' \
     -e '20,40 s/var/@ref{var}/g' \
     -e '20,30 s/prm/@ref{prm}/g' \

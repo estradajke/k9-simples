@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdfetex 2020.5.15)  4 JUL 2021 12:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdfetex 2020.5.15)  4 JUL 2021 14:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -152,9 +152,161 @@ texinfo.tex: doing @include of k.d2
 
 
 (/Users/estradaj/GitHub/k9-simples/k.d2)
+Overfull \hbox (24.02896pt too wide) in paragraph at lines 1--34
+[]@texttt $curl -o k.so shakti.com/python/k.so                                 
+        []|
+
+@hbox(7.60416+2.43333)x433.62
+.@hbox(0.0+0.0)x15.0
+.@texttt $
+.@texttt c
+.@texttt u
+.@texttt r
+.etc.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
-[][][]@texttt Chapter 2 [Verb], page 6,[][]                   [][]Chapter 3 [Ad
-verb], page 24,[][]
+
+
+@hbox(0.0+0.0)x433.62
+.@penalty -10000
+.@glue(@rightskip) 0.0
+
+
+Overfull \hbox (9.02896pt too wide) in paragraph at lines 1--34
+[]@texttt python>>> import k;k.k('2+3')                                        
+        []|
+
+@hbox(7.60416+2.43333)x433.62
+.@hbox(0.0+0.0)x0.0
+.@texttt p
+.@texttt y
+.@texttt t
+.@texttt h
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--34
+
+
+@hbox(0.0+0.0)x433.62
+.@penalty -10000
+.@glue(@rightskip) 0.0
+
+
+Overfull \hbox (9.02896pt too wide) in paragraph at lines 1--34
+[]@texttt nodejs> require('k').k('2+3')                                        
+        []|
+
+@hbox(7.60416+2.43333)x433.62
+.@hbox(0.0+0.0)x0.0
+.@texttt n
+.@texttt o
+.@texttt d
+.@texttt e
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--34
+
+
+@hbox(0.0+0.0)x433.62
+.@penalty -10000
+.@glue(@rightskip) 0.0
+
+
+Overfull \hbox (9.02896pt too wide) in paragraph at lines 1--34
+[]@texttt $k [-p 1024] [a.k]                                                   
+        []|
+
+@hbox(7.60416+2.43333)x433.62
+.@hbox(0.0+0.0)x0.0
+.@texttt $
+.@texttt k
+.@glue 5.74869
+.@texttt [
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--34
+
+
+@hbox(0.0+0.0)x433.62
+.@penalty -10000
+.@glue(@rightskip) 0.0
+
+
+Overfull \hbox (9.02896pt too wide) in paragraph at lines 1--34
+[] @texttt t:[[]t:09:30:00.000+!2;e:"b";s:`aa;v:2;p:2.3e]                      
+        []|
+
+@hbox(7.60416+2.43333)x433.62
+.@hbox(0.0+0.0)x0.0
+.@glue 5.74869
+.@texttt t
+.@texttt :
+.@texttt [
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--34
+
+
+@hbox(0.0+0.0)x433.62
+.@penalty -10000
+.@glue(@rightskip) 0.0
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--34
+[] @texttt `[][][csv], page 63[][]?`[][][csv], page 63,[][] t;`[][][json], page
+ 63[][]?`[][][json], page 63,[][]
+
+@hbox(7.60416+2.43333)x433.62
+.@hbox(0.0+0.0)x0.0
+.@glue 5.74869
+.@texttt `
+.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{csv}
+.@pdfliteral{0 0 0 rg 0 0 0 RG}
+.etc.
+
+
+Overfull \hbox (9.02896pt too wide) in paragraph at lines 1--34
+[] @texttt `[][][compress], page 63[][]?`[][][compress], page 63,[][] t;`[][][c
+ompress], page 63[][]?`[][][compress],|
+
+@hbox(7.60416+2.43333)x433.62
+.@hbox(0.0+0.0)x0.0
+.@glue 5.74869
+.@texttt `
+.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{compress}
+.@pdfliteral{0 0 0 rg 0 0 0 RG}
+.etc.
+
+
+Overfull \hbox (9.02896pt too wide) in paragraph at lines 1--34
+[]                                                                             
+[]|
+
+@hbox(0.0+0.0)x433.62
+.@hbox(0.0+0.0)x0.0
+.@glue 5.74869
+.@glue 5.74869
+.@glue 5.74869
+.@glue 5.74869
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--34
+
+
+@hbox(0.0+0.0)x433.62
+.@penalty -10000
+.@glue(@rightskip) 0.0
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--34
+[][][]@texttt Chapter 2 [Verb], page 6,[][]                    [][]Chapter 3 [A
+dverb], page 24,[][]
 
 @hbox(7.60416+2.43333)x433.62
 .@hbox(0.0+0.0)x0.0
@@ -188,19 +340,6 @@ cover], page 28,[][]      c/
 .@glue 5.74869
 .@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{flip}
 .@pdfliteral{0 0 0 rg 0 0 0 RG}
-.etc.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--34
-[][]@texttt [join], page 26,[][]    [][][name], page 32,[][] ``ab              
- [][][timing], page 82[][]:n
-
-@hbox(7.60416+2.43333)x433.62
-.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{join}
-.@pdfliteral{0 0 0 rg 0 0 0 RG}
-.@texttt [
-.@texttt j
-.@texttt o
 .etc.
 
 
@@ -257,6 +396,40 @@ eachleft], page 28,[][]
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
+@texttt g\:[][][cscan], page 28,[][]    [][][time], page 33,[][] 12:34:56.789 [
+][][.z.t], page 85,[][]
+
+@hbox(7.60416+2.43333)x433.62
+.@texttt g
+.@texttt \
+.@texttt :
+.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{cscan}
+.@pdfliteral{0 0 0 rg 0 0 0 RG}
+.etc.
+
+
+Overfull \hbox (146.99747pt too wide) in paragraph at lines 1--34
+[]@texttt | [][][reverse], page 10,[][]   [][][max/or], page 10,[][]           
+                                                []|
+
+@hbox(7.60416+2.43333)x433.62
+.@hbox(0.0+0.0)x0.0
+.@texttt |
+.@glue 5.74869
+.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{reverse}
+.@pdfliteral{0 0 0 rg 0 0 0 RG}
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--34
+
+
+@hbox(0.0+0.0)x433.62
+.@penalty -10000
+.@glue(@rightskip) 0.0
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--34
 []@texttt < [][][asc], page 10,[][]       [][][less], page 11,[][]       [][]Ch
 apter 11 [I/O], page 62,[][]
 
@@ -283,7 +456,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1--34
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
-@texttt line], page 64,[][] line (N;C)0:     [][]Chapter 5 [List], page 35,[][]
+@texttt line], page 64,[][] line             [][]Chapter 5 [List], page 35,[][]
  (2;3.4;`c)
 
 @hbox(7.60416+2.43333)x433.62
@@ -386,9 +559,77 @@ ps [][][4get], page 66,[][]
 .etc.
 
 
-Overfull \hbox (3.28027pt too wide) in paragraph at lines 1--34
-[]@texttt ? [][][unique], page 19,[][]    [][][find], page 19,[][]             
-                  limit|
+Underfull \hbox (badness 10000) in paragraph at lines 1--34
+[]@texttt ^ [][][sort], page 14,[][]   [f][][][cut], page 15,[][]        5: [][
+][ffi], page 68[][]/import
+
+@hbox(7.60416+2.43333)x433.62
+.@hbox(0.0+0.0)x0.0
+.@texttt ^
+.@glue 5.74869
+.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{sort}
+.@pdfliteral{0 0 0 rg 0 0 0 RG}
+.etc.
+
+
+Overfull \hbox (146.99747pt too wide) in paragraph at lines 1--34
+[]@texttt # [][][count], page 16,[][]  [f][][][take], page 16,[][]             
+                                                []|
+
+@hbox(7.60416+2.43333)x433.62
+.@hbox(0.0+0.0)x0.0
+.@texttt #
+.@glue 5.74869
+.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{count}
+.@pdfliteral{0 0 0 rg 0 0 0 RG}
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--34
+
+
+@hbox(0.0+0.0)x433.62
+.@penalty -10000
+.@glue(@rightskip) 0.0
+
+
+Overfull \hbox (146.99747pt too wide) in paragraph at lines 1--34
+[]@texttt _ [][][floor], page 18,[][]  [f][][][drop], page 18,[][]             
+                                                []|
+
+@hbox(7.60416+2.43333)x433.62
+.@hbox(0.0+0.0)x0.0
+.@texttt _
+.@glue 5.74869
+.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{floor}
+.@pdfliteral{0 0 0 rg 0 0 0 RG}
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--34
+
+
+@hbox(0.0+0.0)x433.62
+.@penalty -10000
+.@glue(@rightskip) 0.0
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--34
+[]@texttt $ [][][string], page 19,[][]    [][][parse], page 19,[][]      $[b;t;
+f] [][][cond], page 84,[][]
+
+@hbox(7.60416+2.43333)x433.62
+.@hbox(0.0+0.0)x0.0
+.@texttt $
+.@glue 5.74869
+.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{string}
+.@pdfliteral{0 0 0 rg 0 0 0 RG}
+.etc.
+
+
+Overfull \hbox (210.23303pt too wide) in paragraph at lines 1--34
+[]@texttt ? [][][unique], page 19,[][]    [][][find], page 19[][]/[][][rand], p
+age 53,[][]                                                        []|
 
 @hbox(7.60416+2.43333)x433.62
 .@hbox(0.0+0.0)x0.0
@@ -397,6 +638,14 @@ Overfull \hbox (3.28027pt too wide) in paragraph at lines 1--34
 .@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{unique}
 .@pdfliteral{0 0 0 rg 0 0 0 RG}
 .etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--34
+
+
+@hbox(0.0+0.0)x433.62
+.@penalty -10000
+.@glue(@rightskip) 0.0
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
@@ -413,8 +662,8 @@ f[;y]] [][][amend],
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
-[]@texttt . [][][value], page 21,[][]  [f][][][dot], page 21,[][]        .[x;i;
-f[;y]] [][][dmend],
+[]@texttt . [][][value], page 21,[][]  [f][][][Hdot], page 50,[][]        .[x;i
+;f[;y]] [][][dmend],
 
 @hbox(7.60416+2.43333)x433.62
 .@hbox(0.0+0.0)x0.0
@@ -425,68 +674,63 @@ f[;y]] [][][dmend],
 .etc.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1--34
-[]@texttt math: [][][sqrt], page 52,[][] [][][sqr], page 52,[][] [][][exp], pag
-e 51,[][] [][][log], page 51,[][]
+Overfull \hbox (9.02896pt too wide) in paragraph at lines 1--34
+[]                                                                             
+[]|
 
-@hbox(7.60416+2.43333)x433.62
+@hbox(0.0+0.0)x433.62
 .@hbox(0.0+0.0)x0.0
-.@texttt m
-.@texttt a
-.@texttt t
-.@texttt h
+.@glue 5.74869
+.@glue 5.74869
+.@glue 5.74869
+.@glue 5.74869
 .etc.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
-[][]@texttt [sin], page 52,[][] [][][cos], page 52,[][] [][][div], page 55,[][]
- mod [][][bar], page 55,[][] [][][in],
+
+
+@hbox(0.0+0.0)x433.62
+.@penalty -10000
+.@glue(@rightskip) 0.0
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--34
+[][][]@texttt [Hcount], page 50,[][]  [][][Hfirst], page 50,[][] [][][Hlast], p
+age 50,[][] [][][Hmin], page 50,[][]
 
 @hbox(7.60416+2.43333)x433.62
-.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{sin}
+.@hbox(0.0+0.0)x0.0
+.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{Hcount}
+.@pdfliteral{0 0 0 rg 0 0 0 RG}
+.@texttt [
+.@texttt H
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--34
+[][]@texttt [Hmax], page 50,[][] [][][Hsum], page 50,[][] [][][avg], page 51,[]
+[] [][][var], page 51,[][] [][][dev],
+
+@hbox(7.60416+2.43333)x433.62
+.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{Hmax}
+.@pdfliteral{0 0 0 rg 0 0 0 RG}
+.@texttt [
+.@texttt H
+.@texttt m
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--34
+[][][]@texttt [select], page 71,[][] [][][A], page 72,[][] [][][by B], page 73,
+[][] from T [][][where C],
+
+@hbox(7.60416+2.43333)x433.62
+.@hbox(0.0+0.0)x0.0
+.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{select}
 .@pdfliteral{0 0 0 rg 0 0 0 RG}
 .@texttt [
 .@texttt s
-.@texttt i
-.etc.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--34
-[]@texttt aggr: [][][count], page 16,[][] [][][Hfirst], page 50,[][] [][][Hlast
-], page 50,[][] [][][Hmin],
-
-@hbox(7.60416+2.43333)x433.62
-.@hbox(0.0+0.0)x0.0
-.@texttt a
-.@texttt g
-.@texttt g
-.@texttt r
-.etc.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--34
-@texttt page 50,[][] [][][Hmax], page 50,[][] [][][Hsum], page 50,[][] [][][Hdo
-t], page 50,[][] [][][avg], page 51,[][]
-
-@hbox(7.60416+2.43333)x433.62
-.@texttt p
-.@texttt a
-.@texttt g
-.@texttt e
-.@penalty 10000
-.etc.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--34
-[]@texttt sql: [][][select], page 71,[][] [][][A], page 72,[][] [][][by B], pag
-e 73,[][] from T [][][where C],
-
-@hbox(7.60416+2.43333)x433.62
-.@hbox(0.0+0.0)x0.0
-.@texttt s
-.@texttt q
-.@texttt l
-.@texttt :
 .etc.
 
 
@@ -501,6 +745,53 @@ Underfull \hbox (badness 10000) in paragraph at lines 1--34
 .@texttt e
 .@penalty 10000
 .etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--34
+[][][]@texttt [sqrt], page 52,[][] [][][sqr], page 52,[][] [][][exp], page 51,[
+][] [][][log], page 51,[][] [][][sin],
+
+@hbox(7.60416+2.43333)x433.62
+.@hbox(0.0+0.0)x0.0
+.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{sqrt}
+.@pdfliteral{0 0 0 rg 0 0 0 RG}
+.@texttt [
+.@texttt s
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--34
+@texttt page 52,[][] [][][cos], page 52,[][] [][][div], page 55,[][] [][][mod],
+ page 55,[][] [][][bar], page 55,[][]
+
+@hbox(7.60416+2.43333)x433.62
+.@texttt p
+.@texttt a
+.@texttt g
+.@texttt e
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (9.02896pt too wide) in paragraph at lines 1--34
+[]                                                                             
+[]|
+
+@hbox(0.0+0.0)x433.62
+.@hbox(0.0+0.0)x0.0
+.@glue 5.74869
+.@glue 5.74869
+.@glue 5.74869
+.@glue 5.74869
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--34
+
+
+@hbox(0.0+0.0)x433.62
+.@penalty -10000
+.@glue(@rightskip) 0.0
 
 Chapter 1 [1]
 Overfull \hbox (14.94176pt too wide) in paragraph at lines 108--108
@@ -872,8 +1163,8 @@ texinfo.tex: doing @verbatiminclude of k.d
  (/Users/estradaj/GitHub/k9-simples/k.d) [100] ) 
 Here is how much of TeX's memory you used:
  3963 strings out of 496271
- 39406 string characters out of 6185843
- 127951 words of memory out of 5000000
+ 39403 string characters out of 6185843
+ 133823 words of memory out of 5000000
  4869 multiletter control sequences out of 15000+600000
  34203 words of font info for 119 fonts, out of 8000000 for 9000
  590 hyphenation exceptions out of 8191
@@ -889,9 +1180,9 @@ al/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr
 /local/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb><
 /usr/local/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pf
 b>
-Output written on k.manual.pdf (102 pages, 269203 bytes).
+Output written on k.manual.pdf (102 pages, 268758 bytes).
 PDF statistics:
- 1009 PDF objects out of 1200 (max. 8388607)
+ 1017 PDF objects out of 1200 (max. 8388607)
  776 compressed objects within 8 object streams
  284 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)

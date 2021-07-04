@@ -105,7 +105,7 @@ other languages to k9.
 
 <a href="#json">json</a>
 <a href="#csv">csv</a>
-<a href="#lz4-zstd">lz4 zstd</a>
+<a href="#compress">lz4 zstd</a>
 </pre></div>
 
  
@@ -184,7 +184,7 @@ b 2
 </pre></div>
 
 
-<span id="lz4-zstd"></span><span id="lz4-zstd-_21d2-_0060lz4-_0060zstd"></span><h3 class="section">11.4 lz4 zstd &rArr; <em>`</em>lz4 <em>`</em>zstd</h3>
+<span id="compress"></span><span id="lz4-zstd-_21d2-_0060lz4-_0060zstd"></span><h3 class="section">11.4 lz4 zstd &rArr; <em>`</em>lz4 <em>`</em>zstd</h3>
 <p>lz4 and zstd are compression algorythms which can be used to reduce the size of files.  As with other foreign libraries k9 does the work behind the scenes.  Here is an example of writing a large csv file to disk and reading it back in.  In the second (lz4) and third (zstd) examples the csv&rsquo;s are compressed and decompressed with lz4 and zstd respectively.  One can look at the file sizes to see how well the compression worked.
 </p>
 <div class="example">
