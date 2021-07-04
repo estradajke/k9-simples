@@ -3130,7 +3130,7 @@ other languages to k9.
 
 @ref{json}
 @ref{csv}
-@ref{lz4 and zstd}
+@ref{lz4 zstd}
 @end example
 
  @c @ref{write json,`jk@} d
@@ -3285,7 +3285,7 @@ Export object x to json format or import string x from json format.  The json sh
 @c @end example
 @c 
 
-@anchor{lz4 and zstd}@section lz4 and zstd @result{} @math{`}lz4 and @math{`}zstd
+@anchor{lz4 zstd}@section lz4 zstd @result{} @math{`}lz4 @math{`}zstd
 lz4 and zstd are compression algorythms which can be used to reduce the size of files.  As with other foreign libraries k9 does the work behind the scenes.  Here is an example of writing a large csv file to disk and reading it back in.  In the second (lz4) and third (zstd) examples the csv's are compressed and decompressed with lz4 and zstd respectively.  One can look at the file sizes to see how well the compression worked.
 
 @example

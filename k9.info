@@ -2954,7 +2954,7 @@ k9 is also able to interface with other languages so one doesn't need to transla
 
      *note json::
      *note csv::
-     *note lz4 and zstd::
+     *note lz4 zstd::
 
 11.1 Example of Data I/O
 ========================
@@ -3028,8 +3028,8 @@ path on the binary may cause issues.
      (,"x";,"y")!(,"a";3)
      (,"x";,"y")!(,"b";2)
 
-11.4 lz4 and zstd => `lz4 and `zstd
-===================================
+11.4 lz4 zstd => `lz4 `zstd
+===========================
 
 lz4 and zstd are compression algorythms which can be used to reduce the size of files.  As with other foreign libraries k9 does the work behind the scenes.  Here is an example of writing a large csv
 file to disk and reading it back in.  In the second (lz4) and third (zstd) examples the csv's are compressed and decompressed with lz4 and zstd respectively.  One can look at the file sizes to see how
@@ -4815,62 +4815,62 @@ Ref: dmend173258
 Ref: dmend373426
 Ref: dmend473591
 Node: I/O73752
-Ref: csv76008
-Ref: json76420
-Ref: lz4 and zstd76889
-Ref: w line77779
-Ref: r line78117
-Ref: w byte78230
-Ref: r byte78584
-Ref: r data78732
-Ref: w data79389
-Ref: k-ipc80331
-Ref: 3set80816
-Ref: 4get81231
-Node: FF81803
-Ref: ffi82153
-Node: Tables82586
-Ref: table83212
-Ref: utable84854
-Node: kSQL85393
-Ref: select86293
-Ref: A86860
-Ref: by B87713
-Ref: where C88042
-Ref: update88884
-Ref: delete89605
-Ref: Joins89887
-Ref: union90244
-Ref: leftjoin90765
-Ref: outer91544
-Ref: asof92179
-Ref: asof+93650
-Ref: insert94868
-Ref: upsert95214
-Node: System95628
-Ref: load96118
-Ref: timing96307
-Ref: variables96592
-Ref: files96700
-Ref: cd96794
-Node: Control Flow96920
-Ref: cond97156
-Node: Temporal Functions97526
-Ref: .z.d97886
-Ref: .z.t98047
-Node: Errors98925
-Ref: class99373
-Ref: rank99462
-Ref: length99586
-Ref: _type99709
-Ref: domain99818
-Ref: limit99940
-Ref: nyi100151
-Ref: eparse100478
-Ref: _value100631
-Node: Examples100759
-Node: Benchmark108749
-Node: Conclusion117421
+Ref: csv76004
+Ref: json76416
+Ref: lz4 zstd76885
+Ref: w line77759
+Ref: r line78097
+Ref: w byte78210
+Ref: r byte78564
+Ref: r data78712
+Ref: w data79369
+Ref: k-ipc80311
+Ref: 3set80796
+Ref: 4get81211
+Node: FF81783
+Ref: ffi82133
+Node: Tables82566
+Ref: table83192
+Ref: utable84834
+Node: kSQL85373
+Ref: select86273
+Ref: A86840
+Ref: by B87693
+Ref: where C88022
+Ref: update88864
+Ref: delete89585
+Ref: Joins89867
+Ref: union90224
+Ref: leftjoin90745
+Ref: outer91524
+Ref: asof92159
+Ref: asof+93630
+Ref: insert94848
+Ref: upsert95194
+Node: System95608
+Ref: load96098
+Ref: timing96287
+Ref: variables96572
+Ref: files96680
+Ref: cd96774
+Node: Control Flow96900
+Ref: cond97136
+Node: Temporal Functions97506
+Ref: .z.d97866
+Ref: .z.t98027
+Node: Errors98905
+Ref: class99353
+Ref: rank99442
+Ref: length99566
+Ref: _type99689
+Ref: domain99798
+Ref: limit99920
+Ref: nyi100131
+Ref: eparse100458
+Ref: _value100611
+Node: Examples100739
+Node: Benchmark108729
+Node: Conclusion117401
 
 End Tag Table
 
