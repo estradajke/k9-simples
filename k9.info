@@ -2954,6 +2954,7 @@ k9 is also able to interface with other languages so one doesn't need to transla
 
      *note json::
      *note csv::
+     *note lz4 and zstd::
 
 11.1 Example of Data I/O
 ========================
@@ -3027,7 +3028,33 @@ path on the binary may cause issues.
      (,"x";,"y")!(,"a";3)
      (,"x";,"y")!(,"b";2)
 
-11.4 write line => x 0:y
+11.4 lz4 and zstd => `lz4 and `zstd
+===================================
+
+lz4 and zstd are compression algorythms which can be used to reduce the size of files.  As with other foreign libraries k9 does the work behind the scenes.  Here is an example of writing a large csv
+file to disk and reading it back in.  In the second (lz4) and third (zstd) examples the csv's are compressed and decompressed with lz4 and zstd respectively.  One can look at the file sizes to see how
+well the compression worked.
+
+      g:{+`s`f`i!(x?"abc";x?10.;x?10)}
+
+     "t.csv"1:`csv@g[_1e7]
+     "t.csv"
+
+     \t tc:`csv?1:"t.csv"         / read from csv
+     314
+
+     "t.lz4"1:`lz4@`csv@g[_1e7]
+     "t.lz4"
+
+     \t tz:`csv?`lz4?1:"t.lz4"    / read from lz4 compressed csv
+     525
+
+      "t.zstd"1:`zstd@`csv@g[_1e7]
+     "t.zstd"
+      \t tz:`csv?`zstd?1:"t.zstd" / read from zstd compressed csv
+     535
+
+11.5 write line => x 0:y
 ========================
 
 Output to x the list of strings in y.  y must be a list of strings.  If y is a single string then convert to list via *note list: enlist.
@@ -3038,7 +3065,7 @@ Output to x the list of strings in y.  y must be a list of strings.  If y is a s
 
       "file.txt" 0: ("blue"; "red") / write to file, one line per element
 
-11.5 read line => 0:x
+11.6 read line => 0:x
 =====================
 
 Read from file x.
@@ -3048,7 +3075,7 @@ Read from file x.
      1,3.
      2,4.
 
-11.6 write byte => x 1:y
+11.7 write byte => x 1:y
 ========================
 
 Output to file x the list of chars in y as bytes.
@@ -3071,12 +3098,12 @@ Output to file x the list of chars in y as bytes.
      1 3
      2 4
 
-11.7 read byte => 1:x
+11.8 read byte => 1:x
 =====================
 
 Read from byte data from file x.  See *note w byte:: for an example to write and then read byte data.
 
-11.8 read data => 2: x
+11.9 read data => 2: x
 ======================
 
 Enterprise Only
@@ -3098,8 +3125,8 @@ Load file, eg. csv or from a (x 2: y) save.  For the latter, one can find a "sav
      ..
 
 
-11.9 write data => x 2: y
-=========================
+11.10 write data => x 2: y
+==========================
 
 Enterprise only
 
@@ -3117,13 +3144,13 @@ Start new session.
       \t r:2:`r;select avg a,sum b, max c, min d, sum e from r
      148
 
-11.10 IPC
+11.11 IPC
 =========
 
 k9 has the ability to comunicate between separate k9 instances via inter-process communication (IPC). These processes can be on the same or separate machines.  A user will start multiple instances
 specifying the port that the k9 session will use, opening a handle to that port, and then running remote commands via the handle and '3:' or '4:'.
 
-11.11 k-ipc => 3:x
+11.12 k-ipc => 3:x
 ==================
 
 Open a connection to port 'x' and return a handle.  If the port has been forwarded from another machine (eg.  ssh -L 1280:server.com:1280 laptop.com) then this handle allows remote execution.
@@ -3135,7 +3162,7 @@ Open a connection to port 'x' and return a handle.  If the port has been forward
       h        / h is an integer
      4
 
-11.12 set => x 3:y
+11.13 set => x 3:y
 ==================
 
 Exectute string y using handle x.  Handle x should have already been created using k-ipc.  'set' is asynchronous, thus once the command is sent the session immediately returns to the user.
@@ -3144,7 +3171,7 @@ Exectute string y using handle x.  Handle x should have already been created usi
       h 3:"a:12"             / set a to 12 on remote session
       h 3:"n:_1e8;b:1?n?1."  / set b to a random number on remote
 
-11.13 get => x 4:y
+11.14 get => x 4:y
 ==================
 
 Execute string y using handle x.  Handle x should have already been created using k-ipc.  'get' is synchronous, thus on the command is sent the session waits until there result is ready.
@@ -4788,61 +4815,62 @@ Ref: dmend173258
 Ref: dmend373426
 Ref: dmend473591
 Node: I/O73752
-Ref: csv75982
-Ref: json76394
-Ref: w line76863
-Ref: r line77201
-Ref: w byte77314
-Ref: r byte77668
-Ref: r data77816
-Ref: w data78473
-Ref: k-ipc79413
-Ref: 3set79898
-Ref: 4get80313
-Node: FF80885
-Ref: ffi81235
-Node: Tables81668
-Ref: table82294
-Ref: utable83936
-Node: kSQL84475
-Ref: select85375
-Ref: A85942
-Ref: by B86795
-Ref: where C87124
-Ref: update87966
-Ref: delete88687
-Ref: Joins88969
-Ref: union89326
-Ref: leftjoin89847
-Ref: outer90626
-Ref: asof91261
-Ref: asof+92732
-Ref: insert93950
-Ref: upsert94296
-Node: System94710
-Ref: load95200
-Ref: timing95389
-Ref: variables95674
-Ref: files95782
-Ref: cd95876
-Node: Control Flow96002
-Ref: cond96238
-Node: Temporal Functions96608
-Ref: .z.d96968
-Ref: .z.t97129
-Node: Errors98007
-Ref: class98455
-Ref: rank98544
-Ref: length98668
-Ref: _type98791
-Ref: domain98900
-Ref: limit99022
-Ref: nyi99233
-Ref: eparse99560
-Ref: _value99713
-Node: Examples99841
-Node: Benchmark107831
-Node: Conclusion116503
+Ref: csv76008
+Ref: json76420
+Ref: lz4 and zstd76889
+Ref: w line77779
+Ref: r line78117
+Ref: w byte78230
+Ref: r byte78584
+Ref: r data78732
+Ref: w data79389
+Ref: k-ipc80331
+Ref: 3set80816
+Ref: 4get81231
+Node: FF81803
+Ref: ffi82153
+Node: Tables82586
+Ref: table83212
+Ref: utable84854
+Node: kSQL85393
+Ref: select86293
+Ref: A86860
+Ref: by B87713
+Ref: where C88042
+Ref: update88884
+Ref: delete89605
+Ref: Joins89887
+Ref: union90244
+Ref: leftjoin90765
+Ref: outer91544
+Ref: asof92179
+Ref: asof+93650
+Ref: insert94868
+Ref: upsert95214
+Node: System95628
+Ref: load96118
+Ref: timing96307
+Ref: variables96592
+Ref: files96700
+Ref: cd96794
+Node: Control Flow96920
+Ref: cond97156
+Node: Temporal Functions97526
+Ref: .z.d97886
+Ref: .z.t98047
+Node: Errors98925
+Ref: class99373
+Ref: rank99462
+Ref: length99586
+Ref: _type99709
+Ref: domain99818
+Ref: limit99940
+Ref: nyi100151
+Ref: eparse100478
+Ref: _value100631
+Node: Examples100759
+Node: Benchmark108749
+Node: Conclusion117421
 
 End Tag Table
 
