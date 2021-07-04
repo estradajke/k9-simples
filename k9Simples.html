@@ -89,7 +89,7 @@ table.menu th{
 Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; </p>
 </div>
 <span id="k9_003a-Manual"></span><h1 class="top">k9: Manual</h1>
-<p>This manual is for Shakti (k9) build 2021.03.12.<br>
+<p>This manual is for Shakti (k9) build 2021.06.30.<br>
 </p>
 <p>The Shakti programming language is the work of Arthur Whitney and the team at Shakti.  The language comes from a lineage of similar languages going back to APL.  It&rsquo;s also known as k9 given the similarities to k, k2, ..., k6, k7 and the fact that Arthur also wrote those.  k9 is still under development so expect a bit of syntax change and likely even more improvements.
 </p>
@@ -1009,7 +1009,7 @@ d|3
 <span id="take3"></span><p>If x is a function, then select the values where the function is non-zero.
 </p>
 <div class="example">
-<pre class="example"> (0.5&lt;)#10 rand 1.           / select values greater than 0.5
+<pre class="example"> (0.5&lt;)#10?1.           / select values greater than 0.5
 0.840732 0.5330717 0.7539563 0.643315 0.6993048f
 </pre></div>
 
@@ -1087,7 +1087,7 @@ c|2
 <span id="drop3"></span><p>If x is a function, then select values where the function is zero.
 </p>
 <div class="example">
-<pre class="example"> (0.5&lt;)_10 rand 1.           / values less than or equal to 0.5
+<pre class="example"> (0.5&lt;)_10?1.           / values less than or equal to 0.5
 0.02049699 0.1269226
 </pre></div>
 
@@ -4327,7 +4327,7 @@ t            p
  S:#[;`eurusd]                             / symbol
  T:^?[;_8.64e7]@                           / time in number of milliseconds
  E:?[;&quot;ce&quot;]                                / exchange
- B:11904++\-3+nf bin/:?[;*|nf]@            / bid price, start at 12415
+ B:11904++\-3+nf bin/:?[;*|nf]@            / bid price, start at 11904
  P:?[;2,2,8#1]@                            / bid/ask spread
  Q:{+qs!((D;S;T;E)@'x),(*;+/)@\:(B;P)@'x}  / generator quote table
  q:Q@_1e8;10#q
