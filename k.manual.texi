@@ -3294,18 +3294,19 @@ lz4 and zstd are compression algorythms which can be used to reduce the size of 
 "t.csv"1:`csv@@g[_1e7]
 "t.csv"
 
-\t tc:`csv?1:"t.csv"         / read from csv
+\t tc:`csv?1:"t.csv"            / read from csv
 314
 
-"t.lz4"1:`lz4@@`csv@@g[_1e7]
+"t.lz4"1:`lz4@@`csv@@g[_1e7]    / write to lz4
 "t.lz4"
 
-\t tz:`csv?`lz4?1:"t.lz4"    / read from lz4 compressed csv
+\t tz:`csv?`lz4?1:"t.lz4"       / read from lz4 compressed csv
 525
 
- "t.zstd"1:`zstd@@`csv@@g[_1e7]
+ "t.zstd"1:`zstd@@`csv@@g[_1e7] / write to zstd
 "t.zstd"
- \t tz:`csv?`zstd?1:"t.zstd" / read from zstd compressed csv
+
+ \t tz:`csv?`zstd?1:"t.zstd"    / read from zstd compressed csv
 535
 @end example
 

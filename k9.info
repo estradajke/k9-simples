@@ -3040,18 +3040,19 @@ well the compression worked.
      "t.csv"1:`csv@g[_1e7]
      "t.csv"
 
-     \t tc:`csv?1:"t.csv"         / read from csv
+     \t tc:`csv?1:"t.csv"            / read from csv
      314
 
-     "t.lz4"1:`lz4@`csv@g[_1e7]
+     "t.lz4"1:`lz4@`csv@g[_1e7]    / write to lz4
      "t.lz4"
 
-     \t tz:`csv?`lz4?1:"t.lz4"    / read from lz4 compressed csv
+     \t tz:`csv?`lz4?1:"t.lz4"       / read from lz4 compressed csv
      525
 
-      "t.zstd"1:`zstd@`csv@g[_1e7]
+      "t.zstd"1:`zstd@`csv@g[_1e7] / write to zstd
      "t.zstd"
-      \t tz:`csv?`zstd?1:"t.zstd" / read from zstd compressed csv
+
+      \t tz:`csv?`zstd?1:"t.zstd"    / read from zstd compressed csv
      535
 
 11.5 write line => x 0:y
@@ -4818,59 +4819,59 @@ Node: I/O73752
 Ref: csv76004
 Ref: json76416
 Ref: lz4 zstd76885
-Ref: w line77759
-Ref: r line78097
-Ref: w byte78210
-Ref: r byte78564
-Ref: r data78712
-Ref: w data79369
-Ref: k-ipc80311
-Ref: 3set80796
-Ref: 4get81211
-Node: FF81783
-Ref: ffi82133
-Node: Tables82566
-Ref: table83192
-Ref: utable84834
-Node: kSQL85373
-Ref: select86273
-Ref: A86840
-Ref: by B87693
-Ref: where C88022
-Ref: update88864
-Ref: delete89585
-Ref: Joins89867
-Ref: union90224
-Ref: leftjoin90745
-Ref: outer91524
-Ref: asof92159
-Ref: asof+93630
-Ref: insert94848
-Ref: upsert95194
-Node: System95608
-Ref: load96098
-Ref: timing96287
-Ref: variables96572
-Ref: files96680
-Ref: cd96774
-Node: Control Flow96900
-Ref: cond97136
-Node: Temporal Functions97506
-Ref: .z.d97866
-Ref: .z.t98027
-Node: Errors98905
-Ref: class99353
-Ref: rank99442
-Ref: length99566
-Ref: _type99689
-Ref: domain99798
-Ref: limit99920
-Ref: nyi100131
-Ref: eparse100458
-Ref: _value100611
-Node: Examples100739
-Node: Benchmark108729
-Node: Conclusion117401
+Ref: w line77803
+Ref: r line78141
+Ref: w byte78254
+Ref: r byte78608
+Ref: r data78756
+Ref: w data79413
+Ref: k-ipc80355
+Ref: 3set80840
+Ref: 4get81255
+Node: FF81827
+Ref: ffi82177
+Node: Tables82610
+Ref: table83236
+Ref: utable84878
+Node: kSQL85417
+Ref: select86317
+Ref: A86884
+Ref: by B87737
+Ref: where C88066
+Ref: update88908
+Ref: delete89629
+Ref: Joins89911
+Ref: union90268
+Ref: leftjoin90789
+Ref: outer91568
+Ref: asof92203
+Ref: asof+93674
+Ref: insert94892
+Ref: upsert95238
+Node: System95652
+Ref: load96142
+Ref: timing96331
+Ref: variables96616
+Ref: files96724
+Ref: cd96818
+Node: Control Flow96944
+Ref: cond97180
+Node: Temporal Functions97550
+Ref: .z.d97910
+Ref: .z.t98071
+Node: Errors98949
+Ref: class99397
+Ref: rank99486
+Ref: length99610
+Ref: _type99733
+Ref: domain99842
+Ref: limit99964
+Ref: nyi100175
+Ref: eparse100502
+Ref: _value100655
+Node: Examples100783
+Node: Benchmark108773
+Node: Conclusion117445
 
 End Tag Table
 
