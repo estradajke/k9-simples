@@ -1,6 +1,6 @@
 This is k9.info, produced by texi2any version 6.7 from k.manual.texi.
 
-April 10, 2021
+July 4, 2021
 
 Copyright (C) 2020 John Estrada
 
@@ -2952,85 +2952,80 @@ k9 is also able to interface with other languages so one doesn't need to transla
      *4: https *note get: 4get.
      *5: *note ffi:::`f!"ifsIF"
 
-     *note jk: read json.
-     *note csv: read csv.
+     *note json::
+     *note csv::
 
 11.1 Example of Data I/O
 ========================
 
-Let's begin with a simple example to show how to read data from a csv file.  We'll generate a small table and save it with and without headers (wHeader.csv and woHeader.csv respectively).  Then we'll
-read it back in, both specifying types and with the csv reader.  Types are specifed by one letter and the full list can be found in *note Atom Types::.
+Let's begin with a simple example to write a sample table to csv and then read it back in again.  We'll use a function so the table can easily grow to a larger size.
 
-      t:[[]a:3 2 1;b:1. 2. 4.;c:`x`y`z];t / generate table
-     a b  c
-     - -- -
-     3 1. x
-     2 2. y
-     1 4. z
+      g:{+`s`f`i!(x?"abc";x?10.;x?10)} / generate function for table
 
-      "wHeader.csv"1:`csv t               / save with column headers
-     wHeader.csv
+     g[5]                              / generate table with 5 rows
+     s f          i
+     - ---------- -
+     c 1.296544   4
+     c 0.03771765 7
+     c 3.371475   0
+     b 1.352739   4
+     b 1.187619   5
 
-      `csv?1:"wHeader.csv"                / default reader
-     a b  c
-     - -- -
-     3 1. x
-     2 2. y
-     1 4. z
+     `csv@g[5]                         / convert table to csv string
+     "s,f,i\nb,1.08707,3\na,5.506882,0\nc,8.938667,1\nc,6.217895,6\nb,1.542842,6\n"
 
-      "woHeader.csv"1:1_`csv t            / save without col headers
-     woHeader.csv
+      "sample.csv"1:`csv@g[5]          / write to sample.csv file
+     "sample.csv"
 
-      (",";"ifn")1:"wHeader.csv"          / separator and types
-     a b  c
-     - -- -
-     3 1. x
-     2 2. y
-     1 4. z
+      1:"sample.csv"                   / read from file
+     "s,f,i\na,3.669518,1\na,0.001226037,7\nb,2.792163,3\nc,8.539221,7\nb,9.333188,7\n"
 
-      (`e`f`g;",";"ifn")0:"woHeader.csv"  / names, separator and types
-     e f  g
-     - -- -
-     3 1. x
-     2 2. y
-     1 4. z
+      `csv?1:"sample.csv"              / read from file and convert from csv
+     s f           i
+     - ----------- -
+     a 3.669518    1
+     a 0.001226037 7
+     b 2.792163    3
+     c 8.539221    7
+     b 9.333188    7
 
-11.2 read csv => csv[x;y]
-=========================
+Given the small size of the file all this happens too quickly to notice the speed.  Let's give it a go with a bigger file.
 
-Enterprise only
+      \t "sample.csv"1:`csv@g[_1e7]
+     2587
+      \t t:`csv?1:"sample.csv"
+     388
 
-Convert y from csv format using type(s) x.  Before using 'csv' one must load the csv.so (linux) or csv.dylib (mac) shared library.  Types are integer (I), float (F), string (S), date (D), and time (T).
+Ten million rows via csv in under 1/2 a second.  Of course results will depend on hardware and number of columns also.
 
-      cjF:*"./csv.dylib"5:(,"_Z2ckPcS_")!," ss"; csv:{cjF[x;y]}
-      0:"some.csv"
-     x,y,z
-     1,1.,blue
-     2,0.1,red
-     3,0.01,green
-
-      csv["IFS";1:"some.csv"]  / y is not the file name but the file contents
-     x y    z
-     - ---- -----
-     1 1    blue
-     2 0.1  red
-     3 0.01 green
-
-11.3 read json => jk x
-======================
+11.2 export, import csv => 'csv@x, `csv?x
+=========================================
 
 Enterprise only
 
-Convert x from json format.  Before using 'jk' one must load the json.so (linux) or json.dylib (mac) shared library
+csv tools allows one to export tables into csv and import from csv.  Generally these functions are used with file i/o '1:'
 
-      jk:*"./json.dylib"5:(`$"_Z2jkPc")!" s" / load shared library
-      jk"{\"a\":[0.0,1.0,2.0], \"b\":true}"  / convert from json string
-     a|0 1 2.
-     b|1
+      "test.csv"1:`csv@[[]x:`a`b;y:3 2]  / write sample table to file
+     "test.csv"
 
-      jk@1:"ab.json"                         / convert from file input
-     a|0 1 2.
-     b|1
+      `csv?1:"test.csv"                  / read csv from file
+     x y
+     - -
+     a 3
+     b 2
+
+11.3 export, import json => 'json@x, `json?x
+============================================
+
+Export object x to json format or import string x from json format.  The json shared library will be automatically pulled from the Shakti website into the current directory.  Use of symbolic links with
+path on the binary may cause issues.
+
+      "test.json"1:`json@[[]x:`a`b;y:3 2]
+     "test.json"
+
+     `json?1:"test.json"
+     (,"x";,"y")!(,"a";3)
+     (,"x";,"y")!(,"b";2)
 
 11.4 write line => x 0:y
 ========================
@@ -4664,190 +4659,190 @@ sql: select A by B from T where C; update A from T; delete from T where C
 
 
 Tag Table:
-Node: Top120
-Node: Introduction5040
-Node: Verb16079
-Ref: x17738
-Ref: set17763
-Ref: flip18022
-Ref: plus18307
-Ref: negate18785
-Ref: minus18957
-Ref: first19064
-Ref: times19280
-Ref: divide19411
-Ref: where19552
-Ref: min/and20035
-Ref: reverse20294
-Ref: max/or20553
-Ref: asc20817
-Ref: desc20817
-Ref: less21208
-Ref: more21208
-Ref: group21509
-Ref: equal21762
-Ref: not22066
-Ref: match22183
-Ref: enum22566
-Ref: key23649
-Ref: enlist23874
-Ref: cat24014
-Ref: sort24351
-Ref: cut25003
-Ref: cut125265
-Ref: cut225417
-Ref: cut325611
-Ref: cut425885
-Ref: count26065
-Ref: take26369
-Ref: take126964
-Ref: take227333
-Ref: take327755
-Ref: take427953
-Ref: floor28312
-Ref: drop28403
-Ref: drop128917
-Ref: drop229100
-Ref: drop329376
-Ref: string29540
-Ref: parse29641
-Ref: unique29834
-Ref: find30078
-Ref: type30460
-Ref: at31004
-Ref: value31493
-Ref: dot31934
-Node: Adverb33115
-Ref: each34581
-Ref: over35184
-Ref: scan35312
-Ref: join36663
-Ref: split37034
-Ref: eachprior37292
-Ref: eachright38350
-Ref: eachleft38558
-Ref: cover38753
-Ref: cscan39066
-Node: Noun40242
-Ref: Atom Types41638
-Ref: bool44253
-Ref: int44940
-Ref: flt45620
-Ref: char46022
-Ref: name46255
-Ref: uuid46495
-Ref: time46652
-Ref: date47555
-Ref: datetime48016
-Node: List48930
-Node: Dictionary53401
-Node: User Functions59029
-Node: Expression62274
-Node: Named Functions63761
-Ref: Hcount64361
-Ref: Hfirst64454
-Ref: Hlast64547
-Ref: Hmin64649
-Ref: Hmax64764
-Ref: Hsum64879
-Ref: Hdot64981
-Ref: avg65140
-Ref: var65291
-Ref: dev65426
-Ref: med65468
-Ref: mode65510
-Ref: countd65556
-Ref: exp65610
-Ref: log65715
-Ref: sin65811
-Ref: cos65946
-Ref: sqr66090
-Ref: sqrt66175
-Ref: prm66275
-Ref: freq66450
-Ref: sums66806
-Ref: deltas66946
-Ref: rand67284
-Ref: has68165
-Ref: bin68459
-Ref: in68669
-Ref: within68843
-Ref: div69075
-Ref: mod69259
-Ref: bar69433
-Ref: cmb69622
-Ref: msum70050
-Ref: mavg70187
-Ref: topX70331
-Ref: keyF70489
-Ref: unkey70784
-Ref: meta70920
-Node: Knit Functions71051
-Ref: amend71346
-Ref: amend171869
-Ref: amend272118
-Ref: amend372337
-Ref: amend472642
-Ref: dmend72930
-Ref: dmend173260
-Ref: dmend373428
-Ref: dmend473593
-Node: I/O73754
-Ref: read csv75640
-Ref: read json76218
-Ref: w line76657
-Ref: r line76995
-Ref: w byte77108
-Ref: r byte77462
-Ref: r data77610
-Ref: w data78267
-Ref: k-ipc79207
-Ref: 3set79692
-Ref: 4get80107
-Node: FF80679
-Ref: ffi81029
-Node: Tables81462
-Ref: table82088
-Ref: utable83730
-Node: kSQL84269
-Ref: select85169
-Ref: A85736
-Ref: by B86589
-Ref: where C86918
-Ref: update87760
-Ref: delete88481
-Ref: Joins88763
-Ref: union89120
-Ref: leftjoin89641
-Ref: outer90420
-Ref: asof91055
-Ref: asof+92526
-Ref: insert93744
-Ref: upsert94090
-Node: System94504
-Ref: load94994
-Ref: timing95183
-Ref: variables95468
-Ref: files95576
-Ref: cd95670
-Node: Control Flow95796
-Ref: cond96032
-Node: Temporal Functions96402
-Ref: .z.d96762
-Ref: .z.t96923
-Node: Errors97801
-Ref: class98249
-Ref: rank98338
-Ref: length98462
-Ref: _type98585
-Ref: domain98694
-Ref: limit98816
-Ref: nyi99027
-Ref: eparse99354
-Ref: _value99507
-Node: Examples99635
-Node: Benchmark107625
-Node: Conclusion116297
+Node: Top118
+Node: Introduction5038
+Node: Verb16077
+Ref: x17736
+Ref: set17761
+Ref: flip18020
+Ref: plus18305
+Ref: negate18783
+Ref: minus18955
+Ref: first19062
+Ref: times19278
+Ref: divide19409
+Ref: where19550
+Ref: min/and20033
+Ref: reverse20292
+Ref: max/or20551
+Ref: asc20815
+Ref: desc20815
+Ref: less21206
+Ref: more21206
+Ref: group21507
+Ref: equal21760
+Ref: not22064
+Ref: match22181
+Ref: enum22564
+Ref: key23647
+Ref: enlist23872
+Ref: cat24012
+Ref: sort24349
+Ref: cut25001
+Ref: cut125263
+Ref: cut225415
+Ref: cut325609
+Ref: cut425883
+Ref: count26063
+Ref: take26367
+Ref: take126962
+Ref: take227331
+Ref: take327753
+Ref: take427951
+Ref: floor28310
+Ref: drop28401
+Ref: drop128915
+Ref: drop229098
+Ref: drop329374
+Ref: string29538
+Ref: parse29639
+Ref: unique29832
+Ref: find30076
+Ref: type30458
+Ref: at31002
+Ref: value31491
+Ref: dot31932
+Node: Adverb33113
+Ref: each34579
+Ref: over35182
+Ref: scan35310
+Ref: join36661
+Ref: split37032
+Ref: eachprior37290
+Ref: eachright38348
+Ref: eachleft38556
+Ref: cover38751
+Ref: cscan39064
+Node: Noun40240
+Ref: Atom Types41636
+Ref: bool44251
+Ref: int44938
+Ref: flt45618
+Ref: char46020
+Ref: name46253
+Ref: uuid46493
+Ref: time46650
+Ref: date47553
+Ref: datetime48014
+Node: List48928
+Node: Dictionary53399
+Node: User Functions59027
+Node: Expression62272
+Node: Named Functions63759
+Ref: Hcount64359
+Ref: Hfirst64452
+Ref: Hlast64545
+Ref: Hmin64647
+Ref: Hmax64762
+Ref: Hsum64877
+Ref: Hdot64979
+Ref: avg65138
+Ref: var65289
+Ref: dev65424
+Ref: med65466
+Ref: mode65508
+Ref: countd65554
+Ref: exp65608
+Ref: log65713
+Ref: sin65809
+Ref: cos65944
+Ref: sqr66088
+Ref: sqrt66173
+Ref: prm66273
+Ref: freq66448
+Ref: sums66804
+Ref: deltas66944
+Ref: rand67282
+Ref: has68163
+Ref: bin68457
+Ref: in68667
+Ref: within68841
+Ref: div69073
+Ref: mod69257
+Ref: bar69431
+Ref: cmb69620
+Ref: msum70048
+Ref: mavg70185
+Ref: topX70329
+Ref: keyF70487
+Ref: unkey70782
+Ref: meta70918
+Node: Knit Functions71049
+Ref: amend71344
+Ref: amend171867
+Ref: amend272116
+Ref: amend372335
+Ref: amend472640
+Ref: dmend72928
+Ref: dmend173258
+Ref: dmend373426
+Ref: dmend473591
+Node: I/O73752
+Ref: csv75982
+Ref: json76394
+Ref: w line76863
+Ref: r line77201
+Ref: w byte77314
+Ref: r byte77668
+Ref: r data77816
+Ref: w data78473
+Ref: k-ipc79413
+Ref: 3set79898
+Ref: 4get80313
+Node: FF80885
+Ref: ffi81235
+Node: Tables81668
+Ref: table82294
+Ref: utable83936
+Node: kSQL84475
+Ref: select85375
+Ref: A85942
+Ref: by B86795
+Ref: where C87124
+Ref: update87966
+Ref: delete88687
+Ref: Joins88969
+Ref: union89326
+Ref: leftjoin89847
+Ref: outer90626
+Ref: asof91261
+Ref: asof+92732
+Ref: insert93950
+Ref: upsert94296
+Node: System94710
+Ref: load95200
+Ref: timing95389
+Ref: variables95674
+Ref: files95782
+Ref: cd95876
+Node: Control Flow96002
+Ref: cond96238
+Node: Temporal Functions96608
+Ref: .z.d96968
+Ref: .z.t97129
+Node: Errors98007
+Ref: class98455
+Ref: rank98544
+Ref: length98668
+Ref: _type98791
+Ref: domain98900
+Ref: limit99022
+Ref: nyi99233
+Ref: eparse99560
+Ref: _value99713
+Node: Examples99841
+Node: Benchmark107831
+Node: Conclusion116503
 
 End Tag Table
 

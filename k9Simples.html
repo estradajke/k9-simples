@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- April 10, 2021
+<!-- July 4, 2021
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -3114,85 +3114,83 @@ other languages to k9.
 *4: https <a href="#g_t4get">get</a>
 *5: <a href="#ffi">ffi</a>:`f!&quot;ifsIF&quot;
 
-<a href="#read-json">jk</a>
-<a href="#read-csv">csv</a>
+<a href="#json">json</a>
+<a href="#csv">csv</a>
 </pre></div>
 
  
 <span id="Example-of-Data-I_002fO"></span><h3 class="section">11.1 Example of Data I/O</h3>
-<p>Let&rsquo;s begin with a simple example to show how to read data from a csv file.  We&rsquo;ll generate a small table and save it with and without headers (wHeader.csv and woHeader.csv respectively).  Then we&rsquo;ll read it back in, both specifying types and with the csv reader.  Types are specifed by one letter and the full list can be found in <a href="#Atom-Types">Atom Types</a>.
+<p>Let&rsquo;s begin with a simple example to write a sample table to csv and then read it back in again.  We&rsquo;ll use a function so the table can easily grow to a larger size.
 </p>
 <div class="example">
-<pre class="example"> t:[[]a:3 2 1;b:1. 2. 4.;c:`x`y`z];t / generate table
-a b  c
-- -- -
-3 1. x
-2 2. y
-1 4. z
+<pre class="example"> g:{+`s`f`i!(x?&quot;abc&quot;;x?10.;x?10)} / generate function for table
 
- &quot;wHeader.csv&quot;1:`csv t               / save with column headers
-wHeader.csv
+g[5]                              / generate table with 5 rows
+s f          i
+- ---------- -
+c 1.296544   4
+c 0.03771765 7
+c 3.371475   0
+b 1.352739   4
+b 1.187619   5
 
- `csv?1:&quot;wHeader.csv&quot;                / default reader
-a b  c
-- -- -
-3 1. x
-2 2. y
-1 4. z
+`csv@g[5]                         / convert table to csv string
+&quot;s,f,i\nb,1.08707,3\na,5.506882,0\nc,8.938667,1\nc,6.217895,6\nb,1.542842,6\n&quot;
 
- &quot;woHeader.csv&quot;1:1_`csv t            / save without col headers
-woHeader.csv
+ &quot;sample.csv&quot;1:`csv@g[5]          / write to sample.csv file
+&quot;sample.csv&quot;
 
- (&quot;,&quot;;&quot;ifn&quot;)1:&quot;wHeader.csv&quot;          / separator and types
-a b  c
-- -- -
-3 1. x
-2 2. y
-1 4. z
+ 1:&quot;sample.csv&quot;                   / read from file
+&quot;s,f,i\na,3.669518,1\na,0.001226037,7\nb,2.792163,3\nc,8.539221,7\nb,9.333188,7\n&quot;
 
- (`e`f`g;&quot;,&quot;;&quot;ifn&quot;)0:&quot;woHeader.csv&quot;  / names, separator and types
-e f  g
-- -- -
-3 1. x
-2 2. y
-1 4. z
+ `csv?1:&quot;sample.csv&quot;              / read from file and convert from csv
+s f           i
+- ----------- -
+a 3.669518    1
+a 0.001226037 7
+b 2.792163    3
+c 8.539221    7
+b 9.333188    7
 </pre></div>
 
-<span id="read-csv"></span><span id="read-csv-_21d2-csv_005bx_003by_005d"></span><h3 class="section">11.2 read csv &rArr; csv[x;y]</h3>
-<p>Enterprise only
-</p>
-<p>Convert y from csv format using type(s) x.  Before using <code>csv</code> one must load the csv.so (linux) or csv.dylib (mac) shared library.  Types are integer (I), float (F), string (S), date (D), and time (T).
+<p>Given the small size of the file all this happens too quickly to notice the speed.  Let&rsquo;s give it a go with a bigger file.
 </p>
 <div class="example">
-<pre class="example"> cjF:*&quot;./csv.dylib&quot;5:(,&quot;_Z2ckPcS_&quot;)!,&quot; ss&quot;; csv:{cjF[x;y]}
- 0:&quot;some.csv&quot;
-x,y,z       
-1,1.,blue   
-2,0.1,red   
-3,0.01,green
-
- csv[&quot;IFS&quot;;1:&quot;some.csv&quot;]  / y is not the file name but the file contents
-x y    z    
-- ---- -----
-1 1    blue 
-2 0.1  red  
-3 0.01 green
+<pre class="example"> \t &quot;sample.csv&quot;1:`csv@g[_1e7]
+2587
+ \t t:`csv?1:&quot;sample.csv&quot;
+388
 </pre></div>
 
-<span id="read-json"></span><span id="read-json-_21d2-jk-x"></span><h3 class="section">11.3 read json &rArr; jk x</h3>
+<p>Ten million rows via csv in under 1/2 a second.  Of course results will depend on hardware and number of columns also.
+</p>
+
+<span id="csv"></span><span id="export_002c-import-csv-_21d2-_0060csv_0040x_002c-_0060csv_003fx"></span><h3 class="section">11.2 export, import csv &rArr; &lsquo;csv@x, <em>`</em>csv?x</h3>
 <p>Enterprise only
 </p>
-<p>Convert x from json format.  Before using <code>jk</code> one must load the json.so (linux) or json.dylib (mac) shared library 
+<p>csv tools allows one to export tables into csv and import from csv.  Generally these functions are used with file i/o <code>1:</code>
 </p>
 <div class="example">
-<pre class="example"> jk:*&quot;./json.dylib&quot;5:(`$&quot;_Z2jkPc&quot;)!&quot; s&quot; / load shared library
- jk&quot;{\&quot;a\&quot;:[0.0,1.0,2.0], \&quot;b\&quot;:true}&quot;  / convert from json string
-a|0 1 2.
-b|1     
+<pre class="example"> &quot;test.csv&quot;1:`csv@[[]x:`a`b;y:3 2]  / write sample table to file
+&quot;test.csv&quot;
 
- jk@1:&quot;ab.json&quot;                         / convert from file input
-a|0 1 2.
-b|1     
+ `csv?1:&quot;test.csv&quot;                  / read csv from file
+x y
+- -
+a 3
+b 2
+</pre></div>
+
+<span id="json"></span><span id="export_002c-import-json-_21d2-_0060json_0040x_002c-_0060json_003fx"></span><h3 class="section">11.3 export, import json &rArr; &lsquo;json@x, <em>`</em>json?x</h3>
+<p>Export object x to json format or import string x from json format.  The json shared library will be automatically pulled from the Shakti website into the current directory.  Use of symbolic links with path on the binary may cause issues.
+</p>
+<div class="example">
+<pre class="example"> &quot;test.json&quot;1:`json@[[]x:`a`b;y:3 2]
+&quot;test.json&quot;
+
+`json?1:&quot;test.json&quot;
+(,&quot;x&quot;;,&quot;y&quot;)!(,&quot;a&quot;;3)
+(,&quot;x&quot;;,&quot;y&quot;)!(,&quot;b&quot;;2)
 </pre></div>
 
 <span id="w-line"></span><span id="write-line-_21d2-x-0_003ay"></span><h3 class="section">11.4 write line &rArr; x 0:y</h3>

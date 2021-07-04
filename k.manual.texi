@@ -3128,73 +3128,130 @@ other languages to k9.
 *4: https @ref{4get,get}
 *5: @ref{ffi}:`f!"ifsIF"
 
-@ref{read json,jk}
-@ref{read csv,csv}
+@ref{json}
+@ref{csv}
 @end example
 
  @c @ref{write json,`jk@} d
  @c @ref{write csv,`csv@} t
  
 @section Example of Data I/O
-Let's begin with a simple example to show how to read data from a csv file.  We'll generate a small table and save it with and without headers (wHeader.csv and woHeader.csv respectively).  Then we'll read it back in, both specifying types and with the csv reader.  Types are specifed by one letter and the full list can be found in @ref{Atom Types}.
+Let's begin with a simple example to write a sample table to csv and then read it back in again.  We'll use a function so the table can easily grow to a larger size.
 
 @example
- t:[[]a:3 2 1;b:1. 2. 4.;c:`x`y`z];t / generate table
-a b  c
-- -- -
-3 1. x
-2 2. y
-1 4. z
+ g:@{+`s`f`i!(x?"abc";x?10.;x?10)@} / generate function for table
 
- "wHeader.csv"1:`csv t               / save with column headers
-wHeader.csv
+g[5]                              / generate table with 5 rows
+s f          i
+- ---------- -
+c 1.296544   4
+c 0.03771765 7
+c 3.371475   0
+b 1.352739   4
+b 1.187619   5
 
- `csv?1:"wHeader.csv"                / default reader
-a b  c
-- -- -
-3 1. x
-2 2. y
-1 4. z
+`csv@@g[5]                         / convert table to csv string
+"s,f,i\nb,1.08707,3\na,5.506882,0\nc,8.938667,1\nc,6.217895,6\nb,1.542842,6\n"
 
- "woHeader.csv"1:1_`csv t            / save without col headers
-woHeader.csv
+ "sample.csv"1:`csv@@g[5]          / write to sample.csv file
+"sample.csv"
 
- (",";"ifn")1:"wHeader.csv"          / separator and types
-a b  c
-- -- -
-3 1. x
-2 2. y
-1 4. z
+ 1:"sample.csv"                   / read from file
+"s,f,i\na,3.669518,1\na,0.001226037,7\nb,2.792163,3\nc,8.539221,7\nb,9.333188,7\n"
 
- (`e`f`g;",";"ifn")0:"woHeader.csv"  / names, separator and types
-e f  g
-- -- -
-3 1. x
-2 2. y
-1 4. z
+ `csv?1:"sample.csv"              / read from file and convert from csv
+s f           i
+- ----------- -
+a 3.669518    1
+a 0.001226037 7
+b 2.792163    3
+c 8.539221    7
+b 9.333188    7
 @end example
 
-@anchor{read csv}@section read csv @result{} csv[x;y]
+Given the small size of the file all this happens too quickly to notice the speed.  Let's give it a go with a bigger file.
+
+@example
+ \t "sample.csv"1:`csv@@g[_1e7]
+2587
+ \t t:`csv?1:"sample.csv"
+388
+@end example
+
+Ten million rows via csv in under 1/2 a second.  Of course results will depend on hardware and number of columns also.
+
+@c Let's begin with a simple example to show how to read data from a csv file.  We'll generate a small table and save it with and without headers (wHeader.csv and woHeader.csv respectively).  Then we'll read it back in, both specifying types and with the csv reader.  Types are specifed by one letter and the full list can be found in @ref{Atom Types}.
+@c 
+@c @example
+@c  t:[[]a:3 2 1;b:1. 2. 4.;c:`x`y`z];t / generate table
+@c a b  c
+@c - -- -
+@c 3 1. x
+@c 2 2. y
+@c 1 4. z
+@c 
+@c  "wHeader.csv"1:`csv t               / save with column headers
+@c wHeader.csv
+@c 
+@c  `csv?1:"wHeader.csv"                / default reader
+@c a b  c
+@c - -- -
+@c 3 1. x
+@c 2 2. y
+@c 1 4. z
+@c 
+@c  "woHeader.csv"1:1_`csv t            / save without col headers
+@c woHeader.csv
+@c 
+@c  (",";"ifn")1:"wHeader.csv"          / separator and types
+@c a b  c
+@c - -- -
+@c 3 1. x
+@c 2 2. y
+@c 1 4. z
+@c 
+@c  (`e`f`g;",";"ifn")0:"woHeader.csv"  / names, separator and types
+@c e f  g
+@c - -- -
+@c 3 1. x
+@c 2 2. y
+@c 1 4. z
+@c @end example
+
+@anchor{csv}@section export, import csv @result{} `csv@@x, @math{`}csv?x
 Enterprise only
 
-Convert y from csv format using type(s) x.  Before using @code{csv} one must load the csv.so (linux) or csv.dylib (mac) shared library.  Types are integer (I), float (F), string (S), date (D), and time (T).
+csv tools allows one to export tables into csv and import from csv.  Generally these functions are used with file i/o @code{1:}
 
 @example
- cjF:*"./csv.dylib"5:(,"_Z2ckPcS_")!," ss"; csv:@{cjF[x;y]@}
- 0:"some.csv"
-x,y,z       
-1,1.,blue   
-2,0.1,red   
-3,0.01,green
+ "test.csv"1:`csv@@[[]x:`a`b;y:3 2]  / write sample table to file
+"test.csv"
 
- csv["IFS";1:"some.csv"]  / y is not the file name but the file contents
-x y    z    
-- ---- -----
-1 1    blue 
-2 0.1  red  
-3 0.01 green
+ `csv?1:"test.csv"                  / read csv from file
+x y
+- -
+a 3
+b 2
 @end example
 
+@c Convert y from csv format using type(s) x.  Before using @code{csv} one must load the csv.so (linux) or csv.dylib (mac) shared library.  Types are integer (I), float (F), string (S), date (D), and time (T).
+@c 
+@c @example
+@c  cjF:*"./csv.dylib"5:(,"_Z2ckPcS_")!," ss"; csv:@{cjF[x;y]@}
+@c  0:"some.csv"
+@c x,y,z       
+@c 1,1.,blue   
+@c 2,0.1,red   
+@c 3,0.01,green
+@c 
+@c  csv["IFS";1:"some.csv"]  / y is not the file name but the file contents
+@c x y    z    
+@c - ---- -----
+@c 1 1    blue 
+@c 2 0.1  red  
+@c 3 0.01 green
+@c @end example
+@c 
 @c @anchor{write csv}@section write csv @result{} @math{`}csv x
 @c Convert x to csv format.  Works on lists and tables.  You can also use @math{`}cs.
 @c 
@@ -3205,31 +3262,18 @@ x y    z
 @c 2,4.
 @c @end example
 @c 
-@anchor{read json}@section read json @result{} jk x
-Enterprise only
-
-Convert x from json format.  Before using @code{jk} one must load the json.so (linux) or json.dylib (mac) shared library 
+@anchor{json}@section export, import json @result{} `json@@x, @math{`}json?x
+Export object x to json format or import string x from json format.  The json shared library will be automatically pulled from the Shakti website into the current directory.  Use of symbolic links with path on the binary may cause issues.
 
 @example
- jk:*"./json.dylib"5:(`$"_Z2jkPc")!" s" / load shared library
- jk"@{\"a\":[0.0,1.0,2.0], \"b\":true@}"  / convert from json string
-a|0 1 2.
-b|1     
+ "test.json"1:`json@@[[]x:`a`b;y:3 2]
+"test.json"
 
- jk@@1:"ab.json"                         / convert from file input
-a|0 1 2.
-b|1     
+`json?1:"test.json"
+(,"x";,"y")!(,"a";3)
+(,"x";,"y")!(,"b";2)
 @end example
 
-@c @anchor{write json}@section write json @result{} @math{`}js x
-@c Convert x to json format.  Works on lists and tables.
-@c 
-@c @example
-@c  `js [[]a:1 2;b:3. 4.]
-@c @{a:1,b:3.@}
-@c @{a:2,b:4.@}
-@c @end example
-@c 
 @c @anchor{read nv}@section read name value @result{} @math{`}nv?x
 @c Convert x, a list of name:value pairs, to a dictionary.
 @c 
