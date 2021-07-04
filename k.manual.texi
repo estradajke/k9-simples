@@ -20,7 +20,7 @@ Copyright @copyright{} 2020 John Estrada
 @c @ifnottex
 @node Top
 @top k9: Manual
-This manual is for Shakti (k9) build 2021.03.12.@*
+This manual is for Shakti (k9) build 2021.06.30.@*
 
 The Shakti programming language is the work of Arthur Whitney and the team at Shakti.  The language comes from a lineage of similar languages going back to APL.  It's also known as k9 given the similarities to k, k2, ..., k6, k7 and the fact that Arthur also wrote those.  k9 is still under development so expect a bit of syntax change and likely even more improvements.
 
@@ -991,7 +991,7 @@ d|3
 If x is a function, then select the values where the function is non-zero.
 
 @example
- (0.5<)#10 rand 1.           / select values greater than 0.5
+ (0.5<)#10?1.           / select values greater than 0.5
 0.840732 0.5330717 0.7539563 0.643315 0.6993048f
 @end example
 
@@ -1075,7 +1075,7 @@ c|2
 If x is a function, then select values where the function is zero.
 
 @example
- (0.5<)_10 rand 1.           / values less than or equal to 0.5
+ (0.5<)_10?1.           / values less than or equal to 0.5
 0.02049699 0.1269226
 @end example
 
@@ -4417,7 +4417,7 @@ Let's use k9 to generate a set of random quotes for a particular day and symbol.
  S:#[;`eurusd]                             / symbol
  T:^?[;_8.64e7]@@                           / time in number of milliseconds
  E:?[;"ce"]                                / exchange
- B:11904++\-3+nf bin/:?[;*|nf]@@            / bid price, start at 12415
+ B:11904++\-3+nf bin/:?[;*|nf]@@            / bid price, start at 11904
  P:?[;2,2,8#1]@@                            / bid/ask spread
  Q:@{+qs!((D;S;T;E)@@'x),(*;+/)@@\:(B;P)@@'x@}  / generator quote table
  q:Q@@_1e8;10#q
