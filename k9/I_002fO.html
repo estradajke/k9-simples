@@ -196,13 +196,13 @@ b 2
 \t tc:`csv?1:&quot;t.csv&quot;            / read from csv
 314
 
-&quot;t.lz4&quot;1:`lz4@`csv@g[_1e7]    / write to lz4
+&quot;t.lz4&quot;1:`lz4@`csv@g[_1e7]      / write to lz4
 &quot;t.lz4&quot;
 
 \t tz:`csv?`lz4?1:&quot;t.lz4&quot;       / read from lz4 compressed csv
 525
 
- &quot;t.zstd&quot;1:`zstd@`csv@g[_1e7] / write to zstd
+ &quot;t.zstd&quot;1:`zstd@`csv@g[_1e7]   / write to zstd
 &quot;t.zstd&quot;
 
  \t tz:`csv?`zstd?1:&quot;t.zstd&quot;    / read from zstd compressed csv
