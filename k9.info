@@ -3217,14 +3217,36 @@ File: k9.info,  Node: FF,  Next: Tables,  Prev: I/O,  Up: Top
 12 Foreign Functions
 ********************
 
-k9 is able to interface with other programing laguages via it's foreign function interface (ffi).
-
 python:from k import k;k('+',2,3);nodejs:k=require('k').k;k('+',2,3)
 *ffi:"./a.so"5:`a!"fi" //double a(int x){return 2.3+x;}
 
 Enterprise only
 
-12.1 ffi => 5:
+k9 is able to interface with other programing laguages via shared libraries (python and nodejs) and the foreign function interface (ffi).
+
+12.1 python
+===========
+
+In order to have python call k, one has to download the shared object file (k.so for linux and m.so for mac) and save it in the appropriate directory.
+
+     user1@hw1:~$ python3 -m site --user-site
+     /Users/user1/Library/Python/3.8/lib/python/site-packages
+
+Once the file is stored (and it must be called k.so even on the mac) then one can start a python session and call k.
+
+     user1@hw1:~$ python3
+     Python 3.8.5 (v3.8.5:580fbb018f, Jul 20 2020, 12:11:27)
+     [Clang 6.0 (clang-600.0.57)] on darwin
+     Type "help", "copyright", "credits" or "license" for more information.
+     >>> import k
+     >>> k.k('x:5?10.')
+     >>> k.k('x')
+     [7.691266643814743, 6.843659253790975, 6.399056380614638, 9.637191963847727, 4.250652831979096]
+     >>> len(k.k('x'))
+     5
+     >>>
+
+12.2 ffi => 5:
 ==============
 
 Load shared library.
@@ -4851,49 +4873,50 @@ Ref: k-ipc82589
 Ref: 3set83074
 Ref: 4get83489
 Node: FF84061
-Ref: ffi84411
-Node: Tables84844
-Ref: table85470
-Ref: utable87112
-Node: kSQL87651
-Ref: select88551
-Ref: A89118
-Ref: by B89971
-Ref: where C90300
-Ref: update91142
-Ref: delete91863
-Ref: Joins92145
-Ref: union92502
-Ref: leftjoin93023
-Ref: outer93802
-Ref: asof94437
-Ref: asof+95908
-Ref: insert97126
-Ref: upsert97472
-Node: System97886
-Ref: load98376
-Ref: timing98565
-Ref: variables98850
-Ref: files98958
-Ref: cd99052
-Node: Control Flow99178
-Ref: cond99414
-Node: Temporal Functions99784
-Ref: .z.d100144
-Ref: .z.t100305
-Node: Errors101183
-Ref: class101631
-Ref: rank101720
-Ref: length101844
-Ref: _type101967
-Ref: domain102076
-Ref: limit102198
-Ref: nyi102409
-Ref: eparse102736
-Ref: _value102889
-Node: Examples103017
-Node: Benchmark110992
-Node: Conclusion119664
+Ref: python84451
+Ref: ffi85263
+Node: Tables85696
+Ref: table86322
+Ref: utable87964
+Node: kSQL88503
+Ref: select89403
+Ref: A89970
+Ref: by B90823
+Ref: where C91152
+Ref: update91994
+Ref: delete92715
+Ref: Joins92997
+Ref: union93354
+Ref: leftjoin93875
+Ref: outer94654
+Ref: asof95289
+Ref: asof+96760
+Ref: insert97978
+Ref: upsert98324
+Node: System98738
+Ref: load99228
+Ref: timing99417
+Ref: variables99702
+Ref: files99810
+Ref: cd99904
+Node: Control Flow100030
+Ref: cond100266
+Node: Temporal Functions100636
+Ref: .z.d100996
+Ref: .z.t101157
+Node: Errors102035
+Ref: class102483
+Ref: rank102572
+Ref: length102696
+Ref: _type102819
+Ref: domain102928
+Ref: limit103050
+Ref: nyi103261
+Ref: eparse103588
+Ref: _value103741
+Node: Examples103869
+Node: Benchmark111844
+Node: Conclusion120516
 
 End Tag Table
 

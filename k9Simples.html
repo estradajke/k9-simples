@@ -3381,14 +3381,39 @@ Next: <a href="#Tables" accesskey="n" rel="next">Tables</a>, Previous: <a href="
 </div>
 <span id="Foreign-Functions"></span><h2 class="chapter">12 Foreign Functions</h2>
 
-<p>k9 is able to interface with other programing laguages via it&rsquo;s foreign function interface (ffi).
-</p>
 <pre class="verbatim">python:from k import k;k('+',2,3);nodejs:k=require('k').k;k('+',2,3)
 *ffi:&quot;./a.so&quot;5:`a!&quot;fi&quot; //double a(int x){return 2.3+x;}
 </pre>
 <p>Enterprise only
 </p>
-<span id="ffi"></span><span id="ffi-_21d2-5_003a"></span><h3 class="section">12.1 ffi &rArr; 5:</h3>
+<p>k9 is able to interface with other programing laguages via shared libraries (python and nodejs) and the foreign function interface (ffi).
+</p>
+<span id="python"></span><span id="python-1"></span><h3 class="section">12.1 python</h3>
+<p>In order to have python call k, one has to download the shared object file (k.so for linux and m.so for mac) and save it in the appropriate directory.
+</p>
+<div class="example">
+<pre class="example">user1@hw1:~$ python3 -m site --user-site
+/Users/user1/Library/Python/3.8/lib/python/site-packages
+</pre></div>
+
+<p>Once the file is stored (and it must be called k.so even on the mac) then one can start a python session and call k.
+</p>
+<div class="example">
+<pre class="example">user1@hw1:~$ python3
+Python 3.8.5 (v3.8.5:580fbb018f, Jul 20 2020, 12:11:27) 
+[Clang 6.0 (clang-600.0.57)] on darwin
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; import k
+&gt;&gt;&gt; k.k('x:5?10.')
+&gt;&gt;&gt; k.k('x')
+[7.691266643814743, 6.843659253790975, 6.399056380614638, 9.637191963847727, 4.250652831979096]
+&gt;&gt;&gt; len(k.k('x'))
+5
+&gt;&gt;&gt; 
+</pre></div>
+
+
+<span id="ffi"></span><span id="ffi-_21d2-5_003a"></span><h3 class="section">12.2 ffi &rArr; 5:</h3>
 
 <p>Load shared library.
 </p>

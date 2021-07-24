@@ -3459,14 +3459,39 @@ Execute string y using handle x.  Handle x should have already been created usin
 @node FF
 @chapter Foreign Functions
 
-k9 is able to interface with other programing laguages via it's foreign function interface (ffi).
-
 @verbatim
 python:from k import k;k('+',2,3);nodejs:k=require('k').k;k('+',2,3)
 *ffi:"./a.so"5:`a!"fi" //double a(int x){return 2.3+x;}
 @end verbatim
 
 Enterprise only
+
+k9 is able to interface with other programing laguages via shared libraries (python and nodejs) and the foreign function interface (ffi).
+
+@anchor{python}@section python
+In order to have python call k, one has to download the shared object file (k.so for linux and m.so for mac) and save it in the appropriate directory.
+
+@example
+user1@@hw1:~$ python3 -m site --user-site
+/Users/user1/Library/Python/3.8/lib/python/site-packages
+@end example
+
+Once the file is stored (and it must be called k.so even on the mac) then one can start a python session and call k.
+
+@example
+user1@@hw1:~$ python3
+Python 3.8.5 (v3.8.5:580fbb018f, Jul 20 2020, 12:11:27) 
+[Clang 6.0 (clang-600.0.57)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import k
+>>> k.k('x:5?10.')
+>>> k.k('x')
+[7.691266643814743, 6.843659253790975, 6.399056380614638, 9.637191963847727, 4.250652831979096]
+>>> len(k.k('x'))
+5
+>>> 
+@end example
+
 
 @anchor{ffi}@section ffi @result{} 5:
 
