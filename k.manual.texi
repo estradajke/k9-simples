@@ -1520,6 +1520,11 @@ Apply f[x;y] to each value of y, i.e. the right one.
 0 1  
 10 11
 20 21
+
+ "pre-",/:("apple";"banana";"cherry")
+pre-apple 
+pre-banana
+pre-cherry
 @end example
 
 @anchor{eachleft}@section eachleft @result{} f\:[x;y]
@@ -1533,6 +1538,11 @@ Apply f[x;y] to each value of x, i.e. the left one.
  @{x+10*y@}\:[!2;!3]
 0 10 20
 1 11 21
+
+ ("apple";"banana";"cherry"),\:"-post"
+apple-post 
+banana-post
+cherry-post
 @end example
 
 @anchor{cover}@section Converge Over @result{} g/:x or (n;g)/:x

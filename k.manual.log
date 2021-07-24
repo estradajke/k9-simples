@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdfetex 2020.5.15)  4 JUL 2021 17:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdfetex 2020.5.15)  24 JUL 2021 09:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**\nonstopmode \input ./k.manual.texi
+**\nonstopmode \input ./k.manual.texi \input ./k.manual.texi
 (./k.manual.texi (/Users/estradaj/GitHub/k9-simples/texinfo.tex
 Loading texinfo [version 2019-09-20.22]:
 \outerhsize=\dimen16
@@ -1042,7 +1042,7 @@ Overfull \hbox (54.25473pt too wide) in paragraph at lines 1392--1392
 [25] [26] [27] [28] Chapter 4 [29] [30] [31] [32] [33] Chapter 5 [34] [35]
 [36] [37] Chapter 6 [38] [39] [40] [41] [42] [43] Chapter 7 [44] [45] [46]
 Chapter 8 [47] [48] Chapter 9 [49]
-Overfull \hbox (53.60722pt too wide) in paragraph at lines 2526--2526
+Overfull \hbox (53.60722pt too wide) in paragraph at lines 2536--2536
  [][][]@smalltt [Hcount], page 50,[][] [][][Hfirst], page 50,[][] [][][Hlast], 
 page 50,[][] [][][Hmin], page 50,[][] [][][Hmax], page 50,[][] [][][Hsum],|
 
@@ -1056,7 +1056,7 @@ page 50,[][] [][][Hmin], page 50,[][] [][][Hmax], page 50,[][] [][][Hsum],|
 
 [50] [51] [52] [53] [54] [55] [56] Chapter 10 [57] [58] [59] Chapter 11
 [60] [61]
-Overfull \hbox (43.6852pt too wide) in paragraph at lines 3155--3155
+Overfull \hbox (43.6852pt too wide) in paragraph at lines 3165--3165
  []@texttt "s,f,i\nb,1.08707,3\na,5.506882,0\nc,8.938667,1\nc,6.217895,6\nb,1.5
 42842,6\n"[] |
 
@@ -1069,7 +1069,7 @@ Overfull \hbox (43.6852pt too wide) in paragraph at lines 3155--3155
 .etc.
 
 
-Overfull \hbox (66.67995pt too wide) in paragraph at lines 3161--3161
+Overfull \hbox (66.67995pt too wide) in paragraph at lines 3171--3171
  []@texttt "s,f,i\na,3.669518,1\na,0.001226037,7\nb,2.792163,3\nc,8.539221,7\nb
 ,9.333188,7\n"[] |
 
@@ -1083,7 +1083,7 @@ Overfull \hbox (66.67995pt too wide) in paragraph at lines 3161--3161
 
 [62] [63] [64] [65] [66] Chapter 12 [67] Chapter 13 [68] [69] Chapter 14
 [70]
-Overfull \hbox (66.67995pt too wide) in paragraph at lines 3599--3599
+Overfull \hbox (66.67995pt too wide) in paragraph at lines 3609--3609
  []@texttt {[][][select], page 71[][]|[][][update], page 74[][]} [][][A], page 
 72,[][] [][][by B], page 73,[][] from T [][][where|
 
@@ -1096,7 +1096,7 @@ Overfull \hbox (66.67995pt too wide) in paragraph at lines 3599--3599
 .etc.
 
 
-Overfull \hbox (124.16682pt too wide) in paragraph at lines 3602--3602
+Overfull \hbox (124.16682pt too wide) in paragraph at lines 3612--3612
  []@texttt x,y      / [][][insert], page 80[][], [][][upsert], page 80[][], [][
 ][union], page 75[][], equi-and-asof [][][leftjoin],|
 
@@ -1110,7 +1110,7 @@ Overfull \hbox (124.16682pt too wide) in paragraph at lines 3602--3602
 
 [71] [72] [73] [74] [75] [76] [77] [78] [79] [80] Chapter 15 [81] [82]
 Chapter 16 [83] Chapter 17 [84] [85] Chapter 18 [86] [87] Chapter 19 [88]
-Overfull \hbox (95.42339pt too wide) in paragraph at lines 4378--4378
+Overfull \hbox (95.42339pt too wide) in paragraph at lines 4388--4388
  [] @texttt B:100++\-1+n?3      / generate bids near 100, equivalent to: 100 + 
 (+\((-1)+n rand 3))[] |
 
@@ -1123,7 +1123,7 @@ Overfull \hbox (95.42339pt too wide) in paragraph at lines 4378--4378
 .etc.
 
 [89]
-Overfull \hbox (26.43913pt too wide) in paragraph at lines 4418--4418
+Overfull \hbox (26.43913pt too wide) in paragraph at lines 4428--4428
  [] @texttt T:^?[;_8.64e7]@                           / time in number of milli
 seconds[] |
 
@@ -1168,7 +1168,7 @@ Here is how much of TeX's memory you used:
  4869 multiletter control sequences out of 15000+600000
  34203 words of font info for 119 fonts, out of 8000000 for 9000
  590 hyphenation exceptions out of 8191
- 14i,7n,16p,698b,556s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 14i,7n,16p,721b,556s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2020basic/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmb10.pfb></usr/local/texlive/2020basi
 c/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2020
@@ -1180,7 +1180,7 @@ al/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr
 /local/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb><
 /usr/local/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pf
 b>
-Output written on k.manual.pdf (102 pages, 268748 bytes).
+Output written on k.manual.pdf (102 pages, 268798 bytes).
 PDF statistics:
  1017 PDF objects out of 1200 (max. 8388607)
  776 compressed objects within 8 object streams
