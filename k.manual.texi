@@ -1203,16 +1203,19 @@ drow
 @c There is also another use of @code{@@} where x is a special name, eg. @math{`}js, @math{`}csv (or @math{`}cs), or @math{`}nv.  This is further discussed in the @ref{I/O} section.
 @c 
 @anchor{value}@section value @result{} .x
-Evaluate a string of valid k code or list of k code.  Can also be used to covert from a string to a numeric, 
-temporal or name type.
+Evaluate a string of valid k code, list of k code, or a system command.  Can also be used to covert from a string to a numeric, temporal or name type.
 
+String of k code
 @example
  ."3+2"
 5
 
  ."20*1+!3"
 20 40 60
+@end example
 
+List of k code
+@example
  .(*;16;3)
 48
 
@@ -1225,7 +1228,17 @@ temporal or name type.
 2 
 14
 0
+@end example
 
+System command (must be prefixed with \\)
+@example
+ ."\\ls ."
+Mi2.0     
+json.dylib
+@end example
+
+Convert from string to numeric or name.
+@example
  ."15"
 15
 
