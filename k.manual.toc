@@ -29,10 +29,10 @@
 @numsecentry{reverse @result {} |x}{2.12}{}{10}
 @numsecentry{or @result {} x|y}{2.13}{}{10}
 @numsecentry{asc(desc) @result {} < (>) x}{2.14}{}{10}
-@numsecentry{less (more) @result {} x < (>) y}{2.15}{}{11}
+@numsecentry{less (more) @result {} x < (>) y}{2.15}{}{10}
 @numsecentry{group @result {} =x}{2.16}{}{11}
 @numsecentry{equal @result {} x=y}{2.17}{}{11}
-@numsecentry{not @result {} ~x}{2.18}{}{12}
+@numsecentry{not @result {} ~x}{2.18}{}{11}
 @numsecentry{match @result {} x~y}{2.19}{}{12}
 @numsecentry{enum @result {} !x}{2.20}{}{12}
 @numsecentry{key @result {} x!y}{2.21}{}{13}
@@ -47,11 +47,11 @@
 @numsecentry{string @result {} $x}{2.30}{}{19}
 @numsecentry{parse @result {} x$y}{2.31}{}{19}
 @numsecentry{unique @result {} ?x}{2.32}{}{19}
-@numsecentry{[n]find @result {} x?y}{2.33}{}{19}
-@numsecentry{type @result {} @@x}{2.34}{}{20}
-@numsecentry{[n]at @result {} x@@y}{2.35}{}{20}
+@numsecentry{find/rand @result {} x?y}{2.33}{}{19}
+@numsecentry{type @result {} @@x}{2.34}{}{19}
+@numsecentry{[f]at @result {} x@@y}{2.35}{}{20}
 @numsecentry{value @result {} .x}{2.36}{}{21}
-@numsecentry{dot @result {} x.y}{2.37}{}{22}
+@numsecentry{[f]dot @result {} x.y}{2.37}{}{22}
 @numchapentry{Adverbs}{3}{Adverb}{24}
 @numsecentry{each @result {} f'x}{3.1}{}{24}
 @numsecentry{over @result {} f/y or x f/y}{3.2}{}{25}

@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdfetex 2020.5.15)  25 JUL 2021 10:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdfetex 2020.5.15)  28 JUL 2021 13:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**\nonstopmode \input ./k.manual.texi \input ./k.manual.texi
+**\nonstopmode \input ./k.manual.texi
 (./k.manual.texi (/Users/estradaj/GitHub/k9-simples/texinfo.tex
 Loading texinfo [version 2019-09-20.22]:
 \outerhsize=\dimen16
@@ -357,7 +357,7 @@ cscan], page 28,[][]      c\
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
-[]@texttt * [][][first], page 8,[][]     [][][times], page 9,[][]   [y]f':[][][
+[]@texttt * [][][first], page 8,[][]     [][][times], page 8,[][]   [y]f':[][][
 eachprior], page 27,[][]
 
 @hbox(7.60416+2.43333)x433.62
@@ -408,9 +408,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 1--34
 .etc.
 
 
-Overfull \hbox (146.99747pt too wide) in paragraph at lines 1--34
-[]@texttt | [][][reverse], page 10,[][]   [][][max/or], page 10,[][]           
-                                                []|
+Overfull \hbox (141.24878pt too wide) in paragraph at lines 1--34
+[]@texttt | [][][reverse], page 9,[][]   [][][max/or], page 10,[][]            
+                                               []|
 
 @hbox(7.60416+2.43333)x433.62
 .@hbox(0.0+0.0)x0.0
@@ -430,7 +430,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1--34
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
-[]@texttt < [][][asc], page 10,[][]       [][][less], page 11,[][]       [][]Ch
+[]@texttt < [][][asc], page 10,[][]       [][][less], page 10,[][]       [][]Ch
 apter 11 [I/O], page 62,[][]
 
 @hbox(7.60416+2.43333)x433.62
@@ -443,7 +443,7 @@ apter 11 [I/O], page 62,[][]
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
-[]@texttt > [][][desc], page 10,[][]      [][][more], page 11,[][]       0: [][
+[]@texttt > [][][desc], page 10,[][]      [][][more], page 10,[][]       0: [][
 ][r line], page 64[][]/[][][w
 
 @hbox(7.60416+2.43333)x433.62
@@ -615,7 +615,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1--34
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
-[]@texttt $ [][][string], page 19,[][]    [][][parse], page 19,[][]      $[b;t;
+[]@texttt $ [][][string], page 18,[][]    [][][parse], page 19,[][]      $[b;t;
 f] [][][cond], page 84,[][]
 
 @hbox(7.60416+2.43333)x433.62
@@ -627,9 +627,9 @@ f] [][][cond], page 84,[][]
 .etc.
 
 
-Overfull \hbox (210.23303pt too wide) in paragraph at lines 1--34
-[]@texttt ? [][][unique], page 19,[][]    [][][find], page 19[][]/[][][rand], p
-age 53,[][]                                                        []|
+Overfull \hbox (146.99747pt too wide) in paragraph at lines 1--34
+[]@texttt ? [][][unique], page 19,[][]    [][][find/rand], page 19,[][]        
+                                                []|
 
 @hbox(7.60416+2.43333)x433.62
 .@hbox(0.0+0.0)x0.0
@@ -649,8 +649,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 1--34
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
-[]@texttt @ [][][type], page 19,[][]   [f][][][at], page 20,[][]         @[x;i;
-f[;y]] [][][amend],
+[]@texttt @ [][][type], page 19,[][]   [f]at         @[x;i;f[;y]] [][][amend], 
+page 58,[][]
 
 @hbox(7.60416+2.43333)x433.62
 .@hbox(0.0+0.0)x0.0
@@ -1175,12 +1175,12 @@ texinfo.tex: doing @verbatiminclude of k.d
  (/Users/estradaj/GitHub/k9-simples/k.d) [100] ) 
 Here is how much of TeX's memory you used:
  3967 strings out of 496271
- 39446 string characters out of 6185843
- 133837 words of memory out of 5000000
+ 39466 string characters out of 6185843
+ 133316 words of memory out of 5000000
  4872 multiletter control sequences out of 15000+600000
  34203 words of font info for 119 fonts, out of 8000000 for 9000
  590 hyphenation exceptions out of 8191
- 14i,7n,16p,721b,556s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 14i,7n,16p,698b,556s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2020basic/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmb10.pfb></usr/local/texlive/2020basi
 c/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2020
@@ -1192,9 +1192,9 @@ al/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr
 /local/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb><
 /usr/local/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pf
 b>
-Output written on k.manual.pdf (102 pages, 269706 bytes).
+Output written on k.manual.pdf (102 pages, 269599 bytes).
 PDF statistics:
- 1018 PDF objects out of 1200 (max. 8388607)
+ 1016 PDF objects out of 1200 (max. 8388607)
  777 compressed objects within 8 object streams
  285 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)

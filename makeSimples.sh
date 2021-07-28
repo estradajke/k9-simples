@@ -45,9 +45,9 @@ sed -e 's/@/@@/g' \
     -e 's/string/@ref{string}/g' \
     -e 's/parse/@ref{parse}/g' \
     -e 's/unique/@ref{unique}/g' \
-    -e 's/find/@ref{find}/g' \
+    -e 's/find\/rand/@ref{find\/rand}/g' \
     -e '20,100 s/type/@ref{type}/g' \
-    -e 's/]at/]@ref{at}/g' \
+    -e 's/[f]at/[f]@ref{at}/g' \
     -e 's/value/@ref{value}/g' \
     -e '1,26 s/dot/@ref{dot}/g' \
     -e '1,10 s/join/@ref{join}/g' \
@@ -128,7 +128,7 @@ sed -e 's/@/@@/g' \
     -e '20,40 s/mavg/@ref{mavg}/g' \
     -e '20,40 s/sums/@ref{sums}/g' \
     -e '20,40 s/deltas/@ref{deltas}/g' \
-    -e '20,40 s/rand/@ref{rand}/g' \
+    -e '20,40 s/randXXX/@ref{randXXX}/g' \
     -e '20,40 s/has/@ref{has}/g' \
     -e '28,35 s/count/@ref{Hcount,count} /g' \
     -e '28,35 s/first/@ref{Hfirst,first}/g' \

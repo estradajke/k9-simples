@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- July 25, 2021
+<!-- July 28, 2021
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -125,8 +125,8 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; <
 <tt>#&nbsp;<a href="#count">count</a>&nbsp;&nbsp;[f]<a href="#take">take</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
 <tt>_&nbsp;<a href="#floor">floor</a>&nbsp;&nbsp;[f]<a href="#drop">drop</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
 <tt>$&nbsp;<a href="#string">string</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#parse">parse</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$[b;t;f]&nbsp;<a href="#cond">cond</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
-<tt>?&nbsp;<a href="#unique">unique</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#find">find</a>/<a href="#rand">rand</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
-<tt>@&nbsp;<a href="#type">type</a>&nbsp;&nbsp;&nbsp;[f]<a href="#at">at</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@[x;i;f[;y]]&nbsp;<a href="#amend">amend</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Tables">table</a>&nbsp;[[]n:`b`c;i:2&nbsp;3]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
+<tt>?&nbsp;<a href="#unique">unique</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#find_002frand">find/rand</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
+<tt>@&nbsp;<a href="#type">type</a>&nbsp;&nbsp;&nbsp;[f]at&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@[x;i;f[;y]]&nbsp;<a href="#amend">amend</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Tables">table</a>&nbsp;[[]n:`b`c;i:2&nbsp;3]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
 <tt>.&nbsp;<a href="#value">value</a>&nbsp;&nbsp;[f]<a href="#Hdot">dot</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.[x;i;f[;y]]&nbsp;<a href="#dmend">dmend</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#utable">utable</a>&nbsp;&nbsp;[[n:`b`c]i:2&nbsp;3]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
 <tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
 <tt><a href="#Hcount">count</a> &nbsp;<a href="#Hfirst">first</a>&nbsp;<a href="#Hlast">last</a>&nbsp;<a href="#Hmin">min</a>&nbsp;<a href="#Hmax">max</a>&nbsp;<a href="#Hsum">sum</a>&nbsp;<a href="#avg">avg</a>&nbsp;<a href="#var">var</a>&nbsp;<a href="#dev">dev</a>&nbsp;[<a href="#med">med</a>&nbsp;..]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
@@ -424,7 +424,7 @@ Next: <a href="#Adverb" accesskey="n" rel="next">Adverb</a>, Previous: <a href="
 </p>
 <p>Most functions are overloaded and change depending on the number of arguments.  This can confuse new users.  Eg. <code>(1 4)++(2 3;5 6;7 8)</code> contains the plus symbol once as flip and then for addition.  (Remember evaluation is right to left!)
 </p>
-<p>There are verbs that can take a function argument. Those are listed with a &rsquo;[f]&rsquo; prefix.  These include [f]cut, [f]take, and [f]drop.  A few can take a special name prefix and those are listed with a &rsquo;n&rsquo; prefix and include [n]find, and [n]at.
+<p>There are verbs that can take a function argument. Those are listed with a &rsquo;[f]&rsquo; prefix.  These include [f]cut, [f]take, [f]drop, [f]at, and [f]dot.
 </p>
 <div class="example">
 <pre class="example">Verb
@@ -439,15 +439,15 @@ Next: <a href="#Adverb" accesskey="n" rel="next">Adverb</a>, Previous: <a href="
 &gt; <a href="#asc">desc</a>,      <a href="#less">more</a>.
 = <a href="#group">group</a>,     <a href="#equal">equal</a>.
 ~ <a href="#not">not</a>,       <a href="#match">match</a>.
-! <a href="#enum">enum</a>,      <a href="#key">key</a>.
+! <a href="#key">key</a>,       <a href="#key">key</a>.
 , <a href="#enlist">list</a>,      <a href="#cat">cat</a>.
 ^ <a href="#sort">sort</a>,   [f]<a href="#cut">cut</a>. 
 # <a href="#count">count</a>,  [f]<a href="#take">take</a>.  
 _ <a href="#floor">floor</a>,  [f]<a href="#drop">drop</a>.    
 $ <a href="#string">string</a>,    <a href="#parse">parse</a>.    
-? <a href="#unique">unique</a>, [n]<a href="#find">find</a>.    
-@ <a href="#type">type</a>,   [n]<a href="#at">at</a>.    
-. <a href="#value">value</a>,     <a href="#dot">dot</a>.
+? <a href="#unique">unique</a>,    <a href="#find_002frand">find/rand</a>.    
+@ <a href="#type">type</a>,   [f]<a href="#at">at</a>.    
+. <a href="#value">value</a>,   [f]<a href="#dot">dot</a>.
 
 </pre></div>
 
@@ -1124,7 +1124,7 @@ c|2
 ?&quot;ban&quot;
 </pre></div>
 
-<span id="find"></span><span id="g_t_005bn_005dfind-_21d2-x_003fy"></span><h3 class="section">2.33 [n]find &rArr; x?y</h3>
+<span id="find_002frand"></span><span id="find_002frand-_21d2-x_003fy"></span><h3 class="section">2.33 find/rand &rArr; x?y</h3>
 <p>Find the first element of x that matches y otherwise return the end of vector.
 </p>
 <div class="example">
@@ -1183,7 +1183,7 @@ c|2
 `a
 </pre></div>
 
-<span id="at"></span><span id="g_t_005bn_005dat-_21d2-x_0040y"></span><h3 class="section">2.35 [n]at &rArr; x@y</h3>
+<span id="at"></span><span id="g_t_005bf_005dat-_21d2-x_0040y"></span><h3 class="section">2.35 [f]at &rArr; x@y</h3>
 <p>Given a list or function x return the value(s) at index(indices) y.  
 </p>
 <div class="example">
@@ -1257,7 +1257,7 @@ json.dylib
 `abc
 </pre></div>
 
-<span id="dot"></span><span id="dot-_21d2-x_002ey"></span><h3 class="section">2.37 dot &rArr; x.y</h3>
+<span id="dot"></span><span id="g_t_005bf_005ddot-_21d2-x_002ey"></span><h3 class="section">2.37 [f]dot &rArr; x.y</h3>
 <p>Given list x return the value at list y.  The action of dot depends on the shape of y.
 </p><ul>
 <li> Index returns the value(s) at x at each index y, i.e. x@y@0, x@y@1, ..., x@y@(n-1).

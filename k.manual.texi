@@ -308,7 +308,7 @@ This chapter covers verbs which are the core primitives of k9.  Given how differ
 
 Most functions are overloaded and change depending on the number of arguments.  This can confuse new users.  Eg. @code{(1 4)++(2 3;5 6;7 8)} contains the plus symbol once as flip and then for addition.  (Remember evaluation is right to left!)
 
-There are verbs that can take a function argument. Those are listed with a '[f]' prefix.  These include [f]cut, [f]take, and [f]drop.  A few can take a special name prefix and those are listed with a 'n' prefix and include [n]find, and [n]at.
+There are verbs that can take a function argument. Those are listed with a '[f]' prefix.  These include [f]cut, [f]take, [f]drop, [f]at, and [f]dot.
 
 @example
 Verb
@@ -323,15 +323,15 @@ Verb
 > @ref{asc,desc},      @ref{less,more}.
 = @ref{group},     @ref{equal}.
 ~ @ref{not},       @ref{match}.
-! @ref{enum},      @ref{key}.
+! @ref{key},       @ref{key}.
 , @ref{enlist,list},      @ref{cat}.
 ^ @ref{sort},   [f]@ref{cut}. 
 # @ref{count},  [f]@ref{take}.  
 _ @ref{floor},  [f]@ref{drop}.    
 $ @ref{string},    @ref{parse}.    
-? @ref{unique}, [n]@ref{find}.    
-@@ @ref{type},   [n]@ref{at}.    
-. @ref{value},     @ref{dot}.
+? @ref{unique},    @ref{find/rand}.    
+@@ @ref{type},   [f]@ref{at}.    
+. @ref{value},   [f]@ref{dot}.
 
 @end example
 
@@ -1112,7 +1112,7 @@ Return the unique values of the list x.  The @code{?} preceeding the return valu
 ?"ban"
 @end example
 
-@anchor{find}@section [n]find @result{} x?y
+@anchor{find/rand}@section find/rand @result{} x?y
 Find the first element of x that matches y otherwise return the end of vector.
 
 @example
@@ -1173,7 +1173,7 @@ Return the data type of x.  Lower-case represents a single element while upper-c
 `a
 @end example
 
-@anchor{at}@section [n]at @result{} x@@y
+@anchor{at}@section [f]at @result{} x@@y
 Given a list or function x return the value(s) at index(indices) y.  
 
 @example
@@ -1249,7 +1249,7 @@ Convert from string to numeric or name.
 `abc
 @end example
 
-@anchor{dot}@section dot @result{} x.y
+@anchor{dot}@section [f]dot @result{} x.y
 Given list x return the value at list y.  The action of dot depends on the shape of y.
 @itemize
 @item Index returns the value(s) at x at each index y, i.e. x@@y@@0, x@@y@@1, ..., x@@y@@(n-1).
