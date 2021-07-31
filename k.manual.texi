@@ -3148,17 +3148,14 @@ other languages to k9.
  1: @ref{r byte,r}/@ref{w byte,w} char
 *2: @ref{r data,r}/@ref{w data,w} data
 *3: @ref{k-ipc} @ref{3set,set}    
-*4: https @ref{4get,get}
-*5: @ref{ffi}:`f!"ifsIF"
+*4: @ref{https} @ref{4get,get}
+*5: @ref{ffi}/@ref{import}
 
-@ref{json}
-@ref{csv}
-@ref{compress,lz4 zstd}
+ `@ref{csv}?`@ref{csv} t;`@ref{json}?`@ref{json} t                                                   
+ `@ref{compress,lz4}?`@ref{compress,lz4} t;`@ref{compress,zstd}?`@ref{compress,zstd} t  
+
 @end example
 
- @c @ref{write json,`jk@} d
- @c @ref{write csv,`csv@} t
- 
 @section Example of Data I/O
 Let's begin with a simple example to write a sample table to csv and then read it back in again.  We'll use a function so the table can easily grow to a larger size.
 
@@ -3204,45 +3201,149 @@ Given the small size of the file all this happens too quickly to notice the spee
 
 Ten million rows via csv in under 1/2 a second.  Of course results will depend on hardware and number of columns also.
 
-@c Let's begin with a simple example to show how to read data from a csv file.  We'll generate a small table and save it with and without headers (wHeader.csv and woHeader.csv respectively).  Then we'll read it back in, both specifying types and with the csv reader.  Types are specifed by one letter and the full list can be found in @ref{Atom Types}.
-@c 
-@c @example
-@c  t:[[]a:3 2 1;b:1. 2. 4.;c:`x`y`z];t / generate table
-@c a b  c
-@c - -- -
-@c 3 1. x
-@c 2 2. y
-@c 1 4. z
-@c 
-@c  "wHeader.csv"1:`csv t               / save with column headers
-@c wHeader.csv
-@c 
-@c  `csv?1:"wHeader.csv"                / default reader
-@c a b  c
-@c - -- -
-@c 3 1. x
-@c 2 2. y
-@c 1 4. z
-@c 
-@c  "woHeader.csv"1:1_`csv t            / save without col headers
-@c woHeader.csv
-@c 
-@c  (",";"ifn")1:"wHeader.csv"          / separator and types
-@c a b  c
-@c - -- -
-@c 3 1. x
-@c 2 2. y
-@c 1 4. z
-@c 
-@c  (`e`f`g;",";"ifn")0:"woHeader.csv"  / names, separator and types
-@c e f  g
-@c - -- -
-@c 3 1. x
-@c 2 2. y
-@c 1 4. z
-@c @end example
+@section Read / Write
 
-@anchor{csv}@section export, import csv @result{} `csv@@x, @math{`}csv?x
+@anchor{r line}@subsection read line @result{} 0:x
+Read from file x.
+
+@example
+ 0:"some.csv"
+a,b 
+1,3.
+2,4.
+@end example
+
+@anchor{w line}@subsection write line @result{} x 0:y
+Output to x the list of strings in y.  y must be a list of strings.  If y is a single string then convert to list via @ref{enlist,list}.
+
+@example
+ ""0:("blue";"red")      / "" represents stdout
+blue
+red
+
+ "file.txt" 0: ("blue"; "red") / write to file, one line per element
+@end example
+
+@anchor{r byte}@subsection read byte @result{} 1:x
+Read from byte data from file x.  See @ref{w byte} for an example to write and then read byte data.
+
+@anchor{w byte}@subsection write byte @result{} x 1:y
+Output to file x the list of chars in y as bytes.
+
+@example
+ "some.txt"1:"0123ABab"
+"some.txt"
+
+ 1:"some.txt"
+"0123ABab"
+
+ "some.csv" 1:`csv [[]a:1 2;b:3. 4.]
+"some.csv"
+
+ 1: "some.csv"
+"a,b\n1,3.00\n2,4.00\n"
+
+ `csv?1:"some.csv"
+a b
+- -
+1 3
+2 4
+@end example
+
+@anchor{r data}@subsection read data @result{} 2: x
+Enterprise Only
+
+Load file, eg.@: csv or from a (x 2: y) save.  For the latter, one can find a ``save then load'' example in the next section.
+
+@example
+ 2:`t.csv
+s    t        e p  z   
+---- -------- - -- ----
+AABL 09:30:00 D 11 4379
+AABL 09:30:00 B 40 3950
+
+@ 2:`r                / read from file
+a          b          c          d          e         
+---------- ---------- ---------- ---------- ----------
+0.5366064  0.8250996  0.8978589  0.4895149  0.6811532 
+0.1653467  0.05017282 0.4831432  0.4657975  0.4434603 
+0.08842649 0.8885677  0.23108    0.3336785  0.6270692 
+..
+
+@end example
+
+@anchor{w data}@subsection write data @result{} x 2: y
+Enterprise only
+
+Save to file x non-atomic data y (e.g., lists, dictionaries, or tables). 
+
+This example saves 100 million 8-byte doubles to file.  The session is then closed and a fresh session reads in the file.  Both the write (420 ms) and compute statistics from the file  have impressive speeds (146 ms) given the file size (800 MB).
+
+@example
+ n:_1e8
+ r:+`a`b`c`d`e!5^n rand 1.;r
+ `r 2:r              / write to file 
+@end example
+
+Start new session.
+
+@example
+ \t r:2:`r;select avg a,sum b, max c, min d, sum e from r
+148
+@end example
+
+@section IPC
+k9 has the ability to comunicate between separate k9 instances via inter-process communication (IPC).  These processes can be on the same or separate machines.  A user will start multiple instances specifying the port that the k9 session will use, opening a handle to that port, and then running remote commands via the handle and @code{3:} or @code{4:}.
+
+@anchor{k-ipc}@subsection k-ipc @result{} 3:x
+Open a connection to port @code{x} and return a handle.  If the port has been forwarded from another machine (eg. ssh -L 1280:server.com:1280 laptop.com) then this handle allows remote execution.
+
+@example
+ / before running this session start another k session in another
+ / terminal window specifying that port 1251 should be used
+ / k -p 1251
+ h:3:1251 / create handle to port 1251 and save to h
+ h        / h is an integer
+4
+@end example
+
+@anchor{3set}@subsection set @result{} x 3:y
+Exectute string y using handle x.  Handle x should have already been created using k-ipc.  @code{set} is asynchronous, thus once the command is sent the session immediately returns to the user.
+
+@example
+ h:3:1251               / create handle to port 1251
+ h 3:"a:12"             / set a to 12 on remote session
+ h 3:"n:_1e8;b:1?n?1."  / set b to a random number on remote
+@end example
+
+@anchor{https}@subsection https @result{} 4:x
+TBD
+
+@anchor{4get}@subsection get @result{} x 4:y
+Execute string y using handle x.  Handle x should have already been created using k-ipc.  @code{get} is synchronous, thus on the command is sent the session waits until there result is ready.
+
+@example
+ h:3:1251               / create handle to port 1251
+ h 3:"a:12"             / set a to 12 on remote session
+ h 3:"n:_1e8;b:1?n?1."  / set b to a random number on remote
+ h 4:"a"
+12
+
+ h 4:"b"
+,0.07820029
+
+ a:"local"              / set a locally to a string value
+ a
+"local"
+
+4:"a"
+12
+@end example
+
+@section ffi/import
+These topics will be covered in the @ref{FF} chapter.
+
+@anchor{csv}@subsection export, import csv @result{} `csv@@x, @math{`}csv?x
 Enterprise only
 
 csv tools allows one to export tables into csv and import from csv.  Generally these functions are used with file i/o @code{1:}
@@ -3258,35 +3359,7 @@ a 3
 b 2
 @end example
 
-@c Convert y from csv format using type(s) x.  Before using @code{csv} one must load the csv.so (linux) or csv.dylib (mac) shared library.  Types are integer (I), float (F), string (S), date (D), and time (T).
-@c 
-@c @example
-@c  cjF:*"./csv.dylib"5:(,"_Z2ckPcS_")!," ss"; csv:@{cjF[x;y]@}
-@c  0:"some.csv"
-@c x,y,z       
-@c 1,1.,blue   
-@c 2,0.1,red   
-@c 3,0.01,green
-@c 
-@c  csv["IFS";1:"some.csv"]  / y is not the file name but the file contents
-@c x y    z    
-@c - ---- -----
-@c 1 1    blue 
-@c 2 0.1  red  
-@c 3 0.01 green
-@c @end example
-@c 
-@c @anchor{write csv}@section write csv @result{} @math{`}csv x
-@c Convert x to csv format.  Works on lists and tables.  You can also use @math{`}cs.
-@c 
-@c @example
-@c  `csv [[]a:1 2;b:3. 4.]
-@c a,b 
-@c 1,3.
-@c 2,4.
-@c @end example
-@c 
-@anchor{json}@section export, import json @result{} `json@@x, @math{`}json?x
+@anchor{json}@subsection export, import json @result{} `json@@x, @math{`}json?x
 Export object x to json format or import string x from json format.  The json shared library will be automatically pulled from the Shakti website into the current directory.  Use of symbolic links with path on the binary may cause issues.
 
 @example
@@ -3298,17 +3371,7 @@ Export object x to json format or import string x from json format.  The json sh
 (,"x";,"y")!(,"b";2)
 @end example
 
-@c @anchor{read nv}@section read name value @result{} @math{`}nv?x
-@c Convert x, a list of name:value pairs, to a dictionary.
-@c 
-@c @example
-@c  `nv?("key1:value1";"key2:value2")
-@c key1|value1
-@c key2|value2
-@c @end example
-@c 
-
-@anchor{compress}@section lz4 zstd @result{} @math{`}lz4 @math{`}zstd
+@anchor{compress}@subsection lz4 zstd @result{} @math{`}lz4 @math{`}zstd
 lz4 and zstd are compression algorythms which can be used to reduce the size of files.  As with other foreign libraries k9 does the work behind the scenes.  Here is an example of writing a large csv file to disk and reading it back in.  In the second (lz4) and third (zstd) examples the csv's are compressed and decompressed with lz4 and zstd respectively.  One can look at the file sizes to see how well the compression worked.
 
 @example
@@ -3333,149 +3396,13 @@ lz4 and zstd are compression algorythms which can be used to reduce the size of 
 535
 @end example
 
-@anchor{w line}@section write line @result{} x 0:y
-Output to x the list of strings in y.  y must be a list of strings.  If y is a single string then convert to list via @ref{enlist,list}.
-
-@example
- ""0:("blue";"red")      / "" represents stdout
-blue
-red
-
- "file.txt" 0: ("blue"; "red") / write to file, one line per element
-@end example
-
-@anchor{r line}@section read line @result{} 0:x
-Read from file x.
-
-@example
- 0:"some.csv"
-a,b 
-1,3.
-2,4.
-@end example
-
-@anchor{w byte}@section write byte @result{} x 1:y
-Output to file x the list of chars in y as bytes.
-
-@example
- "some.txt"1:"0123ABab"
-"some.txt"
-
- 1:"some.txt"
-"0123ABab"
-
- "some.csv" 1:`csv [[]a:1 2;b:3. 4.]
-"some.csv"
-
- 1: "some.csv"
-"a,b\n1,3.00\n2,4.00\n"
-
- `csv?1:"some.csv"
-a b
-- -
-1 3
-2 4
-@end example
-
-@anchor{r byte}@section read byte @result{} 1:x
-Read from byte data from file x.  See @ref{w byte} for an example to write and then read byte data.
-
-@anchor{r data}@section read data @result{} 2: x
-
-Enterprise Only
-
-Load file, eg.@: csv or from a (x 2: y) save.  For the latter, one can find a ``save then load'' example in the next section.
-
-@example
- 2:`t.csv
-s    t        e p  z   
----- -------- - -- ----
-AABL 09:30:00 D 11 4379
-AABL 09:30:00 B 40 3950
-
-@ 2:`r                / read from file
-a          b          c          d          e         
----------- ---------- ---------- ---------- ----------
-0.5366064  0.8250996  0.8978589  0.4895149  0.6811532 
-0.1653467  0.05017282 0.4831432  0.4657975  0.4434603 
-0.08842649 0.8885677  0.23108    0.3336785  0.6270692 
-..
-
-@end example
-
-@anchor{w data}@section write data @result{} x 2: y
-
-Enterprise only
-
-Save to file x non-atomic data y (e.g., lists, dictionaries, or tables). 
-
-This example saves 100 million 8-byte doubles to file.  The session is then closed and a fresh session reads in the file.  Both the write (420 ms) and compute statistics from the file  have impressive speeds (146 ms) given the file size (800 MB).
-
-@example
- n:_1e8
- r:+`a`b`c`d`e!5^n rand 1.;r
- `r 2:r              / write to file 
-@end example
-
-Start new session.
-
-@example
- \t r:2:`r;select avg a,sum b, max c, min d, sum e from r
-148
-@end example
-
-@section IPC
-k9 has the ability to comunicate between separate k9 instances via inter-process communication (IPC).  These processes can be on the same or separate machines.  A user will start multiple instances specifying the port that the k9 session will use, opening a handle to that port, and then running remote commands via the handle and @code{3:} or @code{4:}.
-
-@anchor{k-ipc}@section k-ipc @result{} 3:x
-Open a connection to port @code{x} and return a handle.  If the port has been forwarded from another machine (eg. ssh -L 1280:server.com:1280 laptop.com) then this handle allows remote execution.
-
-@example
- / before running this session start another k session in another
- / terminal window specifying that port 1251 should be used
- / k -p 1251
- h:3:1251 / create handle to port 1251 and save to h
- h        / h is an integer
-4
-@end example
-
-@anchor{3set}@section set @result{} x 3:y
-Exectute string y using handle x.  Handle x should have already been created using k-ipc.  @code{set} is asynchronous, thus once the command is sent the session immediately returns to the user.
-
-@example
- h:3:1251               / create handle to port 1251
- h 3:"a:12"             / set a to 12 on remote session
- h 3:"n:_1e8;b:1?n?1."  / set b to a random number on remote
-@end example
-
-@anchor{4get}@section get @result{} x 4:y
-Execute string y using handle x.  Handle x should have already been created using k-ipc.  @code{get} is synchronous, thus on the command is sent the session waits until there result is ready.
-
-@example
- h:3:1251               / create handle to port 1251
- h 3:"a:12"             / set a to 12 on remote session
- h 3:"n:_1e8;b:1?n?1."  / set b to a random number on remote
- h 4:"a"
-12
-
- h 4:"b"
-,0.07820029
-
- a:"local"              / set a locally to a string value
- a
-"local"
-
-4:"a"
-12
-@end example
-
 @node FF
 @chapter Foreign Functions
 
-@verbatim
-python:from k import k;k('+',2,3);nodejs:k=require('k').k;k('+',2,3)
-*ffi:"./a.so"5:`a!"fi" //double a(int x){return 2.3+x;}
-@end verbatim
+@example
+@ref{python}:from k import k;k('+',2,3);@ref{nodejs}:k=require('k').k;k('+',2,3)
+*5: @ref{ffi}/@ref{import}
+@end example
 
 Enterprise only
 
@@ -3505,6 +3432,8 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> 
 @end example
 
+@anchor{nodejs}@section nodejs
+TBD
 
 @anchor{ffi}@section ffi @result{} 5:
 
@@ -3530,6 +3459,9 @@ Load the shared library into the session.
 @ f[`indx][12 13 14;2]
 14
 @end example
+
+@anchor{import}@section import @result{} 5:x
+TBD
 
 @node Tables
 @chapter Tables
@@ -4966,6 +4898,80 @@ Eventually, you'll realize that this manual isn't needed and it's all here...
 @bye
 
 
-@c At this point I expect you reached the same conclusion I did, this manual (not produced by Shakti) isn't that good.  Feel free to ask for corrections or improvements in any area that would make it better.
+@c Let's begin with a simple example to show how to read data from a csv file.  We'll generate a small table and save it with and without headers (wHeader.csv and woHeader.csv respectively).  Then we'll read it back in, both specifying types and with the csv reader.  Types are specifed by one letter and the full list can be found in @ref{Atom Types}.
 @c 
-@c On a more serious note, 
+@c @example
+@c  t:[[]a:3 2 1;b:1. 2. 4.;c:`x`y`z];t / generate table
+@c a b  c
+@c - -- -
+@c 3 1. x
+@c 2 2. y
+@c 1 4. z
+@c 
+@c  "wHeader.csv"1:`csv t               / save with column headers
+@c wHeader.csv
+@c 
+@c  `csv?1:"wHeader.csv"                / default reader
+@c a b  c
+@c - -- -
+@c 3 1. x
+@c 2 2. y
+@c 1 4. z
+@c 
+@c  "woHeader.csv"1:1_`csv t            / save without col headers
+@c woHeader.csv
+@c 
+@c  (",";"ifn")1:"wHeader.csv"          / separator and types
+@c a b  c
+@c - -- -
+@c 3 1. x
+@c 2 2. y
+@c 1 4. z
+@c 
+@c  (`e`f`g;",";"ifn")0:"woHeader.csv"  / names, separator and types
+@c e f  g
+@c - -- -
+@c 3 1. x
+@c 2 2. y
+@c 1 4. z
+@c @end example
+
+@c Convert y from csv format using type(s) x.  Before using @code{csv} one must load the csv.so (linux) or csv.dylib (mac) shared library.  Types are integer (I), float (F), string (S), date (D), and time (T).
+@c 
+@c @example
+@c  cjF:*"./csv.dylib"5:(,"_Z2ckPcS_")!," ss"; csv:@{cjF[x;y]@}
+@c  0:"some.csv"
+@c x,y,z       
+@c 1,1.,blue   
+@c 2,0.1,red   
+@c 3,0.01,green
+@c 
+@c  csv["IFS";1:"some.csv"]  / y is not the file name but the file contents
+@c x y    z    
+@c - ---- -----
+@c 1 1    blue 
+@c 2 0.1  red  
+@c 3 0.01 green
+@c @end example
+@c 
+@c @anchor{write csv}@section write csv @result{} @math{`}csv x
+@c Convert x to csv format.  Works on lists and tables.  You can also use @math{`}cs.
+@c 
+@c @example
+@c  `csv [[]a:1 2;b:3. 4.]
+@c a,b 
+@c 1,3.
+@c 2,4.
+@c @end example
+@c 
+
+@c @anchor{read nv}@section read name value @result{} @math{`}nv?x
+@c Convert x, a list of name:value pairs, to a dictionary.
+@c 
+@c @example
+@c  `nv?("key1:value1";"key2:value2")
+@c key1|value1
+@c key2|value2
+@c @end example
+@c 
+

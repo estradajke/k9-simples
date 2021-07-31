@@ -154,86 +154,91 @@
 @numsecentry{dmend @result {} .[r;i;f[;y]]}{10.2}{}{60}
 @numchapentry{I/O and Interface}{11}{I/O}{62}
 @numsecentry{Example of Data I/O}{11.1}{}{62}
-@numsecentry{export, import csv @result {} `csv@@x, @math {`}csv?x}{11.2}{}{63}
-@numsecentry{export, import json @result {} `json@@x, @math {`}json?x}{11.3}{}{63}
-@numsecentry{lz4 zstd @result {} @math {`}lz4 @math {`}zstd}{11.4}{}{63}
-@numsecentry{write line @result {} x 0:y}{11.5}{}{64}
-@numsecentry{read line @result {} 0:x}{11.6}{}{64}
-@numsecentry{write byte @result {} x 1:y}{11.7}{}{64}
-@numsecentry{read byte @result {} 1:x}{11.8}{}{65}
-@numsecentry{read data @result {} 2: x}{11.9}{}{65}
-@numsecentry{write data @result {} x 2: y}{11.10}{}{65}
-@numsecentry{IPC}{11.11}{}{66}
-@numsecentry{k-ipc @result {} 3:x}{11.12}{}{66}
-@numsecentry{set @result {} x 3:y}{11.13}{}{66}
-@numsecentry{get @result {} x 4:y}{11.14}{}{66}
+@numsecentry{Read / Write}{11.2}{}{63}
+@numsubsecentry{read line @result {} 0:x}{11.2.1}{}{63}
+@numsubsecentry{write line @result {} x 0:y}{11.2.2}{}{63}
+@numsubsecentry{read byte @result {} 1:x}{11.2.3}{}{63}
+@numsubsecentry{write byte @result {} x 1:y}{11.2.4}{}{63}
+@numsubsecentry{read data @result {} 2: x}{11.2.5}{}{64}
+@numsubsecentry{write data @result {} x 2: y}{11.2.6}{}{64}
+@numsecentry{IPC}{11.3}{}{65}
+@numsubsecentry{k-ipc @result {} 3:x}{11.3.1}{}{65}
+@numsubsecentry{set @result {} x 3:y}{11.3.2}{}{65}
+@numsubsecentry{https @result {} 4:x}{11.3.3}{}{65}
+@numsubsecentry{get @result {} x 4:y}{11.3.4}{}{65}
+@numsecentry{ffi/import}{11.4}{}{66}
+@numsubsecentry{export, import csv @result {} `csv@@x, @math {`}csv?x}{11.4.1}{}{66}
+@numsubsecentry{export, import json @result {} `json@@x, @math {`}json?x}{11.4.2}{}{66}
+@numsubsecentry{lz4 zstd @result {} @math {`}lz4 @math {`}zstd}{11.4.3}{}{66}
 @numchapentry{Foreign Functions}{12}{FF}{68}
 @numsecentry{python}{12.1}{}{68}
-@numsecentry{ffi @result {} 5:}{12.2}{}{68}
-@numchapentry{Tables}{13}{Tables}{69}
-@numsecentry{table}{13.1}{}{69}
-@numsubsecentry{Table format}{13.1.1}{}{69}
-@numsubsecentry{Dictionary format}{13.1.2}{}{69}
-@numsubsecentry{File import}{13.1.3}{}{70}
-@numsecentry{utable}{13.2}{}{70}
-@numchapentry{kSQL}{14}{kSQL}{71}
-@numsecentry{Queries}{14.1}{}{71}
-@numsubsecentry{select}{14.1.1}{}{71}
-@numsubsecentry{A}{14.1.2}{}{72}
-@numsubsecentry{by B}{14.1.3}{}{73}
-@numsubsecentry{where C}{14.1.4}{}{73}
-@numsubsecentry{Query with By and Where}{14.1.5}{}{74}
-@numsubsecentry{update}{14.1.6}{}{74}
-@numsubsecentry{delete}{14.1.7}{}{75}
-@numsecentry{Joins}{14.2}{}{75}
-@numsubsecentry{union join @result {} t1,t2}{14.2.1}{}{75}
-@numsubsecentry{leftjoin @result {} t,k}{14.2.2}{}{76}
-@numsubsecentry{outer join @result {} k1,k2}{14.2.3}{}{77}
-@numsubsecentry{asof join @result {} t,k}{14.2.4}{}{78}
-@numsubsecentry{asof+ join @result {} k1+k2}{14.2.5}{}{79}
-@numsecentry{Insert and Upsert}{14.3}{}{80}
-@numsubsecentry{insert @result {} t,d}{14.3.1}{}{80}
-@numsubsecentry{upsert @result {} k,d}{14.3.2}{}{80}
-@numchapentry{System}{15}{System}{82}
-@numsecentry{load @result {} \l a.k}{15.1}{}{82}
-@numsecentry{timing @result {} \t x or \t:n x}{15.2}{}{82}
-@numsecentry{variables @result {} \v}{15.3}{}{82}
-@numsecentry{files @result {} \f}{15.4}{}{82}
-@numsecentry{cd @result {} \cd [d]}{15.5}{}{83}
-@numchapentry{Control Flow}{16}{Control Flow}{84}
-@numsecentry{cond @result {} $[b;t;f]}{16.1}{}{84}
-@numchapentry{Temporal Functions}{17}{Temporal Functions}{85}
-@numsecentry{.z.[dm] date}{17.1}{}{85}
-@numsecentry{.z.[hrstuv] time}{17.2}{}{85}
-@numsecentry{Temporal dot functions}{17.3}{}{85}
-@numchapentry{Errors}{18}{Errors}{87}
-@numsecentry{:class}{18.1}{}{87}
-@numsecentry{:rank}{18.2}{}{87}
-@numsecentry{:length}{18.3}{}{87}
-@numsecentry{:type}{18.4}{}{87}
-@numsecentry{:domain}{18.5}{}{87}
-@numsecentry{:limit}{18.6}{}{87}
-@numsecentry{:nyi}{18.7}{}{88}
-@numsecentry{:parse}{18.8}{}{88}
-@numsecentry{:value}{18.9}{}{88}
-@numchapentry{Examples}{19}{Examples}{89}
-@numsecentry{A Tiny Introduction to Financial Market Data}{19.1}{}{89}
-@numsecentry{Data Manipulation}{19.2}{}{90}
-@numsecentry{Understanding Code Examples}{19.3}{}{91}
-@numchapentry{Benchmark}{20}{Benchmark}{94}
-@numsecentry{b.k}{20.1}{}{94}
-@numsubsecentry{T}{20.1.1}{}{94}
-@numsubsecentry{P, Z, E}{20.1.2}{}{95}
-@numsubsecentry{m, n, S, N}{20.1.3}{}{95}
-@numsubsecentry{t}{20.1.4}{}{95}
-@numsubsecentry{q}{20.1.5}{}{95}
-@numsubsecentry{a, A}{20.1.6}{}{96}
-@numsubsecentry{Max price by exchange}{20.1.7}{}{96}
-@numsubsecentry{Compute sum of trade size by hour.}{20.1.8}{}{96}
-@numsubsecentry{Compute last bid by symbol}{20.1.9}{}{96}
-@numsubsecentry{Find trades below the bid}{20.1.10}{}{97}
-@numsecentry{taxi}{20.2}{}{97}
-@numsubsecentry{g}{20.2.1}{}{98}
-@numsubsecentry{x}{20.2.2}{}{98}
-@numsubsecentry{2009.01.04}{20.2.3}{}{98}
-@numchapentry{Conclusion}{21}{Conclusion}{100}
+@numsecentry{nodejs}{12.2}{}{68}
+@numsecentry{ffi @result {} 5:}{12.3}{}{68}
+@numsecentry{import @result {} 5:x}{12.4}{}{69}
+@numchapentry{Tables}{13}{Tables}{70}
+@numsecentry{table}{13.1}{}{70}
+@numsubsecentry{Table format}{13.1.1}{}{70}
+@numsubsecentry{Dictionary format}{13.1.2}{}{70}
+@numsubsecentry{File import}{13.1.3}{}{71}
+@numsecentry{utable}{13.2}{}{71}
+@numchapentry{kSQL}{14}{kSQL}{72}
+@numsecentry{Queries}{14.1}{}{72}
+@numsubsecentry{select}{14.1.1}{}{72}
+@numsubsecentry{A}{14.1.2}{}{73}
+@numsubsecentry{by B}{14.1.3}{}{74}
+@numsubsecentry{where C}{14.1.4}{}{74}
+@numsubsecentry{Query with By and Where}{14.1.5}{}{75}
+@numsubsecentry{update}{14.1.6}{}{75}
+@numsubsecentry{delete}{14.1.7}{}{76}
+@numsecentry{Joins}{14.2}{}{76}
+@numsubsecentry{union join @result {} t1,t2}{14.2.1}{}{76}
+@numsubsecentry{leftjoin @result {} t,k}{14.2.2}{}{77}
+@numsubsecentry{outer join @result {} k1,k2}{14.2.3}{}{78}
+@numsubsecentry{asof join @result {} t,k}{14.2.4}{}{79}
+@numsubsecentry{asof+ join @result {} k1+k2}{14.2.5}{}{80}
+@numsecentry{Insert and Upsert}{14.3}{}{81}
+@numsubsecentry{insert @result {} t,d}{14.3.1}{}{81}
+@numsubsecentry{upsert @result {} k,d}{14.3.2}{}{81}
+@numchapentry{System}{15}{System}{83}
+@numsecentry{load @result {} \l a.k}{15.1}{}{83}
+@numsecentry{timing @result {} \t x or \t:n x}{15.2}{}{83}
+@numsecentry{variables @result {} \v}{15.3}{}{83}
+@numsecentry{files @result {} \f}{15.4}{}{83}
+@numsecentry{cd @result {} \cd [d]}{15.5}{}{84}
+@numchapentry{Control Flow}{16}{Control Flow}{85}
+@numsecentry{cond @result {} $[b;t;f]}{16.1}{}{85}
+@numchapentry{Temporal Functions}{17}{Temporal Functions}{86}
+@numsecentry{.z.[dm] date}{17.1}{}{86}
+@numsecentry{.z.[hrstuv] time}{17.2}{}{86}
+@numsecentry{Temporal dot functions}{17.3}{}{86}
+@numchapentry{Errors}{18}{Errors}{88}
+@numsecentry{:class}{18.1}{}{88}
+@numsecentry{:rank}{18.2}{}{88}
+@numsecentry{:length}{18.3}{}{88}
+@numsecentry{:type}{18.4}{}{88}
+@numsecentry{:domain}{18.5}{}{88}
+@numsecentry{:limit}{18.6}{}{88}
+@numsecentry{:nyi}{18.7}{}{89}
+@numsecentry{:parse}{18.8}{}{89}
+@numsecentry{:value}{18.9}{}{89}
+@numchapentry{Examples}{19}{Examples}{90}
+@numsecentry{A Tiny Introduction to Financial Market Data}{19.1}{}{90}
+@numsecentry{Data Manipulation}{19.2}{}{91}
+@numsecentry{Understanding Code Examples}{19.3}{}{92}
+@numchapentry{Benchmark}{20}{Benchmark}{95}
+@numsecentry{b.k}{20.1}{}{95}
+@numsubsecentry{T}{20.1.1}{}{95}
+@numsubsecentry{P, Z, E}{20.1.2}{}{96}
+@numsubsecentry{m, n, S, N}{20.1.3}{}{96}
+@numsubsecentry{t}{20.1.4}{}{96}
+@numsubsecentry{q}{20.1.5}{}{96}
+@numsubsecentry{a, A}{20.1.6}{}{97}
+@numsubsecentry{Max price by exchange}{20.1.7}{}{97}
+@numsubsecentry{Compute sum of trade size by hour.}{20.1.8}{}{97}
+@numsubsecentry{Compute last bid by symbol}{20.1.9}{}{97}
+@numsubsecentry{Find trades below the bid}{20.1.10}{}{98}
+@numsecentry{taxi}{20.2}{}{98}
+@numsubsecentry{g}{20.2.1}{}{99}
+@numsubsecentry{x}{20.2.2}{}{99}
+@numsubsecentry{2009.01.04}{20.2.3}{}{99}
+@numchapentry{Conclusion}{21}{Conclusion}{101}

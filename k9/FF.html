@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- July 29, 2021
+<!-- July 31, 2021
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -90,9 +90,11 @@ Next: <a href="Tables.html" accesskey="n" rel="next">Tables</a>, Previous: <a hr
 <hr>
 <span id="Foreign-Functions"></span><h2 class="chapter">12 Foreign Functions</h2>
 
-<pre class="verbatim">python:from k import k;k('+',2,3);nodejs:k=require('k').k;k('+',2,3)
-*ffi:&quot;./a.so&quot;5:`a!&quot;fi&quot; //double a(int x){return 2.3+x;}
-</pre>
+<div class="example">
+<pre class="example"><a href="#python">python</a>:from k import k;k('+',2,3);<a href="#nodejs">nodejs</a>:k=require('k').k;k('+',2,3)
+*5: <a href="#ffi">ffi</a>/<a href="#import">import</a>
+</pre></div>
+
 <p>Enterprise only
 </p>
 <p>k9 is able to interface with other programing laguages via shared libraries (python and nodejs) and the foreign function interface (ffi).
@@ -121,8 +123,10 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 &gt;&gt;&gt; 
 </pre></div>
 
-
-<span id="ffi"></span><span id="ffi-_21d2-5_003a"></span><h3 class="section">12.2 ffi &rArr; 5:</h3>
+<span id="nodejs"></span><span id="nodejs-1"></span><h3 class="section">12.2 nodejs</h3>
+<p>TBD
+</p>
+<span id="ffi"></span><span id="ffi-_21d2-5_003a"></span><h3 class="section">12.3 ffi &rArr; 5:</h3>
 
 <p>Load shared library.
 </p>
@@ -147,6 +151,9 @@ int indx(int x[],int y){return x[y];}
 14
 </pre></div>
 
+<span id="import"></span><span id="import-_21d2-5_003ax"></span><h3 class="section">12.4 import &rArr; 5:x</h3>
+<p>TBD
+</p>
 
 
 

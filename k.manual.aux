@@ -384,105 +384,114 @@
 @xrdef{I/O-title}{I/O and Interface}
 @xrdef{I/O-snt}{Chapter@tie 11}
 @xrdef{I/O-pg}{62}
-@xrdef{csv-title}{Example of Data I/O}
-@xrdef{csv-snt}{}
-@xrdef{json-title}{export, import csv @result {} `csv@@x, @math {`}csv?x}
-@xrdef{json-snt}{}
-@xrdef{compress-title}{export, import json @result {} `json@@x, @math {`}json?x}
-@xrdef{compress-snt}{}
-@xrdef{csv-pg}{63}
-@xrdef{json-pg}{63}
-@xrdef{compress-pg}{63}
-@xrdef{w line-title}{lz4 zstd @result {} @math {`}lz4 @math {`}zstd}
-@xrdef{w line-snt}{}
-@xrdef{r line-title}{write line @result {} x 0:y}
+@xrdef{r line-title}{Read / Write}
 @xrdef{r line-snt}{}
-@xrdef{w byte-title}{read line @result {} 0:x}
-@xrdef{w byte-snt}{}
-@xrdef{w line-pg}{64}
-@xrdef{r line-pg}{64}
-@xrdef{w byte-pg}{64}
-@xrdef{r byte-title}{write byte @result {} x 1:y}
+@xrdef{w line-title}{read line @result {} 0:x}
+@xrdef{w line-snt}{}
+@xrdef{r byte-title}{write line @result {} x 0:y}
 @xrdef{r byte-snt}{}
-@xrdef{r data-title}{read byte @result {} 1:x}
+@xrdef{w byte-title}{read byte @result {} 1:x}
+@xrdef{w byte-snt}{}
+@xrdef{r line-pg}{63}
+@xrdef{w line-pg}{63}
+@xrdef{r byte-pg}{63}
+@xrdef{w byte-pg}{63}
+@xrdef{r data-title}{write byte @result {} x 1:y}
 @xrdef{r data-snt}{}
 @xrdef{w data-title}{read data @result {} 2: x}
 @xrdef{w data-snt}{}
-@xrdef{r byte-pg}{65}
-@xrdef{r data-pg}{65}
-@xrdef{w data-pg}{65}
+@xrdef{r data-pg}{64}
+@xrdef{w data-pg}{64}
 @xrdef{k-ipc-title}{IPC}
 @xrdef{k-ipc-snt}{}
 @xrdef{3set-title}{k-ipc @result {} 3:x}
 @xrdef{3set-snt}{}
-@xrdef{4get-title}{set @result {} x 3:y}
+@xrdef{https-title}{set @result {} x 3:y}
+@xrdef{https-snt}{}
+@xrdef{4get-title}{https @result {} 4:x}
 @xrdef{4get-snt}{}
-@xrdef{k-ipc-pg}{66}
-@xrdef{3set-pg}{66}
-@xrdef{4get-pg}{66}
+@xrdef{csv-title}{ffi/import}
+@xrdef{csv-snt}{}
+@xrdef{k-ipc-pg}{65}
+@xrdef{3set-pg}{65}
+@xrdef{https-pg}{65}
+@xrdef{4get-pg}{65}
+@xrdef{json-title}{export, import csv @result {} `csv@@x, @math {`}csv?x}
+@xrdef{json-snt}{}
+@xrdef{compress-title}{export, import json @result {} `json@@x, @math {`}json?x}
+@xrdef{compress-snt}{}
+@xrdef{csv-pg}{66}
+@xrdef{json-pg}{66}
+@xrdef{compress-pg}{66}
 @xrdef{FF-title}{Foreign Functions}
 @xrdef{FF-snt}{Chapter@tie 12}
 @xrdef{python-title}{Foreign Functions}
 @xrdef{python-snt}{}
-@xrdef{ffi-title}{python}
+@xrdef{nodejs-title}{python}
+@xrdef{nodejs-snt}{}
+@xrdef{ffi-title}{nodejs}
 @xrdef{ffi-snt}{}
+@xrdef{import-title}{ffi @result {} 5:}
+@xrdef{import-snt}{}
 @xrdef{FF-pg}{68}
 @xrdef{python-pg}{68}
+@xrdef{nodejs-pg}{68}
 @xrdef{ffi-pg}{68}
+@xrdef{import-pg}{68}
 @xrdef{Tables-title}{Tables}
 @xrdef{Tables-snt}{Chapter@tie 13}
 @xrdef{table-title}{Tables}
 @xrdef{table-snt}{}
-@xrdef{Tables-pg}{69}
-@xrdef{table-pg}{69}
+@xrdef{Tables-pg}{70}
+@xrdef{table-pg}{70}
 @xrdef{utable-title}{File import}
 @xrdef{utable-snt}{}
-@xrdef{utable-pg}{70}
+@xrdef{utable-pg}{71}
 @xrdef{kSQL-title}{kSQL}
 @xrdef{kSQL-snt}{Chapter@tie 14}
 @xrdef{select-title}{Queries}
 @xrdef{select-snt}{}
-@xrdef{kSQL-pg}{71}
-@xrdef{select-pg}{71}
+@xrdef{kSQL-pg}{72}
+@xrdef{select-pg}{72}
 @xrdef{A-title}{select}
 @xrdef{A-snt}{}
-@xrdef{A-pg}{72}
+@xrdef{A-pg}{73}
 @xrdef{by B-title}{A}
 @xrdef{by B-snt}{}
 @xrdef{where C-title}{by B}
 @xrdef{where C-snt}{}
-@xrdef{by B-pg}{73}
-@xrdef{where C-pg}{73}
+@xrdef{by B-pg}{74}
+@xrdef{where C-pg}{74}
 @xrdef{update-title}{Query with By and Where}
 @xrdef{update-snt}{}
-@xrdef{update-pg}{74}
+@xrdef{update-pg}{75}
 @xrdef{delete-title}{update}
 @xrdef{delete-snt}{}
 @xrdef{Joins-title}{delete}
 @xrdef{Joins-snt}{}
 @xrdef{union-title}{Joins}
 @xrdef{union-snt}{}
-@xrdef{delete-pg}{75}
-@xrdef{Joins-pg}{75}
-@xrdef{union-pg}{75}
+@xrdef{delete-pg}{76}
+@xrdef{Joins-pg}{76}
+@xrdef{union-pg}{76}
 @xrdef{leftjoin-title}{union join @result {} t1,t2}
 @xrdef{leftjoin-snt}{}
-@xrdef{leftjoin-pg}{76}
+@xrdef{leftjoin-pg}{77}
 @xrdef{outer-title}{leftjoin @result {} t,k}
 @xrdef{outer-snt}{}
-@xrdef{outer-pg}{77}
+@xrdef{outer-pg}{78}
 @xrdef{asof-title}{outer join @result {} k1,k2}
 @xrdef{asof-snt}{}
-@xrdef{asof-pg}{78}
+@xrdef{asof-pg}{79}
 @xrdef{asof+-title}{asof join @result {} t,k}
 @xrdef{asof+-snt}{}
 @xrdef{insert-title}{Insert and Upsert}
 @xrdef{insert-snt}{}
-@xrdef{asof+-pg}{79}
+@xrdef{asof+-pg}{80}
 @xrdef{upsert-title}{insert @result {} t,d}
 @xrdef{upsert-snt}{}
-@xrdef{insert-pg}{80}
-@xrdef{upsert-pg}{80}
+@xrdef{insert-pg}{81}
+@xrdef{upsert-pg}{81}
 @xrdef{System-title}{System}
 @xrdef{System-snt}{Chapter@tie 15}
 @xrdef{load-title}{System}
@@ -495,27 +504,27 @@
 @xrdef{files-snt}{}
 @xrdef{cd-title}{files @result {} \f}
 @xrdef{cd-snt}{}
-@xrdef{System-pg}{82}
-@xrdef{load-pg}{82}
-@xrdef{timing-pg}{82}
-@xrdef{variables-pg}{82}
-@xrdef{files-pg}{82}
-@xrdef{cd-pg}{83}
+@xrdef{System-pg}{83}
+@xrdef{load-pg}{83}
+@xrdef{timing-pg}{83}
+@xrdef{variables-pg}{83}
+@xrdef{files-pg}{83}
+@xrdef{cd-pg}{84}
 @xrdef{Control Flow-title}{Control Flow}
 @xrdef{Control Flow-snt}{Chapter@tie 16}
 @xrdef{cond-title}{Control Flow}
 @xrdef{cond-snt}{}
-@xrdef{Control Flow-pg}{84}
-@xrdef{cond-pg}{84}
+@xrdef{Control Flow-pg}{85}
+@xrdef{cond-pg}{85}
 @xrdef{Temporal Functions-title}{Temporal Functions}
 @xrdef{Temporal Functions-snt}{Chapter@tie 17}
 @xrdef{.z.d-title}{Temporal Functions}
 @xrdef{.z.d-snt}{}
 @xrdef{.z.t-title}{.z.[dm] date}
 @xrdef{.z.t-snt}{}
-@xrdef{Temporal Functions-pg}{85}
-@xrdef{.z.d-pg}{85}
-@xrdef{.z.t-pg}{85}
+@xrdef{Temporal Functions-pg}{86}
+@xrdef{.z.d-pg}{86}
+@xrdef{.z.t-pg}{86}
 @xrdef{Errors-title}{Errors}
 @xrdef{Errors-snt}{Chapter@tie 18}
 @xrdef{class-title}{Errors}
@@ -532,26 +541,26 @@
 @xrdef{limit-snt}{}
 @xrdef{nyi-title}{:limit}
 @xrdef{nyi-snt}{}
-@xrdef{Errors-pg}{87}
-@xrdef{class-pg}{87}
-@xrdef{rank-pg}{87}
-@xrdef{length-pg}{87}
-@xrdef{_type-pg}{87}
-@xrdef{domain-pg}{87}
-@xrdef{limit-pg}{87}
-@xrdef{nyi-pg}{87}
+@xrdef{Errors-pg}{88}
+@xrdef{class-pg}{88}
+@xrdef{rank-pg}{88}
+@xrdef{length-pg}{88}
+@xrdef{_type-pg}{88}
+@xrdef{domain-pg}{88}
+@xrdef{limit-pg}{88}
+@xrdef{nyi-pg}{88}
 @xrdef{eparse-title}{:nyi}
 @xrdef{eparse-snt}{}
 @xrdef{_value-title}{:parse}
 @xrdef{_value-snt}{}
-@xrdef{eparse-pg}{88}
-@xrdef{_value-pg}{88}
+@xrdef{eparse-pg}{89}
+@xrdef{_value-pg}{89}
 @xrdef{Examples-title}{Examples}
 @xrdef{Examples-snt}{Chapter@tie 19}
-@xrdef{Examples-pg}{89}
+@xrdef{Examples-pg}{90}
 @xrdef{Benchmark-title}{Benchmark}
 @xrdef{Benchmark-snt}{Chapter@tie 20}
-@xrdef{Benchmark-pg}{94}
+@xrdef{Benchmark-pg}{95}
 @xrdef{Conclusion-title}{Conclusion}
 @xrdef{Conclusion-snt}{Chapter@tie 21}
-@xrdef{Conclusion-pg}{100}
+@xrdef{Conclusion-pg}{101}
