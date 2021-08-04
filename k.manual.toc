@@ -153,23 +153,23 @@
 @numsecentry{amend @result {} @@[r;i;f[;y]]}{10.1}{}{58}
 @numsecentry{dmend @result {} .[r;i;f[;y]]}{10.2}{}{60}
 @numchapentry{I/O and Interface}{11}{I/O}{62}
-@numsecentry{Example of Data I/O}{11.1}{}{62}
-@numsecentry{Read / Write}{11.2}{}{63}
-@numsubsecentry{read line @result {} 0:x}{11.2.1}{}{63}
-@numsubsecentry{write line @result {} x 0:y}{11.2.2}{}{63}
-@numsubsecentry{read byte @result {} 1:x}{11.2.3}{}{63}
-@numsubsecentry{write byte @result {} x 1:y}{11.2.4}{}{63}
-@numsubsecentry{read data @result {} 2: x}{11.2.5}{}{64}
-@numsubsecentry{write data @result {} x 2: y}{11.2.6}{}{64}
-@numsecentry{IPC}{11.3}{}{65}
-@numsubsecentry{k-ipc @result {} 3:x}{11.3.1}{}{65}
-@numsubsecentry{set @result {} x 3:y}{11.3.2}{}{65}
-@numsubsecentry{https @result {} 4:x}{11.3.3}{}{65}
-@numsubsecentry{get @result {} x 4:y}{11.3.4}{}{65}
-@numsecentry{ffi/import}{11.4}{}{66}
-@numsubsecentry{export, import csv @result {} `csv@@x, @math {`}csv?x}{11.4.1}{}{66}
-@numsubsecentry{export, import json @result {} `json@@x, @math {`}json?x}{11.4.2}{}{66}
-@numsubsecentry{lz4 zstd @result {} @math {`}lz4 @math {`}zstd}{11.4.3}{}{66}
+@numsecentry{File I/O}{11.1}{}{62}
+@numsubsecentry{Example File I/O}{11.1.1}{}{62}
+@numsubsecentry{read line @result {} 0:x}{11.1.2}{}{63}
+@numsubsecentry{write line @result {} x 0:y}{11.1.3}{}{63}
+@numsubsecentry{read char @result {} 1:x}{11.1.4}{}{63}
+@numsubsecentry{write char @result {} x 1:y}{11.1.5}{}{63}
+@numsubsecentry{read data @result {} 2: x}{11.1.6}{}{64}
+@numsubsecentry{write data @result {} x 2: y}{11.1.7}{}{64}
+@numsecentry{IPC}{11.2}{}{65}
+@numsubsecentry{k-ipc @result {} 3:x}{11.2.1}{}{65}
+@numsubsecentry{set @result {} x 3:y}{11.2.2}{}{65}
+@numsubsecentry{https @result {} 4:x}{11.2.3}{}{65}
+@numsubsecentry{get @result {} x 4:y}{11.2.4}{}{65}
+@numsecentry{ffi/import}{11.3}{}{66}
+@numsubsecentry{export, import csv @result {} `csv@@x, @math {`}csv?x}{11.3.1}{}{66}
+@numsubsecentry{export, import json @result {} `json@@x, @math {`}json?x}{11.3.2}{}{66}
+@numsubsecentry{lz4 zstd @result {} @math {`}lz4 @math {`}zstd}{11.3.3}{}{66}
 @numchapentry{Foreign Functions}{12}{FF}{68}
 @numsecentry{python}{12.1}{}{68}
 @numsecentry{nodejs}{12.2}{}{68}

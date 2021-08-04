@@ -3137,27 +3137,27 @@ Dmend with function f[r;y] at indices i.
 
 @node I/O
 @chapter I/O and Interface
-In order to support fast data analysis, k9 supports fast input and output (I/O).  If you have the habit of making tea while a huge csv file loads, you might have to opt to take a few sips from a glass of water instead.
-
-k9 is also able to interface with other languages so one doesn't need to translate everything you've already written in those
-other languages to k9.
+This chapter covers reading and writing to file (File I/O), interprocess communication (IPC), and working with pre-built shared libraries (csv, json, lz4, and zstd).
 
 @example
  i/o(*enterprise)
  0: @ref{r line,r}/@ref{w line,w} line
- 1: @ref{r byte,r}/@ref{w byte,w} char
+ 1: @ref{r char,r}/@ref{w char,w} char
 *2: @ref{r data,r}/@ref{w data,w} data
 *3: @ref{k-ipc} @ref{3set,set}    
 *4: @ref{https} @ref{4get,get}
-*5: @ref{ffi}/@ref{import}
+ 5: @ref{ffi}/@ref{import}
 
  `@ref{csv}?`@ref{csv} t;`@ref{json}?`@ref{json} t                                                   
  `@ref{compress,lz4}?`@ref{compress,lz4} t;`@ref{compress,zstd}?`@ref{compress,zstd} t  
 
 @end example
 
-@section Example of Data I/O
-Let's begin with a simple example to write a sample table to csv and then read it back in again.  We'll use a function so the table can easily grow to a larger size.
+@section File I/O
+k9 reads and writes to files in three different formats including line (list of strings), char (list of characters), and data (k9 format).
+
+@subsection Example File I/O
+Let's begin with a simple example to creat a sample table, write to csv and then read it back in again.  We'll use a function so the table can easily grow to a larger size.
 
 @example
  g:@{+`s`f`i!(x?"abc";x?10.;x?10)@} / generate function for table
@@ -3201,8 +3201,6 @@ Given the small size of the file all this happens too quickly to notice the spee
 
 Ten million rows via csv in under 1/2 a second.  Of course results will depend on hardware and number of columns also.
 
-@section Read / Write
-
 @anchor{r line}@subsection read line @result{} 0:x
 Read from file x.
 
@@ -3224,11 +3222,21 @@ red
  "file.txt" 0: ("blue"; "red") / write to file, one line per element
 @end example
 
-@anchor{r byte}@subsection read byte @result{} 1:x
-Read from byte data from file x.  See @ref{w byte} for an example to write and then read byte data.
+@anchor{r char}@subsection read char @result{} 1:x
+Read in file x (string).
 
-@anchor{w byte}@subsection write byte @result{} x 1:y
-Output to file x the list of chars in y as bytes.
+@example
+ / file.bin contains the binary value 0x0010FA37
+ 1:"file.bin"
+0010fa37
+
+ / file.txt contains the ascii string 37\ntest\n
+ 1:"file.txt"
+"37\ntest\n"
+@end example
+
+@anchor{w char}@subsection write char @result{} x 1:y
+Write to file x (string) data y (list of characters).
 
 @example
  "some.txt"1:"0123ABab"
@@ -3293,7 +3301,7 @@ Start new session.
 @end example
 
 @section IPC
-k9 has the ability to comunicate between separate k9 instances via inter-process communication (IPC).  These processes can be on the same or separate machines.  A user will start multiple instances specifying the port that the k9 session will use, opening a handle to that port, and then running remote commands via the handle and @code{3:} or @code{4:}.
+k9 has the ability to comunicate between separate k9 instances via interprocess communication (IPC).  These processes can be on the same or separate machines.  A user will start multiple instances specifying the port (via the command line argurment -p) that the k9 session will use, opening a handle to that port, and then running remote commands via the handle and @code{3:} or @code{4:}.  The commands to be run are sent as a string, eg. ``3+12''.
 
 @anchor{k-ipc}@subsection k-ipc @result{} 3:x
 Open a connection to port @code{x} and return a handle.  If the port has been forwarded from another machine (eg. ssh -L 1280:server.com:1280 laptop.com) then this handle allows remote execution.
@@ -3308,7 +3316,7 @@ Open a connection to port @code{x} and return a handle.  If the port has been fo
 @end example
 
 @anchor{3set}@subsection set @result{} x 3:y
-Exectute string y using handle x.  Handle x should have already been created using k-ipc.  @code{set} is asynchronous, thus once the command is sent the session immediately returns to the user.
+Exectute string y using handle x.  Handle x should have already been created using k-ipc.  @code{set} is asynchronous, thus once the command is sent the session immediately returns to the user.  One will not be able to return any results via @code{set}.  If a result is required then one should use @ref{4get,get}.
 
 @example
  h:3:1251               / create handle to port 1251
@@ -3320,7 +3328,7 @@ Exectute string y using handle x.  Handle x should have already been created usi
 TBD
 
 @anchor{4get}@subsection get @result{} x 4:y
-Execute string y using handle x.  Handle x should have already been created using k-ipc.  @code{get} is synchronous, thus on the command is sent the session waits until there result is ready.
+Execute string y using handle x.  Handle x should have already been created using k-ipc.  @code{get} is synchronous, thus once the command is sent the session waits until there result is ready.
 
 @example
  h:3:1251               / create handle to port 1251
@@ -3406,7 +3414,7 @@ lz4 and zstd are compression algorythms which can be used to reduce the size of 
 
 Enterprise only
 
-k9 is able to interface with other programing laguages via shared libraries (python and nodejs) and the foreign function interface (ffi).
+k9 is able to interface with other programing laguages (python and nodejs) via shared libraries and the foreign function interface (ffi).
 
 @anchor{python}@section python
 In order to have python call k, one has to download the shared object file (k.so for linux and m.so for mac) and save it in the appropriate directory.

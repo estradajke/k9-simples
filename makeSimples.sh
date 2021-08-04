@@ -102,7 +102,7 @@ sed -e 's/@/@@/g' \
     -e 's/zstd/@ref{compress,zstd}/g' \
     -e 's/json/@ref{json}/g' \
     -e 's/r\/w@ line/@ref{r line,r}\/@ref{w line,w}@ line/g' \
-    -e 's/r\/w@ char/@ref{r byte,r}\/@ref{w byte,w}@ char/g' \
+    -e 's/r\/w@ char/@ref{r char,r}\/@ref{w char,w}@ char/g' \
     -e 's/r\/w@ data/@ref{r data,r}\/@ref{w data,w}@ data/g' \
     -e 's/k-ipc@ set/@ref{k-ipc} @ref{3set,set}/g' \
     -e 's/https@ get/@ref{https}@ @ref{4get,get}/g' \
