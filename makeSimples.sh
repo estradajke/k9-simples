@@ -89,7 +89,7 @@ sed -e 's/@/@@/g' \
     -e 's/Control/@ref{cond,Control}/g' \
     -e 's/if@ else/@ref{cond,if else}/g' \
     -e '1,20 s/date/@ref{date}/g' \
-    -e '14,16 s/time/@ref{time}/g' \
+    -e '16,16 s/time/@ref{time}/g' \
     -e 's/bool/@ref{bool}/g' \
     -e '7,20 s/int/@ref{int}/g' \
     -e 's/flt/@ref{flt}/g' \
@@ -107,7 +107,8 @@ sed -e 's/@/@@/g' \
     -e 's/k-ipc@ set/@ref{k-ipc} @ref{3set,set}/g' \
     -e 's/https@ get/@ref{https}@ @ref{4get,get}/g' \
     -e 's/ffi/@ref{ffi}/g' \
-    -e 's/import/@ref{import}/g' \
+    -e 's/python/@ref{python}/g' \
+    -e 's/nodejs/@ref{nodejs}/g' \
     -e '20,40 s/ key/ @ref{key}/g' \
     -e '20,40 s/unkey/@ref{unkey}/g' \
     -e '20,40 s/meta/@ref{meta}/g' \
