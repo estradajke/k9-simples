@@ -3441,7 +3441,52 @@ Type "help", "copyright", "credits" or "license" for more information.
 @end example
 
 @anchor{nodejs}@section nodejs
-TBD
+One can call k9 from nodejs using the k.node shared libary.  (If using a mac then download m.node and rename it k.node.)
+
+From the terminal...
+
+@verbatim
+% node
+Welcome to Node.js v14.17.4.
+Type ".help" for more information.
+> k=require('./k')
+{}
+> k.k('+/!20')
+190
+> 
+@end verbatim
+
+There's also the ability to send information from k9 to nodejs via @ref{k-ipc,IPC}.
+
+ipc.js file
+@verbatim
+p=1299;s=new require('net').Server();
+s.listen(p, function()            {console.log(`Port ${p} is open.`);})
+s.on('connection',function(socket){console.log(`Port ${p} is connected.`);
+ socket.on('data',     function(chunk) {console.log(`Data: ${chunk.toString()}` );});
+ socket.on('end',      function()      {console.log(`Port ${p} is disconnected.`);});
+});
+@end verbatim
+
+Start nodejs
+@verbatim
+% node ipc.js
+@end verbatim
+
+In k9...
+@example
+ h:3:1299
+ h 3: "\nLine1\nLine2\n"
+@end example
+
+In nodejs...
+@verbatim
+Port 1299 is open.
+Port 1299 is connected.
+Data: 
+Line1
+Line2
+@end verbatim
 
 @anchor{ffi}@section ffi @result{} 5:
 

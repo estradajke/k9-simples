@@ -124,8 +124,45 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 </pre></div>
 
 <span id="nodejs"></span><span id="nodejs-1"></span><h3 class="section">12.2 nodejs</h3>
-<p>TBD
+<p>One can call k9 from nodejs using the k.node shared libary.  (If using a mac then download m.node and rename it k.node.)
 </p>
+<p>From the terminal...
+</p>
+<pre class="verbatim">% node
+Welcome to Node.js v14.17.4.
+Type &quot;.help&quot; for more information.
+&gt; k=require('./k')
+{}
+&gt; k.k('+/!20')
+190
+&gt; 
+</pre>
+<p>There&rsquo;s also the ability to send information from k9 to nodejs via <a href="I_002fO.html#k_002dipc">IPC</a>.
+</p>
+<p>ipc.js file
+</p><pre class="verbatim">p=1299;s=new require('net').Server();
+s.listen(p, function()            {console.log(`Port ${p} is open.`);})
+s.on('connection',function(socket){console.log(`Port ${p} is connected.`);
+ socket.on('data',     function(chunk) {console.log(`Data: ${chunk.toString()}` );});
+ socket.on('end',      function()      {console.log(`Port ${p} is disconnected.`);});
+});
+</pre>
+<p>Start nodejs
+</p><pre class="verbatim">% node ipc.js
+</pre>
+<p>In k9...
+</p><div class="example">
+<pre class="example"> h:3:1299
+ h 3: &quot;\nLine1\nLine2\n&quot;
+</pre></div>
+
+<p>In nodejs...
+</p><pre class="verbatim">Port 1299 is open.
+Port 1299 is connected.
+Data: 
+Line1
+Line2
+</pre>
 <span id="ffi"></span><span id="ffi-_21d2-5_003a"></span><h3 class="section">12.3 ffi &rArr; 5:</h3>
 
 <p>Load shared library.
@@ -154,6 +191,11 @@ int indx(int x[],int y){return x[y];}
 <span id="import"></span><span id="import-_21d2-5_003ax"></span><h3 class="section">12.4 import &rArr; 5:x</h3>
 <p>TBD
 </p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Tables.html" accesskey="n" rel="next">Tables</a>, Previous: <a href="I_002fO.html" accesskey="p" rel="prev">I/O</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+</div>
 
 
 

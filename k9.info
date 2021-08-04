@@ -3278,7 +3278,42 @@ Once the file is stored (and it must be called k.so even on the mac) then one ca
 12.2 nodejs
 ===========
 
-TBD
+One can call k9 from nodejs using the k.node shared libary.  (If using a mac then download m.node and rename it k.node.)
+
+From the terminal...
+
+% node
+Welcome to Node.js v14.17.4.
+Type ".help" for more information.
+> k=require('./k')
+{}
+> k.k('+/!20')
+190
+> 
+
+There's also the ability to send information from k9 to nodejs via *note IPC: k-ipc.
+
+ipc.js file
+p=1299;s=new require('net').Server();
+s.listen(p, function()            {console.log(`Port ${p} is open.`);})
+s.on('connection',function(socket){console.log(`Port ${p} is connected.`);
+ socket.on('data',     function(chunk) {console.log(`Data: ${chunk.toString()}` );});
+ socket.on('end',      function()      {console.log(`Port ${p} is disconnected.`);});
+});
+
+Start nodejs
+% node ipc.js
+
+In k9...
+      h:3:1299
+      h 3: "\nLine1\nLine2\n"
+
+In nodejs...
+Port 1299 is open.
+Port 1299 is connected.
+Data: 
+Line1
+Line2
 
 12.3 ffi => 5:
 ==============
@@ -4917,50 +4952,50 @@ Ref: compress83820
 Node: FF84746
 Ref: python85137
 Ref: nodejs85949
-Ref: ffi85979
-Ref: import86412
-Node: Tables86456
-Ref: table87082
-Ref: utable88724
-Node: kSQL89263
-Ref: select90163
-Ref: A90730
-Ref: by B91583
-Ref: where C91912
-Ref: update92754
-Ref: delete93475
-Ref: Joins93757
-Ref: union94114
-Ref: leftjoin94635
-Ref: outer95414
-Ref: asof96049
-Ref: asof+97520
-Ref: insert98738
-Ref: upsert99084
-Node: System99498
-Ref: load99988
-Ref: timing100177
-Ref: variables100462
-Ref: files100570
-Ref: cd100664
-Node: Control Flow100790
-Ref: cond101026
-Node: Temporal Functions101396
-Ref: .z.d101756
-Ref: .z.t101917
-Node: Errors102795
-Ref: class103243
-Ref: rank103332
-Ref: length103456
-Ref: _type103579
-Ref: domain103688
-Ref: limit103810
-Ref: nyi104021
-Ref: eparse104348
-Ref: _value104501
-Node: Examples104629
-Node: Benchmark112679
-Node: Conclusion121351
+Ref: ffi86853
+Ref: import87286
+Node: Tables87330
+Ref: table87956
+Ref: utable89598
+Node: kSQL90137
+Ref: select91037
+Ref: A91604
+Ref: by B92457
+Ref: where C92786
+Ref: update93628
+Ref: delete94349
+Ref: Joins94631
+Ref: union94988
+Ref: leftjoin95509
+Ref: outer96288
+Ref: asof96923
+Ref: asof+98394
+Ref: insert99612
+Ref: upsert99958
+Node: System100372
+Ref: load100862
+Ref: timing101051
+Ref: variables101336
+Ref: files101444
+Ref: cd101538
+Node: Control Flow101664
+Ref: cond101900
+Node: Temporal Functions102270
+Ref: .z.d102630
+Ref: .z.t102791
+Node: Errors103669
+Ref: class104117
+Ref: rank104206
+Ref: length104330
+Ref: _type104453
+Ref: domain104562
+Ref: limit104684
+Ref: nyi104895
+Ref: eparse105222
+Ref: _value105375
+Node: Examples105503
+Node: Benchmark113553
+Node: Conclusion122225
 
 End Tag Table
 
