@@ -1265,9 +1265,9 @@ Convert from string to numeric or name.
 @end example
 
 @anchor{dot}@section [f]dot @result{} x.y
-Given list x return the value at list y.  The action of dot depends on the shape of y.  Also, dot can be used to set the value of a variable.
+Return the value(s) of list x at list y.  This differs from @ref{at} as dot can recursively index.
 @itemize
-@item Index returns the value(s) at x at each index y, i.e. x@@y@@0, x@@y@@1, ..., x@@y@@(n-1).
+@item Simple index returns the value(s) at x at each index y, i.e. x@@y@@0, x@@y@@1, ..., x@@y@@(n-1).
 @item Recursive index returns the value(s) at x[y@@0;y@@1].
 @item Recursive index over returns x[y[0;0];y[1]], x[y[0;1];y[1]], ..., x[y[0;n-1];y[1]].
 @end itemize
