@@ -738,7 +738,7 @@ c b 2
 <pre class="example"> 3_0 1 2 3 4 5          / drop first three
 3 4 5
 
- -2_0 1 2 3 4 5         / drop last three
+ -2_0 1 2 3 4 5         / drop last two
 0 1 2 3
 </pre></div>
 
@@ -775,11 +775,17 @@ c|2
 <div class="example">
 <pre class="example"> `i$&quot;23&quot;
 23
+
  `f$&quot;2.3&quot;
 2.3
+
+ `f$&quot;2&quot;
+2
+
  `t$&quot;12:34:56.789&quot;
 12:34:56.789
- `d$&quot;2020.04.20&quot;
+
+`d$&quot;2020.04.20&quot;
 2020.04.20
 </pre></div>
 
@@ -787,9 +793,10 @@ c|2
 <p>Return the unique values of the list x.  The <code>?</code> preceeding the return value explicitly shows that the list has no repeated values.
 </p>
 <div class="example">
-<pre class="example">&nbsp;?`f`a`b`c`a`b`d`e`a
+<pre class="example"> ?`f`a`b`c`a`b`d`e`a
 ?`f`a`b`c`d`e
-&nbsp;?&quot;banana&quot;
+
+?&quot;banana&quot;
 ?&quot;ban&quot;
 </pre></div>
 
@@ -799,11 +806,14 @@ c|2
 <div class="example">
 <pre class="example"> `a`b`a`c`b`a`a?`b
 1
-&nbsp;`a`b`a`c`b`a`a?`d / missing thus return the list length
+
+ `a`b`a`c`b`a`a?`d / missing thus return the list length
 7
-&nbsp;0 1 2 3 4?10
+
+ 0 1 2 3 4?10
 5
-&nbsp;(1;`a;&quot;blue&quot;;7.4)?3
+
+(1;`a;&quot;blue&quot;;7.4)?3
 4
 </pre></div>
 
@@ -818,10 +828,7 @@ c|2
 <p>Return the data type of x.  Lower-case represents a single element while upper-case represents a list of type indicated.
 </p>
 <div class="example">
-<pre class="example">@1 / 0 ro 1 will show up as binary
-`b
-
-@2
+<pre class="example">@2
 `i
 
 @1.2
@@ -849,6 +856,12 @@ c|2
 `.
 
 @`a`b!1 2
+`a
+
+@[[]x:`a`b;y:1 2]
+`A
+
+@[x:`a`b]y:1 2]
 `a
 </pre></div>
 

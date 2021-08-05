@@ -1055,7 +1055,7 @@ Postive (negative) x drops the first (last) x elements of y.
  3_0 1 2 3 4 5          / drop first three
 3 4 5
 
- -2_0 1 2 3 4 5         / drop last three
+ -2_0 1 2 3 4 5         / drop last two
 0 1 2 3
 @end example
 
@@ -1094,11 +1094,17 @@ Parse string y into type x.
 @example
  `i$"23"
 23
+
  `f$"2.3"
 2.3
+
+ `f$"2"
+2
+
  `t$"12:34:56.789"
 12:34:56.789
- `d$"2020.04.20"
+
+`d$"2020.04.20"
 2020.04.20
 @end example
 
@@ -1106,9 +1112,10 @@ Parse string y into type x.
 Return the unique values of the list x.  The @code{?} preceeding the return value explicitly shows that the list has no repeated values.
 
 @example
-@ ?`f`a`b`c`a`b`d`e`a
+ ?`f`a`b`c`a`b`d`e`a
 ?`f`a`b`c`d`e
-@ ?"banana"
+
+?"banana"
 ?"ban"
 @end example
 
@@ -1118,11 +1125,14 @@ Find the first element of x that matches y otherwise return the end of vector.
 @example
  `a`b`a`c`b`a`a?`b
 1
-@ `a`b`a`c`b`a`a?`d / missing thus return the list length
+
+ `a`b`a`c`b`a`a?`d / missing thus return the list length
 7
-@ 0 1 2 3 4?10
+
+ 0 1 2 3 4?10
 5
-@ (1;`a;"blue";7.4)?3
+
+(1;`a;"blue";7.4)?3
 4
 @end example
 
@@ -1133,15 +1143,10 @@ Return random numbers.  Documented at @ref{rand}.
 0.01640292 0.8029538 0.9569196
 @end example
 
-@c There is also another use of @code{?} where x is a special name, eg. @math{`}js, @math{`}csv (or @math{`}cs), or @math{`}nv.  This is further discussed in the @ref{I/O} section.
-@c 
 @anchor{type}@section type @result{} @@x
 Return the data type of x.  Lower-case represents a single element while upper-case represents a list of type indicated.
 
 @example
-@@1 / 0 ro 1 will show up as binary
-`b
-
 @@2
 `i
 
@@ -1170,6 +1175,12 @@ Return the data type of x.  Lower-case represents a single element while upper-c
 `.
 
 @@`a`b!1 2
+`a
+
+@@[[]x:`a`b;y:1 2]
+`A
+
+@@[x:`a`b]y:1 2]
 `a
 @end example
 
