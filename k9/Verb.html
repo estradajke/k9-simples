@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- August 4, 2021
+<!-- August 5, 2021
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -927,7 +927,7 @@ json.dylib
 </pre></div>
 
 <span id="dot"></span><span id="g_t_005bf_005ddot-_21d2-x_002ey"></span><h3 class="section">2.37 [f]dot &rArr; x.y</h3>
-<p>Given list x return the value at list y.  The action of dot depends on the shape of y.
+<p>Given list x return the value at list y.  The action of dot depends on the shape of y.  Also, dot can be used to set the value of a variable.
 </p><ul>
 <li> Index returns the value(s) at x at each index y, i.e. x@y@0, x@y@1, ..., x@y@(n-1).
 </li><li> Recursive index returns the value(s) at x[y@0;y@1].
@@ -990,6 +990,20 @@ x30 x31
 a|1
 b|2
 c|3
+</pre></div>
+
+<p>Set variable x to value y.  x must be the variable name as symbol.
+</p>
+<div class="example">
+<pre class="example"> a
+!value
+
+ (:;`a;15)
+ a
+15
+
+ a
+15
 </pre></div>
 
 <hr>

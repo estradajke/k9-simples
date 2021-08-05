@@ -49,7 +49,7 @@ sed -e 's/@/@@/g' \
     -e '20,100 s/type/@ref{type}/g' \
     -e 's/[f]at/[f]@ref{at}/g' \
     -e 's/value/@ref{value}/g' \
-    -e '1,26 s/dot/@ref{dot}/g' \
+    -e '30,30 s/dot/@ref{dot}/g' \
     -e '1,10 s/join/@ref{join}/g' \
     -e '1,5 s/scan/@ref{scan}/g' \
     -e '1,5 s/over/@ref{over}/g' \
@@ -138,7 +138,7 @@ sed -e 's/@/@@/g' \
     -e '28,35 s/min/@ref{Hmin,min}/g' \
     -e '28,35 s/max/@ref{Hmax,max}/g' \
     -e '28,35 s/sum/@ref{Hsum,sum}/g' \
-    -e '28,35 s/dot/@ref{Hdot,dot}/g' \
+    -e '31,35 s/dot/@ref{Hdot,dot}/g' \
     -e '12,15 s/.z.d/@ref{.z.d}/g' \
     -e '12,15 s/.z.t/@ref{.z.t}/g' \
     -e '20,40 s/avg/@ref{avg}/g' \

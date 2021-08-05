@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- August 4, 2021
+<!-- August 5, 2021
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -128,7 +128,7 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; <
 <tt>$&nbsp;<a href="#string">string</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#parse">parse</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$[b;t;f]&nbsp;<a href="#cond">cond</a></tt><br>
 <tt>?&nbsp;<a href="#unique">unique</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#find_002frand">find/rand</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
 <tt>@&nbsp;<a href="#type">type</a>&nbsp;&nbsp;&nbsp;[f]at&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@[x;i;f[;y]]&nbsp;<a href="#amend">amend</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Tables">table</a>&nbsp;[[]n:`b`c;i:2&nbsp;3]</tt><br>
-<tt>.&nbsp;<a href="#value">value</a>&nbsp;&nbsp;[f]<a href="#Hdot">dot</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.[x;i;f[;y]]&nbsp;<a href="#dmend">dmend</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#utable">utable</a>&nbsp;&nbsp;[[n:`b`c]i:2&nbsp;3]</tt><br>
+<tt>.&nbsp;<a href="#value">value</a>&nbsp;&nbsp;[f]<a href="#dot">dot</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.[x;i;f[;y]]&nbsp;<a href="#dmend">dmend</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#utable">utable</a>&nbsp;&nbsp;[[n:`b`c]i:2&nbsp;3]</tt><br>
 <tt></tt><br>
 <tt><a href="#Hcount">count</a> &nbsp;<a href="#Hfirst">first</a>&nbsp;<a href="#Hlast">last</a>&nbsp;<a href="#Hmin">min</a>&nbsp;<a href="#Hmax">max</a>&nbsp;<a href="#Hsum">sum</a>&nbsp;<a href="#avg">avg</a>&nbsp;<a href="#var">var</a>&nbsp;<a href="#dev">dev</a>&nbsp;[<a href="#med">med</a>&nbsp;..]</tt><br>
 <tt><a href="#select">select</a>&nbsp;<a href="#A">A</a>&nbsp;<a href="#by-B">by B</a>&nbsp;from&nbsp;T&nbsp;<a href="#where-C">where C</a>;&nbsp;<a href="#update">update</a>&nbsp;<a href="#A">A</a>&nbsp;from&nbsp;T;&nbsp;<a href="#delete">delete</a>&nbsp;from&nbsp;T&nbsp;<a href="#where-C">where C</a></tt><br>
@@ -1260,7 +1260,7 @@ json.dylib
 </pre></div>
 
 <span id="dot"></span><span id="g_t_005bf_005ddot-_21d2-x_002ey"></span><h3 class="section">2.37 [f]dot &rArr; x.y</h3>
-<p>Given list x return the value at list y.  The action of dot depends on the shape of y.
+<p>Given list x return the value at list y.  The action of dot depends on the shape of y.  Also, dot can be used to set the value of a variable.
 </p><ul>
 <li> Index returns the value(s) at x at each index y, i.e. x@y@0, x@y@1, ..., x@y@(n-1).
 </li><li> Recursive index returns the value(s) at x[y@0;y@1].
@@ -1323,6 +1323,20 @@ x30 x31
 a|1
 b|2
 c|3
+</pre></div>
+
+<p>Set variable x to value y.  x must be the variable name as symbol.
+</p>
+<div class="example">
+<pre class="example"> a
+!value
+
+ (:;`a;15)
+ a
+15
+
+ a
+15
 </pre></div>
 
 <hr>
@@ -3505,9 +3519,13 @@ int indx(int x[],int y){return x[y];}
 14
 </pre></div>
 
-<span id="import"></span><span id="import-_21d2-5_003ax"></span><h3 class="section">12.4 import &rArr; 5:x</h3>
-<p>TBD
+<span id="import"></span><span id="import-_21d2-x-5_003ay"></span><h3 class="section">12.4 import &rArr; x 5:y</h3>
+<p>Import as name x library y.
 </p>
+<div class="example">
+<pre class="example"> .(:;`json;5:`json) / using dot notation
+</pre></div>
+
 <hr>
 <span id="Tables"></span><div class="header">
 <p>
