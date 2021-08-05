@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdfetex 2020.5.15)  5 AUG 2021 20:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdfetex 2020.5.15)  5 AUG 2021 20:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**\nonstopmode \input ./k.manual.texi
+**\nonstopmode \input ./k.manual.texi \input ./k.manual.texi
 (./k.manual.texi (/Users/estradaj/GitHub/k9-simples/texinfo.tex
 Loading texinfo [version 2019-09-20.22]:
 \outerhsize=\dimen16
@@ -153,7 +153,7 @@ texinfo.tex: doing @include of k.d2
 
 (/Users/estradaj/GitHub/k9-simples/k.d2)
 Overfull \hbox (26.27502pt too wide) in paragraph at lines 1--34
-[][][]@texttt [python], page 68[][]: import k;k.k('2+3') #[][][nodejs], page 68
+[][][]@texttt [python], page 69[][]: import k;k.k('2+3') #[][][nodejs], page 69
 [][]: require('k').k('2+3')[]|
 
 @hbox(7.60416+2.43333)x433.62
@@ -174,8 +174,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 1--34
 
 
 Overfull \hbox (3.28027pt too wide) in paragraph at lines 1--34
-[]@texttt `[][][compress], page 66[][]?`[][][compress], page 66,[][] t;`[][][co
-mpress], page 66[][]?`[][][compress],|
+[]@texttt `[][][compress], page 67[][]?`[][][compress], page 67,[][] t;`[][][co
+mpress], page 67[][]?`[][][compress],|
 
 @hbox(7.60416+2.43333)x433.62
 .@hbox(0.0+0.0)x0.0
@@ -188,7 +188,7 @@ mpress], page 66[][]?`[][][compress],|
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
 [][][]@texttt Chapter 2 [Verb], page 6,[][]                    [][]Chapter 3 [A
-dverb], page 24,[][]
+dverb], page 25,[][]
 
 @hbox(7.60416+2.43333)x433.62
 .@hbox(0.0+0.0)x0.0
@@ -200,7 +200,7 @@ dverb], page 24,[][]
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
-[]@texttt : x         y          f' [][][each], page 24,[][]                 ch
+[]@texttt : x         y          f' [][][each], page 25,[][]                 ch
 ar " ab"
 
 @hbox(7.60416+2.43333)x433.62
@@ -214,7 +214,7 @@ ar " ab"
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
 []@texttt + [][][flip], page 7,[][]      [][][plus], page 7,[][]    [x]f/ [][][
-cover], page 28,[][]      c/
+cover], page 29,[][]      c/
 
 @hbox(7.60416+2.43333)x433.62
 .@hbox(0.0+0.0)x0.0
@@ -227,7 +227,7 @@ cover], page 28,[][]      c/
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
 []@texttt - [][][minus], page 8,[][]     [][][minus], page 8,[][]   [x]f\ [][][
-cscan], page 28,[][]      c\
+cscan], page 29,[][]      c\
 
 @hbox(7.60416+2.43333)x433.62
 .@hbox(0.0+0.0)x0.0
@@ -239,7 +239,7 @@ cscan], page 28,[][]      c\
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
-[][]@texttt [split], page 26,[][]   [][][int], page 31,[][]  2 3               
+[][]@texttt [split], page 27,[][]   [][][int], page 32,[][]  2 3               
  [][][variables],
 
 @hbox(7.60416+2.43333)x433.62
@@ -252,8 +252,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 1--34
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
-[]@texttt * [][][first], page 8,[][]     [][][times], page 8,[][]   [y]f':[][][
-eachprior], page 27,[][]
+[]@texttt * [][][first], page 8,[][]     [][][times], page 9,[][]   [y]f':[][][
+eachprior], page 28,[][]
 
 @hbox(7.60416+2.43333)x433.62
 .@hbox(0.0+0.0)x0.0
@@ -265,7 +265,7 @@ eachprior], page 27,[][]
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
-[]@texttt %           [][][divide], page 9,[][]     f/:[][][eachright], page 27
+[]@texttt %           [][][divide], page 9,[][]     f/:[][][eachright], page 28
 ,[][] g/:[][][cover],
 
 @hbox(7.60416+2.43333)x433.62
@@ -279,7 +279,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1--34
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
 []@texttt & [][][where], page 9,[][]     [][][min/and], page 9,[][]    f\:[][][
-eachleft], page 28,[][]
+eachleft], page 29,[][]
 
 @hbox(7.60416+2.43333)x433.62
 .@hbox(0.0+0.0)x0.0
@@ -291,8 +291,8 @@ eachleft], page 28,[][]
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
-[]@texttt < [][][asc], page 10,[][]       [][][less], page 10,[][]       [][]Ch
-apter 11 [I/O], page 62,[][]
+[]@texttt < [][][asc], page 10,[][]       [][][less], page 11,[][]       [][]Ch
+apter 11 [I/O], page 63,[][]
 
 @hbox(7.60416+2.43333)x433.62
 .@hbox(0.0+0.0)x0.0
@@ -304,8 +304,8 @@ apter 11 [I/O], page 62,[][]
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
-[]@texttt > [][][desc], page 10,[][]      [][][more], page 10,[][]       0: [][
-][r line], page 63[][]/[][][w
+[]@texttt > [][][desc], page 10,[][]      [][][more], page 11,[][]       0: [][
+][r line], page 64[][]/[][][w
 
 @hbox(7.60416+2.43333)x433.62
 .@hbox(0.0+0.0)x0.0
@@ -318,7 +318,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1--34
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
 []@texttt = [][][group], page 11,[][]     [][][equal], page 11,[][]      1: [][
-][r char], page 63[][]/[][][w
+][r char], page 64[][]/[][][w
 
 @hbox(7.60416+2.43333)x433.62
 .@hbox(0.0+0.0)x0.0
@@ -330,8 +330,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 1--34
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
-@texttt char], page 63,[][] char             [][]Chapter 6 [Dictionary], page 3
-9,[][]
+@texttt char], page 64,[][] char             [][]Chapter 6 [Dictionary], page 4
+0,[][]
 
 @hbox(7.60416+2.43333)x433.62
 .@texttt c
@@ -344,7 +344,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1--34
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
 []@texttt ~ [][][not], page 11,[][]       [][][match], page 12,[][]     *2: [][
-][r data], page 64[][]/[][][w
+][r data], page 65[][]/[][][w
 
 @hbox(7.60416+2.43333)x433.62
 .@hbox(0.0+0.0)x0.0
@@ -356,8 +356,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 1--34
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
-@texttt data], page 64,[][] data             [][]Chapter 7 [User Functions], pa
-ge 45,[][]
+@texttt data], page 65,[][] data             [][]Chapter 7 [User Functions], pa
+ge 46,[][]
 
 @hbox(7.60416+2.43333)x433.62
 .@texttt d
@@ -370,7 +370,7 @@ ge 45,[][]
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
 []@texttt ! [][][key], page 13,[][]       [][][key], page 13,[][]       *3: [][
-][k-ipc], page 65,[][] [][][3set],
+][k-ipc], page 66,[][] [][][3set],
 
 @hbox(7.60416+2.43333)x433.62
 .@hbox(0.0+0.0)x0.0
@@ -382,8 +382,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 1--34
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
-[]@texttt , [][][enlist], page 13,[][]    [][][cat], page 14,[][]       *4: [][
-][https], page 65,[][] [][][4get],
+[]@texttt , [][][enlist], page 14,[][]    [][][cat], page 14,[][]       *4: [][
+][https], page 66,[][] [][][4get],
 
 @hbox(7.60416+2.43333)x433.62
 .@hbox(0.0+0.0)x0.0
@@ -417,7 +417,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1--34
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
 []@texttt @ [][][type], page 20,[][]   [f]at         @[x;i;f[;y]] [][][amend], 
-page 58,[][]
+page 59,[][]
 
 @hbox(7.60416+2.43333)x433.62
 .@hbox(0.0+0.0)x0.0
@@ -442,8 +442,8 @@ f[;y]] [][][dmend],
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
-[][][]@texttt [Hcount], page 50,[][]  [][][Hfirst], page 50,[][] [][][Hlast], p
-age 50,[][] [][][Hmin], page 50,[][]
+[][][]@texttt [Hcount], page 51,[][]  [][][Hfirst], page 51,[][] [][][Hlast], p
+age 51,[][] [][][Hmin], page 51,[][]
 
 @hbox(7.60416+2.43333)x433.62
 .@hbox(0.0+0.0)x0.0
@@ -455,8 +455,8 @@ age 50,[][] [][][Hmin], page 50,[][]
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
-[][]@texttt [Hmax], page 50,[][] [][][Hsum], page 50,[][] [][][avg], page 51,[]
-[] [][][var], page 51,[][] [][][dev],
+[][]@texttt [Hmax], page 51,[][] [][][Hsum], page 51,[][] [][][avg], page 52,[]
+[] [][][var], page 52,[][] [][][dev],
 
 @hbox(7.60416+2.43333)x433.62
 .@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{Hmax}
@@ -468,7 +468,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1--34
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
-[][][]@texttt [select], page 72,[][] [][][A], page 73,[][] [][][by B], page 74,
+[][][]@texttt [select], page 73,[][] [][][A], page 74,[][] [][][by B], page 75,
 [][] from T [][][where C],
 
 @hbox(7.60416+2.43333)x433.62
@@ -481,8 +481,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 1--34
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
-@texttt page 74[][]; [][][update], page 75,[][] [][][A], page 73,[][] from T; [
-][][delete], page 76,[][] from T
+@texttt page 75[][]; [][][update], page 76,[][] [][][A], page 74,[][] from T; [
+][][delete], page 77,[][] from T
 
 @hbox(7.60416+2.43333)x433.62
 .@texttt p
@@ -494,8 +494,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 1--34
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
-[][][]@texttt [sqrt], page 52,[][] [][][sqr], page 52,[][] [][][exp], page 51,[
-][] [][][log], page 51,[][] [][][sin],
+[][][]@texttt [sqrt], page 53,[][] [][][sqr], page 53,[][] [][][exp], page 52,[
+][] [][][log], page 52,[][] [][][sin],
 
 @hbox(7.60416+2.43333)x433.62
 .@hbox(0.0+0.0)x0.0
@@ -507,8 +507,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 1--34
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--34
-@texttt page 52,[][] [][][cos], page 52,[][] [][][div], page 55,[][] [][][mod],
- page 55,[][] [][][bar], page 55,[][]
+@texttt page 53,[][] [][][cos], page 53,[][] [][][div], page 56,[][] [][][mod],
+ page 56,[][] [][][bar], page 56,[][]
 
 @hbox(7.60416+2.43333)x433.62
 .@texttt p
@@ -548,7 +548,7 @@ tput with ;)[] |
 
 [4] [5] Chapter 2 [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17]
 [18] [19] [20]
-Overfull \hbox (66.67995pt too wide) in paragraph at lines 1207--1207
+Overfull \hbox (66.67995pt too wide) in paragraph at lines 1149--1149
  [] @texttt (sqr;sqrt;|;#)@'(3;10;"word";^^Ra^^Rb^^Rc) / list of fuctions appli
 ed to list of inputs[] |
 
@@ -560,8 +560,8 @@ ed to list of inputs[] |
 .@texttt (
 .etc.
 
-[21] [22] Chapter 3 [23] [24]
-Overfull \hbox (18.75497pt too wide) in paragraph at lines 1417--1417
+[21] [22] [23] Chapter 3 [24] [25]
+Overfull \hbox (18.75497pt too wide) in paragraph at lines 1359--1359
   @textbf a f[x]| 
 
 @hbox(9.34993+3.85005)x18.69167, glue set - 1.0
@@ -573,7 +573,7 @@ Overfull \hbox (18.75497pt too wide) in paragraph at lines 1417--1417
 .etc.
 
 
-Overfull \hbox (60.52925pt too wide) in paragraph at lines 1417--1417
+Overfull \hbox (60.52925pt too wide) in paragraph at lines 1359--1359
   @textbf x:0 1 4 9 16 25| 
 
 @hbox(9.34993+3.85005)x18.69167, glue set - 1.0
@@ -585,7 +585,7 @@ Overfull \hbox (60.52925pt too wide) in paragraph at lines 1417--1417
 .etc.
 
 
-Overfull \hbox (13.01823pt too wide) in paragraph at lines 1417--1417
+Overfull \hbox (13.01823pt too wide) in paragraph at lines 1359--1359
   @texttt +\@textbf x| 
 
 @hbox(9.34993+3.85005)x18.69167, glue set - 1.0
@@ -597,7 +597,7 @@ Overfull \hbox (13.01823pt too wide) in paragraph at lines 1417--1417
 .etc.
 
 
-Overfull \hbox (18.49324pt too wide) in paragraph at lines 1417--1417
+Overfull \hbox (18.49324pt too wide) in paragraph at lines 1359--1359
   @textbf 3@texttt +\@textbf x| 
 
 @hbox(9.34993+3.85005)x18.69167, glue set - 1.0
@@ -609,7 +609,7 @@ Overfull \hbox (18.49324pt too wide) in paragraph at lines 1417--1417
 .etc.
 
 
-Overfull \hbox (12.74455pt too wide) in paragraph at lines 1417--1417
+Overfull \hbox (12.74455pt too wide) in paragraph at lines 1359--1359
   @texttt +@textbf /x| 
 
 @hbox(9.34993+3.85005)x18.69167, glue set - 1.0
@@ -621,7 +621,7 @@ Overfull \hbox (12.74455pt too wide) in paragraph at lines 1417--1417
 .etc.
 
 
-Overfull \hbox (18.21956pt too wide) in paragraph at lines 1417--1417
+Overfull \hbox (18.21956pt too wide) in paragraph at lines 1359--1359
   @textbf 3@texttt +@textbf /x[] 
 
 @hbox(8.2125+2.73749)x18.69167, glue set - 1.0
@@ -633,7 +633,7 @@ Overfull \hbox (18.21956pt too wide) in paragraph at lines 1417--1417
 .etc.
 
 
-Overfull \hbox (28.96684pt too wide) in paragraph at lines 1418--1418
+Overfull \hbox (28.96684pt too wide) in paragraph at lines 1360--1360
   @textrm f$[]$[a;x$[]$]| 
 
 @hbox(9.34993+3.85005)x18.69167, glue set - 1.0
@@ -645,7 +645,7 @@ Overfull \hbox (28.96684pt too wide) in paragraph at lines 1418--1418
 .etc.
 
 
-Overfull \hbox (31.58774pt too wide) in paragraph at lines 1419--1419
+Overfull \hbox (31.58774pt too wide) in paragraph at lines 1361--1361
   @textrm f$[]$[f$[]$;x$[]$]| 
 
 @hbox(9.34993+3.85005)x18.69167, glue set - 1.0
@@ -657,7 +657,7 @@ Overfull \hbox (31.58774pt too wide) in paragraph at lines 1419--1419
 .etc.
 
 
-Overfull \hbox (31.58774pt too wide) in paragraph at lines 1419--1419
+Overfull \hbox (31.58774pt too wide) in paragraph at lines 1361--1361
   @textrm f$[]$[f$[]$;x$[]$]| 
 
 @hbox(9.34993+3.85005)x18.69167, glue set - 1.0
@@ -669,7 +669,7 @@ Overfull \hbox (31.58774pt too wide) in paragraph at lines 1419--1419
 .etc.
 
 
-Overfull \hbox (33.71277pt too wide) in paragraph at lines 1421--1421
+Overfull \hbox (33.71277pt too wide) in paragraph at lines 1363--1363
   @textrm f$[]$[f$[]$;x$[]$]| 
 
 @hbox(9.34993+3.85005)x18.69167, glue set - 1.0
@@ -681,7 +681,7 @@ Overfull \hbox (33.71277pt too wide) in paragraph at lines 1421--1421
 .etc.
 
 
-Overfull \hbox (33.71277pt too wide) in paragraph at lines 1421--1421
+Overfull \hbox (33.71277pt too wide) in paragraph at lines 1363--1363
   @textrm f$[]$[f$[]$;x$[]$]| 
 
 @hbox(9.34993+3.85005)x18.69167, glue set - 1.0
@@ -693,7 +693,7 @@ Overfull \hbox (33.71277pt too wide) in paragraph at lines 1421--1421
 .etc.
 
 
-Overfull \hbox (13.82658pt too wide) in paragraph at lines 1423--1423
+Overfull \hbox (13.82658pt too wide) in paragraph at lines 1365--1365
   @textrm x$[]$| 
 
 @hbox(9.34993+3.85005)x18.69167, glue set - 1.0
@@ -705,7 +705,7 @@ Overfull \hbox (13.82658pt too wide) in paragraph at lines 1423--1423
 .etc.
 
 
-Overfull \hbox (54.25473pt too wide) in paragraph at lines 1423--1423
+Overfull \hbox (54.25473pt too wide) in paragraph at lines 1365--1365
   @textrm f$[]$[f$[]$;x$[]$]| 
 
 @hbox(9.34993+3.85005)x18.69167, glue set - 1.0
@@ -717,7 +717,7 @@ Overfull \hbox (54.25473pt too wide) in paragraph at lines 1423--1423
 .etc.
 
 
-Overfull \hbox (54.25473pt too wide) in paragraph at lines 1423--1423
+Overfull \hbox (54.25473pt too wide) in paragraph at lines 1365--1365
   @textrm f$[]$[f$[]$;x$[]$]| 
 
 @hbox(9.34993+3.85005)x18.69167, glue set - 1.0
@@ -729,7 +729,7 @@ Overfull \hbox (54.25473pt too wide) in paragraph at lines 1423--1423
 .etc.
 
 
-Overfull \hbox (13.82658pt too wide) in paragraph at lines 1424--1424
+Overfull \hbox (13.82658pt too wide) in paragraph at lines 1366--1366
   @textrm x$[]$| 
 
 @hbox(9.34993+3.85005)x18.69167, glue set - 1.0
@@ -741,7 +741,7 @@ Overfull \hbox (13.82658pt too wide) in paragraph at lines 1424--1424
 .etc.
 
 
-Overfull \hbox (54.25473pt too wide) in paragraph at lines 1424--1424
+Overfull \hbox (54.25473pt too wide) in paragraph at lines 1366--1366
   @textrm f$[]$[f$[]$;x$[]$]| 
 
 @hbox(9.34993+3.85005)x18.69167, glue set - 1.0
@@ -753,7 +753,7 @@ Overfull \hbox (54.25473pt too wide) in paragraph at lines 1424--1424
 .etc.
 
 
-Overfull \hbox (54.25473pt too wide) in paragraph at lines 1424--1424
+Overfull \hbox (54.25473pt too wide) in paragraph at lines 1366--1366
   @textrm f$[]$[f$[]$;x$[]$]| 
 
 @hbox(9.34993+3.85005)x18.69167, glue set - 1.0
@@ -764,12 +764,12 @@ Overfull \hbox (54.25473pt too wide) in paragraph at lines 1424--1424
 .@mathon
 .etc.
 
-[25] [26] [27] [28] Chapter 4 [29] [30] [31] [32] [33] Chapter 5 [34] [35]
-[36] [37] Chapter 6 [38] [39] [40] [41] [42] [43] Chapter 7 [44] [45] [46]
-Chapter 8 [47] [48] Chapter 9 [49]
-Overfull \hbox (53.60722pt too wide) in paragraph at lines 2568--2568
- [][][]@smalltt [Hcount], page 50,[][] [][][Hfirst], page 50,[][] [][][Hlast], 
-page 50,[][] [][][Hmin], page 50,[][] [][][Hmax], page 50,[][] [][][Hsum],|
+[26] [27] [28] [29] Chapter 4 [30] [31] [32] [33] [34] Chapter 5 [35] [36]
+[37] [38] Chapter 6 [39] [40] [41] [42] [43] [44] Chapter 7 [45] [46] [47]
+Chapter 8 [48] [49] Chapter 9 [50]
+Overfull \hbox (53.60722pt too wide) in paragraph at lines 2510--2510
+ [][][]@smalltt [Hcount], page 51,[][] [][][Hfirst], page 51,[][] [][][Hlast], 
+page 51,[][] [][][Hmin], page 51,[][] [][][Hmax], page 51,[][] [][][Hsum],|
 
 @hbox(6.25+2.0)x433.62
 .@glue(@leftskip) 28.90755
@@ -779,11 +779,11 @@ page 50,[][] [][][Hmin], page 50,[][] [][][Hmax], page 50,[][] [][][Hsum],|
 .@smalltt [
 .etc.
 
-[50] [51] [52] [53] [54] [55] [56] Chapter 10 [57] [58] [59] Chapter 11
-[60] [61]
-Overfull \hbox (49.43388pt too wide) in paragraph at lines 3171--3171
- [] @texttt ^^R[][][compress], page 66[][]?^^R[][][compress], page 66,[][] t;^^
-R[][][compress], page 66[][]?^^R[][][compress],|
+[51] [52] [53] [54] [55] [56] [57] Chapter 10 [58] [59] [60] Chapter 11
+[61] [62]
+Overfull \hbox (49.43388pt too wide) in paragraph at lines 3113--3113
+ [] @texttt ^^R[][][compress], page 67[][]?^^R[][][compress], page 67,[][] t;^^
+R[][][compress], page 67[][]?^^R[][][compress],|
 
 @hbox(7.60416+2.43333)x433.62
 .@glue(@leftskip) 28.90755
@@ -794,7 +794,7 @@ R[][][compress], page 66[][]?^^R[][][compress],|
 .etc.
 
 
-Overfull \hbox (43.6852pt too wide) in paragraph at lines 3194--3194
+Overfull \hbox (43.6852pt too wide) in paragraph at lines 3136--3136
  []@texttt "s,f,i\nb,1.08707,3\na,5.506882,0\nc,8.938667,1\nc,6.217895,6\nb,1.5
 42842,6\n"[] |
 
@@ -807,7 +807,7 @@ Overfull \hbox (43.6852pt too wide) in paragraph at lines 3194--3194
 .etc.
 
 
-Overfull \hbox (66.67995pt too wide) in paragraph at lines 3200--3200
+Overfull \hbox (66.67995pt too wide) in paragraph at lines 3142--3142
  []@texttt "s,f,i\na,3.669518,1\na,0.001226037,7\nb,2.792163,3\nc,8.539221,7\nb
 ,9.333188,7\n"[] |
 
@@ -819,10 +819,10 @@ Overfull \hbox (66.67995pt too wide) in paragraph at lines 3200--3200
 .@texttt ,
 .etc.
 
-[62] [63] [64] [65] [66] Chapter 12 [67]
-Overfull \hbox (112.66945pt too wide) in paragraph at lines 3430--3430
- [][][]@texttt [python], page 68[][]:from k import k;k('+',2,3);[][][nodejs], p
-age 68[][]:k=require('k').k;k('+',2,3)[] |
+[63] [64] [65] [66] [67] Chapter 12 [68]
+Overfull \hbox (112.66945pt too wide) in paragraph at lines 3372--3372
+ [][][]@texttt [python], page 69[][]:from k import k;k('+',2,3);[][][nodejs], p
+age 69[][]:k=require('k').k;k('+',2,3)[] |
 
 @hbox(7.60416+2.43333)x433.62
 .@glue(@leftskip) 28.90755
@@ -833,7 +833,7 @@ age 68[][]:k=require('k').k;k('+',2,3)[] |
 .etc.
 
 
-Overfull \hbox (141.41289pt too wide) in paragraph at lines 3456--3456
+Overfull \hbox (141.41289pt too wide) in paragraph at lines 3398--3398
  []@texttt [7.691266643814743, 6.843659253790975, 6.399056380614638, 9.63719196
 3847727, 4.250652831979096][] |
 
@@ -846,7 +846,7 @@ Overfull \hbox (141.41289pt too wide) in paragraph at lines 3456--3456
 .etc.
 
 
-Overfull \hbox (55.01846pt too wide) in paragraph at lines 3488--3488
+Overfull \hbox (55.01846pt too wide) in paragraph at lines 3430--3430
 [][] |
 
 @hbox(7.60416+2.43333)x433.62
@@ -863,8 +863,8 @@ Overfull \hbox (55.01846pt too wide) in paragraph at lines 3488--3488
 .@glue(@rightskip) 0.0
 .etc.
 
-[68]
-Overfull \hbox (55.01846pt too wide) in paragraph at lines 3488--3488
+[69]
+Overfull \hbox (55.01846pt too wide) in paragraph at lines 3430--3430
 [][] |
 
 @hbox(7.60416+2.43333)x433.62
@@ -881,10 +881,10 @@ Overfull \hbox (55.01846pt too wide) in paragraph at lines 3488--3488
 .@glue(@rightskip) 0.0
 .etc.
 
-Chapter 13 [69] [70] Chapter 14 [71]
-Overfull \hbox (66.67995pt too wide) in paragraph at lines 3655--3655
- []@texttt {[][][select], page 72[][]|[][][update], page 75[][]} [][][A], page 
-73,[][] [][][by B], page 74,[][] from T [][][where|
+Chapter 13 [70] [71] Chapter 14 [72]
+Overfull \hbox (66.67995pt too wide) in paragraph at lines 3597--3597
+ []@texttt {[][][select], page 73[][]|[][][update], page 76[][]} [][][A], page 
+74,[][] [][][by B], page 75,[][] from T [][][where|
 
 @hbox(7.60416+2.43333)x433.62
 .@glue(@leftskip) 28.90755
@@ -895,9 +895,9 @@ Overfull \hbox (66.67995pt too wide) in paragraph at lines 3655--3655
 .etc.
 
 
-Overfull \hbox (124.16682pt too wide) in paragraph at lines 3658--3658
- []@texttt x,y      / [][][insert], page 81[][], [][][upsert], page 81[][], [][
-][union], page 76[][], equi-and-asof [][][leftjoin],|
+Overfull \hbox (124.16682pt too wide) in paragraph at lines 3600--3600
+ []@texttt x,y      / [][][insert], page 82[][], [][][upsert], page 82[][], [][
+][union], page 77[][], equi-and-asof [][][leftjoin],|
 
 @hbox(7.60416+2.43333)x433.62
 .@glue(@leftskip) 28.90755
@@ -907,9 +907,9 @@ Overfull \hbox (124.16682pt too wide) in paragraph at lines 3658--3658
 .@texttt y
 .etc.
 
-[72] [73] [74] [75] [76] [77] [78] [79] [80] [81] Chapter 15 [82] [83]
-Chapter 16 [84] Chapter 17 [85] [86] Chapter 18 [87] [88] Chapter 19 [89]
-Overfull \hbox (95.42339pt too wide) in paragraph at lines 4434--4434
+[73] [74] [75] [76] [77] [78] [79] [80] [81] [82] Chapter 15 [83] [84]
+Chapter 16 [85] Chapter 17 [86] [87] Chapter 18 [88] [89] Chapter 19 [90]
+Overfull \hbox (95.42339pt too wide) in paragraph at lines 4376--4376
  [] @texttt B:100++\-1+n?3      / generate bids near 100, equivalent to: 100 + 
 (+\((-1)+n rand 3))[] |
 
@@ -921,8 +921,8 @@ Overfull \hbox (95.42339pt too wide) in paragraph at lines 4434--4434
 .@texttt B
 .etc.
 
-[90]
-Overfull \hbox (26.43913pt too wide) in paragraph at lines 4474--4474
+[91]
+Overfull \hbox (26.43913pt too wide) in paragraph at lines 4416--4416
  [] @texttt T:^?[;_8.64e7]@                           / time in number of milli
 seconds[] |
 
@@ -934,11 +934,11 @@ seconds[] |
 .@texttt T
 .etc.
 
-[91] [92] [93] Chapter 20 [94] [95] [96] [97]
+[92] [93] [94] Chapter 20 [95] [96] [97] [98]
 texinfo.tex: doing @verbatiminclude of taxi.k
 
 
-(/Users/estradaj/GitHub/k9-simples/taxi.k [98]
+(/Users/estradaj/GitHub/k9-simples/taxi.k [99]
 Overfull \hbox (76.67407pt too wide) in paragraph at lines 35--35
 [][] |
 
@@ -956,18 +956,18 @@ Overfull \hbox (76.67407pt too wide) in paragraph at lines 35--35
 .@glue(@rightskip) 0.0
 .etc.
 
-) [99] Chapter 21 [100]
+) [100] Chapter 21 [101]
 texinfo.tex: doing @verbatiminclude of k.d
 
- (/Users/estradaj/GitHub/k9-simples/k.d) [101] ) 
+ (/Users/estradaj/GitHub/k9-simples/k.d) [102] ) 
 Here is how much of TeX's memory you used:
- 3980 strings out of 496271
- 39594 string characters out of 6185843
- 129805 words of memory out of 5000000
+ 3981 strings out of 496271
+ 39597 string characters out of 6185843
+ 129798 words of memory out of 5000000
  4881 multiletter control sequences out of 15000+600000
  34203 words of font info for 119 fonts, out of 8000000 for 9000
  590 hyphenation exceptions out of 8191
- 15i,7n,16p,698b,556s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 15i,7n,16p,721b,556s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2020basic/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmb10.pfb></usr/local/texlive/2020basi
 c/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2020
@@ -979,10 +979,10 @@ al/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr
 /local/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb><
 /usr/local/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pf
 b>
-Output written on k.manual.pdf (103 pages, 273213 bytes).
+Output written on k.manual.pdf (104 pages, 273473 bytes).
 PDF statistics:
- 1044 PDF objects out of 1200 (max. 8388607)
- 801 compressed objects within 9 object streams
- 289 named destinations out of 1000 (max. 500000)
+ 1048 PDF objects out of 1200 (max. 8388607)
+ 804 compressed objects within 9 object streams
+ 290 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

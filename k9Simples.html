@@ -449,12 +449,13 @@ _ <a href="#floor">floor</a>,  [f]<a href="#drop">drop</a>.
 $ <a href="#string">string</a>,    <a href="#parse">parse</a>.    
 ? <a href="#unique">unique</a>,    <a href="#find_002frand">find/rand</a>.    
 @ <a href="#type">type</a>,   [f]<a href="#at">at</a>.    
-. <a href="#value">value</a>,   [f]<a href="#dot">dot</a>.
+. <a href="#value">value</a>,  [f]<a href="#dot">dot</a>.
 
 </pre></div>
 
 <span id="x"></span><span id="x-_21d2-_003ax"></span><h3 class="section">2.1 x &rArr; :x</h3>
-
+<p>TBD
+</p>
 <span id="set"></span><span id="set-_21d2-x_003ay"></span><h3 class="section">2.2 set &rArr; x:y</h3>
 <p>Set a variable, x, to a value, y.  There should be no space between <code>x</code> and <code>:</code>. 
 </p>
@@ -803,6 +804,14 @@ n|2 4
 1 0 1
 1 1 0
 1 1 1
+
+ B:`b'+!16#2 / create the binary numbers from 0 to 65,535
+
+B[12123]     / take the 12123 element
+0 0 1 0 1 1 1 1 0 1 0 1 1 0 1 1
+
+2/B[12123]   / convert back to decimal
+12123
 </pre></div>
 
 <span id="key"></span><span id="key-_21d2-x_0021y"></span><h3 class="section">2.21 key &rArr; x!y</h3>
