@@ -1228,6 +1228,10 @@ List of k code
 2 
 14
 0
+
+ .(:;`a;12 14 16) / set a to (12 14 16)
+ a
+12 14 16
 @end example
 
 System command (must be prefixed with \\)
@@ -1316,20 +1320,6 @@ If x is a function then apply the function to y.
 a|1
 b|2
 c|3
-@end example
-
-Set variable x to value y.  x must be the variable name as symbol.
-
-@example
- a
-!value
-
- (:;`a;15)
- a
-15
-
- a
-15
 @end example
 
 @node Adverb
