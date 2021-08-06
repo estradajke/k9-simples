@@ -231,8 +231,10 @@ Sep 13 2020 16GB (c) shakti
  \\
 </pre></div>
 
-<span id="Simple-example"></span><h3 class="section">1.6 Simple example</h3>
-
+<span id="REPL"></span><h3 class="section">1.6 REPL</h3>
+<p>k9 runs as a read, evaluation, print loop (REPL).  This means that one either programs in an interactive programming environment (eg. a shell/terminal window) or by running a script.  There is no reason to compile code into an executable.  
+</p>
+<span id="Simple-example"></span><h3 class="section">1.7 Simple example</h3>
 
 <p>Here I will start up k9, perform some trivial calculations, and then close the session.  After this example it will be assumed the user will have a k9 session running and working in repl mode.  Comments (<code>/</code>) will be added to the end of lines as needed.  One can review <a href="Verb.html#plus">plus</a>, <a href="Verb.html#enum">enum</a>, <a href="Verb.html#floor">floor</a> and <a href="System.html#timing">timing</a> as needed. 
 </p>
@@ -260,29 +262,30 @@ bash-3.2$
 </pre></div>
 
 
-<span id="Document-formatting-for-code-examples"></span><h3 class="section">1.7 Document formatting for code examples</h3>
+
+<span id="Document-formatting-for-code-examples"></span><h3 class="section">1.8 Document formatting for code examples</h3>
 <p>This document uses a number of examples to familiarize the reader with k9.  The sytax is to have input with a leading space and output without a leading space.  This follows the terminal syntax where the REPL input has space but prints output without.
 </p><div class="example">
 <pre class="example"> 3+2 / this is input
 5    / this is output
 </pre></div>
 
-<span id="k9-idiosyncracies"></span><h3 class="section">1.8 k9 idiosyncracies</h3>
+<span id="k9-idiosyncracies"></span><h3 class="section">1.9 k9 idiosyncracies</h3>
 <p>One will need to understand some basic rules of k9 in order to progress.  These may seem strange at first but the faster you learn them, the faster you&rsquo;ll move forward. Also, some of them, like overloading based on number of arguments, add a lot of expressability to the language.
 </p>
-<span id="Colon-_0028_003a_0029-is-used-to-set-a-variable-to-a-value"></span><h4 class="subsection">1.8.1 Colon (<code>:</code>) is used to set a variable to a value</h4>
+<span id="Colon-_0028_003a_0029-is-used-to-set-a-variable-to-a-value"></span><h4 class="subsection">1.9.1 Colon (<code>:</code>) is used to set a variable to a value</h4>
 <p><code>a:3</code> is used to set the variable, a, to the value, 3.  <code>a=3</code> is an equality test to determine if a is equal to 3.
 </p>
-<span id="Percent-_0028_0025_0029-is-used-to-divide-numbers"></span><h4 class="subsection">1.8.2 Percent (<code>%</code>) is used to divide numbers</h4>
+<span id="Percent-_0028_0025_0029-is-used-to-divide-numbers"></span><h4 class="subsection">1.9.2 Percent (<code>%</code>) is used to divide numbers</h4>
 <p>Yeah, 2 divided by 5 is written as <code>2%5</code>, not <code>2/5</code>.  This choice is because <code>%</code> is similar to &#x00F7;, and the \ and / symbols are used elsewhere.
 </p>
-<span id="Evaluation-is-done-right-to-left"></span><h4 class="subsection">1.8.3 Evaluation is done right to left</h4>
+<span id="Evaluation-is-done-right-to-left"></span><h4 class="subsection">1.9.3 Evaluation is done right to left</h4>
 <p>2+5*3 is 17 and 2*5+3 is 16.  2+5*3 is first evaluated on the right most portion, 5*3, and once that is computed then it proceeds with 2+15.  2*5+3 goes to 2*8 which becomes 16.
 </p>
-<span id="There-is-no-arithmetic-order"></span><h4 class="subsection">1.8.4 There is no arithmetic order</h4>
+<span id="There-is-no-arithmetic-order"></span><h4 class="subsection">1.9.4 There is no arithmetic order</h4>
 <p>+ has equal precedence as *.  The order of evaluation is done right to left unless parenthesis are used.  (2+5)*3 = 21 as the 2+5 in parenthesis is done before being multiplied by 3.
 </p>
-<span id="Operators-are-overloaded-depending-on-the-number-of-arguments_002e"></span><h4 class="subsection">1.8.5 Operators are overloaded depending on the number of arguments.</h4>
+<span id="Operators-are-overloaded-depending-on-the-number-of-arguments_002e"></span><h4 class="subsection">1.9.5 Operators are overloaded depending on the number of arguments.</h4>
 <div class="example">
 <pre class="example">&nbsp;*(13;6;9)    / single argument: * returns the first element
 13
@@ -290,7 +293,7 @@ bash-3.2$
 26 12 18
 </pre></div>
 
-<span id="Lists-and-functions-are-very-similar_002e"></span><h4 class="subsection">1.8.6 Lists and functions are very similar.</h4>
+<span id="Lists-and-functions-are-very-similar_002e"></span><h4 class="subsection">1.9.6 Lists and functions are very similar.</h4>
 <p>k9 syntax encourages you to treat lists and functions in a similar function.  They should both be thought of a mapping from a value to another value or from a domain to a range. Lists and functions do not have the same type.
 </p>
 <div class="example">
@@ -306,7 +309,7 @@ bash-3.2$
 `.
 </pre></div>
 
-<span id="k9-notions-of-Noun_002c-Verb_002c-and-Adverb"></span><h4 class="subsection">1.8.7 k9 notions of Noun, Verb, and Adverb</h4>
+<span id="k9-notions-of-Noun_002c-Verb_002c-and-Adverb"></span><h4 class="subsection">1.9.7 k9 notions of Noun, Verb, and Adverb</h4>
 <p>k9 uses an analogy with grammar to describe language syntax.  The k9 grammar consists of nouns (data), verbs (functions) and adverbs (function modifiers).
 </p><ul>
 <li> <tt>The boy ate an appple. (Noun verb noun)</tt>

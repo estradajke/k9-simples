@@ -171,9 +171,10 @@ Sep 13 2020 16GB (c) shakti
  \\
 @end example
 
-@section Simple example
+@section REPL
+k9 runs as a read, evaluation, print loop (REPL).  This means that one either programs in an interactive programming environment (eg. a shell/terminal window) or by running a script.  There is no reason to compile code into an executable.  
 
-@c JOHN: I SUGGEST MOVING THIS TO LATER BECAUSE AS IT IS, IT WOULDN'T LOOK SIMPLE AT ALL TO A NEWBIE.
+@section Simple example
 
 Here I will start up k9, perform some trivial calculations, and then close the session.  After this example it will be assumed the user will have a k9 session running and working in repl mode.  Comments (@code{/}) will be added to the end of lines as needed.  One can review @ref{plus}, @ref{enum}, @ref{floor} and @ref{timing} as needed. 
 
@@ -199,6 +200,8 @@ Now let's exit the session.
  \\
 bash-3.2$ 
 @end example
+
+@c JOHN: I SUGGEST MOVING THIS TO LATER BECAUSE AS IT IS, IT WOULDN'T LOOK SIMPLE AT ALL TO A NEWBIE.
 
 @c @example
 @c  rlwrap ./k

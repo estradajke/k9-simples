@@ -235,7 +235,13 @@ the date of the build, (c), and shakti and then listens to user input.  In this 
      Sep 13 2020 16GB (c) shakti
       \\
 
-1.6 Simple example
+1.6 REPL
+========
+
+k9 runs as a read, evaluation, print loop (REPL). This means that one either programs in an interactive programming environment (eg.  a shell/terminal window) or by running a script.  There is no reason
+to compile code into an executable.
+
+1.7 Simple example
 ==================
 
 Here I will start up k9, perform some trivial calculations, and then close the session.  After this example it will be assumed the user will have a k9 session running and working in repl mode.  Comments
@@ -260,7 +266,7 @@ Now let's exit the session.
       \\
      bash-3.2$
 
-1.7 Document formatting for code examples
+1.8 Document formatting for code examples
 =========================================
 
 This document uses a number of examples to familiarize the reader with k9.  The sytax is to have input with a leading space and output without a leading space.  This follows the terminal syntax where
@@ -268,33 +274,33 @@ the REPL input has space but prints output without.
       3+2 / this is input
      5    / this is output
 
-1.8 k9 idiosyncracies
+1.9 k9 idiosyncracies
 =====================
 
 One will need to understand some basic rules of k9 in order to progress.  These may seem strange at first but the faster you learn them, the faster you'll move forward.  Also, some of them, like
 overloading based on number of arguments, add a lot of expressability to the language.
 
-1.8.1 Colon (':') is used to set a variable to a value
+1.9.1 Colon (':') is used to set a variable to a value
 ------------------------------------------------------
 
 'a:3' is used to set the variable, a, to the value, 3.  'a=3' is an equality test to determine if a is equal to 3.
 
-1.8.2 Percent ('%') is used to divide numbers
+1.9.2 Percent ('%') is used to divide numbers
 ---------------------------------------------
 
 Yeah, 2 divided by 5 is written as '2%5', not '2/5'.  This choice is because '%' is similar to ÷, and the \ and / symbols are used elsewhere.
 
-1.8.3 Evaluation is done right to left
+1.9.3 Evaluation is done right to left
 --------------------------------------
 
 2+5*3 is 17 and 2*5+3 is 16.  2+5*3 is first evaluated on the right most portion, 5*3, and once that is computed then it proceeds with 2+15.  2*5+3 goes to 2*8 which becomes 16.
 
-1.8.4 There is no arithmetic order
+1.9.4 There is no arithmetic order
 ----------------------------------
 
 + has equal precedence as *.  The order of evaluation is done right to left unless parenthesis are used.  (2+5)*3 = 21 as the 2+5 in parenthesis is done before being multiplied by 3.
 
-1.8.5 Operators are overloaded depending on the number of arguments.
+1.9.5 Operators are overloaded depending on the number of arguments.
 --------------------------------------------------------------------
 
       *(13;6;9)    / single argument: * returns the first element
@@ -302,7 +308,7 @@ Yeah, 2 divided by 5 is written as '2%5', not '2/5'.  This choice is because '%'
       2*(13;6;9)   / two arguments: * is multiplication
      26 12 18
 
-1.8.6 Lists and functions are very similar.
+1.9.6 Lists and functions are very similar.
 -------------------------------------------
 
 k9 syntax encourages you to treat lists and functions in a similar function.  They should both be thought of a mapping from a value to another value or from a domain to a range.  Lists and functions do
@@ -319,7 +325,7 @@ not have the same type.
       @f
      `.
 
-1.8.7 k9 notions of Noun, Verb, and Adverb
+1.9.7 k9 notions of Noun, Verb, and Adverb
 ------------------------------------------
 
 k9 uses an analogy with grammar to describe language syntax.  The k9 grammar consists of nouns (data), verbs (functions) and adverbs (function modifiers).
@@ -4873,195 +4879,195 @@ sqrt sqr exp log sin cos div mod bar in bin
 Tag Table:
 Node: Top120
 Node: Introduction5037
-Node: Verb15976
-Ref: x17546
-Ref: set17576
-Ref: flip17835
-Ref: plus18120
-Ref: negate18598
-Ref: minus18770
-Ref: first18877
-Ref: times19093
-Ref: divide19224
-Ref: where19365
-Ref: min/and19848
-Ref: reverse20107
-Ref: max/or20366
-Ref: asc20630
-Ref: desc20630
-Ref: less21021
-Ref: more21021
-Ref: group21322
-Ref: equal21575
-Ref: not21879
-Ref: match21996
-Ref: enum22379
-Ref: key23663
-Ref: enlist23888
-Ref: cat24028
-Ref: sort24365
-Ref: cut25017
-Ref: cut125354
-Ref: cut225506
-Ref: cut325700
-Ref: cut425974
-Ref: cut526154
-Ref: count26399
-Ref: take26703
-Ref: take127298
-Ref: take227667
-Ref: take328089
-Ref: take428282
-Ref: floor28641
-Ref: drop28732
-Ref: drop129246
-Ref: drop229427
-Ref: drop329703
-Ref: string29862
-Ref: parse29963
-Ref: unique30179
-Ref: find/rand30423
-Ref: type30811
-Ref: at31368
-Ref: value31857
-Ref: dot32543
-Node: Adverb33798
-Ref: each35264
-Ref: over35867
-Ref: scan35995
-Ref: join37346
-Ref: split37717
-Ref: eachprior37975
-Ref: eachright39033
-Ref: eachleft39332
-Ref: cover39622
-Ref: cscan39935
-Node: Noun41111
-Ref: Atom Types42507
-Ref: bool45122
-Ref: int45809
-Ref: flt46489
-Ref: char46891
-Ref: name47124
-Ref: uuid47364
-Ref: time47521
-Ref: date48424
-Ref: datetime48885
-Node: List49799
-Node: Dictionary54270
-Node: User Functions59898
-Node: Expression63143
-Node: Named Functions64630
-Ref: Hcount65230
-Ref: Hfirst65323
-Ref: Hlast65416
-Ref: Hmin65518
-Ref: Hmax65633
-Ref: Hsum65748
-Ref: Hdot65850
-Ref: avg66009
-Ref: var66160
-Ref: dev66295
-Ref: med66337
-Ref: mode66379
-Ref: countd66425
-Ref: exp66479
-Ref: log66584
-Ref: sin66680
-Ref: cos66815
-Ref: sqr66959
-Ref: sqrt67044
-Ref: prm67144
-Ref: freq67319
-Ref: sums67675
-Ref: deltas67815
-Ref: rand68153
-Ref: has69034
-Ref: bin69328
-Ref: in69538
-Ref: within69712
-Ref: div69944
-Ref: mod70128
-Ref: bar70302
-Ref: cmb70491
-Ref: msum70919
-Ref: mavg71056
-Ref: topX71200
-Ref: keyF71358
-Ref: unkey71653
-Ref: meta71789
-Node: Knit Functions71920
-Ref: amend72215
-Ref: amend172738
-Ref: amend272987
-Ref: amend373206
-Ref: amend473511
-Ref: dmend73799
-Ref: dmend174129
-Ref: dmend374297
-Ref: dmend474462
-Node: I/O74623
-Ref: r line76967
-Ref: w line77084
-Ref: r char77426
-Ref: w char77681
-Ref: r data78043
-Ref: w data78704
-Ref: k-ipc79740
-Ref: 3set80227
-Ref: https80761
-Ref: 4get80807
-Ref: csv81473
-Ref: json81889
-Ref: compress82362
-Node: FF83288
-Ref: python83679
-Ref: nodejs84491
-Ref: ffi85395
-Ref: import85828
-Node: Tables85947
-Ref: table86573
-Ref: utable88215
-Node: kSQL88754
-Ref: select89654
-Ref: A90221
-Ref: by B91074
-Ref: where C91403
-Ref: update92245
-Ref: delete92966
-Ref: Joins93248
-Ref: union93605
-Ref: leftjoin94126
-Ref: outer94905
-Ref: asof95540
-Ref: asof+97011
-Ref: insert98229
-Ref: upsert98575
-Node: System98989
-Ref: load99479
-Ref: timing99668
-Ref: variables99953
-Ref: files100061
-Ref: memory100155
-Ref: cd100272
-Node: Control Flow100398
-Ref: cond100634
-Node: Temporal Functions101004
-Ref: .z.d101364
-Ref: .z.t101525
-Node: Errors102403
-Ref: class102851
-Ref: rank102940
-Ref: length103064
-Ref: _type103187
-Ref: domain103296
-Ref: limit103418
-Ref: nyi103629
-Ref: eparse103956
-Ref: _value104109
-Node: Examples104237
-Node: Benchmark112287
-Node: Conclusion120959
+Node: Verb16235
+Ref: x17805
+Ref: set17835
+Ref: flip18094
+Ref: plus18379
+Ref: negate18857
+Ref: minus19029
+Ref: first19136
+Ref: times19352
+Ref: divide19483
+Ref: where19624
+Ref: min/and20107
+Ref: reverse20366
+Ref: max/or20625
+Ref: asc20889
+Ref: desc20889
+Ref: less21280
+Ref: more21280
+Ref: group21581
+Ref: equal21834
+Ref: not22138
+Ref: match22255
+Ref: enum22638
+Ref: key23922
+Ref: enlist24147
+Ref: cat24287
+Ref: sort24624
+Ref: cut25276
+Ref: cut125613
+Ref: cut225765
+Ref: cut325959
+Ref: cut426233
+Ref: cut526413
+Ref: count26658
+Ref: take26962
+Ref: take127557
+Ref: take227926
+Ref: take328348
+Ref: take428541
+Ref: floor28900
+Ref: drop28991
+Ref: drop129505
+Ref: drop229686
+Ref: drop329962
+Ref: string30121
+Ref: parse30222
+Ref: unique30438
+Ref: find/rand30682
+Ref: type31070
+Ref: at31627
+Ref: value32116
+Ref: dot32802
+Node: Adverb34057
+Ref: each35523
+Ref: over36126
+Ref: scan36254
+Ref: join37605
+Ref: split37976
+Ref: eachprior38234
+Ref: eachright39292
+Ref: eachleft39591
+Ref: cover39881
+Ref: cscan40194
+Node: Noun41370
+Ref: Atom Types42766
+Ref: bool45381
+Ref: int46068
+Ref: flt46748
+Ref: char47150
+Ref: name47383
+Ref: uuid47623
+Ref: time47780
+Ref: date48683
+Ref: datetime49144
+Node: List50058
+Node: Dictionary54529
+Node: User Functions60157
+Node: Expression63402
+Node: Named Functions64889
+Ref: Hcount65489
+Ref: Hfirst65582
+Ref: Hlast65675
+Ref: Hmin65777
+Ref: Hmax65892
+Ref: Hsum66007
+Ref: Hdot66109
+Ref: avg66268
+Ref: var66419
+Ref: dev66554
+Ref: med66596
+Ref: mode66638
+Ref: countd66684
+Ref: exp66738
+Ref: log66843
+Ref: sin66939
+Ref: cos67074
+Ref: sqr67218
+Ref: sqrt67303
+Ref: prm67403
+Ref: freq67578
+Ref: sums67934
+Ref: deltas68074
+Ref: rand68412
+Ref: has69293
+Ref: bin69587
+Ref: in69797
+Ref: within69971
+Ref: div70203
+Ref: mod70387
+Ref: bar70561
+Ref: cmb70750
+Ref: msum71178
+Ref: mavg71315
+Ref: topX71459
+Ref: keyF71617
+Ref: unkey71912
+Ref: meta72048
+Node: Knit Functions72179
+Ref: amend72474
+Ref: amend172997
+Ref: amend273246
+Ref: amend373465
+Ref: amend473770
+Ref: dmend74058
+Ref: dmend174388
+Ref: dmend374556
+Ref: dmend474721
+Node: I/O74882
+Ref: r line77226
+Ref: w line77343
+Ref: r char77685
+Ref: w char77940
+Ref: r data78302
+Ref: w data78963
+Ref: k-ipc79999
+Ref: 3set80486
+Ref: https81020
+Ref: 4get81066
+Ref: csv81732
+Ref: json82148
+Ref: compress82621
+Node: FF83547
+Ref: python83938
+Ref: nodejs84750
+Ref: ffi85654
+Ref: import86087
+Node: Tables86206
+Ref: table86832
+Ref: utable88474
+Node: kSQL89013
+Ref: select89913
+Ref: A90480
+Ref: by B91333
+Ref: where C91662
+Ref: update92504
+Ref: delete93225
+Ref: Joins93507
+Ref: union93864
+Ref: leftjoin94385
+Ref: outer95164
+Ref: asof95799
+Ref: asof+97270
+Ref: insert98488
+Ref: upsert98834
+Node: System99248
+Ref: load99738
+Ref: timing99927
+Ref: variables100212
+Ref: files100320
+Ref: memory100414
+Ref: cd100531
+Node: Control Flow100657
+Ref: cond100893
+Node: Temporal Functions101263
+Ref: .z.d101623
+Ref: .z.t101784
+Node: Errors102662
+Ref: class103110
+Ref: rank103199
+Ref: length103323
+Ref: _type103446
+Ref: domain103555
+Ref: limit103677
+Ref: nyi103888
+Ref: eparse104215
+Ref: _value104368
+Node: Examples104496
+Node: Benchmark112546
+Node: Conclusion121218
 
 End Tag Table
 
