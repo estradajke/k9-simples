@@ -250,9 +250,6 @@ This document uses a number of examples to familiarize the reader with k9.  The 
 @section k9 idiosyncracies
 One will need to understand some basic rules of k9 in order to progress.  These may seem strange at first but the faster you learn them, the faster you'll move forward. Also, some of them, like overloading based on number of arguments, add a lot of expressability to the language.
 
-@c @subsection The language changes often (for now).
-@c There may be examples in this document which work on the version indicated but do not with the version currently available to download.  If so, then feel free to drop the author a note.  Items which currently cause an error but are likely to come back 'soon' will be left in the document.
-@c 
 @subsection Colon (@code{:}) is used to set a variable to a value
 @code{a:3} is used to set the variable, a, to the value, 3.  @code{a=3} is an equality test to determine if a is equal to 3.
 
@@ -783,7 +780,7 @@ y z
 @end example
 
 @anchor{cut}@section [f]cut @result{} x^y
-Cut list y by size, indices, or function x.  
+Cut list y by size, indices, or function x.  Also, cut table y into key x and value.
 
 @flushleft
 @multitable {@b{some text for column one}} {for column two}
@@ -792,6 +789,7 @@ Cut list y by size, indices, or function x.
 @item @ref{cut2,columns} @tab negative int
 @item @ref{cut3,indices} @tab list
 @item @ref{cut4,function} @tab function
+@item @ref{cut5,table} @tab column
 @end multitable
 @end flushleft
 
@@ -839,21 +837,21 @@ Cut list y by size, indices, or function x.
 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9
 @end example
 
-@c Cut into domain and range, aka key a table (set an attribute to be a key)
-@c @example
-@c  t:[[]a:`x`y`z;b:1 20 1];t / an unkeyed table
-@c a b 
-@c - --
-@c x  1
-@c y 20
-@c z  1
-@c 
-@c  kt:`a^t;kt                / set `a as the key
-@c a|b 
-@c -|--
-@c x| 1
-@c y|20
-@c z| 1
+@anchor{cut5}Table returning utable (aka keyed table).
+@example
+ t:[[]a:`x`y`z;b:1 20 1];t / an unkeyed table
+a b 
+- --
+x  1
+y 20
+z  1
+
+ kt:`a^t;kt                / set `a as the key
+a|b 
+-|--
+x| 1
+y|20
+z| 1
 @c 
 @c  (0#`)^kt                  / unkey the keyed table
 @c a b 
@@ -861,8 +859,8 @@ Cut list y by size, indices, or function x.
 @c x  1
 @c y 20
 @c z  1
-@c @end example 
-@c 
+@end example 
+ 
 @anchor{count}@section count @result{} #x
 Count the number of elements in list, dictionary, or table x.
 
@@ -1953,7 +1951,6 @@ These functions operate on list elements pairwise and thus requires that x and y
 @item @t{x<y : Less Than}
 @item @t{x=y : Equals}
 @item @t{x!y : Dictionary}
-@c @item @t{x$y : Sumproduct}
 @end itemize
 
 @example
@@ -1986,8 +1983,6 @@ These functions operate on list elements pairwise and thus requires that x and y
 3| 6
 4| 4
 5| 2
-@c @ x$y / dot product JOHN: THIS IS NOT WORKING FOR ME.
-@c 70
 @end example
 
 @subsection Each Element of One List Compared to Entire Other List
@@ -4147,18 +4142,18 @@ List files in current directory.
 simples.k
 @end example
 
-@c @anchor{memory}@section memory @result{} \w
-@c List memory usage
-@c @example
-@c  \w
-@c 1558
-@c 
-@c  r:(_10e6)?10
-@c 
-@c \w
-@c 2098769
-@c @end example
-@c 
+@anchor{memory}@section memory @result{} \w
+List memory usage
+@example
+ \w
+930
+
+ r:(_10e6)?10
+
+ \w
+2098106
+@end example
+
 @anchor{cd}@section cd @result{} \cd [d]
 Change directory (cd) into d or print current directory.
 

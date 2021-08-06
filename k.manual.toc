@@ -41,17 +41,17 @@
 @numsecentry{sort @result {} ^x}{2.24}{}{14}
 @numsecentry{[f]cut @result {} x^y}{2.25}{}{15}
 @numsecentry{count @result {} #x}{2.26}{}{16}
-@numsecentry{[f]take @result {} x#y}{2.27}{}{16}
+@numsecentry{[f]take @result {} x#y}{2.27}{}{17}
 @numsecentry{floor @result {} _x}{2.28}{}{18}
 @numsecentry{[f]drop @result {} x_y}{2.29}{}{18}
 @numsecentry{string @result {} $x}{2.30}{}{19}
 @numsecentry{parse @result {} x$y}{2.31}{}{19}
-@numsecentry{unique @result {} ?x}{2.32}{}{19}
+@numsecentry{unique @result {} ?x}{2.32}{}{20}
 @numsecentry{find/rand @result {} x?y}{2.33}{}{20}
 @numsecentry{type @result {} @@x}{2.34}{}{20}
 @numsecentry{[f]at @result {} x@@y}{2.35}{}{21}
-@numsecentry{value @result {} .x}{2.36}{}{21}
-@numsecentry{[f]dot @result {} x.y}{2.37}{}{22}
+@numsecentry{value @result {} .x}{2.36}{}{22}
+@numsecentry{[f]dot @result {} x.y}{2.37}{}{23}
 @numchapentry{Adverbs}{3}{Adverb}{25}
 @numsecentry{each @result {} f'x}{3.1}{}{25}
 @numsecentry{over @result {} f/y or x f/y}{3.2}{}{26}
@@ -204,7 +204,8 @@
 @numsecentry{timing @result {} \t x or \t:n x}{15.2}{}{84}
 @numsecentry{variables @result {} \v}{15.3}{}{84}
 @numsecentry{files @result {} \f}{15.4}{}{84}
-@numsecentry{cd @result {} \cd [d]}{15.5}{}{85}
+@numsecentry{memory @result {} \w}{15.5}{}{85}
+@numsecentry{cd @result {} \cd [d]}{15.6}{}{85}
 @numchapentry{Control Flow}{16}{Control Flow}{86}
 @numsecentry{cond @result {} $[b;t;f]}{16.1}{}{86}
 @numchapentry{Temporal Functions}{17}{Temporal Functions}{87}
