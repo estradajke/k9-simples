@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- August 6, 2021
+<!-- August 10, 2021
 
 Copyright (C) 2020 John Estrada -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
@@ -3259,7 +3259,7 @@ a,b
 </pre></div>
 
 <span id="w-line"></span><span id="write-line-_21d2-x-0_003ay"></span><h4 class="subsection">11.1.3 write line &rArr; x 0:y</h4>
-<p>Output to x the list of strings in y.  y must be a list of strings.  If y is a single string then convert to list via <a href="#enlist">list</a>.
+<p>Output to string x (file name or null for stdout) the list of strings in y.  y must be a list of strings.  If y is a single string then convert to list via <a href="#enlist">list</a>.
 </p>
 <div class="example">
 <pre class="example"> &quot;&quot;0:(&quot;blue&quot;;&quot;red&quot;)      / &quot;&quot; represents stdout
@@ -4169,14 +4169,11 @@ Next: <a href="#Control-Flow" accesskey="n" rel="next">Control Flow</a>, Previou
 <pre class="example">System
 \l a.k  <a href="#load">load</a>
 \t:n x  <a href="#timing">timing</a>
-\u:n
+\u:n x
 \v      <a href="#variables">variables</a>
+\w      <a href="#memory">memory</a>
 
-\f      <a href="#files">files</a>
-\fl
-\fc
-\fs
-\cd [d] <a href="#cd">cd</a>
+\cmd    <a href="#OS-command">OS command</a>
 </pre></div>
 
 <span id="load"></span><span id="load-_21d2-_005cl-a_002ek"></span><h3 class="section">15.1 load &rArr; \l a.k</h3>
@@ -4201,7 +4198,10 @@ Next: <a href="#Control-Flow" accesskey="n" rel="next">Control Flow</a>, Previou
 2027
 </pre></div>
 
-<span id="variables"></span><span id="variables-_21d2-_005cv"></span><h3 class="section">15.3 variables &rArr; \v</h3>
+<span id="u-_21d2-_005cu-x-or-_005cu_003an-x"></span><h3 class="section">15.3 u &rArr; \u x or \u:n x</h3>
+<p>TBD
+</p>
+<span id="variables"></span><span id="variables-_21d2-_005cv"></span><h3 class="section">15.4 variables &rArr; \v</h3>
 <p>List variables
 </p><div class="example">
 <pre class="example">a:1;b:2;c:3
@@ -4209,14 +4209,6 @@ Next: <a href="#Control-Flow" accesskey="n" rel="next">Control Flow</a>, Previou
  \v
 ,3
 i|`a`b`c
-</pre></div>
-
-<span id="files"></span><span id="files-_21d2-_005cf"></span><h3 class="section">15.4 files &rArr; \f</h3>
-<p>List files in current directory.
-</p>
-<div class="example">
-<pre class="example"> \f
-simples.k
 </pre></div>
 
 <span id="memory"></span><span id="memory-_21d2-_005cw"></span><h3 class="section">15.5 memory &rArr; \w</h3>
@@ -4231,11 +4223,17 @@ simples.k
 2098106
 </pre></div>
 
-<span id="cd"></span><span id="cd-_21d2-_005ccd-_005bd_005d"></span><h3 class="section">15.6 cd &rArr; \cd [d]</h3>
-<p>Change directory (cd) into d or print current directory.
+<span id="OS-command"></span><span id="OS-command-_21d2-_005ccmd"></span><h3 class="section">15.6 OS command &rArr; \cmd</h3>
+<p>Run any valid command via OS.
 </p>
 <div class="example">
 <pre class="example"> \cd &quot;/Users/user123/&quot;
+
+ \pwd
+,&quot;/Users/user123&quot;
+
+ \echo $PATH             / query environmental variable
+,&quot;/opt/local/bin:/usr/bin:/bin&quot;
 </pre></div>
 
 <hr>

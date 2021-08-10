@@ -3171,7 +3171,7 @@ a,b
 @end example
 
 @anchor{w line}@subsection write line @result{} x 0:y
-Output to x the list of strings in y.  y must be a list of strings.  If y is a single string then convert to list via @ref{enlist,list}.
+Output to string x (file name or null for stdout) the list of strings in y.  y must be a list of strings.  If y is a single string then convert to list via @ref{enlist,list}.
 
 @example
  ""0:("blue";"red")      / "" represents stdout
@@ -4094,15 +4094,11 @@ k9 comes with a few system functions and measurement commands.  The commands all
 System
 \l a.k  @ref{load}
 \t:n x  @ref{timing}
-\u:n
+\u:n x
 \v      @ref{variables}
-@c \w     @ref{memory}
+\w      @ref{memory}
 
-\f      @ref{files}
-\fl
-\fc
-\fs
-\cd [d] @ref{cd}
+\cmd    @ref{OS command}
 @end example
 
 @anchor{load}@section load @result{} \l a.k
@@ -4127,6 +4123,9 @@ List time elapsed in milliseconds in evaluting x.  If n is supplied then repeat 
 2027
 @end example
 
+@section u @result{} \u x or \u:n x
+TBD
+
 @anchor{variables}@section variables @result{} \v
 List variables
 @example
@@ -4135,14 +4134,6 @@ a:1;b:2;c:3
  \v
 ,3
 i|`a`b`c
-@end example
-
-@anchor{files}@section files @result{} \f
-List files in current directory.
-
-@example
- \f
-simples.k
 @end example
 
 @anchor{memory}@section memory @result{} \w
@@ -4157,11 +4148,17 @@ List memory usage
 2098106
 @end example
 
-@anchor{cd}@section cd @result{} \cd [d]
-Change directory (cd) into d or print current directory.
+@anchor{OS command}@section OS command @result{} \cmd
+Run any valid command via OS.
 
 @example
  \cd "/Users/user123/"
+
+ \pwd
+,"/Users/user123"
+
+ \echo $PATH             / query environmental variable
+,"/opt/local/bin:/usr/bin:/bin"
 @end example
 
 @node Control Flow
