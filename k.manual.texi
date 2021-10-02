@@ -801,7 +801,7 @@ Cut list y by size, indices, or function x.  Also, cut table y into key x and va
 
 @anchor{cut1}Positve integer x, cut y into x rows
 @example
- 3^101+!20   / 3 rows
+ 3^101+!18   / 3 rows
 101 102 103 104 105 106
 107 108 109 110 111 112
 113 114 115 116 117 118
@@ -809,7 +809,7 @@ Cut list y by size, indices, or function x.  Also, cut table y into key x and va
 
 @anchor{cut2}Negative integer, cut y into x elements per row
 @example
- -3^101+!20  / 3 elements in each row
+ -3^101+!18  / 3 elements in each row
 101 102 103
 104 105 106
 107 108 109
