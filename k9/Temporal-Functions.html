@@ -1,11 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- October 2, 2021
-
-Copyright (C) 2020 John Estrada -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- October 16, 2021
+
+Copyright (C) 2020 John Estrada -->
 <title>Temporal Functions (Shakti (k9) tutorial)</title>
 
 <meta name="description" content="k programming tutorial, Shakti (k9) tutorial">
@@ -13,6 +13,8 @@ Copyright (C) 2020 John Estrada -->
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="index.html" rel="up" title="Top">
 <link href="Errors.html" rel="next" title="Errors">
@@ -22,11 +24,11 @@ Copyright (C) 2020 John Estrada -->
 /* spacing */
 
 
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -35,6 +37,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 .cartouche{
     border: none;
@@ -83,9 +86,10 @@ table.menu th{
 </head>
 
 <body lang="en">
-<span id="Temporal-Functions"></span><div class="header">
+<div class="chapter" id="Temporal-Functions">
+<div class="header">
 <p>
-Next: <a href="Errors.html" accesskey="n" rel="next">Errors</a>, Previous: <a href="Control-Flow.html" accesskey="p" rel="prev">Control Flow</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="Errors.html" accesskey="n" rel="next">Errors</a>, Previous: <a href="Control-Flow.html" accesskey="p" rel="prev">Control Flow</a>, Up: <a href="index.html" accesskey="u" rel="up">k9: Manual</a> &nbsp; </p>
 </div>
 <hr>
 <span id="Temporal-Functions-1"></span><h2 class="chapter">17 Temporal Functions</h2>
@@ -94,7 +98,13 @@ Next: <a href="Errors.html" accesskey="n" rel="next">Errors</a>, Previous: <a hr
 <pre class="verbatim">date 2001.01.01   .z.d
 time 12:34:56.789 .z.t
 </pre>
-<span id="g_t_002ez_002ed"></span><span id="g_t_002ez_002e_005bdm_005d-date"></span><h3 class="section">17.1 .z.[dm] date</h3>
+<span id="g_t_002ez_002ed"></span><ul class="section-toc">
+<li><a href="#g_t_002ez_002e_005bdm_005d-date" accesskey="1">.z.[dm] date</a></li>
+<li><a href="#g_t_002ez_002e_005bhrstuv_005d-time" accesskey="2">.z.[hrstuv] time</a></li>
+<li><a href="#Temporal-dot-functions" accesskey="3">Temporal dot functions</a></li>
+</ul>
+<div class="section" id="g_t_002ez_002e_005bdm_005d-date">
+<h3 class="section">17.1 .z.[dm] date</h3>
 <p>These functions retrieve the date as day (d) or month (m) precision.
 </p>
 <div class="example">
@@ -105,7 +115,9 @@ time 12:34:56.789 .z.t
 2020.12.
 </pre></div>
 
-<span id="g_t_002ez_002et"></span><span id="g_t_002ez_002e_005bhrstuv_005d-time"></span><h3 class="section">17.2 .z.[hrstuv] time</h3>
+<span id="g_t_002ez_002et"></span></div>
+<div class="section" id="g_t_002ez_002e_005bhrstuv_005d-time">
+<h3 class="section">17.2 .z.[hrstuv] time</h3>
 <p>These functions retrieve the time at hour (h), minute (r), second (s), millisecond (t), microsecond (u), or nanosecond (v) precision.
 </p>
 <div class="example">
@@ -133,7 +145,9 @@ time 12:34:56.789 .z.t
 610
 </pre></div>
 
-<span id="Temporal-dot-functions"></span><h3 class="section">17.3 Temporal dot functions</h3>
+</div>
+<div class="section" id="Temporal-dot-functions">
+<h3 class="section">17.3 Temporal dot functions</h3>
 <p>These functions use dot notation to retrieve partial date and times.
 </p>
 <div class="example">
@@ -153,6 +167,8 @@ time 12:34:56.789 .z.t
 11:27:18.049558016
 </pre></div>
 
+</div>
+</div>
 
 
 

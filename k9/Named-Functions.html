@@ -1,11 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- October 2, 2021
-
-Copyright (C) 2020 John Estrada -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- October 16, 2021
+
+Copyright (C) 2020 John Estrada -->
 <title>Named Functions (Shakti (k9) tutorial)</title>
 
 <meta name="description" content="k programming tutorial, Shakti (k9) tutorial">
@@ -13,6 +13,8 @@ Copyright (C) 2020 John Estrada -->
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="index.html" rel="up" title="Top">
 <link href="Knit-Functions.html" rel="next" title="Knit Functions">
@@ -22,11 +24,11 @@ Copyright (C) 2020 John Estrada -->
 /* spacing */
 
 
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -35,6 +37,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 .cartouche{
     border: none;
@@ -83,9 +86,10 @@ table.menu th{
 </head>
 
 <body lang="en">
-<span id="Named-Functions"></span><div class="header">
+<div class="chapter" id="Named-Functions">
+<div class="header">
 <p>
-Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>, Previous: <a href="Expression.html" accesskey="p" rel="prev">Expression</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>, Previous: <a href="Expression.html" accesskey="p" rel="prev">Expression Evaluation</a>, Up: <a href="index.html" accesskey="u" rel="up">k9: Manual</a> &nbsp; </p>
 </div>
 <hr>
 <span id="Named-Functions-1"></span><h2 class="chapter">9 Named Functions</h2>
@@ -98,7 +102,45 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 </pre></div>
 </div>
 
-<span id="Hcount"></span><span id="count-_21d2-count-x"></span><h3 class="section">9.1 count &rArr; count x</h3>
+<span id="Hcount"></span><ul class="section-toc">
+<li><a href="#count-_21d2-count-x" accesskey="1">count &rArr; count x</a></li>
+<li><a href="#first-_21d2-first-x" accesskey="2">first &rArr; first x</a></li>
+<li><a href="#last-_21d2-last-x" accesskey="3">last &rArr; last x</a></li>
+<li><a href="#min-_21d2-min-x" accesskey="4">min &rArr; min x</a></li>
+<li><a href="#max-_21d2-max-x" accesskey="5">max &rArr; max x</a></li>
+<li><a href="#sum-_21d2-sum-x" accesskey="6">sum &rArr; sum x</a></li>
+<li><a href="#dot-_21d2-dot-x" accesskey="7">dot &rArr; dot x</a></li>
+<li><a href="#avg-_21d2-avg-x" accesskey="8">avg &rArr; avg x</a></li>
+<li><a href="#var-_21d2-var-x" accesskey="9">var &rArr; var x</a></li>
+<li><a href="#dev-_21d2-dev-x">dev &rArr; dev x</a></li>
+<li><a href="#med-_21d2-med-x">med &rArr; med x</a></li>
+<li><a href="#mode-_21d2-mode-x">mode &rArr; mode x</a></li>
+<li><a href="#countd-_21d2-countd-x">countd &rArr; countd x</a></li>
+<li><a href="#exp-_21d2-exp-x">exp &rArr; exp x</a></li>
+<li><a href="#log-_21d2-log-x">log &rArr; log x</a></li>
+<li><a href="#sin-_21d2-sin-x">sin &rArr; sin x</a></li>
+<li><a href="#cos-_21d2-cos-x">cos &rArr; cos x</a></li>
+<li><a href="#sqr-_21d2-sqr-x">sqr &rArr; sqr x</a></li>
+<li><a href="#sqrt-_21d2-sqrt-x">sqrt &rArr; sqrt x</a></li>
+<li><a href="#prm-_21d2-prm-x">prm &rArr; prm x</a></li>
+<li><a href="#freq-_21d2-freq-x">freq &rArr; freq x</a></li>
+<li><a href="#sums-_21d2-sums-x">sums &rArr; sums x</a></li>
+<li><a href="#deltas-_21d2-deltas-x-and-x-deltas-y">deltas &rArr; deltas x and x deltas y</a></li>
+<li><a href="#rand-_21d2-rand-x-or-x-rand-y">rand &rArr; rand x or x rand y</a></li>
+<li><a href="#has-_21d2-x-has-y">has &rArr; x has y</a></li>
+<li><a href="#bin-_21d2-x-bin-y">bin &rArr; x bin y</a></li>
+<li><a href="#in-_21d2-x-in-y">in &rArr; x in y</a></li>
+<li><a href="#within-_21d2-x-within-y">within &rArr; x within y</a></li>
+<li><a href="#div-_21d2-x-div-y">div &rArr; x div y</a></li>
+<li><a href="#mod-_21d2-x-mod-y">mod &rArr; x mod y</a></li>
+<li><a href="#bar-_21d2-x-bar-y">bar &rArr; x bar y</a></li>
+<li><a href="#msum-_21d2-x-msum-y">msum &rArr; x msum y</a></li>
+<li><a href="#mavg-_21d2-x-mavg-y">mavg &rArr; x mavg y</a></li>
+<li><a href="#unkey-_21d2-unkey-x">unkey &rArr; unkey x</a></li>
+<li><a href="#meta-_21d2-meta">meta &rArr; meta</a></li>
+</ul>
+<div class="section" id="count-_21d2-count-x">
+<h3 class="section">9.1 count &rArr; count x</h3>
 <p>Same as <a href="Verb.html#count">count</a>.
 </p>
 <div class="example">
@@ -106,7 +148,9 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 3
 </pre></div>
 
-<span id="Hfirst"></span><span id="first-_21d2-first-x"></span><h3 class="section">9.2 first &rArr; first x</h3>
+<span id="Hfirst"></span></div>
+<div class="section" id="first-_21d2-first-x">
+<h3 class="section">9.2 first &rArr; first x</h3>
 <p>Same as <a href="Verb.html#first">first</a>.
 </p>
 <div class="example">
@@ -114,7 +158,9 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 5
 </pre></div>
 
-<span id="Hlast"></span><span id="last-_21d2-last-x"></span><h3 class="section">9.3 last &rArr; last x</h3>
+<span id="Hlast"></span></div>
+<div class="section" id="last-_21d2-last-x">
+<h3 class="section">9.3 last &rArr; last x</h3>
 <p>Retrieve the last element of list x.
 </p>
 <div class="example">
@@ -122,7 +168,9 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 2
 </pre></div>
 
-<span id="Hmin"></span><span id="min-_21d2-min-x"></span><h3 class="section">9.4 min &rArr; min x</h3>
+<span id="Hmin"></span></div>
+<div class="section" id="min-_21d2-min-x">
+<h3 class="section">9.4 min &rArr; min x</h3>
 <p>Retrieve the minimum element of list x.  Same as <code>|/</code>.
 </p>
 <div class="example">
@@ -130,7 +178,9 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 1
 </pre></div>
 
-<span id="Hmax"></span><span id="max-_21d2-max-x"></span><h3 class="section">9.5 max &rArr; max x</h3>
+<span id="Hmax"></span></div>
+<div class="section" id="max-_21d2-max-x">
+<h3 class="section">9.5 max &rArr; max x</h3>
 <p>Retrieve the maximum element of list x.  Same as <code>&amp;/</code>.
 </p>
 <div class="example">
@@ -138,7 +188,9 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 5
 </pre></div>
 
-<span id="Hsum"></span><span id="sum-_21d2-sum-x"></span><h3 class="section">9.6 sum &rArr; sum x</h3>
+<span id="Hsum"></span></div>
+<div class="section" id="sum-_21d2-sum-x">
+<h3 class="section">9.6 sum &rArr; sum x</h3>
 <p>Compute the sum of list x.  Same as <code>+/</code>.
 </p>
 <div class="example">
@@ -146,7 +198,9 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 8
 </pre></div>
 
-<span id="Hdot"></span><span id="dot-_21d2-dot-x"></span><h3 class="section">9.7 dot &rArr; dot x</h3>
+<span id="Hdot"></span></div>
+<div class="section" id="dot-_21d2-dot-x">
+<h3 class="section">9.7 dot &rArr; dot x</h3>
 <p>Compute the dot product of list x.  Same as <code>+/x*x</code>.
 </p>
 <div class="example">
@@ -157,7 +211,9 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 5.09
 </pre></div>
 
-<span id="avg"></span><span id="avg-_21d2-avg-x"></span><h3 class="section">9.8 avg &rArr; avg x</h3>
+<span id="avg"></span></div>
+<div class="section" id="avg-_21d2-avg-x">
+<h3 class="section">9.8 avg &rArr; avg x</h3>
 <p>Compute the average of list x.  Same as <code>+/x%#x</code>.
 </p>
 <div class="example">
@@ -168,7 +224,9 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 5.75
 </pre></div>
 
-<span id="var"></span><span id="var-_21d2-var-x"></span><h3 class="section">9.9 var &rArr; var x</h3>
+<span id="var"></span></div>
+<div class="section" id="var-_21d2-var-x">
+<h3 class="section">9.9 var &rArr; var x</h3>
 <p>Compute the variance of list x.
 </p>
 <div class="example">
@@ -179,19 +237,29 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 8.25
 </pre></div>
 
-<span id="dev"></span><span id="dev-_21d2-dev-x"></span><h3 class="section">9.10 dev &rArr; dev x</h3>
+<span id="dev"></span></div>
+<div class="section" id="dev-_21d2-dev-x">
+<h3 class="section">9.10 dev &rArr; dev x</h3>
 <p>TBD
 </p>
-<span id="med"></span><span id="med-_21d2-med-x"></span><h3 class="section">9.11 med &rArr; med x</h3>
+<span id="med"></span></div>
+<div class="section" id="med-_21d2-med-x">
+<h3 class="section">9.11 med &rArr; med x</h3>
 <p>TBD
 </p>
-<span id="mode"></span><span id="mode-_21d2-mode-x"></span><h3 class="section">9.12 mode &rArr; mode x</h3>
+<span id="mode"></span></div>
+<div class="section" id="mode-_21d2-mode-x">
+<h3 class="section">9.12 mode &rArr; mode x</h3>
 <p>TBD
 </p>
-<span id="countd"></span><span id="countd-_21d2-countd-x"></span><h3 class="section">9.13 countd &rArr; countd x</h3>
+<span id="countd"></span></div>
+<div class="section" id="countd-_21d2-countd-x">
+<h3 class="section">9.13 countd &rArr; countd x</h3>
 <p>TBD
 </p>
-<span id="exp"></span><span id="exp-_21d2-exp-x"></span><h3 class="section">9.14 exp &rArr; exp x</h3>
+<span id="exp"></span></div>
+<div class="section" id="exp-_21d2-exp-x">
+<h3 class="section">9.14 exp &rArr; exp x</h3>
 <p>Compute the exponent of x, i.e. e<sup>x</sup>.
 </p>
 <div class="example">
@@ -199,7 +267,9 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 2.718282
 </pre></div>
 
-<span id="log"></span><span id="log-_21d2-log-x"></span><h3 class="section">9.15 log &rArr; log x</h3>
+<span id="log"></span></div>
+<div class="section" id="log-_21d2-log-x">
+<h3 class="section">9.15 log &rArr; log x</h3>
 <p>Log computes the natural log.
 </p>
 <div class="example">
@@ -207,7 +277,9 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 2.302585
 </pre></div>
 
-<span id="sin"></span><span id="sin-_21d2-sin-x"></span><h3 class="section">9.16 sin &rArr; sin x</h3>
+<span id="sin"></span></div>
+<div class="section" id="sin-_21d2-sin-x">
+<h3 class="section">9.16 sin &rArr; sin x</h3>
 <p>sin computes the sine of x where x is in radians.
 </p><div class="example">
 <pre class="example">&nbsp;sin 0
@@ -216,7 +288,9 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 1.
 </pre></div>
 
-<span id="cos"></span><span id="cos-_21d2-cos-x"></span><h3 class="section">9.17 cos &rArr; cos x</h3>
+<span id="cos"></span></div>
+<div class="section" id="cos-_21d2-cos-x">
+<h3 class="section">9.17 cos &rArr; cos x</h3>
 <p>cos computes the cosine of x where x is in radians.
 </p><div class="example">
 <pre class="example">&nbsp;cos 0
@@ -225,7 +299,9 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 0.7071055
 </pre></div>
 
-<span id="sqr"></span><span id="sqr-_21d2-sqr-x"></span><h3 class="section">9.18 sqr &rArr; sqr x</h3>
+<span id="sqr"></span></div>
+<div class="section" id="sqr-_21d2-sqr-x">
+<h3 class="section">9.18 sqr &rArr; sqr x</h3>
 <p>Compute the square of x.
 </p>
 <div class="example">
@@ -233,7 +309,9 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 4.0
 </pre></div>
 
-<span id="sqrt"></span><span id="sqrt-_21d2-sqrt-x"></span><h3 class="section">9.19 sqrt &rArr; sqrt x</h3>
+<span id="sqrt"></span></div>
+<div class="section" id="sqrt-_21d2-sqrt-x">
+<h3 class="section">9.19 sqrt &rArr; sqrt x</h3>
 <p>Compute the square root of x.
 </p>
 <div class="example">
@@ -241,7 +319,9 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 1.414214
 </pre></div>
 
-<span id="prm"></span><span id="prm-_21d2-prm-x"></span><h3 class="section">9.20 prm &rArr; prm x</h3>
+<span id="prm"></span></div>
+<div class="section" id="prm-_21d2-prm-x">
+<h3 class="section">9.20 prm &rArr; prm x</h3>
 <p>Write out all permutations of integers up x-1. Display them as columns.
 </p>
 <div class="example">
@@ -251,7 +331,9 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 2 2 0 1 1 0
 </pre></div>
 
-<span id="freq"></span><span id="freq-_21d2-freq-x"></span><h3 class="section">9.21 freq &rArr; freq x</h3>
+<span id="freq"></span></div>
+<div class="section" id="freq-_21d2-freq-x">
+<h3 class="section">9.21 freq &rArr; freq x</h3>
 <p>Compute the frequency of the items in list x.
 </p>
 <div class="example">
@@ -281,7 +363,9 @@ z|1
 9| 95
 </pre></div>
 
-<span id="sums"></span><span id="sums-_21d2-sums-x"></span><h3 class="section">9.22 sums &rArr; sums x</h3>
+<span id="sums"></span></div>
+<div class="section" id="sums-_21d2-sums-x">
+<h3 class="section">9.22 sums &rArr; sums x</h3>
 <p>Compute the running sum of list x.  Sames as <code>+\</code>.
 </p>
 <div class="example">
@@ -289,7 +373,9 @@ z|1
 0 1 3 6 10 15 21 28 36 45
 </pre></div>
 
-<span id="deltas"></span><span id="deltas-_21d2-deltas-x-and-x-deltas-y"></span><h3 class="section">9.23 deltas &rArr; deltas x and x deltas y</h3>
+<span id="deltas"></span></div>
+<div class="section" id="deltas-_21d2-deltas-x-and-x-deltas-y">
+<h3 class="section">9.23 deltas &rArr; deltas x and x deltas y</h3>
 <p>Compute the difference between each element in list x and the previous value.  If delta is called with two parameters then x will be used as the first value to delta instead of the default 0.
 </p>
 <div class="example">
@@ -300,7 +386,9 @@ z|1
 0 4 5
 </pre></div>
 
-<span id="rand"></span><span id="rand-_21d2-rand-x-or-x-rand-y"></span><h3 class="section">9.24 rand &rArr; rand x or x rand y</h3>
+<span id="rand"></span></div>
+<div class="section" id="rand-_21d2-rand-x-or-x-rand-y">
+<h3 class="section">9.24 rand &rArr; rand x or x rand y</h3>
 <p>Generate x random values using a uniform distribution from [0,1) or -x random values of a normal distribution (mean=0, standard deviation=1).
 </p>
 <div class="example">
@@ -330,7 +418,9 @@ z|1
 &quot;yxxxy&quot;
 </pre></div>
 
-<span id="has"></span><span id="has-_21d2-x-has-y"></span><h3 class="section">9.25 has &rArr; x has y</h3>
+<span id="has"></span></div>
+<div class="section" id="has-_21d2-x-has-y">
+<h3 class="section">9.25 has &rArr; x has y</h3>
 <p>Determine whether vector x has element y. Simliar to <a href="#in">in</a> but with the arguments reversed.
 </p>
 <div class="example">
@@ -347,7 +437,9 @@ z|1
 10b
 </pre></div>
 
-<span id="bin"></span><span id="bin-_21d2-x-bin-y"></span><h3 class="section">9.26 bin &rArr; x bin y</h3>
+<span id="bin"></span></div>
+<div class="section" id="bin-_21d2-x-bin-y">
+<h3 class="section">9.26 bin &rArr; x bin y</h3>
 <p>Given a sorted (increasing) list x, find the greatest index, i, where y&gt;x[i].
 </p>
 <div class="example">
@@ -357,7 +449,9 @@ z|1
 3
 </pre></div>
 
-<span id="in"></span><span id="in-_21d2-x-in-y"></span><h3 class="section">9.27 in &rArr; x in y</h3>
+<span id="in"></span></div>
+<div class="section" id="in-_21d2-x-in-y">
+<h3 class="section">9.27 in &rArr; x in y</h3>
 <p>Determine if x is in list y.  Similar to <a href="#has">has</a> but arguments reversed.
 </p>
 <div class="example">
@@ -367,7 +461,9 @@ z|1
 0b
 </pre></div>
 
-<span id="within"></span><span id="within-_21d2-x-within-y"></span><h3 class="section">9.28 within &rArr; x within y</h3>
+<span id="within"></span></div>
+<div class="section" id="within-_21d2-x-within-y">
+<h3 class="section">9.28 within &rArr; x within y</h3>
 <p>Test if x is equal to or greater than y[0] and less than y[1].
 </p>
 <div class="example">
@@ -384,7 +480,9 @@ z|1
 0b
 </pre></div>
 
-<span id="div"></span><span id="div-_21d2-x-div-y"></span><h3 class="section">9.29 div &rArr; x div y</h3>
+<span id="div"></span></div>
+<div class="section" id="div-_21d2-x-div-y">
+<h3 class="section">9.29 div &rArr; x div y</h3>
 <p>y divided by x using integer division, taking the floor of the result.  x and y must be integers.
 </p>
 <div class="example">
@@ -394,7 +492,9 @@ z|1
 4
 </pre></div>
 
-<span id="mod"></span><span id="mod-_21d2-x-mod-y"></span><h3 class="section">9.30 mod &rArr; x mod y</h3>
+<span id="mod"></span></div>
+<div class="section" id="mod-_21d2-x-mod-y">
+<h3 class="section">9.30 mod &rArr; x mod y</h3>
 <p>The remainder after y divided by x using integer division.  x and y must be integers.
 </p>
 <div class="example">
@@ -404,7 +504,9 @@ z|1
 2
 </pre></div>
 
-<span id="bar"></span><span id="bar-_21d2-x-bar-y"></span><h3 class="section">9.31 bar &rArr; x bar y</h3>
+<span id="bar"></span></div>
+<div class="section" id="bar-_21d2-x-bar-y">
+<h3 class="section">9.31 bar &rArr; x bar y</h3>
 <p>For each value in y determine the maximum multiple of x that is less than or equal to each y.
 </p>
 <div class="example">
@@ -412,7 +514,9 @@ z|1
 0 10 10 10 20 20
 </pre></div>
 
-<span id="msum"></span><span id="msum-_21d2-x-msum-y"></span><h3 class="section">9.32 msum &rArr; x msum y</h3>
+<span id="msum"></span></div>
+<div class="section" id="msum-_21d2-x-msum-y">
+<h3 class="section">9.32 msum &rArr; x msum y</h3>
 <p>Compute the length x  moving sum of list y.
 </p>
 <div class="example">
@@ -421,7 +525,9 @@ z|1
 </pre></div>
 
 
-<span id="mavg"></span><span id="mavg-_21d2-x-mavg-y"></span><h3 class="section">9.33 mavg &rArr; x mavg y</h3>
+<span id="mavg"></span></div>
+<div class="section" id="mavg-_21d2-x-mavg-y">
+<h3 class="section">9.33 mavg &rArr; x mavg y</h3>
 <p>Compute the length x  moving average of list y.
 </p>
 <div class="example">
@@ -445,7 +551,9 @@ fa|1 2 3
 fb|4 5 6
 </pre></div>
 
-<span id="unkey"></span><span id="unkey-_21d2-unkey-x"></span><h3 class="section">9.34 unkey &rArr; unkey x</h3>
+<span id="unkey"></span></div>
+<div class="section" id="unkey-_21d2-unkey-x">
+<h3 class="section">9.34 unkey &rArr; unkey x</h3>
 <p>Remove key from table x.
 </p>
 <div class="example">
@@ -456,7 +564,9 @@ x 1
 y 2
 </pre></div>
 
-<span id="meta"></span><span id="meta-_21d2-meta"></span><h3 class="section">9.35 meta &rArr; meta</h3>
+<span id="meta"></span></div>
+<div class="section" id="meta-_21d2-meta">
+<h3 class="section">9.35 meta &rArr; meta</h3>
 <p>Determine the types of the fields in a table.
 </p>
 <div class="example">
@@ -465,10 +575,12 @@ a|n
 b|i
 </pre></div>
 
+</div>
+</div>
 <hr>
 <div class="header">
 <p>
-Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>, Previous: <a href="Expression.html" accesskey="p" rel="prev">Expression</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="Knit-Functions.html">Knit Functions</a>, Previous: <a href="Expression.html">Expression Evaluation</a>, Up: <a href="index.html">k9: Manual</a> &nbsp; </p>
 </div>
 
 

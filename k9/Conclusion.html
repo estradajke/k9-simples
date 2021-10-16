@@ -1,11 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- October 2, 2021
-
-Copyright (C) 2020 John Estrada -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- October 16, 2021
+
+Copyright (C) 2020 John Estrada -->
 <title>Conclusion (Shakti (k9) tutorial)</title>
 
 <meta name="description" content="k programming tutorial, Shakti (k9) tutorial">
@@ -13,6 +13,8 @@ Copyright (C) 2020 John Estrada -->
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="index.html" rel="up" title="Top">
 <link href="Benchmark.html" rel="prev" title="Benchmark">
@@ -21,11 +23,11 @@ Copyright (C) 2020 John Estrada -->
 /* spacing */
 
 
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -34,6 +36,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 .cartouche{
     border: none;
@@ -82,9 +85,10 @@ table.menu th{
 </head>
 
 <body lang="en">
-<span id="Conclusion"></span><div class="header">
+<div class="chapter" id="Conclusion">
+<div class="header">
 <p>
-Previous: <a href="Benchmark.html" accesskey="p" rel="prev">Benchmark</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Previous: <a href="Benchmark.html" accesskey="p" rel="prev">Benchmark</a>, Up: <a href="index.html" accesskey="u" rel="up">k9: Manual</a> &nbsp; </p>
 </div>
 <hr>
 <span id="Conclusion-1"></span><h2 class="chapter">21 Conclusion</h2>
@@ -96,14 +100,16 @@ Previous: <a href="Benchmark.html" accesskey="p" rel="prev">Benchmark</a>, Up: <
 <p>Eventually, you&rsquo;ll realize that this manual isn&rsquo;t needed and it&rsquo;s all here...
 </p>
 <div class="format">
-<pre class="verbatim">$curl -o k.so shakti.com/python/k.so
-python: import k;k.k('2+3') #nodejs: require('k').k('2+3')
+<pre class="verbatim">python: import k;k.k('2+3')   shakti.com/python/k.so
+nodejs: require('k').k('2+3') shakti.com/nodejs/k.node
 
-$k [-p 1024] [a.k]
+$k [-n4 -p1024] a.k
 
-t:[[]t:09:30:00.000+!2;e:&quot;b&quot;;s:`aa;v:2;p:2.3e]
-`csv?`csv t;`json?`json t
-`lz4?`lz4 t;`zstd?`zstd t
+t:[[]t:09:30:00.000 09:30:00.001;e:&quot;b&quot;;s:`aa`aa;v:2 3;p:2.3 3.4]
+x:&quot;t,e,s,v,p\n09:30:00.000,b,aa,2,2.3\n09:30:00.001,b,aa,3,3.4\n&quot;
+`csv?`csv t     /also `json?`json t
+`lz4?`lz4 x     /also `zstd?`zstd x
+\\
 
 verb                    adverb                 noun                    \l a.k
 : x         y          f' each                 char &quot; ab&quot;              \t:n x
@@ -137,10 +143,11 @@ sqrt sqr exp log sin cos div mod bar in bin
 
 
 
+</div>
 <hr>
 <div class="header">
 <p>
-Previous: <a href="Benchmark.html" accesskey="p" rel="prev">Benchmark</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Previous: <a href="Benchmark.html">Benchmark</a>, Up: <a href="index.html">k9: Manual</a> &nbsp; </p>
 </div>
 
 

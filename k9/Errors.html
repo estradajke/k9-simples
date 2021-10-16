@@ -1,11 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- October 2, 2021
-
-Copyright (C) 2020 John Estrada -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- October 16, 2021
+
+Copyright (C) 2020 John Estrada -->
 <title>Errors (Shakti (k9) tutorial)</title>
 
 <meta name="description" content="k programming tutorial, Shakti (k9) tutorial">
@@ -13,6 +13,8 @@ Copyright (C) 2020 John Estrada -->
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="index.html" rel="up" title="Top">
 <link href="Examples.html" rel="next" title="Examples">
@@ -22,11 +24,11 @@ Copyright (C) 2020 John Estrada -->
 /* spacing */
 
 
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -35,6 +37,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 .cartouche{
     border: none;
@@ -83,9 +86,10 @@ table.menu th{
 </head>
 
 <body lang="en">
-<span id="Errors"></span><div class="header">
+<div class="chapter" id="Errors">
+<div class="header">
 <p>
-Next: <a href="Examples.html" accesskey="n" rel="next">Examples</a>, Previous: <a href="Temporal-Functions.html" accesskey="p" rel="prev">Temporal Functions</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="Examples.html" accesskey="n" rel="next">Examples</a>, Previous: <a href="Temporal-Functions.html" accesskey="p" rel="prev">Temporal Functions</a>, Up: <a href="index.html" accesskey="u" rel="up">k9: Manual</a> &nbsp; </p>
 </div>
 <hr>
 <span id="Errors-1"></span><h2 class="chapter">18 Errors</h2>
@@ -97,14 +101,28 @@ Next: <a href="Examples.html" accesskey="n" rel="next">Examples</a>, Previous: <
 stack <a href="#eparse">parse</a> <a href="#g_t_005fvalue">value</a>
 </pre></div>
 
-<span id="class"></span><span id="g_t_003aclass"></span><h3 class="section">18.1 :class</h3>
+<span id="class"></span><ul class="section-toc">
+<li><a href="#g_t_003aclass" accesskey="1">:class</a></li>
+<li><a href="#g_t_003arank" accesskey="2">:rank</a></li>
+<li><a href="#g_t_003alength" accesskey="3">:length</a></li>
+<li><a href="#g_t_003atype" accesskey="4">:type</a></li>
+<li><a href="#g_t_003adomain" accesskey="5">:domain</a></li>
+<li><a href="#g_t_003alimit" accesskey="6">:limit</a></li>
+<li><a href="#g_t_003anyi" accesskey="7">:nyi</a></li>
+<li><a href="#g_t_003aparse" accesskey="8">:parse</a></li>
+<li><a href="#g_t_003avalue" accesskey="9">:value</a></li>
+</ul>
+<div class="section" id="g_t_003aclass">
+<h3 class="section">18.1 :class</h3>
 <p>Calling a function on mismatched types.
 </p><div class="example">
 <pre class="example">&nbsp;3+`b
 :class
 </pre></div>
 
-<span id="rank"></span><span id="g_t_003arank"></span><h3 class="section">18.2 :rank</h3>
+<span id="rank"></span></div>
+<div class="section" id="g_t_003arank">
+<h3 class="section">18.2 :rank</h3>
 <p>Calling a function with too many parameters.
 </p><div class="example">
 <pre class="example">&nbsp;{x+y}[1;2;3]
@@ -113,14 +131,18 @@ stack <a href="#eparse">parse</a> <a href="#g_t_005fvalue">value</a>
 :rank
 </pre></div>
 
-<span id="length"></span><span id="g_t_003alength"></span><h3 class="section">18.3 :length</h3>
+<span id="length"></span></div>
+<div class="section" id="g_t_003alength">
+<h3 class="section">18.3 :length</h3>
 <p>Operations on unequal length lists that require equal length.
 </p><div class="example">
 <pre class="example">&nbsp;(1 2 3)+(4 5)
 :length
 </pre></div>
 
-<span id="g_t_005ftype"></span><span id="g_t_003atype"></span><h3 class="section">18.4 :type</h3>
+<span id="g_t_005ftype"></span></div>
+<div class="section" id="g_t_003atype">
+<h3 class="section">18.4 :type</h3>
 <p>Calling a function with an unsupported variable type.
 </p><div class="example">
 <pre class="example">`a+`b
@@ -128,14 +150,18 @@ stack <a href="#eparse">parse</a> <a href="#g_t_005fvalue">value</a>
 :type
 </pre></div>
 
-<span id="domain"></span><span id="g_t_003adomain"></span><h3 class="section">18.5 :domain</h3>
+<span id="domain"></span></div>
+<div class="section" id="g_t_003adomain">
+<h3 class="section">18.5 :domain</h3>
 <p>Exhausted the number of input values
 </p><div class="example">
 <pre class="example">&nbsp;-12?10   / only 10 unique value exist
 :domain
 </pre></div>
 
-<span id="limit"></span><span id="g_t_003alimit"></span><h3 class="section">18.6 :limit</h3>
+<span id="limit"></span></div>
+<div class="section" id="g_t_003alimit">
+<h3 class="section">18.6 :limit</h3>
 <p>Exceeded a limit above the software maximum, eg. writing a single file above 1GB.
 </p><div class="example">
 <pre class="example">&nbsp;n:_100e6;d:+`x`y!(!n;n rand 1.);`d 2:d
@@ -144,7 +170,9 @@ n:_100e6;d:+`x`y!(!n;n rand 1.);`d 2:d
 :limit
 </pre></div>
 
-<span id="nyi"></span><span id="g_t_003anyi"></span><h3 class="section">18.7 :nyi</h3>
+<span id="nyi"></span></div>
+<div class="section" id="g_t_003anyi">
+<h3 class="section">18.7 :nyi</h3>
 <p>Running code that is not yet implemented.  This may come from running code in this document with a different version of k9.
 </p>
 <p>2020.05.31 (c) shakti
@@ -166,23 +194,29 @@ a b|
 :nyi
 </pre></div>
 
-<span id="eparse"></span><span id="g_t_003aparse"></span><h3 class="section">18.8 :parse</h3>
+<span id="eparse"></span></div>
+<div class="section" id="g_t_003aparse">
+<h3 class="section">18.8 :parse</h3>
 <p>Syntax is wrong.  This may be due to mismatched parentheses or  brackets, e.g., (), {}, [], &quot;&quot;.
 </p><div class="example">
 <pre class="example">&nbsp;{37 . &quot;hello&quot;
 :parse
 </pre></div>
 
-<span id="g_t_005fvalue"></span><span id="g_t_003avalue"></span><h3 class="section">18.9 :value</h3>
+<span id="g_t_005fvalue"></span></div>
+<div class="section" id="g_t_003avalue">
+<h3 class="section">18.9 :value</h3>
 <p>Undefined variable is used.
 </p><div class="example">
 <pre class="example">&nbsp;g    / assuming 'g' has not be defining in this session
 :value
 </pre></div>
+</div>
+</div>
 <hr>
 <div class="header">
 <p>
-Next: <a href="Examples.html" accesskey="n" rel="next">Examples</a>, Previous: <a href="Temporal-Functions.html" accesskey="p" rel="prev">Temporal Functions</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="Examples.html">Examples</a>, Previous: <a href="Temporal-Functions.html">Temporal Functions</a>, Up: <a href="index.html">k9: Manual</a> &nbsp; </p>
 </div>
 
 

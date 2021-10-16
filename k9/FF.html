@@ -1,11 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- October 2, 2021
-
-Copyright (C) 2020 John Estrada -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- October 16, 2021
+
+Copyright (C) 2020 John Estrada -->
 <title>FF (Shakti (k9) tutorial)</title>
 
 <meta name="description" content="k programming tutorial, Shakti (k9) tutorial">
@@ -13,6 +13,8 @@ Copyright (C) 2020 John Estrada -->
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="index.html" rel="up" title="Top">
 <link href="Tables.html" rel="next" title="Tables">
@@ -22,11 +24,11 @@ Copyright (C) 2020 John Estrada -->
 /* spacing */
 
 
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -35,6 +37,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 .cartouche{
     border: none;
@@ -83,9 +86,10 @@ table.menu th{
 </head>
 
 <body lang="en">
-<span id="FF"></span><div class="header">
+<div class="chapter" id="FF">
+<div class="header">
 <p>
-Next: <a href="Tables.html" accesskey="n" rel="next">Tables</a>, Previous: <a href="I_002fO.html" accesskey="p" rel="prev">I/O</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="Tables.html" accesskey="n" rel="next">Tables</a>, Previous: <a href="I_002fO.html" accesskey="p" rel="prev">I/O and Interface</a>, Up: <a href="index.html" accesskey="u" rel="up">k9: Manual</a> &nbsp; </p>
 </div>
 <hr>
 <span id="Foreign-Functions"></span><h2 class="chapter">12 Foreign Functions</h2>
@@ -99,7 +103,14 @@ Next: <a href="Tables.html" accesskey="n" rel="next">Tables</a>, Previous: <a hr
 </p>
 <p>k9 is able to interface with other programing laguages (python and nodejs) via shared libraries and the foreign function interface (ffi).
 </p>
-<span id="python"></span><span id="python-1"></span><h3 class="section">12.1 python</h3>
+<span id="python"></span><ul class="section-toc">
+<li><a href="#python-1" accesskey="1">python</a></li>
+<li><a href="#nodejs-1" accesskey="2">nodejs</a></li>
+<li><a href="#ffi-_21d2-5_003a" accesskey="3">ffi &rArr; 5:</a></li>
+<li><a href="#import-_21d2-x-5_003ay" accesskey="4">import &rArr; x 5:y</a></li>
+</ul>
+<div class="section" id="python-1">
+<h3 class="section">12.1 python</h3>
 <p>In order to have python call k, one has to download the shared object file (k.so for linux and m.so for mac) and save it in the appropriate directory.
 </p>
 <div class="example">
@@ -123,7 +134,9 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 &gt;&gt;&gt; 
 </pre></div>
 
-<span id="nodejs"></span><span id="nodejs-1"></span><h3 class="section">12.2 nodejs</h3>
+<span id="nodejs"></span></div>
+<div class="section" id="nodejs-1">
+<h3 class="section">12.2 nodejs</h3>
 <p>One can call k9 from nodejs using the k.node shared libary.  (If using a mac then download m.node and rename it k.node.)
 </p>
 <p>From the terminal...
@@ -163,7 +176,9 @@ Data:
 Line1
 Line2
 </pre>
-<span id="ffi"></span><span id="ffi-_21d2-5_003a"></span><h3 class="section">12.3 ffi &rArr; 5:</h3>
+<span id="ffi"></span></div>
+<div class="section" id="ffi-_21d2-5_003a">
+<h3 class="section">12.3 ffi &rArr; 5:</h3>
 
 <p>Load shared library.
 </p>
@@ -188,17 +203,21 @@ int indx(int x[],int y){return x[y];}
 14
 </pre></div>
 
-<span id="import"></span><span id="import-_21d2-x-5_003ay"></span><h3 class="section">12.4 import &rArr; x 5:y</h3>
+<span id="import"></span></div>
+<div class="section" id="import-_21d2-x-5_003ay">
+<h3 class="section">12.4 import &rArr; x 5:y</h3>
 <p>Import as name x library y.
 </p>
 <div class="example">
 <pre class="example"> .(:;`json;5:`json) / using dot notation
 </pre></div>
 
+</div>
+</div>
 <hr>
 <div class="header">
 <p>
-Next: <a href="Tables.html" accesskey="n" rel="next">Tables</a>, Previous: <a href="I_002fO.html" accesskey="p" rel="prev">I/O</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="Tables.html">Tables</a>, Previous: <a href="I_002fO.html">I/O and Interface</a>, Up: <a href="index.html">k9: Manual</a> &nbsp; </p>
 </div>
 
 

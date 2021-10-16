@@ -1,11 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- October 2, 2021
-
-Copyright (C) 2020 John Estrada -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- October 16, 2021
+
+Copyright (C) 2020 John Estrada -->
 <title>List (Shakti (k9) tutorial)</title>
 
 <meta name="description" content="k programming tutorial, Shakti (k9) tutorial">
@@ -13,6 +13,8 @@ Copyright (C) 2020 John Estrada -->
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="index.html" rel="up" title="Top">
 <link href="Dictionary.html" rel="next" title="Dictionary">
@@ -22,11 +24,11 @@ Copyright (C) 2020 John Estrada -->
 /* spacing */
 
 
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -35,6 +37,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 .cartouche{
     border: none;
@@ -83,9 +86,10 @@ table.menu th{
 </head>
 
 <body lang="en">
-<span id="List"></span><div class="header">
+<div class="chapter" id="List">
+<div class="header">
 <p>
-Next: <a href="Dictionary.html" accesskey="n" rel="next">Dictionary</a>, Previous: <a href="Noun.html" accesskey="p" rel="prev">Noun</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="Dictionary.html" accesskey="n" rel="next">Dictionary</a>, Previous: <a href="Noun.html" accesskey="p" rel="prev">Noun</a>, Up: <a href="index.html" accesskey="u" rel="up">k9: Manual</a> &nbsp; </p>
 </div>
 <hr>
 <span id="List-1"></span><h2 class="chapter">5 List</h2>
@@ -131,7 +135,15 @@ Next: <a href="Dictionary.html" accesskey="n" rel="next">Dictionary</a>, Previou
 `I
 </pre></div>
 
-<span id="List-Syntax"></span><h3 class="section">5.1 List Syntax</h3>
+<ul class="section-toc">
+<li><a href="#List-Syntax" accesskey="1">List Syntax</a></li>
+<li><a href="#List-Indexing" accesskey="2">List Indexing</a></li>
+<li><a href="#Updating-List-Elements" accesskey="3">Updating List Elements</a></li>
+<li><a href="#Function-Applied-to-Lists" accesskey="4">Function Applied to Lists</a></li>
+<li><a href="#Functions-Applied-to-Two-Lists" accesskey="5">Functions Applied to Two Lists</a></li>
+</ul>
+<div class="section" id="List-Syntax">
+<h3 class="section">5.1 List Syntax</h3>
 <p>In general, lists consist of elements separated by semicolons and encased by parenthesis.
 </p>
 <div class="example">
@@ -151,7 +163,9 @@ LI
 ,,,,,3 1
 </pre></div>
 
-<span id="List-Indexing"></span><h3 class="section">5.2 List Indexing</h3>
+</div>
+<div class="section" id="List-Indexing">
+<h3 class="section">5.2 List Indexing</h3>
 <p>Lists can be indexed in different ways.  The @ notation is often used as it&rsquo;s fewer characters than [] and the explicit @ instead of space is likely more clear.
 </p>
 <div class="example">
@@ -168,7 +182,9 @@ LI
 0
 </pre></div>
 
-<span id="Updating-List-Elements"></span><h3 class="section">5.3 Updating List Elements</h3>
+</div>
+<div class="section" id="Updating-List-Elements">
+<h3 class="section">5.3 Updating List Elements</h3>
 <p>Lists can be updated elementwise by  setting the indexed element to a required value.  There is also a syntax for updating many elements and that is found at <a href="Knit-Functions.html#amend">amend</a>.
 </p>
 <div class="example">
@@ -179,7 +195,9 @@ LI
 2 4 6 80 10 12 14 16 18 20
 </pre></div>
 
-<span id="Function-Applied-to-Lists"></span><h3 class="section">5.4 Function Applied to Lists</h3>
+</div>
+<div class="section" id="Function-Applied-to-Lists">
+<h3 class="section">5.4 Function Applied to Lists</h3>
 <p>Most functions can be applied to lists without special syntax as if it was an element.
 </p>
 <div class="example">
@@ -199,10 +217,18 @@ LI
 0 0.7080734 0.8268218
 </pre></div>
 
-<span id="Functions-Applied-to-Two-Lists"></span><h3 class="section">5.5 Functions Applied to Two Lists</h3>
+</div>
+<div class="section" id="Functions-Applied-to-Two-Lists">
+<h3 class="section">5.5 Functions Applied to Two Lists</h3>
 <p>This section will focus on functions (f) that operate on two lists (x and y).  As these are internal functions, examples will be shown with infix notation (x+y) but prefix notation (+[x;y]) would  also be possible.
 </p>
-<span id="Pairwise"></span><h4 class="subsection">5.5.1 Pairwise</h4>
+<ul class="section-toc">
+<li><a href="#Pairwise" accesskey="1">Pairwise</a></li>
+<li><a href="#Each-Element-of-One-List-Compared-to-Entire-Other-List" accesskey="2">Each Element of One List Compared to Entire Other List</a></li>
+<li><a href="#Each-List-Used-Symmetrically" accesskey="3">Each List Used Symmetrically</a></li>
+</ul>
+<div class="subsection" id="Pairwise">
+<h4 class="subsection">5.5.1 Pairwise</h4>
 <p>These functions operate on list elements pairwise and thus requires that x and y are equal length.
 </p><ul>
 <li> <tt>x+y : Add</tt>
@@ -249,7 +275,9 @@ LI
 5| 2
 </pre></div>
 
-<span id="Each-Element-of-One-List-Compared-to-Entire-Other-List"></span><h4 class="subsection">5.5.2 Each Element of One List Compared to Entire Other List</h4>
+</div>
+<div class="subsection" id="Each-Element-of-One-List-Compared-to-Entire-Other-List">
+<h4 class="subsection">5.5.2 Each Element of One List Compared to Entire Other List</h4>
 <p>These functions compare x[i] to y or x to y[i]. They are  not symmetric to their inputs, i.e. f[x;y] does not equal f[y;x];
 </p>
 <ul>
@@ -275,7 +303,9 @@ LI
 3 0 3 3 1 3
 </pre></div>
 
-<span id="Each-List-Used-Symmetrically"></span><h4 class="subsection">5.5.3 Each List Used Symmetrically</h4>
+</div>
+<div class="subsection" id="Each-List-Used-Symmetrically">
+<h4 class="subsection">5.5.3 Each List Used Symmetrically</h4>
 <p>This is symmetric in its inputs f[x;y]=f[y;x] and the lists are not required to be equal length.
 </p>
 <ul>
@@ -290,10 +320,13 @@ LI
 </pre></div>
 
 
+</div>
+</div>
+</div>
 <hr>
 <div class="header">
 <p>
-Next: <a href="Dictionary.html" accesskey="n" rel="next">Dictionary</a>, Previous: <a href="Noun.html" accesskey="p" rel="prev">Noun</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="Dictionary.html">Dictionary</a>, Previous: <a href="Noun.html">Noun</a>, Up: <a href="index.html">k9: Manual</a> &nbsp; </p>
 </div>
 
 

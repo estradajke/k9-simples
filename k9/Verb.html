@@ -1,11 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- October 2, 2021
-
-Copyright (C) 2020 John Estrada -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- October 16, 2021
+
+Copyright (C) 2020 John Estrada -->
 <title>Verb (Shakti (k9) tutorial)</title>
 
 <meta name="description" content="k programming tutorial, Shakti (k9) tutorial">
@@ -13,6 +13,8 @@ Copyright (C) 2020 John Estrada -->
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="index.html" rel="up" title="Top">
 <link href="Adverb.html" rel="next" title="Adverb">
@@ -22,11 +24,11 @@ Copyright (C) 2020 John Estrada -->
 /* spacing */
 
 
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -35,6 +37,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 .cartouche{
     border: none;
@@ -83,9 +86,10 @@ table.menu th{
 </head>
 
 <body lang="en">
-<span id="Verb"></span><div class="header">
+<div class="chapter" id="Verb">
+<div class="header">
 <p>
-Next: <a href="Adverb.html" accesskey="n" rel="next">Adverb</a>, Previous: <a href="Introduction.html" accesskey="p" rel="prev">Introduction</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="Adverb.html" accesskey="n" rel="next">Adverbs</a>, Previous: <a href="Introduction.html" accesskey="p" rel="prev">Introduction</a>, Up: <a href="index.html" accesskey="u" rel="up">k9: Manual</a> &nbsp; </p>
 </div>
 <hr>
 <span id="Verbs"></span><h2 class="chapter">2 Verbs</h2>
@@ -120,10 +124,52 @@ $ <a href="#string">string</a>,    <a href="#parse">parse</a>.
 
 </pre></div>
 
-<span id="x"></span><span id="x-_21d2-_003ax"></span><h3 class="section">2.1 x &rArr; :x</h3>
+<span id="x"></span><ul class="section-toc">
+<li><a href="#x-_21d2-_003ax" accesskey="1">x &rArr; :x</a></li>
+<li><a href="#set-_21d2-x_003ay" accesskey="2">set &rArr; x:y</a></li>
+<li><a href="#flip-_21d2-_002bx" accesskey="3">flip &rArr; +x</a></li>
+<li><a href="#plus-_21d2-x_002by" accesskey="4">plus &rArr; x+y</a></li>
+<li><a href="#negate-_21d2-_002dx_002e" accesskey="5">negate &rArr; -x.</a></li>
+<li><a href="#minus-_21d2-x_002dy_002e" accesskey="6">minus &rArr; x-y.</a></li>
+<li><a href="#first-_21d2-_002ax" accesskey="7">first &rArr; *x</a></li>
+<li><a href="#times-_21d2-x_002ay" accesskey="8">times &rArr;  x*y</a></li>
+<li><a href="#divide-_21d2-x_0025y" accesskey="9">divide &rArr; x<code>%</code>y</a></li>
+<li><a href="#where-_21d2-_0026x">where &rArr; &amp;x</a></li>
+<li><a href="#and-_21d2-x_0026y">and &rArr; x&amp;y</a></li>
+<li><a href="#reverse-_21d2-_007cx">reverse &rArr; |x</a></li>
+<li><a href="#or-_21d2-x_007cy">or &rArr; x|y</a></li>
+<li><a href="#asc_0028desc_0029-_21d2-_003c-_0028_003e_0029-x">asc(desc) &rArr; &lt; (&gt;) x</a></li>
+<li><a href="#less-_0028more_0029-_21d2-x-_003c-_0028_003e_0029-y">less (more) &rArr; x &lt; (&gt;) y</a></li>
+<li><a href="#group-_21d2-_003dx">group &rArr; =x</a></li>
+<li><a href="#equal-_21d2-x_003dy">equal &rArr; x=y</a></li>
+<li><a href="#not-_21d2-_007ex">not &rArr; ~x</a></li>
+<li><a href="#match-_21d2-x_007ey">match &rArr; x~y</a></li>
+<li><a href="#enum-_21d2-_0021x">enum &rArr; !x</a></li>
+<li><a href="#key-_21d2-x_0021y">key &rArr; x!y</a></li>
+<li><a href="#enlist-_21d2-_002cx">enlist &rArr; ,x</a></li>
+<li><a href="#cat-_21d2-x_002cy">cat &rArr; x,y</a></li>
+<li><a href="#sort-_21d2-_005ex">sort &rArr; ^x</a></li>
+<li><a href="#g_t_005bf_005dcut-_21d2-x_005ey">[f]cut &rArr; x^y</a></li>
+<li><a href="#count-_21d2-_0023x">count &rArr; #x</a></li>
+<li><a href="#g_t_005bf_005dtake-_21d2-x_0023y">[f]take &rArr; x#y</a></li>
+<li><a href="#floor-_21d2-_005fx">floor &rArr; _x</a></li>
+<li><a href="#g_t_005bf_005ddrop-_21d2-x_005fy">[f]drop &rArr; x_y</a></li>
+<li><a href="#string-_21d2-_0024x">string &rArr; $x</a></li>
+<li><a href="#parse-_21d2-x_0024y">parse &rArr; x$y</a></li>
+<li><a href="#unique-_21d2-_003fx">unique &rArr; ?x</a></li>
+<li><a href="#find_002frand-_21d2-x_003fy">find/rand &rArr; x?y</a></li>
+<li><a href="#type-_21d2-_0040x">type &rArr; @x</a></li>
+<li><a href="#g_t_005bf_005dat-_21d2-x_0040y">[f]at &rArr; x@y</a></li>
+<li><a href="#value-_21d2-_002ex">value &rArr; .x</a></li>
+<li><a href="#g_t_005bf_005ddot-_21d2-x_002ey">[f]dot &rArr; x.y</a></li>
+</ul>
+<div class="section" id="x-_21d2-_003ax">
+<h3 class="section">2.1 x &rArr; :x</h3>
 <p>TBD
 </p>
-<span id="set"></span><span id="set-_21d2-x_003ay"></span><h3 class="section">2.2 set &rArr; x:y</h3>
+<span id="set"></span></div>
+<div class="section" id="set-_21d2-x_003ay">
+<h3 class="section">2.2 set &rArr; x:y</h3>
 <p>Set a variable, x, to a value, y.  There should be no space between <code>x</code> and <code>:</code>. 
 </p>
 <div class="example">
@@ -142,7 +188,9 @@ blue
 27
 </pre></div>
 
-<span id="flip"></span><span id="flip-_21d2-_002bx"></span><h3 class="section">2.3 flip &rArr; +x</h3>
+<span id="flip"></span></div>
+<div class="section" id="flip-_21d2-_002bx">
+<h3 class="section">2.3 flip &rArr; +x</h3>
 <p>Flip, or transpose, x where x is not a simple element.  
 </p>
 <div class="example">
@@ -168,7 +216,9 @@ a b
 5 6
 </pre></div>
 
-<span id="plus"></span><span id="plus-_21d2-x_002by"></span><h3 class="section">2.4 plus &rArr; x+y</h3>
+<span id="plus"></span></div>
+<div class="section" id="plus-_21d2-x_002by">
+<h3 class="section">2.4 plus &rArr; x+y</h3>
 <p>Add x and y.  Arguments can be elements or lists but if both x and y are lists then they must be of equal length.
 </p>
 <div class="example">
@@ -198,7 +248,9 @@ a:3;
 10:00:00.001
 </pre></div>
 
-<span id="negate"></span><span id="negate-_21d2-_002dx_002e"></span><h3 class="section">2.5 negate &rArr; -x.</h3>
+<span id="negate"></span></div>
+<div class="section" id="negate-_21d2-_002dx_002e">
+<h3 class="section">2.5 negate &rArr; -x.</h3>
 
 <div class="example">
 <pre class="example">&nbsp;-3
@@ -214,7 +266,9 @@ a|-1 -2 -3
 b|-4 -5 -6
 </pre></div>
 
-<span id="minus"></span><span id="minus-_21d2-x_002dy_002e"></span><h3 class="section">2.6 minus &rArr; x-y.</h3>
+<span id="minus"></span></div>
+<div class="section" id="minus-_21d2-x_002dy_002e">
+<h3 class="section">2.6 minus &rArr; x-y.</h3>
 <p>Subtract y from x.
 </p>
 <div class="example">
@@ -225,7 +279,9 @@ b|-4 -5 -6
 3
 </pre></div>
 
-<span id="first"></span><span id="first-_21d2-_002ax"></span><h3 class="section">2.7 first &rArr; *x</h3>
+<span id="first"></span></div>
+<div class="section" id="first-_21d2-_002ax">
+<h3 class="section">2.7 first &rArr; *x</h3>
 <p>Return the first value of x.  
 </p><div class="example">
 <pre class="example"> *1 2 3
@@ -240,7 +296,9 @@ b|-4 -5 -6
 3
 </pre></div>
 
-<span id="times"></span><span id="times-_21d2-x_002ay"></span><h3 class="section">2.8 times &rArr;  x*y</h3>
+<span id="times"></span></div>
+<div class="section" id="times-_21d2-x_002ay">
+<h3 class="section">2.8 times &rArr;  x*y</h3>
 <p>Mutliply x and y.
 </p><div class="example">
 <pre class="example">&nbsp;3*4
@@ -251,7 +309,9 @@ b|-4 -5 -6
 4 10 18
 </pre></div>
 
-<span id="divide"></span><span id="divide-_21d2-x_0025y"></span><h3 class="section">2.9 divide &rArr; x<code>%</code>y</h3>
+<span id="divide"></span></div>
+<div class="section" id="divide-_21d2-x_0025y">
+<h3 class="section">2.9 divide &rArr; x<code>%</code>y</h3>
 <p>Divide x by y.
 </p><div class="example">
 <pre class="example">&nbsp;12%5
@@ -260,7 +320,9 @@ b|-4 -5 -6
 3f
 </pre></div>
 
-<span id="where"></span><span id="where-_21d2-_0026x"></span><h3 class="section">2.10 where &rArr; &amp;x</h3>
+<span id="where"></span></div>
+<div class="section" id="where-_21d2-_0026x">
+<h3 class="section">2.10 where &rArr; &amp;x</h3>
 <p>Given a list of boolean values return the indices where the value is non-zero.   
 </p>
 <div class="example">
@@ -283,7 +345,9 @@ x[1] values of 1, ..., and x[n-1] values of n-1.
 
 </pre></div>
 
-<span id="min_002fand"></span><span id="and-_21d2-x_0026y"></span><h3 class="section">2.11 and &rArr; x&amp;y</h3>
+<span id="min_002fand"></span></div>
+<div class="section" id="and-_21d2-x_0026y">
+<h3 class="section">2.11 and &rArr; x&amp;y</h3>
 <p>The smaller of x and y.  One can use the over adverb to determine the min value in a list.
 </p><div class="example">
 <pre class="example">&nbsp;3&amp;2
@@ -298,7 +362,9 @@ x[1] values of 1, ..., and x[n-1] values of n-1.
 -200
 </pre></div>
 
-<span id="reverse"></span><span id="reverse-_21d2-_007cx"></span><h3 class="section">2.12 reverse &rArr; |x</h3>
+<span id="reverse"></span></div>
+<div class="section" id="reverse-_21d2-_007cx">
+<h3 class="section">2.12 reverse &rArr; |x</h3>
 <p>Reverse the list x.
 </p><div class="example">
 <pre class="example">&nbsp;|0 3 1 2
@@ -311,9 +377,11 @@ x[1] values of 1, ..., and x[n-1] values of n-1.
 1 2 3
 </pre></div>
 
-<p>To get the last element, one can take  the first element of the reverse list (*|<em>`</em>a<em>`</em>b<em>`</em>c).
+<p>To get the last element, one can take  the first element of the reverse list (*|<em class='math'>`</em>a<em class='math'>`</em>b<em class='math'>`</em>c).
 </p>
-<span id="max_002for"></span><span id="or-_21d2-x_007cy"></span><h3 class="section">2.13 or &rArr; x|y</h3>
+<span id="max_002for"></span></div>
+<div class="section" id="or-_21d2-x_007cy">
+<h3 class="section">2.13 or &rArr; x|y</h3>
 <p>The greater of x and y.  Max of a list can be determine by use of the adverb over.
 </p><div class="example">
 <pre class="example">&nbsp;3|2
@@ -326,7 +394,9 @@ x[1] values of 1, ..., and x[n-1] values of n-1.
 12
 </pre></div>
 
-<span id="asc"></span><span id="desc"></span><span id="asc_0028desc_0029-_21d2-_003c-_0028_003e_0029-x"></span><h3 class="section">2.14 asc(desc) &rArr; &lt; (&gt;) x</h3>
+<span id="asc"></span><span id="desc"></span></div>
+<div class="section" id="asc_0028desc_0029-_21d2-_003c-_0028_003e_0029-x">
+<h3 class="section">2.14 asc(desc) &rArr; &lt; (&gt;) x</h3>
 <p>Sort a list or dictionary in ascending (&lt;) or descending (&gt;) order.  Applied to a list, these will return the indices to be used to achieve the sort.
 </p>
 <div class="example">
@@ -347,7 +417,9 @@ b|2
 a|3
 </pre></div>
 
-<span id="less"></span><span id="more"></span><span id="less-_0028more_0029-_21d2-x-_003c-_0028_003e_0029-y"></span><h3 class="section">2.15 less (more) &rArr; x &lt; (&gt;) y</h3>
+<span id="less"></span><span id="more"></span></div>
+<div class="section" id="less-_0028more_0029-_21d2-x-_003c-_0028_003e_0029-y">
+<h3 class="section">2.15 less (more) &rArr; x &lt; (&gt;) y</h3>
 <p>Return true (1b) if x is less (more) than y else false (0b).
 </p><div class="example">
 <pre class="example">&nbsp;3&lt;2
@@ -364,7 +436,9 @@ a|3
 1b
 </pre></div>
 
-<span id="group"></span><span id="group-_21d2-_003dx"></span><h3 class="section">2.16 group &rArr; =x</h3>
+<span id="group"></span></div>
+<div class="section" id="group-_21d2-_003dx">
+<h3 class="section">2.16 group &rArr; =x</h3>
 <p>A dictionary of the distinct values of x (key) and their indices (values).
 </p><div class="example">
 <pre class="example">&nbsp;=&quot;banana&quot;
@@ -380,7 +454,9 @@ n|2 4
 12|8    
 </pre></div>
 
-<span id="equal"></span><span id="equal-_21d2-x_003dy"></span><h3 class="section">2.17 equal &rArr; x=y</h3>
+<span id="equal"></span></div>
+<div class="section" id="equal-_21d2-x_003dy">
+<h3 class="section">2.17 equal &rArr; x=y</h3>
 <p>Return true (1b) if x is equal to y else false (0b).  
 </p>
 <div class="example">
@@ -397,7 +473,9 @@ n|2 4
 :length
 </pre></div>
 
-<span id="not"></span><span id="not-_21d2-_007ex"></span><h3 class="section">2.18 not &rArr; ~x</h3>
+<span id="not"></span></div>
+<div class="section" id="not-_21d2-_007ex">
+<h3 class="section">2.18 not &rArr; ~x</h3>
 <p>Boolean invert of x
 </p><div class="example">
 <pre class="example">&nbsp;~1b
@@ -408,7 +486,9 @@ n|2 4
 010b
 </pre></div>
 
-<span id="match"></span><span id="match-_21d2-x_007ey"></span><h3 class="section">2.19 match &rArr; x~y</h3>
+<span id="match"></span></div>
+<div class="section" id="match-_21d2-x_007ey">
+<h3 class="section">2.19 match &rArr; x~y</h3>
 <p>Return true (1b) if x matches y else false (0b).  A match happens if the two arguments evaluate to the same expression.
 </p>
 <div class="example">
@@ -429,7 +509,9 @@ n|2 4
 1b
 </pre></div>
 
-<span id="enum"></span><span id="enum-_21d2-_0021x"></span><h3 class="section">2.20 enum &rArr; !x</h3>
+<span id="enum"></span></div>
+<div class="section" id="enum-_21d2-_0021x">
+<h3 class="section">2.20 enum &rArr; !x</h3>
 <p>Enumerate the domain of x.  Given an integer, x, generate an integer list from 0 to x-1.  Given a dictionary, x, return all key values.  
 </p>
 <div class="example">
@@ -481,7 +563,9 @@ B[12123]     / take the 12123 element
 12123
 </pre></div>
 
-<span id="key"></span><span id="key-_21d2-x_0021y"></span><h3 class="section">2.21 key &rArr; x!y</h3>
+<span id="key"></span></div>
+<div class="section" id="key-_21d2-x_0021y">
+<h3 class="section">2.21 key &rArr; x!y</h3>
 <p>Dictionary of x (key) and y (value).  
 </p>
 <div class="example">
@@ -502,7 +586,9 @@ b|2
 c|3
 </pre></div>
 
-<span id="enlist"></span><span id="enlist-_21d2-_002cx"></span><h3 class="section">2.22 enlist &rArr; ,x</h3>
+<span id="enlist"></span></div>
+<div class="section" id="enlist-_21d2-_002cx">
+<h3 class="section">2.22 enlist &rArr; ,x</h3>
 <p>Create a list from x
 </p>
 <div class="example">
@@ -516,7 +602,9 @@ c|3
 0b
 </pre></div>
 
-<span id="cat"></span><span id="cat-_21d2-x_002cy"></span><h3 class="section">2.23 cat &rArr; x,y</h3>
+<span id="cat"></span></div>
+<div class="section" id="cat-_21d2-x_002cy">
+<h3 class="section">2.23 cat &rArr; x,y</h3>
 <p>Concatenate x and y.
 </p>
 <div class="example">
@@ -542,7 +630,9 @@ ghi
 &quot;abcdefghi&quot;
 </pre></div>
 
-<span id="sort"></span><span id="sort-_21d2-_005ex"></span><h3 class="section">2.24 sort &rArr; ^x</h3>
+<span id="sort"></span></div>
+<div class="section" id="sort-_21d2-_005ex">
+<h3 class="section">2.24 sort &rArr; ^x</h3>
 <p>Sort list, dictionary, or table x into ascending order.  Dictionaries are sorted using the keys and tables by the first column field.  One can sort tables by arbitrary columns by first reordering the columns in the table using <a href="#take">take</a> or by extracting the sort column by index or expression.
 </p>
 <div class="example">
@@ -567,7 +657,9 @@ y z
 3 c
 </pre></div>
 
-<span id="cut"></span><span id="g_t_005bf_005dcut-_21d2-x_005ey"></span><h3 class="section">2.25 [f]cut &rArr; x^y</h3>
+<span id="cut"></span></div>
+<div class="section" id="g_t_005bf_005dcut-_21d2-x_005ey">
+<h3 class="section">2.25 [f]cut &rArr; x^y</h3>
 <p>Cut list y by size, indices, or function x.  Also, cut table y into key x and value.
 </p>
 <table>
@@ -640,7 +732,9 @@ y|20
 z| 1
 </pre></div>
  
-<span id="count"></span><span id="count-_21d2-_0023x"></span><h3 class="section">2.26 count &rArr; #x</h3>
+<span id="count"></span></div>
+<div class="section" id="count-_21d2-_0023x">
+<h3 class="section">2.26 count &rArr; #x</h3>
 <p>Count the number of elements in list, dictionary, or table x.
 </p>
 <div class="example">
@@ -658,7 +752,9 @@ z| 1
 !class
 </pre></div>
 
-<span id="take"></span><span id="g_t_005bf_005dtake-_21d2-x_0023y"></span><h3 class="section">2.27 [f]take &rArr; x#y</h3>
+<span id="take"></span></div>
+<div class="section" id="g_t_005bf_005dtake-_21d2-x_0023y">
+<h3 class="section">2.27 [f]take &rArr; x#y</h3>
 <p>[f]take has a number of different actions depending on x.  These include head (take from front of list), tail (take from back of list), common (take common elements), filter (take where function is non-zero), and select (take columns from table).
 </p>
 <table>
@@ -741,14 +837,18 @@ b a 1
 c b 2
 </pre></div>
 
-<span id="floor"></span><span id="floor-_21d2-_005fx"></span><h3 class="section">2.28 floor &rArr; _x</h3>
+<span id="floor"></span></div>
+<div class="section" id="floor-_21d2-_005fx">
+<h3 class="section">2.28 floor &rArr; _x</h3>
 <p>Return the integer floor of float x.
 </p><div class="example">
 <pre class="example">&nbsp;_3.7
 3
 </pre></div>
 
-<span id="drop"></span><span id="g_t_005bf_005ddrop-_21d2-x_005fy"></span><h3 class="section">2.29 [f]drop &rArr; x_y</h3>
+<span id="drop"></span></div>
+<div class="section" id="g_t_005bf_005ddrop-_21d2-x_005fy">
+<h3 class="section">2.29 [f]drop &rArr; x_y</h3>
 <p>[f]drop has a number of different actions depending on x.  This include de-head (drop from front of list), de-tail (drop from back of list), uncommon (drop common elements), and filter (drop where function is zero).
 </p>
 <table>
@@ -787,7 +887,9 @@ c|2
 0.02049699 0.1269226
 </pre></div>
 
-<span id="string"></span><span id="string-_21d2-_0024x"></span><h3 class="section">2.30 string &rArr; $x</h3>
+<span id="string"></span></div>
+<div class="section" id="string-_21d2-_0024x">
+<h3 class="section">2.30 string &rArr; $x</h3>
 <p>Cast x to string.
 </p><div class="example">
 <pre class="example"> $`abc
@@ -796,7 +898,9 @@ c|2
 &quot;4.7&quot;
 </pre></div>
 
-<span id="parse"></span><span id="parse-_21d2-x_0024y"></span><h3 class="section">2.31 parse &rArr; x$y</h3>
+<span id="parse"></span></div>
+<div class="section" id="parse-_21d2-x_0024y">
+<h3 class="section">2.31 parse &rArr; x$y</h3>
 <p>Parse string y into type x.
 </p>
 <div class="example">
@@ -816,7 +920,9 @@ c|2
 2020.04.20
 </pre></div>
 
-<span id="unique"></span><span id="unique-_21d2-_003fx"></span><h3 class="section">2.32 unique &rArr; ?x</h3>
+<span id="unique"></span></div>
+<div class="section" id="unique-_21d2-_003fx">
+<h3 class="section">2.32 unique &rArr; ?x</h3>
 <p>Return the unique values of the list x.  The <code>?</code> preceeding the return value explicitly shows that the list has no repeated values.
 </p>
 <div class="example">
@@ -827,7 +933,9 @@ c|2
 ?&quot;ban&quot;
 </pre></div>
 
-<span id="find_002frand"></span><span id="find_002frand-_21d2-x_003fy"></span><h3 class="section">2.33 find/rand &rArr; x?y</h3>
+<span id="find_002frand"></span></div>
+<div class="section" id="find_002frand-_21d2-x_003fy">
+<h3 class="section">2.33 find/rand &rArr; x?y</h3>
 <p>Find the first element of x that matches y otherwise return the end of vector.
 </p>
 <div class="example">
@@ -851,7 +959,9 @@ c|2
 0.01640292 0.8029538 0.9569196
 </pre></div>
 
-<span id="type"></span><span id="type-_21d2-_0040x"></span><h3 class="section">2.34 type &rArr; @x</h3>
+<span id="type"></span></div>
+<div class="section" id="type-_21d2-_0040x">
+<h3 class="section">2.34 type &rArr; @x</h3>
 <p>Return the data type of x.  Lower-case represents a single element while upper-case represents a list of type indicated.
 </p>
 <div class="example">
@@ -892,7 +1002,9 @@ c|2
 `a
 </pre></div>
 
-<span id="at"></span><span id="g_t_005bf_005dat-_21d2-x_0040y"></span><h3 class="section">2.35 [f]at &rArr; x@y</h3>
+<span id="at"></span></div>
+<div class="section" id="g_t_005bf_005dat-_21d2-x_0040y">
+<h3 class="section">2.35 [f]at &rArr; x@y</h3>
 <p>Given a list or function x return the value(s) at index(indices) y.  
 </p>
 <div class="example">
@@ -919,7 +1031,9 @@ drow
 3       
 </pre></div>
 
-<span id="value"></span><span id="value-_21d2-_002ex"></span><h3 class="section">2.36 value &rArr; .x</h3>
+<span id="value"></span></div>
+<div class="section" id="value-_21d2-_002ex">
+<h3 class="section">2.36 value &rArr; .x</h3>
 <p>Evaluate a string of valid k code, list of k code, or a system command.  Can also be used to covert from a string to a numeric, temporal or name type.
 </p>
 <p>String of k code
@@ -970,7 +1084,9 @@ json.dylib
 `abc
 </pre></div>
 
-<span id="dot"></span><span id="g_t_005bf_005ddot-_21d2-x_002ey"></span><h3 class="section">2.37 [f]dot &rArr; x.y</h3>
+<span id="dot"></span></div>
+<div class="section" id="g_t_005bf_005ddot-_21d2-x_002ey">
+<h3 class="section">2.37 [f]dot &rArr; x.y</h3>
 <p>Return the value(s) of list x at list y.  This differs from <a href="#at">at</a> as dot can recursively index.
 </p><ul>
 <li> Simple index returns the value(s) at x at each index y, i.e. x@y@0, x@y@1, ..., x@y@(n-1).
@@ -980,10 +1096,10 @@ json.dylib
 
 <table>
 <tr><td><b>action</b></td><td><b>@y</b></td><td><b>#y</b></td><td><b>example</b></td></tr>
-<tr><td>simple index</td><td><em>`</em>I</td><td>1</td><td>,2</td></tr>
-<tr><td>simple indices</td><td><em>`</em>I</td><td>1</td><td>,1 3</td></tr>
-<tr><td>recursive index</td><td><em>`</em>L</td><td>1</td><td>0 2</td></tr>
-<tr><td>recursive index over</td><td><em>`</em>L</td><td>2</td><td>(0 2;1 3)</td></tr>
+<tr><td>simple index</td><td><em class='math'>`</em>I</td><td>1</td><td>,2</td></tr>
+<tr><td>simple indices</td><td><em class='math'>`</em>I</td><td>1</td><td>,1 3</td></tr>
+<tr><td>recursive index</td><td><em class='math'>`</em>L</td><td>1</td><td>0 2</td></tr>
+<tr><td>recursive index over</td><td><em class='math'>`</em>L</td><td>2</td><td>(0 2;1 3)</td></tr>
 </table>
 
 <div class="example">
@@ -1040,10 +1156,12 @@ c|3
 12 14 15
 </pre></div>
 
+</div>
+</div>
 <hr>
 <div class="header">
 <p>
-Next: <a href="Adverb.html" accesskey="n" rel="next">Adverb</a>, Previous: <a href="Introduction.html" accesskey="p" rel="prev">Introduction</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="Adverb.html">Adverbs</a>, Previous: <a href="Introduction.html">Introduction</a>, Up: <a href="index.html">k9: Manual</a> &nbsp; </p>
 </div>
 
 

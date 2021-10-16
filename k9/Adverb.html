@@ -1,11 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- October 2, 2021
-
-Copyright (C) 2020 John Estrada -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- October 16, 2021
+
+Copyright (C) 2020 John Estrada -->
 <title>Adverb (Shakti (k9) tutorial)</title>
 
 <meta name="description" content="k programming tutorial, Shakti (k9) tutorial">
@@ -13,6 +13,8 @@ Copyright (C) 2020 John Estrada -->
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="index.html" rel="up" title="Top">
 <link href="Noun.html" rel="next" title="Noun">
@@ -22,11 +24,11 @@ Copyright (C) 2020 John Estrada -->
 /* spacing */
 
 
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -35,6 +37,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 .cartouche{
     border: none;
@@ -83,9 +86,10 @@ table.menu th{
 </head>
 
 <body lang="en">
-<span id="Adverb"></span><div class="header">
+<div class="chapter" id="Adverb">
+<div class="header">
 <p>
-Next: <a href="Noun.html" accesskey="n" rel="next">Noun</a>, Previous: <a href="Verb.html" accesskey="p" rel="prev">Verb</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="Noun.html" accesskey="n" rel="next">Noun</a>, Previous: <a href="Verb.html" accesskey="p" rel="prev">Verbs</a>, Up: <a href="index.html" accesskey="u" rel="up">k9: Manual</a> &nbsp; </p>
 </div>
 <hr>
 <span id="Adverbs"></span><h2 class="chapter">3 Adverbs</h2>
@@ -132,7 +136,20 @@ Next: <a href="Noun.html" accesskey="n" rel="next">Noun</a>, Previous: <a href="
 0.99 0.9801 0.960596 .. 8.87948e-287 0
 </pre></div>
 
-<span id="each"></span><span id="each-_21d2-f_0027x"></span><h3 class="section">3.1 each &rArr; f&rsquo;x</h3>
+<span id="each"></span><ul class="section-toc">
+<li><a href="#each-_21d2-f_0027x" accesskey="1">each &rArr; f&rsquo;x</a></li>
+<li><a href="#over-_21d2-f_002fy-or-x-f_002fy" accesskey="2">over &rArr; f/y or x f/y</a></li>
+<li><a href="#scan-_21d2-f_005cy-or-x-f_005cy" accesskey="3">scan &rArr; f\y or x f\y</a></li>
+<li><a href="#join-_21d2-c_002fx" accesskey="4">join &rArr; c/x</a></li>
+<li><a href="#split-_21d2-c_005cx" accesskey="5">split &rArr; c\x</a></li>
+<li><a href="#eachprior-_21d2-f_0027_003a_005bx_003by_005d-or-y-f_0027_003ax" accesskey="6">eachprior &rArr; f&rsquo;:[x;y] or y f&rsquo;:x</a></li>
+<li><a href="#eachright-_21d2-f_002f_003a_005bx_003by_005d" accesskey="7">eachright &rArr; f/:[x;y]</a></li>
+<li><a href="#eachleft-_21d2-f_005c_003a_005bx_003by_005d" accesskey="8">eachleft &rArr; f\:[x;y]</a></li>
+<li><a href="#Converge-Over-_21d2-g_002f_003ax-or-_0028n_003bg_0029_002f_003ax" accesskey="9">Converge Over &rArr; g/:x or (n;g)/:x</a></li>
+<li><a href="#Converge-Scan-_21d2-g_005c_003ax-or-_0028n_003bg_0029_005c_003ax">Converge Scan &rArr; g\:x or (n;g)\:x</a></li>
+</ul>
+<div class="section" id="each-_21d2-f_0027x">
+<h3 class="section">3.1 each &rArr; f&rsquo;x</h3>
 <p>Apply function f to each value in list x in a single thread.  Multithread operation is done with <a href="#eachprior">eachprior</a>.  
 </p>
 <div class="example">
@@ -156,10 +173,14 @@ Next: <a href="Noun.html" accesskey="n" rel="next">Noun</a>, Previous: <a href="
 0 2 4
 </pre></div>
 
-<span id="over"></span><span id="over-_21d2-f_002fy-or-x-f_002fy"></span><h3 class="section">3.2 over &rArr; f/y or x f/y</h3>
+<span id="over"></span></div>
+<div class="section" id="over-_21d2-f_002fy-or-x-f_002fy">
+<h3 class="section">3.2 over &rArr; f/y or x f/y</h3>
 <p>Over has the same function as <a href="#scan">scan</a> but returns only the last value.
 </p>
-<span id="scan"></span><span id="scan-_21d2-f_005cy-or-x-f_005cy"></span><h3 class="section">3.3 scan &rArr; f\y or x f\y</h3>
+<span id="scan"></span></div>
+<div class="section" id="scan-_21d2-f_005cy-or-x-f_005cy">
+<h3 class="section">3.3 scan &rArr; f\y or x f\y</h3>
 <p>Compute f, a function of two arguments, over list y with optional initial value x.  On the first iteration return y<sub>0</sub>.  On each subsequent iteration function will be called with previous output and the next element of y as arguments, i.e. f<sub>i</sub>=f[f<sub>i-1</sub>;y<sub>i</sub>].  Calling with f, a function of one argument, is covered in <a href="#each">each</a>.
 </p>
 <table>
@@ -208,7 +229,9 @@ abc
 31 32 33
 </pre></div>
 
-<span id="join"></span><span id="join-_21d2-c_002fx"></span><h3 class="section">3.4 join &rArr; c/x</h3>
+<span id="join"></span></div>
+<div class="section" id="join-_21d2-c_002fx">
+<h3 class="section">3.4 join &rArr; c/x</h3>
 <p>Join a list of strings x using character c between each pair.
 </p>
 <div class="example">
@@ -223,7 +246,9 @@ abc
 129
 </pre></div>
 
-<span id="split"></span><span id="split-_21d2-c_005cx"></span><h3 class="section">3.5 split &rArr; c\x</h3>
+<span id="split"></span></div>
+<div class="section" id="split-_21d2-c_005cx">
+<h3 class="section">3.5 split &rArr; c\x</h3>
 <p>Split the string x using character c to determine the locations.
 </p>
 <div class="example">
@@ -242,7 +267,9 @@ sentence.
 2 0 1
 </pre></div>
 
-<span id="eachprior"></span><span id="eachprior-_21d2-f_0027_003a_005bx_003by_005d-or-y-f_0027_003ax"></span><h3 class="section">3.6 eachprior &rArr; f&rsquo;:[x;y] or y f&rsquo;:x</h3>
+<span id="eachprior"></span></div>
+<div class="section" id="eachprior-_21d2-f_0027_003a_005bx_003by_005d-or-y-f_0027_003ax">
+<h3 class="section">3.6 eachprior &rArr; f&rsquo;:[x;y] or y f&rsquo;:x</h3>
 <p>Compute f, a function of two arguments, over list x with optional initial value y.   Concretely f<sub>i</sub>=f[x<sub>i</sub>;x<sub>i-1</sub>] where f<sub>0</sub> returns f[x<sub>0</sub>;i].
 </p>
 <div class="example">
@@ -277,7 +304,9 @@ x4 x3
 1202
 </pre></div>
 
-<span id="eachright"></span><span id="eachright-_21d2-f_002f_003a_005bx_003by_005d"></span><h3 class="section">3.7 eachright &rArr; f/:[x;y]</h3>
+<span id="eachright"></span></div>
+<div class="section" id="eachright-_21d2-f_002f_003a_005bx_003by_005d">
+<h3 class="section">3.7 eachright &rArr; f/:[x;y]</h3>
 <p>Apply f[x;y] to each value of y, i.e. the right one.
 </p>
 <div class="example">
@@ -297,7 +326,9 @@ pre-banana
 pre-cherry
 </pre></div>
 
-<span id="eachleft"></span><span id="eachleft-_21d2-f_005c_003a_005bx_003by_005d"></span><h3 class="section">3.8 eachleft &rArr; f\:[x;y]</h3>
+<span id="eachleft"></span></div>
+<div class="section" id="eachleft-_21d2-f_005c_003a_005bx_003by_005d">
+<h3 class="section">3.8 eachleft &rArr; f\:[x;y]</h3>
 <p>Apply f[x;y] to each value of x, i.e. the left one.
 </p>
 <div class="example">
@@ -315,7 +346,9 @@ banana-post
 cherry-post
 </pre></div>
 
-<span id="cover"></span><span id="Converge-Over-_21d2-g_002f_003ax-or-_0028n_003bg_0029_002f_003ax"></span><h3 class="section">3.9 Converge Over &rArr; g/:x or (n;g)/:x</h3>
+<span id="cover"></span></div>
+<div class="section" id="Converge-Over-_21d2-g_002f_003ax-or-_0028n_003bg_0029_002f_003ax">
+<h3 class="section">3.9 Converge Over &rArr; g/:x or (n;g)/:x</h3>
 <p>Converge Over is the same function as <a href="#cscan">Converge Scan</a> but only returns the final value(s).
 </p>
 <div class="example">
@@ -328,7 +361,9 @@ cherry-post
 1 2 3 4
 </pre></div>
 
-<span id="cscan"></span><span id="Converge-Scan-_21d2-g_005c_003ax-or-_0028n_003bg_0029_005c_003ax"></span><h3 class="section">3.10 Converge Scan &rArr; g\:x or (n;g)\:x</h3>
+<span id="cscan"></span></div>
+<div class="section" id="Converge-Scan-_21d2-g_005c_003ax-or-_0028n_003bg_0029_005c_003ax">
+<h3 class="section">3.10 Converge Scan &rArr; g\:x or (n;g)\:x</h3>
 <p>Compute function g where g<sub>i</sub>=g[g<sub>i-1</sub>] and g<sub>0</sub>=x.  If n is specified then it is either (DO) the number of iterations or (WHILE) a function returning a non-zero result.  
 </p>
 <div class="example">
@@ -372,10 +407,12 @@ cherry-post
 
 
 
+</div>
+</div>
 <hr>
 <div class="header">
 <p>
-Next: <a href="Noun.html" accesskey="n" rel="next">Noun</a>, Previous: <a href="Verb.html" accesskey="p" rel="prev">Verb</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="Noun.html">Noun</a>, Previous: <a href="Verb.html">Verbs</a>, Up: <a href="index.html">k9: Manual</a> &nbsp; </p>
 </div>
 
 

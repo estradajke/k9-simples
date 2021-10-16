@@ -1,11 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- October 2, 2021
-
-Copyright (C) 2020 John Estrada -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- October 16, 2021
+
+Copyright (C) 2020 John Estrada -->
 <title>kSQL (Shakti (k9) tutorial)</title>
 
 <meta name="description" content="k programming tutorial, Shakti (k9) tutorial">
@@ -13,6 +13,8 @@ Copyright (C) 2020 John Estrada -->
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="index.html" rel="up" title="Top">
 <link href="System.html" rel="next" title="System">
@@ -22,11 +24,11 @@ Copyright (C) 2020 John Estrada -->
 /* spacing */
 
 
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -35,6 +37,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 .cartouche{
     border: none;
@@ -83,9 +86,10 @@ table.menu th{
 </head>
 
 <body lang="en">
-<span id="kSQL"></span><div class="header">
+<div class="chapter" id="kSQL">
+<div class="header">
 <p>
-Next: <a href="System.html" accesskey="n" rel="next">System</a>, Previous: <a href="Tables.html" accesskey="p" rel="prev">Tables</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="System.html" accesskey="n" rel="next">System</a>, Previous: <a href="Tables.html" accesskey="p" rel="prev">Tables</a>, Up: <a href="index.html" accesskey="u" rel="up">k9: Manual</a> &nbsp; </p>
 </div>
 <hr>
 <span id="kSQL-1"></span><h2 class="chapter">14 kSQL</h2>
@@ -102,10 +106,26 @@ x#y      / take/intersect innerjoin
 x_y      / drop/difference
 </pre></div>
 
-<span id="Queries"></span><h3 class="section">14.1 Queries</h3>
+<ul class="section-toc">
+<li><a href="#Queries" accesskey="1">Queries</a></li>
+<li><a href="#Joins-1" accesskey="2">Joins</a></li>
+<li><a href="#Insert-and-Upsert" accesskey="3">Insert and Upsert</a></li>
+</ul>
+<div class="section" id="Queries">
+<h3 class="section">14.1 Queries</h3>
 <p>Queries can be done either via the kSQL or functional forms.  The kSQL form is general simplier to write while the functional form allows one to more easily run multithreaded or build queries programmatically.  
 </p>
-<span id="select"></span><span id="select-1"></span><h4 class="subsection">14.1.1 select</h4>
+<span id="select"></span><ul class="section-toc">
+<li><a href="#select-1" accesskey="1">select</a></li>
+<li><a href="#A-1" accesskey="2">A</a></li>
+<li><a href="#by-B-1" accesskey="3">by B</a></li>
+<li><a href="#where-C-1" accesskey="4">where C</a></li>
+<li><a href="#Query-with-By-and-Where" accesskey="5">Query with By and Where</a></li>
+<li><a href="#update-1" accesskey="6">update</a></li>
+<li><a href="#delete-1" accesskey="7">delete</a></li>
+</ul>
+<div class="subsection" id="select-1">
+<h4 class="subsection">14.1.1 select</h4>
 <p>There a number of ways to return a complete table with kSQL.  You can use the table name, a kSQL query without columns, or a fully specified query with columns.
 </p>
 <div class="example">
@@ -137,7 +157,9 @@ x y
 4 -0.7568025
 </pre></div>
 
-<span id="A"></span><span id="A-1"></span><h4 class="subsection">14.1.2 A</h4>
+<span id="A"></span></div>
+<div class="subsection" id="A-1">
+<h4 class="subsection">14.1.2 A</h4>
 <p>A is the list of fields to return from the select or update query.  A can create new column names.  
 </p>
 <div class="example">
@@ -197,7 +219,9 @@ x z
 4 -0.7568025
 </pre></div>
 
-<span id="by-B"></span><span id="by-B-1"></span><h4 class="subsection">14.1.3 by B</h4>
+<span id="by-B"></span></div>
+<div class="subsection" id="by-B-1">
+<h4 class="subsection">14.1.3 by B</h4>
 <p>kSQL also has a way to group rows using <code>by B</code>.  The result is a utable where the key is determined by the grouping clause.
 </p>
 <div class="example">
@@ -213,7 +237,9 @@ x|y
 1|-0.6156825
 </pre></div>
 
-<span id="where-C"></span><span id="where-C-1"></span><h4 class="subsection">14.1.4 where C</h4>
+<span id="where-C"></span></div>
+<div class="subsection" id="where-C-1">
+<h4 class="subsection">14.1.4 where C</h4>
 <p>kSQL makes it easy to build up a where clause to filter down the table.  C is the list of constraints.
 </p>
 <div class="example">
@@ -247,7 +273,9 @@ x y
 3 0.14112 
 </pre></div>
 
-<span id="Query-with-By-and-Where"></span><h4 class="subsection">14.1.5 Query with By and Where</h4>
+</div>
+<div class="subsection" id="Query-with-By-and-Where">
+<h4 class="subsection">14.1.5 Query with By and Where</h4>
 
 <div class="example">
 <pre class="example"> n:5;t:[[]x:!n;y:sin !n]
@@ -262,7 +290,9 @@ x|y
 1|0.14112 
 </pre></div>
 
-<span id="update"></span><span id="update-1"></span><h4 class="subsection">14.1.6 update</h4>
+<span id="update"></span></div>
+<div class="subsection" id="update-1">
+<h4 class="subsection">14.1.6 update</h4>
 <p>update allows one to modify values without specifying all the fields that pass through.  update is also used to add new columns in a table.  update does not, by itself, save the modifications to the table. If you want to preserve those modifications, use assignment.
 </p>
 <div class="example">
@@ -296,7 +326,9 @@ b 2 20
 c 3 21
 </pre></div>
 
-<span id="delete"></span><span id="delete-1"></span><h4 class="subsection">14.1.7 delete</h4>
+<span id="delete"></span></div>
+<div class="subsection" id="delete-1">
+<h4 class="subsection">14.1.7 delete</h4>
 <p>Delete rows from a table that satisfy one or more conditions.  Currently not working.
 </p>
 <div class="example">
@@ -314,7 +346,10 @@ c 1
 !nyi
 </pre></div>
 
-<span id="Joins"></span><span id="Joins-1"></span><h3 class="section">14.2 Joins</h3>
+<span id="Joins"></span></div>
+</div>
+<div class="section" id="Joins-1">
+<h3 class="section">14.2 Joins</h3>
 <p>k9 has a number of methods to join tables together which are described below.  In this section t, t1 and t2 represent tables and k, k1 and k2 represent utables.
 </p>
 <table>
@@ -326,7 +361,15 @@ c 1
 <tr><td><a href="#asof_002b">asof+</a></td><td>k1+k2</td></tr>
 </table>
 
-<span id="union"></span><span id="union-join-_21d2-t1_002ct2"></span><h4 class="subsection">14.2.1 union join &rArr; t1,t2</h4>
+<span id="union"></span><ul class="section-toc">
+<li><a href="#union-join-_21d2-t1_002ct2" accesskey="1">union join &rArr; t1,t2</a></li>
+<li><a href="#leftjoin-_21d2-t_002ck" accesskey="2">leftjoin &rArr; t,k</a></li>
+<li><a href="#outer-join-_21d2-k1_002ck2" accesskey="3">outer join &rArr; k1,k2</a></li>
+<li><a href="#asof-join-_21d2-t_002ck" accesskey="4">asof join &rArr; t,k</a></li>
+<li><a href="#asof_002b-join-_21d2-k1_002bk2" accesskey="5">asof+ join &rArr; k1+k2</a></li>
+</ul>
+<div class="subsection" id="union-join-_21d2-t1_002ct2">
+<h4 class="subsection">14.2.1 union join &rArr; t1,t2</h4>
 <p>Union join table t1 with table t2.  The tables should have the same columns and the join results in a table with t2 appended to t1.  If the tables do not have the same columns then return t1.
 </p>
 <div class="example">
@@ -353,7 +396,9 @@ b 11 21
 c 12 22
 </pre></div>
 
-<span id="leftjoin"></span><span id="leftjoin-_21d2-t_002ck"></span><h4 class="subsection">14.2.2 leftjoin &rArr; t,k</h4>
+<span id="leftjoin"></span></div>
+<div class="subsection" id="leftjoin-_21d2-t_002ck">
+<h4 class="subsection">14.2.2 leftjoin &rArr; t,k</h4>
 <p>leftjoin table t with utable k.  Result includes all rows from t and the values from table k having the same key values.
 If a row of t has key values not found in k, then the t values are shown and 0 for the columns coming from k.
 </p>
@@ -386,7 +431,9 @@ b 2 102 52
 c 3   9  0
 </pre></div>
 
-<span id="outer"></span><span id="outer-join-_21d2-k1_002ck2"></span><h4 class="subsection">14.2.3 outer join &rArr; k1,k2</h4>
+<span id="outer"></span></div>
+<div class="subsection" id="outer-join-_21d2-k1_002ck2">
+<h4 class="subsection">14.2.3 outer join &rArr; k1,k2</h4>
 <p>Outer join utable k1 and k2. 
 </p>
 <div class="example">
@@ -432,7 +479,9 @@ c|3 30
 d|3 30
 </pre></div>
 
-<span id="asof"></span><span id="asof-join-_21d2-t_002ck"></span><h4 class="subsection">14.2.4 asof join &rArr; t,k</h4>
+<span id="asof"></span></div>
+<div class="subsection" id="asof-join-_21d2-t_002ck">
+<h4 class="subsection">14.2.4 asof join &rArr; t,k</h4>
 <p>Asof joins each row rt of table t to a row rk in utable k (keyed by time) provided rk has the maximum time value of any row in k while obeying the constraint that the time value in rt &gt;= the time value of rk. Intuitively, rk should be the row in k that is most up-to-date with respect to rt. 
 </p>
 <div class="example">
@@ -492,7 +541,9 @@ t           |p
 222
 </pre></div>
 
-<span id="asof_002b"></span><span id="asof_002b-join-_21d2-k1_002bk2"></span><h4 class="subsection">14.2.5 asof+ join &rArr; k1+k2</h4>
+<span id="asof_002b"></span></div>
+<div class="subsection" id="asof_002b-join-_21d2-k1_002bk2">
+<h4 class="subsection">14.2.5 asof+ join &rArr; k1+k2</h4>
 <p>Asof+ joins  allows one to aggregate over markets to find the total available at a given time.  The utables need to be specified with <code>`a</code>. The effect is to merge the two key fields (the field t in this case) and for each row rk1 from table k1, add the non-key field (bs in this case) from rk1 to the bs field of the most recent row in k2 whose t value is less than or equal to the t value in rk1. And symmetrically for each row of table k2.
 </p>
 <div class="example">
@@ -524,10 +575,18 @@ t    |bs
 09:50|103
 </pre></div>
 
-<span id="Insert-and-Upsert"></span><h3 class="section">14.3 Insert and Upsert</h3>
+</div>
+</div>
+<div class="section" id="Insert-and-Upsert">
+<h3 class="section">14.3 Insert and Upsert</h3>
 <p>One can add data to tables via insert or upsert.  The difference between the two is that insert adds data to a table while upsert on some key x will replace the values if x is present in the target table or insert x with its associated value otherwise. 
 </p>
-<span id="insert"></span><span id="insert-_21d2-t_002cd"></span><h4 class="subsection">14.3.1 insert &rArr; t,d</h4>
+<span id="insert"></span><ul class="section-toc">
+<li><a href="#insert-_21d2-t_002cd" accesskey="1">insert &rArr; t,d</a></li>
+<li><a href="#upsert-_21d2-k_002cd" accesskey="2">upsert &rArr; k,d</a></li>
+</ul>
+<div class="subsection" id="insert-_21d2-t_002cd">
+<h4 class="subsection">14.3.1 insert &rArr; t,d</h4>
 <p>Insert dictionary d into table t.
 </p><div class="example">
 <pre class="example"> t:[[]c1:`a`b`a;c2:1 2 7];t
@@ -554,7 +613,9 @@ a   7
 c  12
 </pre></div>
 
-<span id="upsert"></span><span id="upsert-_21d2-k_002cd"></span><h4 class="subsection">14.3.2 upsert &rArr; k,d</h4>
+<span id="upsert"></span></div>
+<div class="subsection" id="upsert-_21d2-k_002cd">
+<h4 class="subsection">14.3.2 upsert &rArr; k,d</h4>
 <p>Insert dictionary d into utable k.
 </p><div class="example">
 <pre class="example"> k:[[c1:`a`b`c]c2:1 2 7];k
@@ -587,10 +648,13 @@ c | 7
 d |12
 </pre></div>
 
+</div>
+</div>
+</div>
 <hr>
 <div class="header">
 <p>
-Next: <a href="System.html" accesskey="n" rel="next">System</a>, Previous: <a href="Tables.html" accesskey="p" rel="prev">Tables</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="System.html">System</a>, Previous: <a href="Tables.html">Tables</a>, Up: <a href="index.html">k9: Manual</a> &nbsp; </p>
 </div>
 
 

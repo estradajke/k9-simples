@@ -1,11 +1,13 @@
-$curl -o k.so shakti.com/python/k.so
-python: import k;k.k('2+3') #nodejs: require('k').k('2+3')
+python: import k;k.k('2+3')   shakti.com/python/k.so
+nodejs: require('k').k('2+3') shakti.com/nodejs/k.node
 
-$k [-p 1024] [a.k]
+$k [-n4 -p1024] a.k
 
-t:[[]t:09:30:00.000+!2;e:"b";s:`aa;v:2;p:2.3e]
-`csv?`csv t;`json?`json t
-`lz4?`lz4 t;`zstd?`zstd t
+t:[[]t:09:30:00.000 09:30:00.001;e:"b";s:`aa`aa;v:2 3;p:2.3 3.4]
+x:"t,e,s,v,p\n09:30:00.000,b,aa,2,2.3\n09:30:00.001,b,aa,3,3.4\n"
+`csv?`csv t     /also `json?`json t
+`lz4?`lz4 x     /also `zstd?`zstd x
+\\
 
 verb                    adverb                 noun                    \l a.k
 : x         y          f' each                 char " ab"              \t:n x

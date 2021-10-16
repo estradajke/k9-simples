@@ -1,11 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- October 2, 2021
-
-Copyright (C) 2020 John Estrada -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- October 16, 2021
+
+Copyright (C) 2020 John Estrada -->
 <title>Examples (Shakti (k9) tutorial)</title>
 
 <meta name="description" content="k programming tutorial, Shakti (k9) tutorial">
@@ -13,6 +13,8 @@ Copyright (C) 2020 John Estrada -->
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="index.html" rel="up" title="Top">
 <link href="Benchmark.html" rel="next" title="Benchmark">
@@ -22,11 +24,11 @@ Copyright (C) 2020 John Estrada -->
 /* spacing */
 
 
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -35,6 +37,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 .cartouche{
     border: none;
@@ -83,15 +86,22 @@ table.menu th{
 </head>
 
 <body lang="en">
-<span id="Examples"></span><div class="header">
+<div class="chapter" id="Examples">
+<div class="header">
 <p>
-Next: <a href="Benchmark.html" accesskey="n" rel="next">Benchmark</a>, Previous: <a href="Errors.html" accesskey="p" rel="prev">Errors</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="Benchmark.html" accesskey="n" rel="next">Benchmark</a>, Previous: <a href="Errors.html" accesskey="p" rel="prev">Errors</a>, Up: <a href="index.html" accesskey="u" rel="up">k9: Manual</a> &nbsp; </p>
 </div>
 <hr>
 <span id="Examples-1"></span><h2 class="chapter">19 Examples</h2>
 <p>This chapter presents an example from finance, as this is one of the primary application domains for k.  For those not familiar with this field, here is a short introduction.
 </p>
-<span id="A-Tiny-Introduction-to-Financial-Market-Data"></span><h3 class="section">19.1 A Tiny Introduction to Financial Market Data</h3>
+<ul class="section-toc">
+<li><a href="#A-Tiny-Introduction-to-Financial-Market-Data" accesskey="1">A Tiny Introduction to Financial Market Data</a></li>
+<li><a href="#Data-Manipulation" accesskey="2">Data Manipulation</a></li>
+<li><a href="#Understanding-Code-Examples" accesskey="3">Understanding Code Examples</a></li>
+</ul>
+<div class="section" id="A-Tiny-Introduction-to-Financial-Market-Data">
+<h3 class="section">19.1 A Tiny Introduction to Financial Market Data</h3>
 <p>Finance has a large amount of data associated with it.  In this section finance data will be limited to price and transaction information which typically includes prices to buy and sell (called quotes) and transactions (called trades).  This data includes the date, financial instrument symbol, time, and exchange / venue.  Additionally quotes will have a bid and ask price (where the deal is willing to buy and sell) and trades will have a price and size of the reported transaction.
 </p>
 <p>Although real prices are often shown as fractions of a whole amount, eg. eurusd might be at 1.1904, the actual trades are dealt in whole cents or currencies so can be represented as integers.
@@ -132,7 +142,9 @@ t            p
 </p>
 <p>Now that you&rsquo;ve learned enough finance to understand the data, let&rsquo;s scale up to larger problems to see the power of k9.  
 </p>
-<span id="Data-Manipulation"></span><h3 class="section">19.2 Data Manipulation</h3>
+</div>
+<div class="section" id="Data-Manipulation">
+<h3 class="section">19.2 Data Manipulation</h3>
 
 <p>Let&rsquo;s use k9 to generate a set of random quotes for a particular day and symbol.
 </p>
@@ -183,7 +195,9 @@ bid|14906
 ask|14907
 </pre></div>
 
-<span id="Understanding-Code-Examples"></span><h3 class="section">19.3 Understanding Code Examples</h3>
+</div>
+<div class="section" id="Understanding-Code-Examples">
+<h3 class="section">19.3 Understanding Code Examples</h3>
 <p>In the shakti mailing list there are a number of code examples that can be used to learn best practices.  In order to make sense of other people&rsquo;s codes, one needs to be able to efficiently understand  k9 language expressions.  Here is an example of how one goes about this process.
 </p>
 <div class="example">
@@ -333,10 +347,12 @@ in
 
 <p>The rest of the &rsquo;ss&rsquo; function code is left as an exercise for the reader.  
 </p>
+</div>
+</div>
 <hr>
 <div class="header">
 <p>
-Next: <a href="Benchmark.html" accesskey="n" rel="next">Benchmark</a>, Previous: <a href="Errors.html" accesskey="p" rel="prev">Errors</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="Benchmark.html">Benchmark</a>, Previous: <a href="Errors.html">Errors</a>, Up: <a href="index.html">k9: Manual</a> &nbsp; </p>
 </div>
 
 

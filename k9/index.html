@@ -1,11 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- October 2, 2021
-
-Copyright (C) 2020 John Estrada -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- October 16, 2021
+
+Copyright (C) 2020 John Estrada -->
 <title>Shakti (k9) tutorial</title>
 
 <meta name="description" content="k programming tutorial, Shakti (k9) tutorial">
@@ -13,6 +13,8 @@ Copyright (C) 2020 John Estrada -->
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="#Top" rel="start" title="Top">
 <link href="Introduction.html" rel="next" title="Introduction">
 <style type="text/css">
@@ -20,11 +22,11 @@ Copyright (C) 2020 John Estrada -->
 /* spacing */
 
 
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -33,6 +35,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 .cartouche{
     border: none;
@@ -85,7 +88,8 @@ table.menu th{
 
 
 
-<span id="Top"></span><div class="header">
+<div class="top" id="Top">
+<div class="header">
 <p>
 Next: <a href="Introduction.html" accesskey="n" rel="next">Introduction</a> &nbsp; </p>
 </div>
@@ -101,21 +105,23 @@ Next: <a href="Introduction.html" accesskey="n" rel="next">Introduction</a> &nbs
 </p>
 <p>The built-in reference screen (<code>\</code>) containing all the k9 commands.
 </p>
-<p><tt>$curl&nbsp;-o&nbsp;k.so&nbsp;shakti.com/<a href="FF.html#python">python</a>/k.so</tt><br>
-<tt><a href="FF.html#python">python</a>:&nbsp;import&nbsp;k;k.k('2+3')&nbsp;#<a href="FF.html#nodejs">nodejs</a>:&nbsp;require('k').k('2+3')</tt><br>
+<p><tt><a href="FF.html#python">python</a>:&nbsp;import&nbsp;k;k.k('2+3')&nbsp;&nbsp;&nbsp;shakti.com/<a href="FF.html#python">python</a>/k.so</tt><br>
+<tt><a href="FF.html#nodejs">nodejs</a>:&nbsp;require('k').k('2+3')&nbsp;shakti.com/<a href="FF.html#nodejs">nodejs</a>/k.node</tt><br>
 <tt></tt><br>
-<tt>$k&nbsp;[-p&nbsp;1024]&nbsp;[a.k]</tt><br>
+<tt>$k&nbsp;[-n4&nbsp;-p1024]&nbsp;a.k</tt><br>
 <tt></tt><br>
-<tt>t:[[]t:09:30:00.000+!2;e:&quot;b&quot;;s:`aa;v:2;p:2.3e]</tt><br>
-<tt>`<a href="I_002fO.html#csv">csv</a>?`<a href="I_002fO.html#csv">csv</a>&nbsp;t;`<a href="I_002fO.html#json">json</a>?`<a href="I_002fO.html#json">json</a>&nbsp;t</tt><br>
-<tt>`<a href="I_002fO.html#compress">lz4</a>?`<a href="I_002fO.html#compress">lz4</a>&nbsp;t;`<a href="I_002fO.html#compress">zstd</a>?`<a href="I_002fO.html#compress">zstd</a>&nbsp;t</tt><br>
+<tt>t:[[]t:09:30:00.000&nbsp;09:30:00.001;e:&quot;b&quot;;s:`aa`aa;v:2&nbsp;3;p:2.3&nbsp;3.4]</tt><br>
+<tt>x:&quot;t,e,s,v,p\n09:30:00.000,b,aa,2,2.3\n09:30:00.001,b,aa,3,3.4\n&quot;</tt><br>
+<tt>`<a href="I_002fO.html#csv">csv</a>?`<a href="I_002fO.html#csv">csv</a>&nbsp;t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/also&nbsp;`<a href="I_002fO.html#json">json</a>?`<a href="I_002fO.html#json">json</a>&nbsp;t</tt><br>
+<tt>`<a href="I_002fO.html#compress">lz4</a>?`<a href="I_002fO.html#compress">lz4</a>&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/also&nbsp;`<a href="I_002fO.html#compress">zstd</a>?`<a href="I_002fO.html#compress">zstd</a>&nbsp;x</tt><br>
+<tt>\\</tt><br>
 <tt></tt><br>
 <tt><a href="Verb.html">verb</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Adverb.html">adverb</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Noun.html">noun</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="System.html#load">\l</a>&nbsp;a.k</tt><br>
 <tt>:&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f'&nbsp;<a href="Adverb.html#each">each</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char&nbsp;&quot;&nbsp;ab&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="System.html#timing">\t</a>:n&nbsp;x</tt><br>
 <tt>+&nbsp;<a href="Verb.html#flip">flip</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#plus">plus</a>&nbsp;&nbsp;&nbsp;&nbsp;[x]f/&nbsp;<a href="Adverb.html#cover">over</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c/&nbsp;join&nbsp;&nbsp;&nbsp;&nbsp;<a href="Noun.html#name">name</a>&nbsp;``ab&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u:n&nbsp;x</tt><br>
 <tt>-&nbsp;<a href="Verb.html#minus">minus</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#minus">minus</a>&nbsp;&nbsp;&nbsp;[x]f\&nbsp;<a href="Adverb.html#cscan">scan</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c\&nbsp;<a href="Adverb.html#split">split</a>&nbsp;&nbsp;&nbsp;<a href="Noun.html#int">int</a>&nbsp;&nbsp;2&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="System.html#variables">\v</a></tt><br>
 <tt>*&nbsp;<a href="Verb.html#first">first</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#times">times</a>&nbsp;&nbsp;&nbsp;[y]f':<a href="Adverb.html#eachprior">eachprior</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Noun.html#flt">flt</a>&nbsp;&nbsp;2&nbsp;3.4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\w</tt><br>
-<tt>%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#divide">divide</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f/:<a href="Adverb.html#eachright">eachright</a>&nbsp;g/:<a href="Adverb.html#cover">over</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="Noun.html#date">date</a>&nbsp;2021.06.28&nbsp;&nbsp;&nbsp;<a href="Temporal-Functions.html#g_t_002ez_002ed">.z.d</a>&nbsp;&nbsp;</tt><br>
+<tt>%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#divide">divide</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f/:<a href="Adverb.html#eachright">eachright</a>&nbsp;g/:over&nbsp;&nbsp;&nbsp;&nbsp;<a href="Noun.html#date">date</a>&nbsp;2021.06.28&nbsp;&nbsp;&nbsp;.z.d&nbsp;&nbsp;</tt><br>
 <tt>&amp;&nbsp;<a href="Verb.html#where">where</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#min_002fand">min/and</a>&nbsp;&nbsp;&nbsp;&nbsp;f\:<a href="Adverb.html#eachleft">eachleft</a>&nbsp;&nbsp;g\:scan&nbsp;&nbsp;&nbsp;&nbsp;<a href="Noun.html#time">time</a>&nbsp;12:34:56.789&nbsp;.z.t</tt><br>
 <tt>|&nbsp;<a href="Verb.html#reverse">reverse</a>&nbsp;&nbsp;&nbsp;<a href="Verb.html#max_002for">max/or</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
 <tt>&lt;&nbsp;<a href="Verb.html#asc">asc</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#less">less</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="I_002fO.html">i/o</a>&nbsp;(*enterprise)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class</tt><br>
@@ -125,12 +131,12 @@ Next: <a href="Introduction.html" accesskey="n" rel="next">Introduction</a> &nbs
 <tt>!&nbsp;<a href="Verb.html#key">key</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#key">key</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*3:&nbsp;<a href="I_002fO.html#k_002dipc">k-ipc</a> <a href="I_002fO.html#g_t3set">set</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Expression.html">expr</a>&nbsp;:a+b</tt><br>
 <tt>,&nbsp;<a href="Verb.html#enlist">enlist</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#cat">cat</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*4:&nbsp;<a href="I_002fO.html#https">https</a>&nbsp;<a href="I_002fO.html#g_t4get">get</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
 <tt>^&nbsp;<a href="Verb.html#sort">sort</a>&nbsp;&nbsp;&nbsp;[f]<a href="Verb.html#cut">cut</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5:&nbsp;<a href="FF.html#ffi">ffi</a>/import</tt><br>
-<tt>#&nbsp;<a href="Verb.html#count">count</a>&nbsp;&nbsp;[f]<a href="Verb.html#take">take</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
+<tt>#&nbsp;count&nbsp;&nbsp;[f]<a href="Verb.html#take">take</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
 <tt>_&nbsp;<a href="Verb.html#floor">floor</a>&nbsp;&nbsp;[f]<a href="Verb.html#drop">drop</a></tt><br>
 <tt>$&nbsp;<a href="Verb.html#string">string</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#parse">parse</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$[b;t;f]&nbsp;<a href="Control-Flow.html#cond">cond</a></tt><br>
 <tt>?&nbsp;<a href="Verb.html#unique">unique</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="Verb.html#find_002frand">find/rand</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
 <tt>@&nbsp;<a href="Verb.html#type">type</a>&nbsp;&nbsp;&nbsp;[f]at&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@[x;i;f[;y]]&nbsp;<a href="Knit-Functions.html#amend">amend</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Tables.html">table</a>&nbsp;[[]n:`b`c;i:2&nbsp;3]</tt><br>
-<tt>.&nbsp;<a href="Verb.html#value">value</a>&nbsp;&nbsp;[f]<a href="Verb.html#dot">dot</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.[x;i;f[;y]]&nbsp;<a href="Knit-Functions.html#dmend">dmend</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Tables.html#utable">utable</a>&nbsp;&nbsp;[[n:`b`c]i:2&nbsp;3]</tt><br>
+<tt>.&nbsp;<a href="Verb.html#value">value</a>&nbsp;&nbsp;[f]<a href="Named-Functions.html#Hdot">dot</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.[x;i;f[;y]]&nbsp;<a href="Knit-Functions.html#dmend">dmend</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Tables.html#utable">utable</a>&nbsp;&nbsp;[[n:`b`c]i:2&nbsp;3]</tt><br>
 <tt></tt><br>
 <tt><a href="Named-Functions.html#Hcount">count</a> &nbsp;<a href="Named-Functions.html#Hfirst">first</a>&nbsp;<a href="Named-Functions.html#Hlast">last</a>&nbsp;<a href="Named-Functions.html#Hmin">min</a>&nbsp;<a href="Named-Functions.html#Hmax">max</a>&nbsp;<a href="Named-Functions.html#Hsum">sum</a>&nbsp;<a href="Named-Functions.html#avg">avg</a>&nbsp;<a href="Named-Functions.html#var">var</a>&nbsp;<a href="Named-Functions.html#dev">dev</a>&nbsp;[<a href="Named-Functions.html#med">med</a>&nbsp;..]</tt><br>
 <tt><a href="kSQL.html#select">select</a>&nbsp;<a href="kSQL.html#A">A</a>&nbsp;<a href="kSQL.html#by-B">by B</a>&nbsp;from&nbsp;T&nbsp;<a href="kSQL.html#where-C">where C</a>;&nbsp;<a href="kSQL.html#update">update</a>&nbsp;<a href="kSQL.html#A">A</a>&nbsp;from&nbsp;T;&nbsp;<a href="kSQL.html#delete">delete</a>&nbsp;from&nbsp;T&nbsp;<a href="kSQL.html#where-C">where C</a></tt><br>
@@ -138,51 +144,31 @@ Next: <a href="Introduction.html" accesskey="n" rel="next">Introduction</a> &nbs
 <tt></tt><br>
 <tt>/comment&nbsp;\trace&nbsp;[:return&nbsp;'signal&nbsp;if&nbsp;do&nbsp;while]</tt><br>
 </p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="Introduction.html" accesskey="1">Introduction</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">An introduction to shakti/k9, a novel computer language for data analysis
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Verb.html" accesskey="2">Verb</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Elementary functions
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Adverb.html" accesskey="3">Adverb</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Function modifiers
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Noun.html" accesskey="4">Noun</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Basic data types
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="List.html" accesskey="5">List</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Uniform and non-uniform lists
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Dictionary.html" accesskey="6">Dictionary</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Dictionaries and functions for dictionaries
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="User-Functions.html" accesskey="7">User Functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">User-defined functions
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Expression.html" accesskey="8">Expression</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Expression Evaluation
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Named-Functions.html" accesskey="9">Named Functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Named functions
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Knit-Functions.html">Knit Functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Function to modify lists and dictionaries
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="I_002fO.html">I/O</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Input and output
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="FF.html">FF</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Foreign functions
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Tables.html">Tables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Tables to store data
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="kSQL.html">kSQL</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">kSQL to query tables
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="System.html">System</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">System functions and measurements
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Control-Flow.html">Control Flow</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">If/Do/While Statements 
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Temporal-Functions.html">Temporal Functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Functions for date and time
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Errors.html">Errors</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Error messages
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Examples.html">Examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">A Short Finance Example + Practice Decomposing Other People&rsquo;s Code
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Benchmark.html">Benchmark</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Learn how fast this language is
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Conclusion.html">Conclusion</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Conclusion
-</td></tr>
-</table>
 
+<ul class="section-toc">
+<li><a href="Introduction.html" accesskey="1">Introduction</a></li>
+<li><a href="Verb.html" accesskey="2">Verbs</a></li>
+<li><a href="Adverb.html" accesskey="3">Adverbs</a></li>
+<li><a href="Noun.html" accesskey="4">Noun</a></li>
+<li><a href="List.html" accesskey="5">List</a></li>
+<li><a href="Dictionary.html" accesskey="6">Dictionary</a></li>
+<li><a href="User-Functions.html" accesskey="7">User-defined Functions</a></li>
+<li><a href="Expression.html" accesskey="8">Expression Evaluation</a></li>
+<li><a href="Named-Functions.html" accesskey="9">Named Functions</a></li>
+<li><a href="Knit-Functions.html">Knit Functions</a></li>
+<li><a href="I_002fO.html">I/O and Interface</a></li>
+<li><a href="FF.html">Foreign Functions</a></li>
+<li><a href="Tables.html">Tables</a></li>
+<li><a href="kSQL.html">kSQL</a></li>
+<li><a href="System.html">System</a></li>
+<li><a href="Control-Flow.html">Control Flow</a></li>
+<li><a href="Temporal-Functions.html">Temporal Functions</a></li>
+<li><a href="Errors.html">Errors</a></li>
+<li><a href="Examples.html">Examples</a></li>
+<li><a href="Benchmark.html">Benchmark</a></li>
+<li><a href="Conclusion.html">Conclusion</a></li>
+</ul>
+</div>
 <hr>
 <div class="header">
 <p>

@@ -1,11 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- October 2, 2021
-
-Copyright (C) 2020 John Estrada -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- October 16, 2021
+
+Copyright (C) 2020 John Estrada -->
 <title>Noun (Shakti (k9) tutorial)</title>
 
 <meta name="description" content="k programming tutorial, Shakti (k9) tutorial">
@@ -13,6 +13,8 @@ Copyright (C) 2020 John Estrada -->
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="index.html" rel="up" title="Top">
 <link href="List.html" rel="next" title="List">
@@ -22,11 +24,11 @@ Copyright (C) 2020 John Estrada -->
 /* spacing */
 
 
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -35,6 +37,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 .cartouche{
     border: none;
@@ -83,9 +86,10 @@ table.menu th{
 </head>
 
 <body lang="en">
-<span id="Noun"></span><div class="header">
+<div class="chapter" id="Noun">
+<div class="header">
 <p>
-Next: <a href="List.html" accesskey="n" rel="next">List</a>, Previous: <a href="Adverb.html" accesskey="p" rel="prev">Adverb</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="List.html" accesskey="n" rel="next">List</a>, Previous: <a href="Adverb.html" accesskey="p" rel="prev">Adverbs</a>, Up: <a href="index.html" accesskey="u" rel="up">k9: Manual</a> &nbsp; </p>
 </div>
 <hr>
 <span id="Noun-1"></span><h2 class="chapter">4 Noun</h2>
@@ -122,7 +126,17 @@ Next: <a href="List.html" accesskey="n" rel="next">List</a>, Previous: <a href="
 `i`f`c`n`t`d
 </pre></div>
 
-<span id="Atom-Types"></span><span id="Atom-Types-1"></span><h3 class="section">4.1 Atom Types</h3>
+<span id="Atom-Types"></span><ul class="section-toc">
+<li><a href="#Atom-Types-1" accesskey="1">Atom Types</a></li>
+<li><a href="#bool-_21d2-Boolean-b" accesskey="2">bool &rArr; Boolean b</a></li>
+<li><a href="#Numeric-Data" accesskey="3">Numeric Data</a></li>
+<li><a href="#Text-Data" accesskey="4">Text Data</a></li>
+<li><a href="#Unique-Identifier" accesskey="5">Unique Identifier</a></li>
+<li><a href="#Temporal-Data" accesskey="6">Temporal Data</a></li>
+<li><a href="#Extreme-values" accesskey="7">Extreme values</a></li>
+</ul>
+<div class="section" id="Atom-Types-1">
+<h3 class="section">4.1 Atom Types</h3>
 <p>This section lists all the different types available.  Generally lower case specifies atoms and upper case as lists.
 </p>
 <table>
@@ -137,7 +151,7 @@ Next: <a href="List.html" accesskey="n" rel="next">List</a>, Previous: <a href="
 <tr><td width="10%">h</td><td width="15%">int</td><td width="45%">2h</td><td width="40%">2 byte unsigned</td></tr>
 <tr><td width="10%">i</td><td width="15%">int</td><td width="45%">2</td><td width="40%">4 byte unsigned</td></tr>
 <tr><td width="10%">j</td><td width="15%">int</td><td width="45%">2j</td><td width="40%">8 byte signed</td></tr>
-<tr><td width="10%">n</td><td width="15%">name</td><td width="45%"><em>`</em>abc</td><td width="40%">8 char max</td></tr>
+<tr><td width="10%">n</td><td width="15%">name</td><td width="45%"><em class='math'>`</em>abc</td><td width="40%">8 char max</td></tr>
 <tr><td width="10%">s</td><td width="15%">time</td><td width="45%">12:34:56</td><td width="40%">second</td></tr>
 <tr><td width="10%">S</td><td width="15%">datetime</td><td width="45%">2020.06.15T12:34:56</td><td width="40%">second</td></tr>
 <tr><td width="10%">t</td><td width="15%">time</td><td width="45%">12:34:56.123</td><td width="40%">millisecond</td></tr>
@@ -149,7 +163,9 @@ Next: <a href="List.html" accesskey="n" rel="next">List</a>, Previous: <a href="
 </table>
 
 
-<span id="bool"></span><span id="bool-_21d2-Boolean-b"></span><h3 class="section">4.2 bool &rArr; Boolean b</h3>
+<span id="bool"></span></div>
+<div class="section" id="bool-_21d2-Boolean-b">
+<h3 class="section">4.2 bool &rArr; Boolean b</h3>
 <p>Booleans have two possible values 0 and 1 and have a &rsquo;b&rsquo; to avoid confusion with integers, eg. 0b or 1b.
 </p>
 <div class="example">
@@ -161,7 +177,11 @@ Next: <a href="List.html" accesskey="n" rel="next">List</a>, Previous: <a href="
 10101010b
 </pre></div>
 
-<span id="boolean-logic"></span><h4 class="subsection">4.2.1 boolean logic</h4>
+<ul class="section-toc">
+<li><a href="#boolean-logic" accesskey="1">boolean logic</a></li>
+</ul>
+<div class="subsection" id="boolean-logic">
+<h4 class="subsection">4.2.1 boolean logic</h4>
 <p>k9 implements logic operations in the usual way.
 </p>
 <div class="example">
@@ -176,10 +196,18 @@ x y|AND OR NAND NOR XOR XNOR
 1 1|  1  1    0   0   0    1
 </pre></div>
 
-<span id="Numeric-Data"></span><h3 class="section">4.3 Numeric Data</h3>
+</div>
+</div>
+<div class="section" id="Numeric-Data">
+<h3 class="section">4.3 Numeric Data</h3>
 <p>Numbers can be stored as integers and floats.
 </p>
-<span id="int"></span><span id="int-_21d2-Integer-g_002c-h_002c-i_002c-j"></span><h4 class="subsection">4.3.1 int &rArr; Integer g, h, i, j</h4>
+<span id="int"></span><ul class="section-toc">
+<li><a href="#int-_21d2-Integer-g_002c-h_002c-i_002c-j" accesskey="1">int &rArr; Integer g, h, i, j</a></li>
+<li><a href="#flt-_21d2-Float-e_002c-f" accesskey="2">flt &rArr; Float e, f</a></li>
+</ul>
+<div class="subsection" id="int-_21d2-Integer-g_002c-h_002c-i_002c-j">
+<h4 class="subsection">4.3.1 int &rArr; Integer g, h, i, j</h4>
 <p>Integers can be stored in four different ways which correspond 1, 2, 4, and 8 bytes.  The first three are unsigned and the last (j) is signed.  Positive numbers default to i and negative and very large numbers default to j.  One can specify a non-default type by adding one of the four letters immediately following the number.
 </p>
 <div class="example">
@@ -202,7 +230,9 @@ b:{-1+*/x#256}
 72057594037927935
 </pre></div>
 
-<span id="flt"></span><span id="flt-_21d2-Float-e_002c-f"></span><h4 class="subsection">4.3.2 flt &rArr; Float e, f</h4>
+<span id="flt"></span></div>
+<div class="subsection" id="flt-_21d2-Float-e_002c-f">
+<h4 class="subsection">4.3.2 flt &rArr; Float e, f</h4>
 <p>Float
 </p><div class="example">
 <pre class="example"> 3.1
@@ -222,10 +252,18 @@ b:{-1+*/x#256}
 `f
 </pre></div>
 
-<span id="Text-Data"></span><h3 class="section">4.4 Text Data</h3>
+</div>
+</div>
+<div class="section" id="Text-Data">
+<h3 class="section">4.4 Text Data</h3>
 <p>Text data come in characters, lists of characters (aka strings) and enumerated types.  Enumerated types are displayed as text but stored internally as integers.
 </p>
-<span id="char"></span><span id="char-_21d2-Character-c"></span><h4 class="subsection">4.4.1 char &rArr; Character c</h4>
+<span id="char"></span><ul class="section-toc">
+<li><a href="#char-_21d2-Character-c" accesskey="1">char &rArr; Character c</a></li>
+<li><a href="#name-_21d2-Name-n" accesskey="2">name &rArr; Name n</a></li>
+</ul>
+<div class="subsection" id="char-_21d2-Character-c">
+<h4 class="subsection">4.4.1 char &rArr; Character c</h4>
 <p>Characters are stored as their ANSI value and can be seen by conversion to integers.  A string is a list of characters (including blanks).
 </p>
 <div class="example">
@@ -235,7 +273,9 @@ b:{-1+*/x#256}
 `C 
 </pre></div>
 
-<span id="name"></span><span id="name-_21d2-Name-n"></span><h4 class="subsection">4.4.2 name &rArr; Name n</h4>
+<span id="name"></span></div>
+<div class="subsection" id="name-_21d2-Name-n">
+<h4 class="subsection">4.4.2 name &rArr; Name n</h4>
 <p>A name is an enumerated type displayed as a text string but stored internally as an integer value.
 </p>
 <div class="example">
@@ -245,16 +285,32 @@ b:{-1+*/x#256}
 `N
 </pre></div>
 
-<span id="Unique-Identifier"></span><h3 class="section">4.5 Unique Identifier</h3>
+</div>
+</div>
+<div class="section" id="Unique-Identifier">
+<h3 class="section">4.5 Unique Identifier</h3>
 <p>TBD
 </p>
-<span id="uuid"></span><span id="uuid-_21d2-Uuid"></span><h4 class="subsection">4.5.1 uuid &rArr; Uuid</h4>
+<span id="uuid"></span><ul class="section-toc">
+<li><a href="#uuid-_21d2-Uuid" accesskey="1">uuid &rArr; Uuid</a></li>
+</ul>
+<div class="subsection" id="uuid-_21d2-Uuid">
+<h4 class="subsection">4.5.1 uuid &rArr; Uuid</h4>
 <p>TBD
 </p>
-<span id="Temporal-Data"></span><h3 class="section">4.6 Temporal Data</h3>
+</div>
+</div>
+<div class="section" id="Temporal-Data">
+<h3 class="section">4.6 Temporal Data</h3>
 <p>Temporal data can be expressed as time, date, or a combined date and time.
 </p>
-<span id="time"></span><span id="time-_21d2-Time-s_002c-t_002c-u_002c-v"></span><h4 class="subsection">4.6.1 time &rArr; Time s, t, u, v</h4>
+<span id="time"></span><ul class="section-toc">
+<li><a href="#time-_21d2-Time-s_002c-t_002c-u_002c-v" accesskey="1">time &rArr; Time s, t, u, v</a></li>
+<li><a href="#date-_21d2-Date-d" accesskey="2">date &rArr; Date d</a></li>
+<li><a href="#datetime-_21d2-Datetime-d" accesskey="3">datetime &rArr; Datetime d</a></li>
+</ul>
+<div class="subsection" id="time-_21d2-Time-s_002c-t_002c-u_002c-v">
+<h4 class="subsection">4.6.1 time &rArr; Time s, t, u, v</h4>
 <p>Time has four types depending on the level of precision.  The types are seconds (s), milliseconds (t), microseconds (u), and nanoseconds (v).  The times are all stored internally as integers.  The integers are the number of time units.  For example 00:00:00.012 and 00:00:00.000000012 are both stored as 12 internally.
 </p>
 <div class="example">
@@ -276,7 +332,9 @@ b:{-1+*/x#256}
 00:00:12.345
 </pre></div>
 
-<span id="date"></span><span id="date-_21d2-Date-d"></span><h4 class="subsection">4.6.2 date &rArr; Date d</h4>
+<span id="date"></span></div>
+<div class="subsection" id="date-_21d2-Date-d">
+<h4 class="subsection">4.6.2 date &rArr; Date d</h4>
 <p>Dates are in yyyy.mm.dd format.  Dates are stored internally as integers with 0 corresponding to 2001.01.01.
 </p>
 <div class="example">
@@ -292,7 +350,9 @@ b:{-1+*/x#256}
 2001.01.01
 </pre></div>
 
-<span id="datetime"></span><span id="datetime-_21d2-Datetime-d"></span><h4 class="subsection">4.6.3 datetime &rArr; Datetime d</h4>
+<span id="datetime"></span></div>
+<div class="subsection" id="datetime-_21d2-Datetime-d">
+<h4 class="subsection">4.6.3 datetime &rArr; Datetime d</h4>
 <p>Dates and times can be combined into a single datetime element by combining a date, the letter T, and the time together without spaces.  The datetime use the same lettering as the time precision but in uppercase.  Datetimes are stored interally as integers.  For example 2001.01.02T00:00:00.000 is stored as 86,400,000, the number of milliseconds in a day.
 </p>
 <div class="example">
@@ -302,7 +362,10 @@ b:{-1+*/x#256}
 2020.04.20T12:34:56.789
 </pre></div>
 
-<span id="Extreme-values"></span><h3 class="section">4.7 Extreme values</h3>
+</div>
+</div>
+<div class="section" id="Extreme-values">
+<h3 class="section">4.7 Extreme values</h3>
 <p>Data types can represent in-range, null, and out-of-range values.
 </p>
 <table>
@@ -318,10 +381,12 @@ b:{-1+*/x#256}
 0w
 </pre></div>
 
+</div>
+</div>
 <hr>
 <div class="header">
 <p>
-Next: <a href="List.html" accesskey="n" rel="next">List</a>, Previous: <a href="Adverb.html" accesskey="p" rel="prev">Adverb</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="List.html">List</a>, Previous: <a href="Adverb.html">Adverbs</a>, Up: <a href="index.html">k9: Manual</a> &nbsp; </p>
 </div>
 
 

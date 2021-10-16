@@ -1,11 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- October 2, 2021
-
-Copyright (C) 2020 John Estrada -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- October 16, 2021
+
+Copyright (C) 2020 John Estrada -->
 <title>Knit Functions (Shakti (k9) tutorial)</title>
 
 <meta name="description" content="k programming tutorial, Shakti (k9) tutorial">
@@ -13,6 +13,8 @@ Copyright (C) 2020 John Estrada -->
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="index.html" rel="up" title="Top">
 <link href="I_002fO.html" rel="next" title="I/O">
@@ -22,11 +24,11 @@ Copyright (C) 2020 John Estrada -->
 /* spacing */
 
 
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -35,6 +37,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 .cartouche{
     border: none;
@@ -83,9 +86,10 @@ table.menu th{
 </head>
 
 <body lang="en">
-<span id="Knit-Functions"></span><div class="header">
+<div class="chapter" id="Knit-Functions">
+<div class="header">
 <p>
-Next: <a href="I_002fO.html" accesskey="n" rel="next">I/O</a>, Previous: <a href="Named-Functions.html" accesskey="p" rel="prev">Named Functions</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="I_002fO.html" accesskey="n" rel="next">I/O and Interface</a>, Previous: <a href="Named-Functions.html" accesskey="p" rel="prev">Named Functions</a>, Up: <a href="index.html" accesskey="u" rel="up">k9: Manual</a> &nbsp; </p>
 </div>
 <hr>
 <span id="Knit-Functions-1"></span><h2 class="chapter">10 Knit Functions</h2>
@@ -96,7 +100,12 @@ Next: <a href="I_002fO.html" accesskey="n" rel="next">I/O</a>, Previous: <a href
 .[r;i;f[;y]] <a href="#dmend">dmend</a>
 </pre></div>
 
-<span id="amend"></span><span id="amend-_21d2-_0040_005br_003bi_003bf_005b_003by_005d_005d"></span><h3 class="section">10.1 amend &rArr; @[r;i;f[;y]]</h3>
+<span id="amend"></span><ul class="section-toc">
+<li><a href="#amend-_21d2-_0040_005br_003bi_003bf_005b_003by_005d_005d" accesskey="1">amend &rArr; @[r;i;f[;y]]</a></li>
+<li><a href="#dmend-_21d2-_002e_005br_003bi_003bf_005b_003by_005d_005d" accesskey="2">dmend &rArr; .[r;i;f[;y]]</a></li>
+</ul>
+<div class="section" id="amend-_21d2-_0040_005br_003bi_003bf_005b_003by_005d_005d">
+<h3 class="section">10.1 amend &rArr; @[r;i;f[;y]]</h3>
 <p>Replace the values in list / dictionary r at indices i with element f or function f and parameter y.  The original list is not modified.  Indices are rows for lists and keys for dictionaries.
 </p>
 <table>
@@ -193,7 +202,9 @@ x|`a`b`c
 y|90 40 10
 </pre></div>
 
-<span id="dmend"></span><span id="dmend-_21d2-_002e_005br_003bi_003bf_005b_003by_005d_005d"></span><h3 class="section">10.2 dmend &rArr; .[r;i;f[;y]]</h3>
+<span id="dmend"></span></div>
+<div class="section" id="dmend-_21d2-_002e_005br_003bi_003bf_005b_003by_005d_005d">
+<h3 class="section">10.2 dmend &rArr; .[r;i;f[;y]]</h3>
 <p>Similar to <a href="#amend">amend</a> but using <code>i</code> to fully index <code>r</code>.
 </p>
 <table>
@@ -251,10 +262,12 @@ y|90 40 10
 6    
 </pre></div>
 
+</div>
+</div>
 <hr>
 <div class="header">
 <p>
-Next: <a href="I_002fO.html" accesskey="n" rel="next">I/O</a>, Previous: <a href="Named-Functions.html" accesskey="p" rel="prev">Named Functions</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="I_002fO.html">I/O and Interface</a>, Previous: <a href="Named-Functions.html">Named Functions</a>, Up: <a href="index.html">k9: Manual</a> &nbsp; </p>
 </div>
 
 

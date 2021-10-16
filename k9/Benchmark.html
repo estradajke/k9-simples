@@ -1,11 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- October 2, 2021
-
-Copyright (C) 2020 John Estrada -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- October 16, 2021
+
+Copyright (C) 2020 John Estrada -->
 <title>Benchmark (Shakti (k9) tutorial)</title>
 
 <meta name="description" content="k programming tutorial, Shakti (k9) tutorial">
@@ -13,6 +13,8 @@ Copyright (C) 2020 John Estrada -->
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="index.html" rel="up" title="Top">
 <link href="Conclusion.html" rel="next" title="Conclusion">
@@ -22,11 +24,11 @@ Copyright (C) 2020 John Estrada -->
 /* spacing */
 
 
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -35,6 +37,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 .cartouche{
     border: none;
@@ -83,15 +86,21 @@ table.menu th{
 </head>
 
 <body lang="en">
-<span id="Benchmark"></span><div class="header">
+<div class="chapter" id="Benchmark">
+<div class="header">
 <p>
-Next: <a href="Conclusion.html" accesskey="n" rel="next">Conclusion</a>, Previous: <a href="Examples.html" accesskey="p" rel="prev">Examples</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="Conclusion.html" accesskey="n" rel="next">Conclusion</a>, Previous: <a href="Examples.html" accesskey="p" rel="prev">Examples</a>, Up: <a href="index.html" accesskey="u" rel="up">k9: Manual</a> &nbsp; </p>
 </div>
 <hr>
 <span id="Benchmark-1"></span><h2 class="chapter">20 Benchmark</h2>
 <p>Shakti is a fast data analysis language  and clear benchmarks illustrate this.  The Shakti website has a number of files for such purpose, b.k and taxi.k amongst others.  
 </p>
-<span id="b_002ek"></span><h3 class="section">20.1 b.k</h3>
+<ul class="section-toc">
+<li><a href="#b_002ek" accesskey="1">b.k</a></li>
+<li><a href="#taxi" accesskey="2">taxi</a></li>
+</ul>
+<div class="section" id="b_002ek">
+<h3 class="section">20.1 b.k</h3>
 
 <pre class="verbatim">T:{09:30:00+_6.5*3600*(!x)%x}
 P:{10+x rand 90};Z:{1000+x rand 9000};E:rand[;&quot;ABCD&quot;]
@@ -124,7 +133,20 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 960 billion quotes (S has 170 billion. QQQ has 6 billion.)
  48 billion trades (S has 12 billion. QQQ has 80 million.)
 </pre>
-<span id="T"></span><h4 class="subsection">20.1.1 T</h4>
+<ul class="section-toc">
+<li><a href="#T" accesskey="1">T</a></li>
+<li><a href="#P_002c-Z_002c-E" accesskey="2">P, Z, E</a></li>
+<li><a href="#m_002c-n_002c-S_002c-N" accesskey="3">m, n, S, N</a></li>
+<li><a href="#t" accesskey="4">t</a></li>
+<li><a href="#q" accesskey="5">q</a></li>
+<li><a href="#a_002c-A" accesskey="6">a, A</a></li>
+<li><a href="#Max-price-by-exchange" accesskey="7">Max price by exchange</a></li>
+<li><a href="#Compute-sum-of-trade-size-by-hour_002e" accesskey="8">Compute sum of trade size by hour.</a></li>
+<li><a href="#Compute-last-bid-by-symbol" accesskey="9">Compute last bid by symbol</a></li>
+<li><a href="#Find-trades-below-the-bid">Find trades below the bid</a></li>
+</ul>
+<div class="subsection" id="T">
+<h4 class="subsection">20.1.1 T</h4>
 <p>T is a function which generates a uniform list of times from 09:30 to 16:00.
 </p>
 <div class="example">
@@ -135,7 +157,9 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 ?00:00:02 00:00:03
 </pre></div>
 
-<span id="P_002c-Z_002c-E"></span><h4 class="subsection">20.1.2 P, Z, E</h4>
+</div>
+<div class="subsection" id="P_002c-Z_002c-E">
+<h4 class="subsection">20.1.2 P, Z, E</h4>
 <p>P is a function to generate values from 10 to 100 (price).  Z is a function to generate values from 100 to 1000 (size).  E is a function to generate values A, B, C, or D (exchange).
 </p>
 <div class="example">
@@ -147,7 +171,9 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 &quot;AADCBCCCBC&quot;
 </pre></div>
 
-<span id="m_002c-n_002c-S_002c-N"></span><h4 class="subsection">20.1.3 m, n, S, N</h4>
+</div>
+<div class="subsection" id="m_002c-n_002c-S_002c-N">
+<h4 class="subsection">20.1.3 m, n, S, N</h4>
 <p>m is the number of symbols.  n is the number of trades.  S is a list of symbol names.  N is a list of  numbers in decreasing order which sum approximately to n.  
 </p>
 <div class="example">
@@ -159,7 +185,9 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 5604390
 </pre></div>
 
-<span id="t"></span><h4 class="subsection">20.1.4 t</h4>
+</div>
+<div class="subsection" id="t">
+<h4 class="subsection">20.1.4 t</h4>
 <p>t is an ntable of trades.  The fields are time (t), exchange (e), price (p), and size (z).  The number of trades is set by n.
 </p>
 <p>Pulling one random table from t and showing 10 random rows.  
@@ -180,7 +208,9 @@ t        e p  z
 12:24:28 A 48 3634
 </pre></div>
 
-<span id="q"></span><h4 class="subsection">20.1.5 q</h4>
+</div>
+<div class="subsection" id="q">
+<h4 class="subsection">20.1.5 q</h4>
 <p>q is a ntable of quotes.  The fields are time (t), exchange (e), and bid (b).  The number of quotes is set to 6*n.
 </p>
 <div class="example">
@@ -199,7 +229,9 @@ t        e b
 14:41:38 A 63
 </pre></div>
 
-<span id="a_002c-A"></span><h4 class="subsection">20.1.6 a, A</h4>
+</div>
+<div class="subsection" id="a_002c-A">
+<h4 class="subsection">20.1.6 a, A</h4>
 <p>a is the first symbol of S.  A consists of the first 100 symbols of S.
 </p>
 <div class="example">
@@ -207,7 +239,9 @@ t        e b
 `PKEM
 </pre></div>
 
-<span id="Max-price-by-exchange"></span><h4 class="subsection">20.1.7 Max price by exchange</h4>
+</div>
+<div class="subsection" id="Max-price-by-exchange">
+<h4 class="subsection">20.1.7 Max price by exchange</h4>
 <p>The query takes 100 tables from the trade ntable and computes the max price by exchange.
 </p>
 <div class="example">
@@ -222,7 +256,9 @@ D|99
 22
 </pre></div>
 
-<span id="Compute-sum-of-trade-size-by-hour_002e"></span><h4 class="subsection">20.1.8 Compute sum of trade size by hour.</h4>
+</div>
+<div class="subsection" id="Compute-sum-of-trade-size-by-hour_002e">
+<h4 class="subsection">20.1.8 Compute sum of trade size by hour.</h4>
 <p>This query takes 100 tables from the trade ntable and computes the sum of trade size done by hour.
 </p>
 <div class="example">
@@ -240,7 +276,9 @@ t |z
 27
 </pre></div>
 
-<span id="Compute-last-bid-by-symbol"></span><h4 class="subsection">20.1.9 Compute last bid by symbol</h4>
+</div>
+<div class="subsection" id="Compute-last-bid-by-symbol">
+<h4 class="subsection">20.1.9 Compute last bid by symbol</h4>
 <p>This query takes the 100 tables from the quote ntable and returns the last bid.
 </p>
 <div class="example">
@@ -255,7 +293,9 @@ b
 2
 </pre></div>
 
-<span id="Find-trades-below-the-bid"></span><h4 class="subsection">20.1.10 Find trades below the bid</h4>
+</div>
+<div class="subsection" id="Find-trades-below-the-bid">
+<h4 class="subsection">20.1.10 Find trades below the bid</h4>
 <p>This query operates on one symbol from the q and t ntables, i.e. a single quote and trade table.  The quote table is joined to the trade table giving the current bid on each trade.
 </p>
 <div class="example">
@@ -270,7 +310,10 @@ t        e p  z    b
 3
 </pre></div>
 
-<span id="taxi"></span><h3 class="section">20.2 taxi</h3>
+</div>
+</div>
+<div class="section" id="taxi">
+<h3 class="section">20.2 taxi</h3>
 <p>The taxi data analysis problem has become well known given the ease of acquiring the data and the size of it.  It&rsquo;s well written up  <a href="https://toddwschneider.com/posts/analyzing-1-1-billion-nyc-taxi-and-uber-trips-with-a-vengeance/">here</a> with a benchmark summary <a href="https://tech.marksblogg.com/benchmarks.html">here</a>.  Shakti has a benchmark script to generate simulated taxi data in order to check performance.
 </p>
 <div class="format">
@@ -312,7 +355,13 @@ csv
 t:&quot;b  12            e&quot;  / type(2) passenger(8)
 \t t:(`t`p`d`a;&quot;,&quot;;t)0:&quot;taxi.csv&quot;</pre></div>
 
-<span id="g"></span><h4 class="subsection">20.2.1 g</h4>
+<ul class="section-toc">
+<li><a href="#g" accesskey="1">g</a></li>
+<li><a href="#x-1" accesskey="2">x</a></li>
+<li><a href="#g_t2009_002e01_002e04" accesskey="3">2009.01.04</a></li>
+</ul>
+<div class="subsection" id="g">
+<h4 class="subsection">20.2.1 g</h4>
 <p>Function to generate a table of random data to represent taxi company (<b>t</b> either yellow &lsquo;y or green &lsquo;g),  paid fare (<b>p</b> 0-9), distance travelled (<b>d</b> 0-99) and address (<b>a</b> 0-100.).
 </p>
 <div class="example">
@@ -332,7 +381,9 @@ y 5 66 81.61647
 g 0 10 7.946983
 </pre></div>
 
-<span id="x-1"></span><h4 class="subsection">20.2.2 x</h4>
+</div>
+<div class="subsection" id="x-1">
+<h4 class="subsection">20.2.2 x</h4>
 <p>x is an ntable containing 2500 tables, keyed on day.  Each individual table contains 44,000 rows therefore x has 110 million rows in total.
 </p>
 <div class="example">
@@ -345,7 +396,9 @@ g 0 10 7.946983
 ..
 </pre></div>
 
-<span id="g_t2009_002e01_002e04"></span><h4 class="subsection">20.2.3 2009.01.04</h4>
+</div>
+<div class="subsection" id="g_t2009_002e01_002e04">
+<h4 class="subsection">20.2.3 2009.01.04</h4>
 <p>Let&rsquo;s work with a single table to understand the queries and limit it to 5 rows.
 </p>
 <div class="example">
@@ -406,10 +459,13 @@ y|54989073
 1077
 </pre></div>
 
+</div>
+</div>
+</div>
 <hr>
 <div class="header">
 <p>
-Next: <a href="Conclusion.html" accesskey="n" rel="next">Conclusion</a>, Previous: <a href="Examples.html" accesskey="p" rel="prev">Examples</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="Conclusion.html">Conclusion</a>, Previous: <a href="Examples.html">Examples</a>, Up: <a href="index.html">k9: Manual</a> &nbsp; </p>
 </div>
 
 

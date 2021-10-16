@@ -89,7 +89,7 @@ sed -e 's/@/@@/g' \
     -e 's/Control/@ref{cond,Control}/g' \
     -e 's/if@ else/@ref{cond,if else}/g' \
     -e '1,20 s/date/@ref{date}/g' \
-    -e '16,16 s/time/@ref{time}/g' \
+    -e '18,18 s/time/@ref{time}/g' \
     -e 's/bool/@ref{bool}/g' \
     -e '7,20 s/int/@ref{int}/g' \
     -e 's/flt/@ref{flt}/g' \

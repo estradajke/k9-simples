@@ -1,11 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- October 2, 2021
-
-Copyright (C) 2020 John Estrada -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- October 16, 2021
+
+Copyright (C) 2020 John Estrada -->
 <title>I/O (Shakti (k9) tutorial)</title>
 
 <meta name="description" content="k programming tutorial, Shakti (k9) tutorial">
@@ -13,6 +13,8 @@ Copyright (C) 2020 John Estrada -->
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="index.html" rel="up" title="Top">
 <link href="FF.html" rel="next" title="FF">
@@ -22,11 +24,11 @@ Copyright (C) 2020 John Estrada -->
 /* spacing */
 
 
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -35,6 +37,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 .cartouche{
     border: none;
@@ -83,9 +86,10 @@ table.menu th{
 </head>
 
 <body lang="en">
-<span id="I_002fO"></span><div class="header">
+<div class="chapter" id="I_002fO">
+<div class="header">
 <p>
-Next: <a href="FF.html" accesskey="n" rel="next">FF</a>, Previous: <a href="Knit-Functions.html" accesskey="p" rel="prev">Knit Functions</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="FF.html" accesskey="n" rel="next">Foreign Functions</a>, Previous: <a href="Knit-Functions.html" accesskey="p" rel="prev">Knit Functions</a>, Up: <a href="index.html" accesskey="u" rel="up">k9: Manual</a> &nbsp; </p>
 </div>
 <hr>
 <span id="I_002fO-and-Interface"></span><h2 class="chapter">11 I/O and Interface</h2>
@@ -105,10 +109,26 @@ Next: <a href="FF.html" accesskey="n" rel="next">FF</a>, Previous: <a href="Knit
 
 </pre></div>
 
-<span id="File-I_002fO"></span><h3 class="section">11.1 File I/O</h3>
+<ul class="section-toc">
+<li><a href="#File-I_002fO" accesskey="1">File I/O</a></li>
+<li><a href="#IPC" accesskey="2">IPC</a></li>
+<li><a href="#ffi_002fimport" accesskey="3">ffi/import</a></li>
+</ul>
+<div class="section" id="File-I_002fO">
+<h3 class="section">11.1 File I/O</h3>
 <p>k9 reads and writes to files in three different formats including line (list of strings), char (list of characters), and data (k9 format).
 </p>
-<span id="Example-File-I_002fO"></span><h4 class="subsection">11.1.1 Example File I/O</h4>
+<ul class="section-toc">
+<li><a href="#Example-File-I_002fO" accesskey="1">Example File I/O</a></li>
+<li><a href="#read-line-_21d2-0_003ax" accesskey="2">read line &rArr; 0:x</a></li>
+<li><a href="#write-line-_21d2-x-0_003ay" accesskey="3">write line &rArr; x 0:y</a></li>
+<li><a href="#read-char-_21d2-1_003ax" accesskey="4">read char &rArr; 1:x</a></li>
+<li><a href="#write-char-_21d2-x-1_003ay" accesskey="5">write char &rArr; x 1:y</a></li>
+<li><a href="#read-data-_21d2-2_003a-x" accesskey="6">read data &rArr; 2: x</a></li>
+<li><a href="#write-data-_21d2-x-2_003a-y" accesskey="7">write data &rArr; x 2: y</a></li>
+</ul>
+<div class="subsection" id="Example-File-I_002fO">
+<h4 class="subsection">11.1.1 Example File I/O</h4>
 <p>Let&rsquo;s begin with a simple example to creat a sample table, write to csv and then read it back in again.  We&rsquo;ll use a function so the table can easily grow to a larger size.
 </p>
 <div class="example">
@@ -153,7 +173,9 @@ b 9.333188    7
 
 <p>Ten million rows via csv in under 1/2 a second.  Of course results will depend on hardware and number of columns also.
 </p>
-<span id="r-line"></span><span id="read-line-_21d2-0_003ax"></span><h4 class="subsection">11.1.2 read line &rArr; 0:x</h4>
+<span id="r-line"></span></div>
+<div class="subsection" id="read-line-_21d2-0_003ax">
+<h4 class="subsection">11.1.2 read line &rArr; 0:x</h4>
 <p>Read from file x.
 </p>
 <div class="example">
@@ -163,7 +185,9 @@ a,b
 2,4.
 </pre></div>
 
-<span id="w-line"></span><span id="write-line-_21d2-x-0_003ay"></span><h4 class="subsection">11.1.3 write line &rArr; x 0:y</h4>
+<span id="w-line"></span></div>
+<div class="subsection" id="write-line-_21d2-x-0_003ay">
+<h4 class="subsection">11.1.3 write line &rArr; x 0:y</h4>
 <p>Output to string x (file name or null for stdout) the list of strings in y.  y must be a list of strings.  If y is a single string then convert to list via <a href="Verb.html#enlist">list</a>.
 </p>
 <div class="example">
@@ -174,7 +198,9 @@ red
  &quot;file.txt&quot; 0: (&quot;blue&quot;; &quot;red&quot;) / write to file, one line per element
 </pre></div>
 
-<span id="r-char"></span><span id="read-char-_21d2-1_003ax"></span><h4 class="subsection">11.1.4 read char &rArr; 1:x</h4>
+<span id="r-char"></span></div>
+<div class="subsection" id="read-char-_21d2-1_003ax">
+<h4 class="subsection">11.1.4 read char &rArr; 1:x</h4>
 <p>Read in file x (string).
 </p>
 <div class="example">
@@ -187,7 +213,9 @@ red
 &quot;37\ntest\n&quot;
 </pre></div>
 
-<span id="w-char"></span><span id="write-char-_21d2-x-1_003ay"></span><h4 class="subsection">11.1.5 write char &rArr; x 1:y</h4>
+<span id="w-char"></span></div>
+<div class="subsection" id="write-char-_21d2-x-1_003ay">
+<h4 class="subsection">11.1.5 write char &rArr; x 1:y</h4>
 <p>Write to file x (string) data y (list of characters).
 </p>
 <div class="example">
@@ -210,7 +238,9 @@ a b
 2 4
 </pre></div>
 
-<span id="r-data"></span><span id="read-data-_21d2-2_003a-x"></span><h4 class="subsection">11.1.6 read data &rArr; 2: x</h4>
+<span id="r-data"></span></div>
+<div class="subsection" id="read-data-_21d2-2_003a-x">
+<h4 class="subsection">11.1.6 read data &rArr; 2: x</h4>
 <p>Enterprise Only
 </p>
 <p>Load file, eg. csv or from a (x 2: y) save.  For the latter, one can find a &ldquo;save then load&rdquo; example in the next section.
@@ -232,7 +262,9 @@ a          b          c          d          e
 
 </pre></div>
 
-<span id="w-data"></span><span id="write-data-_21d2-x-2_003a-y"></span><h4 class="subsection">11.1.7 write data &rArr; x 2: y</h4>
+<span id="w-data"></span></div>
+<div class="subsection" id="write-data-_21d2-x-2_003a-y">
+<h4 class="subsection">11.1.7 write data &rArr; x 2: y</h4>
 <p>Enterprise only
 </p>
 <p>Save to file x non-atomic data y (e.g., lists, dictionaries, or tables). 
@@ -252,10 +284,20 @@ a          b          c          d          e
 148
 </pre></div>
 
-<span id="IPC"></span><h3 class="section">11.2 IPC</h3>
+</div>
+</div>
+<div class="section" id="IPC">
+<h3 class="section">11.2 IPC</h3>
 <p>k9 has the ability to comunicate between separate k9 instances via interprocess communication (IPC).  These processes can be on the same or separate machines.  A user will start multiple instances specifying the port (via the command line argurment -p) that the k9 session will use, opening a handle to that port, and then running remote commands via the handle and <code>3:</code> or <code>4:</code>.  The commands to be run are sent as a string, eg. &ldquo;3+12&rdquo;.
 </p>
-<span id="k_002dipc"></span><span id="k_002dipc-_21d2-3_003ax"></span><h4 class="subsection">11.2.1 k-ipc &rArr; 3:x</h4>
+<span id="k_002dipc"></span><ul class="section-toc">
+<li><a href="#k_002dipc-_21d2-3_003ax" accesskey="1">k-ipc &rArr; 3:x</a></li>
+<li><a href="#set-_21d2-x-3_003ay" accesskey="2">set &rArr; x 3:y</a></li>
+<li><a href="#https-_21d2-4_003ax" accesskey="3">https &rArr; 4:x</a></li>
+<li><a href="#get-_21d2-x-4_003ay" accesskey="4">get &rArr; x 4:y</a></li>
+</ul>
+<div class="subsection" id="k_002dipc-_21d2-3_003ax">
+<h4 class="subsection">11.2.1 k-ipc &rArr; 3:x</h4>
 <p>Open a connection to port <code>x</code> and return a handle.  If the port has been forwarded from another machine (eg. ssh -L 1280:server.com:1280 laptop.com) then this handle allows remote execution.
 </p>
 <div class="example">
@@ -267,7 +309,9 @@ a          b          c          d          e
 4
 </pre></div>
 
-<span id="g_t3set"></span><span id="set-_21d2-x-3_003ay"></span><h4 class="subsection">11.2.2 set &rArr; x 3:y</h4>
+<span id="g_t3set"></span></div>
+<div class="subsection" id="set-_21d2-x-3_003ay">
+<h4 class="subsection">11.2.2 set &rArr; x 3:y</h4>
 <p>Exectute string y using handle x.  Handle x should have already been created using k-ipc.  <code>set</code> is asynchronous, thus once the command is sent the session immediately returns to the user.  One will not be able to return any results via <code>set</code>.  If a result is required then one should use <a href="#g_t4get">get</a>.
 </p>
 <div class="example">
@@ -276,10 +320,14 @@ a          b          c          d          e
  h 3:&quot;n:_1e8;b:1?n?1.&quot;  / set b to a random number on remote
 </pre></div>
 
-<span id="https"></span><span id="https-_21d2-4_003ax"></span><h4 class="subsection">11.2.3 https &rArr; 4:x</h4>
+<span id="https"></span></div>
+<div class="subsection" id="https-_21d2-4_003ax">
+<h4 class="subsection">11.2.3 https &rArr; 4:x</h4>
 <p>TBD
 </p>
-<span id="g_t4get"></span><span id="get-_21d2-x-4_003ay"></span><h4 class="subsection">11.2.4 get &rArr; x 4:y</h4>
+<span id="g_t4get"></span></div>
+<div class="subsection" id="get-_21d2-x-4_003ay">
+<h4 class="subsection">11.2.4 get &rArr; x 4:y</h4>
 <p>Execute string y using handle x.  Handle x should have already been created using k-ipc.  <code>get</code> is synchronous, thus once the command is sent the session waits until there result is ready.
 </p>
 <div class="example">
@@ -300,10 +348,19 @@ a          b          c          d          e
 12
 </pre></div>
 
-<span id="ffi_002fimport"></span><h3 class="section">11.3 ffi/import</h3>
-<p>These topics will be covered in the <a href="FF.html">FF</a> chapter.
+</div>
+</div>
+<div class="section" id="ffi_002fimport">
+<h3 class="section">11.3 ffi/import</h3>
+<p>These topics will be covered in the <a href="FF.html">Foreign Functions</a> chapter.
 </p>
-<span id="csv"></span><span id="export_002c-import-csv-_21d2-_0060csv_0040x_002c-_0060csv_003fx"></span><h4 class="subsection">11.3.1 export, import csv &rArr; &lsquo;csv@x, <em>`</em>csv?x</h4>
+<span id="csv"></span><ul class="section-toc">
+<li><a href="#export_002c-import-csv-_21d2-_0060csv_0040x_002c-_0060csv_003fx" accesskey="1">export, import csv &rArr; &lsquo;csv@x, <em class='math'>`</em>csv?x</a></li>
+<li><a href="#export_002c-import-json-_21d2-_0060json_0040x_002c-_0060json_003fx" accesskey="2">export, import json &rArr; &lsquo;json@x, <em class='math'>`</em>json?x</a></li>
+<li><a href="#lz4-zstd-_21d2-_0060lz4-_0060zstd" accesskey="3">lz4 zstd &rArr; <em class='math'>`</em>lz4 <em class='math'>`</em>zstd</a></li>
+</ul>
+<div class="subsection" id="export_002c-import-csv-_21d2-_0060csv_0040x_002c-_0060csv_003fx">
+<h4 class="subsection">11.3.1 export, import csv &rArr; &lsquo;csv@x, <em class='math'>`</em>csv?x</h4>
 <p>Enterprise only
 </p>
 <p>csv tools allows one to export tables into csv and import from csv.  Generally these functions are used with file i/o <code>1:</code>
@@ -319,7 +376,9 @@ a 3
 b 2
 </pre></div>
 
-<span id="json"></span><span id="export_002c-import-json-_21d2-_0060json_0040x_002c-_0060json_003fx"></span><h4 class="subsection">11.3.2 export, import json &rArr; &lsquo;json@x, <em>`</em>json?x</h4>
+<span id="json"></span></div>
+<div class="subsection" id="export_002c-import-json-_21d2-_0060json_0040x_002c-_0060json_003fx">
+<h4 class="subsection">11.3.2 export, import json &rArr; &lsquo;json@x, <em class='math'>`</em>json?x</h4>
 <p>Export object x to json format or import string x from json format.  The json shared library will be automatically pulled from the Shakti website into the current directory.  Use of symbolic links with path on the binary may cause issues.
 </p>
 <div class="example">
@@ -331,7 +390,9 @@ b 2
 (,&quot;x&quot;;,&quot;y&quot;)!(,&quot;b&quot;;2)
 </pre></div>
 
-<span id="compress"></span><span id="lz4-zstd-_21d2-_0060lz4-_0060zstd"></span><h4 class="subsection">11.3.3 lz4 zstd &rArr; <em>`</em>lz4 <em>`</em>zstd</h4>
+<span id="compress"></span></div>
+<div class="subsection" id="lz4-zstd-_21d2-_0060lz4-_0060zstd">
+<h4 class="subsection">11.3.3 lz4 zstd &rArr; <em class='math'>`</em>lz4 <em class='math'>`</em>zstd</h4>
 <p>lz4 and zstd are compression algorythms which can be used to reduce the size of files.  As with other foreign libraries k9 does the work behind the scenes.  Here is an example of writing a large csv file to disk and reading it back in.  In the second (lz4) and third (zstd) examples the csv&rsquo;s are compressed and decompressed with lz4 and zstd respectively.  One can look at the file sizes to see how well the compression worked.
 </p>
 <div class="example">
@@ -356,10 +417,13 @@ b 2
 535
 </pre></div>
 
+</div>
+</div>
+</div>
 <hr>
 <div class="header">
 <p>
-Next: <a href="FF.html" accesskey="n" rel="next">FF</a>, Previous: <a href="Knit-Functions.html" accesskey="p" rel="prev">Knit Functions</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="FF.html">Foreign Functions</a>, Previous: <a href="Knit-Functions.html">Knit Functions</a>, Up: <a href="index.html">k9: Manual</a> &nbsp; </p>
 </div>
 
 

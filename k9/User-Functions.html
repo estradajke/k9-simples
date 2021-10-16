@@ -1,11 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- October 2, 2021
-
-Copyright (C) 2020 John Estrada -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- October 16, 2021
+
+Copyright (C) 2020 John Estrada -->
 <title>User Functions (Shakti (k9) tutorial)</title>
 
 <meta name="description" content="k programming tutorial, Shakti (k9) tutorial">
@@ -13,6 +13,8 @@ Copyright (C) 2020 John Estrada -->
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="index.html" rel="up" title="Top">
 <link href="Expression.html" rel="next" title="Expression">
@@ -22,11 +24,11 @@ Copyright (C) 2020 John Estrada -->
 /* spacing */
 
 
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -35,6 +37,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 .cartouche{
     border: none;
@@ -83,9 +86,10 @@ table.menu th{
 </head>
 
 <body lang="en">
-<span id="User-Functions"></span><div class="header">
+<div class="chapter" id="User-Functions">
+<div class="header">
 <p>
-Next: <a href="Expression.html" accesskey="n" rel="next">Expression</a>, Previous: <a href="Dictionary.html" accesskey="p" rel="prev">Dictionary</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="Expression.html" accesskey="n" rel="next">Expression Evaluation</a>, Previous: <a href="Dictionary.html" accesskey="p" rel="prev">Dictionary</a>, Up: <a href="index.html" accesskey="u" rel="up">k9: Manual</a> &nbsp; </p>
 </div>
 <hr>
 <span id="User_002ddefined-Functions"></span><h2 class="chapter">7 User-defined Functions</h2>
@@ -97,7 +101,17 @@ Next: <a href="Expression.html" accesskey="n" rel="next">Expression</a>, Previou
 <pre class="example">Func {[a;b]a+b}
 </pre></div>
 
-<span id="Function-arguments"></span><h3 class="section">7.1 Function arguments</h3>
+<ul class="section-toc">
+<li><a href="#Function-arguments" accesskey="1">Function arguments</a></li>
+<li><a href="#Function-Defitions" accesskey="2">Function Defitions</a></li>
+<li><a href="#Function-Return" accesskey="3">Function Return</a></li>
+<li><a href="#Calling-functions" accesskey="4">Calling functions</a></li>
+<li><a href="#Anonymous-functions" accesskey="5">Anonymous functions</a></li>
+<li><a href="#Recursive-functions" accesskey="6">Recursive functions</a></li>
+<li><a href="#Chained-functions" accesskey="7">Chained functions</a></li>
+</ul>
+<div class="section" id="Function-arguments">
+<h3 class="section">7.1 Function arguments</h3>
 <p>Functions default to arguments of x, y, and z for the first three parameters but one  can  explicitly spell out these or other argument names.  Given k9&rsquo;s terseness, many k9 programmers prefer short variable names. But this is a matter of taste.
 </p>
 <div class="example">
@@ -121,7 +135,9 @@ Next: <a href="Expression.html" accesskey="n" rel="next">Expression</a>, Previou
 `.
 </pre></div>
 
-<span id="Function-Defitions"></span><h3 class="section">7.2 Function Defitions</h3>
+</div>
+<div class="section" id="Function-Defitions">
+<h3 class="section">7.2 Function Defitions</h3>
 <p>Functions can have intermediate calcuations and local variables.  Function local variables do not affect the values of  global variables.
 </p>
 <div class="example">
@@ -137,7 +153,9 @@ a
 3
 </pre></div>
 
-<span id="Function-Return"></span><h3 class="section">7.3 Function Return</h3>
+</div>
+<div class="section" id="Function-Return">
+<h3 class="section">7.3 Function Return</h3>
 <p>Function return the last value in the definition unless the definition ends with a semicolon in which case the function returns nothing.
 </p>
 <div class="example">
@@ -150,7 +168,9 @@ a
 12
 </pre></div>
 
-<span id="Calling-functions"></span><h3 class="section">7.4 Calling functions</h3>
+</div>
+<div class="section" id="Calling-functions">
+<h3 class="section">7.4 Calling functions</h3>
 <p>Functions, like lists, can be called in a variety of ways.  Typically one uses square bracket notation when the function takes multiple argruments.  If a function is called with fewer than the required number of arguments then it will return a function that requires the remaining arguemnts.
 </p>
 <div class="example">
@@ -183,7 +203,9 @@ a
 `a
 </pre></div>
 
-<span id="Anonymous-functions"></span><h3 class="section">7.5 Anonymous functions</h3>
+</div>
+<div class="section" id="Anonymous-functions">
+<h3 class="section">7.5 Anonymous functions</h3>
 <p>It&rsquo;s possible to define a function without naming it. If the function is to be used in just one place, this can make sense.
 </p>
 <div class="example">
@@ -191,7 +213,9 @@ a
 22
 </pre></div>
 
-<span id="Recursive-functions"></span><h3 class="section">7.6 Recursive functions</h3>
+</div>
+<div class="section" id="Recursive-functions">
+<h3 class="section">7.6 Recursive functions</h3>
 <p>k9 allows one to define a function which calls itself.  Care should be taken to avoid an infinite loop.
 </p>
 <div class="example">
@@ -199,7 +223,9 @@ a
 120
 </pre></div>
 
-<span id="Chained-functions"></span><h3 class="section">7.7 Chained functions</h3>
+</div>
+<div class="section" id="Chained-functions">
+<h3 class="section">7.7 Chained functions</h3>
 <p>It may be necessary to define a function to call a function without specifying arguments.  Imagine this trivial case.
 </p>
 <div class="example">
@@ -219,10 +245,12 @@ a
 2 3 4
 </pre></div>
 
+</div>
+</div>
 <hr>
 <div class="header">
 <p>
-Next: <a href="Expression.html" accesskey="n" rel="next">Expression</a>, Previous: <a href="Dictionary.html" accesskey="p" rel="prev">Dictionary</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="Expression.html">Expression Evaluation</a>, Previous: <a href="Dictionary.html">Dictionary</a>, Up: <a href="index.html">k9: Manual</a> &nbsp; </p>
 </div>
 
 

@@ -1,11 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- October 2, 2021
-
-Copyright (C) 2020 John Estrada -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- October 16, 2021
+
+Copyright (C) 2020 John Estrada -->
 <title>Introduction (Shakti (k9) tutorial)</title>
 
 <meta name="description" content="k programming tutorial, Shakti (k9) tutorial">
@@ -13,6 +13,8 @@ Copyright (C) 2020 John Estrada -->
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="index.html" rel="up" title="Top">
 <link href="Verb.html" rel="next" title="Verb">
@@ -22,11 +24,11 @@ Copyright (C) 2020 John Estrada -->
 /* spacing */
 
 
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -35,6 +37,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 .cartouche{
     border: none;
@@ -83,15 +86,28 @@ table.menu th{
 </head>
 
 <body lang="en">
-<span id="Introduction"></span><div class="header">
+<div class="chapter" id="Introduction">
+<div class="header">
 <p>
-Next: <a href="Verb.html" accesskey="n" rel="next">Verb</a>, Previous: <a href="index.html" accesskey="p" rel="prev">Top</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="Verb.html" accesskey="n" rel="next">Verbs</a>, Previous: <a href="index.html" accesskey="p" rel="prev">k9: Manual</a>, Up: <a href="index.html" accesskey="u" rel="up">k9: Manual</a> &nbsp; </p>
 </div>
 <hr>
 <span id="Introduction-1"></span><h2 class="chapter">1 Introduction</h2>
 <p>The k9 programming language is designed primarily for the analysis of data.  It may surprise new users with two rather different paradigms, (1) fast data analysis and (2) concise syntax.  After you become familiar with the language, these features will both seem normal and intuitive.  Also, going back to slow and verbose programming will be surprisingly difficult.
 </p>
-<span id="Going-fast"></span><h3 class="section">1.1 Going fast</h3>
+<ul class="section-toc">
+<li><a href="#Going-fast" accesskey="1">Going fast</a></li>
+<li><a href="#Going-concise" accesskey="2">Going concise</a></li>
+<li><a href="#Get-k9_002e" accesskey="3">Get k9.</a></li>
+<li><a href="#Help-_002f-Info-Card" accesskey="4">Help / Info Card</a></li>
+<li><a href="#rlwrap" accesskey="5">rlwrap</a></li>
+<li><a href="#REPL" accesskey="6">REPL</a></li>
+<li><a href="#Simple-example" accesskey="7">Simple example</a></li>
+<li><a href="#Document-formatting-for-code-examples" accesskey="8">Document formatting for code examples</a></li>
+<li><a href="#k9-idiosyncracies" accesskey="9">k9 idiosyncracies</a></li>
+</ul>
+<div class="section" id="Going-fast">
+<h3 class="section">1.1 Going fast</h3>
 <p>Imagine you have a small, on-disk, 100 million row database containing a time-series with two float values at each time.  Additionally this data could be split in three different tables covering different measurements.  Here&rsquo;s how fast k9 can read in the data from disk and compute a statistic, average difference over each table, which uses each and every row.
 </p>
 <p><b>This section requires 2: a feature only in the enterprise version of Shakti.</b>
@@ -124,7 +140,9 @@ Next: <a href="Verb.html" accesskey="n" rel="next">Verb</a>, Previous: <a href="
  `q 2:q
 </pre></div>
 
-<span id="Going-concise"></span><h3 class="section">1.2 Going concise</h3>
+</div>
+<div class="section" id="Going-concise">
+<h3 class="section">1.2 Going concise</h3>
 
 <p>The k9 language is more closely related to mathematics syntax than most programming lanauges.  It requires the developer to learn to &ldquo;speak&rdquo; k9 but once that happens most find an ability to speak quicker and more accurately in k9 than in other languages.  At this point an example might help.
 </p>
@@ -155,7 +173,9 @@ z@&amp;y&lt;z:?x
 
 <p>When you first learned arithmetic you likely didn&rsquo;t have a choice.  Now you have a choice whether or not you want to learn k9.  If you give it a try, then you&rsquo;ll likely get it quickly and move onto the power phase fast enough that you&rsquo;ll be happy you gave it a chance.
 </p>
-<span id="Get-k9_002e"></span><h3 class="section">1.3 Get k9.</h3>
+</div>
+<div class="section" id="Get-k9_002e">
+<h3 class="section">1.3 Get k9.</h3>
 
 <p><a href="https://shakti.com">https://shakti.com</a>
 </p>
@@ -175,18 +195,22 @@ z@&amp;y&lt;z:?x
 <pre class="example"> npm i @kparc/k -g
 </pre></div>
 
-<span id="Help-_002f-Info-Card"></span><h3 class="section">1.4 Help / Info Card</h3>
+</div>
+<div class="section" id="Help-_002f-Info-Card">
+<h3 class="section">1.4 Help / Info Card</h3>
 <p>Typing <code>\</code> in a terminal window gives you a concise overview of the language.  This document aims to provide details to beginning user where the help screen is a bit too terse.  Some commands are not available in the basic version and thus marked with an asterisk, eg. *4: https get.
 </p>
 <div class="format">
-<pre class="verbatim">$curl -o k.so shakti.com/python/k.so
-python: import k;k.k('2+3') #nodejs: require('k').k('2+3')
+<pre class="verbatim">python: import k;k.k('2+3')   shakti.com/python/k.so
+nodejs: require('k').k('2+3') shakti.com/nodejs/k.node
 
-$k [-p 1024] [a.k]
+$k [-n4 -p1024] a.k
 
-t:[[]t:09:30:00.000+!2;e:&quot;b&quot;;s:`aa;v:2;p:2.3e]
-`csv?`csv t;`json?`json t
-`lz4?`lz4 t;`zstd?`zstd t
+t:[[]t:09:30:00.000 09:30:00.001;e:&quot;b&quot;;s:`aa`aa;v:2 3;p:2.3 3.4]
+x:&quot;t,e,s,v,p\n09:30:00.000,b,aa,2,2.3\n09:30:00.001,b,aa,3,3.4\n&quot;
+`csv?`csv t     /also `json?`json t
+`lz4?`lz4 x     /also `zstd?`zstd x
+\\
 
 verb                    adverb                 noun                    \l a.k
 : x         y          f' each                 char &quot; ab&quot;              \t:n x
@@ -216,7 +240,9 @@ sqrt sqr exp log sin cos div mod bar in bin
 
 /comment \trace [:return 'signal if do while]</pre></div>
 
-<span id="rlwrap"></span><h3 class="section">1.5 rlwrap</h3>
+</div>
+<div class="section" id="rlwrap">
+<h3 class="section">1.5 rlwrap</h3>
 <p>Although you only need the <samp>k</samp> binary to run k9 most will also install rlwrap, if not already installed, in order to get command history in a terminal window.  rlwrap is &ldquo;Readline wrapper: adds readline support to tools that lack it&rdquo; and allows one to arrow up to go through the command buffer history.
 </p>
 <p>In order to start k9 you should either run <samp>k</samp> or <samp>rlwrap k</samp> to get started.  Here I will show both options but one should run as desired.  In this document lines with input are shown with a leading space and output will be without.  In the examples below the user starts a terminal window in the directory with the <samp>k</samp> binary file.  Then the users enters <kbd>rlwrap ./k <span class="key">RET</span></kbd>.  k9 starts and displays the date of the build, (c), and shakti and then listens to user input.  In this example I have entered the command to exit k9, <kbd>\\</kbd>.  Then I start k9 again without rlwrap and again exit the session.
@@ -231,10 +257,14 @@ Sep 13 2020 16GB (c) shakti
  \\
 </pre></div>
 
-<span id="REPL"></span><h3 class="section">1.6 REPL</h3>
+</div>
+<div class="section" id="REPL">
+<h3 class="section">1.6 REPL</h3>
 <p>k9 runs as a read, evaluation, print loop (REPL).  This means that one either programs in an interactive programming environment (eg. a shell/terminal window) or by running a script.  There is no reason to compile code into an executable.  
 </p>
-<span id="Simple-example"></span><h3 class="section">1.7 Simple example</h3>
+</div>
+<div class="section" id="Simple-example">
+<h3 class="section">1.7 Simple example</h3>
 
 <p>Here I will start up k9, perform some trivial calculations, and then close the session.  After this example it will be assumed the user will have a k9 session running and working in repl mode.  Comments (<code>/</code>) will be added to the end of lines as needed.  One can review <a href="Verb.html#plus">plus</a>, <a href="Verb.html#enum">enum</a>, <a href="Verb.html#floor">floor</a> and <a href="System.html#timing">timing</a> as needed. 
 </p>
@@ -263,29 +293,51 @@ bash-3.2$
 
 
 
-<span id="Document-formatting-for-code-examples"></span><h3 class="section">1.8 Document formatting for code examples</h3>
+</div>
+<div class="section" id="Document-formatting-for-code-examples">
+<h3 class="section">1.8 Document formatting for code examples</h3>
 <p>This document uses a number of examples to familiarize the reader with k9.  The sytax is to have input with a leading space and output without a leading space.  This follows the terminal syntax where the REPL input has space but prints output without.
 </p><div class="example">
 <pre class="example"> 3+2 / this is input
 5    / this is output
 </pre></div>
 
-<span id="k9-idiosyncracies"></span><h3 class="section">1.9 k9 idiosyncracies</h3>
+</div>
+<div class="section" id="k9-idiosyncracies">
+<h3 class="section">1.9 k9 idiosyncracies</h3>
 <p>One will need to understand some basic rules of k9 in order to progress.  These may seem strange at first but the faster you learn them, the faster you&rsquo;ll move forward. Also, some of them, like overloading based on number of arguments, add a lot of expressability to the language.
 </p>
-<span id="Colon-_0028_003a_0029-is-used-to-set-a-variable-to-a-value"></span><h4 class="subsection">1.9.1 Colon (<code>:</code>) is used to set a variable to a value</h4>
+<ul class="section-toc">
+<li><a href="#Colon-_0028_003a_0029-is-used-to-set-a-variable-to-a-value" accesskey="1">Colon (<code>:</code>) is used to set a variable to a value</a></li>
+<li><a href="#Percent-_0028_0025_0029-is-used-to-divide-numbers" accesskey="2">Percent (<code>%</code>) is used to divide numbers</a></li>
+<li><a href="#Evaluation-is-done-right-to-left" accesskey="3">Evaluation is done right to left</a></li>
+<li><a href="#There-is-no-arithmetic-order" accesskey="4">There is no arithmetic order</a></li>
+<li><a href="#Operators-are-overloaded-depending-on-the-number-of-arguments_002e" accesskey="5">Operators are overloaded depending on the number of arguments.</a></li>
+<li><a href="#Lists-and-functions-are-very-similar_002e" accesskey="6">Lists and functions are very similar.</a></li>
+<li><a href="#k9-notions-of-Noun_002c-Verb_002c-and-Adverb" accesskey="7">k9 notions of Noun, Verb, and Adverb</a></li>
+</ul>
+<div class="subsection" id="Colon-_0028_003a_0029-is-used-to-set-a-variable-to-a-value">
+<h4 class="subsection">1.9.1 Colon (<code>:</code>) is used to set a variable to a value</h4>
 <p><code>a:3</code> is used to set the variable, a, to the value, 3.  <code>a=3</code> is an equality test to determine if a is equal to 3.
 </p>
-<span id="Percent-_0028_0025_0029-is-used-to-divide-numbers"></span><h4 class="subsection">1.9.2 Percent (<code>%</code>) is used to divide numbers</h4>
+</div>
+<div class="subsection" id="Percent-_0028_0025_0029-is-used-to-divide-numbers">
+<h4 class="subsection">1.9.2 Percent (<code>%</code>) is used to divide numbers</h4>
 <p>Yeah, 2 divided by 5 is written as <code>2%5</code>, not <code>2/5</code>.  This choice is because <code>%</code> is similar to &#x00F7;, and the \ and / symbols are used elsewhere.
 </p>
-<span id="Evaluation-is-done-right-to-left"></span><h4 class="subsection">1.9.3 Evaluation is done right to left</h4>
+</div>
+<div class="subsection" id="Evaluation-is-done-right-to-left">
+<h4 class="subsection">1.9.3 Evaluation is done right to left</h4>
 <p>2+5*3 is 17 and 2*5+3 is 16.  2+5*3 is first evaluated on the right most portion, 5*3, and once that is computed then it proceeds with 2+15.  2*5+3 goes to 2*8 which becomes 16.
 </p>
-<span id="There-is-no-arithmetic-order"></span><h4 class="subsection">1.9.4 There is no arithmetic order</h4>
+</div>
+<div class="subsection" id="There-is-no-arithmetic-order">
+<h4 class="subsection">1.9.4 There is no arithmetic order</h4>
 <p>+ has equal precedence as *.  The order of evaluation is done right to left unless parenthesis are used.  (2+5)*3 = 21 as the 2+5 in parenthesis is done before being multiplied by 3.
 </p>
-<span id="Operators-are-overloaded-depending-on-the-number-of-arguments_002e"></span><h4 class="subsection">1.9.5 Operators are overloaded depending on the number of arguments.</h4>
+</div>
+<div class="subsection" id="Operators-are-overloaded-depending-on-the-number-of-arguments_002e">
+<h4 class="subsection">1.9.5 Operators are overloaded depending on the number of arguments.</h4>
 <div class="example">
 <pre class="example">&nbsp;*(13;6;9)    / single argument: * returns the first element
 13
@@ -293,7 +345,9 @@ bash-3.2$
 26 12 18
 </pre></div>
 
-<span id="Lists-and-functions-are-very-similar_002e"></span><h4 class="subsection">1.9.6 Lists and functions are very similar.</h4>
+</div>
+<div class="subsection" id="Lists-and-functions-are-very-similar_002e">
+<h4 class="subsection">1.9.6 Lists and functions are very similar.</h4>
 <p>k9 syntax encourages you to treat lists and functions in a similar function.  They should both be thought of a mapping from a value to another value or from a domain to a range. Lists and functions do not have the same type.
 </p>
 <div class="example">
@@ -309,7 +363,9 @@ bash-3.2$
 `.
 </pre></div>
 
-<span id="k9-notions-of-Noun_002c-Verb_002c-and-Adverb"></span><h4 class="subsection">1.9.7 k9 notions of Noun, Verb, and Adverb</h4>
+</div>
+<div class="subsection" id="k9-notions-of-Noun_002c-Verb_002c-and-Adverb">
+<h4 class="subsection">1.9.7 k9 notions of Noun, Verb, and Adverb</h4>
 <p>k9 uses an analogy with grammar to describe language syntax.  The k9 grammar consists of nouns (data), verbs (functions) and adverbs (function modifiers).
 </p><ul>
 <li> <tt>The boy ate an appple. (Noun verb noun)</tt>
@@ -321,10 +377,13 @@ bash-3.2$
 </li><li> <tt>3 &gt;' (1 12;1 4 5) (Noun verb adverb noun)</tt>
 </li></ul>
 
+</div>
+</div>
+</div>
 <hr>
 <div class="header">
 <p>
-Next: <a href="Verb.html" accesskey="n" rel="next">Verb</a>, Previous: <a href="index.html" accesskey="p" rel="prev">Top</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="Verb.html">Verbs</a>, Previous: <a href="index.html">k9: Manual</a>, Up: <a href="index.html">k9: Manual</a> &nbsp; </p>
 </div>
 
 
