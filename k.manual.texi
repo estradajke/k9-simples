@@ -583,13 +583,15 @@ Return true (1b) if x is less (more) than y else false (0b).
 @end example
 
 @anchor{group}@section group @result{} =x
-A dictionary of the distinct values of x (key) and their indices (values).
+Group takes a list of uniform type, x, and returns a dictionary of the distinct values (key) and their indices (value).
+
 @example
-@ ="banana"
+ ="banana"
 a|1 3 5
 b|0    
 n|2 4  
-@ =0 1 0 2 10 7 0 1 12
+
+=0 1 0 2 10 7 0 1 12
  0|0 2 6
  1|1 7  
  2|3    
@@ -604,13 +606,17 @@ Return true (1b) if x is equal to y else false (0b).
 @example
  2=2
 1b
- 2=3
+
+2=3
 0b
- 2=2.
+
+2=2.
 1b
- "banana"="abnaoo" / check strings of equal length by character
+
+"banana"="abnaoo" / check strings of equal length by character
 001100b
- "banana"="apple"  / unequal length strings error
+
+"banana"="apple"  / unequal length strings error
 ^
 :length
 @end example
