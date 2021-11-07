@@ -23,7 +23,7 @@ Copyright @copyright{} 2020 John Estrada
 @c @ifnottex
 @node Top
 @top k9: Manual
-This manual is for Shakti (k9) build 2021.06.30.@*
+This manual is for Shakti (k9) build 2021.10.21.@*
 
 The Shakti programming language is the work of Arthur Whitney and the team at Shakti.  The language comes from a lineage of similar languages going back to APL.  It's also known as k9 given the similarities to k, k2, ..., k6, k7 and the fact that Arthur also wrote those.  k9 is still under development so expect a bit of syntax change and likely even more improvements.
 
@@ -72,7 +72,7 @@ Imagine you have a small, on-disk, 100 million row database containing a time-se
 
 @example
  bash-3.2$ ./k
- 2020.xx.xx 17GB 4core (c) shakti
+ 2021.xx.xx 17GB 4core (c) shakti
  \t q:2:`q;@{select s:avg a-b from x@}'q[!q]
 884
 @end example
