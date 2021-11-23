@@ -3,7 +3,7 @@
 <!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<!-- November 7, 2021
+<!-- November 23, 2021
 
 Copyright (C) 2020 John Estrada -->
 <title>Dictionary (Shakti (k9) tutorial)</title>
@@ -99,14 +99,15 @@ Next: <a href="User-Functions.html" accesskey="n" rel="next">User-defined Functi
 </p>
 <ul class="section-toc">
 <li><a href="#Dictionary-Creation-_21d2-x_0021y-or-_005bx_003by_005d" accesskey="1">Dictionary Creation &rArr; x!y or [x;y]</a></li>
-<li><a href="#Dictionary-Join-_21d2-x_002cy" accesskey="2">Dictionary Join &rArr; x,y</a></li>
-<li><a href="#Dictionary-Indexing-_21d2-x_0040y" accesskey="3">Dictionary Indexing &rArr; x@y</a></li>
-<li><a href="#Dictionary-Key-_21d2-_0021x" accesskey="4">Dictionary Key &rArr; !x</a></li>
-<li><a href="#Dictionary-Value-_21d2-x_005b_005d" accesskey="5">Dictionary Value &rArr; x[]</a></li>
-<li><a href="#Sorting-a-Dictionary-by-Key-_21d2-_005ex" accesskey="6">Sorting a Dictionary by Key &rArr; ^x</a></li>
-<li><a href="#Sorting-a-Dictionary-by-Value-_21d2-_003cx-_0028_003ex_0029" accesskey="7">Sorting a Dictionary by Value &rArr; &lt;x (&gt;x)</a></li>
-<li><a href="#Flipping-a-Dictionary-into-a-Table-_21d2-_002bx" accesskey="8">Flipping a Dictionary into a Table &rArr; +x</a></li>
-<li><a href="#Functions-that-operate-on-each-value-in-a-dictionary" accesskey="9">Functions that operate on each value in a dictionary</a></li>
+<li><a href="#Dictionary-Selection-_21d2-x_0023y-or-x_005fy" accesskey="2">Dictionary Selection &rArr; x#y or x_y</a></li>
+<li><a href="#Dictionary-Join-_21d2-x_002cy" accesskey="3">Dictionary Join &rArr; x,y</a></li>
+<li><a href="#Dictionary-Indexing-_21d2-x_0040y" accesskey="4">Dictionary Indexing &rArr; x@y</a></li>
+<li><a href="#Dictionary-Key-_21d2-_0021x" accesskey="5">Dictionary Key &rArr; !x</a></li>
+<li><a href="#Dictionary-Value-_21d2-x_005b_005d" accesskey="6">Dictionary Value &rArr; x[]</a></li>
+<li><a href="#Sorting-a-Dictionary-by-Key-_21d2-_005ex" accesskey="7">Sorting a Dictionary by Key &rArr; ^x</a></li>
+<li><a href="#Sorting-a-Dictionary-by-Value-_21d2-_003cx-_0028_003ex_0029" accesskey="8">Sorting a Dictionary by Value &rArr; &lt;x (&gt;x)</a></li>
+<li><a href="#Flipping-a-Dictionary-into-a-Table-_21d2-_002bx" accesskey="9">Flipping a Dictionary into a Table &rArr; +x</a></li>
+<li><a href="#Functions-that-operate-on-each-value-in-a-dictionary">Functions that operate on each value in a dictionary</a></li>
 <li><a href="#Functions-that-return-over-values-from-a-dictionary">Functions that return over values from a dictionary</a></li>
 </ul>
 <div class="section" id="Dictionary-Creation-_21d2-x_0021y-or-_005bx_003by_005d">
@@ -159,8 +160,29 @@ cosX|1 0.9950042 0.9800666 0.9553365 0.921061 0.8..
 </pre></div>
 
 </div>
+<div class="section" id="Dictionary-Selection-_21d2-x_0023y-or-x_005fy">
+<h3 class="section">6.2 Dictionary Selection &rArr; x#y or x_y</h3>
+<p>One can select a portion of a dictionary either by <a href="Verb.html#take">take</a> or <a href="Verb.html#drop">drop</a> which keeps and removes keys respectively.
+</p>
+<div class="example">
+<pre class="example"> x:`a`b`c`d!4 2 3 1;x
+a|4
+b|2
+c|3
+d|1
+
+ `b`c#x / take
+b|2
+c|3
+
+ `b`c_x / drop
+a|4
+d|1
+</pre></div>
+
+</div>
 <div class="section" id="Dictionary-Join-_21d2-x_002cy">
-<h3 class="section">6.2 Dictionary Join &rArr; x,y</h3>
+<h3 class="section">6.3 Dictionary Join &rArr; x,y</h3>
 <p>This joins dictionaries together and the right or y dictionary will overwrite the left or x dictionary if common keys are present.
 </p>
 <div class="example">
@@ -191,7 +213,7 @@ e|70
 
 </div>
 <div class="section" id="Dictionary-Indexing-_21d2-x_0040y">
-<h3 class="section">6.3 Dictionary Indexing &rArr; x@y</h3>
+<h3 class="section">6.4 Dictionary Indexing &rArr; x@y</h3>
 
 <p>Dictionaries, like lists, can be key indexed in a number of ways.
 </p>
@@ -217,7 +239,7 @@ x@`a`c / multiple index
 
 </div>
 <div class="section" id="Dictionary-Key-_21d2-_0021x">
-<h3 class="section">6.4 Dictionary Key &rArr; !x</h3>
+<h3 class="section">6.5 Dictionary Key &rArr; !x</h3>
 <p>The keys from a dictionary are retreived by using the ! function.
 </p>
 <div class="example">
@@ -231,7 +253,7 @@ x@`a`c / multiple index
 
 </div>
 <div class="section" id="Dictionary-Value-_21d2-x_005b_005d">
-<h3 class="section">6.5 Dictionary Value &rArr; x[]</h3>
+<h3 class="section">6.6 Dictionary Value &rArr; x[]</h3>
 <p>The values from a dictionary are retrieved using bracket notation.
 </p>
 <div class="example">
@@ -264,7 +286,7 @@ temp|25 25.1 25.6
 
 </div>
 <div class="section" id="Sorting-a-Dictionary-by-Key-_21d2-_005ex">
-<h3 class="section">6.6 Sorting a Dictionary by Key &rArr; ^x</h3>
+<h3 class="section">6.7 Sorting a Dictionary by Key &rArr; ^x</h3>
 
 <div class="example">
 <pre class="example">&nbsp;d0
@@ -280,7 +302,7 @@ pi|3.14
 
 </div>
 <div class="section" id="Sorting-a-Dictionary-by-Value-_21d2-_003cx-_0028_003ex_0029">
-<h3 class="section">6.7 Sorting a Dictionary by Value &rArr; &lt;x (&gt;x)</h3>
+<h3 class="section">6.8 Sorting a Dictionary by Value &rArr; &lt;x (&gt;x)</h3>
 
 <div class="example">
 <pre class="example">&nbsp;d0
@@ -301,7 +323,7 @@ e |2.72
 
 </div>
 <div class="section" id="Flipping-a-Dictionary-into-a-Table-_21d2-_002bx">
-<h3 class="section">6.8 Flipping a Dictionary into a Table &rArr; +x</h3>
+<h3 class="section">6.9 Flipping a Dictionary into a Table &rArr; +x</h3>
 <p>This command flips a dictionary into a table and will be covered in detail in the table chapter.
 </p>
 <div class="example">
@@ -322,7 +344,7 @@ time  temp
 
 </div>
 <div class="section" id="Functions-that-operate-on-each-value-in-a-dictionary">
-<h3 class="section">6.9 Functions that operate on each value in a dictionary</h3>
+<h3 class="section">6.10 Functions that operate on each value in a dictionary</h3>
 <p>There are a number of simple functions on dictionaries that operate on their values.  If &rsquo;f&rsquo; is a function then f applied to a dictionary returns a dictionary with the same keys and the values resulting from the application of &rsquo;f&rsquo;.
 </p>
 <ul>
@@ -374,7 +396,7 @@ time  temp
 
 </div>
 <div class="section" id="Functions-that-return-over-values-from-a-dictionary">
-<h3 class="section">6.10 Functions that return over values from a dictionary</h3>
+<h3 class="section">6.11 Functions that return over values from a dictionary</h3>
 <p>There are functions on dictionaries that operate over the values.  Given function f applied to a dictionary d, f d returns one or more values  without the original keys.
 </p>
 <ul>

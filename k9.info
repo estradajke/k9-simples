@@ -1,6 +1,6 @@
 This is k9.info, produced by texi2any version 6.8 from k.manual.texi.
 
-November 7, 2021
+November 23, 2021
 
 Copyright (C) 2020 John Estrada
 
@@ -386,15 +386,15 @@ TBD
 
 Set a variable, x, to a value, y.  There should be no space between 'x' and ':'.
 
-      a:3
-      a
+      a:3;a
      3
-      b:(`green;37;"blue")
-      b
+
+      b:(`green;37;"blue");b
      green
      37
      blue
-      c:{x+y}
+
+     c:{x+y}
       c
      {x+y}
       c[12;15]
@@ -445,7 +445,7 @@ Add x and y.  Arguments can be elements or lists but if both x and y are lists t
      7 9 11
 
       3 4+1 2 3        / lengths don't match
-     :length
+     !length
 
       10:00+1         / add a minute
      10:01
@@ -461,11 +461,14 @@ Add x and y.  Arguments can be elements or lists but if both x and y are lists t
 
       -3
      -3
+
       --3
      3
+
       x:4;
       -x
      -4
+
       d:`a`b!((1 2 3);(4 5 6))
       -d
      a|-1 -2 -3
@@ -478,6 +481,7 @@ Subtract y from x.
 
       5-2
      3
+
       x:4;y:1;
       x-y
      3
@@ -486,32 +490,41 @@ Subtract y from x.
 ===============
 
 Return the first value of x.
+
       *1 2 3
      1
-      *((1 2);(3 4);(5 6))
+
+     *((1 2);(3 4);(5 6))
      1 2
-      **((1 2);(3 4);(5 6))
+
+     **((1 2);(3 4);(5 6))
      1
-      *`a`b!((1 2 3);(4 5 6))
+
+     *`a`b!((1 2 3);(4 5 6))
      1 2 3
-      *|1 2 3
+
+     *|1 2 3
      3
 
 2.8 times => x*y
 ================
 
 Mutliply x and y.
+
       3*4
      12
-      3*4 5 6
+
+     3*4 5 6
      12 15 18
-      1 2 3*4 5 6
+
+     1 2 3*4 5 6
      4 10 18
 
 2.9 divide => x'%'y
 ===================
 
 Divide x by y.
+
       12%5
      2.4
       6%2    / division of two integers returns a float
@@ -524,11 +537,14 @@ Given a list of boolean values return the indices where the value is non-zero.
 
       &001001b
      2 5
-      "banana"="a"
+
+     "banana"="a"
      010101b
-      &"banana"="a"
+
+     &"banana"="a"
      1 3 5
-      x@&30<x:12.7 0.1 35.6 -12.1 101.101  / return values greater than 30
+
+     x@&30<x:12.7 0.1 35.6 -12.1 101.101  / return values greater than 30
      35.6 101.101
 
 Given a list of non-negative integer values, eg.  x[0], x[1], ..., x[n-1], generate x[0] values of 0, x[1] values of 1, ..., and x[n-1] values of n-1.
@@ -541,14 +557,19 @@ Given a list of non-negative integer values, eg.  x[0], x[1], ..., x[n-1], gener
 ===============
 
 The smaller of x and y.  One can use the over adverb to determine the min value in a list.
+
       3&2
      2
+
       1 2 3&4 5 6
      1 2 3
-      010010b&111000b
-     010000
+
+     0 1 0 0 1 0&1 1 1 0 0 0
+     0 1 0 0 0 0
+
       `a&`b
      `a
+
       &/ 3 2 10 -200 47
      -200
 
@@ -556,10 +577,13 @@ The smaller of x and y.  One can use the over adverb to determine the min value 
 ==================
 
 Reverse the list x.
+
       |0 3 1 2
      2 1 3 0
-      |"banana"
+
+     |"banana"
      "ananab"
+
       |((1 2 3);4;(5 6))
      5 6
      4
@@ -571,12 +595,16 @@ To get the last element, one can take the first element of the reverse list (*|`
 ==============
 
 The greater of x and y.  Max of a list can be determine by use of the adverb over.
-      3|2
+
+       3|2
      3
-      1 2 3|4 5 6
+
+     1 2 3|4 5 6
      4 5 6
-      101101b|000111b
-     101111b
+
+      1 0 1 1 0 1|0 0 0 1 1 1
+     1 0 1 1 1 1
+
       |/12 2 3 10 / use over to determine the max of a list
      12
 
@@ -605,16 +633,21 @@ Sort a list or dictionary in ascending (<) or descending (>) order.  Applied to 
 =============================
 
 Return true (1b) if x is less (more) than y else false (0b).
+
       3<2
      0b
-      2<3
+
+     2<3
      1b
+
       1 2 3<4 5 6
-     111b
+     1 1 1
+
       ((1 2 3);4;(5 6))<((101 0 5);12;(10 0)) / size needs to match
-     101
+     1 0 1
      1
-     10
+     1 0
+
       "a"<"b"
      1b
 
@@ -628,7 +661,7 @@ Group takes a list of uniform type, x, and returns a dictionary of the distinct 
      b|0
      n|2 4
 
-     =0 1 0 2 10 7 0 1 12
+      =0 1 0 2 10 7 0 1 12
       0|0 2 6
       1|1 7
       2|3
@@ -642,52 +675,60 @@ Group takes a list of uniform type, x, and returns a dictionary of the distinct 
 Return true (1b) if x is equal to y else false (0b).
 
       2=2
-     1b
+     1
 
      2=3
-     0b
+     0
 
      2=2.
-     1b
+     1
 
-     "banana"="abnaoo" / check strings of equal length by character
-     001100b
+      "banana"="abnaoo" / check strings of equal length by character
+     0 0 1 1 0 0
 
-     "banana"="apple"  / unequal length strings error
-     ^
-     :length
+      "banana"="apple"  / unequal length strings error
+     !length
 
 2.18 not => ~x
 ==============
 
 Boolean invert of x
-      ~1b
-     0b
-      ~101b
-     010b
+
+      ~1
+     0
+
+      ~1 0 1
+     0 1 0
+
       ~37 0 12
-     010b
+     0 1 0
 
 2.19 match => x~y
 =================
 
-Return true (1b) if x matches y else false (0b).  A match happens if the two arguments evaluate to the same expression.
+Return true (1) if x matches y else false (0).  A match happens if the two arguments evaluate to the same expression.
 
       2~2
-     1b
+     1
+
       2~3
-     0b
+     0
+
       2~2.
-     0b
+     0
+
       "banana"~"apple"
-     0b
+     0
+
       `a`b~`a`b  / different than = which is element-wise comparison
-     1b
+     1
+
       `a`b=`a`b
-     11b
+     1 1
+
       f:{x+y}
       f~{x+y}
-     1b
+     1
 
 2.20 enum => !x
 ===============
@@ -743,7 +784,7 @@ row's repeats must fit below constant values of the row above.
 2.21 key => x!y
 ===============
 
-Dictionary of x (key) and y (value).
+Create a dictionary with x (key) and y (value).
 
       3!7
      3!7
@@ -768,12 +809,15 @@ Create a list from x
 
       ,3
      ,3
-      ,1 2 3
+
+     ,1 2 3
      1 2 3
+
       3=,3
-     ,1b
+     ,1
+
       3~,3
-     0b
+     0
 
 2.23 cat => x,y
 ===============
@@ -846,7 +890,7 @@ Positve integer x, cut y into x rows
      113 114 115 116 117 118
 
 Negative integer, cut y into x elements per row
-      -3^101+!18  / 3 elements in each row
+      -3^101+!18  / 3 columns
      101 102 103
      104 105 106
      107 108 109
@@ -903,10 +947,8 @@ Count the number of elements in list, dictionary, or table x.
       #`a`b!((1 2 3);(4 5 6)) / count the number of keys
      2
 
-      #5                      / will error as an element
-     #5
-     ^
-     !class
+      #5                      / single element is 1
+     1
 
 2.27 [f]take => x#y
 ===================
@@ -2036,7 +2078,26 @@ Often one will need to modify the data while building the dictionary.  User defi
      cosX|1 0.9950042 0.9800666 0.9553365 0.921061 0.8..
 
 
-6.2 Dictionary Join => x,y
+6.2 Dictionary Selection => x#y or x_y
+======================================
+
+One can select a portion of a dictionary either by *note take:: or *note drop:: which keeps and removes keys respectively.
+
+      x:`a`b`c`d!4 2 3 1;x
+     a|4
+     b|2
+     c|3
+     d|1
+
+      `b`c#x / take
+     b|2
+     c|3
+
+      `b`c_x / drop
+     a|4
+     d|1
+
+6.3 Dictionary Join => x,y
 ==========================
 
 This joins dictionaries together and the right or y dictionary will overwrite the left or x dictionary if common keys are present.
@@ -2065,7 +2126,7 @@ This joins dictionaries together and the right or y dictionary will overwrite th
      d|80
      e|70
 
-6.3 Dictionary Indexing => x@y
+6.4 Dictionary Indexing => x@y
 ==============================
 
 Dictionaries, like lists, can be key indexed in a number of ways.
@@ -2088,7 +2149,7 @@ Dictionaries, like lists, can be key indexed in a number of ways.
       x `b;  / space
       x[`b]; / square bracket
 
-6.4 Dictionary Key => !x
+6.5 Dictionary Key => !x
 ========================
 
 The keys from a dictionary are retreived by using the !  function.
@@ -2100,7 +2161,7 @@ The keys from a dictionary are retreived by using the !  function.
       !d2
      0 10 1
 
-6.5 Dictionary Value => x[]
+6.6 Dictionary Value => x[]
 ===========================
 
 The values from a dictionary are retrieved using bracket notation.
@@ -2130,7 +2191,7 @@ values (a pair of lists), and index that by [1;0].
       d1[][1;0]
      25.
 
-6.6 Sorting a Dictionary by Key => ^x
+6.7 Sorting a Dictionary by Key => ^x
 =====================================
 
       d0
@@ -2143,7 +2204,7 @@ values (a pair of lists), and index that by [1;0].
      e |2.72
      pi|3.14
 
-6.7 Sorting a Dictionary by Value => <x (>x)
+6.8 Sorting a Dictionary by Value => <x (>x)
 ============================================
 
       d0
@@ -2161,7 +2222,7 @@ values (a pair of lists), and index that by [1;0].
      pi|3.14
      e |2.72
 
-6.8 Flipping a Dictionary into a Table => +x
+6.9 Flipping a Dictionary into a Table => +x
 ============================================
 
 This command flips a dictionary into a table and will be covered in detail in the table chapter.
@@ -2180,8 +2241,8 @@ This command flips a dictionary into a table and will be covered in detail in th
       d1~+d1
      0b
 
-6.9 Functions that operate on each value in a dictionary
-========================================================
+6.10 Functions that operate on each value in a dictionary
+=========================================================
 
 There are a number of simple functions on dictionaries that operate on their values.  If 'f' is a function then f applied to a dictionary returns a dictionary with the same keys and the values resulting
 from the application of 'f'.
@@ -2229,7 +2290,7 @@ Examples
      10|0.463
       1|0.001
 
-6.10 Functions that return over values from a dictionary
+6.11 Functions that return over values from a dictionary
 ========================================================
 
 There are functions on dictionaries that operate over the values.  Given function f applied to a dictionary d, f d returns one or more values without the original keys.
@@ -4846,193 +4907,193 @@ sqrt sqr exp log sin cos div mod bar in bin
 
 
 Tag Table:
-Node: Top122
-Node: Introduction5142
-Node: Verb16460
-Ref: x18030
-Ref: set18060
-Ref: flip18319
-Ref: plus18604
-Ref: negate19082
-Ref: minus19254
-Ref: first19361
-Ref: times19577
-Ref: divide19708
-Ref: where19849
-Ref: min/and20332
-Ref: reverse20591
-Ref: max/or20850
-Ref: asc21114
-Ref: desc21114
-Ref: less21505
-Ref: more21505
-Ref: group21806
-Ref: equal22105
-Ref: not22409
-Ref: match22526
-Ref: enum22909
-Ref: key24193
-Ref: enlist24418
-Ref: cat24558
-Ref: sort24895
-Ref: cut25547
-Ref: cut125884
-Ref: cut226036
-Ref: cut326230
-Ref: cut426504
-Ref: cut526684
-Ref: count26929
-Ref: take27233
-Ref: take127828
-Ref: take228197
-Ref: take328619
-Ref: take428812
-Ref: floor29171
-Ref: drop29262
-Ref: drop129776
-Ref: drop229957
-Ref: drop330233
-Ref: string30392
-Ref: parse30493
-Ref: unique30709
-Ref: find/rand30953
-Ref: type31341
-Ref: at31898
-Ref: value32387
-Ref: dot33073
-Node: Adverb34328
-Ref: each35794
-Ref: over36397
-Ref: scan36525
-Ref: join37876
-Ref: split38247
-Ref: eachprior38505
-Ref: eachright39563
-Ref: eachleft39862
-Ref: cover40152
-Ref: cscan40465
-Node: Noun41641
-Ref: Atom Types43037
-Ref: bool45652
-Ref: int46339
-Ref: flt47019
-Ref: char47421
-Ref: name47654
-Ref: uuid47894
-Ref: time48051
-Ref: date48954
-Ref: datetime49415
-Node: List50329
-Node: Dictionary54800
-Node: User Functions60428
-Node: Expression63673
-Node: Named Functions65160
-Ref: Hcount65760
-Ref: Hfirst65853
-Ref: Hlast65946
-Ref: Hmin66048
-Ref: Hmax66163
-Ref: Hsum66278
-Ref: Hdot66380
-Ref: avg66539
-Ref: var66690
-Ref: dev66825
-Ref: med66867
-Ref: mode66909
-Ref: countd66955
-Ref: exp67009
-Ref: log67114
-Ref: sin67210
-Ref: cos67345
-Ref: sqr67489
-Ref: sqrt67574
-Ref: prm67674
-Ref: freq67849
-Ref: sums68205
-Ref: deltas68345
-Ref: rand68683
-Ref: has69564
-Ref: bin69858
-Ref: in70068
-Ref: within70242
-Ref: div70474
-Ref: mod70658
-Ref: bar70832
-Ref: msum71021
-Ref: mavg71158
-Ref: unkey71556
-Ref: meta71692
-Node: Knit Functions71823
-Ref: amend72118
-Ref: amend172641
-Ref: amend272890
-Ref: amend373109
-Ref: amend473414
-Ref: dmend73702
-Ref: dmend174032
-Ref: dmend374200
-Ref: dmend474365
-Node: I/O74526
-Ref: r line76870
-Ref: w line76987
-Ref: r char77367
-Ref: w char77622
-Ref: r data77984
-Ref: w data78645
-Ref: k-ipc79681
-Ref: 3set80168
-Ref: https80702
-Ref: 4get80748
-Ref: csv81414
-Ref: json81830
-Ref: compress82303
-Node: FF83229
-Ref: python83620
-Ref: nodejs84432
-Ref: ffi85336
-Ref: import85769
-Node: Tables85888
-Ref: table86514
-Ref: utable88156
-Node: kSQL88695
-Ref: select89595
-Ref: A90162
-Ref: by B91015
-Ref: where C91344
-Ref: update92186
-Ref: delete92907
-Ref: Joins93189
-Ref: union93546
-Ref: leftjoin94067
-Ref: outer94846
-Ref: asof95481
-Ref: asof+96952
-Ref: insert98170
-Ref: upsert98516
-Node: System98930
-Ref: load99404
-Ref: timing99593
-Ref: variables99934
-Ref: memory100042
-Ref: OS command100159
-Node: Control Flow100402
-Ref: cond100638
-Node: Temporal Functions101008
-Ref: .z.d101368
-Ref: .z.t101529
-Node: Errors102407
-Ref: class102855
-Ref: rank102944
-Ref: length103068
-Ref: _type103191
-Ref: domain103300
-Ref: limit103422
-Ref: nyi103633
-Ref: eparse103960
-Ref: _value104113
-Node: Examples104241
-Node: Benchmark112291
-Node: Conclusion120963
+Node: Top123
+Node: Introduction5143
+Node: Verb16461
+Ref: x18031
+Ref: set18061
+Ref: flip18309
+Ref: plus18594
+Ref: negate19072
+Ref: minus19247
+Ref: first19355
+Ref: times19572
+Ref: divide19704
+Ref: where19846
+Ref: min/and20329
+Ref: reverse20605
+Ref: max/or20866
+Ref: asc21146
+Ref: desc21146
+Ref: less21537
+Ref: more21537
+Ref: group21846
+Ref: equal22146
+Ref: not22446
+Ref: match22567
+Ref: enum22948
+Ref: key24232
+Ref: enlist24468
+Ref: cat24608
+Ref: sort24945
+Ref: cut25597
+Ref: cut125934
+Ref: cut226086
+Ref: cut326267
+Ref: cut426541
+Ref: cut526721
+Ref: count26966
+Ref: take27245
+Ref: take127840
+Ref: take228209
+Ref: take328631
+Ref: take428824
+Ref: floor29183
+Ref: drop29274
+Ref: drop129788
+Ref: drop229969
+Ref: drop330245
+Ref: string30404
+Ref: parse30505
+Ref: unique30721
+Ref: find/rand30965
+Ref: type31353
+Ref: at31910
+Ref: value32399
+Ref: dot33085
+Node: Adverb34340
+Ref: each35806
+Ref: over36409
+Ref: scan36537
+Ref: join37888
+Ref: split38259
+Ref: eachprior38517
+Ref: eachright39575
+Ref: eachleft39874
+Ref: cover40164
+Ref: cscan40477
+Node: Noun41653
+Ref: Atom Types43049
+Ref: bool45664
+Ref: int46351
+Ref: flt47031
+Ref: char47433
+Ref: name47666
+Ref: uuid47906
+Ref: time48063
+Ref: date48966
+Ref: datetime49427
+Node: List50341
+Node: Dictionary54812
+Node: User Functions60787
+Node: Expression64032
+Node: Named Functions65519
+Ref: Hcount66119
+Ref: Hfirst66212
+Ref: Hlast66305
+Ref: Hmin66407
+Ref: Hmax66522
+Ref: Hsum66637
+Ref: Hdot66739
+Ref: avg66898
+Ref: var67049
+Ref: dev67184
+Ref: med67226
+Ref: mode67268
+Ref: countd67314
+Ref: exp67368
+Ref: log67473
+Ref: sin67569
+Ref: cos67704
+Ref: sqr67848
+Ref: sqrt67933
+Ref: prm68033
+Ref: freq68208
+Ref: sums68564
+Ref: deltas68704
+Ref: rand69042
+Ref: has69923
+Ref: bin70217
+Ref: in70427
+Ref: within70601
+Ref: div70833
+Ref: mod71017
+Ref: bar71191
+Ref: msum71380
+Ref: mavg71517
+Ref: unkey71915
+Ref: meta72051
+Node: Knit Functions72182
+Ref: amend72477
+Ref: amend173000
+Ref: amend273249
+Ref: amend373468
+Ref: amend473773
+Ref: dmend74061
+Ref: dmend174391
+Ref: dmend374559
+Ref: dmend474724
+Node: I/O74885
+Ref: r line77229
+Ref: w line77346
+Ref: r char77726
+Ref: w char77981
+Ref: r data78343
+Ref: w data79004
+Ref: k-ipc80040
+Ref: 3set80527
+Ref: https81061
+Ref: 4get81107
+Ref: csv81773
+Ref: json82189
+Ref: compress82662
+Node: FF83588
+Ref: python83979
+Ref: nodejs84791
+Ref: ffi85695
+Ref: import86128
+Node: Tables86247
+Ref: table86873
+Ref: utable88515
+Node: kSQL89054
+Ref: select89954
+Ref: A90521
+Ref: by B91374
+Ref: where C91703
+Ref: update92545
+Ref: delete93266
+Ref: Joins93548
+Ref: union93905
+Ref: leftjoin94426
+Ref: outer95205
+Ref: asof95840
+Ref: asof+97311
+Ref: insert98529
+Ref: upsert98875
+Node: System99289
+Ref: load99763
+Ref: timing99952
+Ref: variables100293
+Ref: memory100401
+Ref: OS command100518
+Node: Control Flow100761
+Ref: cond100997
+Node: Temporal Functions101367
+Ref: .z.d101727
+Ref: .z.t101888
+Node: Errors102766
+Ref: class103214
+Ref: rank103303
+Ref: length103427
+Ref: _type103550
+Ref: domain103659
+Ref: limit103781
+Ref: nyi103992
+Ref: eparse104319
+Ref: _value104472
+Node: Examples104600
+Node: Benchmark112650
+Node: Conclusion121322
 
 End Tag Table
 

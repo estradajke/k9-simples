@@ -345,18 +345,18 @@ TBD
 Set a variable, x, to a value, y.  There should be no space between @code{x} and @code{:}. 
 
 @example
-@ a:3
-@ a
+ a:3;a
 3
-@ b:(`green;37;"blue")
-@ b
+
+ b:(`green;37;"blue");b
 green
 37
 blue
-@ c:@{x+y@}
-@ c
+
+c:@{x+y@}
+ c
 @{x+y@}
-@ c[12;15]
+ c[12;15]
 27
 @end example
 
@@ -404,30 +404,33 @@ a:3;
 7 9 11
 
  3 4+1 2 3        / lengths don't match
-:length
+!length
 
-@ 10:00+1         / add a minute
+ 10:00+1         / add a minute
 10:01
 
-@ 10:00:00+1      / add a second
+ 10:00:00+1      / add a second
 10:00:01
 
-@ 10:00:00.000+1  / add a millisecond
+ 10:00:00.000+1  / add a millisecond
 10:00:00.001
 @end example
 
 @anchor{negate}@section negate @result{} -x.
 
 @example
-@ -3
+ -3
 -3
-@ --3
+
+ --3
 3
-@ x:4;
-@ -x
+
+ x:4;
+ -x
 -4
-@ d:`a`b!((1 2 3);(4 5 6))
-@ -d
+
+ d:`a`b!((1 2 3);(4 5 6))
+ -d
 a|-1 -2 -3
 b|-4 -5 -6
 @end example
@@ -436,45 +439,55 @@ b|-4 -5 -6
 Subtract y from x.
 
 @example
-@ 5-2
+ 5-2
 3
-@ x:4;y:1;
-@ x-y
+
+ x:4;y:1;
+ x-y
 3
 @end example
 
 @anchor{first}@section first @result{} *x
 Return the first value of x.  
+
 @example
  *1 2 3
 1
- *((1 2);(3 4);(5 6))
+
+*((1 2);(3 4);(5 6))
 1 2
- **((1 2);(3 4);(5 6))
+
+**((1 2);(3 4);(5 6))
 1
- *`a`b!((1 2 3);(4 5 6))
+
+*`a`b!((1 2 3);(4 5 6))
 1 2 3
- *|1 2 3
+
+*|1 2 3
 3
 @end example
 
 @anchor{times}@section times @result{}  x*y
 Mutliply x and y.
+
 @example
-@ 3*4
+ 3*4
 12
-@ 3*4 5 6
+
+3*4 5 6
 12 15 18
-@ 1 2 3*4 5 6
+
+1 2 3*4 5 6
 4 10 18
 @end example
 
 @anchor{divide}@section divide @result{} x@code{%}y
 Divide x by y.
+
 @example
-@ 12%5
+ 12%5
 2.4
-@ 6%2    / division of two integers returns a float
+ 6%2    / division of two integers returns a float
 3f
 @end example
 
@@ -484,11 +497,14 @@ Given a list of boolean values return the indices where the value is non-zero.
 @example
  &001001b
 2 5
- "banana"="a"
+
+"banana"="a"
 010101b
- &"banana"="a"
+
+&"banana"="a"
 1 3 5
- x@@&30<x:12.7 0.1 35.6 -12.1 101.101  / return values greater than 30
+
+x@@&30<x:12.7 0.1 35.6 -12.1 101.101  / return values greater than 30
 35.6 101.101
 @end example
 
@@ -503,27 +519,35 @@ x[1] values of 1, ..., and x[n-1] values of n-1.
 
 @anchor{min/and}@section and @result{} x&y
 The smaller of x and y.  One can use the over adverb to determine the min value in a list.
+
 @example
-@ 3&2
+ 3&2
 2
-@ 1 2 3&4 5 6
+
+ 1 2 3&4 5 6
 1 2 3
-@ 010010b&111000b
-010000
-@ `a&`b
+
+0 1 0 0 1 0&1 1 1 0 0 0
+0 1 0 0 0 0
+
+ `a&`b
 `a
-@ &/ 3 2 10 -200 47
+
+ &/ 3 2 10 -200 47
 -200
 @end example
 
 @anchor{reverse}@section reverse @result{} |x
 Reverse the list x.
+
 @example
-@ |0 3 1 2
+ |0 3 1 2
 2 1 3 0
-@ |"banana"
+
+|"banana"
 "ananab"
-@ |((1 2 3);4;(5 6))
+
+ |((1 2 3);4;(5 6))
 5 6  
 4    
 1 2 3
@@ -533,14 +557,18 @@ To get the last element, one can take  the first element of the reverse list (*|
 
 @anchor{max/or}@section or @result{} x|y
 The greater of x and y.  Max of a list can be determine by use of the adverb over.
+
 @example
-@ 3|2
+  3|2
 3
-@ 1 2 3|4 5 6
+
+1 2 3|4 5 6
 4 5 6
-@ 101101b|000111b
-101111b
-@ |/12 2 3 10 / use over to determine the max of a list
+
+ 1 0 1 1 0 1|0 0 0 1 1 1
+1 0 1 1 1 1
+
+ |/12 2 3 10 / use over to determine the max of a list
 12
 @end example
 
@@ -567,18 +595,23 @@ a|3
 
 @anchor{less}@anchor{more}@section less (more) @result{} x < (>) y
 Return true (1b) if x is less (more) than y else false (0b).
+
 @example
-@ 3<2
+ 3<2
 0b
-@ 2<3
+
+2<3
 1b
-@ 1 2 3<4 5 6
-111b
-@ ((1 2 3);4;(5 6))<((101 0 5);12;(10 0)) / size needs to match
-101
+
+ 1 2 3<4 5 6
+1 1 1
+
+ ((1 2 3);4;(5 6))<((101 0 5);12;(10 0)) / size needs to match
+1 0 1
 1  
-10
-@ "a"<"b"
+1 0
+
+ "a"<"b"
 1b
 @end example
 
@@ -591,7 +624,7 @@ a|1 3 5
 b|0    
 n|2 4  
 
-=0 1 0 2 10 7 0 1 12
+ =0 1 0 2 10 7 0 1 12
  0|0 2 6
  1|1 7  
  2|3    
@@ -605,52 +638,60 @@ Return true (1b) if x is equal to y else false (0b).
 
 @example
  2=2
-1b
+1
 
 2=3
-0b
+0
 
 2=2.
-1b
+1
 
-"banana"="abnaoo" / check strings of equal length by character
-001100b
+ "banana"="abnaoo" / check strings of equal length by character
+0 0 1 1 0 0
 
-"banana"="apple"  / unequal length strings error
-^
-:length
+ "banana"="apple"  / unequal length strings error
+!length
 @end example
 
 @anchor{not}@section not @result{} ~x
 Boolean invert of x
+
 @example
-@ ~1b
-0b
-@ ~101b
-010b
-@ ~37 0 12
-010b
+ ~1
+0
+
+ ~1 0 1
+0 1 0
+
+ ~37 0 12
+0 1 0
 @end example
 
 @anchor{match}@section match @result{} x~y
-Return true (1b) if x matches y else false (0b).  A match happens if the two arguments evaluate to the same expression.
+Return true (1) if x matches y else false (0).  A match happens if the two arguments evaluate to the same expression.
 
 @example
  2~2
-1b
+1
+
  2~3
-0b
+0
+
  2~2.
-0b
+0
+
  "banana"~"apple"
-0b
+0
+
  `a`b~`a`b  / different than = which is element-wise comparison
-1b
+1
+
  `a`b=`a`b
-11b
+1 1
+
  f:@{x+y@}
  f~@{x+y@}
-1b
+1
 @end example
 
 @anchor{enum}@section enum @result{} !x
@@ -706,7 +747,7 @@ B[12123]     / take the 12123 element
 @end example
 
 @anchor{key}@section key @result{} x!y
-Dictionary of x (key) and y (value).  
+Create a dictionary with x (key) and y (value).  
 
 @example
  3!7
@@ -730,14 +771,17 @@ c|3
 Create a list from x
 
 @example
-@ ,3
+ ,3
 ,3
-@ ,1 2 3
+
+,1 2 3
 1 2 3
-@ 3=,3
-,1b
-@ 3~,3
-0b
+
+ 3=,3
+,1
+
+ 3~,3
+0
 @end example
 
 @anchor{cat}@section cat @result{} x,y
@@ -815,7 +859,7 @@ Cut list y by size, indices, or function x.  Also, cut table y into key x and va
 
 @anchor{cut2}Negative integer, cut y into x elements per row
 @example
- -3^101+!18  / 3 elements in each row
+ -3^101+!18  / 3 columns
 101 102 103
 104 105 106
 107 108 109
@@ -885,10 +929,8 @@ Count the number of elements in list, dictionary, or table x.
  #`a`b!((1 2 3);(4 5 6)) / count the number of keys
 2
 
- #5                      / will error as an element
-#5
-^
-!class
+ #5                      / single element is 1
+1
 @end example
 
 @anchor{take}@section [f]take @result{} x#y
@@ -2090,6 +2132,25 @@ x   |0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 1.1 ..
 sinX|0 0.09983342 0.1986693 0.2955202 0.3894183 0..
 cosX|1 0.9950042 0.9800666 0.9553365 0.921061 0.8..
 
+@end example
+
+@section Dictionary Selection @result{} x#y or x_y
+One can select a portion of a dictionary either by @ref{take} or @ref{drop} which keeps and removes keys respectively.
+
+@example
+ x:`a`b`c`d!4 2 3 1;x
+a|4
+b|2
+c|3
+d|1
+
+ `b`c#x / take
+b|2
+c|3
+
+ `b`c_x / drop
+a|4
+d|1
 @end example
 
 @section Dictionary Join @result{} x,y
