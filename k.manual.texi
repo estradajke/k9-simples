@@ -1958,6 +1958,32 @@ Lists can be indexed in different ways.  The @@ notation is often used as it's f
 0
 @end example
 
+@section List of Lists Indexing
+A list of lists can be indexed by succesive index operations left to right.
+
+@example
+ x:3^!12;x  / cut a list into a matrix or list of lists
+0 1 2 3  
+4 5 6 7  
+8 9 10 11
+
+ x[0]        / index the first element which is a list
+0 1 2 3
+
+ x[0 2]      / index two elements, the 0 and 2 elements
+0 1 2 3  
+8 9 10 11
+
+ x[0;2]      / index the first row and then 2 element of that row
+2
+
+ x[;2][0]    / index the 2 column and then the 0 row
+2
+
+ x[0][2]     / index the 0 row and then the 2 column
+2
+@end example
+
 @section Updating List Elements
 Lists can be updated elementwise by  setting the indexed element to a required value.  There is also a syntax for updating many elements and that is found at @ref{amend}.
 

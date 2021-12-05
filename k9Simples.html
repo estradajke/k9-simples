@@ -3,7 +3,7 @@
 <!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<!-- November 23, 2021
+<!-- December 5, 2021
 
 Copyright (C) 2020 John Estrada -->
 <title>Shakti (k9) tutorial</title>
@@ -2253,9 +2253,10 @@ Next: <a href="#Dictionary" accesskey="n" rel="next">Dictionary</a>, Previous: <
 <ul class="section-toc">
 <li><a href="#List-Syntax" accesskey="1">List Syntax</a></li>
 <li><a href="#List-Indexing" accesskey="2">List Indexing</a></li>
-<li><a href="#Updating-List-Elements" accesskey="3">Updating List Elements</a></li>
-<li><a href="#Function-Applied-to-Lists" accesskey="4">Function Applied to Lists</a></li>
-<li><a href="#Functions-Applied-to-Two-Lists" accesskey="5">Functions Applied to Two Lists</a></li>
+<li><a href="#List-of-Lists-Indexing" accesskey="3">List of Lists Indexing</a></li>
+<li><a href="#Updating-List-Elements" accesskey="4">Updating List Elements</a></li>
+<li><a href="#Function-Applied-to-Lists" accesskey="5">Function Applied to Lists</a></li>
+<li><a href="#Functions-Applied-to-Two-Lists" accesskey="6">Functions Applied to Two Lists</a></li>
 </ul>
 <div class="section" id="List-Syntax">
 <h3 class="section">5.1 List Syntax</h3>
@@ -2298,8 +2299,36 @@ LI
 </pre></div>
 
 </div>
+<div class="section" id="List-of-Lists-Indexing">
+<h3 class="section">5.3 List of Lists Indexing</h3>
+<p>A list of lists can be indexed by succesive index operations left to right.
+</p>
+<div class="example">
+<pre class="example"> x:3^!12;x  / cut a list into a matrix or list of lists
+0 1 2 3  
+4 5 6 7  
+8 9 10 11
+
+ x[0]        / index the first element which is a list
+0 1 2 3
+
+ x[0 2]      / index two elements, the 0 and 2 elements
+0 1 2 3  
+8 9 10 11
+
+ x[0;2]      / index the first row and then 2 element of that row
+2
+
+ x[;2][0]    / index the 2 column and then the 0 row
+2
+
+ x[0][2]     / index the 0 row and then the 2 column
+2
+</pre></div>
+
+</div>
 <div class="section" id="Updating-List-Elements">
-<h3 class="section">5.3 Updating List Elements</h3>
+<h3 class="section">5.4 Updating List Elements</h3>
 <p>Lists can be updated elementwise by  setting the indexed element to a required value.  There is also a syntax for updating many elements and that is found at <a href="#amend">amend</a>.
 </p>
 <div class="example">
@@ -2312,7 +2341,7 @@ LI
 
 </div>
 <div class="section" id="Function-Applied-to-Lists">
-<h3 class="section">5.4 Function Applied to Lists</h3>
+<h3 class="section">5.5 Function Applied to Lists</h3>
 <p>Most functions can be applied to lists without special syntax as if it was an element.
 </p>
 <div class="example">
@@ -2334,7 +2363,7 @@ LI
 
 </div>
 <div class="section" id="Functions-Applied-to-Two-Lists">
-<h3 class="section">5.5 Functions Applied to Two Lists</h3>
+<h3 class="section">5.6 Functions Applied to Two Lists</h3>
 <p>This section will focus on functions (f) that operate on two lists (x and y).  As these are internal functions, examples will be shown with infix notation (x+y) but prefix notation (+[x;y]) would  also be possible.
 </p>
 <ul class="section-toc">
@@ -2343,7 +2372,7 @@ LI
 <li><a href="#Each-List-Used-Symmetrically" accesskey="3">Each List Used Symmetrically</a></li>
 </ul>
 <div class="subsection" id="Pairwise">
-<h4 class="subsection">5.5.1 Pairwise</h4>
+<h4 class="subsection">5.6.1 Pairwise</h4>
 <p>These functions operate on list elements pairwise and thus requires that x and y are equal length.
 </p><ul>
 <li> <tt>x+y : Add</tt>
@@ -2392,7 +2421,7 @@ LI
 
 </div>
 <div class="subsection" id="Each-Element-of-One-List-Compared-to-Entire-Other-List">
-<h4 class="subsection">5.5.2 Each Element of One List Compared to Entire Other List</h4>
+<h4 class="subsection">5.6.2 Each Element of One List Compared to Entire Other List</h4>
 <p>These functions compare x[i] to y or x to y[i]. They are  not symmetric to their inputs, i.e. f[x;y] does not equal f[y;x];
 </p>
 <ul>
@@ -2420,7 +2449,7 @@ LI
 
 </div>
 <div class="subsection" id="Each-List-Used-Symmetrically">
-<h4 class="subsection">5.5.3 Each List Used Symmetrically</h4>
+<h4 class="subsection">5.6.3 Each List Used Symmetrically</h4>
 <p>This is symmetric in its inputs f[x;y]=f[y;x] and the lists are not required to be equal length.
 </p>
 <ul>
