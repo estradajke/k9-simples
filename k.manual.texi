@@ -247,7 +247,7 @@ bash-3.2$
 @c 
 
 @section Document formatting for code examples
-This document uses a number of examples to familiarize the reader with k9.  The sytax is to have input with a leading space and output without a leading space.  This follows the terminal syntax where the REPL input has space but prints output without.
+This document uses a number of examples to familiarize the reader with k9.  The syntax is to have input with a leading space and output without a leading space.  This follows the terminal syntax where the REPL input has space but prints output without.
 @example
  3+2 / this is input
 5    / this is output
@@ -307,7 +307,7 @@ In k9 as the Help/Info card shows data are nouns, functions/lists are verbs and 
 
 @node Verb
 @chapter Verbs
-This chapter covers verbs which are the core primitives of k9.  Given how different is it to call functions in k9 than in most other languages, you may have to read this chapter  a few times.  Once you can ``speak'' k9 you'll read @code{|x} better than @code{reverse(x)}.  
+This chapter covers verbs which are the core primitives of k9.  Given how different it is to call functions in k9 than in most other languages, you may have to read this chapter  a few times.  Once you can ``speak'' k9 you'll read @code{|x} better than @code{reverse(x)}.
 
 Most functions are overloaded and change depending on the number of arguments.  This can confuse new users.  Eg. @code{(1 4)++(2 3;5 6;7 8)} contains the plus symbol once as flip and then for addition.  (Remember evaluation is right to left!)
 
@@ -1361,7 +1361,7 @@ Adverbs modify verbs to operative iteratively over nouns.  This previous sentenc
 1 3 5 7
 @end example
 
-Adverbs area also used where one might use a @code{for}, @code{do}, or @code{while} loop to calculate over a list of value or recursively until a condition is met.
+Adverbs are also used where one might use a @code{for}, @code{do}, or @code{while} loop to calculate over a list of value or recursively until a condition is met.
 
 @example
  f:@{x*y@}   
@@ -1648,7 +1648,7 @@ Compute function g where g@sub{i}=g[g@sub{i-1}] and g@sub{0}=x.  If n is specifi
 @chapter Noun
 The basic data types of the k9 language are booleans, numbers (integer and float), text (characters and enumerated/name) and temporal (date and time).  It is common to have functions operate on multiple data types.
 
-In additional to the basic data types, data can be put into lists (uniform, i.e., all elements of the same type, and non-uniform), dictionaries (key-value pairs), and tables (transposed/flipped dictionaries).  Dictionaries and tables will be covered in anohter chapter.
+In additional to the basic data types, data can be put into lists (uniform, i.e., all elements of the same type, and non-uniform), dictionaries (key-value pairs), and tables (transposed/flipped dictionaries).  Dictionaries and tables will be covered in another chapter.
 
 Here are some examples of each of these types (note that 0N is a null integer and 0n a null float).
 
