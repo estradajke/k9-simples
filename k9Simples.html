@@ -3,7 +3,7 @@
 <!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<!-- December 5, 2021
+<!-- February 4, 2022
 
 Copyright (C) 2020 John Estrada -->
 <title>Shakti (k9) tutorial</title>
@@ -377,7 +377,7 @@ bash-3.2$
 </div>
 <div class="section" id="Document-formatting-for-code-examples">
 <h3 class="section">1.8 Document formatting for code examples</h3>
-<p>This document uses a number of examples to familiarize the reader with k9.  The sytax is to have input with a leading space and output without a leading space.  This follows the terminal syntax where the REPL input has space but prints output without.
+<p>This document uses a number of examples to familiarize the reader with k9.  The syntax is to have input with a leading space and output without a leading space.  This follows the terminal syntax where the REPL input has space but prints output without.
 </p><div class="example">
 <pre class="example"> 3+2 / this is input
 5    / this is output
@@ -468,7 +468,7 @@ bash-3.2$
 Next: <a href="#Adverb" accesskey="n" rel="next">Adverbs</a>, Previous: <a href="#Introduction" accesskey="p" rel="prev">Introduction</a>, Up: <a href="#Top" accesskey="u" rel="up">k9: Manual</a> &nbsp; </p>
 </div>
 <span id="Verbs"></span><h2 class="chapter">2 Verbs</h2>
-<p>This chapter covers verbs which are the core primitives of k9.  Given how different is it to call functions in k9 than in most other languages, you may have to read this chapter  a few times.  Once you can &ldquo;speak&rdquo; k9 you&rsquo;ll read <code>|x</code> better than <code>reverse(x)</code>.  
+<p>This chapter covers verbs which are the core primitives of k9.  Given how different it is to call functions in k9 than in most other languages, you may have to read this chapter  a few times.  Once you can &ldquo;speak&rdquo; k9 you&rsquo;ll read <code>|x</code> better than <code>reverse(x)</code>.
 </p>
 <p>Most functions are overloaded and change depending on the number of arguments.  This can confuse new users.  Eg. <code>(1 4)++(2 3;5 6;7 8)</code> contains the plus symbol once as flip and then for addition.  (Remember evaluation is right to left!)
 </p>
@@ -1616,7 +1616,7 @@ Next: <a href="#Noun" accesskey="n" rel="next">Noun</a>, Previous: <a href="#Ver
 1 3 5 7
 </pre></div>
 
-<p>Adverbs area also used where one might use a <code>for</code>, <code>do</code>, or <code>while</code> loop to calculate over a list of value or recursively until a condition is met.
+<p>Adverbs are also used where one might use a <code>for</code>, <code>do</code>, or <code>while</code> loop to calculate over a list of value or recursively until a condition is met.
 </p>
 <div class="example">
 <pre class="example"> f:{x*y}   
@@ -1913,7 +1913,7 @@ Next: <a href="#List" accesskey="n" rel="next">List</a>, Previous: <a href="#Adv
 <span id="Noun-1"></span><h2 class="chapter">4 Noun</h2>
 <p>The basic data types of the k9 language are booleans, numbers (integer and float), text (characters and enumerated/name) and temporal (date and time).  It is common to have functions operate on multiple data types.
 </p>
-<p>In additional to the basic data types, data can be put into lists (uniform, i.e., all elements of the same type, and non-uniform), dictionaries (key-value pairs), and tables (transposed/flipped dictionaries).  Dictionaries and tables will be covered in anohter chapter.
+<p>In additional to the basic data types, data can be put into lists (uniform, i.e., all elements of the same type, and non-uniform), dictionaries (key-value pairs), and tables (transposed/flipped dictionaries).  Dictionaries and tables will be covered in another chapter.
 </p>
 <p>Here are some examples of each of these types (note that 0N is a null integer and 0n a null float).
 </p>
