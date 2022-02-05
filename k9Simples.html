@@ -2479,7 +2479,7 @@ Next: <a href="#User-Functions" accesskey="n" rel="next">User-defined Functions<
 <p>Dictionaries in k9 are often used.  As an example from finance, market quotes and trade data are dictionaries of symbols (name keys) and market data (table values).  
 </p>
 <ul class="section-toc">
-<li><a href="#Dictionary-Creation-_21d2-x_0021y-or-_005bx_003by_005d" accesskey="1">Dictionary Creation &rArr; x!y or [x;y]</a></li>
+<li><a href="#Dictionary-Creation-_21d2-x_0021y-or-_005bxi_003ayi_005d" accesskey="1">Dictionary Creation &rArr; x!y or [x<sub>i</sub>:y<sub>i</sub>]</a></li>
 <li><a href="#Dictionary-Selection-_21d2-x_0023y-or-x_005fy" accesskey="2">Dictionary Selection &rArr; x#y or x_y</a></li>
 <li><a href="#Dictionary-Join-_21d2-x_002cy" accesskey="3">Dictionary Join &rArr; x,y</a></li>
 <li><a href="#Dictionary-Indexing-_21d2-x_0040y" accesskey="4">Dictionary Indexing &rArr; x@y</a></li>
@@ -2491,8 +2491,8 @@ Next: <a href="#User-Functions" accesskey="n" rel="next">User-defined Functions<
 <li><a href="#Functions-that-operate-on-each-value-in-a-dictionary">Functions that operate on each value in a dictionary</a></li>
 <li><a href="#Functions-that-return-over-values-from-a-dictionary">Functions that return over values from a dictionary</a></li>
 </ul>
-<div class="section" id="Dictionary-Creation-_21d2-x_0021y-or-_005bx_003by_005d">
-<h3 class="section">6.1 Dictionary Creation &rArr; x!y or [x;y]</h3>
+<div class="section" id="Dictionary-Creation-_21d2-x_0021y-or-_005bxi_003ayi_005d">
+<h3 class="section">6.1 Dictionary Creation &rArr; x!y or [x<sub>i</sub>:y<sub>i</sub>]</h3>
 
 <p>Dictionaries are created by using the key symbol or square bracket notation and listing the keys (x) and values (y).  
 </p>
@@ -2513,7 +2513,7 @@ b|10 20 30
 c|100 200 300 499
 </pre></div>
 
-<p><code>[x:y]</code>
+<p><code>[k1:v1;k2:v2;...;kn:vn]</code>
 </p>
 <div class="example">
 <pre class="example"> d0:[a37:12]

@@ -2112,7 +2112,7 @@ Dictionaries are a data type of key-value pairs typically used to retrieve the v
 
 Dictionaries in k9 are often used.  As an example from finance, market quotes and trade data are dictionaries of symbols (name keys) and market data (table values).  
 
-@section Dictionary Creation @result{} x!y or [x;y]
+@section Dictionary Creation @result{} x!y or [x@sub{i}:y@sub{i}]
 
 Dictionaries are created by using the key symbol or square bracket notation and listing the keys (x) and values (y).  
 
@@ -2133,7 +2133,7 @@ b|10 20 30
 c|100 200 300 499
 @end example
 
-@code{[x:y]}
+@code{[k1:v1;k2:v2;...;kn:vn]}
 
 @example
  d0:[a37:12]

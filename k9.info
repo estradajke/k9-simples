@@ -2061,8 +2061,8 @@ unique to avoid lookup value confusion but uniqueness is not enforced.  The valu
 
 Dictionaries in k9 are often used.  As an example from finance, market quotes and trade data are dictionaries of symbols (name keys) and market data (table values).
 
-6.1 Dictionary Creation => x!y or [x;y]
-=======================================
+6.1 Dictionary Creation => x!y or [x_{i}:y_{i}]
+===============================================
 
 Dictionaries are created by using the key symbol or square bracket notation and listing the keys (x) and values (y).
 
@@ -2081,7 +2081,7 @@ Dictionaries are created by using the key symbol or square bracket notation and 
      b|10 20 30
      c|100 200 300 499
 
-'[x:y]'
+'[k1:v1;k2:v2;...;kn:vn]'
 
       d0:[a37:12]
      a37|12
@@ -5011,115 +5011,115 @@ Ref: date48965
 Ref: datetime49426
 Node: List50340
 Node: Dictionary55421
-Node: User Functions61396
-Node: Expression64641
-Node: Named Functions66128
-Ref: Hcount66728
-Ref: Hfirst66821
-Ref: Hlast66914
-Ref: Hmin67016
-Ref: Hmax67131
-Ref: Hsum67246
-Ref: Hdot67348
-Ref: avg67507
-Ref: var67658
-Ref: dev67793
-Ref: med67835
-Ref: mode67877
-Ref: countd67923
-Ref: exp67977
-Ref: log68082
-Ref: sin68178
-Ref: cos68313
-Ref: sqr68457
-Ref: sqrt68542
-Ref: prm68642
-Ref: freq68817
-Ref: sums69173
-Ref: deltas69313
-Ref: rand69651
-Ref: has70532
-Ref: bin70826
-Ref: in71036
-Ref: within71210
-Ref: div71442
-Ref: mod71626
-Ref: bar71800
-Ref: msum71989
-Ref: mavg72126
-Ref: unkey72524
-Ref: meta72660
-Node: Knit Functions72791
-Ref: amend73086
-Ref: amend173609
-Ref: amend273858
-Ref: amend374077
-Ref: amend474382
-Ref: dmend74670
-Ref: dmend175000
-Ref: dmend375168
-Ref: dmend475333
-Node: I/O75494
-Ref: r line77838
-Ref: w line77955
-Ref: r char78335
-Ref: w char78590
-Ref: r data78952
-Ref: w data79613
-Ref: k-ipc80649
-Ref: 3set81136
-Ref: https81670
-Ref: 4get81716
-Ref: csv82382
-Ref: json82798
-Ref: compress83271
-Node: FF84197
-Ref: python84588
-Ref: nodejs85400
-Ref: ffi86304
-Ref: import86737
-Node: Tables86856
-Ref: table87482
-Ref: utable89124
-Node: kSQL89663
-Ref: select90563
-Ref: A91130
-Ref: by B91983
-Ref: where C92312
-Ref: update93154
-Ref: delete93875
-Ref: Joins94157
-Ref: union94514
-Ref: leftjoin95035
-Ref: outer95814
-Ref: asof96449
-Ref: asof+97920
-Ref: insert99138
-Ref: upsert99484
-Node: System99898
-Ref: load100372
-Ref: timing100561
-Ref: variables100902
-Ref: memory101010
-Ref: OS command101127
-Node: Control Flow101370
-Ref: cond101606
-Node: Temporal Functions101976
-Ref: .z.d102336
-Ref: .z.t102497
-Node: Errors103375
-Ref: class103823
-Ref: rank103912
-Ref: length104036
-Ref: _type104159
-Ref: domain104268
-Ref: limit104390
-Ref: nyi104601
-Ref: eparse104928
-Ref: _value105081
-Node: Examples105209
-Node: Benchmark113259
-Node: Conclusion121931
+Node: User Functions61430
+Node: Expression64675
+Node: Named Functions66162
+Ref: Hcount66762
+Ref: Hfirst66855
+Ref: Hlast66948
+Ref: Hmin67050
+Ref: Hmax67165
+Ref: Hsum67280
+Ref: Hdot67382
+Ref: avg67541
+Ref: var67692
+Ref: dev67827
+Ref: med67869
+Ref: mode67911
+Ref: countd67957
+Ref: exp68011
+Ref: log68116
+Ref: sin68212
+Ref: cos68347
+Ref: sqr68491
+Ref: sqrt68576
+Ref: prm68676
+Ref: freq68851
+Ref: sums69207
+Ref: deltas69347
+Ref: rand69685
+Ref: has70566
+Ref: bin70860
+Ref: in71070
+Ref: within71244
+Ref: div71476
+Ref: mod71660
+Ref: bar71834
+Ref: msum72023
+Ref: mavg72160
+Ref: unkey72558
+Ref: meta72694
+Node: Knit Functions72825
+Ref: amend73120
+Ref: amend173643
+Ref: amend273892
+Ref: amend374111
+Ref: amend474416
+Ref: dmend74704
+Ref: dmend175034
+Ref: dmend375202
+Ref: dmend475367
+Node: I/O75528
+Ref: r line77872
+Ref: w line77989
+Ref: r char78369
+Ref: w char78624
+Ref: r data78986
+Ref: w data79647
+Ref: k-ipc80683
+Ref: 3set81170
+Ref: https81704
+Ref: 4get81750
+Ref: csv82416
+Ref: json82832
+Ref: compress83305
+Node: FF84231
+Ref: python84622
+Ref: nodejs85434
+Ref: ffi86338
+Ref: import86771
+Node: Tables86890
+Ref: table87516
+Ref: utable89158
+Node: kSQL89697
+Ref: select90597
+Ref: A91164
+Ref: by B92017
+Ref: where C92346
+Ref: update93188
+Ref: delete93909
+Ref: Joins94191
+Ref: union94548
+Ref: leftjoin95069
+Ref: outer95848
+Ref: asof96483
+Ref: asof+97954
+Ref: insert99172
+Ref: upsert99518
+Node: System99932
+Ref: load100406
+Ref: timing100595
+Ref: variables100936
+Ref: memory101044
+Ref: OS command101161
+Node: Control Flow101404
+Ref: cond101640
+Node: Temporal Functions102010
+Ref: .z.d102370
+Ref: .z.t102531
+Node: Errors103409
+Ref: class103857
+Ref: rank103946
+Ref: length104070
+Ref: _type104193
+Ref: domain104302
+Ref: limit104424
+Ref: nyi104635
+Ref: eparse104962
+Ref: _value105115
+Node: Examples105243
+Node: Benchmark113293
+Node: Conclusion121965
 
 End Tag Table
 
