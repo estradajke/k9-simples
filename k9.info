@@ -2081,7 +2081,7 @@ Dictionaries are created by using the key symbol or square bracket notation and 
      b|10 20 30
      c|100 200 300 499
 
-'[k1:v1;k2:v2;...;kn:vn]'
+'[x_{0}:y_{0};x_{1}:y_{1};...;x_{n}:y_{n}]'
 
       d0:[a37:12]
      a37|12
@@ -5011,115 +5011,115 @@ Ref: date48965
 Ref: datetime49426
 Node: List50340
 Node: Dictionary55421
-Node: User Functions61430
-Node: Expression64675
-Node: Named Functions66162
-Ref: Hcount66762
-Ref: Hfirst66855
-Ref: Hlast66948
-Ref: Hmin67050
-Ref: Hmax67165
-Ref: Hsum67280
-Ref: Hdot67382
-Ref: avg67541
-Ref: var67692
-Ref: dev67827
-Ref: med67869
-Ref: mode67911
-Ref: countd67957
-Ref: exp68011
-Ref: log68116
-Ref: sin68212
-Ref: cos68347
-Ref: sqr68491
-Ref: sqrt68576
-Ref: prm68676
-Ref: freq68851
-Ref: sums69207
-Ref: deltas69347
-Ref: rand69685
-Ref: has70566
-Ref: bin70860
-Ref: in71070
-Ref: within71244
-Ref: div71476
-Ref: mod71660
-Ref: bar71834
-Ref: msum72023
-Ref: mavg72160
-Ref: unkey72558
-Ref: meta72694
-Node: Knit Functions72825
-Ref: amend73120
-Ref: amend173643
-Ref: amend273892
-Ref: amend374111
-Ref: amend474416
-Ref: dmend74704
-Ref: dmend175034
-Ref: dmend375202
-Ref: dmend475367
-Node: I/O75528
-Ref: r line77872
-Ref: w line77989
-Ref: r char78369
-Ref: w char78624
-Ref: r data78986
-Ref: w data79647
-Ref: k-ipc80683
-Ref: 3set81170
-Ref: https81704
-Ref: 4get81750
-Ref: csv82416
-Ref: json82832
-Ref: compress83305
-Node: FF84231
-Ref: python84622
-Ref: nodejs85434
-Ref: ffi86338
-Ref: import86771
-Node: Tables86890
-Ref: table87516
-Ref: utable89158
-Node: kSQL89697
-Ref: select90597
-Ref: A91164
-Ref: by B92017
-Ref: where C92346
-Ref: update93188
-Ref: delete93909
-Ref: Joins94191
-Ref: union94548
-Ref: leftjoin95069
-Ref: outer95848
-Ref: asof96483
-Ref: asof+97954
-Ref: insert99172
-Ref: upsert99518
-Node: System99932
-Ref: load100406
-Ref: timing100595
-Ref: variables100936
-Ref: memory101044
-Ref: OS command101161
-Node: Control Flow101404
-Ref: cond101640
-Node: Temporal Functions102010
-Ref: .z.d102370
-Ref: .z.t102531
-Node: Errors103409
-Ref: class103857
-Ref: rank103946
-Ref: length104070
-Ref: _type104193
-Ref: domain104302
-Ref: limit104424
-Ref: nyi104635
-Ref: eparse104962
-Ref: _value105115
-Node: Examples105243
-Node: Benchmark113293
-Node: Conclusion121965
+Node: User Functions61448
+Node: Expression64693
+Node: Named Functions66180
+Ref: Hcount66780
+Ref: Hfirst66873
+Ref: Hlast66966
+Ref: Hmin67068
+Ref: Hmax67183
+Ref: Hsum67298
+Ref: Hdot67400
+Ref: avg67559
+Ref: var67710
+Ref: dev67845
+Ref: med67887
+Ref: mode67929
+Ref: countd67975
+Ref: exp68029
+Ref: log68134
+Ref: sin68230
+Ref: cos68365
+Ref: sqr68509
+Ref: sqrt68594
+Ref: prm68694
+Ref: freq68869
+Ref: sums69225
+Ref: deltas69365
+Ref: rand69703
+Ref: has70584
+Ref: bin70878
+Ref: in71088
+Ref: within71262
+Ref: div71494
+Ref: mod71678
+Ref: bar71852
+Ref: msum72041
+Ref: mavg72178
+Ref: unkey72576
+Ref: meta72712
+Node: Knit Functions72843
+Ref: amend73138
+Ref: amend173661
+Ref: amend273910
+Ref: amend374129
+Ref: amend474434
+Ref: dmend74722
+Ref: dmend175052
+Ref: dmend375220
+Ref: dmend475385
+Node: I/O75546
+Ref: r line77890
+Ref: w line78007
+Ref: r char78387
+Ref: w char78642
+Ref: r data79004
+Ref: w data79665
+Ref: k-ipc80701
+Ref: 3set81188
+Ref: https81722
+Ref: 4get81768
+Ref: csv82434
+Ref: json82850
+Ref: compress83323
+Node: FF84249
+Ref: python84640
+Ref: nodejs85452
+Ref: ffi86356
+Ref: import86789
+Node: Tables86908
+Ref: table87534
+Ref: utable89176
+Node: kSQL89715
+Ref: select90615
+Ref: A91182
+Ref: by B92035
+Ref: where C92364
+Ref: update93206
+Ref: delete93927
+Ref: Joins94209
+Ref: union94566
+Ref: leftjoin95087
+Ref: outer95866
+Ref: asof96501
+Ref: asof+97972
+Ref: insert99190
+Ref: upsert99536
+Node: System99950
+Ref: load100424
+Ref: timing100613
+Ref: variables100954
+Ref: memory101062
+Ref: OS command101179
+Node: Control Flow101422
+Ref: cond101658
+Node: Temporal Functions102028
+Ref: .z.d102388
+Ref: .z.t102549
+Node: Errors103427
+Ref: class103875
+Ref: rank103964
+Ref: length104088
+Ref: _type104211
+Ref: domain104320
+Ref: limit104442
+Ref: nyi104653
+Ref: eparse104980
+Ref: _value105133
+Node: Examples105261
+Node: Benchmark113311
+Node: Conclusion121983
 
 End Tag Table
 
