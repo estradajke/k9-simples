@@ -3,7 +3,7 @@
 <!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<!-- February 5, 2022
+<!-- February 6, 2022
 
 Copyright (C) 2020 John Estrada -->
 <title>Introduction (Shakti (k9) tutorial)</title>
@@ -110,7 +110,7 @@ Next: <a href="Verb.html" accesskey="n" rel="next">Verbs</a>, Previous: <a href=
 <h3 class="section">1.1 Going fast</h3>
 <p>Imagine you have a small, on-disk, 100 million row database containing a time-series with two float values at each time.  Additionally this data could be split in three different tables covering different measurements.  Here&rsquo;s how fast k9 can read in the data from disk and compute a statistic, average difference over each table, which uses each and every row.
 </p>
-<p><b>This section requires 2: a feature only in the enterprise version of Shakti.</b>
+<p><b>This section requires 2: a feature only in the enterprise version of Shakti.  If that is not available then use the section below with 1:</b>
 </p>
 <div class="example">
 <pre class="example"> bash-3.2$ ./k
@@ -138,6 +138,30 @@ Next: <a href="Verb.html" accesskey="n" rel="next">Verbs</a>, Previous: <a href=
  L:{select t,b,a:b+s from +`t`b`s!(T;B;S)@'x}
  q:`eurusd`usdjpy`usdchf!L'_60e6 20e6 20e6
  `q 2:q
+</pre></div>
+
+<p><b>This section requires 1: a feature in all versions of Shakti.</b>
+</p>
+<div class="example">
+<pre class="example"> bash-3.2$ ./k
+ 2021.xx.xx 17GB 4core (c) shakti
+ \t select s:avg a-b from q:`csv?1:&quot;q.csv&quot;
+832
+</pre></div>
+
+<p>That&rsquo;s 832 ms to read the data in from disk and compute over all the 10 million values.  The data read and csv conversion process are the biggest bits.  
+</p>
+<p>Here is the code to generate the q.csv on-disk file.  Note in this example only 10 million lines are generated versus the 100 million lines in the previous example using 2:
+</p>
+<div class="example">
+<pre class="example"> nf:d+*|d:(|-d),d:683 954 997 1000;
+ T:^`t ?[;_8.64e7]@
+ B:100++\1e-2*-3+nf bin/:?[;*|nf]@
+ S:?[;1e-2*2,2,8#1]@
+ L:{select t,b,a:b+s from +`t`b`s!(T;B;S)x'}
+ q:L[_10e6]
+ &quot;q.csv&quot;1:`csv@q
+&quot;q.csv&quot;
 </pre></div>
 
 </div>
