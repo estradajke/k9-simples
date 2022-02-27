@@ -3002,42 +3002,42 @@ Compute the length x  moving average of list y.
 @c @end example
 @c 
 @c @anchor{keyF}@section key @result{} x key y
-Key table y with x. That is, the values in the x column become the key values.
-
-@example
- `a key [[]a:`fa`fb;b:1 2]
-a |b
---|-
-fa|1
-fb|2
-
- `a key [[]a:`fa`fb;b:((1 2 3); (4 5 6))]
-a |b    
---|-----
-fa|1 2 3
-fb|4 5 6
-@end example
-
-@anchor{unkey}@section unkey @result{} unkey x
-Remove key from table x.
-
-@example
- unkey [[a:`x`y]b:1 2]
-a b
-- -
-x 1
-y 2
-@end example
-
-@anchor{meta}@section meta @result{} meta
-Determine the types of the fields in a table.
-
-@example
- meta [[]a:`x`y;b:1 2]
-a|n
-b|i
-@end example
-
+@c Key table y with x. That is, the values in the x column become the key values.
+@c 
+@c @example
+@c  `a key [[]a:`fa`fb;b:1 2]
+@c a |b
+@c --|-
+@c fa|1
+@c fb|2
+@c 
+@c  `a key [[]a:`fa`fb;b:((1 2 3); (4 5 6))]
+@c a |b    
+@c --|-----
+@c fa|1 2 3
+@c fb|4 5 6
+@c @end example
+@c 
+@c @anchor{unkey}@section unkey @result{} unkey x
+@c Remove key from table x.
+@c 
+@c @example
+@c  unkey [[a:`x`y]b:1 2]
+@c a b
+@c - -
+@c x 1
+@c y 2
+@c @end example
+@c 
+@c @anchor{meta}@section meta @result{} meta
+@c Determine the types of the fields in a table.
+@c 
+@c @example
+@c  meta [[]a:`x`y;b:1 2]
+@c a|n
+@c b|i
+@c @end example
+@c 
 @node Knit Functions
 @chapter Knit Functions
 These functions modify lists and dictionaries given a list of indices and functions or values to replace.

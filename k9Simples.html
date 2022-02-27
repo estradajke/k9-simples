@@ -3,7 +3,7 @@
 <!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<!-- February 6, 2022
+<!-- February 16, 2022
 
 Copyright (C) 2020 John Estrada -->
 <title>Shakti (k9) tutorial</title>
@@ -3109,8 +3109,6 @@ Next: <a href="#Knit-Functions" accesskey="n" rel="next">Knit Functions</a>, Pre
 <li><a href="#bar-_21d2-x-bar-y">bar &rArr; x bar y</a></li>
 <li><a href="#msum-_21d2-x-msum-y">msum &rArr; x msum y</a></li>
 <li><a href="#mavg-_21d2-x-mavg-y">mavg &rArr; x mavg y</a></li>
-<li><a href="#unkey-_21d2-unkey-x">unkey &rArr; unkey x</a></li>
-<li><a href="#meta-_21d2-meta">meta &rArr; meta</a></li>
 </ul>
 <div class="section" id="count-_21d2-count-x">
 <h3 class="section">9.1 count &rArr; count x</h3>
@@ -3506,46 +3504,6 @@ z|1
 <div class="example">
 <pre class="example"> 3 mavg !10
 0 0.3333333 1 2 3 4 5 6 7 8
-</pre></div>
-
-<p>Key table y with x. That is, the values in the x column become the key values.
-</p>
-<div class="example">
-<pre class="example"> `a key [[]a:`fa`fb;b:1 2]
-a |b
---|-
-fa|1
-fb|2
-
- `a key [[]a:`fa`fb;b:((1 2 3); (4 5 6))]
-a |b    
---|-----
-fa|1 2 3
-fb|4 5 6
-</pre></div>
-
-<span id="unkey"></span></div>
-<div class="section" id="unkey-_21d2-unkey-x">
-<h3 class="section">9.34 unkey &rArr; unkey x</h3>
-<p>Remove key from table x.
-</p>
-<div class="example">
-<pre class="example"> unkey [[a:`x`y]b:1 2]
-a b
-- -
-x 1
-y 2
-</pre></div>
-
-<span id="meta"></span></div>
-<div class="section" id="meta-_21d2-meta">
-<h3 class="section">9.35 meta &rArr; meta</h3>
-<p>Determine the types of the fields in a table.
-</p>
-<div class="example">
-<pre class="example"> meta [[]a:`x`y;b:1 2]
-a|n
-b|i
 </pre></div>
 
 <hr>
