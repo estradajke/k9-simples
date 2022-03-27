@@ -3,7 +3,7 @@
 <!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<!-- February 16, 2022
+<!-- March 27, 2022
 
 Copyright (C) 2020 John Estrada -->
 <title>Shakti (k9) tutorial</title>
@@ -1399,11 +1399,20 @@ c|2
 4
 </pre></div>
 
-<p>Return random numbers.  Documented at <a href="#rand">rand</a>.
+<p>Return x uniform random numbers between 0 and y or from list y. Negative x values will result in no duplicates.  
 </p>
 <div class="example">
-<pre class="example"> 3?1.
+<pre class="example"> 3?1.     / values [0,1)
 0.01640292 0.8029538 0.9569196
+
+ 5?`a`b`c / sample from list y
+`a`a`c`c`b
+
+ -3?3     / no duplicates
+1 2 0
+
+ 3?3      / duplicates are possible
+2 2 1
 </pre></div>
 
 <span id="type"></span></div>
@@ -1497,7 +1506,7 @@ drow
 <pre class="example"> .(*;16;3)
 48
 
- n:3;p:+(n rand(+;-;*;%);1+n rand 10;1+n rand 10);p
+ n:3;p:+(n?(+;-;*;%);1+n?10;1+n?10);p
 % 6 3
 * 2 7
 - 5 5
@@ -1816,10 +1825,10 @@ x4 x3
 <p>Additionally eachp (&rsquo;:) is a multithreaded (parallel) each.  This will allow a function to run using multiple threads over a list of arguments.
 </p>
 <div class="example">
-<pre class="example">\t {L:xrand 1.;sum L%sin L*cos L*sin L+L*L}':8#_50e6 / multiple threads
+<pre class="example">\t {L:x?1.;sum L%sin L*cos L*sin L+L*L}':8#_50e6 / multiple threads
 831
 
-\t {L:xrand 1.;sum L%sin L*cos L*sin L+L*L}'8#_50e6  / single thread
+\t {L:x?1.;sum L%sin L*cos L*sin L+L*L}'8#_50e6  / single thread
 1202
 </pre></div>
 
@@ -3096,10 +3105,8 @@ Next: <a href="#Knit-Functions" accesskey="n" rel="next">Knit Functions</a>, Pre
 <li><a href="#sqr-_21d2-sqr-x">sqr &rArr; sqr x</a></li>
 <li><a href="#sqrt-_21d2-sqrt-x">sqrt &rArr; sqrt x</a></li>
 <li><a href="#prm-_21d2-prm-x">prm &rArr; prm x</a></li>
-<li><a href="#freq-_21d2-freq-x">freq &rArr; freq x</a></li>
 <li><a href="#sums-_21d2-sums-x">sums &rArr; sums x</a></li>
 <li><a href="#deltas-_21d2-deltas-x-and-x-deltas-y">deltas &rArr; deltas x and x deltas y</a></li>
-<li><a href="#rand-_21d2-rand-x-or-x-rand-y">rand &rArr; rand x or x rand y</a></li>
 <li><a href="#has-_21d2-x-has-y">has &rArr; x has y</a></li>
 <li><a href="#bin-_21d2-x-bin-y">bin &rArr; x bin y</a></li>
 <li><a href="#in-_21d2-x-in-y">in &rArr; x in y</a></li>
@@ -3302,41 +3309,9 @@ Next: <a href="#Knit-Functions" accesskey="n" rel="next">Knit Functions</a>, Pre
 2 2 0 1 1 0
 </pre></div>
 
-<span id="freq"></span></div>
-<div class="section" id="freq-_21d2-freq-x">
-<h3 class="section">9.21 freq &rArr; freq x</h3>
-<p>Compute the frequency of the items in list x.
-</p>
-<div class="example">
-<pre class="example"> freq &quot;abzccdefeajfekjrlke&quot;
-a|2
-b|1
-c|2
-d|1
-e|4
-f|2
-j|2
-k|2
-l|1
-r|1
-z|1
-
- freq 1000 rand 10
-0| 95
-1|106
-2| 84
-3| 98
-4|109
-5|104
-6| 94
-7| 95
-8|120
-9| 95
-</pre></div>
-
 <span id="sums"></span></div>
 <div class="section" id="sums-_21d2-sums-x">
-<h3 class="section">9.22 sums &rArr; sums x</h3>
+<h3 class="section">9.21 sums &rArr; sums x</h3>
 <p>Compute the running sum of list x.  Sames as <code>+\</code>.
 </p>
 <div class="example">
@@ -3346,7 +3321,7 @@ z|1
 
 <span id="deltas"></span></div>
 <div class="section" id="deltas-_21d2-deltas-x-and-x-deltas-y">
-<h3 class="section">9.23 deltas &rArr; deltas x and x deltas y</h3>
+<h3 class="section">9.22 deltas &rArr; deltas x and x deltas y</h3>
 <p>Compute the difference between each element in list x and the previous value.  If delta is called with two parameters then x will be used as the first value to delta instead of the default 0.
 </p>
 <div class="example">
@@ -3357,41 +3332,9 @@ z|1
 0 4 5
 </pre></div>
 
-<span id="rand"></span></div>
-<div class="section" id="rand-_21d2-rand-x-or-x-rand-y">
-<h3 class="section">9.24 rand &rArr; rand x or x rand y</h3>
-<p>Generate x random values using a uniform distribution from [0,1) or -x random values of a normal distribution (mean=0, standard deviation=1).
-</p>
-<div class="example">
-<pre class="example"> rand 5  / uniform
-0.9722755 0.8904738 0.4088624 0.1399796 0.1334422
-
- rand -5 / normal
-1.008461 0.6204548 -1.206095 -0.7168573 -0.5728272
-</pre></div>
-
-<p>Generate x random values from element or list y.  For element y, y is the exclusive upper bound (int, float, date, or time), the type (character), or the length of each element (name).  For list y, rand choose between elements of the list.
-</p>
-<div class="example">
-<pre class="example"> 5 rand 10 / values between 0 and 9
-3 0 0 7 8
-
- 4 rand &quot;a&quot; / values between &quot;A&quot; and &quot;P&quot;
-&quot;OGFN&quot;
-
- 4 rand `3 / name of length 3 using letters between &quot;A&quot; and &quot;P&quot;
-`BFH`HKH`LOO`DAC
-
- 5 rand 1 2
-1 2 2 1 1
-
-5 rand &quot;xy&quot;
-&quot;yxxxy&quot;
-</pre></div>
-
 <span id="has"></span></div>
 <div class="section" id="has-_21d2-x-has-y">
-<h3 class="section">9.25 has &rArr; x has y</h3>
+<h3 class="section">9.23 has &rArr; x has y</h3>
 <p>Determine whether vector x has element y. Simliar to <a href="#in">in</a> but with the arguments reversed.
 </p>
 <div class="example">
@@ -3410,7 +3353,7 @@ z|1
 
 <span id="bin"></span></div>
 <div class="section" id="bin-_21d2-x-bin-y">
-<h3 class="section">9.26 bin &rArr; x bin y</h3>
+<h3 class="section">9.24 bin &rArr; x bin y</h3>
 <p>Given a sorted (increasing) list x, find the greatest index, i, where y&gt;x[i].
 </p>
 <div class="example">
@@ -3422,7 +3365,7 @@ z|1
 
 <span id="in"></span></div>
 <div class="section" id="in-_21d2-x-in-y">
-<h3 class="section">9.27 in &rArr; x in y</h3>
+<h3 class="section">9.25 in &rArr; x in y</h3>
 <p>Determine if x is in list y.  Similar to <a href="#has">has</a> but arguments reversed.
 </p>
 <div class="example">
@@ -3434,7 +3377,7 @@ z|1
 
 <span id="within"></span></div>
 <div class="section" id="within-_21d2-x-within-y">
-<h3 class="section">9.28 within &rArr; x within y</h3>
+<h3 class="section">9.26 within &rArr; x within y</h3>
 <p>Test if x is equal to or greater than y[0] and less than y[1].
 </p>
 <div class="example">
@@ -3453,7 +3396,7 @@ z|1
 
 <span id="div"></span></div>
 <div class="section" id="div-_21d2-x-div-y">
-<h3 class="section">9.29 div &rArr; x div y</h3>
+<h3 class="section">9.27 div &rArr; x div y</h3>
 <p>y divided by x using integer division, taking the floor of the result.  x and y must be integers.
 </p>
 <div class="example">
@@ -3465,7 +3408,7 @@ z|1
 
 <span id="mod"></span></div>
 <div class="section" id="mod-_21d2-x-mod-y">
-<h3 class="section">9.30 mod &rArr; x mod y</h3>
+<h3 class="section">9.28 mod &rArr; x mod y</h3>
 <p>The remainder after y divided by x using integer division.  x and y must be integers.
 </p>
 <div class="example">
@@ -3477,7 +3420,7 @@ z|1
 
 <span id="bar"></span></div>
 <div class="section" id="bar-_21d2-x-bar-y">
-<h3 class="section">9.31 bar &rArr; x bar y</h3>
+<h3 class="section">9.29 bar &rArr; x bar y</h3>
 <p>For each value in y determine the maximum multiple of x that is less than or equal to each y.
 </p>
 <div class="example">
@@ -3487,7 +3430,7 @@ z|1
 
 <span id="msum"></span></div>
 <div class="section" id="msum-_21d2-x-msum-y">
-<h3 class="section">9.32 msum &rArr; x msum y</h3>
+<h3 class="section">9.30 msum &rArr; x msum y</h3>
 <p>Compute the length x  moving sum of list y.
 </p>
 <div class="example">
@@ -3498,7 +3441,7 @@ z|1
 
 <span id="mavg"></span></div>
 <div class="section" id="mavg-_21d2-x-mavg-y">
-<h3 class="section">9.33 mavg &rArr; x mavg y</h3>
+<h3 class="section">9.31 mavg &rArr; x mavg y</h3>
 <p>Compute the length x  moving average of list y.
 </p>
 <div class="example">
@@ -3873,7 +3816,7 @@ a          b          c          d          e
 </p>
 <div class="example">
 <pre class="example"> n:_1e8
- r:+`a`b`c`d`e!5^n rand 1.;r
+ r:+`a`b`c`d`e!5^n?1.;r
  `r 2:r              / write to file 
 </pre></div>
 
@@ -4692,7 +4635,7 @@ t     p   q
 <p>Scaling this up to a bigger set of tables one can see the performance of k9 on joins.
 </p>
 <div class="example">
-<pre class="example"> N:_1e8;T:[[]t:N rand `t 0;q:N rand 100];5#T
+<pre class="example"> N:_1e8;T:[[]t:N?`t 0;q:N?100];5#T
 t            q 
 ------------ --
 00:00:00.001 44
@@ -4701,7 +4644,7 @@ t            q
 00:00:00.003 35
 00:00:00.003 43
 
- n:_1e5;K:[[t:n rand `t 0]p:n rand 100];5#K
+ n:_1e5;K:[[t:n?`t 0]p:n?100];5#K
 t           |p 
 ------------|--
 00:00:00.481|54
@@ -5019,10 +4962,10 @@ time 12:34:56.789 .z.t
 <p>One could use the current time commands to measure run time but typically this is done via <code>\t</code>
 </p>
 <div class="example">
-<pre class="example"> t1:.z.v;(_2e8)rand 1.;t2:.z.v;t2-t1
+<pre class="example"> t1:.z.v;(_2e8)?1.;t2:.z.v;t2-t1
 00:00:00.609207008
 
-\t (_2e8)rand 1.
+\t (_2e8)?1.
 610
 </pre></div>
 
@@ -5128,8 +5071,8 @@ stack <a href="#eparse">parse</a> <a href="#g_t_005fvalue">value</a>
 <h3 class="section">18.6 :limit</h3>
 <p>Exceeded a limit above the software maximum, eg. writing a single file above 1GB.
 </p><div class="example">
-<pre class="example">&nbsp;n:_100e6;d:+`x`y!(!n;n rand 1.);`d 2:d
-n:_100e6;d:+`x`y!(!n;n rand 1.);`d 2:d
+<pre class="example">&nbsp;n:_100e6;d:+`x`y!(!n;n?1.);`d 2:d
+n:_100e6;d:+`x`y!(!n;n?1.);`d 2:d
 
 :limit
 </pre></div>
@@ -5202,7 +5145,7 @@ Next: <a href="#Benchmark" accesskey="n" rel="next">Benchmark</a>, Previous: <a 
 <div class="example">
 <pre class="example"> n:10
  T:^10:00+`t n?36e5  / sort randomly generated times
- B:100++\-1+n?3      / generate bids near 100, equivalent to: 100 + (+\((-1)+n rand 3))
+ B:100++\-1+n?3      / generate bids near 100, equivalent to: 100 + (+\((-1)+n?3))
  A:B+1+n?2           / generates asks 1 or 2 higher
  q:+`t`b`a!(T;B;A);q / build table t and then display
 t            b   a  
@@ -5457,11 +5400,11 @@ Next: <a href="#Conclusion" accesskey="n" rel="next">Conclusion</a>, Previous: <
 <h3 class="section">20.1 b.k</h3>
 
 <pre class="verbatim">T:{09:30:00+_6.5*3600*(!x)%x}
-P:{10+x rand 90};Z:{1000+x rand 9000};E:rand[;&quot;ABCD&quot;]
+P:{10+x?90};Z:{1000+x?9000};E:?[;&quot;ABCD&quot;]
 
 /m:2;n:6
 m:7000;n:5600000;
-S:(-m)rand `4;N:|1+_n*{x%+/x:exp 15*(!x)%x}m
+S:(-m)?`4;N:|1+_n*{x%+/x:exp 15*(!x)%x}m
 
 t:S!{+`t`e`p`z!(T;E;P;Z)@'x}'N
 q:S!{+`t`e`b!(T;E;P)@'x}'6*N
@@ -5474,7 +5417,7 @@ a:*A:100#S
 \t:10 select from t[a],`t^q a where p&lt;b
 \
 
-C:M:rand[;&quot;ABCDEFGHIJ&quot;]
+C:M:?[;&quot;ABCDEFGHIJ&quot;]
 trade(sym time exchange price size cond)
 quote(sym time exchange bid bz ask az mode)
 
@@ -5507,7 +5450,7 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 <pre class="example">&nbsp;T:{09:30:00+_6.5*3600*(!x)%x}
 &nbsp;T[13]           / 13 times with equal timesteps over [start;end)
 ^09:30:00 10:00:00 10:30:00 11:00:00 11:30:00 .. 15:00:00 15:30:00
-&nbsp;rand1_-':T[10000]  / determine the unique timesteps
+&nbsp;?1_-':T[10000]  / determine the unique timesteps
 ?00:00:02 00:00:03
 </pre></div>
 
@@ -5547,7 +5490,7 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 <p>Pulling one random table from t and showing 10 random rows.  
 </p>
 <div class="example">
-<pre class="example">&nbsp;10 rand*t@1 rand S
+<pre class="example">&nbsp;10?*t@1?S
 t        e p  z   
 -------- - -- ----
 14:37:53 D 73 4397
@@ -5568,7 +5511,7 @@ t        e p  z
 <p>q is a ntable of quotes.  The fields are time (t), exchange (e), and bid (b).  The number of quotes is set to 6*n.
 </p>
 <div class="example">
-<pre class="example">&nbsp;10 rand*q@1 rand S
+<pre class="example">&nbsp;10?*q@1?S
 t        e b 
 -------- - --
 11:31:12 A 80
@@ -5636,7 +5579,7 @@ t |z
 <p>This query takes the 100 tables from the quote ntable and returns the last bid.
 </p>
 <div class="example">
-<pre class="example">&nbsp;3 rand{select last b from x}'q A
+<pre class="example">&nbsp;3?{select last b from x}'q A
 b 
 --
 18
@@ -5653,7 +5596,7 @@ b
 <p>This query operates on one symbol from the q and t ntables, i.e. a single quote and trade table.  The quote table is joined to the trade table giving the current bid on each trade.
 </p>
 <div class="example">
-<pre class="example">&nbsp;4 rand select from t[a],`t^q a where p&lt;b
+<pre class="example">&nbsp;4?select from t[a],`t^q a where p&lt;b
 t        e p  z    b 
 -------- - -- ---- --
 13:54:35 B 94 1345 96
@@ -5719,7 +5662,7 @@ t:&quot;b  12            e&quot;  / type(2) passenger(8)
 <p>Function to generate a table of random data to represent taxi company (<b>t</b> either yellow &lsquo;y or green &lsquo;g),  paid fare (<b>p</b> 0-9), distance travelled (<b>d</b> 0-99) and address (<b>a</b> 0-100.).
 </p>
 <div class="example">
-<pre class="example"> g:{[[]t:x rand`y`g;p:x rand 9;d:x rand 100;a:x rand 100.]}
+<pre class="example"> g:{[[]t:x?`y`g;p:x?9;d:x?100;a:x?100.]}
  g 10
 t p d  a       
 - - -- --------

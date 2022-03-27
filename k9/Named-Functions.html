@@ -3,7 +3,7 @@
 <!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<!-- February 16, 2022
+<!-- March 27, 2022
 
 Copyright (C) 2020 John Estrada -->
 <title>Named Functions (Shakti (k9) tutorial)</title>
@@ -123,10 +123,8 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 <li><a href="#sqr-_21d2-sqr-x">sqr &rArr; sqr x</a></li>
 <li><a href="#sqrt-_21d2-sqrt-x">sqrt &rArr; sqrt x</a></li>
 <li><a href="#prm-_21d2-prm-x">prm &rArr; prm x</a></li>
-<li><a href="#freq-_21d2-freq-x">freq &rArr; freq x</a></li>
 <li><a href="#sums-_21d2-sums-x">sums &rArr; sums x</a></li>
 <li><a href="#deltas-_21d2-deltas-x-and-x-deltas-y">deltas &rArr; deltas x and x deltas y</a></li>
-<li><a href="#rand-_21d2-rand-x-or-x-rand-y">rand &rArr; rand x or x rand y</a></li>
 <li><a href="#has-_21d2-x-has-y">has &rArr; x has y</a></li>
 <li><a href="#bin-_21d2-x-bin-y">bin &rArr; x bin y</a></li>
 <li><a href="#in-_21d2-x-in-y">in &rArr; x in y</a></li>
@@ -329,41 +327,9 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 2 2 0 1 1 0
 </pre></div>
 
-<span id="freq"></span></div>
-<div class="section" id="freq-_21d2-freq-x">
-<h3 class="section">9.21 freq &rArr; freq x</h3>
-<p>Compute the frequency of the items in list x.
-</p>
-<div class="example">
-<pre class="example"> freq &quot;abzccdefeajfekjrlke&quot;
-a|2
-b|1
-c|2
-d|1
-e|4
-f|2
-j|2
-k|2
-l|1
-r|1
-z|1
-
- freq 1000 rand 10
-0| 95
-1|106
-2| 84
-3| 98
-4|109
-5|104
-6| 94
-7| 95
-8|120
-9| 95
-</pre></div>
-
 <span id="sums"></span></div>
 <div class="section" id="sums-_21d2-sums-x">
-<h3 class="section">9.22 sums &rArr; sums x</h3>
+<h3 class="section">9.21 sums &rArr; sums x</h3>
 <p>Compute the running sum of list x.  Sames as <code>+\</code>.
 </p>
 <div class="example">
@@ -373,7 +339,7 @@ z|1
 
 <span id="deltas"></span></div>
 <div class="section" id="deltas-_21d2-deltas-x-and-x-deltas-y">
-<h3 class="section">9.23 deltas &rArr; deltas x and x deltas y</h3>
+<h3 class="section">9.22 deltas &rArr; deltas x and x deltas y</h3>
 <p>Compute the difference between each element in list x and the previous value.  If delta is called with two parameters then x will be used as the first value to delta instead of the default 0.
 </p>
 <div class="example">
@@ -384,41 +350,9 @@ z|1
 0 4 5
 </pre></div>
 
-<span id="rand"></span></div>
-<div class="section" id="rand-_21d2-rand-x-or-x-rand-y">
-<h3 class="section">9.24 rand &rArr; rand x or x rand y</h3>
-<p>Generate x random values using a uniform distribution from [0,1) or -x random values of a normal distribution (mean=0, standard deviation=1).
-</p>
-<div class="example">
-<pre class="example"> rand 5  / uniform
-0.9722755 0.8904738 0.4088624 0.1399796 0.1334422
-
- rand -5 / normal
-1.008461 0.6204548 -1.206095 -0.7168573 -0.5728272
-</pre></div>
-
-<p>Generate x random values from element or list y.  For element y, y is the exclusive upper bound (int, float, date, or time), the type (character), or the length of each element (name).  For list y, rand choose between elements of the list.
-</p>
-<div class="example">
-<pre class="example"> 5 rand 10 / values between 0 and 9
-3 0 0 7 8
-
- 4 rand &quot;a&quot; / values between &quot;A&quot; and &quot;P&quot;
-&quot;OGFN&quot;
-
- 4 rand `3 / name of length 3 using letters between &quot;A&quot; and &quot;P&quot;
-`BFH`HKH`LOO`DAC
-
- 5 rand 1 2
-1 2 2 1 1
-
-5 rand &quot;xy&quot;
-&quot;yxxxy&quot;
-</pre></div>
-
 <span id="has"></span></div>
 <div class="section" id="has-_21d2-x-has-y">
-<h3 class="section">9.25 has &rArr; x has y</h3>
+<h3 class="section">9.23 has &rArr; x has y</h3>
 <p>Determine whether vector x has element y. Simliar to <a href="#in">in</a> but with the arguments reversed.
 </p>
 <div class="example">
@@ -437,7 +371,7 @@ z|1
 
 <span id="bin"></span></div>
 <div class="section" id="bin-_21d2-x-bin-y">
-<h3 class="section">9.26 bin &rArr; x bin y</h3>
+<h3 class="section">9.24 bin &rArr; x bin y</h3>
 <p>Given a sorted (increasing) list x, find the greatest index, i, where y&gt;x[i].
 </p>
 <div class="example">
@@ -449,7 +383,7 @@ z|1
 
 <span id="in"></span></div>
 <div class="section" id="in-_21d2-x-in-y">
-<h3 class="section">9.27 in &rArr; x in y</h3>
+<h3 class="section">9.25 in &rArr; x in y</h3>
 <p>Determine if x is in list y.  Similar to <a href="#has">has</a> but arguments reversed.
 </p>
 <div class="example">
@@ -461,7 +395,7 @@ z|1
 
 <span id="within"></span></div>
 <div class="section" id="within-_21d2-x-within-y">
-<h3 class="section">9.28 within &rArr; x within y</h3>
+<h3 class="section">9.26 within &rArr; x within y</h3>
 <p>Test if x is equal to or greater than y[0] and less than y[1].
 </p>
 <div class="example">
@@ -480,7 +414,7 @@ z|1
 
 <span id="div"></span></div>
 <div class="section" id="div-_21d2-x-div-y">
-<h3 class="section">9.29 div &rArr; x div y</h3>
+<h3 class="section">9.27 div &rArr; x div y</h3>
 <p>y divided by x using integer division, taking the floor of the result.  x and y must be integers.
 </p>
 <div class="example">
@@ -492,7 +426,7 @@ z|1
 
 <span id="mod"></span></div>
 <div class="section" id="mod-_21d2-x-mod-y">
-<h3 class="section">9.30 mod &rArr; x mod y</h3>
+<h3 class="section">9.28 mod &rArr; x mod y</h3>
 <p>The remainder after y divided by x using integer division.  x and y must be integers.
 </p>
 <div class="example">
@@ -504,7 +438,7 @@ z|1
 
 <span id="bar"></span></div>
 <div class="section" id="bar-_21d2-x-bar-y">
-<h3 class="section">9.31 bar &rArr; x bar y</h3>
+<h3 class="section">9.29 bar &rArr; x bar y</h3>
 <p>For each value in y determine the maximum multiple of x that is less than or equal to each y.
 </p>
 <div class="example">
@@ -514,7 +448,7 @@ z|1
 
 <span id="msum"></span></div>
 <div class="section" id="msum-_21d2-x-msum-y">
-<h3 class="section">9.32 msum &rArr; x msum y</h3>
+<h3 class="section">9.30 msum &rArr; x msum y</h3>
 <p>Compute the length x  moving sum of list y.
 </p>
 <div class="example">
@@ -525,7 +459,7 @@ z|1
 
 <span id="mavg"></span></div>
 <div class="section" id="mavg-_21d2-x-mavg-y">
-<h3 class="section">9.33 mavg &rArr; x mavg y</h3>
+<h3 class="section">9.31 mavg &rArr; x mavg y</h3>
 <p>Compute the length x  moving average of list y.
 </p>
 <div class="example">

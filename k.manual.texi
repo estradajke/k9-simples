@@ -1154,11 +1154,20 @@ Find the first element of x that matches y otherwise return the end of vector.
 4
 @end example
 
-Return random numbers.  Documented at @ref{rand}.
+Return x uniform random numbers between 0 and y or from list y. Negative x values will result in no duplicates.  
 
 @example
- 3?1.
+ 3?1.     / values [0,1)
 0.01640292 0.8029538 0.9569196
+
+ 5?`a`b`c / sample from list y
+`a`a`c`c`b
+
+ -3?3     / no duplicates
+1 2 0
+
+ 3?3      / duplicates are possible
+2 2 1
 @end example
 
 @anchor{type}@section type @result{} @@x
@@ -1248,7 +1257,7 @@ List of k code
  .(*;16;3)
 48
 
- n:3;p:+(n rand(+;-;*;%);1+n rand 10;1+n rand 10);p
+ n:3;p:+(n?(+;-;*;%);1+n?10;1+n?10);p
 % 6 3
 * 2 7
 - 5 5
@@ -1540,10 +1549,10 @@ x4 x3
 Additionally eachp (':) is a multithreaded (parallel) each.  This will allow a function to run using multiple threads over a list of arguments.
 
 @example
-\t @{L:xrand 1.;sum L%sin L*cos L*sin L+L*L@}':8#_50e6 / multiple threads
+\t @{L:x?1.;sum L%sin L*cos L*sin L+L*L@}':8#_50e6 / multiple threads
 831
 
-\t @{L:xrand 1.;sum L%sin L*cos L*sin L+L*L@}'8#_50e6  / single thread
+\t @{L:x?1.;sum L%sin L*cos L*sin L+L*L@}'8#_50e6  / single thread
 1202
 @end example
 
@@ -2783,36 +2792,36 @@ Write out all permutations of integers up x-1. Display them as columns.
 2 2 0 1 1 0
 @end example
 
-@anchor{freq}@section freq @result{} freq x
-Compute the frequency of the items in list x.
-
-@example
- freq "abzccdefeajfekjrlke"
-a|2
-b|1
-c|2
-d|1
-e|4
-f|2
-j|2
-k|2
-l|1
-r|1
-z|1
-
- freq 1000 rand 10
-0| 95
-1|106
-2| 84
-3| 98
-4|109
-5|104
-6| 94
-7| 95
-8|120
-9| 95
-@end example
-
+@c @anchor{freq}@section freq @result{} freq x
+@c Compute the frequency of the items in list x.
+@c 
+@c @example
+@c  freq "abzccdefeajfekjrlke"
+@c a|2
+@c b|1
+@c c|2
+@c d|1
+@c e|4
+@c f|2
+@c j|2
+@c k|2
+@c l|1
+@c r|1
+@c z|1
+@c 
+@c  freq 1000?10
+@c 0| 95
+@c 1|106
+@c 2| 84
+@c 3| 98
+@c 4|109
+@c 5|104
+@c 6| 94
+@c 7| 95
+@c 8|120
+@c 9| 95
+@c @end example
+@c 
 @anchor{sums}@section sums @result{} sums x
 Compute the running sum of list x.  Sames as @code{+\}.
 
@@ -2832,36 +2841,36 @@ Compute the difference between each element in list x and the previous value.  I
 0 4 5
 @end example
 
-@anchor{rand}@section rand @result{} rand x or x rand y
-Generate x random values using a uniform distribution from [0,1) or -x random values of a normal distribution (mean=0, standard deviation=1).
-
-@example
- rand 5  / uniform
-0.9722755 0.8904738 0.4088624 0.1399796 0.1334422
-
- rand -5 / normal
-1.008461 0.6204548 -1.206095 -0.7168573 -0.5728272
-@end example
-
-Generate x random values from element or list y.  For element y, y is the exclusive upper bound (int, float, date, or time), the type (character), or the length of each element (name).  For list y, rand choose between elements of the list.
-
-@example
- 5 rand 10 / values between 0 and 9
-3 0 0 7 8
-
- 4 rand "a" / values between "A" and "P"
-"OGFN"
-
- 4 rand `3 / name of length 3 using letters between "A" and "P"
-`BFH`HKH`LOO`DAC
-
- 5 rand 1 2
-1 2 2 1 1
-
-5 rand "xy"
-"yxxxy"
-@end example
-
+@c @anchor{rand}@section rand @result{} rand x or x rand y
+@c Generate x random values using a uniform distribution from [0,1) or -x random values of a normal distribution (mean=0, standard deviation=1).
+@c 
+@c @example
+@c  rand 5  / uniform
+@c 0.9722755 0.8904738 0.4088624 0.1399796 0.1334422
+@c 
+@c  rand -5 / normal
+@c 1.008461 0.6204548 -1.206095 -0.7168573 -0.5728272
+@c @end example
+@c 
+@c Generate x random values from element or list y.  For element y, y is the exclusive upper bound (int, float, date, or time), the type (character), or the length of each element (name).  For list y, rand choose between elements of the list.
+@c 
+@c @example
+@c  5 rand 10 / values between 0 and 9
+@c 3 0 0 7 8
+@c 
+@c  4 rand "a" / values between "A" and "P"
+@c "OGFN"
+@c 
+@c  4 rand `3 / name of length 3 using letters between "A" and "P"
+@c `BFH`HKH`LOO`DAC
+@c 
+@c  5 rand 1 2
+@c 1 2 2 1 1
+@c 
+@c 5 rand "xy"
+@c "yxxxy"
+@c @end example
+@c 
 @anchor{has}@section has @result{} x has y
 Determine whether vector x has element y. Simliar to @ref{in} but with the arguments reversed.
 
@@ -3368,7 +3377,7 @@ This example saves 100 million 8-byte doubles to file.  The session is then clos
 
 @example
  n:_1e8
- r:+`a`b`c`d`e!5^n rand 1.;r
+ r:+`a`b`c`d`e!5^n?1.;r
  `r 2:r              / write to file 
 @end example
 
@@ -4089,7 +4098,7 @@ t     p   q
 Scaling this up to a bigger set of tables one can see the performance of k9 on joins.
 
 @example
- N:_1e8;T:[[]t:N rand `t 0;q:N rand 100];5#T
+ N:_1e8;T:[[]t:N?`t 0;q:N?100];5#T
 t            q 
 ------------ --
 00:00:00.001 44
@@ -4098,7 +4107,7 @@ t            q
 00:00:00.003 35
 00:00:00.003 43
 
- n:_1e5;K:[[t:n rand `t 0]p:n rand 100];5#K
+ n:_1e5;K:[[t:n?`t 0]p:n?100];5#K
 t           |p 
 ------------|--
 00:00:00.481|54
@@ -4355,10 +4364,10 @@ These functions retrieve the time at hour (h), minute (r), second (s), milliseco
 One could use the current time commands to measure run time but typically this is done via @code{\t}
 
 @example
- t1:.z.v;(_2e8)rand 1.;t2:.z.v;t2-t1
+ t1:.z.v;(_2e8)?1.;t2:.z.v;t2-t1
 00:00:00.609207008
 
-\t (_2e8)rand 1.
+\t (_2e8)?1.
 610
 @end example
 
@@ -4433,8 +4442,8 @@ Exhausted the number of input values
 @anchor{limit}@section :limit
 Exceeded a limit above the software maximum, eg. writing a single file above 1GB.
 @example
-@ n:_100e6;d:+`x`y!(!n;n rand 1.);`d 2:d
-n:_100e6;d:+`x`y!(!n;n rand 1.);`d 2:d
+@ n:_100e6;d:+`x`y!(!n;n?1.);`d 2:d
+n:_100e6;d:+`x`y!(!n;n?1.);`d 2:d
 
 :limit
 @end example
@@ -4488,7 +4497,7 @@ Let's start with a simple example of only times (t), bid (b), and ask (a).
 @example
  n:10
  T:^10:00+`t n?36e5  / sort randomly generated times
- B:100++\-1+n?3      / generate bids near 100, equivalent to: 100 + (+\((-1)+n rand 3))
+ B:100++\-1+n?3      / generate bids near 100, equivalent to: 100 + (+\((-1)+n?3))
  A:B+1+n?2           / generates asks 1 or 2 higher
  q:+`t`b`a!(T;B;A);q / build table t and then display
 t            b   a  
@@ -4730,11 +4739,11 @@ Shakti is a fast data analysis language  and clear benchmarks illustrate this.  
 
 @verbatim
 T:{09:30:00+_6.5*3600*(!x)%x}
-P:{10+x rand 90};Z:{1000+x rand 9000};E:rand[;"ABCD"]
+P:{10+x?90};Z:{1000+x?9000};E:?[;"ABCD"]
 
 /m:2;n:6
 m:7000;n:5600000;
-S:(-m)rand `4;N:|1+_n*{x%+/x:exp 15*(!x)%x}m
+S:(-m)?`4;N:|1+_n*{x%+/x:exp 15*(!x)%x}m
 
 t:S!{+`t`e`p`z!(T;E;P;Z)@'x}'N
 q:S!{+`t`e`b!(T;E;P)@'x}'6*N
@@ -4747,7 +4756,7 @@ a:*A:100#S
 \t:10 select from t[a],`t^q a where p<b
 \
 
-C:M:rand[;"ABCDEFGHIJ"]
+C:M:?[;"ABCDEFGHIJ"]
 trade(sym time exchange price size cond)
 quote(sym time exchange bid bz ask az mode)
 
@@ -4768,7 +4777,7 @@ T is a function which generates a uniform list of times from 09:30 to 16:00.
 @ T:@{09:30:00+_6.5*3600*(!x)%x@}
 @ T[13]           / 13 times with equal timesteps over [start;end)
 ^09:30:00 10:00:00 10:30:00 11:00:00 11:30:00 .. 15:00:00 15:30:00
-@ rand1_-':T[10000]  / determine the unique timesteps
+@ ?1_-':T[10000]  / determine the unique timesteps
 ?00:00:02 00:00:03
 @end example
 
@@ -4802,7 +4811,7 @@ t is an ntable of trades.  The fields are time (t), exchange (e), price (p), and
 Pulling one random table from t and showing 10 random rows.  
 
 @example
-@ 10 rand*t@@1 rand S
+@ 10?*t@@1?S
 t        e p  z   
 -------- - -- ----
 14:37:53 D 73 4397
@@ -4821,7 +4830,7 @@ t        e p  z
 q is a ntable of quotes.  The fields are time (t), exchange (e), and bid (b).  The number of quotes is set to 6*n.
 
 @example
-@ 10 rand*q@@1 rand S
+@ 10?*q@@1?S
 t        e b 
 -------- - --
 11:31:12 A 80
@@ -4881,7 +4890,7 @@ t |z
 This query takes the 100 tables from the quote ntable and returns the last bid.
 
 @example
-@ 3 rand@{select last b from x@}'q A
+@ 3?@{select last b from x@}'q A
 b 
 --
 18
@@ -4896,7 +4905,7 @@ b
 This query operates on one symbol from the q and t ntables, i.e. a single quote and trade table.  The quote table is joined to the trade table giving the current bid on each trade.
 
 @example
-@ 4 rand select from t[a],`t^q a where p<b
+@ 4?select from t[a],`t^q a where p<b
 t        e p  z    b 
 -------- - -- ---- --
 13:54:35 B 94 1345 96
@@ -4918,7 +4927,7 @@ The taxi data analysis problem has become well known given the ease of acquiring
 Function to generate a table of random data to represent taxi company (@b{t} either yellow `y or green `g),  paid fare (@b{p} 0-9), distance travelled (@b{d} 0-99) and address (@b{a} 0-100.).
 
 @example
- g:@{[[]t:x rand`y`g;p:x rand 9;d:x rand 100;a:x rand 100.]@}
+ g:@{[[]t:x?`y`g;p:x?9;d:x?100;a:x?100.]@}
  g 10
 t p d  a       
 - - -- --------

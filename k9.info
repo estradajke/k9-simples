@@ -1,6 +1,6 @@
 This is k9.info, produced by texi2any version 6.8 from k.manual.texi.
 
-February 16, 2022
+March 27, 2022
 
 Copyright (C) 2020 John Estrada
 
@@ -1144,10 +1144,19 @@ Find the first element of x that matches y otherwise return the end of vector.
      (1;`a;"blue";7.4)?3
      4
 
-Return random numbers.  Documented at *note rand::.
+Return x uniform random numbers between 0 and y or from list y.  Negative x values will result in no duplicates.
 
-      3?1.
+      3?1.     / values [0,1)
      0.01640292 0.8029538 0.9569196
+
+      5?`a`b`c / sample from list y
+     `a`a`c`c`b
+
+      -3?3     / no duplicates
+     1 2 0
+
+      3?3      / duplicates are possible
+     2 2 1
 
 2.34 type => @x
 ===============
@@ -1233,7 +1242,7 @@ List of k code
       .(*;16;3)
      48
 
-      n:3;p:+(n rand(+;-;*;%);1+n rand 10;1+n rand 10);p
+      n:3;p:+(n?(+;-;*;%);1+n?10;1+n?10);p
      % 6 3
      * 2 7
      - 5 5
@@ -1504,10 +1513,10 @@ Compute f, a function of two arguments, over list x with optional initial value 
 
 Additionally eachp (':) is a multithreaded (parallel) each.  This will allow a function to run using multiple threads over a list of arguments.
 
-     \t {L:xrand 1.;sum L%sin L*cos L*sin L+L*L}':8#_50e6 / multiple threads
+     \t {L:x?1.;sum L%sin L*cos L*sin L+L*L}':8#_50e6 / multiple threads
      831
 
-     \t {L:xrand 1.;sum L%sin L*cos L*sin L+L*L}'8#_50e6  / single thread
+     \t {L:x?1.;sum L%sin L*cos L*sin L+L*L}'8#_50e6  / single thread
      1202
 
 3.7 eachright => f/:[x;y]
@@ -2725,37 +2734,7 @@ Write out all permutations of integers up x-1.  Display them as columns.
      1 0 2 2 0 1
      2 2 0 1 1 0
 
-9.21 freq => freq x
-===================
-
-Compute the frequency of the items in list x.
-
-      freq "abzccdefeajfekjrlke"
-     a|2
-     b|1
-     c|2
-     d|1
-     e|4
-     f|2
-     j|2
-     k|2
-     l|1
-     r|1
-     z|1
-
-      freq 1000 rand 10
-     0| 95
-     1|106
-     2| 84
-     3| 98
-     4|109
-     5|104
-     6| 94
-     7| 95
-     8|120
-     9| 95
-
-9.22 sums => sums x
+9.21 sums => sums x
 ===================
 
 Compute the running sum of list x.  Sames as '+\'.
@@ -2763,7 +2742,7 @@ Compute the running sum of list x.  Sames as '+\'.
       sums !10
      0 1 3 6 10 15 21 28 36 45
 
-9.23 deltas => deltas x and x deltas y
+9.22 deltas => deltas x and x deltas y
 ======================================
 
 Compute the difference between each element in list x and the previous value.  If delta is called with two parameters then x will be used as the first value to delta instead of the default 0.
@@ -2774,36 +2753,7 @@ Compute the difference between each element in list x and the previous value.  I
       1 deltas 1 5 10
      0 4 5
 
-9.24 rand => rand x or x rand y
-===============================
-
-Generate x random values using a uniform distribution from [0,1) or -x random values of a normal distribution (mean=0, standard deviation=1).
-
-      rand 5  / uniform
-     0.9722755 0.8904738 0.4088624 0.1399796 0.1334422
-
-      rand -5 / normal
-     1.008461 0.6204548 -1.206095 -0.7168573 -0.5728272
-
-Generate x random values from element or list y.  For element y, y is the exclusive upper bound (int, float, date, or time), the type (character), or the length of each element (name).  For list y, rand
-choose between elements of the list.
-
-      5 rand 10 / values between 0 and 9
-     3 0 0 7 8
-
-      4 rand "a" / values between "A" and "P"
-     "OGFN"
-
-      4 rand `3 / name of length 3 using letters between "A" and "P"
-     `BFH`HKH`LOO`DAC
-
-      5 rand 1 2
-     1 2 2 1 1
-
-     5 rand "xy"
-     "yxxxy"
-
-9.25 has => x has y
+9.23 has => x has y
 ===================
 
 Determine whether vector x has element y.  Simliar to *note in:: but with the arguments reversed.
@@ -2820,7 +2770,7 @@ Determine whether vector x has element y.  Simliar to *note in:: but with the ar
       (1 2;4 5 6;7 9)has(1 2;8 9)
      10b
 
-9.26 bin => x bin y
+9.24 bin => x bin y
 ===================
 
 Given a sorted (increasing) list x, find the greatest index, i, where y>x[i].
@@ -2830,7 +2780,7 @@ Given a sorted (increasing) list x, find the greatest index, i, where y>x[i].
       n bin 1.025
      3
 
-9.27 in => x in y
+9.25 in => x in y
 =================
 
 Determine if x is in list y.  Similar to *note has:: but arguments reversed.
@@ -2840,7 +2790,7 @@ Determine if x is in list y.  Similar to *note has:: but arguments reversed.
       `c in `a`b`d`e
      0b
 
-9.28 within => x within y
+9.26 within => x within y
 =========================
 
 Test if x is equal to or greater than y[0] and less than y[1].
@@ -2857,7 +2807,7 @@ Test if x is equal to or greater than y[0] and less than y[1].
      23 within 0 12
      0b
 
-9.29 div => x div y
+9.27 div => x div y
 ===================
 
 y divided by x using integer division, taking the floor of the result.  x and y must be integers.
@@ -2867,7 +2817,7 @@ y divided by x using integer division, taking the floor of the result.  x and y 
       5 div 22
      4
 
-9.30 mod => x mod y
+9.28 mod => x mod y
 ===================
 
 The remainder after y divided by x using integer division.  x and y must be integers.
@@ -2877,7 +2827,7 @@ The remainder after y divided by x using integer division.  x and y must be inte
       5 mod 22
      2
 
-9.31 bar => x bar y
+9.29 bar => x bar y
 ===================
 
 For each value in y determine the maximum multiple of x that is less than or equal to each y.
@@ -2885,7 +2835,7 @@ For each value in y determine the maximum multiple of x that is less than or equ
       10 bar 9 10 11 19 20 21
      0 10 10 10 20 20
 
-9.32 msum => x msum y
+9.30 msum => x msum y
 =====================
 
 Compute the length x moving sum of list y.
@@ -2893,7 +2843,7 @@ Compute the length x moving sum of list y.
       3 msum !10
      0 1 3 6 9 12 15 18 21 24
 
-9.33 mavg => x mavg y
+9.31 mavg => x mavg y
 =====================
 
 Compute the length x moving average of list y.
@@ -3211,7 +3161,7 @@ This example saves 100 million 8-byte doubles to file.  The session is then clos
 speeds (146 ms) given the file size (800 MB).
 
       n:_1e8
-      r:+`a`b`c`d`e!5^n rand 1.;r
+      r:+`a`b`c`d`e!5^n?1.;r
       `r 2:r              / write to file
 
 Start new session.
@@ -3919,7 +3869,7 @@ of rk.  Intuitively, rk should be the row in k that is most up-to-date with resp
 
 Scaling this up to a bigger set of tables one can see the performance of k9 on joins.
 
-      N:_1e8;T:[[]t:N rand `t 0;q:N rand 100];5#T
+      N:_1e8;T:[[]t:N?`t 0;q:N?100];5#T
      t            q
      ------------ --
      00:00:00.001 44
@@ -3928,7 +3878,7 @@ Scaling this up to a bigger set of tables one can see the performance of k9 on j
      00:00:00.003 35
      00:00:00.003 43
 
-      n:_1e5;K:[[t:n rand `t 0]p:n rand 100];5#K
+      n:_1e5;K:[[t:n?`t 0]p:n?100];5#K
      t           |p
      ------------|--
      00:00:00.481|54
@@ -4197,10 +4147,10 @@ These functions retrieve the time at hour (h), minute (r), second (s), milliseco
 
 One could use the current time commands to measure run time but typically this is done via '\t'
 
-      t1:.z.v;(_2e8)rand 1.;t2:.z.v;t2-t1
+      t1:.z.v;(_2e8)?1.;t2:.z.v;t2-t1
      00:00:00.609207008
 
-     \t (_2e8)rand 1.
+     \t (_2e8)?1.
      610
 
 17.3 Temporal dot functions
@@ -4277,8 +4227,8 @@ Exhausted the number of input values
 ===========
 
 Exceeded a limit above the software maximum, eg.  writing a single file above 1GB.
-      n:_100e6;d:+`x`y!(!n;n rand 1.);`d 2:d
-     n:_100e6;d:+`x`y!(!n;n rand 1.);`d 2:d
+      n:_100e6;d:+`x`y!(!n;n?1.);`d 2:d
+     n:_100e6;d:+`x`y!(!n;n?1.);`d 2:d
 
      :limit
 
@@ -4337,7 +4287,7 @@ Let's start with a simple example of only times (t), bid (b), and ask (a).
 
       n:10
       T:^10:00+`t n?36e5  / sort randomly generated times
-      B:100++\-1+n?3      / generate bids near 100, equivalent to: 100 + (+\((-1)+n rand 3))
+      B:100++\-1+n?3      / generate bids near 100, equivalent to: 100 + (+\((-1)+n?3))
       A:B+1+n?2           / generates asks 1 or 2 higher
       q:+`t`b`a!(T;B;A);q / build table t and then display
      t            b   a
@@ -4559,11 +4509,11 @@ Shakti is a fast data analysis language and clear benchmarks illustrate this.  T
 ========
 
 T:{09:30:00+_6.5*3600*(!x)%x}
-P:{10+x rand 90};Z:{1000+x rand 9000};E:rand[;"ABCD"]
+P:{10+x?90};Z:{1000+x?9000};E:?[;"ABCD"]
 
 /m:2;n:6
 m:7000;n:5600000;
-S:(-m)rand `4;N:|1+_n*{x%+/x:exp 15*(!x)%x}m
+S:(-m)?`4;N:|1+_n*{x%+/x:exp 15*(!x)%x}m
 
 t:S!{+`t`e`p`z!(T;E;P;Z)@'x}'N
 q:S!{+`t`e`b!(T;E;P)@'x}'6*N
@@ -4576,7 +4526,7 @@ a:*A:100#S
 \t:10 select from t[a],`t^q a where p<b
 \
 
-C:M:rand[;"ABCDEFGHIJ"]
+C:M:?[;"ABCDEFGHIJ"]
 trade(sym time exchange price size cond)
 quote(sym time exchange bid bz ask az mode)
 
@@ -4597,7 +4547,7 @@ T is a function which generates a uniform list of times from 09:30 to 16:00.
       T:{09:30:00+_6.5*3600*(!x)%x}
       T[13]           / 13 times with equal timesteps over [start;end)
      ^09:30:00 10:00:00 10:30:00 11:00:00 11:30:00 .. 15:00:00 15:30:00
-      rand1_-':T[10000]  / determine the unique timesteps
+      ?1_-':T[10000]  / determine the unique timesteps
      ?00:00:02 00:00:03
 
 20.1.2 P, Z, E
@@ -4631,7 +4581,7 @@ t is an ntable of trades.  The fields are time (t), exchange (e), price (p), and
 
 Pulling one random table from t and showing 10 random rows.
 
-      10 rand*t@1 rand S
+      10?*t@1?S
      t        e p  z
      -------- - -- ----
      14:37:53 D 73 4397
@@ -4650,7 +4600,7 @@ Pulling one random table from t and showing 10 random rows.
 
 q is a ntable of quotes.  The fields are time (t), exchange (e), and bid (b).  The number of quotes is set to 6*n.
 
-      10 rand*q@1 rand S
+      10?*q@1?S
      t        e b
      -------- - --
      11:31:12 A 80
@@ -4710,7 +4660,7 @@ This query takes 100 tables from the trade ntable and computes the sum of trade 
 
 This query takes the 100 tables from the quote ntable and returns the last bid.
 
-      3 rand{select last b from x}'q A
+      3?{select last b from x}'q A
      b
      --
      18
@@ -4725,7 +4675,7 @@ This query takes the 100 tables from the quote ntable and returns the last bid.
 
 This query operates on one symbol from the q and t ntables, i.e.  a single quote and trade table.  The quote table is joined to the trade table giving the current bid on each trade.
 
-      4 rand select from t[a],`t^q a where p<b
+      4?select from t[a],`t^q a where p<b
      t        e p  z    b
      -------- - -- ---- --
      13:54:35 B 94 1345 96
@@ -4785,7 +4735,7 @@ t:"b  12            e"  / type(2) passenger(8)
 
 Function to generate a table of random data to represent taxi company (t either yellow 'y or green 'g), paid fare (p 0-9), distance travelled (d 0-99) and address (a 0-100.).
 
-      g:{[[]t:x rand`y`g;p:x rand 9;d:x rand 100;a:x rand 100.]}
+      g:{[[]t:x?`y`g;p:x?9;d:x?100;a:x?100.]}
       g 10
      t p d  a
      - - -- --------
@@ -4919,191 +4869,189 @@ sqrt sqr exp log sin cos div mod bar in bin
 
 
 Tag Table:
-Node: Top123
-Node: Introduction5143
-Node: Verb17266
-Ref: x18836
-Ref: set18866
-Ref: flip19114
-Ref: plus19399
-Ref: negate19877
-Ref: minus20052
-Ref: first20160
-Ref: times20377
-Ref: divide20509
-Ref: where20651
-Ref: min/and21134
-Ref: reverse21410
-Ref: max/or21671
-Ref: asc21951
-Ref: desc21951
-Ref: less22342
-Ref: more22342
-Ref: group22651
-Ref: equal22951
-Ref: not23251
-Ref: match23372
-Ref: enum23753
-Ref: key25037
-Ref: enlist25273
-Ref: cat25413
-Ref: sort25750
-Ref: cut26402
-Ref: cut126739
-Ref: cut226891
-Ref: cut327072
-Ref: cut427346
-Ref: cut527526
-Ref: count27771
-Ref: take28050
-Ref: take128645
-Ref: take229014
-Ref: take329436
-Ref: take429629
-Ref: floor29988
-Ref: drop30079
-Ref: drop130593
-Ref: drop230774
-Ref: drop331050
-Ref: string31209
-Ref: parse31310
-Ref: unique31526
-Ref: find/rand31770
-Ref: type32158
-Ref: at32715
-Ref: value33204
-Ref: dot33890
-Node: Adverb35145
-Ref: each36610
-Ref: over37213
-Ref: scan37341
-Ref: join38692
-Ref: split39063
-Ref: eachprior39321
-Ref: eachright40379
-Ref: eachleft40678
-Ref: cover40968
-Ref: cscan41281
-Node: Noun42457
-Ref: Atom Types43853
-Ref: bool46468
-Ref: int47155
-Ref: flt47835
-Ref: char48237
-Ref: name48470
-Ref: uuid48710
-Ref: time48867
-Ref: date49770
-Ref: datetime50231
-Node: List51145
-Node: Dictionary56226
-Node: User Functions62253
-Node: Expression65498
-Node: Named Functions66985
-Ref: Hcount67585
-Ref: Hfirst67678
-Ref: Hlast67771
-Ref: Hmin67873
-Ref: Hmax67988
-Ref: Hsum68103
-Ref: Hdot68205
-Ref: avg68364
-Ref: var68515
-Ref: dev68650
-Ref: med68692
-Ref: mode68734
-Ref: countd68780
-Ref: exp68834
-Ref: log68939
-Ref: sin69035
-Ref: cos69170
-Ref: sqr69314
-Ref: sqrt69399
-Ref: prm69499
-Ref: freq69674
-Ref: sums70030
-Ref: deltas70170
-Ref: rand70508
-Ref: has71389
-Ref: bin71683
-Ref: in71893
-Ref: within72067
-Ref: div72299
-Ref: mod72483
-Ref: bar72657
-Ref: msum72846
-Ref: mavg72983
-Node: Knit Functions73127
-Ref: amend73422
-Ref: amend173945
-Ref: amend274194
-Ref: amend374413
-Ref: amend474718
-Ref: dmend75006
-Ref: dmend175336
-Ref: dmend375504
-Ref: dmend475669
-Node: I/O75830
-Ref: r line78174
-Ref: w line78291
-Ref: r char78671
-Ref: w char78926
-Ref: r data79288
-Ref: w data79949
-Ref: k-ipc80985
-Ref: 3set81472
-Ref: https82006
-Ref: 4get82052
-Ref: csv82718
-Ref: json83134
-Ref: compress83607
-Node: FF84533
-Ref: python84924
-Ref: nodejs85736
-Ref: ffi86640
-Ref: import87073
-Node: Tables87192
-Ref: table87818
-Ref: utable89460
-Node: kSQL89999
-Ref: select90899
-Ref: A91466
-Ref: by B92319
-Ref: where C92648
-Ref: update93490
-Ref: delete94211
-Ref: Joins94493
-Ref: union94850
-Ref: leftjoin95371
-Ref: outer96150
-Ref: asof96785
-Ref: asof+98256
-Ref: insert99474
-Ref: upsert99820
-Node: System100234
-Ref: load100708
-Ref: timing100897
-Ref: variables101238
-Ref: memory101346
-Ref: OS command101463
-Node: Control Flow101706
-Ref: cond101942
-Node: Temporal Functions102312
-Ref: .z.d102672
-Ref: .z.t102833
-Node: Errors103711
-Ref: class104159
-Ref: rank104248
-Ref: length104372
-Ref: _type104495
-Ref: domain104604
-Ref: limit104726
-Ref: nyi104937
-Ref: eparse105264
-Ref: _value105417
-Node: Examples105545
-Node: Benchmark113595
-Node: Conclusion122267
+Node: Top120
+Node: Introduction5140
+Node: Verb17263
+Ref: x18833
+Ref: set18863
+Ref: flip19111
+Ref: plus19396
+Ref: negate19874
+Ref: minus20049
+Ref: first20157
+Ref: times20374
+Ref: divide20506
+Ref: where20648
+Ref: min/and21131
+Ref: reverse21407
+Ref: max/or21668
+Ref: asc21948
+Ref: desc21948
+Ref: less22339
+Ref: more22339
+Ref: group22648
+Ref: equal22948
+Ref: not23248
+Ref: match23369
+Ref: enum23750
+Ref: key25034
+Ref: enlist25270
+Ref: cat25410
+Ref: sort25747
+Ref: cut26399
+Ref: cut126736
+Ref: cut226888
+Ref: cut327069
+Ref: cut427343
+Ref: cut527523
+Ref: count27768
+Ref: take28047
+Ref: take128642
+Ref: take229011
+Ref: take329433
+Ref: take429626
+Ref: floor29985
+Ref: drop30076
+Ref: drop130590
+Ref: drop230771
+Ref: drop331047
+Ref: string31206
+Ref: parse31307
+Ref: unique31523
+Ref: find/rand31767
+Ref: type32384
+Ref: at32941
+Ref: value33430
+Ref: dot34102
+Node: Adverb35357
+Ref: each36822
+Ref: over37425
+Ref: scan37553
+Ref: join38904
+Ref: split39275
+Ref: eachprior39533
+Ref: eachright40583
+Ref: eachleft40882
+Ref: cover41172
+Ref: cscan41485
+Node: Noun42661
+Ref: Atom Types44057
+Ref: bool46672
+Ref: int47359
+Ref: flt48039
+Ref: char48441
+Ref: name48674
+Ref: uuid48914
+Ref: time49071
+Ref: date49974
+Ref: datetime50435
+Node: List51349
+Node: Dictionary56430
+Node: User Functions62457
+Node: Expression65702
+Node: Named Functions67189
+Ref: Hcount67789
+Ref: Hfirst67882
+Ref: Hlast67975
+Ref: Hmin68077
+Ref: Hmax68192
+Ref: Hsum68307
+Ref: Hdot68409
+Ref: avg68568
+Ref: var68719
+Ref: dev68854
+Ref: med68896
+Ref: mode68938
+Ref: countd68984
+Ref: exp69038
+Ref: log69143
+Ref: sin69239
+Ref: cos69374
+Ref: sqr69518
+Ref: sqrt69603
+Ref: prm69703
+Ref: sums69878
+Ref: deltas70018
+Ref: has70356
+Ref: bin70650
+Ref: in70860
+Ref: within71034
+Ref: div71266
+Ref: mod71450
+Ref: bar71624
+Ref: msum71813
+Ref: mavg71950
+Node: Knit Functions72094
+Ref: amend72389
+Ref: amend172912
+Ref: amend273161
+Ref: amend373380
+Ref: amend473685
+Ref: dmend73973
+Ref: dmend174303
+Ref: dmend374471
+Ref: dmend474636
+Node: I/O74797
+Ref: r line77141
+Ref: w line77258
+Ref: r char77638
+Ref: w char77893
+Ref: r data78255
+Ref: w data78916
+Ref: k-ipc79947
+Ref: 3set80434
+Ref: https80968
+Ref: 4get81014
+Ref: csv81680
+Ref: json82096
+Ref: compress82569
+Node: FF83495
+Ref: python83886
+Ref: nodejs84698
+Ref: ffi85602
+Ref: import86035
+Node: Tables86154
+Ref: table86780
+Ref: utable88422
+Node: kSQL88961
+Ref: select89861
+Ref: A90428
+Ref: by B91281
+Ref: where C91610
+Ref: update92452
+Ref: delete93173
+Ref: Joins93455
+Ref: union93812
+Ref: leftjoin94333
+Ref: outer95112
+Ref: asof95747
+Ref: asof+97198
+Ref: insert98416
+Ref: upsert98762
+Node: System99176
+Ref: load99650
+Ref: timing99839
+Ref: variables100180
+Ref: memory100288
+Ref: OS command100405
+Node: Control Flow100648
+Ref: cond100884
+Node: Temporal Functions101254
+Ref: .z.d101614
+Ref: .z.t101775
+Node: Errors102645
+Ref: class103093
+Ref: rank103182
+Ref: length103306
+Ref: _type103429
+Ref: domain103538
+Ref: limit103660
+Ref: nyi103861
+Ref: eparse104188
+Ref: _value104341
+Node: Examples104469
+Node: Benchmark112514
+Node: Conclusion121117
 
 End Tag Table
 

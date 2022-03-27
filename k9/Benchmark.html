@@ -3,7 +3,7 @@
 <!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<!-- February 16, 2022
+<!-- March 27, 2022
 
 Copyright (C) 2020 John Estrada -->
 <title>Benchmark (Shakti (k9) tutorial)</title>
@@ -103,11 +103,11 @@ Next: <a href="Conclusion.html" accesskey="n" rel="next">Conclusion</a>, Previou
 <h3 class="section">20.1 b.k</h3>
 
 <pre class="verbatim">T:{09:30:00+_6.5*3600*(!x)%x}
-P:{10+x rand 90};Z:{1000+x rand 9000};E:rand[;&quot;ABCD&quot;]
+P:{10+x?90};Z:{1000+x?9000};E:?[;&quot;ABCD&quot;]
 
 /m:2;n:6
 m:7000;n:5600000;
-S:(-m)rand `4;N:|1+_n*{x%+/x:exp 15*(!x)%x}m
+S:(-m)?`4;N:|1+_n*{x%+/x:exp 15*(!x)%x}m
 
 t:S!{+`t`e`p`z!(T;E;P;Z)@'x}'N
 q:S!{+`t`e`b!(T;E;P)@'x}'6*N
@@ -120,7 +120,7 @@ a:*A:100#S
 \t:10 select from t[a],`t^q a where p&lt;b
 \
 
-C:M:rand[;&quot;ABCDEFGHIJ&quot;]
+C:M:?[;&quot;ABCDEFGHIJ&quot;]
 trade(sym time exchange price size cond)
 quote(sym time exchange bid bz ask az mode)
 
@@ -153,7 +153,7 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 <pre class="example">&nbsp;T:{09:30:00+_6.5*3600*(!x)%x}
 &nbsp;T[13]           / 13 times with equal timesteps over [start;end)
 ^09:30:00 10:00:00 10:30:00 11:00:00 11:30:00 .. 15:00:00 15:30:00
-&nbsp;rand1_-':T[10000]  / determine the unique timesteps
+&nbsp;?1_-':T[10000]  / determine the unique timesteps
 ?00:00:02 00:00:03
 </pre></div>
 
@@ -193,7 +193,7 @@ mongo        89000    1700    5800     INF  900   9.0  10.0
 <p>Pulling one random table from t and showing 10 random rows.  
 </p>
 <div class="example">
-<pre class="example">&nbsp;10 rand*t@1 rand S
+<pre class="example">&nbsp;10?*t@1?S
 t        e p  z   
 -------- - -- ----
 14:37:53 D 73 4397
@@ -214,7 +214,7 @@ t        e p  z
 <p>q is a ntable of quotes.  The fields are time (t), exchange (e), and bid (b).  The number of quotes is set to 6*n.
 </p>
 <div class="example">
-<pre class="example">&nbsp;10 rand*q@1 rand S
+<pre class="example">&nbsp;10?*q@1?S
 t        e b 
 -------- - --
 11:31:12 A 80
@@ -282,7 +282,7 @@ t |z
 <p>This query takes the 100 tables from the quote ntable and returns the last bid.
 </p>
 <div class="example">
-<pre class="example">&nbsp;3 rand{select last b from x}'q A
+<pre class="example">&nbsp;3?{select last b from x}'q A
 b 
 --
 18
@@ -299,7 +299,7 @@ b
 <p>This query operates on one symbol from the q and t ntables, i.e. a single quote and trade table.  The quote table is joined to the trade table giving the current bid on each trade.
 </p>
 <div class="example">
-<pre class="example">&nbsp;4 rand select from t[a],`t^q a where p&lt;b
+<pre class="example">&nbsp;4?select from t[a],`t^q a where p&lt;b
 t        e p  z    b 
 -------- - -- ---- --
 13:54:35 B 94 1345 96
@@ -365,7 +365,7 @@ t:&quot;b  12            e&quot;  / type(2) passenger(8)
 <p>Function to generate a table of random data to represent taxi company (<b>t</b> either yellow &lsquo;y or green &lsquo;g),  paid fare (<b>p</b> 0-9), distance travelled (<b>d</b> 0-99) and address (<b>a</b> 0-100.).
 </p>
 <div class="example">
-<pre class="example"> g:{[[]t:x rand`y`g;p:x rand 9;d:x rand 100;a:x rand 100.]}
+<pre class="example"> g:{[[]t:x?`y`g;p:x?9;d:x?100;a:x?100.]}
  g 10
 t p d  a       
 - - -- --------

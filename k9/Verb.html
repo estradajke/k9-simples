@@ -3,7 +3,7 @@
 <!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<!-- February 16, 2022
+<!-- March 27, 2022
 
 Copyright (C) 2020 John Estrada -->
 <title>Verb (Shakti (k9) tutorial)</title>
@@ -1000,11 +1000,20 @@ c|2
 4
 </pre></div>
 
-<p>Return random numbers.  Documented at <a href="Named-Functions.html#rand">rand</a>.
+<p>Return x uniform random numbers between 0 and y or from list y. Negative x values will result in no duplicates.  
 </p>
 <div class="example">
-<pre class="example"> 3?1.
+<pre class="example"> 3?1.     / values [0,1)
 0.01640292 0.8029538 0.9569196
+
+ 5?`a`b`c / sample from list y
+`a`a`c`c`b
+
+ -3?3     / no duplicates
+1 2 0
+
+ 3?3      / duplicates are possible
+2 2 1
 </pre></div>
 
 <span id="type"></span></div>
@@ -1098,7 +1107,7 @@ drow
 <pre class="example"> .(*;16;3)
 48
 
- n:3;p:+(n rand(+;-;*;%);1+n rand 10;1+n rand 10);p
+ n:3;p:+(n?(+;-;*;%);1+n?10;1+n?10);p
 % 6 3
 * 2 7
 - 5 5

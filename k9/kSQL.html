@@ -3,7 +3,7 @@
 <!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<!-- February 16, 2022
+<!-- March 27, 2022
 
 Copyright (C) 2020 John Estrada -->
 <title>kSQL (Shakti (k9) tutorial)</title>
@@ -519,7 +519,7 @@ t     p   q
 <p>Scaling this up to a bigger set of tables one can see the performance of k9 on joins.
 </p>
 <div class="example">
-<pre class="example"> N:_1e8;T:[[]t:N rand `t 0;q:N rand 100];5#T
+<pre class="example"> N:_1e8;T:[[]t:N?`t 0;q:N?100];5#T
 t            q 
 ------------ --
 00:00:00.001 44
@@ -528,7 +528,7 @@ t            q
 00:00:00.003 35
 00:00:00.003 43
 
- n:_1e5;K:[[t:n rand `t 0]p:n rand 100];5#K
+ n:_1e5;K:[[t:n?`t 0]p:n?100];5#K
 t           |p 
 ------------|--
 00:00:00.481|54
