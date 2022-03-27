@@ -1166,40 +1166,40 @@ Return x uniform random numbers between 0 and y or from list y with the same typ
 
 Return the data type of x.  Lower-case represents a single element while upper-case represents a list of type indicated.
 
-     @2
+      @2
      `i
 
-     @1.2
+      @1.2
      `f
 
-     @`a
+      @`a
      `n
 
-     @"a"
+      @"a"
      `c
 
-     @2020.04.20
+      @2020.04.20
      `d
 
-     @12:34:56.789
+      @12:34:56.789
      `t
 
-     @(1;1.2;`a;"a";2020.04.20;12:34:56.789)  / type of a list
+      @(1;1.2;`a;"a";2020.04.20;12:34:56.789)  / type of a list
      `:
 
-     @'(1;1.2;`a;"a";2020.04.20;12:34:56.789) / type of elements of the list
+      @'(1;1.2;`a;"a";2020.04.20;12:34:56.789) / type of elements of the list
      `i`f`s`c`d`t
 
-     @{x*x}
+      @{x*x}
      `.
 
-     @`a`b!1 2
+      @`a`b!1 2
      `a
 
-     @[[]x:`a`b;y:1 2]
+      @[[]x:`a`b;y:1 2]
      `A
 
-     @[x:`a`b]y:1 2]
+      @[x:`a`b]y:1 2]
      `a
 
 2.35 [f]at => x@y
@@ -4923,138 +4923,138 @@ Ref: parse31307
 Ref: unique31523
 Ref: find/rand31767
 Ref: type32449
-Ref: at33006
-Ref: value33495
-Ref: dot34167
-Node: Adverb35422
-Ref: each36887
-Ref: over37490
-Ref: scan37618
-Ref: join38969
-Ref: split39340
-Ref: eachprior39598
-Ref: eachright40648
-Ref: eachleft40947
-Ref: cover41237
-Ref: cscan41550
-Node: Noun42726
-Ref: Atom Types44122
-Ref: bool46737
-Ref: int47424
-Ref: flt48104
-Ref: char48506
-Ref: name48739
-Ref: uuid48979
-Ref: time49136
-Ref: date50039
-Ref: datetime50500
-Node: List51414
-Node: Dictionary56495
-Node: User Functions62522
-Node: Expression65767
-Node: Named Functions67254
-Ref: Hcount67854
-Ref: Hfirst67947
-Ref: Hlast68040
-Ref: Hmin68142
-Ref: Hmax68257
-Ref: Hsum68372
-Ref: Hdot68474
-Ref: avg68633
-Ref: var68784
-Ref: dev68919
-Ref: med68961
-Ref: mode69003
-Ref: countd69049
-Ref: exp69103
-Ref: log69208
-Ref: sin69304
-Ref: cos69439
-Ref: sqr69583
-Ref: sqrt69668
-Ref: prm69768
-Ref: sums69943
-Ref: deltas70083
-Ref: has70421
-Ref: bin70715
-Ref: in70925
-Ref: within71099
-Ref: div71331
-Ref: mod71515
-Ref: bar71689
-Ref: msum71878
-Ref: mavg72015
-Node: Knit Functions72159
-Ref: amend72454
-Ref: amend172977
-Ref: amend273226
-Ref: amend373445
-Ref: amend473750
-Ref: dmend74038
-Ref: dmend174368
-Ref: dmend374536
-Ref: dmend474701
-Node: I/O74862
-Ref: r line77206
-Ref: w line77323
-Ref: r char77703
-Ref: w char77958
-Ref: r data78320
-Ref: w data78981
-Ref: k-ipc80012
-Ref: 3set80499
-Ref: https81033
-Ref: 4get81079
-Ref: csv81745
-Ref: json82161
-Ref: compress82634
-Node: FF83560
-Ref: python83951
-Ref: nodejs84763
-Ref: ffi85667
-Ref: import86100
-Node: Tables86219
-Ref: table86845
-Ref: utable88487
-Node: kSQL89026
-Ref: select89926
-Ref: A90493
-Ref: by B91346
-Ref: where C91675
-Ref: update92517
-Ref: delete93238
-Ref: Joins93520
-Ref: union93877
-Ref: leftjoin94398
-Ref: outer95177
-Ref: asof95812
-Ref: asof+97263
-Ref: insert98481
-Ref: upsert98827
-Node: System99241
-Ref: load99715
-Ref: timing99904
-Ref: variables100245
-Ref: memory100353
-Ref: OS command100470
-Node: Control Flow100713
-Ref: cond100949
-Node: Temporal Functions101319
-Ref: .z.d101679
-Ref: .z.t101840
-Node: Errors102710
-Ref: class103158
-Ref: rank103247
-Ref: length103371
-Ref: _type103494
-Ref: domain103603
-Ref: limit103725
-Ref: nyi103926
-Ref: eparse104253
-Ref: _value104406
-Node: Examples104534
-Node: Benchmark112579
-Node: Conclusion121182
+Ref: at33018
+Ref: value33507
+Ref: dot34179
+Node: Adverb35434
+Ref: each36899
+Ref: over37502
+Ref: scan37630
+Ref: join38981
+Ref: split39352
+Ref: eachprior39610
+Ref: eachright40660
+Ref: eachleft40959
+Ref: cover41249
+Ref: cscan41562
+Node: Noun42738
+Ref: Atom Types44134
+Ref: bool46749
+Ref: int47436
+Ref: flt48116
+Ref: char48518
+Ref: name48751
+Ref: uuid48991
+Ref: time49148
+Ref: date50051
+Ref: datetime50512
+Node: List51426
+Node: Dictionary56507
+Node: User Functions62534
+Node: Expression65779
+Node: Named Functions67266
+Ref: Hcount67866
+Ref: Hfirst67959
+Ref: Hlast68052
+Ref: Hmin68154
+Ref: Hmax68269
+Ref: Hsum68384
+Ref: Hdot68486
+Ref: avg68645
+Ref: var68796
+Ref: dev68931
+Ref: med68973
+Ref: mode69015
+Ref: countd69061
+Ref: exp69115
+Ref: log69220
+Ref: sin69316
+Ref: cos69451
+Ref: sqr69595
+Ref: sqrt69680
+Ref: prm69780
+Ref: sums69955
+Ref: deltas70095
+Ref: has70433
+Ref: bin70727
+Ref: in70937
+Ref: within71111
+Ref: div71343
+Ref: mod71527
+Ref: bar71701
+Ref: msum71890
+Ref: mavg72027
+Node: Knit Functions72171
+Ref: amend72466
+Ref: amend172989
+Ref: amend273238
+Ref: amend373457
+Ref: amend473762
+Ref: dmend74050
+Ref: dmend174380
+Ref: dmend374548
+Ref: dmend474713
+Node: I/O74874
+Ref: r line77218
+Ref: w line77335
+Ref: r char77715
+Ref: w char77970
+Ref: r data78332
+Ref: w data78993
+Ref: k-ipc80024
+Ref: 3set80511
+Ref: https81045
+Ref: 4get81091
+Ref: csv81757
+Ref: json82173
+Ref: compress82646
+Node: FF83572
+Ref: python83963
+Ref: nodejs84775
+Ref: ffi85679
+Ref: import86112
+Node: Tables86231
+Ref: table86857
+Ref: utable88499
+Node: kSQL89038
+Ref: select89938
+Ref: A90505
+Ref: by B91358
+Ref: where C91687
+Ref: update92529
+Ref: delete93250
+Ref: Joins93532
+Ref: union93889
+Ref: leftjoin94410
+Ref: outer95189
+Ref: asof95824
+Ref: asof+97275
+Ref: insert98493
+Ref: upsert98839
+Node: System99253
+Ref: load99727
+Ref: timing99916
+Ref: variables100257
+Ref: memory100365
+Ref: OS command100482
+Node: Control Flow100725
+Ref: cond100961
+Node: Temporal Functions101331
+Ref: .z.d101691
+Ref: .z.t101852
+Node: Errors102722
+Ref: class103170
+Ref: rank103259
+Ref: length103383
+Ref: _type103506
+Ref: domain103615
+Ref: limit103737
+Ref: nyi103938
+Ref: eparse104265
+Ref: _value104418
+Node: Examples104546
+Node: Benchmark112591
+Node: Conclusion121194
 
 End Tag Table
 
