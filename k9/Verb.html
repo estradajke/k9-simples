@@ -1000,16 +1000,18 @@ c|2
 4
 </pre></div>
 
-<p>Return x uniform random numbers between 0 and y or from list y. Negative x values will result in no duplicates.  
+<p>Return x uniform random numbers between 0 and y or from list y with the same type as y. If x is negative then values are unique.  
 </p>
 <div class="example">
-<pre class="example"> 3?1.     / values [0,1)
+<pre class="example"> 3?1.     / values [0,1.)
 0.01640292 0.8029538 0.9569196
 
- 5?`a`b`c / sample from list y
+ 3?10     / values [0,9)
+
+5?`a`b`c / sample from list y
 `a`a`c`c`b
 
- -3?3     / no duplicates
+ -3?3     / unique values
 1 2 0
 
  3?3      / duplicates are possible

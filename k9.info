@@ -1144,15 +1144,17 @@ Find the first element of x that matches y otherwise return the end of vector.
      (1;`a;"blue";7.4)?3
      4
 
-Return x uniform random numbers between 0 and y or from list y.  Negative x values will result in no duplicates.
+Return x uniform random numbers between 0 and y or from list y with the same type as y.  If x is negative then values are unique.
 
-      3?1.     / values [0,1)
+      3?1.     / values [0,1.)
      0.01640292 0.8029538 0.9569196
 
-      5?`a`b`c / sample from list y
+      3?10     / values [0,9)
+
+     5?`a`b`c / sample from list y
      `a`a`c`c`b
 
-      -3?3     / no duplicates
+      -3?3     / unique values
      1 2 0
 
       3?3      / duplicates are possible
@@ -4919,139 +4921,139 @@ Ref: string31206
 Ref: parse31307
 Ref: unique31523
 Ref: find/rand31767
-Ref: type32384
-Ref: at32941
-Ref: value33430
-Ref: dot34102
-Node: Adverb35357
-Ref: each36822
-Ref: over37425
-Ref: scan37553
-Ref: join38904
-Ref: split39275
-Ref: eachprior39533
-Ref: eachright40583
-Ref: eachleft40882
-Ref: cover41172
-Ref: cscan41485
-Node: Noun42661
-Ref: Atom Types44057
-Ref: bool46672
-Ref: int47359
-Ref: flt48039
-Ref: char48441
-Ref: name48674
-Ref: uuid48914
-Ref: time49071
-Ref: date49974
-Ref: datetime50435
-Node: List51349
-Node: Dictionary56430
-Node: User Functions62457
-Node: Expression65702
-Node: Named Functions67189
-Ref: Hcount67789
-Ref: Hfirst67882
-Ref: Hlast67975
-Ref: Hmin68077
-Ref: Hmax68192
-Ref: Hsum68307
-Ref: Hdot68409
-Ref: avg68568
-Ref: var68719
-Ref: dev68854
-Ref: med68896
-Ref: mode68938
-Ref: countd68984
-Ref: exp69038
-Ref: log69143
-Ref: sin69239
-Ref: cos69374
-Ref: sqr69518
-Ref: sqrt69603
-Ref: prm69703
-Ref: sums69878
-Ref: deltas70018
-Ref: has70356
-Ref: bin70650
-Ref: in70860
-Ref: within71034
-Ref: div71266
-Ref: mod71450
-Ref: bar71624
-Ref: msum71813
-Ref: mavg71950
-Node: Knit Functions72094
-Ref: amend72389
-Ref: amend172912
-Ref: amend273161
-Ref: amend373380
-Ref: amend473685
-Ref: dmend73973
-Ref: dmend174303
-Ref: dmend374471
-Ref: dmend474636
-Node: I/O74797
-Ref: r line77141
-Ref: w line77258
-Ref: r char77638
-Ref: w char77893
-Ref: r data78255
-Ref: w data78916
-Ref: k-ipc79947
-Ref: 3set80434
-Ref: https80968
-Ref: 4get81014
-Ref: csv81680
-Ref: json82096
-Ref: compress82569
-Node: FF83495
-Ref: python83886
-Ref: nodejs84698
-Ref: ffi85602
-Ref: import86035
-Node: Tables86154
-Ref: table86780
-Ref: utable88422
-Node: kSQL88961
-Ref: select89861
-Ref: A90428
-Ref: by B91281
-Ref: where C91610
-Ref: update92452
-Ref: delete93173
-Ref: Joins93455
-Ref: union93812
-Ref: leftjoin94333
-Ref: outer95112
-Ref: asof95747
-Ref: asof+97198
-Ref: insert98416
-Ref: upsert98762
-Node: System99176
-Ref: load99650
-Ref: timing99839
-Ref: variables100180
-Ref: memory100288
-Ref: OS command100405
-Node: Control Flow100648
-Ref: cond100884
-Node: Temporal Functions101254
-Ref: .z.d101614
-Ref: .z.t101775
-Node: Errors102645
-Ref: class103093
-Ref: rank103182
-Ref: length103306
-Ref: _type103429
-Ref: domain103538
-Ref: limit103660
-Ref: nyi103861
-Ref: eparse104188
-Ref: _value104341
-Node: Examples104469
-Node: Benchmark112514
-Node: Conclusion121117
+Ref: type32432
+Ref: at32989
+Ref: value33478
+Ref: dot34150
+Node: Adverb35405
+Ref: each36870
+Ref: over37473
+Ref: scan37601
+Ref: join38952
+Ref: split39323
+Ref: eachprior39581
+Ref: eachright40631
+Ref: eachleft40930
+Ref: cover41220
+Ref: cscan41533
+Node: Noun42709
+Ref: Atom Types44105
+Ref: bool46720
+Ref: int47407
+Ref: flt48087
+Ref: char48489
+Ref: name48722
+Ref: uuid48962
+Ref: time49119
+Ref: date50022
+Ref: datetime50483
+Node: List51397
+Node: Dictionary56478
+Node: User Functions62505
+Node: Expression65750
+Node: Named Functions67237
+Ref: Hcount67837
+Ref: Hfirst67930
+Ref: Hlast68023
+Ref: Hmin68125
+Ref: Hmax68240
+Ref: Hsum68355
+Ref: Hdot68457
+Ref: avg68616
+Ref: var68767
+Ref: dev68902
+Ref: med68944
+Ref: mode68986
+Ref: countd69032
+Ref: exp69086
+Ref: log69191
+Ref: sin69287
+Ref: cos69422
+Ref: sqr69566
+Ref: sqrt69651
+Ref: prm69751
+Ref: sums69926
+Ref: deltas70066
+Ref: has70404
+Ref: bin70698
+Ref: in70908
+Ref: within71082
+Ref: div71314
+Ref: mod71498
+Ref: bar71672
+Ref: msum71861
+Ref: mavg71998
+Node: Knit Functions72142
+Ref: amend72437
+Ref: amend172960
+Ref: amend273209
+Ref: amend373428
+Ref: amend473733
+Ref: dmend74021
+Ref: dmend174351
+Ref: dmend374519
+Ref: dmend474684
+Node: I/O74845
+Ref: r line77189
+Ref: w line77306
+Ref: r char77686
+Ref: w char77941
+Ref: r data78303
+Ref: w data78964
+Ref: k-ipc79995
+Ref: 3set80482
+Ref: https81016
+Ref: 4get81062
+Ref: csv81728
+Ref: json82144
+Ref: compress82617
+Node: FF83543
+Ref: python83934
+Ref: nodejs84746
+Ref: ffi85650
+Ref: import86083
+Node: Tables86202
+Ref: table86828
+Ref: utable88470
+Node: kSQL89009
+Ref: select89909
+Ref: A90476
+Ref: by B91329
+Ref: where C91658
+Ref: update92500
+Ref: delete93221
+Ref: Joins93503
+Ref: union93860
+Ref: leftjoin94381
+Ref: outer95160
+Ref: asof95795
+Ref: asof+97246
+Ref: insert98464
+Ref: upsert98810
+Node: System99224
+Ref: load99698
+Ref: timing99887
+Ref: variables100228
+Ref: memory100336
+Ref: OS command100453
+Node: Control Flow100696
+Ref: cond100932
+Node: Temporal Functions101302
+Ref: .z.d101662
+Ref: .z.t101823
+Node: Errors102693
+Ref: class103141
+Ref: rank103230
+Ref: length103354
+Ref: _type103477
+Ref: domain103586
+Ref: limit103708
+Ref: nyi103909
+Ref: eparse104236
+Ref: _value104389
+Node: Examples104517
+Node: Benchmark112562
+Node: Conclusion121165
 
 End Tag Table
 
