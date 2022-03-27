@@ -1157,18 +1157,18 @@ Find the first element of x that matches y otherwise return the end of vector.
 Return x uniform random numbers between 0 and y or from list y with the same type as y. If x is negative then values are unique.  
 
 @example
- 3?1.     / values [0,1.)
+ 3?1.      / values [0,1.)
 0.01640292 0.8029538 0.9569196
 
- 3?10     / values [0,9)
+ 3?10      / values [0,9)
 
-5?`a`b`c / sample from list y
+ 5?`a`b`c  / sample from list y
 `a`a`c`c`b
 
- -3?3     / unique values
+ -3?3      / unique values
 1 2 0
 
- 3?3      / duplicates are possible
+ 3?3       / duplicates are possible
 2 2 1
 @end example
 
