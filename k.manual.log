@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdfetex 2020.5.15)  27 MAR 2022 12:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdfetex 2020.5.15)  10 MAR 2023 22:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**\input ./k.manual.texi
+**\input ./k.manual.texi \input ./k.manual.texi
 (./k.manual.texi (/Users/estradaj/GitHub/k9-simples/texinfo.tex
 Loading texinfo [version 2019-09-20.22]:
 \outerhsize=\dimen16
@@ -152,29 +152,16 @@ texinfo.tex: doing @include of k.d2
 
 
 (/Users/estradaj/GitHub/k9-simples/k.d2)
-Underfull \hbox (badness 10000) in paragraph at lines 1--37
-[][][]@texttt [python], page 69[][]: import k;k.k('2+3')   shakti.com/[][][pyth
-on],
+Overfull \hbox (35.52634pt too wide) in paragraph at lines 1--37
+[]@texttt ["Tdtcnghije"]2'`t.[][][csv], page 67[][];[#!@*.[^]]`t.[][][csv], pag
+e 67[][];1'stdout;2'stderr[]|
 
 @hbox(7.60416+2.43333)x433.62
 .@hbox(0.0+0.0)x15.0
-.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{python}
-.@pdfliteral{0 0 0 rg 0 0 0 RG}
 .@texttt [
-.@texttt p
-.etc.
-
-
-Overfull \hbox (3.28027pt too wide) in paragraph at lines 1--37
-[][][]@texttt [nodejs], page 69[][]: require('k').k('2+3') shakti.com/[][][node
-js], page 69[][]/k.node[]|
-
-@hbox(7.60416+2.43333)x433.62
-.@hbox(0.0+0.0)x0.0
-.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{nodejs}
-.@pdfliteral{0 0 0 rg 0 0 0 RG}
-.@texttt [
-.@texttt n
+.@texttt "
+.@texttt T
+.@texttt d
 .etc.
 
 
@@ -187,361 +174,158 @@ Underfull \hbox (badness 10000) in paragraph at lines 1--37
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--37
-[]@texttt `[][][csv], page 67[][]?`[][][csv], page 67,[][] t     /also `[][][js
-on], page 67[][]?`[][][json],
+[]@texttt select [][][count], page 18,[][] last min max sum avg var dev .. by .
+.;in log
 
 @hbox(7.60416+2.43333)x433.62
 .@hbox(0.0+0.0)x0.0
-.@texttt `
-.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{csv}
-.@pdfliteral{0 0 0 rg 0 0 0 RG}
-.@texttt [
+.@texttt s
+.@texttt e
+.@texttt l
+.@texttt e
 .etc.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--37
-[]@texttt `[][][compress], page 67[][]?`[][][compress], page 67,[][] x     /als
-o `[][][compress],
-
-@hbox(7.60416+2.43333)x433.62
-.@hbox(0.0+0.0)x0.0
-.@texttt `
-.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{compress}
-.@pdfliteral{0 0 0 rg 0 0 0 RG}
-.@texttt [
-.etc.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--37
-[][][]@texttt Chapter 2 [Verb], page 7,[][]                    [][]Chapter 3 [A
-dverb], page 27,[][]
-
-@hbox(7.60416+2.43333)x433.62
-.@hbox(0.0+0.0)x0.0
-.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{Verb}
-.@pdfliteral{0 0 0 rg 0 0 0 RG}
-.@texttt C
-.@texttt h
-.etc.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--37
-[]@texttt : x         y          f' [][][each], page 27,[][]                 ch
-ar " ab"
-
-@hbox(7.60416+2.43333)x433.62
-.@hbox(0.0+0.0)x0.0
-.@texttt :
-.@glue 5.74869
-.@texttt x
-.@glue 5.74869
-.etc.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--37
-[]@texttt + [][][flip], page 8,[][]      [][][plus], page 8,[][]    [x]f/ [][][
-cover], page 31,[][]      c/
+[]@texttt +  +      [][][flip], page 8,[][]         ' [][][each], page 27,[][] 
+       [][][char],
 
 @hbox(7.60416+2.43333)x433.62
 .@hbox(0.0+0.0)x0.0
 .@texttt +
 .@glue 5.74869
-.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{flip}
-.@pdfliteral{0 0 0 rg 0 0 0 RG}
-.etc.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--37
-[]@texttt - [][][minus], page 9,[][]     [][][minus], page 9,[][]   [x]f\ [][][
-cscan], page 31,[][]      c\
-
-@hbox(7.60416+2.43333)x433.62
-.@hbox(0.0+0.0)x0.0
-.@texttt -
 .@glue 5.74869
-.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{minus}
-.@pdfliteral{0 0 0 rg 0 0 0 RG}
+.@texttt +
 .etc.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--37
-[][]@texttt [split], page 29,[][]   [][][int], page 34,[][]  2 3               
- [][][variables],
-
-@hbox(7.60416+2.43333)x433.62
-.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{split}
-.@pdfliteral{0 0 0 rg 0 0 0 RG}
-.@texttt [
-.@texttt s
-.@texttt p
-.etc.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--37
-[]@texttt * [][][first], page 9,[][]     [][][times], page 10,[][]   [y]f':[][]
-[eachprior], page 30,[][]
+[]@texttt *  *      [][][first], page 9,[][]        \ [][][cscan], page 31,[][]
+        [][][bool],
 
 @hbox(7.60416+2.43333)x433.62
 .@hbox(0.0+0.0)x0.0
 .@texttt *
 .@glue 5.74869
-.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{first}
-.@pdfliteral{0 0 0 rg 0 0 0 RG}
-.etc.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--37
-[]@texttt %           [][][divide], page 10,[][]     f/:[][][eachright], page 3
-0,[][] g/:over
-
-@hbox(7.60416+2.43333)x433.62
-.@hbox(0.0+0.0)x0.0
-.@texttt %
 .@glue 5.74869
-.@glue 5.74869
-.@glue 5.74869
+.@texttt *
 .etc.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--37
-[]@texttt & [][][where], page 10,[][]     [][][min/and], page 11,[][]    f\:[][
-][eachleft], page 31,[][]
-
-@hbox(7.60416+2.43333)x433.62
-.@hbox(0.0+0.0)x0.0
-.@texttt &
-.@glue 5.74869
-.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{where}
-.@pdfliteral{0 0 0 rg 0 0 0 RG}
-.etc.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--37
-[]@texttt < [][][asc], page 12,[][]       [][][less], page 12,[][]       [][]Ch
-apter 11 [I/O], page 63,[][]
-
-@hbox(7.60416+2.43333)x433.62
-.@hbox(0.0+0.0)x0.0
-.@texttt <
-.@glue 5.74869
-.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{asc}
-.@pdfliteral{0 0 0 rg 0 0 0 RG}
-.etc.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--37
-[]@texttt > [][][desc], page 12,[][]      [][][more], page 12,[][]       0: [][
-][r line], page 64[][]/[][][w
-
-@hbox(7.60416+2.43333)x433.62
-.@hbox(0.0+0.0)x0.0
-.@texttt >
-.@glue 5.74869
-.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{desc}
-.@pdfliteral{0 0 0 rg 0 0 0 RG}
-.etc.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--37
-[]@texttt = [][][group], page 12,[][]     [][][equal], page 13,[][]      1: [][
-][r char], page 64[][]/[][][w
-
-@hbox(7.60416+2.43333)x433.62
-.@hbox(0.0+0.0)x0.0
-.@texttt =
-.@glue 5.74869
-.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{group}
-.@pdfliteral{0 0 0 rg 0 0 0 RG}
-.etc.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--37
-@texttt char], page 64,[][] char             [][]Chapter 6 [Dictionary], page 4
-3,[][]
-
-@hbox(7.60416+2.43333)x433.62
-.@texttt c
-.@texttt h
-.@texttt a
-.@texttt r
-.@texttt ]
-.etc.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--37
-[]@texttt ~ [][][not], page 13,[][]       [][][match], page 13,[][]     *2: [][
-][r data], page 65[][]/[][][w
-
-@hbox(7.60416+2.43333)x433.62
-.@hbox(0.0+0.0)x0.0
-.@texttt ~
-.@glue 5.74869
-.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{not}
-.@pdfliteral{0 0 0 rg 0 0 0 RG}
-.etc.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--37
-@texttt data], page 65,[][] data             [][]Chapter 7 [User Functions], pa
-ge 49,[][]
-
-@hbox(7.60416+2.43333)x433.62
-.@texttt d
-.@texttt a
-.@texttt t
-.@texttt a
-.@texttt ]
-.etc.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--37
-[]@texttt ! [][][key], page 15,[][]       [][][key], page 15,[][]       *3: [][
-][k-ipc], page 66,[][] [][][3set],
+[]@texttt !  mod    [][][key], page 15,[][]          [][]Chapter 15 [System], p
+age 84,[][]
 
 @hbox(7.60416+2.43333)x433.62
 .@hbox(0.0+0.0)x0.0
 .@texttt !
 .@glue 5.74869
-.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{key}
-.@pdfliteral{0 0 0 rg 0 0 0 RG}
-.etc.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--37
-[]@texttt , [][][enlist], page 15,[][]    [][][cat], page 16,[][]       *4: [][
-][https], page 66,[][] [][][4get],
-
-@hbox(7.60416+2.43333)x433.62
-.@hbox(0.0+0.0)x0.0
-.@texttt ,
 .@glue 5.74869
-.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{enlist}
-.@pdfliteral{0 0 0 rg 0 0 0 RG}
-.etc.
-
-
-Overfull \hbox (3.28027pt too wide) in paragraph at lines 1--37
-[]@texttt ? [][][unique], page 22,[][]    [][][find/rand], page 22,[][]        
-                       []|
-
-@hbox(7.60416+2.43333)x433.62
-.@hbox(0.0+0.0)x0.0
-.@texttt ?
-.@glue 5.74869
-.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{unique}
-.@pdfliteral{0 0 0 rg 0 0 0 RG}
-.etc.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--37
-
-
-@hbox(0.0+0.0)x433.62
-.@penalty -10000
-.@glue(@rightskip) 0.0
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--37
-[]@texttt @ [][][type], page 22,[][]   [f]at         @[x;i;f[;y]] [][][amend], 
-page 59,[][]
-
-@hbox(7.60416+2.43333)x433.62
-.@hbox(0.0+0.0)x0.0
-.@texttt @
-.@glue 5.74869
-.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{type}
-.@pdfliteral{0 0 0 rg 0 0 0 RG}
-.etc.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--37
-[]@texttt . [][][value], page 24,[][]  [f][][][Hdot], page 54,[][]        .[x;i
-;f[;y]] [][][dmend],
-
-@hbox(7.60416+2.43333)x433.62
-.@hbox(0.0+0.0)x0.0
-.@texttt .
-.@glue 5.74869
-.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{value}
-.@pdfliteral{0 0 0 rg 0 0 0 RG}
-.etc.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--37
-[][][]@texttt [Hcount], page 54,[][]  [][][Hfirst], page 54,[][] [][][Hlast], p
-age 54,[][] [][][Hmin], page 54,[][]
-
-@hbox(7.60416+2.43333)x433.62
-.@hbox(0.0+0.0)x0.0
-.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{Hcount}
-.@pdfliteral{0 0 0 rg 0 0 0 RG}
-.@texttt [
-.@texttt H
-.etc.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--37
-[][]@texttt [Hmax], page 54,[][] [][][Hsum], page 54,[][] [][][avg], page 55,[]
-[] [][][var], page 55,[][] [][][dev],
-
-@hbox(7.60416+2.43333)x433.62
-.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{Hmax}
-.@pdfliteral{0 0 0 rg 0 0 0 RG}
-.@texttt [
-.@texttt H
 .@texttt m
 .etc.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--37
-[][][]@texttt [select], page 73,[][] [][][A], page 74,[][] [][][by B], page 75,
-[][] from T [][][where C],
+[]@texttt &  &      [][][where], page 10,[][]        [][][load], page 84,[][] l
+oad      -fixed  2.0
 
 @hbox(7.60416+2.43333)x433.62
 .@hbox(0.0+0.0)x0.0
-.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{select}
-.@pdfliteral{0 0 0 rg 0 0 0 RG}
-.@texttt [
-.@texttt s
+.@texttt &
+.@glue 5.74869
+.@glue 5.74869
+.@texttt &
 .etc.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--37
-@texttt page 75[][]; [][][update], page 76,[][] [][][A], page 74,[][] from T; [
-][][delete], page 77,[][] from T
-
-@hbox(7.60416+2.43333)x433.62
-.@texttt p
-.@texttt a
-.@texttt g
-.@texttt e
-.@penalty 10000
-.etc.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--37
-[][][]@texttt [sqrt], page 56,[][] [][][sqr], page 56,[][] [][][exp], page 55,[
-][] [][][log], page 55,[][] [][][sin],
+[]@texttt |  |      [][][reverse], page 11,[][]      [][][timing], page 84,[][]
+ time      -locus
 
 @hbox(7.60416+2.43333)x433.62
 .@hbox(0.0+0.0)x0.0
-.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{sqrt}
-.@pdfliteral{0 0 0 rg 0 0 0 RG}
-.@texttt [
-.@texttt s
+.@texttt |
+.@glue 5.74869
+.@glue 5.74869
+.@texttt |
 .etc.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1--37
-@texttt page 56,[][] [][][cos], page 56,[][] [][][div], page 58,[][] [][][mod],
- page 58,[][] [][][bar], page 58,[][]
+[]@texttt <  <      [][][asc], page 12,[][]          [][][variables], page 84,[
+][] vars   [][][z.d],
 
 @hbox(7.60416+2.43333)x433.62
-.@texttt p
-.@texttt a
-.@texttt g
-.@texttt e
-.@penalty 10000
+.@hbox(0.0+0.0)x0.0
+.@texttt <
+.@glue 5.74869
+.@glue 5.74869
+.@texttt <
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--37
+[]@texttt >  >      [][][desc], page 12,[][]         \w work   [][][z.t], page 
+87,[][] [][][time],
+
+@hbox(7.60416+2.43333)x433.62
+.@hbox(0.0+0.0)x0.0
+.@texttt >
+.@glue 5.74869
+.@glue 5.74869
+.@texttt >
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--37
+[]@texttt _  [][][drop], page 20,[][]   [][][floor], page 20,[][]     [n]0' lin
+e       [][]Chapter 8
+
+@hbox(7.60416+2.43333)x433.62
+.@hbox(0.0+0.0)x0.0
+.@texttt _
+.@glue 5.74869
+.@glue 5.74869
+.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{drop}
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--37
+[]@texttt ^  [][][cut], page 17,[][]    [][][sort], page 16,[][]      [n]1' cha
+r       [][]Chapter 7
+
+@hbox(7.60416+2.43333)x433.62
+.@hbox(0.0+0.0)x0.0
+.@texttt ^
+.@glue 5.74869
+.@glue 5.74869
+.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{cut}
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--37
+[]@texttt $  [][][parse], page 21,[][]  str         *4' get        [][]Chapter 
+6 [Dictionary],
+
+@hbox(7.60416+2.43333)x433.62
+.@hbox(0.0+0.0)x0.0
+.@texttt $
+.@glue 5.74869
+.@glue 5.74869
+.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{parse}
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--37
+[]@texttt .  [][]Chapter 6 [Dictionary], page 43,[][]   [][][value], page 24,[]
+[]       *5' [][][ffi],
+
+@hbox(7.60416+2.43333)x433.62
+.@hbox(0.0+0.0)x0.0
+.@texttt .
+.@glue 5.74869
+.@glue 5.74869
+.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action goto name{Dictionary}
 .etc.
 
 Chapter 1 [1]
@@ -988,12 +772,12 @@ texinfo.tex: doing @verbatiminclude of k.d
  (/Users/estradaj/GitHub/k9-simples/k.d) [102] ) 
 Here is how much of TeX's memory you used:
  3957 strings out of 496271
- 39426 string characters out of 6185843
- 129294 words of memory out of 5000000
+ 39418 string characters out of 6185843
+ 107364 words of memory out of 5000000
  4863 multiletter control sequences out of 15000+600000
  34203 words of font info for 119 fonts, out of 8000000 for 9000
  590 hyphenation exceptions out of 8191
- 15i,7n,16p,685b,556s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 15i,7n,16p,708b,556s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2020basic/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmb10.pfb></usr/local/texlive/2020basi
 c/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2020
@@ -1006,9 +790,9 @@ al/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr
 /usr/local/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pf
 b></usr/local/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9
 .pfb>
-Output written on k.manual.pdf (104 pages, 277504 bytes).
+Output written on k.manual.pdf (104 pages, 277103 bytes).
 PDF statistics:
- 1044 PDF objects out of 1200 (max. 8388607)
+ 970 PDF objects out of 1000 (max. 8388607)
  801 compressed objects within 9 object streams
  284 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)

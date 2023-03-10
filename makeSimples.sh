@@ -88,8 +88,8 @@ sed -e 's/@/@@/g' \
     -e 's/dmend/@ref{dmend}/g' \
     -e 's/Control/@ref{cond,Control}/g' \
     -e 's/if@ else/@ref{cond,if else}/g' \
-    -e '1,20 s/date/@ref{date}/g' \
-    -e '18,18 s/time/@ref{time}/g' \
+    -e '1,12 s/date/@ref{date}/g' \
+    -e '13,13 s/time/@ref{time}/g' \
     -e 's/bool/@ref{bool}/g' \
     -e '7,20 s/int/@ref{int}/g' \
     -e 's/flt/@ref{flt}/g' \
@@ -139,8 +139,8 @@ sed -e 's/@/@@/g' \
     -e '28,35 s/max/@ref{Hmax,max}/g' \
     -e '28,35 s/sum/@ref{Hsum,sum}/g' \
     -e '31,35 s/dot/@ref{Hdot,dot}/g' \
-    -e '12,15 s/.z.d/@ref{.z.d}/g' \
-    -e '12,15 s/.z.t/@ref{.z.t}/g' \
+    -e '12,15 s/z.d/@ref{z.d}/g' \
+    -e '12,15 s/z.t/@ref{z.t}/g' \
     -e '20,40 s/avg/@ref{avg}/g' \
     -e '20,40 s/var/@ref{var}/g' \
     -e '20,30 s/prm/@ref{prm}/g' \

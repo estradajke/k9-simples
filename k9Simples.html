@@ -3,7 +3,7 @@
 <!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<!-- March 27, 2022
+<!-- March 10, 2023
 
 Copyright (C) 2020 John Estrada -->
 <title>Shakti (k9) tutorial</title>
@@ -104,44 +104,29 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; <
 </p>
 <p>The built-in reference screen (<code>\</code>) containing all the k9 commands.
 </p>
-<p><tt><a href="#python">python</a>:&nbsp;import&nbsp;k;k.k('2+3')&nbsp;&nbsp;&nbsp;shakti.com/<a href="#python">python</a>/k.so</tt><br>
-<tt><a href="#nodejs">nodejs</a>:&nbsp;require('k').k('2+3')&nbsp;shakti.com/<a href="#nodejs">nodejs</a>/k.node</tt><br>
+<p><tt>[&quot;Tdtcnghije&quot;]2'`t.<a href="#csv">csv</a>;[#!@*.[^]]`t.<a href="#csv">csv</a>;1'stdout;2'stderr</tt><br>
+<tt>select&nbsp;<a href="#count">count</a>&nbsp;last&nbsp;min&nbsp;max&nbsp;sum&nbsp;avg&nbsp;var&nbsp;dev&nbsp;..&nbsp;by&nbsp;..;in&nbsp;log&nbsp;exp</tt><br>
 <tt></tt><br>
-<tt>$k&nbsp;[-n4&nbsp;-p1024]&nbsp;a.k</tt><br>
-<tt></tt><br>
-<tt>t:[[]t:09:30:00.000&nbsp;09:30:00.001;e:&quot;b&quot;;s:`aa`aa;v:2&nbsp;3;p:2.3&nbsp;3.4]</tt><br>
-<tt>x:&quot;t,e,s,v,p\n09:30:00.000,b,aa,2,2.3\n09:30:00.001,b,aa,3,3.4\n&quot;</tt><br>
-<tt>`<a href="#csv">csv</a>?`<a href="#csv">csv</a>&nbsp;t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/also&nbsp;`<a href="#json">json</a>?`<a href="#json">json</a>&nbsp;t</tt><br>
-<tt>`<a href="#compress">lz4</a>?`<a href="#compress">lz4</a>&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/also&nbsp;`<a href="#compress">zstd</a>?`<a href="#compress">zstd</a>&nbsp;x</tt><br>
-<tt>\\</tt><br>
-<tt></tt><br>
-<tt><a href="#Verb">verb</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Adverb">adverb</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Noun">noun</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#load">\l</a>&nbsp;a.k</tt><br>
-<tt>:&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f'&nbsp;<a href="#each">each</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char&nbsp;&quot;&nbsp;ab&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#timing">\t</a>:n&nbsp;x</tt><br>
-<tt>+&nbsp;<a href="#flip">flip</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#plus">plus</a>&nbsp;&nbsp;&nbsp;&nbsp;[x]f/&nbsp;<a href="#cover">over</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c/&nbsp;join&nbsp;&nbsp;&nbsp;&nbsp;<a href="#name">name</a>&nbsp;``ab&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u:n&nbsp;x</tt><br>
-<tt>-&nbsp;<a href="#minus">minus</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#minus">minus</a>&nbsp;&nbsp;&nbsp;[x]f\&nbsp;<a href="#cscan">scan</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c\&nbsp;<a href="#split">split</a>&nbsp;&nbsp;&nbsp;<a href="#int">int</a>&nbsp;&nbsp;2&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#variables">\v</a></tt><br>
-<tt>*&nbsp;<a href="#first">first</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#times">times</a>&nbsp;&nbsp;&nbsp;[y]f':<a href="#eachprior">eachprior</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#flt">flt</a>&nbsp;&nbsp;2&nbsp;3.4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\w</tt><br>
-<tt>%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#divide">divide</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f/:<a href="#eachright">eachright</a>&nbsp;g/:over&nbsp;&nbsp;&nbsp;&nbsp;<a href="#date">date</a>&nbsp;2021.06.28&nbsp;&nbsp;&nbsp;.z.d&nbsp;&nbsp;</tt><br>
-<tt>&amp;&nbsp;<a href="#where">where</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#min_002fand">min/and</a>&nbsp;&nbsp;&nbsp;&nbsp;f\:<a href="#eachleft">eachleft</a>&nbsp;&nbsp;g\:scan&nbsp;&nbsp;&nbsp;&nbsp;<a href="#time">time</a>&nbsp;12:34:56.789&nbsp;.z.t</tt><br>
-<tt>|&nbsp;<a href="#reverse">reverse</a>&nbsp;&nbsp;&nbsp;<a href="#max_002for">max/or</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
-<tt>&lt;&nbsp;<a href="#asc">asc</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#less">less</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#I_002fO">i/o</a>&nbsp;(*enterprise)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class</tt><br>
-<tt>&gt;&nbsp;<a href="#desc">desc</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#more">more</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0:&nbsp;<a href="#r-line">r</a>/<a href="#w-line">w</a>&nbsp;line&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#List">list</a>&nbsp;(2;3.4;`c)</tt><br>
-<tt>=&nbsp;<a href="#group">group</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#equal">equal</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1:&nbsp;<a href="#r-char">r</a>/<a href="#w-char">w</a>&nbsp;char&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Dictionary">dict</a>&nbsp;[n:`b;i:2]</tt><br>
-<tt>~&nbsp;<a href="#not">not</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#match">match</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*2:&nbsp;<a href="#r-data">r</a>/<a href="#w-data">w</a>&nbsp;data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#User-Functions">func</a>&nbsp;{[a;b]a+b}</tt><br>
-<tt>!&nbsp;<a href="#key">key</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#key">key</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*3:&nbsp;<a href="#k_002dipc">k-ipc</a> <a href="#g_t3set">set</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Expression">expr</a>&nbsp;:a+b</tt><br>
-<tt>,&nbsp;<a href="#enlist">enlist</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#cat">cat</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*4:&nbsp;<a href="#https">https</a>&nbsp;<a href="#g_t4get">get</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
-<tt>^&nbsp;<a href="#sort">sort</a>&nbsp;&nbsp;&nbsp;[f]<a href="#cut">cut</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5:&nbsp;<a href="#ffi">ffi</a>/import</tt><br>
-<tt>#&nbsp;count&nbsp;&nbsp;[f]<a href="#take">take</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
-<tt>_&nbsp;<a href="#floor">floor</a>&nbsp;&nbsp;[f]<a href="#drop">drop</a></tt><br>
-<tt>$&nbsp;<a href="#string">string</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#parse">parse</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$[b;t;f]&nbsp;<a href="#cond">cond</a></tt><br>
-<tt>?&nbsp;<a href="#unique">unique</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#find_002frand">find/rand</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
-<tt>@&nbsp;<a href="#type">type</a>&nbsp;&nbsp;&nbsp;[f]at&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@[x;i;f[;y]]&nbsp;<a href="#amend">amend</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Tables">table</a>&nbsp;[[]n:`b`c;i:2&nbsp;3]</tt><br>
-<tt>.&nbsp;<a href="#value">value</a>&nbsp;&nbsp;[f]<a href="#Hdot">dot</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.[x;i;f[;y]]&nbsp;<a href="#dmend">dmend</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#utable">utable</a>&nbsp;&nbsp;[[n:`b`c]i:2&nbsp;3]</tt><br>
-<tt></tt><br>
-<tt><a href="#Hcount">count</a> &nbsp;<a href="#Hfirst">first</a>&nbsp;<a href="#Hlast">last</a>&nbsp;<a href="#Hmin">min</a>&nbsp;<a href="#Hmax">max</a>&nbsp;<a href="#Hsum">sum</a>&nbsp;<a href="#avg">avg</a>&nbsp;<a href="#var">var</a>&nbsp;<a href="#dev">dev</a>&nbsp;[<a href="#med">med</a>&nbsp;..]</tt><br>
-<tt><a href="#select">select</a>&nbsp;<a href="#A">A</a>&nbsp;<a href="#by-B">by B</a>&nbsp;from&nbsp;T&nbsp;<a href="#where-C">where C</a>;&nbsp;<a href="#update">update</a>&nbsp;<a href="#A">A</a>&nbsp;from&nbsp;T;&nbsp;<a href="#delete">delete</a>&nbsp;from&nbsp;T&nbsp;<a href="#where-C">where C</a></tt><br>
-<tt><a href="#sqrt">sqrt</a>&nbsp;<a href="#sqr">sqr</a>&nbsp;<a href="#exp">exp</a>&nbsp;<a href="#log">log</a>&nbsp;<a href="#sin">sin</a>&nbsp;<a href="#cos">cos</a>&nbsp;<a href="#div">div</a>&nbsp;<a href="#mod">mod</a>&nbsp;<a href="#bar">bar</a>&nbsp;<a href="#in">in</a>&nbsp;<a href="#bin">bin</a></tt><br>
-<tt></tt><br>
-<tt>/comment&nbsp;\trace&nbsp;[:return&nbsp;'signal&nbsp;if&nbsp;do&nbsp;while]</tt><br>
+<tt>Verb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unary&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ad<a href="#Verb">verb</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Type</tt><br>
+<tt>+&nbsp;&nbsp;+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#flip">flip</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&nbsp;<a href="#each">each</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#char">char</a>&nbsp;&nbsp;&nbsp;&quot;&nbsp;ab&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
+<tt>-&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;<a href="#cover">over</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sym&nbsp;&nbsp;&nbsp;&nbsp;``ab</tt><br>
+<tt>*&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#first">first</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\&nbsp;<a href="#cscan">scan</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#bool">bool</a>&nbsp;&nbsp;&nbsp;011b&nbsp;&nbsp;&nbsp;</tt><br>
+<tt>%&nbsp;&nbsp;div&nbsp;&nbsp;&nbsp;&nbsp;sqrt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#int">int</a>&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;3&nbsp;4</tt><br>
+<tt>!&nbsp;&nbsp;mod&nbsp;&nbsp;&nbsp;&nbsp;<a href="#key">key</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#System">System</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float&nbsp;&nbsp;2&nbsp;3e4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
+<tt>&amp;&nbsp;&nbsp;&amp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#where">where</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#load">\l</a>&nbsp;load&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-fixed&nbsp;&nbsp;2.0&nbsp;3.4</tt><br>
+<tt>|&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#reverse">reverse</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#timing">\t</a>&nbsp;time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-locus&nbsp;&nbsp;-74::40.7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
+<tt>&lt;&nbsp;&nbsp;&lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#asc">asc</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#variables">\v</a>&nbsp;vars&nbsp;&nbsp;&nbsp;<a href="#z_002ed">z.d</a>&nbsp;<a href="#date">date</a>&nbsp;&nbsp;&nbsp;2001.02.03&nbsp;&nbsp;</tt><br>
+<tt>&gt;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#desc">desc</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\w&nbsp;work&nbsp;&nbsp;&nbsp;<a href="#z_002et">z.t</a>&nbsp;<a href="#time">time</a>&nbsp;&nbsp;&nbsp;12:34:56.789</tt><br>
+<tt>=&nbsp;&nbsp;=&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;freq&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.T&nbsp;datetime</tt><br>
+<tt>~&nbsp;&nbsp;~&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
+<tt>,&nbsp;&nbsp;,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;,</tt><br>
+<tt>#&nbsp;&nbsp;<a href="#take">take</a>&nbsp;&nbsp;&nbsp;<a href="#count">count</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I/O&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
+<tt>_&nbsp;&nbsp;<a href="#drop">drop</a>&nbsp;&nbsp;&nbsp;<a href="#floor">floor</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[n]0'&nbsp;line&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Expression">expr</a>&nbsp;&nbsp;&nbsp;:2+a</tt><br>
+<tt>^&nbsp;&nbsp;<a href="#cut">cut</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#sort">sort</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[n]1'&nbsp;char&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#User-Functions">func</a>&nbsp;&nbsp;&nbsp;f[a]:2+a</tt><br>
+<tt>@&nbsp;&nbsp;@&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#type">type</a>&nbsp;&nbsp;&nbsp;&nbsp;[nft]2'&nbsp;data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt><br>
+<tt>?&nbsp;&nbsp;find&nbsp;&nbsp;&nbsp;distinct&nbsp;&nbsp;&nbsp;&nbsp;*3'&nbsp;set&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#List">list</a>&nbsp;&nbsp;&nbsp;(2;3.4)&nbsp;&nbsp;</tt><br>
+<tt>$&nbsp;&nbsp;<a href="#parse">parse</a>&nbsp;&nbsp;str&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*4'&nbsp;get&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Dictionary">dict</a>&nbsp;&nbsp;&nbsp;{a:2&nbsp;3}</tt><br>
+<tt>.&nbsp;&nbsp;<a href="#Dictionary">dict</a>&nbsp;&nbsp;&nbsp;<a href="#value">value</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*5'&nbsp;<a href="#ffi">ffi</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Tables">table</a>&nbsp;&nbsp;[a:2&nbsp;3]</tt><br>
 </p>
 
 <ul class="section-toc">
@@ -306,44 +291,30 @@ z@&amp;y&lt;z:?x
 <p>Typing <code>\</code> in a terminal window gives you a concise overview of the language.  This document aims to provide details to beginning user where the help screen is a bit too terse.  Some commands are not available in the basic version and thus marked with an asterisk, eg. *4: https get.
 </p>
 <div class="format">
-<pre class="verbatim">python: import k;k.k('2+3')   shakti.com/python/k.so
-nodejs: require('k').k('2+3') shakti.com/nodejs/k.node
+<pre class="verbatim">[&quot;Tdtcnghije&quot;]2'`t.csv;[#!@*.[^]]`t.csv;1'stdout;2'stderr
+select count last min max sum avg var dev .. by ..;in log exp
 
-$k [-n4 -p1024] a.k
-
-t:[[]t:09:30:00.000 09:30:00.001;e:&quot;b&quot;;s:`aa`aa;v:2 3;p:2.3 3.4]
-x:&quot;t,e,s,v,p\n09:30:00.000,b,aa,2,2.3\n09:30:00.001,b,aa,3,3.4\n&quot;
-`csv?`csv t     /also `json?`json t
-`lz4?`lz4 x     /also `zstd?`zstd x
-\\
-
-verb                    adverb                 noun                    \l a.k
-: x         y          f' each                 char &quot; ab&quot;              \t:n x
-+ flip      plus    [x]f/ over      c/ join    name ``ab               \u:n x
-- minus     minus   [x]f\ scan      c\ split   int  2 3                \v
-* first     times   [y]f':eachprior            flt  2 3.4              \w
-%           divide     f/:eachright g/:over    date 2021.06.28   .z.d  
-&amp; where     min/and    f\:eachleft  g\:scan    time 12:34:56.789 .z.t
-| reverse   max/or     
-&lt; asc       less       i/o (*enterprise)       class
-&gt; desc      more       0: r/w line             list (2;3.4;`c)
-= group     equal      1: r/w char             dict [n:`b;i:2]
-~ not       match     *2: r/w data             func {[a;b]a+b}
-! key       key       *3: k-ipc set            expr :a+b
-, enlist    cat       *4: https get            
-^ sort   [f]cut        5: ffi/import
-# count  [f]take      
-_ floor  [f]drop
-$ string    parse      $[b;t;f] cond
-? unique    find/rand                               
-@ type   [f]at         @[x;i;f[;y]] amend      table [[]n:`b`c;i:2 3]
-. value  [f]dot        .[x;i;f[;y]] dmend     utable  [[n:`b`c]i:2 3]
-
-count first last min max sum avg var dev [med ..]
-select A by B from T where C; update A from T; delete from T where C
-sqrt sqr exp log sin cos div mod bar in bin
-
-/comment \trace [:return 'signal if do while]</pre></div>
+Verb      unary        Adverb        Type
++  +      flip         ' each        char   &quot; ab&quot;          
+-  -      -            / over        sym    ``ab
+*  *      first        \ scan        bool   011b   
+%  div    sqrt                       int    2 3 4
+!  mod    key          System        float  2 3e4          
+&amp;  &amp;      where        \l load      -fixed  2.0 3.4
+|  |      reverse      \t time      -locus  -74::40.7      
+&lt;  &lt;      asc          \v vars   z.d date   2001.02.03  
+&gt;  &gt;      desc         \w work   z.t time   12:34:56.789
+=  =      freq                   z.T datetime
+~  ~      ~                                       
+,  ,      ,
+#  take   count        I/O           Class      
+_  drop   floor     [n]0' line       expr   :2+a
+^  cut    sort      [n]1' char       func   f[a]:2+a
+@  @      type    [nft]2' data               
+?  find   distinct    *3' set        list   (2;3.4)  
+$  parse  str         *4' get        dict   {a:2 3}
+.  dict   value       *5' ffi        table  [a:2 3]
+</pre></div>
 
 </div>
 <div class="section" id="rlwrap">
@@ -4925,9 +4896,9 @@ Next: <a href="#Errors" accesskey="n" rel="next">Errors</a>, Previous: <a href="
 <pre class="verbatim">date 2001.01.01   .z.d
 time 12:34:56.789 .z.t
 </pre>
-<span id="g_t_002ez_002ed"></span><ul class="section-toc">
+<span id="z_002ed"></span><ul class="section-toc">
 <li><a href="#g_t_002ez_002e_005bdm_005d-date" accesskey="1">.z.[dm] date</a></li>
-<li><a href="#g_t_002ez_002e_005bhrstuv_005d-time" accesskey="2">.z.[hrstuv] time</a></li>
+<li><a href="#z_002e_005bhrstuv_005d-time" accesskey="2">z.[hrstuv] time</a></li>
 <li><a href="#Temporal-dot-functions" accesskey="3">Temporal dot functions</a></li>
 </ul>
 <div class="section" id="g_t_002ez_002e_005bdm_005d-date">
@@ -4942,9 +4913,9 @@ time 12:34:56.789 .z.t
 2020.12.
 </pre></div>
 
-<span id="g_t_002ez_002et"></span></div>
-<div class="section" id="g_t_002ez_002e_005bhrstuv_005d-time">
-<h3 class="section">17.2 .z.[hrstuv] time</h3>
+<span id="z_002et"></span></div>
+<div class="section" id="z_002e_005bhrstuv_005d-time">
+<h3 class="section">17.2 z.[hrstuv] time</h3>
 <p>These functions retrieve the time at hour (h), minute (r), second (s), millisecond (t), microsecond (u), or nanosecond (v) precision.
 </p>
 <div class="example">
@@ -5777,44 +5748,30 @@ Previous: <a href="#Benchmark" accesskey="p" rel="prev">Benchmark</a>, Up: <a hr
 <p>Eventually, you&rsquo;ll realize that this manual isn&rsquo;t needed and it&rsquo;s all here...
 </p>
 <div class="format">
-<pre class="verbatim">python: import k;k.k('2+3')   shakti.com/python/k.so
-nodejs: require('k').k('2+3') shakti.com/nodejs/k.node
+<pre class="verbatim">[&quot;Tdtcnghije&quot;]2'`t.csv;[#!@*.[^]]`t.csv;1'stdout;2'stderr
+select count last min max sum avg var dev .. by ..;in log exp
 
-$k [-n4 -p1024] a.k
-
-t:[[]t:09:30:00.000 09:30:00.001;e:&quot;b&quot;;s:`aa`aa;v:2 3;p:2.3 3.4]
-x:&quot;t,e,s,v,p\n09:30:00.000,b,aa,2,2.3\n09:30:00.001,b,aa,3,3.4\n&quot;
-`csv?`csv t     /also `json?`json t
-`lz4?`lz4 x     /also `zstd?`zstd x
-\\
-
-verb                    adverb                 noun                    \l a.k
-: x         y          f' each                 char &quot; ab&quot;              \t:n x
-+ flip      plus    [x]f/ over      c/ join    name ``ab               \u:n x
-- minus     minus   [x]f\ scan      c\ split   int  2 3                \v
-* first     times   [y]f':eachprior            flt  2 3.4              \w
-%           divide     f/:eachright g/:over    date 2021.06.28   .z.d  
-&amp; where     min/and    f\:eachleft  g\:scan    time 12:34:56.789 .z.t
-| reverse   max/or     
-&lt; asc       less       i/o (*enterprise)       class
-&gt; desc      more       0: r/w line             list (2;3.4;`c)
-= group     equal      1: r/w char             dict [n:`b;i:2]
-~ not       match     *2: r/w data             func {[a;b]a+b}
-! key       key       *3: k-ipc set            expr :a+b
-, enlist    cat       *4: https get            
-^ sort   [f]cut        5: ffi/import
-# count  [f]take      
-_ floor  [f]drop
-$ string    parse      $[b;t;f] cond
-? unique    find/rand                               
-@ type   [f]at         @[x;i;f[;y]] amend      table [[]n:`b`c;i:2 3]
-. value  [f]dot        .[x;i;f[;y]] dmend     utable  [[n:`b`c]i:2 3]
-
-count first last min max sum avg var dev [med ..]
-select A by B from T where C; update A from T; delete from T where C
-sqrt sqr exp log sin cos div mod bar in bin
-
-/comment \trace [:return 'signal if do while]</pre></div>
+Verb      unary        Adverb        Type
++  +      flip         ' each        char   &quot; ab&quot;          
+-  -      -            / over        sym    ``ab
+*  *      first        \ scan        bool   011b   
+%  div    sqrt                       int    2 3 4
+!  mod    key          System        float  2 3e4          
+&amp;  &amp;      where        \l load      -fixed  2.0 3.4
+|  |      reverse      \t time      -locus  -74::40.7      
+&lt;  &lt;      asc          \v vars   z.d date   2001.02.03  
+&gt;  &gt;      desc         \w work   z.t time   12:34:56.789
+=  =      freq                   z.T datetime
+~  ~      ~                                       
+,  ,      ,
+#  take   count        I/O           Class      
+_  drop   floor     [n]0' line       expr   :2+a
+^  cut    sort      [n]1' char       func   f[a]:2+a
+@  @      type    [nft]2' data               
+?  find   distinct    *3' set        list   (2;3.4)  
+$  parse  str         *4' get        dict   {a:2 3}
+.  dict   value       *5' ffi        table  [a:2 3]
+</pre></div>
 
 
 
