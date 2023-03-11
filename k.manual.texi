@@ -23,7 +23,7 @@ Copyright @copyright{} 2020 John Estrada
 @c @ifnottex
 @node Top
 @top k9: Manual
-This manual is for Shakti (k9) build 2021.10.21.@*
+This manual is for Shakti (k9) build 2023.03.09.@*
 
 The Shakti programming language is the work of Arthur Whitney and the team at Shakti.  The language comes from a lineage of similar languages going back to APL.  It's also known as k9 given the similarities to k, k2, ..., k6, k7 and the fact that Arthur also wrote those.  k9 is still under development so expect a bit of syntax change and likely even more improvements.
 
@@ -355,8 +355,8 @@ Verb
 ^ @ref{sort},   [f]@ref{cut}. 
 # @ref{count},  [f]@ref{take}.  
 _ @ref{floor},  [f]@ref{drop}.    
-$ @ref{string},    @ref{parse}.    
-? @ref{unique},    @ref{find/rand}.    
+$ @ref{str},    @ref{parse}.    
+? @ref{distinct},    @ref{find/rand}.    
 @@ @ref{type},   [f]@ref{at}.    
 . @ref{value},  [f]@ref{dot}.
 
@@ -1097,7 +1097,7 @@ If x is a function, then select values where the function is zero.
 0.02049699 0.1269226
 @end example
 
-@anchor{string}@section string @result{} $x
+@anchor{str}@section str @result{} $x
 Cast x to string.
 @example
  $`abc
@@ -1126,8 +1126,8 @@ Parse string y into type x.
 2020.04.20
 @end example
 
-@anchor{unique}@section unique @result{} ?x
-Return the unique values of the list x.  The @code{?} preceeding the return value explicitly shows that the list has no repeated values.
+@anchor{distinct}@section distinct @result{} ?x
+Return the distinct values of the list x.  The @code{?} preceeding the return value explicitly shows that the list has no repeated values.
 
 @example
  ?`f`a`b`c`a`b`d`e`a

@@ -3,7 +3,7 @@
 <!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<!-- March 10, 2023
+<!-- March 11, 2023
 
 Copyright (C) 2020 John Estrada -->
 <title>Shakti (k9) tutorial</title>
@@ -94,7 +94,7 @@ table.menu th{
 Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a> &nbsp; </p>
 </div>
 <span id="k9_003a-Manual"></span><h1 class="top">k9: Manual</h1>
-<p>This manual is for Shakti (k9) build 2021.10.21.<br>
+<p>This manual is for Shakti (k9) build 2023.03.09.<br>
 </p>
 <p>The Shakti programming language is the work of Arthur Whitney and the team at Shakti.  The language comes from a lineage of similar languages going back to APL.  It&rsquo;s also known as k9 given the similarities to k, k2, ..., k6, k7 and the fact that Arthur also wrote those.  k9 is still under development so expect a bit of syntax change and likely even more improvements.
 </p>
@@ -487,8 +487,8 @@ Next: <a href="#Adverb" accesskey="n" rel="next">Adverbs</a>, Previous: <a href=
 ^ <a href="#sort">sort</a>,   [f]<a href="#cut">cut</a>. 
 # <a href="#count">count</a>,  [f]<a href="#take">take</a>.  
 _ <a href="#floor">floor</a>,  [f]<a href="#drop">drop</a>.    
-$ <a href="#string">string</a>,    <a href="#parse">parse</a>.    
-? <a href="#unique">unique</a>,    <a href="#find_002frand">find/rand</a>.    
+$ <a href="#str">str</a>,    <a href="#parse">parse</a>.    
+? <a href="#distinct">distinct</a>,    <a href="#find_002frand">find/rand</a>.    
 @ <a href="#type">type</a>,   [f]<a href="#at">at</a>.    
 . <a href="#value">value</a>,  [f]<a href="#dot">dot</a>.
 
@@ -524,9 +524,9 @@ $ <a href="#string">string</a>,    <a href="#parse">parse</a>.
 <li><a href="#g_t_005bf_005dtake-_21d2-x_0023y">[f]take &rArr; x#y</a></li>
 <li><a href="#floor-_21d2-_005fx">floor &rArr; _x</a></li>
 <li><a href="#g_t_005bf_005ddrop-_21d2-x_005fy">[f]drop &rArr; x_y</a></li>
-<li><a href="#string-_21d2-_0024x">string &rArr; $x</a></li>
+<li><a href="#str-_21d2-_0024x">str &rArr; $x</a></li>
 <li><a href="#parse-_21d2-x_0024y">parse &rArr; x$y</a></li>
-<li><a href="#unique-_21d2-_003fx">unique &rArr; ?x</a></li>
+<li><a href="#distinct-_21d2-_003fx">distinct &rArr; ?x</a></li>
 <li><a href="#find_002frand-_21d2-x_003fy">find/rand &rArr; x?y</a></li>
 <li><a href="#type-_21d2-_0040x">type &rArr; @x</a></li>
 <li><a href="#g_t_005bf_005dat-_21d2-x_0040y">[f]at &rArr; x@y</a></li>
@@ -1305,9 +1305,9 @@ c|2
 0.02049699 0.1269226
 </pre></div>
 
-<span id="string"></span></div>
-<div class="section" id="string-_21d2-_0024x">
-<h3 class="section">2.30 string &rArr; $x</h3>
+<span id="str"></span></div>
+<div class="section" id="str-_21d2-_0024x">
+<h3 class="section">2.30 str &rArr; $x</h3>
 <p>Cast x to string.
 </p><div class="example">
 <pre class="example"> $`abc
@@ -1338,10 +1338,10 @@ c|2
 2020.04.20
 </pre></div>
 
-<span id="unique"></span></div>
-<div class="section" id="unique-_21d2-_003fx">
-<h3 class="section">2.32 unique &rArr; ?x</h3>
-<p>Return the unique values of the list x.  The <code>?</code> preceeding the return value explicitly shows that the list has no repeated values.
+<span id="distinct"></span></div>
+<div class="section" id="distinct-_21d2-_003fx">
+<h3 class="section">2.32 distinct &rArr; ?x</h3>
+<p>Return the distinct values of the list x.  The <code>?</code> preceeding the return value explicitly shows that the list has no repeated values.
 </p>
 <div class="example">
 <pre class="example"> ?`f`a`b`c`a`b`d`e`a

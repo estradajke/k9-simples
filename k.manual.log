@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdfetex 2020.5.15)  10 MAR 2023 22:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdfetex 2020.5.15)  11 MAR 2023 08:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**\input ./k.manual.texi
+**\input ./k.manual.texi \input ./k.manual.texi
 (./k.manual.texi (/Users/estradaj/GitHub/k9-simples/texinfo.tex
 Loading texinfo [version 2019-09-20.22]:
 \outerhsize=\dimen16
@@ -772,12 +772,12 @@ texinfo.tex: doing @verbatiminclude of k.d
  (/Users/estradaj/GitHub/k9-simples/k.d) [102] ) 
 Here is how much of TeX's memory you used:
  3957 strings out of 496271
- 39418 string characters out of 6185843
- 107364 words of memory out of 5000000
+ 39414 string characters out of 6185843
+ 107361 words of memory out of 5000000
  4863 multiletter control sequences out of 15000+600000
  34203 words of font info for 119 fonts, out of 8000000 for 9000
  590 hyphenation exceptions out of 8191
- 15i,7n,16p,685b,556s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 15i,7n,16p,708b,556s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2020basic/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmb10.pfb></usr/local/texlive/2020basi
 c/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2020
@@ -790,7 +790,7 @@ al/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr
 /usr/local/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pf
 b></usr/local/texlive/2020basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9
 .pfb>
-Output written on k.manual.pdf (104 pages, 277103 bytes).
+Output written on k.manual.pdf (104 pages, 277099 bytes).
 PDF statistics:
  970 PDF objects out of 1000 (max. 8388607)
  801 compressed objects within 9 object streams
