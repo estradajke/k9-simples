@@ -42,9 +42,9 @@ sed -e 's/@/@@/g' \
     -e 's/take/@ref{take}/g' \
     -e 's/floor/@ref{floor}/g' \
     -e 's/drop/@ref{drop}/g' \
-    -e 's/string/@ref{string}/g' \
+    -e 's/str/@ref{str}/g' \
     -e 's/parse/@ref{parse}/g' \
-    -e 's/unique/@ref{unique}/g' \
+    -e 's/distinct/@ref{distinct}/g' \
     -e 's/find\/rand/@ref{find\/rand}/g' \
     -e '20,100 s/type/@ref{type}/g' \
     -e 's/[f]at/[f]@ref{at}/g' \
@@ -90,6 +90,7 @@ sed -e 's/@/@@/g' \
     -e 's/if@ else/@ref{cond,if else}/g' \
     -e '1,12 s/date/@ref{date}/g' \
     -e '13,13 s/time/@ref{time}/g' \
+    -e '14,14 s/datetime/@ref{datetime}/g' \
     -e 's/bool/@ref{bool}/g' \
     -e '7,20 s/int/@ref{int}/g' \
     -e 's/flt/@ref{flt}/g' \
@@ -120,7 +121,7 @@ sed -e 's/@/@@/g' \
     -e '20,40 s/sin/@ref{sin}/g' \
     -e '20,40 s/cos/@ref{cos}/g' \
     -e '20,40 s/sqr@ /@ref{sqr}@ /g' \
-    -e '20,40 s/sqrt/@ref{sqrt}/g' \
+    -e '1,40 s/sqrt/@ref{sqrt}/g' \
     -e '20,40 s/div/@ref{div}/g' \
     -e '29,40 s/mod/@ref{mod}/g' \
     -e '20,40 s/bar/@ref{bar}/g' \
@@ -141,6 +142,7 @@ sed -e 's/@/@@/g' \
     -e '31,35 s/dot/@ref{Hdot,dot}/g' \
     -e '12,15 s/z.d/@ref{z.d}/g' \
     -e '12,15 s/z.t/@ref{z.t}/g' \
+    -e '12,15 s/z.T/@ref{z.T}/g' \
     -e '20,40 s/avg/@ref{avg}/g' \
     -e '20,40 s/var/@ref{var}/g' \
     -e '20,30 s/prm/@ref{prm}/g' \

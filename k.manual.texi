@@ -335,54 +335,52 @@ This chapter covers verbs which are the core primitives of k9.  Given how differ
 
 Most functions are overloaded and change depending on the number of arguments.  This can confuse new users.  Eg. @code{(1 4)++(2 3;5 6;7 8)} contains the plus symbol once as flip and then for addition.  (Remember evaluation is right to left!)
 
-There are verbs that can take a function argument. Those are listed with a '[f]' prefix.  These include [f]cut, [f]take, [f]drop, [f]at, and [f]dot.
+@c There are verbs that can take a function argument. Those are listed with a '[f]' prefix.  These include [f]cut, [f]take, [f]drop, [f]at, and [f]dot.
 
 @example
-Verb
-: @ref{x},         @ref{set}.
-+ @ref{flip},      @ref{plus}.
-- @ref{negate},    @ref{minus}.
-* @ref{first},     @ref{times}.
-%            @ref{divide}.
-& @ref{where},     @ref{min/and}.
-| @ref{reverse},   @ref{max/or}.
-< @ref{asc},       @ref{less}.
-> @ref{asc,desc},      @ref{less,more}.
-= @ref{group},     @ref{equal}.
-~ @ref{not},       @ref{match}.
-! @ref{key},       @ref{key}.
-, @ref{enlist,list},      @ref{cat}.
-^ @ref{sort},   [f]@ref{cut}. 
-# @ref{count},  [f]@ref{take}.  
-_ @ref{floor},  [f]@ref{drop}.    
-$ @ref{str},    @ref{parse}.    
-? @ref{distinct},    @ref{find/rand}.    
-@@ @ref{type},   [f]@ref{at}.    
-. @ref{value},  [f]@ref{dot}.
-
+Verb      unary     
++  +      @ref{flip}
+-  -      -         
+*  *      @ref{first}
+%  div    @ref{sqrt}
+!  mod    @ref{key}
+&  &      @ref{where}
+|  |      @ref{reverse}
+<  <      @ref{asc}
+>  >      @ref{desc}
+=  =      @ref{freq}
+~  ~      ~         
+,  ,      ,
+#  take   @ref{count}
+_  drop   @ref{floor}
+^  cut    @ref{sort}
+@@  @@      @ref{type}
+?  find   @ref{distinct}
+$  parse  @ref{str}       
+.  dict   @ref{value}
 @end example
 
-@anchor{x}@section x @result{} :x
-TBD
-
-@anchor{set}@section set @result{} x:y
-Set a variable, x, to a value, y.  There should be no space between @code{x} and @code{:}. 
-
-@example
- a:3;a
-3
-
- b:(`green;37;"blue");b
-green
-37
-blue
-
-c:@{x+y@}
- c
-@{x+y@}
- c[12;15]
-27
-@end example
+@c @anchor{x}@section x @result{} :x
+@c TBD
+@c 
+@c @anchor{set}@section set @result{} x:y
+@c Set a variable, x, to a value, y.  There should be no space between @code{x} and @code{:}. 
+@c 
+@c @example
+@c  a:3;a
+@c 3
+@c 
+@c  b:(`green;37;"blue");b
+@c green
+@c 37
+@c blue
+@c 
+@c c:@{x+y@}
+@c  c
+@c @{x+y@}
+@c  c[12;15]
+@c 27
+@c @end example
 
 @anchor{flip}@section flip @result{} +x
 Flip, or transpose, x where x is not a simple element.  
@@ -2570,7 +2568,7 @@ Expr :a+b
 @end verbatim
 
 @section expr @result{} x :y
-Evaluate expression(s) @code{y} on table or dictionary @code{x}.  The space between @code{x} and @code{:} is required otherwise it becomes @ref{set}, i.e., assignment.
+Evaluate expression(s) @code{y} on table or dictionary @code{x}.  The space between @code{x} and @code{:} is required otherwise it becomes set, i.e., assignment.
 
 @example
  d:[city:`Chongqing`Shanhai`Beijing`Delhi`Chengdu]; d
@@ -2795,36 +2793,36 @@ Write out all permutations of integers up x-1. Display them as columns.
 2 2 0 1 1 0
 @end example
 
-@c @anchor{freq}@section freq @result{} freq x
-@c Compute the frequency of the items in list x.
-@c 
-@c @example
-@c  freq "abzccdefeajfekjrlke"
-@c a|2
-@c b|1
-@c c|2
-@c d|1
-@c e|4
-@c f|2
-@c j|2
-@c k|2
-@c l|1
-@c r|1
-@c z|1
-@c 
-@c  freq 1000?10
-@c 0| 95
-@c 1|106
-@c 2| 84
-@c 3| 98
-@c 4|109
-@c 5|104
-@c 6| 94
-@c 7| 95
-@c 8|120
-@c 9| 95
-@c @end example
-@c 
+@anchor{freq}@section freq @result{} freq x
+Compute the frequency of the items in list x.
+
+@example
+ freq "abzccdefeajfekjrlke"
+a|2
+b|1
+c|2
+d|1
+e|4
+f|2
+j|2
+k|2
+l|1
+r|1
+z|1
+
+ freq 1000?10
+0| 95
+1|106
+2| 84
+3| 98
+4|109
+5|104
+6| 94
+7| 95
+8|120
+9| 95
+@end example
+
 @anchor{sums}@section sums @result{} sums x
 Compute the running sum of list x.  Sames as @code{+\}.
 
@@ -4331,47 +4329,43 @@ b|3 4
 k9 has functions (within @code{.z}) to get the current date and time to various degrees of precision.  There are also functions to retrieve partial date and time using dot notation.
 
 @verbatim
-date 2001.01.01   .z.d
-time 12:34:56.789 .z.t
+z.d date   2001.02.03  
+z.t time   12:34:56.789
+z.T datetime
 @end verbatim
 
-@anchor{z.d}@section .z.[dm] date
+@anchor{z.d}@section z.d date
 These functions retrieve the date as day (d) or month (m) precision.
 
 @example
  .z.d
-2020.12.13
-
- .z.m
-2020.12.
+2023.03.11
 @end example
 
-@anchor{z.t}@section z.[hrstuv] time
-These functions retrieve the time at hour (h), minute (r), second (s), millisecond (t), microsecond (u), or nanosecond (v) precision.
+@anchor{z.t}@section z.t time
+These functions retrieve the time millisecond precision.
 
 @example
- .z.h
-11
- .z.r
-11:25
- .z.s
-11:25:16
- .z.t
-11:25:16.842
- .z.u
-11:25:17.491362
- .z.v
-11:25:18.186360064
+ z.t
+09:09:02.451
 @end example
 
 One could use the current time commands to measure run time but typically this is done via @code{\t}
 
 @example
- t1:.z.v;(_2e8)?1.;t2:.z.v;t2-t1
-00:00:00.609207008
+ t1:z.t;(_2e8)?1.;t2:z.t;t2-t1
+00:00:00.001
 
-\t (_2e8)?1.
+ \t (_2e8)?1.
 610
+@end example
+
+@anchor{z.T}@section z.T datetime
+These functions retrieve the date and time as datetime.
+
+@example
+ .z.T
+2023.03.11 09:09:49.654
 @end example
 
 @section Temporal dot functions

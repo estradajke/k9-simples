@@ -95,59 +95,58 @@ Next: <a href="Errors.html" accesskey="n" rel="next">Errors</a>, Previous: <a hr
 <span id="Temporal-Functions-1"></span><h2 class="chapter">17 Temporal Functions</h2>
 <p>k9 has functions (within <code>.z</code>) to get the current date and time to various degrees of precision.  There are also functions to retrieve partial date and time using dot notation.
 </p>
-<pre class="verbatim">date 2001.01.01   .z.d
-time 12:34:56.789 .z.t
+<pre class="verbatim">z.d date   2001.02.03  
+z.t time   12:34:56.789
+z.T datetime
 </pre>
 <span id="z_002ed"></span><ul class="section-toc">
-<li><a href="#g_t_002ez_002e_005bdm_005d-date" accesskey="1">.z.[dm] date</a></li>
-<li><a href="#z_002e_005bhrstuv_005d-time" accesskey="2">z.[hrstuv] time</a></li>
-<li><a href="#Temporal-dot-functions" accesskey="3">Temporal dot functions</a></li>
+<li><a href="#z_002ed-date" accesskey="1">z.d date</a></li>
+<li><a href="#z_002et-time" accesskey="2">z.t time</a></li>
+<li><a href="#z_002eT-datetime" accesskey="3">z.T datetime</a></li>
+<li><a href="#Temporal-dot-functions" accesskey="4">Temporal dot functions</a></li>
 </ul>
-<div class="section" id="g_t_002ez_002e_005bdm_005d-date">
-<h3 class="section">17.1 .z.[dm] date</h3>
+<div class="section" id="z_002ed-date">
+<h3 class="section">17.1 z.d date</h3>
 <p>These functions retrieve the date as day (d) or month (m) precision.
 </p>
 <div class="example">
 <pre class="example"> .z.d
-2020.12.13
-
- .z.m
-2020.12.
+2023.03.11
 </pre></div>
 
 <span id="z_002et"></span></div>
-<div class="section" id="z_002e_005bhrstuv_005d-time">
-<h3 class="section">17.2 z.[hrstuv] time</h3>
-<p>These functions retrieve the time at hour (h), minute (r), second (s), millisecond (t), microsecond (u), or nanosecond (v) precision.
+<div class="section" id="z_002et-time">
+<h3 class="section">17.2 z.t time</h3>
+<p>These functions retrieve the time millisecond precision.
 </p>
 <div class="example">
-<pre class="example"> .z.h
-11
- .z.r
-11:25
- .z.s
-11:25:16
- .z.t
-11:25:16.842
- .z.u
-11:25:17.491362
- .z.v
-11:25:18.186360064
+<pre class="example"> z.t
+09:09:02.451
 </pre></div>
 
 <p>One could use the current time commands to measure run time but typically this is done via <code>\t</code>
 </p>
 <div class="example">
-<pre class="example"> t1:.z.v;(_2e8)?1.;t2:.z.v;t2-t1
-00:00:00.609207008
+<pre class="example"> t1:z.t;(_2e8)?1.;t2:z.t;t2-t1
+00:00:00.001
 
-\t (_2e8)?1.
+ \t (_2e8)?1.
 610
+</pre></div>
+
+<span id="z_002eT"></span></div>
+<div class="section" id="z_002eT-datetime">
+<h3 class="section">17.3 z.T datetime</h3>
+<p>These functions retrieve the date and time as datetime.
+</p>
+<div class="example">
+<pre class="example"> .z.T
+2023.03.11 09:09:49.654
 </pre></div>
 
 </div>
 <div class="section" id="Temporal-dot-functions">
-<h3 class="section">17.3 Temporal dot functions</h3>
+<h3 class="section">17.4 Temporal dot functions</h3>
 <p>These functions use dot notation to retrieve partial date and times.
 </p>
 <div class="example">

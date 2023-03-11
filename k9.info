@@ -30,21 +30,21 @@ Verb      unary        Ad*note verb: Verb.        Type
 +  +      *note flip::         ' *note each::        *note char::   " ab"          
 -  -      -            / *note over: cover.        sym    ``ab
 *  *      *note first::        \ *note scan: cscan.        *note bool::   011b   
-%  div    sqrt                       *note int::    2 3 4
+%  div    *note sqrt::                       *note int::    2 3 4
 !  mod    *note key::          *note System::        float  2 3e4          
 &  &      *note where::        *note \l: load. load      -fixed  2.0 3.4
 |  |      *note reverse::      *note \t: timing. time      -locus  -74::40.7      
 <  <      *note asc::          *note \v: variables. vars   *note z.d:: *note date::   2001.02.03  
 >  >      *note desc::         \w work   *note z.t:: *note time::   12:34:56.789
-=  =      freq                   z.T datetime
+=  =      freq                   *note z.T:: *note datetime::
 ~  ~      ~                                       
 ,  ,      ,
 #  *note take::   *note count::        I/O           Class      
 _  *note drop::   *note floor::     [n]0' line       *note expr: Expression.   :2+a
 ^  *note cut::    *note sort::      [n]1' char       *note func: User Functions.   f[a]:2+a
 @  @      *note type::    [nft]2' data               
-?  find   distinct    *3' set        *note list: List.   (2;3.4)  
-$  *note parse::  str         *4' get        *note dict: Dictionary.   {a:2 3}
+?  find   *note distinct::    *3' set        *note list: List.   (2;3.4)  
+$  *note parse::  *note str::         *4' get        *note dict: Dictionary.   {a:2 3}
 .  *note dict: Dictionary.   *note value::       *5' *note ffi::        *note table: Tables.  [a:2 3]
 
 * Menu:
@@ -341,56 +341,28 @@ can "speak" k9 you'll read '|x' better than 'reverse(x)'.
 Most functions are overloaded and change depending on the number of arguments.  This can confuse new users.  Eg.  '(1 4)++(2 3;5 6;7 8)' contains the plus symbol once as flip and then for addition.
 (Remember evaluation is right to left!)
 
-There are verbs that can take a function argument.  Those are listed with a '[f]' prefix.  These include [f]cut, [f]take, [f]drop, [f]at, and [f]dot.
+     Verb      unary
+     +  +      *note flip::
+     -  -      -
+     *  *      *note first::
+     %  div    *note sqrt::
+     !  mod    *note key::
+     &  &      *note where::
+     |  |      *note reverse::
+     <  <      *note asc::
+     >  >      *note desc::
+     =  =      *note freq::
+     ~  ~      ~
+     ,  ,      ,
+     #  take   *note count::
+     _  drop   *note floor::
+     ^  cut    *note sort::
+     @  @      *note type::
+     ?  find   *note distinct::
+     $  parse  *note str::
+     .  dict   *note value::
 
-     Verb
-     : *note x::,         *note set::.
-     + *note flip::,      *note plus::.
-     - *note negate::,    *note minus::.
-     * *note first::,     *note times::.
-     %            *note divide::.
-     & *note where::,     *note min/and::.
-     | *note reverse::,   *note max/or::.
-     < *note asc::,       *note less::.
-     > *note desc: asc,      *note more: less.
-     = *note group::,     *note equal::.
-     ~ *note not::,       *note match::.
-     ! *note key::,       *note key::.
-     , *note list: enlist,      *note cat::.
-     ^ *note sort::,   [f]*note cut::.
-     # *note count::,  [f]*note take::.
-     _ *note floor::,  [f]*note drop::.
-     $ *note str::,    *note parse::.
-     ? *note distinct::,    *note find/rand::.
-     @ *note type::,   [f]*note at::.
-     . *note value::,  [f]*note dot::.
-
-
-2.1 x => :x
-===========
-
-TBD
-
-2.2 set => x:y
-==============
-
-Set a variable, x, to a value, y.  There should be no space between 'x' and ':'.
-
-      a:3;a
-     3
-
-      b:(`green;37;"blue");b
-     green
-     37
-     blue
-
-     c:{x+y}
-      c
-     {x+y}
-      c[12;15]
-     27
-
-2.3 flip => +x
+2.1 flip => +x
 ==============
 
 Flip, or transpose, x where x is not a simple element.
@@ -416,7 +388,7 @@ Flip, or transpose, x where x is not a simple element.
      3 4
      5 6
 
-2.4 plus => x+y
+2.2 plus => x+y
 ===============
 
 Add x and y.  Arguments can be elements or lists but if both x and y are lists then they must be of equal length.
@@ -446,7 +418,7 @@ Add x and y.  Arguments can be elements or lists but if both x and y are lists t
       10:00:00.000+1  / add a millisecond
      10:00:00.001
 
-2.5 negate => -x.
+2.3 negate => -x.
 =================
 
       -3
@@ -464,7 +436,7 @@ Add x and y.  Arguments can be elements or lists but if both x and y are lists t
      a|-1 -2 -3
      b|-4 -5 -6
 
-2.6 minus => x-y.
+2.4 minus => x-y.
 =================
 
 Subtract y from x.
@@ -476,7 +448,7 @@ Subtract y from x.
       x-y
      3
 
-2.7 first => *x
+2.5 first => *x
 ===============
 
 Return the first value of x.
@@ -496,7 +468,7 @@ Return the first value of x.
      *|1 2 3
      3
 
-2.8 times => x*y
+2.6 times => x*y
 ================
 
 Mutliply x and y.
@@ -510,7 +482,7 @@ Mutliply x and y.
      1 2 3*4 5 6
      4 10 18
 
-2.9 divide => x'%'y
+2.7 divide => x'%'y
 ===================
 
 Divide x by y.
@@ -520,8 +492,8 @@ Divide x by y.
       6%2    / division of two integers returns a float
      3f
 
-2.10 where => &x
-================
+2.8 where => &x
+===============
 
 Given a list of boolean values return the indices where the value is non-zero.
 
@@ -543,8 +515,8 @@ Given a list of non-negative integer values, eg.  x[0], x[1], ..., x[n-1], gener
      0 0 0 1 3 3
 
 
-2.11 and => x&y
-===============
+2.9 and => x&y
+==============
 
 The smaller of x and y.  One can use the over adverb to determine the min value in a list.
 
@@ -563,7 +535,7 @@ The smaller of x and y.  One can use the over adverb to determine the min value 
       &/ 3 2 10 -200 47
      -200
 
-2.12 reverse => |x
+2.10 reverse => |x
 ==================
 
 Reverse the list x.
@@ -581,7 +553,7 @@ Reverse the list x.
 
 To get the last element, one can take the first element of the reverse list (*|`a`b`c).
 
-2.13 or => x|y
+2.11 or => x|y
 ==============
 
 The greater of x and y.  Max of a list can be determine by use of the adverb over.
@@ -598,7 +570,7 @@ The greater of x and y.  Max of a list can be determine by use of the adverb ove
       |/12 2 3 10 / use over to determine the max of a list
      12
 
-2.14 asc(desc) => < (>) x
+2.12 asc(desc) => < (>) x
 =========================
 
 Sort a list or dictionary in ascending (<) or descending (>) order.  Applied to a list, these will return the indices to be used to achieve the sort.
@@ -619,7 +591,7 @@ Sort a list or dictionary in ascending (<) or descending (>) order.  Applied to 
      b|2
      a|3
 
-2.15 less (more) => x < (>) y
+2.13 less (more) => x < (>) y
 =============================
 
 Return true (1b) if x is less (more) than y else false (0b).
@@ -641,7 +613,7 @@ Return true (1b) if x is less (more) than y else false (0b).
       "a"<"b"
      1b
 
-2.16 group => =x
+2.14 group => =x
 ================
 
 Group takes a list of uniform type, x, and returns a dictionary of the distinct values (key) and their indices (value).
@@ -659,7 +631,7 @@ Group takes a list of uniform type, x, and returns a dictionary of the distinct 
      10|4
      12|8
 
-2.17 equal => x=y
+2.15 equal => x=y
 =================
 
 Return true (1b) if x is equal to y else false (0b).
@@ -679,7 +651,7 @@ Return true (1b) if x is equal to y else false (0b).
       "banana"="apple"  / unequal length strings error
      !length
 
-2.18 not => ~x
+2.16 not => ~x
 ==============
 
 Boolean invert of x
@@ -693,7 +665,7 @@ Boolean invert of x
       ~37 0 12
      0 1 0
 
-2.19 match => x~y
+2.17 match => x~y
 =================
 
 Return true (1) if x matches y else false (0).  A match happens if the two arguments evaluate to the same expression.
@@ -720,7 +692,7 @@ Return true (1) if x matches y else false (0).  A match happens if the two argum
       f~{x+y}
      1
 
-2.20 enum => !x
+2.18 enum => !x
 ===============
 
 Enumerate the domain of x.  Given an integer, x, generate an integer list from 0 to x-1.  Given a dictionary, x, return all key values.
@@ -771,7 +743,7 @@ row's repeats must fit below constant values of the row above.
      2/B[12123]   / convert back to decimal
      12123
 
-2.21 key => x!y
+2.19 key => x!y
 ===============
 
 Create a dictionary with x (key) and y (value).
@@ -792,7 +764,7 @@ Create a dictionary with x (key) and y (value).
      b|2
      c|3
 
-2.22 enlist => ,x
+2.20 enlist => ,x
 =================
 
 Create a list from x
@@ -809,7 +781,7 @@ Create a list from x
       3~,3
      0
 
-2.23 cat => x,y
+2.21 cat => x,y
 ===============
 
 Concatenate x and y.
@@ -835,7 +807,7 @@ Concatenate x and y.
       ,//:C   / converge over join until single list
      "abcdefghi"
 
-2.24 sort => ^x
+2.22 sort => ^x
 ===============
 
 Sort list, dictionary, or table x into ascending order.  Dictionaries are sorted using the keys and tables by the first column field.  One can sort tables by arbitrary columns by first reordering the
@@ -861,7 +833,7 @@ columns in the table using *note take:: or by extracting the sort column by inde
      2 a
      3 c
 
-2.25 [f]cut => x^y
+2.23 [f]cut => x^y
 ==================
 
 Cut list y by size, indices, or function x.  Also, cut table y into key x and value.
@@ -924,7 +896,7 @@ Table returning utable (aka keyed table).
      y|20
      z| 1
 
-2.26 count => #x
+2.24 count => #x
 ================
 
 Count the number of elements in list, dictionary, or table x.
@@ -940,7 +912,7 @@ Count the number of elements in list, dictionary, or table x.
       #5                      / single element is 1
      1
 
-2.27 [f]take => x#y
+2.25 [f]take => x#y
 ===================
 
 [f]take has a number of different actions depending on x.  These include head (take from front of list), tail (take from back of list), common (take common elements), filter (take where function is
@@ -1016,14 +988,14 @@ If x is a name or list of names, then take the name column or columns from the t
      b a 1
      c b 2
 
-2.28 floor => _x
+2.26 floor => _x
 ================
 
 Return the integer floor of float x.
       _3.7
      3
 
-2.29 [f]drop => x_y
+2.27 [f]drop => x_y
 ===================
 
 [f]drop has a number of different actions depending on x.  This include de-head (drop from front of list), de-tail (drop from back of list), uncommon (drop common elements), and filter (drop where
@@ -1057,7 +1029,7 @@ If x is a function, then select values where the function is zero.
       (0.5<)_10?1.           / values less than or equal to 0.5
      0.02049699 0.1269226
 
-2.30 str => $x
+2.28 str => $x
 ==============
 
 Cast x to string.
@@ -1066,7 +1038,7 @@ Cast x to string.
       $4.7
      "4.7"
 
-2.31 parse => x$y
+2.29 parse => x$y
 =================
 
 Parse string y into type x.
@@ -1086,7 +1058,7 @@ Parse string y into type x.
      `d$"2020.04.20"
      2020.04.20
 
-2.32 distinct => ?x
+2.30 distinct => ?x
 ===================
 
 Return the distinct values of the list x.  The '?' preceeding the return value explicitly shows that the list has no repeated values.
@@ -1097,7 +1069,7 @@ Return the distinct values of the list x.  The '?' preceeding the return value e
      ?"banana"
      ?"ban"
 
-2.33 find/rand => x?y
+2.31 find/rand => x?y
 =====================
 
 Find the first element of x that matches y otherwise return the end of vector.
@@ -1131,7 +1103,7 @@ Return x uniform random numbers between 0 and y or from list y with the same typ
       3?3       / duplicates are possible
      2 2 1
 
-2.34 type => @x
+2.32 type => @x
 ===============
 
 Return the data type of x.  Lower-case represents a single element while upper-case represents a list of type indicated.
@@ -1172,7 +1144,7 @@ Return the data type of x.  Lower-case represents a single element while upper-c
       @[x:`a`b]y:1 2]
      `a
 
-2.35 [f]at => x@y
+2.33 [f]at => x@y
 =================
 
 Given a list or function x return the value(s) at index(indices) y.
@@ -1199,7 +1171,7 @@ Given a list or function x return the value(s) at index(indices) y.
      drow
      3
 
-2.36 value => .x
+2.34 value => .x
 ================
 
 Evaluate a string of valid k code, list of k code, or a system command.  Can also be used to covert from a string to a numeric, temporal or name type.
@@ -1244,7 +1216,7 @@ Convert from string to numeric or name.
       ."`abc"
      `abc
 
-2.37 [f]dot => x.y
+2.35 [f]dot => x.y
 ==================
 
 Return the value(s) of list x at list y.  This differs from *note at:: as dot can recursively index.
@@ -2480,7 +2452,7 @@ Expr :a+b
 8.1 expr => x :y
 ================
 
-Evaluate expression(s) 'y' on table or dictionary 'x'.  The space between 'x' and ':' is required otherwise it becomes *note set::, i.e., assignment.
+Evaluate expression(s) 'y' on table or dictionary 'x'.  The space between 'x' and ':' is required otherwise it becomes set, i.e., assignment.
 
       d:[city:`Chongqing`Shanhai`Beijing`Delhi`Chengdu]; d
      city|`Chongqin`Shanhai`Beijing`Delhi`Chengdu
@@ -2707,7 +2679,37 @@ Write out all permutations of integers up x-1.  Display them as columns.
      1 0 2 2 0 1
      2 2 0 1 1 0
 
-9.21 sums => sums x
+9.21 freq => freq x
+===================
+
+Compute the frequency of the items in list x.
+
+      freq "abzccdefeajfekjrlke"
+     a|2
+     b|1
+     c|2
+     d|1
+     e|4
+     f|2
+     j|2
+     k|2
+     l|1
+     r|1
+     z|1
+
+      freq 1000?10
+     0| 95
+     1|106
+     2| 84
+     3| 98
+     4|109
+     5|104
+     6| 94
+     7| 95
+     8|120
+     9| 95
+
+9.22 sums => sums x
 ===================
 
 Compute the running sum of list x.  Sames as '+\'.
@@ -2715,7 +2717,7 @@ Compute the running sum of list x.  Sames as '+\'.
       sums !10
      0 1 3 6 10 15 21 28 36 45
 
-9.22 deltas => deltas x and x deltas y
+9.23 deltas => deltas x and x deltas y
 ======================================
 
 Compute the difference between each element in list x and the previous value.  If delta is called with two parameters then x will be used as the first value to delta instead of the default 0.
@@ -2726,7 +2728,7 @@ Compute the difference between each element in list x and the previous value.  I
       1 deltas 1 5 10
      0 4 5
 
-9.23 has => x has y
+9.24 has => x has y
 ===================
 
 Determine whether vector x has element y.  Simliar to *note in:: but with the arguments reversed.
@@ -2743,7 +2745,7 @@ Determine whether vector x has element y.  Simliar to *note in:: but with the ar
       (1 2;4 5 6;7 9)has(1 2;8 9)
      10b
 
-9.24 bin => x bin y
+9.25 bin => x bin y
 ===================
 
 Given a sorted (increasing) list x, find the greatest index, i, where y>x[i].
@@ -2753,7 +2755,7 @@ Given a sorted (increasing) list x, find the greatest index, i, where y>x[i].
       n bin 1.025
      3
 
-9.25 in => x in y
+9.26 in => x in y
 =================
 
 Determine if x is in list y.  Similar to *note has:: but arguments reversed.
@@ -2763,7 +2765,7 @@ Determine if x is in list y.  Similar to *note has:: but arguments reversed.
       `c in `a`b`d`e
      0b
 
-9.26 within => x within y
+9.27 within => x within y
 =========================
 
 Test if x is equal to or greater than y[0] and less than y[1].
@@ -2780,7 +2782,7 @@ Test if x is equal to or greater than y[0] and less than y[1].
      23 within 0 12
      0b
 
-9.27 div => x div y
+9.28 div => x div y
 ===================
 
 y divided by x using integer division, taking the floor of the result.  x and y must be integers.
@@ -2790,7 +2792,7 @@ y divided by x using integer division, taking the floor of the result.  x and y 
       5 div 22
      4
 
-9.28 mod => x mod y
+9.29 mod => x mod y
 ===================
 
 The remainder after y divided by x using integer division.  x and y must be integers.
@@ -2800,7 +2802,7 @@ The remainder after y divided by x using integer division.  x and y must be inte
       5 mod 22
      2
 
-9.29 bar => x bar y
+9.30 bar => x bar y
 ===================
 
 For each value in y determine the maximum multiple of x that is less than or equal to each y.
@@ -2808,7 +2810,7 @@ For each value in y determine the maximum multiple of x that is less than or equ
       10 bar 9 10 11 19 20 21
      0 10 10 10 20 20
 
-9.30 msum => x msum y
+9.31 msum => x msum y
 =====================
 
 Compute the length x moving sum of list y.
@@ -2816,7 +2818,7 @@ Compute the length x moving sum of list y.
       3 msum !10
      0 1 3 6 9 12 15 18 21 24
 
-9.31 mavg => x mavg y
+9.32 mavg => x mavg y
 =====================
 
 Compute the length x moving average of list y.
@@ -4086,47 +4088,43 @@ File: k9.info,  Node: Temporal Functions,  Next: Errors,  Prev: Control Flow,  U
 
 k9 has functions (within '.z') to get the current date and time to various degrees of precision.  There are also functions to retrieve partial date and time using dot notation.
 
-date 2001.01.01   .z.d
-time 12:34:56.789 .z.t
+z.d date   2001.02.03  
+z.t time   12:34:56.789
+z.T datetime
 
-17.1 .z.[dm] date
-=================
+17.1 z.d date
+=============
 
 These functions retrieve the date as day (d) or month (m) precision.
 
       .z.d
-     2020.12.13
+     2023.03.11
 
-      .z.m
-     2020.12.
+17.2 z.t time
+=============
 
-17.2 z.[hrstuv] time
-====================
+These functions retrieve the time millisecond precision.
 
-These functions retrieve the time at hour (h), minute (r), second (s), millisecond (t), microsecond (u), or nanosecond (v) precision.
-
-      .z.h
-     11
-      .z.r
-     11:25
-      .z.s
-     11:25:16
-      .z.t
-     11:25:16.842
-      .z.u
-     11:25:17.491362
-      .z.v
-     11:25:18.186360064
+      z.t
+     09:09:02.451
 
 One could use the current time commands to measure run time but typically this is done via '\t'
 
-      t1:.z.v;(_2e8)?1.;t2:.z.v;t2-t1
-     00:00:00.609207008
+      t1:z.t;(_2e8)?1.;t2:z.t;t2-t1
+     00:00:00.001
 
-     \t (_2e8)?1.
+      \t (_2e8)?1.
      610
 
-17.3 Temporal dot functions
+17.3 z.T datetime
+=================
+
+These functions retrieve the date and time as datetime.
+
+      .z.T
+     2023.03.11 09:09:49.654
+
+17.4 Temporal dot functions
 ===========================
 
 These functions use dot notation to retrieve partial date and times.
@@ -4828,188 +4826,188 @@ $  parse  str         *4' get        dict   {a:2 3}
 
 Tag Table:
 Node: Top120
-Node: Introduction3788
-Node: Verb15285
-Ref: x16854
-Ref: set16884
-Ref: flip17132
-Ref: plus17417
-Ref: negate17895
-Ref: minus18070
-Ref: first18178
-Ref: times18395
-Ref: divide18527
-Ref: where18669
-Ref: min/and19152
-Ref: reverse19428
-Ref: max/or19689
-Ref: asc19969
-Ref: desc19969
-Ref: less20360
-Ref: more20360
-Ref: group20669
-Ref: equal20969
-Ref: not21269
-Ref: match21390
-Ref: enum21771
-Ref: key23055
-Ref: enlist23291
-Ref: cat23431
-Ref: sort23768
-Ref: cut24420
-Ref: cut124757
-Ref: cut224909
-Ref: cut325090
-Ref: cut425364
-Ref: cut525544
-Ref: count25789
-Ref: take26068
-Ref: take126663
-Ref: take227032
-Ref: take327454
-Ref: take427647
-Ref: floor28006
-Ref: drop28097
-Ref: drop128611
-Ref: drop228792
-Ref: drop329068
-Ref: str29227
-Ref: parse29322
-Ref: distinct29538
-Ref: find/rand29788
-Ref: type30470
-Ref: at31039
-Ref: value31528
-Ref: dot32200
-Node: Adverb33455
-Ref: each34920
-Ref: over35523
-Ref: scan35651
-Ref: join37002
-Ref: split37373
-Ref: eachprior37631
-Ref: eachright38681
-Ref: eachleft38980
-Ref: cover39270
-Ref: cscan39583
-Node: Noun40759
-Ref: Atom Types42155
-Ref: bool44770
-Ref: int45457
-Ref: flt46137
-Ref: char46539
-Ref: name46772
-Ref: uuid47012
-Ref: time47169
-Ref: date48072
-Ref: datetime48533
-Node: List49447
-Node: Dictionary54528
-Node: User Functions60555
-Node: Expression63800
-Node: Named Functions65287
-Ref: Hcount65887
-Ref: Hfirst65980
-Ref: Hlast66073
-Ref: Hmin66175
-Ref: Hmax66290
-Ref: Hsum66405
-Ref: Hdot66507
-Ref: avg66666
-Ref: var66817
-Ref: dev66952
-Ref: med66994
-Ref: mode67036
-Ref: countd67082
-Ref: exp67136
-Ref: log67241
-Ref: sin67337
-Ref: cos67472
-Ref: sqr67616
-Ref: sqrt67701
-Ref: prm67801
-Ref: sums67976
-Ref: deltas68116
-Ref: has68454
-Ref: bin68748
-Ref: in68958
-Ref: within69132
-Ref: div69364
-Ref: mod69548
-Ref: bar69722
-Ref: msum69911
-Ref: mavg70048
-Node: Knit Functions70192
-Ref: amend70487
-Ref: amend171010
-Ref: amend271259
-Ref: amend371478
-Ref: amend471783
-Ref: dmend72071
-Ref: dmend172401
-Ref: dmend372569
-Ref: dmend472734
-Node: I/O72895
-Ref: r line75239
-Ref: w line75356
-Ref: r char75736
-Ref: w char75991
-Ref: r data76353
-Ref: w data77014
-Ref: k-ipc78045
-Ref: 3set78532
-Ref: https79066
-Ref: 4get79112
-Ref: csv79778
-Ref: json80194
-Ref: compress80667
-Node: FF81593
-Ref: python81984
-Ref: nodejs82796
-Ref: ffi83700
-Ref: import84133
-Node: Tables84252
-Ref: table84878
-Ref: utable86520
-Node: kSQL87059
-Ref: select87959
-Ref: A88526
-Ref: by B89379
-Ref: where C89708
-Ref: update90550
-Ref: delete91271
-Ref: Joins91553
-Ref: union91910
-Ref: leftjoin92431
-Ref: outer93210
-Ref: asof93845
-Ref: asof+95296
-Ref: insert96514
-Ref: upsert96860
-Node: System97274
-Ref: load97748
-Ref: timing97937
-Ref: variables98278
-Ref: memory98386
-Ref: OS command98503
-Node: Control Flow98746
-Ref: cond98982
-Node: Temporal Functions99352
-Ref: z.d99712
-Ref: z.t99873
-Node: Errors100741
-Ref: class101189
-Ref: rank101278
-Ref: length101402
-Ref: _type101525
-Ref: domain101634
-Ref: limit101756
-Ref: nyi101957
-Ref: eparse102284
-Ref: _value102437
-Node: Examples102565
-Node: Benchmark110610
-Node: Conclusion119213
+Node: Introduction3828
+Node: Verb15325
+Ref: flip16447
+Ref: plus16732
+Ref: negate17210
+Ref: minus17385
+Ref: first17493
+Ref: times17710
+Ref: divide17842
+Ref: where17984
+Ref: min/and18465
+Ref: reverse18739
+Ref: max/or19000
+Ref: asc19280
+Ref: desc19280
+Ref: less19671
+Ref: more19671
+Ref: group19980
+Ref: equal20280
+Ref: not20580
+Ref: match20701
+Ref: enum21082
+Ref: key22366
+Ref: enlist22602
+Ref: cat22742
+Ref: sort23079
+Ref: cut23731
+Ref: cut124068
+Ref: cut224220
+Ref: cut324401
+Ref: cut424675
+Ref: cut524855
+Ref: count25100
+Ref: take25379
+Ref: take125974
+Ref: take226343
+Ref: take326765
+Ref: take426958
+Ref: floor27317
+Ref: drop27408
+Ref: drop127922
+Ref: drop228103
+Ref: drop328379
+Ref: str28538
+Ref: parse28633
+Ref: distinct28849
+Ref: find/rand29099
+Ref: type29781
+Ref: at30350
+Ref: value30839
+Ref: dot31511
+Node: Adverb32766
+Ref: each34231
+Ref: over34834
+Ref: scan34962
+Ref: join36313
+Ref: split36684
+Ref: eachprior36942
+Ref: eachright37992
+Ref: eachleft38291
+Ref: cover38581
+Ref: cscan38894
+Node: Noun40070
+Ref: Atom Types41466
+Ref: bool44081
+Ref: int44768
+Ref: flt45448
+Ref: char45850
+Ref: name46083
+Ref: uuid46323
+Ref: time46480
+Ref: date47383
+Ref: datetime47844
+Node: List48758
+Node: Dictionary53839
+Node: User Functions59866
+Node: Expression63111
+Node: Named Functions64590
+Ref: Hcount65190
+Ref: Hfirst65283
+Ref: Hlast65376
+Ref: Hmin65478
+Ref: Hmax65593
+Ref: Hsum65708
+Ref: Hdot65810
+Ref: avg65969
+Ref: var66120
+Ref: dev66255
+Ref: med66297
+Ref: mode66339
+Ref: countd66385
+Ref: exp66439
+Ref: log66544
+Ref: sin66640
+Ref: cos66775
+Ref: sqr66919
+Ref: sqrt67004
+Ref: prm67104
+Ref: freq67279
+Ref: sums67630
+Ref: deltas67770
+Ref: has68108
+Ref: bin68402
+Ref: in68612
+Ref: within68786
+Ref: div69018
+Ref: mod69202
+Ref: bar69376
+Ref: msum69565
+Ref: mavg69702
+Node: Knit Functions69846
+Ref: amend70141
+Ref: amend170664
+Ref: amend270913
+Ref: amend371132
+Ref: amend471437
+Ref: dmend71725
+Ref: dmend172055
+Ref: dmend372223
+Ref: dmend472388
+Node: I/O72549
+Ref: r line74893
+Ref: w line75010
+Ref: r char75390
+Ref: w char75645
+Ref: r data76007
+Ref: w data76668
+Ref: k-ipc77699
+Ref: 3set78186
+Ref: https78720
+Ref: 4get78766
+Ref: csv79432
+Ref: json79848
+Ref: compress80321
+Node: FF81247
+Ref: python81638
+Ref: nodejs82450
+Ref: ffi83354
+Ref: import83787
+Node: Tables83906
+Ref: table84532
+Ref: utable86174
+Node: kSQL86713
+Ref: select87613
+Ref: A88180
+Ref: by B89033
+Ref: where C89362
+Ref: update90204
+Ref: delete90925
+Ref: Joins91207
+Ref: union91564
+Ref: leftjoin92085
+Ref: outer92864
+Ref: asof93499
+Ref: asof+94950
+Ref: insert96168
+Ref: upsert96514
+Node: System96928
+Ref: load97402
+Ref: timing97591
+Ref: variables97932
+Ref: memory98040
+Ref: OS command98157
+Node: Control Flow98400
+Ref: cond98636
+Node: Temporal Functions99006
+Ref: z.d99381
+Ref: z.t99508
+Ref: z.T99805
+Node: Errors100279
+Ref: class100727
+Ref: rank100816
+Ref: length100940
+Ref: _type101063
+Ref: domain101172
+Ref: limit101294
+Ref: nyi101495
+Ref: eparse101822
+Ref: _value101975
+Node: Examples102103
+Node: Benchmark110148
+Node: Conclusion118751
 
 End Tag Table
 
