@@ -22,35 +22,36 @@
 @numsecentry{minus @result {} x-y.}{2.4}{}{9}
 @numsecentry{first @result {} *x}{2.5}{}{9}
 @numsecentry{times @result {} x*y}{2.6}{}{9}
-@numsecentry{divide @result {} x@code {%}y}{2.7}{}{10}
-@numsecentry{where @result {} &x}{2.8}{}{10}
-@numsecentry{and @result {} x&y}{2.9}{}{10}
-@numsecentry{reverse @result {} |x}{2.10}{}{11}
-@numsecentry{or @result {} x|y}{2.11}{}{11}
-@numsecentry{asc(desc) @result {} < (>) x}{2.12}{}{11}
-@numsecentry{less (more) @result {} x < (>) y}{2.13}{}{12}
-@numsecentry{group @result {} =x}{2.14}{}{12}
-@numsecentry{equal @result {} x=y}{2.15}{}{12}
-@numsecentry{not @result {} ~x}{2.16}{}{13}
-@numsecentry{match @result {} x~y}{2.17}{}{13}
-@numsecentry{enum @result {} !x}{2.18}{}{14}
-@numsecentry{key @result {} x!y}{2.19}{}{15}
-@numsecentry{enlist @result {} ,x}{2.20}{}{15}
-@numsecentry{cat @result {} x,y}{2.21}{}{15}
-@numsecentry{sort @result {} ^x}{2.22}{}{16}
-@numsecentry{[f]cut @result {} x^y}{2.23}{}{16}
-@numsecentry{count @result {} #x}{2.24}{}{18}
-@numsecentry{[f]take @result {} x#y}{2.25}{}{18}
-@numsecentry{floor @result {} _x}{2.26}{}{20}
-@numsecentry{[f]drop @result {} x_y}{2.27}{}{20}
-@numsecentry{str @result {} $x}{2.28}{}{21}
-@numsecentry{parse @result {} x$y}{2.29}{}{21}
-@numsecentry{distinct @result {} ?x}{2.30}{}{21}
-@numsecentry{find/rand @result {} x?y}{2.31}{}{21}
-@numsecentry{type @result {} @@x}{2.32}{}{22}
-@numsecentry{[f]at @result {} x@@y}{2.33}{}{23}
-@numsecentry{value @result {} .x}{2.34}{}{23}
-@numsecentry{[f]dot @result {} x.y}{2.35}{}{24}
+@numsecentry{sqrt @result {} %x}{2.7}{}{10}
+@numsecentry{divide @result {} x@code {%}y}{2.8}{}{10}
+@numsecentry{key @result {} !x}{2.9}{}{10}
+@numsecentry{mod @result {} x!y}{2.10}{}{11}
+@numsecentry{where @result {} &x}{2.11}{}{11}
+@numsecentry{and @result {} x&y}{2.12}{}{12}
+@numsecentry{reverse @result {} |x}{2.13}{}{12}
+@numsecentry{or @result {} x|y}{2.14}{}{12}
+@numsecentry{asc(desc) @result {} < (>) x}{2.15}{}{13}
+@numsecentry{less (more) @result {} x < (>) y}{2.16}{}{13}
+@numsecentry{freq@result {} =x}{2.17}{}{13}
+@numsecentry{equal @result {} x=y}{2.18}{}{14}
+@numsecentry{not @result {} ~x}{2.19}{}{14}
+@numsecentry{match @result {} x~y}{2.20}{}{14}
+@numsecentry{enlist @result {} ,x}{2.21}{}{15}
+@numsecentry{cat @result {} x,y}{2.22}{}{15}
+@numsecentry{sort @result {} ^x}{2.23}{}{16}
+@numsecentry{[f]cut @result {} x^y}{2.24}{}{16}
+@numsecentry{count @result {} #x}{2.25}{}{18}
+@numsecentry{[f]take @result {} x#y}{2.26}{}{18}
+@numsecentry{floor @result {} _x}{2.27}{}{20}
+@numsecentry{[f]drop @result {} x_y}{2.28}{}{20}
+@numsecentry{str @result {} $x}{2.29}{}{21}
+@numsecentry{parse @result {} x$y}{2.30}{}{21}
+@numsecentry{distinct @result {} ?x}{2.31}{}{21}
+@numsecentry{find @result {} x?y}{2.32}{}{21}
+@numsecentry{type @result {} @@x}{2.33}{}{22}
+@numsecentry{[f]at @result {} x@@y}{2.34}{}{23}
+@numsecentry{value @result {} .x}{2.35}{}{23}
+@numsecentry{[f]dot @result {} x.y}{2.36}{}{24}
 @numchapentry{Adverbs}{3}{Adverb}{27}
 @numsecentry{each @result {} f'x}{3.1}{}{27}
 @numsecentry{over @result {} f/y or x f/y}{3.2}{}{28}
@@ -68,17 +69,17 @@
 @numsubsecentry{boolean logic}{4.2.1}{}{34}
 @numsecentry{Numeric Data}{4.3}{}{34}
 @numsubsecentry{int @result {} Integer g, h, i, j}{4.3.1}{}{34}
-@numsubsecentry{flt @result {} Float e, f}{4.3.2}{}{35}
-@numsecentry{Text Data}{4.4}{}{35}
-@numsubsecentry{char @result {} Character c}{4.4.1}{}{35}
-@numsubsecentry{name @result {} Name n}{4.4.2}{}{36}
-@numsecentry{Unique Identifier}{4.5}{}{36}
-@numsubsecentry{uuid @result {} Uuid}{4.5.1}{}{36}
-@numsecentry{Temporal Data}{4.6}{}{36}
-@numsubsecentry{time @result {} Time s, t, u, v}{4.6.1}{}{36}
-@numsubsecentry{date @result {} Date d}{4.6.2}{}{36}
-@numsubsecentry{datetime @result {} Datetime d}{4.6.3}{}{37}
-@numsecentry{Extreme values}{4.7}{}{37}
+@numsubsecentry{float @result {} Float e, f}{4.3.2}{}{35}
+@numsubsecentry{fixed @result {} Float e, f}{4.3.3}{}{35}
+@numsubsecentry{locus @result {} Float e, f}{4.3.4}{}{35}
+@numsecentry{Text Data}{4.4}{}{36}
+@numsubsecentry{char @result {} Character c}{4.4.1}{}{36}
+@numsubsecentry{sym @result {} Name n}{4.4.2}{}{36}
+@numsecentry{Temporal Data}{4.5}{}{36}
+@numsubsecentry{time @result {} Time s, t, u, v}{4.5.1}{}{36}
+@numsubsecentry{date @result {} Date d}{4.5.2}{}{37}
+@numsubsecentry{datetime @result {} Datetime d}{4.5.3}{}{37}
+@numsecentry{Extreme values}{4.6}{}{37}
 @numchapentry{List}{5}{List}{38}
 @numsecentry{List Syntax}{5.1}{}{38}
 @numsecentry{List Indexing}{5.2}{}{39}
@@ -130,112 +131,109 @@
 @numsecentry{sin @result {} sin x}{9.16}{}{56}
 @numsecentry{cos @result {} cos x}{9.17}{}{56}
 @numsecentry{sqr @result {} sqr x}{9.18}{}{56}
-@numsecentry{sqrt @result {} sqrt x}{9.19}{}{56}
-@numsecentry{prm @result {} prm x}{9.20}{}{56}
-@numsecentry{freq @result {} freq x}{9.21}{}{56}
-@numsecentry{sums @result {} sums x}{9.22}{}{57}
-@numsecentry{deltas @result {} deltas x and x deltas y}{9.23}{}{57}
-@numsecentry{has @result {} x has y}{9.24}{}{57}
-@numsecentry{bin @result {} x bin y}{9.25}{}{58}
-@numsecentry{in @result {} x in y}{9.26}{}{58}
-@numsecentry{within @result {} x within y}{9.27}{}{58}
-@numsecentry{div @result {} x div y}{9.28}{}{58}
-@numsecentry{mod @result {} x mod y}{9.29}{}{59}
-@numsecentry{bar @result {} x bar y}{9.30}{}{59}
-@numsecentry{msum @result {} x msum y}{9.31}{}{59}
-@numsecentry{mavg @result {} x mavg y}{9.32}{}{59}
-@numchapentry{Knit Functions}{10}{Knit Functions}{60}
-@numsecentry{amend @result {} @@[r;i;f[;y]]}{10.1}{}{60}
-@numsecentry{dmend @result {} .[r;i;f[;y]]}{10.2}{}{62}
-@numchapentry{I/O and Interface}{11}{I/O}{64}
-@numsecentry{File I/O}{11.1}{}{64}
-@numsubsecentry{Example File I/O}{11.1.1}{}{64}
-@numsubsecentry{read line @result {} 0:x}{11.1.2}{}{65}
-@numsubsecentry{write line @result {} x 0:y}{11.1.3}{}{65}
-@numsubsecentry{read char @result {} 1:x}{11.1.4}{}{65}
-@numsubsecentry{write char @result {} x 1:y}{11.1.5}{}{65}
-@numsubsecentry{read data @result {} 2: x}{11.1.6}{}{66}
-@numsubsecentry{write data @result {} x 2: y}{11.1.7}{}{66}
-@numsecentry{IPC}{11.2}{}{67}
-@numsubsecentry{k-ipc @result {} 3:x}{11.2.1}{}{67}
-@numsubsecentry{set @result {} x 3:y}{11.2.2}{}{67}
-@numsubsecentry{https @result {} 4:x}{11.2.3}{}{67}
-@numsubsecentry{get @result {} x 4:y}{11.2.4}{}{67}
-@numsecentry{ffi/import}{11.3}{}{68}
-@numsubsecentry{export, import csv @result {} `csv@@x, @math {`}csv?x}{11.3.1}{}{68}
-@numsubsecentry{export, import json @result {} `json@@x, @math {`}json?x}{11.3.2}{}{68}
-@numsubsecentry{lz4 zstd @result {} @math {`}lz4 @math {`}zstd}{11.3.3}{}{68}
-@numchapentry{Foreign Functions}{12}{FF}{70}
-@numsecentry{python}{12.1}{}{70}
-@numsecentry{nodejs}{12.2}{}{70}
-@numsecentry{ffi @result {} 5:}{12.3}{}{71}
-@numsecentry{import @result {} x 5:y}{12.4}{}{71}
-@numchapentry{Tables}{13}{Tables}{72}
-@numsecentry{table}{13.1}{}{72}
-@numsubsecentry{Table format}{13.1.1}{}{72}
-@numsubsecentry{Dictionary format}{13.1.2}{}{72}
-@numsubsecentry{File import}{13.1.3}{}{73}
-@numsecentry{utable}{13.2}{}{73}
-@numchapentry{kSQL}{14}{kSQL}{74}
-@numsecentry{Queries}{14.1}{}{74}
-@numsubsecentry{select}{14.1.1}{}{74}
-@numsubsecentry{A}{14.1.2}{}{75}
-@numsubsecentry{by B}{14.1.3}{}{76}
-@numsubsecentry{where C}{14.1.4}{}{76}
-@numsubsecentry{Query with By and Where}{14.1.5}{}{77}
-@numsubsecentry{update}{14.1.6}{}{77}
-@numsubsecentry{delete}{14.1.7}{}{78}
-@numsecentry{Joins}{14.2}{}{78}
-@numsubsecentry{union join @result {} t1,t2}{14.2.1}{}{78}
-@numsubsecentry{leftjoin @result {} t,k}{14.2.2}{}{79}
-@numsubsecentry{outer join @result {} k1,k2}{14.2.3}{}{80}
-@numsubsecentry{asof join @result {} t,k}{14.2.4}{}{81}
-@numsubsecentry{asof+ join @result {} k1+k2}{14.2.5}{}{82}
-@numsecentry{Insert and Upsert}{14.3}{}{83}
-@numsubsecentry{insert @result {} t,d}{14.3.1}{}{83}
-@numsubsecentry{upsert @result {} k,d}{14.3.2}{}{83}
-@numchapentry{System}{15}{System}{85}
-@numsecentry{load @result {} \l a.k}{15.1}{}{85}
-@numsecentry{timing @result {} \t x or \t:n x}{15.2}{}{85}
-@numsecentry{u @result {} \u x or \u:n x}{15.3}{}{85}
-@numsecentry{variables @result {} \v}{15.4}{}{85}
-@numsecentry{memory @result {} \w}{15.5}{}{86}
-@numsecentry{OS command @result {} \cmd}{15.6}{}{86}
-@numchapentry{Control Flow}{16}{Control Flow}{87}
-@numsecentry{cond @result {} $[b;t;f]}{16.1}{}{87}
-@numchapentry{Temporal Functions}{17}{Temporal Functions}{88}
-@numsecentry{z.d date}{17.1}{}{88}
-@numsecentry{z.t time}{17.2}{}{88}
-@numsecentry{z.T datetime}{17.3}{}{88}
-@numsecentry{Temporal dot functions}{17.4}{}{88}
-@numchapentry{Errors}{18}{Errors}{90}
-@numsecentry{:class}{18.1}{}{90}
-@numsecentry{:rank}{18.2}{}{90}
-@numsecentry{:length}{18.3}{}{90}
-@numsecentry{:type}{18.4}{}{90}
-@numsecentry{:domain}{18.5}{}{90}
-@numsecentry{:limit}{18.6}{}{90}
-@numsecentry{:nyi}{18.7}{}{91}
-@numsecentry{:parse}{18.8}{}{91}
-@numsecentry{:value}{18.9}{}{91}
-@numchapentry{Examples}{19}{Examples}{92}
-@numsecentry{A Tiny Introduction to Financial Market Data}{19.1}{}{92}
-@numsecentry{Data Manipulation}{19.2}{}{93}
-@numsecentry{Understanding Code Examples}{19.3}{}{94}
-@numchapentry{Benchmark}{20}{Benchmark}{97}
-@numsecentry{b.k}{20.1}{}{97}
-@numsubsecentry{T}{20.1.1}{}{97}
-@numsubsecentry{P, Z, E}{20.1.2}{}{98}
-@numsubsecentry{m, n, S, N}{20.1.3}{}{98}
-@numsubsecentry{t}{20.1.4}{}{98}
-@numsubsecentry{q}{20.1.5}{}{98}
-@numsubsecentry{a, A}{20.1.6}{}{99}
-@numsubsecentry{Max price by exchange}{20.1.7}{}{99}
-@numsubsecentry{Compute sum of trade size by hour.}{20.1.8}{}{99}
-@numsubsecentry{Compute last bid by symbol}{20.1.9}{}{99}
-@numsubsecentry{Find trades below the bid}{20.1.10}{}{100}
-@numsecentry{taxi}{20.2}{}{100}
-@numsubsecentry{g}{20.2.1}{}{101}
-@numsubsecentry{x}{20.2.2}{}{101}
-@numsubsecentry{2009.01.04}{20.2.3}{}{101}
-@numchapentry{Conclusion}{21}{Conclusion}{103}
+@numsecentry{prm @result {} prm x}{9.19}{}{56}
+@numsecentry{sums @result {} sums x}{9.20}{}{56}
+@numsecentry{deltas @result {} deltas x and x deltas y}{9.21}{}{56}
+@numsecentry{has @result {} x has y}{9.22}{}{57}
+@numsecentry{bin @result {} x bin y}{9.23}{}{57}
+@numsecentry{in @result {} x in y}{9.24}{}{57}
+@numsecentry{within @result {} x within y}{9.25}{}{57}
+@numsecentry{div @result {} x div y}{9.26}{}{58}
+@numsecentry{bar @result {} x bar y}{9.27}{}{58}
+@numsecentry{msum @result {} x msum y}{9.28}{}{58}
+@numsecentry{mavg @result {} x mavg y}{9.29}{}{58}
+@numchapentry{Knit Functions}{10}{Knit Functions}{59}
+@numsecentry{amend @result {} @@[r;i;f[;y]]}{10.1}{}{59}
+@numsecentry{dmend @result {} .[r;i;f[;y]]}{10.2}{}{61}
+@numchapentry{I/O and Interface}{11}{I/O}{63}
+@numsecentry{File I/O}{11.1}{}{63}
+@numsubsecentry{Example File I/O}{11.1.1}{}{63}
+@numsubsecentry{read line @result {} 0:x}{11.1.2}{}{64}
+@numsubsecentry{write line @result {} x 0:y}{11.1.3}{}{64}
+@numsubsecentry{read char @result {} 1:x}{11.1.4}{}{64}
+@numsubsecentry{write char @result {} x 1:y}{11.1.5}{}{64}
+@numsubsecentry{read data @result {} 2: x}{11.1.6}{}{65}
+@numsubsecentry{write data @result {} x 2: y}{11.1.7}{}{65}
+@numsecentry{IPC}{11.2}{}{66}
+@numsubsecentry{k-ipc @result {} 3:x}{11.2.1}{}{66}
+@numsubsecentry{set @result {} x 3:y}{11.2.2}{}{66}
+@numsubsecentry{https @result {} 4:x}{11.2.3}{}{66}
+@numsubsecentry{get @result {} x 4:y}{11.2.4}{}{66}
+@numsecentry{ffi/import}{11.3}{}{67}
+@numsubsecentry{export, import csv @result {} `csv@@x, @math {`}csv?x}{11.3.1}{}{67}
+@numsubsecentry{export, import json @result {} `json@@x, @math {`}json?x}{11.3.2}{}{67}
+@numsubsecentry{lz4 zstd @result {} @math {`}lz4 @math {`}zstd}{11.3.3}{}{67}
+@numchapentry{Foreign Functions}{12}{FF}{69}
+@numsecentry{python}{12.1}{}{69}
+@numsecentry{nodejs}{12.2}{}{69}
+@numsecentry{ffi @result {} 5:}{12.3}{}{70}
+@numsecentry{import @result {} x 5:y}{12.4}{}{70}
+@numchapentry{Tables}{13}{Tables}{71}
+@numsecentry{table}{13.1}{}{71}
+@numsubsecentry{Table format}{13.1.1}{}{71}
+@numsubsecentry{Dictionary format}{13.1.2}{}{71}
+@numsubsecentry{File import}{13.1.3}{}{72}
+@numsecentry{utable}{13.2}{}{72}
+@numchapentry{kSQL}{14}{kSQL}{73}
+@numsecentry{Queries}{14.1}{}{73}
+@numsubsecentry{select}{14.1.1}{}{73}
+@numsubsecentry{A}{14.1.2}{}{74}
+@numsubsecentry{by B}{14.1.3}{}{75}
+@numsubsecentry{where C}{14.1.4}{}{75}
+@numsubsecentry{Query with By and Where}{14.1.5}{}{76}
+@numsubsecentry{update}{14.1.6}{}{76}
+@numsubsecentry{delete}{14.1.7}{}{77}
+@numsecentry{Joins}{14.2}{}{77}
+@numsubsecentry{union join @result {} t1,t2}{14.2.1}{}{77}
+@numsubsecentry{leftjoin @result {} t,k}{14.2.2}{}{78}
+@numsubsecentry{outer join @result {} k1,k2}{14.2.3}{}{79}
+@numsubsecentry{asof join @result {} t,k}{14.2.4}{}{80}
+@numsubsecentry{asof+ join @result {} k1+k2}{14.2.5}{}{81}
+@numsecentry{Insert and Upsert}{14.3}{}{82}
+@numsubsecentry{insert @result {} t,d}{14.3.1}{}{82}
+@numsubsecentry{upsert @result {} k,d}{14.3.2}{}{82}
+@numchapentry{System}{15}{System}{84}
+@numsecentry{load @result {} \l a.k}{15.1}{}{84}
+@numsecentry{timing @result {} \t x or \t:n x}{15.2}{}{84}
+@numsecentry{u @result {} \u x or \u:n x}{15.3}{}{84}
+@numsecentry{variables @result {} \v}{15.4}{}{84}
+@numsecentry{memory @result {} \w}{15.5}{}{85}
+@numsecentry{OS command @result {} \cmd}{15.6}{}{85}
+@numchapentry{Control Flow}{16}{Control Flow}{86}
+@numsecentry{cond @result {} $[b;t;f]}{16.1}{}{86}
+@numchapentry{Temporal Functions}{17}{Temporal Functions}{87}
+@numsecentry{z.d date}{17.1}{}{87}
+@numsecentry{z.t time}{17.2}{}{87}
+@numsecentry{z.T datetime}{17.3}{}{87}
+@numsecentry{Temporal dot functions}{17.4}{}{87}
+@numchapentry{Errors}{18}{Errors}{89}
+@numsecentry{:class}{18.1}{}{89}
+@numsecentry{:rank}{18.2}{}{89}
+@numsecentry{:length}{18.3}{}{89}
+@numsecentry{:type}{18.4}{}{89}
+@numsecentry{:domain}{18.5}{}{89}
+@numsecentry{:limit}{18.6}{}{89}
+@numsecentry{:nyi}{18.7}{}{90}
+@numsecentry{:parse}{18.8}{}{90}
+@numsecentry{:value}{18.9}{}{90}
+@numchapentry{Examples}{19}{Examples}{91}
+@numsecentry{A Tiny Introduction to Financial Market Data}{19.1}{}{91}
+@numsecentry{Data Manipulation}{19.2}{}{92}
+@numsecentry{Understanding Code Examples}{19.3}{}{93}
+@numchapentry{Benchmark}{20}{Benchmark}{96}
+@numsecentry{b.k}{20.1}{}{96}
+@numsubsecentry{T}{20.1.1}{}{96}
+@numsubsecentry{P, Z, E}{20.1.2}{}{97}
+@numsubsecentry{m, n, S, N}{20.1.3}{}{97}
+@numsubsecentry{t}{20.1.4}{}{97}
+@numsubsecentry{q}{20.1.5}{}{97}
+@numsubsecentry{a, A}{20.1.6}{}{98}
+@numsubsecentry{Max price by exchange}{20.1.7}{}{98}
+@numsubsecentry{Compute sum of trade size by hour.}{20.1.8}{}{98}
+@numsubsecentry{Compute last bid by symbol}{20.1.9}{}{98}
+@numsubsecentry{Find trades below the bid}{20.1.10}{}{99}
+@numsecentry{taxi}{20.2}{}{99}
+@numsubsecentry{g}{20.2.1}{}{100}
+@numsubsecentry{x}{20.2.2}{}{100}
+@numsubsecentry{2009.01.04}{20.2.3}{}{100}
+@numchapentry{Conclusion}{21}{Conclusion}{102}

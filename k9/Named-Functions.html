@@ -3,7 +3,7 @@
 <!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<!-- March 11, 2023
+<!-- March 12, 2023
 
 Copyright (C) 2020 John Estrada -->
 <title>Named Functions (Shakti (k9) tutorial)</title>
@@ -98,7 +98,7 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 <div class="format">
 <div class="example">
 <pre class="example"><a href="#Hcount">count</a> <a href="#Hfirst">first</a> <a href="#Hlast">last</a> <a href="#Hmin">min</a> <a href="#Hmax">max</a> <a href="#Hsum">sum</a> <a href="#Hdot">dot</a> <a href="#avg">avg</a> <a href="#var">var</a> [dev med mode countd ..]
-<a href="#sqrt">sqrt</a> <a href="#sqr">sqr</a> <a href="#exp">exp</a> <a href="#log">log</a> <a href="#sin">sin</a> <a href="#cos">cos</a> <a href="#div">div</a> <a href="#mod">mod</a> <a href="#bar">bar</a> <a href="#in">in</a> 
+<a href="Verb.html#sqrt">sqrt</a> <a href="#sqr">sqr</a> <a href="#exp">exp</a> <a href="#log">log</a> <a href="#sin">sin</a> <a href="#cos">cos</a> <a href="#div">div</a> <a href="Verb.html#mod">mod</a> <a href="#bar">bar</a> <a href="#in">in</a> 
 </pre></div>
 </div>
 
@@ -121,9 +121,7 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 <li><a href="#sin-_21d2-sin-x">sin &rArr; sin x</a></li>
 <li><a href="#cos-_21d2-cos-x">cos &rArr; cos x</a></li>
 <li><a href="#sqr-_21d2-sqr-x">sqr &rArr; sqr x</a></li>
-<li><a href="#sqrt-_21d2-sqrt-x">sqrt &rArr; sqrt x</a></li>
 <li><a href="#prm-_21d2-prm-x">prm &rArr; prm x</a></li>
-<li><a href="#freq-_21d2-freq-x">freq &rArr; freq x</a></li>
 <li><a href="#sums-_21d2-sums-x">sums &rArr; sums x</a></li>
 <li><a href="#deltas-_21d2-deltas-x-and-x-deltas-y">deltas &rArr; deltas x and x deltas y</a></li>
 <li><a href="#has-_21d2-x-has-y">has &rArr; x has y</a></li>
@@ -131,7 +129,6 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 <li><a href="#in-_21d2-x-in-y">in &rArr; x in y</a></li>
 <li><a href="#within-_21d2-x-within-y">within &rArr; x within y</a></li>
 <li><a href="#div-_21d2-x-div-y">div &rArr; x div y</a></li>
-<li><a href="#mod-_21d2-x-mod-y">mod &rArr; x mod y</a></li>
 <li><a href="#bar-_21d2-x-bar-y">bar &rArr; x bar y</a></li>
 <li><a href="#msum-_21d2-x-msum-y">msum &rArr; x msum y</a></li>
 <li><a href="#mavg-_21d2-x-mavg-y">mavg &rArr; x mavg y</a></li>
@@ -306,19 +303,9 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 4.0
 </pre></div>
 
-<span id="sqrt"></span></div>
-<div class="section" id="sqrt-_21d2-sqrt-x">
-<h3 class="section">9.19 sqrt &rArr; sqrt x</h3>
-<p>Compute the square root of x.
-</p>
-<div class="example">
-<pre class="example">&nbsp;sqrt 2
-1.414214
-</pre></div>
-
 <span id="prm"></span></div>
 <div class="section" id="prm-_21d2-prm-x">
-<h3 class="section">9.20 prm &rArr; prm x</h3>
+<h3 class="section">9.19 prm &rArr; prm x</h3>
 <p>Write out all permutations of integers up x-1. Display them as columns.
 </p>
 <div class="example">
@@ -328,41 +315,9 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 2 2 0 1 1 0
 </pre></div>
 
-<span id="freq"></span></div>
-<div class="section" id="freq-_21d2-freq-x">
-<h3 class="section">9.21 freq &rArr; freq x</h3>
-<p>Compute the frequency of the items in list x.
-</p>
-<div class="example">
-<pre class="example"> freq &quot;abzccdefeajfekjrlke&quot;
-a|2
-b|1
-c|2
-d|1
-e|4
-f|2
-j|2
-k|2
-l|1
-r|1
-z|1
-
- freq 1000?10
-0| 95
-1|106
-2| 84
-3| 98
-4|109
-5|104
-6| 94
-7| 95
-8|120
-9| 95
-</pre></div>
-
 <span id="sums"></span></div>
 <div class="section" id="sums-_21d2-sums-x">
-<h3 class="section">9.22 sums &rArr; sums x</h3>
+<h3 class="section">9.20 sums &rArr; sums x</h3>
 <p>Compute the running sum of list x.  Sames as <code>+\</code>.
 </p>
 <div class="example">
@@ -372,7 +327,7 @@ z|1
 
 <span id="deltas"></span></div>
 <div class="section" id="deltas-_21d2-deltas-x-and-x-deltas-y">
-<h3 class="section">9.23 deltas &rArr; deltas x and x deltas y</h3>
+<h3 class="section">9.21 deltas &rArr; deltas x and x deltas y</h3>
 <p>Compute the difference between each element in list x and the previous value.  If delta is called with two parameters then x will be used as the first value to delta instead of the default 0.
 </p>
 <div class="example">
@@ -385,7 +340,7 @@ z|1
 
 <span id="has"></span></div>
 <div class="section" id="has-_21d2-x-has-y">
-<h3 class="section">9.24 has &rArr; x has y</h3>
+<h3 class="section">9.22 has &rArr; x has y</h3>
 <p>Determine whether vector x has element y. Simliar to <a href="#in">in</a> but with the arguments reversed.
 </p>
 <div class="example">
@@ -404,7 +359,7 @@ z|1
 
 <span id="bin"></span></div>
 <div class="section" id="bin-_21d2-x-bin-y">
-<h3 class="section">9.25 bin &rArr; x bin y</h3>
+<h3 class="section">9.23 bin &rArr; x bin y</h3>
 <p>Given a sorted (increasing) list x, find the greatest index, i, where y&gt;x[i].
 </p>
 <div class="example">
@@ -416,7 +371,7 @@ z|1
 
 <span id="in"></span></div>
 <div class="section" id="in-_21d2-x-in-y">
-<h3 class="section">9.26 in &rArr; x in y</h3>
+<h3 class="section">9.24 in &rArr; x in y</h3>
 <p>Determine if x is in list y.  Similar to <a href="#has">has</a> but arguments reversed.
 </p>
 <div class="example">
@@ -428,7 +383,7 @@ z|1
 
 <span id="within"></span></div>
 <div class="section" id="within-_21d2-x-within-y">
-<h3 class="section">9.27 within &rArr; x within y</h3>
+<h3 class="section">9.25 within &rArr; x within y</h3>
 <p>Test if x is equal to or greater than y[0] and less than y[1].
 </p>
 <div class="example">
@@ -447,7 +402,7 @@ z|1
 
 <span id="div"></span></div>
 <div class="section" id="div-_21d2-x-div-y">
-<h3 class="section">9.28 div &rArr; x div y</h3>
+<h3 class="section">9.26 div &rArr; x div y</h3>
 <p>y divided by x using integer division, taking the floor of the result.  x and y must be integers.
 </p>
 <div class="example">
@@ -457,21 +412,9 @@ z|1
 4
 </pre></div>
 
-<span id="mod"></span></div>
-<div class="section" id="mod-_21d2-x-mod-y">
-<h3 class="section">9.29 mod &rArr; x mod y</h3>
-<p>The remainder after y divided by x using integer division.  x and y must be integers.
-</p>
-<div class="example">
-<pre class="example">&nbsp;12 mod 27
-3
-&nbsp;5 mod 22
-2
-</pre></div>
-
 <span id="bar"></span></div>
 <div class="section" id="bar-_21d2-x-bar-y">
-<h3 class="section">9.30 bar &rArr; x bar y</h3>
+<h3 class="section">9.27 bar &rArr; x bar y</h3>
 <p>For each value in y determine the maximum multiple of x that is less than or equal to each y.
 </p>
 <div class="example">
@@ -481,7 +424,7 @@ z|1
 
 <span id="msum"></span></div>
 <div class="section" id="msum-_21d2-x-msum-y">
-<h3 class="section">9.31 msum &rArr; x msum y</h3>
+<h3 class="section">9.28 msum &rArr; x msum y</h3>
 <p>Compute the length x  moving sum of list y.
 </p>
 <div class="example">
@@ -492,7 +435,7 @@ z|1
 
 <span id="mavg"></span></div>
 <div class="section" id="mavg-_21d2-x-mavg-y">
-<h3 class="section">9.32 mavg &rArr; x mavg y</h3>
+<h3 class="section">9.29 mavg &rArr; x mavg y</h3>
 <p>Compute the length x  moving average of list y.
 </p>
 <div class="example">

@@ -45,7 +45,7 @@ sed -e 's/@/@@/g' \
     -e 's/str/@ref{str}/g' \
     -e 's/parse/@ref{parse}/g' \
     -e 's/distinct/@ref{distinct}/g' \
-    -e 's/find\/rand/@ref{find\/rand}/g' \
+    -e 's/find/@ref{find}/g' \
     -e '20,100 s/type/@ref{type}/g' \
     -e 's/[f]at/[f]@ref{at}/g' \
     -e 's/value/@ref{value}/g' \

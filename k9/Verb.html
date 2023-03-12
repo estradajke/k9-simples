@@ -3,7 +3,7 @@
 <!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<!-- March 11, 2023
+<!-- March 12, 2023
 
 Copyright (C) 2020 John Estrada -->
 <title>Verb (Shakti (k9) tutorial)</title>
@@ -103,13 +103,13 @@ Next: <a href="Adverb.html" accesskey="n" rel="next">Adverbs</a>, Previous: <a h
 +  +      <a href="#flip">flip</a>
 -  -      -         
 *  *      <a href="#first">first</a>
-%  div    <a href="Named-Functions.html#sqrt">sqrt</a>
+%  div    <a href="#sqrt">sqrt</a>
 !  mod    <a href="#key">key</a>
 &amp;  &amp;      <a href="#where">where</a>
 |  |      <a href="#reverse">reverse</a>
 &lt;  &lt;      <a href="#asc">asc</a>
 &gt;  &gt;      <a href="#desc">desc</a>
-=  =      <a href="Named-Functions.html#freq">freq</a>
+=  =      <a href="#freq">freq</a>
 ~  ~      ~         
 ,  ,      ,
 #  take   <a href="#count">count</a>
@@ -129,19 +129,20 @@ $  parse  <a href="#str">str</a>
 <li><a href="#minus-_21d2-x_002dy_002e" accesskey="4">minus &rArr; x-y.</a></li>
 <li><a href="#first-_21d2-_002ax" accesskey="5">first &rArr; *x</a></li>
 <li><a href="#times-_21d2-x_002ay" accesskey="6">times &rArr;  x*y</a></li>
-<li><a href="#divide-_21d2-x_0025y" accesskey="7">divide &rArr; x<code>%</code>y</a></li>
-<li><a href="#where-_21d2-_0026x" accesskey="8">where &rArr; &amp;x</a></li>
-<li><a href="#and-_21d2-x_0026y" accesskey="9">and &rArr; x&amp;y</a></li>
+<li><a href="#sqrt-_21d2-_0025x" accesskey="7">sqrt &rArr; %x</a></li>
+<li><a href="#divide-_21d2-x_0025y" accesskey="8">divide &rArr; x<code>%</code>y</a></li>
+<li><a href="#key-_21d2-_0021x" accesskey="9">key &rArr; !x</a></li>
+<li><a href="#mod-_21d2-x_0021y">mod &rArr; x!y</a></li>
+<li><a href="#where-_21d2-_0026x">where &rArr; &amp;x</a></li>
+<li><a href="#and-_21d2-x_0026y">and &rArr; x&amp;y</a></li>
 <li><a href="#reverse-_21d2-_007cx">reverse &rArr; |x</a></li>
 <li><a href="#or-_21d2-x_007cy">or &rArr; x|y</a></li>
 <li><a href="#asc_0028desc_0029-_21d2-_003c-_0028_003e_0029-x">asc(desc) &rArr; &lt; (&gt;) x</a></li>
 <li><a href="#less-_0028more_0029-_21d2-x-_003c-_0028_003e_0029-y">less (more) &rArr; x &lt; (&gt;) y</a></li>
-<li><a href="#group-_21d2-_003dx">group &rArr; =x</a></li>
+<li><a href="#freq_21d2-_003dx">freq&rArr; =x</a></li>
 <li><a href="#equal-_21d2-x_003dy">equal &rArr; x=y</a></li>
 <li><a href="#not-_21d2-_007ex">not &rArr; ~x</a></li>
 <li><a href="#match-_21d2-x_007ey">match &rArr; x~y</a></li>
-<li><a href="#enum-_21d2-_0021x">enum &rArr; !x</a></li>
-<li><a href="#key-_21d2-x_0021y">key &rArr; x!y</a></li>
 <li><a href="#enlist-_21d2-_002cx">enlist &rArr; ,x</a></li>
 <li><a href="#cat-_21d2-x_002cy">cat &rArr; x,y</a></li>
 <li><a href="#sort-_21d2-_005ex">sort &rArr; ^x</a></li>
@@ -153,7 +154,7 @@ $  parse  <a href="#str">str</a>
 <li><a href="#str-_21d2-_0024x">str &rArr; $x</a></li>
 <li><a href="#parse-_21d2-x_0024y">parse &rArr; x$y</a></li>
 <li><a href="#distinct-_21d2-_003fx">distinct &rArr; ?x</a></li>
-<li><a href="#find_002frand-_21d2-x_003fy">find/rand &rArr; x?y</a></li>
+<li><a href="#find-_21d2-x_003fy">find &rArr; x?y</a></li>
 <li><a href="#type-_21d2-_0040x">type &rArr; @x</a></li>
 <li><a href="#g_t_005bf_005dat-_21d2-x_0040y">[f]at &rArr; x@y</a></li>
 <li><a href="#value-_21d2-_002ex">value &rArr; .x</a></li>
@@ -291,9 +292,21 @@ b|-4 -5 -6
 4 10 18
 </pre></div>
 
+<span id="sqrt"></span></div>
+<div class="section" id="sqrt-_21d2-_0025x">
+<h3 class="section">2.7 sqrt &rArr; %x</h3>
+<p>Return the square root of x.
+</p>
+<div class="example">
+<pre class="example"> %25
+5.000e+00
+ %14.4
+3.794e+00
+</pre></div>
+
 <span id="divide"></span></div>
 <div class="section" id="divide-_21d2-x_0025y">
-<h3 class="section">2.7 divide &rArr; x<code>%</code>y</h3>
+<h3 class="section">2.8 divide &rArr; x<code>%</code>y</h3>
 <p>Divide x by y.
 </p>
 <div class="example">
@@ -303,232 +316,9 @@ b|-4 -5 -6
 3f
 </pre></div>
 
-<span id="where"></span></div>
-<div class="section" id="where-_21d2-_0026x">
-<h3 class="section">2.8 where &rArr; &amp;x</h3>
-<p>Given a list of boolean values return the indices where the value is non-zero.   
-</p>
-<div class="example">
-<pre class="example"> &amp;001001b
-2 5
-
-&quot;banana&quot;=&quot;a&quot;
-010101b
-
-&amp;&quot;banana&quot;=&quot;a&quot;
-1 3 5
-
-x@&amp;30&lt;x:12.7 0.1 35.6 -12.1 101.101  / return values greater than 30
-35.6 101.101
-</pre></div>
-
-<p>Given a list of non-negative integer values, eg. x[0], x[1], ..., x[n-1], generate x[0] values of 0,
-x[1] values of 1, ..., and x[n-1] values of n-1. 
-</p>
-<div class="example">
-<pre class="example"> &amp; 3 1 0 2
-0 0 0 1 3 3
-
-</pre></div>
-
-<span id="min_002fand"></span></div>
-<div class="section" id="and-_21d2-x_0026y">
-<h3 class="section">2.9 and &rArr; x&amp;y</h3>
-<p>The smaller of x and y.  One can use the over adverb to determine the min value in a list.
-</p>
-<div class="example">
-<pre class="example"> 3&amp;2
-2
-
- 1 2 3&amp;4 5 6
-1 2 3
-
-0 1 0 0 1 0&amp;1 1 1 0 0 0
-0 1 0 0 0 0
-
- `a&amp;`b
-`a
-
- &amp;/ 3 2 10 -200 47
--200
-</pre></div>
-
-<span id="reverse"></span></div>
-<div class="section" id="reverse-_21d2-_007cx">
-<h3 class="section">2.10 reverse &rArr; |x</h3>
-<p>Reverse the list x.
-</p>
-<div class="example">
-<pre class="example"> |0 3 1 2
-2 1 3 0
-
-|&quot;banana&quot;
-&quot;ananab&quot;
-
- |((1 2 3);4;(5 6))
-5 6  
-4    
-1 2 3
-</pre></div>
-
-<p>To get the last element, one can take  the first element of the reverse list (*|<em class='math'>`</em>a<em class='math'>`</em>b<em class='math'>`</em>c).
-</p>
-<span id="max_002for"></span></div>
-<div class="section" id="or-_21d2-x_007cy">
-<h3 class="section">2.11 or &rArr; x|y</h3>
-<p>The greater of x and y.  Max of a list can be determine by use of the adverb over.
-</p>
-<div class="example">
-<pre class="example">  3|2
-3
-
-1 2 3|4 5 6
-4 5 6
-
- 1 0 1 1 0 1|0 0 0 1 1 1
-1 0 1 1 1 1
-
- |/12 2 3 10 / use over to determine the max of a list
-12
-</pre></div>
-
-<span id="asc"></span><span id="desc"></span></div>
-<div class="section" id="asc_0028desc_0029-_21d2-_003c-_0028_003e_0029-x">
-<h3 class="section">2.12 asc(desc) &rArr; &lt; (&gt;) x</h3>
-<p>Sort a list or dictionary in ascending (&lt;) or descending (&gt;) order.  Applied to a list, these will return the indices to be used to achieve the sort.
-</p>
-<div class="example">
-<pre class="example"> &lt;5 7 0 12
-2 0 1 3
-
- x@&lt;x:5 7 0 12
-0 5 7 12
-
- d:`a`b`c!3 2 1;d
-a|3
-b|2
-c|1
-
- &lt;d / a dictionary is sorted by value
-c|1
-b|2
-a|3
-</pre></div>
-
-<span id="less"></span><span id="more"></span></div>
-<div class="section" id="less-_0028more_0029-_21d2-x-_003c-_0028_003e_0029-y">
-<h3 class="section">2.13 less (more) &rArr; x &lt; (&gt;) y</h3>
-<p>Return true (1b) if x is less (more) than y else false (0b).
-</p>
-<div class="example">
-<pre class="example"> 3&lt;2
-0b
-
-2&lt;3
-1b
-
- 1 2 3&lt;4 5 6
-1 1 1
-
- ((1 2 3);4;(5 6))&lt;((101 0 5);12;(10 0)) / size needs to match
-1 0 1
-1  
-1 0
-
- &quot;a&quot;&lt;&quot;b&quot;
-1b
-</pre></div>
-
-<span id="group"></span></div>
-<div class="section" id="group-_21d2-_003dx">
-<h3 class="section">2.14 group &rArr; =x</h3>
-<p>Group takes a list of uniform type, x, and returns a dictionary of the distinct values (key) and their indices (value).
-</p>
-<div class="example">
-<pre class="example"> =&quot;banana&quot;
-a|1 3 5
-b|0    
-n|2 4  
-
- =0 1 0 2 10 7 0 1 12
- 0|0 2 6
- 1|1 7  
- 2|3    
- 7|5    
-10|4    
-12|8    
-</pre></div>
-
-<span id="equal"></span></div>
-<div class="section" id="equal-_21d2-x_003dy">
-<h3 class="section">2.15 equal &rArr; x=y</h3>
-<p>Return true (1b) if x is equal to y else false (0b).  
-</p>
-<div class="example">
-<pre class="example"> 2=2
-1
-
-2=3
-0
-
-2=2.
-1
-
- &quot;banana&quot;=&quot;abnaoo&quot; / check strings of equal length by character
-0 0 1 1 0 0
-
- &quot;banana&quot;=&quot;apple&quot;  / unequal length strings error
-!length
-</pre></div>
-
-<span id="not"></span></div>
-<div class="section" id="not-_21d2-_007ex">
-<h3 class="section">2.16 not &rArr; ~x</h3>
-<p>Boolean invert of x
-</p>
-<div class="example">
-<pre class="example"> ~1
-0
-
- ~1 0 1
-0 1 0
-
- ~37 0 12
-0 1 0
-</pre></div>
-
-<span id="match"></span></div>
-<div class="section" id="match-_21d2-x_007ey">
-<h3 class="section">2.17 match &rArr; x~y</h3>
-<p>Return true (1) if x matches y else false (0).  A match happens if the two arguments evaluate to the same expression.
-</p>
-<div class="example">
-<pre class="example"> 2~2
-1
-
- 2~3
-0
-
- 2~2.
-0
-
- &quot;banana&quot;~&quot;apple&quot;
-0
-
- `a`b~`a`b  / different than = which is element-wise comparison
-1
-
- `a`b=`a`b
-1 1
-
- f:{x+y}
- f~{x+y}
-1
-</pre></div>
-
-<span id="enum"></span></div>
-<div class="section" id="enum-_21d2-_0021x">
-<h3 class="section">2.18 enum &rArr; !x</h3>
+<span id="key"></span></div>
+<div class="section" id="key-_21d2-_0021x">
+<h3 class="section">2.9 key &rArr; !x</h3>
 <p>Enumerate the domain of x.  Given an integer, x, generate an integer list from 0 to x-1.  Given a dictionary, x, return all key values.  
 </p>
 <div class="example">
@@ -580,32 +370,244 @@ B[12123]     / take the 12123 element
 12123
 </pre></div>
 
-<span id="key"></span></div>
-<div class="section" id="key-_21d2-x_0021y">
-<h3 class="section">2.19 key &rArr; x!y</h3>
-<p>Create a dictionary with x (key) and y (value).  
+<span id="mod"></span></div>
+<div class="section" id="mod-_21d2-x_0021y">
+<h3 class="section">2.10 mod &rArr; x!y</h3>
+<p>The remainder after y divided by x using integer division.  x and y must be integers.
 </p>
 <div class="example">
-<pre class="example"> 3!7
-3!7
+<pre class="example"> 12!27
+3
+ 5!22
+2
+</pre></div>
 
-`a`b!3 7
+<span id="where"></span></div>
+<div class="section" id="where-_21d2-_0026x">
+<h3 class="section">2.11 where &rArr; &amp;x</h3>
+<p>Given a list of boolean values return the indices where the value is non-zero.   
+</p>
+<div class="example">
+<pre class="example"> &amp;001001b
+2 5
+
+&quot;banana&quot;=&quot;a&quot;
+010101b
+
+&amp;&quot;banana&quot;=&quot;a&quot;
+1 3 5
+
+x@&amp;30&lt;x:12.7 0.1 35.6 -12.1 101.101  / return values greater than 30
+35.6 101.101
+</pre></div>
+
+<p>Given a list of non-negative integer values, eg. x[0], x[1], ..., x[n-1], generate x[0] values of 0,
+x[1] values of 1, ..., and x[n-1] values of n-1. 
+</p>
+<div class="example">
+<pre class="example"> &amp; 3 1 0 2
+0 0 0 1 3 3
+
+</pre></div>
+
+<span id="min_002fand"></span></div>
+<div class="section" id="and-_21d2-x_0026y">
+<h3 class="section">2.12 and &rArr; x&amp;y</h3>
+<p>The smaller of x and y.  One can use the over adverb to determine the min value in a list.
+</p>
+<div class="example">
+<pre class="example"> 3&amp;2
+2
+
+ 1 2 3&amp;4 5 6
+1 2 3
+
+0 1 0 0 1 0&amp;1 1 1 0 0 0
+0 1 0 0 0 0
+
+ `a&amp;`b
+`a
+
+ &amp;/ 3 2 10 -200 47
+-200
+</pre></div>
+
+<span id="reverse"></span></div>
+<div class="section" id="reverse-_21d2-_007cx">
+<h3 class="section">2.13 reverse &rArr; |x</h3>
+<p>Reverse the list x.
+</p>
+<div class="example">
+<pre class="example"> |0 3 1 2
+2 1 3 0
+
+|&quot;banana&quot;
+&quot;ananab&quot;
+
+ |((1 2 3);4;(5 6))
+5 6  
+4    
+1 2 3
+</pre></div>
+
+<p>To get the last element, one can take  the first element of the reverse list (*|<em class='math'>`</em>a<em class='math'>`</em>b<em class='math'>`</em>c).
+</p>
+<span id="max_002for"></span></div>
+<div class="section" id="or-_21d2-x_007cy">
+<h3 class="section">2.14 or &rArr; x|y</h3>
+<p>The greater of x and y.  Max of a list can be determine by use of the adverb over.
+</p>
+<div class="example">
+<pre class="example">  3|2
+3
+
+1 2 3|4 5 6
+4 5 6
+
+ 1 0 1 1 0 1|0 0 0 1 1 1
+1 0 1 1 1 1
+
+ |/12 2 3 10 / use over to determine the max of a list
+12
+</pre></div>
+
+<span id="asc"></span><span id="desc"></span></div>
+<div class="section" id="asc_0028desc_0029-_21d2-_003c-_0028_003e_0029-x">
+<h3 class="section">2.15 asc(desc) &rArr; &lt; (&gt;) x</h3>
+<p>Sort a list or dictionary in ascending (&lt;) or descending (&gt;) order.  Applied to a list, these will return the indices to be used to achieve the sort.
+</p>
+<div class="example">
+<pre class="example"> &lt;5 7 0 12
+2 0 1 3
+
+ x@&lt;x:5 7 0 12
+0 5 7 12
+
+ d:`a`b`c!3 2 1;d
 a|3
-b|7
-
- `a`b!((1 2);(3 4))
-a|1 2
-b|3 4
-
- (!).(`a`b`c;1 2 3)
-a|1
 b|2
-c|3
+c|1
+
+ &lt;d / a dictionary is sorted by value
+c|1
+b|2
+a|3
+</pre></div>
+
+<span id="less"></span><span id="more"></span></div>
+<div class="section" id="less-_0028more_0029-_21d2-x-_003c-_0028_003e_0029-y">
+<h3 class="section">2.16 less (more) &rArr; x &lt; (&gt;) y</h3>
+<p>Return true (1b) if x is less (more) than y else false (0b).
+</p>
+<div class="example">
+<pre class="example"> 3&lt;2
+0b
+
+2&lt;3
+1b
+
+ 1 2 3&lt;4 5 6
+1 1 1
+
+ ((1 2 3);4;(5 6))&lt;((101 0 5);12;(10 0)) / size needs to match
+1 0 1
+1  
+1 0
+
+ &quot;a&quot;&lt;&quot;b&quot;
+1b
+</pre></div>
+
+<span id="freq"></span></div>
+<div class="section" id="freq_21d2-_003dx">
+<h3 class="section">2.17 freq&rArr; =x</h3>
+<p>Freq takes a list of uniform type, x, and returns a dictionary of the distinct values (key) and their number of occurences (value).
+</p>
+<div class="example">
+<pre class="example"> =&quot;banana&quot;
+a|3
+b|1    
+n|2  
+
+ =0 1 0 2 10 7 0 1 12
+ 0|3
+ 1|2  
+ 2|1    
+ 7|1    
+10|1    
+12|1    
+</pre></div>
+
+<span id="equal"></span></div>
+<div class="section" id="equal-_21d2-x_003dy">
+<h3 class="section">2.18 equal &rArr; x=y</h3>
+<p>Return true (1b) if x is equal to y else false (0b).  
+</p>
+<div class="example">
+<pre class="example"> 2=2
+1
+
+2=3
+0
+
+2=2.
+1
+
+ &quot;banana&quot;=&quot;abnaoo&quot; / check strings of equal length by character
+0 0 1 1 0 0
+
+ &quot;banana&quot;=&quot;apple&quot;  / unequal length strings error
+!length
+</pre></div>
+
+<span id="not"></span></div>
+<div class="section" id="not-_21d2-_007ex">
+<h3 class="section">2.19 not &rArr; ~x</h3>
+<p>Boolean invert of x
+</p>
+<div class="example">
+<pre class="example"> ~1
+0
+
+ ~1 0 1
+0 1 0
+
+ ~37 0 12
+0 1 0
+</pre></div>
+
+<span id="match"></span></div>
+<div class="section" id="match-_21d2-x_007ey">
+<h3 class="section">2.20 match &rArr; x~y</h3>
+<p>Return true (1) if x matches y else false (0).  A match happens if the two arguments evaluate to the same expression.
+</p>
+<div class="example">
+<pre class="example"> 2~2
+1
+
+ 2~3
+0
+
+ 2~2.
+0
+
+ &quot;banana&quot;~&quot;apple&quot;
+0
+
+ `a`b~`a`b  / different than = which is element-wise comparison
+1
+
+ `a`b=`a`b
+1 1
+
+ f:{x+y}
+ f~{x+y}
+1
 </pre></div>
 
 <span id="enlist"></span></div>
 <div class="section" id="enlist-_21d2-_002cx">
-<h3 class="section">2.20 enlist &rArr; ,x</h3>
+<h3 class="section">2.21 enlist &rArr; ,x</h3>
 <p>Create a list from x
 </p>
 <div class="example">
@@ -624,7 +626,7 @@ c|3
 
 <span id="cat"></span></div>
 <div class="section" id="cat-_21d2-x_002cy">
-<h3 class="section">2.21 cat &rArr; x,y</h3>
+<h3 class="section">2.22 cat &rArr; x,y</h3>
 <p>Concatenate x and y.
 </p>
 <div class="example">
@@ -652,7 +654,7 @@ ghi
 
 <span id="sort"></span></div>
 <div class="section" id="sort-_21d2-_005ex">
-<h3 class="section">2.22 sort &rArr; ^x</h3>
+<h3 class="section">2.23 sort &rArr; ^x</h3>
 <p>Sort list, dictionary, or table x into ascending order.  Dictionaries are sorted using the keys and tables by the first column field.  One can sort tables by arbitrary columns by first reordering the columns in the table using <a href="#take">take</a> or by extracting the sort column by index or expression.
 </p>
 <div class="example">
@@ -679,7 +681,7 @@ y z
 
 <span id="cut"></span></div>
 <div class="section" id="g_t_005bf_005dcut-_21d2-x_005ey">
-<h3 class="section">2.23 [f]cut &rArr; x^y</h3>
+<h3 class="section">2.24 [f]cut &rArr; x^y</h3>
 <p>Cut list y by size, indices, or function x.  Also, cut table y into key x and value.
 </p>
 <table>
@@ -754,7 +756,7 @@ z| 1
  
 <span id="count"></span></div>
 <div class="section" id="count-_21d2-_0023x">
-<h3 class="section">2.24 count &rArr; #x</h3>
+<h3 class="section">2.25 count &rArr; #x</h3>
 <p>Count the number of elements in list, dictionary, or table x.
 </p>
 <div class="example">
@@ -772,7 +774,7 @@ z| 1
 
 <span id="take"></span></div>
 <div class="section" id="g_t_005bf_005dtake-_21d2-x_0023y">
-<h3 class="section">2.25 [f]take &rArr; x#y</h3>
+<h3 class="section">2.26 [f]take &rArr; x#y</h3>
 <p>[f]take has a number of different actions depending on x.  These include head (take from front of list), tail (take from back of list), common (take common elements), filter (take where function is non-zero), and select (take columns from table).
 </p>
 <table>
@@ -857,7 +859,7 @@ c b 2
 
 <span id="floor"></span></div>
 <div class="section" id="floor-_21d2-_005fx">
-<h3 class="section">2.26 floor &rArr; _x</h3>
+<h3 class="section">2.27 floor &rArr; _x</h3>
 <p>Return the integer floor of float x.
 </p><div class="example">
 <pre class="example">&nbsp;_3.7
@@ -866,7 +868,7 @@ c b 2
 
 <span id="drop"></span></div>
 <div class="section" id="g_t_005bf_005ddrop-_21d2-x_005fy">
-<h3 class="section">2.27 [f]drop &rArr; x_y</h3>
+<h3 class="section">2.28 [f]drop &rArr; x_y</h3>
 <p>[f]drop has a number of different actions depending on x.  This include de-head (drop from front of list), de-tail (drop from back of list), uncommon (drop common elements), and filter (drop where function is zero).
 </p>
 <table>
@@ -907,7 +909,7 @@ c|2
 
 <span id="str"></span></div>
 <div class="section" id="str-_21d2-_0024x">
-<h3 class="section">2.28 str &rArr; $x</h3>
+<h3 class="section">2.29 str &rArr; $x</h3>
 <p>Cast x to string.
 </p><div class="example">
 <pre class="example"> $`abc
@@ -918,7 +920,7 @@ c|2
 
 <span id="parse"></span></div>
 <div class="section" id="parse-_21d2-x_0024y">
-<h3 class="section">2.29 parse &rArr; x$y</h3>
+<h3 class="section">2.30 parse &rArr; x$y</h3>
 <p>Parse string y into type x.
 </p>
 <div class="example">
@@ -940,7 +942,7 @@ c|2
 
 <span id="distinct"></span></div>
 <div class="section" id="distinct-_21d2-_003fx">
-<h3 class="section">2.30 distinct &rArr; ?x</h3>
+<h3 class="section">2.31 distinct &rArr; ?x</h3>
 <p>Return the distinct values of the list x.  The <code>?</code> preceeding the return value explicitly shows that the list has no repeated values.
 </p>
 <div class="example">
@@ -951,9 +953,9 @@ c|2
 ?&quot;ban&quot;
 </pre></div>
 
-<span id="find_002frand"></span></div>
-<div class="section" id="find_002frand-_21d2-x_003fy">
-<h3 class="section">2.31 find/rand &rArr; x?y</h3>
+<span id="find"></span></div>
+<div class="section" id="find-_21d2-x_003fy">
+<h3 class="section">2.32 find &rArr; x?y</h3>
 <p>Find the first element of x that matches y otherwise return the end of vector.
 </p>
 <div class="example">
@@ -991,7 +993,7 @@ c|2
 
 <span id="type"></span></div>
 <div class="section" id="type-_21d2-_0040x">
-<h3 class="section">2.32 type &rArr; @x</h3>
+<h3 class="section">2.33 type &rArr; @x</h3>
 <p>Return the data type of x.  Lower-case represents a single element while upper-case represents a list of type indicated.
 </p>
 <div class="example">
@@ -1034,7 +1036,7 @@ c|2
 
 <span id="at"></span></div>
 <div class="section" id="g_t_005bf_005dat-_21d2-x_0040y">
-<h3 class="section">2.33 [f]at &rArr; x@y</h3>
+<h3 class="section">2.34 [f]at &rArr; x@y</h3>
 <p>Given a list or function x return the value(s) at index(indices) y.  
 </p>
 <div class="example">
@@ -1063,7 +1065,7 @@ drow
 
 <span id="value"></span></div>
 <div class="section" id="value-_21d2-_002ex">
-<h3 class="section">2.34 value &rArr; .x</h3>
+<h3 class="section">2.35 value &rArr; .x</h3>
 <p>Evaluate a string of valid k code, list of k code, or a system command.  Can also be used to covert from a string to a numeric, temporal or name type.
 </p>
 <p>String of k code
@@ -1116,7 +1118,7 @@ json.dylib
 
 <span id="dot"></span></div>
 <div class="section" id="g_t_005bf_005ddot-_21d2-x_002ey">
-<h3 class="section">2.35 [f]dot &rArr; x.y</h3>
+<h3 class="section">2.36 [f]dot &rArr; x.y</h3>
 <p>Return the value(s) of list x at list y.  This differs from <a href="#at">at</a> as dot can recursively index.
 </p><ul>
 <li> Simple index returns the value(s) at x at each index y, i.e. x@y@0, x@y@1, ..., x@y@(n-1).

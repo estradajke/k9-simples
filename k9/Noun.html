@@ -3,7 +3,7 @@
 <!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<!-- March 11, 2023
+<!-- March 12, 2023
 
 Copyright (C) 2020 John Estrada -->
 <title>Noun (Shakti (k9) tutorial)</title>
@@ -100,16 +100,17 @@ Next: <a href="List.html" accesskey="n" rel="next">List</a>, Previous: <a href="
 <p>Here are some examples of each of these types (note that 0N is a null integer and 0n a null float).
 </p>
 <div class="example">
-<pre class="example">type              
-<a href="#bool">bool</a> 011b
-<a href="#int">int</a>  0N 0 2 3
-<a href="#flt">flt</a>  0n 0 2 3.4   
-<a href="#char">char</a> &quot; ab&quot;        
-<a href="#name">name</a> ``ab         
-<a href="#uuid">uuid</a>
-
-<a href="#date">date</a> 2024.01.01
-<a href="#time">time</a> 12:34:56.123456789
+<pre class="example">Type
+<a href="#char">char</a>   &quot; ab&quot;          
+<a href="#sym">sym</a>    ``ab
+<a href="#bool">bool</a>   011b   
+<a href="#int">int</a>    2 3 4
+<a href="#float">float</a>  2 3e4          
+<a href="#fixed">fixed</a>  2.0 3.4
+<a href="#locus">locus</a>  -74::40.7      
+<a href="#date">date</a>   2001.02.03  
+<a href="#time">time</a>   12:34:56.789
+<a href="#datetime">datetime</a>
 </pre></div>
 
 <p>Data types can be determined by using the <code>@</code> function on values or lists of values.  In the case of non-uniform lists <code>@</code> returns the type of the list <code>`L</code> but the function can be modified to evaluate the type of each element in the list using <code>@'</code>.
@@ -131,9 +132,8 @@ Next: <a href="List.html" accesskey="n" rel="next">List</a>, Previous: <a href="
 <li><a href="#bool-_21d2-Boolean-b" accesskey="2">bool &rArr; Boolean b</a></li>
 <li><a href="#Numeric-Data" accesskey="3">Numeric Data</a></li>
 <li><a href="#Text-Data" accesskey="4">Text Data</a></li>
-<li><a href="#Unique-Identifier" accesskey="5">Unique Identifier</a></li>
-<li><a href="#Temporal-Data" accesskey="6">Temporal Data</a></li>
-<li><a href="#Extreme-values" accesskey="7">Extreme values</a></li>
+<li><a href="#Temporal-Data" accesskey="5">Temporal Data</a></li>
+<li><a href="#Extreme-values" accesskey="6">Extreme values</a></li>
 </ul>
 <div class="section" id="Atom-Types-1">
 <h3 class="section">4.1 Atom Types</h3>
@@ -204,7 +204,9 @@ x y|AND OR NAND NOR XOR XNOR
 </p>
 <span id="int"></span><ul class="section-toc">
 <li><a href="#int-_21d2-Integer-g_002c-h_002c-i_002c-j" accesskey="1">int &rArr; Integer g, h, i, j</a></li>
-<li><a href="#flt-_21d2-Float-e_002c-f" accesskey="2">flt &rArr; Float e, f</a></li>
+<li><a href="#float-_21d2-Float-e_002c-f" accesskey="2">float &rArr; Float e, f</a></li>
+<li><a href="#fixed-_21d2-Float-e_002c-f" accesskey="3">fixed &rArr; Float e, f</a></li>
+<li><a href="#locus-_21d2-Float-e_002c-f" accesskey="4">locus &rArr; Float e, f</a></li>
 </ul>
 <div class="subsection" id="int-_21d2-Integer-g_002c-h_002c-i_002c-j">
 <h4 class="subsection">4.3.1 int &rArr; Integer g, h, i, j</h4>
@@ -230,9 +232,9 @@ b:{-1+*/x#256}
 72057594037927935
 </pre></div>
 
-<span id="flt"></span></div>
-<div class="subsection" id="flt-_21d2-Float-e_002c-f">
-<h4 class="subsection">4.3.2 flt &rArr; Float e, f</h4>
+<span id="float"></span></div>
+<div class="subsection" id="float-_21d2-Float-e_002c-f">
+<h4 class="subsection">4.3.2 float &rArr; Float e, f</h4>
 <p>Float
 </p><div class="example">
 <pre class="example"> 3.1
@@ -252,6 +254,26 @@ b:{-1+*/x#256}
 `f
 </pre></div>
 
+<span id="fixed"></span></div>
+<div class="subsection" id="fixed-_21d2-Float-e_002c-f">
+<h4 class="subsection">4.3.3 fixed &rArr; Float e, f</h4>
+<p>Fixed TBD
+</p>
+<div class="example">
+<pre class="example"> 2 3e4
+2.000e+00 3.000e+04
+</pre></div>
+
+<span id="locus"></span></div>
+<div class="subsection" id="locus-_21d2-Float-e_002c-f">
+<h4 class="subsection">4.3.4 locus &rArr; Float e, f</h4>
+<p>Locus TBD
+</p>
+<div class="example">
+<pre class="example"> -74::40.7
+4.07e+01
+</pre></div>
+
 </div>
 </div>
 <div class="section" id="Text-Data">
@@ -260,7 +282,7 @@ b:{-1+*/x#256}
 </p>
 <span id="char"></span><ul class="section-toc">
 <li><a href="#char-_21d2-Character-c" accesskey="1">char &rArr; Character c</a></li>
-<li><a href="#name-_21d2-Name-n" accesskey="2">name &rArr; Name n</a></li>
+<li><a href="#sym-_21d2-Name-n" accesskey="2">sym &rArr; Name n</a></li>
 </ul>
 <div class="subsection" id="char-_21d2-Character-c">
 <h4 class="subsection">4.4.1 char &rArr; Character c</h4>
@@ -273,10 +295,10 @@ b:{-1+*/x#256}
 `C 
 </pre></div>
 
-<span id="name"></span></div>
-<div class="subsection" id="name-_21d2-Name-n">
-<h4 class="subsection">4.4.2 name &rArr; Name n</h4>
-<p>A name is an enumerated type displayed as a text string but stored internally as an integer value.
+<span id="sym"></span></div>
+<div class="subsection" id="sym-_21d2-Name-n">
+<h4 class="subsection">4.4.2 sym &rArr; Name n</h4>
+<p>A symbol (sym) is an enumerated type displayed as a text string but stored internally as an integer value.
 </p>
 <div class="example">
 <pre class="example">&nbsp;@`blue
@@ -287,21 +309,8 @@ b:{-1+*/x#256}
 
 </div>
 </div>
-<div class="section" id="Unique-Identifier">
-<h3 class="section">4.5 Unique Identifier</h3>
-<p>TBD
-</p>
-<span id="uuid"></span><ul class="section-toc">
-<li><a href="#uuid-_21d2-Uuid" accesskey="1">uuid &rArr; Uuid</a></li>
-</ul>
-<div class="subsection" id="uuid-_21d2-Uuid">
-<h4 class="subsection">4.5.1 uuid &rArr; Uuid</h4>
-<p>TBD
-</p>
-</div>
-</div>
 <div class="section" id="Temporal-Data">
-<h3 class="section">4.6 Temporal Data</h3>
+<h3 class="section">4.5 Temporal Data</h3>
 <p>Temporal data can be expressed as time, date, or a combined date and time.
 </p>
 <span id="time"></span><ul class="section-toc">
@@ -310,7 +319,7 @@ b:{-1+*/x#256}
 <li><a href="#datetime-_21d2-Datetime-d" accesskey="3">datetime &rArr; Datetime d</a></li>
 </ul>
 <div class="subsection" id="time-_21d2-Time-s_002c-t_002c-u_002c-v">
-<h4 class="subsection">4.6.1 time &rArr; Time s, t, u, v</h4>
+<h4 class="subsection">4.5.1 time &rArr; Time s, t, u, v</h4>
 <p>Time has four types depending on the level of precision.  The types are seconds (s), milliseconds (t), microseconds (u), and nanoseconds (v).  The times are all stored internally as integers.  The integers are the number of time units.  For example 00:00:00.012 and 00:00:00.000000012 are both stored as 12 internally.
 </p>
 <div class="example">
@@ -334,7 +343,7 @@ b:{-1+*/x#256}
 
 <span id="date"></span></div>
 <div class="subsection" id="date-_21d2-Date-d">
-<h4 class="subsection">4.6.2 date &rArr; Date d</h4>
+<h4 class="subsection">4.5.2 date &rArr; Date d</h4>
 <p>Dates are in yyyy.mm.dd format.  Dates are stored internally as integers with 0 corresponding to 2001.01.01.
 </p>
 <div class="example">
@@ -352,7 +361,7 @@ b:{-1+*/x#256}
 
 <span id="datetime"></span></div>
 <div class="subsection" id="datetime-_21d2-Datetime-d">
-<h4 class="subsection">4.6.3 datetime &rArr; Datetime d</h4>
+<h4 class="subsection">4.5.3 datetime &rArr; Datetime d</h4>
 <p>Dates and times can be combined into a single datetime element by combining a date, the letter T, and the time together without spaces.  The datetime use the same lettering as the time precision but in uppercase.  Datetimes are stored interally as integers.  For example 2001.01.02T00:00:00.000 is stored as 86,400,000, the number of milliseconds in a day.
 </p>
 <div class="example">
@@ -365,7 +374,7 @@ b:{-1+*/x#256}
 </div>
 </div>
 <div class="section" id="Extreme-values">
-<h3 class="section">4.7 Extreme values</h3>
+<h3 class="section">4.6 Extreme values</h3>
 <p>Data types can represent in-range, null, and out-of-range values.
 </p>
 <table>

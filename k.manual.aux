@@ -21,58 +21,61 @@
 @xrdef{first-snt}{}
 @xrdef{times-title}{first @result {} *x}
 @xrdef{times-snt}{}
-@xrdef{divide-title}{times @result {} x*y}
-@xrdef{divide-snt}{}
+@xrdef{sqrt-title}{times @result {} x*y}
+@xrdef{sqrt-snt}{}
 @xrdef{minus-pg}{9}
 @xrdef{first-pg}{9}
 @xrdef{times-pg}{9}
-@xrdef{divide-pg}{9}
-@xrdef{where-title}{divide @result {} x@code {%}y}
+@xrdef{sqrt-pg}{9}
+@xrdef{divide-title}{sqrt @result {} %x}
+@xrdef{divide-snt}{}
+@xrdef{key-title}{divide @result {} x@code {%}y}
+@xrdef{key-snt}{}
+@xrdef{divide-pg}{10}
+@xrdef{key-pg}{10}
+@xrdef{mod-title}{key @result {} !x}
+@xrdef{mod-snt}{}
+@xrdef{where-title}{mod @result {} x!y}
 @xrdef{where-snt}{}
 @xrdef{min/and-title}{where @result {} &x}
 @xrdef{min/and-snt}{}
+@xrdef{mod-pg}{11}
+@xrdef{where-pg}{11}
+@xrdef{min/and-pg}{11}
 @xrdef{reverse-title}{and @result {} x&y}
 @xrdef{reverse-snt}{}
-@xrdef{where-pg}{10}
-@xrdef{min/and-pg}{10}
-@xrdef{reverse-pg}{10}
 @xrdef{max/or-title}{reverse @result {} |x}
 @xrdef{max/or-snt}{}
 @xrdef{asc-title}{or @result {} x|y}
 @xrdef{asc-snt}{}
 @xrdef{desc-title}{or @result {} x|y}
 @xrdef{desc-snt}{}
-@xrdef{max/or-pg}{11}
-@xrdef{asc-pg}{11}
-@xrdef{desc-pg}{11}
+@xrdef{reverse-pg}{12}
+@xrdef{max/or-pg}{12}
+@xrdef{asc-pg}{12}
+@xrdef{desc-pg}{12}
 @xrdef{less-title}{asc(desc) @result {} < (>) x}
 @xrdef{less-snt}{}
 @xrdef{more-title}{asc(desc) @result {} < (>) x}
 @xrdef{more-snt}{}
-@xrdef{group-title}{less (more) @result {} x < (>) y}
-@xrdef{group-snt}{}
-@xrdef{equal-title}{group @result {} =x}
+@xrdef{freq-title}{less (more) @result {} x < (>) y}
+@xrdef{freq-snt}{}
+@xrdef{less-pg}{13}
+@xrdef{more-pg}{13}
+@xrdef{freq-pg}{13}
+@xrdef{equal-title}{freq@result {} =x}
 @xrdef{equal-snt}{}
-@xrdef{less-pg}{12}
-@xrdef{more-pg}{12}
-@xrdef{group-pg}{12}
-@xrdef{equal-pg}{12}
 @xrdef{not-title}{equal @result {} x=y}
 @xrdef{not-snt}{}
 @xrdef{match-title}{not @result {} ~x}
 @xrdef{match-snt}{}
-@xrdef{enum-title}{match @result {} x~y}
-@xrdef{enum-snt}{}
-@xrdef{not-pg}{13}
-@xrdef{match-pg}{13}
-@xrdef{enum-pg}{14}
-@xrdef{key-title}{enum @result {} !x}
-@xrdef{key-snt}{}
-@xrdef{enlist-title}{key @result {} x!y}
+@xrdef{equal-pg}{14}
+@xrdef{not-pg}{14}
+@xrdef{match-pg}{14}
+@xrdef{enlist-title}{match @result {} x~y}
 @xrdef{enlist-snt}{}
 @xrdef{cat-title}{enlist @result {} ,x}
 @xrdef{cat-snt}{}
-@xrdef{key-pg}{15}
 @xrdef{enlist-pg}{15}
 @xrdef{cat-pg}{15}
 @xrdef{sort-title}{cat @result {} x,y}
@@ -131,17 +134,17 @@
 @xrdef{drop1-pg}{20}
 @xrdef{drop2-pg}{20}
 @xrdef{drop3-pg}{20}
+@xrdef{str-pg}{20}
 @xrdef{parse-title}{str @result {} $x}
 @xrdef{parse-snt}{}
 @xrdef{distinct-title}{parse @result {} x$y}
 @xrdef{distinct-snt}{}
-@xrdef{find/rand-title}{distinct @result {} ?x}
-@xrdef{find/rand-snt}{}
-@xrdef{str-pg}{21}
+@xrdef{find-title}{distinct @result {} ?x}
+@xrdef{find-snt}{}
 @xrdef{parse-pg}{21}
 @xrdef{distinct-pg}{21}
-@xrdef{find/rand-pg}{21}
-@xrdef{type-title}{find/rand @result {} x?y}
+@xrdef{find-pg}{21}
+@xrdef{type-title}{find @result {} x?y}
 @xrdef{type-snt}{}
 @xrdef{type-pg}{22}
 @xrdef{at-title}{type @result {} @@x}
@@ -198,22 +201,25 @@
 @xrdef{int-snt}{}
 @xrdef{bool-pg}{34}
 @xrdef{int-pg}{34}
-@xrdef{flt-title}{int @result {} Integer g, h, i, j}
-@xrdef{flt-snt}{}
+@xrdef{float-title}{int @result {} Integer g, h, i, j}
+@xrdef{float-snt}{}
+@xrdef{fixed-title}{float @result {} Float e, f}
+@xrdef{fixed-snt}{}
+@xrdef{locus-title}{fixed @result {} Float e, f}
+@xrdef{locus-snt}{}
 @xrdef{char-title}{Text Data}
 @xrdef{char-snt}{}
-@xrdef{name-title}{char @result {} Character c}
-@xrdef{name-snt}{}
-@xrdef{flt-pg}{35}
-@xrdef{char-pg}{35}
-@xrdef{name-pg}{35}
-@xrdef{uuid-title}{Unique Identifier}
-@xrdef{uuid-snt}{}
+@xrdef{float-pg}{35}
+@xrdef{fixed-pg}{35}
+@xrdef{locus-pg}{35}
+@xrdef{sym-title}{char @result {} Character c}
+@xrdef{sym-snt}{}
 @xrdef{time-title}{Temporal Data}
 @xrdef{time-snt}{}
 @xrdef{date-title}{time @result {} Time s, t, u, v}
 @xrdef{date-snt}{}
-@xrdef{uuid-pg}{36}
+@xrdef{char-pg}{36}
+@xrdef{sym-pg}{36}
 @xrdef{time-pg}{36}
 @xrdef{date-pg}{36}
 @xrdef{datetime-title}{date @result {} Date d}
@@ -285,51 +291,42 @@
 @xrdef{cos-snt}{}
 @xrdef{sqr-title}{cos @result {} cos x}
 @xrdef{sqr-snt}{}
-@xrdef{sqrt-title}{sqr @result {} sqr x}
-@xrdef{sqrt-snt}{}
-@xrdef{prm-title}{sqrt @result {} sqrt x}
+@xrdef{prm-title}{sqr @result {} sqr x}
 @xrdef{prm-snt}{}
-@xrdef{freq-title}{prm @result {} prm x}
-@xrdef{freq-snt}{}
-@xrdef{sin-pg}{56}
-@xrdef{cos-pg}{56}
-@xrdef{sqr-pg}{56}
-@xrdef{sqrt-pg}{56}
-@xrdef{prm-pg}{56}
-@xrdef{freq-pg}{56}
-@xrdef{sums-title}{freq @result {} freq x}
+@xrdef{sums-title}{prm @result {} prm x}
 @xrdef{sums-snt}{}
 @xrdef{deltas-title}{sums @result {} sums x}
 @xrdef{deltas-snt}{}
+@xrdef{sin-pg}{56}
+@xrdef{cos-pg}{56}
+@xrdef{sqr-pg}{56}
+@xrdef{prm-pg}{56}
+@xrdef{sums-pg}{56}
+@xrdef{deltas-pg}{56}
 @xrdef{has-title}{deltas @result {} deltas x and x deltas y}
 @xrdef{has-snt}{}
-@xrdef{sums-pg}{57}
-@xrdef{deltas-pg}{57}
-@xrdef{has-pg}{57}
 @xrdef{bin-title}{has @result {} x has y}
 @xrdef{bin-snt}{}
 @xrdef{in-title}{bin @result {} x bin y}
 @xrdef{in-snt}{}
 @xrdef{within-title}{in @result {} x in y}
 @xrdef{within-snt}{}
+@xrdef{has-pg}{57}
+@xrdef{bin-pg}{57}
+@xrdef{in-pg}{57}
+@xrdef{within-pg}{57}
 @xrdef{div-title}{within @result {} x within y}
 @xrdef{div-snt}{}
-@xrdef{mod-title}{div @result {} x div y}
-@xrdef{mod-snt}{}
-@xrdef{bin-pg}{58}
-@xrdef{in-pg}{58}
-@xrdef{within-pg}{58}
-@xrdef{div-pg}{58}
-@xrdef{mod-pg}{58}
-@xrdef{bar-title}{mod @result {} x mod y}
+@xrdef{bar-title}{div @result {} x div y}
 @xrdef{bar-snt}{}
 @xrdef{msum-title}{bar @result {} x bar y}
 @xrdef{msum-snt}{}
 @xrdef{mavg-title}{msum @result {} x msum y}
 @xrdef{mavg-snt}{}
-@xrdef{bar-pg}{59}
-@xrdef{msum-pg}{59}
-@xrdef{mavg-pg}{59}
+@xrdef{div-pg}{58}
+@xrdef{bar-pg}{58}
+@xrdef{msum-pg}{58}
+@xrdef{mavg-pg}{58}
 @xrdef{Knit Functions-title}{Knit Functions}
 @xrdef{Knit Functions-snt}{Chapter@tie 10}
 @xrdef{amend-title}{Knit Functions}
@@ -338,31 +335,31 @@
 @xrdef{amend1-snt}{}
 @xrdef{amend2-title}{amend @result {} @@[r;i;f[;y]]}
 @xrdef{amend2-snt}{}
-@xrdef{Knit Functions-pg}{60}
-@xrdef{amend-pg}{60}
-@xrdef{amend1-pg}{60}
-@xrdef{amend2-pg}{60}
+@xrdef{Knit Functions-pg}{59}
+@xrdef{amend-pg}{59}
+@xrdef{amend1-pg}{59}
+@xrdef{amend2-pg}{59}
 @xrdef{amend3-title}{amend @result {} @@[r;i;f[;y]]}
 @xrdef{amend3-snt}{}
 @xrdef{amend4-title}{amend @result {} @@[r;i;f[;y]]}
 @xrdef{amend4-snt}{}
 @xrdef{dmend-title}{amend @result {} @@[r;i;f[;y]]}
 @xrdef{dmend-snt}{}
-@xrdef{amend3-pg}{61}
-@xrdef{amend4-pg}{61}
-@xrdef{dmend-pg}{61}
+@xrdef{amend3-pg}{60}
+@xrdef{amend4-pg}{60}
+@xrdef{dmend-pg}{60}
 @xrdef{dmend1-title}{dmend @result {} .[r;i;f[;y]]}
 @xrdef{dmend1-snt}{}
 @xrdef{dmend3-title}{dmend @result {} .[r;i;f[;y]]}
 @xrdef{dmend3-snt}{}
 @xrdef{dmend4-title}{dmend @result {} .[r;i;f[;y]]}
 @xrdef{dmend4-snt}{}
-@xrdef{dmend1-pg}{62}
-@xrdef{dmend3-pg}{62}
-@xrdef{dmend4-pg}{62}
+@xrdef{dmend1-pg}{61}
+@xrdef{dmend3-pg}{61}
+@xrdef{dmend4-pg}{61}
 @xrdef{I/O-title}{I/O and Interface}
 @xrdef{I/O-snt}{Chapter@tie 11}
-@xrdef{I/O-pg}{64}
+@xrdef{I/O-pg}{63}
 @xrdef{r line-title}{Example File I/O}
 @xrdef{r line-snt}{}
 @xrdef{w line-title}{read line @result {} 0:x}
@@ -371,16 +368,16 @@
 @xrdef{r char-snt}{}
 @xrdef{w char-title}{read char @result {} 1:x}
 @xrdef{w char-snt}{}
-@xrdef{r line-pg}{65}
-@xrdef{w line-pg}{65}
-@xrdef{r char-pg}{65}
-@xrdef{w char-pg}{65}
+@xrdef{r line-pg}{64}
+@xrdef{w line-pg}{64}
+@xrdef{r char-pg}{64}
+@xrdef{w char-pg}{64}
 @xrdef{r data-title}{write char @result {} x 1:y}
 @xrdef{r data-snt}{}
 @xrdef{w data-title}{read data @result {} 2: x}
 @xrdef{w data-snt}{}
-@xrdef{r data-pg}{66}
-@xrdef{w data-pg}{66}
+@xrdef{r data-pg}{65}
+@xrdef{w data-pg}{65}
 @xrdef{k-ipc-title}{IPC}
 @xrdef{k-ipc-snt}{}
 @xrdef{3set-title}{k-ipc @result {} 3:x}
@@ -389,88 +386,88 @@
 @xrdef{https-snt}{}
 @xrdef{4get-title}{https @result {} 4:x}
 @xrdef{4get-snt}{}
-@xrdef{k-ipc-pg}{67}
-@xrdef{3set-pg}{67}
-@xrdef{https-pg}{67}
-@xrdef{4get-pg}{67}
+@xrdef{k-ipc-pg}{66}
+@xrdef{3set-pg}{66}
+@xrdef{https-pg}{66}
+@xrdef{4get-pg}{66}
 @xrdef{csv-title}{ffi/import}
 @xrdef{csv-snt}{}
 @xrdef{json-title}{export, import csv @result {} `csv@@x, @math {`}csv?x}
 @xrdef{json-snt}{}
 @xrdef{compress-title}{export, import json @result {} `json@@x, @math {`}json?x}
 @xrdef{compress-snt}{}
-@xrdef{csv-pg}{68}
-@xrdef{json-pg}{68}
-@xrdef{compress-pg}{68}
+@xrdef{csv-pg}{67}
+@xrdef{json-pg}{67}
+@xrdef{compress-pg}{67}
 @xrdef{FF-title}{Foreign Functions}
 @xrdef{FF-snt}{Chapter@tie 12}
 @xrdef{python-title}{Foreign Functions}
 @xrdef{python-snt}{}
 @xrdef{nodejs-title}{python}
 @xrdef{nodejs-snt}{}
-@xrdef{FF-pg}{70}
-@xrdef{python-pg}{70}
-@xrdef{nodejs-pg}{70}
+@xrdef{FF-pg}{69}
+@xrdef{python-pg}{69}
+@xrdef{nodejs-pg}{69}
 @xrdef{ffi-title}{nodejs}
 @xrdef{ffi-snt}{}
 @xrdef{import-title}{ffi @result {} 5:}
 @xrdef{import-snt}{}
-@xrdef{ffi-pg}{71}
-@xrdef{import-pg}{71}
+@xrdef{ffi-pg}{70}
+@xrdef{import-pg}{70}
 @xrdef{Tables-title}{Tables}
 @xrdef{Tables-snt}{Chapter@tie 13}
 @xrdef{table-title}{Tables}
 @xrdef{table-snt}{}
-@xrdef{Tables-pg}{72}
-@xrdef{table-pg}{72}
+@xrdef{Tables-pg}{71}
+@xrdef{table-pg}{71}
 @xrdef{utable-title}{File import}
 @xrdef{utable-snt}{}
-@xrdef{utable-pg}{73}
+@xrdef{utable-pg}{72}
 @xrdef{kSQL-title}{kSQL}
 @xrdef{kSQL-snt}{Chapter@tie 14}
 @xrdef{select-title}{Queries}
 @xrdef{select-snt}{}
-@xrdef{kSQL-pg}{74}
-@xrdef{select-pg}{74}
+@xrdef{kSQL-pg}{73}
+@xrdef{select-pg}{73}
 @xrdef{A-title}{select}
 @xrdef{A-snt}{}
-@xrdef{A-pg}{75}
+@xrdef{A-pg}{74}
 @xrdef{by B-title}{A}
 @xrdef{by B-snt}{}
 @xrdef{where C-title}{by B}
 @xrdef{where C-snt}{}
-@xrdef{by B-pg}{76}
-@xrdef{where C-pg}{76}
+@xrdef{by B-pg}{75}
+@xrdef{where C-pg}{75}
 @xrdef{update-title}{Query with By and Where}
 @xrdef{update-snt}{}
-@xrdef{update-pg}{77}
+@xrdef{update-pg}{76}
 @xrdef{delete-title}{update}
 @xrdef{delete-snt}{}
 @xrdef{Joins-title}{delete}
 @xrdef{Joins-snt}{}
 @xrdef{union-title}{Joins}
 @xrdef{union-snt}{}
-@xrdef{delete-pg}{78}
-@xrdef{Joins-pg}{78}
-@xrdef{union-pg}{78}
+@xrdef{delete-pg}{77}
+@xrdef{Joins-pg}{77}
+@xrdef{union-pg}{77}
 @xrdef{leftjoin-title}{union join @result {} t1,t2}
 @xrdef{leftjoin-snt}{}
-@xrdef{leftjoin-pg}{79}
+@xrdef{leftjoin-pg}{78}
 @xrdef{outer-title}{leftjoin @result {} t,k}
 @xrdef{outer-snt}{}
-@xrdef{outer-pg}{80}
+@xrdef{outer-pg}{79}
 @xrdef{asof-title}{outer join @result {} k1,k2}
 @xrdef{asof-snt}{}
-@xrdef{asof-pg}{81}
+@xrdef{asof-pg}{80}
 @xrdef{asof+-title}{asof join @result {} t,k}
 @xrdef{asof+-snt}{}
 @xrdef{insert-title}{Insert and Upsert}
 @xrdef{insert-snt}{}
-@xrdef{asof+-pg}{82}
+@xrdef{asof+-pg}{81}
 @xrdef{upsert-title}{insert @result {} t,d}
 @xrdef{upsert-snt}{}
-@xrdef{insert-pg}{83}
-@xrdef{upsert-pg}{83}
+@xrdef{insert-pg}{82}
+@xrdef{upsert-pg}{82}
 @xrdef{System-title}{System}
 @xrdef{System-snt}{Chapter@tie 15}
 @xrdef{load-title}{System}
@@ -481,20 +478,20 @@
 @xrdef{variables-snt}{}
 @xrdef{memory-title}{variables @result {} \v}
 @xrdef{memory-snt}{}
-@xrdef{System-pg}{85}
-@xrdef{load-pg}{85}
-@xrdef{timing-pg}{85}
-@xrdef{variables-pg}{85}
-@xrdef{memory-pg}{85}
+@xrdef{System-pg}{84}
+@xrdef{load-pg}{84}
+@xrdef{timing-pg}{84}
+@xrdef{variables-pg}{84}
+@xrdef{memory-pg}{84}
 @xrdef{OS command-title}{memory @result {} \w}
 @xrdef{OS command-snt}{}
-@xrdef{OS command-pg}{86}
+@xrdef{OS command-pg}{85}
 @xrdef{Control Flow-title}{Control Flow}
 @xrdef{Control Flow-snt}{Chapter@tie 16}
 @xrdef{cond-title}{Control Flow}
 @xrdef{cond-snt}{}
-@xrdef{Control Flow-pg}{87}
-@xrdef{cond-pg}{87}
+@xrdef{Control Flow-pg}{86}
+@xrdef{cond-pg}{86}
 @xrdef{Temporal Functions-title}{Temporal Functions}
 @xrdef{Temporal Functions-snt}{Chapter@tie 17}
 @xrdef{z.d-title}{Temporal Functions}
@@ -503,10 +500,10 @@
 @xrdef{z.t-snt}{}
 @xrdef{z.T-title}{z.t time}
 @xrdef{z.T-snt}{}
-@xrdef{Temporal Functions-pg}{88}
-@xrdef{z.d-pg}{88}
-@xrdef{z.t-pg}{88}
-@xrdef{z.T-pg}{88}
+@xrdef{Temporal Functions-pg}{87}
+@xrdef{z.d-pg}{87}
+@xrdef{z.t-pg}{87}
+@xrdef{z.T-pg}{87}
 @xrdef{Errors-title}{Errors}
 @xrdef{Errors-snt}{Chapter@tie 18}
 @xrdef{class-title}{Errors}
@@ -523,26 +520,26 @@
 @xrdef{limit-snt}{}
 @xrdef{nyi-title}{:limit}
 @xrdef{nyi-snt}{}
-@xrdef{Errors-pg}{90}
-@xrdef{class-pg}{90}
-@xrdef{rank-pg}{90}
-@xrdef{length-pg}{90}
-@xrdef{_type-pg}{90}
-@xrdef{domain-pg}{90}
-@xrdef{limit-pg}{90}
-@xrdef{nyi-pg}{90}
+@xrdef{Errors-pg}{89}
+@xrdef{class-pg}{89}
+@xrdef{rank-pg}{89}
+@xrdef{length-pg}{89}
+@xrdef{_type-pg}{89}
+@xrdef{domain-pg}{89}
+@xrdef{limit-pg}{89}
+@xrdef{nyi-pg}{89}
 @xrdef{eparse-title}{:nyi}
 @xrdef{eparse-snt}{}
 @xrdef{_value-title}{:parse}
 @xrdef{_value-snt}{}
-@xrdef{eparse-pg}{91}
-@xrdef{_value-pg}{91}
+@xrdef{eparse-pg}{90}
+@xrdef{_value-pg}{90}
 @xrdef{Examples-title}{Examples}
 @xrdef{Examples-snt}{Chapter@tie 19}
-@xrdef{Examples-pg}{92}
+@xrdef{Examples-pg}{91}
 @xrdef{Benchmark-title}{Benchmark}
 @xrdef{Benchmark-snt}{Chapter@tie 20}
-@xrdef{Benchmark-pg}{97}
+@xrdef{Benchmark-pg}{96}
 @xrdef{Conclusion-title}{Conclusion}
 @xrdef{Conclusion-snt}{Chapter@tie 21}
-@xrdef{Conclusion-pg}{103}
+@xrdef{Conclusion-pg}{102}
