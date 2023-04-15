@@ -19,7 +19,7 @@ sed -e 's/@/@@/g' \
     -e 's/minus/@ref{minus}/g' \
     -e '1,20 s/first/@ref{first}/g' \
     -e 's/times/@ref{times}/g' \
-    -e 's/divide/@ref{divide}/g' \
+    -e '1,2 s/divideXXX/@ref{divide}/g' \
     -e '1,20 s/where/@ref{where}/' \
     -e 's/min\/and/@ref{min\/and}/g' \
     -e 's/reverse/@ref{reverse}/g' \
@@ -33,7 +33,7 @@ sed -e 's/@/@@/g' \
     -e 's/not/@ref{not}/g' \
     -e 's/match/@ref{match}/g' \
     -e 's/enum/@ref{enum}/g' \
-    -e '1,20 s/key/@ref{key}/g' \
+    -e '1,2 s/key/@ref{key}/g' \
     -e 's/enlist/@ref{enlist}/g' \
     -e 's/cat/@ref{cat}/g' \
     -e 's/sort/@ref{sort}/g' \
@@ -82,7 +82,8 @@ sed -e 's/@/@@/g' \
     -e 's/@ list/@ @ref{List,list}/g' \
     -e 's/func/@ref{User Functions,func}/g' \
     -e 's/expr/@ref{Expression,expr}/g' \
-    -e 's/dict/@ref{Dictionary,dict}/g' \
+    -e '23 s/dict/@ref{dict}/g' \
+    -e '22 s/dict/@ref{Dictionary,dict}/g' \
     -e 's/cond/@ref{cond}/g' \
     -e 's/amend/@ref{amend}/g' \
     -e 's/dmend/@ref{dmend}/g' \
@@ -122,8 +123,8 @@ sed -e 's/@/@@/g' \
     -e '20,40 s/cos/@ref{cos}/g' \
     -e '20,40 s/sqr@ /@ref{sqr}@ /g' \
     -e '1,40 s/sqrt/@ref{sqrt}/g' \
-    -e '20,40 s/div/@ref{div}/g' \
-    -e '29,40 s/mod/@ref{mod}/g' \
+    -e '5,100 s/div/@ref{div}/g' \
+    -e 's/mod/@ref{mod}/g' \
     -e '20,40 s/bar/@ref{bar}/g' \
     -e '20,40 s/top/@ref{topX,top}/g' \
     -e '20,40 s/freq/@ref{freq}/g' \

@@ -203,7 +203,7 @@ k9 runs as a read, evaluation, print loop (REPL).  This means that one either pr
 
 @section Simple example
 
-Here I will start up k9, perform some trivial calculations, and then close the session.  After this example it will be assumed the user will have a k9 session running and working in repl mode.  Comments (@code{/}) will be added to the end of lines as needed.  One can review @ref{plus}, @ref{key}, @ref{floor} and @ref{timing} as needed. 
+Here I will start up k9, perform some trivial calculations, and then close the session.  After this example it will be assumed the user will have a k9 session running and working in repl mode.  Comments (@code{/}) will be added to the end of lines as needed.  One can review @ref{plus}, @ref{where}, @ref{floor} and @ref{timing} as needed. 
 
 @example
  1+2  / add 1 and 2
@@ -338,26 +338,26 @@ Most functions are overloaded and change depending on the number of arguments.  
 @c There are verbs that can take a function argument. Those are listed with a '[f]' prefix.  These include [f]cut, [f]take, [f]drop, [f]at, and [f]dot.
 
 @example
-Verb      unary     
-+  +      @ref{flip}
--  -      -         
-*  *      @ref{first}
-%  div    @ref{sqrt}
-!  mod    @ref{key}
-&  &      @ref{where}
-|  |      @ref{reverse}
-<  <      @ref{asc}
->  >      @ref{desc}
-=  =      @ref{freq}
-~  ~      ~         
-,  ,      ,
-#  take   @ref{count}
-_  drop   @ref{floor}
-^  cut    @ref{sort}
-@@  @@      @ref{type}
-?  find   @ref{distinct}
-$  parse  @ref{str}       
-.  dict   @ref{value}
+Verb     monad   
++ +              
+- -              
+* *              
+% @ref{div}            
+! @ref{mod}    @ref{where}
+& &      @ref{flip}  
+| |      @ref{reverse}
+< <      @ref{asc}
+> >      @ref{desc}
+= =      @ref{freq}
+~ ~      ~       
+, ,      ,
+# @ref{take}   @ref{count}
+_ @ref{drop}   @ref{first}
+^ @ref{cut}    @ref{sort}
+@@ @@      @ref{type}
+? @ref{find}   @ref{unique}
+$ @ref{parse}  @ref{str}
+. @ref{dict}   @ref{value}
 @end example
 
 @c @anchor{x}@section x @result{} :x
@@ -381,32 +381,6 @@ $  parse  @ref{str}
 @c  c[12;15]
 @c 27
 @c @end example
-
-@anchor{flip}@section flip @result{} +x
-Flip, or transpose, x where x is not a simple element.  
-
-@example
- x:((1 2);(3 4);(5 6))
- x
-1 2
-3 4
-5 6
-
- +x
-1 3 5
-2 4 6
-
- `a`b!+x
-a|1 3 5
-b|2 4 5
-
- +`a`b!+x
-a b
-- -
-1 2
-3 4
-5 6
-@end example
 
 @anchor{plus}@section plus @result{} x+y
 Add x and y.  Arguments can be elements or lists but if both x and y are lists then they must be of equal length.
@@ -469,23 +443,23 @@ Subtract y from x.
 3
 @end example
 
-@anchor{first}@section first @result{} *x
+@anchor{first}@section first @result{} _x
 Return the first value of x.  
 
 @example
- *1 2 3
+ _1 2 3
 1
 
-*((1 2);(3 4);(5 6))
+ _((1 2);(3 4);(5 6))
 1 2
 
-**((1 2);(3 4);(5 6))
+ __((1 2);(3 4);(5 6))
 1
 
-*`a`b!((1 2 3);(4 5 6))
+ _`a`b.((1 2 3);(4 5 6))
 1 2 3
 
-*|1 2 3
+ _|1 2 3
 3
 @end example
 
@@ -513,68 +487,69 @@ Return the square root of x.
 3.794e+00
 @end example
 
-@anchor{divide}@section divide @result{} x@code{%}y
+@anchor{div}@section div @result{} x@code{%}y
 Divide x by y.
 
 @example
  12%5
-2.4
- 6%2    / division of two integers returns a float
-3f
+2.400e+00
+
+6%2
+3.000e+00
 @end example
 
-@anchor{key}@section key @result{} !x
-Enumerate the domain of x.  Given an integer, x, generate an integer list from 0 to x-1.  Given a dictionary, x, return all key values.  
-
-@example
- !3
-0 1 2
-
- !`a`b`c!3 2 1
-`a`b`c
-@end example
-
-In the case where x is a list of integers  x1 x2 ... xk, generate a matrix of k rows where each row has size */x1 x2 ... xk and the elements of row i are !xi repeated as many times as necessary. Each row's repeats must fit below constant values of the row above.
-
-@example
- / Each row of length 2*3*2 = */2 3 2 = 12.
- / First row values 0,1
- / Second row values 0,1,2
- / Third row values 0,1
- !2 3 2 
-0 0 0 0 0 0 1 1 1 1 1 1
-0 0 1 1 2 2 0 0 1 1 2 2
-0 1 0 1 0 1 0 1 0 1 0 1
-
- !4 2 3
-0 0 0 0 0 0 1 1 1 1 1 1 2 2 2 2 2 2 3 3 3 3 3 3
-0 0 0 1 1 1 0 0 0 1 1 1 0 0 0 1 1 1 0 0 0 1 1 1
-0 1 2 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2
-
- !2 2 2
-0 0 0 0 1 1 1 1
-0 0 1 1 0 0 1 1
-0 1 0 1 0 1 0 1
-
- +!2 2 2
-0 0 0
-0 0 1
-0 1 0
-0 1 1
-1 0 0
-1 0 1
-1 1 0
-1 1 1
-
- B:`b'+!16#2 / create the binary numbers from 0 to 65,535
-
-B[12123]     / take the 12123 element
-0 0 1 0 1 1 1 1 0 1 0 1 1 0 1 1
-
-2/B[12123]   / convert back to decimal
-12123
-@end example
-
+@c @anchor{key}@section key @result{} !x
+@c Enumerate the domain of x.  Given an integer, x, generate an integer list from 0 to x-1.  Given a dictionary, x, return all key values.  
+@c 
+@c @example
+@c  !3
+@c 0 1 2
+@c 
+@c  !`a`b`c!3 2 1
+@c `a`b`c
+@c @end example
+@c 
+@c In the case where x is a list of integers  x1 x2 ... xk, generate a matrix of k rows where each row has size */x1 x2 ... xk and the elements of row i are !xi repeated as many times as necessary. Each row's repeats must fit below constant values of the row above.
+@c 
+@c @example
+@c  / Each row of length 2*3*2 = */2 3 2 = 12.
+@c  / First row values 0,1
+@c  / Second row values 0,1,2
+@c  / Third row values 0,1
+@c  !2 3 2 
+@c 0 0 0 0 0 0 1 1 1 1 1 1
+@c 0 0 1 1 2 2 0 0 1 1 2 2
+@c 0 1 0 1 0 1 0 1 0 1 0 1
+@c 
+@c  !4 2 3
+@c 0 0 0 0 0 0 1 1 1 1 1 1 2 2 2 2 2 2 3 3 3 3 3 3
+@c 0 0 0 1 1 1 0 0 0 1 1 1 0 0 0 1 1 1 0 0 0 1 1 1
+@c 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2
+@c 
+@c  !2 2 2
+@c 0 0 0 0 1 1 1 1
+@c 0 0 1 1 0 0 1 1
+@c 0 1 0 1 0 1 0 1
+@c 
+@c  +!2 2 2
+@c 0 0 0
+@c 0 0 1
+@c 0 1 0
+@c 0 1 1
+@c 1 0 0
+@c 1 0 1
+@c 1 1 0
+@c 1 1 1
+@c 
+@c  B:`b'+!16#2 / create the binary numbers from 0 to 65,535
+@c 
+@c B[12123]     / take the 12123 element
+@c 0 0 1 0 1 1 1 1 0 1 0 1 1 0 1 1
+@c 
+@c 2/B[12123]   / convert back to decimal
+@c 12123
+@c @end example
+@c 
 @anchor{mod}@section mod @result{} x!y
 The remainder after y divided by x using integer division.  x and y must be integers.
 
@@ -606,32 +581,81 @@ The remainder after y divided by x using integer division.  x and y must be inte
 @c c|3
 @c @end example
 @c 
-@anchor{where}@section where @result{} &x
-Given a list of boolean values return the indices where the value is non-zero.   
+@anchor{where}@section where @result{} !x
+Given a list of boolean values return the non-zero indices.
 
 @example
- &001001b
-2 5
+ !00110011b
+2 3 6 7
 
-"banana"="a"
-010101b
+ "banana"="a"
+010101
 
-&"banana"="a"
+ !"banana"="a"
 1 3 5
 
-x@@&30<x:12.7 0.1 35.6 -12.1 101.101  / return values greater than 30
-35.6 101.101
+ x@@!30<x:12.7 0.1 35.6 -12.1 101.101
+3.560e+01 1.011e+02
 @end example
 
-Given a list of non-negative integer values, eg. x[0], x[1], ..., x[n-1], generate x[0] values of 0,
-x[1] values of 1, ..., and x[n-1] values of n-1. 
+@anchor{flip}@section flip @result{} &x
+Flip, or transpose, x where x is list of 2 or more dimensions.  
 
 @example
- & 3 1 0 2
-0 0 0 1 3 3
+ x:(1 2;3 4;5 6);x
+(1 2;3 4;5 6)
 
+ &x
+(1 3 5;2 4 6)
+
+ `a`b.&x
+@{a:1 3 5;b:2 4 6@}
+
+ &`a`b.&x
+[a:1 3 5;b:2 4 6]
 @end example
 
+Given a list of boolean values return a list of indices where the value is zero (index 0) and non-zero (index 1).
+
+@example
+ &00110011b
+(0 1 4 5;2 3 6 7)
+
+ "banana"="a"
+010101
+
+ &"banana"="a"
+(0 2 4;1 3 5)
+
+ x@@&30<x:12.7 0.1 35.6 -12.1 101.101
+(1.270e+01 0.100e+00 -1.210e+01;3.560e+01 1.011e+02)
+@end example
+
+Given a list of non-binary values, return the ascending sorted indices.
+
+@example
+ & 4 1 2 -3 4 1 
+(,3;1 5;,2;0 4)
+
+ &`a`b`a`d
+(0 2;,1;,3)
+
+ &"blue red greeen"
+(4 8;,0;,7;3 6 11 12 13;,9;,1;,14;5 10;,2)
+
+ & 2023.01.01 2023.01.02 2023.01.01
+(0 2;,1)
+@end example
+
+@c Given a list of non-negative integer values, eg. x[0], x[1], ..., x[n-1], generate x[0] values of 0,
+@c x[1] values of 1, ..., and x[n-1] values of n-1. 
+@c 
+@c @example
+@c  & 3 1 0 2
+@c 0 0 0 1 3 3
+@c 
+@c @end example
+@c 
 @anchor{min/and}@section and @result{} x&y
 The smaller of x and y.  One can use the over adverb to determine the min value in a list.
 
@@ -663,9 +687,7 @@ Reverse the list x.
 "ananab"
 
  |((1 2 3);4;(5 6))
-5 6  
-4    
-1 2 3
+(5 6;4;1 2 3)
 @end example
 
 To get the last element, one can take  the first element of the reverse list (*|@math{`}a@math{`}b@math{`}c).
@@ -735,17 +757,10 @@ Freq takes a list of uniform type, x, and returns a dictionary of the distinct v
 
 @example
  ="banana"
-a|3
-b|1    
-n|2  
+abn.3 1 2
 
  =0 1 0 2 10 7 0 1 12
- 0|3
- 1|2  
- 2|1    
- 7|1    
-10|1    
-12|1    
+0 1 2 7 10 12.3 2 1 1 1 1
 @end example
 
 @c @example
@@ -1159,7 +1174,7 @@ Parse string y into type x.
 2020.04.20
 @end example
 
-@anchor{distinct}@section distinct @result{} ?x
+@anchor{unique}@section unique @result{} ?x
 Return the distinct values of the list x.  The @code{?} preceeding the return value explicitly shows that the list has no repeated values.
 
 @example
@@ -1327,78 +1342,114 @@ Convert from string to numeric or name.
 `abc
 @end example
 
-@anchor{dot}@section [f]dot @result{} x.y
-Return the value(s) of list x at list y.  This differs from @ref{at} as dot can recursively index.
-@itemize
-@item Simple index returns the value(s) at x at each index y, i.e. x@@y@@0, x@@y@@1, ..., x@@y@@(n-1).
-@item Recursive index returns the value(s) at x[y@@0;y@@1].
-@item Recursive index over returns x[y[0;0];y[1]], x[y[0;1];y[1]], ..., x[y[0;n-1];y[1]].
-@end itemize
-
-@flushleft
-@multitable {recursive index over 123} {def} {ghi} {123 123}
-@c @headitem action @tab @@y @tab #y @tab example
-@item @b{action} @tab @b{@@y} @tab @b{#y} @tab @b{example}
-@item simple index @tab @math{`}I @tab 1 @tab ,2
-@item simple indices @tab @math{`}I @tab 1 @tab ,1 3
-@item recursive index @tab @math{`}L @tab 1 @tab 0 2
-@item recursive index over @tab @math{`}L @tab 2 @tab (0 2;1 3)
-@end multitable
-@end flushleft
+@anchor{dict}@section dict @result{} x.y
+Create a dictionary from key x and value y.  Keys and vlaues can be of the various types, eg. numbers, symbols, characters, strings, dates, and times.  There is a an alternative form to create dictionaries using curly brack notation, eg. @{a:2 3@}. 
 
 @example
-@ (3 4 7 12).,2
-7
-@ `a`b`c.,2
-`c
-@ x:(`x00`x01;`x10`x11`x12;`x20;`x30`x31`x32);x
-x00 x01    
-x10 x11 x12
-x20        
-x30 x31 x32
+ d:`a`b`c.1 2 3;d
+`a`b`c.1 2 3
 
-@ x . ,1
-`x10`x11`x12
-@ x . ,0 1 3
-x00 x01    
-x10 x11 x12
-x30 x31 x32
+ d`b
+2
 
-@ x . 3 1
-`x31
-@ x . (1 3;0 1)
-x10 x11
-x30 x31
+ d:1 2 3 . 4 5 6;d
+1 2 3.4 5 6
+
+ d:"blue" . 1 2 3 4;d
+blue.1 2 3 4
+
+ d:2023.01.01 2023.02.01 2023.03.01 . 1 2 3;d
+2023.01.01 2023.02.01 2023.03.01.1 2 3
+
+ d:`a`b`c . (1 2 3;4 5;6);d
+@{a:1 2 3;b:4 5;c:6@}
+
+ fa[a] a+1
+ fb[a] a+2
+ fc[a] a+3
+
+ d:`f1`f2`f3 . (fa;fb;fc);d
+@{f1:(,`a;0a+;(1); a+1);f2:(,`a;0a+;(2); a+2);f3:(,`a;0a+;(3); a+3)@}
+
+ (d@@`f1)@@99
+100
+
+(d@@`f3)@@99
+102
 @end example
 
-If x is a function then apply the function to y.
-
-@example
- (+). 3 2
-5
-
- (+;-;*;%).\: 3 2
-5  
-1  
-6  
-1.5
-
- a:@{x+y@};b:@{x*sin y@};a . 3 1
-4
- a . 3 1
-4
- b . 3 1
-2.524413
-
- (!).(`a`b`c;1 2 3)
-a|1
-b|2
-c|3
-
- (:).(`a;12 14 15)
- a
-12 14 15
-@end example
+@c @anchor{dot}@section [f]dot @result{} x.y
+@c Return the value(s) of list x at list y.  This differs from @ref{at} as dot can recursively index.
+@c @itemize
+@c @item Simple index returns the value(s) at x at each index y, i.e. x@@y@@0, x@@y@@1, ..., x@@y@@(n-1).
+@c @item Recursive index returns the value(s) at x[y@@0;y@@1].
+@c @item Recursive index over returns x[y[0;0];y[1]], x[y[0;1];y[1]], ..., x[y[0;n-1];y[1]].
+@c @end itemize
+@c 
+@c @flushleft
+@c @multitable {recursive index over 123} {def} {ghi} {123 123}
+@c @c @headitem action @tab @@y @tab #y @tab example
+@c @item @b{action} @tab @b{@@y} @tab @b{#y} @tab @b{example}
+@c @item simple index @tab @math{`}I @tab 1 @tab ,2
+@c @item simple indices @tab @math{`}I @tab 1 @tab ,1 3
+@c @item recursive index @tab @math{`}L @tab 1 @tab 0 2
+@c @item recursive index over @tab @math{`}L @tab 2 @tab (0 2;1 3)
+@c @end multitable
+@c @end flushleft
+@c 
+@c @example
+@c @ (3 4 7 12).,2
+@c 7
+@c @ `a`b`c.,2
+@c `c
+@c @ x:(`x00`x01;`x10`x11`x12;`x20;`x30`x31`x32);x
+@c x00 x01    
+@c x10 x11 x12
+@c x20        
+@c x30 x31 x32
+@c 
+@c @ x . ,1
+@c `x10`x11`x12
+@c @ x . ,0 1 3
+@c x00 x01    
+@c x10 x11 x12
+@c x30 x31 x32
+@c 
+@c @ x . 3 1
+@c `x31
+@c @ x . (1 3;0 1)
+@c x10 x11
+@c x30 x31
+@c @end example
+@c 
+@c If x is a function then apply the function to y.
+@c 
+@c @example
+@c  (+). 3 2
+@c 5
+@c 
+@c  (+;-;*;%).\: 3 2
+@c 5  
+@c 1  
+@c 6  
+@c 1.5
+@c 
+@c  a:@{x+y@};b:@{x*sin y@};a . 3 1
+@c 4
+@c  a . 3 1
+@c 4
+@c  b . 3 1
+@c 2.524413
+@c 
+@c  (!).(`a`b`c;1 2 3)
+@c a|1
+@c b|2
+@c c|3
+@c 
+@c  (:).(`a;12 14 15)
+@c  a
+@c 12 14 15
+@c @end example
 
 @node Adverb
 @chapter Adverbs
@@ -2978,16 +3029,16 @@ Test if x is equal to or greater than y[0] and less than y[1].
 0b
 @end example
 
-@anchor{div}@section div @result{} x div y
-y divided by x using integer division, taking the floor of the result.  x and y must be integers.
-
-@example
-@ 2 div 7
-3
-@ 5 div 22
-4
-@end example
-
+@c @anchor{div}@section div @result{} x div y
+@c y divided by x using integer division, taking the floor of the result.  x and y must be integers.
+@c 
+@c @example
+@c @ 2 div 7
+@c 3
+@c @ 5 div 22
+@c 4
+@c @end example
+@c 
 @c @anchor{mod}@section mod @result{} x mod y
 @c The remainder after y divided by x using integer division.  x and y must be integers.
 @c 

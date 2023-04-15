@@ -3,7 +3,7 @@
 <!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<!-- March 12, 2023
+<!-- April 15, 2023
 
 Copyright (C) 2020 John Estrada -->
 <title>Named Functions (Shakti (k9) tutorial)</title>
@@ -98,7 +98,7 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 <div class="format">
 <div class="example">
 <pre class="example"><a href="#Hcount">count</a> <a href="#Hfirst">first</a> <a href="#Hlast">last</a> <a href="#Hmin">min</a> <a href="#Hmax">max</a> <a href="#Hsum">sum</a> <a href="#Hdot">dot</a> <a href="#avg">avg</a> <a href="#var">var</a> [dev med mode countd ..]
-<a href="Verb.html#sqrt">sqrt</a> <a href="#sqr">sqr</a> <a href="#exp">exp</a> <a href="#log">log</a> <a href="#sin">sin</a> <a href="#cos">cos</a> <a href="#div">div</a> <a href="Verb.html#mod">mod</a> <a href="#bar">bar</a> <a href="#in">in</a> 
+<a href="Verb.html#sqrt">sqrt</a> <a href="#sqr">sqr</a> <a href="#exp">exp</a> <a href="#log">log</a> <a href="#sin">sin</a> <a href="#cos">cos</a> <a href="Verb.html#div">div</a> <a href="Verb.html#mod">mod</a> <a href="#bar">bar</a> <a href="#in">in</a> 
 </pre></div>
 </div>
 
@@ -128,7 +128,6 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 <li><a href="#bin-_21d2-x-bin-y">bin &rArr; x bin y</a></li>
 <li><a href="#in-_21d2-x-in-y">in &rArr; x in y</a></li>
 <li><a href="#within-_21d2-x-within-y">within &rArr; x within y</a></li>
-<li><a href="#div-_21d2-x-div-y">div &rArr; x div y</a></li>
 <li><a href="#bar-_21d2-x-bar-y">bar &rArr; x bar y</a></li>
 <li><a href="#msum-_21d2-x-msum-y">msum &rArr; x msum y</a></li>
 <li><a href="#mavg-_21d2-x-mavg-y">mavg &rArr; x mavg y</a></li>
@@ -400,21 +399,9 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 0b
 </pre></div>
 
-<span id="div"></span></div>
-<div class="section" id="div-_21d2-x-div-y">
-<h3 class="section">9.26 div &rArr; x div y</h3>
-<p>y divided by x using integer division, taking the floor of the result.  x and y must be integers.
-</p>
-<div class="example">
-<pre class="example">&nbsp;2 div 7
-3
-&nbsp;5 div 22
-4
-</pre></div>
-
 <span id="bar"></span></div>
 <div class="section" id="bar-_21d2-x-bar-y">
-<h3 class="section">9.27 bar &rArr; x bar y</h3>
+<h3 class="section">9.26 bar &rArr; x bar y</h3>
 <p>For each value in y determine the maximum multiple of x that is less than or equal to each y.
 </p>
 <div class="example">
@@ -424,7 +411,7 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 
 <span id="msum"></span></div>
 <div class="section" id="msum-_21d2-x-msum-y">
-<h3 class="section">9.28 msum &rArr; x msum y</h3>
+<h3 class="section">9.27 msum &rArr; x msum y</h3>
 <p>Compute the length x  moving sum of list y.
 </p>
 <div class="example">
@@ -435,7 +422,7 @@ Next: <a href="Knit-Functions.html" accesskey="n" rel="next">Knit Functions</a>,
 
 <span id="mavg"></span></div>
 <div class="section" id="mavg-_21d2-x-mavg-y">
-<h3 class="section">9.29 mavg &rArr; x mavg y</h3>
+<h3 class="section">9.28 mavg &rArr; x mavg y</h3>
 <p>Compute the length x  moving average of list y.
 </p>
 <div class="example">

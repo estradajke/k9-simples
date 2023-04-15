@@ -3,7 +3,7 @@
 <!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<!-- March 12, 2023
+<!-- April 15, 2023
 
 Copyright (C) 2020 John Estrada -->
 <title>Introduction (Shakti (k9) tutorial)</title>
@@ -225,30 +225,29 @@ z@&amp;y&lt;z:?x
 <p>Typing <code>\</code> in a terminal window gives you a concise overview of the language.  This document aims to provide details to beginning user where the help screen is a bit too terse.  Some commands are not available in the basic version and thus marked with an asterisk, eg. *4: https get.
 </p>
 <div class="format">
-<pre class="verbatim">[&quot;Tdtcnghije&quot;]2'`t.csv;[#!@*.[^]]`t.csv;1'stdout;2'stderr
-select count last min max sum avg var dev .. by ..;in log exp
+<pre class="verbatim">select count first last min max sum avg var dev .. by ..
+in n_(rand) n@(multiply) n?(divide) n@n?(bar)
 
-Verb      unary        Adverb        Type
-+  +      flip         ' each        char   &quot; ab&quot;          
--  -      -            / over        sym    ``ab
-*  *      first        \ scan        bool   011b   
-%  div    sqrt                       int    2 3 4
-!  mod    key          System        float  2 3e4          
-&amp;  &amp;      where        \l load      -fixed  2.0 3.4
-|  |      reverse      \t time      -locus  -74::40.7      
-&lt;  &lt;      asc          \v vars   z.d date   2001.02.03  
-&gt;  &gt;      desc         \w work   z.t time   12:34:56.789
-=  =      freq                   z.T datetime
-~  ~      ~                                       
-,  ,      ,
-#  take   count        I/O           Class      
-_  drop   floor     [n]0' line       expr   :2+a
-^  cut    sort      [n]1' char       func   f[a]:2+a
-@  @      type    [nft]2' data               
-?  find   distinct    *3' set        list   (2;3.4)  
-$  parse  str         *4' get        dict   {a:2 3}
-.  dict   value       *5' ffi        table  [a:2 3]
-</pre></div>
+Verb     monad        Adverb            Type 
++ +                   ' each            char   &quot; ab&quot;          
+- -                   / over            sym    ``ab
+* *                   \ scan            bool   011b   
+% div                                   int    2 3 4
+! mod    where        System            float  2 3e4      
+&amp; &amp;      flip         \l load          -fixed  2.0 3.4
+| |      reverse      \t time          -locus  -74::40.7      
+&lt; &lt;      asc          \v vars       z.d date   2001.02.03  
+&gt; &gt;      desc         \w work       z.t time   12:34:56.789
+= =      freq                       z.T datetime
+~ ~      ~                                      
+, ,      ,
+# take   count        I/O               Class
+_ drop   first        0' line           expr   :2+a
+^ cut    sort         1' char/stdout    func   f[a] 2+a
+@ @      type         2' data/stderr              
+? find   unique      *3' set            list   (2;3.4)  
+$ parse  str         *4' get            dict   {a:2 3}
+. dict   value       *5' ffi            table  [a:2 3]</pre></div>
 
 </div>
 <div class="section" id="rlwrap">
@@ -276,7 +275,7 @@ Sep 13 2020 16GB (c) shakti
 <div class="section" id="Simple-example">
 <h3 class="section">1.7 Simple example</h3>
 
-<p>Here I will start up k9, perform some trivial calculations, and then close the session.  After this example it will be assumed the user will have a k9 session running and working in repl mode.  Comments (<code>/</code>) will be added to the end of lines as needed.  One can review <a href="Verb.html#plus">plus</a>, <a href="Verb.html#key">key</a>, <a href="Verb.html#floor">floor</a> and <a href="System.html#timing">timing</a> as needed. 
+<p>Here I will start up k9, perform some trivial calculations, and then close the session.  After this example it will be assumed the user will have a k9 session running and working in repl mode.  Comments (<code>/</code>) will be added to the end of lines as needed.  One can review <a href="Verb.html#plus">plus</a>, <a href="Verb.html#where">where</a>, <a href="Verb.html#floor">floor</a> and <a href="System.html#timing">timing</a> as needed. 
 </p>
 <div class="example">
 <pre class="example"> 1+2  / add 1 and 2
